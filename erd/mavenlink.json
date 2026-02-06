@@ -1,0 +1,3665 @@
+{
+  "tables": [
+    {
+      "name": "story_allocation_day",
+      "columns": [
+        {
+          "name": "id",
+          "type": "Long",
+          "primaryKey": true
+        },
+        {
+          "name": "assignment_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "story_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "created_at",
+          "type": "Instant"
+        },
+        {
+          "name": "current",
+          "type": "Boolean"
+        },
+        {
+          "name": "date",
+          "type": "LocalDate"
+        },
+        {
+          "name": "minutes",
+          "type": "Int"
+        },
+        {
+          "name": "updated_at",
+          "type": "Instant"
+        }
+      ],
+      "tags": [],
+      "link": "http://developer.mavenlink.com/story_allocation_days/"
+    },
+    {
+      "name": "role",
+      "columns": [
+        {
+          "name": "id",
+          "type": "Long",
+          "primaryKey": true
+        },
+        {
+          "name": "created_at",
+          "type": "Instant"
+        },
+        {
+          "name": "deleted_at",
+          "type": "Instant"
+        },
+        {
+          "name": "name",
+          "type": "String"
+        },
+        {
+          "name": "updated_at",
+          "type": "Instant"
+        }
+      ],
+      "tags": [],
+      "link": "http://developer.mavenlink.com/beta/#tag/Roles"
+    },
+    {
+      "name": "assignment",
+      "columns": [
+        {
+          "name": "id",
+          "type": "Long",
+          "primaryKey": true
+        },
+        {
+          "name": "assignee_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "story_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "allocated_minutes",
+          "type": "Int"
+        },
+        {
+          "name": "created_at",
+          "type": "Instant"
+        },
+        {
+          "name": "current",
+          "type": "Boolean"
+        },
+        {
+          "name": "estimated_minutes",
+          "type": "Int"
+        },
+        {
+          "name": "resource_id",
+          "type": "Long"
+        },
+        {
+          "name": "updated_at",
+          "type": "Instant"
+        }
+      ],
+      "tags": [],
+      "link": "http://developer.mavenlink.com/assignments/"
+    },
+    {
+      "name": "workspace_invoice_preference",
+      "columns": [
+        {
+          "name": "id",
+          "type": "Long",
+          "primaryKey": true
+        },
+        {
+          "name": "workspace_id",
+          "type": "Long",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "client_invoice_address",
+          "type": "String"
+        },
+        {
+          "name": "client_invoice_name",
+          "type": "String"
+        },
+        {
+          "name": "consultant_invoice_address",
+          "type": "String"
+        },
+        {
+          "name": "consultant_invoice_name",
+          "type": "String"
+        },
+        {
+          "name": "project_code",
+          "type": "String"
+        },
+        {
+          "name": "purchase_order",
+          "type": "String"
+        }
+      ],
+      "tags": [],
+      "link": "http://developer.mavenlink.com/workspace_invoice_preference/"
+    },
+    {
+      "name": "time_off_entry",
+      "columns": [
+        {
+          "name": "id",
+          "type": "Long",
+          "primaryKey": true
+        },
+        {
+          "name": "user_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "hours",
+          "type": "Float"
+        },
+        {
+          "name": "requested_date",
+          "type": "LocalDate"
+        },
+        {
+          "name": "submission_date",
+          "type": "LocalDate"
+        }
+      ],
+      "tags": [],
+      "link": "http://developer.mavenlink.com/beta/#tag/Time-Off-Entries"
+    },
+    {
+      "name": "holiday",
+      "columns": [
+        {
+          "name": "id",
+          "type": "Long",
+          "primaryKey": true
+        },
+        {
+          "name": "end_date",
+          "type": "LocalDate"
+        },
+        {
+          "name": "name",
+          "type": "String"
+        },
+        {
+          "name": "paid",
+          "type": "Boolean"
+        },
+        {
+          "name": "start_date",
+          "type": "LocalDate"
+        },
+        {
+          "name": "total_hours",
+          "type": "Int"
+        }
+      ],
+      "tags": [],
+      "link": "http://developer.mavenlink.com/beta/#tag/Holidays"
+    },
+    {
+      "name": "invoice_time_entry",
+      "columns": [
+        {
+          "name": "invoice_id",
+          "type": "Long",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "time_entry_id",
+          "type": "Long",
+          "primaryKey": true,
+          "foreignKey": true
+        }
+      ],
+      "tags": [],
+      "link": null
+    },
+    {
+      "name": "account_membership",
+      "columns": [
+        {
+          "name": "id",
+          "type": "Long",
+          "primaryKey": true
+        },
+        {
+          "name": "default_role_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "manager_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "user_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "bill_rate_in_cents",
+          "type": "Long"
+        },
+        {
+          "name": "billability_target",
+          "type": "Long"
+        },
+        {
+          "name": "can_create_workspace",
+          "type": "Boolean"
+        },
+        {
+          "name": "can_view_reports",
+          "type": "Boolean"
+        },
+        {
+          "name": "cost_rate_in_cents",
+          "type": "Long"
+        },
+        {
+          "name": "created_at",
+          "type": "Instant"
+        },
+        {
+          "name": "default_read_only",
+          "type": "Boolean"
+        },
+        {
+          "name": "disabled_at",
+          "type": "Instant"
+        },
+        {
+          "name": "is_administrator",
+          "type": "Boolean"
+        },
+        {
+          "name": "is_backup_approver",
+          "type": "Boolean"
+        },
+        {
+          "name": "is_owner",
+          "type": "Boolean"
+        },
+        {
+          "name": "is_project_lead",
+          "type": "Boolean"
+        },
+        {
+          "name": "is_punch_clock_user",
+          "type": "Boolean"
+        },
+        {
+          "name": "manager_can_approve",
+          "type": "Boolean"
+        },
+        {
+          "name": "permission",
+          "type": "String"
+        },
+        {
+          "name": "should_show_alert_on_timesheet_submission",
+          "type": "Boolean"
+        },
+        {
+          "name": "updated_at",
+          "type": "Instant"
+        }
+      ],
+      "tags": [],
+      "link": "http://developer.mavenlink.com/account_memberships/"
+    },
+    {
+      "name": "rate_card_version_history",
+      "columns": [
+        {
+          "name": "id",
+          "type": "Long",
+          "primaryKey": true
+        },
+        {
+          "name": "updated_at",
+          "type": "Instant",
+          "primaryKey": true
+        },
+        {
+          "name": "rate_card_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "created_at",
+          "type": "Instant"
+        },
+        {
+          "name": "default_rate",
+          "type": "Int"
+        }
+      ],
+      "tags": [],
+      "link": "http://developer.mavenlink.com/beta/#tag/Rate-Card-Versions"
+    },
+    {
+      "name": "skill_membership",
+      "columns": [
+        {
+          "name": "id",
+          "type": "Long",
+          "primaryKey": true
+        },
+        {
+          "name": "creator_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "skill_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "user_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "created_at",
+          "type": "Instant"
+        },
+        {
+          "name": "level",
+          "type": "Int"
+        },
+        {
+          "name": "updated_at",
+          "type": "Instant"
+        }
+      ],
+      "tags": [],
+      "link": "http://developer.mavenlink.com/account_invitations/"
+    },
+    {
+      "name": "account_location",
+      "columns": [
+        {
+          "name": "id",
+          "type": "Long",
+          "primaryKey": true
+        },
+        {
+          "name": "archived",
+          "type": "Boolean"
+        },
+        {
+          "name": "in_use",
+          "type": "Boolean"
+        },
+        {
+          "name": "name",
+          "type": "String"
+        }
+      ],
+      "tags": [],
+      "link": "https://developer.kantata.com/tag/Account-Locations#operation/get-account-locations"
+    },
+    {
+      "name": "workweek",
+      "columns": [
+        {
+          "name": "id",
+          "type": "Long",
+          "primaryKey": true
+        },
+        {
+          "name": "created_at",
+          "type": "Instant"
+        },
+        {
+          "name": "default",
+          "type": "Boolean"
+        },
+        {
+          "name": "end_date",
+          "type": "LocalDate"
+        },
+        {
+          "name": "friday_minutes",
+          "type": "Int"
+        },
+        {
+          "name": "monday_minutes",
+          "type": "Int"
+        },
+        {
+          "name": "saturday_minutes",
+          "type": "Int"
+        },
+        {
+          "name": "start_date",
+          "type": "LocalDate"
+        },
+        {
+          "name": "sunday_minutes",
+          "type": "Int"
+        },
+        {
+          "name": "thursday_minutes",
+          "type": "Int"
+        },
+        {
+          "name": "total_minutes",
+          "type": "Int"
+        },
+        {
+          "name": "tuesday_minutes",
+          "type": "Int"
+        },
+        {
+          "name": "updated_at",
+          "type": "Instant"
+        },
+        {
+          "name": "wednesday_minutes",
+          "type": "Int"
+        }
+      ],
+      "tags": [],
+      "link": "http://developer.mavenlink.com/beta/#tag/Workweeks"
+    },
+    {
+      "name": "estimate_scenario",
+      "columns": [
+        {
+          "name": "id",
+          "type": "Long",
+          "primaryKey": true
+        },
+        {
+          "name": "estimate_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "rate_card_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "budget_in_cents",
+          "type": "Long"
+        },
+        {
+          "name": "created_at",
+          "type": "Instant"
+        },
+        {
+          "name": "name",
+          "type": "String"
+        },
+        {
+          "name": "start_date",
+          "type": "LocalDate"
+        },
+        {
+          "name": "target_margin_percent",
+          "type": "Int"
+        },
+        {
+          "name": "updated_at",
+          "type": "Instant"
+        }
+      ],
+      "tags": [],
+      "link": "http://developer.mavenlink.com/estimate_scenarios/"
+    },
+    {
+      "name": "skill",
+      "columns": [
+        {
+          "name": "id",
+          "type": "Long",
+          "primaryKey": true
+        },
+        {
+          "name": "skill_category_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "created_at",
+          "type": "Instant"
+        },
+        {
+          "name": "description",
+          "type": "String"
+        },
+        {
+          "name": "max_level",
+          "type": "String"
+        },
+        {
+          "name": "name",
+          "type": "String"
+        },
+        {
+          "name": "updated_at",
+          "type": "Instant"
+        }
+      ],
+      "tags": [],
+      "link": "http://developer.mavenlink.com/account_invitations/"
+    },
+    {
+      "name": "participation",
+      "columns": [
+        {
+          "name": "id",
+          "type": "Long",
+          "primaryKey": true
+        },
+        {
+          "name": "workspace_id",
+          "type": "Long",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "user_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "active_role_name",
+          "type": "String"
+        },
+        {
+          "name": "allocated_workspace_minutes",
+          "type": "Long"
+        },
+        {
+          "name": "can_invite",
+          "type": "Boolean"
+        },
+        {
+          "name": "cost_in_cents",
+          "type": "Long"
+        },
+        {
+          "name": "created_at",
+          "type": "Instant"
+        },
+        {
+          "name": "default_rate_in_cents",
+          "type": "Long"
+        },
+        {
+          "name": "estimated_workspace_minutes",
+          "type": "Long"
+        },
+        {
+          "name": "is_team_lead",
+          "type": "Boolean"
+        },
+        {
+          "name": "permissions",
+          "type": "String"
+        },
+        {
+          "name": "rate_in_cents",
+          "type": "Long"
+        },
+        {
+          "name": "role",
+          "type": "String"
+        },
+        {
+          "name": "show_as_read_only",
+          "type": "Boolean"
+        },
+        {
+          "name": "updated_at",
+          "type": "Instant"
+        }
+      ],
+      "tags": [],
+      "link": "http://developer.mavenlink.com/beta/#tag/Participations"
+    },
+    {
+      "name": "workspace_resource",
+      "columns": [
+        {
+          "name": "id",
+          "type": "Long",
+          "primaryKey": true
+        },
+        {
+          "name": "participation_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "role_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "user_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "workspace_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "created_at",
+          "type": "Instant"
+        },
+        {
+          "name": "display_label",
+          "type": "String"
+        },
+        {
+          "name": "full_name",
+          "type": "String"
+        },
+        {
+          "name": "label",
+          "type": "String"
+        },
+        {
+          "name": "photo_path",
+          "type": "String"
+        },
+        {
+          "name": "role_name",
+          "type": "String"
+        },
+        {
+          "name": "updated_at",
+          "type": "Instant"
+        }
+      ],
+      "tags": [],
+      "link": "http://developer.mavenlink.com/beta/#tag/Workspace-Resources"
+    },
+    {
+      "name": "rate_card_set_history",
+      "columns": [
+        {
+          "name": "id",
+          "type": "Long",
+          "primaryKey": true
+        },
+        {
+          "name": "updated_at",
+          "type": "Instant",
+          "primaryKey": true
+        },
+        {
+          "name": "account_default",
+          "type": "Boolean"
+        },
+        {
+          "name": "active_currencies",
+          "type": "Json"
+        },
+        {
+          "name": "created_at",
+          "type": "Instant"
+        },
+        {
+          "name": "default_currencies",
+          "type": "Json"
+        },
+        {
+          "name": "destroyable",
+          "type": "Boolean"
+        },
+        {
+          "name": "title",
+          "type": "String"
+        }
+      ],
+      "tags": [],
+      "link": "http://developer.mavenlink.com/beta/#tag/Rate-Card-Sets-(Group-of-Rate-Cards)"
+    },
+    {
+      "name": "rate_card_role_history",
+      "columns": [
+        {
+          "name": "id",
+          "type": "Long",
+          "primaryKey": true
+        },
+        {
+          "name": "updated_at",
+          "type": "Instant",
+          "primaryKey": true
+        },
+        {
+          "name": "rate_card_version_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "role_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "created_at",
+          "type": "Instant"
+        },
+        {
+          "name": "rate",
+          "type": "Int"
+        }
+      ],
+      "tags": [],
+      "link": "http://developer.mavenlink.com/beta/#tag/Rate-Card-Role-(Rate-for-a-Role)"
+    },
+    {
+      "name": "user",
+      "columns": [
+        {
+          "name": "id",
+          "type": "Long",
+          "primaryKey": true
+        },
+        {
+          "name": "role_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "account_id",
+          "type": "Long"
+        },
+        {
+          "name": "email_address",
+          "type": "String"
+        },
+        {
+          "name": "full_name",
+          "type": "String"
+        },
+        {
+          "name": "headline",
+          "type": "String"
+        },
+        {
+          "name": "photo_path",
+          "type": "String"
+        },
+        {
+          "name": "custom_*",
+          "type": "",
+          "wildCard": true
+        }
+      ],
+      "tags": [],
+      "link": "http://developer.mavenlink.com/users/"
+    },
+    {
+      "name": "expense",
+      "columns": [
+        {
+          "name": "id",
+          "type": "Long",
+          "primaryKey": true
+        },
+        {
+          "name": "expense_category_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "story_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "user_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "workspace_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "amount_in_cents",
+          "type": "Long"
+        },
+        {
+          "name": "category",
+          "type": "String"
+        },
+        {
+          "name": "created_at",
+          "type": "Instant"
+        },
+        {
+          "name": "currency",
+          "type": "String"
+        },
+        {
+          "name": "currency_base_unit",
+          "type": "Int"
+        },
+        {
+          "name": "currency_symbol",
+          "type": "String"
+        },
+        {
+          "name": "date",
+          "type": "LocalDate"
+        },
+        {
+          "name": "is_billable",
+          "type": "Boolean"
+        },
+        {
+          "name": "is_invoiced",
+          "type": "Boolean"
+        },
+        {
+          "name": "notes",
+          "type": "String"
+        },
+        {
+          "name": "taxable",
+          "type": "Boolean"
+        },
+        {
+          "name": "updated_at",
+          "type": "Instant"
+        },
+        {
+          "name": "user_can_edit",
+          "type": "Boolean"
+        }
+      ],
+      "tags": [],
+      "link": "http://developer.mavenlink.com/expenses/"
+    },
+    {
+      "name": "workspace_association",
+      "columns": [
+        {
+          "name": "workspace_group_id",
+          "type": "Long",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "workspace_id",
+          "type": "Long",
+          "primaryKey": true,
+          "foreignKey": true
+        }
+      ],
+      "tags": [],
+      "link": null
+    },
+    {
+      "name": "billable_utilizations",
+      "columns": [
+        {
+          "name": "id",
+          "type": "Long",
+          "primaryKey": true
+        },
+        {
+          "name": "account_membership_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "creator_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "created_at",
+          "type": "Instant"
+        },
+        {
+          "name": "effective_date",
+          "type": "LocalDate"
+        },
+        {
+          "name": "target",
+          "type": "Int"
+        },
+        {
+          "name": "updated_at",
+          "type": "Instant"
+        }
+      ],
+      "tags": [],
+      "link": null
+    },
+    {
+      "name": "workspace",
+      "columns": [
+        {
+          "name": "id",
+          "type": "Long",
+          "primaryKey": true
+        },
+        {
+          "name": "account_color_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "creator_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "primary_workspace_group_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "rate_card_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "access_level",
+          "type": "String"
+        },
+        {
+          "name": "account_feature_has_time_entry_role_picker",
+          "type": "Boolean"
+        },
+        {
+          "name": "account_feature_time_trackable",
+          "type": "Boolean"
+        },
+        {
+          "name": "archived",
+          "type": "Boolean"
+        },
+        {
+          "name": "budget_used_in_cents",
+          "type": "Long"
+        },
+        {
+          "name": "budgeted",
+          "type": "Boolean"
+        },
+        {
+          "name": "can_create_line_items",
+          "type": "Boolean"
+        },
+        {
+          "name": "can_invite",
+          "type": "Boolean"
+        },
+        {
+          "name": "change_orders_enabled",
+          "type": "Boolean"
+        },
+        {
+          "name": "client_role_name",
+          "type": "String"
+        },
+        {
+          "name": "consultant_role_name",
+          "type": "String"
+        },
+        {
+          "name": "created_at",
+          "type": "Instant"
+        },
+        {
+          "name": "currency",
+          "type": "String"
+        },
+        {
+          "name": "currency_base_unit",
+          "type": "Int"
+        },
+        {
+          "name": "currency_symbol",
+          "type": "String"
+        },
+        {
+          "name": "default_rate",
+          "type": "BigDecimal"
+        },
+        {
+          "name": "description",
+          "type": "String"
+        },
+        {
+          "name": "due_date",
+          "type": "LocalDate"
+        },
+        {
+          "name": "effective_due_date",
+          "type": "LocalDate"
+        },
+        {
+          "name": "exclude_archived_stories_percent_complete",
+          "type": "Boolean"
+        },
+        {
+          "name": "expenses_in_burn_rate",
+          "type": "Boolean"
+        },
+        {
+          "name": "has_active_expense_report_submissions",
+          "type": "Boolean"
+        },
+        {
+          "name": "has_active_timesheet_submissions",
+          "type": "Boolean"
+        },
+        {
+          "name": "has_budget_access",
+          "type": "Boolean"
+        },
+        {
+          "name": "over_budget",
+          "type": "Boolean"
+        },
+        {
+          "name": "percentage_complete",
+          "type": "Int"
+        },
+        {
+          "name": "posts_require_privacy_decision",
+          "type": "Boolean"
+        },
+        {
+          "name": "price_in_cents",
+          "type": "Long"
+        },
+        {
+          "name": "primary_counterpart_id",
+          "type": "Int"
+        },
+        {
+          "name": "provider_lead_name",
+          "type": "String"
+        },
+        {
+          "name": "require_expense_approvals",
+          "type": "Boolean"
+        },
+        {
+          "name": "require_time_approvals",
+          "type": "Boolean"
+        },
+        {
+          "name": "start_date",
+          "type": "LocalDate"
+        },
+        {
+          "name": "status_color",
+          "type": "String"
+        },
+        {
+          "name": "status_key",
+          "type": "Int"
+        },
+        {
+          "name": "status_message",
+          "type": "String"
+        },
+        {
+          "name": "stories_are_fixed_fee_by_default",
+          "type": "Boolean"
+        },
+        {
+          "name": "target_margin",
+          "type": "Int"
+        },
+        {
+          "name": "tasks_default_non_billable",
+          "type": "Boolean"
+        },
+        {
+          "name": "title",
+          "type": "String"
+        },
+        {
+          "name": "total_expenses_in_cents",
+          "type": "Long"
+        },
+        {
+          "name": "updated_at",
+          "type": "Instant"
+        },
+        {
+          "name": "custom_*",
+          "type": "",
+          "wildCard": true
+        },
+        {
+          "name": "permission_*",
+          "type": "",
+          "wildCard": true
+        }
+      ],
+      "tags": [],
+      "link": "http://developer.mavenlink.com/workspaces/"
+    },
+    {
+      "name": "timesheet_submission",
+      "columns": [
+        {
+          "name": "id",
+          "type": "Long",
+          "primaryKey": true
+        },
+        {
+          "name": "user_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "workspace_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "comment",
+          "type": "String"
+        },
+        {
+          "name": "created_at",
+          "type": "Instant"
+        },
+        {
+          "name": "currency",
+          "type": "String"
+        },
+        {
+          "name": "currency_base_unit",
+          "type": "Int"
+        },
+        {
+          "name": "currency_symbol",
+          "type": "String"
+        },
+        {
+          "name": "current_resolution_created_at_date",
+          "type": "Instant"
+        },
+        {
+          "name": "current_resolution_creator_id",
+          "type": "Int"
+        },
+        {
+          "name": "current_resolution_description",
+          "type": "String"
+        },
+        {
+          "name": "end_date",
+          "type": "LocalDate"
+        },
+        {
+          "name": "line_item_total_formatted",
+          "type": "String"
+        },
+        {
+          "name": "line_item_total_in_cents",
+          "type": "Long"
+        },
+        {
+          "name": "resolution_description",
+          "type": "String"
+        },
+        {
+          "name": "start_date",
+          "type": "LocalDate"
+        },
+        {
+          "name": "status",
+          "type": "String"
+        },
+        {
+          "name": "title",
+          "type": "String"
+        },
+        {
+          "name": "type",
+          "type": "String"
+        },
+        {
+          "name": "updated_at",
+          "type": "Instant"
+        },
+        {
+          "name": "permission_*",
+          "type": "",
+          "wildCard": true
+        }
+      ],
+      "tags": [],
+      "link": "http://developer.mavenlink.com/timesheet_submissions/"
+    },
+    {
+      "name": "story_state_change",
+      "columns": [
+        {
+          "name": "id",
+          "type": "Long",
+          "primaryKey": true
+        },
+        {
+          "name": "story_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "user_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "created_at",
+          "type": "Instant"
+        },
+        {
+          "name": "formatted_state",
+          "type": "String"
+        },
+        {
+          "name": "state",
+          "type": "String"
+        },
+        {
+          "name": "updated_at",
+          "type": "Instant"
+        }
+      ],
+      "tags": [],
+      "link": "http://developer.mavenlink.com/story_state_changes/"
+    },
+    {
+      "name": "story",
+      "columns": [
+        {
+          "name": "id",
+          "type": "Long",
+          "primaryKey": true
+        },
+        {
+          "name": "creator_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "parent_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "root_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "workspace_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "archived",
+          "type": "Boolean"
+        },
+        {
+          "name": "assignment_timestamped_at",
+          "type": "Instant"
+        },
+        {
+          "name": "billable",
+          "type": "Boolean"
+        },
+        {
+          "name": "budget_estimate_in_cents",
+          "type": "Long"
+        },
+        {
+          "name": "budget_used_in_cents",
+          "type": "Long"
+        },
+        {
+          "name": "created_at",
+          "type": "Instant"
+        },
+        {
+          "name": "deleted_at",
+          "type": "Instant"
+        },
+        {
+          "name": "description",
+          "type": "String"
+        },
+        {
+          "name": "due_date",
+          "type": "LocalDate"
+        },
+        {
+          "name": "fixed_fee",
+          "type": "Boolean"
+        },
+        {
+          "name": "has_proofing_access",
+          "type": "Boolean"
+        },
+        {
+          "name": "invoiced_balance_in_cents",
+          "type": "Long"
+        },
+        {
+          "name": "logged_billable_time_in_minutes",
+          "type": "Int"
+        },
+        {
+          "name": "logged_nonbillable_time_in_minutes",
+          "type": "Int"
+        },
+        {
+          "name": "percentage_complete",
+          "type": "Int"
+        },
+        {
+          "name": "position",
+          "type": "Int"
+        },
+        {
+          "name": "priority",
+          "type": "String"
+        },
+        {
+          "name": "start_date",
+          "type": "LocalDate"
+        },
+        {
+          "name": "state",
+          "type": "String"
+        },
+        {
+          "name": "story_type",
+          "type": "String"
+        },
+        {
+          "name": "sub_stories_billable_time_in_minutes",
+          "type": "Int"
+        },
+        {
+          "name": "sub_stories_budget_estimate_in_cents",
+          "type": "Long"
+        },
+        {
+          "name": "sub_stories_budget_used_in_cents",
+          "type": "Long"
+        },
+        {
+          "name": "sub_stories_time_estimate_in_minutes",
+          "type": "Int"
+        },
+        {
+          "name": "sub_story_count",
+          "type": "Int"
+        },
+        {
+          "name": "subtree_depth",
+          "type": "Int"
+        },
+        {
+          "name": "time_estimate_in_minutes",
+          "type": "Int"
+        },
+        {
+          "name": "time_trackable",
+          "type": "Boolean"
+        },
+        {
+          "name": "title",
+          "type": "String"
+        },
+        {
+          "name": "uninvoiced_balance_in_cents",
+          "type": "Long"
+        },
+        {
+          "name": "updated_at",
+          "type": "Instant"
+        },
+        {
+          "name": "weight",
+          "type": "Int"
+        },
+        {
+          "name": "custom_*",
+          "type": "",
+          "wildCard": true
+        }
+      ],
+      "tags": [],
+      "link": "http://developer.mavenlink.com/stories/"
+    },
+    {
+      "name": "invoice_expense",
+      "columns": [
+        {
+          "name": "expense_id",
+          "type": "Long",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "invoice_id",
+          "type": "Long",
+          "primaryKey": true,
+          "foreignKey": true
+        }
+      ],
+      "tags": [],
+      "link": null
+    },
+    {
+      "name": "estimate",
+      "columns": [
+        {
+          "name": "id",
+          "type": "Long",
+          "primaryKey": true
+        },
+        {
+          "name": "creator_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "workspace_group_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "created_at",
+          "type": "Instant"
+        },
+        {
+          "name": "currency",
+          "type": "String"
+        },
+        {
+          "name": "is_locked",
+          "type": "Boolean"
+        },
+        {
+          "name": "name",
+          "type": "String"
+        },
+        {
+          "name": "updated_at",
+          "type": "Instant"
+        }
+      ],
+      "tags": [],
+      "link": "http://developer.mavenlink.com/estimates/"
+    },
+    {
+      "name": "timesheet_submission_time_entry",
+      "columns": [
+        {
+          "name": "time_entry_id",
+          "type": "Long",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "timesheet_submission_id",
+          "type": "Long",
+          "primaryKey": true,
+          "foreignKey": true
+        }
+      ],
+      "tags": [],
+      "link": null
+    },
+    {
+      "name": "workspace_user",
+      "columns": [
+        {
+          "name": "user_id",
+          "type": "Long",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "workspace_id",
+          "type": "Long",
+          "primaryKey": true,
+          "foreignKey": true
+        }
+      ],
+      "tags": [],
+      "link": null
+    },
+    {
+      "name": "invoice_fixed_fee_item",
+      "columns": [
+        {
+          "name": "fixed_fee_item_id",
+          "type": "Long",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "invoice_id",
+          "type": "Long",
+          "primaryKey": true,
+          "foreignKey": true
+        }
+      ],
+      "tags": [],
+      "link": null
+    },
+    {
+      "name": "fixed_fee_item",
+      "columns": [
+        {
+          "name": "id",
+          "type": "Long",
+          "primaryKey": true
+        },
+        {
+          "name": "story_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "workspace_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "amount_in_cents",
+          "type": "Long"
+        },
+        {
+          "name": "currency",
+          "type": "String"
+        },
+        {
+          "name": "notes",
+          "type": "String"
+        },
+        {
+          "name": "taxable",
+          "type": "Boolean"
+        }
+      ],
+      "tags": [],
+      "link": "http://developer.mavenlink.com/invoices/"
+    },
+    {
+      "name": "invoice_workspace",
+      "columns": [
+        {
+          "name": "invoice_id",
+          "type": "Long",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "workspace_id",
+          "type": "Long",
+          "primaryKey": true,
+          "foreignKey": true
+        }
+      ],
+      "tags": [],
+      "link": null
+    },
+    {
+      "name": "workspace_status_change",
+      "columns": [
+        {
+          "name": "id",
+          "type": "Long",
+          "primaryKey": true
+        },
+        {
+          "name": "from_color",
+          "type": "String",
+          "foreignKey": true
+        },
+        {
+          "name": "to_color",
+          "type": "String",
+          "foreignKey": true
+        },
+        {
+          "name": "user_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "workspace_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "created_at",
+          "type": "Instant"
+        },
+        {
+          "name": "from_message",
+          "type": "String"
+        },
+        {
+          "name": "from_status_key",
+          "type": "String"
+        },
+        {
+          "name": "to_message",
+          "type": "String"
+        },
+        {
+          "name": "to_status_key",
+          "type": "String"
+        },
+        {
+          "name": "updated_at",
+          "type": "Instant"
+        }
+      ],
+      "tags": [],
+      "link": null
+    },
+    {
+      "name": "holiday_calendar_membership",
+      "columns": [
+        {
+          "name": "id",
+          "type": "Long",
+          "primaryKey": true
+        },
+        {
+          "name": "holiday_calendar_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "user_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "created_at",
+          "type": "Instant"
+        },
+        {
+          "name": "end_date",
+          "type": "LocalDate"
+        },
+        {
+          "name": "in_use",
+          "type": "Boolean"
+        },
+        {
+          "name": "start_date",
+          "type": "LocalDate"
+        },
+        {
+          "name": "updated_at",
+          "type": "Instant"
+        }
+      ],
+      "tags": [],
+      "link": "http://developer.mavenlink.com/beta/#tag/Holiday-Calendar-Memberships"
+    },
+    {
+      "name": "holiday_calendar",
+      "columns": [
+        {
+          "name": "id",
+          "type": "Long",
+          "primaryKey": true
+        },
+        {
+          "name": "default",
+          "type": "Boolean"
+        },
+        {
+          "name": "name",
+          "type": "String"
+        }
+      ],
+      "tags": [],
+      "link": "http://developer.mavenlink.com/beta/#tag/Holiday-Calendars"
+    },
+    {
+      "name": "time_entry",
+      "columns": [
+        {
+          "name": "id",
+          "type": "Long",
+          "primaryKey": true
+        },
+        {
+          "name": "location_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "story_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "user_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "workspace_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "active_submission_id",
+          "type": "Long"
+        },
+        {
+          "name": "approved",
+          "type": "Boolean"
+        },
+        {
+          "name": "billable",
+          "type": "Boolean"
+        },
+        {
+          "name": "cost_rate_in_cents",
+          "type": "Long"
+        },
+        {
+          "name": "created_at",
+          "type": "Instant"
+        },
+        {
+          "name": "currency",
+          "type": "String"
+        },
+        {
+          "name": "currency_base_unit",
+          "type": "Int"
+        },
+        {
+          "name": "currency_symbol",
+          "type": "String"
+        },
+        {
+          "name": "date_performed",
+          "type": "LocalDate"
+        },
+        {
+          "name": "is_invoiced",
+          "type": "Boolean"
+        },
+        {
+          "name": "notes",
+          "type": "String"
+        },
+        {
+          "name": "rate_in_cents",
+          "type": "Long"
+        },
+        {
+          "name": "taxable",
+          "type": "Boolean"
+        },
+        {
+          "name": "time_in_minutes",
+          "type": "Int"
+        },
+        {
+          "name": "updated_at",
+          "type": "Instant"
+        },
+        {
+          "name": "user_can_edit",
+          "type": "Boolean"
+        }
+      ],
+      "tags": [],
+      "link": "http://developer.mavenlink.com/time_entries/"
+    },
+    {
+      "name": "account_color",
+      "columns": [
+        {
+          "name": "id",
+          "type": "Long",
+          "primaryKey": true
+        },
+        {
+          "name": "created_at",
+          "type": "Instant"
+        },
+        {
+          "name": "default_color",
+          "type": "Boolean"
+        },
+        {
+          "name": "enabled",
+          "type": "Boolean"
+        },
+        {
+          "name": "hex",
+          "type": "String"
+        },
+        {
+          "name": "name",
+          "type": "String"
+        },
+        {
+          "name": "updated_at",
+          "type": "Instant"
+        }
+      ],
+      "tags": [],
+      "link": "https://developer.kantata.com/tag/Account-Colors"
+    },
+    {
+      "name": "estimate_scenario_resource",
+      "columns": [
+        {
+          "name": "id",
+          "type": "Long",
+          "primaryKey": true
+        },
+        {
+          "name": "estimate_scenario_id",
+          "type": "Long",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "role_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "user_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "bill_rate",
+          "type": "Long"
+        },
+        {
+          "name": "cost_rate",
+          "type": "Long"
+        },
+        {
+          "name": "created_at",
+          "type": "Instant"
+        },
+        {
+          "name": "geography_id",
+          "type": "Long"
+        },
+        {
+          "name": "label",
+          "type": "String"
+        },
+        {
+          "name": "updated_at",
+          "type": "Instant"
+        }
+      ],
+      "tags": [],
+      "link": "http://developer.mavenlink.com/estimate_scenario_resources/"
+    },
+    {
+      "name": "invoice",
+      "columns": [
+        {
+          "name": "id",
+          "type": "Long",
+          "primaryKey": true
+        },
+        {
+          "name": "recipient_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "user_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "balance_in_cents",
+          "type": "Long"
+        },
+        {
+          "name": "created_at",
+          "type": "Instant"
+        },
+        {
+          "name": "currency",
+          "type": "String"
+        },
+        {
+          "name": "currency_base_unit",
+          "type": "Int"
+        },
+        {
+          "name": "currency_symbol",
+          "type": "String"
+        },
+        {
+          "name": "draft",
+          "type": "Boolean"
+        },
+        {
+          "name": "due_date",
+          "type": "LocalDate"
+        },
+        {
+          "name": "invoice_date",
+          "type": "LocalDate"
+        },
+        {
+          "name": "message",
+          "type": "String"
+        },
+        {
+          "name": "payment_schedule",
+          "type": "Int"
+        },
+        {
+          "name": "project_code",
+          "type": "String"
+        },
+        {
+          "name": "purchase_order",
+          "type": "String"
+        },
+        {
+          "name": "status",
+          "type": "String"
+        },
+        {
+          "name": "tax_rate",
+          "type": "Float"
+        },
+        {
+          "name": "title",
+          "type": "String"
+        },
+        {
+          "name": "updated_at",
+          "type": "Instant"
+        },
+        {
+          "name": "user_invoice_number",
+          "type": "Long"
+        },
+        {
+          "name": "user_invoice_title",
+          "type": "String"
+        }
+      ],
+      "tags": [],
+      "link": "http://developer.mavenlink.com/invoices/"
+    },
+    {
+      "name": "rate_card_history",
+      "columns": [
+        {
+          "name": "id",
+          "type": "Long",
+          "primaryKey": true
+        },
+        {
+          "name": "updated_at",
+          "type": "Instant",
+          "primaryKey": true
+        },
+        {
+          "name": "rate_card_set_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "created_at",
+          "type": "Instant"
+        },
+        {
+          "name": "currency",
+          "type": "String"
+        },
+        {
+          "name": "uses",
+          "type": "Int"
+        }
+      ],
+      "tags": [],
+      "link": "http://developer.mavenlink.com/beta/#tag/Rate-Cards-(Multiple-Currencies)"
+    },
+    {
+      "name": "status_reports",
+      "columns": [
+        {
+          "name": "id",
+          "type": "Long",
+          "primaryKey": true
+        },
+        {
+          "name": "creator_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "updater_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "workspace_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "color",
+          "type": "String"
+        },
+        {
+          "name": "created_at",
+          "type": "Instant"
+        },
+        {
+          "name": "description",
+          "type": "String"
+        },
+        {
+          "name": "updated_at",
+          "type": "Instant"
+        }
+      ],
+      "tags": [],
+      "link": null
+    },
+    {
+      "name": "post",
+      "columns": [
+        {
+          "name": "id",
+          "type": "Long",
+          "primaryKey": true
+        },
+        {
+          "name": "story_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "subject_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "user_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "workspace_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "created_at",
+          "type": "Instant"
+        },
+        {
+          "name": "formatted_message",
+          "type": "String"
+        },
+        {
+          "name": "has_attachment",
+          "type": "Boolean"
+        },
+        {
+          "name": "has_attachments",
+          "type": "Boolean"
+        },
+        {
+          "name": "message",
+          "type": "String"
+        },
+        {
+          "name": "newest_reply_at",
+          "type": "Instant"
+        },
+        {
+          "name": "private",
+          "type": "Boolean"
+        },
+        {
+          "name": "reply",
+          "type": "Boolean"
+        },
+        {
+          "name": "reply_count",
+          "type": "Long"
+        },
+        {
+          "name": "subject_title",
+          "type": "String"
+        },
+        {
+          "name": "subject_type",
+          "type": "String"
+        },
+        {
+          "name": "updated_at",
+          "type": "Instant"
+        },
+        {
+          "name": "workspace_type",
+          "type": "String"
+        }
+      ],
+      "tags": [],
+      "link": "http://developer.mavenlink.com/posts/"
+    },
+    {
+      "name": "workweek_membership",
+      "columns": [
+        {
+          "name": "id",
+          "type": "Long",
+          "primaryKey": true
+        },
+        {
+          "name": "user_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "workweek_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "created_at",
+          "type": "Instant"
+        },
+        {
+          "name": "end_date",
+          "type": "LocalDate"
+        },
+        {
+          "name": "start_date",
+          "type": "LocalDate"
+        },
+        {
+          "name": "updated_at",
+          "type": "Instant"
+        }
+      ],
+      "tags": [],
+      "link": "http://developer.mavenlink.com/beta/#tag/Workweek-Memberships"
+    },
+    {
+      "name": "account_invitation",
+      "columns": [
+        {
+          "name": "id",
+          "type": "Long",
+          "primaryKey": true
+        },
+        {
+          "name": "default_role_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "invitee_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "inviter_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "bill_rate_in_cents",
+          "type": "Long"
+        },
+        {
+          "name": "cost_rate_in_cents",
+          "type": "Long"
+        },
+        {
+          "name": "created_at",
+          "type": "Instant"
+        },
+        {
+          "name": "email_address",
+          "type": "String"
+        },
+        {
+          "name": "full_name",
+          "type": "String"
+        },
+        {
+          "name": "pending",
+          "type": "Boolean"
+        },
+        {
+          "name": "permission",
+          "type": "String"
+        }
+      ],
+      "tags": [],
+      "link": "http://developer.mavenlink.com/account_invitations/"
+    },
+    {
+      "name": "checklist",
+      "columns": [
+        {
+          "name": "id",
+          "type": "Long",
+          "primaryKey": true
+        },
+        {
+          "name": "story_id",
+          "type": "Long",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "completed_by_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "completed",
+          "type": "Boolean"
+        },
+        {
+          "name": "completed_at",
+          "type": "Instant"
+        },
+        {
+          "name": "created_at",
+          "type": "Instant"
+        },
+        {
+          "name": "name",
+          "type": "String"
+        },
+        {
+          "name": "position",
+          "type": "Int"
+        },
+        {
+          "name": "updated_at",
+          "type": "Instant"
+        }
+      ],
+      "tags": [],
+      "link": "http://developer.mavenlink.com/story_tasks/"
+    },
+    {
+      "name": "expense_category",
+      "columns": [
+        {
+          "name": "id",
+          "type": "Long",
+          "primaryKey": true
+        },
+        {
+          "name": "deleted_at",
+          "type": "Instant"
+        },
+        {
+          "name": "name",
+          "type": "String"
+        }
+      ],
+      "tags": [],
+      "link": "http://developer.mavenlink.com/expense_categories/"
+    },
+    {
+      "name": "holiday_calendar_association",
+      "columns": [
+        {
+          "name": "holiday_calendar_id",
+          "type": "Long",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "holiday_id",
+          "type": "Long",
+          "primaryKey": true,
+          "foreignKey": true
+        }
+      ],
+      "tags": [],
+      "link": "http://developer.mavenlink.com/beta/#tag/Holiday-Calendar-Associations"
+    },
+    {
+      "name": "workspace_allocation",
+      "columns": [
+        {
+          "name": "id",
+          "type": "Long",
+          "primaryKey": true
+        },
+        {
+          "name": "workspace_resource_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "created_at",
+          "type": "Instant"
+        },
+        {
+          "name": "end_date",
+          "type": "LocalDate"
+        },
+        {
+          "name": "hard",
+          "type": "Boolean"
+        },
+        {
+          "name": "minutes",
+          "type": "Int"
+        },
+        {
+          "name": "notes",
+          "type": "String"
+        },
+        {
+          "name": "percentage",
+          "type": "Float"
+        },
+        {
+          "name": "start_date",
+          "type": "LocalDate"
+        },
+        {
+          "name": "updated_at",
+          "type": "Instant"
+        }
+      ],
+      "tags": [],
+      "link": "http://developer.mavenlink.com/beta/#tag/Workspace-Allocations"
+    },
+    {
+      "name": "workspace_group",
+      "columns": [
+        {
+          "name": "id",
+          "type": "Long",
+          "primaryKey": true
+        },
+        {
+          "name": "address",
+          "type": "String"
+        },
+        {
+          "name": "company",
+          "type": "Boolean"
+        },
+        {
+          "name": "contact_name",
+          "type": "String"
+        },
+        {
+          "name": "created_at",
+          "type": "Instant"
+        },
+        {
+          "name": "email",
+          "type": "String"
+        },
+        {
+          "name": "name",
+          "type": "String"
+        },
+        {
+          "name": "notes",
+          "type": "String"
+        },
+        {
+          "name": "phone_number",
+          "type": "String"
+        },
+        {
+          "name": "updated_at",
+          "type": "Instant"
+        },
+        {
+          "name": "website",
+          "type": "String"
+        },
+        {
+          "name": "custom_*",
+          "type": "",
+          "wildCard": true
+        }
+      ],
+      "tags": [],
+      "link": "http://developer.mavenlink.com/workspace_groups/"
+    },
+    {
+      "name": "skill_category",
+      "columns": [
+        {
+          "name": "id",
+          "type": "Long",
+          "primaryKey": true
+        },
+        {
+          "name": "name",
+          "type": "String"
+        }
+      ],
+      "tags": [],
+      "link": "http://developer.mavenlink.com/account_invitations/"
+    }
+  ],
+  "relations": [
+    {
+      "targetTable": "assignment",
+      "sourceTable": "story_allocation_day",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "assignment_id"
+      ]
+    },
+    {
+      "targetTable": "story",
+      "sourceTable": "story_allocation_day",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "story_id"
+      ]
+    },
+    {
+      "targetTable": "story",
+      "sourceTable": "assignment",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "story_id"
+      ]
+    },
+    {
+      "targetTable": "user",
+      "sourceTable": "assignment",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "assignee_id"
+      ]
+    },
+    {
+      "targetTable": "workspace",
+      "sourceTable": "workspace_invoice_preference",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "workspace_id"
+      ]
+    },
+    {
+      "targetTable": "user",
+      "sourceTable": "time_off_entry",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "user_id"
+      ]
+    },
+    {
+      "targetTable": "invoice",
+      "sourceTable": "invoice_time_entry",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "invoice_id"
+      ]
+    },
+    {
+      "targetTable": "time_entry",
+      "sourceTable": "invoice_time_entry",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "time_entry_id"
+      ]
+    },
+    {
+      "targetTable": "user",
+      "sourceTable": "account_membership",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "user_id"
+      ]
+    },
+    {
+      "targetTable": "user",
+      "sourceTable": "account_membership",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "manager_id"
+      ]
+    },
+    {
+      "targetTable": "role",
+      "sourceTable": "account_membership",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "default_role_id"
+      ]
+    },
+    {
+      "targetTable": "rate_card_history",
+      "sourceTable": "rate_card_version_history",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "rate_card_id"
+      ]
+    },
+    {
+      "targetTable": "skill",
+      "sourceTable": "skill_membership",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "skill_id"
+      ]
+    },
+    {
+      "targetTable": "user",
+      "sourceTable": "skill_membership",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "creator_id"
+      ]
+    },
+    {
+      "targetTable": "user",
+      "sourceTable": "skill_membership",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "user_id"
+      ]
+    },
+    {
+      "targetTable": "estimate",
+      "sourceTable": "estimate_scenario",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "estimate_id"
+      ]
+    },
+    {
+      "targetTable": "rate_card_history",
+      "sourceTable": "estimate_scenario",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "rate_card_id"
+      ]
+    },
+    {
+      "targetTable": "skill_category",
+      "sourceTable": "skill",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "skill_category_id"
+      ]
+    },
+    {
+      "targetTable": "workspace",
+      "sourceTable": "participation",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "workspace_id"
+      ]
+    },
+    {
+      "targetTable": "user",
+      "sourceTable": "participation",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "user_id"
+      ]
+    },
+    {
+      "targetTable": "workspace",
+      "sourceTable": "workspace_resource",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "workspace_id"
+      ]
+    },
+    {
+      "targetTable": "user",
+      "sourceTable": "workspace_resource",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "user_id"
+      ]
+    },
+    {
+      "targetTable": "role",
+      "sourceTable": "workspace_resource",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "role_id"
+      ]
+    },
+    {
+      "targetTable": "participation",
+      "sourceTable": "workspace_resource",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "participation_id"
+      ]
+    },
+    {
+      "targetTable": "role",
+      "sourceTable": "rate_card_role_history",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "role_id"
+      ]
+    },
+    {
+      "targetTable": "rate_card_version_history",
+      "sourceTable": "rate_card_role_history",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "rate_card_version_id"
+      ]
+    },
+    {
+      "targetTable": "role",
+      "sourceTable": "user",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "role_id"
+      ]
+    },
+    {
+      "targetTable": "workspace",
+      "sourceTable": "expense",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "workspace_id"
+      ]
+    },
+    {
+      "targetTable": "user",
+      "sourceTable": "expense",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "user_id"
+      ]
+    },
+    {
+      "targetTable": "story",
+      "sourceTable": "expense",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "story_id"
+      ]
+    },
+    {
+      "targetTable": "expense_category",
+      "sourceTable": "expense",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "expense_category_id"
+      ]
+    },
+    {
+      "targetTable": "workspace_group",
+      "sourceTable": "workspace_association",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "workspace_group_id"
+      ]
+    },
+    {
+      "targetTable": "workspace",
+      "sourceTable": "workspace_association",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "workspace_id"
+      ]
+    },
+    {
+      "targetTable": "account_membership",
+      "sourceTable": "billable_utilizations",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "account_membership_id"
+      ]
+    },
+    {
+      "targetTable": "user",
+      "sourceTable": "billable_utilizations",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "creator_id"
+      ]
+    },
+    {
+      "targetTable": "user",
+      "sourceTable": "workspace",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "creator_id"
+      ]
+    },
+    {
+      "targetTable": "workspace_group",
+      "sourceTable": "workspace",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "primary_workspace_group_id"
+      ]
+    },
+    {
+      "targetTable": "rate_card_history",
+      "sourceTable": "workspace",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "rate_card_id"
+      ]
+    },
+    {
+      "targetTable": "account_color",
+      "sourceTable": "workspace",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "account_color_id"
+      ]
+    },
+    {
+      "targetTable": "workspace",
+      "sourceTable": "timesheet_submission",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "workspace_id"
+      ]
+    },
+    {
+      "targetTable": "user",
+      "sourceTable": "timesheet_submission",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "user_id"
+      ]
+    },
+    {
+      "targetTable": "user",
+      "sourceTable": "story_state_change",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "user_id"
+      ]
+    },
+    {
+      "targetTable": "story",
+      "sourceTable": "story_state_change",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "story_id"
+      ]
+    },
+    {
+      "targetTable": "workspace",
+      "sourceTable": "story",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "workspace_id"
+      ]
+    },
+    {
+      "targetTable": "user",
+      "sourceTable": "story",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "creator_id"
+      ]
+    },
+    {
+      "targetTable": "story",
+      "sourceTable": "story",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "parent_id"
+      ]
+    },
+    {
+      "targetTable": "story",
+      "sourceTable": "story",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "root_id"
+      ]
+    },
+    {
+      "targetTable": "invoice",
+      "sourceTable": "invoice_expense",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "invoice_id"
+      ]
+    },
+    {
+      "targetTable": "expense",
+      "sourceTable": "invoice_expense",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "expense_id"
+      ]
+    },
+    {
+      "targetTable": "user",
+      "sourceTable": "estimate",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "creator_id"
+      ]
+    },
+    {
+      "targetTable": "workspace_group",
+      "sourceTable": "estimate",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "workspace_group_id"
+      ]
+    },
+    {
+      "targetTable": "timesheet_submission",
+      "sourceTable": "timesheet_submission_time_entry",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "timesheet_submission_id"
+      ]
+    },
+    {
+      "targetTable": "time_entry",
+      "sourceTable": "timesheet_submission_time_entry",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "time_entry_id"
+      ]
+    },
+    {
+      "targetTable": "workspace",
+      "sourceTable": "workspace_user",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "workspace_id"
+      ]
+    },
+    {
+      "targetTable": "user",
+      "sourceTable": "workspace_user",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "user_id"
+      ]
+    },
+    {
+      "targetTable": "invoice",
+      "sourceTable": "invoice_fixed_fee_item",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "invoice_id"
+      ]
+    },
+    {
+      "targetTable": "fixed_fee_item",
+      "sourceTable": "invoice_fixed_fee_item",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "fixed_fee_item_id"
+      ]
+    },
+    {
+      "targetTable": "story",
+      "sourceTable": "fixed_fee_item",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "story_id"
+      ]
+    },
+    {
+      "targetTable": "workspace",
+      "sourceTable": "fixed_fee_item",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "workspace_id"
+      ]
+    },
+    {
+      "targetTable": "invoice",
+      "sourceTable": "invoice_workspace",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "invoice_id"
+      ]
+    },
+    {
+      "targetTable": "workspace",
+      "sourceTable": "invoice_workspace",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "workspace_id"
+      ]
+    },
+    {
+      "targetTable": "user",
+      "sourceTable": "workspace_status_change",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "user_id"
+      ]
+    },
+    {
+      "targetTable": "workspace",
+      "sourceTable": "workspace_status_change",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "workspace_id"
+      ]
+    },
+    {
+      "targetTable": "account_color",
+      "sourceTable": "workspace_status_change",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "from_color"
+      ]
+    },
+    {
+      "targetTable": "account_color",
+      "sourceTable": "workspace_status_change",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "to_color"
+      ]
+    },
+    {
+      "targetTable": "user",
+      "sourceTable": "holiday_calendar_membership",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "user_id"
+      ]
+    },
+    {
+      "targetTable": "holiday_calendar",
+      "sourceTable": "holiday_calendar_membership",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "holiday_calendar_id"
+      ]
+    },
+    {
+      "targetTable": "account_location",
+      "sourceTable": "time_entry",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "location_id"
+      ]
+    },
+    {
+      "targetTable": "story",
+      "sourceTable": "time_entry",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "story_id"
+      ]
+    },
+    {
+      "targetTable": "workspace",
+      "sourceTable": "time_entry",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "workspace_id"
+      ]
+    },
+    {
+      "targetTable": "user",
+      "sourceTable": "time_entry",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "user_id"
+      ]
+    },
+    {
+      "targetTable": "estimate_scenario",
+      "sourceTable": "estimate_scenario_resource",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "estimate_scenario_id"
+      ]
+    },
+    {
+      "targetTable": "role",
+      "sourceTable": "estimate_scenario_resource",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "role_id"
+      ]
+    },
+    {
+      "targetTable": "user",
+      "sourceTable": "estimate_scenario_resource",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "user_id"
+      ]
+    },
+    {
+      "targetTable": "user",
+      "sourceTable": "invoice",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "user_id"
+      ]
+    },
+    {
+      "targetTable": "user",
+      "sourceTable": "invoice",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "recipient_id"
+      ]
+    },
+    {
+      "targetTable": "rate_card_set_history",
+      "sourceTable": "rate_card_history",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "rate_card_set_id"
+      ]
+    },
+    {
+      "targetTable": "user",
+      "sourceTable": "status_reports",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "creator_id"
+      ]
+    },
+    {
+      "targetTable": "user",
+      "sourceTable": "status_reports",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "updater_id"
+      ]
+    },
+    {
+      "targetTable": "workspace",
+      "sourceTable": "status_reports",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "workspace_id"
+      ]
+    },
+    {
+      "targetTable": "story",
+      "sourceTable": "post",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "story_id"
+      ]
+    },
+    {
+      "targetTable": "workspace",
+      "sourceTable": "post",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "workspace_id"
+      ]
+    },
+    {
+      "targetTable": "user",
+      "sourceTable": "post",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "user_id"
+      ]
+    },
+    {
+      "targetTable": "post",
+      "sourceTable": "post",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "subject_id"
+      ]
+    },
+    {
+      "targetTable": "workweek",
+      "sourceTable": "workweek_membership",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "workweek_id"
+      ]
+    },
+    {
+      "targetTable": "user",
+      "sourceTable": "workweek_membership",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "user_id"
+      ]
+    },
+    {
+      "targetTable": "role",
+      "sourceTable": "account_invitation",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "default_role_id"
+      ]
+    },
+    {
+      "targetTable": "user",
+      "sourceTable": "account_invitation",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "inviter_id"
+      ]
+    },
+    {
+      "targetTable": "user",
+      "sourceTable": "account_invitation",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "invitee_id"
+      ]
+    },
+    {
+      "targetTable": "story",
+      "sourceTable": "checklist",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "story_id"
+      ]
+    },
+    {
+      "targetTable": "user",
+      "sourceTable": "checklist",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "completed_by_id"
+      ]
+    },
+    {
+      "targetTable": "holiday",
+      "sourceTable": "holiday_calendar_association",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "holiday_id"
+      ]
+    },
+    {
+      "targetTable": "holiday_calendar",
+      "sourceTable": "holiday_calendar_association",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "holiday_calendar_id"
+      ]
+    },
+    {
+      "targetTable": "workspace_resource",
+      "sourceTable": "workspace_allocation",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "workspace_resource_id"
+      ]
+    }
+  ],
+  "positions": {
+    "account_membership": {
+      "x": -724.0,
+      "y": 2579.0
+    },
+    "workspace": {
+      "x": 3502.0,
+      "y": 1569.0
+    },
+    "workspace_allocation": {
+      "x": 4569.0,
+      "y": 44.0
+    },
+    "estimate_scenario": {
+      "x": 4841.0,
+      "y": 2561.0
+    },
+    "holiday_calendar_membership": {
+      "x": -724.0,
+      "y": 3541.0
+    },
+    "skill_category": {
+      "x": -1270.0,
+      "y": 868.0
+    },
+    "account_color": {
+      "x": 5345.0,
+      "y": 0.0
+    },
+    "billable_utilizations": {
+      "x": -1270.0,
+      "y": 2697.0
+    },
+    "fixed_fee_item": {
+      "x": 1593.0,
+      "y": 3821.0
+    },
+    "post": {
+      "x": 954.0,
+      "y": 1060.0
+    },
+    "expense_category": {
+      "x": 2224.0,
+      "y": 4176.0
+    },
+    "estimate": {
+      "x": 4841.0,
+      "y": 1976.0
+    },
+    "workspace_resource": {
+      "x": 3502.0,
+      "y": 44.0
+    },
+    "estimate_scenario_resource": {
+      "x": 4841.0,
+      "y": 3126.0
+    },
+    "holiday_calendar_association": {
+      "x": -1270.0,
+      "y": 3927.0
+    },
+    "workspace_user": {
+      "x": 3502.0,
+      "y": 1194.0
+    },
+    "account_invitation": {
+      "x": -724.0,
+      "y": 1624.0
+    },
+    "workspace_group": {
+      "x": 4841.0,
+      "y": 1184.0
+    },
+    "account_location": {
+      "x": -724.0,
+      "y": 4472.0
+    },
+    "workweek": {
+      "x": -724.0,
+      "y": 540.0
+    },
+    "invoice_expense": {
+      "x": 1593.0,
+      "y": 3230.0
+    },
+    "invoice_workspace": {
+      "x": 397.0,
+      "y": 3636.0
+    },
+    "rate_card_set_history": {
+      "x": 4209.0,
+      "y": 3505.0
+    },
+    "rate_card_version_history": {
+      "x": 4209.0,
+      "y": 3129.0
+    },
+    "expense": {
+      "x": 2224.0,
+      "y": 3352.0
+    },
+    "workweek_membership": {
+      "x": -724.0,
+      "y": 1211.0
+    },
+    "timesheet_submission": {
+      "x": 3502.0,
+      "y": 3541.0
+    },
+    "workspace_status_change": {
+      "x": 5345.0,
+      "y": 412.0
+    },
+    "story_allocation_day": {
+      "x": 954.0,
+      "y": 2280.0
+    },
+    "participation": {
+      "x": 2777.0,
+      "y": 540.0
+    },
+    "role": {
+      "x": -724.0,
+      "y": 2192.0
+    },
+    "rate_card_role_history": {
+      "x": 4209.0,
+      "y": 2210.0
+    },
+    "workspace_invoice_preference": {
+      "x": 4209.0,
+      "y": 761.0
+    },
+    "holiday": {
+      "x": -1270.0,
+      "y": 4249.0
+    },
+    "skill": {
+      "x": -1270.0,
+      "y": 456.0
+    },
+    "workspace_association": {
+      "x": 4209.0,
+      "y": 1293.0
+    },
+    "story_state_change": {
+      "x": 954.0,
+      "y": 1868.0
+    },
+    "invoice_time_entry": {
+      "x": 397.0,
+      "y": 3230.0
+    },
+    "assignment": {
+      "x": 954.0,
+      "y": 2728.0
+    },
+    "time_off_entry": {
+      "x": -724.0,
+      "y": 4042.0
+    },
+    "checklist": {
+      "x": 954.0,
+      "y": 540.0
+    },
+    "rate_card_history": {
+      "x": 4209.0,
+      "y": 1745.0
+    },
+    "skill_membership": {
+      "x": -1270.0,
+      "y": 44.0
+    },
+    "time_entry": {
+      "x": -61.0,
+      "y": 3939.0
+    },
+    "timesheet_submission_time_entry": {
+      "x": 1593.0,
+      "y": 4781.0
+    },
+    "invoice_fixed_fee_item": {
+      "x": 1593.0,
+      "y": 3502.0
+    },
+    "invoice": {
+      "x": 954.0,
+      "y": 3233.0
+    },
+    "user": {
+      "x": -61.0,
+      "y": 2131.0
+    },
+    "story": {
+      "x": 2777.0,
+      "y": 1775.0
+    },
+    "holiday_calendar": {
+      "x": -1270.0,
+      "y": 3607.0
+    },
+    "status_reports": {
+      "x": 4209.0,
+      "y": 2681.0
+    }
+  },
+  "notes": {
+    "byTable": {},
+    "generalNotes": []
+  },
+  "tableGroups": []
+}

@@ -1,0 +1,321 @@
+{
+  "tables": [
+    {
+      "name": "record_type",
+      "columns": [
+        {
+          "name": "_fivetran_id",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "created_at",
+          "type": "Unknown"
+        },
+        {
+          "name": "id",
+          "type": "Unknown"
+        },
+        {
+          "name": "localized_name",
+          "type": "Unknown"
+        },
+        {
+          "name": "name",
+          "type": "Unknown"
+        },
+        {
+          "name": "updated_at",
+          "type": "Unknown"
+        }
+      ],
+      "link": "https://developers.salsify.com/reference/read-record-types"
+    },
+    {
+      "name": "product_digital_asset",
+      "columns": [
+        {
+          "name": "digital_asset_id",
+          "type": "Unknown",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "product_id",
+          "type": "Unknown",
+          "primaryKey": true,
+          "foreignKey": true
+        }
+      ],
+      "link": "https://developers.salsify.com/reference/read-product-record"
+    },
+    {
+      "name": "product",
+      "columns": [
+        {
+          "name": "id",
+          "type": "Unknown",
+          "primaryKey": true
+        },
+        {
+          "name": "parent_id",
+          "type": "Unknown",
+          "foreignKey": true
+        },
+        {
+          "name": "created_at",
+          "type": "Unknown"
+        },
+        {
+          "name": "profile_asset_id",
+          "type": "Unknown"
+        },
+        {
+          "name": "relation_updated_at",
+          "type": "Unknown"
+        },
+        {
+          "name": "system_id",
+          "type": "Unknown"
+        },
+        {
+          "name": "updated_at",
+          "type": "Unknown"
+        },
+        {
+          "name": "version",
+          "type": "Unknown"
+        },
+        {
+          "name": "custom_*",
+          "type": "",
+          "wildCard": true
+        }
+      ],
+      "link": "https://developers.salsify.com/reference/read-product-record"
+    },
+    {
+      "name": "record_digital_asset",
+      "columns": [
+        {
+          "name": "digital_asset_id",
+          "type": "Unknown",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "record_id",
+          "type": "Unknown",
+          "primaryKey": true,
+          "foreignKey": true
+        }
+      ],
+      "link": "https://developers.salsify.com/reference/read-record"
+    },
+    {
+      "name": "record",
+      "columns": [
+        {
+          "name": "id",
+          "type": "Unknown",
+          "primaryKey": true
+        },
+        {
+          "name": "parent_id",
+          "type": "Unknown",
+          "foreignKey": true
+        },
+        {
+          "name": "created_at",
+          "type": "Unknown"
+        },
+        {
+          "name": "relation_updated_at",
+          "type": "Unknown"
+        },
+        {
+          "name": "system_id",
+          "type": "Unknown"
+        },
+        {
+          "name": "updated_at",
+          "type": "Unknown"
+        },
+        {
+          "name": "version",
+          "type": "Unknown"
+        },
+        {
+          "name": "custom_*",
+          "type": "",
+          "wildCard": true
+        }
+      ],
+      "link": "https://developers.salsify.com/reference/read-record"
+    },
+    {
+      "name": "digital_asset",
+      "columns": [
+        {
+          "name": "id",
+          "type": "Unknown",
+          "primaryKey": true
+        },
+        {
+          "name": "asset_height",
+          "type": "Unknown"
+        },
+        {
+          "name": "asset_resource_type",
+          "type": "Unknown"
+        },
+        {
+          "name": "asset_width",
+          "type": "Unknown"
+        },
+        {
+          "name": "bytes",
+          "type": "Unknown"
+        },
+        {
+          "name": "created_at",
+          "type": "Unknown"
+        },
+        {
+          "name": "etag",
+          "type": "Unknown"
+        },
+        {
+          "name": "filename",
+          "type": "Unknown"
+        },
+        {
+          "name": "format",
+          "type": "Unknown"
+        },
+        {
+          "name": "name",
+          "type": "Unknown"
+        },
+        {
+          "name": "source_url",
+          "type": "Unknown"
+        },
+        {
+          "name": "status",
+          "type": "Unknown"
+        },
+        {
+          "name": "system_id",
+          "type": "Unknown"
+        },
+        {
+          "name": "updated_at",
+          "type": "Unknown"
+        },
+        {
+          "name": "url",
+          "type": "Unknown"
+        },
+        {
+          "name": "widen_file_upload_date",
+          "type": "Unknown"
+        },
+        {
+          "name": "custom_*",
+          "type": "",
+          "wildCard": true
+        }
+      ],
+      "link": "https://developers.salsify.com/reference/get-digital-asset"
+    }
+  ],
+  "relations": [
+    {
+      "targetTable": "digital_asset",
+      "sourceTable": "product_digital_asset",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "digital_asset_id"
+      ]
+    },
+    {
+      "targetTable": "product",
+      "sourceTable": "product_digital_asset",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "product_id"
+      ]
+    },
+    {
+      "targetTable": "product",
+      "sourceTable": "product",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "parent_id"
+      ]
+    },
+    {
+      "targetTable": "digital_asset",
+      "sourceTable": "record_digital_asset",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "digital_asset_id"
+      ]
+    },
+    {
+      "targetTable": "record",
+      "sourceTable": "record_digital_asset",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "record_id"
+      ]
+    },
+    {
+      "targetTable": "record",
+      "sourceTable": "record",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "parent_id"
+      ]
+    }
+  ],
+  "positions": {
+    "record_type": {
+      "x": 4,
+      "y": 760
+    },
+    "product_digital_asset": {
+      "x": 512,
+      "y": 8
+    },
+    "product": {
+      "x": 511.9152432183166,
+      "y": 276
+    },
+    "record_digital_asset": {
+      "x": 1051,
+      "y": 760
+    },
+    "record": {
+      "x": 512,
+      "y": 760
+    },
+    "digital_asset": {
+      "x": 1051,
+      "y": 8
+    }
+  }
+}

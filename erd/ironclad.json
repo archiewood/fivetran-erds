@@ -1,0 +1,1293 @@
+{
+  "tables": [
+    {
+      "name": "schema_attribute",
+      "columns": [
+        {
+          "name": "name",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "schema_id",
+          "type": "String",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "description",
+          "type": "String"
+        },
+        {
+          "name": "multi_valued",
+          "type": "Boolean"
+        },
+        {
+          "name": "mutability",
+          "type": "String"
+        },
+        {
+          "name": "required",
+          "type": "Boolean"
+        },
+        {
+          "name": "returned",
+          "type": "String"
+        },
+        {
+          "name": "sub_attributes",
+          "type": "Json"
+        },
+        {
+          "name": "type",
+          "type": "String"
+        }
+      ],
+      "tags": [],
+      "link": null
+    },
+    {
+      "name": "schema",
+      "columns": [
+        {
+          "name": "id",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "description",
+          "type": "String"
+        },
+        {
+          "name": "meta_location",
+          "type": "String"
+        },
+        {
+          "name": "meta_resource_type",
+          "type": "String"
+        },
+        {
+          "name": "name",
+          "type": "String"
+        }
+      ],
+      "tags": [],
+      "link": null
+    },
+    {
+      "name": "workflow_reviewer",
+      "columns": [
+        {
+          "name": "display_name",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "role",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "workflow_id",
+          "type": "String",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "reviewer_type",
+          "type": "String"
+        },
+        {
+          "name": "status",
+          "type": "String"
+        }
+      ],
+      "tags": [],
+      "link": null
+    },
+    {
+      "name": "workflow_participant",
+      "columns": [
+        {
+          "name": "user_id",
+          "type": "String",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "workflow_id",
+          "type": "String",
+          "primaryKey": true,
+          "foreignKey": true
+        }
+      ],
+      "tags": [],
+      "link": null
+    },
+    {
+      "name": "record_link",
+      "columns": [
+        {
+          "name": "link_record_id",
+          "type": "String",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "record_id",
+          "type": "String",
+          "primaryKey": true,
+          "foreignKey": true
+        }
+      ],
+      "tags": [],
+      "link": null
+    },
+    {
+      "name": "record_property",
+      "columns": [
+        {
+          "name": "name",
+          "type": "Unknown",
+          "primaryKey": true
+        },
+        {
+          "name": "record_id",
+          "type": "String",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "value",
+          "type": "Unknown"
+        }
+      ],
+      "tags": [],
+      "link": null
+    },
+    {
+      "name": "record",
+      "columns": [
+        {
+          "name": "id",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "source_workflow_id",
+          "type": "String",
+          "foreignKey": true
+        },
+        {
+          "name": "ironclad_id",
+          "type": "Unknown"
+        },
+        {
+          "name": "last_updated",
+          "type": "Instant"
+        },
+        {
+          "name": "name",
+          "type": "String"
+        },
+        {
+          "name": "signed_copy_content_type",
+          "type": "String"
+        },
+        {
+          "name": "signed_copy_filename",
+          "type": "String"
+        },
+        {
+          "name": "signed_copy_href",
+          "type": "String"
+        },
+        {
+          "name": "source_type",
+          "type": "String"
+        },
+        {
+          "name": "type",
+          "type": "String"
+        }
+      ],
+      "tags": [],
+      "link": null
+    },
+    {
+      "name": "turn_history",
+      "columns": [
+        {
+          "name": "turn_number",
+          "type": "Unknown",
+          "primaryKey": true
+        },
+        {
+          "name": "turn_start_time",
+          "type": "Unknown",
+          "primaryKey": true
+        },
+        {
+          "name": "workflow_id",
+          "type": "String",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "turn_end_time",
+          "type": "Unknown"
+        },
+        {
+          "name": "turn_location",
+          "type": "Unknown"
+        },
+        {
+          "name": "turn_party",
+          "type": "Unknown"
+        },
+        {
+          "name": "turn_user_email",
+          "type": "Unknown"
+        },
+        {
+          "name": "turn_user_id",
+          "type": "Unknown"
+        }
+      ],
+      "tags": [],
+      "link": "https://developer.ironcladapp.com/reference/turn-history"
+    },
+    {
+      "name": "workflow_schema_property",
+      "columns": [
+        {
+          "name": "name",
+          "type": "Unknown",
+          "primaryKey": true
+        },
+        {
+          "name": "workflow_schema_id",
+          "type": "String",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "value",
+          "type": "Unknown"
+        }
+      ],
+      "tags": [],
+      "link": null
+    },
+    {
+      "name": "workflow_schema",
+      "columns": [
+        {
+          "name": "id",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "name",
+          "type": "String"
+        }
+      ],
+      "tags": [],
+      "link": null
+    },
+    {
+      "name": "workflow_record",
+      "columns": [
+        {
+          "name": "record_id",
+          "type": "String",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "workflow_id",
+          "type": "String",
+          "primaryKey": true,
+          "foreignKey": true
+        }
+      ],
+      "tags": [],
+      "link": null
+    },
+    {
+      "name": "workflow_role_assignee",
+      "columns": [
+        {
+          "name": "user_id",
+          "type": "String",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "workflow_role_id",
+          "type": "String",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "workflow_role_workflow_id",
+          "type": "String",
+          "primaryKey": true,
+          "foreignKey": true
+        }
+      ],
+      "tags": [],
+      "link": null
+    },
+    {
+      "name": "workflow_role",
+      "columns": [
+        {
+          "name": "id",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "workflow_id",
+          "type": "String",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "display_name",
+          "type": "String"
+        }
+      ],
+      "tags": [],
+      "link": null
+    },
+    {
+      "name": "workflow_attribute",
+      "columns": [
+        {
+          "name": "name",
+          "type": "Unknown",
+          "primaryKey": true
+        },
+        {
+          "name": "workflow_id",
+          "type": "String",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "value",
+          "type": "Unknown"
+        }
+      ],
+      "tags": [],
+      "link": null
+    },
+    {
+      "name": "workflow",
+      "columns": [
+        {
+          "name": "id",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "creator_id",
+          "type": "String",
+          "foreignKey": true
+        },
+        {
+          "name": "template",
+          "type": "String",
+          "foreignKey": true
+        },
+        {
+          "name": "approvals_state",
+          "type": "Unknown"
+        },
+        {
+          "name": "approvals_url",
+          "type": "Unknown"
+        },
+        {
+          "name": "contract_approval_timestamp",
+          "type": "Instant"
+        },
+        {
+          "name": "contract_execution_date",
+          "type": "Instant"
+        },
+        {
+          "name": "created",
+          "type": "Instant"
+        },
+        {
+          "name": "ironclad_id",
+          "type": "Unknown"
+        },
+        {
+          "name": "is_cancelled",
+          "type": "Boolean"
+        },
+        {
+          "name": "is_complete",
+          "type": "Boolean"
+        },
+        {
+          "name": "is_revertible_to_review",
+          "type": "Boolean"
+        },
+        {
+          "name": "last_updated",
+          "type": "Instant"
+        },
+        {
+          "name": "signatures_state",
+          "type": "String"
+        },
+        {
+          "name": "signatures_url",
+          "type": "String"
+        },
+        {
+          "name": "status",
+          "type": "String"
+        },
+        {
+          "name": "step",
+          "type": "String"
+        },
+        {
+          "name": "title",
+          "type": "String"
+        }
+      ],
+      "tags": [],
+      "link": null
+    },
+    {
+      "name": "group_schema",
+      "columns": [
+        {
+          "name": "groups_id",
+          "type": "String",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "schema_id",
+          "type": "String",
+          "primaryKey": true,
+          "foreignKey": true
+        }
+      ],
+      "tags": [],
+      "link": null
+    },
+    {
+      "name": "group_member",
+      "columns": [
+        {
+          "name": "groups_id",
+          "type": "String",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "user_id",
+          "type": "String",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "ref",
+          "type": "String"
+        },
+        {
+          "name": "type",
+          "type": "String"
+        }
+      ],
+      "tags": [],
+      "link": null
+    },
+    {
+      "name": "groups",
+      "columns": [
+        {
+          "name": "id",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "display_name",
+          "type": "String"
+        },
+        {
+          "name": "external_id",
+          "type": "String"
+        }
+      ],
+      "tags": [],
+      "link": null
+    },
+    {
+      "name": "user_schema",
+      "columns": [
+        {
+          "name": "schema_id",
+          "type": "String",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "users_id",
+          "type": "String",
+          "primaryKey": true,
+          "foreignKey": true
+        }
+      ],
+      "tags": [],
+      "link": null
+    },
+    {
+      "name": "user_email",
+      "columns": [
+        {
+          "name": "value",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "users_id",
+          "type": "String",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "is_primary",
+          "type": "Boolean"
+        },
+        {
+          "name": "type",
+          "type": "String"
+        }
+      ],
+      "tags": [],
+      "link": null
+    },
+    {
+      "name": "users",
+      "columns": [
+        {
+          "name": "id",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "active",
+          "type": "Boolean"
+        },
+        {
+          "name": "family_name",
+          "type": "String"
+        },
+        {
+          "name": "given_name",
+          "type": "String"
+        },
+        {
+          "name": "user_name",
+          "type": "String"
+        }
+      ],
+      "tags": [],
+      "link": "https://developer.ironcladapp.com/reference/retrieve-all-users"
+    },
+    {
+      "name": "workflow_signer_delegate",
+      "columns": [
+        {
+          "name": "delegate_email",
+          "type": "Unknown",
+          "primaryKey": true
+        },
+        {
+          "name": "workflow_signer_email",
+          "type": "String",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "workflow_signer_workflow_id",
+          "type": "String",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "delegate_name",
+          "type": "Unknown"
+        }
+      ],
+      "tags": [],
+      "link": null
+    },
+    {
+      "name": "workflow_signer",
+      "columns": [
+        {
+          "name": "email",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "workflow_id",
+          "type": "String",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "role_name",
+          "type": "String"
+        },
+        {
+          "name": "signature_status",
+          "type": "String"
+        }
+      ],
+      "tags": [],
+      "link": null
+    },
+    {
+      "name": "approval_request",
+      "columns": [
+        {
+          "name": "_fivetran_id",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "workflow_id",
+          "type": "String",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "actor_id",
+          "type": "Unknown"
+        },
+        {
+          "name": "actor_type",
+          "type": "Unknown"
+        },
+        {
+          "name": "aggregate_duration",
+          "type": "Unknown"
+        },
+        {
+          "name": "approval_type",
+          "type": "Unknown"
+        },
+        {
+          "name": "duration",
+          "type": "Unknown"
+        },
+        {
+          "name": "end_time",
+          "type": "Unknown"
+        },
+        {
+          "name": "role",
+          "type": "Unknown"
+        },
+        {
+          "name": "role_name",
+          "type": "Unknown"
+        },
+        {
+          "name": "start_time",
+          "type": "Unknown"
+        },
+        {
+          "name": "status",
+          "type": "Unknown"
+        }
+      ],
+      "tags": [],
+      "link": "https://developer.ironcladapp.com/reference/approval-requests"
+    },
+    {
+      "name": "type_hash_data",
+      "columns": [
+        {
+          "name": "index",
+          "type": "Unknown",
+          "primaryKey": true
+        },
+        {
+          "name": "entity_relationship_type_id",
+          "type": "Unknown",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "data",
+          "type": "Unknown"
+        }
+      ],
+      "tags": [],
+      "link": "https://developer.ironcladapp.com/reference/get-all-entity-relationship-types"
+    },
+    {
+      "name": "entity_relationship_type",
+      "columns": [
+        {
+          "name": "id",
+          "type": "Unknown",
+          "primaryKey": true
+        },
+        {
+          "name": "company_id",
+          "type": "Unknown"
+        },
+        {
+          "name": "description",
+          "type": "Unknown"
+        },
+        {
+          "name": "display_name",
+          "type": "Unknown"
+        },
+        {
+          "name": "kind",
+          "type": "Unknown"
+        },
+        {
+          "name": "name",
+          "type": "Unknown"
+        },
+        {
+          "name": "type_hash_type",
+          "type": "Unknown"
+        },
+        {
+          "name": "properties_*",
+          "type": "",
+          "wildCard": true
+        }
+      ],
+      "tags": [],
+      "link": "https://developer.ironcladapp.com/reference/get-all-entity-relationship-types"
+    },
+    {
+      "name": "entity_named_type_id",
+      "columns": [
+        {
+          "name": "named_type_id",
+          "type": "Unknown",
+          "primaryKey": true
+        },
+        {
+          "name": "entity_id",
+          "type": "Unknown",
+          "primaryKey": true,
+          "foreignKey": true
+        }
+      ],
+      "tags": [],
+      "link": "https://developer.ironcladapp.com/reference/list-all-entities"
+    },
+    {
+      "name": "entity",
+      "columns": [
+        {
+          "name": "id",
+          "type": "Unknown",
+          "primaryKey": true
+        },
+        {
+          "name": "ironclad_id",
+          "type": "Unknown"
+        },
+        {
+          "name": "last_updated",
+          "type": "Unknown"
+        },
+        {
+          "name": "name",
+          "type": "Unknown"
+        },
+        {
+          "name": "status",
+          "type": "Unknown"
+        },
+        {
+          "name": "properties_*",
+          "type": "",
+          "wildCard": true
+        }
+      ],
+      "tags": [],
+      "link": "https://developer.ironcladapp.com/reference/list-all-entities"
+    }
+  ],
+  "relations": [
+    {
+      "targetTable": "schema",
+      "sourceTable": "schema_attribute",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "schema_id"
+      ]
+    },
+    {
+      "targetTable": "workflow",
+      "sourceTable": "workflow_reviewer",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "workflow_id"
+      ]
+    },
+    {
+      "targetTable": "users",
+      "sourceTable": "workflow_participant",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "user_id"
+      ]
+    },
+    {
+      "targetTable": "workflow",
+      "sourceTable": "workflow_participant",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "workflow_id"
+      ]
+    },
+    {
+      "targetTable": "record",
+      "sourceTable": "record_link",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "link_record_id"
+      ]
+    },
+    {
+      "targetTable": "record",
+      "sourceTable": "record_link",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "record_id"
+      ]
+    },
+    {
+      "targetTable": "record",
+      "sourceTable": "record_property",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "record_id"
+      ]
+    },
+    {
+      "targetTable": "workflow",
+      "sourceTable": "record",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "source_workflow_id"
+      ]
+    },
+    {
+      "targetTable": "workflow",
+      "sourceTable": "turn_history",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "workflow_id"
+      ]
+    },
+    {
+      "targetTable": "workflow_schema",
+      "sourceTable": "workflow_schema_property",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "workflow_schema_id"
+      ]
+    },
+    {
+      "targetTable": "record",
+      "sourceTable": "workflow_record",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "record_id"
+      ]
+    },
+    {
+      "targetTable": "workflow",
+      "sourceTable": "workflow_record",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "workflow_id"
+      ]
+    },
+    {
+      "targetTable": "users",
+      "sourceTable": "workflow_role_assignee",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "user_id"
+      ]
+    },
+    {
+      "targetTable": "workflow_role",
+      "sourceTable": "workflow_role_assignee",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "workflow_role_id"
+      ]
+    },
+    {
+      "targetTable": "workflow_role",
+      "sourceTable": "workflow_role_assignee",
+      "targetColumns": [
+        "workflow_id"
+      ],
+      "sourceColumns": [
+        "workflow_role_workflow_id"
+      ]
+    },
+    {
+      "targetTable": "workflow",
+      "sourceTable": "workflow_role",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "workflow_id"
+      ]
+    },
+    {
+      "targetTable": "workflow",
+      "sourceTable": "workflow_attribute",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "workflow_id"
+      ]
+    },
+    {
+      "targetTable": "workflow_schema",
+      "sourceTable": "workflow",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "template"
+      ]
+    },
+    {
+      "targetTable": "users",
+      "sourceTable": "workflow",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "creator_id"
+      ]
+    },
+    {
+      "targetTable": "schema",
+      "sourceTable": "group_schema",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "schema_id"
+      ]
+    },
+    {
+      "targetTable": "groups",
+      "sourceTable": "group_schema",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "groups_id"
+      ]
+    },
+    {
+      "targetTable": "users",
+      "sourceTable": "group_member",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "user_id"
+      ]
+    },
+    {
+      "targetTable": "groups",
+      "sourceTable": "group_member",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "groups_id"
+      ]
+    },
+    {
+      "targetTable": "schema",
+      "sourceTable": "user_schema",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "schema_id"
+      ]
+    },
+    {
+      "targetTable": "users",
+      "sourceTable": "user_schema",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "users_id"
+      ]
+    },
+    {
+      "targetTable": "users",
+      "sourceTable": "user_email",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "users_id"
+      ]
+    },
+    {
+      "targetTable": "workflow_signer",
+      "sourceTable": "workflow_signer_delegate",
+      "targetColumns": [
+        "workflow_id"
+      ],
+      "sourceColumns": [
+        "workflow_signer_workflow_id"
+      ]
+    },
+    {
+      "targetTable": "workflow_signer",
+      "sourceTable": "workflow_signer_delegate",
+      "targetColumns": [
+        "email"
+      ],
+      "sourceColumns": [
+        "workflow_signer_email"
+      ]
+    },
+    {
+      "targetTable": "workflow",
+      "sourceTable": "workflow_signer",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "workflow_id"
+      ]
+    },
+    {
+      "targetTable": "workflow",
+      "sourceTable": "approval_request",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "workflow_id"
+      ]
+    },
+    {
+      "targetTable": "entity_relationship_type",
+      "sourceTable": "type_hash_data",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "entity_relationship_type_id"
+      ]
+    },
+    {
+      "targetTable": "entity",
+      "sourceTable": "entity_named_type_id",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "entity_id"
+      ]
+    }
+  ],
+  "positions": {
+    "schema_attribute": {
+      "x": 504,
+      "y": 1432
+    },
+    "schema": {
+      "x": 504,
+      "y": 1092
+    },
+    "workflow_participant": {
+      "x": 1512,
+      "y": 304
+    },
+    "record_link": {
+      "x": 504,
+      "y": 520
+    },
+    "record_property": {
+      "x": 504,
+      "y": 788
+    },
+    "record": {
+      "x": 0,
+      "y": 34
+    },
+    "workflow_schema_property": {
+      "x": 2016,
+      "y": 0
+    },
+    "workflow_schema": {
+      "x": 1512,
+      "y": 1824
+    },
+    "workflow_record": {
+      "x": 1512,
+      "y": 572
+    },
+    "workflow_role_assignee": {
+      "x": 1512,
+      "y": 1520
+    },
+    "workflow_role": {
+      "x": 1512,
+      "y": 1216
+    },
+    "workflow": {
+      "x": 1008,
+      "y": 1252
+    },
+    "group_schema": {
+      "x": 0,
+      "y": 1432
+    },
+    "group_member": {
+      "x": 0,
+      "y": 1092
+    },
+    "groups": {
+      "x": 0,
+      "y": 1700
+    },
+    "user_schema": {
+      "x": 1008,
+      "y": 644
+    },
+    "user_email": {
+      "x": 1008,
+      "y": 304
+    },
+    "users": {
+      "x": 1008,
+      "y": 912
+    },
+    "workflow_signer_delegate": {
+      "x": 2016,
+      "y": 644
+    },
+    "workflow_signer": {
+      "x": 2016,
+      "y": 304
+    },
+    "type_hash_data": {
+      "x": 2520,
+      "y": 1092
+    },
+    "entity_relationship_type": {
+      "x": 2520,
+      "y": 644
+    },
+    "entity_named_type_id": {
+      "x": 2520,
+      "y": 376
+    },
+    "entity": {
+      "x": 2520,
+      "y": 0
+    },
+    "f63da65eff": {
+      "x": 3024,
+      "y": 0
+    },
+    "workflow_reviewer": {
+      "x": 1512,
+      "y": 900
+    },
+    "turn_history": {
+      "x": 2016,
+      "y": 974
+    },
+    "approval_request": {
+      "x": 0,
+      "y": 503
+    },
+    "workflow_attribute": {
+      "x": 1008,
+      "y": 2050
+    }
+  },
+  "notes": {
+    "byTable": {},
+    "generalNotes": []
+  },
+  "tableGroups": [
+    {
+      "id": "f63da65eff",
+      "parentTable": "workflow",
+      "tables": [],
+      "excludedTables": [
+        "workflow_reviewer",
+        "turn_history",
+        "approval_request",
+        "workflow_attribute"
+      ],
+      "width": 64,
+      "height": 64
+    }
+  ]
+}

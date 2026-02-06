@@ -1,0 +1,120 @@
+CREATE TABLE master_page (
+    id text,
+    active text,
+    label text,
+    "name" text,
+    url text,
+    PRIMARY KEY (id)
+);
+
+CREATE TABLE event_type (
+    id text,
+    description text,
+    label text,
+    "name" text,
+    PRIMARY KEY (id)
+);
+
+CREATE TABLE users (
+    id text,
+    email text,
+    first_name text,
+    last_name text,
+    role_name text,
+    "status" text,
+    PRIMARY KEY (id)
+);
+
+CREATE TABLE booking_page (
+    id text,
+    active text,
+    label text,
+    "name" text,
+    timezone text,
+    url text,
+    PRIMARY KEY (id)
+);
+
+CREATE TABLE contact (
+    id text,
+    owner text,
+    bot text,
+    city text,
+    company text,
+    company_size text,
+    country text,
+    creation_time text,
+    email text,
+    employees text,
+    first_name text,
+    form text,
+    has_consent text,
+    job_title text,
+    last_interacted_time text,
+    last_name text,
+    last_updated_time text,
+    mobile_phone text,
+    phone text,
+    post_code text,
+    salutation text,
+    "state" text,
+    street_address text,
+    terms_of_service text,
+    timezone text,
+    -- custom_* (dynamic column),
+    PRIMARY KEY (id),
+    FOREIGN KEY (owner) REFERENCES users(id)
+);
+
+CREATE TABLE booking (
+    id text,
+    booking_page_id text,
+    cancel_reschedule_user_id text,
+    contact_id text,
+    event_type_id text,
+    master_page_id text,
+    owner text,
+    rescheduled_booking_id text,
+    booking_calendar text,
+    cancel_reschedule_actioned_by text,
+    cancel_reschedule_reason text,
+    cancel_url text,
+    conversation text,
+    creation_time text,
+    customer_timezone text,
+    duration_minutes text,
+    external_calendar_event_id text,
+    external_calendar_id text,
+    external_calendar_name text,
+    external_calendar_type text,
+    form_submission_company text,
+    form_submission_email text,
+    form_submission_guests jsonb,
+    form_submission_mobile_phone text,
+    form_submission_name text,
+    form_submission_note text,
+    form_submission_phone text,
+    in_trash text,
+    last_updated_time text,
+    location_description text,
+    reschedule_url text,
+    starting_time text,
+    "status" text,
+    subject text,
+    tracking_id text,
+    utm_params_campaign text,
+    utm_params_content text,
+    utm_params_medium text,
+    utm_params_source text,
+    utm_params_term text,
+    virtual_conferencing_join_url text,
+    -- form_submission_custom_* (dynamic column),
+    PRIMARY KEY (id),
+    FOREIGN KEY (booking_page_id) REFERENCES booking_page(id),
+    FOREIGN KEY (cancel_reschedule_user_id) REFERENCES users(id),
+    FOREIGN KEY (contact_id) REFERENCES contact(id),
+    FOREIGN KEY (event_type_id) REFERENCES event_type(id),
+    FOREIGN KEY (master_page_id) REFERENCES master_page(id),
+    FOREIGN KEY (owner) REFERENCES users(id),
+    FOREIGN KEY (rescheduled_booking_id) REFERENCES booking(id)
+);

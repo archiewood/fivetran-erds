@@ -1,0 +1,3290 @@
+{
+  "tables": [
+    {
+      "name": "office",
+      "columns": [
+        {
+          "name": "id",
+          "type": "Long",
+          "primaryKey": true
+        },
+        {
+          "name": "parent_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "primary_contact_user_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "external_id",
+          "type": "String"
+        },
+        {
+          "name": "location_name",
+          "type": "String"
+        },
+        {
+          "name": "name",
+          "type": "String"
+        }
+      ],
+      "tags": [],
+      "link": "https://developers.greenhouse.io/harvest.html#get-list-offices"
+    },
+    {
+      "name": "discipline",
+      "columns": [
+        {
+          "name": "id",
+          "type": "Long",
+          "primaryKey": true
+        },
+        {
+          "name": "name",
+          "type": "String"
+        },
+        {
+          "name": "priority",
+          "type": "Int"
+        }
+      ],
+      "tags": [],
+      "link": "https://developers.greenhouse.io/harvest.html#get-list-disciplines"
+    },
+    {
+      "name": "source",
+      "columns": [
+        {
+          "name": "id",
+          "type": "Long",
+          "primaryKey": true
+        },
+        {
+          "name": "name",
+          "type": "String"
+        },
+        {
+          "name": "source_type_id",
+          "type": "Long"
+        },
+        {
+          "name": "source_type_name",
+          "type": "String"
+        }
+      ],
+      "tags": [],
+      "link": "https://developers.greenhouse.io/harvest.html#get-list-sources"
+    },
+    {
+      "name": "hiring_team_status",
+      "columns": [
+        {
+          "name": "user_id",
+          "type": "Long",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "job_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "active",
+          "type": "Boolean"
+        }
+      ],
+      "tags": [],
+      "link": "https://developers.greenhouse.io/harvest.html#get-hiring-team"
+    },
+    {
+      "name": "demographic_question_set",
+      "columns": [
+        {
+          "name": "id",
+          "type": "Long",
+          "primaryKey": true
+        },
+        {
+          "name": "active",
+          "type": "Boolean"
+        },
+        {
+          "name": "description",
+          "type": "String"
+        },
+        {
+          "name": "title",
+          "type": "String"
+        }
+      ],
+      "tags": [],
+      "link": "https://developers.greenhouse.io/harvest.html#get-list-demographic-question-sets"
+    },
+    {
+      "name": "offer",
+      "columns": [
+        {
+          "name": "id",
+          "type": "Long",
+          "primaryKey": true
+        },
+        {
+          "name": "application_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "opening_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "created_at",
+          "type": "Instant"
+        },
+        {
+          "name": "resolved_at",
+          "type": "Instant"
+        },
+        {
+          "name": "sent_at",
+          "type": "LocalDate"
+        },
+        {
+          "name": "starts_at",
+          "type": "LocalDate"
+        },
+        {
+          "name": "status",
+          "type": "String"
+        },
+        {
+          "name": "updated_at",
+          "type": "Instant"
+        },
+        {
+          "name": "version",
+          "type": "Long"
+        },
+        {
+          "name": "custom_*",
+          "type": "",
+          "wildCard": true
+        }
+      ],
+      "tags": [],
+      "link": "https://developers.greenhouse.io/harvest.html#get-list-offers"
+    },
+    {
+      "name": "demographic_answer_option",
+      "columns": [
+        {
+          "name": "id",
+          "type": "Long",
+          "primaryKey": true
+        },
+        {
+          "name": "demographic_question_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "active",
+          "type": "Boolean"
+        },
+        {
+          "name": "free_from",
+          "type": "Boolean"
+        },
+        {
+          "name": "name",
+          "type": "String"
+        }
+      ],
+      "tags": [],
+      "link": "https://developers.greenhouse.io/harvest.html#get-list-demographic-answer-options-for-demographic-question"
+    },
+    {
+      "name": "school",
+      "columns": [
+        {
+          "name": "id",
+          "type": "Long",
+          "primaryKey": true
+        },
+        {
+          "name": "name",
+          "type": "String"
+        },
+        {
+          "name": "priority",
+          "type": "Int"
+        }
+      ],
+      "tags": [],
+      "link": "https://developers.greenhouse.io/harvest.html#get-list-schools"
+    },
+    {
+      "name": "rejection_reason",
+      "columns": [
+        {
+          "name": "id",
+          "type": "Long",
+          "primaryKey": true
+        },
+        {
+          "name": "reason",
+          "type": "String"
+        },
+        {
+          "name": "rejection_reason_type_id",
+          "type": "Long"
+        },
+        {
+          "name": "rejection_reason_type_name",
+          "type": "String"
+        }
+      ],
+      "tags": [],
+      "link": "https://developers.greenhouse.io/harvest.html#get-list-rejection-reasons"
+    },
+    {
+      "name": "job_history",
+      "columns": [
+        {
+          "name": "updated_at",
+          "type": "Instant",
+          "primaryKey": true
+        },
+        {
+          "name": "job_id",
+          "type": "Long",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "closed_at",
+          "type": "Instant"
+        },
+        {
+          "name": "confidential",
+          "type": "Boolean"
+        },
+        {
+          "name": "name",
+          "type": "String"
+        },
+        {
+          "name": "notes",
+          "type": "String"
+        },
+        {
+          "name": "requisition_id",
+          "type": "String"
+        },
+        {
+          "name": "status",
+          "type": "String"
+        }
+      ],
+      "tags": [],
+      "link": "https://developers.greenhouse.io/harvest.html#get-list-jobs"
+    },
+    {
+      "name": "application_history",
+      "columns": [
+        {
+          "name": "updated_at",
+          "type": "Instant",
+          "primaryKey": true
+        },
+        {
+          "name": "application_id",
+          "type": "Long",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "new_stage_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "new_status",
+          "type": "String"
+        }
+      ],
+      "tags": [],
+      "link": "https://developers.greenhouse.io/harvest.html#get-list-applications"
+    },
+    {
+      "name": "degree",
+      "columns": [
+        {
+          "name": "id",
+          "type": "Long",
+          "primaryKey": true
+        },
+        {
+          "name": "name",
+          "type": "String"
+        },
+        {
+          "name": "priority",
+          "type": "Int"
+        }
+      ],
+      "tags": [],
+      "link": "https://developers.greenhouse.io/harvest.html#get-list-degrees"
+    },
+    {
+      "name": "prospect_stage",
+      "columns": [
+        {
+          "name": "id",
+          "type": "Long",
+          "primaryKey": true
+        },
+        {
+          "name": "prospect_pool_id",
+          "type": "Long",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "name",
+          "type": "String"
+        }
+      ],
+      "tags": [],
+      "link": "https://developers.greenhouse.io/harvest.html#get-list-prospect-pools"
+    },
+    {
+      "name": "prospect_pool",
+      "columns": [
+        {
+          "name": "id",
+          "type": "Long",
+          "primaryKey": true
+        },
+        {
+          "name": "active",
+          "type": "Boolean"
+        },
+        {
+          "name": "name",
+          "type": "String"
+        }
+      ],
+      "tags": [],
+      "link": "https://developers.greenhouse.io/harvest.html#get-list-prospect-pools"
+    },
+    {
+      "name": "user_email",
+      "columns": [
+        {
+          "name": "email",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "user_id",
+          "type": "Long",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "is_primary",
+          "type": "Boolean"
+        }
+      ],
+      "tags": [],
+      "link": "https://developers.greenhouse.io/harvest.html#get-list-users"
+    },
+    {
+      "name": "user_linked_candidate",
+      "columns": [
+        {
+          "name": "candidate_id",
+          "type": "Long",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "user_id",
+          "type": "Long",
+          "primaryKey": true,
+          "foreignKey": true
+        }
+      ],
+      "tags": [],
+      "link": "https://developers.greenhouse.io/harvest.html#get-list-users"
+    },
+    {
+      "name": "users",
+      "columns": [
+        {
+          "name": "id",
+          "type": "Long",
+          "primaryKey": true
+        },
+        {
+          "name": "created_at",
+          "type": "Instant"
+        },
+        {
+          "name": "disabled",
+          "type": "Boolean"
+        },
+        {
+          "name": "employee_id",
+          "type": "String"
+        },
+        {
+          "name": "first_name",
+          "type": "String"
+        },
+        {
+          "name": "last_name",
+          "type": "String"
+        },
+        {
+          "name": "primary_email_address",
+          "type": "String"
+        },
+        {
+          "name": "site_admin",
+          "type": "Boolean"
+        },
+        {
+          "name": "updated_at",
+          "type": "Instant"
+        }
+      ],
+      "tags": [],
+      "link": "https://developers.greenhouse.io/harvest.html#get-list-users"
+    },
+    {
+      "name": "tags",
+      "columns": [
+        {
+          "name": "id",
+          "type": "Long",
+          "primaryKey": true
+        },
+        {
+          "name": "name",
+          "type": "String"
+        }
+      ],
+      "tags": [],
+      "link": "https://developers.greenhouse.io/harvest.html#get-list-candidate-tags"
+    },
+    {
+      "name": "close_reason",
+      "columns": [
+        {
+          "name": "id",
+          "type": "Long",
+          "primaryKey": true
+        },
+        {
+          "name": "name",
+          "type": "String"
+        }
+      ],
+      "tags": [],
+      "link": "https://developers.greenhouse.io/harvest.html#close-reasons"
+    },
+    {
+      "name": "candidate_tag",
+      "columns": [
+        {
+          "name": "candidate_id",
+          "type": "Long",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "tag_id",
+          "type": "Long",
+          "primaryKey": true,
+          "foreignKey": true
+        }
+      ],
+      "tags": [],
+      "link": "https://developers.greenhouse.io/harvest.html#get-list-tags-applied-to-candidate"
+    },
+    {
+      "name": "job_department",
+      "columns": [
+        {
+          "name": "department_id",
+          "type": "Long",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "job_id",
+          "type": "Long",
+          "primaryKey": true,
+          "foreignKey": true
+        }
+      ],
+      "tags": [],
+      "link": "https://developers.greenhouse.io/harvest.html#get-list-jobs"
+    },
+    {
+      "name": "job_office",
+      "columns": [
+        {
+          "name": "job_id",
+          "type": "Long",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "office_id",
+          "type": "Long",
+          "primaryKey": true,
+          "foreignKey": true
+        }
+      ],
+      "tags": [],
+      "link": "https://developers.greenhouse.io/harvest.html#get-list-jobs"
+    },
+    {
+      "name": "hiring_team",
+      "columns": [
+        {
+          "name": "role",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "job_id",
+          "type": "Long",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "user_id",
+          "type": "Long",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "responsible",
+          "type": "Boolean"
+        }
+      ],
+      "tags": [],
+      "link": "https://developers.greenhouse.io/harvest.html#get-list-jobs"
+    },
+    {
+      "name": "job",
+      "columns": [
+        {
+          "name": "id",
+          "type": "Long",
+          "primaryKey": true
+        },
+        {
+          "name": "closed_at",
+          "type": "Instant"
+        },
+        {
+          "name": "confidential",
+          "type": "Boolean"
+        },
+        {
+          "name": "created_at",
+          "type": "Instant"
+        },
+        {
+          "name": "is_template",
+          "type": "Boolean"
+        },
+        {
+          "name": "name",
+          "type": "String"
+        },
+        {
+          "name": "notes",
+          "type": "String"
+        },
+        {
+          "name": "opened_at",
+          "type": "Instant"
+        },
+        {
+          "name": "requisition_id",
+          "type": "String"
+        },
+        {
+          "name": "status",
+          "type": "String"
+        },
+        {
+          "name": "updated_at",
+          "type": "Instant"
+        },
+        {
+          "name": "custom_*",
+          "type": "",
+          "wildCard": true
+        }
+      ],
+      "tags": [],
+      "link": "https://developers.greenhouse.io/harvest.html#get-list-jobs"
+    },
+    {
+      "name": "email_template_cc",
+      "columns": [
+        {
+          "name": "email_id",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "email_template_id",
+          "type": "Long",
+          "primaryKey": true,
+          "foreignKey": true
+        }
+      ],
+      "tags": [],
+      "link": "https://developers.greenhouse.io/harvest.html#email-templates"
+    },
+    {
+      "name": "email_template",
+      "columns": [
+        {
+          "name": "id",
+          "type": "Long",
+          "primaryKey": true
+        },
+        {
+          "name": "user_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "body",
+          "type": "String"
+        },
+        {
+          "name": "created_at",
+          "type": "Instant"
+        },
+        {
+          "name": "description",
+          "type": "String"
+        },
+        {
+          "name": "from_email",
+          "type": "String"
+        },
+        {
+          "name": "html_body",
+          "type": "String"
+        },
+        {
+          "name": "is_default",
+          "type": "Boolean"
+        },
+        {
+          "name": "name",
+          "type": "String"
+        },
+        {
+          "name": "type",
+          "type": "String"
+        },
+        {
+          "name": "updated_at",
+          "type": "Instant"
+        }
+      ],
+      "tags": [],
+      "link": "https://developers.greenhouse.io/harvest.html#email-templates"
+    },
+    {
+      "name": "interview_question",
+      "columns": [
+        {
+          "name": "id",
+          "type": "Long",
+          "primaryKey": true
+        },
+        {
+          "name": "interview_id",
+          "type": "Long",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "question",
+          "type": "String"
+        }
+      ],
+      "tags": [],
+      "link": "https://developers.greenhouse.io/harvest.html#get-list-job-stages"
+    },
+    {
+      "name": "interview",
+      "columns": [
+        {
+          "name": "id",
+          "type": "Long",
+          "primaryKey": true
+        },
+        {
+          "name": "job_stage_id",
+          "type": "Long",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "interview_kit_content",
+          "type": "String"
+        },
+        {
+          "name": "name",
+          "type": "String"
+        }
+      ],
+      "tags": [],
+      "link": "https://developers.greenhouse.io/harvest.html#get-list-job-stages"
+    },
+    {
+      "name": "job_stage",
+      "columns": [
+        {
+          "name": "id",
+          "type": "Long",
+          "primaryKey": true
+        },
+        {
+          "name": "job_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "active",
+          "type": "Boolean"
+        },
+        {
+          "name": "created_at",
+          "type": "Instant"
+        },
+        {
+          "name": "name",
+          "type": "String"
+        },
+        {
+          "name": "priority",
+          "type": "Int"
+        },
+        {
+          "name": "updated_at",
+          "type": "Instant"
+        }
+      ],
+      "tags": [],
+      "link": "https://developers.greenhouse.io/harvest.html#get-list-job-stages"
+    },
+    {
+      "name": "offer_history",
+      "columns": [
+        {
+          "name": "updated_at",
+          "type": "Instant",
+          "primaryKey": true
+        },
+        {
+          "name": "offer_id",
+          "type": "Long",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "application_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "resolved_at",
+          "type": "Instant"
+        },
+        {
+          "name": "sent_at",
+          "type": "LocalDate"
+        },
+        {
+          "name": "starts_at",
+          "type": "LocalDate"
+        },
+        {
+          "name": "status",
+          "type": "String"
+        },
+        {
+          "name": "version",
+          "type": "Long"
+        }
+      ],
+      "tags": [],
+      "link": "https://developers.greenhouse.io/harvest.html#get-list-offers"
+    },
+    {
+      "name": "scorecard_attribute",
+      "columns": [
+        {
+          "name": "index",
+          "type": "Int",
+          "primaryKey": true
+        },
+        {
+          "name": "scorecard_id",
+          "type": "Long",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "name",
+          "type": "String"
+        },
+        {
+          "name": "note",
+          "type": "String"
+        },
+        {
+          "name": "rating",
+          "type": "String"
+        },
+        {
+          "name": "type",
+          "type": "String"
+        }
+      ],
+      "tags": [],
+      "link": "https://developers.greenhouse.io/harvest.html#get-list-scorecards"
+    },
+    {
+      "name": "scorecard_qna",
+      "columns": [
+        {
+          "name": "index",
+          "type": "Int",
+          "primaryKey": true
+        },
+        {
+          "name": "scorecard_id",
+          "type": "Long",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "answer",
+          "type": "String"
+        },
+        {
+          "name": "id",
+          "type": "Long"
+        },
+        {
+          "name": "question",
+          "type": "String"
+        }
+      ],
+      "tags": [],
+      "link": "https://developers.greenhouse.io/harvest.html#get-list-scorecards"
+    },
+    {
+      "name": "scorecard",
+      "columns": [
+        {
+          "name": "id",
+          "type": "Long",
+          "primaryKey": true
+        },
+        {
+          "name": "application_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "candidate_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "created_at",
+          "type": "Instant"
+        },
+        {
+          "name": "interview",
+          "type": "String"
+        },
+        {
+          "name": "interviewed_at",
+          "type": "Instant"
+        },
+        {
+          "name": "overall_recommendation",
+          "type": "String"
+        },
+        {
+          "name": "submitted_at",
+          "type": "Instant"
+        },
+        {
+          "name": "submitted_by_user_id",
+          "type": "Long"
+        },
+        {
+          "name": "updated_at",
+          "type": "Instant"
+        }
+      ],
+      "tags": [],
+      "link": "https://developers.greenhouse.io/harvest.html#get-list-scorecards"
+    },
+    {
+      "name": "user_role",
+      "columns": [
+        {
+          "name": "id",
+          "type": "Long",
+          "primaryKey": true
+        },
+        {
+          "name": "name",
+          "type": "String"
+        },
+        {
+          "name": "type",
+          "type": "String"
+        }
+      ],
+      "tags": [],
+      "link": "https://developers.greenhouse.io/harvest.html#user-roles"
+    },
+    {
+      "name": "address",
+      "columns": [
+        {
+          "name": "index",
+          "type": "Int",
+          "primaryKey": true
+        },
+        {
+          "name": "candidate_id",
+          "type": "Long",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "type",
+          "type": "String"
+        },
+        {
+          "name": "value",
+          "type": "String"
+        }
+      ],
+      "tags": [],
+      "link": "https://developers.greenhouse.io/harvest.html#candidates"
+    },
+    {
+      "name": "website_address",
+      "columns": [
+        {
+          "name": "index",
+          "type": "Int",
+          "primaryKey": true
+        },
+        {
+          "name": "candidate_id",
+          "type": "Long",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "type",
+          "type": "String"
+        },
+        {
+          "name": "value",
+          "type": "String"
+        }
+      ],
+      "tags": [],
+      "link": "https://developers.greenhouse.io/harvest.html#candidates"
+    },
+    {
+      "name": "email_address",
+      "columns": [
+        {
+          "name": "index",
+          "type": "Int",
+          "primaryKey": true
+        },
+        {
+          "name": "candidate_id",
+          "type": "Long",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "type",
+          "type": "String"
+        },
+        {
+          "name": "value",
+          "type": "String"
+        }
+      ],
+      "tags": [],
+      "link": "https://developers.greenhouse.io/harvest.html#candidates"
+    },
+    {
+      "name": "social_media_address",
+      "columns": [
+        {
+          "name": "index",
+          "type": "Int",
+          "primaryKey": true
+        },
+        {
+          "name": "candidate_id",
+          "type": "Long",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "value",
+          "type": "String"
+        }
+      ],
+      "tags": [],
+      "link": "https://developers.greenhouse.io/harvest.html#candidates"
+    },
+    {
+      "name": "phone_number",
+      "columns": [
+        {
+          "name": "index",
+          "type": "Int",
+          "primaryKey": true
+        },
+        {
+          "name": "candidate_id",
+          "type": "Long",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "type",
+          "type": "String"
+        },
+        {
+          "name": "value",
+          "type": "String"
+        }
+      ],
+      "tags": [],
+      "link": "https://developers.greenhouse.io/harvest.html#candidates"
+    },
+    {
+      "name": "attachment",
+      "columns": [
+        {
+          "name": "index",
+          "type": "Int",
+          "primaryKey": true
+        },
+        {
+          "name": "candidate_id",
+          "type": "Long",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "filename",
+          "type": "String"
+        },
+        {
+          "name": "type",
+          "type": "String"
+        },
+        {
+          "name": "url",
+          "type": "String"
+        }
+      ],
+      "tags": [],
+      "link": "https://developers.greenhouse.io/harvest.html#candidates"
+    },
+    {
+      "name": "employment",
+      "columns": [
+        {
+          "name": "index",
+          "type": "Unknown",
+          "primaryKey": true
+        },
+        {
+          "name": "candidate_id",
+          "type": "Long",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "company_name",
+          "type": "String"
+        },
+        {
+          "name": "date_end",
+          "type": "LocalDate"
+        },
+        {
+          "name": "date_start",
+          "type": "LocalDate"
+        },
+        {
+          "name": "id",
+          "type": "Long"
+        },
+        {
+          "name": "title",
+          "type": "String"
+        }
+      ],
+      "tags": [],
+      "link": "https://developers.greenhouse.io/harvest.html#candidates"
+    },
+    {
+      "name": "education",
+      "columns": [
+        {
+          "name": "index",
+          "type": "Unknown",
+          "primaryKey": true
+        },
+        {
+          "name": "candidate_id",
+          "type": "Long",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "degree",
+          "type": "String",
+          "foreignKey": true
+        },
+        {
+          "name": "discipline",
+          "type": "String",
+          "foreignKey": true
+        },
+        {
+          "name": "school_name",
+          "type": "String",
+          "foreignKey": true
+        },
+        {
+          "name": "end_date",
+          "type": "String"
+        },
+        {
+          "name": "id",
+          "type": "Long"
+        },
+        {
+          "name": "start_date",
+          "type": "String"
+        }
+      ],
+      "tags": [],
+      "link": "https://developers.greenhouse.io/harvest.html#candidates"
+    },
+    {
+      "name": "candidate",
+      "columns": [
+        {
+          "name": "id",
+          "type": "Long",
+          "primaryKey": true
+        },
+        {
+          "name": "coordinator_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "new_candidate_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "recruiter_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "can_email",
+          "type": "Boolean"
+        },
+        {
+          "name": "company",
+          "type": "String"
+        },
+        {
+          "name": "created_at",
+          "type": "Instant"
+        },
+        {
+          "name": "first_name",
+          "type": "String"
+        },
+        {
+          "name": "is_private",
+          "type": "Boolean"
+        },
+        {
+          "name": "last_activity",
+          "type": "Instant"
+        },
+        {
+          "name": "last_name",
+          "type": "String"
+        },
+        {
+          "name": "photo_url",
+          "type": "String"
+        },
+        {
+          "name": "title",
+          "type": "String"
+        },
+        {
+          "name": "updated_at",
+          "type": "Instant"
+        },
+        {
+          "name": "custom_*",
+          "type": "",
+          "wildCard": true
+        }
+      ],
+      "tags": [],
+      "link": "https://developers.greenhouse.io/harvest.html#candidates"
+    },
+    {
+      "name": "job_opening",
+      "columns": [
+        {
+          "name": "id",
+          "type": "Long",
+          "primaryKey": true
+        },
+        {
+          "name": "job_id",
+          "type": "Long",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "application_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "close_reason_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "closed_at",
+          "type": "Instant"
+        },
+        {
+          "name": "opened_at",
+          "type": "Instant"
+        },
+        {
+          "name": "opening_id",
+          "type": "String"
+        },
+        {
+          "name": "status",
+          "type": "String"
+        },
+        {
+          "name": "custom_*",
+          "type": "",
+          "wildCard": true
+        }
+      ],
+      "tags": [],
+      "link": "https://developers.greenhouse.io/harvest.html#get-list-job-openings"
+    },
+    {
+      "name": "job_post_question",
+      "columns": [
+        {
+          "name": "index",
+          "type": "Int",
+          "primaryKey": true
+        },
+        {
+          "name": "job_post_id",
+          "type": "Long",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "description",
+          "type": "String"
+        },
+        {
+          "name": "label",
+          "type": "String"
+        },
+        {
+          "name": "name",
+          "type": "String"
+        },
+        {
+          "name": "private",
+          "type": "Boolean"
+        },
+        {
+          "name": "required",
+          "type": "Boolean"
+        },
+        {
+          "name": "type",
+          "type": "String"
+        },
+        {
+          "name": "values",
+          "type": "Json"
+        }
+      ],
+      "tags": [],
+      "link": "https://developers.greenhouse.io/harvest.html#get-list-job-posts"
+    },
+    {
+      "name": "job_post",
+      "columns": [
+        {
+          "name": "id",
+          "type": "Long",
+          "primaryKey": true
+        },
+        {
+          "name": "job_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "active",
+          "type": "Boolean"
+        },
+        {
+          "name": "content",
+          "type": "String"
+        },
+        {
+          "name": "created_at",
+          "type": "Instant"
+        },
+        {
+          "name": "demographic_question_set_id",
+          "type": "Long"
+        },
+        {
+          "name": "external",
+          "type": "Boolean"
+        },
+        {
+          "name": "first_published_at",
+          "type": "Instant"
+        },
+        {
+          "name": "internal",
+          "type": "Boolean"
+        },
+        {
+          "name": "internal_content",
+          "type": "String"
+        },
+        {
+          "name": "job_post_custom_location_id",
+          "type": "Long"
+        },
+        {
+          "name": "job_post_location_type_id",
+          "type": "Long"
+        },
+        {
+          "name": "job_post_location_type_name",
+          "type": "String"
+        },
+        {
+          "name": "live",
+          "type": "Boolean"
+        },
+        {
+          "name": "location_name",
+          "type": "String"
+        },
+        {
+          "name": "location_office_id",
+          "type": "Unknown"
+        },
+        {
+          "name": "title",
+          "type": "String"
+        },
+        {
+          "name": "updated_at",
+          "type": "Instant"
+        }
+      ],
+      "tags": [],
+      "link": "https://developers.greenhouse.io/harvest.html#get-list-job-posts"
+    },
+    {
+      "name": "eeoc",
+      "columns": [
+        {
+          "name": "application_id",
+          "type": "Long",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "disability_status_description",
+          "type": "String"
+        },
+        {
+          "name": "disability_status_id",
+          "type": "Long"
+        },
+        {
+          "name": "gender_description",
+          "type": "String"
+        },
+        {
+          "name": "gender_id",
+          "type": "Long"
+        },
+        {
+          "name": "race_description",
+          "type": "String"
+        },
+        {
+          "name": "race_id",
+          "type": "Long"
+        },
+        {
+          "name": "submitted_at",
+          "type": "Instant"
+        },
+        {
+          "name": "veteran_status_description",
+          "type": "String"
+        },
+        {
+          "name": "veteran_status_id",
+          "type": "Long"
+        }
+      ],
+      "tags": [],
+      "link": "https://developers.greenhouse.io/harvest.html#get-list-eeoc"
+    },
+    {
+      "name": "department",
+      "columns": [
+        {
+          "name": "id",
+          "type": "Long",
+          "primaryKey": true
+        },
+        {
+          "name": "parent_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "external_id",
+          "type": "String"
+        },
+        {
+          "name": "name",
+          "type": "String"
+        }
+      ],
+      "tags": [],
+      "link": "https://developers.greenhouse.io/harvest.html#get-list-departments"
+    },
+    {
+      "name": "demographic_questions",
+      "columns": [
+        {
+          "name": "id",
+          "type": "Long",
+          "primaryKey": true
+        },
+        {
+          "name": "demographic_question_set_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "active",
+          "type": "Boolean"
+        },
+        {
+          "name": "name",
+          "type": "String"
+        }
+      ],
+      "tags": [],
+      "link": "https://developers.greenhouse.io/harvest.html#get-list-demographic-questions-for-demographic-question-set"
+    },
+    {
+      "name": "approver",
+      "columns": [
+        {
+          "name": "id",
+          "type": "Long",
+          "primaryKey": true
+        },
+        {
+          "name": "approval_id",
+          "type": "Long",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "approver_group_id",
+          "type": "Long",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "email_addresses",
+          "type": "Json"
+        },
+        {
+          "name": "employee_id",
+          "type": "String"
+        },
+        {
+          "name": "name",
+          "type": "String"
+        }
+      ],
+      "tags": [],
+      "link": "https://developers.greenhouse.io/harvest.html#approvals"
+    },
+    {
+      "name": "approver_group",
+      "columns": [
+        {
+          "name": "id",
+          "type": "Long",
+          "primaryKey": true
+        },
+        {
+          "name": "approval_id",
+          "type": "Long",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "approvals_required",
+          "type": "Int"
+        },
+        {
+          "name": "created_at",
+          "type": "Instant"
+        },
+        {
+          "name": "job_id",
+          "type": "Long"
+        },
+        {
+          "name": "offer_id",
+          "type": "Unknown"
+        },
+        {
+          "name": "priority",
+          "type": "Int"
+        },
+        {
+          "name": "resolved_at",
+          "type": "Instant"
+        }
+      ],
+      "tags": [],
+      "link": "https://developers.greenhouse.io/harvest.html#approvals"
+    },
+    {
+      "name": "approval",
+      "columns": [
+        {
+          "name": "id",
+          "type": "Long",
+          "primaryKey": true
+        },
+        {
+          "name": "job_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "offer_id",
+          "type": "Long"
+        },
+        {
+          "name": "requested_by_user_id",
+          "type": "Long"
+        },
+        {
+          "name": "sequential",
+          "type": "Boolean"
+        },
+        {
+          "name": "status",
+          "type": "String"
+        },
+        {
+          "name": "type",
+          "type": "String"
+        },
+        {
+          "name": "version",
+          "type": "Int"
+        }
+      ],
+      "tags": [],
+      "link": "https://developers.greenhouse.io/harvest.html#approvals"
+    },
+    {
+      "name": "scheduled_interviewer",
+      "columns": [
+        {
+          "name": "interviewer_id",
+          "type": "Long",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "scheduled_interview_id",
+          "type": "Long",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "scorecard_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "response_status",
+          "type": "Unknown"
+        }
+      ],
+      "tags": [],
+      "link": "https://developers.greenhouse.io/harvest.html#get-list-scheduled-interviews"
+    },
+    {
+      "name": "scheduled_interview",
+      "columns": [
+        {
+          "name": "id",
+          "type": "Long",
+          "primaryKey": true
+        },
+        {
+          "name": "application_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "created_at",
+          "type": "Instant"
+        },
+        {
+          "name": "ends",
+          "type": "Instant"
+        },
+        {
+          "name": "interview_id",
+          "type": "Long"
+        },
+        {
+          "name": "location",
+          "type": "String"
+        },
+        {
+          "name": "organizer_id",
+          "type": "Long"
+        },
+        {
+          "name": "start",
+          "type": "Instant"
+        },
+        {
+          "name": "status",
+          "type": "String"
+        },
+        {
+          "name": "updated_at",
+          "type": "Instant"
+        }
+      ],
+      "tags": [],
+      "link": "https://developers.greenhouse.io/harvest.html#get-list-scheduled-interviews"
+    },
+    {
+      "name": "demographic_answer",
+      "columns": [
+        {
+          "name": "id",
+          "type": "Long",
+          "primaryKey": true
+        },
+        {
+          "name": "application_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "demographic_answer_option_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "demographic_question_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "created_at",
+          "type": "Instant"
+        },
+        {
+          "name": "free_form_text",
+          "type": "String"
+        },
+        {
+          "name": "updated_at",
+          "type": "Instant"
+        }
+      ],
+      "tags": [],
+      "link": "https://developers.greenhouse.io/harvest.html#get-list-demographic-answer-options"
+    },
+    {
+      "name": "job_application",
+      "columns": [
+        {
+          "name": "application_id",
+          "type": "Long",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "job_id",
+          "type": "Long",
+          "primaryKey": true,
+          "foreignKey": true
+        }
+      ],
+      "tags": [],
+      "link": "https://developers.greenhouse.io/harvest.html#get-list-applications"
+    },
+    {
+      "name": "application_qna",
+      "columns": [
+        {
+          "name": "index",
+          "type": "Int",
+          "primaryKey": true
+        },
+        {
+          "name": "application_id",
+          "type": "Long",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "answer",
+          "type": "String"
+        },
+        {
+          "name": "question",
+          "type": "String"
+        }
+      ],
+      "tags": [],
+      "link": "https://developers.greenhouse.io/harvest.html#get-list-applications"
+    },
+    {
+      "name": "application_attachment",
+      "columns": [
+        {
+          "name": "index",
+          "type": "Int",
+          "primaryKey": true
+        },
+        {
+          "name": "application_id",
+          "type": "Long",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "created_at",
+          "type": "Instant"
+        },
+        {
+          "name": "filename",
+          "type": "String"
+        },
+        {
+          "name": "type",
+          "type": "String"
+        },
+        {
+          "name": "url",
+          "type": "String"
+        }
+      ],
+      "tags": [],
+      "link": "https://developers.greenhouse.io/harvest.html#get-list-applications"
+    },
+    {
+      "name": "application",
+      "columns": [
+        {
+          "name": "id",
+          "type": "Long",
+          "primaryKey": true
+        },
+        {
+          "name": "candidate_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "coordinator_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "credited_to_user_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "job_post_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "recruiter_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "rejection_reason_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "source_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "applied_at",
+          "type": "Instant"
+        },
+        {
+          "name": "current_stage_id",
+          "type": "Long"
+        },
+        {
+          "name": "current_stage_name",
+          "type": "String"
+        },
+        {
+          "name": "last_activity_at",
+          "type": "Instant"
+        },
+        {
+          "name": "location_address",
+          "type": "String"
+        },
+        {
+          "name": "prospect",
+          "type": "Boolean"
+        },
+        {
+          "name": "prospect_owner_id",
+          "type": "Long"
+        },
+        {
+          "name": "prospect_pool_id",
+          "type": "Long"
+        },
+        {
+          "name": "prospect_stage_id",
+          "type": "Long"
+        },
+        {
+          "name": "prospective_department",
+          "type": "Unknown"
+        },
+        {
+          "name": "prospective_office",
+          "type": "Unknown"
+        },
+        {
+          "name": "rejected_at",
+          "type": "Instant"
+        },
+        {
+          "name": "status",
+          "type": "String"
+        },
+        {
+          "name": "custom_*",
+          "type": "",
+          "wildCard": true
+        }
+      ],
+      "tags": [],
+      "link": "https://developers.greenhouse.io/harvest.html#get-list-applications"
+    },
+    {
+      "name": "user_permission",
+      "columns": [
+        {
+          "name": "id",
+          "type": "Long",
+          "primaryKey": true
+        },
+        {
+          "name": "user_id",
+          "type": "Long",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "job_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "user_role_id",
+          "type": "Long",
+          "foreignKey": true
+        }
+      ],
+      "tags": [],
+      "link": "https://developers.greenhouse.io/harvest.html#get-list-job-permissions"
+    },
+    {
+      "name": "note",
+      "columns": [
+        {
+          "name": "id",
+          "type": "Long",
+          "primaryKey": true
+        },
+        {
+          "name": "candidate_id",
+          "type": "Long",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "user_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "body",
+          "type": "String"
+        },
+        {
+          "name": "created_at",
+          "type": "Instant"
+        },
+        {
+          "name": "private",
+          "type": "Boolean"
+        },
+        {
+          "name": "visibility",
+          "type": "String"
+        }
+      ],
+      "tags": [],
+      "link": "https://developers.greenhouse.io/harvest.html#get-retrieve-activity-feed"
+    },
+    {
+      "name": "activity",
+      "columns": [
+        {
+          "name": "id",
+          "type": "Long",
+          "primaryKey": true
+        },
+        {
+          "name": "candidate_id",
+          "type": "Long",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "user_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "body",
+          "type": "String"
+        },
+        {
+          "name": "created_at",
+          "type": "Instant"
+        },
+        {
+          "name": "subject",
+          "type": "String"
+        }
+      ],
+      "tags": [],
+      "link": "https://developers.greenhouse.io/harvest.html#get-retrieve-activity-feed"
+    },
+    {
+      "name": "email_cc",
+      "columns": [
+        {
+          "name": "cc_email",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "email_id",
+          "type": "Long",
+          "primaryKey": true,
+          "foreignKey": true
+        }
+      ],
+      "tags": [],
+      "link": "https://developers.greenhouse.io/harvest.html#get-retrieve-activity-feed"
+    },
+    {
+      "name": "email",
+      "columns": [
+        {
+          "name": "id",
+          "type": "Long",
+          "primaryKey": true
+        },
+        {
+          "name": "candidate_id",
+          "type": "Long",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "user_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "body",
+          "type": "String"
+        },
+        {
+          "name": "created_at",
+          "type": "Instant"
+        },
+        {
+          "name": "from_email",
+          "type": "String"
+        },
+        {
+          "name": "subject",
+          "type": "String"
+        },
+        {
+          "name": "to_email",
+          "type": "String"
+        }
+      ],
+      "tags": [],
+      "link": "https://developers.greenhouse.io/harvest.html#get-retrieve-activity-feed"
+    }
+  ],
+  "relations": [
+    {
+      "targetTable": "office",
+      "sourceTable": "office",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "parent_id"
+      ]
+    },
+    {
+      "targetTable": "users",
+      "sourceTable": "office",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "primary_contact_user_id"
+      ]
+    },
+    {
+      "targetTable": "hiring_team",
+      "sourceTable": "hiring_team_status",
+      "targetColumns": [
+        "user_id"
+      ],
+      "sourceColumns": [
+        "user_id"
+      ]
+    },
+    {
+      "targetTable": "job",
+      "sourceTable": "hiring_team_status",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "job_id"
+      ]
+    },
+    {
+      "targetTable": "application",
+      "sourceTable": "offer",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "application_id"
+      ]
+    },
+    {
+      "targetTable": "job_opening",
+      "sourceTable": "offer",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "opening_id"
+      ]
+    },
+    {
+      "targetTable": "demographic_questions",
+      "sourceTable": "demographic_answer_option",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "demographic_question_id"
+      ]
+    },
+    {
+      "targetTable": "job",
+      "sourceTable": "job_history",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "job_id"
+      ]
+    },
+    {
+      "targetTable": "application",
+      "sourceTable": "application_history",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "application_id"
+      ]
+    },
+    {
+      "targetTable": "job_stage",
+      "sourceTable": "application_history",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "new_stage_id"
+      ]
+    },
+    {
+      "targetTable": "prospect_pool",
+      "sourceTable": "prospect_stage",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "prospect_pool_id"
+      ]
+    },
+    {
+      "targetTable": "users",
+      "sourceTable": "user_email",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "user_id"
+      ]
+    },
+    {
+      "targetTable": "candidate",
+      "sourceTable": "user_linked_candidate",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "candidate_id"
+      ]
+    },
+    {
+      "targetTable": "users",
+      "sourceTable": "user_linked_candidate",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "user_id"
+      ]
+    },
+    {
+      "targetTable": "tags",
+      "sourceTable": "candidate_tag",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "tag_id"
+      ]
+    },
+    {
+      "targetTable": "candidate",
+      "sourceTable": "candidate_tag",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "candidate_id"
+      ]
+    },
+    {
+      "targetTable": "department",
+      "sourceTable": "job_department",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "department_id"
+      ]
+    },
+    {
+      "targetTable": "job",
+      "sourceTable": "job_department",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "job_id"
+      ]
+    },
+    {
+      "targetTable": "office",
+      "sourceTable": "job_office",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "office_id"
+      ]
+    },
+    {
+      "targetTable": "job",
+      "sourceTable": "job_office",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "job_id"
+      ]
+    },
+    {
+      "targetTable": "users",
+      "sourceTable": "hiring_team",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "user_id"
+      ]
+    },
+    {
+      "targetTable": "job",
+      "sourceTable": "hiring_team",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "job_id"
+      ]
+    },
+    {
+      "targetTable": "email_template",
+      "sourceTable": "email_template_cc",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "email_template_id"
+      ]
+    },
+    {
+      "targetTable": "users",
+      "sourceTable": "email_template",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "user_id"
+      ]
+    },
+    {
+      "targetTable": "interview",
+      "sourceTable": "interview_question",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "interview_id"
+      ]
+    },
+    {
+      "targetTable": "job_stage",
+      "sourceTable": "interview",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "job_stage_id"
+      ]
+    },
+    {
+      "targetTable": "job",
+      "sourceTable": "job_stage",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "job_id"
+      ]
+    },
+    {
+      "targetTable": "offer",
+      "sourceTable": "offer_history",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "offer_id"
+      ]
+    },
+    {
+      "targetTable": "application",
+      "sourceTable": "offer_history",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "application_id"
+      ]
+    },
+    {
+      "targetTable": "scorecard",
+      "sourceTable": "scorecard_attribute",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "scorecard_id"
+      ]
+    },
+    {
+      "targetTable": "scorecard",
+      "sourceTable": "scorecard_qna",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "scorecard_id"
+      ]
+    },
+    {
+      "targetTable": "application",
+      "sourceTable": "scorecard",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "application_id"
+      ]
+    },
+    {
+      "targetTable": "candidate",
+      "sourceTable": "scorecard",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "candidate_id"
+      ]
+    },
+    {
+      "targetTable": "candidate",
+      "sourceTable": "address",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "candidate_id"
+      ]
+    },
+    {
+      "targetTable": "candidate",
+      "sourceTable": "website_address",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "candidate_id"
+      ]
+    },
+    {
+      "targetTable": "candidate",
+      "sourceTable": "email_address",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "candidate_id"
+      ]
+    },
+    {
+      "targetTable": "candidate",
+      "sourceTable": "social_media_address",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "candidate_id"
+      ]
+    },
+    {
+      "targetTable": "candidate",
+      "sourceTable": "phone_number",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "candidate_id"
+      ]
+    },
+    {
+      "targetTable": "candidate",
+      "sourceTable": "attachment",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "candidate_id"
+      ]
+    },
+    {
+      "targetTable": "candidate",
+      "sourceTable": "employment",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "candidate_id"
+      ]
+    },
+    {
+      "targetTable": "degree",
+      "sourceTable": "education",
+      "targetColumns": [
+        "name"
+      ],
+      "sourceColumns": [
+        "degree"
+      ]
+    },
+    {
+      "targetTable": "discipline",
+      "sourceTable": "education",
+      "targetColumns": [
+        "name"
+      ],
+      "sourceColumns": [
+        "discipline"
+      ]
+    },
+    {
+      "targetTable": "school",
+      "sourceTable": "education",
+      "targetColumns": [
+        "name"
+      ],
+      "sourceColumns": [
+        "school_name"
+      ]
+    },
+    {
+      "targetTable": "candidate",
+      "sourceTable": "education",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "candidate_id"
+      ]
+    },
+    {
+      "targetTable": "users",
+      "sourceTable": "candidate",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "coordinator_id"
+      ]
+    },
+    {
+      "targetTable": "candidate",
+      "sourceTable": "candidate",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "new_candidate_id"
+      ]
+    },
+    {
+      "targetTable": "users",
+      "sourceTable": "candidate",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "recruiter_id"
+      ]
+    },
+    {
+      "targetTable": "application",
+      "sourceTable": "job_opening",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "application_id"
+      ]
+    },
+    {
+      "targetTable": "close_reason",
+      "sourceTable": "job_opening",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "close_reason_id"
+      ]
+    },
+    {
+      "targetTable": "job",
+      "sourceTable": "job_opening",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "job_id"
+      ]
+    },
+    {
+      "targetTable": "job_post",
+      "sourceTable": "job_post_question",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "job_post_id"
+      ]
+    },
+    {
+      "targetTable": "job",
+      "sourceTable": "job_post",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "job_id"
+      ]
+    },
+    {
+      "targetTable": "application",
+      "sourceTable": "eeoc",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "application_id"
+      ]
+    },
+    {
+      "targetTable": "department",
+      "sourceTable": "department",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "parent_id"
+      ]
+    },
+    {
+      "targetTable": "demographic_question_set",
+      "sourceTable": "demographic_questions",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "demographic_question_set_id"
+      ]
+    },
+    {
+      "targetTable": "approver_group",
+      "sourceTable": "approver",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "approver_group_id"
+      ]
+    },
+    {
+      "targetTable": "approver_group",
+      "sourceTable": "approver",
+      "targetColumns": [
+        "approval_id"
+      ],
+      "sourceColumns": [
+        "approval_id"
+      ]
+    },
+    {
+      "targetTable": "approval",
+      "sourceTable": "approver_group",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "approval_id"
+      ]
+    },
+    {
+      "targetTable": "job",
+      "sourceTable": "approval",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "job_id"
+      ]
+    },
+    {
+      "targetTable": "users",
+      "sourceTable": "scheduled_interviewer",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "interviewer_id"
+      ]
+    },
+    {
+      "targetTable": "scorecard",
+      "sourceTable": "scheduled_interviewer",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "scorecard_id"
+      ]
+    },
+    {
+      "targetTable": "scheduled_interview",
+      "sourceTable": "scheduled_interviewer",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "scheduled_interview_id"
+      ]
+    },
+    {
+      "targetTable": "application",
+      "sourceTable": "scheduled_interview",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "application_id"
+      ]
+    },
+    {
+      "targetTable": "application",
+      "sourceTable": "demographic_answer",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "application_id"
+      ]
+    },
+    {
+      "targetTable": "demographic_answer_option",
+      "sourceTable": "demographic_answer",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "demographic_answer_option_id"
+      ]
+    },
+    {
+      "targetTable": "demographic_questions",
+      "sourceTable": "demographic_answer",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "demographic_question_id"
+      ]
+    },
+    {
+      "targetTable": "job",
+      "sourceTable": "job_application",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "job_id"
+      ]
+    },
+    {
+      "targetTable": "application",
+      "sourceTable": "job_application",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "application_id"
+      ]
+    },
+    {
+      "targetTable": "application",
+      "sourceTable": "application_qna",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "application_id"
+      ]
+    },
+    {
+      "targetTable": "application",
+      "sourceTable": "application_attachment",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "application_id"
+      ]
+    },
+    {
+      "targetTable": "rejection_reason",
+      "sourceTable": "application",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "rejection_reason_id"
+      ]
+    },
+    {
+      "targetTable": "job_post",
+      "sourceTable": "application",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "job_post_id"
+      ]
+    },
+    {
+      "targetTable": "users",
+      "sourceTable": "application",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "coordinator_id"
+      ]
+    },
+    {
+      "targetTable": "candidate",
+      "sourceTable": "application",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "candidate_id"
+      ]
+    },
+    {
+      "targetTable": "source",
+      "sourceTable": "application",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "source_id"
+      ]
+    },
+    {
+      "targetTable": "users",
+      "sourceTable": "application",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "credited_to_user_id"
+      ]
+    },
+    {
+      "targetTable": "users",
+      "sourceTable": "application",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "recruiter_id"
+      ]
+    },
+    {
+      "targetTable": "job",
+      "sourceTable": "user_permission",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "job_id"
+      ]
+    },
+    {
+      "targetTable": "user_role",
+      "sourceTable": "user_permission",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "user_role_id"
+      ]
+    },
+    {
+      "targetTable": "users",
+      "sourceTable": "user_permission",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "user_id"
+      ]
+    },
+    {
+      "targetTable": "users",
+      "sourceTable": "note",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "user_id"
+      ]
+    },
+    {
+      "targetTable": "candidate",
+      "sourceTable": "note",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "candidate_id"
+      ]
+    },
+    {
+      "targetTable": "users",
+      "sourceTable": "activity",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "user_id"
+      ]
+    },
+    {
+      "targetTable": "candidate",
+      "sourceTable": "activity",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "candidate_id"
+      ]
+    },
+    {
+      "targetTable": "email",
+      "sourceTable": "email_cc",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "email_id"
+      ]
+    },
+    {
+      "targetTable": "users",
+      "sourceTable": "email",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "user_id"
+      ]
+    },
+    {
+      "targetTable": "candidate",
+      "sourceTable": "email",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "candidate_id"
+      ]
+    }
+  ],
+  "positions": {
+    "education": {
+      "x": 1933.1885979137455,
+      "y": 657.3809268091686
+    },
+    "job_post_question": {
+      "x": 5772.683874034986,
+      "y": 2694.028014220055
+    },
+    "job_department": {
+      "x": 5772.683874034986,
+      "y": 2403.919852583898
+    },
+    "discipline": {
+      "x": 271.63432782807774,
+      "y": 1481.0330874717124
+    },
+    "source": {
+      "x": 1685.4666625029167,
+      "y": 1517.3809268091723
+    },
+    "office": {
+      "x": 6276.683874034986,
+      "y": 1955.9184745153198
+    },
+    "scheduled_interviewer": {
+      "x": 606.1213651530443,
+      "y": 3325.033087471745
+    },
+    "demographic_question_set": {
+      "x": 83.02889845695393,
+      "y": 1749.0330874717124
+    },
+    "offer": {
+      "x": 3445.1885979137455,
+      "y": 1623.2050369073236
+    },
+    "demographic_answer_option": {
+      "x": 347.4776108612347,
+      "y": 2053.033087471713
+    },
+    "job_office": {
+      "x": 5772.683874034986,
+      "y": 2098.3568420316246
+    },
+    "school": {
+      "x": 512.0,
+      "y": 586.8743410519024
+    },
+    "rejection_reason": {
+      "x": 1514.7745261705622,
+      "y": 1821.3809268091723
+    },
+    "job_history": {
+      "x": 5214.634302146141,
+      "y": 1551.1224140353918
+    },
+    "user_email": {
+      "x": 4811.971665776001,
+      "y": 675.1224140353918
+    },
+    "interview_question": {
+      "x": 4478.112335901525,
+      "y": 3816.997423370932
+    },
+    "application_history": {
+      "x": 1437.7945303484119,
+      "y": 2949.380926809172
+    },
+    "prospect_pool": {
+      "x": 931.9145616237895,
+      "y": 2126.8652395459476
+    },
+    "degree": {
+      "x": 271.63432782807774,
+      "y": 1213.0330874717124
+    },
+    "users": {
+      "x": 8.0,
+      "y": 729.0330874717124
+    },
+    "tags": {
+      "x": 8.0,
+      "y": 85.0330874717124
+    },
+    "scorecard_qna": {
+      "x": 921.342075542743,
+      "y": 2394.8652395459476
+    },
+    "scorecard_attribute": {
+      "x": 417.342075542743,
+      "y": 2393.033087471713
+    },
+    "phone_number": {
+      "x": 2858.8511611523686,
+      "y": 166.19420146517882
+    },
+    "user_linked_candidate": {
+      "x": 4764.560671896936,
+      "y": 1283.1224140353918
+    },
+    "close_reason": {
+      "x": 3990.3272251130857,
+      "y": 3234.771673540977
+    },
+    "job": {
+      "x": 5105.73484396385,
+      "y": 2035.122414035392
+    },
+    "candidate_tag": {
+      "x": 2437.1885979137455,
+      "y": 1086.789167957338
+    },
+    "email_cc": {
+      "x": 4370.851161152369,
+      "y": 102.68379236835563
+    },
+    "email_template": {
+      "x": 5915.462146812262,
+      "y": 1141.1900707286693
+    },
+    "job_stage": {
+      "x": 3974.112335901524,
+      "y": 3466.771673540977
+    },
+    "note": {
+      "x": 3200.299670913165,
+      "y": 835.2050369073237
+    },
+    "activity": {
+      "x": 4208.299670913165,
+      "y": 1039.5507452332838
+    },
+    "offer_history": {
+      "x": 4206.63430214614,
+      "y": 1607.9209566853915
+    },
+    "email_template_cc": {
+      "x": 5819.971665776001,
+      "y": 873.1900707286692
+    },
+    "scorecard": {
+      "x": 724.1399248749137,
+      "y": 2805.033087471712
+    },
+    "user_role": {
+      "x": 5315.971665776001,
+      "y": 940.5390376503854
+    },
+    "candidate": {
+      "x": 2886.8199129664517,
+      "y": 1682.667853447509
+    },
+    "attachment": {
+      "x": 3866.8511611523686,
+      "y": 8.0
+    },
+    "hiring_team": {
+      "x": 4710.63430214614,
+      "y": 1680.0396927314382
+    },
+    "job_opening": {
+      "x": 3934.6566610896184,
+      "y": 2714.771673540921
+    },
+    "job_post": {
+      "x": 5268.683874034986,
+      "y": 2627.1224140353925
+    },
+    "prospect_stage": {
+      "x": 1435.9145616237895,
+      "y": 2125.3809268091723
+    },
+    "application_qna": {
+      "x": 3949.1885979137455,
+      "y": 2106.7716735409213
+    },
+    "eeoc": {
+      "x": 1482.0200332493073,
+      "y": 2429.3809268091723
+    },
+    "department": {
+      "x": 6276.683874034986,
+      "y": 2345.9051685012114
+    },
+    "demographic_questions": {
+      "x": 654.6414546590911,
+      "y": 1749.0330874717124
+    },
+    "email": {
+      "x": 3362.8511611523686,
+      "y": 261.07692775108217
+    },
+    "website_address": {
+      "x": 2941.1885979137455,
+      "y": 1342.667853447509
+    },
+    "address": {
+      "x": 3702.63430214614,
+      "y": 1283.2050369073236
+    },
+    "scheduled_interview": {
+      "x": 1387.9537797874234,
+      "y": 3289.380926809172
+    },
+    "employment": {
+      "x": 1933.1885979137455,
+      "y": 1105.3809268091723
+    },
+    "demographic_answer": {
+      "x": 8.0,
+      "y": 317.0330874717124
+    },
+    "email_address": {
+      "x": 2630.8682161848565,
+      "y": 746.7891679573379
+    },
+    "job_application": {
+      "x": 3963.260656347626,
+      "y": 2446.7716735409213
+    },
+    "application": {
+      "x": 2838.8348442190254,
+      "y": 2382.667853447509
+    },
+    "user_permission": {
+      "x": 4793.341289628252,
+      "y": 943.1224140353918
+    },
+    "interview": {
+      "x": 3926.072853142592,
+      "y": 3878.771673540977
+    },
+    "social_media_address": {
+      "x": 3704.299670913165,
+      "y": 745.0769277510822
+    }
+  },
+  "notes": {
+    "byTable": {},
+    "generalNotes": []
+  },
+  "tableGroups": [
+    {
+      "id": "6005bf354b",
+      "parentTable": "candidate",
+      "tables": [
+        "website_address",
+        "address",
+        "email_address",
+        "attachment",
+        "phone_number",
+        "employment",
+        "social_media_address"
+      ],
+      "excludedTables": [],
+      "width": null,
+      "height": null
+    },
+    {
+      "id": "dcc2db1ed5",
+      "parentTable": "application",
+      "tables": [
+        "application_attachment",
+        "application_qna",
+        "eeoc"
+      ],
+      "excludedTables": [],
+      "width": null,
+      "height": null
+    }
+  ]
+}

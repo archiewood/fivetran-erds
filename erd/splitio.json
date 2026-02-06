@@ -1,0 +1,1209 @@
+{
+  "tables": [
+    {
+      "name": "groups",
+      "columns": [
+        {
+          "name": "id",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "description",
+          "type": "String"
+        },
+        {
+          "name": "name",
+          "type": "String"
+        }
+      ],
+      "tags": [],
+      "link": "https://docs.split.io/reference/list-groups"
+    },
+    {
+      "name": "environment",
+      "columns": [
+        {
+          "name": "id",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "workspace_id",
+          "type": "String",
+          "foreignKey": true
+        },
+        {
+          "name": "name",
+          "type": "String"
+        },
+        {
+          "name": "production",
+          "type": "Boolean"
+        }
+      ],
+      "tags": [],
+      "link": "https://docs.split.io/reference/get-environments"
+    },
+    {
+      "name": "change_request_comment",
+      "columns": [
+        {
+          "name": "_fivetran_id",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "change_request_id",
+          "type": "String",
+          "foreignKey": true
+        },
+        {
+          "name": "comment",
+          "type": "String"
+        },
+        {
+          "name": "role",
+          "type": "String"
+        },
+        {
+          "name": "time_stamp",
+          "type": "Instant"
+        },
+        {
+          "name": "users",
+          "type": "String"
+        }
+      ],
+      "tags": [],
+      "link": null
+    },
+    {
+      "name": "change_request",
+      "columns": [
+        {
+          "name": "id",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "rollout_status_id",
+          "type": "String",
+          "foreignKey": true
+        },
+        {
+          "name": "split_id",
+          "type": "Unknown",
+          "foreignKey": true
+        },
+        {
+          "name": "approvers",
+          "type": "Json"
+        },
+        {
+          "name": "operation_type",
+          "type": "String"
+        },
+        {
+          "name": "segment",
+          "type": "String"
+        },
+        {
+          "name": "split_open_change_request_id",
+          "type": "String"
+        },
+        {
+          "name": "split_split_id",
+          "type": "String"
+        },
+        {
+          "name": "status",
+          "type": "String"
+        },
+        {
+          "name": "title",
+          "type": "String"
+        }
+      ],
+      "tags": [],
+      "link": "https://docs.split.io/reference/list-change-requests"
+    },
+    {
+      "name": "resource_permission_view",
+      "columns": [
+        {
+          "name": "user_id",
+          "type": "String",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "workspace_restriction_resource_id",
+          "type": "String",
+          "primaryKey": true,
+          "foreignKey": true
+        }
+      ],
+      "tags": [],
+      "link": null
+    },
+    {
+      "name": "workspace_restriction",
+      "columns": [
+        {
+          "name": "resource_id",
+          "type": "String",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "id",
+          "type": "String"
+        },
+        {
+          "name": "view",
+          "type": "Boolean"
+        }
+      ],
+      "tags": [],
+      "link": "https://docs.split.io/reference/list-restrictions"
+    },
+    {
+      "name": "traffic_type",
+      "columns": [
+        {
+          "name": "id",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "workspace_id",
+          "type": "String",
+          "foreignKey": true
+        },
+        {
+          "name": "display_attribute_id",
+          "type": "String"
+        },
+        {
+          "name": "name",
+          "type": "String"
+        }
+      ],
+      "tags": [],
+      "link": "https://docs.split.io/reference/get-traffic-types"
+    },
+    {
+      "name": "split_tag",
+      "columns": [
+        {
+          "name": "name",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "split_id",
+          "type": "String",
+          "primaryKey": true,
+          "foreignKey": true
+        }
+      ],
+      "tags": [],
+      "link": null
+    },
+    {
+      "name": "split",
+      "columns": [
+        {
+          "name": "id",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "rollout_status_id",
+          "type": "String",
+          "foreignKey": true
+        },
+        {
+          "name": "traffic_type_id",
+          "type": "String",
+          "foreignKey": true
+        },
+        {
+          "name": "workspace_id",
+          "type": "String",
+          "foreignKey": true
+        },
+        {
+          "name": "creation_time",
+          "type": "Instant"
+        },
+        {
+          "name": "description",
+          "type": "String"
+        },
+        {
+          "name": "name",
+          "type": "String"
+        },
+        {
+          "name": "rollout_status_timestamp",
+          "type": "String"
+        }
+      ],
+      "tags": [],
+      "link": "https://docs.split.io/reference/list-splits"
+    },
+    {
+      "name": "rollout_status",
+      "columns": [
+        {
+          "name": "id",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "workspace_id",
+          "type": "String",
+          "foreignKey": true
+        },
+        {
+          "name": "description",
+          "type": "String"
+        },
+        {
+          "name": "name",
+          "type": "String"
+        }
+      ],
+      "tags": [],
+      "link": "https://docs.split.io/reference/get-rollout-statuses"
+    },
+    {
+      "name": "split_definition_treatment",
+      "columns": [
+        {
+          "name": "_fivetran_id",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "split_definition_environment_environment_id",
+          "type": "String",
+          "foreignKey": true
+        },
+        {
+          "name": "split_definition_environment_split_id",
+          "type": "String",
+          "foreignKey": true
+        },
+        {
+          "name": "configurations",
+          "type": "String"
+        },
+        {
+          "name": "description",
+          "type": "String"
+        },
+        {
+          "name": "key",
+          "type": "Json"
+        },
+        {
+          "name": "name",
+          "type": "String"
+        },
+        {
+          "name": "segment",
+          "type": "Json"
+        }
+      ],
+      "tags": [],
+      "link": null
+    },
+    {
+      "name": "split_definition_rule",
+      "columns": [
+        {
+          "name": "_fivetran_id",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "split_definition_environment_environment_id",
+          "type": "String",
+          "foreignKey": true
+        },
+        {
+          "name": "split_definition_environment_split_id",
+          "type": "String",
+          "foreignKey": true
+        },
+        {
+          "name": "size",
+          "type": "Int"
+        },
+        {
+          "name": "treatment",
+          "type": "String"
+        }
+      ],
+      "tags": [],
+      "link": null
+    },
+    {
+      "name": "split_definition_rule_bucket",
+      "columns": [
+        {
+          "name": "index",
+          "type": "Unknown",
+          "primaryKey": true
+        },
+        {
+          "name": "environment_id",
+          "type": "String",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "split_id",
+          "type": "String",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "size",
+          "type": "Int"
+        },
+        {
+          "name": "treatment",
+          "type": "String"
+        }
+      ],
+      "tags": [],
+      "link": null
+    },
+    {
+      "name": "split_definition_rule_condition",
+      "columns": [
+        {
+          "name": "_fivetran_id",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "split_definition_environment_environment_id",
+          "type": "String",
+          "foreignKey": true
+        },
+        {
+          "name": "split_definition_environment_split_id",
+          "type": "String",
+          "foreignKey": true
+        },
+        {
+          "name": "combiner",
+          "type": "String"
+        },
+        {
+          "name": "matchers",
+          "type": "Json"
+        }
+      ],
+      "tags": [],
+      "link": null
+    },
+    {
+      "name": "split_definition_environment",
+      "columns": [
+        {
+          "name": "environment_id",
+          "type": "String",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "split_id",
+          "type": "String",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "traffic_type_id",
+          "type": "String",
+          "foreignKey": true
+        },
+        {
+          "name": "workspace_id",
+          "type": "String",
+          "foreignKey": true
+        },
+        {
+          "name": "baseline_treatment",
+          "type": "String"
+        },
+        {
+          "name": "change_number",
+          "type": "Double"
+        },
+        {
+          "name": "creation_time",
+          "type": "Instant"
+        },
+        {
+          "name": "default_treatment",
+          "type": "String"
+        },
+        {
+          "name": "killed",
+          "type": "String"
+        },
+        {
+          "name": "last_update_time",
+          "type": "Instant"
+        },
+        {
+          "name": "traffic_allocation",
+          "type": "Int"
+        }
+      ],
+      "tags": [],
+      "link": "https://docs.split.io/reference/lists-split-definitions-in-environment"
+    },
+    {
+      "name": "workspace",
+      "columns": [
+        {
+          "name": "id",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "name",
+          "type": "String"
+        },
+        {
+          "name": "requires_title_and_comments",
+          "type": "Boolean"
+        }
+      ],
+      "tags": [],
+      "link": "https://docs.split.io/reference/get-workspaces"
+    },
+    {
+      "name": "attribute_suggested_value",
+      "columns": [
+        {
+          "name": "suggested_value",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "attribute_id",
+          "type": "String",
+          "primaryKey": true,
+          "foreignKey": true
+        }
+      ],
+      "tags": [],
+      "link": null
+    },
+    {
+      "name": "attribute",
+      "columns": [
+        {
+          "name": "id",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "traffic_type_id",
+          "type": "String",
+          "foreignKey": true
+        },
+        {
+          "name": "workspace_id",
+          "type": "String",
+          "foreignKey": true
+        },
+        {
+          "name": "data_type",
+          "type": "String"
+        },
+        {
+          "name": "display_name",
+          "type": "String"
+        },
+        {
+          "name": "is_searchable",
+          "type": "String"
+        },
+        {
+          "name": "organization_id",
+          "type": "String"
+        },
+        {
+          "name": "set_description",
+          "type": "String"
+        }
+      ],
+      "tags": [],
+      "link": "https://docs.split.io/reference/get-attributes"
+    },
+    {
+      "name": "segment_tag",
+      "columns": [
+        {
+          "name": "name",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "segment_name",
+          "type": "String",
+          "primaryKey": true,
+          "foreignKey": true
+        }
+      ],
+      "tags": [],
+      "link": null
+    },
+    {
+      "name": "segment",
+      "columns": [
+        {
+          "name": "name",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "workspace_id",
+          "type": "String",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "traffic_type_id",
+          "type": "String",
+          "foreignKey": true
+        },
+        {
+          "name": "creation_time",
+          "type": "Instant"
+        },
+        {
+          "name": "description",
+          "type": "String"
+        }
+      ],
+      "tags": [],
+      "link": "https://docs.split.io/reference/list-segments"
+    },
+    {
+      "name": "segment_environment",
+      "columns": [
+        {
+          "name": "environment_id",
+          "type": "String",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "segment_name",
+          "type": "String",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "workspace_id",
+          "type": "String",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "traffic_type_id",
+          "type": "String",
+          "foreignKey": true
+        },
+        {
+          "name": "creation_time",
+          "type": "Instant"
+        }
+      ],
+      "tags": [],
+      "link": "https://docs.split.io/reference/list-segments-in-environment"
+    },
+    {
+      "name": "segment_key_environment",
+      "columns": [
+        {
+          "name": "_fivetran_id",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "environment_id",
+          "type": "String",
+          "foreignKey": true
+        },
+        {
+          "name": "segment_environment_segment_name",
+          "type": "String",
+          "foreignKey": true
+        },
+        {
+          "name": "key",
+          "type": "String"
+        }
+      ],
+      "tags": [],
+      "link": "https://docs.split.io/reference/get-segment-keys-in-environment"
+    },
+    {
+      "name": "user_group",
+      "columns": [
+        {
+          "name": "group_id",
+          "type": "String",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "users_id",
+          "type": "String",
+          "primaryKey": true,
+          "foreignKey": true
+        }
+      ],
+      "tags": [],
+      "link": null
+    },
+    {
+      "name": "users",
+      "columns": [
+        {
+          "name": "id",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "email",
+          "type": "String"
+        },
+        {
+          "name": "name",
+          "type": "String"
+        },
+        {
+          "name": "status",
+          "type": "String"
+        },
+        {
+          "name": "two_factor_authentication",
+          "type": "Boolean"
+        },
+        {
+          "name": "type",
+          "type": "String"
+        }
+      ],
+      "tags": [],
+      "link": "https://docs.split.io/reference/list-users"
+    }
+  ],
+  "relations": [
+    {
+      "targetTable": "workspace",
+      "sourceTable": "environment",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "workspace_id"
+      ]
+    },
+    {
+      "targetTable": "change_request",
+      "sourceTable": "change_request_comment",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "change_request_id"
+      ]
+    },
+    {
+      "targetTable": "rollout_status",
+      "sourceTable": "change_request",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "rollout_status_id"
+      ]
+    },
+    {
+      "targetTable": "split_definition_environment",
+      "sourceTable": "change_request",
+      "targetColumns": [
+        "split_id"
+      ],
+      "sourceColumns": [
+        "split_id"
+      ]
+    },
+    {
+      "targetTable": "users",
+      "sourceTable": "resource_permission_view",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "user_id"
+      ]
+    },
+    {
+      "targetTable": "workspace_restriction",
+      "sourceTable": "resource_permission_view",
+      "targetColumns": [
+        "resource_id"
+      ],
+      "sourceColumns": [
+        "workspace_restriction_resource_id"
+      ]
+    },
+    {
+      "targetTable": "workspace",
+      "sourceTable": "workspace_restriction",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "resource_id"
+      ]
+    },
+    {
+      "targetTable": "workspace",
+      "sourceTable": "traffic_type",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "workspace_id"
+      ]
+    },
+    {
+      "targetTable": "split",
+      "sourceTable": "split_tag",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "split_id"
+      ]
+    },
+    {
+      "targetTable": "rollout_status",
+      "sourceTable": "split",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "rollout_status_id"
+      ]
+    },
+    {
+      "targetTable": "traffic_type",
+      "sourceTable": "split",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "traffic_type_id"
+      ]
+    },
+    {
+      "targetTable": "workspace",
+      "sourceTable": "split",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "workspace_id"
+      ]
+    },
+    {
+      "targetTable": "workspace",
+      "sourceTable": "rollout_status",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "workspace_id"
+      ]
+    },
+    {
+      "targetTable": "split_definition_environment",
+      "sourceTable": "split_definition_treatment",
+      "targetColumns": [
+        "split_id"
+      ],
+      "sourceColumns": [
+        "split_definition_environment_split_id"
+      ]
+    },
+    {
+      "targetTable": "split_definition_environment",
+      "sourceTable": "split_definition_treatment",
+      "targetColumns": [
+        "environment_id"
+      ],
+      "sourceColumns": [
+        "split_definition_environment_environment_id"
+      ]
+    },
+    {
+      "targetTable": "split_definition_environment",
+      "sourceTable": "split_definition_rule",
+      "targetColumns": [
+        "split_id"
+      ],
+      "sourceColumns": [
+        "split_definition_environment_split_id"
+      ]
+    },
+    {
+      "targetTable": "split_definition_environment",
+      "sourceTable": "split_definition_rule",
+      "targetColumns": [
+        "environment_id"
+      ],
+      "sourceColumns": [
+        "split_definition_environment_environment_id"
+      ]
+    },
+    {
+      "targetTable": "split_definition_environment",
+      "sourceTable": "split_definition_rule_bucket",
+      "targetColumns": [
+        "split_id"
+      ],
+      "sourceColumns": [
+        "split_id"
+      ]
+    },
+    {
+      "targetTable": "split_definition_environment",
+      "sourceTable": "split_definition_rule_bucket",
+      "targetColumns": [
+        "environment_id"
+      ],
+      "sourceColumns": [
+        "environment_id"
+      ]
+    },
+    {
+      "targetTable": "split_definition_environment",
+      "sourceTable": "split_definition_rule_condition",
+      "targetColumns": [
+        "split_id"
+      ],
+      "sourceColumns": [
+        "split_definition_environment_split_id"
+      ]
+    },
+    {
+      "targetTable": "split_definition_environment",
+      "sourceTable": "split_definition_rule_condition",
+      "targetColumns": [
+        "environment_id"
+      ],
+      "sourceColumns": [
+        "split_definition_environment_environment_id"
+      ]
+    },
+    {
+      "targetTable": "traffic_type",
+      "sourceTable": "split_definition_environment",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "traffic_type_id"
+      ]
+    },
+    {
+      "targetTable": "split",
+      "sourceTable": "split_definition_environment",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "split_id"
+      ]
+    },
+    {
+      "targetTable": "workspace",
+      "sourceTable": "split_definition_environment",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "workspace_id"
+      ]
+    },
+    {
+      "targetTable": "environment",
+      "sourceTable": "split_definition_environment",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "environment_id"
+      ]
+    },
+    {
+      "targetTable": "attribute",
+      "sourceTable": "attribute_suggested_value",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "attribute_id"
+      ]
+    },
+    {
+      "targetTable": "traffic_type",
+      "sourceTable": "attribute",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "traffic_type_id"
+      ]
+    },
+    {
+      "targetTable": "workspace",
+      "sourceTable": "attribute",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "workspace_id"
+      ]
+    },
+    {
+      "targetTable": "segment",
+      "sourceTable": "segment_tag",
+      "targetColumns": [
+        "name"
+      ],
+      "sourceColumns": [
+        "segment_name"
+      ]
+    },
+    {
+      "targetTable": "traffic_type",
+      "sourceTable": "segment",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "traffic_type_id"
+      ]
+    },
+    {
+      "targetTable": "workspace",
+      "sourceTable": "segment",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "workspace_id"
+      ]
+    },
+    {
+      "targetTable": "segment",
+      "sourceTable": "segment_environment",
+      "targetColumns": [
+        "name"
+      ],
+      "sourceColumns": [
+        "segment_name"
+      ]
+    },
+    {
+      "targetTable": "traffic_type",
+      "sourceTable": "segment_environment",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "traffic_type_id"
+      ]
+    },
+    {
+      "targetTable": "environment",
+      "sourceTable": "segment_environment",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "environment_id"
+      ]
+    },
+    {
+      "targetTable": "workspace",
+      "sourceTable": "segment_environment",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "workspace_id"
+      ]
+    },
+    {
+      "targetTable": "environment",
+      "sourceTable": "segment_key_environment",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "environment_id"
+      ]
+    },
+    {
+      "targetTable": "segment_environment",
+      "sourceTable": "segment_key_environment",
+      "targetColumns": [
+        "segment_name"
+      ],
+      "sourceColumns": [
+        "segment_environment_segment_name"
+      ]
+    },
+    {
+      "targetTable": "groups",
+      "sourceTable": "user_group",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "group_id"
+      ]
+    },
+    {
+      "targetTable": "users",
+      "sourceTable": "user_group",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "users_id"
+      ]
+    }
+  ],
+  "positions": {
+    "groups": {
+      "x": 2931.1634775098855,
+      "y": 354.4247813288956
+    },
+    "environment": {
+      "x": 483,
+      "y": 785
+    },
+    "change_request_comment": {
+      "x": 2427,
+      "y": 981
+    },
+    "change_request": {
+      "x": 1923,
+      "y": 936
+    },
+    "resource_permission_view": {
+      "x": 1923,
+      "y": 8
+    },
+    "workspace_restriction": {
+      "x": 1017,
+      "y": 8
+    },
+    "traffic_type": {
+      "x": 483,
+      "y": 1357
+    },
+    "split_tag": {
+      "x": 1017,
+      "y": 1456
+    },
+    "split": {
+      "x": 1017,
+      "y": 1008
+    },
+    "rollout_status": {
+      "x": 1017,
+      "y": 276
+    },
+    "split_definition_treatment": {
+      "x": 1017,
+      "y": 2692
+    },
+    "split_definition_rule": {
+      "x": 1521,
+      "y": 2281
+    },
+    "split_definition_rule_bucket": {
+      "x": 1521,
+      "y": 2692
+    },
+    "split_definition_rule_condition": {
+      "x": 483,
+      "y": 2162
+    },
+    "split_definition_environment": {
+      "x": 1017,
+      "y": 2100
+    },
+    "workspace": {
+      "x": 483,
+      "y": 1089
+    },
+    "attribute_suggested_value": {
+      "x": 1521,
+      "y": 681.2616335361893
+    },
+    "attribute": {
+      "x": 1017,
+      "y": 580
+    },
+    "segment_tag": {
+      "x": 483,
+      "y": 1661
+    },
+    "segment": {
+      "x": 1017,
+      "y": 1724
+    },
+    "segment_environment": {
+      "x": -21,
+      "y": 1904
+    },
+    "segment_key_environment": {
+      "x": 483,
+      "y": 481
+    },
+    "user_group": {
+      "x": 2427.1634775098855,
+      "y": 354.4247813288956
+    },
+    "users": {
+      "x": 1923,
+      "y": 276
+    }
+  },
+  "notes": {
+    "byTable": {},
+    "generalNotes": []
+  },
+  "tableGroups": []
+}

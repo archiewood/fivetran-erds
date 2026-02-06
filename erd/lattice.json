@@ -1,0 +1,1389 @@
+{
+  "tables": [
+    {
+      "name": "users",
+      "columns": [
+        {
+          "name": "id",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "birth_date",
+          "type": "Unknown"
+        },
+        {
+          "name": "created_at",
+          "type": "Unknown"
+        },
+        {
+          "name": "department_id",
+          "type": "String"
+        },
+        {
+          "name": "email",
+          "type": "String"
+        },
+        {
+          "name": "external_user_id",
+          "type": "String"
+        },
+        {
+          "name": "gender",
+          "type": "String"
+        },
+        {
+          "name": "is_admin",
+          "type": "Boolean"
+        },
+        {
+          "name": "manager_id",
+          "type": "String"
+        },
+        {
+          "name": "name",
+          "type": "String"
+        },
+        {
+          "name": "preferred_name",
+          "type": "String"
+        },
+        {
+          "name": "start_date",
+          "type": "Unknown"
+        },
+        {
+          "name": "status",
+          "type": "String"
+        },
+        {
+          "name": "timezone",
+          "type": "String"
+        },
+        {
+          "name": "title",
+          "type": "String"
+        },
+        {
+          "name": "updated_at",
+          "type": "Unknown"
+        }
+      ],
+      "link": "https://developers.lattice.com/reference/api_users"
+    },
+    {
+      "name": "goal_user",
+      "columns": [
+        {
+          "name": "goal_id",
+          "type": "String",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "user_id",
+          "type": "String",
+          "primaryKey": true,
+          "foreignKey": true
+        }
+      ],
+      "link": "https://developers.lattice.com/reference/api_goal"
+    },
+    {
+      "name": "question_rating_scale",
+      "columns": [
+        {
+          "name": "_fivetran_id",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "question_id",
+          "type": "String",
+          "foreignKey": true
+        },
+        {
+          "name": "descriptor",
+          "type": "String"
+        },
+        {
+          "name": "value",
+          "type": "Double"
+        }
+      ],
+      "link": ""
+    },
+    {
+      "name": "question",
+      "columns": [
+        {
+          "name": "id",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "body",
+          "type": "String"
+        },
+        {
+          "name": "choices",
+          "type": "String"
+        },
+        {
+          "name": "description",
+          "type": "String"
+        },
+        {
+          "name": "has_free_form_text",
+          "type": "Boolean"
+        }
+      ],
+      "link": "https://developers.lattice.com/reference/api_question"
+    },
+    {
+      "name": "user_direct_report",
+      "columns": [
+        {
+          "name": "report_id",
+          "type": "String",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "user_id",
+          "type": "String",
+          "primaryKey": true,
+          "foreignKey": true
+        }
+      ],
+      "link": "https://developers.lattice.com/reference/api_user_directreports"
+    },
+    {
+      "name": "revision_question_rating_scale",
+      "columns": [
+        {
+          "name": "_fivetran_id",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "revision_question_id",
+          "type": "String",
+          "foreignKey": true
+        },
+        {
+          "name": "descriptor",
+          "type": "String"
+        },
+        {
+          "name": "value",
+          "type": "Double"
+        }
+      ],
+      "link": ""
+    },
+    {
+      "name": "revision_question",
+      "columns": [
+        {
+          "name": "id",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "body",
+          "type": "String"
+        },
+        {
+          "name": "choices",
+          "type": "String"
+        },
+        {
+          "name": "description",
+          "type": "String"
+        },
+        {
+          "name": "has_free_form_text",
+          "type": "Boolean"
+        }
+      ],
+      "link": "https://developers.lattice.com/reference/api_questionrevision"
+    },
+    {
+      "name": "review_competency",
+      "columns": [
+        {
+          "name": "id",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "description",
+          "type": "String"
+        },
+        {
+          "name": "name",
+          "type": "String"
+        }
+      ],
+      "link": ""
+    },
+    {
+      "name": "feedback_competency",
+      "columns": [
+        {
+          "name": "id",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "description",
+          "type": "String"
+        },
+        {
+          "name": "name",
+          "type": "String"
+        }
+      ],
+      "link": ""
+    },
+    {
+      "name": "task",
+      "columns": [
+        {
+          "name": "id",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "goal_id",
+          "type": "String",
+          "foreignKey": true
+        },
+        {
+          "name": "review_cycle_id",
+          "type": "String",
+          "foreignKey": true
+        },
+        {
+          "name": "user_id",
+          "type": "String",
+          "foreignKey": true
+        },
+        {
+          "name": "complete_requests_count",
+          "type": "Long"
+        },
+        {
+          "name": "due_at",
+          "type": "Instant"
+        },
+        {
+          "name": "object",
+          "type": "String"
+        },
+        {
+          "name": "total_requests_count",
+          "type": "Long"
+        },
+        {
+          "name": "type",
+          "type": "String"
+        }
+      ],
+      "link": "https://developers.lattice.com/reference/api_user_tasks"
+    },
+    {
+      "name": "review_cycle_reviewee",
+      "columns": [
+        {
+          "name": "reviewee_id",
+          "type": "String",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "review_cycle_id",
+          "type": "String",
+          "foreignKey": true
+        },
+        {
+          "name": "user_id",
+          "type": "Unknown",
+          "foreignKey": true
+        }
+      ],
+      "link": "https://developers.lattice.com/reference/api_reviewcycle_reviewees"
+    },
+    {
+      "name": "department",
+      "columns": [
+        {
+          "name": "id",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "created_at",
+          "type": "Instant"
+        },
+        {
+          "name": "description",
+          "type": "String"
+        },
+        {
+          "name": "name",
+          "type": "String"
+        }
+      ],
+      "link": "https://developers.lattice.com/reference/api_departments"
+    },
+    {
+      "name": "custom_attribute",
+      "columns": [
+        {
+          "name": "id",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "name",
+          "type": "String"
+        },
+        {
+          "name": "type",
+          "type": "String"
+        },
+        {
+          "name": "visibility",
+          "type": "String"
+        }
+      ],
+      "link": ""
+    },
+    {
+      "name": "custom_attribute_value",
+      "columns": [
+        {
+          "name": "id",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "value",
+          "type": "String"
+        }
+      ],
+      "link": ""
+    },
+    {
+      "name": "user_custom_attribute",
+      "columns": [
+        {
+          "name": "custom_attribute_id",
+          "type": "String",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "custom_attribute_value_id",
+          "type": "String",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "custom_attribute_temp_users_id",
+          "type": "Unknown",
+          "foreignKey": true
+        },
+        {
+          "name": "user_id",
+          "type": "String"
+        }
+      ],
+      "link": ""
+    },
+    {
+      "name": "child_goal",
+      "columns": [
+        {
+          "name": "child_goal_id",
+          "type": "String",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "goal_id",
+          "type": "String",
+          "primaryKey": true,
+          "foreignKey": true
+        }
+      ],
+      "link": ""
+    },
+    {
+      "name": "tag_goal",
+      "columns": [
+        {
+          "name": "goal_id",
+          "type": "String",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "tag_id",
+          "type": "String",
+          "primaryKey": true,
+          "foreignKey": true
+        }
+      ],
+      "link": ""
+    },
+    {
+      "name": "goal",
+      "columns": [
+        {
+          "name": "id",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "department_id",
+          "type": "String",
+          "foreignKey": true
+        },
+        {
+          "name": "parent_goal_id",
+          "type": "String",
+          "foreignKey": true
+        },
+        {
+          "name": "amount_type",
+          "type": "String"
+        },
+        {
+          "name": "archived_at",
+          "type": "Instant"
+        },
+        {
+          "name": "completed_at",
+          "type": "Instant"
+        },
+        {
+          "name": "created_at",
+          "type": "Instant"
+        },
+        {
+          "name": "current_amount",
+          "type": "Double"
+        },
+        {
+          "name": "description",
+          "type": "String"
+        },
+        {
+          "name": "due_date",
+          "type": "LocalDate"
+        },
+        {
+          "name": "ending_amount",
+          "type": "Double"
+        },
+        {
+          "name": "goal_type",
+          "type": "String"
+        },
+        {
+          "name": "is_private",
+          "type": "Boolean"
+        },
+        {
+          "name": "last_updated_at",
+          "type": "Instant"
+        },
+        {
+          "name": "name",
+          "type": "String"
+        },
+        {
+          "name": "priority",
+          "type": "String"
+        },
+        {
+          "name": "published_at",
+          "type": "Instant"
+        },
+        {
+          "name": "start_date",
+          "type": "LocalDate"
+        },
+        {
+          "name": "starting_amount",
+          "type": "Double"
+        },
+        {
+          "name": "state",
+          "type": "String"
+        },
+        {
+          "name": "status",
+          "type": "String"
+        },
+        {
+          "name": "updated_at",
+          "type": "Instant"
+        }
+      ],
+      "link": "https://developers.lattice.com/reference/api_goals"
+    },
+    {
+      "name": "update_response",
+      "columns": [
+        {
+          "name": "id",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "update_id",
+          "type": "String",
+          "foreignKey": true
+        },
+        {
+          "name": "answer",
+          "type": "String"
+        },
+        {
+          "name": "question",
+          "type": "String"
+        }
+      ],
+      "link": ""
+    },
+    {
+      "name": "updates",
+      "columns": [
+        {
+          "name": "id",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "author_id",
+          "type": "String",
+          "foreignKey": true
+        },
+        {
+          "name": "manager_id",
+          "type": "String",
+          "foreignKey": true
+        },
+        {
+          "name": "created_at",
+          "type": "Instant"
+        },
+        {
+          "name": "is_public",
+          "type": "Boolean"
+        },
+        {
+          "name": "published_at",
+          "type": "Instant"
+        },
+        {
+          "name": "reviewed_at",
+          "type": "Instant"
+        },
+        {
+          "name": "sentiment_id",
+          "type": "String"
+        },
+        {
+          "name": "sentiment_rating",
+          "type": "Double"
+        }
+      ],
+      "link": "https://developers.lattice.com/reference/api_updates"
+    },
+    {
+      "name": "review",
+      "columns": [
+        {
+          "name": "id",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "competency_id",
+          "type": "String",
+          "foreignKey": true
+        },
+        {
+          "name": "goal_id",
+          "type": "String",
+          "foreignKey": true
+        },
+        {
+          "name": "question_id",
+          "type": "String",
+          "foreignKey": true
+        },
+        {
+          "name": "review_cycle_id",
+          "type": "String",
+          "foreignKey": true
+        },
+        {
+          "name": "reviewee_id",
+          "type": "String",
+          "foreignKey": true
+        },
+        {
+          "name": "reviewer_id",
+          "type": "String",
+          "foreignKey": true
+        },
+        {
+          "name": "revision_question_id",
+          "type": "String",
+          "foreignKey": true
+        },
+        {
+          "name": "calibrated_response_choices",
+          "type": "String"
+        },
+        {
+          "name": "calibrated_response_comment",
+          "type": "String"
+        },
+        {
+          "name": "calibrated_response_comment_sentiment",
+          "type": "Double"
+        },
+        {
+          "name": "calibrated_response_created_at",
+          "type": "Instant"
+        },
+        {
+          "name": "calibrated_response_rating",
+          "type": "Double"
+        },
+        {
+          "name": "calibrated_response_updated_at",
+          "type": "Instant"
+        },
+        {
+          "name": "declined_at",
+          "type": "Instant"
+        },
+        {
+          "name": "response_choices",
+          "type": "String"
+        },
+        {
+          "name": "response_comment",
+          "type": "String"
+        },
+        {
+          "name": "response_comment_sentiment",
+          "type": "Double"
+        },
+        {
+          "name": "response_created_at",
+          "type": "Instant"
+        },
+        {
+          "name": "response_rating",
+          "type": "Double"
+        },
+        {
+          "name": "response_updated_at",
+          "type": "Instant"
+        },
+        {
+          "name": "review_type",
+          "type": "String"
+        },
+        {
+          "name": "submitted_at",
+          "type": "Instant"
+        }
+      ],
+      "link": "https://developers.lattice.com/reference/api_reviewcycle_reviews"
+    },
+    {
+      "name": "tags",
+      "columns": [
+        {
+          "name": "id",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "created_at",
+          "type": "Instant"
+        },
+        {
+          "name": "name",
+          "type": "String"
+        },
+        {
+          "name": "updated_at",
+          "type": "Instant"
+        }
+      ],
+      "link": "https://developers.lattice.com/reference/api_tags"
+    },
+    {
+      "name": "feedback_target",
+      "columns": [
+        {
+          "name": "feedback_id",
+          "type": "String",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "user_id",
+          "type": "String",
+          "primaryKey": true,
+          "foreignKey": true
+        }
+      ],
+      "link": ""
+    },
+    {
+      "name": "feedback_company",
+      "columns": [
+        {
+          "name": "company_value_id",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "feedback_id",
+          "type": "String",
+          "primaryKey": true,
+          "foreignKey": true
+        }
+      ],
+      "link": ""
+    },
+    {
+      "name": "feedback",
+      "columns": [
+        {
+          "name": "id",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "author_id",
+          "type": "String",
+          "foreignKey": true
+        },
+        {
+          "name": "competency_id",
+          "type": "String",
+          "foreignKey": true
+        },
+        {
+          "name": "feedback_request_author_id",
+          "type": "String",
+          "foreignKey": true
+        },
+        {
+          "name": "feedback_request_competency_id",
+          "type": "String",
+          "foreignKey": true
+        },
+        {
+          "name": "feedback_request_subject_id",
+          "type": "String",
+          "foreignKey": true
+        },
+        {
+          "name": "body",
+          "type": "String"
+        },
+        {
+          "name": "created_at",
+          "type": "Instant"
+        },
+        {
+          "name": "feedback_request_body",
+          "type": "String"
+        },
+        {
+          "name": "feedback_request_created_at",
+          "type": "Instant"
+        },
+        {
+          "name": "feedback_request_fulfilled_at",
+          "type": "Instant"
+        },
+        {
+          "name": "is_public",
+          "type": "Boolean"
+        },
+        {
+          "name": "visibility",
+          "type": "String"
+        }
+      ],
+      "link": "https://developers.lattice.com/reference/api_feedbacks"
+    },
+    {
+      "name": "review_cycle",
+      "columns": [
+        {
+          "name": "id",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "creator_id",
+          "type": "String",
+          "foreignKey": true
+        },
+        {
+          "name": "created_at",
+          "type": "Instant"
+        },
+        {
+          "name": "name",
+          "type": "String"
+        },
+        {
+          "name": "peer_selection_started_at",
+          "type": "Instant"
+        },
+        {
+          "name": "reviews_ended_at",
+          "type": "Instant"
+        },
+        {
+          "name": "reviews_started_at",
+          "type": "Instant"
+        },
+        {
+          "name": "stage",
+          "type": "String"
+        },
+        {
+          "name": "updated_at",
+          "type": "Instant"
+        }
+      ],
+      "link": "https://developers.lattice.com/reference/api_reviewcycles"
+    }
+  ],
+  "relations": [
+    {
+      "targetTable": "goal",
+      "sourceTable": "goal_user",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "goal_id"
+      ]
+    },
+    {
+      "targetTable": "users",
+      "sourceTable": "goal_user",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "user_id"
+      ]
+    },
+    {
+      "targetTable": "question",
+      "sourceTable": "question_rating_scale",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "question_id"
+      ]
+    },
+    {
+      "targetTable": "users",
+      "sourceTable": "user_direct_report",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "report_id"
+      ]
+    },
+    {
+      "targetTable": "users",
+      "sourceTable": "user_direct_report",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "user_id"
+      ]
+    },
+    {
+      "targetTable": "revision_question",
+      "sourceTable": "revision_question_rating_scale",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "revision_question_id"
+      ]
+    },
+    {
+      "targetTable": "goal",
+      "sourceTable": "task",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "goal_id"
+      ]
+    },
+    {
+      "targetTable": "review_cycle",
+      "sourceTable": "task",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "review_cycle_id"
+      ]
+    },
+    {
+      "targetTable": "users",
+      "sourceTable": "task",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "user_id"
+      ]
+    },
+    {
+      "targetTable": "users",
+      "sourceTable": "review_cycle_reviewee",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "reviewee_id"
+      ]
+    },
+    {
+      "targetTable": "users",
+      "sourceTable": "review_cycle_reviewee",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "user_id"
+      ]
+    },
+    {
+      "targetTable": "review_cycle",
+      "sourceTable": "review_cycle_reviewee",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "review_cycle_id"
+      ]
+    },
+    {
+      "targetTable": "custom_attribute",
+      "sourceTable": "user_custom_attribute",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "custom_attribute_id"
+      ]
+    },
+    {
+      "targetTable": "custom_attribute_value",
+      "sourceTable": "user_custom_attribute",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "custom_attribute_value_id"
+      ]
+    },
+    {
+      "targetTable": "users",
+      "sourceTable": "user_custom_attribute",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "custom_attribute_temp_users_id"
+      ]
+    },
+    {
+      "targetTable": "goal",
+      "sourceTable": "child_goal",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "child_goal_id"
+      ]
+    },
+    {
+      "targetTable": "goal",
+      "sourceTable": "child_goal",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "goal_id"
+      ]
+    },
+    {
+      "targetTable": "tags",
+      "sourceTable": "tag_goal",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "tag_id"
+      ]
+    },
+    {
+      "targetTable": "goal",
+      "sourceTable": "tag_goal",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "goal_id"
+      ]
+    },
+    {
+      "targetTable": "goal",
+      "sourceTable": "goal",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "parent_goal_id"
+      ]
+    },
+    {
+      "targetTable": "department",
+      "sourceTable": "goal",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "department_id"
+      ]
+    },
+    {
+      "targetTable": "updates",
+      "sourceTable": "update_response",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "update_id"
+      ]
+    },
+    {
+      "targetTable": "users",
+      "sourceTable": "updates",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "author_id"
+      ]
+    },
+    {
+      "targetTable": "users",
+      "sourceTable": "updates",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "manager_id"
+      ]
+    },
+    {
+      "targetTable": "question",
+      "sourceTable": "review",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "question_id"
+      ]
+    },
+    {
+      "targetTable": "revision_question",
+      "sourceTable": "review",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "revision_question_id"
+      ]
+    },
+    {
+      "targetTable": "users",
+      "sourceTable": "review",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "reviewer_id"
+      ]
+    },
+    {
+      "targetTable": "review_cycle_reviewee",
+      "sourceTable": "review",
+      "targetColumns": [
+        "reviewee_id"
+      ],
+      "sourceColumns": [
+        "reviewee_id"
+      ]
+    },
+    {
+      "targetTable": "goal",
+      "sourceTable": "review",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "goal_id"
+      ]
+    },
+    {
+      "targetTable": "review_competency",
+      "sourceTable": "review",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "competency_id"
+      ]
+    },
+    {
+      "targetTable": "review_cycle",
+      "sourceTable": "review",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "review_cycle_id"
+      ]
+    },
+    {
+      "targetTable": "users",
+      "sourceTable": "feedback_target",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "user_id"
+      ]
+    },
+    {
+      "targetTable": "feedback",
+      "sourceTable": "feedback_target",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "feedback_id"
+      ]
+    },
+    {
+      "targetTable": "feedback",
+      "sourceTable": "feedback_company",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "feedback_id"
+      ]
+    },
+    {
+      "targetTable": "users",
+      "sourceTable": "feedback",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "author_id"
+      ]
+    },
+    {
+      "targetTable": "feedback_competency",
+      "sourceTable": "feedback",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "competency_id"
+      ]
+    },
+    {
+      "targetTable": "users",
+      "sourceTable": "feedback",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "feedback_request_author_id"
+      ]
+    },
+    {
+      "targetTable": "feedback_competency",
+      "sourceTable": "feedback",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "feedback_request_competency_id"
+      ]
+    },
+    {
+      "targetTable": "users",
+      "sourceTable": "feedback",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "feedback_request_subject_id"
+      ]
+    },
+    {
+      "targetTable": "users",
+      "sourceTable": "review_cycle",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "creator_id"
+      ]
+    }
+  ],
+  "positions": {
+    "users": {
+      "x": 1526.152006305722,
+      "y": 916.4738811197119
+    },
+    "goal_user": {
+      "x": 1022.152006305722,
+      "y": 960
+    },
+    "question_rating_scale": {
+      "x": 3615.2922616709093,
+      "y": 1479.751844932572
+    },
+    "question": {
+      "x": 3111.2922616709093,
+      "y": 1445.2272547686377
+    },
+    "user_direct_report": {
+      "x": 2030,
+      "y": 1342
+    },
+    "revision_question_rating_scale": {
+      "x": 3111,
+      "y": 2125
+    },
+    "revision_question": {
+      "x": 3111.2922616709093,
+      "y": 1785.2272547686377
+    },
+    "review_competency": {
+      "x": 3095,
+      "y": 1192
+    },
+    "feedback_competency": {
+      "x": 530,
+      "y": 519
+    },
+    "task": {
+      "x": 2591,
+      "y": 128
+    },
+    "review_cycle_reviewee": {
+      "x": 2030,
+      "y": 1078
+    },
+    "department": {
+      "x": 1526.152006305722,
+      "y": 612.4738811197119
+    },
+    "custom_attribute": {
+      "x": 512,
+      "y": 1156
+    },
+    "custom_attribute_value": {
+      "x": 1022.152006305722,
+      "y": 1228.0000000000002
+    },
+    "user_custom_attribute": {
+      "x": 1022,
+      "y": 1456
+    },
+    "child_goal": {
+      "x": 1526.152006305722,
+      "y": 25.83161370328608
+    },
+    "tag_goal": {
+      "x": 1526.152006305722,
+      "y": 293.83161370328594
+    },
+    "goal": {
+      "x": 1022.152006305722,
+      "y": 8
+    },
+    "update_response": {
+      "x": 2591,
+      "y": 625
+    },
+    "updates": {
+      "x": 2030.152006305722,
+      "y": 597.8316137032862
+    },
+    "review": {
+      "x": 2590.513105343366,
+      "y": 1408.607666907905
+    },
+    "tags": {
+      "x": 2030.152006305722,
+      "y": 293.83161370328605
+    },
+    "feedback_target": {
+      "x": 512.152006305722,
+      "y": 888.0000000000002
+    },
+    "feedback_company": {
+      "x": 8,
+      "y": 400.4332854338786
+    },
+    "feedback": {
+      "x": 8.152006305721955,
+      "y": 668.4332854338786
+    },
+    "review_cycle": {
+      "x": 2590.513105343366,
+      "y": 924.607666907905
+    }
+  }
+}

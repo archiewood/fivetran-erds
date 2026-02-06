@@ -1,0 +1,463 @@
+CREATE TABLE location_product (
+    id text,
+    location_id text,
+    "type" text,
+    PRIMARY KEY (id, location_id),
+    FOREIGN KEY (id) REFERENCES location_included(id),
+    FOREIGN KEY (location_id) REFERENCES location(id),
+    FOREIGN KEY ("type") REFERENCES location_included("type")
+);
+
+CREATE TABLE location (
+    id text,
+    location_type text,
+    location_type_id text,
+    warehouse_id text,
+    warehouse_type text,
+    barcode text,
+    created_at text,
+    "name" text,
+    updated_at text,
+    PRIMARY KEY (id),
+    FOREIGN KEY (location_type) REFERENCES location_included("type"),
+    FOREIGN KEY (location_type_id) REFERENCES location_included(id),
+    FOREIGN KEY (warehouse_id) REFERENCES location_included(id),
+    FOREIGN KEY (warehouse_type) REFERENCES location_included("type")
+);
+
+CREATE TABLE location_included (
+    id text,
+    "type" text,
+    product_id text,
+    address text,
+    address_2 text,
+    city text,
+    company_name text,
+    country text,
+    created_at text,
+    customer_contact_information_id text,
+    customer_contact_information_type text,
+    email text,
+    "name" text,
+    phone text,
+    product_type text,
+    quantity_on_hand text,
+    quantity_reserved_for_picking text,
+    "state" text,
+    updated_at text,
+    zip text,
+    PRIMARY KEY (id, "type"),
+    FOREIGN KEY (product_id) REFERENCES product(id)
+);
+
+CREATE TABLE tote_order_item (
+    id text,
+    tote_id text,
+    "type" text,
+    PRIMARY KEY (id, tote_id),
+    FOREIGN KEY (id) REFERENCES tote_included(id),
+    FOREIGN KEY (tote_id) REFERENCES tote(id),
+    FOREIGN KEY ("type") REFERENCES tote_included("type")
+);
+
+CREATE TABLE tote (
+    id text,
+    warehouse_id text,
+    warehouse_type text,
+    barcode text,
+    created_at text,
+    "name" text,
+    updated_at text,
+    PRIMARY KEY (id),
+    FOREIGN KEY (warehouse_id) REFERENCES tote_included(id),
+    FOREIGN KEY (warehouse_type) REFERENCES tote_included("type")
+);
+
+CREATE TABLE product_included (
+    id text,
+    "type" text,
+    location_product_location_id text,
+    address text,
+    address_2 text,
+    city text,
+    company_name text,
+    country text,
+    created_at text,
+    customer_contact_information_id text,
+    customer_contact_information_type text,
+    email text,
+    file_name text,
+    location_product_location_type text,
+    "name" text,
+    object_type text,
+    phone text,
+    "source" text,
+    "state" text,
+    updated_at text,
+    zip text,
+    PRIMARY KEY (id, "type"),
+    FOREIGN KEY (location_product_location_id) REFERENCES location(id)
+);
+
+CREATE TABLE product_barcode (
+    id text,
+    product_id text,
+    "type" text,
+    PRIMARY KEY (id, product_id),
+    FOREIGN KEY (id) REFERENCES product_included(id),
+    FOREIGN KEY (product_id) REFERENCES product(id),
+    FOREIGN KEY ("type") REFERENCES product_included("type")
+);
+
+CREATE TABLE product_image (
+    id text,
+    product_id text,
+    "type" text,
+    PRIMARY KEY (id, product_id),
+    FOREIGN KEY (id) REFERENCES product_included(id),
+    FOREIGN KEY (product_id) REFERENCES product(id),
+    FOREIGN KEY ("type") REFERENCES product_included("type")
+);
+
+CREATE TABLE products_location_product (
+    id text,
+    product_id text,
+    "type" text,
+    PRIMARY KEY (id, product_id),
+    FOREIGN KEY (id) REFERENCES product_included(id),
+    FOREIGN KEY (product_id) REFERENCES product(id),
+    FOREIGN KEY ("type") REFERENCES product_included("type")
+);
+
+CREATE TABLE product (
+    id text,
+    customer_id text,
+    customer_type text,
+    attribute_type text,
+    barcode text,
+    country_of_origin text,
+    created_at text,
+    customs_description text,
+    customs_price text,
+    height text,
+    hs_code text,
+    inventory_sync text,
+    length text,
+    "name" text,
+    note text,
+    price text,
+    quantity_allocated text,
+    quantity_available text,
+    quantity_backordered text,
+    quantity_on_hand text,
+    sku text,
+    tags text,
+    updated_at text,
+    "value" text,
+    weight text,
+    width text,
+    PRIMARY KEY (id),
+    FOREIGN KEY (customer_id) REFERENCES product_included(id),
+    FOREIGN KEY (customer_type) REFERENCES product_included("type")
+);
+
+CREATE TABLE customer_setting (
+    customer_id text,
+    id text,
+    "type" text,
+    PRIMARY KEY (customer_id, id),
+    FOREIGN KEY (customer_id) REFERENCES customer(id),
+    FOREIGN KEY (id) REFERENCES customer_included(id),
+    FOREIGN KEY ("type") REFERENCES customer_included("type")
+);
+
+CREATE TABLE customer_children (
+    customer_id text,
+    id text,
+    "type" text,
+    PRIMARY KEY (customer_id, id),
+    FOREIGN KEY (customer_id) REFERENCES customer(id),
+    FOREIGN KEY (id) REFERENCES customer_included(id),
+    FOREIGN KEY ("type") REFERENCES customer_included("type")
+);
+
+CREATE TABLE customer (
+    id text,
+    contact_information_id text,
+    contact_information_type text,
+    created_at text,
+    updated_at text,
+    PRIMARY KEY (id),
+    FOREIGN KEY (contact_information_id) REFERENCES customer_included(id),
+    FOREIGN KEY (contact_information_type) REFERENCES customer_included("type")
+);
+
+CREATE TABLE purchase_order_included (
+    "type" text,
+    id text,
+    product_id text,
+    address text,
+    address_2 text,
+    city text,
+    company_name text,
+    contact_information_id text,
+    contact_information_type text,
+    country text,
+    created_at text,
+    email text,
+    "name" text,
+    phone text,
+    quantity text,
+    quantity_pending text,
+    quantity_received text,
+    quantity_rejected text,
+    quantity_returned text,
+    quantity_sell_ahead text,
+    "state" text,
+    updated_at text,
+    zip text,
+    PRIMARY KEY ("type", id),
+    FOREIGN KEY (id) REFERENCES purchase_order_item(id),
+    FOREIGN KEY (product_id) REFERENCES product(id)
+);
+
+CREATE TABLE purchase_order_item (
+    id text,
+    purchase_order_id text,
+    "type" text,
+    PRIMARY KEY (id, purchase_order_id),
+    FOREIGN KEY (id) REFERENCES purchase_order_included(id),
+    FOREIGN KEY (purchase_order_id) REFERENCES purchase_order(id),
+    FOREIGN KEY ("type") REFERENCES purchase_order_included("type")
+);
+
+CREATE TABLE purchase_order (
+    id text,
+    customer_id text,
+    customer_type text,
+    warehouse_id text,
+    warehouse_type text,
+    closed_at text,
+    created_at timestamp,
+    delivered_at text,
+    expected_at text,
+    external_id text,
+    note text,
+    number text,
+    ordered_at text,
+    priority text,
+    received_at text,
+    tags text,
+    tracking_number text,
+    tracking_url text,
+    updated_at text,
+    PRIMARY KEY (id),
+    FOREIGN KEY (customer_id) REFERENCES purchase_order_included(id),
+    FOREIGN KEY (customer_type) REFERENCES purchase_order_included("type"),
+    FOREIGN KEY (warehouse_id) REFERENCES purchase_order_included(id),
+    FOREIGN KEY (warehouse_type) REFERENCES purchase_order_included("type")
+);
+
+CREATE TABLE order_included (
+    id text,
+    "type" text,
+    order_item_product_id text,
+    address text,
+    address_2 text,
+    approved text,
+    attribute_type text,
+    city text,
+    company_name text,
+    contact_information_id text,
+    contact_information_type text,
+    cost text,
+    country text,
+    created_at text,
+    document_type text,
+    email text,
+    external_id text,
+    height text,
+    length text,
+    "name" text,
+    note text,
+    number text,
+    package_order_item text,
+    phone text,
+    price text,
+    quantity text,
+    quantity_allocated text,
+    quantity_allocated_pickable text,
+    quantity_backordered text,
+    quantity_pending text,
+    quantity_reshipped text,
+    quantity_returned text,
+    quantity_shipped text,
+    reason text,
+    return_order_item_id text,
+    serial_number text,
+    shipment_shipping_method_id text,
+    shipment_shipping_method_type text,
+    shipping_carrier_id text,
+    shipping_carrier_type text,
+    "size" text,
+    sku text,
+    "state" text,
+    status_text text,
+    tracking_number text,
+    tracking_url text,
+    updated_at text,
+    url text,
+    weight text,
+    width text,
+    zip text,
+    PRIMARY KEY (id, "type"),
+    FOREIGN KEY (order_item_product_id) REFERENCES product(id)
+);
+
+CREATE TABLE tote_included (
+    id text,
+    "type" text,
+    order_id text,
+    order_item_id text,
+    product_id text,
+    address text,
+    address_2 text,
+    city text,
+    company_name text,
+    contact_information_id text,
+    contact_information_type text,
+    country text,
+    created_at text,
+    email text,
+    external_id text,
+    "name" text,
+    order_item_type text,
+    order_type text,
+    phone text,
+    picked_at text,
+    price text,
+    product_type text,
+    quantity text,
+    quantity_allocated text,
+    quantity_allocated_pickable text,
+    quantity_backordered text,
+    quantity_pending text,
+    quantity_reshipped text,
+    quantity_returned text,
+    quantity_shipped text,
+    removed_at text,
+    sku text,
+    "state" text,
+    updated_at text,
+    zip text,
+    PRIMARY KEY (id, "type"),
+    FOREIGN KEY (order_id) REFERENCES orders(id),
+    FOREIGN KEY (order_item_id) REFERENCES tote_order_item(id),
+    FOREIGN KEY (product_id) REFERENCES product(id)
+);
+
+CREATE TABLE customer_included (
+    id text,
+    "type" text,
+    address text,
+    address_2 text,
+    city text,
+    company_name text,
+    country text,
+    created_at text,
+    customer_children_contact_information_id text,
+    customer_children_contact_information_type text,
+    email text,
+    "key" text,
+    "name" text,
+    phone text,
+    "state" text,
+    updated_at text,
+    "value" text,
+    zip text,
+    PRIMARY KEY (id, "type")
+);
+
+CREATE TABLE order_item (
+    id text,
+    order_id text,
+    "type" text,
+    PRIMARY KEY (id, order_id),
+    FOREIGN KEY (id) REFERENCES order_included(id),
+    FOREIGN KEY (order_id) REFERENCES orders(id),
+    FOREIGN KEY ("type") REFERENCES order_included("type")
+);
+
+CREATE TABLE order_shipment (
+    id text,
+    order_id text,
+    "type" text,
+    PRIMARY KEY (id, order_id),
+    FOREIGN KEY (id) REFERENCES order_included(id),
+    FOREIGN KEY (order_id) REFERENCES orders(id),
+    FOREIGN KEY ("type") REFERENCES order_included("type")
+);
+
+CREATE TABLE order_return (
+    id text,
+    order_id text,
+    "type" text,
+    PRIMARY KEY (id, order_id),
+    FOREIGN KEY (id) REFERENCES order_included(id),
+    FOREIGN KEY (order_id) REFERENCES orders(id),
+    FOREIGN KEY ("type") REFERENCES order_included("type")
+);
+
+CREATE TABLE orders (
+    id text,
+    billing_contact_information_id text,
+    billing_contact_information_type text,
+    customer_id text,
+    customer_type text,
+    order_channel_id text,
+    order_channel_type text,
+    shipping_contact_information_id text,
+    shipping_contact_information_type text,
+    shipping_method_id text,
+    shipping_method_type text,
+    address_hold text,
+    allow_partial text,
+    archived_at text,
+    cancelled_at text,
+    created_at text,
+    discount text,
+    external_id text,
+    fraud_hold text,
+    fulfilled_at text,
+    hold_until text,
+    is_wholesale text,
+    number text,
+    operator_hold text,
+    ordered_at text,
+    packing_note text,
+    payment_hold text,
+    ready_to_pick text,
+    ready_to_ship text,
+    scheduled_delivery text,
+    ship_before text,
+    shipping text,
+    shipping_method_code text,
+    shipping_method_name text,
+    status_text text,
+    tags text,
+    tax text,
+    total text,
+    tote text,
+    updated_at timestamp,
+    PRIMARY KEY (id),
+    FOREIGN KEY (billing_contact_information_id) REFERENCES order_included(id),
+    FOREIGN KEY (billing_contact_information_type) REFERENCES order_included("type"),
+    FOREIGN KEY (customer_id) REFERENCES order_included(id),
+    FOREIGN KEY (customer_type) REFERENCES order_included("type"),
+    FOREIGN KEY (order_channel_id) REFERENCES order_included(id),
+    FOREIGN KEY (order_channel_type) REFERENCES order_included("type"),
+    FOREIGN KEY (shipping_contact_information_id) REFERENCES order_included(id),
+    FOREIGN KEY (shipping_contact_information_type) REFERENCES order_included("type"),
+    FOREIGN KEY (shipping_method_id) REFERENCES order_included(id),
+    FOREIGN KEY (shipping_method_type) REFERENCES order_included("type")
+);

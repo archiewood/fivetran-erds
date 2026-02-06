@@ -1,0 +1,714 @@
+{
+  "tables": [
+    {
+      "name": "survey_program",
+      "columns": [
+        {
+          "name": "id",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "activation_date",
+          "type": "Instant"
+        },
+        {
+          "name": "modified_by",
+          "type": "String"
+        },
+        {
+          "name": "modified_on",
+          "type": "Instant"
+        },
+        {
+          "name": "name",
+          "type": "String"
+        }
+      ],
+      "tags": [],
+      "link": "https://docs.medallia.com/en/medallia-experience-cloud/integration/apis/query-api/metadata-queries"
+    },
+    {
+      "name": "unit",
+      "columns": [
+        {
+          "name": "id",
+          "type": "Long",
+          "primaryKey": true
+        },
+        {
+          "name": "identifier",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "city",
+          "type": "String"
+        },
+        {
+          "name": "name",
+          "type": "String"
+        },
+        {
+          "name": "postal_code",
+          "type": "String"
+        },
+        {
+          "name": "street_address",
+          "type": "String"
+        },
+        {
+          "name": "timezone",
+          "type": "String"
+        }
+      ],
+      "tags": [],
+      "link": "https://docs.medallia.com/en/medallia-experience-cloud/integration/apis/query-api/data-queries/pulling-feedback-data"
+    },
+    {
+      "name": "group",
+      "columns": [
+        {
+          "name": "id",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "name",
+          "type": "String"
+        }
+      ],
+      "tags": [],
+      "link": "https://docs.medallia.com/en/medallia-experience-cloud/integration/apis/query-api/data-queries/pulling-feedback-data"
+    },
+    {
+      "name": "unit_group",
+      "columns": [
+        {
+          "name": "group_id",
+          "type": "String",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "unit_id",
+          "type": "Long",
+          "primaryKey": true,
+          "foreignKey": true
+        }
+      ],
+      "tags": [],
+      "link": "https://docs.medallia.com/en/medallia-experience-cloud/integration/apis/query-api/data-queries/pulling-feedback-data"
+    },
+    {
+      "name": "feedback_topic",
+      "columns": [
+        {
+          "name": "_fivetran_id",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "feedback_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "question_id",
+          "type": "String",
+          "foreignKey": true
+        },
+        {
+          "name": "comment",
+          "type": "String"
+        },
+        {
+          "name": "topic_id",
+          "type": "Long"
+        },
+        {
+          "name": "topic_name",
+          "type": "String"
+        }
+      ],
+      "tags": [],
+      "link": "https://docs.medallia.com/en/medallia-experience-cloud/integration/apis/query-api/data-queries/pulling-text-analytics-data"
+    },
+    {
+      "name": "feedback_theme",
+      "columns": [
+        {
+          "name": "_fivetran_id",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "feedback_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "question_id",
+          "type": "String",
+          "foreignKey": true
+        },
+        {
+          "name": "comment",
+          "type": "String"
+        },
+        {
+          "name": "theme_id",
+          "type": "Long"
+        },
+        {
+          "name": "theme_name",
+          "type": "String"
+        }
+      ],
+      "tags": [],
+      "link": "https://docs.medallia.com/en/medallia-experience-cloud/integration/apis/query-api/data-queries/pulling-text-analytics-data"
+    },
+    {
+      "name": "feedback_answer",
+      "columns": [
+        {
+          "name": "feedback_id",
+          "type": "Long",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "question_id",
+          "type": "String",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "value",
+          "type": "String",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "rank",
+          "type": "Int"
+        }
+      ],
+      "tags": [],
+      "link": "https://docs.medallia.com/en/medallia-experience-cloud/integration/apis/query-api/data-queries/pulling-feedback-data"
+    },
+    {
+      "name": "feedback_theme_region",
+      "columns": [
+        {
+          "name": "end_index",
+          "type": "Int",
+          "primaryKey": true
+        },
+        {
+          "name": "start_index",
+          "type": "Int",
+          "primaryKey": true
+        },
+        {
+          "name": "feedback_theme_id",
+          "type": "String",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "value",
+          "type": "String"
+        }
+      ],
+      "tags": [],
+      "link": "https://docs.medallia.com/en/medallia-experience-cloud/integration/apis/query-api/data-queries/pulling-text-analytics-data"
+    },
+    {
+      "name": "feedback_history",
+      "columns": [
+        {
+          "name": "id",
+          "type": "Long",
+          "primaryKey": true
+        },
+        {
+          "name": "a_unit_identifier",
+          "type": "String",
+          "foreignKey": true
+        },
+        {
+          "name": "e_accepteddate",
+          "type": "Instant"
+        },
+        {
+          "name": "e_creationdate",
+          "type": "Instant"
+        },
+        {
+          "name": "e_expirationdate",
+          "type": "Instant"
+        },
+        {
+          "name": "e_lastupdated",
+          "type": "Instant"
+        },
+        {
+          "name": "e_responsedate",
+          "type": "Instant"
+        },
+        {
+          "name": "e_status",
+          "type": "String"
+        },
+        {
+          "name": "e_survey_method",
+          "type": "String"
+        },
+        {
+          "name": "e_survey_source",
+          "type": "String"
+        }
+      ],
+      "tags": [],
+      "link": "https://docs.medallia.com/en/medallia-experience-cloud/integration/apis/query-api/data-queries/pulling-feedback-data"
+    },
+    {
+      "name": "feedback_topic_region",
+      "columns": [
+        {
+          "name": "end_index",
+          "type": "Int",
+          "primaryKey": true
+        },
+        {
+          "name": "start_index",
+          "type": "Int",
+          "primaryKey": true
+        },
+        {
+          "name": "feedback_topic_id",
+          "type": "String",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "value",
+          "type": "String"
+        }
+      ],
+      "tags": [],
+      "link": "https://docs.medallia.com/en/medallia-experience-cloud/integration/apis/query-api/data-queries/pulling-text-analytics-data"
+    },
+    {
+      "name": "feedback_sentiment_region",
+      "columns": [
+        {
+          "name": "end_index",
+          "type": "Int",
+          "primaryKey": true
+        },
+        {
+          "name": "start_index",
+          "type": "Int",
+          "primaryKey": true
+        },
+        {
+          "name": "feedback_sentiment_id",
+          "type": "String",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "value",
+          "type": "String"
+        }
+      ],
+      "tags": [],
+      "link": "https://docs.medallia.com/en/medallia-experience-cloud/integration/apis/query-api/data-queries/pulling-text-analytics-data"
+    },
+    {
+      "name": "field_option",
+      "columns": [
+        {
+          "name": "id",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "field_id",
+          "type": "String",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "name",
+          "type": "String"
+        },
+        {
+          "name": "numeric_value",
+          "type": "Int"
+        }
+      ],
+      "tags": [],
+      "link": "https://docs.medallia.com/en/medallia-experience-cloud/integration/apis/query-api/metadata-queries"
+    },
+    {
+      "name": "feedback_sentiment",
+      "columns": [
+        {
+          "name": "_fivetran_id",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "feedback_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "question_id",
+          "type": "String",
+          "foreignKey": true
+        },
+        {
+          "name": "comment",
+          "type": "String"
+        },
+        {
+          "name": "sentiment",
+          "type": "String"
+        }
+      ],
+      "tags": [],
+      "link": "https://docs.medallia.com/en/medallia-experience-cloud/integration/apis/query-api/data-queries/pulling-text-analytics-data"
+    },
+    {
+      "name": "field_meta_data",
+      "columns": [
+        {
+          "name": "id",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "data_type",
+          "type": "String"
+        },
+        {
+          "name": "filterable",
+          "type": "Boolean"
+        },
+        {
+          "name": "multivalued",
+          "type": "Boolean"
+        },
+        {
+          "name": "name",
+          "type": "String"
+        }
+      ],
+      "tags": [],
+      "link": "https://docs.medallia.com/en/medallia-experience-cloud/integration/apis/query-api/metadata-queries"
+    },
+    {
+      "name": "survey_question",
+      "columns": [
+        {
+          "name": "program_id",
+          "type": "String",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "question_id",
+          "type": "String",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "text",
+          "type": "String"
+        }
+      ],
+      "tags": [],
+      "link": "https://docs.medallia.com/en/medallia-experience-cloud/integration/apis/query-api/metadata-queries"
+    },
+    {
+      "name": "customer_profile",
+      "columns": [
+        {
+          "name": "id",
+          "type": "Long",
+          "primaryKey": true
+        }
+      ],
+      "tags": [],
+      "link": "https://developer.medallia.com/medallia-apis/reference/query-api-overview#customers-cx-profiles"
+    }
+  ],
+  "relations": [
+    {
+      "targetTable": "unit",
+      "sourceTable": "unit_group",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "unit_id"
+      ]
+    },
+    {
+      "targetTable": "group",
+      "sourceTable": "unit_group",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "group_id"
+      ]
+    },
+    {
+      "targetTable": "survey_question",
+      "sourceTable": "feedback_topic",
+      "targetColumns": [
+        "question_id"
+      ],
+      "sourceColumns": [
+        "question_id"
+      ]
+    },
+    {
+      "targetTable": "feedback_history",
+      "sourceTable": "feedback_topic",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "feedback_id"
+      ]
+    },
+    {
+      "targetTable": "survey_question",
+      "sourceTable": "feedback_theme",
+      "targetColumns": [
+        "question_id"
+      ],
+      "sourceColumns": [
+        "question_id"
+      ]
+    },
+    {
+      "targetTable": "feedback_history",
+      "sourceTable": "feedback_theme",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "feedback_id"
+      ]
+    },
+    {
+      "targetTable": "feedback_history",
+      "sourceTable": "feedback_answer",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "feedback_id"
+      ]
+    },
+    {
+      "targetTable": "survey_question",
+      "sourceTable": "feedback_answer",
+      "targetColumns": [
+        "question_id"
+      ],
+      "sourceColumns": [
+        "question_id"
+      ]
+    },
+    {
+      "targetTable": "field_option",
+      "sourceTable": "feedback_answer",
+      "targetColumns": [
+        "field_id"
+      ],
+      "sourceColumns": [
+        "value"
+      ]
+    },
+    {
+      "targetTable": "feedback_theme",
+      "sourceTable": "feedback_theme_region",
+      "targetColumns": [
+        "_fivetran_id"
+      ],
+      "sourceColumns": [
+        "feedback_theme_id"
+      ]
+    },
+    {
+      "targetTable": "unit",
+      "sourceTable": "feedback_history",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "a_unit_identifier"
+      ]
+    },
+    {
+      "targetTable": "feedback_topic",
+      "sourceTable": "feedback_topic_region",
+      "targetColumns": [
+        "_fivetran_id"
+      ],
+      "sourceColumns": [
+        "feedback_topic_id"
+      ]
+    },
+    {
+      "targetTable": "feedback_sentiment",
+      "sourceTable": "feedback_sentiment_region",
+      "targetColumns": [
+        "_fivetran_id"
+      ],
+      "sourceColumns": [
+        "feedback_sentiment_id"
+      ]
+    },
+    {
+      "targetTable": "field_meta_data",
+      "sourceTable": "field_option",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "field_id"
+      ]
+    },
+    {
+      "targetTable": "survey_question",
+      "sourceTable": "feedback_sentiment",
+      "targetColumns": [
+        "question_id"
+      ],
+      "sourceColumns": [
+        "question_id"
+      ]
+    },
+    {
+      "targetTable": "feedback_history",
+      "sourceTable": "feedback_sentiment",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "feedback_id"
+      ]
+    },
+    {
+      "targetTable": "field_meta_data",
+      "sourceTable": "survey_question",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "question_id"
+      ]
+    },
+    {
+      "targetTable": "survey_program",
+      "sourceTable": "survey_question",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "program_id"
+      ]
+    }
+  ],
+  "positions": {
+    "unit_group": {
+      "x": 2098.954522735709,
+      "y": 246.19044545443683
+    },
+    "customer_profile": {
+      "x": 1555.1251752774888,
+      "y": 642.7856180618935
+    },
+    "feedback_history": {
+      "x": 1016.115531121378,
+      "y": 238.37859802781304
+    },
+    "survey_program": {
+      "x": 1629.6177524141995,
+      "y": 838.7856180618934
+    },
+    "field_meta_data": {
+      "x": 1163.386030845858,
+      "y": 1178.7856180619037
+    },
+    "field_option": {
+      "x": 1164.011492709665,
+      "y": 1518.7856180619037
+    },
+    "feedback_theme_region": {
+      "x": 8,
+      "y": 93.98949347524007
+    },
+    "feedback_theme": {
+      "x": 512.1155311211899,
+      "y": 8
+    },
+    "feedback_answer": {
+      "x": 515,
+      "y": 1117
+    },
+    "survey_question": {
+      "x": 1016,
+      "y": 758
+    },
+    "feedback_sentiment_region": {
+      "x": 8.115523486737459,
+      "y": 773.98949347524
+    },
+    "unit": {
+      "x": 1594.9545227357096,
+      "y": 194.7856180618934
+    },
+    "feedback_sentiment": {
+      "x": 514.804703836292,
+      "y": 777.1638842197077
+    },
+    "feedback_topic": {
+      "x": 512.1155311211865,
+      "y": 401.1638842197077
+    },
+    "group": {
+      "x": 2133.6177524142,
+      "y": 644.2084609042806
+    },
+    "feedback_topic_region": {
+      "x": 8.11553112118645,
+      "y": 433.98949347524
+    },
+    "note-usqynmakkc": {
+      "x": 1630,
+      "y": 1617
+    }
+  },
+  "notes": {
+    "byTable": {},
+    "generalNotes": [
+      {
+        "content": "# Note\n\nfield_option table consists of options for ENUM type fields.",
+        "width": 384,
+        "height": 124,
+        "id": "note-usqynmakkc"
+      }
+    ]
+  },
+  "tableGroups": []
+}

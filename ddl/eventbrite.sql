@@ -1,0 +1,924 @@
+CREATE TABLE display_setting (
+    _fivetran_id text,
+    event_id text,
+    show_end_date text,
+    show_facebook_friends_going text,
+    show_map text,
+    show_organizer_facebook text,
+    show_organizer_twitter text,
+    show_remaining text,
+    show_start_date text,
+    show_start_end_time text,
+    show_timezone text,
+    terminology text,
+    PRIMARY KEY (_fivetran_id),
+    FOREIGN KEY (event_id) REFERENCES event(id)
+);
+
+CREATE TABLE discount_hold (
+    discount_id text,
+    hold_id text,
+    PRIMARY KEY (discount_id, hold_id),
+    FOREIGN KEY (discount_id) REFERENCES discount(id),
+    FOREIGN KEY (hold_id) REFERENCES event_hold(id)
+);
+
+CREATE TABLE discount_ticket_class (
+    discount_id text,
+    ticket_class_id text,
+    PRIMARY KEY (discount_id, ticket_class_id),
+    FOREIGN KEY (discount_id) REFERENCES discount(id),
+    FOREIGN KEY (ticket_class_id) REFERENCES ticket_class(id)
+);
+
+CREATE TABLE discount (
+    id text,
+    event_id text,
+    organization_id text,
+    amount_off text,
+    code text,
+    discount_type text,
+    end_date text,
+    end_date_relative text,
+    event text,
+    percent_off text,
+    quantity_available text,
+    quantity_sold text,
+    start_date text,
+    start_date_relative text,
+    ticket_group_id text,
+    ticket_ids text,
+    "type" text,
+    PRIMARY KEY (id),
+    FOREIGN KEY (event_id) REFERENCES event(id),
+    FOREIGN KEY (organization_id) REFERENCES organization(id)
+);
+
+CREATE TABLE custom_question_ticket_class (
+    id text,
+    custom_question_id text,
+    "name" text,
+    PRIMARY KEY (id, custom_question_id),
+    FOREIGN KEY (custom_question_id) REFERENCES custom_question(id)
+);
+
+CREATE TABLE custom_question_choice (
+    id text,
+    custom_question_id text,
+    answer_text text,
+    low_stock text,
+    quantity_available text,
+    quantity_sold text,
+    subquestion_ids jsonb,
+    PRIMARY KEY (id, custom_question_id),
+    FOREIGN KEY (custom_question_id) REFERENCES custom_question(id)
+);
+
+CREATE TABLE custom_question (
+    id text,
+    event_id text,
+    display_answer_on_order text,
+    parent_choice_id text,
+    parent_id text,
+    question_text text,
+    required text,
+    respondent text,
+    sorting text,
+    "type" text,
+    PRIMARY KEY (id),
+    FOREIGN KEY (event_id) REFERENCES event(id)
+);
+
+CREATE TABLE format (
+    id text,
+    "name" text,
+    name_localized text,
+    short_name text,
+    short_name_localized text,
+    PRIMARY KEY (id)
+);
+
+CREATE TABLE user_request (
+    email text,
+    user_id text,
+    is_primary text,
+    verified text,
+    PRIMARY KEY (email, user_id),
+    FOREIGN KEY (user_id) REFERENCES users(id)
+);
+
+CREATE TABLE users (
+    id text,
+    first_name text,
+    is_public text,
+    last_name text,
+    "name" text,
+    PRIMARY KEY (id),
+    FOREIGN KEY (id) REFERENCES organization_member(user_id)
+);
+
+CREATE TABLE seat_map (
+    id text,
+    event_id text,
+    organization_id text,
+    venue_id text,
+    capacity text,
+    "name" text,
+    thumbnail_url text,
+    PRIMARY KEY (id),
+    FOREIGN KEY (event_id) REFERENCES event(id),
+    FOREIGN KEY (organization_id) REFERENCES organization(id),
+    FOREIGN KEY (venue_id) REFERENCES venue(id)
+);
+
+CREATE TABLE structure_content_working_module (
+    id text,
+    event_id text,
+    data_body_alignment text,
+    data_body_text text,
+    layout text,
+    semantic_purpose text,
+    "type" text,
+    -- custom_* (dynamic column),
+    PRIMARY KEY (id, event_id),
+    FOREIGN KEY (event_id) REFERENCES structure_content_working(event_id)
+);
+
+CREATE TABLE structure_content_working_widget_tab_slot_host (
+    "name" text,
+    event_id text,
+    widget_tab_name text,
+    widget_type text,
+    PRIMARY KEY ("name", event_id, widget_tab_name, widget_type),
+    FOREIGN KEY (event_id) REFERENCES structure_content_working_widget_tab(event_id),
+    FOREIGN KEY (widget_tab_name) REFERENCES structure_content_working_widget_tab("name"),
+    FOREIGN KEY (widget_type) REFERENCES structure_content_working_widget_tab_slot(widget_type)
+);
+
+CREATE TABLE structure_content_working_widget_tab_slot (
+    _fivetran_id text,
+    event_id text,
+    widget_tab_name text,
+    widget_type text,
+    description text,
+    end_time text,
+    start_time text,
+    title text,
+    PRIMARY KEY (_fivetran_id, event_id, widget_tab_name, widget_type),
+    FOREIGN KEY (event_id) REFERENCES structure_content_working_widget_tab(event_id),
+    FOREIGN KEY (widget_tab_name) REFERENCES structure_content_working_widget_tab("name"),
+    FOREIGN KEY (widget_type) REFERENCES structure_content_working_widget_tab(widget_type)
+);
+
+CREATE TABLE structure_content_working_widget_tab (
+    "name" text,
+    widget_type text,
+    event_id text,
+    PRIMARY KEY ("name", widget_type, event_id),
+    FOREIGN KEY (event_id) REFERENCES structure_content_working(event_id)
+);
+
+CREATE TABLE structure_content_working (
+    _fivetran_id text,
+    event_id text,
+    access_type text,
+    has_autogenerated_content text,
+    hide_virtual_venue_content text,
+    page_version_number text,
+    purpose text,
+    PRIMARY KEY (_fivetran_id),
+    FOREIGN KEY (event_id) REFERENCES event(id)
+);
+
+CREATE TABLE ticket_class_confirmation_setting (
+    _fivetran_id text,
+    event_id text,
+    order_id text,
+    ticket_class_id text,
+    PRIMARY KEY (_fivetran_id),
+    FOREIGN KEY (event_id) REFERENCES event(id),
+    FOREIGN KEY (order_id) REFERENCES orders(id),
+    FOREIGN KEY (ticket_class_id) REFERENCES ticket_class(id)
+);
+
+CREATE TABLE orders (
+    id text,
+    organization_id text,
+    base_price_currency text,
+    base_price_display text,
+    base_price_major_value text,
+    base_price_value text,
+    changed text,
+    cost_discount_type text,
+    cost_has_gts_tax text,
+    cost_tax_name text,
+    created text,
+    discount_amount_currency text,
+    discount_amount_display text,
+    discount_amount_major_value text,
+    discount_amount_value text,
+    display_fee_currency text,
+    display_fee_display text,
+    display_fee_major_value text,
+    display_fee_value text,
+    display_price_currency text,
+    display_price_display text,
+    display_price_major_value text,
+    display_price_value text,
+    display_tax_currency text,
+    display_tax_display text,
+    display_tax_major_value text,
+    display_tax_value text,
+    event_id text,
+    eventbrite_fee_currency text,
+    eventbrite_fee_display text,
+    eventbrite_fee_major_value text,
+    eventbrite_fee_value text,
+    gross_currency text,
+    gross_display text,
+    gross_major_value text,
+    gross_value text,
+    owner_email text,
+    owner_first_name text,
+    owner_last_name text,
+    owner_name text,
+    payment_fee_currency text,
+    payment_fee_display text,
+    payment_fee_major_value text,
+    payment_fee_value text,
+    price_before_discount_currency text,
+    price_before_discount_display text,
+    price_before_discount_major_value text,
+    price_before_discount_value text,
+    "status" text,
+    tax_currency text,
+    tax_display text,
+    tax_major_value text,
+    tax_value text,
+    ticket_buyer_confirmation_message_text text,
+    ticket_buyer_instructions_text text,
+    ticket_buyer_settings_event_id text,
+    ticket_buyer_settings_refund_request_enabled text,
+    time_remaining text,
+    PRIMARY KEY (id),
+    FOREIGN KEY (id) REFERENCES event(id),
+    FOREIGN KEY (organization_id) REFERENCES organization(id)
+);
+
+CREATE TABLE code_component (
+    _fivetran_id text,
+    base text,
+    bucket text,
+    discount_currency text,
+    discount_display text,
+    discount_major_value text,
+    discount_reason text,
+    discount_value text,
+    group_name text,
+    intermediate text,
+    internal_name text,
+    "name" text,
+    payer text,
+    recipient text,
+    rule_id text,
+    "type" text,
+    "value" text,
+    PRIMARY KEY (_fivetran_id)
+);
+
+CREATE TABLE organization_role (
+    id text,
+    organization_id text,
+    deletable text,
+    description text,
+    grantable text,
+    immutable text,
+    "name" text,
+    permission jsonb,
+    permission_type text,
+    PRIMARY KEY (id),
+    FOREIGN KEY (organization_id) REFERENCES organization(id)
+);
+
+CREATE TABLE ticket_delivery_method (
+    delivery_method text,
+    event_id text,
+    ticket_class_id text,
+    PRIMARY KEY (delivery_method, event_id, ticket_class_id),
+    FOREIGN KEY (event_id) REFERENCES event(id),
+    FOREIGN KEY (ticket_class_id) REFERENCES ticket_class(id)
+);
+
+CREATE TABLE ticket_delivery_sales_channel (
+    sales_channel text,
+    event_id text,
+    ticket_class_id text,
+    PRIMARY KEY (sales_channel, event_id, ticket_class_id),
+    FOREIGN KEY (event_id) REFERENCES event(id),
+    FOREIGN KEY (ticket_class_id) REFERENCES ticket_class(id)
+);
+
+CREATE TABLE ticket_class (
+    id text,
+    event_id text,
+    inventory_tier_id text,
+    actual_cost_currency text,
+    actual_cost_display text,
+    actual_cost_major_value text,
+    actual_cost_value text,
+    actual_fee_currency text,
+    actual_fee_display text,
+    actual_fee_major_value text,
+    actual_fee_value text,
+    auto_hide text,
+    auto_hide_after text,
+    auto_hide_before text,
+    capacity text,
+    cost_currency text,
+    cost_display text,
+    cost_major_value text,
+    cost_value text,
+    description text,
+    display_name text,
+    donation text,
+    fee_currency text,
+    fee_display text,
+    fee_major_value text,
+    fee_value text,
+    free text,
+    has_pdf_ticket text,
+    hidden text,
+    hidden_currently text,
+    hide_description text,
+    hide_sale_dates text,
+    include_fee text,
+    maximum_quantity text,
+    maximum_quantity_per_order text,
+    minimum_quantity text,
+    "name" text,
+    on_sale_status text,
+    order_confirmation_message text,
+    payment_constraints jsonb,
+    quantity_sold text,
+    quantity_total text,
+    sales_channels text,
+    sales_end text,
+    sales_end_relative text,
+    sales_start text,
+    sales_start_after text,
+    secondary_assignment_enabled text,
+    sorting text,
+    split_fee text,
+    tax_currency text,
+    tax_display text,
+    tax_major_value text,
+    tax_value text,
+    PRIMARY KEY (id),
+    FOREIGN KEY (event_id) REFERENCES event(id),
+    FOREIGN KEY (inventory_tier_id) REFERENCES inventory_tier(id)
+);
+
+CREATE TABLE venue (
+    id text,
+    organization_id text,
+    address_address_1 text,
+    address_address_2 text,
+    address_city text,
+    address_country text,
+    address_latitude text,
+    address_localized_address_display text,
+    address_localized_area_display text,
+    address_localized_multi_line_address_display jsonb,
+    address_longitude text,
+    address_postal_code text,
+    address_region text,
+    age_restriction text,
+    capacity text,
+    latitude text,
+    longitude text,
+    "name" text,
+    PRIMARY KEY (id),
+    FOREIGN KEY (organization_id) REFERENCES organization(id)
+);
+
+CREATE TABLE default_question_ticket_class (
+    id text,
+    default_question_id text,
+    "name" text,
+    PRIMARY KEY (id, default_question_id),
+    FOREIGN KEY (default_question_id) REFERENCES default_question(id)
+);
+
+CREATE TABLE default_question_choice (
+    id text,
+    default_question_id text,
+    answer_text text,
+    low_stock text,
+    quantity_available text,
+    quantity_sold text,
+    subquestion_ids jsonb,
+    PRIMARY KEY (id, default_question_id),
+    FOREIGN KEY (default_question_id) REFERENCES default_question(id)
+);
+
+CREATE TABLE default_question (
+    id text,
+    event_id text,
+    default_value text,
+    editable text,
+    group_display_header text,
+    group_id text,
+    include text,
+    question_text text,
+    required text,
+    respondent text,
+    "type" text,
+    PRIMARY KEY (id),
+    FOREIGN KEY (event_id) REFERENCES event(id)
+);
+
+CREATE TABLE event_checkout_offline_setting (
+    _fivetran_id text,
+    event_id text,
+    instructions text,
+    payment_method text,
+    PRIMARY KEY (_fivetran_id),
+    FOREIGN KEY (event_id) REFERENCES event(id)
+);
+
+CREATE TABLE event_subcategory (
+    id text,
+    event_id text,
+    "name" text,
+    parent_category jsonb,
+    PRIMARY KEY (id, event_id),
+    FOREIGN KEY (event_id) REFERENCES event(id)
+);
+
+CREATE TABLE event (
+    id text,
+    category_id text,
+    format_id text,
+    organization_id text,
+    organizer_id text,
+    subcategory_id text,
+    venue_id text,
+    capacity text,
+    capacity_is_custom text,
+    category_name text,
+    category_name_localized text,
+    category_short_name text,
+    category_short_name_localized text,
+    changed text,
+    checkout_settings_changed text,
+    checkout_settings_checkout_method text,
+    checkout_settings_country_code text,
+    checkout_settings_created text,
+    checkout_settings_currency_code text,
+    checkout_settings_user_instrument_vault_id text,
+    created timestamp,
+    currency text,
+    description_text text,
+    end_local text,
+    end_timezone text,
+    end_utc text,
+    event_sales_start_date_local text,
+    event_sales_start_date_timezone text,
+    event_sales_start_date_utc text,
+    event_sales_status text,
+    external_ticketing_external_url text,
+    external_ticketing_is_free text,
+    external_ticketing_sales_end text,
+    external_ticketing_sales_start text,
+    external_ticketing_ticketing_provider_name text,
+    facebook_event_id text,
+    format_name text,
+    format_name_localized text,
+    format_short_name text,
+    format_short_name_localized text,
+    hide_end_date text,
+    hide_start_date text,
+    inventory_type text,
+    invite_only text,
+    is_externally_ticketed text,
+    is_free text,
+    is_locked text,
+    is_reserved_seating text,
+    is_series text,
+    is_series_parent text,
+    listed text,
+    locale text,
+    logo_aspect_ratio text,
+    logo_crop_mask_height text,
+    logo_crop_mask_top_left_x text,
+    logo_crop_mask_top_left_y text,
+    logo_crop_mask_width text,
+    logo_edge_color text,
+    logo_edge_color_set text,
+    logo_id text,
+    logo_original_height text,
+    logo_original_url text,
+    logo_original_width text,
+    logo_url text,
+    max_ticket_price_currency text,
+    max_ticket_price_display text,
+    max_ticket_price_major_value text,
+    max_ticket_price_value text,
+    min_ticket_price_currency text,
+    min_ticket_price_display text,
+    min_ticket_price_major_value text,
+    min_ticket_price_value text,
+    music_properties_age_restriction text,
+    music_properties_door_time text,
+    music_properties_presented_by text,
+    name_text text,
+    online_event text,
+    organizer_description text,
+    organizer_facebook text,
+    organizer_logo_aspect_ratio text,
+    organizer_logo_crop_mask_height text,
+    organizer_logo_crop_mask_top_left_x text,
+    organizer_logo_crop_mask_top_left_y text,
+    organizer_logo_crop_mask_width text,
+    organizer_logo_edge_color text,
+    organizer_logo_edge_color_set text,
+    organizer_logo_id text,
+    organizer_logo_original_height text,
+    organizer_logo_original_url text,
+    organizer_logo_original_width text,
+    organizer_logo_url text,
+    organizer_long_description text,
+    organizer_name text,
+    organizer_num_future_events text,
+    organizer_num_past_events text,
+    organizer_twitter text,
+    organizer_url text,
+    privacy_setting text,
+    published text,
+    series_id text,
+    shareable text,
+    show_colors_in_seatmap_thumbnail text,
+    show_pick_a_seat text,
+    show_remaining text,
+    show_seatmap_thumbnail text,
+    "source" text,
+    start_local text,
+    start_timezone text,
+    start_utc text,
+    "status" text,
+    subcategory_name text,
+    subcategory_parent_category_id text,
+    subcategory_parent_category_name text,
+    subcategory_parent_category_name_localized text,
+    subcategory_parent_category_short_name text,
+    subcategory_parent_category_short_name_localized text,
+    subcategory_parent_category_subcategories text,
+    ticket_availability_has_available_tickets text,
+    ticket_availability_is_sold_out text,
+    ticket_availability_max_ticket_price_currency text,
+    ticket_availability_max_ticket_price_display text,
+    ticket_availability_max_ticket_price_major_value text,
+    ticket_availability_max_ticket_price_value text,
+    ticket_availability_min_ticket_price_currency text,
+    ticket_availability_min_ticket_price_display text,
+    ticket_availability_min_ticket_price_major_value text,
+    ticket_availability_min_ticket_price_value text,
+    ticket_availability_start_sales_date_local text,
+    ticket_availability_start_sales_date_timezone text,
+    ticket_availability_start_sales_date_utc text,
+    ticket_availability_waitlist_available text,
+    tx_time_limit text,
+    url text,
+    vanity_url text,
+    venue_address_1 text,
+    venue_address_2 text,
+    venue_age_restriction text,
+    venue_capacity text,
+    venue_city text,
+    venue_country text,
+    venue_latitude text,
+    venue_longitude text,
+    venue_name text,
+    venue_postal_code text,
+    venue_region text,
+    version text,
+    PRIMARY KEY (id),
+    FOREIGN KEY (category_id) REFERENCES category(id),
+    FOREIGN KEY (format_id) REFERENCES format(id),
+    FOREIGN KEY (organization_id) REFERENCES organization(id),
+    FOREIGN KEY (organizer_id) REFERENCES organization_member(user_id),
+    FOREIGN KEY (subcategory_id) REFERENCES sub_category(id),
+    FOREIGN KEY (venue_id) REFERENCES venue(id)
+);
+
+CREATE TABLE event_hold (
+    id text,
+    event_id text,
+    abbreviation text,
+    color text,
+    "name" text,
+    quantity_pending text,
+    quantity_sold text,
+    quantity_total text,
+    sort_order text,
+    PRIMARY KEY (id),
+    FOREIGN KEY (event_id) REFERENCES event(id)
+);
+
+CREATE TABLE event_capacity (
+    event_id text,
+    capacity_is_custom text,
+    capacity_pending text,
+    capacity_sold text,
+    capacity_total text,
+    quantity_pending text,
+    quantity_sold text,
+    quantity_total text,
+    PRIMARY KEY (event_id),
+    FOREIGN KEY (event_id) REFERENCES event(id)
+);
+
+CREATE TABLE attendee_barcode (
+    barcode text,
+    attendee_id text,
+    changed text,
+    checkin_type text,
+    created text,
+    is_printed text,
+    "status" text,
+    PRIMARY KEY (barcode),
+    FOREIGN KEY (attendee_id) REFERENCES attendee(id)
+);
+
+CREATE TABLE attendee_answer (
+    attendee_id text,
+    question_id text,
+    answer text,
+    question text,
+    "type" text,
+    PRIMARY KEY (attendee_id, question_id),
+    FOREIGN KEY (attendee_id) REFERENCES attendee(id),
+    FOREIGN KEY (question_id) REFERENCES attendee_question(id)
+);
+
+CREATE TABLE attendee_question (
+    id text,
+    attendee_id text,
+    label text,
+    required text,
+    "type" text,
+    PRIMARY KEY (id, attendee_id),
+    FOREIGN KEY (attendee_id) REFERENCES attendee(id)
+);
+
+CREATE TABLE attendee (
+    id text,
+    event_id text,
+    invited_by text,
+    order_id text,
+    organization_id text,
+    ticket_class_id text,
+    affiliate text,
+    assigned_unit_description text,
+    assigned_unit_id text,
+    assigned_unit_labels jsonb,
+    assigned_unit_titles jsonb,
+    base_price_currency text,
+    base_price_display text,
+    base_price_major_value text,
+    base_price_value text,
+    cancelled text,
+    changed text,
+    checked_in text,
+    contact_list_preferences_has_contact_list text,
+    contact_list_preferences_has_opted_in text,
+    contact_list_preferences_type text,
+    created text,
+    delivery_method text,
+    eventbrite_fee_currency text,
+    eventbrite_fee_display text,
+    eventbrite_fee_major_value text,
+    eventbrite_fee_value text,
+    gross_currency text,
+    gross_display text,
+    gross_major_value text,
+    gross_value text,
+    guestlist_id text,
+    payment_fee_currency text,
+    payment_fee_display text,
+    payment_fee_major_value text,
+    payment_fee_value text,
+    profile_addresses_bill_address_1 text,
+    profile_addresses_bill_address_2 text,
+    profile_addresses_bill_city text,
+    profile_addresses_bill_country text,
+    profile_addresses_bill_latitude text,
+    profile_addresses_bill_localized_address_display text,
+    profile_addresses_bill_localized_area_display text,
+    profile_addresses_bill_localized_multi_line_address_display jsonb,
+    profile_addresses_bill_longitude text,
+    profile_addresses_bill_postal_code text,
+    profile_addresses_bill_region text,
+    profile_addresses_home_address_1 text,
+    profile_addresses_home_address_2 text,
+    profile_addresses_home_city text,
+    profile_addresses_home_country text,
+    profile_addresses_home_latitude text,
+    profile_addresses_home_localized_address_display text,
+    profile_addresses_home_localized_area_display text,
+    profile_addresses_home_localized_multi_line_address_display jsonb,
+    profile_addresses_home_longitude text,
+    profile_addresses_home_postal_code text,
+    profile_addresses_home_region text,
+    profile_addresses_ship_address_1 text,
+    profile_addresses_ship_address_2 text,
+    profile_addresses_ship_city text,
+    profile_addresses_ship_country text,
+    profile_addresses_ship_latitude text,
+    profile_addresses_ship_localized_address_display text,
+    profile_addresses_ship_localized_area_display text,
+    profile_addresses_ship_localized_multi_line_address_display jsonb,
+    profile_addresses_ship_longitude text,
+    profile_addresses_ship_postal_code text,
+    profile_addresses_ship_region text,
+    profile_addresses_work_address_1 text,
+    profile_addresses_work_address_2 text,
+    profile_addresses_work_city text,
+    profile_addresses_work_country text,
+    profile_addresses_work_latitude text,
+    profile_addresses_work_localized_address_display text,
+    profile_addresses_work_localized_area_display text,
+    profile_addresses_work_localized_multi_line_address_display jsonb,
+    profile_addresses_work_longitude text,
+    profile_addresses_work_postal_code text,
+    profile_addresses_work_region text,
+    profile_age text,
+    profile_birth_date text,
+    profile_blog text,
+    profile_cell_phone text,
+    profile_company text,
+    profile_email text,
+    profile_first_name text,
+    profile_gender text,
+    profile_job_title text,
+    profile_last_name text,
+    profile_name text,
+    profile_prefix text,
+    profile_suffix text,
+    profile_website text,
+    profile_work_phone text,
+    refunded text,
+    "status" text,
+    tax_currency text,
+    tax_display text,
+    tax_major_value text,
+    tax_value text,
+    team_date_joined text,
+    team_event_id text,
+    team_id text,
+    team_name text,
+    variant_id text,
+    PRIMARY KEY (id),
+    FOREIGN KEY (event_id) REFERENCES event(id),
+    FOREIGN KEY (invited_by) REFERENCES organization_member(user_id),
+    FOREIGN KEY (order_id) REFERENCES orders(id),
+    FOREIGN KEY (organization_id) REFERENCES organization(id),
+    FOREIGN KEY (ticket_class_id) REFERENCES ticket_class(id)
+);
+
+CREATE TABLE inventory_tier_ticket_class (
+    ticket_class_id text,
+    inventory_tier_id text,
+    PRIMARY KEY (ticket_class_id, inventory_tier_id),
+    FOREIGN KEY (inventory_tier_id) REFERENCES inventory_tier(id)
+);
+
+CREATE TABLE inventory_tier_hold (
+    id text,
+    inventory_tier_id text,
+    event_hold_id text,
+    event_id text,
+    PRIMARY KEY (id, inventory_tier_id),
+    FOREIGN KEY (inventory_tier_id) REFERENCES inventory_tier(id),
+    FOREIGN KEY (event_hold_id) REFERENCES event_hold(id),
+    FOREIGN KEY (event_id) REFERENCES event(id)
+);
+
+CREATE TABLE inventory_tier (
+    id text,
+    event_id text,
+    capacity_total text,
+    color text,
+    count_against_event_capacity text,
+    "name" text,
+    quantity_held text,
+    quantity_pending text,
+    quantity_sold text,
+    quantity_total text,
+    seatmap_number text,
+    sort_order text,
+    tier text,
+    PRIMARY KEY (id),
+    FOREIGN KEY (event_id) REFERENCES event(id)
+);
+
+CREATE TABLE buyer_ticket_class (
+    survey_ticket_class_id text,
+    ticket_buyer_event_id text,
+    PRIMARY KEY (survey_ticket_class_id, ticket_buyer_event_id),
+    FOREIGN KEY (ticket_buyer_event_id) REFERENCES ticket_buyer(event_id)
+);
+
+CREATE TABLE ticket_buyer (
+    event_id text,
+    allow_attendee_update text,
+    confirmation_message_text text,
+    instructions_text text,
+    redirect_url text,
+    refund_request_enabled text,
+    sales_ended_message_text text,
+    survey_info_text text,
+    survey_name text,
+    survey_respondent text,
+    survey_time_limit text,
+    PRIMARY KEY (event_id),
+    FOREIGN KEY (event_id) REFERENCES event(id)
+);
+
+CREATE TABLE organization_member (
+    user_id text,
+    organization_id text,
+    immutable text,
+    role_summary text,
+    "type" text,
+    PRIMARY KEY (user_id),
+    FOREIGN KEY (organization_id) REFERENCES organization(id)
+);
+
+CREATE TABLE organization (
+    id text,
+    created text,
+    locale text,
+    "name" text,
+    parent_id text,
+    "type" text,
+    vertical text,
+    PRIMARY KEY (id)
+);
+
+CREATE TABLE ticket_group (
+    _fivetran_id text,
+    organization_id text,
+    event_ticket_ids jsonb,
+    "name" text,
+    "status" text,
+    tickets jsonb,
+    PRIMARY KEY (_fivetran_id),
+    FOREIGN KEY (organization_id) REFERENCES organization(id)
+);
+
+CREATE TABLE sub_category (
+    id text,
+    category_id text,
+    "name" text,
+    parent_category jsonb,
+    PRIMARY KEY (id, category_id),
+    FOREIGN KEY (category_id) REFERENCES category(id)
+);
+
+CREATE TABLE category (
+    id text,
+    "name" text,
+    name_localized text,
+    short_name text,
+    short_name_localized text,
+    PRIMARY KEY (id)
+);
+
+CREATE TABLE pricing (
+    _fivetran_id text,
+    channel text,
+    payment_type text,
+    country text,
+    currency text,
+    fee_name text,
+    fixed_currency text,
+    fixed_display text,
+    fixed_major_value text,
+    fixed_value text,
+    item_type text,
+    maximum_currency text,
+    maximum_display text,
+    maximum_major_value text,
+    maximum_value text,
+    minimum_currency text,
+    minimum_display text,
+    minimum_major_value text,
+    minimum_value text,
+    payment_fee text,
+    percentage text,
+    plan text,
+    PRIMARY KEY (_fivetran_id),
+    FOREIGN KEY (channel) REFERENCES ticket_delivery_sales_channel(sales_channel),
+    FOREIGN KEY (payment_type) REFERENCES event_checkout_offline_setting(payment_method)
+);

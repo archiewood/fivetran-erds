@@ -1,0 +1,981 @@
+{
+  "tables": [
+    {
+      "name": "pipeline_tag",
+      "columns": [
+        {
+          "name": "name",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "pipeline_id",
+          "type": "String",
+          "primaryKey": true,
+          "foreignKey": true
+        }
+      ],
+      "tags": [],
+      "link": "https://buildkite.com/docs/apis/rest-api/pipelines"
+    },
+    {
+      "name": "pipeline_step_agent_query_rule",
+      "columns": [
+        {
+          "name": "pipeline_step_index",
+          "type": "Long",
+          "primaryKey": true
+        },
+        {
+          "name": "rule",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "pipeline_id",
+          "type": "String",
+          "primaryKey": true,
+          "foreignKey": true
+        }
+      ],
+      "tags": [],
+      "link": "https://buildkite.com/docs/apis/rest-api/pipelines"
+    },
+    {
+      "name": "pipeline_step",
+      "columns": [
+        {
+          "name": "pipeline_id",
+          "type": "String",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "artifact_paths",
+          "type": "String"
+        },
+        {
+          "name": "branch_configuration",
+          "type": "String"
+        },
+        {
+          "name": "command",
+          "type": "String"
+        },
+        {
+          "name": "concurrency",
+          "type": "String"
+        },
+        {
+          "name": "env",
+          "type": "Json"
+        },
+        {
+          "name": "index",
+          "type": "Long"
+        },
+        {
+          "name": "name",
+          "type": "String"
+        },
+        {
+          "name": "parallelism",
+          "type": "String"
+        },
+        {
+          "name": "timeout_in_minutes",
+          "type": "String"
+        },
+        {
+          "name": "type",
+          "type": "String"
+        }
+      ],
+      "tags": [],
+      "link": "https://buildkite.com/docs/apis/rest-api/pipelines"
+    },
+    {
+      "name": "pipeline",
+      "columns": [
+        {
+          "name": "id",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "created_by_id",
+          "type": "String",
+          "foreignKey": true
+        },
+        {
+          "name": "organization_id",
+          "type": "String",
+          "foreignKey": true
+        },
+        {
+          "name": "allow_rebuilds",
+          "type": "Boolean"
+        },
+        {
+          "name": "archived_at",
+          "type": "String"
+        },
+        {
+          "name": "branch_configuration",
+          "type": "String"
+        },
+        {
+          "name": "builds_url",
+          "type": "String"
+        },
+        {
+          "name": "cancel_running_branch_builds",
+          "type": "Boolean"
+        },
+        {
+          "name": "cancel_running_branch_builds_filter",
+          "type": "String"
+        },
+        {
+          "name": "created_at",
+          "type": "Instant"
+        },
+        {
+          "name": "default_branch",
+          "type": "String"
+        },
+        {
+          "name": "env",
+          "type": "Json"
+        },
+        {
+          "name": "name",
+          "type": "String"
+        },
+        {
+          "name": "provider",
+          "type": "Json"
+        },
+        {
+          "name": "qraphql_id",
+          "type": "String"
+        },
+        {
+          "name": "repository",
+          "type": "String"
+        },
+        {
+          "name": "running_builds_count",
+          "type": "Int"
+        },
+        {
+          "name": "running_jobs_count",
+          "type": "Int"
+        },
+        {
+          "name": "scheduled_builds_count",
+          "type": "Int"
+        },
+        {
+          "name": "scheduled_jobs_count",
+          "type": "Int"
+        },
+        {
+          "name": "skip_queued_branch_builds",
+          "type": "Boolean"
+        },
+        {
+          "name": "skip_queued_branch_builds_filter",
+          "type": "String"
+        },
+        {
+          "name": "slug",
+          "type": "String"
+        },
+        {
+          "name": "url",
+          "type": "String"
+        },
+        {
+          "name": "visibility",
+          "type": "String"
+        },
+        {
+          "name": "waiting_jobs_count",
+          "type": "Int"
+        },
+        {
+          "name": "web_url",
+          "type": "String"
+        }
+      ],
+      "tags": [],
+      "link": "https://buildkite.com/docs/apis/rest-api/pipelines"
+    },
+    {
+      "name": "agent_metadata",
+      "columns": [
+        {
+          "name": "name",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "agent_id",
+          "type": "String",
+          "primaryKey": true,
+          "foreignKey": true
+        }
+      ],
+      "tags": [],
+      "link": "https://buildkite.com/docs/apis/graphql/schemas/object/build"
+    },
+    {
+      "name": "agent",
+      "columns": [
+        {
+          "name": "id",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "creator_id",
+          "type": "String",
+          "foreignKey": true
+        },
+        {
+          "name": "organization_id",
+          "type": "String",
+          "foreignKey": true
+        },
+        {
+          "name": "connection_state",
+          "type": "String"
+        },
+        {
+          "name": "created_at",
+          "type": "Instant"
+        },
+        {
+          "name": "hostname",
+          "type": "String"
+        },
+        {
+          "name": "ip_address",
+          "type": "String"
+        },
+        {
+          "name": "last_job_finished_at",
+          "type": "Instant"
+        },
+        {
+          "name": "name",
+          "type": "String"
+        },
+        {
+          "name": "priority",
+          "type": "String"
+        },
+        {
+          "name": "url",
+          "type": "String"
+        },
+        {
+          "name": "user_agent",
+          "type": "String"
+        },
+        {
+          "name": "version",
+          "type": "String"
+        },
+        {
+          "name": "web_url",
+          "type": "String"
+        }
+      ],
+      "tags": [],
+      "link": "https://buildkite.com/docs/apis/graphql/schemas/object/build"
+    },
+    {
+      "name": "build_job_agent_query_rule",
+      "columns": [
+        {
+          "name": "rule",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "build_job_id",
+          "type": "String",
+          "primaryKey": true,
+          "foreignKey": true
+        }
+      ],
+      "tags": [],
+      "link": "https://buildkite.com/docs/apis/graphql/schemas/object/build"
+    },
+    {
+      "name": "build_job",
+      "columns": [
+        {
+          "name": "id",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "build_id",
+          "type": "String",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "agent_id",
+          "type": "String",
+          "foreignKey": true
+        },
+        {
+          "name": "organization_id",
+          "type": "String",
+          "foreignKey": true
+        },
+        {
+          "name": "retried_in_job_id",
+          "type": "Unknown",
+          "foreignKey": true
+        },
+        {
+          "name": "unblocked_by_id",
+          "type": "String",
+          "foreignKey": true
+        },
+        {
+          "name": "artifact_paths",
+          "type": "String"
+        },
+        {
+          "name": "artifacts_url",
+          "type": "String"
+        },
+        {
+          "name": "build_url",
+          "type": "String"
+        },
+        {
+          "name": "command",
+          "type": "String"
+        },
+        {
+          "name": "created_at",
+          "type": "Instant"
+        },
+        {
+          "name": "exit_status",
+          "type": "Long"
+        },
+        {
+          "name": "expired_at",
+          "type": "Instant"
+        },
+        {
+          "name": "finished_at",
+          "type": "Instant"
+        },
+        {
+          "name": "graphql_id",
+          "type": "String"
+        },
+        {
+          "name": "log_url",
+          "type": "String"
+        },
+        {
+          "name": "matrix",
+          "type": "String"
+        },
+        {
+          "name": "name",
+          "type": "String"
+        },
+        {
+          "name": "parallel_group_index",
+          "type": "Int"
+        },
+        {
+          "name": "parallel_group_total",
+          "type": "Int"
+        },
+        {
+          "name": "priority",
+          "type": "Int"
+        },
+        {
+          "name": "raw_log_url",
+          "type": "String"
+        },
+        {
+          "name": "retried",
+          "type": "Boolean"
+        },
+        {
+          "name": "retries_count",
+          "type": "Int"
+        },
+        {
+          "name": "retry_type",
+          "type": "String"
+        },
+        {
+          "name": "runnable_at",
+          "type": "Instant"
+        },
+        {
+          "name": "scheduled_at",
+          "type": "Instant"
+        },
+        {
+          "name": "soft_failed",
+          "type": "Boolean"
+        },
+        {
+          "name": "started_at",
+          "type": "Instant"
+        },
+        {
+          "name": "state",
+          "type": "String"
+        },
+        {
+          "name": "step_id",
+          "type": "String"
+        },
+        {
+          "name": "step_key",
+          "type": "String"
+        },
+        {
+          "name": "step_signature_algorithm",
+          "type": "String"
+        },
+        {
+          "name": "step_signature_signed_fields",
+          "type": "Json"
+        },
+        {
+          "name": "step_signature_value",
+          "type": "String"
+        },
+        {
+          "name": "type",
+          "type": "String"
+        },
+        {
+          "name": "unblock_url",
+          "type": "String"
+        },
+        {
+          "name": "unblockable",
+          "type": "Boolean"
+        },
+        {
+          "name": "unblocked_at",
+          "type": "Instant"
+        },
+        {
+          "name": "web_url",
+          "type": "String"
+        }
+      ],
+      "tags": [],
+      "link": "https://buildkite.com/docs/apis/graphql/schemas/object/build"
+    },
+    {
+      "name": "build",
+      "columns": [
+        {
+          "name": "id",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "creator_id",
+          "type": "String",
+          "foreignKey": true
+        },
+        {
+          "name": "organization_id",
+          "type": "String",
+          "foreignKey": true
+        },
+        {
+          "name": "pipeline_id",
+          "type": "String",
+          "foreignKey": true
+        },
+        {
+          "name": "rebuilt_from_id",
+          "type": "String",
+          "foreignKey": true
+        },
+        {
+          "name": "blocked",
+          "type": "Boolean"
+        },
+        {
+          "name": "blocked_state",
+          "type": "String"
+        },
+        {
+          "name": "branch",
+          "type": "String"
+        },
+        {
+          "name": "commit",
+          "type": "String"
+        },
+        {
+          "name": "created_at",
+          "type": "Instant"
+        },
+        {
+          "name": "env",
+          "type": "Json"
+        },
+        {
+          "name": "finished_at",
+          "type": "Instant"
+        },
+        {
+          "name": "github_author_email",
+          "type": "String"
+        },
+        {
+          "name": "github_author_name",
+          "type": "String"
+        },
+        {
+          "name": "github_author_username",
+          "type": "String"
+        },
+        {
+          "name": "graphql_id",
+          "type": "String"
+        },
+        {
+          "name": "message",
+          "type": "String"
+        },
+        {
+          "name": "meta_data",
+          "type": "Json"
+        },
+        {
+          "name": "number",
+          "type": "Long"
+        },
+        {
+          "name": "pipeline_slug",
+          "type": "String"
+        },
+        {
+          "name": "pr_number",
+          "type": "String"
+        },
+        {
+          "name": "pr_repo",
+          "type": "String"
+        },
+        {
+          "name": "scheduled_at",
+          "type": "Instant"
+        },
+        {
+          "name": "source",
+          "type": "String"
+        },
+        {
+          "name": "started_at",
+          "type": "Instant"
+        },
+        {
+          "name": "state",
+          "type": "String"
+        },
+        {
+          "name": "tag",
+          "type": "String"
+        },
+        {
+          "name": "url",
+          "type": "String"
+        },
+        {
+          "name": "web_url",
+          "type": "String"
+        }
+      ],
+      "tags": [],
+      "link": "https://buildkite.com/docs/apis/graphql/schemas/object/build"
+    },
+    {
+      "name": "organization",
+      "columns": [
+        {
+          "name": "id",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "agents_url",
+          "type": "String"
+        },
+        {
+          "name": "created_at",
+          "type": "Instant"
+        },
+        {
+          "name": "emojis_url",
+          "type": "String"
+        },
+        {
+          "name": "graph_id",
+          "type": "String"
+        },
+        {
+          "name": "name",
+          "type": "String"
+        },
+        {
+          "name": "pipelines_url",
+          "type": "String"
+        },
+        {
+          "name": "slug",
+          "type": "String"
+        },
+        {
+          "name": "url",
+          "type": "String"
+        },
+        {
+          "name": "web_url",
+          "type": "String"
+        }
+      ],
+      "tags": [],
+      "link": "https://buildkite.com/docs/apis/rest-api/organizations"
+    },
+    {
+      "name": "users",
+      "columns": [
+        {
+          "name": "id",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "organization_id",
+          "type": "String",
+          "foreignKey": true
+        },
+        {
+          "name": "avatar_url",
+          "type": "String"
+        },
+        {
+          "name": "created_at",
+          "type": "Instant"
+        },
+        {
+          "name": "email",
+          "type": "String"
+        },
+        {
+          "name": "graph_id",
+          "type": "String"
+        },
+        {
+          "name": "is_bot",
+          "type": "Boolean"
+        },
+        {
+          "name": "name",
+          "type": "String"
+        },
+        {
+          "name": "role",
+          "type": "String"
+        },
+        {
+          "name": "sso_mode",
+          "type": "String"
+        }
+      ],
+      "tags": [],
+      "link": "https://buildkite.com/docs/apis/graphql/schemas/object/user"
+    }
+  ],
+  "relations": [
+    {
+      "targetTable": "pipeline",
+      "sourceTable": "pipeline_tag",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "pipeline_id"
+      ]
+    },
+    {
+      "targetTable": "pipeline",
+      "sourceTable": "pipeline_step_agent_query_rule",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "pipeline_id"
+      ]
+    },
+    {
+      "targetTable": "pipeline",
+      "sourceTable": "pipeline_step",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "pipeline_id"
+      ]
+    },
+    {
+      "targetTable": "users",
+      "sourceTable": "pipeline",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "created_by_id"
+      ]
+    },
+    {
+      "targetTable": "organization",
+      "sourceTable": "pipeline",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "organization_id"
+      ]
+    },
+    {
+      "targetTable": "agent",
+      "sourceTable": "agent_metadata",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "agent_id"
+      ]
+    },
+    {
+      "targetTable": "users",
+      "sourceTable": "agent",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "creator_id"
+      ]
+    },
+    {
+      "targetTable": "organization",
+      "sourceTable": "agent",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "organization_id"
+      ]
+    },
+    {
+      "targetTable": "build_job",
+      "sourceTable": "build_job_agent_query_rule",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "build_job_id"
+      ]
+    },
+    {
+      "targetTable": "users",
+      "sourceTable": "build_job",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "unblocked_by_id"
+      ]
+    },
+    {
+      "targetTable": "build",
+      "sourceTable": "build_job",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "retried_in_job_id"
+      ]
+    },
+    {
+      "targetTable": "agent",
+      "sourceTable": "build_job",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "agent_id"
+      ]
+    },
+    {
+      "targetTable": "build",
+      "sourceTable": "build_job",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "build_id"
+      ]
+    },
+    {
+      "targetTable": "organization",
+      "sourceTable": "build_job",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "organization_id"
+      ]
+    },
+    {
+      "targetTable": "pipeline",
+      "sourceTable": "build",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "pipeline_id"
+      ]
+    },
+    {
+      "targetTable": "build",
+      "sourceTable": "build",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "rebuilt_from_id"
+      ]
+    },
+    {
+      "targetTable": "users",
+      "sourceTable": "build",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "creator_id"
+      ]
+    },
+    {
+      "targetTable": "organization",
+      "sourceTable": "build",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "organization_id"
+      ]
+    },
+    {
+      "targetTable": "organization",
+      "sourceTable": "users",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "organization_id"
+      ]
+    }
+  ],
+  "positions": {
+    "annotation": {
+      "x": 1609.5165036193391,
+      "y": 1470.690404499064
+    },
+    "pipeline_step": {
+      "x": 460.6224129610223,
+      "y": 1328.4960878569682
+    },
+    "agent": {
+      "x": 1157.6513711447046,
+      "y": 33.145204278585766
+    },
+    "pipeline_step_agent_query_rule": {
+      "x": 463.50993818781535,
+      "y": 1897.9444071810462
+    },
+    "build_job_agent_query_rule": {
+      "x": 2376.3377706581027,
+      "y": 386.0117445987082
+    },
+    "users": {
+      "x": 466.12045750784,
+      "y": 512.7670438520238
+    },
+    "build_job": {
+      "x": 1729.5423247539125,
+      "y": -128.0169750511933
+    },
+    "artifact": {
+      "x": 2307.4246992474878,
+      "y": 962.1277126613386
+    },
+    "pipeline": {
+      "x": -74.11023115991179,
+      "y": 718.1951184594697
+    },
+    "build": {
+      "x": 1106.408535934127,
+      "y": 782.6330725597525
+    },
+    "organization": {
+      "x": -49.62625046980202,
+      "y": 87.29097196122115
+    },
+    "pipeline_tag": {
+      "x": 462.91635410188246,
+      "y": 1002.7037325916201
+    },
+    "agent_metadata": {
+      "x": 502.53184772418103,
+      "y": 178.79205297849802
+    }
+  },
+  "notes": {
+    "byTable": {},
+    "generalNotes": []
+  },
+  "tableGroups": [
+    {
+      "id": "04846a2a2f",
+      "parentTable": "pipeline",
+      "tables": [
+        "pipeline_step",
+        "pipeline_tag",
+        "pipeline_step_agent_query_rule"
+      ],
+      "excludedTables": [],
+      "width": null,
+      "height": null
+    }
+  ]
+}

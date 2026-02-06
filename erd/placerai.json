@@ -1,0 +1,317 @@
+{
+  "tables": [
+    {
+      "name": "visit_by_trend",
+      "columns": [
+        {
+          "name": "date",
+          "type": "Unknown",
+          "primaryKey": true
+        },
+        {
+          "name": "api_id",
+          "type": "Unknown",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "panel_visit",
+          "type": "Unknown"
+        },
+        {
+          "name": "visit",
+          "type": "Unknown"
+        },
+        {
+          "name": "visit_duration_segmentation",
+          "type": "Unknown"
+        }
+      ],
+      "link": "https://docs.placer.ai/reference/post_v1-reports-visit-trends"
+    },
+    {
+      "name": "entity",
+      "columns": [
+        {
+          "name": "api_id",
+          "type": "Unknown",
+          "primaryKey": true
+        },
+        {
+          "name": "address_city",
+          "type": "Unknown"
+        },
+        {
+          "name": "address_country_code",
+          "type": "Unknown"
+        },
+        {
+          "name": "address_formatted_address",
+          "type": "Unknown"
+        },
+        {
+          "name": "address_short_formatted_address",
+          "type": "Unknown"
+        },
+        {
+          "name": "address_state",
+          "type": "Unknown"
+        },
+        {
+          "name": "address_street_name",
+          "type": "Unknown"
+        },
+        {
+          "name": "address_zip_code",
+          "type": "Unknown"
+        },
+        {
+          "name": "category_infocategory",
+          "type": "Unknown"
+        },
+        {
+          "name": "category_infogroup",
+          "type": "Unknown"
+        },
+        {
+          "name": "category_infosub_category",
+          "type": "Unknown"
+        },
+        {
+          "name": "is_flagged",
+          "type": "Unknown"
+        },
+        {
+          "name": "is_permitted",
+          "type": "Unknown"
+        },
+        {
+          "name": "name",
+          "type": "Unknown"
+        },
+        {
+          "name": "parent_chain_api_id",
+          "type": "Unknown"
+        },
+        {
+          "name": "parent_chain_name",
+          "type": "Unknown"
+        },
+        {
+          "name": "parent_tag_api_id",
+          "type": "Unknown"
+        },
+        {
+          "name": "parent_tag_name",
+          "type": "Unknown"
+        },
+        {
+          "name": "placer_url",
+          "type": "Unknown"
+        },
+        {
+          "name": "region_cbsa_code",
+          "type": "Unknown"
+        },
+        {
+          "name": "region_cbsa_name",
+          "type": "Unknown"
+        },
+        {
+          "name": "region_code",
+          "type": "Unknown"
+        },
+        {
+          "name": "region_dma_code",
+          "type": "Unknown"
+        },
+        {
+          "name": "region_dma_name",
+          "type": "Unknown"
+        },
+        {
+          "name": "region_state_code",
+          "type": "Unknown"
+        },
+        {
+          "name": "region_state_name",
+          "type": "Unknown"
+        },
+        {
+          "name": "region_type",
+          "type": "Unknown"
+        }
+      ],
+      "link": "https://docs.placer.ai/reference/get_v1-poi-my-properties"
+    },
+    {
+      "name": "sub_entity",
+      "columns": [
+        {
+          "name": "sub_entity_api_id",
+          "type": "Unknown",
+          "primaryKey": true
+        },
+        {
+          "name": "entity_api_id",
+          "type": "Unknown",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "flagged",
+          "type": "Unknown"
+        },
+        {
+          "name": "name",
+          "type": "Unknown"
+        },
+        {
+          "name": "region_code",
+          "type": "Unknown"
+        },
+        {
+          "name": "region_type",
+          "type": "Unknown"
+        },
+        {
+          "name": "store_id",
+          "type": "Unknown"
+        }
+      ],
+      "link": "https://docs.placer.ai/reference/get_v1-poi-id-entities"
+    },
+    {
+      "name": "visit_by_hour",
+      "columns": [
+        {
+          "name": "bins",
+          "type": "Unknown",
+          "primaryKey": true
+        },
+        {
+          "name": "end_date",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "start_date",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "api_id",
+          "type": "Unknown",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "estimated_foot_traffic",
+          "type": "Unknown"
+        },
+        {
+          "name": "near_by_radius",
+          "type": "Unknown"
+        },
+        {
+          "name": "visit_duration_segmentation",
+          "type": "Unknown"
+        }
+      ],
+      "link": "https://docs.placer.ai/reference/post_v1-reports-visit-trends"
+    },
+    {
+      "name": "visit_by_opening_hour",
+      "columns": [
+        {
+          "name": "index",
+          "type": "Unknown",
+          "primaryKey": true
+        },
+        {
+          "name": "api_id",
+          "type": "Unknown",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "day",
+          "type": "Unknown"
+        },
+        {
+          "name": "from_hour",
+          "type": "Unknown"
+        },
+        {
+          "name": "to_hour",
+          "type": "Unknown"
+        }
+      ],
+      "link": "https://docs.placer.ai/reference/post_v1-reports-visit-metrics-hours"
+    }
+  ],
+  "relations": [
+    {
+      "targetTable": "entity",
+      "sourceTable": "visit_by_trend",
+      "targetColumns": [
+        "api_id"
+      ],
+      "sourceColumns": [
+        "api_id"
+      ]
+    },
+    {
+      "targetTable": "entity",
+      "sourceTable": "sub_entity",
+      "targetColumns": [
+        "api_id"
+      ],
+      "sourceColumns": [
+        "entity_api_id"
+      ]
+    },
+    {
+      "targetTable": "entity",
+      "sourceTable": "visit_by_hour",
+      "targetColumns": [
+        "api_id"
+      ],
+      "sourceColumns": [
+        "api_id"
+      ]
+    },
+    {
+      "targetTable": "entity",
+      "sourceTable": "visit_by_opening_hour",
+      "targetColumns": [
+        "api_id"
+      ],
+      "sourceColumns": [
+        "api_id"
+      ]
+    }
+  ],
+  "positions": {
+    "visit_by_trend": {
+      "x": -549,
+      "y": 827
+    },
+    "entity": {
+      "x": 0,
+      "y": 0
+    },
+    "sub_entity": {
+      "x": 504,
+      "y": 0
+    },
+    "visit_by_hour": {
+      "x": -549,
+      "y": 375
+    },
+    "visit_by_opening_hour": {
+      "x": -549,
+      "y": 0
+    }
+  }
+}

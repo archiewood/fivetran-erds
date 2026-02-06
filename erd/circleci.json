@@ -1,0 +1,1193 @@
+{
+  "tables": [
+    {
+      "name": "project",
+      "columns": [
+        {
+          "name": "id",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "user_slug",
+          "type": "String",
+          "foreignKey": true
+        },
+        {
+          "name": "name",
+          "type": "String"
+        },
+        {
+          "name": "organization_id",
+          "type": "String"
+        },
+        {
+          "name": "organization_name",
+          "type": "String"
+        },
+        {
+          "name": "organization_slug",
+          "type": "String"
+        },
+        {
+          "name": "slug",
+          "type": "String"
+        },
+        {
+          "name": "vcs_info_default_branch",
+          "type": "String"
+        },
+        {
+          "name": "vcs_info_provider",
+          "type": "String"
+        },
+        {
+          "name": "vcs_info_vcs_url",
+          "type": "String"
+        }
+      ],
+      "link": ""
+    },
+    {
+      "name": "project_branch",
+      "columns": [
+        {
+          "name": "branch_name",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "project_id",
+          "type": "String",
+          "primaryKey": true,
+          "foreignKey": true
+        }
+      ],
+      "link": ""
+    },
+    {
+      "name": "workflow_recent_run",
+      "columns": [
+        {
+          "name": "id",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "project_id",
+          "type": "String",
+          "foreignKey": true
+        },
+        {
+          "name": "workflow_id",
+          "type": "String",
+          "foreignKey": true
+        },
+        {
+          "name": "branch",
+          "type": "String"
+        },
+        {
+          "name": "created_at",
+          "type": "Instant"
+        },
+        {
+          "name": "credits_used",
+          "type": "Double"
+        },
+        {
+          "name": "duration",
+          "type": "Double"
+        },
+        {
+          "name": "status",
+          "type": "String"
+        },
+        {
+          "name": "stopped_at",
+          "type": "Instant"
+        }
+      ],
+      "link": ""
+    },
+    {
+      "name": "user_collaboration",
+      "columns": [
+        {
+          "name": "slug",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "avatar_url",
+          "type": "String"
+        },
+        {
+          "name": "id",
+          "type": "String"
+        },
+        {
+          "name": "name",
+          "type": "String"
+        },
+        {
+          "name": "vcs_type",
+          "type": "String"
+        }
+      ],
+      "link": ""
+    },
+    {
+      "name": "workflow_job_dependency",
+      "columns": [
+        {
+          "name": "dependency",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "job_id",
+          "type": "String",
+          "primaryKey": true,
+          "foreignKey": true
+        }
+      ],
+      "link": ""
+    },
+    {
+      "name": "workflow_job",
+      "columns": [
+        {
+          "name": "id",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "project_id",
+          "type": "String",
+          "foreignKey": true
+        },
+        {
+          "name": "workflow_id",
+          "type": "String",
+          "foreignKey": true
+        },
+        {
+          "name": "approval_request_id",
+          "type": "String"
+        },
+        {
+          "name": "approved_by",
+          "type": "String"
+        },
+        {
+          "name": "canceled_by",
+          "type": "String"
+        },
+        {
+          "name": "job_number",
+          "type": "String"
+        },
+        {
+          "name": "name",
+          "type": "String"
+        },
+        {
+          "name": "project_slug",
+          "type": "String"
+        },
+        {
+          "name": "started_at",
+          "type": "Instant"
+        },
+        {
+          "name": "status",
+          "type": "String"
+        },
+        {
+          "name": "stopped_at",
+          "type": "Instant"
+        },
+        {
+          "name": "type",
+          "type": "String"
+        }
+      ],
+      "link": ""
+    },
+    {
+      "name": "context",
+      "columns": [
+        {
+          "name": "id",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "user_slug",
+          "type": "String",
+          "foreignKey": true
+        },
+        {
+          "name": "created_at",
+          "type": "Instant"
+        },
+        {
+          "name": "name",
+          "type": "String"
+        }
+      ],
+      "link": ""
+    },
+    {
+      "name": "flaky_test",
+      "columns": [
+        {
+          "name": "_fivetran_id",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "project_id",
+          "type": "String",
+          "foreignKey": true
+        },
+        {
+          "name": "workflow_id",
+          "type": "Unknown",
+          "foreignKey": true
+        },
+        {
+          "name": "classname",
+          "type": "String"
+        },
+        {
+          "name": "file",
+          "type": "String"
+        },
+        {
+          "name": "job_name",
+          "type": "String"
+        },
+        {
+          "name": "job_number",
+          "type": "Double"
+        },
+        {
+          "name": "pipeline_number",
+          "type": "Double"
+        },
+        {
+          "name": "source",
+          "type": "String"
+        },
+        {
+          "name": "test_name",
+          "type": "String"
+        },
+        {
+          "name": "time_wasted",
+          "type": "Int"
+        },
+        {
+          "name": "times_flaked",
+          "type": "Int"
+        },
+        {
+          "name": "workflow_created_at",
+          "type": "Instant"
+        },
+        {
+          "name": "workflow_name",
+          "type": "String"
+        }
+      ],
+      "link": ""
+    },
+    {
+      "name": "pipeline_error",
+      "columns": [
+        {
+          "name": "_fivetran_id",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "pipeline_id",
+          "type": "String",
+          "foreignKey": true
+        },
+        {
+          "name": "message",
+          "type": "String"
+        },
+        {
+          "name": "type",
+          "type": "String"
+        }
+      ],
+      "link": ""
+    },
+    {
+      "name": "pipeline",
+      "columns": [
+        {
+          "name": "id",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "project_id",
+          "type": "String",
+          "foreignKey": true
+        },
+        {
+          "name": "created_at",
+          "type": "Instant"
+        },
+        {
+          "name": "number",
+          "type": "Double"
+        },
+        {
+          "name": "project_slug",
+          "type": "String"
+        },
+        {
+          "name": "state",
+          "type": "String"
+        },
+        {
+          "name": "trigger_actor_avatar_url",
+          "type": "String"
+        },
+        {
+          "name": "trigger_actor_login",
+          "type": "String"
+        },
+        {
+          "name": "trigger_received_at",
+          "type": "Instant"
+        },
+        {
+          "name": "trigger_type",
+          "type": "String"
+        },
+        {
+          "name": "updated_at",
+          "type": "Instant"
+        },
+        {
+          "name": "vcs_branch",
+          "type": "String"
+        },
+        {
+          "name": "vcs_commit_body",
+          "type": "String"
+        },
+        {
+          "name": "vcs_commit_subject",
+          "type": "String"
+        },
+        {
+          "name": "vcs_origin_repository_url",
+          "type": "String"
+        },
+        {
+          "name": "vcs_provider_name",
+          "type": "String"
+        },
+        {
+          "name": "vcs_review_id",
+          "type": "String"
+        },
+        {
+          "name": "vcs_review_url",
+          "type": "String"
+        },
+        {
+          "name": "vcs_revision",
+          "type": "String"
+        },
+        {
+          "name": "vcs_tags",
+          "type": "String"
+        },
+        {
+          "name": "vcs_target_repository_url",
+          "type": "String"
+        },
+        {
+          "name": "trigger_parameters_*",
+          "type": "",
+          "wildCard": true
+        }
+      ],
+      "link": ""
+    },
+    {
+      "name": "schedule_day_of_month",
+      "columns": [
+        {
+          "name": "date",
+          "type": "Int",
+          "primaryKey": true
+        },
+        {
+          "name": "schedule_id",
+          "type": "String",
+          "primaryKey": true,
+          "foreignKey": true
+        }
+      ],
+      "link": ""
+    },
+    {
+      "name": "schedule_month",
+      "columns": [
+        {
+          "name": "month",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "schedule_id",
+          "type": "String",
+          "primaryKey": true,
+          "foreignKey": true
+        }
+      ],
+      "link": ""
+    },
+    {
+      "name": "schedule_hour_of_day",
+      "columns": [
+        {
+          "name": "hour",
+          "type": "Int",
+          "primaryKey": true
+        },
+        {
+          "name": "schedule_id",
+          "type": "String",
+          "primaryKey": true,
+          "foreignKey": true
+        }
+      ],
+      "link": ""
+    },
+    {
+      "name": "schedule_day_of_week",
+      "columns": [
+        {
+          "name": "day",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "schedule_id",
+          "type": "String",
+          "primaryKey": true,
+          "foreignKey": true
+        }
+      ],
+      "link": ""
+    },
+    {
+      "name": "schedule",
+      "columns": [
+        {
+          "name": "id",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "project_id",
+          "type": "String",
+          "foreignKey": true
+        },
+        {
+          "name": "actor_id",
+          "type": "String"
+        },
+        {
+          "name": "actor_login",
+          "type": "String"
+        },
+        {
+          "name": "actor_name",
+          "type": "String"
+        },
+        {
+          "name": "created_at",
+          "type": "Instant"
+        },
+        {
+          "name": "description",
+          "type": "String"
+        },
+        {
+          "name": "name",
+          "type": "String"
+        },
+        {
+          "name": "parameters_branch",
+          "type": "String"
+        },
+        {
+          "name": "parameters_deploy_prod",
+          "type": "Boolean"
+        },
+        {
+          "name": "project_slug",
+          "type": "String"
+        },
+        {
+          "name": "timetable_per_hour",
+          "type": "Int"
+        },
+        {
+          "name": "updated_at",
+          "type": "Instant"
+        }
+      ],
+      "link": ""
+    },
+    {
+      "name": "job_parallel_run",
+      "columns": [
+        {
+          "name": "_fivetran_id",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "job_number",
+          "type": "String",
+          "foreignKey": true
+        },
+        {
+          "name": "project_id",
+          "type": "String",
+          "foreignKey": true
+        },
+        {
+          "name": "index",
+          "type": "Double"
+        },
+        {
+          "name": "status",
+          "type": "String"
+        }
+      ],
+      "link": ""
+    },
+    {
+      "name": "job_message",
+      "columns": [
+        {
+          "name": "_fivetran_id",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "job_number",
+          "type": "String",
+          "foreignKey": true
+        },
+        {
+          "name": "project_id",
+          "type": "String",
+          "foreignKey": true
+        },
+        {
+          "name": "message",
+          "type": "String"
+        },
+        {
+          "name": "reason",
+          "type": "String"
+        },
+        {
+          "name": "type",
+          "type": "String"
+        }
+      ],
+      "link": ""
+    },
+    {
+      "name": "job_context",
+      "columns": [
+        {
+          "name": "name",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "job_number",
+          "type": "String",
+          "foreignKey": true
+        },
+        {
+          "name": "project_id",
+          "type": "String",
+          "foreignKey": true
+        }
+      ],
+      "link": ""
+    },
+    {
+      "name": "job",
+      "columns": [
+        {
+          "name": "number",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "project_id",
+          "type": "String",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "latest_workflow_name",
+          "type": "String",
+          "foreignKey": true
+        },
+        {
+          "name": "pipeline_id",
+          "type": "String",
+          "foreignKey": true
+        },
+        {
+          "name": "created_at",
+          "type": "Instant"
+        },
+        {
+          "name": "duration",
+          "type": "Double"
+        },
+        {
+          "name": "executor_resource_class",
+          "type": "String"
+        },
+        {
+          "name": "executor_type",
+          "type": "String"
+        },
+        {
+          "name": "name",
+          "type": "String"
+        },
+        {
+          "name": "organization_name",
+          "type": "String"
+        },
+        {
+          "name": "parallelism",
+          "type": "String"
+        },
+        {
+          "name": "queued_at",
+          "type": "Instant"
+        },
+        {
+          "name": "started_at",
+          "type": "Instant"
+        },
+        {
+          "name": "status",
+          "type": "String"
+        },
+        {
+          "name": "stopped_at",
+          "type": "Instant"
+        },
+        {
+          "name": "web_url",
+          "type": "String"
+        }
+      ],
+      "link": ""
+    },
+    {
+      "name": "job_artifact",
+      "columns": [
+        {
+          "name": "_fivetran_id",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "job_number",
+          "type": "String",
+          "foreignKey": true
+        },
+        {
+          "name": "project_id",
+          "type": "String",
+          "foreignKey": true
+        },
+        {
+          "name": "node_index",
+          "type": "Double"
+        },
+        {
+          "name": "path",
+          "type": "String"
+        },
+        {
+          "name": "url",
+          "type": "String"
+        }
+      ],
+      "link": ""
+    },
+    {
+      "name": "workflow",
+      "columns": [
+        {
+          "name": "id",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "pipeline_id",
+          "type": "String",
+          "foreignKey": true
+        },
+        {
+          "name": "project_id",
+          "type": "String",
+          "foreignKey": true
+        },
+        {
+          "name": "canceled_by",
+          "type": "String"
+        },
+        {
+          "name": "created_at",
+          "type": "Instant"
+        },
+        {
+          "name": "errored_by",
+          "type": "String"
+        },
+        {
+          "name": "name",
+          "type": "String"
+        },
+        {
+          "name": "project_slug",
+          "type": "String"
+        },
+        {
+          "name": "started_by",
+          "type": "String"
+        },
+        {
+          "name": "status",
+          "type": "String"
+        },
+        {
+          "name": "stopped_at",
+          "type": "Instant"
+        },
+        {
+          "name": "tags",
+          "type": "String"
+        }
+      ],
+      "link": ""
+    }
+  ],
+  "relations": [
+    {
+      "targetTable": "user_collaboration",
+      "sourceTable": "project",
+      "targetColumns": [
+        "slug"
+      ],
+      "sourceColumns": [
+        "user_slug"
+      ]
+    },
+    {
+      "targetTable": "project",
+      "sourceTable": "project_branch",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "project_id"
+      ]
+    },
+    {
+      "targetTable": "project",
+      "sourceTable": "workflow_recent_run",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "project_id"
+      ]
+    },
+    {
+      "targetTable": "workflow",
+      "sourceTable": "workflow_recent_run",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "workflow_id"
+      ]
+    },
+    {
+      "targetTable": "workflow_job",
+      "sourceTable": "workflow_job_dependency",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "job_id"
+      ]
+    },
+    {
+      "targetTable": "workflow",
+      "sourceTable": "workflow_job",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "workflow_id"
+      ]
+    },
+    {
+      "targetTable": "project",
+      "sourceTable": "workflow_job",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "project_id"
+      ]
+    },
+    {
+      "targetTable": "user_collaboration",
+      "sourceTable": "context",
+      "targetColumns": [
+        "slug"
+      ],
+      "sourceColumns": [
+        "user_slug"
+      ]
+    },
+    {
+      "targetTable": "project",
+      "sourceTable": "flaky_test",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "project_id"
+      ]
+    },
+    {
+      "targetTable": "workflow",
+      "sourceTable": "flaky_test",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "workflow_id"
+      ]
+    },
+    {
+      "targetTable": "pipeline",
+      "sourceTable": "pipeline_error",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "pipeline_id"
+      ]
+    },
+    {
+      "targetTable": "project",
+      "sourceTable": "pipeline",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "project_id"
+      ]
+    },
+    {
+      "targetTable": "schedule",
+      "sourceTable": "schedule_day_of_month",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "schedule_id"
+      ]
+    },
+    {
+      "targetTable": "schedule",
+      "sourceTable": "schedule_month",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "schedule_id"
+      ]
+    },
+    {
+      "targetTable": "schedule",
+      "sourceTable": "schedule_hour_of_day",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "schedule_id"
+      ]
+    },
+    {
+      "targetTable": "schedule",
+      "sourceTable": "schedule_day_of_week",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "schedule_id"
+      ]
+    },
+    {
+      "targetTable": "project",
+      "sourceTable": "schedule",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "project_id"
+      ]
+    },
+    {
+      "targetTable": "job",
+      "sourceTable": "job_parallel_run",
+      "targetColumns": [
+        "number"
+      ],
+      "sourceColumns": [
+        "job_number"
+      ]
+    },
+    {
+      "targetTable": "project",
+      "sourceTable": "job_parallel_run",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "project_id"
+      ]
+    },
+    {
+      "targetTable": "job",
+      "sourceTable": "job_message",
+      "targetColumns": [
+        "number"
+      ],
+      "sourceColumns": [
+        "job_number"
+      ]
+    },
+    {
+      "targetTable": "project",
+      "sourceTable": "job_message",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "project_id"
+      ]
+    },
+    {
+      "targetTable": "job",
+      "sourceTable": "job_context",
+      "targetColumns": [
+        "number"
+      ],
+      "sourceColumns": [
+        "job_number"
+      ]
+    },
+    {
+      "targetTable": "project",
+      "sourceTable": "job_context",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "project_id"
+      ]
+    },
+    {
+      "targetTable": "pipeline",
+      "sourceTable": "job",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "pipeline_id"
+      ]
+    },
+    {
+      "targetTable": "workflow",
+      "sourceTable": "job",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "latest_workflow_name"
+      ]
+    },
+    {
+      "targetTable": "project",
+      "sourceTable": "job",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "project_id"
+      ]
+    },
+    {
+      "targetTable": "job",
+      "sourceTable": "job_artifact",
+      "targetColumns": [
+        "number"
+      ],
+      "sourceColumns": [
+        "job_number"
+      ]
+    },
+    {
+      "targetTable": "project",
+      "sourceTable": "job_artifact",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "project_id"
+      ]
+    },
+    {
+      "targetTable": "pipeline",
+      "sourceTable": "workflow",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "pipeline_id"
+      ]
+    },
+    {
+      "targetTable": "project",
+      "sourceTable": "workflow",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "project_id"
+      ]
+    }
+  ],
+  "positions": {
+    "workflow": {
+      "x": 1395.0,
+      "y": 53.0
+    },
+    "schedule_hour_of_day": {
+      "x": 784.0,
+      "y": 1732.0
+    },
+    "schedule_day_of_week": {
+      "x": 311.0,
+      "y": 1732.0
+    },
+    "job_artifact": {
+      "x": 3089.4567779246995,
+      "y": 1582.5945874631086
+    },
+    "project": {
+      "x": 1395.0,
+      "y": 641.0
+    },
+    "job_context": {
+      "x": 2073.0,
+      "y": 1982.0
+    },
+    "user_collaboration": {
+      "x": 575.203116604576,
+      "y": 770.1717937238127
+    },
+    "pipeline": {
+      "x": 1964.0,
+      "y": 8.0
+    },
+    "schedule": {
+      "x": 642.3486819141651,
+      "y": 1110.1717937238127
+    },
+    "flaky_test": {
+      "x": 2555.756689587333,
+      "y": 312.1953794636197
+    },
+    "job_message": {
+      "x": 2585.4567779246995,
+      "y": 1316.1953794636197
+    },
+    "workflow_recent_run": {
+      "x": 735.2521850032831,
+      "y": 286.1717937238127
+    },
+    "workflow_job": {
+      "x": 1395.0,
+      "y": 1159.0
+    },
+    "pipeline_error": {
+      "x": 2475.5120466622525,
+      "y": 8.195379463619702
+    },
+    "schedule_month": {
+      "x": 113.34912920300121,
+      "y": 1379.2480649874747
+    },
+    "context": {
+      "x": 8.0,
+      "y": 561.7310615754013
+    },
+    "project_branch": {
+      "x": 1964.1226712429288,
+      "y": 960.0000000000002
+    },
+    "job": {
+      "x": 2072.8086128418918,
+      "y": 1228.0000000000002
+    },
+    "workflow_job_dependency": {
+      "x": 1395.0,
+      "y": 1758.0
+    },
+    "schedule_day_of_month": {
+      "x": 113.0,
+      "y": 1133.0
+    },
+    "job_parallel_run": {
+      "x": 2960.095451995827,
+      "y": 976.1953794636197
+    }
+  }
+}

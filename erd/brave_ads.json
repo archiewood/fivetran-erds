@@ -1,0 +1,322 @@
+{
+  "tables": [
+    {
+      "name": "campaign_report",
+      "columns": [
+        {
+          "name": "_fivetran_id",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "campaign_id",
+          "type": "Unknown",
+          "foreignKey": true
+        },
+        {
+          "name": "creative_instance_id",
+          "type": "Unknown",
+          "foreignKey": true
+        },
+        {
+          "name": "creative_set_id",
+          "type": "Unknown",
+          "foreignKey": true
+        },
+        {
+          "name": "advertiser_name",
+          "type": "Unknown"
+        },
+        {
+          "name": "attribution_window_days",
+          "type": "Unknown"
+        },
+        {
+          "name": "campaign_name",
+          "type": "Unknown"
+        },
+        {
+          "name": "click_count",
+          "type": "Unknown"
+        },
+        {
+          "name": "click_through_conversion_count",
+          "type": "Unknown"
+        },
+        {
+          "name": "conversion_count",
+          "type": "Unknown"
+        },
+        {
+          "name": "country",
+          "type": "Unknown"
+        },
+        {
+          "name": "creative_body",
+          "type": "Unknown"
+        },
+        {
+          "name": "creative_set_name",
+          "type": "Unknown"
+        },
+        {
+          "name": "creative_title",
+          "type": "Unknown"
+        },
+        {
+          "name": "creative_url",
+          "type": "Unknown"
+        },
+        {
+          "name": "day_or_hour",
+          "type": "Unknown"
+        },
+        {
+          "name": "dismissed_count",
+          "type": "Unknown"
+        },
+        {
+          "name": "impression_count",
+          "type": "Unknown"
+        },
+        {
+          "name": "os",
+          "type": "Unknown"
+        },
+        {
+          "name": "segment",
+          "type": "Unknown"
+        },
+        {
+          "name": "site_visit_count",
+          "type": "Unknown"
+        },
+        {
+          "name": "spend",
+          "type": "Unknown"
+        },
+        {
+          "name": "view_through_conversion_count",
+          "type": "Unknown"
+        }
+      ],
+      "link": "https://github.com/brave/ads-ui/wiki/Brave-Ads-Advertiser-API-Guide#campaign-reporting"
+    },
+    {
+      "name": "advertiser_campaign_ad_set_ads",
+      "columns": [
+        {
+          "name": "id",
+          "type": "Unknown",
+          "primaryKey": true
+        },
+        {
+          "name": "ad_set_id",
+          "type": "Unknown",
+          "foreignKey": true
+        },
+        {
+          "name": "advertiser_id",
+          "type": "Unknown",
+          "foreignKey": true
+        },
+        {
+          "name": "campaign_id",
+          "type": "Unknown",
+          "foreignKey": true
+        }
+      ],
+      "link": "https://github.com/brave/ads-ui/wiki/Brave-Ads-Advertiser-API-Guide#campaign-details"
+    },
+    {
+      "name": "advertiser_campaign_ad_set",
+      "columns": [
+        {
+          "name": "id",
+          "type": "Unknown",
+          "primaryKey": true
+        },
+        {
+          "name": "advertiser_id",
+          "type": "Unknown",
+          "foreignKey": true
+        },
+        {
+          "name": "campaign_id",
+          "type": "Unknown",
+          "foreignKey": true
+        },
+        {
+          "name": "name",
+          "type": "Unknown"
+        }
+      ],
+      "link": "https://github.com/brave/ads-ui/wiki/Brave-Ads-Advertiser-API-Guide#campaign-details"
+    },
+    {
+      "name": "advertiser_campaign",
+      "columns": [
+        {
+          "name": "id",
+          "type": "Unknown",
+          "primaryKey": true
+        },
+        {
+          "name": "advertiser_id",
+          "type": "Unknown",
+          "foreignKey": true
+        },
+        {
+          "name": "end_at",
+          "type": "Unknown"
+        },
+        {
+          "name": "format",
+          "type": "Unknown"
+        },
+        {
+          "name": "name",
+          "type": "Unknown"
+        },
+        {
+          "name": "start_at",
+          "type": "Unknown"
+        }
+      ],
+      "link": "https://github.com/brave/ads-ui/wiki/Brave-Ads-Advertiser-API-Guide#campaign-details"
+    },
+    {
+      "name": "advertiser",
+      "columns": [
+        {
+          "name": "id",
+          "type": "Unknown",
+          "primaryKey": true
+        },
+        {
+          "name": "name",
+          "type": "Unknown"
+        },
+        {
+          "name": "state",
+          "type": "Unknown"
+        }
+      ],
+      "link": "https://github.com/brave/ads-ui/wiki/Brave-Ads-Advertiser-API-Guide#campaign-details"
+    }
+  ],
+  "relations": [
+    {
+      "targetTable": "advertiser_campaign",
+      "sourceTable": "campaign_report",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "campaign_id"
+      ]
+    },
+    {
+      "targetTable": "advertiser_campaign_ad_set",
+      "sourceTable": "campaign_report",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "creative_set_id"
+      ]
+    },
+    {
+      "targetTable": "advertiser_campaign_ad_set_ads",
+      "sourceTable": "campaign_report",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "creative_instance_id"
+      ]
+    },
+    {
+      "targetTable": "advertiser_campaign_ad_set",
+      "sourceTable": "advertiser_campaign_ad_set_ads",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "ad_set_id"
+      ]
+    },
+    {
+      "targetTable": "advertiser_campaign_ad_set",
+      "sourceTable": "advertiser_campaign_ad_set_ads",
+      "targetColumns": [
+        "advertiser_id"
+      ],
+      "sourceColumns": [
+        "advertiser_id"
+      ]
+    },
+    {
+      "targetTable": "advertiser_campaign_ad_set",
+      "sourceTable": "advertiser_campaign_ad_set_ads",
+      "targetColumns": [
+        "campaign_id"
+      ],
+      "sourceColumns": [
+        "campaign_id"
+      ]
+    },
+    {
+      "targetTable": "advertiser_campaign",
+      "sourceTable": "advertiser_campaign_ad_set",
+      "targetColumns": [
+        "advertiser_id"
+      ],
+      "sourceColumns": [
+        "advertiser_id"
+      ]
+    },
+    {
+      "targetTable": "advertiser_campaign",
+      "sourceTable": "advertiser_campaign_ad_set",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "campaign_id"
+      ]
+    },
+    {
+      "targetTable": "advertiser",
+      "sourceTable": "advertiser_campaign",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "advertiser_id"
+      ]
+    }
+  ],
+  "positions": {
+    "advertiser": {
+      "x": 938,
+      "y": 418
+    },
+    "campaign_report": {
+      "x": 2205,
+      "y": 449
+    },
+    "advertiser_campaign": {
+      "x": 1603,
+      "y": 160
+    },
+    "advertiser_campaign_ad_set_ads": {
+      "x": 938,
+      "y": 851
+    },
+    "advertiser_campaign_ad_set": {
+      "x": 938,
+      "y": 1192
+    }
+  }
+}

@@ -1,0 +1,1296 @@
+{
+  "tables": [
+    {
+      "name": "worklog_attribute_value",
+      "columns": [
+        {
+          "name": "_fivetran_id",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "key",
+          "type": "String",
+          "foreignKey": true
+        },
+        {
+          "name": "worklog_worklog_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "value",
+          "type": "String"
+        }
+      ],
+      "link": "https://apidocs.tempo.io/v4/#tag/Worklogs/operation/getWorklogs"
+    },
+    {
+      "name": "worklog",
+      "columns": [
+        {
+          "name": "worklog_id",
+          "type": "Long",
+          "primaryKey": true
+        },
+        {
+          "name": "author_account_id",
+          "type": "String"
+        },
+        {
+          "name": "billable_seconds",
+          "type": "Long"
+        },
+        {
+          "name": "created_at",
+          "type": "Instant"
+        },
+        {
+          "name": "description",
+          "type": "String"
+        },
+        {
+          "name": "issue_id",
+          "type": "Long"
+        },
+        {
+          "name": "issue_key",
+          "type": "String"
+        },
+        {
+          "name": "jira_worklog_id",
+          "type": "Long"
+        },
+        {
+          "name": "start_date",
+          "type": "LocalDate"
+        },
+        {
+          "name": "start_time",
+          "type": "String"
+        },
+        {
+          "name": "time_spent_seconds",
+          "type": "Long"
+        },
+        {
+          "name": "updated_at",
+          "type": "Instant"
+        }
+      ],
+      "link": "https://apidocs.tempo.io/v4/#tag/Worklogs/operation/getWorklogs"
+    },
+    {
+      "name": "workload_scheme_day",
+      "columns": [
+        {
+          "name": "_fivetran_id",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "workload_scheme_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "day",
+          "type": "String"
+        },
+        {
+          "name": "required_seconds",
+          "type": "Long"
+        }
+      ],
+      "link": "https://apidocs.tempo.io/v4/#tag/Workload-Schemes/operation/getWorkloadSchemes"
+    },
+    {
+      "name": "workload_scheme",
+      "columns": [
+        {
+          "name": "id",
+          "type": "Long",
+          "primaryKey": true
+        },
+        {
+          "name": "default_scheme",
+          "type": "Boolean"
+        },
+        {
+          "name": "description",
+          "type": "String"
+        },
+        {
+          "name": "member_count",
+          "type": "Long"
+        },
+        {
+          "name": "name",
+          "type": "String"
+        }
+      ],
+      "link": "https://apidocs.tempo.io/v4/#tag/Workload-Schemes/operation/getWorkloadSchemes"
+    },
+    {
+      "name": "global_configuration",
+      "columns": [
+        {
+          "name": "_fivetran_id",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "allow_logging_on_closed_account",
+          "type": "Boolean"
+        },
+        {
+          "name": "approval_period",
+          "type": "String"
+        },
+        {
+          "name": "approval_week_start",
+          "type": "Long"
+        },
+        {
+          "name": "max_hours_per_day_per_user",
+          "type": "Long"
+        },
+        {
+          "name": "number_of_days_allowed_into_future",
+          "type": "Long"
+        },
+        {
+          "name": "remaining_estimate_optional",
+          "type": "Boolean"
+        },
+        {
+          "name": "week_start",
+          "type": "Long"
+        },
+        {
+          "name": "worklog_description_optional",
+          "type": "Boolean"
+        }
+      ],
+      "link": "https://apidocs.tempo.io/v4/#tag/Global-Configurations/operation/getGlobalConfiguration"
+    },
+    {
+      "name": "plan_period_value",
+      "columns": [
+        {
+          "name": "_fivetran_id",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "plan_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "from",
+          "type": "String"
+        },
+        {
+          "name": "planned_seconds",
+          "type": "Long"
+        },
+        {
+          "name": "to",
+          "type": "String"
+        }
+      ],
+      "link": "https://apidocs.tempo.io/v4/#tag/Plans/operation/getPlansForUser"
+    },
+    {
+      "name": "planned_time_day_value",
+      "columns": [
+        {
+          "name": "_fivetran_id",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "plan_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "date",
+          "type": "LocalDate"
+        },
+        {
+          "name": "planned_seconds",
+          "type": "Long"
+        }
+      ],
+      "link": "https://apidocs.tempo.io/v4/#tag/Plans/operation/getPlansForUser"
+    },
+    {
+      "name": "plan",
+      "columns": [
+        {
+          "name": "id",
+          "type": "Long",
+          "primaryKey": true
+        },
+        {
+          "name": "account_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "assignee_id",
+          "type": "String"
+        },
+        {
+          "name": "assignee_type",
+          "type": "String"
+        },
+        {
+          "name": "description",
+          "type": "String"
+        },
+        {
+          "name": "end_date",
+          "type": "LocalDate"
+        },
+        {
+          "name": "include_non_working_days",
+          "type": "Boolean"
+        },
+        {
+          "name": "period_count",
+          "type": "Long"
+        },
+        {
+          "name": "plan_approval_account_id",
+          "type": "String"
+        },
+        {
+          "name": "plan_approval_status",
+          "type": "String"
+        },
+        {
+          "name": "plan_item_id",
+          "type": "Int"
+        },
+        {
+          "name": "plan_item_type",
+          "type": "String"
+        },
+        {
+          "name": "planned_seconds_per_day",
+          "type": "Long"
+        },
+        {
+          "name": "planned_time_day_count",
+          "type": "Long"
+        },
+        {
+          "name": "recurrence_end_date",
+          "type": "LocalDate"
+        },
+        {
+          "name": "rule",
+          "type": "String"
+        },
+        {
+          "name": "start_date",
+          "type": "LocalDate"
+        },
+        {
+          "name": "total_planned_seconds_in_scope",
+          "type": "Long"
+        }
+      ],
+      "link": "https://apidocs.tempo.io/v4/#tag/Plans/operation/getPlansForUser"
+    },
+    {
+      "name": "role",
+      "columns": [
+        {
+          "name": "id",
+          "type": "Long",
+          "primaryKey": true
+        },
+        {
+          "name": "default",
+          "type": "Boolean"
+        },
+        {
+          "name": "name",
+          "type": "String"
+        }
+      ],
+      "link": "https://apidocs.tempo.io/v4/#tag/Roles/operation/getAllRoles"
+    },
+    {
+      "name": "account",
+      "columns": [
+        {
+          "name": "id",
+          "type": "Long",
+          "primaryKey": true
+        },
+        {
+          "name": "customer_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "category_id",
+          "type": "Long"
+        },
+        {
+          "name": "category_key",
+          "type": "String"
+        },
+        {
+          "name": "category_name",
+          "type": "String"
+        },
+        {
+          "name": "category_type_name",
+          "type": "String"
+        },
+        {
+          "name": "contact_account_id",
+          "type": "String"
+        },
+        {
+          "name": "contact_type",
+          "type": "String"
+        },
+        {
+          "name": "global",
+          "type": "Boolean"
+        },
+        {
+          "name": "key",
+          "type": "String"
+        },
+        {
+          "name": "lead_account_id",
+          "type": "String"
+        },
+        {
+          "name": "monthly_budget",
+          "type": "Long"
+        },
+        {
+          "name": "name",
+          "type": "String"
+        },
+        {
+          "name": "status",
+          "type": "String"
+        }
+      ],
+      "link": "https://apidocs.tempo.io/v4/#tag/Accounts/operation/getAccounts"
+    },
+    {
+      "name": "permission_access_entity",
+      "columns": [
+        {
+          "name": "id",
+          "type": "Long",
+          "primaryKey": true
+        },
+        {
+          "name": "permission_role_id",
+          "type": "Long",
+          "foreignKey": true
+        }
+      ],
+      "link": "https://apidocs.tempo.io/v4/#tag/Permission-Roles/operation/getPermissionRoles"
+    },
+    {
+      "name": "permission",
+      "columns": [
+        {
+          "name": "key",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "permission_role_id",
+          "type": "Long",
+          "foreignKey": true
+        }
+      ],
+      "link": "https://apidocs.tempo.io/v4/#tag/Permission-Roles/operation/getPermissionRoles"
+    },
+    {
+      "name": "permission_role",
+      "columns": [
+        {
+          "name": "id",
+          "type": "Long",
+          "primaryKey": true
+        },
+        {
+          "name": "access_type",
+          "type": "String"
+        },
+        {
+          "name": "editable",
+          "type": "Boolean"
+        },
+        {
+          "name": "name",
+          "type": "String"
+        },
+        {
+          "name": "permitted_account_id",
+          "type": "String"
+        }
+      ],
+      "link": "https://apidocs.tempo.io/v4/#tag/Permission-Roles/operation/getPermissionRoles"
+    },
+    {
+      "name": "holiday",
+      "columns": [
+        {
+          "name": "id",
+          "type": "Long",
+          "primaryKey": true
+        },
+        {
+          "name": "scheme_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "date",
+          "type": "LocalDate"
+        },
+        {
+          "name": "description",
+          "type": "String"
+        },
+        {
+          "name": "duration_seconds",
+          "type": "Long"
+        },
+        {
+          "name": "name",
+          "type": "String"
+        },
+        {
+          "name": "type",
+          "type": "String"
+        }
+      ],
+      "link": "https://apidocs.tempo.io/v4/#tag/Holiday-Schemes/operation/getHolidays"
+    },
+    {
+      "name": "work_attribute",
+      "columns": [
+        {
+          "name": "key",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "name",
+          "type": "String"
+        },
+        {
+          "name": "required",
+          "type": "Boolean"
+        },
+        {
+          "name": "some_value",
+          "type": "String"
+        },
+        {
+          "name": "type",
+          "type": "String"
+        },
+        {
+          "name": "values",
+          "type": "Json"
+        }
+      ],
+      "link": "https://apidocs.tempo.io/v4/#tag/Work-Attributes/operation/getWorkAttributes"
+    },
+    {
+      "name": "customer",
+      "columns": [
+        {
+          "name": "id",
+          "type": "Long",
+          "primaryKey": true
+        },
+        {
+          "name": "key",
+          "type": "String"
+        },
+        {
+          "name": "name",
+          "type": "String"
+        }
+      ],
+      "link": "https://apidocs.tempo.io/v4/#tag/Customers/operation/getCustomers"
+    },
+    {
+      "name": "holiday_scheme",
+      "columns": [
+        {
+          "name": "id",
+          "type": "Long",
+          "primaryKey": true
+        },
+        {
+          "name": "default_scheme",
+          "type": "Boolean"
+        },
+        {
+          "name": "description",
+          "type": "String"
+        },
+        {
+          "name": "member_count",
+          "type": "Long"
+        },
+        {
+          "name": "name",
+          "type": "String"
+        }
+      ],
+      "link": "https://apidocs.tempo.io/v4/#tag/Holiday-Schemes/operation/getHolidaySchemes"
+    },
+    {
+      "name": "generic_resource",
+      "columns": [
+        {
+          "name": "id",
+          "type": "Long",
+          "primaryKey": true
+        },
+        {
+          "name": "team_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "name",
+          "type": "String"
+        }
+      ],
+      "link": "https://apidocs.tempo.io/v4/#tag/Generic-Resource-Team-Members/operation/getResourcesInTeam"
+    },
+    {
+      "name": "global_permission_access_entity",
+      "columns": [
+        {
+          "name": "id",
+          "type": "Long",
+          "primaryKey": true
+        },
+        {
+          "name": "global_permission_role_id",
+          "type": "Long",
+          "primaryKey": true,
+          "foreignKey": true
+        }
+      ],
+      "link": "https://apidocs.tempo.io/v4/#tag/Permission-Roles/operation/getGlobalPermissionRoles"
+    },
+    {
+      "name": "global_permission",
+      "columns": [
+        {
+          "name": "key",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "global_permission_role_id",
+          "type": "Long",
+          "primaryKey": true,
+          "foreignKey": true
+        }
+      ],
+      "link": "https://apidocs.tempo.io/v4/#tag/Permission-Roles/operation/getGlobalPermissionRoles"
+    },
+    {
+      "name": "global_permitted_user",
+      "columns": [
+        {
+          "name": "account_id",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "global_permission_role_id",
+          "type": "Long",
+          "primaryKey": true,
+          "foreignKey": true
+        }
+      ],
+      "link": "https://apidocs.tempo.io/v4/#tag/Permission-Roles/operation/getGlobalPermissionRoles"
+    },
+    {
+      "name": "global_permission_role",
+      "columns": [
+        {
+          "name": "id",
+          "type": "Long",
+          "primaryKey": true
+        },
+        {
+          "name": "access_type",
+          "type": "String"
+        },
+        {
+          "name": "editable",
+          "type": "Boolean"
+        },
+        {
+          "name": "name",
+          "type": "String"
+        }
+      ],
+      "link": "https://apidocs.tempo.io/v4/#tag/Permission-Roles/operation/getGlobalPermissionRoles"
+    },
+    {
+      "name": "team_membership",
+      "columns": [
+        {
+          "name": "id",
+          "type": "Long",
+          "primaryKey": true
+        },
+        {
+          "name": "role_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "team_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "commitment_percent",
+          "type": "Long"
+        },
+        {
+          "name": "from",
+          "type": "String"
+        },
+        {
+          "name": "member_account_id",
+          "type": "String"
+        },
+        {
+          "name": "to",
+          "type": "String"
+        }
+      ],
+      "link": "https://apidocs.tempo.io/v4/#tag/Team-Memberships/operation/getAllMemberships"
+    },
+    {
+      "name": "workload_member",
+      "columns": [
+        {
+          "name": "_fivetran_id",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "workload_scheme_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "account_id",
+          "type": "String"
+        }
+      ],
+      "link": "https://apidocs.tempo.io/v4/#tag/Workload-Schemes/operation/getWorkloadSchemeMembers_1"
+    },
+    {
+      "name": "timesheet_approval",
+      "columns": [
+        {
+          "name": "_fivetran_id",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "team_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "period_from",
+          "type": "String"
+        },
+        {
+          "name": "period_to",
+          "type": "String"
+        },
+        {
+          "name": "required_seconds",
+          "type": "Long"
+        },
+        {
+          "name": "reviewer_account_id",
+          "type": "String"
+        },
+        {
+          "name": "status_account_id",
+          "type": "String"
+        },
+        {
+          "name": "status_comment",
+          "type": "String"
+        },
+        {
+          "name": "status_key",
+          "type": "String"
+        },
+        {
+          "name": "status_required_seconds_at_submit",
+          "type": "Long"
+        },
+        {
+          "name": "status_time_spent_seconds_at_submit",
+          "type": "Long"
+        },
+        {
+          "name": "status_updated_at",
+          "type": "Instant"
+        },
+        {
+          "name": "time_spent_seconds",
+          "type": "Long"
+        },
+        {
+          "name": "user_account_id",
+          "type": "String"
+        }
+      ],
+      "link": "https://apidocs.tempo.io/v4/#tag/Timesheet-Approvals/operation/getTimesheetApprovalForTeam"
+    },
+    {
+      "name": "holiday_member",
+      "columns": [
+        {
+          "name": "_fivetran_id",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "holiday_scheme_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "account_id",
+          "type": "String"
+        }
+      ],
+      "link": "https://apidocs.tempo.io/v4/#tag/Holiday-Schemes/operation/getWorkloadSchemeMembers"
+    },
+    {
+      "name": "team",
+      "columns": [
+        {
+          "name": "id",
+          "type": "Long",
+          "primaryKey": true
+        },
+        {
+          "name": "program_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "lead_account_id",
+          "type": "String"
+        },
+        {
+          "name": "name",
+          "type": "String"
+        },
+        {
+          "name": "summary",
+          "type": "String"
+        }
+      ],
+      "link": "https://apidocs.tempo.io/v4/#tag/Team/operation/getTeams"
+    },
+    {
+      "name": "user_schedule",
+      "columns": [
+        {
+          "name": "_fivetran_id",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "holiday_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "scheme_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "date",
+          "type": "LocalDate"
+        },
+        {
+          "name": "required_seconds",
+          "type": "Long"
+        },
+        {
+          "name": "type",
+          "type": "String"
+        }
+      ],
+      "link": "https://apidocs.tempo.io/v4/#tag/User-Schedule/operation/getAuthenticatedUserSchedule"
+    },
+    {
+      "name": "timesheet_reviewer",
+      "columns": [
+        {
+          "name": "_fivetran_id",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "account_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "account_id",
+          "type": "String"
+        }
+      ],
+      "link": "https://apidocs.tempo.io/v4/#tag/Timesheet-Approvals/operation/getTimesheetReviewersForUser"
+    },
+    {
+      "name": "program_team_value",
+      "columns": [
+        {
+          "name": "program_id",
+          "type": "Long",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "team_id",
+          "type": "Long",
+          "primaryKey": true,
+          "foreignKey": true
+        }
+      ],
+      "link": "https://apidocs.tempo.io/v4/#tag/Program/operation/getPrograms"
+    },
+    {
+      "name": "program",
+      "columns": [
+        {
+          "name": "id",
+          "type": "Long",
+          "primaryKey": true
+        },
+        {
+          "name": "manager_account_id",
+          "type": "String"
+        },
+        {
+          "name": "name",
+          "type": "String"
+        }
+      ],
+      "link": "https://apidocs.tempo.io/v4/#tag/Program/operation/getPrograms"
+    }
+  ],
+  "relations": [
+    {
+      "targetTable": "work_attribute",
+      "sourceTable": "worklog_attribute_value",
+      "targetColumns": [
+        "key"
+      ],
+      "sourceColumns": [
+        "key"
+      ]
+    },
+    {
+      "targetTable": "worklog",
+      "sourceTable": "worklog_attribute_value",
+      "targetColumns": [
+        "worklog_id"
+      ],
+      "sourceColumns": [
+        "worklog_worklog_id"
+      ]
+    },
+    {
+      "targetTable": "workload_scheme",
+      "sourceTable": "workload_scheme_day",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "workload_scheme_id"
+      ]
+    },
+    {
+      "targetTable": "plan",
+      "sourceTable": "plan_period_value",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "plan_id"
+      ]
+    },
+    {
+      "targetTable": "plan",
+      "sourceTable": "planned_time_day_value",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "plan_id"
+      ]
+    },
+    {
+      "targetTable": "account",
+      "sourceTable": "plan",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "account_id"
+      ]
+    },
+    {
+      "targetTable": "customer",
+      "sourceTable": "account",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "customer_id"
+      ]
+    },
+    {
+      "targetTable": "permission_role",
+      "sourceTable": "permission_access_entity",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "permission_role_id"
+      ]
+    },
+    {
+      "targetTable": "permission_role",
+      "sourceTable": "permission",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "permission_role_id"
+      ]
+    },
+    {
+      "targetTable": "holiday_scheme",
+      "sourceTable": "holiday",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "scheme_id"
+      ]
+    },
+    {
+      "targetTable": "team",
+      "sourceTable": "generic_resource",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "team_id"
+      ]
+    },
+    {
+      "targetTable": "global_permission_role",
+      "sourceTable": "global_permission_access_entity",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "global_permission_role_id"
+      ]
+    },
+    {
+      "targetTable": "global_permission_role",
+      "sourceTable": "global_permission",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "global_permission_role_id"
+      ]
+    },
+    {
+      "targetTable": "global_permission_role",
+      "sourceTable": "global_permitted_user",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "global_permission_role_id"
+      ]
+    },
+    {
+      "targetTable": "team",
+      "sourceTable": "team_membership",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "team_id"
+      ]
+    },
+    {
+      "targetTable": "role",
+      "sourceTable": "team_membership",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "role_id"
+      ]
+    },
+    {
+      "targetTable": "workload_scheme",
+      "sourceTable": "workload_member",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "workload_scheme_id"
+      ]
+    },
+    {
+      "targetTable": "team",
+      "sourceTable": "timesheet_approval",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "team_id"
+      ]
+    },
+    {
+      "targetTable": "holiday_scheme",
+      "sourceTable": "holiday_member",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "holiday_scheme_id"
+      ]
+    },
+    {
+      "targetTable": "program",
+      "sourceTable": "team",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "program_id"
+      ]
+    },
+    {
+      "targetTable": "holiday",
+      "sourceTable": "user_schedule",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "holiday_id"
+      ]
+    },
+    {
+      "targetTable": "holiday_scheme",
+      "sourceTable": "user_schedule",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "scheme_id"
+      ]
+    },
+    {
+      "targetTable": "account",
+      "sourceTable": "timesheet_reviewer",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "account_id"
+      ]
+    },
+    {
+      "targetTable": "team",
+      "sourceTable": "program_team_value",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "team_id"
+      ]
+    },
+    {
+      "targetTable": "program",
+      "sourceTable": "program_team_value",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "program_id"
+      ]
+    }
+  ],
+  "positions": {
+    "worklog_attribute_value": {
+      "x": 486,
+      "y": 1584
+    },
+    "worklog": {
+      "x": 988,
+      "y": 1458
+    },
+    "workload_scheme_day": {
+      "x": 2946,
+      "y": 620
+    },
+    "workload_scheme": {
+      "x": 2473,
+      "y": 748
+    },
+    "global_configuration": {
+      "x": 486,
+      "y": 1831
+    },
+    "plan_period_value": {
+      "x": 988,
+      "y": 421
+    },
+    "planned_time_day_value": {
+      "x": 988,
+      "y": 199
+    },
+    "plan": {
+      "x": 988,
+      "y": 688
+    },
+    "role": {
+      "x": 2473,
+      "y": 199
+    },
+    "account": {
+      "x": 486,
+      "y": 424
+    },
+    "permission_access_entity": {
+      "x": 2946,
+      "y": 199
+    },
+    "permission": {
+      "x": 2946,
+      "y": 395
+    },
+    "permission_role": {
+      "x": 2473,
+      "y": 437
+    },
+    "holiday": {
+      "x": 1474,
+      "y": 1476
+    },
+    "work_attribute": {
+      "x": 486,
+      "y": 1273
+    },
+    "customer": {
+      "x": 486,
+      "y": 1031
+    },
+    "holiday_scheme": {
+      "x": 1474,
+      "y": 865
+    },
+    "generic_resource": {
+      "x": 1994,
+      "y": 865
+    },
+    "global_permission_access_entity": {
+      "x": 2946,
+      "y": 1352
+    },
+    "global_permission": {
+      "x": 2946,
+      "y": 1563
+    },
+    "global_permitted_user": {
+      "x": 2946,
+      "y": 1123
+    },
+    "global_permission_role": {
+      "x": 2473,
+      "y": 1259
+    },
+    "team_membership": {
+      "x": 1994,
+      "y": 199
+    },
+    "workload_member": {
+      "x": 2946,
+      "y": 865
+    },
+    "timesheet_approval": {
+      "x": 1994,
+      "y": 1087
+    },
+    "holiday_member": {
+      "x": 1474,
+      "y": 643
+    },
+    "team": {
+      "x": 1994,
+      "y": 571
+    },
+    "user_schedule": {
+      "x": 1474,
+      "y": 1148
+    },
+    "timesheet_reviewer": {
+      "x": 485.88207688798576,
+      "y": 199.05017637170215
+    },
+    "program_team_value": {
+      "x": 1474,
+      "y": 199
+    },
+    "program": {
+      "x": 1474,
+      "y": 421
+    }
+  }
+}

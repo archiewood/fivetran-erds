@@ -1,0 +1,893 @@
+CREATE TABLE x_axes_labels (
+    "index" text,
+    calibration_cycle_template_id text,
+    x_label text,
+    PRIMARY KEY ("index", calibration_cycle_template_id),
+    FOREIGN KEY (calibration_cycle_template_id) REFERENCES calibration_cycle_template(id)
+);
+
+CREATE TABLE y_axes_labels (
+    "index" text,
+    calibration_cycle_template_id text,
+    y_label text,
+    PRIMARY KEY ("index", calibration_cycle_template_id),
+    FOREIGN KEY (calibration_cycle_template_id) REFERENCES calibration_cycle_template(id)
+);
+
+CREATE TABLE matrix_content (
+    "index" text,
+    calibration_cycle_template_id text,
+    bg text,
+    color text,
+    label text,
+    PRIMARY KEY ("index", calibration_cycle_template_id),
+    FOREIGN KEY (calibration_cycle_template_id) REFERENCES calibration_cycle_template(id)
+);
+
+CREATE TABLE histogram_content (
+    "index" text,
+    calibration_cycle_template_id text,
+    bg text,
+    color text,
+    label text,
+    PRIMARY KEY ("index", calibration_cycle_template_id),
+    FOREIGN KEY (calibration_cycle_template_id) REFERENCES calibration_cycle_template(id)
+);
+
+CREATE TABLE talent_record_columns (
+    "index" text,
+    calibration_cycle_template_id text,
+    display_type text,
+    label text,
+    read_only text,
+    sortable text,
+    talent_key text,
+    PRIMARY KEY ("index", calibration_cycle_template_id),
+    FOREIGN KEY (calibration_cycle_template_id) REFERENCES calibration_cycle_template(id)
+);
+
+CREATE TABLE mapping (
+    id text,
+    calibration_cycle_template_id text,
+    mappings_properties_created_by text,
+    mappings_properties_created_on text,
+    mappings_properties_cycle_template_id text,
+    mappings_properties_expression text,
+    mappings_properties_modified_by text,
+    mappings_properties_modified_on text,
+    mappings_properties_talent_key text,
+    "type" text,
+    PRIMARY KEY (id, calibration_cycle_template_id),
+    FOREIGN KEY (calibration_cycle_template_id) REFERENCES calibration_cycle_template(id)
+);
+
+CREATE TABLE calibration_cycle_template (
+    id text,
+    box_number text,
+    configuration_matrix_axes_x_length text,
+    configuration_matrix_axes_x_talent_key text,
+    configuration_matrix_axes_x_title text,
+    configuration_matrix_axes_y_length text,
+    configuration_matrix_axes_y_talent_key text,
+    configuration_matrix_axes_y_title text,
+    created_by text,
+    created_on text,
+    dimension text,
+    label_type text,
+    modified_by text,
+    modified_on text,
+    "name" text,
+    talent_key text,
+    title text,
+    "type" text,
+    PRIMARY KEY (id)
+);
+
+CREATE TABLE recognition_mentioned_users (
+    id text,
+    recognition_id text,
+    "name" text,
+    uuid text,
+    PRIMARY KEY (id, recognition_id),
+    FOREIGN KEY (recognition_id) REFERENCES recognition(id)
+);
+
+CREATE TABLE recognition_hashtag (
+    recognition_hashtag_id text,
+    recognition_id text,
+    PRIMARY KEY (recognition_hashtag_id, recognition_id),
+    FOREIGN KEY (recognition_hashtag_id) REFERENCES hashtag(id),
+    FOREIGN KEY (recognition_id) REFERENCES recognition(id)
+);
+
+CREATE TABLE recognition (
+    id text,
+    comment_author_id text,
+    shoutout_author_id text,
+    shoutout_for_user_id text,
+    team_id text,
+    comment_created text,
+    comment_created_on text,
+    comment_edited text,
+    comment_id text,
+    comment_is_key_result text,
+    comment_modified_on text,
+    comment_text text,
+    comment_uuid text,
+    created text,
+    created_on text,
+    for_group text,
+    for_group_id text,
+    for_group_name text,
+    for_group_uuid text,
+    goal_id text,
+    goal_name text,
+    goal_owner_group_id text,
+    goal_owner_group_is_active text,
+    goal_owner_group_is_team text,
+    goal_owner_group_name text,
+    goal_owner_group_parent_id text,
+    goal_owner_group_uuid text,
+    goal_owner_user_id text,
+    goal_owner_user_name text,
+    goal_owner_user_uuid text,
+    goal_uuid text,
+    group_picture_uris_medium text,
+    group_picture_uris_small text,
+    modified_on text,
+    shoutout_created text,
+    shoutout_edited text,
+    shoutout_id text,
+    shoutout_text text,
+    shoutout_uuid text,
+    team_created_on text,
+    team_is_active text,
+    team_modified_on text,
+    team_name text,
+    team_picture_uris_medium text,
+    team_picture_uris_small text,
+    team_uuid text,
+    uuid text,
+    PRIMARY KEY (id),
+    FOREIGN KEY (comment_author_id) REFERENCES users(id),
+    FOREIGN KEY (shoutout_author_id) REFERENCES users(id),
+    FOREIGN KEY (shoutout_for_user_id) REFERENCES users(id),
+    FOREIGN KEY (team_id) REFERENCES team(id)
+);
+
+CREATE TABLE calibration_cycle (
+    id text,
+    conversation_cycle_id text,
+    "name" text,
+    PRIMARY KEY (id)
+);
+
+CREATE TABLE conversation_template_allowed_employee (
+    id text,
+    conversation_template_id text,
+    email text,
+    is_active text,
+    "name" text,
+    PRIMARY KEY (id, conversation_template_id),
+    FOREIGN KEY (conversation_template_id) REFERENCES conversation_template(id)
+);
+
+CREATE TABLE conversation_template_allowed_group (
+    "index" text,
+    conversation_template_id text,
+    allowed_group text,
+    PRIMARY KEY ("index", conversation_template_id),
+    FOREIGN KEY (conversation_template_id) REFERENCES conversation_template(id)
+);
+
+CREATE TABLE conversation_template_deployments_cycle (
+    id text,
+    conversation_template_deployment_conversation_tempalate_id text,
+    conversation_template_deployment_id text,
+    ends text,
+    grace_period_end text,
+    lock_date text,
+    lock_on_share text,
+    review_end text,
+    "role" text,
+    stage text,
+    "start" text,
+    submit_end text,
+    uuid text,
+    PRIMARY KEY (id, conversation_template_deployment_conversation_tempalate_id, conversation_template_deployment_id),
+    FOREIGN KEY (conversation_template_deployment_conversation_tempalate_id) REFERENCES conversation_template_deployment(conversation_tempalate_id),
+    FOREIGN KEY (conversation_template_deployment_id) REFERENCES conversation_template_deployment(id)
+);
+
+CREATE TABLE conversation_template_deployment (
+    id text,
+    conversation_tempalate_id text,
+    description text,
+    "name" text,
+    uuid text,
+    PRIMARY KEY (id, conversation_tempalate_id),
+    FOREIGN KEY (conversation_tempalate_id) REFERENCES conversation_template(id)
+);
+
+CREATE TABLE conversation_template_hrq_participant (
+    "index" text,
+    conversation_template_id text,
+    hrq_participants text,
+    PRIMARY KEY ("index", conversation_template_id),
+    FOREIGN KEY (conversation_template_id) REFERENCES conversation_template(id)
+);
+
+CREATE TABLE conversation_template_participant (
+    "index" text,
+    conversation_template_id text,
+    participants text,
+    PRIMARY KEY ("index", conversation_template_id),
+    FOREIGN KEY (conversation_template_id) REFERENCES conversation_template(id)
+);
+
+CREATE TABLE conversation_template (
+    id text,
+    created_by_id text,
+    updated_by_id text,
+    created text,
+    created_on text,
+    description text,
+    enabled text,
+    hr_admin_permission text,
+    hrq_enabled text,
+    hrq_is_concurrent text,
+    hrq_notification_on_due text,
+    hrq_notification_on_start text,
+    is_goal_creation_enabled text,
+    matrix_manager_can_see_direct_report_responses text,
+    matrix_manager_can_see_responses text,
+    matrix_manager_enabled text,
+    modified_on text,
+    "name" text,
+    notification_midcycle_days text,
+    notification_on_end text,
+    notification_on_start text,
+    notification_overdue_days text,
+    only_managers_can_initiate text,
+    require_marked_as_met text,
+    skip_level_managers_level text,
+    skip_level_managers_permission text,
+    super_admin_permission text,
+    "type" text,
+    updated text,
+    uuid text,
+    PRIMARY KEY (id),
+    FOREIGN KEY (created_by_id) REFERENCES users(id),
+    FOREIGN KEY (updated_by_id) REFERENCES users(id)
+);
+
+CREATE TABLE feedback_request_template_question (
+    "index" text,
+    feedback_request_id text,
+    template_question text,
+    PRIMARY KEY ("index", feedback_request_id),
+    FOREIGN KEY (feedback_request_id) REFERENCES feedback_request(id)
+);
+
+CREATE TABLE feedback_request_question (
+    id text,
+    feedback_request_id text,
+    hide_number text,
+    mandatory text,
+    "option" jsonb,
+    orders text,
+    template_id text,
+    text text,
+    "type" text,
+    uuid text,
+    PRIMARY KEY (id, feedback_request_id),
+    FOREIGN KEY (feedback_request_id) REFERENCES feedback_request(id)
+);
+
+CREATE TABLE feedback_request_response (
+    id text,
+    feedback_request_id text,
+    feedback_id text,
+    answer text,
+    hide_number text,
+    multiple_choice_answer text,
+    options_answer text,
+    question text,
+    question_id text,
+    question_option text,
+    rating text,
+    rating_range text,
+    "type" text,
+    uuid text,
+    PRIMARY KEY (id, feedback_request_id),
+    FOREIGN KEY (feedback_request_id) REFERENCES feedback_request(id),
+    FOREIGN KEY (feedback_id) REFERENCES feedback(id)
+);
+
+CREATE TABLE feedback_request (
+    id text,
+    created_by_id text,
+    department_id text,
+    feedback_id text,
+    for_user_id text,
+    from_user_id text,
+    requested_by_id text,
+    adhoc_cycle_ends text,
+    adhoc_cycle_id text,
+    adhoc_cycle_notification_reminder_date text,
+    adhoc_cycle_questions_locked text,
+    adhoc_cycle_start text,
+    adhoc_cycle_template_id text,
+    adhoc_cycle_template_name text,
+    can_view_feedback text,
+    created text,
+    created_on text,
+    custom_note text,
+    cycle_enable_anytime_nomination text,
+    cycle_ends text,
+    cycle_feedback_start text,
+    cycle_grace_period_end text,
+    cycle_id text,
+    cycle_selection_end text,
+    cycle_start text,
+    cycle_uuid text,
+    decline_reason text,
+    declined text,
+    employee_can_view text,
+    employee_see_identity text,
+    expired text,
+    feedback_uuid text,
+    hold_feedback text,
+    manager_can_view text,
+    manager_see_identity text,
+    modified_on text,
+    question text,
+    skip_level_can_view text,
+    skip_level_managers_level text,
+    skip_level_see_identity text,
+    "status" text,
+    template_id text,
+    template_uuid text,
+    uuid text,
+    PRIMARY KEY (id),
+    FOREIGN KEY (created_by_id) REFERENCES users(id),
+    FOREIGN KEY (department_id) REFERENCES department(id),
+    FOREIGN KEY (feedback_id) REFERENCES feedback(id),
+    FOREIGN KEY (for_user_id) REFERENCES users(id),
+    FOREIGN KEY (from_user_id) REFERENCES users(id),
+    FOREIGN KEY (requested_by_id) REFERENCES users(id)
+);
+
+CREATE TABLE department (
+    id text,
+    created_on text,
+    is_active text,
+    modified_on text,
+    "name" text,
+    parent_id text,
+    parent_name text,
+    parent_uuid text,
+    uuid text,
+    PRIMARY KEY (id)
+);
+
+CREATE TABLE feedback_cycle (
+    id text,
+    feedback_template_id text,
+    cycle_end text,
+    cycle_start text,
+    enable_anytime_nomination text,
+    feedback_start text,
+    grace_period_end text,
+    selection_end text,
+    uuid text,
+    PRIMARY KEY (id, feedback_template_id),
+    FOREIGN KEY (feedback_template_id) REFERENCES feedback_template(id)
+);
+
+CREATE TABLE feedback_template_allowed_provider (
+    id text,
+    feedback_template_id text,
+    "name" text,
+    uuid text,
+    PRIMARY KEY (id, feedback_template_id),
+    FOREIGN KEY (feedback_template_id) REFERENCES feedback_template(id)
+);
+
+CREATE TABLE feedback_template_allowed_employee (
+    id text,
+    feedback_template_id text,
+    "name" text,
+    uuid text,
+    PRIMARY KEY (id, feedback_template_id),
+    FOREIGN KEY (feedback_template_id) REFERENCES feedback_template(id)
+);
+
+CREATE TABLE feedback_template_question (
+    id text,
+    template_id text,
+    hide_number text,
+    mandatory text,
+    options jsonb,
+    orders text,
+    text text,
+    "type" text,
+    uuid text,
+    PRIMARY KEY (id),
+    FOREIGN KEY (template_id) REFERENCES feedback_template(id)
+);
+
+CREATE TABLE feedback_template (
+    id text,
+    created text,
+    created_on text,
+    custom_note_enabled text,
+    default_provider_type text,
+    default_providers_includes_direct text,
+    default_providers_includes_manager text,
+    default_providers_includes_peer text,
+    default_providers_limit text,
+    employee_can_choose text,
+    employee_can_view text,
+    employee_see_identity text,
+    enabled text,
+    hold_feedback text,
+    manager_can_choose text,
+    manager_can_view text,
+    manager_see_identity text,
+    modified_on text,
+    "name" text,
+    notify_cycle_started text,
+    notify_feedback_reminder text,
+    notify_feedback_requested text,
+    questions_locked text,
+    skip_level_can_view text,
+    skip_level_managers_level text,
+    skip_level_see_identity text,
+    summary_visible_employee text,
+    summary_visible_manager text,
+    "type" text,
+    updated text,
+    uuid text,
+    PRIMARY KEY (id)
+);
+
+CREATE TABLE goal_children (
+    id text,
+    goal_id text,
+    modified_on text,
+    "name" text,
+    uuid text,
+    PRIMARY KEY (id, goal_id),
+    FOREIGN KEY (goal_id) REFERENCES goal(id)
+);
+
+CREATE TABLE goal_category (
+    id text,
+    goal_id text,
+    "name" text,
+    uuid text,
+    PRIMARY KEY (id, goal_id),
+    FOREIGN KEY (goal_id) REFERENCES goal(id)
+);
+
+CREATE TABLE goal (
+    id text,
+    created_by_id text,
+    last_checked_in_by_id text,
+    owner_team_id text,
+    owner_user_id text,
+    parent_id text,
+    updated_by_id text,
+    attribute_scope text,
+    attribute_type text,
+    created text,
+    created_on text,
+    description text,
+    ends text,
+    integration_identifier text,
+    integration_last_sync text,
+    integration_type text,
+    is_key_result text,
+    is_shared_with_downline text,
+    last_checked_in text,
+    last_checked_in_byid text,
+    measurement_condition text,
+    measurement_current text,
+    measurement_done text,
+    measurement_expected text,
+    measurement_initial text,
+    measurement_is_binary text,
+    measurement_is_numeric text,
+    measurement_lower_limit text,
+    measurement_lower_mid text,
+    measurement_progress text,
+    measurement_target text,
+    measurement_type text,
+    measurement_unit text,
+    measurement_updated text,
+    measurement_upper_limit text,
+    measurement_upper_mid text,
+    modified_on text,
+    "name" text,
+    owner_group_id text,
+    owner_group_name text,
+    owner_group_parent_id text,
+    owner_group_picture_uris_medium text,
+    owner_group_picture_uris_small text,
+    owner_group_uuid text,
+    owner_team_picture_uris_medium text,
+    owner_team_picture_uris_small text,
+    "start" text,
+    stats_cheers text,
+    stats_comments text,
+    stats_last_assessed text,
+    stats_nudges text,
+    stats_views text,
+    updated text,
+    uuid text,
+    visibility text,
+    PRIMARY KEY (id),
+    FOREIGN KEY (created_by_id) REFERENCES users(id),
+    FOREIGN KEY (last_checked_in_by_id) REFERENCES users(id),
+    FOREIGN KEY (owner_team_id) REFERENCES team(id),
+    FOREIGN KEY (owner_user_id) REFERENCES users(id),
+    FOREIGN KEY (parent_id) REFERENCES users(id),
+    FOREIGN KEY (updated_by_id) REFERENCES users(id)
+);
+
+CREATE TABLE hashtag (
+    id text,
+    created_on text,
+    modified_on text,
+    "name" text,
+    PRIMARY KEY (id)
+);
+
+CREATE TABLE rating (
+    id text,
+    calibration_talent_record_id text,
+    max text,
+    min text,
+    rating_type_id text,
+    talent_key text,
+    "value" text,
+    -- options_* (dynamic column),
+    PRIMARY KEY (id, calibration_talent_record_id),
+    FOREIGN KEY (calibration_talent_record_id) REFERENCES calibration_talent_record(id)
+);
+
+CREATE TABLE nine_box_position (
+    "index" text,
+    calibration_talent_record_id text,
+    nine_box_position text,
+    PRIMARY KEY ("index", calibration_talent_record_id),
+    FOREIGN KEY (calibration_talent_record_id) REFERENCES calibration_talent_record(id)
+);
+
+CREATE TABLE calibration_talent_record (
+    id text,
+    cycle_id text,
+    comments_employee text,
+    comments_manager text,
+    compensation_raise text,
+    compensation_raise_percent text,
+    created_by text,
+    created_on text,
+    critical_skills text,
+    development_opportunities text,
+    fellowships text,
+    internal_mobility text,
+    modified_by text,
+    modified_on text,
+    nominate_as_mentor text,
+    potential_next_roles text,
+    promotion_promote text,
+    promotion_rationale text,
+    promotion_role text,
+    relocate text,
+    special_program text,
+    subject_id text,
+    PRIMARY KEY (id),
+    FOREIGN KEY (cycle_id) REFERENCES calibration_cycle(id)
+);
+
+CREATE TABLE team_member (
+    id text,
+    team_id text,
+    "name" text,
+    uuid text,
+    PRIMARY KEY (id, team_id),
+    FOREIGN KEY (team_id) REFERENCES team(id)
+);
+
+CREATE TABLE team (
+    id text,
+    created_on text,
+    is_active text,
+    modified_on text,
+    "name" text,
+    picture_uris_medium text,
+    picture_uris_small text,
+    uuid text,
+    PRIMARY KEY (id)
+);
+
+CREATE TABLE report_run (
+    id text,
+    created_by_id text,
+    created text,
+    date_range_end text,
+    date_range_start text,
+    error text,
+    finished text,
+    report text,
+    result_created text,
+    result_expires_on text,
+    result_file_name text,
+    result_type text,
+    result_url text,
+    "status" text,
+    template text,
+    PRIMARY KEY (id),
+    FOREIGN KEY (created_by_id) REFERENCES users(id)
+);
+
+CREATE TABLE users (
+    id text,
+    department_id text,
+    about text,
+    created_on text,
+    deactivated_on text,
+    deactivation_date text,
+    email text,
+    employee_id text,
+    first_name text,
+    is_active text,
+    is_admin text,
+    is_goalmaster text,
+    is_group_admin text,
+    is_super_admin text,
+    last_name text,
+    locale text,
+    manager_id text,
+    manager_name text,
+    manager_uuid text,
+    modified_on text,
+    "name" text,
+    phone text,
+    preferred_name text,
+    title text,
+    uuid text,
+    -- attributes_* (dynamic column),
+    -- custom_value_* (dynamic column),
+    PRIMARY KEY (id),
+    FOREIGN KEY (department_id) REFERENCES department(id)
+);
+
+CREATE TABLE feedback_response (
+    id text,
+    feedback_id text,
+    answer text,
+    hide_numbers text,
+    question text,
+    question_id text,
+    question_option jsonb,
+    question_uuid text,
+    "type" text,
+    uuid text,
+    PRIMARY KEY (id),
+    FOREIGN KEY (feedback_id) REFERENCES feedback(id)
+);
+
+CREATE TABLE feedback (
+    id text,
+    created_by_id text,
+    cycle_id text,
+    for_user_id text,
+    requested_by_id text,
+    created text,
+    created_on text,
+    cycle_enable_anytime_nomination text,
+    cycle_end text,
+    cycle_feedback_start text,
+    cycle_grace_period_end text,
+    cycle_selection_end text,
+    cycle_start text,
+    cycle_uuid text,
+    employee_can_view text,
+    employee_see_identity text,
+    hold_feedback text,
+    manager_can_view text,
+    manager_see_identity text,
+    modified_on text,
+    "name" text,
+    "status" text,
+    template_name text,
+    template_type text,
+    updated text,
+    uuid text,
+    PRIMARY KEY (id),
+    FOREIGN KEY (created_by_id) REFERENCES users(id),
+    FOREIGN KEY (cycle_id) REFERENCES calibration_cycle(id),
+    FOREIGN KEY (for_user_id) REFERENCES users(id),
+    FOREIGN KEY (requested_by_id) REFERENCES users(id)
+);
+
+CREATE TABLE conversations_manager_response (
+    id text,
+    conversation_id text,
+    answer text,
+    created text,
+    created_on text,
+    lock_date text,
+    modified_on text,
+    question text,
+    question_id text,
+    question_options text,
+    question_uuid text,
+    rating_range text,
+    "type" text,
+    updated text,
+    uuid text,
+    PRIMARY KEY (id, conversation_id),
+    FOREIGN KEY (conversation_id) REFERENCES conversation(id)
+);
+
+CREATE TABLE conversations_contributor (
+    conversation_id text,
+    user_id text,
+    response text,
+    "status" text,
+    PRIMARY KEY (conversation_id, user_id),
+    FOREIGN KEY (conversation_id) REFERENCES conversation(id),
+    FOREIGN KEY (user_id) REFERENCES users(id)
+);
+
+CREATE TABLE conversations_employee_response (
+    id text,
+    conversation_id text,
+    answer text,
+    created text,
+    created_on text,
+    lock_date text,
+    modified_on text,
+    question text,
+    question_id text,
+    question_options text,
+    question_uuid text,
+    rating_range text,
+    "type" text,
+    updated text,
+    uuid text,
+    PRIMARY KEY (id, conversation_id),
+    FOREIGN KEY (conversation_id) REFERENCES conversation(id)
+);
+
+CREATE TABLE conversations_post_manager_response (
+    id text,
+    conversation_id text,
+    answer text,
+    created text,
+    created_on text,
+    lock_date text,
+    modified_on text,
+    question text,
+    question_id text,
+    question_options text,
+    question_uuid text,
+    rating_range text,
+    "type" text,
+    updated text,
+    uuid text,
+    PRIMARY KEY (id, conversation_id),
+    FOREIGN KEY (conversation_id) REFERENCES conversation(id)
+);
+
+CREATE TABLE conversations_post_employee_response (
+    id text,
+    conversation_id text,
+    answer text,
+    created text,
+    created_on text,
+    lock_date text,
+    modified_on text,
+    question text,
+    question_id text,
+    question_options text,
+    question_uuid text,
+    rating_range text,
+    "type" text,
+    updated text,
+    uuid text,
+    PRIMARY KEY (id, conversation_id),
+    FOREIGN KEY (conversation_id) REFERENCES conversation(id)
+);
+
+CREATE TABLE conversation (
+    id text,
+    created_by_id text,
+    employee_id text,
+    employee_response_created_by_id text,
+    employee_response_updated_by_id text,
+    manager_id text,
+    manager_response_created_by_id text,
+    manager_response_updated_by_id text,
+    post_employee_response_created_by_id text,
+    post_employee_response_updated_by_id text,
+    post_manager_response_created_by_id text,
+    post_manager_response_updated_by_id text,
+    created text,
+    created_on text,
+    deployment_id text,
+    deployment_uuid text,
+    description text,
+    employee_notes text,
+    employee_notes_updated text,
+    employee_response_created text,
+    employee_response_created_on text,
+    employee_response_id text,
+    employee_response_modified_on text,
+    employee_response_shared_on text,
+    employee_response_submitted_on text,
+    employee_response_unlocked_until text,
+    employee_response_updated text,
+    employee_response_uuid text,
+    employee_review_end text,
+    employee_status text,
+    employee_submit_end text,
+    ends text,
+    grace_period_end text,
+    manager_notes text,
+    manager_notes_updated text,
+    manager_response_created text,
+    manager_response_created_on text,
+    manager_response_id text,
+    manager_response_modified_on text,
+    manager_response_shared_on text,
+    manager_response_submitted_on text,
+    manager_response_unlocked_until text,
+    manager_response_updated text,
+    manager_response_uuid text,
+    manager_review_end text,
+    manager_status text,
+    manager_submit_end text,
+    marked_as_met text,
+    modified_on text,
+    "name" text,
+    post_employee_questionnaire_pending text,
+    post_employee_response_created text,
+    post_employee_response_created_on text,
+    post_employee_response_id text,
+    post_employee_response_modified_on text,
+    post_employee_response_shared_on text,
+    post_employee_response_submitted_on text,
+    post_employee_response_unlocked_until text,
+    post_employee_response_updated text,
+    post_employee_response_uuid text,
+    post_manager_questionnaire_pending text,
+    post_manager_response_created text,
+    post_manager_response_created_on text,
+    post_manager_response_id text,
+    post_manager_response_modified_on text,
+    post_manager_response_shared_on text,
+    post_manager_response_submitted_on text,
+    post_manager_response_unlocked_until text,
+    post_manager_response_updated text,
+    post_manager_response_uuid text,
+    "start" text,
+    "type" text,
+    uuid text,
+    PRIMARY KEY (id),
+    FOREIGN KEY (created_by_id) REFERENCES users(id),
+    FOREIGN KEY (employee_id) REFERENCES users(id),
+    FOREIGN KEY (employee_response_created_by_id) REFERENCES users(id),
+    FOREIGN KEY (employee_response_updated_by_id) REFERENCES users(id),
+    FOREIGN KEY (manager_id) REFERENCES users(id),
+    FOREIGN KEY (manager_response_created_by_id) REFERENCES users(id),
+    FOREIGN KEY (manager_response_updated_by_id) REFERENCES users(id),
+    FOREIGN KEY (post_employee_response_created_by_id) REFERENCES users(id),
+    FOREIGN KEY (post_employee_response_updated_by_id) REFERENCES users(id),
+    FOREIGN KEY (post_manager_response_created_by_id) REFERENCES users(id),
+    FOREIGN KEY (post_manager_response_updated_by_id) REFERENCES users(id)
+);

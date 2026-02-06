@@ -1,0 +1,583 @@
+CREATE TABLE registered_customer (
+    id text,
+    company text,
+    created_at timestamp,
+    email text,
+    fax text,
+    first_name text,
+    last_name text,
+    phone text,
+    updated_at timestamp,
+    website text,
+    PRIMARY KEY (id)
+);
+
+CREATE TABLE customer_address (
+    id text,
+    customer_id text,
+    company text,
+    country_code_numeric text,
+    country_name text,
+    first_name text,
+    last_name text,
+    locality text,
+    postal_code text,
+    region text,
+    street_address text,
+    PRIMARY KEY (id),
+    FOREIGN KEY (customer_id) REFERENCES registered_customer(id)
+);
+
+CREATE TABLE dispute_status_history (
+    _index integer,
+    dispute_id text,
+    disbursement_date timestamp,
+    effective_date timestamp,
+    "status" text,
+    "timestamp" timestamp,
+    PRIMARY KEY (_index, dispute_id),
+    FOREIGN KEY (dispute_id) REFERENCES dispute(id)
+);
+
+CREATE TABLE masterpass_card_details (
+    transaction_id text,
+    bin text,
+    card_type text,
+    cardholder_name text,
+    commercial text,
+    country_of_issuance text,
+    debit text,
+    durbin_regulated text,
+    expiration_date text,
+    expiration_month text,
+    expiration_year text,
+    healthcare text,
+    image_url text,
+    issuing_bank text,
+    last_4 text,
+    payroll text,
+    prepaid text,
+    product_id text,
+    token text,
+    PRIMARY KEY (transaction_id),
+    FOREIGN KEY (transaction_id) REFERENCES "transaction"(id)
+);
+
+CREATE TABLE transaction_line_item (
+    _fivetran_id text,
+    transaction_id text,
+    commodity_code text,
+    description text,
+    discount_amount numeric,
+    kind text,
+    "name" text,
+    product_code text,
+    quantity text,
+    tax_amount numeric,
+    total_amount numeric,
+    unit_amount numeric,
+    unit_of_measure text,
+    unit_tax_amount numeric,
+    url text,
+    PRIMARY KEY (_fivetran_id, transaction_id),
+    FOREIGN KEY (transaction_id) REFERENCES "transaction"(id)
+);
+
+CREATE TABLE apple_pay_card (
+    transaction_id text,
+    bin text,
+    card_type text,
+    cardholder_name text,
+    commercial text,
+    country_of_issuance text,
+    debit text,
+    expiration_month text,
+    expiration_year text,
+    healthcare text,
+    issuing_bank text,
+    last_4 text,
+    payment_instrument_name text,
+    payroll text,
+    prepaid text,
+    source_description text,
+    token text,
+    PRIMARY KEY (transaction_id),
+    FOREIGN KEY (transaction_id) REFERENCES "transaction"(id)
+);
+
+CREATE TABLE subscription_status_history (
+    _index integer,
+    subscription_id text,
+    balance numeric,
+    price numeric,
+    "source" text,
+    "status" text,
+    "timestamp" timestamp,
+    "user" text,
+    PRIMARY KEY (_index, subscription_id),
+    FOREIGN KEY (subscription_id) REFERENCES subscription(id)
+);
+
+CREATE TABLE plan (
+    id text,
+    billing_day_of_month integer,
+    billing_frequency integer,
+    created_at timestamp,
+    currency_iso_code text,
+    description text,
+    "name" text,
+    number_of_billing_cycles integer,
+    price numeric,
+    trial_duration integer,
+    trial_duration_unit text,
+    updated_at timestamp,
+    PRIMARY KEY (id)
+);
+
+CREATE TABLE us_bank_account_details (
+    transaction_id text,
+    account_holder_name text,
+    account_type text,
+    ach_mandate text,
+    bank_name text,
+    image_url text,
+    last_4 text,
+    routing_number text,
+    token text,
+    PRIMARY KEY (transaction_id),
+    FOREIGN KEY (transaction_id) REFERENCES "transaction"(id)
+);
+
+CREATE TABLE decision_reason (
+    decision_reason text,
+    risk_data_id text,
+    PRIMARY KEY (decision_reason, risk_data_id)
+);
+
+CREATE TABLE local_payment_details (
+    transaction_id text,
+    capture_id text,
+    custom_field text,
+    debug_id text,
+    description text,
+    funding_source text,
+    payer_id text,
+    payment_id text,
+    refund_from_transaction_fee_amount text,
+    refund_from_transaction_fee_currency_iso_code text,
+    refund_id text,
+    transaction_fee_amount text,
+    transaction_fee_currency_iso_code text,
+    PRIMARY KEY (transaction_id),
+    FOREIGN KEY (transaction_id) REFERENCES "transaction"(id)
+);
+
+CREATE TABLE paypal_here_details (
+    transaction_id text,
+    authorization_id text,
+    capture_id text,
+    invoice_id text,
+    payment_id text,
+    payment_type text,
+    refund_id text,
+    transaction_fee_amount text,
+    transaction_fee_currency_iso_code text,
+    transaction_initiation_date text,
+    transaction_updated_date text,
+    PRIMARY KEY (transaction_id),
+    FOREIGN KEY (transaction_id) REFERENCES "transaction"(id)
+);
+
+CREATE TABLE visa_checkout_details (
+    transaction_id text,
+    bin text,
+    call_id text,
+    card_type text,
+    cardholder_name text,
+    commercial text,
+    country_of_issuance text,
+    debit text,
+    durbin_regulated text,
+    expiration_month text,
+    expiration_year text,
+    healthcare text,
+    image_url text,
+    issuing_bank text,
+    last_4 text,
+    payroll text,
+    prepaid text,
+    product_id text,
+    token text,
+    PRIMARY KEY (transaction_id),
+    FOREIGN KEY (transaction_id) REFERENCES "transaction"(id)
+);
+
+CREATE TABLE subscription (
+    id text,
+    merchant_account_id text,
+    plan_id text,
+    balance numeric,
+    billing_day_of_month integer,
+    billing_period_end_date timestamp,
+    billing_period_start_date timestamp,
+    created_at timestamp,
+    current_billing_cycle integer,
+    days_past_due integer,
+    description text,
+    descriptor_name text,
+    descriptor_phone text,
+    descriptor_url text,
+    failure_count integer,
+    first_billing_date timestamp,
+    has_trial_period boolean,
+    never_expires boolean,
+    next_billing_date timestamp,
+    next_billing_period_amount numeric,
+    number_of_billing_cycles integer,
+    paid_through_date timestamp,
+    payment_method_token text,
+    price numeric,
+    "status" text,
+    trial_duration integer,
+    trial_duration_unit text,
+    updated_at timestamp,
+    PRIMARY KEY (id),
+    FOREIGN KEY (merchant_account_id) REFERENCES merchant_account(id),
+    FOREIGN KEY (plan_id) REFERENCES plan(id)
+);
+
+CREATE TABLE transaction_discount (
+    id text,
+    plan_id text,
+    transaction_id text,
+    amount numeric,
+    current_billing_cycle integer,
+    description text,
+    kind text,
+    "name" text,
+    never_expires boolean,
+    number_of_billing_cycles integer,
+    quantity integer,
+    PRIMARY KEY (id),
+    FOREIGN KEY (plan_id) REFERENCES plan(id),
+    FOREIGN KEY (transaction_id) REFERENCES "transaction"(id)
+);
+
+CREATE TABLE transaction_status_history (
+    _index integer,
+    transaction_id text,
+    amount numeric,
+    "source" text,
+    "status" text,
+    "timestamp" timestamp,
+    "user" text,
+    PRIMARY KEY (_index, transaction_id),
+    FOREIGN KEY (transaction_id) REFERENCES "transaction"(id)
+);
+
+CREATE TABLE paypal_details (
+    transaction_id text,
+    authorization_id text,
+    capture_id text,
+    custom_field text,
+    debug_id text,
+    description text,
+    image_url text,
+    payee_email text,
+    payer_email text,
+    payer_first_name text,
+    payer_id text,
+    payer_last_name text,
+    payer_status text,
+    payment_id text,
+    refund_id text,
+    seller_protection_status text,
+    token text,
+    transaction_fee_amount text,
+    transaction_fee_currency_iso_code text,
+    PRIMARY KEY (transaction_id),
+    FOREIGN KEY (transaction_id) REFERENCES "transaction"(id)
+);
+
+CREATE TABLE subscription_add_on (
+    id text,
+    subscription_id text,
+    plan_id text,
+    amount numeric,
+    current_billing_cycle integer,
+    description text,
+    kind text,
+    "name" text,
+    never_expires boolean,
+    number_of_billing_cycles integer,
+    quantity integer,
+    PRIMARY KEY (id, subscription_id),
+    FOREIGN KEY (subscription_id) REFERENCES subscription(id),
+    FOREIGN KEY (plan_id) REFERENCES plan(id)
+);
+
+CREATE TABLE venmo_details (
+    transaction_id text,
+    image_url text,
+    source_description text,
+    token text,
+    username text,
+    venmo_user_id text,
+    PRIMARY KEY (transaction_id),
+    FOREIGN KEY (transaction_id) REFERENCES "transaction"(id)
+);
+
+CREATE TABLE dispute (
+    id text,
+    merchant_account_id text,
+    transaction_id text,
+    amount numeric,
+    amount_won numeric,
+    case_number text,
+    created_date timestamp,
+    currency_iso_code text,
+    dispute_amount numeric,
+    kind text,
+    opened_date timestamp,
+    original_dispute_id text,
+    processor_comments text,
+    reason text,
+    reason_code text,
+    reason_description text,
+    received_date timestamp,
+    reference_number text,
+    reply_by_date timestamp,
+    "status" text,
+    updated_date timestamp,
+    won_date timestamp,
+    PRIMARY KEY (id),
+    FOREIGN KEY (merchant_account_id) REFERENCES merchant_account(id),
+    FOREIGN KEY (transaction_id) REFERENCES "transaction"(id)
+);
+
+CREATE TABLE unregistered_customer (
+    transaction_id text,
+    company text,
+    email text,
+    first_name text,
+    last_name text,
+    phone text,
+    website text,
+    PRIMARY KEY (transaction_id),
+    FOREIGN KEY (transaction_id) REFERENCES "transaction"(id)
+);
+
+CREATE TABLE subscription_discount (
+    id text,
+    subscription_id text,
+    plan_id text,
+    amount numeric,
+    current_billing_cycle integer,
+    description text,
+    kind text,
+    "name" text,
+    never_expires boolean,
+    number_of_billing_cycles integer,
+    quantity integer,
+    PRIMARY KEY (id, subscription_id),
+    FOREIGN KEY (subscription_id) REFERENCES subscription(id),
+    FOREIGN KEY (plan_id) REFERENCES plan(id)
+);
+
+CREATE TABLE "transaction" (
+    id text,
+    customer_id text,
+    merchant_account_id text,
+    plan_id text,
+    subscription_id text,
+    amount numeric,
+    authorization_expires_at timestamp,
+    authorized_transaction_id text,
+    billing_period_end_date timestamp,
+    billing_period_start_date timestamp,
+    channel text,
+    created_at timestamp,
+    currency_iso_code text,
+    descriptor_name text,
+    descriptor_phone text,
+    descriptor_url text,
+    escrow_status text,
+    gateway_rejection_reason text,
+    network_response_code text,
+    network_response_text text,
+    network_transaction_id text,
+    order_id text,
+    payment_instrument_type text,
+    processed_with_network_token boolean,
+    processor_authorization_code text,
+    processor_response_code text,
+    processor_response_text text,
+    processor_response_type text,
+    processor_settlement_response_code text,
+    processor_settlement_response_text text,
+    purchase_order_number text,
+    recurring boolean,
+    refunded_transaction_id text,
+    retrieval_reference_number text,
+    service_fee_amount numeric,
+    settlement_batch_id text,
+    shipping_amount numeric,
+    shipping_from_postal_code text,
+    "status" text,
+    tax_amount numeric,
+    tax_exempt boolean,
+    "type" text,
+    updated_at timestamp,
+    voice_referral_number text,
+    -- billing_address_* (dynamic column),
+    -- disbursement_* (dynamic column),
+    -- risk_data_* (dynamic column),
+    -- shipping_address_* (dynamic column),
+    -- three_d_secure_info_* (dynamic column),
+    PRIMARY KEY (id),
+    FOREIGN KEY (customer_id) REFERENCES registered_customer(id),
+    FOREIGN KEY (merchant_account_id) REFERENCES merchant_account(id),
+    FOREIGN KEY (plan_id) REFERENCES plan(id),
+    FOREIGN KEY (subscription_id) REFERENCES subscription(id)
+);
+
+CREATE TABLE samsung_pay_card_details (
+    transaction_id text,
+    bin text,
+    card_holder_name text,
+    card_type text,
+    commercial text,
+    country_of_issuance text,
+    debit text,
+    durbin_regulated text,
+    expiration_date text,
+    expiration_month text,
+    expiration_year text,
+    health_care text,
+    image_url text,
+    issuing_bank text,
+    last_4 text,
+    payroll text,
+    prepaid text,
+    product_id text,
+    token text,
+    PRIMARY KEY (transaction_id),
+    FOREIGN KEY (transaction_id) REFERENCES "transaction"(id)
+);
+
+CREATE TABLE credit_card (
+    transaction_id text,
+    bin text,
+    card_type text,
+    cardholder_name text,
+    commercial text,
+    country_of_issuance text,
+    created_at timestamp,
+    customer_id text,
+    customer_location text,
+    debit text,
+    durbin_regulated text,
+    expiration_date text,
+    expiration_month text,
+    expiration_year text,
+    healthcare text,
+    image_url text,
+    is_default boolean,
+    is_expired boolean,
+    is_venmo_sdk boolean,
+    issuing_bank text,
+    last_4 text,
+    payroll text,
+    prepaid text,
+    product_id text,
+    token text,
+    unique_number_identifier text,
+    updated_at timestamp,
+    -- address_* (dynamic column),
+    PRIMARY KEY (transaction_id),
+    FOREIGN KEY (transaction_id) REFERENCES "transaction"(id)
+);
+
+CREATE TABLE android_pay_details (
+    transaction_id text,
+    bin text,
+    card_type text,
+    commercial text,
+    country_of_issuance text,
+    debit text,
+    expiration_month text,
+    expiration_year text,
+    google_transaction_id text,
+    healthcare text,
+    image_url text,
+    issuing_bank text,
+    last_4 text,
+    network_tokenized boolean,
+    payroll text,
+    prepaid text,
+    source_card_last_4 text,
+    source_card_type text,
+    source_description text,
+    token text,
+    virtual_card_last_4 text,
+    virtual_card_type text,
+    PRIMARY KEY (transaction_id),
+    FOREIGN KEY (transaction_id) REFERENCES "transaction"(id)
+);
+
+CREATE TABLE credit_card_verification (
+    id text,
+    credit_card_unique_number_identifier text,
+    merchant_account_id text,
+    amount numeric,
+    avs_error_response_code text,
+    avs_postal_code_response_code text,
+    avs_street_address_response_code text,
+    created_at timestamp,
+    currency_iso_code text,
+    cvv_response_code text,
+    gateway_rejection_reason text,
+    network_response_code text,
+    network_response_text text,
+    processor_response_code text,
+    processor_response_text text,
+    processor_response_type text,
+    "status" text,
+    -- address_* (dynamic column),
+    -- risk_data_* (dynamic column),
+    PRIMARY KEY (id, credit_card_unique_number_identifier),
+    FOREIGN KEY (credit_card_unique_number_identifier) REFERENCES credit_card(transaction_id),
+    FOREIGN KEY (merchant_account_id) REFERENCES merchant_account(id)
+);
+
+CREATE TABLE merchant_account (
+    id text,
+    currency_iso_code text,
+    date_of_birth text,
+    email text,
+    first_name text,
+    is_default boolean,
+    last_name text,
+    phone text,
+    "status" text,
+    -- address_* (dynamic column),
+    -- funding_details_* (dynamic column),
+    PRIMARY KEY (id)
+);
+
+CREATE TABLE transaction_add_on (
+    id text,
+    transaction_id text,
+    plan_id text,
+    amount numeric,
+    current_billing_cycle integer,
+    description text,
+    kind text,
+    "name" text,
+    never_expires boolean,
+    number_of_billing_cycles integer,
+    quantity integer,
+    PRIMARY KEY (id, transaction_id),
+    FOREIGN KEY (transaction_id) REFERENCES "transaction"(id),
+    FOREIGN KEY (plan_id) REFERENCES plan(id)
+);

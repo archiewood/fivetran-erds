@@ -1,0 +1,7282 @@
+{
+  "tables": [
+    {
+      "name": "group_sla_policy_history",
+      "columns": [
+        {
+          "name": "id",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "created_at",
+          "type": "Instant"
+        },
+        {
+          "name": "description",
+          "type": "String"
+        },
+        {
+          "name": "position",
+          "type": "Long"
+        },
+        {
+          "name": "title",
+          "type": "String"
+        },
+        {
+          "name": "updated_at",
+          "type": "Instant"
+        }
+      ],
+      "tags": [],
+      "link": "https://developer.zendesk.com/api-reference/ticketing/business-rules/group_sla_policies/"
+    },
+    {
+      "name": "agent_condition_required_status",
+      "columns": [
+        {
+          "name": "_fivetran_id",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "agent_condition_id",
+          "type": "String",
+          "foreignKey": true
+        },
+        {
+          "name": "status",
+          "type": "String"
+        }
+      ],
+      "tags": [],
+      "link": null
+    },
+    {
+      "name": "alert_recipient",
+      "columns": [
+        {
+          "name": "ticket_alert_id",
+          "type": "Long",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "user_id",
+          "type": "Long",
+          "primaryKey": true,
+          "foreignKey": true
+        }
+      ],
+      "tags": [],
+      "link": "https://developer.zendesk.com/documentation/ticketing/reference-guides/ticket-audit-events-reference/#follower-notification-event"
+    },
+    {
+      "name": "macro_action",
+      "columns": [
+        {
+          "name": "field",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "macro_id",
+          "type": "Long",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "value",
+          "type": "Json"
+        }
+      ],
+      "tags": [],
+      "link": "https://developer.zendesk.com/documentation/ticketing/reference-guides/actions-reference/"
+    },
+    {
+      "name": "call_leg",
+      "columns": [
+        {
+          "name": "id",
+          "type": "Long",
+          "primaryKey": true
+        },
+        {
+          "name": "agent_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "call_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "user_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "available_via",
+          "type": "String"
+        },
+        {
+          "name": "call_charge",
+          "type": "String"
+        },
+        {
+          "name": "completion_status",
+          "type": "String"
+        },
+        {
+          "name": "conference_from",
+          "type": "Long"
+        },
+        {
+          "name": "conference_time",
+          "type": "Long"
+        },
+        {
+          "name": "conference_to",
+          "type": "Long"
+        },
+        {
+          "name": "consultation_from",
+          "type": "Long"
+        },
+        {
+          "name": "consultation_time",
+          "type": "Long"
+        },
+        {
+          "name": "consultation_to",
+          "type": "Long"
+        },
+        {
+          "name": "created_at",
+          "type": "Instant"
+        },
+        {
+          "name": "duration",
+          "type": "Long"
+        },
+        {
+          "name": "forwarded_to",
+          "type": "String"
+        },
+        {
+          "name": "hold_time",
+          "type": "Long"
+        },
+        {
+          "name": "minutes_billed",
+          "type": "Long"
+        },
+        {
+          "name": "talk_time",
+          "type": "Long"
+        },
+        {
+          "name": "transferred_from",
+          "type": "Long"
+        },
+        {
+          "name": "transferred_to",
+          "type": "Long"
+        },
+        {
+          "name": "type",
+          "type": "String"
+        },
+        {
+          "name": "updated_at",
+          "type": "Instant"
+        },
+        {
+          "name": "wrap_up_time",
+          "type": "Long"
+        }
+      ],
+      "tags": [],
+      "link": "https://developer.zendesk.com/api-reference/voice/talk-api/incremental_exports/#incremental-call-legs-export"
+    },
+    {
+      "name": "satisfaction_rating",
+      "columns": [
+        {
+          "name": "id",
+          "type": "Long",
+          "primaryKey": true
+        },
+        {
+          "name": "assignee_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "group_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "requester_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "ticket_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "comment",
+          "type": "String"
+        },
+        {
+          "name": "created_at",
+          "type": "Instant"
+        },
+        {
+          "name": "reason",
+          "type": "String"
+        },
+        {
+          "name": "score",
+          "type": "String"
+        },
+        {
+          "name": "updated_at",
+          "type": "Instant"
+        },
+        {
+          "name": "url",
+          "type": "String"
+        }
+      ],
+      "tags": [],
+      "link": "https://developer.zendesk.com/rest_api/docs/core/ticket_audits#satisfaction-rating-events"
+    },
+    {
+      "name": "ticket_email_cc",
+      "columns": [
+        {
+          "name": "ticket_id",
+          "type": "Long",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "user_id",
+          "type": "Long",
+          "primaryKey": true,
+          "foreignKey": true
+        }
+      ],
+      "tags": [],
+      "link": null
+    },
+    {
+      "name": "csat_survey_closed_ended_option",
+      "columns": [
+        {
+          "name": "option_id",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "question_id",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "survey_id",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "survey_version",
+          "type": "Long",
+          "primaryKey": true
+        },
+        {
+          "name": "label_key",
+          "type": "String"
+        },
+        {
+          "name": "label_type",
+          "type": "String"
+        },
+        {
+          "name": "label_value",
+          "type": "String"
+        }
+      ],
+      "tags": [],
+      "link": null
+    },
+    {
+      "name": "badge",
+      "columns": [
+        {
+          "name": "id",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "badge_category_id",
+          "type": "String",
+          "foreignKey": true
+        },
+        {
+          "name": "created_at",
+          "type": "Instant"
+        },
+        {
+          "name": "description",
+          "type": "String"
+        },
+        {
+          "name": "icon_url",
+          "type": "String"
+        },
+        {
+          "name": "name",
+          "type": "String"
+        },
+        {
+          "name": "updated_at",
+          "type": "Instant"
+        }
+      ],
+      "tags": [],
+      "link": null
+    },
+    {
+      "name": "content_subscription",
+      "columns": [
+        {
+          "name": "id",
+          "type": "Long",
+          "primaryKey": true
+        },
+        {
+          "name": "user_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "content_id",
+          "type": "Long"
+        },
+        {
+          "name": "content_type",
+          "type": "String"
+        },
+        {
+          "name": "created_at",
+          "type": "Instant"
+        },
+        {
+          "name": "include_comments",
+          "type": "Boolean"
+        },
+        {
+          "name": "locale",
+          "type": "String"
+        },
+        {
+          "name": "source_locale",
+          "type": "String"
+        },
+        {
+          "name": "updated_at",
+          "type": "Instant"
+        },
+        {
+          "name": "url",
+          "type": "String"
+        }
+      ],
+      "tags": [],
+      "link": null
+    },
+    {
+      "name": "line",
+      "columns": [
+        {
+          "name": "id",
+          "type": "Long",
+          "primaryKey": true
+        },
+        {
+          "name": "brand_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "ivr_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "schedule_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "call_recording_consent",
+          "type": "String"
+        },
+        {
+          "name": "country_code",
+          "type": "String"
+        },
+        {
+          "name": "created_at",
+          "type": "Instant"
+        },
+        {
+          "name": "default_group_id",
+          "type": "Long"
+        },
+        {
+          "name": "display_number",
+          "type": "String"
+        },
+        {
+          "name": "external",
+          "type": "Boolean"
+        },
+        {
+          "name": "failover_number",
+          "type": "String"
+        },
+        {
+          "name": "line_type",
+          "type": "String"
+        },
+        {
+          "name": "location",
+          "type": "String"
+        },
+        {
+          "name": "name",
+          "type": "String"
+        },
+        {
+          "name": "nickname",
+          "type": "String"
+        },
+        {
+          "name": "number",
+          "type": "String"
+        },
+        {
+          "name": "outbound_enabled",
+          "type": "Boolean"
+        },
+        {
+          "name": "outbound_number",
+          "type": "String"
+        },
+        {
+          "name": "priority",
+          "type": "Long"
+        },
+        {
+          "name": "recorded",
+          "type": "Boolean"
+        },
+        {
+          "name": "sms_enabled",
+          "type": "Boolean"
+        },
+        {
+          "name": "sms_group_id",
+          "type": "Long"
+        },
+        {
+          "name": "token",
+          "type": "String"
+        },
+        {
+          "name": "toll_free",
+          "type": "Boolean"
+        },
+        {
+          "name": "transcription",
+          "type": "Boolean"
+        },
+        {
+          "name": "voice_enabled",
+          "type": "Boolean"
+        },
+        {
+          "name": "capabilities_*",
+          "type": "",
+          "wildCard": true
+        }
+      ],
+      "tags": [],
+      "link": "https://developer.zendesk.com/api-reference/voice/talk-api/lines/"
+    },
+    {
+      "name": "ticket_alert",
+      "columns": [
+        {
+          "name": "id",
+          "type": "Long",
+          "primaryKey": true
+        },
+        {
+          "name": "ticket_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "user_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "body",
+          "type": "String"
+        },
+        {
+          "name": "created",
+          "type": "Instant"
+        },
+        {
+          "name": "resource",
+          "type": "String"
+        },
+        {
+          "name": "subject",
+          "type": "String"
+        },
+        {
+          "name": "type",
+          "type": "String"
+        },
+        {
+          "name": "via_channel",
+          "type": "String"
+        },
+        {
+          "name": "via_source_from_address",
+          "type": "String"
+        },
+        {
+          "name": "via_source_from_id",
+          "type": "Long"
+        },
+        {
+          "name": "via_source_from_title",
+          "type": "String"
+        },
+        {
+          "name": "via_source_rel",
+          "type": "String"
+        },
+        {
+          "name": "via_source_to_address",
+          "type": "String"
+        },
+        {
+          "name": "via_source_to_name",
+          "type": "String"
+        }
+      ],
+      "tags": [],
+      "link": null
+    },
+    {
+      "name": "ticket_chat_event",
+      "columns": [
+        {
+          "name": "created_at",
+          "type": "Instant",
+          "primaryKey": true
+        },
+        {
+          "name": "chat_id",
+          "type": "String",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "actor_id",
+          "type": "String",
+          "foreignKey": true
+        },
+        {
+          "name": "chat_index",
+          "type": "Long"
+        },
+        {
+          "name": "external_message_id",
+          "type": "String"
+        },
+        {
+          "name": "filename",
+          "type": "String"
+        },
+        {
+          "name": "is_history_context",
+          "type": "Boolean"
+        },
+        {
+          "name": "message",
+          "type": "String"
+        },
+        {
+          "name": "message_id",
+          "type": "String"
+        },
+        {
+          "name": "message_source",
+          "type": "String"
+        },
+        {
+          "name": "mime_type",
+          "type": "String"
+        },
+        {
+          "name": "original_message",
+          "type": "Json"
+        },
+        {
+          "name": "original_message_type",
+          "type": "String"
+        },
+        {
+          "name": "parent_message_id",
+          "type": "String"
+        },
+        {
+          "name": "reason",
+          "type": "String"
+        },
+        {
+          "name": "size",
+          "type": "Long"
+        },
+        {
+          "name": "status",
+          "type": "String"
+        },
+        {
+          "name": "status_updated_at",
+          "type": "Instant"
+        },
+        {
+          "name": "type",
+          "type": "String"
+        },
+        {
+          "name": "url",
+          "type": "String"
+        }
+      ],
+      "tags": [],
+      "link": "https://developer.zendesk.com/documentation/ticketing/reference-guides/ticket-audit-events-reference/#chat-started-event"
+    },
+    {
+      "name": "custom_role",
+      "columns": [
+        {
+          "name": "id",
+          "type": "Long",
+          "primaryKey": true
+        },
+        {
+          "name": "created_at",
+          "type": "Instant"
+        },
+        {
+          "name": "description",
+          "type": "String"
+        },
+        {
+          "name": "name",
+          "type": "String"
+        },
+        {
+          "name": "role_type",
+          "type": "Long"
+        },
+        {
+          "name": "updated_at",
+          "type": "Instant"
+        },
+        {
+          "name": "configuration_*",
+          "type": "",
+          "wildCard": true
+        }
+      ],
+      "tags": [],
+      "link": "https://developer.zendesk.com/rest_api/docs/core/custom_roles"
+    },
+    {
+      "name": "ticket_side_conversation_event",
+      "columns": [
+        {
+          "name": "id",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "side_conversation_id",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "actor_support_agent_id",
+          "type": "String",
+          "foreignKey": true
+        },
+        {
+          "name": "actor_support_group_id",
+          "type": "String",
+          "foreignKey": true
+        },
+        {
+          "name": "actor_user_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "message_from_support_agent_id",
+          "type": "String",
+          "foreignKey": true
+        },
+        {
+          "name": "message_from_support_group_id",
+          "type": "String",
+          "foreignKey": true
+        },
+        {
+          "name": "message_from_user_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "actor_email",
+          "type": "String"
+        },
+        {
+          "name": "actor_msteams_channel_id",
+          "type": "String"
+        },
+        {
+          "name": "actor_name",
+          "type": "String"
+        },
+        {
+          "name": "actor_slack_channel_id",
+          "type": "String"
+        },
+        {
+          "name": "actor_slack_workspace_id",
+          "type": "String"
+        },
+        {
+          "name": "created_at",
+          "type": "Instant"
+        },
+        {
+          "name": "type",
+          "type": "String"
+        },
+        {
+          "name": "updated_state",
+          "type": "String"
+        },
+        {
+          "name": "updated_subject",
+          "type": "String"
+        },
+        {
+          "name": "via",
+          "type": "String"
+        },
+        {
+          "name": "message_*",
+          "type": "",
+          "wildCard": true
+        }
+      ],
+      "tags": [],
+      "link": "https://developer.zendesk.com/api-reference/ticketing/side_conversation/side_conversation/"
+    },
+    {
+      "name": "time_zone",
+      "columns": [
+        {
+          "name": "time_zone",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "standard_offset",
+          "type": "String"
+        }
+      ],
+      "tags": [],
+      "link": null
+    },
+    {
+      "name": "ticket_macro_reference",
+      "columns": [
+        {
+          "name": "id",
+          "type": "Long",
+          "primaryKey": true
+        },
+        {
+          "name": "ticket_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "user_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "created",
+          "type": "Instant"
+        },
+        {
+          "name": "macro_deleted",
+          "type": "Boolean"
+        },
+        {
+          "name": "macro_id",
+          "type": "String"
+        },
+        {
+          "name": "macro_title",
+          "type": "String"
+        },
+        {
+          "name": "via_channel",
+          "type": "String"
+        },
+        {
+          "name": "via_source_from_address",
+          "type": "String"
+        },
+        {
+          "name": "via_source_from_id",
+          "type": "Long"
+        },
+        {
+          "name": "via_source_from_title",
+          "type": "String"
+        },
+        {
+          "name": "via_source_rel",
+          "type": "String"
+        },
+        {
+          "name": "via_source_to_address",
+          "type": "String"
+        },
+        {
+          "name": "via_source_to_name",
+          "type": "String"
+        }
+      ],
+      "tags": [],
+      "link": null
+    },
+    {
+      "name": "ticket_attribute",
+      "columns": [
+        {
+          "name": "attribute_name",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "value",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "ticket_id",
+          "type": "Long",
+          "primaryKey": true,
+          "foreignKey": true
+        }
+      ],
+      "tags": [],
+      "link": null
+    },
+    {
+      "name": "user_segment_organization",
+      "columns": [
+        {
+          "name": "organization_id",
+          "type": "Long",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "user_segment_id",
+          "type": "Long",
+          "primaryKey": true,
+          "foreignKey": true
+        }
+      ],
+      "tags": [],
+      "link": null
+    },
+    {
+      "name": "user_segment_tag",
+      "columns": [
+        {
+          "name": "is_or_tag",
+          "type": "Boolean",
+          "primaryKey": true
+        },
+        {
+          "name": "tag",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "user_segment_id",
+          "type": "Long",
+          "primaryKey": true,
+          "foreignKey": true
+        }
+      ],
+      "tags": [],
+      "link": null
+    },
+    {
+      "name": "ticket_chat",
+      "columns": [
+        {
+          "name": "chat_id",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "ticket_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "user_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "authenticated",
+          "type": "Boolean"
+        },
+        {
+          "name": "backend",
+          "type": "String"
+        },
+        {
+          "name": "channel",
+          "type": "String"
+        },
+        {
+          "name": "conversation_id",
+          "type": "String"
+        },
+        {
+          "name": "initiator",
+          "type": "String"
+        },
+        {
+          "name": "integration_id",
+          "type": "String"
+        },
+        {
+          "name": "tags",
+          "type": "Json"
+        },
+        {
+          "name": "visitor_id",
+          "type": "String"
+        },
+        {
+          "name": "webpath",
+          "type": "Json"
+        }
+      ],
+      "tags": [],
+      "link": "https://developer.zendesk.com/documentation/ticketing/reference-guides/ticket-audit-events-reference/#chat-started-event"
+    },
+    {
+      "name": "ticket_tag",
+      "columns": [
+        {
+          "name": "tag",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "ticket_id",
+          "type": "Long",
+          "primaryKey": true,
+          "foreignKey": true
+        }
+      ],
+      "tags": [],
+      "link": "https://developer.zendesk.com/rest_api/docs/core/tickets#json-format"
+    },
+    {
+      "name": "article",
+      "columns": [
+        {
+          "name": "id",
+          "type": "Long",
+          "primaryKey": true
+        },
+        {
+          "name": "author_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "permission_group_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "body",
+          "type": "String"
+        },
+        {
+          "name": "comments_disabled",
+          "type": "Boolean"
+        },
+        {
+          "name": "created_at",
+          "type": "Instant"
+        },
+        {
+          "name": "draft",
+          "type": "Boolean"
+        },
+        {
+          "name": "edited_at",
+          "type": "Instant"
+        },
+        {
+          "name": "html_url",
+          "type": "String"
+        },
+        {
+          "name": "locale",
+          "type": "String"
+        },
+        {
+          "name": "name",
+          "type": "String"
+        },
+        {
+          "name": "outdated",
+          "type": "Boolean"
+        },
+        {
+          "name": "position",
+          "type": "Int"
+        },
+        {
+          "name": "promoted",
+          "type": "Boolean"
+        },
+        {
+          "name": "section_id",
+          "type": "String"
+        },
+        {
+          "name": "source_locale",
+          "type": "String"
+        },
+        {
+          "name": "title",
+          "type": "String"
+        },
+        {
+          "name": "updated_at",
+          "type": "Instant"
+        },
+        {
+          "name": "url",
+          "type": "String"
+        },
+        {
+          "name": "user_segment_id",
+          "type": "Long"
+        },
+        {
+          "name": "vote_count",
+          "type": "Int"
+        },
+        {
+          "name": "vote_sum",
+          "type": "Int"
+        }
+      ],
+      "tags": [],
+      "link": "https://developer.zendesk.com/rest_api/docs/help_center/articles#content"
+    },
+    {
+      "name": "article_outdated_locale",
+      "columns": [
+        {
+          "name": "outdated_locale",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "article_id",
+          "type": "Long",
+          "primaryKey": true,
+          "foreignKey": true
+        }
+      ],
+      "tags": [],
+      "link": "https://developer.zendesk.com/api-reference/help_center/help-center-api/articles/"
+    },
+    {
+      "name": "ivr_menu_route",
+      "columns": [
+        {
+          "name": "id",
+          "type": "Long",
+          "primaryKey": true
+        },
+        {
+          "name": "ivr_menu_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "action",
+          "type": "String"
+        },
+        {
+          "name": "greeting",
+          "type": "String"
+        },
+        {
+          "name": "keypress",
+          "type": "String"
+        },
+        {
+          "name": "option_text",
+          "type": "String"
+        },
+        {
+          "name": "options_*",
+          "type": "",
+          "wildCard": true
+        }
+      ],
+      "tags": [],
+      "link": "https://developer.zendesk.com/api-reference/voice/talk-api/ivr_routes/"
+    },
+    {
+      "name": "csat_survey_answer",
+      "columns": [
+        {
+          "name": "question_id",
+          "type": "String",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "survey_response_id",
+          "type": "String",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "rating",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "selections_option_id",
+          "type": "String",
+          "foreignKey": true
+        },
+        {
+          "name": "created_at",
+          "type": "Instant"
+        },
+        {
+          "name": "rating_category",
+          "type": "String"
+        },
+        {
+          "name": "selections_type",
+          "type": "String"
+        },
+        {
+          "name": "type",
+          "type": "String"
+        },
+        {
+          "name": "updated_at",
+          "type": "Instant"
+        },
+        {
+          "name": "value",
+          "type": "String"
+        }
+      ],
+      "tags": [],
+      "link": null
+    },
+    {
+      "name": "agent_status_type_group",
+      "columns": [
+        {
+          "name": "agent_status_type_id",
+          "type": "Long",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "group_id",
+          "type": "String",
+          "primaryKey": true,
+          "foreignKey": true
+        }
+      ],
+      "tags": [],
+      "link": "https://developer.zendesk.com/api-reference/webhooks/event-types/agent-availability-events/"
+    },
+    {
+      "name": "user_identity",
+      "columns": [
+        {
+          "name": "id",
+          "type": "Long",
+          "primaryKey": true
+        },
+        {
+          "name": "user_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "created_at",
+          "type": "Instant"
+        },
+        {
+          "name": "deliverable_state",
+          "type": "String"
+        },
+        {
+          "name": "is_primary",
+          "type": "Boolean"
+        },
+        {
+          "name": "type",
+          "type": "String"
+        },
+        {
+          "name": "undeliverable_count",
+          "type": "Long"
+        },
+        {
+          "name": "updated_at",
+          "type": "Instant"
+        },
+        {
+          "name": "url",
+          "type": "String"
+        },
+        {
+          "name": "value",
+          "type": "String"
+        },
+        {
+          "name": "verification_method",
+          "type": "String"
+        },
+        {
+          "name": "verified",
+          "type": "Boolean"
+        },
+        {
+          "name": "verified_at",
+          "type": "Instant"
+        }
+      ],
+      "tags": [],
+      "link": null
+    },
+    {
+      "name": "greeting_ivr",
+      "columns": [
+        {
+          "name": "id",
+          "type": "Long",
+          "primaryKey": true
+        },
+        {
+          "name": "greeting_id",
+          "type": "String",
+          "primaryKey": true,
+          "foreignKey": true
+        }
+      ],
+      "tags": [],
+      "link": null
+    },
+    {
+      "name": "automation_condition",
+      "columns": [
+        {
+          "name": "_fivetran_id",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "automation_id",
+          "type": "Long",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "condition_type",
+          "type": "String"
+        },
+        {
+          "name": "field",
+          "type": "String"
+        },
+        {
+          "name": "operator",
+          "type": "String"
+        },
+        {
+          "name": "value",
+          "type": "Json"
+        }
+      ],
+      "tags": [],
+      "link": "https://developer.zendesk.com/documentation/ticketing/reference-guides/conditions-reference/"
+    },
+    {
+      "name": "organization",
+      "columns": [
+        {
+          "name": "id",
+          "type": "Long",
+          "primaryKey": true
+        },
+        {
+          "name": "group_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "created_at",
+          "type": "Instant"
+        },
+        {
+          "name": "details",
+          "type": "String"
+        },
+        {
+          "name": "external_id",
+          "type": "String"
+        },
+        {
+          "name": "name",
+          "type": "String"
+        },
+        {
+          "name": "notes",
+          "type": "String"
+        },
+        {
+          "name": "shared_comments",
+          "type": "Boolean"
+        },
+        {
+          "name": "shared_tickets",
+          "type": "Boolean"
+        },
+        {
+          "name": "updated_at",
+          "type": "Instant"
+        },
+        {
+          "name": "url",
+          "type": "String"
+        }
+      ],
+      "tags": [],
+      "link": "https://developer.zendesk.com/rest_api/docs/core/organizations"
+    },
+    {
+      "name": "article_label_name",
+      "columns": [
+        {
+          "name": "label_name",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "article_id",
+          "type": "Long",
+          "primaryKey": true,
+          "foreignKey": true
+        }
+      ],
+      "tags": [],
+      "link": "https://developer.zendesk.com/api-reference/help_center/help-center-api/articles/"
+    },
+    {
+      "name": "content_tag",
+      "columns": [
+        {
+          "name": "id",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "created_at",
+          "type": "Instant"
+        },
+        {
+          "name": "name",
+          "type": "String"
+        },
+        {
+          "name": "updated_at",
+          "type": "Instant"
+        }
+      ],
+      "tags": [],
+      "link": "https://developer.zendesk.com/api-reference/help_center/help-center-api/content_tags/"
+    },
+    {
+      "name": "ticket_group_sla_policy",
+      "columns": [
+        {
+          "name": "group_sla_policy_id",
+          "type": "String",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "ticket_id",
+          "type": "Long",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "group_policy_applied_at",
+          "type": "Instant"
+        }
+      ],
+      "tags": [],
+      "link": null
+    },
+    {
+      "name": "domain_name",
+      "columns": [
+        {
+          "name": "index",
+          "type": "Int",
+          "primaryKey": true
+        },
+        {
+          "name": "organization_id",
+          "type": "Long",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "domain_name",
+          "type": "String"
+        }
+      ],
+      "tags": [],
+      "link": "https://developer.zendesk.com/rest_api/docs/core/organizations"
+    },
+    {
+      "name": "section",
+      "columns": [
+        {
+          "name": "id",
+          "type": "Long",
+          "primaryKey": true
+        },
+        {
+          "name": "category_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "created_at",
+          "type": "Instant"
+        },
+        {
+          "name": "description",
+          "type": "String"
+        },
+        {
+          "name": "html_url",
+          "type": "String"
+        },
+        {
+          "name": "locale",
+          "type": "String"
+        },
+        {
+          "name": "name",
+          "type": "String"
+        },
+        {
+          "name": "outdated",
+          "type": "Boolean"
+        },
+        {
+          "name": "parent_section_id",
+          "type": "Long"
+        },
+        {
+          "name": "position",
+          "type": "Long"
+        },
+        {
+          "name": "sorting",
+          "type": "String"
+        },
+        {
+          "name": "source_locale",
+          "type": "String"
+        },
+        {
+          "name": "theme_template",
+          "type": "String"
+        },
+        {
+          "name": "updated_at",
+          "type": "Instant"
+        },
+        {
+          "name": "url",
+          "type": "String"
+        }
+      ],
+      "tags": [],
+      "link": "https://developer.zendesk.com/api-reference/help_center/help-center-api/categories/"
+    },
+    {
+      "name": "locale",
+      "columns": [
+        {
+          "name": "id",
+          "type": "Long",
+          "primaryKey": true
+        },
+        {
+          "name": "updated_at",
+          "type": "Instant",
+          "primaryKey": true
+        },
+        {
+          "name": "created_at",
+          "type": "Instant"
+        },
+        {
+          "name": "default",
+          "type": "Boolean"
+        },
+        {
+          "name": "locale",
+          "type": "String"
+        },
+        {
+          "name": "name",
+          "type": "String"
+        },
+        {
+          "name": "native_name",
+          "type": "String"
+        },
+        {
+          "name": "presentation_name",
+          "type": "String"
+        },
+        {
+          "name": "rtl",
+          "type": "Boolean"
+        },
+        {
+          "name": "url",
+          "type": "String"
+        }
+      ],
+      "tags": [],
+      "link": null
+    },
+    {
+      "name": "call_metric",
+      "columns": [
+        {
+          "name": "id",
+          "type": "Long",
+          "primaryKey": true
+        },
+        {
+          "name": "agent_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "call_group_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "phone_number_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "ticket_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "call_charge",
+          "type": "String"
+        },
+        {
+          "name": "call_recording_consent",
+          "type": "String"
+        },
+        {
+          "name": "call_recording_consent_action",
+          "type": "String"
+        },
+        {
+          "name": "call_recording_consent_keypress",
+          "type": "String"
+        },
+        {
+          "name": "callback",
+          "type": "Boolean"
+        },
+        {
+          "name": "callback_source",
+          "type": "String"
+        },
+        {
+          "name": "completion_status",
+          "type": "String"
+        },
+        {
+          "name": "consultation_time",
+          "type": "Long"
+        },
+        {
+          "name": "created_at",
+          "type": "Instant"
+        },
+        {
+          "name": "customer_requested_voicemail",
+          "type": "Boolean"
+        },
+        {
+          "name": "default_group",
+          "type": "Boolean"
+        },
+        {
+          "name": "direction",
+          "type": "String"
+        },
+        {
+          "name": "duration",
+          "type": "Long"
+        },
+        {
+          "name": "exceeded_queue_wait_time",
+          "type": "Boolean"
+        },
+        {
+          "name": "hold_time",
+          "type": "Long"
+        },
+        {
+          "name": "ivr_action",
+          "type": "String"
+        },
+        {
+          "name": "ivr_destination_group_name",
+          "type": "String"
+        },
+        {
+          "name": "ivr_hops",
+          "type": "Long"
+        },
+        {
+          "name": "ivr_routed_to",
+          "type": "String"
+        },
+        {
+          "name": "ivr_time_spent",
+          "type": "Long"
+        },
+        {
+          "name": "minutes_billed",
+          "type": "Long"
+        },
+        {
+          "name": "not_recording_time",
+          "type": "Long"
+        },
+        {
+          "name": "outside_business_hours",
+          "type": "Boolean"
+        },
+        {
+          "name": "overflowed",
+          "type": "Boolean"
+        },
+        {
+          "name": "overflowed_to",
+          "type": "String"
+        },
+        {
+          "name": "phone_number",
+          "type": "String"
+        },
+        {
+          "name": "quality_issues",
+          "type": "Json"
+        },
+        {
+          "name": "recording_control_interactions",
+          "type": "Int"
+        },
+        {
+          "name": "recording_time",
+          "type": "Long"
+        },
+        {
+          "name": "talk_time",
+          "type": "Long"
+        },
+        {
+          "name": "time_to_answer",
+          "type": "Long"
+        },
+        {
+          "name": "updated_at",
+          "type": "Instant"
+        },
+        {
+          "name": "voicemail",
+          "type": "Boolean"
+        },
+        {
+          "name": "wait_time",
+          "type": "Long"
+        },
+        {
+          "name": "wrap_up_time",
+          "type": "Long"
+        }
+      ],
+      "tags": [],
+      "link": "https://developer.zendesk.com/rest_api/docs/voice-api/incremental_exports"
+    },
+    {
+      "name": "ticket_field_history",
+      "columns": [
+        {
+          "name": "updated",
+          "type": "Instant",
+          "primaryKey": true
+        },
+        {
+          "name": "field_name",
+          "type": "String",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "ticket_id",
+          "type": "Long",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "user_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "value",
+          "type": "String"
+        },
+        {
+          "name": "via_channel",
+          "type": "String"
+        },
+        {
+          "name": "via_source_from_address",
+          "type": "String"
+        },
+        {
+          "name": "via_source_from_id",
+          "type": "Long"
+        },
+        {
+          "name": "via_source_from_title",
+          "type": "String"
+        },
+        {
+          "name": "via_source_rel",
+          "type": "String"
+        },
+        {
+          "name": "via_source_to_address",
+          "type": "String"
+        },
+        {
+          "name": "via_source_to_name",
+          "type": "String"
+        }
+      ],
+      "tags": [],
+      "link": "https://developer.zendesk.com/api-reference/ticketing/tickets/ticket_audits/#list-audits-for-a-ticket"
+    },
+    {
+      "name": "ticket_collaborator",
+      "columns": [
+        {
+          "name": "ticket_id",
+          "type": "Long",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "user_id",
+          "type": "Long",
+          "primaryKey": true,
+          "foreignKey": true
+        }
+      ],
+      "tags": [],
+      "link": null
+    },
+    {
+      "name": "agent_condition",
+      "columns": [
+        {
+          "name": "_fivetran_id",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "child_field_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "parent_field_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "ticket_form_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "is_required",
+          "type": "Boolean"
+        },
+        {
+          "name": "parent_field_type",
+          "type": "String"
+        },
+        {
+          "name": "required_on_statuses_type",
+          "type": "String"
+        },
+        {
+          "name": "value",
+          "type": "String"
+        }
+      ],
+      "tags": [],
+      "link": null
+    },
+    {
+      "name": "user_subscription",
+      "columns": [
+        {
+          "name": "id",
+          "type": "Long",
+          "primaryKey": true
+        },
+        {
+          "name": "followed_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "follower_id",
+          "type": "Long",
+          "foreignKey": true
+        }
+      ],
+      "tags": [],
+      "link": null
+    },
+    {
+      "name": "tweet_recipient",
+      "columns": [
+        {
+          "name": "ticket_comment_id",
+          "type": "Long",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "user_id",
+          "type": "Long",
+          "primaryKey": true,
+          "foreignKey": true
+        }
+      ],
+      "tags": [],
+      "link": "https://developer.zendesk.com/rest_api/docs/core/ticket_audits#tweet-event"
+    },
+    {
+      "name": "badge_category",
+      "columns": [
+        {
+          "name": "id",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "brand_id",
+          "type": "String"
+        },
+        {
+          "name": "created_at",
+          "type": "Instant"
+        },
+        {
+          "name": "name",
+          "type": "String"
+        },
+        {
+          "name": "slug",
+          "type": "String"
+        },
+        {
+          "name": "updated_at",
+          "type": "Instant"
+        }
+      ],
+      "tags": [],
+      "link": null
+    },
+    {
+      "name": "user_segment_group",
+      "columns": [
+        {
+          "name": "group_id",
+          "type": "Long",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "user_segment_id",
+          "type": "Long",
+          "primaryKey": true,
+          "foreignKey": true
+        }
+      ],
+      "tags": [],
+      "link": null
+    },
+    {
+      "name": "user_segment_added_user",
+      "columns": [
+        {
+          "name": "user_id",
+          "type": "Long",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "user_segment_id",
+          "type": "Long",
+          "primaryKey": true,
+          "foreignKey": true
+        }
+      ],
+      "tags": [],
+      "link": null
+    },
+    {
+      "name": "suspended_ticket_attachment",
+      "columns": [
+        {
+          "name": "id",
+          "type": "Long",
+          "primaryKey": true
+        },
+        {
+          "name": "suspended_ticket_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "content_type",
+          "type": "String"
+        },
+        {
+          "name": "content_url",
+          "type": "String"
+        },
+        {
+          "name": "deleted",
+          "type": "Boolean"
+        },
+        {
+          "name": "file_name",
+          "type": "String"
+        },
+        {
+          "name": "height",
+          "type": "Long"
+        },
+        {
+          "name": "inline",
+          "type": "Boolean"
+        },
+        {
+          "name": "malware_access_override",
+          "type": "Boolean"
+        },
+        {
+          "name": "malware_scan_result",
+          "type": "String"
+        },
+        {
+          "name": "mapped_content_url",
+          "type": "String"
+        },
+        {
+          "name": "size",
+          "type": "Long"
+        },
+        {
+          "name": "width",
+          "type": "Long"
+        }
+      ],
+      "tags": [],
+      "link": null
+    },
+    {
+      "name": "schedule_holiday",
+      "columns": [
+        {
+          "name": "id",
+          "type": "Long",
+          "primaryKey": true
+        },
+        {
+          "name": "schedule_id",
+          "type": "Long",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "end_date",
+          "type": "String"
+        },
+        {
+          "name": "name",
+          "type": "String"
+        },
+        {
+          "name": "start_date",
+          "type": "String"
+        }
+      ],
+      "tags": [],
+      "link": "https://developer.zendesk.com/api-reference/ticketing/ticket-management/schedules/#list-holidays-for-schedule"
+    },
+    {
+      "name": "ticket_form_restricted_brand",
+      "columns": [
+        {
+          "name": "brand_id",
+          "type": "Long",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "ticket_form_id",
+          "type": "Long",
+          "primaryKey": true,
+          "foreignKey": true
+        }
+      ],
+      "tags": [],
+      "link": null
+    },
+    {
+      "name": "ticket_custom_field",
+      "columns": [
+        {
+          "name": "id",
+          "type": "Long",
+          "primaryKey": true
+        },
+        {
+          "name": "active",
+          "type": "Boolean"
+        },
+        {
+          "name": "agent_description",
+          "type": "String"
+        },
+        {
+          "name": "collapsed_for_agents",
+          "type": "Boolean"
+        },
+        {
+          "name": "created_at",
+          "type": "Instant"
+        },
+        {
+          "name": "description",
+          "type": "String"
+        },
+        {
+          "name": "editable_in_portal",
+          "type": "Boolean"
+        },
+        {
+          "name": "key",
+          "type": "String"
+        },
+        {
+          "name": "position",
+          "type": "Int"
+        },
+        {
+          "name": "raw_description",
+          "type": "String"
+        },
+        {
+          "name": "raw_title",
+          "type": "String"
+        },
+        {
+          "name": "raw_title_in_portal",
+          "type": "String"
+        },
+        {
+          "name": "regexp_for_validation",
+          "type": "String"
+        },
+        {
+          "name": "relationship_target_type",
+          "type": "String"
+        },
+        {
+          "name": "removable",
+          "type": "Boolean"
+        },
+        {
+          "name": "required",
+          "type": "Boolean"
+        },
+        {
+          "name": "required_in_portal",
+          "type": "Boolean"
+        },
+        {
+          "name": "sub_type_id",
+          "type": "Int"
+        },
+        {
+          "name": "system",
+          "type": "Boolean"
+        },
+        {
+          "name": "tag",
+          "type": "String"
+        },
+        {
+          "name": "title",
+          "type": "String"
+        },
+        {
+          "name": "title_in_portal",
+          "type": "String"
+        },
+        {
+          "name": "type",
+          "type": "String"
+        },
+        {
+          "name": "updated_at",
+          "type": "Instant"
+        },
+        {
+          "name": "url",
+          "type": "String"
+        },
+        {
+          "name": "visible_in_portal",
+          "type": "Boolean"
+        }
+      ],
+      "tags": [],
+      "link": null
+    },
+    {
+      "name": "ivr_menu_route_option",
+      "columns": [
+        {
+          "name": "group_id",
+          "type": "Long",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "ivr_menu_route_id",
+          "type": "Long",
+          "primaryKey": true,
+          "foreignKey": true
+        }
+      ],
+      "tags": [],
+      "link": null
+    },
+    {
+      "name": "sla_policy_metric_history",
+      "columns": [
+        {
+          "name": "index",
+          "type": "Int",
+          "primaryKey": true
+        },
+        {
+          "name": "sla_policy_id",
+          "type": "Long",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "sla_policy_updated_at",
+          "type": "Instant",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "business_hours",
+          "type": "Boolean"
+        },
+        {
+          "name": "metric",
+          "type": "String"
+        },
+        {
+          "name": "priority",
+          "type": "String"
+        },
+        {
+          "name": "target",
+          "type": "Long"
+        }
+      ],
+      "tags": [],
+      "link": "https://developer.zendesk.com/rest_api/docs/core/sla_policies"
+    },
+    {
+      "name": "skip_ticket_history",
+      "columns": [
+        {
+          "name": "id",
+          "type": "Long",
+          "primaryKey": true
+        },
+        {
+          "name": "updated_at",
+          "type": "Instant",
+          "primaryKey": true
+        },
+        {
+          "name": "ticket_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "user_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "created_at",
+          "type": "Instant"
+        },
+        {
+          "name": "reason",
+          "type": "String"
+        }
+      ],
+      "tags": [],
+      "link": "https://developer.zendesk.com/rest_api/docs/support/ticket_skips"
+    },
+    {
+      "name": "automation_action",
+      "columns": [
+        {
+          "name": "field",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "automation_id",
+          "type": "Long",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "value",
+          "type": "Json"
+        }
+      ],
+      "tags": [],
+      "link": "https://developer.zendesk.com/documentation/ticketing/reference-guides/actions-reference/"
+    },
+    {
+      "name": "brand",
+      "columns": [
+        {
+          "name": "id",
+          "type": "Long",
+          "primaryKey": true
+        },
+        {
+          "name": "active",
+          "type": "Boolean"
+        },
+        {
+          "name": "brand_url",
+          "type": "String"
+        },
+        {
+          "name": "default",
+          "type": "Boolean"
+        },
+        {
+          "name": "has_help_center",
+          "type": "Boolean"
+        },
+        {
+          "name": "help_center_state",
+          "type": "String"
+        },
+        {
+          "name": "name",
+          "type": "String"
+        },
+        {
+          "name": "subdomain",
+          "type": "String"
+        },
+        {
+          "name": "url",
+          "type": "String"
+        },
+        {
+          "name": "logo_*",
+          "type": "",
+          "wildCard": true
+        }
+      ],
+      "tags": [],
+      "link": "https://developer.zendesk.com/rest_api/docs/core/brands"
+    },
+    {
+      "name": "daylight_time",
+      "columns": [
+        {
+          "name": "time_zone",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "year",
+          "type": "Int",
+          "primaryKey": true
+        },
+        {
+          "name": "daylight_end_utc",
+          "type": "LocalDateTime"
+        },
+        {
+          "name": "daylight_offset",
+          "type": "Int"
+        },
+        {
+          "name": "daylight_start_utc",
+          "type": "LocalDateTime"
+        }
+      ],
+      "tags": [],
+      "link": null
+    },
+    {
+      "name": "ivr",
+      "columns": [
+        {
+          "name": "id",
+          "type": "Long",
+          "primaryKey": true
+        },
+        {
+          "name": "name",
+          "type": "String"
+        }
+      ],
+      "tags": [],
+      "link": "https://developer.zendesk.com/api-reference/voice/talk-api/ivrs/"
+    },
+    {
+      "name": "trigger",
+      "columns": [
+        {
+          "name": "id",
+          "type": "Long",
+          "primaryKey": true
+        },
+        {
+          "name": "active",
+          "type": "Boolean"
+        },
+        {
+          "name": "app_installation",
+          "type": "Json"
+        },
+        {
+          "name": "category_id",
+          "type": "String"
+        },
+        {
+          "name": "created_at",
+          "type": "Instant"
+        },
+        {
+          "name": "default",
+          "type": "Boolean"
+        },
+        {
+          "name": "description",
+          "type": "String"
+        },
+        {
+          "name": "permissions",
+          "type": "Json"
+        },
+        {
+          "name": "position",
+          "type": "String"
+        },
+        {
+          "name": "raw_title",
+          "type": "String"
+        },
+        {
+          "name": "title",
+          "type": "String"
+        },
+        {
+          "name": "updated_at",
+          "type": "Instant"
+        },
+        {
+          "name": "url",
+          "type": "String"
+        }
+      ],
+      "tags": [],
+      "link": "https://developer.zendesk.com/api-reference/ticketing/business-rules/triggers/"
+    },
+    {
+      "name": "group_sla_policy_metric_history",
+      "columns": [
+        {
+          "name": "metric",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "priority",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "group_sla_policy_id",
+          "type": "String",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "business_hours",
+          "type": "Boolean"
+        },
+        {
+          "name": "target",
+          "type": "Long"
+        }
+      ],
+      "tags": [],
+      "link": "https://developer.zendesk.com/api-reference/ticketing/business-rules/group_sla_policies/"
+    },
+    {
+      "name": "user_vote",
+      "columns": [
+        {
+          "name": "id",
+          "type": "Long",
+          "primaryKey": true
+        },
+        {
+          "name": "user_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "created_at",
+          "type": "Instant"
+        },
+        {
+          "name": "item_id",
+          "type": "Long"
+        },
+        {
+          "name": "item_type",
+          "type": "String"
+        },
+        {
+          "name": "updated_at",
+          "type": "Instant"
+        },
+        {
+          "name": "value",
+          "type": "Long"
+        }
+      ],
+      "tags": [],
+      "link": "https://developer.zendesk.com/api-reference/help_center/help-center-api/votes/"
+    },
+    {
+      "name": "ticket_field_option",
+      "columns": [
+        {
+          "name": "value",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "ticket_custom_field_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "default",
+          "type": "Boolean"
+        },
+        {
+          "name": "id",
+          "type": "Long"
+        },
+        {
+          "name": "name",
+          "type": "String"
+        }
+      ],
+      "tags": [],
+      "link": "https://developer.zendesk.com/rest_api/docs/core/ticket_fields#list-ticket-field-options"
+    },
+    {
+      "name": "ticket_custom_status",
+      "columns": [
+        {
+          "name": "id",
+          "type": "Long",
+          "primaryKey": true
+        },
+        {
+          "name": "ticket_custom_field_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "active",
+          "type": "Boolean"
+        },
+        {
+          "name": "agent_label",
+          "type": "String"
+        },
+        {
+          "name": "created_at",
+          "type": "String"
+        },
+        {
+          "name": "default",
+          "type": "Boolean"
+        },
+        {
+          "name": "description",
+          "type": "String"
+        },
+        {
+          "name": "end_user_description",
+          "type": "String"
+        },
+        {
+          "name": "end_user_label",
+          "type": "String"
+        },
+        {
+          "name": "status_category",
+          "type": "String"
+        },
+        {
+          "name": "updated_at",
+          "type": "String"
+        }
+      ],
+      "tags": [],
+      "link": null
+    },
+    {
+      "name": "agent_status_type",
+      "columns": [
+        {
+          "name": "id",
+          "type": "Long",
+          "primaryKey": true
+        },
+        {
+          "name": "channels_messaging",
+          "type": "String"
+        },
+        {
+          "name": "channels_support",
+          "type": "String"
+        },
+        {
+          "name": "channels_talk",
+          "type": "String"
+        },
+        {
+          "name": "description",
+          "type": "String"
+        },
+        {
+          "name": "name",
+          "type": "String"
+        },
+        {
+          "name": "updated_at",
+          "type": "Instant"
+        }
+      ],
+      "tags": [],
+      "link": "https://developer.zendesk.com/api-reference/webhooks/event-types/agent-availability-events/"
+    },
+    {
+      "name": "post",
+      "columns": [
+        {
+          "name": "id",
+          "type": "Long",
+          "primaryKey": true
+        },
+        {
+          "name": "updated_at",
+          "type": "Instant",
+          "primaryKey": true
+        },
+        {
+          "name": "author_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "topic_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "closed",
+          "type": "Boolean"
+        },
+        {
+          "name": "comment_count",
+          "type": "Int"
+        },
+        {
+          "name": "created_at",
+          "type": "Instant"
+        },
+        {
+          "name": "details",
+          "type": "String"
+        },
+        {
+          "name": "featured",
+          "type": "Boolean"
+        },
+        {
+          "name": "follower_count",
+          "type": "Int"
+        },
+        {
+          "name": "html_url",
+          "type": "String"
+        },
+        {
+          "name": "pinned",
+          "type": "Boolean"
+        },
+        {
+          "name": "status",
+          "type": "String"
+        },
+        {
+          "name": "title",
+          "type": "String"
+        },
+        {
+          "name": "url",
+          "type": "String"
+        },
+        {
+          "name": "vote_count",
+          "type": "Int"
+        },
+        {
+          "name": "vote_sum",
+          "type": "Int"
+        }
+      ],
+      "tags": [],
+      "link": "https://developer.zendesk.com/rest_api/docs/help_center/posts#list-posts"
+    },
+    {
+      "name": "forum_topic",
+      "columns": [
+        {
+          "name": "id",
+          "type": "Long",
+          "primaryKey": true
+        },
+        {
+          "name": "community_id",
+          "type": "Long"
+        },
+        {
+          "name": "created_at",
+          "type": "Instant"
+        },
+        {
+          "name": "description",
+          "type": "String"
+        },
+        {
+          "name": "follower_count",
+          "type": "Long"
+        },
+        {
+          "name": "html_url",
+          "type": "String"
+        },
+        {
+          "name": "manageable_by",
+          "type": "String"
+        },
+        {
+          "name": "name",
+          "type": "String"
+        },
+        {
+          "name": "position",
+          "type": "Long"
+        },
+        {
+          "name": "updated_at",
+          "type": "Instant"
+        },
+        {
+          "name": "url",
+          "type": "String"
+        },
+        {
+          "name": "user_segment_id",
+          "type": "Long"
+        }
+      ],
+      "tags": [],
+      "link": "https://developer.zendesk.com/rest_api/docs/help_center/topics#show-topic"
+    },
+    {
+      "name": "agent_channel_history",
+      "columns": [
+        {
+          "name": "channel",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "agent_id",
+          "type": "Long",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "updated_at",
+          "type": "Instant"
+        }
+      ],
+      "tags": [],
+      "link": "https://developer.zendesk.com/api-reference/webhooks/event-types/agent-availability-events/"
+    },
+    {
+      "name": "ticket_form_history",
+      "columns": [
+        {
+          "name": "id",
+          "type": "Long",
+          "primaryKey": true
+        },
+        {
+          "name": "updated_at",
+          "type": "Instant",
+          "primaryKey": true
+        },
+        {
+          "name": "active",
+          "type": "Boolean"
+        },
+        {
+          "name": "created_at",
+          "type": "Instant"
+        },
+        {
+          "name": "default",
+          "type": "Boolean"
+        },
+        {
+          "name": "display_name",
+          "type": "String"
+        },
+        {
+          "name": "end_user_visible",
+          "type": "Boolean"
+        },
+        {
+          "name": "in_all_brands",
+          "type": "Boolean"
+        },
+        {
+          "name": "name",
+          "type": "String"
+        },
+        {
+          "name": "position",
+          "type": "Long"
+        },
+        {
+          "name": "raw_display_name",
+          "type": "String"
+        },
+        {
+          "name": "raw_name",
+          "type": "String"
+        },
+        {
+          "name": "url",
+          "type": "String"
+        }
+      ],
+      "tags": [],
+      "link": "https://developer.zendesk.com/api-reference/ticketing/tickets/ticket_forms/"
+    },
+    {
+      "name": "macro",
+      "columns": [
+        {
+          "name": "id",
+          "type": "Long",
+          "primaryKey": true
+        },
+        {
+          "name": "active",
+          "type": "Boolean"
+        },
+        {
+          "name": "app_installation",
+          "type": "Json"
+        },
+        {
+          "name": "created_at",
+          "type": "Instant"
+        },
+        {
+          "name": "default",
+          "type": "Boolean"
+        },
+        {
+          "name": "description",
+          "type": "String"
+        },
+        {
+          "name": "permissions",
+          "type": "Json"
+        },
+        {
+          "name": "position",
+          "type": "String"
+        },
+        {
+          "name": "restriction",
+          "type": "Json"
+        },
+        {
+          "name": "title",
+          "type": "String"
+        },
+        {
+          "name": "updated_at",
+          "type": "Instant"
+        },
+        {
+          "name": "url",
+          "type": "String"
+        }
+      ],
+      "tags": [],
+      "link": "https://developer.zendesk.com/api-reference/ticketing/business-rules/macros/"
+    },
+    {
+      "name": "audit_log",
+      "columns": [
+        {
+          "name": "id",
+          "type": "Long",
+          "primaryKey": true
+        },
+        {
+          "name": "actor_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "action",
+          "type": "String"
+        },
+        {
+          "name": "change_description",
+          "type": "String"
+        },
+        {
+          "name": "created_at",
+          "type": "Instant"
+        },
+        {
+          "name": "source_id",
+          "type": "Long"
+        },
+        {
+          "name": "source_label",
+          "type": "String"
+        },
+        {
+          "name": "source_type",
+          "type": "String"
+        }
+      ],
+      "tags": [],
+      "link": "https://developer.zendesk.com/rest_api/docs/support/audit_logs#content"
+    },
+    {
+      "name": "user_segment",
+      "columns": [
+        {
+          "name": "id",
+          "type": "Long",
+          "primaryKey": true
+        },
+        {
+          "name": "built_in",
+          "type": "Boolean"
+        },
+        {
+          "name": "created_at",
+          "type": "Instant"
+        },
+        {
+          "name": "name",
+          "type": "String"
+        },
+        {
+          "name": "updated_at",
+          "type": "Instant"
+        },
+        {
+          "name": "user_type",
+          "type": "String"
+        }
+      ],
+      "tags": [],
+      "link": "https://developer.zendesk.com/api-reference/help_center/help-center-api/user_segments/"
+    },
+    {
+      "name": "agent_status_history",
+      "columns": [
+        {
+          "name": "channel",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "agent_id",
+          "type": "Long",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "new_state",
+          "type": "String"
+        },
+        {
+          "name": "previous_state",
+          "type": "String"
+        },
+        {
+          "name": "updated_at",
+          "type": "Instant"
+        }
+      ],
+      "tags": [],
+      "link": "https://developer.zendesk.com/api-reference/webhooks/event-types/agent-availability-events/"
+    },
+    {
+      "name": "ticket_comment",
+      "columns": [
+        {
+          "name": "id",
+          "type": "Long",
+          "primaryKey": true
+        },
+        {
+          "name": "ticket_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "user_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "body",
+          "type": "String"
+        },
+        {
+          "name": "created",
+          "type": "Instant"
+        },
+        {
+          "name": "facebook_comment",
+          "type": "Boolean"
+        },
+        {
+          "name": "html_body",
+          "type": "String"
+        },
+        {
+          "name": "metadata",
+          "type": "String"
+        },
+        {
+          "name": "plain_body",
+          "type": "String"
+        },
+        {
+          "name": "tweet",
+          "type": "Boolean"
+        },
+        {
+          "name": "via_channel",
+          "type": "String"
+        },
+        {
+          "name": "via_source_from_address",
+          "type": "String"
+        },
+        {
+          "name": "via_source_from_id",
+          "type": "Long"
+        },
+        {
+          "name": "via_source_from_title",
+          "type": "String"
+        },
+        {
+          "name": "via_source_rel",
+          "type": "String"
+        },
+        {
+          "name": "via_source_to_address",
+          "type": "String"
+        },
+        {
+          "name": "via_source_to_name",
+          "type": "String"
+        },
+        {
+          "name": "voice_comment",
+          "type": "Boolean"
+        }
+      ],
+      "tags": [],
+      "link": "https://developer.zendesk.com/api-reference/ticketing/tickets/ticket_comments/"
+    },
+    {
+      "name": "agent_max_capacity_history",
+      "columns": [
+        {
+          "name": "channel",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "agent_id",
+          "type": "Long",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "current",
+          "type": "Long"
+        },
+        {
+          "name": "previous",
+          "type": "Long"
+        },
+        {
+          "name": "updated_at",
+          "type": "Instant"
+        }
+      ],
+      "tags": [],
+      "link": "https://developer.zendesk.com/api-reference/webhooks/event-types/agent-availability-events/"
+    },
+    {
+      "name": "ticket",
+      "columns": [
+        {
+          "name": "id",
+          "type": "Long",
+          "primaryKey": true
+        },
+        {
+          "name": "assignee_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "brand_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "custom_status_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "forum_topic_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "group_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "organization_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "requester_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "submitter_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "allow_attachments",
+          "type": "Boolean"
+        },
+        {
+          "name": "allow_channelback",
+          "type": "Boolean"
+        },
+        {
+          "name": "created_at",
+          "type": "Instant"
+        },
+        {
+          "name": "description",
+          "type": "String"
+        },
+        {
+          "name": "due_at",
+          "type": "Instant"
+        },
+        {
+          "name": "external_id",
+          "type": "String"
+        },
+        {
+          "name": "followup_ids",
+          "type": "Json"
+        },
+        {
+          "name": "from_messaging_channel",
+          "type": "Boolean"
+        },
+        {
+          "name": "has_incidents",
+          "type": "Boolean"
+        },
+        {
+          "name": "is_public",
+          "type": "Boolean"
+        },
+        {
+          "name": "merged_ticket_ids",
+          "type": "Json"
+        },
+        {
+          "name": "priority",
+          "type": "String"
+        },
+        {
+          "name": "problem_id",
+          "type": "Long"
+        },
+        {
+          "name": "raw_subject",
+          "type": "String"
+        },
+        {
+          "name": "recipient",
+          "type": "String"
+        },
+        {
+          "name": "status",
+          "type": "String"
+        },
+        {
+          "name": "subject",
+          "type": "String"
+        },
+        {
+          "name": "ticket_form_id",
+          "type": "Long"
+        },
+        {
+          "name": "type",
+          "type": "String"
+        },
+        {
+          "name": "updated_at",
+          "type": "Instant"
+        },
+        {
+          "name": "url",
+          "type": "String"
+        },
+        {
+          "name": "via_channel",
+          "type": "String"
+        },
+        {
+          "name": "via_followup_source_id",
+          "type": "Long"
+        },
+        {
+          "name": "via_source_from_address",
+          "type": "String"
+        },
+        {
+          "name": "via_source_from_id",
+          "type": "Long"
+        },
+        {
+          "name": "via_source_from_title",
+          "type": "String"
+        },
+        {
+          "name": "via_source_rel",
+          "type": "String"
+        },
+        {
+          "name": "via_source_to_address",
+          "type": "String"
+        },
+        {
+          "name": "via_source_to_name",
+          "type": "String"
+        }
+      ],
+      "tags": [],
+      "link": "https://developer.zendesk.com/rest_api/docs/core/tickets"
+    },
+    {
+      "name": "sla_policy_history",
+      "columns": [
+        {
+          "name": "id",
+          "type": "Long",
+          "primaryKey": true
+        },
+        {
+          "name": "updated_at",
+          "type": "Instant",
+          "primaryKey": true
+        },
+        {
+          "name": "created_at",
+          "type": "Instant"
+        },
+        {
+          "name": "description",
+          "type": "String"
+        },
+        {
+          "name": "position",
+          "type": "Long"
+        },
+        {
+          "name": "title",
+          "type": "String"
+        }
+      ],
+      "tags": [],
+      "link": null
+    },
+    {
+      "name": "article_comment",
+      "columns": [
+        {
+          "name": "id",
+          "type": "Long",
+          "primaryKey": true
+        },
+        {
+          "name": "author_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "non_author_editor_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "source_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "body",
+          "type": "String"
+        },
+        {
+          "name": "created_at",
+          "type": "Instant"
+        },
+        {
+          "name": "html_url",
+          "type": "String"
+        },
+        {
+          "name": "locale",
+          "type": "String"
+        },
+        {
+          "name": "non_author_updated_at",
+          "type": "Instant"
+        },
+        {
+          "name": "official",
+          "type": "Boolean"
+        },
+        {
+          "name": "source_type",
+          "type": "String"
+        },
+        {
+          "name": "updated_at",
+          "type": "Instant"
+        },
+        {
+          "name": "url",
+          "type": "String"
+        },
+        {
+          "name": "vote_count",
+          "type": "Long"
+        },
+        {
+          "name": "vote_sum",
+          "type": "Long"
+        }
+      ],
+      "tags": [],
+      "link": "https://developer.zendesk.com/api-reference/help_center/help-center-api/article_comments/"
+    },
+    {
+      "name": "ticket_comment_attachment",
+      "columns": [
+        {
+          "name": "id",
+          "type": "Long",
+          "primaryKey": true
+        },
+        {
+          "name": "ticket_comment_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "content_type",
+          "type": "String"
+        },
+        {
+          "name": "content_url",
+          "type": "String"
+        },
+        {
+          "name": "deleted",
+          "type": "Boolean"
+        },
+        {
+          "name": "file_name",
+          "type": "String"
+        },
+        {
+          "name": "height",
+          "type": "Long"
+        },
+        {
+          "name": "inline",
+          "type": "Boolean"
+        },
+        {
+          "name": "malware_access_override",
+          "type": "Boolean"
+        },
+        {
+          "name": "malware_scan_result",
+          "type": "String"
+        },
+        {
+          "name": "mapped_content_url",
+          "type": "String"
+        },
+        {
+          "name": "size",
+          "type": "Long"
+        },
+        {
+          "name": "width",
+          "type": "Long"
+        }
+      ],
+      "tags": [],
+      "link": "https://developer.zendesk.com/api-reference/ticketing/tickets/ticket-attachments/"
+    },
+    {
+      "name": "organization_member",
+      "columns": [
+        {
+          "name": "id",
+          "type": "Long",
+          "primaryKey": true
+        },
+        {
+          "name": "organization_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "user_id",
+          "type": "Long",
+          "foreignKey": true
+        }
+      ],
+      "tags": [],
+      "link": "https://developer.zendesk.com/rest_api/docs/core/organization_memberships"
+    },
+    {
+      "name": "organization_tag",
+      "columns": [
+        {
+          "name": "tag",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "organization_id",
+          "type": "Long",
+          "primaryKey": true,
+          "foreignKey": true
+        }
+      ],
+      "tags": [],
+      "link": "https://developer.zendesk.com/rest_api/docs/core/organization_fields"
+    },
+    {
+      "name": "automation",
+      "columns": [
+        {
+          "name": "id",
+          "type": "Long",
+          "primaryKey": true
+        },
+        {
+          "name": "active",
+          "type": "Boolean"
+        },
+        {
+          "name": "app_installation",
+          "type": "Json"
+        },
+        {
+          "name": "created_at",
+          "type": "Instant"
+        },
+        {
+          "name": "default",
+          "type": "Boolean"
+        },
+        {
+          "name": "permissions",
+          "type": "Json"
+        },
+        {
+          "name": "position",
+          "type": "String"
+        },
+        {
+          "name": "raw_title",
+          "type": "String"
+        },
+        {
+          "name": "title",
+          "type": "String"
+        },
+        {
+          "name": "updated_at",
+          "type": "Instant"
+        }
+      ],
+      "tags": [],
+      "link": "https://developer.zendesk.com/api-reference/ticketing/business-rules/automations/"
+    },
+    {
+      "name": "user",
+      "columns": [
+        {
+          "name": "id",
+          "type": "Long",
+          "primaryKey": true
+        },
+        {
+          "name": "custom_role_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "default_group_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "organization_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "active",
+          "type": "Boolean"
+        },
+        {
+          "name": "alias",
+          "type": "String"
+        },
+        {
+          "name": "authenticity_token",
+          "type": "String"
+        },
+        {
+          "name": "chat_only",
+          "type": "Boolean"
+        },
+        {
+          "name": "created_at",
+          "type": "Instant"
+        },
+        {
+          "name": "details",
+          "type": "String"
+        },
+        {
+          "name": "email",
+          "type": "String"
+        },
+        {
+          "name": "external_id",
+          "type": "String"
+        },
+        {
+          "name": "iana_time_zone",
+          "type": "String"
+        },
+        {
+          "name": "last_login_at",
+          "type": "Instant"
+        },
+        {
+          "name": "locale",
+          "type": "String"
+        },
+        {
+          "name": "locale_id",
+          "type": "Long"
+        },
+        {
+          "name": "moderator",
+          "type": "Boolean"
+        },
+        {
+          "name": "name",
+          "type": "String"
+        },
+        {
+          "name": "notes",
+          "type": "String"
+        },
+        {
+          "name": "only_private_comments",
+          "type": "Boolean"
+        },
+        {
+          "name": "phone",
+          "type": "String"
+        },
+        {
+          "name": "remote_photo_url",
+          "type": "String"
+        },
+        {
+          "name": "report_csv",
+          "type": "Boolean"
+        },
+        {
+          "name": "restricted_agent",
+          "type": "Boolean"
+        },
+        {
+          "name": "role",
+          "type": "String"
+        },
+        {
+          "name": "role_type",
+          "type": "Int"
+        },
+        {
+          "name": "shared",
+          "type": "Boolean"
+        },
+        {
+          "name": "shared_agent",
+          "type": "Boolean"
+        },
+        {
+          "name": "shared_phone_number",
+          "type": "String"
+        },
+        {
+          "name": "signature",
+          "type": "String"
+        },
+        {
+          "name": "suspended",
+          "type": "Boolean"
+        },
+        {
+          "name": "ticket_restriction",
+          "type": "String"
+        },
+        {
+          "name": "time_zone",
+          "type": "String"
+        },
+        {
+          "name": "two_factor_auth_enabled",
+          "type": "Boolean"
+        },
+        {
+          "name": "updated_at",
+          "type": "Instant"
+        },
+        {
+          "name": "url",
+          "type": "String"
+        },
+        {
+          "name": "verified",
+          "type": "Boolean"
+        }
+      ],
+      "tags": [],
+      "link": "https://developer.zendesk.com/rest_api/docs/core/users"
+    },
+    {
+      "name": "ivr_menu",
+      "columns": [
+        {
+          "name": "id",
+          "type": "Long",
+          "primaryKey": true
+        },
+        {
+          "name": "ivr_id",
+          "type": "Long",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "greeting_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "name",
+          "type": "String"
+        },
+        {
+          "name": "system_default",
+          "type": "Boolean"
+        }
+      ],
+      "tags": [],
+      "link": "https://developer.zendesk.com/api-reference/voice/talk-api/ivr_menus/"
+    },
+    {
+      "name": "group",
+      "columns": [
+        {
+          "name": "id",
+          "type": "Long",
+          "primaryKey": true
+        },
+        {
+          "name": "created_at",
+          "type": "Instant"
+        },
+        {
+          "name": "default",
+          "type": "Boolean"
+        },
+        {
+          "name": "description",
+          "type": "String"
+        },
+        {
+          "name": "is_public",
+          "type": "Boolean"
+        },
+        {
+          "name": "name",
+          "type": "String"
+        },
+        {
+          "name": "updated_at",
+          "type": "Instant"
+        },
+        {
+          "name": "url",
+          "type": "String"
+        }
+      ],
+      "tags": [],
+      "link": "https://developer.zendesk.com/rest_api/docs/core/groups"
+    },
+    {
+      "name": "agent_attribute",
+      "columns": [
+        {
+          "name": "attribute_name",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "value",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "agent_id",
+          "type": "Long",
+          "primaryKey": true,
+          "foreignKey": true
+        }
+      ],
+      "tags": [],
+      "link": "https://developer.zendesk.com/rest_api/docs/support/skill_based_routing#list-agent-attribute-values"
+    },
+    {
+      "name": "post_comment",
+      "columns": [
+        {
+          "name": "id",
+          "type": "Long",
+          "primaryKey": true
+        },
+        {
+          "name": "updated_at",
+          "type": "Instant",
+          "primaryKey": true
+        },
+        {
+          "name": "author_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "post_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "body",
+          "type": "String"
+        },
+        {
+          "name": "created_at",
+          "type": "Instant"
+        },
+        {
+          "name": "html_url",
+          "type": "String"
+        },
+        {
+          "name": "official",
+          "type": "Boolean"
+        },
+        {
+          "name": "url",
+          "type": "String"
+        },
+        {
+          "name": "vote_count",
+          "type": "Int"
+        },
+        {
+          "name": "vote_sum",
+          "type": "Int"
+        }
+      ],
+      "tags": [],
+      "link": "https://developer.zendesk.com/rest_api/docs/help_center/post_comments#list-comments"
+    },
+    {
+      "name": "call_leg_quality_issue",
+      "columns": [
+        {
+          "name": "issue",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "call_leg_id",
+          "type": "Long",
+          "primaryKey": true,
+          "foreignKey": true
+        }
+      ],
+      "tags": [],
+      "link": null
+    },
+    {
+      "name": "address",
+      "columns": [
+        {
+          "name": "id",
+          "type": "Long",
+          "primaryKey": true
+        },
+        {
+          "name": "city",
+          "type": "String"
+        },
+        {
+          "name": "country_code",
+          "type": "String"
+        },
+        {
+          "name": "name",
+          "type": "String"
+        },
+        {
+          "name": "provider_reference",
+          "type": "String"
+        },
+        {
+          "name": "province",
+          "type": "String"
+        },
+        {
+          "name": "state",
+          "type": "String"
+        },
+        {
+          "name": "street",
+          "type": "String"
+        },
+        {
+          "name": "zip",
+          "type": "String"
+        }
+      ],
+      "tags": [],
+      "link": "https://developer.zendesk.com/api-reference/voice/talk-api/addresses/"
+    },
+    {
+      "name": "category",
+      "columns": [
+        {
+          "name": "id",
+          "type": "Long",
+          "primaryKey": true
+        },
+        {
+          "name": "created_at",
+          "type": "Instant"
+        },
+        {
+          "name": "description",
+          "type": "String"
+        },
+        {
+          "name": "html_url",
+          "type": "String"
+        },
+        {
+          "name": "locale",
+          "type": "String"
+        },
+        {
+          "name": "name",
+          "type": "String"
+        },
+        {
+          "name": "outdated",
+          "type": "Boolean"
+        },
+        {
+          "name": "position",
+          "type": "Long"
+        },
+        {
+          "name": "source_locale",
+          "type": "String"
+        },
+        {
+          "name": "updated_at",
+          "type": "Instant"
+        },
+        {
+          "name": "url",
+          "type": "String"
+        }
+      ],
+      "tags": [],
+      "link": "https://developer.zendesk.com/api-reference/help_center/help-center-api/categories/"
+    },
+    {
+      "name": "ticket_link",
+      "columns": [
+        {
+          "name": "id",
+          "type": "Long",
+          "primaryKey": true
+        },
+        {
+          "name": "ticket_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "created_at",
+          "type": "Instant"
+        },
+        {
+          "name": "issue_id",
+          "type": "String"
+        },
+        {
+          "name": "issue_key",
+          "type": "String"
+        },
+        {
+          "name": "updated_at",
+          "type": "Instant"
+        }
+      ],
+      "tags": [],
+      "link": "https://developer.zendesk.com/rest_api/docs/support/skill_based_routing#list-ticket-attribute-values"
+    },
+    {
+      "name": "ticket_form_field",
+      "columns": [
+        {
+          "name": "ticket_field_id",
+          "type": "Long",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "ticket_form_id",
+          "type": "Long",
+          "primaryKey": true,
+          "foreignKey": true
+        }
+      ],
+      "tags": [],
+      "link": null
+    },
+    {
+      "name": "greeting",
+      "columns": [
+        {
+          "name": "id",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "category_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "active",
+          "type": "Boolean"
+        },
+        {
+          "name": "audio_name",
+          "type": "String"
+        },
+        {
+          "name": "audio_url",
+          "type": "String"
+        },
+        {
+          "name": "default_lang",
+          "type": "Boolean"
+        },
+        {
+          "name": "has_sub_settings",
+          "type": "Boolean"
+        },
+        {
+          "name": "name",
+          "type": "String"
+        },
+        {
+          "name": "pending",
+          "type": "Boolean"
+        },
+        {
+          "name": "system_default",
+          "type": "Boolean"
+        },
+        {
+          "name": "upload_id",
+          "type": "Long"
+        }
+      ],
+      "tags": [],
+      "link": "https://developer.zendesk.com/api-reference/voice/talk-api/greetings/#list-greetings"
+    },
+    {
+      "name": "line_categorised_greeting",
+      "columns": [
+        {
+          "name": "category_id",
+          "type": "String",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "greeting_id",
+          "type": "String",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "line_id",
+          "type": "Long",
+          "primaryKey": true,
+          "foreignKey": true
+        }
+      ],
+      "tags": [],
+      "link": null
+    },
+    {
+      "name": "ticket_follower",
+      "columns": [
+        {
+          "name": "ticket_id",
+          "type": "Long",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "user_id",
+          "type": "Long",
+          "primaryKey": true,
+          "foreignKey": true
+        }
+      ],
+      "tags": [],
+      "link": null
+    },
+    {
+      "name": "ticket_sla_policy",
+      "columns": [
+        {
+          "name": "policy_applied_at",
+          "type": "Instant",
+          "primaryKey": true
+        },
+        {
+          "name": "sla_policy_id",
+          "type": "Long",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "ticket_id",
+          "type": "Long",
+          "primaryKey": true,
+          "foreignKey": true
+        }
+      ],
+      "tags": [],
+      "link": null
+    },
+    {
+      "name": "suspended_ticket",
+      "columns": [
+        {
+          "name": "id",
+          "type": "Long",
+          "primaryKey": true
+        },
+        {
+          "name": "author_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "brand_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "ticket_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "author_email",
+          "type": "String"
+        },
+        {
+          "name": "author_name",
+          "type": "String"
+        },
+        {
+          "name": "cause",
+          "type": "String"
+        },
+        {
+          "name": "cause_id",
+          "type": "Long"
+        },
+        {
+          "name": "content",
+          "type": "String"
+        },
+        {
+          "name": "created_at",
+          "type": "Instant"
+        },
+        {
+          "name": "message_id",
+          "type": "String"
+        },
+        {
+          "name": "recipient",
+          "type": "String"
+        },
+        {
+          "name": "subject",
+          "type": "String"
+        },
+        {
+          "name": "updated_at",
+          "type": "Instant"
+        },
+        {
+          "name": "url",
+          "type": "String"
+        },
+        {
+          "name": "via_channel",
+          "type": "String"
+        },
+        {
+          "name": "via_source_from_address",
+          "type": "String"
+        },
+        {
+          "name": "via_source_from_id",
+          "type": "Long"
+        },
+        {
+          "name": "via_source_from_title",
+          "type": "String"
+        },
+        {
+          "name": "via_source_rel",
+          "type": "String"
+        },
+        {
+          "name": "via_source_to_address",
+          "type": "String"
+        },
+        {
+          "name": "via_source_to_name",
+          "type": "String"
+        }
+      ],
+      "tags": [],
+      "link": "https://developer.zendesk.com/api-reference/ticketing/tickets/suspended_tickets/"
+    },
+    {
+      "name": "csat_survey_question",
+      "columns": [
+        {
+          "name": "question_id",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "survey_id",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "survey_version",
+          "type": "Long",
+          "primaryKey": true
+        },
+        {
+          "name": "alias",
+          "type": "String"
+        },
+        {
+          "name": "headline_key",
+          "type": "String"
+        },
+        {
+          "name": "headline_type",
+          "type": "String"
+        },
+        {
+          "name": "headline_value",
+          "type": "String"
+        },
+        {
+          "name": "sub_type",
+          "type": "String"
+        },
+        {
+          "name": "type",
+          "type": "String"
+        }
+      ],
+      "tags": [],
+      "link": null
+    },
+    {
+      "name": "agent_unified_status_history",
+      "columns": [
+        {
+          "name": "agent_id",
+          "type": "Long",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "new_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "previous_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "new_reason",
+          "type": "String"
+        },
+        {
+          "name": "previous_reason",
+          "type": "String"
+        },
+        {
+          "name": "updated_at",
+          "type": "Instant"
+        }
+      ],
+      "tags": [],
+      "link": "https://developer.zendesk.com/api-reference/webhooks/event-types/agent-availability-events/"
+    },
+    {
+      "name": "ticket_csat_survey",
+      "columns": [
+        {
+          "name": "survey_response_id",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "ticket_id",
+          "type": "Long",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "survey_id",
+          "type": "String",
+          "foreignKey": true
+        },
+        {
+          "name": "survey_version",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "expires_at",
+          "type": "Instant"
+        },
+        {
+          "name": "responder_id",
+          "type": "String"
+        },
+        {
+          "name": "subject_zrns",
+          "type": "Json"
+        },
+        {
+          "name": "subjects",
+          "type": "Json"
+        },
+        {
+          "name": "survey_state",
+          "type": "String"
+        }
+      ],
+      "tags": [],
+      "link": null
+    },
+    {
+      "name": "ticket_side_conversation",
+      "columns": [
+        {
+          "name": "id",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "ticket_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "created_at",
+          "type": "Instant"
+        },
+        {
+          "name": "state",
+          "type": "String"
+        },
+        {
+          "name": "state_updated_at",
+          "type": "Instant"
+        },
+        {
+          "name": "subject",
+          "type": "String"
+        }
+      ],
+      "tags": [],
+      "link": "https://developer.zendesk.com/api-reference/ticketing/side_conversation/side_conversation/"
+    },
+    {
+      "name": "badge_assignment",
+      "columns": [
+        {
+          "name": "id",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "badge_id",
+          "type": "String",
+          "foreignKey": true
+        },
+        {
+          "name": "user_id",
+          "type": "String",
+          "foreignKey": true
+        },
+        {
+          "name": "created_at",
+          "type": "Instant"
+        }
+      ],
+      "tags": [],
+      "link": null
+    },
+    {
+      "name": "schedule",
+      "columns": [
+        {
+          "name": "end_time",
+          "type": "Int",
+          "primaryKey": true
+        },
+        {
+          "name": "id",
+          "type": "Long",
+          "primaryKey": true
+        },
+        {
+          "name": "start_time",
+          "type": "Int",
+          "primaryKey": true
+        },
+        {
+          "name": "created_at",
+          "type": "Instant"
+        },
+        {
+          "name": "name",
+          "type": "String"
+        },
+        {
+          "name": "time_zone",
+          "type": "String"
+        }
+      ],
+      "tags": [],
+      "link": "https://developer.zendesk.com/rest_api/docs/core/schedules"
+    },
+    {
+      "name": "line_greeting",
+      "columns": [
+        {
+          "name": "greeting_id",
+          "type": "String",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "line_id",
+          "type": "Long",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "is_default",
+          "type": "Boolean"
+        }
+      ],
+      "tags": [],
+      "link": null
+    },
+    {
+      "name": "ticket_tag_history",
+      "columns": [
+        {
+          "name": "tag",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "updated",
+          "type": "Instant",
+          "primaryKey": true
+        },
+        {
+          "name": "ticket_id",
+          "type": "Long",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "user_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "tagged",
+          "type": "Boolean"
+        },
+        {
+          "name": "via_channel",
+          "type": "String"
+        },
+        {
+          "name": "via_source_from_address",
+          "type": "String"
+        },
+        {
+          "name": "via_source_from_id",
+          "type": "Long"
+        },
+        {
+          "name": "via_source_from_title",
+          "type": "String"
+        },
+        {
+          "name": "via_source_rel",
+          "type": "String"
+        },
+        {
+          "name": "via_source_to_address",
+          "type": "String"
+        },
+        {
+          "name": "via_source_to_name",
+          "type": "String"
+        }
+      ],
+      "tags": [],
+      "link": "https://developer.zendesk.com/api-reference/ticketing/tickets/ticket_audits/#list-audits-for-a-ticket"
+    },
+    {
+      "name": "greeting_category",
+      "columns": [
+        {
+          "name": "id",
+          "type": "Long",
+          "primaryKey": true
+        },
+        {
+          "name": "name",
+          "type": "String"
+        }
+      ],
+      "tags": [],
+      "link": "https://developer.zendesk.com/api-reference/voice/talk-api/greetings/#list-greeting-categories"
+    },
+    {
+      "name": "article_content_tag",
+      "columns": [
+        {
+          "name": "article_id",
+          "type": "Long",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "content_tag_id",
+          "type": "String",
+          "primaryKey": true,
+          "foreignKey": true
+        }
+      ],
+      "tags": [],
+      "link": "https://developer.zendesk.com/api-reference/help_center/help-center-api/articles/"
+    },
+    {
+      "name": "csat_survey_rating_option",
+      "columns": [
+        {
+          "name": "rating",
+          "type": "Long",
+          "primaryKey": true
+        },
+        {
+          "name": "question_id",
+          "type": "String",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "survey_id",
+          "type": "String",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "survey_version",
+          "type": "Long",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "emoji_type",
+          "type": "String"
+        },
+        {
+          "name": "emoji_value",
+          "type": "String"
+        },
+        {
+          "name": "label_key",
+          "type": "String"
+        },
+        {
+          "name": "label_type",
+          "type": "String"
+        },
+        {
+          "name": "label_value",
+          "type": "String"
+        }
+      ],
+      "tags": [],
+      "link": null
+    },
+    {
+      "name": "trigger_condition",
+      "columns": [
+        {
+          "name": "_fivetran_id",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "trigger_id",
+          "type": "Long",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "condition_type",
+          "type": "String"
+        },
+        {
+          "name": "field",
+          "type": "String"
+        },
+        {
+          "name": "operator",
+          "type": "String"
+        },
+        {
+          "name": "value",
+          "type": "Json"
+        }
+      ],
+      "tags": [],
+      "link": "https://developer.zendesk.com/documentation/ticketing/reference-guides/conditions-reference/"
+    },
+    {
+      "name": "ticket_side_conversation_recipient",
+      "columns": [
+        {
+          "name": "_fivetran_id",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "support_agent_id",
+          "type": "String",
+          "foreignKey": true
+        },
+        {
+          "name": "support_group_id",
+          "type": "String",
+          "foreignKey": true
+        },
+        {
+          "name": "ticket_side_conversation_event_id",
+          "type": "String",
+          "foreignKey": true
+        },
+        {
+          "name": "user_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "email",
+          "type": "String"
+        },
+        {
+          "name": "msteams_channel_id",
+          "type": "String"
+        },
+        {
+          "name": "name",
+          "type": "String"
+        },
+        {
+          "name": "slack_channel_id",
+          "type": "String"
+        },
+        {
+          "name": "slack_workspace_id",
+          "type": "String"
+        }
+      ],
+      "tags": [],
+      "link": "https://developer.zendesk.com/api-reference/ticketing/side_conversation/side_conversation/"
+    },
+    {
+      "name": "translation",
+      "columns": [
+        {
+          "name": "id",
+          "type": "Long",
+          "primaryKey": true
+        },
+        {
+          "name": "body",
+          "type": "String"
+        },
+        {
+          "name": "created_at",
+          "type": "Instant"
+        },
+        {
+          "name": "created_by_id",
+          "type": "Long"
+        },
+        {
+          "name": "draft",
+          "type": "Boolean"
+        },
+        {
+          "name": "html_url",
+          "type": "String"
+        },
+        {
+          "name": "locale",
+          "type": "String"
+        },
+        {
+          "name": "outdated",
+          "type": "Boolean"
+        },
+        {
+          "name": "source_id",
+          "type": "Long"
+        },
+        {
+          "name": "source_type",
+          "type": "String"
+        },
+        {
+          "name": "title",
+          "type": "String"
+        },
+        {
+          "name": "updated_at",
+          "type": "Instant"
+        },
+        {
+          "name": "updated_by_id",
+          "type": "Long"
+        },
+        {
+          "name": "url",
+          "type": "String"
+        }
+      ],
+      "tags": [],
+      "link": null
+    },
+    {
+      "name": "end_user_condition",
+      "columns": [
+        {
+          "name": "_fivetran_id",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "child_field_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "parent_field_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "ticket_form_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "is_required",
+          "type": "Boolean"
+        },
+        {
+          "name": "parent_field_type",
+          "type": "String"
+        },
+        {
+          "name": "value",
+          "type": "String"
+        }
+      ],
+      "tags": [],
+      "link": null
+    },
+    {
+      "name": "group_member",
+      "columns": [
+        {
+          "name": "id",
+          "type": "Long",
+          "primaryKey": true
+        },
+        {
+          "name": "group_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "user_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "created_at",
+          "type": "Instant"
+        },
+        {
+          "name": "updated_at",
+          "type": "Instant"
+        }
+      ],
+      "tags": [],
+      "link": "https://developer.zendesk.com/rest_api/docs/core/group_memberships"
+    },
+    {
+      "name": "user_tag",
+      "columns": [
+        {
+          "name": "tag",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "user_id",
+          "type": "Long",
+          "primaryKey": true,
+          "foreignKey": true
+        }
+      ],
+      "tags": [],
+      "link": "https://developer.zendesk.com/rest_api/docs/core/users#json-format-for-agent-or-admin-requests"
+    },
+    {
+      "name": "ticket_schedule",
+      "columns": [
+        {
+          "name": "created_at",
+          "type": "Instant",
+          "primaryKey": true
+        },
+        {
+          "name": "ticket_id",
+          "type": "Long",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "schedule_id",
+          "type": "Long",
+          "foreignKey": true
+        }
+      ],
+      "tags": [],
+      "link": "https://developer.zendesk.com/api-reference/ticketing/tickets/ticket_audits/#list-audits-for-a-ticket"
+    },
+    {
+      "name": "trigger_action",
+      "columns": [
+        {
+          "name": "field",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "trigger_id",
+          "type": "Long",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "value",
+          "type": "Json"
+        }
+      ],
+      "tags": [],
+      "link": "https://developer.zendesk.com/documentation/ticketing/reference-guides/actions-reference/"
+    },
+    {
+      "name": "line_group",
+      "columns": [
+        {
+          "name": "group_id",
+          "type": "String",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "line_id",
+          "type": "Long",
+          "primaryKey": true,
+          "foreignKey": true
+        }
+      ],
+      "tags": [],
+      "link": null
+    }
+  ],
+  "relations": [
+    {
+      "targetTable": "agent_condition",
+      "sourceTable": "agent_condition_required_status",
+      "targetColumns": [
+        "_fivetran_id"
+      ],
+      "sourceColumns": [
+        "agent_condition_id"
+      ]
+    },
+    {
+      "targetTable": "user",
+      "sourceTable": "alert_recipient",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "user_id"
+      ]
+    },
+    {
+      "targetTable": "ticket_alert",
+      "sourceTable": "alert_recipient",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "ticket_alert_id"
+      ]
+    },
+    {
+      "targetTable": "macro",
+      "sourceTable": "macro_action",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "macro_id"
+      ]
+    },
+    {
+      "targetTable": "user",
+      "sourceTable": "call_leg",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "agent_id"
+      ]
+    },
+    {
+      "targetTable": "call_metric",
+      "sourceTable": "call_leg",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "call_id"
+      ]
+    },
+    {
+      "targetTable": "user",
+      "sourceTable": "call_leg",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "user_id"
+      ]
+    },
+    {
+      "targetTable": "user",
+      "sourceTable": "satisfaction_rating",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "assignee_id"
+      ]
+    },
+    {
+      "targetTable": "group",
+      "sourceTable": "satisfaction_rating",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "group_id"
+      ]
+    },
+    {
+      "targetTable": "user",
+      "sourceTable": "satisfaction_rating",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "requester_id"
+      ]
+    },
+    {
+      "targetTable": "ticket",
+      "sourceTable": "satisfaction_rating",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "ticket_id"
+      ]
+    },
+    {
+      "targetTable": "ticket",
+      "sourceTable": "ticket_email_cc",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "ticket_id"
+      ]
+    },
+    {
+      "targetTable": "user",
+      "sourceTable": "ticket_email_cc",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "user_id"
+      ]
+    },
+    {
+      "targetTable": "badge_category",
+      "sourceTable": "badge",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "badge_category_id"
+      ]
+    },
+    {
+      "targetTable": "user",
+      "sourceTable": "content_subscription",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "user_id"
+      ]
+    },
+    {
+      "targetTable": "brand",
+      "sourceTable": "line",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "brand_id"
+      ]
+    },
+    {
+      "targetTable": "ivr",
+      "sourceTable": "line",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "ivr_id"
+      ]
+    },
+    {
+      "targetTable": "schedule",
+      "sourceTable": "line",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "schedule_id"
+      ]
+    },
+    {
+      "targetTable": "ticket",
+      "sourceTable": "ticket_alert",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "ticket_id"
+      ]
+    },
+    {
+      "targetTable": "user",
+      "sourceTable": "ticket_alert",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "user_id"
+      ]
+    },
+    {
+      "targetTable": "ticket_chat",
+      "sourceTable": "ticket_chat_event",
+      "targetColumns": [
+        "chat_id"
+      ],
+      "sourceColumns": [
+        "chat_id"
+      ]
+    },
+    {
+      "targetTable": "user",
+      "sourceTable": "ticket_chat_event",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "actor_id"
+      ]
+    },
+    {
+      "targetTable": "user",
+      "sourceTable": "ticket_side_conversation_event",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "actor_user_id"
+      ]
+    },
+    {
+      "targetTable": "group",
+      "sourceTable": "ticket_side_conversation_event",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "actor_support_group_id"
+      ]
+    },
+    {
+      "targetTable": "user",
+      "sourceTable": "ticket_side_conversation_event",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "actor_support_agent_id"
+      ]
+    },
+    {
+      "targetTable": "user",
+      "sourceTable": "ticket_side_conversation_event",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "message_from_user_id"
+      ]
+    },
+    {
+      "targetTable": "group",
+      "sourceTable": "ticket_side_conversation_event",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "message_from_support_group_id"
+      ]
+    },
+    {
+      "targetTable": "user",
+      "sourceTable": "ticket_side_conversation_event",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "message_from_support_agent_id"
+      ]
+    },
+    {
+      "targetTable": "ticket",
+      "sourceTable": "ticket_macro_reference",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "ticket_id"
+      ]
+    },
+    {
+      "targetTable": "user",
+      "sourceTable": "ticket_macro_reference",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "user_id"
+      ]
+    },
+    {
+      "targetTable": "ticket",
+      "sourceTable": "ticket_attribute",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "ticket_id"
+      ]
+    },
+    {
+      "targetTable": "user_segment",
+      "sourceTable": "user_segment_organization",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "user_segment_id"
+      ]
+    },
+    {
+      "targetTable": "organization",
+      "sourceTable": "user_segment_organization",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "organization_id"
+      ]
+    },
+    {
+      "targetTable": "user_segment",
+      "sourceTable": "user_segment_tag",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "user_segment_id"
+      ]
+    },
+    {
+      "targetTable": "ticket",
+      "sourceTable": "ticket_chat",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "ticket_id"
+      ]
+    },
+    {
+      "targetTable": "user",
+      "sourceTable": "ticket_chat",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "user_id"
+      ]
+    },
+    {
+      "targetTable": "ticket",
+      "sourceTable": "ticket_tag",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "ticket_id"
+      ]
+    },
+    {
+      "targetTable": "user",
+      "sourceTable": "article",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "author_id"
+      ]
+    },
+    {
+      "targetTable": "group",
+      "sourceTable": "article",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "permission_group_id"
+      ]
+    },
+    {
+      "targetTable": "article",
+      "sourceTable": "article_outdated_locale",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "article_id"
+      ]
+    },
+    {
+      "targetTable": "ivr_menu",
+      "sourceTable": "ivr_menu_route",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "ivr_menu_id"
+      ]
+    },
+    {
+      "targetTable": "csat_survey_question",
+      "sourceTable": "csat_survey_answer",
+      "targetColumns": [
+        "survey_id"
+      ],
+      "sourceColumns": [
+        "question_id"
+      ]
+    },
+    {
+      "targetTable": "ticket_csat_survey",
+      "sourceTable": "csat_survey_answer",
+      "targetColumns": [
+        "ticket_id"
+      ],
+      "sourceColumns": [
+        "survey_response_id"
+      ]
+    },
+    {
+      "targetTable": "csat_survey_closed_ended_option",
+      "sourceTable": "csat_survey_answer",
+      "targetColumns": [
+        "survey_id"
+      ],
+      "sourceColumns": [
+        "selections_option_id"
+      ]
+    },
+    {
+      "targetTable": "csat_survey_rating_option",
+      "sourceTable": "csat_survey_answer",
+      "targetColumns": [
+        "survey_id"
+      ],
+      "sourceColumns": [
+        "rating"
+      ]
+    },
+    {
+      "targetTable": "agent_status_type",
+      "sourceTable": "agent_status_type_group",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "agent_status_type_id"
+      ]
+    },
+    {
+      "targetTable": "group",
+      "sourceTable": "agent_status_type_group",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "group_id"
+      ]
+    },
+    {
+      "targetTable": "user",
+      "sourceTable": "user_identity",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "user_id"
+      ]
+    },
+    {
+      "targetTable": "greeting",
+      "sourceTable": "greeting_ivr",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "greeting_id"
+      ]
+    },
+    {
+      "targetTable": "automation",
+      "sourceTable": "automation_condition",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "automation_id"
+      ]
+    },
+    {
+      "targetTable": "group",
+      "sourceTable": "organization",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "group_id"
+      ]
+    },
+    {
+      "targetTable": "article",
+      "sourceTable": "article_label_name",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "article_id"
+      ]
+    },
+    {
+      "targetTable": "ticket",
+      "sourceTable": "ticket_group_sla_policy",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "ticket_id"
+      ]
+    },
+    {
+      "targetTable": "group_sla_policy_history",
+      "sourceTable": "ticket_group_sla_policy",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "group_sla_policy_id"
+      ]
+    },
+    {
+      "targetTable": "organization",
+      "sourceTable": "domain_name",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "organization_id"
+      ]
+    },
+    {
+      "targetTable": "category",
+      "sourceTable": "section",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "category_id"
+      ]
+    },
+    {
+      "targetTable": "ticket",
+      "sourceTable": "call_metric",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "ticket_id"
+      ]
+    },
+    {
+      "targetTable": "user",
+      "sourceTable": "call_metric",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "agent_id"
+      ]
+    },
+    {
+      "targetTable": "group",
+      "sourceTable": "call_metric",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "call_group_id"
+      ]
+    },
+    {
+      "targetTable": "line",
+      "sourceTable": "call_metric",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "phone_number_id"
+      ]
+    },
+    {
+      "targetTable": "ticket",
+      "sourceTable": "ticket_field_history",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "ticket_id"
+      ]
+    },
+    {
+      "targetTable": "ticket_custom_field",
+      "sourceTable": "ticket_field_history",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "field_name"
+      ]
+    },
+    {
+      "targetTable": "user",
+      "sourceTable": "ticket_field_history",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "user_id"
+      ]
+    },
+    {
+      "targetTable": "ticket",
+      "sourceTable": "ticket_collaborator",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "ticket_id"
+      ]
+    },
+    {
+      "targetTable": "user",
+      "sourceTable": "ticket_collaborator",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "user_id"
+      ]
+    },
+    {
+      "targetTable": "ticket_custom_field",
+      "sourceTable": "agent_condition",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "parent_field_id"
+      ]
+    },
+    {
+      "targetTable": "ticket_form_history",
+      "sourceTable": "agent_condition",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "ticket_form_id"
+      ]
+    },
+    {
+      "targetTable": "ticket_custom_field",
+      "sourceTable": "agent_condition",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "child_field_id"
+      ]
+    },
+    {
+      "targetTable": "user",
+      "sourceTable": "user_subscription",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "followed_id"
+      ]
+    },
+    {
+      "targetTable": "user",
+      "sourceTable": "user_subscription",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "follower_id"
+      ]
+    },
+    {
+      "targetTable": "ticket_comment",
+      "sourceTable": "tweet_recipient",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "ticket_comment_id"
+      ]
+    },
+    {
+      "targetTable": "user",
+      "sourceTable": "tweet_recipient",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "user_id"
+      ]
+    },
+    {
+      "targetTable": "user_segment",
+      "sourceTable": "user_segment_group",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "user_segment_id"
+      ]
+    },
+    {
+      "targetTable": "group",
+      "sourceTable": "user_segment_group",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "group_id"
+      ]
+    },
+    {
+      "targetTable": "user_segment",
+      "sourceTable": "user_segment_added_user",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "user_segment_id"
+      ]
+    },
+    {
+      "targetTable": "user",
+      "sourceTable": "user_segment_added_user",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "user_id"
+      ]
+    },
+    {
+      "targetTable": "suspended_ticket",
+      "sourceTable": "suspended_ticket_attachment",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "suspended_ticket_id"
+      ]
+    },
+    {
+      "targetTable": "schedule",
+      "sourceTable": "schedule_holiday",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "schedule_id"
+      ]
+    },
+    {
+      "targetTable": "ticket_form_history",
+      "sourceTable": "ticket_form_restricted_brand",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "ticket_form_id"
+      ]
+    },
+    {
+      "targetTable": "brand",
+      "sourceTable": "ticket_form_restricted_brand",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "brand_id"
+      ]
+    },
+    {
+      "targetTable": "ivr_menu_route",
+      "sourceTable": "ivr_menu_route_option",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "ivr_menu_route_id"
+      ]
+    },
+    {
+      "targetTable": "group",
+      "sourceTable": "ivr_menu_route_option",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "group_id"
+      ]
+    },
+    {
+      "targetTable": "sla_policy_history",
+      "sourceTable": "sla_policy_metric_history",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "sla_policy_id"
+      ]
+    },
+    {
+      "targetTable": "sla_policy_history",
+      "sourceTable": "sla_policy_metric_history",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "sla_policy_updated_at"
+      ]
+    },
+    {
+      "targetTable": "ticket",
+      "sourceTable": "skip_ticket_history",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "ticket_id"
+      ]
+    },
+    {
+      "targetTable": "user",
+      "sourceTable": "skip_ticket_history",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "user_id"
+      ]
+    },
+    {
+      "targetTable": "automation",
+      "sourceTable": "automation_action",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "automation_id"
+      ]
+    },
+    {
+      "targetTable": "group_sla_policy_history",
+      "sourceTable": "group_sla_policy_metric_history",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "group_sla_policy_id"
+      ]
+    },
+    {
+      "targetTable": "user",
+      "sourceTable": "user_vote",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "user_id"
+      ]
+    },
+    {
+      "targetTable": "ticket_custom_field",
+      "sourceTable": "ticket_field_option",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "ticket_custom_field_id"
+      ]
+    },
+    {
+      "targetTable": "ticket_custom_field",
+      "sourceTable": "ticket_custom_status",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "ticket_custom_field_id"
+      ]
+    },
+    {
+      "targetTable": "forum_topic",
+      "sourceTable": "post",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "topic_id"
+      ]
+    },
+    {
+      "targetTable": "user",
+      "sourceTable": "post",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "author_id"
+      ]
+    },
+    {
+      "targetTable": "user",
+      "sourceTable": "agent_channel_history",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "agent_id"
+      ]
+    },
+    {
+      "targetTable": "user",
+      "sourceTable": "audit_log",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "actor_id"
+      ]
+    },
+    {
+      "targetTable": "user",
+      "sourceTable": "agent_status_history",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "agent_id"
+      ]
+    },
+    {
+      "targetTable": "ticket",
+      "sourceTable": "ticket_comment",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "ticket_id"
+      ]
+    },
+    {
+      "targetTable": "user",
+      "sourceTable": "ticket_comment",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "user_id"
+      ]
+    },
+    {
+      "targetTable": "user",
+      "sourceTable": "agent_max_capacity_history",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "agent_id"
+      ]
+    },
+    {
+      "targetTable": "user",
+      "sourceTable": "ticket",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "assignee_id"
+      ]
+    },
+    {
+      "targetTable": "brand",
+      "sourceTable": "ticket",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "brand_id"
+      ]
+    },
+    {
+      "targetTable": "forum_topic",
+      "sourceTable": "ticket",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "forum_topic_id"
+      ]
+    },
+    {
+      "targetTable": "organization",
+      "sourceTable": "ticket",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "organization_id"
+      ]
+    },
+    {
+      "targetTable": "user",
+      "sourceTable": "ticket",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "requester_id"
+      ]
+    },
+    {
+      "targetTable": "user",
+      "sourceTable": "ticket",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "submitter_id"
+      ]
+    },
+    {
+      "targetTable": "group",
+      "sourceTable": "ticket",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "group_id"
+      ]
+    },
+    {
+      "targetTable": "ticket_custom_status",
+      "sourceTable": "ticket",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "custom_status_id"
+      ]
+    },
+    {
+      "targetTable": "user",
+      "sourceTable": "article_comment",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "author_id"
+      ]
+    },
+    {
+      "targetTable": "article",
+      "sourceTable": "article_comment",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "source_id"
+      ]
+    },
+    {
+      "targetTable": "user",
+      "sourceTable": "article_comment",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "non_author_editor_id"
+      ]
+    },
+    {
+      "targetTable": "ticket_comment",
+      "sourceTable": "ticket_comment_attachment",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "ticket_comment_id"
+      ]
+    },
+    {
+      "targetTable": "user",
+      "sourceTable": "organization_member",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "user_id"
+      ]
+    },
+    {
+      "targetTable": "organization",
+      "sourceTable": "organization_member",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "organization_id"
+      ]
+    },
+    {
+      "targetTable": "organization",
+      "sourceTable": "organization_tag",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "organization_id"
+      ]
+    },
+    {
+      "targetTable": "custom_role",
+      "sourceTable": "user",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "custom_role_id"
+      ]
+    },
+    {
+      "targetTable": "group",
+      "sourceTable": "user",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "default_group_id"
+      ]
+    },
+    {
+      "targetTable": "organization",
+      "sourceTable": "user",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "organization_id"
+      ]
+    },
+    {
+      "targetTable": "ivr",
+      "sourceTable": "ivr_menu",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "ivr_id"
+      ]
+    },
+    {
+      "targetTable": "greeting",
+      "sourceTable": "ivr_menu",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "greeting_id"
+      ]
+    },
+    {
+      "targetTable": "user",
+      "sourceTable": "agent_attribute",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "agent_id"
+      ]
+    },
+    {
+      "targetTable": "post",
+      "sourceTable": "post_comment",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "post_id"
+      ]
+    },
+    {
+      "targetTable": "user",
+      "sourceTable": "post_comment",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "author_id"
+      ]
+    },
+    {
+      "targetTable": "call_leg",
+      "sourceTable": "call_leg_quality_issue",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "call_leg_id"
+      ]
+    },
+    {
+      "targetTable": "ticket",
+      "sourceTable": "ticket_link",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "ticket_id"
+      ]
+    },
+    {
+      "targetTable": "ticket_form_history",
+      "sourceTable": "ticket_form_field",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "ticket_form_id"
+      ]
+    },
+    {
+      "targetTable": "ticket_custom_field",
+      "sourceTable": "ticket_form_field",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "ticket_field_id"
+      ]
+    },
+    {
+      "targetTable": "greeting_category",
+      "sourceTable": "greeting",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "category_id"
+      ]
+    },
+    {
+      "targetTable": "greeting_category",
+      "sourceTable": "line_categorised_greeting",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "category_id"
+      ]
+    },
+    {
+      "targetTable": "line",
+      "sourceTable": "line_categorised_greeting",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "line_id"
+      ]
+    },
+    {
+      "targetTable": "greeting",
+      "sourceTable": "line_categorised_greeting",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "greeting_id"
+      ]
+    },
+    {
+      "targetTable": "ticket",
+      "sourceTable": "ticket_follower",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "ticket_id"
+      ]
+    },
+    {
+      "targetTable": "user",
+      "sourceTable": "ticket_follower",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "user_id"
+      ]
+    },
+    {
+      "targetTable": "ticket",
+      "sourceTable": "ticket_sla_policy",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "ticket_id"
+      ]
+    },
+    {
+      "targetTable": "sla_policy_history",
+      "sourceTable": "ticket_sla_policy",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "sla_policy_id"
+      ]
+    },
+    {
+      "targetTable": "brand",
+      "sourceTable": "suspended_ticket",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "brand_id"
+      ]
+    },
+    {
+      "targetTable": "ticket",
+      "sourceTable": "suspended_ticket",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "ticket_id"
+      ]
+    },
+    {
+      "targetTable": "user",
+      "sourceTable": "suspended_ticket",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "author_id"
+      ]
+    },
+    {
+      "targetTable": "user",
+      "sourceTable": "agent_unified_status_history",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "agent_id"
+      ]
+    },
+    {
+      "targetTable": "agent_status_type",
+      "sourceTable": "agent_unified_status_history",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "new_id"
+      ]
+    },
+    {
+      "targetTable": "agent_status_type",
+      "sourceTable": "agent_unified_status_history",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "previous_id"
+      ]
+    },
+    {
+      "targetTable": "ticket",
+      "sourceTable": "ticket_csat_survey",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "ticket_id"
+      ]
+    },
+    {
+      "targetTable": "csat_survey_question",
+      "sourceTable": "ticket_csat_survey",
+      "targetColumns": [
+        "survey_id"
+      ],
+      "sourceColumns": [
+        "survey_id"
+      ]
+    },
+    {
+      "targetTable": "csat_survey_question",
+      "sourceTable": "ticket_csat_survey",
+      "targetColumns": [
+        "survey_id"
+      ],
+      "sourceColumns": [
+        "survey_version"
+      ]
+    },
+    {
+      "targetTable": "ticket",
+      "sourceTable": "ticket_side_conversation",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "ticket_id"
+      ]
+    },
+    {
+      "targetTable": "badge",
+      "sourceTable": "badge_assignment",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "badge_id"
+      ]
+    },
+    {
+      "targetTable": "user",
+      "sourceTable": "badge_assignment",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "user_id"
+      ]
+    },
+    {
+      "targetTable": "greeting",
+      "sourceTable": "line_greeting",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "greeting_id"
+      ]
+    },
+    {
+      "targetTable": "line",
+      "sourceTable": "line_greeting",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "line_id"
+      ]
+    },
+    {
+      "targetTable": "ticket",
+      "sourceTable": "ticket_tag_history",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "ticket_id"
+      ]
+    },
+    {
+      "targetTable": "user",
+      "sourceTable": "ticket_tag_history",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "user_id"
+      ]
+    },
+    {
+      "targetTable": "article",
+      "sourceTable": "article_content_tag",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "article_id"
+      ]
+    },
+    {
+      "targetTable": "content_tag",
+      "sourceTable": "article_content_tag",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "content_tag_id"
+      ]
+    },
+    {
+      "targetTable": "csat_survey_question",
+      "sourceTable": "csat_survey_rating_option",
+      "targetColumns": [
+        "survey_id"
+      ],
+      "sourceColumns": [
+        "survey_id"
+      ]
+    },
+    {
+      "targetTable": "csat_survey_question",
+      "sourceTable": "csat_survey_rating_option",
+      "targetColumns": [
+        "survey_id"
+      ],
+      "sourceColumns": [
+        "survey_version"
+      ]
+    },
+    {
+      "targetTable": "csat_survey_question",
+      "sourceTable": "csat_survey_rating_option",
+      "targetColumns": [
+        "survey_id"
+      ],
+      "sourceColumns": [
+        "question_id"
+      ]
+    },
+    {
+      "targetTable": "trigger",
+      "sourceTable": "trigger_condition",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "trigger_id"
+      ]
+    },
+    {
+      "targetTable": "user",
+      "sourceTable": "ticket_side_conversation_recipient",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "user_id"
+      ]
+    },
+    {
+      "targetTable": "group",
+      "sourceTable": "ticket_side_conversation_recipient",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "support_group_id"
+      ]
+    },
+    {
+      "targetTable": "user",
+      "sourceTable": "ticket_side_conversation_recipient",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "support_agent_id"
+      ]
+    },
+    {
+      "targetTable": "ticket_side_conversation_event",
+      "sourceTable": "ticket_side_conversation_recipient",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "ticket_side_conversation_event_id"
+      ]
+    },
+    {
+      "targetTable": "ticket_custom_field",
+      "sourceTable": "end_user_condition",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "parent_field_id"
+      ]
+    },
+    {
+      "targetTable": "ticket_form_history",
+      "sourceTable": "end_user_condition",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "ticket_form_id"
+      ]
+    },
+    {
+      "targetTable": "ticket_custom_field",
+      "sourceTable": "end_user_condition",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "child_field_id"
+      ]
+    },
+    {
+      "targetTable": "user",
+      "sourceTable": "group_member",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "user_id"
+      ]
+    },
+    {
+      "targetTable": "group",
+      "sourceTable": "group_member",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "group_id"
+      ]
+    },
+    {
+      "targetTable": "user",
+      "sourceTable": "user_tag",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "user_id"
+      ]
+    },
+    {
+      "targetTable": "ticket",
+      "sourceTable": "ticket_schedule",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "ticket_id"
+      ]
+    },
+    {
+      "targetTable": "schedule",
+      "sourceTable": "ticket_schedule",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "schedule_id"
+      ]
+    },
+    {
+      "targetTable": "trigger",
+      "sourceTable": "trigger_action",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "trigger_id"
+      ]
+    },
+    {
+      "targetTable": "group",
+      "sourceTable": "line_group",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "group_id"
+      ]
+    },
+    {
+      "targetTable": "line",
+      "sourceTable": "line_group",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "line_id"
+      ]
+    }
+  ],
+  "positions": {
+    "2bdfe5e64d": {
+      "x": 5160.933001960538,
+      "y": 2303.3797753313424
+    },
+    "4f656c8933": {
+      "x": 6263.853193379492,
+      "y": 5344.544544391097
+    },
+    "group_sla_policy_history": {
+      "x": 3947.1281956937255,
+      "y": 624.1174603261783
+    },
+    "agent_condition_required_status": {
+      "x": 2517.2188724557263,
+      "y": 5080.559627059927
+    },
+    "alert_recipient": {
+      "x": 7945.346982939139,
+      "y": 6422.061221180166
+    },
+    "macro_action": {
+      "x": 5811.800736653372,
+      "y": 1276.257600657854
+    },
+    "call_leg": {
+      "x": 5227.548200872591,
+      "y": 4625.820907934701
+    },
+    "satisfaction_rating": {
+      "x": 5731.548200872591,
+      "y": 4788.544544391097
+    },
+    "ticket_email_cc": {
+      "x": 6272.933001960538,
+      "y": 2606.6959872916213
+    },
+    "csat_survey_closed_ended_option": {
+      "x": 3281.0507044522205,
+      "y": 2788.8338374279965
+    },
+    "badge": {
+      "x": 6034.953990813868,
+      "y": 3805.4196237480173
+    },
+    "content_subscription": {
+      "x": 7855.853193379491,
+      "y": 4986.061221180166
+    },
+    "line": {
+      "x": 1746.4333042135922,
+      "y": 162.55761258933387
+    },
+    "ticket_alert": {
+      "x": 8449.34698293914,
+      "y": 6422.061221180166
+    },
+    "ticket_chat_event": {
+      "x": 7945.346982939139,
+      "y": 5506.061221180166
+    },
+    "custom_role": {
+      "x": 6966.153269563982,
+      "y": 4932.544544391097
+    },
+    "ticket_side_conversation_event": {
+      "x": 5254.790740427784,
+      "y": 5649.820907934701
+    },
+    "time_zone": {
+      "x": 2013.2188724557263,
+      "y": 4779.303226580742
+    },
+    "ticket_macro_reference": {
+      "x": 5768.933001960538,
+      "y": 3141.4196237480173
+    },
+    "user_segment_organization": {
+      "x": 2368.779056232283,
+      "y": 3491.3032265807415
+    },
+    "user_segment_tag": {
+      "x": 603.6619969529644,
+      "y": 4027.3032265807424
+    },
+    "ticket_chat": {
+      "x": 8449.34698293914,
+      "y": 5506.061221180166
+    },
+    "article": {
+      "x": 4451.1281956937255,
+      "y": 963.8791658276882
+    },
+    "article_outdated_locale": {
+      "x": 4955.1281956937255,
+      "y": 963.8791658276882
+    },
+    "ivr_menu_route": {
+      "x": 2939.128195693725,
+      "y": 1401.5691200018593
+    },
+    "csat_survey_answer": {
+      "x": 2777.0507044522205,
+      "y": 2633.0104609371333
+    },
+    "agent_status_type_group": {
+      "x": 2523.298879863626,
+      "y": 5348.559627059927
+    },
+    "greeting_ivr": {
+      "x": 864.0640222354914,
+      "y": 1726.5385314751131
+    },
+    "automation_condition": {
+      "x": 6822.766011329931,
+      "y": 1042.4747101455553
+    },
+    "organization": {
+      "x": 1864.779056232283,
+      "y": 3682.12481740287
+    },
+    "article_label_name": {
+      "x": 4955.1281956937255,
+      "y": 1231.8791658276882
+    },
+    "content_tag": {
+      "x": 5050.630733761133,
+      "y": 1499.8791658276882
+    },
+    "ticket_group_sla_policy": {
+      "x": 3947.1281956937255,
+      "y": 1468.1174603261784
+    },
+    "domain_name": {
+      "x": 1360.7790562322825,
+      "y": 3455.3032265807415
+    },
+    "section": {
+      "x": 8,
+      "y": 1170.5385314751131
+    },
+    "locale": {
+      "x": 1769.0507044522205,
+      "y": 2818.538531475113
+    },
+    "call_metric": {
+      "x": 2250.4333042135922,
+      "y": 314.6379151171891
+    },
+    "ticket_field_history": {
+      "x": 2923.3878438172387,
+      "y": 3896.559627059927
+    },
+    "ticket_collaborator": {
+      "x": 6272.933001960538,
+      "y": 2874.6959872916213
+    },
+    "agent_condition": {
+      "x": 3970.932116637993,
+      "y": 4508.177809341908
+    },
+    "user_subscription": {
+      "x": 5790.97650027119,
+      "y": 6836.544544391097
+    },
+    "tweet_recipient": {
+      "x": 7855.853193379491,
+      "y": 4408.913496855523
+    },
+    "badge_category": {
+      "x": 6538.953990813868,
+      "y": 3805.4196237480173
+    },
+    "user_segment_group": {
+      "x": 1107.6619969529643,
+      "y": 4027.3032265807424
+    },
+    "user_segment_added_user": {
+      "x": 603.6619969529644,
+      "y": 4331.303226580742
+    },
+    "suspended_ticket_attachment": {
+      "x": 4152.933001960538,
+      "y": 2061.082434567391
+    },
+    "schedule_holiday": {
+      "x": 1402.1992559319647,
+      "y": 4295.303226580742
+    },
+    "ticket_form_restricted_brand": {
+      "x": 6272.933001960538,
+      "y": 3142.6959872916213
+    },
+    "ticket_custom_field": {
+      "x": 3466.9321166379923,
+      "y": 3984.559627059927
+    },
+    "ivr_menu_route_option": {
+      "x": 2939.128195693725,
+      "y": 1813.5691200018593
+    },
+    "sla_policy_metric_history": {
+      "x": 4724.414528921938,
+      "y": 4177.820907934701
+    },
+    "skip_ticket_history": {
+      "x": 6272.933001960538,
+      "y": 2194.6959872916213
+    },
+    "automation_action": {
+      "x": 7326.766011329932,
+      "y": 1042.4747101455553
+    },
+    "brand": {
+      "x": 4152.933001960538,
+      "y": 3324.177809341908
+    },
+    "daylight_time": {
+      "x": 2013.2188724557263,
+      "y": 5011.303226580742
+    },
+    "ivr": {
+      "x": 3258.4333042135922,
+      "y": 8
+    },
+    "trigger": {
+      "x": 6822.766011329931,
+      "y": 1974.474710145555
+    },
+    "group_sla_policy_metric_history": {
+      "x": 3947.1281956937255,
+      "y": 1092.1174603261784
+    },
+    "ticket_field_option": {
+      "x": 3466.9321166379923,
+      "y": 3644.559627059927
+    },
+    "ticket_custom_status": {
+      "x": 2923.3878438172387,
+      "y": 4524.559627059927
+    },
+    "agent_status_type": {
+      "x": 3027.298879863626,
+      "y": 5348.559627059927
+    },
+    "post": {
+      "x": 257.0507044522203,
+      "y": 2863.3032265807415
+    },
+    "forum_topic": {
+      "x": 761.0507044522204,
+      "y": 2863.3032265807415
+    },
+    "ticket_form_history": {
+      "x": 3970.9321166379946,
+      "y": 3844.177809341908
+    },
+    "macro": {
+      "x": 6315.800736653372,
+      "y": 1276.257600657854
+    },
+    "user_segment": {
+      "x": 603.6619969529644,
+      "y": 4599.303226580742
+    },
+    "ticket_comment": {
+      "x": 8359.853193379491,
+      "y": 4408.913496855523
+    },
+    "ticket": {
+      "x": 4656.933001960538,
+      "y": 2307.6767764350707
+    },
+    "sla_policy_history": {
+      "x": 5228.414528921938,
+      "y": 4184.117866789799
+    },
+    "article_comment": {
+      "x": 5254.790740427784,
+      "y": 6529.820907934701
+    },
+    "ticket_comment_attachment": {
+      "x": 8863.853193379491,
+      "y": 4408.913496855523
+    },
+    "organization_member": {
+      "x": 1360.7790562322825,
+      "y": 3759.303226580742
+    },
+    "organization_tag": {
+      "x": 2368.779056232283,
+      "y": 3759.303226580742
+    },
+    "automation": {
+      "x": 6822.766011329931,
+      "y": 1454.4747101455553
+    },
+    "user": {
+      "x": 5759.853193379492,
+      "y": 5344.544544391097
+    },
+    "ivr_menu": {
+      "x": 3258.4333042135922,
+      "y": 277.6181822819801
+    },
+    "group": {
+      "x": 2754.4333042135922,
+      "y": 504.55761258933444
+    },
+    "post_comment": {
+      "x": 1265.0507044522205,
+      "y": 2863.3032265807415
+    },
+    "call_leg_quality_issue": {
+      "x": 6425.345662368097,
+      "y": 6768.544544391097
+    },
+    "address": {
+      "x": 6776.933001960538,
+      "y": 2906.474710145555
+    },
+    "category": {
+      "x": 512,
+      "y": 1170.5385314751131
+    },
+    "ticket_form_field": {
+      "x": 3060.483370334349,
+      "y": 5080.559627059927
+    },
+    "greeting": {
+      "x": 1368.0640222354914,
+      "y": 1726.5385314751131
+    },
+    "line_categorised_greeting": {
+      "x": 1472.1492391559418,
+      "y": 2282.538531475113
+    },
+    "ticket_follower": {
+      "x": 6272.933001960538,
+      "y": 3410.6959872916213
+    },
+    "ticket_sla_policy": {
+      "x": 4724.414528921938,
+      "y": 3873.8209079347007
+    },
+    "suspended_ticket": {
+      "x": 5264.4185253692895,
+      "y": 3140.117866789799
+    },
+    "csat_survey_question": {
+      "x": 2273.0507044522205,
+      "y": 2283.7455256734274
+    },
+    "agent_unified_status_history": {
+      "x": 2523.298879863626,
+      "y": 5616.559627059927
+    },
+    "ticket_csat_survey": {
+      "x": 3281.0507044522205,
+      "y": 2268.8338374279965
+    },
+    "badge_assignment": {
+      "x": 6034.953990813868,
+      "y": 4217.419623748017
+    },
+    "schedule": {
+      "x": 1906.1992559319651,
+      "y": 4367.303226580742
+    },
+    "line_greeting": {
+      "x": 864.0640222354914,
+      "y": 2282.538531475113
+    },
+    "ticket_tag_history": {
+      "x": 4152.933001960538,
+      "y": 2689.082434567391
+    },
+    "greeting_category": {
+      "x": 1472.1492391559418,
+      "y": 2586.538531475113
+    },
+    "article_content_tag": {
+      "x": 5050.630733761133,
+      "y": 1803.8791658276882
+    },
+    "csat_survey_rating_option": {
+      "x": 2273.0507044522205,
+      "y": 2803.7455256734274
+    },
+    "trigger_condition": {
+      "x": 7326.766011329932,
+      "y": 1974.474710145555
+    },
+    "ticket_side_conversation_recipient": {
+      "x": 6393.138158247157,
+      "y": 4824.544544391097
+    },
+    "translation": {
+      "x": 3443.128195693725,
+      "y": 1447.5151587101802
+    },
+    "end_user_condition": {
+      "x": 3970.932116637993,
+      "y": 4956.177809341908
+    },
+    "group_member": {
+      "x": 2754.4333042135922,
+      "y": 952.5576125893344
+    },
+    "ticket_schedule": {
+      "x": 1402.1992559319647,
+      "y": 4783.303226580742
+    },
+    "trigger_action": {
+      "x": 6822.766011329931,
+      "y": 2602.474710145555
+    },
+    "line_group": {
+      "x": 1664.5452161899602,
+      "y": 1294.557612589334
+    },
+    "note-g30vottjkl": {
+      "x": 5554.630733761133,
+      "y": 1683.62612000813
+    },
+    "ticket_side_conversation": {
+      "x": 544,
+      "y": 64
+    },
+    "ticket_attribute": {
+      "x": 64,
+      "y": 64
+    },
+    "ticket_tag": {
+      "x": 544,
+      "y": 416
+    },
+    "ticket_link": {
+      "x": 64,
+      "y": 344
+    },
+    "agent_channel_history": {
+      "x": 64,
+      "y": 344
+    },
+    "user_vote": {
+      "x": 1024,
+      "y": 64
+    },
+    "audit_log": {
+      "x": 544,
+      "y": 64
+    },
+    "user_tag": {
+      "x": 544,
+      "y": 1092
+    },
+    "agent_max_capacity_history": {
+      "x": 64,
+      "y": 624
+    },
+    "user_identity": {
+      "x": 544,
+      "y": 488
+    },
+    "agent_attribute": {
+      "x": 64,
+      "y": 64
+    },
+    "agent_status_history": {
+      "x": 64,
+      "y": 976
+    }
+  },
+  "notes": {
+    "byTable": {
+      "translation": {
+        "content": "Translation will only be synced if any one of the entity Article, Section or Categories is selected.\n\nIf you stop syncing translation data and start re-syncing it later, the connection will not backfill missing translation records for already synced articles, sections, and categories.",
+        "width": 384,
+        "height": 160
+      },
+      "content_subscription": {
+        "content": "content_id refers to the ID of an Article, Post, Topic, or Section\ncontent_type is either Article, Post, Topic, or Section\n",
+        "width": 384,
+        "height": 96
+      },
+      "schedule": {
+        "content": "Information about working hours.",
+        "width": 384,
+        "height": 56
+      },
+      "ticket_schedule": {
+        "content": "Schedule assignment for tickets is a Zendesk Enterprise feature.  For all other accounts the default schedule applies to all tickets.",
+        "width": 384,
+        "height": 96
+      },
+      "sla_policy_history": {
+        "content": "SLA Policies are a Zendesk Professional or Enterprise feature\n",
+        "width": 384,
+        "height": 76
+      },
+      "group_sla_policy_history": {
+        "content": "SLA Policies are a Zendesk Professional or Enterprise feature\n",
+        "width": 384,
+        "height": 76
+      },
+      "group_sla_policy_metric_history": {
+        "content": "SLA Policies are a Zendesk Professional or Enterprise feature\n",
+        "width": 384,
+        "height": 76
+      }
+    },
+    "generalNotes": [
+      {
+        "content": "# Notes\n\n- Zendesk__ticket_metrics and other models must be created through [Transformations](https://fivetran.com/docs/transformations/data-models/zendesk-support-data-model/zendesk-support-transform-model).\n- [Tags](https://support.zendesk.com/hc/en-us/articles/203662096-Using-tags) provide additional context about tickets, organizations and users and are used in automations.",
+        "width": 384,
+        "height": 162,
+        "id": "note-g30vottjkl"
+      }
+    ]
+  },
+  "tableGroups": [
+    {
+      "id": "2bdfe5e64d",
+      "parentTable": "ticket",
+      "tables": [
+        "ticket_side_conversation",
+        "ticket_attribute",
+        "ticket_tag",
+        "ticket_link"
+      ],
+      "excludedTables": [],
+      "width": 992,
+      "height": 664
+    },
+    {
+      "id": "4f656c8933",
+      "selectionState": "related",
+      "parentTable": "user",
+      "tables": [
+        "agent_channel_history",
+        "user_vote",
+        "audit_log",
+        "user_tag",
+        "agent_max_capacity_history",
+        "user_identity",
+        "agent_attribute",
+        "agent_status_history"
+      ],
+      "excludedTables": [
+        "content_subscription"
+      ],
+      "width": 1472,
+      "height": 1304
+    }
+  ]
+}

@@ -1,0 +1,685 @@
+{
+  "tables": [
+    {
+      "name": "employee_goal",
+      "columns": [
+        {
+          "name": "employee_id",
+          "type": "Int",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "goal_id",
+          "type": "Int",
+          "primaryKey": true,
+          "foreignKey": true
+        }
+      ],
+      "tags": [],
+      "link": "https://documentation.bamboohr.com/reference/get-goals"
+    },
+    {
+      "name": "goal",
+      "columns": [
+        {
+          "name": "id",
+          "type": "Int",
+          "primaryKey": true
+        },
+        {
+          "name": "completed_at",
+          "type": "Instant"
+        },
+        {
+          "name": "description",
+          "type": "String"
+        },
+        {
+          "name": "due_date",
+          "type": "LocalDate"
+        },
+        {
+          "name": "percent_complete",
+          "type": "Int"
+        },
+        {
+          "name": "status",
+          "type": "String"
+        },
+        {
+          "name": "title",
+          "type": "String"
+        }
+      ],
+      "tags": [],
+      "link": "https://documentation.bamboohr.com/reference/get-goals"
+    },
+    {
+      "name": "time_off_policy",
+      "columns": [
+        {
+          "name": "id",
+          "type": "Int",
+          "primaryKey": true
+        },
+        {
+          "name": "type_id",
+          "type": "Int",
+          "foreignKey": true
+        },
+        {
+          "name": "effective_date",
+          "type": "LocalDate"
+        },
+        {
+          "name": "name",
+          "type": "String"
+        },
+        {
+          "name": "type",
+          "type": "String"
+        }
+      ],
+      "tags": [],
+      "link": "https://documentation.bamboohr.com/reference/get-time-off-policies"
+    },
+    {
+      "name": "training_category",
+      "columns": [
+        {
+          "name": "id",
+          "type": "Int",
+          "primaryKey": true
+        },
+        {
+          "name": "name",
+          "type": "String"
+        }
+      ],
+      "tags": [],
+      "link": "https://documentation.bamboohr.com/reference/list-training-categories"
+    },
+    {
+      "name": "employee_time_off_policy",
+      "columns": [
+        {
+          "name": "employee_id",
+          "type": "Int",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "policy_id",
+          "type": "Int",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "accrual_start_date",
+          "type": "LocalDate"
+        }
+      ],
+      "tags": [],
+      "link": "https://documentation.bamboohr.com/reference/time-off-v11-list-time-off-policies-for-employee"
+    },
+    {
+      "name": "account_user",
+      "columns": [
+        {
+          "name": "id",
+          "type": "Int",
+          "primaryKey": true
+        },
+        {
+          "name": "employee_id",
+          "type": "Int",
+          "foreignKey": true
+        },
+        {
+          "name": "email",
+          "type": "String"
+        },
+        {
+          "name": "first_name",
+          "type": "String"
+        },
+        {
+          "name": "last_login",
+          "type": "Instant"
+        },
+        {
+          "name": "last_name",
+          "type": "String"
+        },
+        {
+          "name": "status",
+          "type": "String"
+        }
+      ],
+      "tags": [],
+      "link": "https://documentation.bamboohr.com/reference/get-a-list-of-users-1"
+    },
+    {
+      "name": "time_off_request",
+      "columns": [
+        {
+          "name": "id",
+          "type": "Int",
+          "primaryKey": true
+        },
+        {
+          "name": "employee_id",
+          "type": "Int",
+          "foreignKey": true
+        },
+        {
+          "name": "amount",
+          "type": "Float"
+        },
+        {
+          "name": "created_at",
+          "type": "LocalDate"
+        },
+        {
+          "name": "end_date",
+          "type": "LocalDate"
+        },
+        {
+          "name": "name",
+          "type": "String"
+        },
+        {
+          "name": "notes_employee",
+          "type": "String"
+        },
+        {
+          "name": "notes_manager",
+          "type": "String"
+        },
+        {
+          "name": "start_date",
+          "type": "LocalDate"
+        },
+        {
+          "name": "status",
+          "type": "String"
+        },
+        {
+          "name": "status_changed_at",
+          "type": "LocalDate"
+        },
+        {
+          "name": "status_changed_by",
+          "type": "Int"
+        },
+        {
+          "name": "type_id",
+          "type": "Int"
+        },
+        {
+          "name": "unit",
+          "type": "String"
+        }
+      ],
+      "tags": [],
+      "link": "https://documentation.bamboohr.com/reference/time-off-get-time-off-requests-1"
+    },
+    {
+      "name": "time_off_type",
+      "columns": [
+        {
+          "name": "id",
+          "type": "Int",
+          "primaryKey": true
+        },
+        {
+          "name": "name",
+          "type": "String"
+        },
+        {
+          "name": "units",
+          "type": "String"
+        }
+      ],
+      "tags": [],
+      "link": "https://documentation.bamboohr.com/reference/get-time-off-types"
+    },
+    {
+      "name": "employee_dependent",
+      "columns": [
+        {
+          "name": "id",
+          "type": "Int",
+          "primaryKey": true
+        },
+        {
+          "name": "employee_id",
+          "type": "Int",
+          "foreignKey": true
+        },
+        {
+          "name": "address_line_1",
+          "type": "String"
+        },
+        {
+          "name": "address_line_2",
+          "type": "String"
+        },
+        {
+          "name": "city",
+          "type": "String"
+        },
+        {
+          "name": "country",
+          "type": "String"
+        },
+        {
+          "name": "date_of_birth",
+          "type": "LocalDate"
+        },
+        {
+          "name": "first_name",
+          "type": "String"
+        },
+        {
+          "name": "gender",
+          "type": "String"
+        },
+        {
+          "name": "is_student",
+          "type": "String"
+        },
+        {
+          "name": "is_us_citizen",
+          "type": "String"
+        },
+        {
+          "name": "last_name",
+          "type": "String"
+        },
+        {
+          "name": "masked_sin",
+          "type": "String"
+        },
+        {
+          "name": "masked_ssn",
+          "type": "String"
+        },
+        {
+          "name": "middle_name",
+          "type": "String"
+        },
+        {
+          "name": "relationship",
+          "type": "String"
+        },
+        {
+          "name": "state",
+          "type": "String"
+        },
+        {
+          "name": "zip_code",
+          "type": "String"
+        }
+      ],
+      "tags": [],
+      "link": "https://documentation.bamboohr.com/reference/get-employee-dependents-1"
+    },
+    {
+      "name": "employee",
+      "columns": [
+        {
+          "name": "id",
+          "type": "Int",
+          "primaryKey": true
+        },
+        {
+          "name": "last_changed",
+          "type": "Instant"
+        }
+      ],
+      "tags": [],
+      "link": "https://documentation.bamboohr.com/reference/request-custom-report-1"
+    },
+    {
+      "name": "milestone",
+      "columns": [
+        {
+          "name": "id",
+          "type": "Int",
+          "primaryKey": true
+        },
+        {
+          "name": "goal_id",
+          "type": "Int",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "completed_at",
+          "type": "Instant"
+        },
+        {
+          "name": "current_value",
+          "type": "Int"
+        },
+        {
+          "name": "end_value",
+          "type": "Int"
+        },
+        {
+          "name": "start_value",
+          "type": "Int"
+        },
+        {
+          "name": "title",
+          "type": "String"
+        },
+        {
+          "name": "updated_at",
+          "type": "Instant"
+        },
+        {
+          "name": "updated_by",
+          "type": "Int"
+        }
+      ],
+      "tags": [],
+      "link": "https://documentation.bamboohr.com/reference/get-goals"
+    },
+    {
+      "name": "training",
+      "columns": [
+        {
+          "name": "id",
+          "type": "Int",
+          "primaryKey": true
+        },
+        {
+          "name": "employee_id",
+          "type": "Int",
+          "foreignKey": true
+        },
+        {
+          "name": "type_id",
+          "type": "Int",
+          "foreignKey": true
+        },
+        {
+          "name": "completed_at",
+          "type": "LocalDate"
+        },
+        {
+          "name": "cost",
+          "type": "String"
+        },
+        {
+          "name": "credits",
+          "type": "Float"
+        },
+        {
+          "name": "hours",
+          "type": "Float"
+        },
+        {
+          "name": "instructor",
+          "type": "String"
+        },
+        {
+          "name": "notes",
+          "type": "String"
+        }
+      ],
+      "tags": [],
+      "link": "https://documentation.bamboohr.com/reference/list-employee-trainings"
+    },
+    {
+      "name": "training_type",
+      "columns": [
+        {
+          "name": "id",
+          "type": "Int",
+          "primaryKey": true
+        },
+        {
+          "name": "category_id",
+          "type": "Int",
+          "foreignKey": true
+        },
+        {
+          "name": "description",
+          "type": "String"
+        },
+        {
+          "name": "due_from_hire_date_amount",
+          "type": "Float"
+        },
+        {
+          "name": "due_from_hire_date_unit",
+          "type": "String"
+        },
+        {
+          "name": "frequency",
+          "type": "Int"
+        },
+        {
+          "name": "link_url",
+          "type": "String"
+        },
+        {
+          "name": "name",
+          "type": "String"
+        },
+        {
+          "name": "renewable",
+          "type": "Boolean"
+        },
+        {
+          "name": "required",
+          "type": "Boolean"
+        }
+      ],
+      "tags": [],
+      "link": "https://documentation.bamboohr.com/reference/list-training-types"
+    }
+  ],
+  "relations": [
+    {
+      "targetTable": "employee",
+      "sourceTable": "employee_goal",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "employee_id"
+      ]
+    },
+    {
+      "targetTable": "goal",
+      "sourceTable": "employee_goal",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "goal_id"
+      ]
+    },
+    {
+      "targetTable": "time_off_type",
+      "sourceTable": "time_off_policy",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "type_id"
+      ]
+    },
+    {
+      "targetTable": "employee",
+      "sourceTable": "employee_time_off_policy",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "employee_id"
+      ]
+    },
+    {
+      "targetTable": "time_off_policy",
+      "sourceTable": "employee_time_off_policy",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "policy_id"
+      ]
+    },
+    {
+      "targetTable": "employee",
+      "sourceTable": "account_user",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "employee_id"
+      ]
+    },
+    {
+      "targetTable": "employee",
+      "sourceTable": "time_off_request",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "employee_id"
+      ]
+    },
+    {
+      "targetTable": "employee",
+      "sourceTable": "employee_dependent",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "employee_id"
+      ]
+    },
+    {
+      "targetTable": "goal",
+      "sourceTable": "milestone",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "goal_id"
+      ]
+    },
+    {
+      "targetTable": "employee",
+      "sourceTable": "training",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "employee_id"
+      ]
+    },
+    {
+      "targetTable": "training_type",
+      "sourceTable": "training",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "type_id"
+      ]
+    },
+    {
+      "targetTable": "training_category",
+      "sourceTable": "training_type",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "category_id"
+      ]
+    }
+  ],
+  "positions": {
+    "employee_goal": {
+      "x": 1575.6909668175738,
+      "y": 935.4229874696709
+    },
+    "goal": {
+      "x": 2080.1988233302454,
+      "y": 810.5058341296037
+    },
+    "time_off_policy": {
+      "x": 8,
+      "y": 930.9387474578782
+    },
+    "training_category": {
+      "x": 2080.1988233302454,
+      "y": 1222.505834129604
+    },
+    "employee_time_off_policy": {
+      "x": 512,
+      "y": 934.8523734126111
+    },
+    "time_off_type": {
+      "x": 64.1988233302452,
+      "y": 420
+    },
+    "employee": {
+      "x": 1072,
+      "y": 146
+    },
+    "milestone": {
+      "x": 2080.1988233302454,
+      "y": 290.50583412960367
+    },
+    "training": {
+      "x": 1072.099863664176,
+      "y": 1214.7631873833611
+    },
+    "training_type": {
+      "x": 1576.099863664176,
+      "y": 1203.4229874696712
+    },
+    "813144bbf2": {
+      "x": 2584.1988233302454,
+      "y": 146
+    },
+    "account_user": {
+      "x": 64,
+      "y": 64
+    },
+    "time_off_request": {
+      "x": 1024,
+      "y": 64
+    },
+    "employee_dependent": {
+      "x": 544,
+      "y": 64
+    }
+  },
+  "notes": {
+    "byTable": {},
+    "generalNotes": []
+  },
+  "tableGroups": [
+    {
+      "id": "813144bbf2",
+      "parentTable": "employee",
+      "tables": [
+        "account_user",
+        "time_off_request",
+        "employee_dependent"
+      ],
+      "excludedTables": [],
+      "width": 1472,
+      "height": 816
+    }
+  ]
+}

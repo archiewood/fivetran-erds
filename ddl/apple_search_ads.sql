@@ -1,0 +1,381 @@
+CREATE TABLE search_term_report (
+    _fivetran_id text,
+    "date" text,
+    ad_group_id bigint,
+    campaign_id bigint,
+    keyword_id bigint,
+    ad_group_deleted boolean,
+    ad_group_name text,
+    avg_cpm_amount numeric,
+    avg_cpm_currency text,
+    avg_cpt_amount numeric,
+    avg_cpt_currency text,
+    bid_amount_amount numeric,
+    bid_amount_currency text,
+    deleted boolean,
+    impressions integer,
+    keyword text,
+    keyword_display_status text,
+    local_spend_amount numeric,
+    local_spend_currency text,
+    match_type text,
+    search_term_source text,
+    search_term_text text,
+    tap_install_cpi_amount numeric,
+    tap_install_cpi_currency text,
+    tap_install_rate numeric,
+    tap_installs bigint,
+    tap_new_downloads bigint,
+    tap_redownloads bigint,
+    tap_through_rate text,
+    taps integer,
+    total_avg_cpi_amount numeric,
+    total_avg_cpi_currency text,
+    total_install_rate numeric,
+    total_installs bigint,
+    total_new_downloads bigint,
+    total_redownloads bigint,
+    view_installs bigint,
+    view_new_downloads bigint,
+    view_redownloads bigint,
+    PRIMARY KEY (_fivetran_id, "date", ad_group_id, campaign_id),
+    FOREIGN KEY (ad_group_id) REFERENCES ad_group_history(id),
+    FOREIGN KEY (campaign_id) REFERENCES campaign_history(id),
+    FOREIGN KEY (keyword_id) REFERENCES keyword_history(id)
+);
+
+CREATE TABLE ad_history (
+    id bigint,
+    modification_time timestamp,
+    ad_group_id bigint,
+    campaign_id bigint,
+    creative_id bigint,
+    org_id bigint,
+    creation_time timestamp,
+    creative_type text,
+    deleted boolean,
+    "name" text,
+    serving_status text,
+    "status" text,
+    PRIMARY KEY (id, modification_time),
+    FOREIGN KEY (ad_group_id) REFERENCES ad_group_history(id),
+    FOREIGN KEY (campaign_id) REFERENCES campaign_history(id),
+    FOREIGN KEY (creative_id) REFERENCES creative_history(id),
+    FOREIGN KEY (org_id) REFERENCES organization(id)
+);
+
+CREATE TABLE locale_device (
+    language_code text,
+    "name" text,
+    product_page_id text,
+    PRIMARY KEY (language_code, "name", product_page_id),
+    FOREIGN KEY (product_page_id) REFERENCES product_page_history(id)
+);
+
+CREATE TABLE campaign_history (
+    id bigint,
+    modification_time timestamp,
+    organization_id bigint,
+    ad_channel_type text,
+    adam_id bigint,
+    billing_event text,
+    budget_amount numeric,
+    budget_currency text,
+    budget_orders jsonb,
+    creation_time timestamp,
+    daily_budget_amount numeric,
+    daily_budget_currency text,
+    deleted boolean,
+    display_status text,
+    end_time timestamp,
+    "name" text,
+    payment_model text,
+    serving_state_reasons jsonb,
+    serving_status text,
+    start_time timestamp,
+    "status" text,
+    supply_sources jsonb,
+    -- loc_invoice_detail_* (dynamic column),
+    PRIMARY KEY (id, modification_time),
+    FOREIGN KEY (organization_id) REFERENCES organization(id)
+);
+
+CREATE TABLE targeting_dimensions_history (
+    "type" text,
+    ad_group_id bigint,
+    ad_group_modification_time timestamp,
+    "value" jsonb,
+    PRIMARY KEY ("type", ad_group_id, ad_group_modification_time),
+    FOREIGN KEY (ad_group_id) REFERENCES ad_group_history(id),
+    FOREIGN KEY (ad_group_modification_time) REFERENCES ad_group_history(id)
+);
+
+CREATE TABLE keyword_history (
+    id bigint,
+    modification_time timestamp,
+    ad_group_id bigint,
+    campaign_id bigint,
+    bid_amount numeric,
+    bid_currency text,
+    creation_time timestamp,
+    deleted boolean,
+    match_type text,
+    "status" text,
+    text text,
+    PRIMARY KEY (id, modification_time),
+    FOREIGN KEY (ad_group_id) REFERENCES ad_group_history(id),
+    FOREIGN KEY (campaign_id) REFERENCES campaign_history(id)
+);
+
+CREATE TABLE ad_level_report (
+    "date" text,
+    ad_group_id bigint,
+    ad_id bigint,
+    campaign_id bigint,
+    creative_id bigint,
+    avg_cpm_amount numeric,
+    avg_cpm_currency text,
+    avg_cpt_amount numeric,
+    avg_cpt_currency text,
+    display_status text,
+    impressions integer,
+    language text,
+    local_spend_amount numeric,
+    local_spend_currency text,
+    tap_install_cpi_amount numeric,
+    tap_install_cpi_currency text,
+    tap_install_rate numeric,
+    tap_installs bigint,
+    tap_new_downloads bigint,
+    tap_redownloads bigint,
+    tap_through_rate text,
+    taps integer,
+    total_avg_cpi_amount numeric,
+    total_avg_cpi_currency text,
+    total_install_rate numeric,
+    total_installs bigint,
+    total_new_downloads bigint,
+    total_redownloads bigint,
+    view_installs bigint,
+    view_new_downloads bigint,
+    view_redownloads bigint,
+    PRIMARY KEY ("date", ad_group_id, ad_id, campaign_id, creative_id),
+    FOREIGN KEY (ad_group_id) REFERENCES ad_group_history(id),
+    FOREIGN KEY (ad_id) REFERENCES ad_history(id),
+    FOREIGN KEY (campaign_id) REFERENCES campaign_history(id),
+    FOREIGN KEY (creative_id) REFERENCES creative_history(id)
+);
+
+CREATE TABLE ad_group_history (
+    id bigint,
+    modification_time timestamp,
+    campaign_id bigint,
+    organization_id bigint,
+    automated_keywords_opt_in boolean,
+    cpa_goal_amount numeric,
+    cpa_goal_currency text,
+    default_bid_amount numeric,
+    default_bid_currency text,
+    default_cpc_bid_amount numeric,
+    default_cpc_bid_currency text,
+    deleted boolean,
+    display_status text,
+    end_time timestamp,
+    "name" text,
+    payment_model text,
+    pricing_model text,
+    serving_state_reasons jsonb,
+    serving_status text,
+    start_time timestamp,
+    "status" text,
+    storefronts jsonb,
+    PRIMARY KEY (id, modification_time),
+    FOREIGN KEY (campaign_id) REFERENCES campaign_history(id),
+    FOREIGN KEY (organization_id) REFERENCES organization(id)
+);
+
+CREATE TABLE country_or_region_history (
+    "index" bigint,
+    campaign_id bigint,
+    campaign_modification_time timestamp,
+    country_or_region text,
+    PRIMARY KEY ("index", campaign_id, campaign_modification_time),
+    FOREIGN KEY (campaign_id) REFERENCES campaign_history(id),
+    FOREIGN KEY (campaign_modification_time) REFERENCES campaign_history(id)
+);
+
+CREATE TABLE creative_history (
+    id bigint,
+    modification_time timestamp,
+    org_id bigint,
+    product_page_id text,
+    adam_id bigint,
+    creation_time timestamp,
+    language_code text,
+    "name" text,
+    "state" text,
+    "type" text,
+    PRIMARY KEY (id, modification_time),
+    FOREIGN KEY (org_id) REFERENCES organization(id),
+    FOREIGN KEY (product_page_id) REFERENCES product_page_history(id)
+);
+
+CREATE TABLE negative_keyword_history (
+    id bigint,
+    modification_time timestamp,
+    ad_group_id bigint,
+    campaign_id bigint,
+    deleted boolean,
+    match_type text,
+    "status" text,
+    text text,
+    PRIMARY KEY (id, modification_time),
+    FOREIGN KEY (ad_group_id) REFERENCES ad_group_history(id),
+    FOREIGN KEY (campaign_id) REFERENCES campaign_history(id)
+);
+
+CREATE TABLE organization (
+    id bigint,
+    currency text,
+    "name" text,
+    payment_model text,
+    role_names jsonb,
+    time_zone text,
+    PRIMARY KEY (id)
+);
+
+CREATE TABLE creative_state_reason_history (
+    modification_time timestamp,
+    reason text,
+    creative_id bigint,
+    PRIMARY KEY (modification_time, reason, creative_id),
+    FOREIGN KEY (creative_id) REFERENCES creative_history(id)
+);
+
+CREATE TABLE product_page_history (
+    id text,
+    modification_time timestamp,
+    adam_id bigint,
+    creation_time timestamp,
+    deep_link text,
+    "name" text,
+    "state" text,
+    PRIMARY KEY (id, modification_time)
+);
+
+CREATE TABLE ad_group_report (
+    "date" text,
+    ad_group_id bigint,
+    avg_cpm_amount numeric,
+    avg_cpm_currency text,
+    avg_cpt_amount numeric,
+    avg_cpt_currency text,
+    device_class text,
+    impressions integer,
+    local_spend_amount numeric,
+    local_spend_currency text,
+    tap_install_cpi_amount numeric,
+    tap_install_cpi_currency text,
+    tap_install_rate numeric,
+    tap_installs bigint,
+    tap_new_downloads bigint,
+    tap_redownloads bigint,
+    tap_through_rate text,
+    taps integer,
+    total_avg_cpi_amount numeric,
+    total_avg_cpi_currency text,
+    total_install_rate numeric,
+    total_installs bigint,
+    total_new_downloads bigint,
+    total_redownloads bigint,
+    view_installs bigint,
+    view_new_downloads bigint,
+    view_redownloads bigint,
+    PRIMARY KEY ("date", ad_group_id),
+    FOREIGN KEY (ad_group_id) REFERENCES ad_group_history(id)
+);
+
+CREATE TABLE keyword_report (
+    "date" text,
+    id bigint,
+    avg_cpm_amount numeric,
+    avg_cpm_currency text,
+    avg_cpt_amount numeric,
+    avg_cpt_currency text,
+    impressions integer,
+    local_spend_amount numeric,
+    local_spend_currency text,
+    tap_install_cpi_amount numeric,
+    tap_install_cpi_currency text,
+    tap_install_rate numeric,
+    tap_installs bigint,
+    tap_new_downloads bigint,
+    tap_redownloads bigint,
+    tap_through_rate text,
+    taps integer,
+    total_avg_cpi_amount numeric,
+    total_avg_cpi_currency text,
+    total_install_rate numeric,
+    total_installs bigint,
+    total_new_downloads bigint,
+    total_redownloads bigint,
+    view_installs bigint,
+    view_new_downloads bigint,
+    view_redownloads bigint,
+    PRIMARY KEY ("date", id),
+    FOREIGN KEY (id) REFERENCES keyword_history(id)
+);
+
+CREATE TABLE product_page_locale (
+    language_code text,
+    product_page_id text,
+    adam_id bigint,
+    app_name text,
+    language text,
+    promotional_text text,
+    short_description text,
+    sub_title text,
+    PRIMARY KEY (language_code, product_page_id),
+    FOREIGN KEY (product_page_id) REFERENCES product_page_history(id)
+);
+
+CREATE TABLE campaign_report (
+    "date" text,
+    id bigint,
+    ad_channel_type text,
+    avg_cpm_amount numeric,
+    avg_cpm_currency text,
+    avg_cpt_amount numeric,
+    avg_cpt_currency text,
+    device_class text,
+    impressions integer,
+    local_spend_amount numeric,
+    local_spend_currency text,
+    tap_install_cpi_amount numeric,
+    tap_install_cpi_currency text,
+    tap_install_rate numeric,
+    tap_installs bigint,
+    tap_new_downloads bigint,
+    tap_redownloads bigint,
+    tap_through_rate text,
+    taps integer,
+    total_avg_cpi_amount numeric,
+    total_avg_cpi_currency text,
+    total_install_rate numeric,
+    total_installs bigint,
+    total_new_downloads bigint,
+    total_redownloads bigint,
+    view_installs bigint,
+    view_new_downloads bigint,
+    view_redownloads bigint,
+    PRIMARY KEY ("date", id),
+    FOREIGN KEY (id) REFERENCES campaign_history(id)
+);
+
+CREATE TABLE ad_serving_state_reason_history (
+    modification_time timestamp,
+    reason text,
+    ad_id bigint,
+    PRIMARY KEY (modification_time, reason, ad_id),
+    FOREIGN KEY (ad_id) REFERENCES ad_history(id)
+);

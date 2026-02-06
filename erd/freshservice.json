@@ -1,0 +1,4472 @@
+{
+  "tables": [
+    {
+      "name": "associated_asset",
+      "columns": [
+        {
+          "name": "asset_display_id",
+          "type": "Long",
+          "primaryKey": true
+        },
+        {
+          "name": "parent_entity_id",
+          "type": "Long",
+          "primaryKey": true
+        },
+        {
+          "name": "parent_entity_type",
+          "type": "String",
+          "primaryKey": true
+        }
+      ],
+      "tags": [],
+      "link": null
+    },
+    {
+      "name": "service_item",
+      "columns": [
+        {
+          "name": "id",
+          "type": "Long",
+          "primaryKey": true
+        },
+        {
+          "name": "category_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "ci_type_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "product_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "allow_attachments",
+          "type": "Boolean"
+        },
+        {
+          "name": "allow_quantity",
+          "type": "Boolean"
+        },
+        {
+          "name": "botified",
+          "type": "Boolean"
+        },
+        {
+          "name": "configs",
+          "type": "Json"
+        },
+        {
+          "name": "cost_visibility",
+          "type": "Boolean"
+        },
+        {
+          "name": "create_child",
+          "type": "Boolean"
+        },
+        {
+          "name": "created_at",
+          "type": "Instant"
+        },
+        {
+          "name": "delivery_time",
+          "type": "Int"
+        },
+        {
+          "name": "delivery_time_visibility",
+          "type": "Boolean"
+        },
+        {
+          "name": "display_id",
+          "type": "Long"
+        },
+        {
+          "name": "group_visibility",
+          "type": "Int"
+        },
+        {
+          "name": "icon_name",
+          "type": "String"
+        },
+        {
+          "name": "is_bundle",
+          "type": "Boolean"
+        },
+        {
+          "name": "item_type",
+          "type": "Int"
+        },
+        {
+          "name": "name",
+          "type": "String"
+        },
+        {
+          "name": "quantity",
+          "type": "Int"
+        },
+        {
+          "name": "updated_at",
+          "type": "Instant"
+        },
+        {
+          "name": "visibility",
+          "type": "Int"
+        }
+      ],
+      "tags": [],
+      "link": "https://api.freshservice.com/#service_item"
+    },
+    {
+      "name": "user_group",
+      "columns": [
+        {
+          "name": "type",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "group_id",
+          "type": "Long",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "user_id",
+          "type": "Long",
+          "primaryKey": true,
+          "foreignKey": true
+        }
+      ],
+      "tags": [],
+      "link": "https://api.freshservice.com/#list_all_agents"
+    },
+    {
+      "name": "solution_folder_relation_id",
+      "columns": [
+        {
+          "name": "entity_id",
+          "type": "Long",
+          "primaryKey": true
+        },
+        {
+          "name": "relation_type",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "folder_id",
+          "type": "Long",
+          "primaryKey": true,
+          "foreignKey": true
+        }
+      ],
+      "tags": [],
+      "link": null
+    },
+    {
+      "name": "solution_folder_approval",
+      "columns": [
+        {
+          "name": "approval_type",
+          "type": "Int",
+          "primaryKey": true
+        },
+        {
+          "name": "approver_id",
+          "type": "Long",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "folder_id",
+          "type": "Long",
+          "primaryKey": true,
+          "foreignKey": true
+        }
+      ],
+      "tags": [],
+      "link": null
+    },
+    {
+      "name": "announcement_email",
+      "columns": [
+        {
+          "name": "email",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "announcement_id",
+          "type": "Long",
+          "primaryKey": true,
+          "foreignKey": true
+        }
+      ],
+      "tags": [],
+      "link": "https://api.freshservice.com/#announcements"
+    },
+    {
+      "name": "ticket_email",
+      "columns": [
+        {
+          "name": "email",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "type",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "ticket_id",
+          "type": "Long",
+          "primaryKey": true,
+          "foreignKey": true
+        }
+      ],
+      "tags": [],
+      "link": null
+    },
+    {
+      "name": "department",
+      "columns": [
+        {
+          "name": "id",
+          "type": "Long",
+          "primaryKey": true
+        },
+        {
+          "name": "head_user_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "prime_user_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "created_at",
+          "type": "Instant"
+        },
+        {
+          "name": "description",
+          "type": "String"
+        },
+        {
+          "name": "name",
+          "type": "String"
+        },
+        {
+          "name": "note",
+          "type": "String"
+        },
+        {
+          "name": "updated_at",
+          "type": "Instant"
+        }
+      ],
+      "tags": [],
+      "link": "https://api.freshservice.com/#departments"
+    },
+    {
+      "name": "ticket",
+      "columns": [
+        {
+          "name": "id",
+          "type": "Long",
+          "primaryKey": true
+        },
+        {
+          "name": "department_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "group_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "requested_for_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "requester_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "responder_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "approval_status",
+          "type": "Int"
+        },
+        {
+          "name": "approval_status_name",
+          "type": "String"
+        },
+        {
+          "name": "association_type",
+          "type": "Int"
+        },
+        {
+          "name": "category",
+          "type": "String"
+        },
+        {
+          "name": "created_at",
+          "type": "Instant"
+        },
+        {
+          "name": "description",
+          "type": "String"
+        },
+        {
+          "name": "description_text",
+          "type": "String"
+        },
+        {
+          "name": "due_by",
+          "type": "Instant"
+        },
+        {
+          "name": "fr_due_by",
+          "type": "Instant"
+        },
+        {
+          "name": "is_escalated",
+          "type": "Boolean"
+        },
+        {
+          "name": "item_category",
+          "type": "String"
+        },
+        {
+          "name": "priority",
+          "type": "String"
+        },
+        {
+          "name": "source",
+          "type": "String"
+        },
+        {
+          "name": "spam",
+          "type": "Boolean"
+        },
+        {
+          "name": "stats_closed_at",
+          "type": "Instant"
+        },
+        {
+          "name": "stats_first_responded_at",
+          "type": "Instant"
+        },
+        {
+          "name": "stats_resolved_at",
+          "type": "Instant"
+        },
+        {
+          "name": "status",
+          "type": "String"
+        },
+        {
+          "name": "sub_category",
+          "type": "String"
+        },
+        {
+          "name": "subject",
+          "type": "String"
+        },
+        {
+          "name": "type",
+          "type": "String"
+        },
+        {
+          "name": "updated_at",
+          "type": "Instant"
+        },
+        {
+          "name": "workspace_id",
+          "type": "Int"
+        }
+      ],
+      "tags": [],
+      "link": "https://api.freshservice.com/#tickets"
+    },
+    {
+      "name": "software_user",
+      "columns": [
+        {
+          "name": "id",
+          "type": "Long",
+          "primaryKey": true
+        },
+        {
+          "name": "license_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "software_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "user_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "allocated_date",
+          "type": "Instant"
+        },
+        {
+          "name": "created_at",
+          "type": "Instant"
+        },
+        {
+          "name": "first_used",
+          "type": "Instant"
+        },
+        {
+          "name": "last_used",
+          "type": "Instant"
+        },
+        {
+          "name": "updated_at",
+          "type": "Instant"
+        }
+      ],
+      "tags": [],
+      "link": "https://api.freshservice.com/#list_users"
+    },
+    {
+      "name": "purchase_order",
+      "columns": [
+        {
+          "name": "id",
+          "type": "Long",
+          "primaryKey": true
+        },
+        {
+          "name": "created_by",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "department_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "vendor_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "billing_address",
+          "type": "String"
+        },
+        {
+          "name": "billing_same_as_shipping",
+          "type": "Boolean"
+        },
+        {
+          "name": "created_at",
+          "type": "Instant"
+        },
+        {
+          "name": "discount_percentage",
+          "type": "Long"
+        },
+        {
+          "name": "expected_delivery_date",
+          "type": "Instant"
+        },
+        {
+          "name": "name",
+          "type": "String"
+        },
+        {
+          "name": "po_number",
+          "type": "String"
+        },
+        {
+          "name": "shipping_address",
+          "type": "String"
+        },
+        {
+          "name": "shipping_cost",
+          "type": "Long"
+        },
+        {
+          "name": "status",
+          "type": "Long"
+        },
+        {
+          "name": "tax_percentage",
+          "type": "Long"
+        },
+        {
+          "name": "updated_at",
+          "type": "Instant"
+        },
+        {
+          "name": "vendor_details",
+          "type": "String"
+        },
+        {
+          "name": "currency_*",
+          "type": "",
+          "wildCard": true
+        }
+      ],
+      "tags": [],
+      "link": "https://api.freshservice.com/#purchase-order"
+    },
+    {
+      "name": "task",
+      "columns": [
+        {
+          "name": "id",
+          "type": "Long",
+          "primaryKey": true
+        },
+        {
+          "name": "agent_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "group_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "closed_at",
+          "type": "Instant"
+        },
+        {
+          "name": "created_at",
+          "type": "Instant"
+        },
+        {
+          "name": "description",
+          "type": "String"
+        },
+        {
+          "name": "due_date",
+          "type": "Instant"
+        },
+        {
+          "name": "parent_object_id",
+          "type": "Long"
+        },
+        {
+          "name": "parent_object_type",
+          "type": "String"
+        },
+        {
+          "name": "status",
+          "type": "Int"
+        },
+        {
+          "name": "title",
+          "type": "String"
+        },
+        {
+          "name": "updated_at",
+          "type": "Instant"
+        }
+      ],
+      "tags": [],
+      "link": "https://api.freshservice.com/#ticket_task_attributes"
+    },
+    {
+      "name": "solution_article_feature",
+      "columns": [
+        {
+          "name": "type",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "value",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "article_id",
+          "type": "Long",
+          "primaryKey": true,
+          "foreignKey": true
+        }
+      ],
+      "tags": [],
+      "link": null
+    },
+    {
+      "name": "service_group",
+      "columns": [
+        {
+          "name": "id",
+          "type": "Long",
+          "primaryKey": true
+        },
+        {
+          "name": "business_hour_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "escalate_to",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "approval_required",
+          "type": "Boolean"
+        },
+        {
+          "name": "auto_ticket_assign",
+          "type": "Boolean"
+        },
+        {
+          "name": "created_at",
+          "type": "Instant"
+        },
+        {
+          "name": "description",
+          "type": "String"
+        },
+        {
+          "name": "is_requester_group",
+          "type": "Boolean"
+        },
+        {
+          "name": "name",
+          "type": "String"
+        },
+        {
+          "name": "type",
+          "type": "String"
+        },
+        {
+          "name": "unassigned_for",
+          "type": "String"
+        },
+        {
+          "name": "updated_at",
+          "type": "Instant"
+        }
+      ],
+      "tags": [],
+      "link": "https://api.freshservice.com/#agent-groups"
+    },
+    {
+      "name": "project_task",
+      "columns": [
+        {
+          "name": "id",
+          "type": "Long",
+          "primaryKey": true
+        },
+        {
+          "name": "assignee_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "parent_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "priority_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "project_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "reporter_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "sprint_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "status_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "type_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "version_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "created_at",
+          "type": "Instant"
+        },
+        {
+          "name": "display_key",
+          "type": "String"
+        },
+        {
+          "name": "end_date",
+          "type": "Instant"
+        },
+        {
+          "name": "planned_duration",
+          "type": "String"
+        },
+        {
+          "name": "planned_effort",
+          "type": "String"
+        },
+        {
+          "name": "planned_end_date",
+          "type": "Instant"
+        },
+        {
+          "name": "planned_start_date",
+          "type": "Instant"
+        },
+        {
+          "name": "start_date",
+          "type": "Instant"
+        },
+        {
+          "name": "story_points",
+          "type": "Long"
+        },
+        {
+          "name": "title",
+          "type": "String"
+        },
+        {
+          "name": "updated_at",
+          "type": "Instant"
+        }
+      ],
+      "tags": [],
+      "link": "https://api.freshservice.com/#view_all_project_tasks_newgen"
+    },
+    {
+      "name": "vendor",
+      "columns": [
+        {
+          "name": "id",
+          "type": "Long",
+          "primaryKey": true
+        },
+        {
+          "name": "primary_contact_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "contact_name",
+          "type": "String"
+        },
+        {
+          "name": "created_at",
+          "type": "Instant"
+        },
+        {
+          "name": "description",
+          "type": "String"
+        },
+        {
+          "name": "email",
+          "type": "String"
+        },
+        {
+          "name": "mobile",
+          "type": "String"
+        },
+        {
+          "name": "name",
+          "type": "String"
+        },
+        {
+          "name": "phone",
+          "type": "String"
+        },
+        {
+          "name": "updated_at",
+          "type": "Instant"
+        },
+        {
+          "name": "address_*",
+          "type": "",
+          "wildCard": true
+        }
+      ],
+      "tags": [],
+      "link": "https://api.freshservice.com/#vendors"
+    },
+    {
+      "name": "associated_change",
+      "columns": [
+        {
+          "name": "change_id",
+          "type": "Long",
+          "primaryKey": true
+        },
+        {
+          "name": "release_id",
+          "type": "Long",
+          "primaryKey": true
+        }
+      ],
+      "tags": [],
+      "link": null
+    },
+    {
+      "name": "ticket_attachment",
+      "columns": [
+        {
+          "name": "id",
+          "type": "Long",
+          "primaryKey": true
+        },
+        {
+          "name": "ticket_id",
+          "type": "Long",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "attachment_url",
+          "type": "String"
+        },
+        {
+          "name": "content_type",
+          "type": "String"
+        },
+        {
+          "name": "created_at",
+          "type": "Instant"
+        },
+        {
+          "name": "name",
+          "type": "String"
+        },
+        {
+          "name": "size",
+          "type": "Long"
+        },
+        {
+          "name": "updated_at",
+          "type": "Instant"
+        }
+      ],
+      "tags": [],
+      "link": null
+    },
+    {
+      "name": "change",
+      "columns": [
+        {
+          "name": "id",
+          "type": "Long",
+          "primaryKey": true
+        },
+        {
+          "name": "agent_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "department_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "group_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "requester_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "approval_status",
+          "type": "Int"
+        },
+        {
+          "name": "category",
+          "type": "String"
+        },
+        {
+          "name": "change_type",
+          "type": "Int"
+        },
+        {
+          "name": "created_at",
+          "type": "Instant"
+        },
+        {
+          "name": "description",
+          "type": "String"
+        },
+        {
+          "name": "description_text",
+          "type": "String"
+        },
+        {
+          "name": "due_by",
+          "type": "Instant"
+        },
+        {
+          "name": "impact",
+          "type": "Int"
+        },
+        {
+          "name": "item_category",
+          "type": "String"
+        },
+        {
+          "name": "known_error",
+          "type": "Boolean"
+        },
+        {
+          "name": "planned_end_date",
+          "type": "Instant"
+        },
+        {
+          "name": "planned_start_date",
+          "type": "Instant"
+        },
+        {
+          "name": "priority",
+          "type": "Int"
+        },
+        {
+          "name": "risk",
+          "type": "Int"
+        },
+        {
+          "name": "status",
+          "type": "Int"
+        },
+        {
+          "name": "sub_category",
+          "type": "String"
+        },
+        {
+          "name": "subject",
+          "type": "String"
+        },
+        {
+          "name": "updated_at",
+          "type": "Instant"
+        }
+      ],
+      "tags": [],
+      "link": "https://api.freshservice.com/#changes"
+    },
+    {
+      "name": "time_entry",
+      "columns": [
+        {
+          "name": "id",
+          "type": "Long",
+          "primaryKey": true
+        },
+        {
+          "name": "agent_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "task_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "billable",
+          "type": "Boolean"
+        },
+        {
+          "name": "created_at",
+          "type": "Instant"
+        },
+        {
+          "name": "executed_at",
+          "type": "Instant"
+        },
+        {
+          "name": "note",
+          "type": "String"
+        },
+        {
+          "name": "parent_entity_id",
+          "type": "Long"
+        },
+        {
+          "name": "parent_entity_type",
+          "type": "String"
+        },
+        {
+          "name": "start_time",
+          "type": "Instant"
+        },
+        {
+          "name": "time_spent",
+          "type": "String"
+        },
+        {
+          "name": "timer_running",
+          "type": "Boolean"
+        },
+        {
+          "name": "updated_at",
+          "type": "Instant"
+        }
+      ],
+      "tags": [],
+      "link": "https://api.freshservice.com/#list_all_ticket_time_entries"
+    },
+    {
+      "name": "project_membership",
+      "columns": [
+        {
+          "name": "id",
+          "type": "Long",
+          "primaryKey": true
+        },
+        {
+          "name": "project_id",
+          "type": "Long",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "user_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "access_type",
+          "type": "Long"
+        },
+        {
+          "name": "created_at",
+          "type": "Instant"
+        },
+        {
+          "name": "manage_settings",
+          "type": "Boolean"
+        },
+        {
+          "name": "project_manager",
+          "type": "Boolean"
+        },
+        {
+          "name": "updated_at",
+          "type": "Instant"
+        }
+      ],
+      "tags": [],
+      "link": "https://api.freshservice.com/#view_project_memberships"
+    },
+    {
+      "name": "department_domain",
+      "columns": [
+        {
+          "name": "domain",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "department_id",
+          "type": "Long",
+          "primaryKey": true,
+          "foreignKey": true
+        }
+      ],
+      "tags": [],
+      "link": null
+    },
+    {
+      "name": "asset_component",
+      "columns": [
+        {
+          "name": "id",
+          "type": "Long",
+          "primaryKey": true
+        },
+        {
+          "name": "asset_id",
+          "type": "Long",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "component_data",
+          "type": "Json"
+        },
+        {
+          "name": "component_type",
+          "type": "String"
+        },
+        {
+          "name": "created_at",
+          "type": "Instant"
+        },
+        {
+          "name": "updated_at",
+          "type": "Instant"
+        }
+      ],
+      "tags": [],
+      "link": "https://api.freshservice.com/#list_all_asset_components"
+    },
+    {
+      "name": "project_task_priority",
+      "columns": [
+        {
+          "name": "id",
+          "type": "Long",
+          "primaryKey": true
+        },
+        {
+          "name": "project_id",
+          "type": "Long",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "created_at",
+          "type": "Instant"
+        },
+        {
+          "name": "description",
+          "type": "String"
+        },
+        {
+          "name": "name",
+          "type": "String"
+        },
+        {
+          "name": "updated_at",
+          "type": "Instant"
+        }
+      ],
+      "tags": [],
+      "link": "https://api.freshservice.com/#view_project_task_priorities"
+    },
+    {
+      "name": "contract",
+      "columns": [
+        {
+          "name": "id",
+          "type": "Long",
+          "primaryKey": true
+        },
+        {
+          "name": "approver_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "contract_type_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "delegatee_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "future_contract_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "requester_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "software_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "vendor_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "visible_to_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "auto_renew",
+          "type": "Boolean"
+        },
+        {
+          "name": "billing_cycle",
+          "type": "String"
+        },
+        {
+          "name": "contract_number",
+          "type": "String"
+        },
+        {
+          "name": "cost",
+          "type": "Float"
+        },
+        {
+          "name": "created_at",
+          "type": "Instant"
+        },
+        {
+          "name": "description",
+          "type": "String"
+        },
+        {
+          "name": "end_date",
+          "type": "Instant"
+        },
+        {
+          "name": "expiry_notified",
+          "type": "Boolean"
+        },
+        {
+          "name": "has_associated_assets",
+          "type": "Boolean"
+        },
+        {
+          "name": "has_attachments",
+          "type": "Boolean"
+        },
+        {
+          "name": "license_key",
+          "type": "String"
+        },
+        {
+          "name": "license_type",
+          "type": "String"
+        },
+        {
+          "name": "name",
+          "type": "String"
+        },
+        {
+          "name": "notify_before",
+          "type": "Int"
+        },
+        {
+          "name": "notify_expiry",
+          "type": "Boolean"
+        },
+        {
+          "name": "start_date",
+          "type": "Instant"
+        },
+        {
+          "name": "status",
+          "type": "String"
+        },
+        {
+          "name": "updated_at",
+          "type": "Instant"
+        }
+      ],
+      "tags": [],
+      "link": "https://api.freshservice.com/#contracts"
+    },
+    {
+      "name": "location",
+      "columns": [
+        {
+          "name": "id",
+          "type": "Long",
+          "primaryKey": true
+        },
+        {
+          "name": "parent_location_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "primary_contact_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "created_at",
+          "type": "Instant"
+        },
+        {
+          "name": "email",
+          "type": "String"
+        },
+        {
+          "name": "name",
+          "type": "String"
+        },
+        {
+          "name": "phone",
+          "type": "String"
+        },
+        {
+          "name": "updated_at",
+          "type": "Instant"
+        },
+        {
+          "name": "address_*",
+          "type": "",
+          "wildCard": true
+        }
+      ],
+      "tags": [],
+      "link": "https://api.freshservice.com/#locations"
+    },
+    {
+      "name": "announcement_relation",
+      "columns": [
+        {
+          "name": "entity_id",
+          "type": "Long",
+          "primaryKey": true
+        },
+        {
+          "name": "relation_type",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "announcement_id",
+          "type": "Long",
+          "primaryKey": true,
+          "foreignKey": true
+        }
+      ],
+      "tags": [],
+      "link": "https://api.freshservice.com/#announcements"
+    },
+    {
+      "name": "release",
+      "columns": [
+        {
+          "name": "id",
+          "type": "Long",
+          "primaryKey": true
+        },
+        {
+          "name": "agent_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "department_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "group_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "requester_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "approval_status",
+          "type": "Int"
+        },
+        {
+          "name": "category",
+          "type": "String"
+        },
+        {
+          "name": "created_at",
+          "type": "Instant"
+        },
+        {
+          "name": "description",
+          "type": "String"
+        },
+        {
+          "name": "description_text",
+          "type": "String"
+        },
+        {
+          "name": "due_by",
+          "type": "Instant"
+        },
+        {
+          "name": "impact",
+          "type": "Int"
+        },
+        {
+          "name": "item_category",
+          "type": "String"
+        },
+        {
+          "name": "known_error",
+          "type": "Boolean"
+        },
+        {
+          "name": "planned_end_date",
+          "type": "Instant"
+        },
+        {
+          "name": "planned_start_date",
+          "type": "Instant"
+        },
+        {
+          "name": "priority",
+          "type": "Int"
+        },
+        {
+          "name": "release_type",
+          "type": "Int"
+        },
+        {
+          "name": "risk",
+          "type": "Int"
+        },
+        {
+          "name": "status",
+          "type": "Int"
+        },
+        {
+          "name": "sub_category",
+          "type": "String"
+        },
+        {
+          "name": "subject",
+          "type": "String"
+        },
+        {
+          "name": "updated_at",
+          "type": "Instant"
+        },
+        {
+          "name": "work_end_date",
+          "type": "Instant"
+        },
+        {
+          "name": "work_start_date",
+          "type": "Instant"
+        }
+      ],
+      "tags": [],
+      "link": "https://api.freshservice.com/#releases"
+    },
+    {
+      "name": "project_task_type_field",
+      "columns": [
+        {
+          "name": "type_id",
+          "type": "Long",
+          "primaryKey": true
+        },
+        {
+          "name": "project_id",
+          "type": "Long",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "choices",
+          "type": "Json"
+        },
+        {
+          "name": "created_at",
+          "type": "Instant"
+        },
+        {
+          "name": "default",
+          "type": "Boolean"
+        },
+        {
+          "name": "label",
+          "type": "String"
+        },
+        {
+          "name": "mandatory",
+          "type": "Boolean"
+        },
+        {
+          "name": "name",
+          "type": "String"
+        },
+        {
+          "name": "type",
+          "type": "String"
+        },
+        {
+          "name": "updated_at",
+          "type": "Instant"
+        }
+      ],
+      "tags": [],
+      "link": null
+    },
+    {
+      "name": "project",
+      "columns": [
+        {
+          "name": "id",
+          "type": "Long",
+          "primaryKey": true
+        },
+        {
+          "name": "group_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "manager_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "archived",
+          "type": "Boolean"
+        },
+        {
+          "name": "closed_at",
+          "type": "Instant"
+        },
+        {
+          "name": "created_at",
+          "type": "Instant"
+        },
+        {
+          "name": "description",
+          "type": "String"
+        },
+        {
+          "name": "end_date",
+          "type": "LocalDate"
+        },
+        {
+          "name": "key",
+          "type": "String"
+        },
+        {
+          "name": "name",
+          "type": "String"
+        },
+        {
+          "name": "priority_code",
+          "type": "Long"
+        },
+        {
+          "name": "project_type",
+          "type": "String"
+        },
+        {
+          "name": "sprint_duration",
+          "type": "Long"
+        },
+        {
+          "name": "start_date",
+          "type": "LocalDate"
+        },
+        {
+          "name": "status_code",
+          "type": "Long"
+        },
+        {
+          "name": "updated_at",
+          "type": "Instant"
+        },
+        {
+          "name": "visibility",
+          "type": "Long"
+        }
+      ],
+      "tags": [],
+      "link": "https://api.freshservice.com/#projects-newgen"
+    },
+    {
+      "name": "agent_department",
+      "columns": [
+        {
+          "name": "agent_id",
+          "type": "Long",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "department_id",
+          "type": "Long",
+          "primaryKey": true,
+          "foreignKey": true
+        }
+      ],
+      "tags": [],
+      "link": null
+    },
+    {
+      "name": "project_sprint",
+      "columns": [
+        {
+          "name": "id",
+          "type": "Long",
+          "primaryKey": true
+        },
+        {
+          "name": "project_id",
+          "type": "Long",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "created_at",
+          "type": "Instant"
+        },
+        {
+          "name": "goal",
+          "type": "String"
+        },
+        {
+          "name": "planned_end_date",
+          "type": "Instant"
+        },
+        {
+          "name": "planned_start_date",
+          "type": "Instant"
+        },
+        {
+          "name": "state",
+          "type": "Long"
+        },
+        {
+          "name": "title",
+          "type": "String"
+        },
+        {
+          "name": "updated_at",
+          "type": "Instant"
+        }
+      ],
+      "tags": [],
+      "link": "https://api.freshservice.com/#view_project_sprints"
+    },
+    {
+      "name": "contract_type",
+      "columns": [
+        {
+          "name": "id",
+          "type": "Long",
+          "primaryKey": true
+        },
+        {
+          "name": "created_at",
+          "type": "Instant"
+        },
+        {
+          "name": "description",
+          "type": "String"
+        },
+        {
+          "name": "is_default",
+          "type": "Boolean"
+        },
+        {
+          "name": "name",
+          "type": "String"
+        },
+        {
+          "name": "needs_approval",
+          "type": "Boolean"
+        },
+        {
+          "name": "updated_at",
+          "type": "Instant"
+        }
+      ],
+      "tags": [],
+      "link": "https://api.freshservice.com/#list_all_contract_types"
+    },
+    {
+      "name": "problem",
+      "columns": [
+        {
+          "name": "id",
+          "type": "Long",
+          "primaryKey": true
+        },
+        {
+          "name": "agent_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "department_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "group_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "requester_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "category",
+          "type": "String"
+        },
+        {
+          "name": "created_at",
+          "type": "Instant"
+        },
+        {
+          "name": "description",
+          "type": "String"
+        },
+        {
+          "name": "description_text",
+          "type": "String"
+        },
+        {
+          "name": "due_by",
+          "type": "Instant"
+        },
+        {
+          "name": "impact",
+          "type": "Int"
+        },
+        {
+          "name": "item_category",
+          "type": "String"
+        },
+        {
+          "name": "known_error",
+          "type": "Boolean"
+        },
+        {
+          "name": "priority",
+          "type": "Int"
+        },
+        {
+          "name": "status",
+          "type": "Int"
+        },
+        {
+          "name": "sub_category",
+          "type": "String"
+        },
+        {
+          "name": "updated_at",
+          "type": "Instant"
+        }
+      ],
+      "tags": [],
+      "link": "https://api.freshservice.com/#problems"
+    },
+    {
+      "name": "project_task_type",
+      "columns": [
+        {
+          "name": "id",
+          "type": "Long",
+          "primaryKey": true
+        },
+        {
+          "name": "project_id",
+          "type": "Long",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "created_at",
+          "type": "Instant"
+        },
+        {
+          "name": "description",
+          "type": "String"
+        },
+        {
+          "name": "name",
+          "type": "String"
+        },
+        {
+          "name": "updated_at",
+          "type": "Instant"
+        }
+      ],
+      "tags": [],
+      "link": "https://api.freshservice.com/#view_project_task_types"
+    },
+    {
+      "name": "purchase_order_item",
+      "columns": [
+        {
+          "name": "id",
+          "type": "Long",
+          "primaryKey": true
+        },
+        {
+          "name": "order_id",
+          "type": "Long",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "item_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "cost",
+          "type": "Float"
+        },
+        {
+          "name": "created_at",
+          "type": "Instant"
+        },
+        {
+          "name": "description",
+          "type": "String"
+        },
+        {
+          "name": "item_name",
+          "type": "String"
+        },
+        {
+          "name": "item_type",
+          "type": "Int"
+        },
+        {
+          "name": "quantity",
+          "type": "Long"
+        },
+        {
+          "name": "received",
+          "type": "Long"
+        },
+        {
+          "name": "tax_percentage",
+          "type": "Float"
+        },
+        {
+          "name": "total_cost",
+          "type": "Float"
+        },
+        {
+          "name": "updated_at",
+          "type": "Instant"
+        }
+      ],
+      "tags": [],
+      "link": null
+    },
+    {
+      "name": "notify_email",
+      "columns": [
+        {
+          "name": "email",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "parent_entity_id",
+          "type": "Long",
+          "primaryKey": true
+        },
+        {
+          "name": "parent_entity_type",
+          "type": "String",
+          "primaryKey": true
+        }
+      ],
+      "tags": [],
+      "link": "https://developers.asana.com/docs/goals"
+    },
+    {
+      "name": "project_version",
+      "columns": [
+        {
+          "name": "id",
+          "type": "Long",
+          "primaryKey": true
+        },
+        {
+          "name": "project_id",
+          "type": "Long",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "owner_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "created_at",
+          "type": "Instant"
+        },
+        {
+          "name": "description",
+          "type": "String"
+        },
+        {
+          "name": "due_date",
+          "type": "Instant"
+        },
+        {
+          "name": "name",
+          "type": "String"
+        },
+        {
+          "name": "start_date",
+          "type": "Instant"
+        },
+        {
+          "name": "status_code",
+          "type": "Long"
+        },
+        {
+          "name": "updated_at",
+          "type": "Instant"
+        }
+      ],
+      "tags": [],
+      "link": "https://api.freshservice.com/#view_project_versions"
+    },
+    {
+      "name": "software_relationship",
+      "columns": [
+        {
+          "name": "id",
+          "type": "Long",
+          "primaryKey": true
+        },
+        {
+          "name": "created_at",
+          "type": "Instant"
+        },
+        {
+          "name": "primary_id",
+          "type": "Long"
+        },
+        {
+          "name": "primary_type",
+          "type": "String"
+        },
+        {
+          "name": "relationship_type_id",
+          "type": "Long"
+        },
+        {
+          "name": "secondary_id",
+          "type": "Long"
+        },
+        {
+          "name": "secondary_type",
+          "type": "String"
+        },
+        {
+          "name": "updated_at",
+          "type": "Instant"
+        }
+      ],
+      "tags": [],
+      "link": "https://api.freshservice.com/#list_relationships_of_a_software"
+    },
+    {
+      "name": "product",
+      "columns": [
+        {
+          "name": "id",
+          "type": "Long",
+          "primaryKey": true
+        },
+        {
+          "name": "asset_type_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "created_at",
+          "type": "Instant"
+        },
+        {
+          "name": "depreciation_type_id",
+          "type": "Long"
+        },
+        {
+          "name": "description",
+          "type": "String"
+        },
+        {
+          "name": "description_text",
+          "type": "String"
+        },
+        {
+          "name": "manufacturer",
+          "type": "String"
+        },
+        {
+          "name": "mode_of_procurement",
+          "type": "String"
+        },
+        {
+          "name": "name",
+          "type": "String"
+        },
+        {
+          "name": "status",
+          "type": "String"
+        },
+        {
+          "name": "updated_at",
+          "type": "Instant"
+        }
+      ],
+      "tags": [],
+      "link": "https://api.freshservice.com/#products"
+    },
+    {
+      "name": "service_category",
+      "columns": [
+        {
+          "name": "id",
+          "type": "Long",
+          "primaryKey": true
+        },
+        {
+          "name": "created_at",
+          "type": "Instant"
+        },
+        {
+          "name": "description",
+          "type": "String"
+        },
+        {
+          "name": "name",
+          "type": "String"
+        },
+        {
+          "name": "position",
+          "type": "Int"
+        },
+        {
+          "name": "updated_at",
+          "type": "Instant"
+        }
+      ],
+      "tags": [],
+      "link": "https://api.freshservice.com/#service_category"
+    },
+    {
+      "name": "ticket_tag",
+      "columns": [
+        {
+          "name": "tag_name",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "ticket_id",
+          "type": "Long",
+          "primaryKey": true,
+          "foreignKey": true
+        }
+      ],
+      "tags": [],
+      "link": null
+    },
+    {
+      "name": "announcement",
+      "columns": [
+        {
+          "name": "id",
+          "type": "Long",
+          "primaryKey": true
+        },
+        {
+          "name": "created_by",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "body",
+          "type": "String"
+        },
+        {
+          "name": "body_html",
+          "type": "String"
+        },
+        {
+          "name": "created_at",
+          "type": "Instant"
+        },
+        {
+          "name": "is_read",
+          "type": "Boolean"
+        },
+        {
+          "name": "send_email",
+          "type": "Boolean"
+        },
+        {
+          "name": "state",
+          "type": "String"
+        },
+        {
+          "name": "title",
+          "type": "String"
+        },
+        {
+          "name": "updated_at",
+          "type": "Instant"
+        },
+        {
+          "name": "visibility",
+          "type": "String"
+        },
+        {
+          "name": "visible_from",
+          "type": "Instant"
+        },
+        {
+          "name": "visible_till",
+          "type": "Instant"
+        }
+      ],
+      "tags": [],
+      "link": "https://api.freshservice.com/#announcements"
+    },
+    {
+      "name": "associated_attachment",
+      "columns": [
+        {
+          "name": "id",
+          "type": "Long",
+          "primaryKey": true
+        },
+        {
+          "name": "parent_entity_id",
+          "type": "Long",
+          "primaryKey": true
+        },
+        {
+          "name": "parent_entity_type",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "attachment_url",
+          "type": "String"
+        },
+        {
+          "name": "canonical_url",
+          "type": "String"
+        },
+        {
+          "name": "content_type",
+          "type": "String"
+        },
+        {
+          "name": "created_at",
+          "type": "Instant"
+        },
+        {
+          "name": "name",
+          "type": "String"
+        },
+        {
+          "name": "size",
+          "type": "Long"
+        },
+        {
+          "name": "updated_at",
+          "type": "Instant"
+        }
+      ],
+      "tags": [],
+      "link": "https://api.freshservice.com/#list_all_attachments"
+    },
+    {
+      "name": "project_task_status",
+      "columns": [
+        {
+          "name": "id",
+          "type": "Long",
+          "primaryKey": true
+        },
+        {
+          "name": "project_id",
+          "type": "Long",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "category_code",
+          "type": "Long"
+        },
+        {
+          "name": "created_at",
+          "type": "Instant"
+        },
+        {
+          "name": "description",
+          "type": "String"
+        },
+        {
+          "name": "name",
+          "type": "String"
+        },
+        {
+          "name": "updated_at",
+          "type": "Instant"
+        }
+      ],
+      "tags": [],
+      "link": "https://api.freshservice.com/#view_project_task_statuses"
+    },
+    {
+      "name": "role",
+      "columns": [
+        {
+          "name": "id",
+          "type": "Long",
+          "primaryKey": true
+        },
+        {
+          "name": "created_at",
+          "type": "Instant"
+        },
+        {
+          "name": "default",
+          "type": "Boolean"
+        },
+        {
+          "name": "description",
+          "type": "String"
+        },
+        {
+          "name": "name",
+          "type": "String"
+        },
+        {
+          "name": "updated_at",
+          "type": "Instant"
+        }
+      ],
+      "tags": [],
+      "link": "https://api.freshservice.com/#view_all_role"
+    },
+    {
+      "name": "ticket_item",
+      "columns": [
+        {
+          "name": "id",
+          "type": "Long",
+          "primaryKey": true
+        },
+        {
+          "name": "ticket_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "cost_per_request",
+          "type": "Double"
+        },
+        {
+          "name": "created_at",
+          "type": "Instant"
+        },
+        {
+          "name": "delivery_time",
+          "type": "Int"
+        },
+        {
+          "name": "is_parent",
+          "type": "Boolean"
+        },
+        {
+          "name": "loaned",
+          "type": "Boolean"
+        },
+        {
+          "name": "quantity",
+          "type": "Int"
+        },
+        {
+          "name": "remarks",
+          "type": "String"
+        },
+        {
+          "name": "service_item_id",
+          "type": "Long"
+        },
+        {
+          "name": "stage",
+          "type": "Int"
+        },
+        {
+          "name": "updated_at",
+          "type": "Instant"
+        }
+      ],
+      "tags": [],
+      "link": "https://api.freshservice.com/#view_req_items_of_sr"
+    },
+    {
+      "name": "contract_item_detail",
+      "columns": [
+        {
+          "name": "id",
+          "type": "Long",
+          "primaryKey": true
+        },
+        {
+          "name": "contract_id",
+          "type": "Long",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "comments",
+          "type": "String"
+        },
+        {
+          "name": "cost",
+          "type": "Float"
+        },
+        {
+          "name": "count",
+          "type": "String"
+        },
+        {
+          "name": "created_at",
+          "type": "Instant"
+        },
+        {
+          "name": "item_name",
+          "type": "String"
+        },
+        {
+          "name": "pricing_model",
+          "type": "String"
+        },
+        {
+          "name": "updated_at",
+          "type": "Instant"
+        }
+      ],
+      "tags": [],
+      "link": null
+    },
+    {
+      "name": "software_installation",
+      "columns": [
+        {
+          "name": "id",
+          "type": "Long",
+          "primaryKey": true
+        },
+        {
+          "name": "department_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "installation_machine_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "software_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "user_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "created_at",
+          "type": "Instant"
+        },
+        {
+          "name": "installation_date",
+          "type": "Instant"
+        },
+        {
+          "name": "installation_path",
+          "type": "String"
+        },
+        {
+          "name": "updated_at",
+          "type": "Instant"
+        },
+        {
+          "name": "version",
+          "type": "String"
+        }
+      ],
+      "tags": [],
+      "link": "https://api.freshservice.com/#installation_attributes"
+    },
+    {
+      "name": "asset",
+      "columns": [
+        {
+          "name": "id",
+          "type": "Long",
+          "primaryKey": true
+        },
+        {
+          "name": "agent_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "asset_type_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "department_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "group_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "location_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "user_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "asset_tag",
+          "type": "String"
+        },
+        {
+          "name": "assigned_on",
+          "type": "Instant"
+        },
+        {
+          "name": "author_type",
+          "type": "String"
+        },
+        {
+          "name": "created_at",
+          "type": "Instant"
+        },
+        {
+          "name": "description",
+          "type": "String"
+        },
+        {
+          "name": "display_id",
+          "type": "Long"
+        },
+        {
+          "name": "impact",
+          "type": "String"
+        },
+        {
+          "name": "name",
+          "type": "String"
+        },
+        {
+          "name": "updated_at",
+          "type": "Instant"
+        },
+        {
+          "name": "usage_type",
+          "type": "String"
+        }
+      ],
+      "tags": [],
+      "link": "https://api.freshservice.com/#assets"
+    },
+    {
+      "name": "service_user",
+      "columns": [
+        {
+          "name": "id",
+          "type": "Long",
+          "primaryKey": true
+        },
+        {
+          "name": "location_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "reporting_manager_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "active",
+          "type": "Boolean"
+        },
+        {
+          "name": "address",
+          "type": "String"
+        },
+        {
+          "name": "blocked",
+          "type": "Boolean"
+        },
+        {
+          "name": "created_at",
+          "type": "Instant"
+        },
+        {
+          "name": "first_name",
+          "type": "String"
+        },
+        {
+          "name": "is_agent",
+          "type": "Boolean"
+        },
+        {
+          "name": "job_title",
+          "type": "String"
+        },
+        {
+          "name": "language",
+          "type": "String"
+        },
+        {
+          "name": "last_active_at",
+          "type": "Instant"
+        },
+        {
+          "name": "last_login_at",
+          "type": "Instant"
+        },
+        {
+          "name": "last_name",
+          "type": "String"
+        },
+        {
+          "name": "mobile_phone_number",
+          "type": "String"
+        },
+        {
+          "name": "occasional",
+          "type": "Boolean"
+        },
+        {
+          "name": "primary_email",
+          "type": "String"
+        },
+        {
+          "name": "signature",
+          "type": "String"
+        },
+        {
+          "name": "time_zone",
+          "type": "String"
+        },
+        {
+          "name": "updated_at",
+          "type": "Instant"
+        },
+        {
+          "name": "vip_user",
+          "type": "Boolean"
+        },
+        {
+          "name": "work_phone_number",
+          "type": "String"
+        }
+      ],
+      "tags": [],
+      "link": "https://api.freshservice.com/#agents"
+    },
+    {
+      "name": "software",
+      "columns": [
+        {
+          "name": "id",
+          "type": "Long",
+          "primaryKey": true
+        },
+        {
+          "name": "managed_by_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "publisher_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "application_type",
+          "type": "String"
+        },
+        {
+          "name": "category",
+          "type": "String"
+        },
+        {
+          "name": "created_at",
+          "type": "Instant"
+        },
+        {
+          "name": "description",
+          "type": "String"
+        },
+        {
+          "name": "installation_count",
+          "type": "Long"
+        },
+        {
+          "name": "name",
+          "type": "String"
+        },
+        {
+          "name": "notes",
+          "type": "String"
+        },
+        {
+          "name": "status",
+          "type": "String"
+        },
+        {
+          "name": "updated_at",
+          "type": "Instant"
+        },
+        {
+          "name": "user_count",
+          "type": "Long"
+        }
+      ],
+      "tags": [],
+      "link": "https://api.freshservice.com/#software"
+    },
+    {
+      "name": "note",
+      "columns": [
+        {
+          "name": "id",
+          "type": "Long",
+          "primaryKey": true
+        },
+        {
+          "name": "parent_entity_id",
+          "type": "Long",
+          "primaryKey": true
+        },
+        {
+          "name": "parent_entity_type",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "user_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "body",
+          "type": "String"
+        },
+        {
+          "name": "body_text",
+          "type": "String"
+        },
+        {
+          "name": "from_email",
+          "type": "String"
+        }
+      ],
+      "tags": [],
+      "link": "https://api.freshservice.com/#view_all_change_notes"
+    },
+    {
+      "name": "business_hour",
+      "columns": [
+        {
+          "name": "id",
+          "type": "Long",
+          "primaryKey": true
+        },
+        {
+          "name": "created_at",
+          "type": "Instant"
+        },
+        {
+          "name": "description",
+          "type": "String"
+        },
+        {
+          "name": "name",
+          "type": "String"
+        },
+        {
+          "name": "updated_at",
+          "type": "Instant"
+        }
+      ],
+      "tags": [],
+      "link": "https://api.freshservice.com/#business-hours"
+    },
+    {
+      "name": "agent_role",
+      "columns": [
+        {
+          "name": "agent_id",
+          "type": "Long",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "role_id",
+          "type": "Long",
+          "primaryKey": true,
+          "foreignKey": true
+        }
+      ],
+      "tags": [],
+      "link": "https://api.freshservice.com/#agent-roles"
+    },
+    {
+      "name": "solution_article",
+      "columns": [
+        {
+          "name": "id",
+          "type": "Long",
+          "primaryKey": true
+        },
+        {
+          "name": "category_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "folder_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "modified_by",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "user_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "approval_status",
+          "type": "Long"
+        },
+        {
+          "name": "article_type",
+          "type": "Int"
+        },
+        {
+          "name": "created_at",
+          "type": "Instant"
+        },
+        {
+          "name": "description",
+          "type": "String"
+        },
+        {
+          "name": "description_text",
+          "type": "String"
+        },
+        {
+          "name": "inserted_into_tickets",
+          "type": "Int"
+        },
+        {
+          "name": "modified_at",
+          "type": "Instant"
+        },
+        {
+          "name": "position",
+          "type": "Int"
+        },
+        {
+          "name": "review_date",
+          "type": "Instant"
+        },
+        {
+          "name": "status",
+          "type": "Int"
+        },
+        {
+          "name": "thumbs_down",
+          "type": "Int"
+        },
+        {
+          "name": "thumbs_up",
+          "type": "Int"
+        },
+        {
+          "name": "title",
+          "type": "String"
+        },
+        {
+          "name": "updated_at",
+          "type": "Instant"
+        },
+        {
+          "name": "url",
+          "type": "String"
+        },
+        {
+          "name": "views",
+          "type": "Int"
+        }
+      ],
+      "tags": [],
+      "link": "https://api.freshservice.com/#solution-article"
+    },
+    {
+      "name": "conversation",
+      "columns": [
+        {
+          "name": "id",
+          "type": "Long",
+          "primaryKey": true
+        },
+        {
+          "name": "ticket_id",
+          "type": "Long",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "user_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "body",
+          "type": "String"
+        },
+        {
+          "name": "body_text",
+          "type": "String"
+        },
+        {
+          "name": "created_at",
+          "type": "Instant"
+        },
+        {
+          "name": "from_email",
+          "type": "String"
+        },
+        {
+          "name": "incoming",
+          "type": "Boolean"
+        },
+        {
+          "name": "private",
+          "type": "Boolean"
+        },
+        {
+          "name": "source",
+          "type": "Long"
+        },
+        {
+          "name": "support_email",
+          "type": "String"
+        },
+        {
+          "name": "updated_at",
+          "type": "Instant"
+        }
+      ],
+      "tags": [],
+      "link": "https://api.freshservice.com/#conversations"
+    },
+    {
+      "name": "software_license",
+      "columns": [
+        {
+          "name": "id",
+          "type": "Long",
+          "primaryKey": true
+        },
+        {
+          "name": "software_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "contract_id",
+          "type": "String"
+        },
+        {
+          "name": "created_time",
+          "type": "Instant"
+        },
+        {
+          "name": "updated_time",
+          "type": "Instant"
+        }
+      ],
+      "tags": [],
+      "link": "https://api.freshservice.com/#list_all_licenses"
+    },
+    {
+      "name": "asset_type",
+      "columns": [
+        {
+          "name": "id",
+          "type": "Long",
+          "primaryKey": true
+        },
+        {
+          "name": "parent_asset_type_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "created_at",
+          "type": "Instant"
+        },
+        {
+          "name": "description",
+          "type": "String"
+        },
+        {
+          "name": "name",
+          "type": "String"
+        },
+        {
+          "name": "updated_at",
+          "type": "Instant"
+        },
+        {
+          "name": "visible",
+          "type": "Boolean"
+        }
+      ],
+      "tags": [],
+      "link": "https://api.freshservice.com/#asset-types"
+    },
+    {
+      "name": "solution_category",
+      "columns": [
+        {
+          "name": "id",
+          "type": "Long",
+          "primaryKey": true
+        },
+        {
+          "name": "created_at",
+          "type": "Instant"
+        },
+        {
+          "name": "default_category",
+          "type": "Boolean"
+        },
+        {
+          "name": "description",
+          "type": "String"
+        },
+        {
+          "name": "name",
+          "type": "String"
+        },
+        {
+          "name": "position",
+          "type": "Int"
+        },
+        {
+          "name": "updated_at",
+          "type": "Instant"
+        }
+      ],
+      "tags": [],
+      "link": "https://api.freshservice.com/#solution-category"
+    },
+    {
+      "name": "solution_folder",
+      "columns": [
+        {
+          "name": "id",
+          "type": "Long",
+          "primaryKey": true
+        },
+        {
+          "name": "category_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "created_at",
+          "type": "Instant"
+        },
+        {
+          "name": "default_folder",
+          "type": "Boolean"
+        },
+        {
+          "name": "description",
+          "type": "String"
+        },
+        {
+          "name": "name",
+          "type": "String"
+        },
+        {
+          "name": "position",
+          "type": "Int"
+        },
+        {
+          "name": "updated_at",
+          "type": "Instant"
+        },
+        {
+          "name": "visibility",
+          "type": "Int"
+        }
+      ],
+      "tags": [],
+      "link": "https://api.freshservice.com/#solution-folder"
+    }
+  ],
+  "relations": [
+    {
+      "targetTable": "service_category",
+      "sourceTable": "service_item",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "category_id"
+      ]
+    },
+    {
+      "targetTable": "product",
+      "sourceTable": "service_item",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "product_id"
+      ]
+    },
+    {
+      "targetTable": "asset_type",
+      "sourceTable": "service_item",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "ci_type_id"
+      ]
+    },
+    {
+      "targetTable": "service_user",
+      "sourceTable": "user_group",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "user_id"
+      ]
+    },
+    {
+      "targetTable": "service_group",
+      "sourceTable": "user_group",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "group_id"
+      ]
+    },
+    {
+      "targetTable": "solution_folder",
+      "sourceTable": "solution_folder_relation_id",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "folder_id"
+      ]
+    },
+    {
+      "targetTable": "solution_folder",
+      "sourceTable": "solution_folder_approval",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "folder_id"
+      ]
+    },
+    {
+      "targetTable": "service_user",
+      "sourceTable": "solution_folder_approval",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "approver_id"
+      ]
+    },
+    {
+      "targetTable": "announcement",
+      "sourceTable": "announcement_email",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "announcement_id"
+      ]
+    },
+    {
+      "targetTable": "ticket",
+      "sourceTable": "ticket_email",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "ticket_id"
+      ]
+    },
+    {
+      "targetTable": "service_user",
+      "sourceTable": "department",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "head_user_id"
+      ]
+    },
+    {
+      "targetTable": "service_user",
+      "sourceTable": "department",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "prime_user_id"
+      ]
+    },
+    {
+      "targetTable": "service_user",
+      "sourceTable": "ticket",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "requester_id"
+      ]
+    },
+    {
+      "targetTable": "service_user",
+      "sourceTable": "ticket",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "responder_id"
+      ]
+    },
+    {
+      "targetTable": "department",
+      "sourceTable": "ticket",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "department_id"
+      ]
+    },
+    {
+      "targetTable": "service_group",
+      "sourceTable": "ticket",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "group_id"
+      ]
+    },
+    {
+      "targetTable": "service_user",
+      "sourceTable": "ticket",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "requested_for_id"
+      ]
+    },
+    {
+      "targetTable": "software",
+      "sourceTable": "software_user",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "software_id"
+      ]
+    },
+    {
+      "targetTable": "service_user",
+      "sourceTable": "software_user",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "user_id"
+      ]
+    },
+    {
+      "targetTable": "contract",
+      "sourceTable": "software_user",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "license_id"
+      ]
+    },
+    {
+      "targetTable": "department",
+      "sourceTable": "purchase_order",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "department_id"
+      ]
+    },
+    {
+      "targetTable": "vendor",
+      "sourceTable": "purchase_order",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "vendor_id"
+      ]
+    },
+    {
+      "targetTable": "service_user",
+      "sourceTable": "purchase_order",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "created_by"
+      ]
+    },
+    {
+      "targetTable": "service_group",
+      "sourceTable": "task",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "group_id"
+      ]
+    },
+    {
+      "targetTable": "service_user",
+      "sourceTable": "task",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "agent_id"
+      ]
+    },
+    {
+      "targetTable": "solution_article",
+      "sourceTable": "solution_article_feature",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "article_id"
+      ]
+    },
+    {
+      "targetTable": "service_user",
+      "sourceTable": "service_group",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "escalate_to"
+      ]
+    },
+    {
+      "targetTable": "business_hour",
+      "sourceTable": "service_group",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "business_hour_id"
+      ]
+    },
+    {
+      "targetTable": "project",
+      "sourceTable": "project_task",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "project_id"
+      ]
+    },
+    {
+      "targetTable": "project_task_status",
+      "sourceTable": "project_task",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "status_id"
+      ]
+    },
+    {
+      "targetTable": "project_task_type",
+      "sourceTable": "project_task",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "type_id"
+      ]
+    },
+    {
+      "targetTable": "service_user",
+      "sourceTable": "project_task",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "assignee_id"
+      ]
+    },
+    {
+      "targetTable": "project_task_priority",
+      "sourceTable": "project_task",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "priority_id"
+      ]
+    },
+    {
+      "targetTable": "service_user",
+      "sourceTable": "project_task",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "reporter_id"
+      ]
+    },
+    {
+      "targetTable": "project_sprint",
+      "sourceTable": "project_task",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "sprint_id"
+      ]
+    },
+    {
+      "targetTable": "project_version",
+      "sourceTable": "project_task",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "version_id"
+      ]
+    },
+    {
+      "targetTable": "project_task",
+      "sourceTable": "project_task",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "parent_id"
+      ]
+    },
+    {
+      "targetTable": "service_user",
+      "sourceTable": "vendor",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "primary_contact_id"
+      ]
+    },
+    {
+      "targetTable": "ticket",
+      "sourceTable": "ticket_attachment",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "ticket_id"
+      ]
+    },
+    {
+      "targetTable": "service_user",
+      "sourceTable": "change",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "requester_id"
+      ]
+    },
+    {
+      "targetTable": "service_user",
+      "sourceTable": "change",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "agent_id"
+      ]
+    },
+    {
+      "targetTable": "department",
+      "sourceTable": "change",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "department_id"
+      ]
+    },
+    {
+      "targetTable": "service_group",
+      "sourceTable": "change",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "group_id"
+      ]
+    },
+    {
+      "targetTable": "service_user",
+      "sourceTable": "time_entry",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "agent_id"
+      ]
+    },
+    {
+      "targetTable": "task",
+      "sourceTable": "time_entry",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "task_id"
+      ]
+    },
+    {
+      "targetTable": "project",
+      "sourceTable": "project_membership",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "project_id"
+      ]
+    },
+    {
+      "targetTable": "service_user",
+      "sourceTable": "project_membership",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "user_id"
+      ]
+    },
+    {
+      "targetTable": "department",
+      "sourceTable": "department_domain",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "department_id"
+      ]
+    },
+    {
+      "targetTable": "asset",
+      "sourceTable": "asset_component",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "asset_id"
+      ]
+    },
+    {
+      "targetTable": "project",
+      "sourceTable": "project_task_priority",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "project_id"
+      ]
+    },
+    {
+      "targetTable": "vendor",
+      "sourceTable": "contract",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "vendor_id"
+      ]
+    },
+    {
+      "targetTable": "service_user",
+      "sourceTable": "contract",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "approver_id"
+      ]
+    },
+    {
+      "targetTable": "service_user",
+      "sourceTable": "contract",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "requester_id"
+      ]
+    },
+    {
+      "targetTable": "service_user",
+      "sourceTable": "contract",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "delegatee_id"
+      ]
+    },
+    {
+      "targetTable": "contract",
+      "sourceTable": "contract",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "future_contract_id"
+      ]
+    },
+    {
+      "targetTable": "service_group",
+      "sourceTable": "contract",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "visible_to_id"
+      ]
+    },
+    {
+      "targetTable": "contract_type",
+      "sourceTable": "contract",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "contract_type_id"
+      ]
+    },
+    {
+      "targetTable": "software",
+      "sourceTable": "contract",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "software_id"
+      ]
+    },
+    {
+      "targetTable": "location",
+      "sourceTable": "location",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "parent_location_id"
+      ]
+    },
+    {
+      "targetTable": "service_user",
+      "sourceTable": "location",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "primary_contact_id"
+      ]
+    },
+    {
+      "targetTable": "announcement",
+      "sourceTable": "announcement_relation",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "announcement_id"
+      ]
+    },
+    {
+      "targetTable": "service_user",
+      "sourceTable": "release",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "requester_id"
+      ]
+    },
+    {
+      "targetTable": "service_user",
+      "sourceTable": "release",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "agent_id"
+      ]
+    },
+    {
+      "targetTable": "department",
+      "sourceTable": "release",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "department_id"
+      ]
+    },
+    {
+      "targetTable": "service_group",
+      "sourceTable": "release",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "group_id"
+      ]
+    },
+    {
+      "targetTable": "project",
+      "sourceTable": "project_task_type_field",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "project_id"
+      ]
+    },
+    {
+      "targetTable": "service_group",
+      "sourceTable": "project",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "group_id"
+      ]
+    },
+    {
+      "targetTable": "service_user",
+      "sourceTable": "project",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "manager_id"
+      ]
+    },
+    {
+      "targetTable": "service_user",
+      "sourceTable": "agent_department",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "agent_id"
+      ]
+    },
+    {
+      "targetTable": "department",
+      "sourceTable": "agent_department",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "department_id"
+      ]
+    },
+    {
+      "targetTable": "project",
+      "sourceTable": "project_sprint",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "project_id"
+      ]
+    },
+    {
+      "targetTable": "service_user",
+      "sourceTable": "problem",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "requester_id"
+      ]
+    },
+    {
+      "targetTable": "service_user",
+      "sourceTable": "problem",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "agent_id"
+      ]
+    },
+    {
+      "targetTable": "department",
+      "sourceTable": "problem",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "department_id"
+      ]
+    },
+    {
+      "targetTable": "service_group",
+      "sourceTable": "problem",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "group_id"
+      ]
+    },
+    {
+      "targetTable": "project",
+      "sourceTable": "project_task_type",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "project_id"
+      ]
+    },
+    {
+      "targetTable": "purchase_order",
+      "sourceTable": "purchase_order_item",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "order_id"
+      ]
+    },
+    {
+      "targetTable": "product",
+      "sourceTable": "purchase_order_item",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "item_id"
+      ]
+    },
+    {
+      "targetTable": "project",
+      "sourceTable": "project_version",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "project_id"
+      ]
+    },
+    {
+      "targetTable": "service_user",
+      "sourceTable": "project_version",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "owner_id"
+      ]
+    },
+    {
+      "targetTable": "asset_type",
+      "sourceTable": "product",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "asset_type_id"
+      ]
+    },
+    {
+      "targetTable": "ticket",
+      "sourceTable": "ticket_tag",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "ticket_id"
+      ]
+    },
+    {
+      "targetTable": "service_user",
+      "sourceTable": "announcement",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "created_by"
+      ]
+    },
+    {
+      "targetTable": "project",
+      "sourceTable": "project_task_status",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "project_id"
+      ]
+    },
+    {
+      "targetTable": "ticket",
+      "sourceTable": "ticket_item",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "ticket_id"
+      ]
+    },
+    {
+      "targetTable": "contract",
+      "sourceTable": "contract_item_detail",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "contract_id"
+      ]
+    },
+    {
+      "targetTable": "software",
+      "sourceTable": "software_installation",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "software_id"
+      ]
+    },
+    {
+      "targetTable": "service_user",
+      "sourceTable": "software_installation",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "user_id"
+      ]
+    },
+    {
+      "targetTable": "department",
+      "sourceTable": "software_installation",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "department_id"
+      ]
+    },
+    {
+      "targetTable": "asset",
+      "sourceTable": "software_installation",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "installation_machine_id"
+      ]
+    },
+    {
+      "targetTable": "service_user",
+      "sourceTable": "asset",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "user_id"
+      ]
+    },
+    {
+      "targetTable": "department",
+      "sourceTable": "asset",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "department_id"
+      ]
+    },
+    {
+      "targetTable": "service_user",
+      "sourceTable": "asset",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "agent_id"
+      ]
+    },
+    {
+      "targetTable": "service_group",
+      "sourceTable": "asset",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "group_id"
+      ]
+    },
+    {
+      "targetTable": "asset_type",
+      "sourceTable": "asset",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "asset_type_id"
+      ]
+    },
+    {
+      "targetTable": "location",
+      "sourceTable": "asset",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "location_id"
+      ]
+    },
+    {
+      "targetTable": "service_user",
+      "sourceTable": "service_user",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "reporting_manager_id"
+      ]
+    },
+    {
+      "targetTable": "location",
+      "sourceTable": "service_user",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "location_id"
+      ]
+    },
+    {
+      "targetTable": "vendor",
+      "sourceTable": "software",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "publisher_id"
+      ]
+    },
+    {
+      "targetTable": "service_user",
+      "sourceTable": "software",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "managed_by_id"
+      ]
+    },
+    {
+      "targetTable": "service_user",
+      "sourceTable": "note",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "user_id"
+      ]
+    },
+    {
+      "targetTable": "service_user",
+      "sourceTable": "agent_role",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "agent_id"
+      ]
+    },
+    {
+      "targetTable": "role",
+      "sourceTable": "agent_role",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "role_id"
+      ]
+    },
+    {
+      "targetTable": "solution_folder",
+      "sourceTable": "solution_article",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "folder_id"
+      ]
+    },
+    {
+      "targetTable": "solution_category",
+      "sourceTable": "solution_article",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "category_id"
+      ]
+    },
+    {
+      "targetTable": "service_user",
+      "sourceTable": "solution_article",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "user_id"
+      ]
+    },
+    {
+      "targetTable": "service_user",
+      "sourceTable": "solution_article",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "modified_by"
+      ]
+    },
+    {
+      "targetTable": "ticket",
+      "sourceTable": "conversation",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "ticket_id"
+      ]
+    },
+    {
+      "targetTable": "service_user",
+      "sourceTable": "conversation",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "user_id"
+      ]
+    },
+    {
+      "targetTable": "software",
+      "sourceTable": "software_license",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "software_id"
+      ]
+    },
+    {
+      "targetTable": "asset_type",
+      "sourceTable": "asset_type",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "parent_asset_type_id"
+      ]
+    },
+    {
+      "targetTable": "solution_category",
+      "sourceTable": "solution_folder",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "category_id"
+      ]
+    }
+  ],
+  "positions": {
+    "software_relationship": {
+      "x": 2544.5516843418895,
+      "y": 1515.8730011048847
+    },
+    "software": {
+      "x": 3552.5516843418895,
+      "y": 1515.8730011048847
+    },
+    "release": {
+      "x": 8031.1602755015165,
+      "y": 3607.4119953861637
+    },
+    "solution_article_feature": {
+      "x": 3737.22449440139,
+      "y": 1074.025038715737
+    },
+    "project": {
+      "x": 773.9936356761293,
+      "y": 2699.4509640723936
+    },
+    "agent_department": {
+      "x": 2796.5516843418895,
+      "y": 3311.1827408680815
+    },
+    "project_membership": {
+      "x": 773.9936356761293,
+      "y": 3516.622045740695
+    },
+    "business_hour": {
+      "x": 6366.742473788315,
+      "y": 4555.388535268883
+    },
+    "project_task_priority": {
+      "x": 1353.4765673673248,
+      "y": 3933.110048422778
+    },
+    "software_installation": {
+      "x": 3048.5516843418895,
+      "y": 1515.8730011048847
+    },
+    "announcement_relation": {
+      "x": 4505.1046900510955,
+      "y": 4006.3675510602407
+    },
+    "problem": {
+      "x": 5039.529807121534,
+      "y": 2470.452203653478
+    },
+    "notify_email": {
+      "x": 4800.024026307483,
+      "y": 1869.0522449156626
+    },
+    "conversation": {
+      "x": 7078.117283944355,
+      "y": 1154.7916041202059
+    },
+    "announcement": {
+      "x": 4001.1046900510955,
+      "y": 4310.367551060241
+    },
+    "project_sprint": {
+      "x": 1353.4765673673248,
+      "y": 2503.4995771875538
+    },
+    "solution_article": {
+      "x": 4241.22449440139,
+      "y": 1074.025038715737
+    },
+    "user_group": {
+      "x": 6366.742473788315,
+      "y": 3963.3885352688826
+    },
+    "department_domain": {
+      "x": 3300.5516843418895,
+      "y": 2863.1827408680815
+    },
+    "service_category": {
+      "x": 1604.1076673517741,
+      "y": 187.47351021204815
+    },
+    "contract": {
+      "x": 4501.862563939727,
+      "y": 2702.322703468855
+    },
+    "project_task_type_field": {
+      "x": 1932.9594990585204,
+      "y": 2807.4509640723936
+    },
+    "service_item": {
+      "x": 1100.1076673517741,
+      "y": 187.47351021204815
+    },
+    "purchase_order_item": {
+      "x": 1751.1904750555093,
+      "y": 643.4067122084972
+    },
+    "solution_folder_relation_id": {
+      "x": 3065.533953071564,
+      "y": 484.8771932235442
+    },
+    "contract_type": {
+      "x": 4501.862563939727,
+      "y": 2270.2640499777463
+    },
+    "task": {
+      "x": 5871.241854672023,
+      "y": 2889.087067761464
+    },
+    "purchase_order": {
+      "x": 2796.5516843418895,
+      "y": 3679.2837336421026
+    },
+    "note": {
+      "x": 5577.197050303341,
+      "y": 2283.9463961173906
+    },
+    "role": {
+      "x": 5223.776028499773,
+      "y": 4052.3149388144575
+    },
+    "project_task_type": {
+      "x": 1932.9594990585204,
+      "y": 3991.6466642200216
+    },
+    "contract_item_detail": {
+      "x": 5039.529807121534,
+      "y": 3293.4638187256537
+    },
+    "asset_component": {
+      "x": 5844.5389746327155,
+      "y": 1542.0312517070497
+    },
+    "announcement_email": {
+      "x": 4001.1046900510955,
+      "y": 4006.3675510602407
+    },
+    "solution_category": {
+      "x": 4745.22449440139,
+      "y": 1074.025038715737
+    },
+    "vendor": {
+      "x": 3300.5516843418895,
+      "y": 3679.2837336421026
+    },
+    "ticket_attachment": {
+      "x": 64.0,
+      "y": 64.0
+    },
+    "asset_type": {
+      "x": 1751.1904750555093,
+      "y": 1307.406712208497
+    },
+    "solution_folder": {
+      "x": 3065.533953071564,
+      "y": 788.8771932235443
+    },
+    "2db643c872": {
+      "x": 6862.950642037092,
+      "y": 133.69700238636835
+    },
+    "associated_change": {
+      "x": 7023.1602755015165,
+      "y": 3607.4119953861637
+    },
+    "department": {
+      "x": 2796.5516843418895,
+      "y": 2863.1827408680815
+    },
+    "software_user": {
+      "x": 3964.19532075792,
+      "y": 3406.510857144587
+    },
+    "product": {
+      "x": 2255.1904750555095,
+      "y": 643.4067122084972
+    },
+    "service_user": {
+      "x": 3964.19532075792,
+      "y": 2412.1345497931225
+    },
+    "ticket": {
+      "x": 6358.950642037092,
+      "y": 133.69700238636835
+    },
+    "change": {
+      "x": 7527.1602755015165,
+      "y": 3607.4119953861637
+    },
+    "service_group": {
+      "x": 6870.742473788315,
+      "y": 3963.3885352688826
+    },
+    "project_task": {
+      "x": 1353.4765673673248,
+      "y": 3043.9389667544765
+    },
+    "time_entry": {
+      "x": 6375.241854672023,
+      "y": 2889.087067761464
+    },
+    "ticket_item": {
+      "x": 544.0,
+      "y": 64.0
+    },
+    "agent_role": {
+      "x": 5223.776028499773,
+      "y": 4428.3149388144575
+    },
+    "solution_folder_approval": {
+      "x": 3569.533953071564,
+      "y": 484.8771932235442
+    },
+    "ticket_tag": {
+      "x": 544.0,
+      "y": 632.0
+    },
+    "project_task_status": {
+      "x": 277.29397994081904,
+      "y": 4032.183280017265
+    },
+    "associated_attachment": {
+      "x": 7018.701371333031,
+      "y": 1939.1574694072287
+    },
+    "project_version": {
+      "x": 1932.9594990585204,
+      "y": 3392.8171220448294
+    },
+    "location": {
+      "x": 3426.528077576113,
+      "y": 2265.9463961173906
+    },
+    "associated_asset": {
+      "x": 5632.028030692063,
+      "y": 3633.999265339759
+    },
+    "asset": {
+      "x": 6348.5389746327155,
+      "y": 1542.0312517070497
+    },
+    "ticket_email": {
+      "x": 64.0,
+      "y": 524.0
+    },
+    "software_license": {
+      "x": 2544.5516843418895,
+      "y": 2143.8730011048847
+    }
+  },
+  "notes": {
+    "byTable": {},
+    "generalNotes": []
+  },
+  "tableGroups": [
+    {
+      "id": "2db643c872",
+      "parentTable": "ticket",
+      "tables": [
+        "ticket_attachment",
+        "ticket_tag",
+        "ticket_email",
+        "ticket_item"
+      ],
+      "excludedTables": [],
+      "width": 992.0,
+      "height": 844.0
+    }
+  ]
+}

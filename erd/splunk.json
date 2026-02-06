@@ -1,0 +1,287 @@
+{
+  "tables": [
+    {
+      "name": "input",
+      "columns": [
+        {
+          "name": "name",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "index",
+          "type": "String",
+          "foreignKey": true
+        },
+        {
+          "name": "disabled",
+          "type": "Boolean"
+        },
+        {
+          "name": "host",
+          "type": "String"
+        },
+        {
+          "name": "source",
+          "type": "String"
+        },
+        {
+          "name": "source_type",
+          "type": "String"
+        },
+        {
+          "name": "updated",
+          "type": "Instant"
+        }
+      ],
+      "tags": [],
+      "link": "https://docs.splunk.com/Documentation/Splunk/7.2.3/RESTREF/RESTinput#data.2Finputs.2Fall"
+    },
+    {
+      "name": "event",
+      "columns": [
+        {
+          "name": "_fivetran_id",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "index",
+          "type": "String",
+          "foreignKey": true
+        },
+        {
+          "name": "host",
+          "type": "String"
+        },
+        {
+          "name": "line_count",
+          "type": "Long"
+        },
+        {
+          "name": "source",
+          "type": "String"
+        },
+        {
+          "name": "source_type",
+          "type": "String"
+        },
+        {
+          "name": "time",
+          "type": "Instant"
+        }
+      ],
+      "tags": [],
+      "link": "https://docs.splunk.com/Documentation/Splunk/7.2.3/RESTREF/RESTsearch#search.2Fjobs.2F.7Bsearch_id.7D.2Fevents"
+    },
+    {
+      "name": "index",
+      "columns": [
+        {
+          "name": "name",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "block_sign_size",
+          "type": "Long"
+        },
+        {
+          "name": "cold_path",
+          "type": "String"
+        },
+        {
+          "name": "cold_path_expanded",
+          "type": "String"
+        },
+        {
+          "name": "cold_to_frozen_dir",
+          "type": "String"
+        },
+        {
+          "name": "cold_to_frozen_script",
+          "type": "String"
+        },
+        {
+          "name": "current_dbsize_mb",
+          "type": "Long"
+        },
+        {
+          "name": "datatype",
+          "type": "String"
+        },
+        {
+          "name": "default_database",
+          "type": "String"
+        },
+        {
+          "name": "disabled",
+          "type": "Boolean"
+        },
+        {
+          "name": "enable_realtime_search",
+          "type": "Boolean"
+        },
+        {
+          "name": "frozen_time_period_in_secs",
+          "type": "Long"
+        },
+        {
+          "name": "home_path",
+          "type": "String"
+        },
+        {
+          "name": "home_path_expanded",
+          "type": "String"
+        },
+        {
+          "name": "is_internal",
+          "type": "Boolean"
+        },
+        {
+          "name": "is_ready",
+          "type": "Boolean"
+        },
+        {
+          "name": "max_concurrent_optimizes",
+          "type": "Long"
+        },
+        {
+          "name": "max_data_size",
+          "type": "String"
+        },
+        {
+          "name": "max_hot_buckets",
+          "type": "String"
+        },
+        {
+          "name": "max_hot_idle_secs",
+          "type": "Long"
+        },
+        {
+          "name": "max_hot_span_secs",
+          "type": "Long"
+        },
+        {
+          "name": "max_meta_entries",
+          "type": "Long"
+        },
+        {
+          "name": "max_time",
+          "type": "Instant"
+        },
+        {
+          "name": "max_total_data_size_mb",
+          "type": "Long"
+        },
+        {
+          "name": "max_warm_db_count",
+          "type": "Long"
+        },
+        {
+          "name": "mim_raw_file_sync_secs",
+          "type": "String"
+        },
+        {
+          "name": "min_time",
+          "type": "Instant"
+        },
+        {
+          "name": "partial_service_meta_period",
+          "type": "Long"
+        },
+        {
+          "name": "quarantine_future_secs",
+          "type": "Long"
+        },
+        {
+          "name": "quarantine_past_secs",
+          "type": "Long"
+        },
+        {
+          "name": "raw_chunk_size_bytes",
+          "type": "Long"
+        },
+        {
+          "name": "rotate_period_in_secs",
+          "type": "Long"
+        },
+        {
+          "name": "service_meta_period",
+          "type": "Long"
+        },
+        {
+          "name": "summarize",
+          "type": "Boolean"
+        },
+        {
+          "name": "sync_meta",
+          "type": "Boolean"
+        },
+        {
+          "name": "thawed_path",
+          "type": "String"
+        },
+        {
+          "name": "thawed_path_expanded",
+          "type": "String"
+        },
+        {
+          "name": "throttle_check_period",
+          "type": "Long"
+        },
+        {
+          "name": "total_event_count",
+          "type": "Long"
+        },
+        {
+          "name": "updated",
+          "type": "Instant"
+        }
+      ],
+      "tags": [],
+      "link": "https://docs.splunk.com/Documentation/Splunk/7.2.3/RESTREF/RESTintrospect#data.2Findexes"
+    }
+  ],
+  "relations": [
+    {
+      "targetTable": "index",
+      "sourceTable": "input",
+      "targetColumns": [
+        "name"
+      ],
+      "sourceColumns": [
+        "index"
+      ]
+    },
+    {
+      "targetTable": "index",
+      "sourceTable": "event",
+      "targetColumns": [
+        "name"
+      ],
+      "sourceColumns": [
+        "index"
+      ]
+    }
+  ],
+  "positions": {
+    "input": {
+      "x": 1016,
+      "y": 129.49999999999994
+    },
+    "event": {
+      "x": 8,
+      "y": 129.5000000000001
+    },
+    "index": {
+      "x": 512,
+      "y": 8
+    }
+  },
+  "notes": {
+    "byTable": {},
+    "generalNotes": []
+  },
+  "tableGroups": []
+}

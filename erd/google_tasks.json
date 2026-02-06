@@ -1,0 +1,179 @@
+{
+  "tables": [
+    {
+      "name": "task_link",
+      "columns": [
+        {
+          "name": "index",
+          "type": "Unknown",
+          "primaryKey": true
+        },
+        {
+          "name": "task_id",
+          "type": "String",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "description",
+          "type": "String"
+        },
+        {
+          "name": "link",
+          "type": "String"
+        },
+        {
+          "name": "type",
+          "type": "String"
+        }
+      ],
+      "link": ""
+    },
+    {
+      "name": "task",
+      "columns": [
+        {
+          "name": "id",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "parent",
+          "type": "String",
+          "foreignKey": true
+        },
+        {
+          "name": "tasklist_id",
+          "type": "String",
+          "foreignKey": true
+        },
+        {
+          "name": "completed",
+          "type": "Instant"
+        },
+        {
+          "name": "deleted",
+          "type": "Boolean"
+        },
+        {
+          "name": "due",
+          "type": "Instant"
+        },
+        {
+          "name": "etag",
+          "type": "String"
+        },
+        {
+          "name": "hidden",
+          "type": "Boolean"
+        },
+        {
+          "name": "kind",
+          "type": "String"
+        },
+        {
+          "name": "notes",
+          "type": "String"
+        },
+        {
+          "name": "position",
+          "type": "String"
+        },
+        {
+          "name": "self_link",
+          "type": "String"
+        },
+        {
+          "name": "status",
+          "type": "String"
+        },
+        {
+          "name": "title",
+          "type": "String"
+        },
+        {
+          "name": "updated",
+          "type": "Instant"
+        }
+      ],
+      "link": ""
+    },
+    {
+      "name": "tasklist",
+      "columns": [
+        {
+          "name": "id",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "etag",
+          "type": "String"
+        },
+        {
+          "name": "kind",
+          "type": "String"
+        },
+        {
+          "name": "self_link",
+          "type": "String"
+        },
+        {
+          "name": "title",
+          "type": "String"
+        },
+        {
+          "name": "updated",
+          "type": "Instant"
+        }
+      ],
+      "link": ""
+    }
+  ],
+  "relations": [
+    {
+      "targetTable": "task",
+      "sourceTable": "task_link",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "task_id"
+      ]
+    },
+    {
+      "targetTable": "task",
+      "sourceTable": "task",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "parent"
+      ]
+    },
+    {
+      "targetTable": "tasklist",
+      "sourceTable": "task",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "tasklist_id"
+      ]
+    }
+  ],
+  "positions": {
+    "task_link": {
+      "x": 729,
+      "y": 228
+    },
+    "task": {
+      "x": 239,
+      "y": 42
+    },
+    "tasklist": {
+      "x": -233,
+      "y": 228
+    }
+  }
+}

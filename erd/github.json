@@ -1,0 +1,5257 @@
+{
+  "tables": [
+    {
+      "name": "ide_code_completion_editor_model",
+      "columns": [
+        {
+          "name": "editor_name",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "name",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "organization",
+          "type": "String",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "report_date",
+          "type": "String",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "custom_model_training_date",
+          "type": "String"
+        },
+        {
+          "name": "is_custom_model",
+          "type": "Boolean"
+        },
+        {
+          "name": "total_engaged_users",
+          "type": "Long"
+        }
+      ],
+      "tags": [],
+      "link": "https://docs.github.com/en/rest/copilot/copilot-metrics?apiVersion=2022-11-28"
+    },
+    {
+      "name": "repository_clone",
+      "columns": [
+        {
+          "name": "timestamp_value",
+          "type": "Instant",
+          "primaryKey": true
+        },
+        {
+          "name": "repository_id",
+          "type": "Long",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "count_value",
+          "type": "Int"
+        },
+        {
+          "name": "uniques",
+          "type": "Int"
+        }
+      ],
+      "tags": [],
+      "link": "https://docs.github.com/en/rest/metrics/traffic?apiVersion=2022-11-28#get-repository-clones"
+    },
+    {
+      "name": "dotcom_pull_request_repository",
+      "columns": [
+        {
+          "name": "name",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "organization",
+          "type": "String",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "report_date",
+          "type": "String",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "total_engaged_users",
+          "type": "Long"
+        }
+      ],
+      "tags": [],
+      "link": "https://docs.github.com/en/rest/copilot/copilot-metrics?apiVersion=2022-11-28"
+    },
+    {
+      "name": "workflow_run",
+      "columns": [
+        {
+          "name": "id",
+          "type": "Long",
+          "primaryKey": true
+        },
+        {
+          "name": "actor_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "head_sha",
+          "type": "String",
+          "foreignKey": true
+        },
+        {
+          "name": "repository_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "triggering_actor_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "workflow_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "conclusion",
+          "type": "String"
+        },
+        {
+          "name": "created_at",
+          "type": "Instant"
+        },
+        {
+          "name": "event",
+          "type": "String"
+        },
+        {
+          "name": "head_branch",
+          "type": "String"
+        },
+        {
+          "name": "name",
+          "type": "String"
+        },
+        {
+          "name": "run_attempt",
+          "type": "Long"
+        },
+        {
+          "name": "run_number",
+          "type": "Long"
+        },
+        {
+          "name": "run_started_at",
+          "type": "Instant"
+        },
+        {
+          "name": "status",
+          "type": "String"
+        },
+        {
+          "name": "updated_at",
+          "type": "Instant"
+        }
+      ],
+      "tags": [],
+      "link": "https://docs.github.com/en/rest/actions/workflow-runs?apiVersion=2022-11-28#list-workflow-runs-for-a-repository"
+    },
+    {
+      "name": "issue",
+      "columns": [
+        {
+          "name": "id",
+          "type": "Long",
+          "primaryKey": true
+        },
+        {
+          "name": "milestone_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "repository_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "user_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "body",
+          "type": "String"
+        },
+        {
+          "name": "closed_at",
+          "type": "Instant"
+        },
+        {
+          "name": "created_at",
+          "type": "Instant"
+        },
+        {
+          "name": "locked",
+          "type": "Boolean"
+        },
+        {
+          "name": "number",
+          "type": "Long"
+        },
+        {
+          "name": "pull_request",
+          "type": "Boolean"
+        },
+        {
+          "name": "state",
+          "type": "String"
+        },
+        {
+          "name": "state_reason",
+          "type": "String"
+        },
+        {
+          "name": "title",
+          "type": "String"
+        },
+        {
+          "name": "updated_at",
+          "type": "Instant"
+        }
+      ],
+      "tags": [],
+      "link": "https://docs.github.com/en/rest/reference/issues#list-repository-issues"
+    },
+    {
+      "name": "user",
+      "columns": [
+        {
+          "name": "id",
+          "type": "Long",
+          "primaryKey": true
+        },
+        {
+          "name": "bio",
+          "type": "String"
+        },
+        {
+          "name": "blog",
+          "type": "String"
+        },
+        {
+          "name": "company",
+          "type": "String"
+        },
+        {
+          "name": "created_at",
+          "type": "Instant"
+        },
+        {
+          "name": "hireable",
+          "type": "Boolean"
+        },
+        {
+          "name": "location",
+          "type": "String"
+        },
+        {
+          "name": "login",
+          "type": "String"
+        },
+        {
+          "name": "name",
+          "type": "String"
+        },
+        {
+          "name": "site_admin",
+          "type": "Boolean"
+        },
+        {
+          "name": "type",
+          "type": "String"
+        },
+        {
+          "name": "updated_at",
+          "type": "Instant"
+        }
+      ],
+      "tags": [],
+      "link": "https://docs.github.com/en/rest/reference/users#emails"
+    },
+    {
+      "name": "user_email",
+      "columns": [
+        {
+          "name": "email",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "user_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "name",
+          "type": "String"
+        }
+      ],
+      "tags": [],
+      "link": "https://docs.github.com/en/rest/reference/users#emails"
+    },
+    {
+      "name": "ide_code_completions_total_language",
+      "columns": [
+        {
+          "name": "name",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "organization",
+          "type": "String",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "report_date",
+          "type": "String",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "total_engaged_users",
+          "type": "Long"
+        }
+      ],
+      "tags": [],
+      "link": "https://docs.github.com/en/rest/copilot/copilot-metrics?apiVersion=2022-11-28"
+    },
+    {
+      "name": "security_advisory",
+      "columns": [
+        {
+          "name": "ghsa_id",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "cve_id",
+          "type": "String"
+        },
+        {
+          "name": "cvss_score",
+          "type": "Double"
+        },
+        {
+          "name": "cvss_vector_string",
+          "type": "String"
+        },
+        {
+          "name": "description",
+          "type": "String"
+        },
+        {
+          "name": "published_at",
+          "type": "Instant"
+        },
+        {
+          "name": "severity",
+          "type": "String"
+        },
+        {
+          "name": "updated_at",
+          "type": "Instant"
+        },
+        {
+          "name": "withdrawn_at",
+          "type": "Instant"
+        }
+      ],
+      "tags": [],
+      "link": "https://docs.github.com/en/rest/dependabot/alerts?apiVersion=2022-11-28#list-dependabot-alerts-for-an-organization"
+    },
+    {
+      "name": "workflow_run_job",
+      "columns": [
+        {
+          "name": "id",
+          "type": "Long",
+          "primaryKey": true
+        },
+        {
+          "name": "run_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "check_run_url",
+          "type": "String"
+        },
+        {
+          "name": "completed_at",
+          "type": "String"
+        },
+        {
+          "name": "conclusion",
+          "type": "String"
+        },
+        {
+          "name": "created_at",
+          "type": "String"
+        },
+        {
+          "name": "head_branch",
+          "type": "String"
+        },
+        {
+          "name": "head_sha",
+          "type": "String"
+        },
+        {
+          "name": "html_url",
+          "type": "String"
+        },
+        {
+          "name": "labels",
+          "type": "Json"
+        },
+        {
+          "name": "name",
+          "type": "String"
+        },
+        {
+          "name": "node_id",
+          "type": "String"
+        },
+        {
+          "name": "run_attempt",
+          "type": "Int"
+        },
+        {
+          "name": "run_url",
+          "type": "String"
+        },
+        {
+          "name": "runner_group_id",
+          "type": "Int"
+        },
+        {
+          "name": "runner_group_name",
+          "type": "String"
+        },
+        {
+          "name": "runner_id",
+          "type": "Int"
+        },
+        {
+          "name": "runner_name",
+          "type": "String"
+        },
+        {
+          "name": "started_at",
+          "type": "String"
+        },
+        {
+          "name": "status",
+          "type": "String"
+        },
+        {
+          "name": "url",
+          "type": "String"
+        },
+        {
+          "name": "workflow_name",
+          "type": "String"
+        }
+      ],
+      "tags": [],
+      "link": null
+    },
+    {
+      "name": "commit",
+      "columns": [
+        {
+          "name": "sha",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "author_email",
+          "type": "String",
+          "foreignKey": true
+        },
+        {
+          "name": "committer_email",
+          "type": "String",
+          "foreignKey": true
+        },
+        {
+          "name": "repository_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "author_date",
+          "type": "Instant"
+        },
+        {
+          "name": "author_name",
+          "type": "String"
+        },
+        {
+          "name": "committer_date",
+          "type": "Instant"
+        },
+        {
+          "name": "committer_name",
+          "type": "String"
+        },
+        {
+          "name": "message",
+          "type": "String"
+        }
+      ],
+      "tags": [],
+      "link": "https://docs.github.com/en/rest/reference/repos#list-commits"
+    },
+    {
+      "name": "dotcom_chat_model",
+      "columns": [
+        {
+          "name": "name",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "organization",
+          "type": "String",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "report_date",
+          "type": "String",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "custom_model_training_date",
+          "type": "String"
+        },
+        {
+          "name": "is_custom_model",
+          "type": "Boolean"
+        },
+        {
+          "name": "total_chats",
+          "type": "Long"
+        },
+        {
+          "name": "total_engaged_users",
+          "type": "Long"
+        }
+      ],
+      "tags": [],
+      "link": "https://docs.github.com/en/rest/copilot/copilot-metrics?apiVersion=2022-11-28"
+    },
+    {
+      "name": "repo_team",
+      "columns": [
+        {
+          "name": "repository_id",
+          "type": "Long",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "team_id",
+          "type": "Long",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "permission",
+          "type": "String"
+        }
+      ],
+      "tags": [],
+      "link": "https://docs.github.com/en/rest/reference/repos#list-repository-teams"
+    },
+    {
+      "name": "issue_closed_history",
+      "columns": [
+        {
+          "name": "closed",
+          "type": "Boolean",
+          "primaryKey": true
+        },
+        {
+          "name": "updated_at",
+          "type": "Instant",
+          "primaryKey": true
+        },
+        {
+          "name": "issue_id",
+          "type": "Long",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "actor_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "commit_sha",
+          "type": "String",
+          "foreignKey": true
+        }
+      ],
+      "tags": [],
+      "link": "https://docs.github.com/en/rest/reference/issues#list-issue-events"
+    },
+    {
+      "name": "requested_reviewer_history",
+      "columns": [
+        {
+          "name": "created_at",
+          "type": "Instant",
+          "primaryKey": true
+        },
+        {
+          "name": "requested_id",
+          "type": "Long",
+          "primaryKey": true
+        },
+        {
+          "name": "pull_request_id",
+          "type": "Long",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "actor_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "removed",
+          "type": "Boolean"
+        },
+        {
+          "name": "requested_reviewer_type",
+          "type": "String"
+        }
+      ],
+      "tags": [],
+      "link": "https://docs.github.com/en/rest/reference/pulls#get-a-pull-request"
+    },
+    {
+      "name": "ide_code_completion_editor_model_team",
+      "columns": [
+        {
+          "name": "editor_name",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "name",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "organization",
+          "type": "String",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "report_date",
+          "type": "String",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "team_id",
+          "type": "Long",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "custom_model_training_date",
+          "type": "String"
+        },
+        {
+          "name": "is_custom_model",
+          "type": "Boolean"
+        },
+        {
+          "name": "total_engaged_users",
+          "type": "Long"
+        }
+      ],
+      "tags": [],
+      "link": "https://docs.github.com/en/rest/copilot/copilot-metrics?apiVersion=2022-11-28"
+    },
+    {
+      "name": "issue_assignee_history",
+      "columns": [
+        {
+          "name": "updated_at",
+          "type": "Instant",
+          "primaryKey": true
+        },
+        {
+          "name": "issue_id",
+          "type": "Long",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "user_id",
+          "type": "Long",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "assigner_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "assigned",
+          "type": "Boolean"
+        }
+      ],
+      "tags": [],
+      "link": "https://docs.github.com/en/rest/reference/issues#list-issue-events"
+    },
+    {
+      "name": "pull_request_review",
+      "columns": [
+        {
+          "name": "id",
+          "type": "Long",
+          "primaryKey": true
+        },
+        {
+          "name": "commit_sha",
+          "type": "String",
+          "foreignKey": true
+        },
+        {
+          "name": "pull_request_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "user_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "body",
+          "type": "String"
+        },
+        {
+          "name": "state",
+          "type": "String"
+        },
+        {
+          "name": "submitted_at",
+          "type": "Instant"
+        }
+      ],
+      "tags": [],
+      "link": "https://docs.github.com/en/rest/reference/pulls#list-reviews-for-a-pull-request"
+    },
+    {
+      "name": "branch_commit_relation",
+      "columns": [
+        {
+          "name": "branch_name",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "commit_sha",
+          "type": "String",
+          "primaryKey": true,
+          "foreignKey": true
+        }
+      ],
+      "tags": [],
+      "link": "https://docs.github.com/en/rest/reference/repos#list-commits"
+    },
+    {
+      "name": "dotcom_pull_request_repository_model",
+      "columns": [
+        {
+          "name": "name",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "repository_name",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "organization",
+          "type": "String",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "report_date",
+          "type": "String",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "custom_model_training_date",
+          "type": "String"
+        },
+        {
+          "name": "is_custom_model",
+          "type": "Boolean"
+        },
+        {
+          "name": "total_engaged_users",
+          "type": "Long"
+        },
+        {
+          "name": "total_pr_summaries_created",
+          "type": "Long"
+        }
+      ],
+      "tags": [],
+      "link": "https://docs.github.com/en/rest/copilot/copilot-metrics?apiVersion=2022-11-28"
+    },
+    {
+      "name": "copilot_metric_team",
+      "columns": [
+        {
+          "name": "date",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "organization",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "team_id",
+          "type": "Long",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "dotcom_chat_total_engaged_users",
+          "type": "Long"
+        },
+        {
+          "name": "dotcom_pull_request_total_engaged_users",
+          "type": "Long"
+        },
+        {
+          "name": "ide_chat_total_engaged_users",
+          "type": "Long"
+        },
+        {
+          "name": "ide_code_completion_total_engaged_users",
+          "type": "Long"
+        },
+        {
+          "name": "total_active_users",
+          "type": "Long"
+        },
+        {
+          "name": "total_engaged_users",
+          "type": "Long"
+        }
+      ],
+      "tags": [],
+      "link": "https://docs.github.com/en/rest/copilot/copilot-metrics?apiVersion=2022-11-28"
+    },
+    {
+      "name": "workflow",
+      "columns": [
+        {
+          "name": "id",
+          "type": "Long",
+          "primaryKey": true
+        },
+        {
+          "name": "repository_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "created_at",
+          "type": "Instant"
+        },
+        {
+          "name": "name",
+          "type": "String"
+        },
+        {
+          "name": "path",
+          "type": "String"
+        },
+        {
+          "name": "state",
+          "type": "String"
+        },
+        {
+          "name": "updated_at",
+          "type": "Instant"
+        }
+      ],
+      "tags": [],
+      "link": "https://docs.github.com/en/rest/actions/workflows?apiVersion=2022-11-28"
+    },
+    {
+      "name": "issue_comment",
+      "columns": [
+        {
+          "name": "id",
+          "type": "Long",
+          "primaryKey": true
+        },
+        {
+          "name": "issue_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "user_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "body",
+          "type": "String"
+        },
+        {
+          "name": "created_at",
+          "type": "Instant"
+        },
+        {
+          "name": "updated_at",
+          "type": "Instant"
+        }
+      ],
+      "tags": [],
+      "link": "https://docs.github.com/en/rest/reference/issues#comments"
+    },
+    {
+      "name": "issue_label_history",
+      "columns": [
+        {
+          "name": "updated_at",
+          "type": "Instant",
+          "primaryKey": true
+        },
+        {
+          "name": "issue_id",
+          "type": "Long",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "label_id",
+          "type": "Long",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "actor_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "labeled",
+          "type": "Boolean"
+        }
+      ],
+      "tags": [],
+      "link": "https://docs.github.com/en/rest/reference/issues#list-issue-events"
+    },
+    {
+      "name": "security_vulnerability",
+      "columns": [
+        {
+          "name": "_fivetran_id",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "package_ecosystem",
+          "type": "String"
+        },
+        {
+          "name": "package_name",
+          "type": "String"
+        },
+        {
+          "name": "patched_version_identifier",
+          "type": "String"
+        },
+        {
+          "name": "severity",
+          "type": "String"
+        },
+        {
+          "name": "vulnerable_version_range",
+          "type": "String"
+        }
+      ],
+      "tags": [],
+      "link": null
+    },
+    {
+      "name": "dotcom_chat_model_team",
+      "columns": [
+        {
+          "name": "name",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "organization",
+          "type": "String",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "report_date",
+          "type": "String",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "team_id",
+          "type": "Long",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "custom_model_training_date",
+          "type": "String"
+        },
+        {
+          "name": "is_custom_model",
+          "type": "Boolean"
+        },
+        {
+          "name": "total_chats",
+          "type": "Long"
+        },
+        {
+          "name": "total_engaged_users",
+          "type": "Long"
+        }
+      ],
+      "tags": [],
+      "link": "https://docs.github.com/en/rest/copilot/copilot-metrics?apiVersion=2022-11-28"
+    },
+    {
+      "name": "security_alert",
+      "columns": [
+        {
+          "name": "number",
+          "type": "Long",
+          "primaryKey": true
+        },
+        {
+          "name": "repository_id",
+          "type": "Long",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "dismissed_by",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "security_advisory_ghsa_id",
+          "type": "String",
+          "foreignKey": true
+        },
+        {
+          "name": "vulnerability_id",
+          "type": "String",
+          "foreignKey": true
+        },
+        {
+          "name": "created_at",
+          "type": "Instant"
+        },
+        {
+          "name": "dependency_manifest_path",
+          "type": "String"
+        },
+        {
+          "name": "dependency_package_ecosystem",
+          "type": "String"
+        },
+        {
+          "name": "dependency_package_name",
+          "type": "String"
+        },
+        {
+          "name": "dependency_scope",
+          "type": "String"
+        },
+        {
+          "name": "dismissed_at",
+          "type": "Instant"
+        },
+        {
+          "name": "dismissed_comment",
+          "type": "String"
+        },
+        {
+          "name": "dismissed_reason",
+          "type": "String"
+        },
+        {
+          "name": "fixed_at",
+          "type": "Instant"
+        },
+        {
+          "name": "state",
+          "type": "String"
+        },
+        {
+          "name": "updated_at",
+          "type": "Instant"
+        }
+      ],
+      "tags": [],
+      "link": "https://docs.github.com/en/rest/dependabot/alerts?apiVersion=2022-11-28#list-dependabot-alerts-for-an-organization"
+    },
+    {
+      "name": "ide_code_completions_total_language_team",
+      "columns": [
+        {
+          "name": "name",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "organization",
+          "type": "String",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "report_date",
+          "type": "String",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "team_id",
+          "type": "Long",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "total_engaged_users",
+          "type": "Long"
+        }
+      ],
+      "tags": [],
+      "link": "https://docs.github.com/en/rest/copilot/copilot-metrics?apiVersion=2022-11-28"
+    },
+    {
+      "name": "workflow_run_job_step",
+      "columns": [
+        {
+          "name": "number",
+          "type": "Int",
+          "primaryKey": true
+        },
+        {
+          "name": "workflow_run_job_id",
+          "type": "Long",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "completed_at",
+          "type": "String"
+        },
+        {
+          "name": "conclusion",
+          "type": "String"
+        },
+        {
+          "name": "name",
+          "type": "String"
+        },
+        {
+          "name": "started_at",
+          "type": "String"
+        },
+        {
+          "name": "status",
+          "type": "String"
+        }
+      ],
+      "tags": [],
+      "link": null
+    },
+    {
+      "name": "pull_request",
+      "columns": [
+        {
+          "name": "id",
+          "type": "Long",
+          "primaryKey": true
+        },
+        {
+          "name": "base_repo_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "base_user_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "head_repo_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "head_user_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "issue_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "active_lock_reason",
+          "type": "String"
+        },
+        {
+          "name": "base_label",
+          "type": "String"
+        },
+        {
+          "name": "base_ref",
+          "type": "String"
+        },
+        {
+          "name": "base_sha",
+          "type": "String"
+        },
+        {
+          "name": "closed_at",
+          "type": "Instant"
+        },
+        {
+          "name": "created_at",
+          "type": "Instant"
+        },
+        {
+          "name": "draft",
+          "type": "Boolean"
+        },
+        {
+          "name": "head_label",
+          "type": "String"
+        },
+        {
+          "name": "head_ref",
+          "type": "String"
+        },
+        {
+          "name": "head_sha",
+          "type": "String"
+        },
+        {
+          "name": "merge_commit_sha",
+          "type": "String"
+        },
+        {
+          "name": "updated_at",
+          "type": "Instant"
+        }
+      ],
+      "tags": [],
+      "link": "https://docs.github.com/en/rest/reference/pulls#list-pull-requests"
+    },
+    {
+      "name": "commit_file",
+      "columns": [
+        {
+          "name": "commit_sha",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "filename",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "additions",
+          "type": "Long"
+        },
+        {
+          "name": "changes",
+          "type": "Long"
+        },
+        {
+          "name": "deletions",
+          "type": "Long"
+        },
+        {
+          "name": "status",
+          "type": "String"
+        }
+      ],
+      "tags": [],
+      "link": "https://docs.github.com/en/rest/reference/repos#get-a-commit"
+    },
+    {
+      "name": "security_reference",
+      "columns": [
+        {
+          "name": "url",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "security_advisory_ghsa_id",
+          "type": "String",
+          "primaryKey": true,
+          "foreignKey": true
+        }
+      ],
+      "tags": [],
+      "link": "https://docs.github.com/en/rest/dependabot/alerts?apiVersion=2022-11-28#list-dependabot-alerts-for-an-organization"
+    },
+    {
+      "name": "project_v_2_item",
+      "columns": [
+        {
+          "name": "id",
+          "type": "Long",
+          "primaryKey": true
+        },
+        {
+          "name": "creator_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "milestone_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "parent_issue_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "project_v_2_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "repository_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "archived_at",
+          "type": "Instant"
+        },
+        {
+          "name": "created_at",
+          "type": "Instant"
+        },
+        {
+          "name": "status",
+          "type": "String"
+        },
+        {
+          "name": "updated_at",
+          "type": "Instant"
+        },
+        {
+          "name": "content_*",
+          "type": "",
+          "wildCard": true
+        }
+      ],
+      "tags": [],
+      "link": "https://docs.github.com/en/rest/projects/items?apiVersion=2022-11-28#list-items-for-an-organization-owned-project"
+    },
+    {
+      "name": "dotcom_pull_request_repository_model_team",
+      "columns": [
+        {
+          "name": "name",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "repository_name",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "organization",
+          "type": "String",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "report_date",
+          "type": "String",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "team_id",
+          "type": "Long",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "custom_model_training_date",
+          "type": "String"
+        },
+        {
+          "name": "is_custom_model",
+          "type": "Boolean"
+        },
+        {
+          "name": "total_engaged_users",
+          "type": "Long"
+        },
+        {
+          "name": "total_pr_summaries_created",
+          "type": "Long"
+        }
+      ],
+      "tags": [],
+      "link": "https://docs.github.com/en/rest/copilot/copilot-metrics?apiVersion=2022-11-28"
+    },
+    {
+      "name": "security_cwe",
+      "columns": [
+        {
+          "name": "cwe_id",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "name",
+          "type": "String"
+        }
+      ],
+      "tags": [],
+      "link": "https://docs.github.com/en/rest/dependabot/alerts?apiVersion=2022-11-28#list-dependabot-alerts-for-an-organization"
+    },
+    {
+      "name": "page_view",
+      "columns": [
+        {
+          "name": "timestamp_value",
+          "type": "Instant",
+          "primaryKey": true
+        },
+        {
+          "name": "repository_id",
+          "type": "Long",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "count_value",
+          "type": "Int"
+        },
+        {
+          "name": "uniques",
+          "type": "Int"
+        }
+      ],
+      "tags": [],
+      "link": "https://docs.github.com/en/rest/metrics/traffic?apiVersion=2022-11-28#get-page-views"
+    },
+    {
+      "name": "issue_referenced",
+      "columns": [
+        {
+          "name": "referenced_at",
+          "type": "Instant",
+          "primaryKey": true
+        },
+        {
+          "name": "issue_id",
+          "type": "Long",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "actor_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "commit_sha",
+          "type": "String",
+          "foreignKey": true
+        }
+      ],
+      "tags": [],
+      "link": "https://docs.github.com/en/rest/reference/issues#list-issue-events"
+    },
+    {
+      "name": "ide_chat_editor_model_team",
+      "columns": [
+        {
+          "name": "editor_name",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "name",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "organization",
+          "type": "String",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "report_date",
+          "type": "String",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "team_id",
+          "type": "Long",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "custom_model_training_date",
+          "type": "String"
+        },
+        {
+          "name": "is_custom_model",
+          "type": "Boolean"
+        },
+        {
+          "name": "total_chat_copy_events",
+          "type": "Long"
+        },
+        {
+          "name": "total_chat_insertion_events",
+          "type": "Long"
+        },
+        {
+          "name": "total_chats",
+          "type": "Long"
+        },
+        {
+          "name": "total_engaged_users",
+          "type": "Long"
+        }
+      ],
+      "tags": [],
+      "link": "https://docs.github.com/en/rest/copilot/copilot-metrics?apiVersion=2022-11-28"
+    },
+    {
+      "name": "security_advisory_cwe",
+      "columns": [
+        {
+          "name": "cwe_id",
+          "type": "String",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "security_advisory_id",
+          "type": "String",
+          "primaryKey": true,
+          "foreignKey": true
+        }
+      ],
+      "tags": [],
+      "link": "https://docs.github.com/en/rest/dependabot/alerts?apiVersion=2022-11-28#list-dependabot-alerts-for-an-organization"
+    },
+    {
+      "name": "pull_request_review_comments",
+      "columns": [
+        {
+          "name": "id",
+          "type": "Long",
+          "primaryKey": true
+        },
+        {
+          "name": "pull_request_id",
+          "type": "Long",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "parent_comment_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "pull_request_review_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "user_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "body",
+          "type": "String"
+        },
+        {
+          "name": "created_at",
+          "type": "Instant"
+        },
+        {
+          "name": "reaction_minus_count",
+          "type": "Int"
+        },
+        {
+          "name": "reaction_plus_count",
+          "type": "Int"
+        },
+        {
+          "name": "updated_at",
+          "type": "Instant"
+        }
+      ],
+      "tags": [],
+      "link": null
+    },
+    {
+      "name": "copilot_metric",
+      "columns": [
+        {
+          "name": "date",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "organization",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "dotcom_chat_total_engaged_users",
+          "type": "Long"
+        },
+        {
+          "name": "dotcom_pull_request_total_engaged_users",
+          "type": "Long"
+        },
+        {
+          "name": "ide_chat_total_engaged_users",
+          "type": "Long"
+        },
+        {
+          "name": "ide_code_completion_total_engaged_users",
+          "type": "Long"
+        },
+        {
+          "name": "total_active_users",
+          "type": "Long"
+        },
+        {
+          "name": "total_engaged_users",
+          "type": "Long"
+        }
+      ],
+      "tags": [],
+      "link": "https://docs.github.com/en/rest/copilot/copilot-metrics?apiVersion=2022-11-28"
+    },
+    {
+      "name": "deployment_status",
+      "columns": [
+        {
+          "name": "id",
+          "type": "Long",
+          "primaryKey": true
+        },
+        {
+          "name": "creator_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "deployment_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "created_at",
+          "type": "Instant"
+        },
+        {
+          "name": "description",
+          "type": "String"
+        },
+        {
+          "name": "environment",
+          "type": "String"
+        },
+        {
+          "name": "state",
+          "type": "String"
+        },
+        {
+          "name": "updated_at",
+          "type": "Instant"
+        }
+      ],
+      "tags": [],
+      "link": "https://docs.github.com/en/rest/reference/repos#list-deployment-statuses"
+    },
+    {
+      "name": "project_v_2_custom_field",
+      "columns": [
+        {
+          "name": "project_v_2_field_id",
+          "type": "Long",
+          "primaryKey": true
+        },
+        {
+          "name": "project_v_2_item_id",
+          "type": "Long",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "data_type",
+          "type": "String"
+        },
+        {
+          "name": "name",
+          "type": "String"
+        },
+        {
+          "name": "value",
+          "type": "String"
+        }
+      ],
+      "tags": [],
+      "link": "https://docs.github.com/en/rest/projects/items?apiVersion=2022-11-28#list-items-for-an-organization-owned-project"
+    },
+    {
+      "name": "pull_request_review_dismissed",
+      "columns": [
+        {
+          "name": "pull_request_review_id",
+          "type": "Long",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "actor_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "dismissal_commit_sha",
+          "type": "String",
+          "foreignKey": true
+        },
+        {
+          "name": "created_at",
+          "type": "Instant"
+        },
+        {
+          "name": "dismissal_message",
+          "type": "String"
+        },
+        {
+          "name": "state",
+          "type": "String"
+        }
+      ],
+      "tags": [],
+      "link": "https://docs.github.com/en/rest/reference/issues#list-issue-events"
+    },
+    {
+      "name": "workflow_run_attempt",
+      "columns": [
+        {
+          "name": "run_attempt",
+          "type": "Long",
+          "primaryKey": true
+        },
+        {
+          "name": "id",
+          "type": "Long",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "actor_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "head_sha",
+          "type": "String",
+          "foreignKey": true
+        },
+        {
+          "name": "repository_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "triggering_actor_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "workflow_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "conclusion",
+          "type": "String"
+        },
+        {
+          "name": "created_at",
+          "type": "Instant"
+        },
+        {
+          "name": "event",
+          "type": "String"
+        },
+        {
+          "name": "head_branch",
+          "type": "String"
+        },
+        {
+          "name": "name",
+          "type": "String"
+        },
+        {
+          "name": "run_number",
+          "type": "Long"
+        },
+        {
+          "name": "run_started_at",
+          "type": "Instant"
+        },
+        {
+          "name": "status",
+          "type": "String"
+        },
+        {
+          "name": "updated_at",
+          "type": "Instant"
+        }
+      ],
+      "tags": [],
+      "link": "https://docs.github.com/en/rest/actions/workflow-runs?apiVersion=2022-11-28#get-a-workflow-run-attempt"
+    },
+    {
+      "name": "issue_mention",
+      "columns": [
+        {
+          "name": "updated_at",
+          "type": "Instant",
+          "primaryKey": true
+        },
+        {
+          "name": "issue_id",
+          "type": "Long",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "user_id",
+          "type": "Long",
+          "primaryKey": true,
+          "foreignKey": true
+        }
+      ],
+      "tags": [],
+      "link": "https://docs.github.com/en/rest/reference/issues#list-issue-events"
+    },
+    {
+      "name": "ide_code_completion_editor_team",
+      "columns": [
+        {
+          "name": "name",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "organization",
+          "type": "String",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "report_date",
+          "type": "String",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "team_id",
+          "type": "Long",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "total_engaged_users",
+          "type": "Long"
+        }
+      ],
+      "tags": [],
+      "link": "https://docs.github.com/en/rest/copilot/copilot-metrics?apiVersion=2022-11-28"
+    },
+    {
+      "name": "ide_code_completion_editor_model_language_team",
+      "columns": [
+        {
+          "name": "editor_name",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "model_name",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "name",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "organization",
+          "type": "String",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "report_date",
+          "type": "String",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "team_id",
+          "type": "Long",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "total_code_acceptances",
+          "type": "Long"
+        },
+        {
+          "name": "total_code_lines_accepted",
+          "type": "Long"
+        },
+        {
+          "name": "total_code_lines_suggested",
+          "type": "Long"
+        },
+        {
+          "name": "total_code_suggestions",
+          "type": "Long"
+        },
+        {
+          "name": "total_engaged_users",
+          "type": "Long"
+        }
+      ],
+      "tags": [],
+      "link": "https://docs.github.com/en/rest/copilot/copilot-metrics?apiVersion=2022-11-28"
+    },
+    {
+      "name": "repository",
+      "columns": [
+        {
+          "name": "id",
+          "type": "Long",
+          "primaryKey": true
+        },
+        {
+          "name": "owner_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "archived",
+          "type": "Boolean"
+        },
+        {
+          "name": "created_at",
+          "type": "Instant"
+        },
+        {
+          "name": "default_branch",
+          "type": "String"
+        },
+        {
+          "name": "description",
+          "type": "String"
+        },
+        {
+          "name": "fork",
+          "type": "Boolean"
+        },
+        {
+          "name": "forks_count",
+          "type": "Int"
+        },
+        {
+          "name": "full_name",
+          "type": "String"
+        },
+        {
+          "name": "homepage",
+          "type": "String"
+        },
+        {
+          "name": "language",
+          "type": "String"
+        },
+        {
+          "name": "name",
+          "type": "String"
+        },
+        {
+          "name": "private",
+          "type": "Boolean"
+        },
+        {
+          "name": "watchers_count",
+          "type": "Int"
+        }
+      ],
+      "tags": [],
+      "link": "https://docs.github.com/en/rest/reference/repos#list-organization-repositories"
+    },
+    {
+      "name": "ide_code_completion_editor_model_language",
+      "columns": [
+        {
+          "name": "editor_name",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "model_name",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "name",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "organization",
+          "type": "String",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "report_date",
+          "type": "String",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "total_code_acceptances",
+          "type": "Long"
+        },
+        {
+          "name": "total_code_lines_accepted",
+          "type": "Long"
+        },
+        {
+          "name": "total_code_lines_suggested",
+          "type": "Long"
+        },
+        {
+          "name": "total_code_suggestions",
+          "type": "Long"
+        },
+        {
+          "name": "total_engaged_users",
+          "type": "Long"
+        }
+      ],
+      "tags": [],
+      "link": "https://docs.github.com/en/rest/copilot/copilot-metrics?apiVersion=2022-11-28"
+    },
+    {
+      "name": "repository_topic",
+      "columns": [
+        {
+          "name": "name",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "repository_id",
+          "type": "Long",
+          "primaryKey": true,
+          "foreignKey": true
+        }
+      ],
+      "tags": [],
+      "link": null
+    },
+    {
+      "name": "ide_chat_editor_team",
+      "columns": [
+        {
+          "name": "name",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "organization",
+          "type": "String",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "report_date",
+          "type": "String",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "team_id",
+          "type": "Long",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "total_engaged_users",
+          "type": "Long"
+        }
+      ],
+      "tags": [],
+      "link": "https://docs.github.com/en/rest/copilot/copilot-metrics?apiVersion=2022-11-28"
+    },
+    {
+      "name": "issue_renamed",
+      "columns": [
+        {
+          "name": "updated_at",
+          "type": "Instant",
+          "primaryKey": true
+        },
+        {
+          "name": "issue_id",
+          "type": "Long",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "actor_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "from_name",
+          "type": "String"
+        },
+        {
+          "name": "to_name",
+          "type": "String"
+        }
+      ],
+      "tags": [],
+      "link": "https://docs.github.com/en/rest/reference/issues#list-issue-events"
+    },
+    {
+      "name": "asset",
+      "columns": [
+        {
+          "name": "id",
+          "type": "Long",
+          "primaryKey": true
+        },
+        {
+          "name": "release_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "uploader_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "content_type",
+          "type": "String"
+        },
+        {
+          "name": "created_at",
+          "type": "Instant"
+        },
+        {
+          "name": "download_count",
+          "type": "Int"
+        },
+        {
+          "name": "label",
+          "type": "String"
+        },
+        {
+          "name": "name",
+          "type": "String"
+        },
+        {
+          "name": "size",
+          "type": "Long"
+        },
+        {
+          "name": "state",
+          "type": "String"
+        },
+        {
+          "name": "updated_at",
+          "type": "Instant"
+        }
+      ],
+      "tags": [],
+      "link": "https://docs.github.com/en/rest/reference/issues#list-issue-events"
+    },
+    {
+      "name": "commit_pull_request",
+      "columns": [
+        {
+          "name": "commit_sha",
+          "type": "String",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "pull_request_id",
+          "type": "Long",
+          "primaryKey": true,
+          "foreignKey": true
+        }
+      ],
+      "tags": [],
+      "link": "https://docs.github.com/en/rest/reference/repos#list-pull-requests-associated-with-a-commit"
+    },
+    {
+      "name": "ide_chat_editor_model",
+      "columns": [
+        {
+          "name": "editor_name",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "name",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "organization",
+          "type": "String",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "report_date",
+          "type": "String",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "custom_model_training_date",
+          "type": "String"
+        },
+        {
+          "name": "is_custom_model",
+          "type": "Boolean"
+        },
+        {
+          "name": "total_chat_copy_events",
+          "type": "Long"
+        },
+        {
+          "name": "total_chat_insertion_events",
+          "type": "Long"
+        },
+        {
+          "name": "total_chats",
+          "type": "Long"
+        },
+        {
+          "name": "total_engaged_users",
+          "type": "Long"
+        }
+      ],
+      "tags": [],
+      "link": "https://docs.github.com/en/rest/copilot/copilot-metrics?apiVersion=2022-11-28"
+    },
+    {
+      "name": "ide_code_completion_editor",
+      "columns": [
+        {
+          "name": "name",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "organization",
+          "type": "String",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "report_date",
+          "type": "String",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "total_engaged_users",
+          "type": "Long"
+        }
+      ],
+      "tags": [],
+      "link": "https://docs.github.com/en/rest/copilot/copilot-metrics?apiVersion=2022-11-28"
+    },
+    {
+      "name": "milestone",
+      "columns": [
+        {
+          "name": "id",
+          "type": "Long",
+          "primaryKey": true
+        },
+        {
+          "name": "creator_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "repository_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "closed_at",
+          "type": "Instant"
+        },
+        {
+          "name": "created_at",
+          "type": "Instant"
+        },
+        {
+          "name": "description",
+          "type": "String"
+        },
+        {
+          "name": "due_on",
+          "type": "Instant"
+        },
+        {
+          "name": "is_deleted",
+          "type": "Boolean"
+        },
+        {
+          "name": "number",
+          "type": "Long"
+        },
+        {
+          "name": "state",
+          "type": "String"
+        },
+        {
+          "name": "title",
+          "type": "String"
+        },
+        {
+          "name": "updated_at",
+          "type": "Instant"
+        }
+      ],
+      "tags": [],
+      "link": "https://docs.github.com/en/rest/reference/issues#milestones"
+    },
+    {
+      "name": "team",
+      "columns": [
+        {
+          "name": "id",
+          "type": "Long",
+          "primaryKey": true
+        },
+        {
+          "name": "org_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "parent_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "description",
+          "type": "String"
+        },
+        {
+          "name": "name",
+          "type": "String"
+        },
+        {
+          "name": "privacy",
+          "type": "String"
+        },
+        {
+          "name": "slug",
+          "type": "String"
+        }
+      ],
+      "tags": [],
+      "link": "https://docs.github.com/en/rest/reference/teams#list-teams"
+    },
+    {
+      "name": "issue_label",
+      "columns": [
+        {
+          "name": "issue_id",
+          "type": "Long",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "label_id",
+          "type": "Long",
+          "primaryKey": true,
+          "foreignKey": true
+        }
+      ],
+      "tags": [],
+      "link": "https://docs.github.com/en/rest/reference/issues#list-repository-issues"
+    },
+    {
+      "name": "repository_property",
+      "columns": [
+        {
+          "name": "name",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "repository_id",
+          "type": "Long",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "value",
+          "type": "String"
+        }
+      ],
+      "tags": [],
+      "link": "https://docs.github.com/en/rest/repos/custom-properties?apiVersion=2022-11-28#get-all-custom-property-values-for-a-repository"
+    },
+    {
+      "name": "commit_parent",
+      "columns": [
+        {
+          "name": "commit_sha",
+          "type": "String",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "parent_sha",
+          "type": "String",
+          "primaryKey": true,
+          "foreignKey": true
+        }
+      ],
+      "tags": [],
+      "link": "https://docs.github.com/en/rest/reference/repos#get-a-commit"
+    },
+    {
+      "name": "deployment",
+      "columns": [
+        {
+          "name": "id",
+          "type": "Long",
+          "primaryKey": true
+        },
+        {
+          "name": "commit_sha",
+          "type": "String",
+          "foreignKey": true
+        },
+        {
+          "name": "creator_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "created_at",
+          "type": "Instant"
+        },
+        {
+          "name": "description",
+          "type": "String"
+        },
+        {
+          "name": "environment",
+          "type": "String"
+        },
+        {
+          "name": "original_environment",
+          "type": "String"
+        },
+        {
+          "name": "payload",
+          "type": "Json"
+        },
+        {
+          "name": "production_environment",
+          "type": "Boolean"
+        },
+        {
+          "name": "ref",
+          "type": "String"
+        },
+        {
+          "name": "task",
+          "type": "String"
+        },
+        {
+          "name": "transient_environment",
+          "type": "Boolean"
+        },
+        {
+          "name": "updated_at",
+          "type": "Instant"
+        }
+      ],
+      "tags": [],
+      "link": "https://docs.github.com/en/rest/reference/repos#list-deployments"
+    },
+    {
+      "name": "dotcom_pull_request_repository_team",
+      "columns": [
+        {
+          "name": "name",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "organization",
+          "type": "String",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "report_date",
+          "type": "String",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "team_id",
+          "type": "Long",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "total_engaged_users",
+          "type": "Long"
+        }
+      ],
+      "tags": [],
+      "link": "https://docs.github.com/en/rest/copilot/copilot-metrics?apiVersion=2022-11-28"
+    },
+    {
+      "name": "repo_collaborator",
+      "columns": [
+        {
+          "name": "repository_id",
+          "type": "Long",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "user_id",
+          "type": "Long",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "admin",
+          "type": "Boolean"
+        },
+        {
+          "name": "maintain",
+          "type": "Boolean"
+        },
+        {
+          "name": "pull",
+          "type": "Boolean"
+        },
+        {
+          "name": "push",
+          "type": "Boolean"
+        },
+        {
+          "name": "role_name",
+          "type": "String"
+        },
+        {
+          "name": "site_admin",
+          "type": "Boolean"
+        },
+        {
+          "name": "triage",
+          "type": "Boolean"
+        }
+      ],
+      "tags": [],
+      "link": "https://docs.github.com/en/rest/collaborators/collaborators?apiVersion=2022-11-28#list-repository-collaborators"
+    },
+    {
+      "name": "label",
+      "columns": [
+        {
+          "name": "id",
+          "type": "Long",
+          "primaryKey": true
+        },
+        {
+          "name": "color",
+          "type": "String"
+        },
+        {
+          "name": "description",
+          "type": "String"
+        },
+        {
+          "name": "is_default",
+          "type": "Boolean"
+        },
+        {
+          "name": "name",
+          "type": "String"
+        },
+        {
+          "name": "url",
+          "type": "String"
+        }
+      ],
+      "tags": [],
+      "link": "https://docs.github.com/en/rest/reference/issues#labels"
+    },
+    {
+      "name": "security_advisory_vulnerability",
+      "columns": [
+        {
+          "name": "security_advisory_id",
+          "type": "String",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "vulnerability_id",
+          "type": "String",
+          "primaryKey": true,
+          "foreignKey": true
+        }
+      ],
+      "tags": [],
+      "link": null
+    },
+    {
+      "name": "commit_check_run",
+      "columns": [
+        {
+          "name": "id",
+          "type": "Long",
+          "primaryKey": true
+        },
+        {
+          "name": "commit_sha",
+          "type": "String",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "app_id",
+          "type": "Long"
+        },
+        {
+          "name": "app_name",
+          "type": "String"
+        },
+        {
+          "name": "check_suite_id",
+          "type": "Long"
+        },
+        {
+          "name": "completed_at",
+          "type": "Instant"
+        },
+        {
+          "name": "conclusion",
+          "type": "String"
+        },
+        {
+          "name": "external_id",
+          "type": "String"
+        },
+        {
+          "name": "name",
+          "type": "String"
+        },
+        {
+          "name": "started_at",
+          "type": "Instant"
+        },
+        {
+          "name": "status",
+          "type": "String"
+        }
+      ],
+      "tags": [],
+      "link": "https://docs.github.com/en/rest/checks/runs?apiVersion=2022-11-28#list-check-runs-for-a-git-reference"
+    },
+    {
+      "name": "stargazer",
+      "columns": [
+        {
+          "name": "login",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "repository_id",
+          "type": "Long",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "starred_at",
+          "type": "Instant"
+        }
+      ],
+      "tags": [],
+      "link": null
+    },
+    {
+      "name": "team_membership",
+      "columns": [
+        {
+          "name": "team_id",
+          "type": "Long",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "user_id",
+          "type": "Long",
+          "primaryKey": true,
+          "foreignKey": true
+        }
+      ],
+      "tags": [],
+      "link": "https://docs.github.com/en/rest/reference/teams#list-team-members"
+    },
+    {
+      "name": "issue_milestone_history",
+      "columns": [
+        {
+          "name": "updated_at",
+          "type": "Instant",
+          "primaryKey": true
+        },
+        {
+          "name": "issue_id",
+          "type": "Long",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "actor_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "milestone_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "milestoned",
+          "type": "Boolean"
+        }
+      ],
+      "tags": [],
+      "link": "https://docs.github.com/en/rest/reference/issues#list-issue-events"
+    },
+    {
+      "name": "ide_chat_editor",
+      "columns": [
+        {
+          "name": "name",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "organization",
+          "type": "String",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "report_date",
+          "type": "String",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "total_engaged_users",
+          "type": "Long"
+        }
+      ],
+      "tags": [],
+      "link": "https://docs.github.com/en/rest/copilot/copilot-metrics?apiVersion=2022-11-28"
+    },
+    {
+      "name": "commit_status",
+      "columns": [
+        {
+          "name": "id",
+          "type": "Long",
+          "primaryKey": true
+        },
+        {
+          "name": "commit_sha",
+          "type": "String",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "context",
+          "type": "String"
+        },
+        {
+          "name": "created_at",
+          "type": "Instant"
+        },
+        {
+          "name": "description",
+          "type": "String"
+        },
+        {
+          "name": "state",
+          "type": "String"
+        },
+        {
+          "name": "target_url",
+          "type": "String"
+        },
+        {
+          "name": "updated_at",
+          "type": "Instant"
+        }
+      ],
+      "tags": [],
+      "link": "https://docs.github.com/en/rest/commits/statuses?apiVersion=2022-11-28#list-commit-statuses-for-a-reference"
+    },
+    {
+      "name": "release",
+      "columns": [
+        {
+          "name": "id",
+          "type": "Long",
+          "primaryKey": true
+        },
+        {
+          "name": "author_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "repository_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "body",
+          "type": "String"
+        },
+        {
+          "name": "created_at",
+          "type": "Instant"
+        },
+        {
+          "name": "draft",
+          "type": "Boolean"
+        },
+        {
+          "name": "name",
+          "type": "String"
+        },
+        {
+          "name": "prerelease",
+          "type": "Boolean"
+        },
+        {
+          "name": "published_at",
+          "type": "Instant"
+        },
+        {
+          "name": "tag_name",
+          "type": "String"
+        },
+        {
+          "name": "target_commitish",
+          "type": "String"
+        },
+        {
+          "name": "updated_at",
+          "type": "Instant"
+        }
+      ],
+      "tags": [],
+      "link": "https://docs.github.com/en/rest/reference/repos#list-releases"
+    },
+    {
+      "name": "issue_assignee",
+      "columns": [
+        {
+          "name": "issue_id",
+          "type": "Long",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "user_id",
+          "type": "Long",
+          "primaryKey": true,
+          "foreignKey": true
+        }
+      ],
+      "tags": [],
+      "link": "https://docs.github.com/en/rest/reference/issues#assignees"
+    },
+    {
+      "name": "workflow_run_pull_request",
+      "columns": [
+        {
+          "name": "pull_request_id",
+          "type": "Long",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "workflow_run_id",
+          "type": "Long",
+          "primaryKey": true,
+          "foreignKey": true
+        }
+      ],
+      "tags": [],
+      "link": "https://docs.github.com/en/rest/actions/workflows?apiVersion=2022-11-28"
+    },
+    {
+      "name": "issue_merged",
+      "columns": [
+        {
+          "name": "merged_at",
+          "type": "Instant",
+          "primaryKey": true
+        },
+        {
+          "name": "commit_sha",
+          "type": "String",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "issue_id",
+          "type": "Long",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "actor_id",
+          "type": "Long",
+          "foreignKey": true
+        }
+      ],
+      "tags": [],
+      "link": "https://docs.github.com/en/rest/reference/issues#list-issue-events"
+    },
+    {
+      "name": "issue_locked_history",
+      "columns": [
+        {
+          "name": "updated_at",
+          "type": "Instant",
+          "primaryKey": true
+        },
+        {
+          "name": "issue_id",
+          "type": "Long",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "actor_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "locked",
+          "type": "Boolean"
+        }
+      ],
+      "tags": [],
+      "link": "https://docs.github.com/en/rest/reference/issues#list-issue-events"
+    },
+    {
+      "name": "project_v_2",
+      "columns": [
+        {
+          "name": "id",
+          "type": "Long",
+          "primaryKey": true
+        },
+        {
+          "name": "creator_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "deleted_by_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "latest_status_update_creator_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "owner_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "closed_at",
+          "type": "Instant"
+        },
+        {
+          "name": "created_at",
+          "type": "Instant"
+        },
+        {
+          "name": "deleted_at",
+          "type": "Instant"
+        },
+        {
+          "name": "description",
+          "type": "String"
+        },
+        {
+          "name": "is_public",
+          "type": "Boolean"
+        },
+        {
+          "name": "is_template",
+          "type": "Boolean"
+        },
+        {
+          "name": "latest_status_update_body",
+          "type": "String"
+        },
+        {
+          "name": "latest_status_update_created_at",
+          "type": "Instant"
+        },
+        {
+          "name": "latest_status_update_id",
+          "type": "Long"
+        },
+        {
+          "name": "latest_status_update_start_date",
+          "type": "LocalDate"
+        },
+        {
+          "name": "latest_status_update_status",
+          "type": "String"
+        },
+        {
+          "name": "latest_status_update_target_date",
+          "type": "LocalDate"
+        },
+        {
+          "name": "latest_status_update_updated_at",
+          "type": "Instant"
+        },
+        {
+          "name": "number",
+          "type": "Long"
+        },
+        {
+          "name": "short_description",
+          "type": "String"
+        },
+        {
+          "name": "state",
+          "type": "String"
+        },
+        {
+          "name": "title",
+          "type": "String"
+        },
+        {
+          "name": "updated_at",
+          "type": "Instant"
+        }
+      ],
+      "tags": [],
+      "link": "https://docs.github.com/en/rest/projects/projects?apiVersion=2022-11-28#list-projects-for-organization"
+    },
+    {
+      "name": "pull_request_ready_for_review_history",
+      "columns": [
+        {
+          "name": "created_at",
+          "type": "Instant",
+          "primaryKey": true
+        },
+        {
+          "name": "pull_request_id",
+          "type": "Long",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "actor_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "ready_for_review",
+          "type": "Boolean"
+        }
+      ],
+      "tags": [],
+      "link": "https://docs.github.com/en/developers/webhooks-and-events/events/issue-event-types#ready_for_review"
+    }
+  ],
+  "relations": [
+    {
+      "targetTable": "copilot_metric",
+      "sourceTable": "ide_code_completion_editor_model",
+      "targetColumns": [
+        "organization"
+      ],
+      "sourceColumns": [
+        "organization"
+      ]
+    },
+    {
+      "targetTable": "copilot_metric",
+      "sourceTable": "ide_code_completion_editor_model",
+      "targetColumns": [
+        "date"
+      ],
+      "sourceColumns": [
+        "report_date"
+      ]
+    },
+    {
+      "targetTable": "repository",
+      "sourceTable": "repository_clone",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "repository_id"
+      ]
+    },
+    {
+      "targetTable": "copilot_metric",
+      "sourceTable": "dotcom_pull_request_repository",
+      "targetColumns": [
+        "organization"
+      ],
+      "sourceColumns": [
+        "organization"
+      ]
+    },
+    {
+      "targetTable": "copilot_metric",
+      "sourceTable": "dotcom_pull_request_repository",
+      "targetColumns": [
+        "date"
+      ],
+      "sourceColumns": [
+        "report_date"
+      ]
+    },
+    {
+      "targetTable": "commit",
+      "sourceTable": "workflow_run",
+      "targetColumns": [
+        "sha"
+      ],
+      "sourceColumns": [
+        "head_sha"
+      ]
+    },
+    {
+      "targetTable": "repository",
+      "sourceTable": "workflow_run",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "repository_id"
+      ]
+    },
+    {
+      "targetTable": "workflow",
+      "sourceTable": "workflow_run",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "workflow_id"
+      ]
+    },
+    {
+      "targetTable": "user",
+      "sourceTable": "workflow_run",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "actor_id"
+      ]
+    },
+    {
+      "targetTable": "user",
+      "sourceTable": "workflow_run",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "triggering_actor_id"
+      ]
+    },
+    {
+      "targetTable": "repository",
+      "sourceTable": "issue",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "repository_id"
+      ]
+    },
+    {
+      "targetTable": "user",
+      "sourceTable": "issue",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "user_id"
+      ]
+    },
+    {
+      "targetTable": "milestone",
+      "sourceTable": "issue",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "milestone_id"
+      ]
+    },
+    {
+      "targetTable": "user",
+      "sourceTable": "user_email",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "user_id"
+      ]
+    },
+    {
+      "targetTable": "copilot_metric",
+      "sourceTable": "ide_code_completions_total_language",
+      "targetColumns": [
+        "organization"
+      ],
+      "sourceColumns": [
+        "organization"
+      ]
+    },
+    {
+      "targetTable": "copilot_metric",
+      "sourceTable": "ide_code_completions_total_language",
+      "targetColumns": [
+        "date"
+      ],
+      "sourceColumns": [
+        "report_date"
+      ]
+    },
+    {
+      "targetTable": "workflow_run",
+      "sourceTable": "workflow_run_job",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "run_id"
+      ]
+    },
+    {
+      "targetTable": "repository",
+      "sourceTable": "commit",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "repository_id"
+      ]
+    },
+    {
+      "targetTable": "user_email",
+      "sourceTable": "commit",
+      "targetColumns": [
+        "email"
+      ],
+      "sourceColumns": [
+        "author_email"
+      ]
+    },
+    {
+      "targetTable": "user_email",
+      "sourceTable": "commit",
+      "targetColumns": [
+        "email"
+      ],
+      "sourceColumns": [
+        "committer_email"
+      ]
+    },
+    {
+      "targetTable": "copilot_metric",
+      "sourceTable": "dotcom_chat_model",
+      "targetColumns": [
+        "organization"
+      ],
+      "sourceColumns": [
+        "organization"
+      ]
+    },
+    {
+      "targetTable": "copilot_metric",
+      "sourceTable": "dotcom_chat_model",
+      "targetColumns": [
+        "date"
+      ],
+      "sourceColumns": [
+        "report_date"
+      ]
+    },
+    {
+      "targetTable": "repository",
+      "sourceTable": "repo_team",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "repository_id"
+      ]
+    },
+    {
+      "targetTable": "team",
+      "sourceTable": "repo_team",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "team_id"
+      ]
+    },
+    {
+      "targetTable": "issue",
+      "sourceTable": "issue_closed_history",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "issue_id"
+      ]
+    },
+    {
+      "targetTable": "user",
+      "sourceTable": "issue_closed_history",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "actor_id"
+      ]
+    },
+    {
+      "targetTable": "commit",
+      "sourceTable": "issue_closed_history",
+      "targetColumns": [
+        "sha"
+      ],
+      "sourceColumns": [
+        "commit_sha"
+      ]
+    },
+    {
+      "targetTable": "pull_request",
+      "sourceTable": "requested_reviewer_history",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "pull_request_id"
+      ]
+    },
+    {
+      "targetTable": "user",
+      "sourceTable": "requested_reviewer_history",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "actor_id"
+      ]
+    },
+    {
+      "targetTable": "copilot_metric_team",
+      "sourceTable": "ide_code_completion_editor_model_team",
+      "targetColumns": [
+        "organization"
+      ],
+      "sourceColumns": [
+        "organization"
+      ]
+    },
+    {
+      "targetTable": "copilot_metric_team",
+      "sourceTable": "ide_code_completion_editor_model_team",
+      "targetColumns": [
+        "date"
+      ],
+      "sourceColumns": [
+        "report_date"
+      ]
+    },
+    {
+      "targetTable": "copilot_metric_team",
+      "sourceTable": "ide_code_completion_editor_model_team",
+      "targetColumns": [
+        "team_id"
+      ],
+      "sourceColumns": [
+        "team_id"
+      ]
+    },
+    {
+      "targetTable": "issue",
+      "sourceTable": "issue_assignee_history",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "issue_id"
+      ]
+    },
+    {
+      "targetTable": "user",
+      "sourceTable": "issue_assignee_history",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "user_id"
+      ]
+    },
+    {
+      "targetTable": "user",
+      "sourceTable": "issue_assignee_history",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "assigner_id"
+      ]
+    },
+    {
+      "targetTable": "pull_request",
+      "sourceTable": "pull_request_review",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "pull_request_id"
+      ]
+    },
+    {
+      "targetTable": "user",
+      "sourceTable": "pull_request_review",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "user_id"
+      ]
+    },
+    {
+      "targetTable": "commit",
+      "sourceTable": "pull_request_review",
+      "targetColumns": [
+        "sha"
+      ],
+      "sourceColumns": [
+        "commit_sha"
+      ]
+    },
+    {
+      "targetTable": "commit",
+      "sourceTable": "branch_commit_relation",
+      "targetColumns": [
+        "sha"
+      ],
+      "sourceColumns": [
+        "commit_sha"
+      ]
+    },
+    {
+      "targetTable": "copilot_metric",
+      "sourceTable": "dotcom_pull_request_repository_model",
+      "targetColumns": [
+        "organization"
+      ],
+      "sourceColumns": [
+        "organization"
+      ]
+    },
+    {
+      "targetTable": "copilot_metric",
+      "sourceTable": "dotcom_pull_request_repository_model",
+      "targetColumns": [
+        "date"
+      ],
+      "sourceColumns": [
+        "report_date"
+      ]
+    },
+    {
+      "targetTable": "team",
+      "sourceTable": "copilot_metric_team",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "team_id"
+      ]
+    },
+    {
+      "targetTable": "repository",
+      "sourceTable": "workflow",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "repository_id"
+      ]
+    },
+    {
+      "targetTable": "issue",
+      "sourceTable": "issue_comment",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "issue_id"
+      ]
+    },
+    {
+      "targetTable": "user",
+      "sourceTable": "issue_comment",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "user_id"
+      ]
+    },
+    {
+      "targetTable": "issue",
+      "sourceTable": "issue_label_history",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "issue_id"
+      ]
+    },
+    {
+      "targetTable": "label",
+      "sourceTable": "issue_label_history",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "label_id"
+      ]
+    },
+    {
+      "targetTable": "user",
+      "sourceTable": "issue_label_history",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "actor_id"
+      ]
+    },
+    {
+      "targetTable": "copilot_metric_team",
+      "sourceTable": "dotcom_chat_model_team",
+      "targetColumns": [
+        "organization"
+      ],
+      "sourceColumns": [
+        "organization"
+      ]
+    },
+    {
+      "targetTable": "copilot_metric_team",
+      "sourceTable": "dotcom_chat_model_team",
+      "targetColumns": [
+        "date"
+      ],
+      "sourceColumns": [
+        "report_date"
+      ]
+    },
+    {
+      "targetTable": "copilot_metric_team",
+      "sourceTable": "dotcom_chat_model_team",
+      "targetColumns": [
+        "team_id"
+      ],
+      "sourceColumns": [
+        "team_id"
+      ]
+    },
+    {
+      "targetTable": "repository",
+      "sourceTable": "security_alert",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "repository_id"
+      ]
+    },
+    {
+      "targetTable": "security_vulnerability",
+      "sourceTable": "security_alert",
+      "targetColumns": [
+        "_fivetran_id"
+      ],
+      "sourceColumns": [
+        "vulnerability_id"
+      ]
+    },
+    {
+      "targetTable": "security_advisory",
+      "sourceTable": "security_alert",
+      "targetColumns": [
+        "ghsa_id"
+      ],
+      "sourceColumns": [
+        "security_advisory_ghsa_id"
+      ]
+    },
+    {
+      "targetTable": "user",
+      "sourceTable": "security_alert",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "dismissed_by"
+      ]
+    },
+    {
+      "targetTable": "copilot_metric_team",
+      "sourceTable": "ide_code_completions_total_language_team",
+      "targetColumns": [
+        "organization"
+      ],
+      "sourceColumns": [
+        "organization"
+      ]
+    },
+    {
+      "targetTable": "copilot_metric_team",
+      "sourceTable": "ide_code_completions_total_language_team",
+      "targetColumns": [
+        "date"
+      ],
+      "sourceColumns": [
+        "report_date"
+      ]
+    },
+    {
+      "targetTable": "copilot_metric_team",
+      "sourceTable": "ide_code_completions_total_language_team",
+      "targetColumns": [
+        "team_id"
+      ],
+      "sourceColumns": [
+        "team_id"
+      ]
+    },
+    {
+      "targetTable": "workflow_run_job",
+      "sourceTable": "workflow_run_job_step",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "workflow_run_job_id"
+      ]
+    },
+    {
+      "targetTable": "issue",
+      "sourceTable": "pull_request",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "issue_id"
+      ]
+    },
+    {
+      "targetTable": "user",
+      "sourceTable": "pull_request",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "head_user_id"
+      ]
+    },
+    {
+      "targetTable": "repository",
+      "sourceTable": "pull_request",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "head_repo_id"
+      ]
+    },
+    {
+      "targetTable": "user",
+      "sourceTable": "pull_request",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "base_user_id"
+      ]
+    },
+    {
+      "targetTable": "repository",
+      "sourceTable": "pull_request",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "base_repo_id"
+      ]
+    },
+    {
+      "targetTable": "security_advisory",
+      "sourceTable": "security_reference",
+      "targetColumns": [
+        "ghsa_id"
+      ],
+      "sourceColumns": [
+        "security_advisory_ghsa_id"
+      ]
+    },
+    {
+      "targetTable": "project_v_2",
+      "sourceTable": "project_v_2_item",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "project_v_2_id"
+      ]
+    },
+    {
+      "targetTable": "milestone",
+      "sourceTable": "project_v_2_item",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "milestone_id"
+      ]
+    },
+    {
+      "targetTable": "repository",
+      "sourceTable": "project_v_2_item",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "repository_id"
+      ]
+    },
+    {
+      "targetTable": "issue",
+      "sourceTable": "project_v_2_item",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "parent_issue_id"
+      ]
+    },
+    {
+      "targetTable": "user",
+      "sourceTable": "project_v_2_item",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "creator_id"
+      ]
+    },
+    {
+      "targetTable": "copilot_metric_team",
+      "sourceTable": "dotcom_pull_request_repository_model_team",
+      "targetColumns": [
+        "organization"
+      ],
+      "sourceColumns": [
+        "organization"
+      ]
+    },
+    {
+      "targetTable": "copilot_metric_team",
+      "sourceTable": "dotcom_pull_request_repository_model_team",
+      "targetColumns": [
+        "date"
+      ],
+      "sourceColumns": [
+        "report_date"
+      ]
+    },
+    {
+      "targetTable": "copilot_metric_team",
+      "sourceTable": "dotcom_pull_request_repository_model_team",
+      "targetColumns": [
+        "team_id"
+      ],
+      "sourceColumns": [
+        "team_id"
+      ]
+    },
+    {
+      "targetTable": "repository",
+      "sourceTable": "page_view",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "repository_id"
+      ]
+    },
+    {
+      "targetTable": "issue",
+      "sourceTable": "issue_referenced",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "issue_id"
+      ]
+    },
+    {
+      "targetTable": "commit",
+      "sourceTable": "issue_referenced",
+      "targetColumns": [
+        "sha"
+      ],
+      "sourceColumns": [
+        "commit_sha"
+      ]
+    },
+    {
+      "targetTable": "user",
+      "sourceTable": "issue_referenced",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "actor_id"
+      ]
+    },
+    {
+      "targetTable": "copilot_metric_team",
+      "sourceTable": "ide_chat_editor_model_team",
+      "targetColumns": [
+        "organization"
+      ],
+      "sourceColumns": [
+        "organization"
+      ]
+    },
+    {
+      "targetTable": "copilot_metric_team",
+      "sourceTable": "ide_chat_editor_model_team",
+      "targetColumns": [
+        "date"
+      ],
+      "sourceColumns": [
+        "report_date"
+      ]
+    },
+    {
+      "targetTable": "copilot_metric_team",
+      "sourceTable": "ide_chat_editor_model_team",
+      "targetColumns": [
+        "team_id"
+      ],
+      "sourceColumns": [
+        "team_id"
+      ]
+    },
+    {
+      "targetTable": "security_cwe",
+      "sourceTable": "security_advisory_cwe",
+      "targetColumns": [
+        "cwe_id"
+      ],
+      "sourceColumns": [
+        "cwe_id"
+      ]
+    },
+    {
+      "targetTable": "security_advisory",
+      "sourceTable": "security_advisory_cwe",
+      "targetColumns": [
+        "ghsa_id"
+      ],
+      "sourceColumns": [
+        "security_advisory_id"
+      ]
+    },
+    {
+      "targetTable": "pull_request",
+      "sourceTable": "pull_request_review_comments",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "pull_request_id"
+      ]
+    },
+    {
+      "targetTable": "pull_request_review",
+      "sourceTable": "pull_request_review_comments",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "pull_request_review_id"
+      ]
+    },
+    {
+      "targetTable": "pull_request_review_comments",
+      "sourceTable": "pull_request_review_comments",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "parent_comment_id"
+      ]
+    },
+    {
+      "targetTable": "user",
+      "sourceTable": "pull_request_review_comments",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "user_id"
+      ]
+    },
+    {
+      "targetTable": "deployment",
+      "sourceTable": "deployment_status",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "deployment_id"
+      ]
+    },
+    {
+      "targetTable": "user",
+      "sourceTable": "deployment_status",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "creator_id"
+      ]
+    },
+    {
+      "targetTable": "project_v_2",
+      "sourceTable": "project_v_2_custom_field",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "project_v_2_item_id"
+      ]
+    },
+    {
+      "targetTable": "user",
+      "sourceTable": "pull_request_review_dismissed",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "actor_id"
+      ]
+    },
+    {
+      "targetTable": "pull_request_review",
+      "sourceTable": "pull_request_review_dismissed",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "pull_request_review_id"
+      ]
+    },
+    {
+      "targetTable": "commit",
+      "sourceTable": "pull_request_review_dismissed",
+      "targetColumns": [
+        "sha"
+      ],
+      "sourceColumns": [
+        "dismissal_commit_sha"
+      ]
+    },
+    {
+      "targetTable": "workflow_run",
+      "sourceTable": "workflow_run_attempt",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "id"
+      ]
+    },
+    {
+      "targetTable": "commit",
+      "sourceTable": "workflow_run_attempt",
+      "targetColumns": [
+        "sha"
+      ],
+      "sourceColumns": [
+        "head_sha"
+      ]
+    },
+    {
+      "targetTable": "repository",
+      "sourceTable": "workflow_run_attempt",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "repository_id"
+      ]
+    },
+    {
+      "targetTable": "workflow",
+      "sourceTable": "workflow_run_attempt",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "workflow_id"
+      ]
+    },
+    {
+      "targetTable": "user",
+      "sourceTable": "workflow_run_attempt",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "actor_id"
+      ]
+    },
+    {
+      "targetTable": "user",
+      "sourceTable": "workflow_run_attempt",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "triggering_actor_id"
+      ]
+    },
+    {
+      "targetTable": "issue",
+      "sourceTable": "issue_mention",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "issue_id"
+      ]
+    },
+    {
+      "targetTable": "user",
+      "sourceTable": "issue_mention",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "user_id"
+      ]
+    },
+    {
+      "targetTable": "copilot_metric_team",
+      "sourceTable": "ide_code_completion_editor_team",
+      "targetColumns": [
+        "organization"
+      ],
+      "sourceColumns": [
+        "organization"
+      ]
+    },
+    {
+      "targetTable": "copilot_metric_team",
+      "sourceTable": "ide_code_completion_editor_team",
+      "targetColumns": [
+        "date"
+      ],
+      "sourceColumns": [
+        "report_date"
+      ]
+    },
+    {
+      "targetTable": "copilot_metric_team",
+      "sourceTable": "ide_code_completion_editor_team",
+      "targetColumns": [
+        "team_id"
+      ],
+      "sourceColumns": [
+        "team_id"
+      ]
+    },
+    {
+      "targetTable": "copilot_metric_team",
+      "sourceTable": "ide_code_completion_editor_model_language_team",
+      "targetColumns": [
+        "organization"
+      ],
+      "sourceColumns": [
+        "organization"
+      ]
+    },
+    {
+      "targetTable": "copilot_metric_team",
+      "sourceTable": "ide_code_completion_editor_model_language_team",
+      "targetColumns": [
+        "date"
+      ],
+      "sourceColumns": [
+        "report_date"
+      ]
+    },
+    {
+      "targetTable": "copilot_metric_team",
+      "sourceTable": "ide_code_completion_editor_model_language_team",
+      "targetColumns": [
+        "team_id"
+      ],
+      "sourceColumns": [
+        "team_id"
+      ]
+    },
+    {
+      "targetTable": "user",
+      "sourceTable": "repository",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "owner_id"
+      ]
+    },
+    {
+      "targetTable": "copilot_metric",
+      "sourceTable": "ide_code_completion_editor_model_language",
+      "targetColumns": [
+        "organization"
+      ],
+      "sourceColumns": [
+        "organization"
+      ]
+    },
+    {
+      "targetTable": "copilot_metric",
+      "sourceTable": "ide_code_completion_editor_model_language",
+      "targetColumns": [
+        "date"
+      ],
+      "sourceColumns": [
+        "report_date"
+      ]
+    },
+    {
+      "targetTable": "repository",
+      "sourceTable": "repository_topic",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "repository_id"
+      ]
+    },
+    {
+      "targetTable": "copilot_metric_team",
+      "sourceTable": "ide_chat_editor_team",
+      "targetColumns": [
+        "organization"
+      ],
+      "sourceColumns": [
+        "organization"
+      ]
+    },
+    {
+      "targetTable": "copilot_metric_team",
+      "sourceTable": "ide_chat_editor_team",
+      "targetColumns": [
+        "date"
+      ],
+      "sourceColumns": [
+        "report_date"
+      ]
+    },
+    {
+      "targetTable": "copilot_metric_team",
+      "sourceTable": "ide_chat_editor_team",
+      "targetColumns": [
+        "team_id"
+      ],
+      "sourceColumns": [
+        "team_id"
+      ]
+    },
+    {
+      "targetTable": "issue",
+      "sourceTable": "issue_renamed",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "issue_id"
+      ]
+    },
+    {
+      "targetTable": "user",
+      "sourceTable": "issue_renamed",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "actor_id"
+      ]
+    },
+    {
+      "targetTable": "release",
+      "sourceTable": "asset",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "release_id"
+      ]
+    },
+    {
+      "targetTable": "user",
+      "sourceTable": "asset",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "uploader_id"
+      ]
+    },
+    {
+      "targetTable": "commit",
+      "sourceTable": "commit_pull_request",
+      "targetColumns": [
+        "sha"
+      ],
+      "sourceColumns": [
+        "commit_sha"
+      ]
+    },
+    {
+      "targetTable": "pull_request",
+      "sourceTable": "commit_pull_request",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "pull_request_id"
+      ]
+    },
+    {
+      "targetTable": "copilot_metric",
+      "sourceTable": "ide_chat_editor_model",
+      "targetColumns": [
+        "organization"
+      ],
+      "sourceColumns": [
+        "organization"
+      ]
+    },
+    {
+      "targetTable": "copilot_metric",
+      "sourceTable": "ide_chat_editor_model",
+      "targetColumns": [
+        "date"
+      ],
+      "sourceColumns": [
+        "report_date"
+      ]
+    },
+    {
+      "targetTable": "copilot_metric",
+      "sourceTable": "ide_code_completion_editor",
+      "targetColumns": [
+        "organization"
+      ],
+      "sourceColumns": [
+        "organization"
+      ]
+    },
+    {
+      "targetTable": "copilot_metric",
+      "sourceTable": "ide_code_completion_editor",
+      "targetColumns": [
+        "date"
+      ],
+      "sourceColumns": [
+        "report_date"
+      ]
+    },
+    {
+      "targetTable": "repository",
+      "sourceTable": "milestone",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "repository_id"
+      ]
+    },
+    {
+      "targetTable": "user",
+      "sourceTable": "milestone",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "creator_id"
+      ]
+    },
+    {
+      "targetTable": "user",
+      "sourceTable": "team",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "org_id"
+      ]
+    },
+    {
+      "targetTable": "team",
+      "sourceTable": "team",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "parent_id"
+      ]
+    },
+    {
+      "targetTable": "issue",
+      "sourceTable": "issue_label",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "issue_id"
+      ]
+    },
+    {
+      "targetTable": "label",
+      "sourceTable": "issue_label",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "label_id"
+      ]
+    },
+    {
+      "targetTable": "repository",
+      "sourceTable": "repository_property",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "repository_id"
+      ]
+    },
+    {
+      "targetTable": "commit",
+      "sourceTable": "commit_parent",
+      "targetColumns": [
+        "sha"
+      ],
+      "sourceColumns": [
+        "commit_sha"
+      ]
+    },
+    {
+      "targetTable": "commit",
+      "sourceTable": "commit_parent",
+      "targetColumns": [
+        "sha"
+      ],
+      "sourceColumns": [
+        "parent_sha"
+      ]
+    },
+    {
+      "targetTable": "commit",
+      "sourceTable": "deployment",
+      "targetColumns": [
+        "sha"
+      ],
+      "sourceColumns": [
+        "commit_sha"
+      ]
+    },
+    {
+      "targetTable": "user",
+      "sourceTable": "deployment",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "creator_id"
+      ]
+    },
+    {
+      "targetTable": "copilot_metric_team",
+      "sourceTable": "dotcom_pull_request_repository_team",
+      "targetColumns": [
+        "organization"
+      ],
+      "sourceColumns": [
+        "organization"
+      ]
+    },
+    {
+      "targetTable": "copilot_metric_team",
+      "sourceTable": "dotcom_pull_request_repository_team",
+      "targetColumns": [
+        "date"
+      ],
+      "sourceColumns": [
+        "report_date"
+      ]
+    },
+    {
+      "targetTable": "copilot_metric_team",
+      "sourceTable": "dotcom_pull_request_repository_team",
+      "targetColumns": [
+        "team_id"
+      ],
+      "sourceColumns": [
+        "team_id"
+      ]
+    },
+    {
+      "targetTable": "repository",
+      "sourceTable": "repo_collaborator",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "repository_id"
+      ]
+    },
+    {
+      "targetTable": "user",
+      "sourceTable": "repo_collaborator",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "user_id"
+      ]
+    },
+    {
+      "targetTable": "security_vulnerability",
+      "sourceTable": "security_advisory_vulnerability",
+      "targetColumns": [
+        "_fivetran_id"
+      ],
+      "sourceColumns": [
+        "vulnerability_id"
+      ]
+    },
+    {
+      "targetTable": "security_advisory",
+      "sourceTable": "security_advisory_vulnerability",
+      "targetColumns": [
+        "ghsa_id"
+      ],
+      "sourceColumns": [
+        "security_advisory_id"
+      ]
+    },
+    {
+      "targetTable": "commit",
+      "sourceTable": "commit_check_run",
+      "targetColumns": [
+        "sha"
+      ],
+      "sourceColumns": [
+        "commit_sha"
+      ]
+    },
+    {
+      "targetTable": "repository",
+      "sourceTable": "stargazer",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "repository_id"
+      ]
+    },
+    {
+      "targetTable": "team",
+      "sourceTable": "team_membership",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "team_id"
+      ]
+    },
+    {
+      "targetTable": "user",
+      "sourceTable": "team_membership",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "user_id"
+      ]
+    },
+    {
+      "targetTable": "issue",
+      "sourceTable": "issue_milestone_history",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "issue_id"
+      ]
+    },
+    {
+      "targetTable": "milestone",
+      "sourceTable": "issue_milestone_history",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "milestone_id"
+      ]
+    },
+    {
+      "targetTable": "user",
+      "sourceTable": "issue_milestone_history",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "actor_id"
+      ]
+    },
+    {
+      "targetTable": "copilot_metric",
+      "sourceTable": "ide_chat_editor",
+      "targetColumns": [
+        "organization"
+      ],
+      "sourceColumns": [
+        "organization"
+      ]
+    },
+    {
+      "targetTable": "copilot_metric",
+      "sourceTable": "ide_chat_editor",
+      "targetColumns": [
+        "date"
+      ],
+      "sourceColumns": [
+        "report_date"
+      ]
+    },
+    {
+      "targetTable": "commit",
+      "sourceTable": "commit_status",
+      "targetColumns": [
+        "sha"
+      ],
+      "sourceColumns": [
+        "commit_sha"
+      ]
+    },
+    {
+      "targetTable": "repository",
+      "sourceTable": "release",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "repository_id"
+      ]
+    },
+    {
+      "targetTable": "user",
+      "sourceTable": "release",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "author_id"
+      ]
+    },
+    {
+      "targetTable": "issue",
+      "sourceTable": "issue_assignee",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "issue_id"
+      ]
+    },
+    {
+      "targetTable": "user",
+      "sourceTable": "issue_assignee",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "user_id"
+      ]
+    },
+    {
+      "targetTable": "workflow_run",
+      "sourceTable": "workflow_run_pull_request",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "workflow_run_id"
+      ]
+    },
+    {
+      "targetTable": "pull_request",
+      "sourceTable": "workflow_run_pull_request",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "pull_request_id"
+      ]
+    },
+    {
+      "targetTable": "issue",
+      "sourceTable": "issue_merged",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "issue_id"
+      ]
+    },
+    {
+      "targetTable": "commit",
+      "sourceTable": "issue_merged",
+      "targetColumns": [
+        "sha"
+      ],
+      "sourceColumns": [
+        "commit_sha"
+      ]
+    },
+    {
+      "targetTable": "user",
+      "sourceTable": "issue_merged",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "actor_id"
+      ]
+    },
+    {
+      "targetTable": "issue",
+      "sourceTable": "issue_locked_history",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "issue_id"
+      ]
+    },
+    {
+      "targetTable": "user",
+      "sourceTable": "issue_locked_history",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "actor_id"
+      ]
+    },
+    {
+      "targetTable": "user",
+      "sourceTable": "project_v_2",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "latest_status_update_creator_id"
+      ]
+    },
+    {
+      "targetTable": "user",
+      "sourceTable": "project_v_2",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "creator_id"
+      ]
+    },
+    {
+      "targetTable": "user",
+      "sourceTable": "project_v_2",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "owner_id"
+      ]
+    },
+    {
+      "targetTable": "user",
+      "sourceTable": "project_v_2",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "deleted_by_id"
+      ]
+    },
+    {
+      "targetTable": "pull_request",
+      "sourceTable": "pull_request_ready_for_review_history",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "pull_request_id"
+      ]
+    },
+    {
+      "targetTable": "user",
+      "sourceTable": "pull_request_ready_for_review_history",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "actor_id"
+      ]
+    }
+  ],
+  "positions": {
+    "dotcom_pull_request_repository_model": {
+      "x": 3748.0001619501218,
+      "y": 2859.078039927405
+    },
+    "ide_chat_editor_model": {
+      "x": 3748.0001619501218,
+      "y": 4579.078039927405
+    },
+    "workflow_run": {
+      "x": 2740.0001619501218,
+      "y": 2307.078039927405
+    },
+    "copilot_metric": {
+      "x": 3748.0001619501218,
+      "y": 583.078039927405
+    },
+    "issue_renamed": {
+      "x": 8.000161950121765,
+      "y": 4156.07803992742
+    },
+    "project_v_2": {
+      "x": 5312.1972518972125,
+      "y": 8.0
+    },
+    "ide_code_completion_editor_model_team": {
+      "x": 4252.000161950122,
+      "y": 2179.078039927405
+    },
+    "issue_closed_history": {
+      "x": 647.0001619501218,
+      "y": 3407.0780399274195
+    },
+    "release": {
+      "x": 2052.0001619501218,
+      "y": 591.078039927405
+    },
+    "commit_check_run": {
+      "x": 64.0,
+      "y": 308.0
+    },
+    "76eac19a3b": {
+      "x": 5816.1972518972125,
+      "y": 8.0
+    },
+    "dotcom_pull_request_repository_team": {
+      "x": 3748.0001619501218,
+      "y": 3863.078039927405
+    },
+    "repository_property": {
+      "x": 64.0,
+      "y": 64.0
+    },
+    "commit": {
+      "x": 1352.0001619501218,
+      "y": 3924.078039927405
+    },
+    "issue_mention": {
+      "x": 8.000161950121765,
+      "y": 3831.0780399274195
+    },
+    "project": {
+      "x": 1352.0001619501218,
+      "y": 961.078039927405
+    },
+    "dotcom_pull_request_repository": {
+      "x": 3748.0001619501218,
+      "y": 2519.078039927405
+    },
+    "repository": {
+      "x": 2052.0001619501218,
+      "y": 1292.078039927405
+    },
+    "issue_assignee": {
+      "x": 8.000161950121765,
+      "y": 3038.0780399274195
+    },
+    "issue_label": {
+      "x": 647.0001619501218,
+      "y": 2333.0780399273904
+    },
+    "ide_code_completion_editor_model_language": {
+      "x": 4252.000161950122,
+      "y": 1031.078039927405
+    },
+    "commit_file": {
+      "x": 647.0001619501218,
+      "y": 4556.078039928351
+    },
+    "ide_code_completion_editor_model": {
+      "x": 4252.000161950122,
+      "y": 583.078039927405
+    },
+    "ide_chat_editor_model_team": {
+      "x": 3748.0001619501218,
+      "y": 5135.078039927405
+    },
+    "ide_code_completion_editor": {
+      "x": 3748.0001619501218,
+      "y": 6103.078039927405
+    },
+    "security_advisory_vulnerability": {
+      "x": 8.000161950121765,
+      "y": 6037.078039927405
+    },
+    "stargazer": {
+      "x": 544.0,
+      "y": 64.0
+    },
+    "user_email": {
+      "x": 1352.0001619501218,
+      "y": 4510.078039927405
+    },
+    "branch_commit_relation": {
+      "x": 64.0,
+      "y": 64.0
+    },
+    "issue": {
+      "x": 1352.0001619501218,
+      "y": 2333.078039927405
+    },
+    "workflow": {
+      "x": 2740.0001619501218,
+      "y": 1805.078039927405
+    },
+    "repo_collaborator": {
+      "x": 3244.0001619501218,
+      "y": 583.078039927405
+    },
+    "ide_code_completions_total_language": {
+      "x": 4252.000161950122,
+      "y": 3039.078039927405
+    },
+    "commit_pull_request": {
+      "x": 2052.0001619501218,
+      "y": 3489.078039927405
+    },
+    "pull_request_ready_for_review_history": {
+      "x": 2052.0001619501218,
+      "y": 5507.078039927405
+    },
+    "project_v_2_custom_field": {
+      "x": 5260.000161950122,
+      "y": 1305.5268495783068
+    },
+    "issue_locked_history": {
+      "x": 647.0001619501218,
+      "y": 4176.07803992742
+    },
+    "issue_merged": {
+      "x": 647.0001619501218,
+      "y": 3831.0780399274195
+    },
+    "card": {
+      "x": 647.0001619501218,
+      "y": 1390.0780399273904
+    },
+    "dotcom_chat_model_team": {
+      "x": 3748.0001619501218,
+      "y": 2035.078039927405
+    },
+    "commit_parent": {
+      "x": 647.0001619501218,
+      "y": 4968.078039928351
+    },
+    "issue_assignee_history": {
+      "x": 8.000161950121765,
+      "y": 3407.0780399274195
+    },
+    "workflow_run_job_step": {
+      "x": 4756.000161950122,
+      "y": 2307.078039927405
+    },
+    "security_cwe": {
+      "x": 2052.0001619501218,
+      "y": 6539.078039927405
+    },
+    "ide_chat_editor_team": {
+      "x": 3748.0001619501218,
+      "y": 5727.078039927405
+    },
+    "pull_request_review_dismissed": {
+      "x": 2740.0001619501218,
+      "y": 3639.078039927405
+    },
+    "security_advisory": {
+      "x": 647.0001619501218,
+      "y": 6294.078039927405
+    },
+    "security_vulnerability": {
+      "x": 8.000161950121765,
+      "y": 5594.078039927405
+    },
+    "team_membership": {
+      "x": 8.0,
+      "y": 589.6252025476002
+    },
+    "dotcom_chat_model": {
+      "x": 3748.0001619501218,
+      "y": 1587.078039927405
+    },
+    "security_alert": {
+      "x": 647.0001619501218,
+      "y": 5522.078039927405
+    },
+    "repository_topic": {
+      "x": 64.0,
+      "y": 344.0
+    },
+    "project_v_2_item": {
+      "x": 5260.000161950122,
+      "y": 1939.078039927405
+    },
+    "issue_milestone_history": {
+      "x": 647.0001619501218,
+      "y": 1920.0780399273904
+    },
+    "workflow_run_job": {
+      "x": 4756.000161950122,
+      "y": 1355.078039927405
+    },
+    "ide_code_completions_total_language_team": {
+      "x": 4252.000161950122,
+      "y": 3379.078039927405
+    },
+    "commit_status": {
+      "x": 544.0,
+      "y": 64.0
+    },
+    "issue_project_history": {
+      "x": 8.000161950121765,
+      "y": 1390.0780399273904
+    },
+    "copilot_metric_team": {
+      "x": 3748.0001619501218,
+      "y": 1067.078039927405
+    },
+    "ide_code_completion_editor_model_language_team": {
+      "x": 4252.000161950122,
+      "y": 1587.078039927405
+    },
+    "ide_code_completion_editor_team": {
+      "x": 4252.000161950122,
+      "y": 2663.078039927405
+    },
+    "deployment": {
+      "x": 2052.0001619501218,
+      "y": 4829.078039927405
+    },
+    "pull_request": {
+      "x": 1352.0001619501218,
+      "y": 3038.078039927405
+    },
+    "workflow_run_pull_request": {
+      "x": 2052.0001619501218,
+      "y": 2762.078039927405
+    },
+    "ide_chat_editor": {
+      "x": 3748.0001619501218,
+      "y": 4239.078039927405
+    },
+    "requested_reviewer_history": {
+      "x": 2052.0001619501218,
+      "y": 3059.078039927405
+    },
+    "column": {
+      "x": 647.0001619501218,
+      "y": 1002.0780399273903
+    },
+    "security_advisory_cwe": {
+      "x": 1352.0001619501218,
+      "y": 6503.078039927405
+    },
+    "deployment_status": {
+      "x": 2740.0001619501218,
+      "y": 4944.078039927405
+    },
+    "team": {
+      "x": 646.8592540860002,
+      "y": 590.0780399273903
+    },
+    "label": {
+      "x": 8.000161950121765,
+      "y": 2458.0780399273904
+    },
+    "2c20f11768": {
+      "x": 5764.000161950122,
+      "y": 996.0
+    },
+    "repo_team": {
+      "x": 1352.0001619501218,
+      "y": 626.078039927405
+    },
+    "issue_label_history": {
+      "x": 647.0001619501218,
+      "y": 2601.0780399273904
+    },
+    "dotcom_pull_request_repository_model_team": {
+      "x": 3748.0001619501218,
+      "y": 3343.078039927405
+    },
+    "issue_comment": {
+      "x": 8.000161950121765,
+      "y": 1920.0780399273904
+    },
+    "pull_request_review_comments": {
+      "x": 2052.0001619501218,
+      "y": 4258.078039927405
+    },
+    "milestone": {
+      "x": 1352.0001619501218,
+      "y": 1663.078039927405
+    },
+    "issue_referenced": {
+      "x": 647.0001619501218,
+      "y": 3024.0780399274195
+    },
+    "pull_request_review": {
+      "x": 2052.0001619501218,
+      "y": 3789.078039927405
+    },
+    "workflow_run_attempt": {
+      "x": 4756.000161950122,
+      "y": 583.078039927405
+    },
+    "asset": {
+      "x": 2740.0001619501218,
+      "y": 591.078039927405
+    },
+    "user": {
+      "x": 1352.0001619501218,
+      "y": 4829.078039927405
+    },
+    "security_reference": {
+      "x": 1352.0001619501218,
+      "y": 6233.078039927405
+    }
+  },
+  "notes": {
+    "byTable": {},
+    "generalNotes": []
+  },
+  "tableGroups": [
+    {
+      "id": "2c20f11768",
+      "parentTable": "commit",
+      "tables": [
+        "branch_commit_relation",
+        "commit_status",
+        "commit_check_run"
+      ],
+      "excludedTables": [],
+      "width": 992.0,
+      "height": 844.0
+    },
+    {
+      "id": "76eac19a3b",
+      "parentTable": "repository",
+      "tables": [
+        "repository_property",
+        "page_view",
+        "repository_topic",
+        "repository_clone",
+        "stargazer"
+      ],
+      "excludedTables": [],
+      "width": null,
+      "height": null
+    }
+  ]
+}

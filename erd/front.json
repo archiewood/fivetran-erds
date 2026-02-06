@@ -1,0 +1,1559 @@
+{
+  "tables": [
+    {
+      "name": "tag",
+      "columns": [
+        {
+          "name": "id",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "created_at",
+          "type": "Instant"
+        },
+        {
+          "name": "description",
+          "type": "String"
+        },
+        {
+          "name": "highlight",
+          "type": "String"
+        },
+        {
+          "name": "is_private",
+          "type": "Boolean"
+        },
+        {
+          "name": "is_visible_in_conversation_lists",
+          "type": "Boolean"
+        },
+        {
+          "name": "name",
+          "type": "String"
+        },
+        {
+          "name": "parent_tag_id",
+          "type": "String"
+        },
+        {
+          "name": "updated_at",
+          "type": "Instant"
+        }
+      ],
+      "tags": [],
+      "link": "https://dev.frontapp.com/#tags"
+    },
+    {
+      "name": "contact_link",
+      "columns": [
+        {
+          "name": "index",
+          "type": "Int",
+          "primaryKey": true
+        },
+        {
+          "name": "contact_id",
+          "type": "String",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "link",
+          "type": "String"
+        }
+      ],
+      "tags": [],
+      "link": "https://dev.frontapp.com/#contacts"
+    },
+    {
+      "name": "conversation",
+      "columns": [
+        {
+          "name": "id",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "last_message_id",
+          "type": "String",
+          "foreignKey": true
+        },
+        {
+          "name": "teammate_id",
+          "type": "String",
+          "foreignKey": true
+        },
+        {
+          "name": "created_at",
+          "type": "Instant"
+        },
+        {
+          "name": "recipient_handle",
+          "type": "String"
+        },
+        {
+          "name": "recipient_role",
+          "type": "String"
+        },
+        {
+          "name": "status",
+          "type": "String"
+        },
+        {
+          "name": "status_category",
+          "type": "String"
+        },
+        {
+          "name": "subject",
+          "type": "String"
+        }
+      ],
+      "tags": [],
+      "link": "https://dev.frontapp.com/#conversations"
+    },
+    {
+      "name": "inbox",
+      "columns": [
+        {
+          "name": "id",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "address",
+          "type": "String"
+        },
+        {
+          "name": "name",
+          "type": "String"
+        },
+        {
+          "name": "send_as",
+          "type": "String"
+        },
+        {
+          "name": "type",
+          "type": "String"
+        }
+      ],
+      "tags": [],
+      "link": "https://dev.frontapp.com/#inboxes"
+    },
+    {
+      "name": "follower",
+      "columns": [
+        {
+          "name": "conversation_id",
+          "type": "String",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "teammate_id",
+          "type": "String",
+          "primaryKey": true,
+          "foreignKey": true
+        }
+      ],
+      "tags": [],
+      "link": "https://dev.frontapp.com/#list-conversation-followers"
+    },
+    {
+      "name": "inbox_channel",
+      "columns": [
+        {
+          "name": "channel_id",
+          "type": "String",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "inbox_id",
+          "type": "String",
+          "primaryKey": true,
+          "foreignKey": true
+        }
+      ],
+      "tags": [],
+      "link": "https://dev.frontapp.com/#teammates"
+    },
+    {
+      "name": "conversation_tag",
+      "columns": [
+        {
+          "name": "conversation_id",
+          "type": "String",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "tag_id",
+          "type": "String",
+          "primaryKey": true,
+          "foreignKey": true
+        }
+      ],
+      "tags": [],
+      "link": "https://dev.frontapp.com/#conversations"
+    },
+    {
+      "name": "account",
+      "columns": [
+        {
+          "name": "id",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "created_at",
+          "type": "Instant"
+        },
+        {
+          "name": "description",
+          "type": "String"
+        },
+        {
+          "name": "domains",
+          "type": "Json"
+        },
+        {
+          "name": "external_id",
+          "type": "String"
+        },
+        {
+          "name": "logo_url",
+          "type": "String"
+        },
+        {
+          "name": "name",
+          "type": "String"
+        },
+        {
+          "name": "updated_at",
+          "type": "Instant"
+        }
+      ],
+      "tags": [],
+      "link": "https://dev.frontapp.com/#contacts"
+    },
+    {
+      "name": "rule_action",
+      "columns": [
+        {
+          "name": "index",
+          "type": "Int",
+          "primaryKey": true
+        },
+        {
+          "name": "rule_id",
+          "type": "String",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "action",
+          "type": "String"
+        }
+      ],
+      "tags": [],
+      "link": "https://dev.frontapp.com/#rules"
+    },
+    {
+      "name": "shift",
+      "columns": [
+        {
+          "name": "id",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "created_at",
+          "type": "Instant"
+        },
+        {
+          "name": "name",
+          "type": "String"
+        },
+        {
+          "name": "times",
+          "type": "Json"
+        },
+        {
+          "name": "timezone",
+          "type": "String"
+        },
+        {
+          "name": "updated_at",
+          "type": "Instant"
+        }
+      ],
+      "tags": [],
+      "link": "https://dev.frontapp.com/reference/shifts-1"
+    },
+    {
+      "name": "conversation_inbox",
+      "columns": [
+        {
+          "name": "conversation_id",
+          "type": "String",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "inbox_id",
+          "type": "String",
+          "primaryKey": true,
+          "foreignKey": true
+        }
+      ],
+      "tags": [],
+      "link": "https://dev.frontapp.com/#list-conversation-inboxes"
+    },
+    {
+      "name": "conversation_link",
+      "columns": [
+        {
+          "name": "conversation_id",
+          "type": "String",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "link_id",
+          "type": "String",
+          "primaryKey": true,
+          "foreignKey": true
+        }
+      ],
+      "tags": [],
+      "link": null
+    },
+    {
+      "name": "contact_handle",
+      "columns": [
+        {
+          "name": "index",
+          "type": "Int",
+          "primaryKey": true
+        },
+        {
+          "name": "contact_id",
+          "type": "String",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "handle",
+          "type": "String"
+        },
+        {
+          "name": "source",
+          "type": "String"
+        }
+      ],
+      "tags": [],
+      "link": "https://dev.frontapp.com/#contact-handles"
+    },
+    {
+      "name": "list",
+      "columns": [
+        {
+          "name": "id",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "name",
+          "type": "String"
+        }
+      ],
+      "tags": [],
+      "link": null
+    },
+    {
+      "name": "conversation_tag_history",
+      "columns": [
+        {
+          "name": "tag_id",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "updated_at",
+          "type": "Instant",
+          "primaryKey": true
+        },
+        {
+          "name": "conversation_id",
+          "type": "String",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "source_rule_id",
+          "type": "String",
+          "foreignKey": true
+        },
+        {
+          "name": "source_teammate_id",
+          "type": "String",
+          "foreignKey": true
+        },
+        {
+          "name": "event_type",
+          "type": "String"
+        },
+        {
+          "name": "source_type",
+          "type": "String"
+        }
+      ],
+      "tags": [],
+      "link": "https://dev.frontapp.com/#conversations"
+    },
+    {
+      "name": "rule",
+      "columns": [
+        {
+          "name": "id",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "name",
+          "type": "String"
+        }
+      ],
+      "tags": [],
+      "link": "https://dev.frontapp.com/#rules"
+    },
+    {
+      "name": "message",
+      "columns": [
+        {
+          "name": "id",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "author_id",
+          "type": "String",
+          "foreignKey": true
+        },
+        {
+          "name": "conversation_id",
+          "type": "String",
+          "foreignKey": true
+        },
+        {
+          "name": "blurb",
+          "type": "String"
+        },
+        {
+          "name": "body",
+          "type": "String"
+        },
+        {
+          "name": "created_at",
+          "type": "Instant"
+        },
+        {
+          "name": "duration",
+          "type": "Int"
+        },
+        {
+          "name": "have_been_answered",
+          "type": "Boolean"
+        },
+        {
+          "name": "have_been_favorited",
+          "type": "Boolean"
+        },
+        {
+          "name": "have_been_retweeted",
+          "type": "Boolean"
+        },
+        {
+          "name": "headers",
+          "type": "Json"
+        },
+        {
+          "name": "intercom_url",
+          "type": "String"
+        },
+        {
+          "name": "is_inbound",
+          "type": "Boolean"
+        },
+        {
+          "name": "is_retweet",
+          "type": "Boolean"
+        },
+        {
+          "name": "text",
+          "type": "String"
+        },
+        {
+          "name": "thread_ref",
+          "type": "String"
+        },
+        {
+          "name": "twitter_url",
+          "type": "String"
+        },
+        {
+          "name": "type",
+          "type": "String"
+        }
+      ],
+      "tags": [],
+      "link": "https://dev.frontapp.com/#messages"
+    },
+    {
+      "name": "team_inbox",
+      "columns": [
+        {
+          "name": "inbox_id",
+          "type": "String",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "team_id",
+          "type": "String",
+          "primaryKey": true,
+          "foreignKey": true
+        }
+      ],
+      "tags": [],
+      "link": "https://dev.frontapp.com/reference/teams"
+    },
+    {
+      "name": "channel",
+      "columns": [
+        {
+          "name": "id",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "address",
+          "type": "String"
+        },
+        {
+          "name": "send_as",
+          "type": "String"
+        },
+        {
+          "name": "settings",
+          "type": "Json"
+        },
+        {
+          "name": "type",
+          "type": "String"
+        }
+      ],
+      "tags": [],
+      "link": "https://dev.frontapp.com/#channels"
+    },
+    {
+      "name": "comment",
+      "columns": [
+        {
+          "name": "id",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "conversation_id",
+          "type": "String",
+          "foreignKey": true
+        },
+        {
+          "name": "author_id",
+          "type": "String"
+        },
+        {
+          "name": "body",
+          "type": "String"
+        },
+        {
+          "name": "posted_at",
+          "type": "Instant"
+        }
+      ],
+      "tags": [],
+      "link": "https://dev.frontapp.com/#list-conversation-comments"
+    },
+    {
+      "name": "message_recipient",
+      "columns": [
+        {
+          "name": "index",
+          "type": "Int",
+          "primaryKey": true
+        },
+        {
+          "name": "message_id",
+          "type": "String",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "contact_id",
+          "type": "String",
+          "foreignKey": true
+        },
+        {
+          "name": "handle",
+          "type": "String"
+        },
+        {
+          "name": "role",
+          "type": "String"
+        }
+      ],
+      "tags": [],
+      "link": "https://dev.frontapp.com/#messages"
+    },
+    {
+      "name": "teammate",
+      "columns": [
+        {
+          "name": "id",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "email",
+          "type": "String"
+        },
+        {
+          "name": "first_name",
+          "type": "String"
+        },
+        {
+          "name": "is_admin",
+          "type": "Boolean"
+        },
+        {
+          "name": "is_available",
+          "type": "Boolean"
+        },
+        {
+          "name": "last_name",
+          "type": "String"
+        },
+        {
+          "name": "username",
+          "type": "String"
+        }
+      ],
+      "tags": [],
+      "link": "https://dev.frontapp.com/#teammates"
+    },
+    {
+      "name": "comment_mention",
+      "columns": [
+        {
+          "name": "teammate_id",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "comment_id",
+          "type": "String",
+          "primaryKey": true,
+          "foreignKey": true
+        }
+      ],
+      "tags": [],
+      "link": "https://dev.frontapp.com/#list-comment-mentions"
+    },
+    {
+      "name": "team_teammate",
+      "columns": [
+        {
+          "name": "team_id",
+          "type": "String",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "teammate_id",
+          "type": "String",
+          "primaryKey": true,
+          "foreignKey": true
+        }
+      ],
+      "tags": [],
+      "link": "https://dev.frontapp.com/reference/teams"
+    },
+    {
+      "name": "contact_list",
+      "columns": [
+        {
+          "name": "contact_id",
+          "type": "String",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "list_id",
+          "type": "String",
+          "primaryKey": true,
+          "foreignKey": true
+        }
+      ],
+      "tags": [],
+      "link": null
+    },
+    {
+      "name": "conversation_link_history",
+      "columns": [
+        {
+          "name": "link_id",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "updated_at",
+          "type": "Instant",
+          "primaryKey": true
+        },
+        {
+          "name": "conversation_id",
+          "type": "String",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "source_rule_id",
+          "type": "String",
+          "foreignKey": true
+        },
+        {
+          "name": "source_teammate_id",
+          "type": "String",
+          "foreignKey": true
+        },
+        {
+          "name": "event_type",
+          "type": "String"
+        },
+        {
+          "name": "source_type",
+          "type": "String"
+        }
+      ],
+      "tags": [],
+      "link": null
+    },
+    {
+      "name": "contact",
+      "columns": [
+        {
+          "name": "id",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "account_id",
+          "type": "String",
+          "foreignKey": true
+        },
+        {
+          "name": "avatar_url",
+          "type": "String"
+        },
+        {
+          "name": "description",
+          "type": "String"
+        },
+        {
+          "name": "name",
+          "type": "String"
+        }
+      ],
+      "tags": [],
+      "link": "https://dev.frontapp.com/#contacts"
+    },
+    {
+      "name": "attachment",
+      "columns": [
+        {
+          "name": "index",
+          "type": "Int",
+          "primaryKey": true
+        },
+        {
+          "name": "message_id",
+          "type": "String",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "cid",
+          "type": "String"
+        },
+        {
+          "name": "content_type",
+          "type": "String"
+        },
+        {
+          "name": "filename",
+          "type": "String"
+        },
+        {
+          "name": "is_inline",
+          "type": "Boolean"
+        },
+        {
+          "name": "size",
+          "type": "Int"
+        },
+        {
+          "name": "url",
+          "type": "String"
+        }
+      ],
+      "tags": [],
+      "link": "https://dev.frontapp.com/#messages"
+    },
+    {
+      "name": "shift_teammate",
+      "columns": [
+        {
+          "name": "shift_id",
+          "type": "String",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "teammate_id",
+          "type": "String",
+          "primaryKey": true,
+          "foreignKey": true
+        }
+      ],
+      "tags": [],
+      "link": "https://dev.frontapp.com/reference/shifts-1#get_shift-shift-id-teammates-1"
+    },
+    {
+      "name": "inbox_teammate",
+      "columns": [
+        {
+          "name": "inbox_id",
+          "type": "String",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "teammate_id",
+          "type": "String",
+          "primaryKey": true,
+          "foreignKey": true
+        }
+      ],
+      "tags": [],
+      "link": null
+    },
+    {
+      "name": "link",
+      "columns": [
+        {
+          "name": "id",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "external_url",
+          "type": "String"
+        },
+        {
+          "name": "name",
+          "type": "String"
+        },
+        {
+          "name": "type",
+          "type": "String"
+        }
+      ],
+      "tags": [],
+      "link": null
+    },
+    {
+      "name": "contact_note",
+      "columns": [
+        {
+          "name": "index",
+          "type": "Int",
+          "primaryKey": true
+        },
+        {
+          "name": "contact_id",
+          "type": "String",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "author_id",
+          "type": "String",
+          "foreignKey": true
+        },
+        {
+          "name": "body",
+          "type": "String"
+        },
+        {
+          "name": "created_at",
+          "type": "Instant"
+        }
+      ],
+      "tags": [],
+      "link": "https://dev.frontapp.com/#contact-notes"
+    },
+    {
+      "name": "conversation_status_history",
+      "columns": [
+        {
+          "name": "status",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "updated_at",
+          "type": "Instant",
+          "primaryKey": true
+        },
+        {
+          "name": "conversation_id",
+          "type": "String",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "source_rule_id",
+          "type": "String",
+          "foreignKey": true
+        },
+        {
+          "name": "source_teammate_id",
+          "type": "String",
+          "foreignKey": true
+        },
+        {
+          "name": "target_teammate_id",
+          "type": "String",
+          "foreignKey": true
+        },
+        {
+          "name": "source_type",
+          "type": "String"
+        }
+      ],
+      "tags": [],
+      "link": "https://dev.frontapp.com/#conversations"
+    },
+    {
+      "name": "team",
+      "columns": [
+        {
+          "name": "id",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "name",
+          "type": "String"
+        }
+      ],
+      "tags": [],
+      "link": "https://dev.frontapp.com/reference/teams"
+    }
+  ],
+  "relations": [
+    {
+      "targetTable": "contact",
+      "sourceTable": "contact_link",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "contact_id"
+      ]
+    },
+    {
+      "targetTable": "teammate",
+      "sourceTable": "conversation",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "teammate_id"
+      ]
+    },
+    {
+      "targetTable": "message",
+      "sourceTable": "conversation",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "last_message_id"
+      ]
+    },
+    {
+      "targetTable": "conversation",
+      "sourceTable": "follower",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "conversation_id"
+      ]
+    },
+    {
+      "targetTable": "teammate",
+      "sourceTable": "follower",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "teammate_id"
+      ]
+    },
+    {
+      "targetTable": "inbox",
+      "sourceTable": "inbox_channel",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "inbox_id"
+      ]
+    },
+    {
+      "targetTable": "channel",
+      "sourceTable": "inbox_channel",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "channel_id"
+      ]
+    },
+    {
+      "targetTable": "conversation",
+      "sourceTable": "conversation_tag",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "conversation_id"
+      ]
+    },
+    {
+      "targetTable": "tag",
+      "sourceTable": "conversation_tag",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "tag_id"
+      ]
+    },
+    {
+      "targetTable": "rule",
+      "sourceTable": "rule_action",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "rule_id"
+      ]
+    },
+    {
+      "targetTable": "conversation",
+      "sourceTable": "conversation_inbox",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "conversation_id"
+      ]
+    },
+    {
+      "targetTable": "inbox",
+      "sourceTable": "conversation_inbox",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "inbox_id"
+      ]
+    },
+    {
+      "targetTable": "conversation",
+      "sourceTable": "conversation_link",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "conversation_id"
+      ]
+    },
+    {
+      "targetTable": "link",
+      "sourceTable": "conversation_link",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "link_id"
+      ]
+    },
+    {
+      "targetTable": "contact",
+      "sourceTable": "contact_handle",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "contact_id"
+      ]
+    },
+    {
+      "targetTable": "conversation",
+      "sourceTable": "conversation_tag_history",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "conversation_id"
+      ]
+    },
+    {
+      "targetTable": "teammate",
+      "sourceTable": "conversation_tag_history",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "source_teammate_id"
+      ]
+    },
+    {
+      "targetTable": "rule",
+      "sourceTable": "conversation_tag_history",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "source_rule_id"
+      ]
+    },
+    {
+      "targetTable": "conversation",
+      "sourceTable": "message",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "conversation_id"
+      ]
+    },
+    {
+      "targetTable": "teammate",
+      "sourceTable": "message",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "author_id"
+      ]
+    },
+    {
+      "targetTable": "team",
+      "sourceTable": "team_inbox",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "team_id"
+      ]
+    },
+    {
+      "targetTable": "inbox",
+      "sourceTable": "team_inbox",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "inbox_id"
+      ]
+    },
+    {
+      "targetTable": "conversation",
+      "sourceTable": "comment",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "conversation_id"
+      ]
+    },
+    {
+      "targetTable": "message",
+      "sourceTable": "message_recipient",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "message_id"
+      ]
+    },
+    {
+      "targetTable": "contact",
+      "sourceTable": "message_recipient",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "contact_id"
+      ]
+    },
+    {
+      "targetTable": "comment",
+      "sourceTable": "comment_mention",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "comment_id"
+      ]
+    },
+    {
+      "targetTable": "team",
+      "sourceTable": "team_teammate",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "team_id"
+      ]
+    },
+    {
+      "targetTable": "teammate",
+      "sourceTable": "team_teammate",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "teammate_id"
+      ]
+    },
+    {
+      "targetTable": "contact",
+      "sourceTable": "contact_list",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "contact_id"
+      ]
+    },
+    {
+      "targetTable": "list",
+      "sourceTable": "contact_list",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "list_id"
+      ]
+    },
+    {
+      "targetTable": "conversation",
+      "sourceTable": "conversation_link_history",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "conversation_id"
+      ]
+    },
+    {
+      "targetTable": "teammate",
+      "sourceTable": "conversation_link_history",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "source_teammate_id"
+      ]
+    },
+    {
+      "targetTable": "rule",
+      "sourceTable": "conversation_link_history",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "source_rule_id"
+      ]
+    },
+    {
+      "targetTable": "account",
+      "sourceTable": "contact",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "account_id"
+      ]
+    },
+    {
+      "targetTable": "attachment",
+      "sourceTable": "attachment",
+      "targetColumns": [
+        "message_id"
+      ],
+      "sourceColumns": [
+        "message_id"
+      ]
+    },
+    {
+      "targetTable": "shift",
+      "sourceTable": "shift_teammate",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "shift_id"
+      ]
+    },
+    {
+      "targetTable": "teammate",
+      "sourceTable": "shift_teammate",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "teammate_id"
+      ]
+    },
+    {
+      "targetTable": "inbox",
+      "sourceTable": "inbox_teammate",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "inbox_id"
+      ]
+    },
+    {
+      "targetTable": "teammate",
+      "sourceTable": "inbox_teammate",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "teammate_id"
+      ]
+    },
+    {
+      "targetTable": "contact",
+      "sourceTable": "contact_note",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "contact_id"
+      ]
+    },
+    {
+      "targetTable": "teammate",
+      "sourceTable": "contact_note",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "author_id"
+      ]
+    },
+    {
+      "targetTable": "conversation",
+      "sourceTable": "conversation_status_history",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "conversation_id"
+      ]
+    },
+    {
+      "targetTable": "teammate",
+      "sourceTable": "conversation_status_history",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "target_teammate_id"
+      ]
+    },
+    {
+      "targetTable": "teammate",
+      "sourceTable": "conversation_status_history",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "source_teammate_id"
+      ]
+    },
+    {
+      "targetTable": "rule",
+      "sourceTable": "conversation_status_history",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "source_rule_id"
+      ]
+    }
+  ],
+  "positions": {
+    "shift": {
+      "x": 1115.2974979301387,
+      "y": 173.5937007874016
+    },
+    "channel": {
+      "x": 8.0,
+      "y": 1606.6412598425195
+    },
+    "rule": {
+      "x": 1016.4965320918536,
+      "y": 2185.0658813641667
+    },
+    "conversation_tag_history": {
+      "x": 1243.4132441571658,
+      "y": 1737.0658813641664
+    },
+    "conversation_status_history": {
+      "x": 1736.950111758132,
+      "y": 2185.065881364166
+    },
+    "team_inbox": {
+      "x": 107.29749793013872,
+      "y": 298.0799999999999
+    },
+    "attachment": {
+      "x": 2240.950111758132,
+      "y": 2007.4949606299208
+    },
+    "contact": {
+      "x": 3131.297497930139,
+      "y": 1228.037273631347
+    },
+    "contact_note": {
+      "x": 3635.297497930139,
+      "y": 919.9374660646781
+    },
+    "team_teammate": {
+      "x": 611.2974979301387,
+      "y": 466.45307086614156
+    },
+    "tag": {
+      "x": 512.0,
+      "y": 1706.3628415328926
+    },
+    "contact_link": {
+      "x": 3635.297497930139,
+      "y": 1653.5043982564068
+    },
+    "conversation": {
+      "x": 1619.2974979301387,
+      "y": 1267.4949606299213
+    },
+    "follower": {
+      "x": 1115.2974979301387,
+      "y": 817.5937007874015
+    },
+    "inbox_teammate": {
+      "x": 107.29749793013872,
+      "y": 8.0
+    },
+    "rule_action": {
+      "x": 1191.9297323641722,
+      "y": 2417.0658813641667
+    },
+    "shift_teammate": {
+      "x": 1115.2974979301387,
+      "y": 549.5937007874015
+    },
+    "team": {
+      "x": 611.2974979301387,
+      "y": 195.22881889763786
+    },
+    "inbox_channel": {
+      "x": 107.29749793013872,
+      "y": 1338.6412598425195
+    },
+    "conversation_tag": {
+      "x": 1115.2974979301387,
+      "y": 1450.6341732283465
+    },
+    "list": {
+      "x": 3840.3866050502975,
+      "y": 687.9374660646781
+    },
+    "message": {
+      "x": 2123.297497930139,
+      "y": 1199.4949606299065
+    },
+    "message_recipient": {
+      "x": 2627.297497930139,
+      "y": 1249.4949606299213
+    },
+    "teammate": {
+      "x": 611.2974979301387,
+      "y": 770.4533858267716
+    },
+    "contact_handle": {
+      "x": 3635.297497930139,
+      "y": 1313.5043982564068
+    },
+    "conversation_inbox": {
+      "x": 1115.2974979301387,
+      "y": 1094.0469291338584
+    },
+    "comment": {
+      "x": 1619.2974979301387,
+      "y": 890.494960629914
+    },
+    "contact_list": {
+      "x": 3840.3866050502975,
+      "y": 419.93746606467823
+    },
+    "comment_mention": {
+      "x": 1619.2974979301387,
+      "y": 577.0412598425198
+    },
+    "inbox": {
+      "x": 611.2974979301387,
+      "y": 1182.4533858267716
+    },
+    "account": {
+      "x": 3131.297497930139,
+      "y": 1628.6506974690055
+    }
+  },
+  "notes": {
+    "byTable": {},
+    "generalNotes": []
+  },
+  "tableGroups": []
+}

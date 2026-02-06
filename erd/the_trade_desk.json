@@ -1,0 +1,1070 @@
+{
+  "tables": [
+    {
+      "name": "bid_list_dimension",
+      "columns": [
+        {
+          "name": "index",
+          "type": "Int",
+          "primaryKey": true
+        },
+        {
+          "name": "bid_list_id",
+          "type": "String",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "dimension",
+          "type": "String"
+        }
+      ],
+      "tags": [],
+      "link": null
+    },
+    {
+      "name": "campaign_conversion_reporting_column",
+      "columns": [
+        {
+          "name": "reporting_column_id",
+          "type": "Long",
+          "primaryKey": true
+        },
+        {
+          "name": "tracking_tag_id",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "campaign_id",
+          "type": "String",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "cross_device_attribution_model_id",
+          "type": "String"
+        },
+        {
+          "name": "include_in_custom_cpa",
+          "type": "Boolean"
+        },
+        {
+          "name": "tracking_tag_name",
+          "type": "String"
+        },
+        {
+          "name": "weight",
+          "type": "Double"
+        }
+      ],
+      "tags": [],
+      "link": null
+    },
+    {
+      "name": "campaign_associated_bid_list",
+      "columns": [
+        {
+          "name": "bid_list_id",
+          "type": "String",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "campaign_id",
+          "type": "String",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "is_default_for_dimension",
+          "type": "Boolean"
+        },
+        {
+          "name": "is_enabled",
+          "type": "Boolean"
+        }
+      ],
+      "tags": [],
+      "link": null
+    },
+    {
+      "name": "campaign_default_bid_list",
+      "columns": [
+        {
+          "name": "bid_list_id",
+          "type": "String",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "campaign_id",
+          "type": "String",
+          "primaryKey": true,
+          "foreignKey": true
+        }
+      ],
+      "tags": [],
+      "link": null
+    },
+    {
+      "name": "campaign_flight",
+      "columns": [
+        {
+          "name": "id",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "campaign_id",
+          "type": "String",
+          "foreignKey": true
+        },
+        {
+          "name": "budget_in_advertiser_currency",
+          "type": "Double"
+        },
+        {
+          "name": "budget_in_impressions",
+          "type": "Long"
+        },
+        {
+          "name": "daily_target_in_advertiser_currency",
+          "type": "Double"
+        },
+        {
+          "name": "daily_target_in_impressions",
+          "type": "Long"
+        },
+        {
+          "name": "end_date_exclusive_utc",
+          "type": "LocalDate"
+        },
+        {
+          "name": "start_date_inclusive_utc",
+          "type": "LocalDate"
+        }
+      ],
+      "tags": [],
+      "link": null
+    },
+    {
+      "name": "advertiser",
+      "columns": [
+        {
+          "name": "id",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "category_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "partner_id",
+          "type": "String",
+          "foreignKey": true
+        },
+        {
+          "name": "advertiser_name",
+          "type": "String"
+        },
+        {
+          "name": "attribution_click_lookback_window_in_seconds",
+          "type": "Long"
+        },
+        {
+          "name": "attribution_impression_lookback_window_in_seconds",
+          "type": "Long"
+        },
+        {
+          "name": "availability",
+          "type": "String"
+        },
+        {
+          "name": "click_dedup_window_in_seconds",
+          "type": "Long"
+        },
+        {
+          "name": "conversion_dedup_window_in_seconds",
+          "type": "Long"
+        },
+        {
+          "name": "currency_code",
+          "type": "String"
+        },
+        {
+          "name": "default_right_media_offer_type_id",
+          "type": "Long"
+        },
+        {
+          "name": "description",
+          "type": "String"
+        },
+        {
+          "name": "domain_address",
+          "type": "String"
+        },
+        {
+          "name": "ignore_referral_url_in_conversion",
+          "type": "Boolean"
+        },
+        {
+          "name": "industry_category_id",
+          "type": "Long"
+        },
+        {
+          "name": "is_ballot_measure",
+          "type": "Boolean"
+        },
+        {
+          "name": "is_candidate_election",
+          "type": "Boolean"
+        },
+        {
+          "name": "logo_url",
+          "type": "String"
+        },
+        {
+          "name": "vetting_status",
+          "type": "String"
+        }
+      ],
+      "tags": [],
+      "link": "https://api.thetradedesk.com/v3/portal/api/ref/post-advertiser-query-partner"
+    },
+    {
+      "name": "report_execution",
+      "columns": [
+        {
+          "name": "report_execution_id",
+          "type": "Long",
+          "primaryKey": true
+        },
+        {
+          "name": "report_schedule_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "disabled_reason",
+          "type": "String"
+        },
+        {
+          "name": "last_state_change_utc",
+          "type": "LocalDate"
+        },
+        {
+          "name": "report_end_date_exclusive",
+          "type": "LocalDate"
+        },
+        {
+          "name": "report_execution_state",
+          "type": "String"
+        },
+        {
+          "name": "report_schedule_name",
+          "type": "String"
+        },
+        {
+          "name": "report_start_date_inclusive",
+          "type": "LocalDate"
+        },
+        {
+          "name": "timezone",
+          "type": "String"
+        }
+      ],
+      "tags": [],
+      "link": "https://api.thetradedesk.com/v3/portal/api/ref/post-myreports-reportexecution-query-advertisers"
+    },
+    {
+      "name": "campaign",
+      "columns": [
+        {
+          "name": "id",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "advertiser_id",
+          "type": "String",
+          "foreignKey": true
+        },
+        {
+          "name": "auto_allocator_enabled",
+          "type": "Boolean"
+        },
+        {
+          "name": "auto_prioritization_enabled",
+          "type": "Boolean"
+        },
+        {
+          "name": "availability",
+          "type": "String"
+        },
+        {
+          "name": "budget_in_impressions",
+          "type": "Long"
+        },
+        {
+          "name": "campaign_name",
+          "type": "String"
+        },
+        {
+          "name": "campaign_type",
+          "type": "String"
+        },
+        {
+          "name": "created_at_utc",
+          "type": "LocalDate"
+        },
+        {
+          "name": "custom_cpaclick_weight",
+          "type": "Double"
+        },
+        {
+          "name": "custom_cpatype",
+          "type": "String"
+        },
+        {
+          "name": "custom_cpaviewthrough_weight",
+          "type": "Double"
+        },
+        {
+          "name": "daily_budget_in_impressions",
+          "type": "Long"
+        },
+        {
+          "name": "deprecate_household_targeting_and_attribution",
+          "type": "Boolean"
+        },
+        {
+          "name": "description",
+          "type": "String"
+        },
+        {
+          "name": "end_date",
+          "type": "LocalDate"
+        },
+        {
+          "name": "include_defaults_from_advertiser",
+          "type": "Boolean"
+        },
+        {
+          "name": "is_ballot_measure",
+          "type": "Boolean"
+        },
+        {
+          "name": "minimum_ad_group_spend_in_advertiser_currency",
+          "type": "Double"
+        },
+        {
+          "name": "objective",
+          "type": "String"
+        },
+        {
+          "name": "pacing_mode",
+          "type": "String"
+        },
+        {
+          "name": "primary_channel",
+          "type": "String"
+        },
+        {
+          "name": "start_date",
+          "type": "LocalDate"
+        },
+        {
+          "name": "timezone",
+          "type": "String"
+        }
+      ],
+      "tags": [],
+      "link": "https://api.thetradedesk.com/v3/portal/api/ref/post-advertiser-query-partner"
+    },
+    {
+      "name": "advertiser_associated_bid_list",
+      "columns": [
+        {
+          "name": "advertiser_id",
+          "type": "String",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "bid_list_id",
+          "type": "String",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "is_default_for_dimension",
+          "type": "Boolean"
+        },
+        {
+          "name": "is_enabled",
+          "type": "Boolean"
+        }
+      ],
+      "tags": [],
+      "link": null
+    },
+    {
+      "name": "partner",
+      "columns": [
+        {
+          "name": "id",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "partner_name",
+          "type": "String"
+        }
+      ],
+      "tags": [],
+      "link": "https://api.thetradedesk.com/v3/portal/api/ref/post-partner-query"
+    },
+    {
+      "name": "report_schedule",
+      "columns": [
+        {
+          "name": "report_schedule_id",
+          "type": "Long",
+          "primaryKey": true
+        },
+        {
+          "name": "ad_group_filters",
+          "type": "Json"
+        },
+        {
+          "name": "advertiser_filters",
+          "type": "Json"
+        },
+        {
+          "name": "campaign_filters",
+          "type": "Json"
+        },
+        {
+          "name": "creation_date_utc",
+          "type": "LocalDate"
+        },
+        {
+          "name": "include_headers",
+          "type": "Boolean"
+        },
+        {
+          "name": "is_completed",
+          "type": "Boolean"
+        },
+        {
+          "name": "lookback_days",
+          "type": "Long"
+        },
+        {
+          "name": "partner_filters",
+          "type": "Json"
+        },
+        {
+          "name": "report_date_format",
+          "type": "String"
+        },
+        {
+          "name": "report_date_range",
+          "type": "String"
+        },
+        {
+          "name": "report_end_date_exclusive",
+          "type": "LocalDate"
+        },
+        {
+          "name": "report_file_format",
+          "type": "String"
+        },
+        {
+          "name": "report_frequency",
+          "type": "String"
+        },
+        {
+          "name": "report_numeric_format",
+          "type": "String"
+        },
+        {
+          "name": "report_schedule_name",
+          "type": "String"
+        },
+        {
+          "name": "report_schedule_status",
+          "type": "String"
+        },
+        {
+          "name": "report_start_date_inclusive",
+          "type": "LocalDate"
+        },
+        {
+          "name": "report_template_id",
+          "type": "Long"
+        },
+        {
+          "name": "requested_by_user_name",
+          "type": "String"
+        },
+        {
+          "name": "schedule_start_date",
+          "type": "LocalDate"
+        },
+        {
+          "name": "timezone",
+          "type": "String"
+        }
+      ],
+      "tags": [],
+      "link": "https://api.thetradedesk.com/v3/portal/api/ref/post-myreports-reportschedule-query"
+    },
+    {
+      "name": "report_template_header",
+      "columns": [
+        {
+          "name": "report_template_id",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "created_by_user_name",
+          "type": "String"
+        },
+        {
+          "name": "format",
+          "type": "String"
+        },
+        {
+          "name": "name",
+          "type": "String"
+        },
+        {
+          "name": "type",
+          "type": "String"
+        }
+      ],
+      "tags": [],
+      "link": "https://api.thetradedesk.com/v3/portal/api/ref/post-myreports-reporttemplateheader-query"
+    },
+    {
+      "name": "category_mapping",
+      "columns": [
+        {
+          "name": "index",
+          "type": "Int",
+          "primaryKey": true
+        },
+        {
+          "name": "category_id",
+          "type": "Long",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "external_id",
+          "type": "String"
+        },
+        {
+          "name": "taxonomy_id",
+          "type": "String"
+        }
+      ],
+      "tags": [],
+      "link": "https://partner.thetradedesk.com/v3/portal/api/doc/Advertiser"
+    },
+    {
+      "name": "advertiser_candidate_profile",
+      "columns": [
+        {
+          "name": "political_data_id",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "advertiser_id",
+          "type": "String",
+          "foreignKey": true
+        },
+        {
+          "name": "audience_description",
+          "type": "String"
+        },
+        {
+          "name": "candidate_name",
+          "type": "String"
+        },
+        {
+          "name": "disclaimer_notice",
+          "type": "String"
+        },
+        {
+          "name": "election_state",
+          "type": "String"
+        },
+        {
+          "name": "federal_verification_id",
+          "type": "String"
+        },
+        {
+          "name": "file_location_in_s_3",
+          "type": "String"
+        },
+        {
+          "name": "geo_description",
+          "type": "String"
+        },
+        {
+          "name": "paying_entity_address",
+          "type": "String"
+        },
+        {
+          "name": "paying_entity_email_address",
+          "type": "String"
+        },
+        {
+          "name": "paying_entity_executive_name",
+          "type": "String"
+        },
+        {
+          "name": "paying_entity_executive_title",
+          "type": "String"
+        },
+        {
+          "name": "paying_entity_name",
+          "type": "String"
+        },
+        {
+          "name": "state_verification_id",
+          "type": "String"
+        }
+      ],
+      "tags": [],
+      "link": null
+    },
+    {
+      "name": "advertiser_default_bid_list",
+      "columns": [
+        {
+          "name": "advertiser_id",
+          "type": "String",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "bid_list_id",
+          "type": "String",
+          "primaryKey": true,
+          "foreignKey": true
+        }
+      ],
+      "tags": [],
+      "link": null
+    },
+    {
+      "name": "partner_associated_bid_list",
+      "columns": [
+        {
+          "name": "bid_list_id",
+          "type": "String",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "partner_id",
+          "type": "String",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "is_default_for_dimension",
+          "type": "Boolean"
+        },
+        {
+          "name": "is_enabled",
+          "type": "Boolean"
+        }
+      ],
+      "tags": [],
+      "link": null
+    },
+    {
+      "name": "advertiser_category",
+      "columns": [
+        {
+          "name": "id",
+          "type": "Long",
+          "primaryKey": true
+        },
+        {
+          "name": "name",
+          "type": "String"
+        },
+        {
+          "name": "taxonomy_id",
+          "type": "String"
+        },
+        {
+          "name": "taxonomy_name",
+          "type": "String"
+        },
+        {
+          "name": "taxonomy_version",
+          "type": "String"
+        }
+      ],
+      "tags": [],
+      "link": "https://partner.thetradedesk.com/v3/portal/api/doc/Advertiser"
+    },
+    {
+      "name": "bid_list",
+      "columns": [
+        {
+          "name": "id",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "adjustment_type",
+          "type": "String"
+        },
+        {
+          "name": "bid_list_type",
+          "type": "String"
+        },
+        {
+          "name": "is_available_for_library_use",
+          "type": "Boolean"
+        },
+        {
+          "name": "is_global",
+          "type": "Boolean"
+        },
+        {
+          "name": "name",
+          "type": "String"
+        },
+        {
+          "name": "owner",
+          "type": "String"
+        },
+        {
+          "name": "owner_id",
+          "type": "String"
+        },
+        {
+          "name": "resolution_type",
+          "type": "String"
+        },
+        {
+          "name": "source",
+          "type": "String"
+        }
+      ],
+      "tags": [],
+      "link": "https://api.thetradedesk.com/v3/portal/api/ref/get-bidlist-bidlistid"
+    }
+  ],
+  "relations": [
+    {
+      "targetTable": "bid_list",
+      "sourceTable": "bid_list_dimension",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "bid_list_id"
+      ]
+    },
+    {
+      "targetTable": "campaign",
+      "sourceTable": "campaign_conversion_reporting_column",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "campaign_id"
+      ]
+    },
+    {
+      "targetTable": "bid_list",
+      "sourceTable": "campaign_associated_bid_list",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "bid_list_id"
+      ]
+    },
+    {
+      "targetTable": "campaign",
+      "sourceTable": "campaign_associated_bid_list",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "campaign_id"
+      ]
+    },
+    {
+      "targetTable": "bid_list",
+      "sourceTable": "campaign_default_bid_list",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "bid_list_id"
+      ]
+    },
+    {
+      "targetTable": "campaign",
+      "sourceTable": "campaign_default_bid_list",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "campaign_id"
+      ]
+    },
+    {
+      "targetTable": "campaign",
+      "sourceTable": "campaign_flight",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "campaign_id"
+      ]
+    },
+    {
+      "targetTable": "partner",
+      "sourceTable": "advertiser",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "partner_id"
+      ]
+    },
+    {
+      "targetTable": "advertiser_category",
+      "sourceTable": "advertiser",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "category_id"
+      ]
+    },
+    {
+      "targetTable": "report_schedule",
+      "sourceTable": "report_execution",
+      "targetColumns": [
+        "report_schedule_id"
+      ],
+      "sourceColumns": [
+        "report_schedule_id"
+      ]
+    },
+    {
+      "targetTable": "advertiser",
+      "sourceTable": "campaign",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "advertiser_id"
+      ]
+    },
+    {
+      "targetTable": "bid_list",
+      "sourceTable": "advertiser_associated_bid_list",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "bid_list_id"
+      ]
+    },
+    {
+      "targetTable": "advertiser",
+      "sourceTable": "advertiser_associated_bid_list",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "advertiser_id"
+      ]
+    },
+    {
+      "targetTable": "advertiser_category",
+      "sourceTable": "category_mapping",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "category_id"
+      ]
+    },
+    {
+      "targetTable": "advertiser",
+      "sourceTable": "advertiser_candidate_profile",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "advertiser_id"
+      ]
+    },
+    {
+      "targetTable": "bid_list",
+      "sourceTable": "advertiser_default_bid_list",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "bid_list_id"
+      ]
+    },
+    {
+      "targetTable": "advertiser",
+      "sourceTable": "advertiser_default_bid_list",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "advertiser_id"
+      ]
+    },
+    {
+      "targetTable": "bid_list",
+      "sourceTable": "partner_associated_bid_list",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "bid_list_id"
+      ]
+    },
+    {
+      "targetTable": "partner",
+      "sourceTable": "partner_associated_bid_list",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "partner_id"
+      ]
+    }
+  ],
+  "positions": {
+    "bid_list_dimension": {
+      "x": 530.0032425536205,
+      "y": 1271.5046942794133
+    },
+    "campaign_conversion_reporting_column": {
+      "x": 2530.7776753134376,
+      "y": 8
+    },
+    "campaign_associated_bid_list": {
+      "x": 8,
+      "y": 591.5046942794133
+    },
+    "campaign_default_bid_list": {
+      "x": 8,
+      "y": 323.50469427941334
+    },
+    "campaign_flight": {
+      "x": 2530.7776753134376,
+      "y": 811.4829559440018
+    },
+    "advertiser": {
+      "x": 2028.362900572055,
+      "y": 1288.8978502194072
+    },
+    "report_execution": {
+      "x": 1418,
+      "y": 2610
+    },
+    "campaign": {
+      "x": 2026.7776753134376,
+      "y": 264.89785021940725
+    },
+    "advertiser_associated_bid_list": {
+      "x": 225.54035114361784,
+      "y": 931.5046942794133
+    },
+    "partner": {
+      "x": 2022.1164384551967,
+      "y": 2172.103536075483
+    },
+    "report_schedule": {
+      "x": 897,
+      "y": 2142
+    },
+    "report_template_header": {
+      "x": 424,
+      "y": 2754
+    },
+    "category_mapping": {
+      "x": 3030.1164384551967,
+      "y": 2142.33373029951
+    },
+    "advertiser_candidate_profile": {
+      "x": 26.003242553620453,
+      "y": 1455.3670039909193
+    },
+    "advertiser_default_bid_list": {
+      "x": 366.1703386266727,
+      "y": 55.50469427941334
+    },
+    "partner_associated_bid_list": {
+      "x": 1524.362900572055,
+      "y": 1744.4143724588894
+    },
+    "advertiser_category": {
+      "x": 2526.1164384551967,
+      "y": 2132.8978502194072
+    },
+    "bid_list": {
+      "x": 1034.0032425536206,
+      "y": 1180.8426826328637
+    },
+    "note-nkfyc1l3r0o": {
+      "x": 1931,
+      "y": 2610
+    }
+  },
+  "notes": {
+    "byTable": {
+      "report_template_header": {
+        "content": "Report Metadata\n",
+        "width": 384,
+        "height": 56
+      },
+      "report_schedule": {
+        "content": "Report Metadata",
+        "width": 384,
+        "height": 56
+      },
+      "report_execution": {
+        "content": "Report Metadata",
+        "width": 384,
+        "height": 56
+      }
+    },
+    "generalNotes": [
+      {
+        "content": "## CUSTOM REPORTING TABLES\n\nReporting tables list available in [The Trade Desk UI](https://auth.thetradedesk.com/Account/Login?ReturnUrl=%2Fconnect%2Fauthorize%2Fcallback%3Fnonce%3Ddd640e4845a7df03f4fcad4cea19c640%26client_id%3Ddesk.refresh%26state%3Ddabf2cb032996ac142d21384bcf297bf%26redirect_uri%3Dhttps%253A%252F%252Fdesk.thetradedesk.com%252Fsignin-gw%26response_type%3Dcode%26scope%3Dopenid%2520ttdui_refresh%2520profile%2520email%2520offline_access%2520ttdapi_elevated).\n",
+        "width": 384,
+        "height": 96,
+        "id": "note-nkfyc1l3r0o"
+      }
+    ]
+  },
+  "tableGroups": []
+}

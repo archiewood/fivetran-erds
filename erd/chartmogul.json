@@ -1,0 +1,1368 @@
+{
+  "tables": [
+    {
+      "name": "data_source",
+      "columns": [
+        {
+          "name": "uuid",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "created_at",
+          "type": "Unknown"
+        },
+        {
+          "name": "name",
+          "type": "String"
+        },
+        {
+          "name": "status",
+          "type": "String"
+        },
+        {
+          "name": "systems",
+          "type": "String"
+        }
+      ],
+      "tags": [],
+      "link": null
+    },
+    {
+      "name": "plan_group",
+      "columns": [
+        {
+          "name": "uuid",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "name",
+          "type": "String"
+        },
+        {
+          "name": "plans_count",
+          "type": "Long"
+        }
+      ],
+      "tags": [],
+      "link": null
+    },
+    {
+      "name": "plan",
+      "columns": [
+        {
+          "name": "uuid",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "data_source_uuid",
+          "type": "String",
+          "foreignKey": true
+        },
+        {
+          "name": "external_id",
+          "type": "String"
+        },
+        {
+          "name": "interval_count",
+          "type": "Long"
+        },
+        {
+          "name": "interval_unit",
+          "type": "String"
+        },
+        {
+          "name": "name",
+          "type": "String"
+        }
+      ],
+      "tags": [],
+      "link": null
+    },
+    {
+      "name": "mrr_churn_rate",
+      "columns": [
+        {
+          "name": "date",
+          "type": "Unknown",
+          "primaryKey": true
+        },
+        {
+          "name": "mrr_churn_rate",
+          "type": "Double"
+        },
+        {
+          "name": "percentage_change",
+          "type": "Double"
+        }
+      ],
+      "tags": [],
+      "link": null
+    },
+    {
+      "name": "account",
+      "columns": [
+        {
+          "name": "_fivetran_id",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "currency",
+          "type": "String"
+        },
+        {
+          "name": "name",
+          "type": "String"
+        },
+        {
+          "name": "time_zone",
+          "type": "String"
+        },
+        {
+          "name": "week_start_on",
+          "type": "String"
+        }
+      ],
+      "tags": [],
+      "link": null
+    },
+    {
+      "name": "annualized_run_rate",
+      "columns": [
+        {
+          "name": "date",
+          "type": "Unknown",
+          "primaryKey": true
+        },
+        {
+          "name": "arr",
+          "type": "Long"
+        },
+        {
+          "name": "percentage_change",
+          "type": "Double"
+        }
+      ],
+      "tags": [],
+      "link": null
+    },
+    {
+      "name": "customer_data_source_uuids",
+      "columns": [
+        {
+          "name": "customer_uuid",
+          "type": "String",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "data_source_uuid",
+          "type": "String",
+          "primaryKey": true,
+          "foreignKey": true
+        }
+      ],
+      "tags": [],
+      "link": null
+    },
+    {
+      "name": "customer_attribute_tag",
+      "columns": [
+        {
+          "name": "tags",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "customer_uuid",
+          "type": "String",
+          "primaryKey": true,
+          "foreignKey": true
+        }
+      ],
+      "tags": [],
+      "link": null
+    },
+    {
+      "name": "customer_external_ids",
+      "columns": [
+        {
+          "name": "external_id",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "customer_uuid",
+          "type": "String",
+          "primaryKey": true,
+          "foreignKey": true
+        }
+      ],
+      "tags": [],
+      "link": null
+    },
+    {
+      "name": "customer",
+      "columns": [
+        {
+          "name": "uuid",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "data_source_uuid",
+          "type": "String",
+          "foreignKey": true
+        },
+        {
+          "name": "address_address_zip",
+          "type": "String"
+        },
+        {
+          "name": "address_city",
+          "type": "String"
+        },
+        {
+          "name": "address_country",
+          "type": "String"
+        },
+        {
+          "name": "address_state",
+          "type": "String"
+        },
+        {
+          "name": "arr",
+          "type": "Long"
+        },
+        {
+          "name": "attributes_clearbit_company_category_industry",
+          "type": "String"
+        },
+        {
+          "name": "attributes_clearbit_company_category_industry_group",
+          "type": "String"
+        },
+        {
+          "name": "attributes_clearbit_company_category_sector",
+          "type": "String"
+        },
+        {
+          "name": "attributes_clearbit_company_category_sub_industry",
+          "type": "String"
+        },
+        {
+          "name": "attributes_clearbit_company_domain",
+          "type": "String"
+        },
+        {
+          "name": "attributes_clearbit_company_legal_name",
+          "type": "String"
+        },
+        {
+          "name": "attributes_clearbit_company_metrics_alexa_global_rank",
+          "type": "Long"
+        },
+        {
+          "name": "attributes_clearbit_company_metrics_employees",
+          "type": "Long"
+        },
+        {
+          "name": "attributes_clearbit_company_metrics_google_rank",
+          "type": "Long"
+        },
+        {
+          "name": "attributes_clearbit_company_metrics_market_cap",
+          "type": "Unknown"
+        },
+        {
+          "name": "attributes_clearbit_company_metrics_raised",
+          "type": "Long"
+        },
+        {
+          "name": "attributes_clearbit_company_name",
+          "type": "String"
+        },
+        {
+          "name": "attributes_clearbit_company_url",
+          "type": "String"
+        },
+        {
+          "name": "attributes_clearbit_person_employment_name",
+          "type": "String"
+        },
+        {
+          "name": "attributes_clearbit_person_name_full_name",
+          "type": "String"
+        },
+        {
+          "name": "attributes_stripe_coupon",
+          "type": "Boolean"
+        },
+        {
+          "name": "attributes_stripe_uid",
+          "type": "Long"
+        },
+        {
+          "name": "billing_system_type",
+          "type": "String"
+        },
+        {
+          "name": "billing_system_url",
+          "type": "String"
+        },
+        {
+          "name": "chartmogul_url",
+          "type": "String"
+        },
+        {
+          "name": "city",
+          "type": "String"
+        },
+        {
+          "name": "company",
+          "type": "String"
+        },
+        {
+          "name": "country",
+          "type": "String"
+        },
+        {
+          "name": "currency",
+          "type": "String"
+        },
+        {
+          "name": "currency_sign",
+          "type": "String"
+        },
+        {
+          "name": "customer_since",
+          "type": "Unknown"
+        },
+        {
+          "name": "email",
+          "type": "String"
+        },
+        {
+          "name": "external_id",
+          "type": "String"
+        },
+        {
+          "name": "free_trial_started_at",
+          "type": "Unknown"
+        },
+        {
+          "name": "id",
+          "type": "Long"
+        },
+        {
+          "name": "lead_created_at",
+          "type": "Unknown"
+        },
+        {
+          "name": "mrr",
+          "type": "Long"
+        },
+        {
+          "name": "name",
+          "type": "String"
+        },
+        {
+          "name": "state",
+          "type": "String"
+        },
+        {
+          "name": "status",
+          "type": "String"
+        },
+        {
+          "name": "zip",
+          "type": "String"
+        },
+        {
+          "name": "custom_*",
+          "type": "",
+          "wildCard": true
+        }
+      ],
+      "tags": [],
+      "link": null
+    },
+    {
+      "name": "customer_churn_rate",
+      "columns": [
+        {
+          "name": "date",
+          "type": "Unknown",
+          "primaryKey": true
+        },
+        {
+          "name": "customer_churn_rate",
+          "type": "Double"
+        },
+        {
+          "name": "percentage_change",
+          "type": "Double"
+        }
+      ],
+      "tags": [],
+      "link": null
+    },
+    {
+      "name": "plan_in_plan_group",
+      "columns": [
+        {
+          "name": "plan_group_uuid",
+          "type": "String",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "uuid",
+          "type": "String",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "data_source_uuid",
+          "type": "String",
+          "foreignKey": true
+        },
+        {
+          "name": "external_id",
+          "type": "String"
+        },
+        {
+          "name": "interval_count",
+          "type": "Long"
+        },
+        {
+          "name": "interval_unit",
+          "type": "String"
+        },
+        {
+          "name": "name",
+          "type": "String"
+        }
+      ],
+      "tags": [],
+      "link": null
+    },
+    {
+      "name": "customer_count",
+      "columns": [
+        {
+          "name": "date",
+          "type": "Unknown",
+          "primaryKey": true
+        },
+        {
+          "name": "customers",
+          "type": "Long"
+        },
+        {
+          "name": "percentage_change",
+          "type": "Double"
+        }
+      ],
+      "tags": [],
+      "link": null
+    },
+    {
+      "name": "customer_lifetime_value",
+      "columns": [
+        {
+          "name": "date",
+          "type": "Unknown",
+          "primaryKey": true
+        },
+        {
+          "name": "ltv",
+          "type": "Long"
+        },
+        {
+          "name": "percentage_change",
+          "type": "Double"
+        }
+      ],
+      "tags": [],
+      "link": null
+    },
+    {
+      "name": "cancellation_date",
+      "columns": [
+        {
+          "name": "cancellation_date",
+          "type": "Unknown",
+          "primaryKey": true
+        },
+        {
+          "name": "subscription_uuid",
+          "type": "String",
+          "primaryKey": true,
+          "foreignKey": true
+        }
+      ],
+      "tags": [],
+      "link": null
+    },
+    {
+      "name": "subscription",
+      "columns": [
+        {
+          "name": "uuid",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "customer_uuid",
+          "type": "String",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "data_source_uuid",
+          "type": "String",
+          "foreignKey": true
+        },
+        {
+          "name": "plan_uuid",
+          "type": "String",
+          "foreignKey": true
+        },
+        {
+          "name": "external_id",
+          "type": "String"
+        },
+        {
+          "name": "subscription_set_external_id",
+          "type": "String"
+        }
+      ],
+      "tags": [],
+      "link": null
+    },
+    {
+      "name": "average_sale_price",
+      "columns": [
+        {
+          "name": "date",
+          "type": "Unknown",
+          "primaryKey": true
+        },
+        {
+          "name": "asp",
+          "type": "Long"
+        },
+        {
+          "name": "percentage_change",
+          "type": "Double"
+        }
+      ],
+      "tags": [],
+      "link": null
+    },
+    {
+      "name": "invoice_line_item",
+      "columns": [
+        {
+          "name": "uuid",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "data_source_uuid",
+          "type": "Unknown",
+          "foreignKey": true
+        },
+        {
+          "name": "invoice_uuid",
+          "type": "String",
+          "foreignKey": true
+        },
+        {
+          "name": "plan_uuid",
+          "type": "String",
+          "foreignKey": true
+        },
+        {
+          "name": "subscription_uuid",
+          "type": "String",
+          "foreignKey": true
+        },
+        {
+          "name": "account_code",
+          "type": "Unknown"
+        },
+        {
+          "name": "amount_in_cents",
+          "type": "Long"
+        },
+        {
+          "name": "discount_amount_in_cents",
+          "type": "Long"
+        },
+        {
+          "name": "discount_code",
+          "type": "String"
+        },
+        {
+          "name": "discount_description",
+          "type": "String"
+        },
+        {
+          "name": "event_order",
+          "type": "Long"
+        },
+        {
+          "name": "external_id",
+          "type": "String"
+        },
+        {
+          "name": "prorated",
+          "type": "Boolean"
+        },
+        {
+          "name": "proration_type",
+          "type": "String"
+        },
+        {
+          "name": "quantity",
+          "type": "Long"
+        },
+        {
+          "name": "service_period_end",
+          "type": "Unknown"
+        },
+        {
+          "name": "service_period_start",
+          "type": "Unknown"
+        },
+        {
+          "name": "subscription_external_id",
+          "type": "String"
+        },
+        {
+          "name": "subscription_set_external_id",
+          "type": "String"
+        },
+        {
+          "name": "tax_amount_in_cents",
+          "type": "Long"
+        },
+        {
+          "name": "transaction_fees_currency",
+          "type": "String"
+        },
+        {
+          "name": "transaction_fees_in_cents",
+          "type": "Long"
+        },
+        {
+          "name": "type",
+          "type": "String"
+        }
+      ],
+      "tags": [],
+      "link": null
+    },
+    {
+      "name": "invoice_transaction",
+      "columns": [
+        {
+          "name": "uuid",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "invoice_uuid",
+          "type": "String",
+          "foreignKey": true
+        },
+        {
+          "name": "amount_in_cent",
+          "type": "Long"
+        },
+        {
+          "name": "date",
+          "type": "Unknown"
+        },
+        {
+          "name": "external_id",
+          "type": "String"
+        },
+        {
+          "name": "result",
+          "type": "String"
+        },
+        {
+          "name": "transaction_fees_currency",
+          "type": "String"
+        },
+        {
+          "name": "transaction_fees_in_cent",
+          "type": "Long"
+        },
+        {
+          "name": "type",
+          "type": "String"
+        }
+      ],
+      "tags": [],
+      "link": null
+    },
+    {
+      "name": "invoice",
+      "columns": [
+        {
+          "name": "uuid",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "customer_uuid",
+          "type": "String",
+          "foreignKey": true
+        },
+        {
+          "name": "currency",
+          "type": "String"
+        },
+        {
+          "name": "date",
+          "type": "Unknown"
+        },
+        {
+          "name": "due_date",
+          "type": "Unknown"
+        },
+        {
+          "name": "external_id",
+          "type": "String"
+        }
+      ],
+      "tags": [],
+      "link": null
+    },
+    {
+      "name": "average_revenue_per_account",
+      "columns": [
+        {
+          "name": "date",
+          "type": "Unknown",
+          "primaryKey": true
+        },
+        {
+          "name": "arpa",
+          "type": "Long"
+        },
+        {
+          "name": "percentage_change",
+          "type": "Double"
+        }
+      ],
+      "tags": [],
+      "link": null
+    },
+    {
+      "name": "metric_subscription",
+      "columns": [
+        {
+          "name": "id",
+          "type": "Long",
+          "primaryKey": true
+        },
+        {
+          "name": "customer_uuid",
+          "type": "String",
+          "foreignKey": true
+        },
+        {
+          "name": "arr",
+          "type": "Long"
+        },
+        {
+          "name": "billing_cycle",
+          "type": "String"
+        },
+        {
+          "name": "billing_cycle_count",
+          "type": "Long"
+        },
+        {
+          "name": "currency",
+          "type": "String"
+        },
+        {
+          "name": "currency_sign",
+          "type": "String"
+        },
+        {
+          "name": "end_date",
+          "type": "Unknown"
+        },
+        {
+          "name": "external_id",
+          "type": "String"
+        },
+        {
+          "name": "mrr",
+          "type": "Long"
+        },
+        {
+          "name": "plan",
+          "type": "String"
+        },
+        {
+          "name": "quantity",
+          "type": "Long"
+        },
+        {
+          "name": "start_date",
+          "type": "Unknown"
+        },
+        {
+          "name": "status",
+          "type": "String"
+        }
+      ],
+      "tags": [],
+      "link": null
+    },
+    {
+      "name": "monthly_recurring_revenue",
+      "columns": [
+        {
+          "name": "date",
+          "type": "Unknown",
+          "primaryKey": true
+        },
+        {
+          "name": "mrr",
+          "type": "Long"
+        },
+        {
+          "name": "mrr_churn",
+          "type": "Long"
+        },
+        {
+          "name": "mrr_contraction",
+          "type": "Long"
+        },
+        {
+          "name": "mrr_expansion",
+          "type": "Long"
+        },
+        {
+          "name": "mrr_new_business",
+          "type": "Long"
+        },
+        {
+          "name": "mrr_reactivation",
+          "type": "Long"
+        },
+        {
+          "name": "percentage_change",
+          "type": "Double"
+        }
+      ],
+      "tags": [],
+      "link": null
+    },
+    {
+      "name": "subscription_event",
+      "columns": [
+        {
+          "name": "id",
+          "type": "Long",
+          "primaryKey": true
+        },
+        {
+          "name": "data_source_uuid",
+          "type": "String",
+          "foreignKey": true
+        },
+        {
+          "name": "amount_in_cents",
+          "type": "Unknown"
+        },
+        {
+          "name": "created_at",
+          "type": "Unknown"
+        },
+        {
+          "name": "currency",
+          "type": "String"
+        },
+        {
+          "name": "data_source_customer_external_id",
+          "type": "String"
+        },
+        {
+          "name": "effective_date",
+          "type": "Unknown"
+        },
+        {
+          "name": "errors",
+          "type": "Json"
+        },
+        {
+          "name": "event_date",
+          "type": "Unknown"
+        },
+        {
+          "name": "event_type",
+          "type": "String"
+        },
+        {
+          "name": "external_id",
+          "type": "String"
+        },
+        {
+          "name": "plan_external_id",
+          "type": "String"
+        },
+        {
+          "name": "quantity",
+          "type": "Unknown"
+        },
+        {
+          "name": "retracted_event_id",
+          "type": "Unknown"
+        },
+        {
+          "name": "subscription_external_id",
+          "type": "String"
+        },
+        {
+          "name": "subscription_set_external_id",
+          "type": "String"
+        },
+        {
+          "name": "tax_amount_in_cents",
+          "type": "Long"
+        },
+        {
+          "name": "updated_at",
+          "type": "Unknown"
+        }
+      ],
+      "tags": [],
+      "link": null
+    },
+    {
+      "name": "activity",
+      "columns": [
+        {
+          "name": "uuid",
+          "type": "Unknown",
+          "primaryKey": true
+        },
+        {
+          "name": "customer_uuid",
+          "type": "Unknown",
+          "foreignKey": true
+        },
+        {
+          "name": "active_subscription_quantity",
+          "type": "Unknown"
+        },
+        {
+          "name": "activity_mrr",
+          "type": "Unknown"
+        },
+        {
+          "name": "activity_mrr_movement",
+          "type": "Unknown"
+        },
+        {
+          "name": "billing_connector_uuid",
+          "type": "Unknown"
+        },
+        {
+          "name": "currency",
+          "type": "Unknown"
+        },
+        {
+          "name": "customer_external_id",
+          "type": "Unknown"
+        },
+        {
+          "name": "customer_name",
+          "type": "Unknown"
+        },
+        {
+          "name": "date",
+          "type": "Unknown"
+        },
+        {
+          "name": "description",
+          "type": "Unknown"
+        },
+        {
+          "name": "plan_external_id",
+          "type": "Unknown"
+        },
+        {
+          "name": "subscription_external_id",
+          "type": "Unknown"
+        },
+        {
+          "name": "type",
+          "type": "Unknown"
+        }
+      ],
+      "tags": [],
+      "link": "https://api.appcues.com/v2/docs#export-bulk-event-data"
+    }
+  ],
+  "relations": [
+    {
+      "targetTable": "data_source",
+      "sourceTable": "plan",
+      "targetColumns": [
+        "uuid"
+      ],
+      "sourceColumns": [
+        "data_source_uuid"
+      ]
+    },
+    {
+      "targetTable": "data_source",
+      "sourceTable": "customer_data_source_uuids",
+      "targetColumns": [
+        "uuid"
+      ],
+      "sourceColumns": [
+        "data_source_uuid"
+      ]
+    },
+    {
+      "targetTable": "customer",
+      "sourceTable": "customer_data_source_uuids",
+      "targetColumns": [
+        "uuid"
+      ],
+      "sourceColumns": [
+        "customer_uuid"
+      ]
+    },
+    {
+      "targetTable": "customer",
+      "sourceTable": "customer_attribute_tag",
+      "targetColumns": [
+        "uuid"
+      ],
+      "sourceColumns": [
+        "customer_uuid"
+      ]
+    },
+    {
+      "targetTable": "customer",
+      "sourceTable": "customer_external_ids",
+      "targetColumns": [
+        "uuid"
+      ],
+      "sourceColumns": [
+        "customer_uuid"
+      ]
+    },
+    {
+      "targetTable": "data_source",
+      "sourceTable": "customer",
+      "targetColumns": [
+        "uuid"
+      ],
+      "sourceColumns": [
+        "data_source_uuid"
+      ]
+    },
+    {
+      "targetTable": "plan",
+      "sourceTable": "plan_in_plan_group",
+      "targetColumns": [
+        "uuid"
+      ],
+      "sourceColumns": [
+        "uuid"
+      ]
+    },
+    {
+      "targetTable": "data_source",
+      "sourceTable": "plan_in_plan_group",
+      "targetColumns": [
+        "uuid"
+      ],
+      "sourceColumns": [
+        "data_source_uuid"
+      ]
+    },
+    {
+      "targetTable": "plan_group",
+      "sourceTable": "plan_in_plan_group",
+      "targetColumns": [
+        "uuid"
+      ],
+      "sourceColumns": [
+        "plan_group_uuid"
+      ]
+    },
+    {
+      "targetTable": "subscription",
+      "sourceTable": "cancellation_date",
+      "targetColumns": [
+        "uuid"
+      ],
+      "sourceColumns": [
+        "subscription_uuid"
+      ]
+    },
+    {
+      "targetTable": "data_source",
+      "sourceTable": "subscription",
+      "targetColumns": [
+        "uuid"
+      ],
+      "sourceColumns": [
+        "data_source_uuid"
+      ]
+    },
+    {
+      "targetTable": "plan",
+      "sourceTable": "subscription",
+      "targetColumns": [
+        "uuid"
+      ],
+      "sourceColumns": [
+        "plan_uuid"
+      ]
+    },
+    {
+      "targetTable": "customer",
+      "sourceTable": "subscription",
+      "targetColumns": [
+        "uuid"
+      ],
+      "sourceColumns": [
+        "customer_uuid"
+      ]
+    },
+    {
+      "targetTable": "subscription",
+      "sourceTable": "invoice_line_item",
+      "targetColumns": [
+        "uuid"
+      ],
+      "sourceColumns": [
+        "subscription_uuid"
+      ]
+    },
+    {
+      "targetTable": "plan",
+      "sourceTable": "invoice_line_item",
+      "targetColumns": [
+        "uuid"
+      ],
+      "sourceColumns": [
+        "plan_uuid"
+      ]
+    },
+    {
+      "targetTable": "invoice",
+      "sourceTable": "invoice_line_item",
+      "targetColumns": [
+        "uuid"
+      ],
+      "sourceColumns": [
+        "invoice_uuid"
+      ]
+    },
+    {
+      "targetTable": "data_source",
+      "sourceTable": "invoice_line_item",
+      "targetColumns": [
+        "uuid"
+      ],
+      "sourceColumns": [
+        "data_source_uuid"
+      ]
+    },
+    {
+      "targetTable": "invoice",
+      "sourceTable": "invoice_transaction",
+      "targetColumns": [
+        "uuid"
+      ],
+      "sourceColumns": [
+        "invoice_uuid"
+      ]
+    },
+    {
+      "targetTable": "customer",
+      "sourceTable": "invoice",
+      "targetColumns": [
+        "uuid"
+      ],
+      "sourceColumns": [
+        "customer_uuid"
+      ]
+    },
+    {
+      "targetTable": "customer",
+      "sourceTable": "metric_subscription",
+      "targetColumns": [
+        "uuid"
+      ],
+      "sourceColumns": [
+        "customer_uuid"
+      ]
+    },
+    {
+      "targetTable": "data_source",
+      "sourceTable": "subscription_event",
+      "targetColumns": [
+        "uuid"
+      ],
+      "sourceColumns": [
+        "data_source_uuid"
+      ]
+    },
+    {
+      "targetTable": "customer",
+      "sourceTable": "activity",
+      "targetColumns": [
+        "uuid"
+      ],
+      "sourceColumns": [
+        "customer_uuid"
+      ]
+    }
+  ],
+  "positions": {
+    "9058f76f6b": {
+      "x": 2306.479588414273,
+      "y": 832.181665221996
+    },
+    "data_source": {
+      "x": 3418.479588414273,
+      "y": 1250.5064971675597
+    },
+    "plan_group": {
+      "x": 8,
+      "y": 8
+    },
+    "plan": {
+      "x": 512,
+      "y": 8
+    },
+    "mrr_churn_rate": {
+      "x": 686.6823971035682,
+      "y": 2487.529006706597
+    },
+    "account": {
+      "x": 3258.160846029222,
+      "y": 2737.614582185409
+    },
+    "annualized_run_rate": {
+      "x": 541.8715980690455,
+      "y": 2077.942214761184
+    },
+    "customer_data_source_uuids": {
+      "x": 3922.479588414273,
+      "y": 1514.4409982945822
+    },
+    "customer": {
+      "x": 1802.479588414273,
+      "y": 832.181665221996
+    },
+    "customer_churn_rate": {
+      "x": 1279.4737651366522,
+      "y": 1756.4808129706494
+    },
+    "plan_in_plan_group": {
+      "x": 8,
+      "y": 384
+    },
+    "customer_count": {
+      "x": 1191.6515046684208,
+      "y": 2066.979392551738
+    },
+    "customer_lifetime_value": {
+      "x": 3105.3680678000446,
+      "y": 564.181665221996
+    },
+    "cancellation_date": {
+      "x": 4089.0476601031687,
+      "y": 1847.098438921047
+    },
+    "subscription": {
+      "x": 4089.0476601031687,
+      "y": 2115.098438921047
+    },
+    "average_sale_price": {
+      "x": 2678.917649891131,
+      "y": 2876.0112801717623
+    },
+    "invoice_line_item": {
+      "x": 152.81079903452274,
+      "y": 949.9669798635338
+    },
+    "invoice_transaction": {
+      "x": 656.8107990345227,
+      "y": 949.9669798635338
+    },
+    "invoice": {
+      "x": 656.8107990345227,
+      "y": 1433.9669798635337
+    },
+    "average_revenue_per_account": {
+      "x": 1121.1147942071364,
+      "y": 439.59504697953
+    },
+    "monthly_recurring_revenue": {
+      "x": 3683.1811929947253,
+      "y": 77.89027105110222
+    },
+    "subscription_event": {
+      "x": 3418.479588414273,
+      "y": 1854.4409982945822
+    },
+    "activity": {
+      "x": 64,
+      "y": 64
+    },
+    "customer_attribute_tag": {
+      "x": 64,
+      "y": 704
+    },
+    "customer_external_ids": {
+      "x": 544,
+      "y": 64
+    },
+    "metric_subscription": {
+      "x": 544,
+      "y": 308
+    }
+  },
+  "notes": {
+    "byTable": {},
+    "generalNotes": []
+  },
+  "tableGroups": [
+    {
+      "id": "9058f76f6b",
+      "parentTable": "customer",
+      "tables": [
+        "activity",
+        "customer_attribute_tag",
+        "customer_external_ids",
+        "metric_subscription"
+      ],
+      "excludedTables": [],
+      "width": 992,
+      "height": 916
+    }
+  ]
+}

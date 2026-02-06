@@ -1,0 +1,344 @@
+{
+  "tables": [
+    {
+      "name": "unsubscribed_people",
+      "columns": [
+        {
+          "name": "person_id",
+          "type": "Unknown",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "unsubscribed_at",
+          "type": "Unknown"
+        }
+      ],
+      "tags": [],
+      "link": "https://app.delighted.com/docs/api/listing-unsubscribed-people"
+    },
+    {
+      "name": "person",
+      "columns": [
+        {
+          "name": "id",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "created_at",
+          "type": "Instant"
+        },
+        {
+          "name": "email",
+          "type": "String"
+        },
+        {
+          "name": "name",
+          "type": "String"
+        }
+      ],
+      "tags": [],
+      "link": "https://app.delighted.com/docs/api/listing-survey-responses"
+    },
+    {
+      "name": "response_tag",
+      "columns": [
+        {
+          "name": "tags",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "response_id",
+          "type": "String",
+          "primaryKey": true,
+          "foreignKey": true
+        }
+      ],
+      "tags": [],
+      "link": "https://app.delighted.com/docs/api/listing-survey-responses"
+    },
+    {
+      "name": "response_note",
+      "columns": [
+        {
+          "name": "id",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "response_id",
+          "type": "String",
+          "foreignKey": true
+        },
+        {
+          "name": "created_at",
+          "type": "Instant"
+        },
+        {
+          "name": "text",
+          "type": "String"
+        },
+        {
+          "name": "user_email",
+          "type": "String"
+        }
+      ],
+      "tags": [],
+      "link": "https://app.delighted.com/docs/api/listing-survey-responses"
+    },
+    {
+      "name": "question",
+      "columns": [
+        {
+          "name": "id",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "text",
+          "type": "String"
+        },
+        {
+          "name": "type",
+          "type": "String"
+        }
+      ],
+      "tags": [],
+      "link": "https://app.delighted.com/docs/api/listing-survey-responses"
+    },
+    {
+      "name": "response_answer",
+      "columns": [
+        {
+          "name": "id",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "question_id",
+          "type": "String",
+          "foreignKey": true
+        },
+        {
+          "name": "response_id",
+          "type": "String",
+          "foreignKey": true
+        },
+        {
+          "name": "email",
+          "type": "String"
+        },
+        {
+          "name": "free_response",
+          "type": "String"
+        },
+        {
+          "name": "name",
+          "type": "String"
+        },
+        {
+          "name": "scale",
+          "type": "Int"
+        }
+      ],
+      "tags": [],
+      "link": "https://app.delighted.com/docs/api/listing-survey-responses"
+    },
+    {
+      "name": "response",
+      "columns": [
+        {
+          "name": "id",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "person_id",
+          "type": "String",
+          "foreignKey": true
+        },
+        {
+          "name": "comment",
+          "type": "String"
+        },
+        {
+          "name": "created_at",
+          "type": "Instant"
+        },
+        {
+          "name": "permalink",
+          "type": "String"
+        },
+        {
+          "name": "score",
+          "type": "Int"
+        },
+        {
+          "name": "survey_type",
+          "type": "String"
+        },
+        {
+          "name": "updated_at",
+          "type": "Instant"
+        },
+        {
+          "name": "properties_*",
+          "type": "",
+          "wildCard": true
+        }
+      ],
+      "tags": [],
+      "link": "https://app.delighted.com/docs/api/listing-survey-responses"
+    },
+    {
+      "name": "response_answer_selection",
+      "columns": [
+        {
+          "name": "id",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "response_answer_id",
+          "type": "String",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "extra_text",
+          "type": "String"
+        },
+        {
+          "name": "text",
+          "type": "String"
+        }
+      ],
+      "tags": [],
+      "link": "https://app.delighted.com/docs/api/listing-survey-responses"
+    }
+  ],
+  "relations": [
+    {
+      "targetTable": "person",
+      "sourceTable": "unsubscribed_people",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "person_id"
+      ]
+    },
+    {
+      "targetTable": "response",
+      "sourceTable": "response_tag",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "response_id"
+      ]
+    },
+    {
+      "targetTable": "response",
+      "sourceTable": "response_note",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "response_id"
+      ]
+    },
+    {
+      "targetTable": "question",
+      "sourceTable": "response_answer",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "question_id"
+      ]
+    },
+    {
+      "targetTable": "response",
+      "sourceTable": "response_answer",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "response_id"
+      ]
+    },
+    {
+      "targetTable": "person",
+      "sourceTable": "response",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "person_id"
+      ]
+    },
+    {
+      "targetTable": "response_answer",
+      "sourceTable": "response_answer_selection",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "response_answer_id"
+      ]
+    }
+  ],
+  "positions": {
+    "unsubscribed_people": {
+      "x": 1670,
+      "y": 207
+    },
+    "person": {
+      "x": 1131,
+      "y": 207
+    },
+    "response_tag": {
+      "x": 496.41549845333293,
+      "y": 574.0436235760368
+    },
+    "response_note": {
+      "x": 1131,
+      "y": 1010
+    },
+    "question": {
+      "x": 2208,
+      "y": 623
+    },
+    "response_answer": {
+      "x": 1670,
+      "y": 587
+    },
+    "response": {
+      "x": 1131,
+      "y": 533
+    },
+    "response_answer_selection": {
+      "x": 1670,
+      "y": 1000
+    },
+    "note-g0d91n1xxg": {
+      "x": 496,
+      "y": 881
+    }
+  },
+  "notes": {
+    "byTable": {},
+    "generalNotes": [
+      {
+        "id": "note-g0d91n1xxg",
+        "content": "### Note: \nTag in the RESPONSE_TAG Table will be renamed to tags for the new connectors.",
+        "width": 384,
+        "height": 108
+      }
+    ]
+  },
+  "tableGroups": []
+}

@@ -1,0 +1,2356 @@
+{
+  "tables": [
+    {
+      "name": "decision",
+      "columns": [
+        {
+          "name": "id",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "campaign_id",
+          "type": "String",
+          "foreignKey": true
+        },
+        {
+          "name": "experiment_id",
+          "type": "String",
+          "foreignKey": true
+        },
+        {
+          "name": "variation_id",
+          "type": "String",
+          "foreignKey": true
+        },
+        {
+          "name": "account_id",
+          "type": "String"
+        },
+        {
+          "name": "client_engine",
+          "type": "String"
+        },
+        {
+          "name": "client_version",
+          "type": "String"
+        },
+        {
+          "name": "is_holdback",
+          "type": "Boolean"
+        },
+        {
+          "name": "process_timestamp",
+          "type": "Instant"
+        },
+        {
+          "name": "referer",
+          "type": "String"
+        },
+        {
+          "name": "revision",
+          "type": "String"
+        },
+        {
+          "name": "session_id",
+          "type": "String"
+        },
+        {
+          "name": "timestamp",
+          "type": "Instant"
+        },
+        {
+          "name": "user_agent",
+          "type": "String"
+        },
+        {
+          "name": "user_ip",
+          "type": "String"
+        },
+        {
+          "name": "visitor_id",
+          "type": "String"
+        }
+      ],
+      "tags": [],
+      "link": "https://docs.developers.optimizely.com/web/docs/enriched-events-export"
+    },
+    {
+      "name": "page",
+      "columns": [
+        {
+          "name": "id",
+          "type": "Long",
+          "primaryKey": true
+        },
+        {
+          "name": "project_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "activation_code",
+          "type": "String"
+        },
+        {
+          "name": "activation_type",
+          "type": "String"
+        },
+        {
+          "name": "archived",
+          "type": "Boolean"
+        },
+        {
+          "name": "category",
+          "type": "String"
+        },
+        {
+          "name": "conditions",
+          "type": "String"
+        },
+        {
+          "name": "created",
+          "type": "Instant"
+        },
+        {
+          "name": "edit_url",
+          "type": "String"
+        },
+        {
+          "name": "key",
+          "type": "String"
+        },
+        {
+          "name": "last_modified",
+          "type": "Instant"
+        },
+        {
+          "name": "name",
+          "type": "String"
+        },
+        {
+          "name": "page_type",
+          "type": "String"
+        }
+      ],
+      "tags": [],
+      "link": "https://developers.optimizely.com/x/rest/v2/#pages"
+    },
+    {
+      "name": "conversion_attribute",
+      "columns": [
+        {
+          "name": "_fivetran_id",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "conversion_id",
+          "type": "String",
+          "foreignKey": true
+        },
+        {
+          "name": "id",
+          "type": "String"
+        },
+        {
+          "name": "name",
+          "type": "String"
+        },
+        {
+          "name": "type",
+          "type": "String"
+        },
+        {
+          "name": "value",
+          "type": "String"
+        }
+      ],
+      "tags": [],
+      "link": "https://docs.developers.optimizely.com/web/docs/enriched-events-export"
+    },
+    {
+      "name": "campaign_history",
+      "columns": [
+        {
+          "name": "id",
+          "type": "Long",
+          "primaryKey": true
+        },
+        {
+          "name": "last_modified",
+          "type": "Instant",
+          "primaryKey": true
+        },
+        {
+          "name": "project_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "url_targeting_page_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "created",
+          "type": "Instant"
+        },
+        {
+          "name": "earliest",
+          "type": "Instant"
+        },
+        {
+          "name": "holdback",
+          "type": "Long"
+        },
+        {
+          "name": "latest",
+          "type": "Instant"
+        },
+        {
+          "name": "name",
+          "type": "String"
+        },
+        {
+          "name": "status",
+          "type": "String"
+        },
+        {
+          "name": "url_targeting_activation_code",
+          "type": "String"
+        },
+        {
+          "name": "url_targeting_activation_type",
+          "type": "String"
+        },
+        {
+          "name": "url_targeting_conditions",
+          "type": "String"
+        },
+        {
+          "name": "url_targeting_edit_url",
+          "type": "String"
+        },
+        {
+          "name": "url_targeting_key",
+          "type": "String"
+        }
+      ],
+      "tags": [],
+      "link": "https://developers.optimizely.com/x/rest/v2/#campaigns"
+    },
+    {
+      "name": "experiment_change_history",
+      "columns": [
+        {
+          "name": "id",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "experiment_id",
+          "type": "Long",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "experiment_last_modified",
+          "type": "Instant",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "action_id",
+          "type": "String",
+          "foreignKey": true
+        },
+        {
+          "name": "allow_additional_redirect",
+          "type": "Boolean"
+        },
+        {
+          "name": "async",
+          "type": "Boolean"
+        },
+        {
+          "name": "destination",
+          "type": "String"
+        },
+        {
+          "name": "extension_id",
+          "type": "String"
+        },
+        {
+          "name": "name",
+          "type": "String"
+        },
+        {
+          "name": "operator",
+          "type": "String"
+        },
+        {
+          "name": "preserve_parameters",
+          "type": "Boolean"
+        },
+        {
+          "name": "selector",
+          "type": "String"
+        },
+        {
+          "name": "src",
+          "type": "String"
+        },
+        {
+          "name": "type",
+          "type": "String"
+        },
+        {
+          "name": "value",
+          "type": "String"
+        },
+        {
+          "name": "css_*",
+          "type": "",
+          "wildCard": true
+        },
+        {
+          "name": "tag_attribute_*",
+          "type": "",
+          "wildCard": true
+        }
+      ],
+      "tags": [],
+      "link": "https://developers.optimizely.com/x/rest/v2/#SharedCodeChange_Experiments_list_experiments_response"
+    },
+    {
+      "name": "audience",
+      "columns": [
+        {
+          "name": "id",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "project_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "archived",
+          "type": "Boolean"
+        },
+        {
+          "name": "conditions",
+          "type": "String"
+        },
+        {
+          "name": "created",
+          "type": "Instant"
+        },
+        {
+          "name": "description",
+          "type": "String"
+        },
+        {
+          "name": "last_modified",
+          "type": "Instant"
+        },
+        {
+          "name": "name",
+          "type": "String"
+        },
+        {
+          "name": "segmentation",
+          "type": "Boolean"
+        }
+      ],
+      "tags": [],
+      "link": "https://developers.optimizely.com/x/rest/v2/#audiences"
+    },
+    {
+      "name": "campaign_page_history",
+      "columns": [
+        {
+          "name": "campaign_id",
+          "type": "Long",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "campaign_last_modified",
+          "type": "Instant",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "page_id",
+          "type": "Long",
+          "primaryKey": true,
+          "foreignKey": true
+        }
+      ],
+      "tags": [],
+      "link": " https://developers.optimizely.com/x/rest/v2/#campaigns"
+    },
+    {
+      "name": "event",
+      "columns": [
+        {
+          "name": "id",
+          "type": "Long",
+          "primaryKey": true
+        },
+        {
+          "name": "project_id",
+          "type": "Long",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "page_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "archived",
+          "type": "Boolean"
+        },
+        {
+          "name": "category",
+          "type": "String"
+        },
+        {
+          "name": "created",
+          "type": "Instant"
+        },
+        {
+          "name": "description",
+          "type": "String"
+        },
+        {
+          "name": "event_type",
+          "type": "String"
+        },
+        {
+          "name": "is_classic",
+          "type": "Boolean"
+        },
+        {
+          "name": "is_editable",
+          "type": "Boolean"
+        },
+        {
+          "name": "key",
+          "type": "String"
+        },
+        {
+          "name": "name",
+          "type": "String"
+        }
+      ],
+      "tags": [],
+      "link": "https://developers.optimizely.com/x/rest/v2/#events"
+    },
+    {
+      "name": "experiment_change_dependency_history",
+      "columns": [
+        {
+          "name": "dependent_change_id",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "change_id",
+          "type": "String",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "experiment_id",
+          "type": "Long",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "experiment_last_modified",
+          "type": "Instant",
+          "primaryKey": true,
+          "foreignKey": true
+        }
+      ],
+      "tags": [],
+      "link": "https://developers.optimizely.com/x/rest/v2/#SharedCodeChange_Experiments_list_experiments_response"
+    },
+    {
+      "name": "project",
+      "columns": [
+        {
+          "name": "id",
+          "type": "Long",
+          "primaryKey": true
+        },
+        {
+          "name": "account_id",
+          "type": "Long"
+        },
+        {
+          "name": "confidence_threshold",
+          "type": "Double"
+        },
+        {
+          "name": "created",
+          "type": "Instant"
+        },
+        {
+          "name": "dcp_service_id",
+          "type": "Long"
+        },
+        {
+          "name": "description",
+          "type": "String"
+        },
+        {
+          "name": "is_classic",
+          "type": "Boolean"
+        },
+        {
+          "name": "last_modified",
+          "type": "Instant"
+        },
+        {
+          "name": "name",
+          "type": "String"
+        },
+        {
+          "name": "platform",
+          "type": "String"
+        },
+        {
+          "name": "socket_token",
+          "type": "String"
+        },
+        {
+          "name": "status",
+          "type": "String"
+        },
+        {
+          "name": "web_snippet_*",
+          "type": "",
+          "wildCard": true
+        }
+      ],
+      "tags": [],
+      "link": "https://developers.optimizely.com/x/rest/v2/#list-projects"
+    },
+    {
+      "name": "sdk",
+      "columns": [
+        {
+          "name": "index",
+          "type": "Long",
+          "primaryKey": true
+        },
+        {
+          "name": "project_id",
+          "type": "Long",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "sdk_name",
+          "type": "String"
+        }
+      ],
+      "tags": [],
+      "link": "https://developers.optimizely.com/x/rest/v2/#list-projects"
+    },
+    {
+      "name": "campaign_change_history",
+      "columns": [
+        {
+          "name": "id",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "campaign_id",
+          "type": "Long",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "campaign_last_modified",
+          "type": "Instant",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "async",
+          "type": "Boolean"
+        },
+        {
+          "name": "name",
+          "type": "String"
+        },
+        {
+          "name": "selector",
+          "type": "String"
+        },
+        {
+          "name": "src",
+          "type": "String"
+        },
+        {
+          "name": "type",
+          "type": "String"
+        },
+        {
+          "name": "value",
+          "type": "String"
+        }
+      ],
+      "tags": [],
+      "link": "https://developers.optimizely.com/x/rest/v2/#SharedCodeChange_Campaigns_list_campaigns_response"
+    },
+    {
+      "name": "conversion_tag",
+      "columns": [
+        {
+          "name": "key",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "conversion_id",
+          "type": "String",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "value",
+          "type": "String"
+        }
+      ],
+      "tags": [],
+      "link": "https://docs.developers.optimizely.com/web/docs/enriched-events-export"
+    },
+    {
+      "name": "product_usage",
+      "columns": [
+        {
+          "name": "index",
+          "type": "Long",
+          "primaryKey": true
+        },
+        {
+          "name": "plan_id",
+          "type": "Long",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "allocation_term_in_months",
+          "type": "Long"
+        },
+        {
+          "name": "end_time",
+          "type": "Instant"
+        },
+        {
+          "name": "last_update_time",
+          "type": "Instant"
+        },
+        {
+          "name": "overage_cents_per_visitor",
+          "type": "Long"
+        },
+        {
+          "name": "product_name",
+          "type": "String"
+        },
+        {
+          "name": "start_time",
+          "type": "Instant"
+        },
+        {
+          "name": "usage",
+          "type": "Long"
+        },
+        {
+          "name": "usage_allowance",
+          "type": "Long"
+        }
+      ],
+      "tags": [],
+      "link": "https://developers.optimizely.com/x/rest/v2/#ProductUsage_Plan_get_plan_responsec"
+    },
+    {
+      "name": "extension",
+      "columns": [
+        {
+          "name": "id",
+          "type": "Long",
+          "primaryKey": true
+        },
+        {
+          "name": "project_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "archived",
+          "type": "Boolean"
+        },
+        {
+          "name": "created",
+          "type": "Instant"
+        },
+        {
+          "name": "description",
+          "type": "String"
+        },
+        {
+          "name": "edit_url",
+          "type": "String"
+        },
+        {
+          "name": "enabled",
+          "type": "Boolean"
+        },
+        {
+          "name": "last_modified",
+          "type": "Instant"
+        },
+        {
+          "name": "name",
+          "type": "String"
+        },
+        {
+          "name": "implementation_*",
+          "type": "",
+          "wildCard": true
+        }
+      ],
+      "tags": [],
+      "link": "https://developers.optimizely.com/x/rest/v2/#extensions"
+    },
+    {
+      "name": "field",
+      "columns": [
+        {
+          "name": "index",
+          "type": "Long",
+          "primaryKey": true
+        },
+        {
+          "name": "extension_id",
+          "type": "Long",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "api_name",
+          "type": "String"
+        },
+        {
+          "name": "default_value",
+          "type": "String"
+        },
+        {
+          "name": "field_type",
+          "type": "String"
+        },
+        {
+          "name": "label",
+          "type": "String"
+        }
+      ],
+      "tags": [],
+      "link": "https://developers.optimizely.com/x/rest/v2/#extensions"
+    },
+    {
+      "name": "group_entity",
+      "columns": [
+        {
+          "name": "id",
+          "type": "Long",
+          "primaryKey": true
+        },
+        {
+          "name": "group_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "kind",
+          "type": "String"
+        },
+        {
+          "name": "weight",
+          "type": "Long"
+        }
+      ],
+      "tags": [],
+      "link": "https://developers.optimizely.com/x/rest/v2/#GroupEntity_Groups_list_groups_response"
+    },
+    {
+      "name": "plan",
+      "columns": [
+        {
+          "name": "id",
+          "type": "Long",
+          "primaryKey": true
+        },
+        {
+          "name": "plan_name",
+          "type": "String"
+        },
+        {
+          "name": "status",
+          "type": "String"
+        },
+        {
+          "name": "unit_of_measurement",
+          "type": "String"
+        }
+      ],
+      "tags": [],
+      "link": "https://developers.optimizely.com/x/events/export/index.html"
+    },
+    {
+      "name": "attribute",
+      "columns": [
+        {
+          "name": "id",
+          "type": "Long",
+          "primaryKey": true
+        },
+        {
+          "name": "project_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "archived",
+          "type": "Boolean"
+        },
+        {
+          "name": "condition_type",
+          "type": "String"
+        },
+        {
+          "name": "description",
+          "type": "String"
+        },
+        {
+          "name": "key",
+          "type": "String"
+        },
+        {
+          "name": "last_modified",
+          "type": "Instant"
+        },
+        {
+          "name": "name",
+          "type": "String"
+        }
+      ],
+      "tags": [],
+      "link": "https://developers.optimizely.com/x/rest/v2/#extensions"
+    },
+    {
+      "name": "campaign_metric_history",
+      "columns": [
+        {
+          "name": "_fivetran_id",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "campaign_id",
+          "type": "Long",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "campaign_last_modified",
+          "type": "Instant",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "event_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "aggregator",
+          "type": "String"
+        },
+        {
+          "name": "field",
+          "type": "String"
+        },
+        {
+          "name": "scope",
+          "type": "String"
+        },
+        {
+          "name": "winning_direction",
+          "type": "String"
+        }
+      ],
+      "tags": [],
+      "link": "https://developers.optimizely.com/x/rest/v2/#Metric_Campaigns_list_campaigns_response"
+    },
+    {
+      "name": "group",
+      "columns": [
+        {
+          "name": "id",
+          "type": "Long",
+          "primaryKey": true
+        },
+        {
+          "name": "project_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "archived",
+          "type": "Boolean"
+        },
+        {
+          "name": "created",
+          "type": "Instant"
+        },
+        {
+          "name": "description",
+          "type": "String"
+        },
+        {
+          "name": "last_modified",
+          "type": "Instant"
+        },
+        {
+          "name": "name",
+          "type": "String"
+        }
+      ],
+      "tags": [],
+      "link": "https://developers.optimizely.com/x/rest/v2/#GroupEntity_Groups_list_groups_response"
+    },
+    {
+      "name": "experiment_history",
+      "columns": [
+        {
+          "name": "id",
+          "type": "Long",
+          "primaryKey": true
+        },
+        {
+          "name": "last_modified",
+          "type": "Instant",
+          "primaryKey": true
+        },
+        {
+          "name": "campaign_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "project_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "url_targeting_page_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "allocation_policy",
+          "type": "String"
+        },
+        {
+          "name": "audience_conditions",
+          "type": "String"
+        },
+        {
+          "name": "created",
+          "type": "Instant"
+        },
+        {
+          "name": "description",
+          "type": "String"
+        },
+        {
+          "name": "earliest",
+          "type": "Instant"
+        },
+        {
+          "name": "holdback",
+          "type": "Long"
+        },
+        {
+          "name": "key",
+          "type": "String"
+        },
+        {
+          "name": "latest",
+          "type": "Instant"
+        },
+        {
+          "name": "name",
+          "type": "String"
+        },
+        {
+          "name": "schedule_start_time",
+          "type": "Instant"
+        },
+        {
+          "name": "schedule_stop_time",
+          "type": "Instant"
+        },
+        {
+          "name": "schedule_time_zone",
+          "type": "String"
+        },
+        {
+          "name": "status",
+          "type": "String"
+        },
+        {
+          "name": "type",
+          "type": "String"
+        },
+        {
+          "name": "url_targeting_activation_code",
+          "type": "String"
+        },
+        {
+          "name": "url_targeting_activation_type",
+          "type": "String"
+        },
+        {
+          "name": "url_targeting_conditions",
+          "type": "String"
+        },
+        {
+          "name": "url_targeting_edit_url",
+          "type": "String"
+        },
+        {
+          "name": "url_targeting_key",
+          "type": "String"
+        }
+      ],
+      "tags": [],
+      "link": "https://developers.optimizely.com/x/rest/v2/#experiments"
+    },
+    {
+      "name": "experiment_variation_history",
+      "columns": [
+        {
+          "name": "id",
+          "type": "Long",
+          "primaryKey": true
+        },
+        {
+          "name": "experiment_id",
+          "type": "Long",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "experiment_last_modified",
+          "type": "Instant",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "archived",
+          "type": "Boolean"
+        },
+        {
+          "name": "description",
+          "type": "String"
+        },
+        {
+          "name": "key",
+          "type": "String"
+        },
+        {
+          "name": "name",
+          "type": "String"
+        },
+        {
+          "name": "status",
+          "type": "String"
+        },
+        {
+          "name": "weight",
+          "type": "Long"
+        }
+      ],
+      "tags": [],
+      "link": "https://developers.optimizely.com/x/rest/v2/#Variation_Experiments_list_experiments_response"
+    },
+    {
+      "name": "campaign_change_dependency_history",
+      "columns": [
+        {
+          "name": "campaign_id",
+          "type": "Long",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "campaign_last_modified",
+          "type": "Instant",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "change_id",
+          "type": "String",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "dependent_change_id",
+          "type": "String",
+          "primaryKey": true,
+          "foreignKey": true
+        }
+      ],
+      "tags": [],
+      "link": "https://developers.optimizely.com/x/rest/v2/#SharedCodeChange_Campaigns_list_campaigns_response"
+    },
+    {
+      "name": "decision_attribute",
+      "columns": [
+        {
+          "name": "_fivetran_id",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "decision_id",
+          "type": "String",
+          "foreignKey": true
+        },
+        {
+          "name": "id",
+          "type": "String"
+        },
+        {
+          "name": "name",
+          "type": "String"
+        },
+        {
+          "name": "type",
+          "type": "String"
+        },
+        {
+          "name": "value",
+          "type": "String"
+        }
+      ],
+      "tags": [],
+      "link": "https://docs.developers.optimizely.com/web/docs/enriched-events-export"
+    },
+    {
+      "name": "experiment_metric_history",
+      "columns": [
+        {
+          "name": "_fivetran_id",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "experiment_id",
+          "type": "Long",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "experiment_last_modified",
+          "type": "Instant",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "event_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "aggregator",
+          "type": "String"
+        },
+        {
+          "name": "field",
+          "type": "String"
+        },
+        {
+          "name": "scope",
+          "type": "String"
+        },
+        {
+          "name": "winning_direction",
+          "type": "String"
+        }
+      ],
+      "tags": [],
+      "link": "https://developers.optimizely.com/x/rest/v2/#Metric_Experiments_list_experiments_response"
+    },
+    {
+      "name": "project_status",
+      "columns": [
+        {
+          "name": "last_modified",
+          "type": "Instant",
+          "primaryKey": true
+        },
+        {
+          "name": "project_id",
+          "type": "Long",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "description",
+          "type": "String"
+        },
+        {
+          "name": "platform",
+          "type": "String"
+        },
+        {
+          "name": "status",
+          "type": "String"
+        }
+      ],
+      "tags": [],
+      "link": "https://developers.optimizely.com/x/rest/v2/#list-projects"
+    },
+    {
+      "name": "list_attribute",
+      "columns": [
+        {
+          "name": "id",
+          "type": "Long",
+          "primaryKey": true
+        },
+        {
+          "name": "project_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "account_id",
+          "type": "Long"
+        },
+        {
+          "name": "archived",
+          "type": "Boolean"
+        },
+        {
+          "name": "created",
+          "type": "Instant"
+        },
+        {
+          "name": "description",
+          "type": "String"
+        },
+        {
+          "name": "key_field",
+          "type": "String"
+        },
+        {
+          "name": "last_modified",
+          "type": "Instant"
+        },
+        {
+          "name": "list_type",
+          "type": "String"
+        },
+        {
+          "name": "name",
+          "type": "String"
+        },
+        {
+          "name": "s_3_path",
+          "type": "String"
+        }
+      ],
+      "tags": [],
+      "link": "https://developers.optimizely.com/x/rest/v2/#extensions"
+    },
+    {
+      "name": "experiment_result_history",
+      "columns": [
+        {
+          "name": "experiment_id",
+          "type": "Long",
+          "primaryKey": true
+        },
+        {
+          "name": "experiment_last_modified",
+          "type": "Instant",
+          "primaryKey": true
+        },
+        {
+          "name": "metric_name",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "metric_variation_id",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "confidence_threshold",
+          "type": "Double"
+        },
+        {
+          "name": "end_time",
+          "type": "Instant"
+        },
+        {
+          "name": "metric_aggregator",
+          "type": "String"
+        },
+        {
+          "name": "metric_conclusion_loser",
+          "type": "String"
+        },
+        {
+          "name": "metric_conclusion_winner",
+          "type": "String"
+        },
+        {
+          "name": "metric_event_id",
+          "type": "String"
+        },
+        {
+          "name": "metric_scope",
+          "type": "String"
+        },
+        {
+          "name": "metric_variation_is_baseline",
+          "type": "Boolean"
+        },
+        {
+          "name": "metric_variation_level",
+          "type": "String"
+        },
+        {
+          "name": "metric_variation_lift_confidence_interval",
+          "type": "Json"
+        },
+        {
+          "name": "metric_variation_lift_is_most_conclusive",
+          "type": "Boolean"
+        },
+        {
+          "name": "metric_variation_lift_is_significant",
+          "type": "Boolean"
+        },
+        {
+          "name": "metric_variation_lift_lift_status",
+          "type": "String"
+        },
+        {
+          "name": "metric_variation_lift_significance",
+          "type": "Double"
+        },
+        {
+          "name": "metric_variation_lift_value",
+          "type": "Double"
+        },
+        {
+          "name": "metric_variation_name",
+          "type": "String"
+        },
+        {
+          "name": "metric_variation_rate",
+          "type": "Double"
+        },
+        {
+          "name": "metric_variation_samples",
+          "type": "Double"
+        },
+        {
+          "name": "metric_variation_value",
+          "type": "Double"
+        },
+        {
+          "name": "metric_variation_variance",
+          "type": "Double"
+        },
+        {
+          "name": "metric_winning_direction",
+          "type": "String"
+        }
+      ],
+      "tags": [],
+      "link": "https://developers.optimizely.com/x/rest/v2/#get-experiment-results"
+    },
+    {
+      "name": "experiment_page_history",
+      "columns": [
+        {
+          "name": "experiment_id",
+          "type": "Long",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "experiment_last_modified",
+          "type": "Instant",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "page_id",
+          "type": "Long",
+          "primaryKey": true,
+          "foreignKey": true
+        }
+      ],
+      "tags": [],
+      "link": " https://developers.optimizely.com/x/rest/v2/#campaigns"
+    },
+    {
+      "name": "conversion_experiment",
+      "columns": [
+        {
+          "name": "index",
+          "type": "Int",
+          "primaryKey": true
+        },
+        {
+          "name": "conversion_id",
+          "type": "String",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "campaign_id",
+          "type": "String",
+          "foreignKey": true
+        },
+        {
+          "name": "experiment_id",
+          "type": "String",
+          "foreignKey": true
+        },
+        {
+          "name": "variation_id",
+          "type": "String",
+          "foreignKey": true
+        },
+        {
+          "name": "is_holdback",
+          "type": "Boolean"
+        }
+      ],
+      "tags": [],
+      "link": "https://docs.developers.optimizely.com/web/docs/enriched-events-export"
+    },
+    {
+      "name": "conversion",
+      "columns": [
+        {
+          "name": "id",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "account_id",
+          "type": "String"
+        },
+        {
+          "name": "client_engine",
+          "type": "String"
+        },
+        {
+          "name": "client_version",
+          "type": "String"
+        },
+        {
+          "name": "entity_id",
+          "type": "String"
+        },
+        {
+          "name": "event_name",
+          "type": "String"
+        },
+        {
+          "name": "event_type",
+          "type": "String"
+        },
+        {
+          "name": "process_timestamp",
+          "type": "Instant"
+        },
+        {
+          "name": "quantity",
+          "type": "Long"
+        },
+        {
+          "name": "referer",
+          "type": "String"
+        },
+        {
+          "name": "revenue",
+          "type": "Long"
+        },
+        {
+          "name": "revision",
+          "type": "String"
+        },
+        {
+          "name": "session_id",
+          "type": "String"
+        },
+        {
+          "name": "timestamp",
+          "type": "Instant"
+        },
+        {
+          "name": "user_agent",
+          "type": "String"
+        },
+        {
+          "name": "user_ip",
+          "type": "String"
+        },
+        {
+          "name": "value",
+          "type": "Double"
+        },
+        {
+          "name": "visitor_id",
+          "type": "String"
+        }
+      ],
+      "tags": [],
+      "link": "https://docs.developers.optimizely.com/web/docs/enriched-events-export"
+    },
+    {
+      "name": "experiment_variation_action_history",
+      "columns": [
+        {
+          "name": "_fivetran_id",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "experiment_id",
+          "type": "Long",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "experiment_last_modified",
+          "type": "Instant",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "variation_id",
+          "type": "Long",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "page_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "share_link",
+          "type": "String"
+        }
+      ],
+      "tags": [],
+      "link": "https://developers.optimizely.com/x/rest/v2/#Variation_Experiments_list_experiments_response"
+    }
+  ],
+  "relations": [
+    {
+      "targetTable": "campaign_history",
+      "sourceTable": "decision",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "campaign_id"
+      ]
+    },
+    {
+      "targetTable": "experiment_history",
+      "sourceTable": "decision",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "experiment_id"
+      ]
+    },
+    {
+      "targetTable": "experiment_variation_history",
+      "sourceTable": "decision",
+      "targetColumns": [
+        "experiment_id"
+      ],
+      "sourceColumns": [
+        "variation_id"
+      ]
+    },
+    {
+      "targetTable": "project",
+      "sourceTable": "page",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "project_id"
+      ]
+    },
+    {
+      "targetTable": "conversion",
+      "sourceTable": "conversion_attribute",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "conversion_id"
+      ]
+    },
+    {
+      "targetTable": "project",
+      "sourceTable": "campaign_history",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "project_id"
+      ]
+    },
+    {
+      "targetTable": "page",
+      "sourceTable": "campaign_history",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "url_targeting_page_id"
+      ]
+    },
+    {
+      "targetTable": "experiment_history",
+      "sourceTable": "experiment_change_history",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "experiment_id"
+      ]
+    },
+    {
+      "targetTable": "experiment_history",
+      "sourceTable": "experiment_change_history",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "experiment_last_modified"
+      ]
+    },
+    {
+      "targetTable": "experiment_variation_action_history",
+      "sourceTable": "experiment_change_history",
+      "targetColumns": [
+        "variation_id"
+      ],
+      "sourceColumns": [
+        "action_id"
+      ]
+    },
+    {
+      "targetTable": "project",
+      "sourceTable": "audience",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "project_id"
+      ]
+    },
+    {
+      "targetTable": "campaign_history",
+      "sourceTable": "campaign_page_history",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "campaign_id"
+      ]
+    },
+    {
+      "targetTable": "campaign_history",
+      "sourceTable": "campaign_page_history",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "campaign_last_modified"
+      ]
+    },
+    {
+      "targetTable": "page",
+      "sourceTable": "campaign_page_history",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "page_id"
+      ]
+    },
+    {
+      "targetTable": "project",
+      "sourceTable": "event",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "project_id"
+      ]
+    },
+    {
+      "targetTable": "page",
+      "sourceTable": "event",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "page_id"
+      ]
+    },
+    {
+      "targetTable": "experiment_change_history",
+      "sourceTable": "experiment_change_dependency_history",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "change_id"
+      ]
+    },
+    {
+      "targetTable": "experiment_history",
+      "sourceTable": "experiment_change_dependency_history",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "experiment_id"
+      ]
+    },
+    {
+      "targetTable": "experiment_history",
+      "sourceTable": "experiment_change_dependency_history",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "experiment_last_modified"
+      ]
+    },
+    {
+      "targetTable": "project",
+      "sourceTable": "sdk",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "project_id"
+      ]
+    },
+    {
+      "targetTable": "campaign_history",
+      "sourceTable": "campaign_change_history",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "campaign_id"
+      ]
+    },
+    {
+      "targetTable": "campaign_history",
+      "sourceTable": "campaign_change_history",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "campaign_last_modified"
+      ]
+    },
+    {
+      "targetTable": "conversion",
+      "sourceTable": "conversion_tag",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "conversion_id"
+      ]
+    },
+    {
+      "targetTable": "plan",
+      "sourceTable": "product_usage",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "plan_id"
+      ]
+    },
+    {
+      "targetTable": "project",
+      "sourceTable": "extension",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "project_id"
+      ]
+    },
+    {
+      "targetTable": "extension",
+      "sourceTable": "field",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "extension_id"
+      ]
+    },
+    {
+      "targetTable": "group",
+      "sourceTable": "group_entity",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "group_id"
+      ]
+    },
+    {
+      "targetTable": "project",
+      "sourceTable": "attribute",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "project_id"
+      ]
+    },
+    {
+      "targetTable": "campaign_history",
+      "sourceTable": "campaign_metric_history",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "campaign_id"
+      ]
+    },
+    {
+      "targetTable": "campaign_history",
+      "sourceTable": "campaign_metric_history",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "campaign_last_modified"
+      ]
+    },
+    {
+      "targetTable": "event",
+      "sourceTable": "campaign_metric_history",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "event_id"
+      ]
+    },
+    {
+      "targetTable": "project",
+      "sourceTable": "group",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "project_id"
+      ]
+    },
+    {
+      "targetTable": "campaign_history",
+      "sourceTable": "experiment_history",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "campaign_id"
+      ]
+    },
+    {
+      "targetTable": "project",
+      "sourceTable": "experiment_history",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "project_id"
+      ]
+    },
+    {
+      "targetTable": "page",
+      "sourceTable": "experiment_history",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "url_targeting_page_id"
+      ]
+    },
+    {
+      "targetTable": "experiment_history",
+      "sourceTable": "experiment_variation_history",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "experiment_id"
+      ]
+    },
+    {
+      "targetTable": "experiment_history",
+      "sourceTable": "experiment_variation_history",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "experiment_last_modified"
+      ]
+    },
+    {
+      "targetTable": "campaign_change_history",
+      "sourceTable": "campaign_change_dependency_history",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "change_id"
+      ]
+    },
+    {
+      "targetTable": "campaign_history",
+      "sourceTable": "campaign_change_dependency_history",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "campaign_id"
+      ]
+    },
+    {
+      "targetTable": "campaign_history",
+      "sourceTable": "campaign_change_dependency_history",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "campaign_last_modified"
+      ]
+    },
+    {
+      "targetTable": "campaign_change_history",
+      "sourceTable": "campaign_change_dependency_history",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "dependent_change_id"
+      ]
+    },
+    {
+      "targetTable": "decision",
+      "sourceTable": "decision_attribute",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "decision_id"
+      ]
+    },
+    {
+      "targetTable": "experiment_history",
+      "sourceTable": "experiment_metric_history",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "experiment_id"
+      ]
+    },
+    {
+      "targetTable": "experiment_history",
+      "sourceTable": "experiment_metric_history",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "experiment_last_modified"
+      ]
+    },
+    {
+      "targetTable": "event",
+      "sourceTable": "experiment_metric_history",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "event_id"
+      ]
+    },
+    {
+      "targetTable": "project",
+      "sourceTable": "project_status",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "project_id"
+      ]
+    },
+    {
+      "targetTable": "project",
+      "sourceTable": "list_attribute",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "project_id"
+      ]
+    },
+    {
+      "targetTable": "experiment_history",
+      "sourceTable": "experiment_page_history",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "experiment_id"
+      ]
+    },
+    {
+      "targetTable": "experiment_history",
+      "sourceTable": "experiment_page_history",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "experiment_last_modified"
+      ]
+    },
+    {
+      "targetTable": "page",
+      "sourceTable": "experiment_page_history",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "page_id"
+      ]
+    },
+    {
+      "targetTable": "conversion",
+      "sourceTable": "conversion_experiment",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "conversion_id"
+      ]
+    },
+    {
+      "targetTable": "campaign_history",
+      "sourceTable": "conversion_experiment",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "campaign_id"
+      ]
+    },
+    {
+      "targetTable": "experiment_history",
+      "sourceTable": "conversion_experiment",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "experiment_id"
+      ]
+    },
+    {
+      "targetTable": "experiment_variation_history",
+      "sourceTable": "conversion_experiment",
+      "targetColumns": [
+        "experiment_id"
+      ],
+      "sourceColumns": [
+        "variation_id"
+      ]
+    },
+    {
+      "targetTable": "experiment_variation_history",
+      "sourceTable": "experiment_variation_action_history",
+      "targetColumns": [
+        "experiment_id"
+      ],
+      "sourceColumns": [
+        "variation_id"
+      ]
+    },
+    {
+      "targetTable": "experiment_history",
+      "sourceTable": "experiment_variation_action_history",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "experiment_id"
+      ]
+    },
+    {
+      "targetTable": "experiment_history",
+      "sourceTable": "experiment_variation_action_history",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "experiment_last_modified"
+      ]
+    },
+    {
+      "targetTable": "page",
+      "sourceTable": "experiment_variation_action_history",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "page_id"
+      ]
+    }
+  ],
+  "positions": {
+    "6392030c3d": {
+      "x": 512,
+      "y": 157.1880041608929
+    },
+    "decision": {
+      "x": 4727,
+      "y": 772.0355497491448
+    },
+    "page": {
+      "x": 2104,
+      "y": 538.9057464675589
+    },
+    "conversion_attribute": {
+      "x": 3719,
+      "y": 160
+    },
+    "campaign_history": {
+      "x": 2689.5329798722564,
+      "y": 1196.870470101149
+    },
+    "experiment_change_history": {
+      "x": 3805.2277862505794,
+      "y": 2455.3482268994444
+    },
+    "campaign_page_history": {
+      "x": 2104,
+      "y": 234.90574646755886
+    },
+    "event": {
+      "x": 8,
+      "y": 365.4112036938197
+    },
+    "experiment_change_dependency_history": {
+      "x": 3729.519647732785,
+      "y": 2115.3482268994444
+    },
+    "project": {
+      "x": 1354.465102413192,
+      "y": 1193.188004160893
+    },
+    "campaign_change_history": {
+      "x": 2710.884914080916,
+      "y": 336.8704701011491
+    },
+    "conversion_tag": {
+      "x": 3719,
+      "y": 1252
+    },
+    "product_usage": {
+      "x": 4309.22778625058,
+      "y": 2405.7244670478512
+    },
+    "extension": {
+      "x": 1357.8138925405694,
+      "y": 2762.838395020779
+    },
+    "field": {
+      "x": 1546.572589667898,
+      "y": 3282.838395020779
+    },
+    "group_entity": {
+      "x": 2050.5725896678982,
+      "y": 3272.659680059312
+    },
+    "plan": {
+      "x": 4332.495878818962,
+      "y": 2961.7244670478517
+    },
+    "campaign_metric_history": {
+      "x": 2104,
+      "y": 1166.905746467573
+    },
+    "group": {
+      "x": 1861.8138925405692,
+      "y": 2761.4975203867634
+    },
+    "experiment_history": {
+      "x": 2663.4599357054335,
+      "y": 1932.8704701011493
+    },
+    "experiment_variation_history": {
+      "x": 3225.519647732785,
+      "y": 2070.674620890289
+    },
+    "campaign_change_dependency_history": {
+      "x": 2608,
+      "y": 856.8704701011491
+    },
+    "decision_attribute": {
+      "x": 4223,
+      "y": 895.1748759711459
+    },
+    "experiment_metric_history": {
+      "x": 3276.310384434703,
+      "y": 3306.674620890289
+    },
+    "experiment_result_history": {
+      "x": 2554.5725896678982,
+      "y": 2992.8704701011493
+    },
+    "experiment_page_history": {
+      "x": 3278.9629948485613,
+      "y": 3002.674620890289
+    },
+    "conversion_experiment": {
+      "x": 3719,
+      "y": 688
+    },
+    "conversion": {
+      "x": 3215,
+      "y": 444.1880041608929
+    },
+    "experiment_variation_action_history": {
+      "x": 3167.459935705434,
+      "y": 2590.674620890289
+    },
+    "audience": {
+      "x": 64,
+      "y": 488
+    },
+    "project_status": {
+      "x": 544,
+      "y": 596
+    },
+    "sdk": {
+      "x": 1024,
+      "y": 64
+    },
+    "attribute": {
+      "x": 64,
+      "y": 64
+    },
+    "list_attribute": {
+      "x": 544,
+      "y": 64
+    }
+  },
+  "notes": {
+    "byTable": {
+      "conversion": {
+        "content": "## Note\n\nThese columns are only available when connector sync mode is \u201cpacked\u201d. For more information, see our Pack Mode [documentation](https://fivetran.com/docs/connectors/applications/optimizely?_gl=1*4tljj0*_gcl_aw*R0NMLjE3NjE3NDI3MjQuQ2owS0NRanc5b2JJQmhDQUFSSXNBR0htMW1RRWpQY0FRRlNNTjFQTFRBdTZJOFBHcXNWcUlMRFFKOTQ2eFVoc1NwRmdqWjh3Y19hUkZxMGFBZ2R6RUFMd193Y0I.*_gcl_au*NDQ0MDA3NjQ2LjE3NjEwNTE5MDI.*_ga*MTAxMTkyNzI2Mi4xNzYxMDUxOTAz*_ga_NE72Z5F3GB*czE3NjE4Mjc5NzUkbzI3JGcxJHQxNzYxODM2MDMzJGo2MCRsMCRoMA..*_ga_MD1R8Y04Z3*czE3NjE4Mjc5NzUkbzI3JGcxJHQxNzYxODM2MDMzJGo2MCRsMCRoMA..#packedmode).\n\n\n\n| Columns|\n|--------|\n| attrbutes |\n| experiments |\n| tags| \n\n",
+        "width": 384,
+        "height": 245
+      },
+      "conversion_attribute": {
+        "content": "## Note \n\nThis tables are available only when connector sync mode is \u201cunpacked\u201d. For more information, see our Pack Mode [documentation](https://fivetran.com/docs/applications/optimizely#packmodeoptions).",
+        "width": 384,
+        "height": 136
+      },
+      "conversion_experiment": {
+        "content": "## Note \n\nThis tables are available only when connector sync mode is \u201cunpacked\u201d. For more information, see our Pack Mode [documentation](https://fivetran.com/docs/applications/optimizely#packmodeoptions).",
+        "width": 384,
+        "height": 136
+      },
+      "conversion_tag": {
+        "content": "## Note \n\nThis tables are available only when connector sync mode is \u201cunpacked\u201d. For more information, see our Pack Mode [documentation](https://fivetran.com/docs/applications/optimizely#packmodeoptions).",
+        "width": 384,
+        "height": 136
+      },
+      "decision_attribute": {
+        "content": "## Note \n\nThis tables are available only when connector sync mode is \u201cunpacked\u201d. For more information, see our Pack Mode [documentation](https://fivetran.com/docs/applications/optimizely#packmodeoptions).",
+        "width": 384,
+        "height": 136
+      },
+      "decision": {
+        "content": "## Note\n\nThis column are only available when connector sync mode is \u201cpacked\u201d. For more information, see our Pack Mode [documentation](https://fivetran.com/docs/connectors/applications/optimizely?_gl=1*4tljj0*_gcl_aw*R0NMLjE3NjE3NDI3MjQuQ2owS0NRanc5b2JJQmhDQUFSSXNBR0htMW1RRWpQY0FRRlNNTjFQTFRBdTZJOFBHcXNWcUlMRFFKOTQ2eFVoc1NwRmdqWjh3Y19hUkZxMGFBZ2R6RUFMd193Y0I.*_gcl_au*NDQ0MDA3NjQ2LjE3NjEwNTE5MDI.*_ga*MTAxMTkyNzI2Mi4xNzYxMDUxOTAz*_ga_NE72Z5F3GB*czE3NjE4Mjc5NzUkbzI3JGcxJHQxNzYxODM2MDMzJGo2MCRsMCRoMA..*_ga_MD1R8Y04Z3*czE3NjE4Mjc5NzUkbzI3JGcxJHQxNzYxODM2MDMzJGo2MCRsMCRoMA..#packedmode).\n\n\n\n| Column|\n|--------|\n| attrbutes |\n\n\n",
+        "width": 384,
+        "height": 195
+      }
+    },
+    "generalNotes": []
+  },
+  "tableGroups": [
+    {
+      "id": "6392030c3d",
+      "parentTable": "project",
+      "tables": [
+        "audience",
+        "project_status",
+        "sdk",
+        "attribute",
+        "list_attribute"
+      ],
+      "excludedTables": [],
+      "width": 1472,
+      "height": 916
+    }
+  ]
+}

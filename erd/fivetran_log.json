@@ -1,0 +1,1893 @@
+{
+  "tables": [
+    {
+      "name": "role_permission",
+      "columns": [
+        {
+          "name": "permission",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "role_id",
+          "type": "String",
+          "primaryKey": true,
+          "foreignKey": true
+        }
+      ],
+      "tags": [],
+      "link": null
+    },
+    {
+      "name": "destination",
+      "columns": [
+        {
+          "name": "id",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "account_id",
+          "type": "String",
+          "foreignKey": true
+        },
+        {
+          "name": "created_at",
+          "type": "Instant"
+        },
+        {
+          "name": "deployment_type",
+          "type": "String"
+        },
+        {
+          "name": "destination_type",
+          "type": "String"
+        },
+        {
+          "name": "is_active",
+          "type": "Boolean"
+        },
+        {
+          "name": "name",
+          "type": "String"
+        },
+        {
+          "name": "region",
+          "type": "String"
+        }
+      ],
+      "tags": [],
+      "link": null
+    },
+    {
+      "name": "destination_column_change_event",
+      "columns": [
+        {
+          "name": "attribute_name",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "detected_at",
+          "type": "Instant",
+          "primaryKey": true
+        },
+        {
+          "name": "column_id",
+          "type": "Long",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "connection_id",
+          "type": "String",
+          "foreignKey": true
+        },
+        {
+          "name": "destination_id",
+          "type": "String",
+          "foreignKey": true
+        },
+        {
+          "name": "change_type",
+          "type": "String"
+        },
+        {
+          "name": "new_value",
+          "type": "String"
+        }
+      ],
+      "tags": [],
+      "link": null
+    },
+    {
+      "name": "destination_table_change_event",
+      "columns": [
+        {
+          "name": "detected_at",
+          "type": "Instant",
+          "primaryKey": true
+        },
+        {
+          "name": "table_id",
+          "type": "Long",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "connection_id",
+          "type": "String",
+          "foreignKey": true
+        },
+        {
+          "name": "destination_id",
+          "type": "String",
+          "foreignKey": true
+        },
+        {
+          "name": "change_type",
+          "type": "String"
+        }
+      ],
+      "tags": [],
+      "link": null
+    },
+    {
+      "name": "source_column_change_event",
+      "columns": [
+        {
+          "name": "attribute_name",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "detected_at",
+          "type": "Instant",
+          "primaryKey": true
+        },
+        {
+          "name": "entity_type",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "column_id",
+          "type": "Long",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "connection_id",
+          "type": "String",
+          "foreignKey": true
+        },
+        {
+          "name": "change_type",
+          "type": "String"
+        },
+        {
+          "name": "new_value",
+          "type": "String"
+        }
+      ],
+      "tags": [],
+      "link": null
+    },
+    {
+      "name": "resource_membership",
+      "columns": [
+        {
+          "name": "id",
+          "type": "Long",
+          "primaryKey": true
+        },
+        {
+          "name": "account_id",
+          "type": "String",
+          "foreignKey": true
+        },
+        {
+          "name": "connection_id",
+          "type": "String",
+          "foreignKey": true
+        },
+        {
+          "name": "destination_id",
+          "type": "String",
+          "foreignKey": true
+        },
+        {
+          "name": "role_id",
+          "type": "String",
+          "foreignKey": true
+        },
+        {
+          "name": "team_id",
+          "type": "String",
+          "foreignKey": true
+        },
+        {
+          "name": "user_id",
+          "type": "String",
+          "foreignKey": true
+        },
+        {
+          "name": "created_at",
+          "type": "Instant"
+        },
+        {
+          "name": "organization_id",
+          "type": "String"
+        }
+      ],
+      "tags": [],
+      "link": null
+    },
+    {
+      "name": "table_lineage",
+      "columns": [
+        {
+          "name": "destination_table_id",
+          "type": "Long",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "source_table_id",
+          "type": "Long",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "created_at",
+          "type": "Instant"
+        }
+      ],
+      "tags": [],
+      "link": null
+    },
+    {
+      "name": "source_schema_change_event",
+      "columns": [
+        {
+          "name": "detected_at",
+          "type": "Instant",
+          "primaryKey": true
+        },
+        {
+          "name": "schema_id",
+          "type": "Int",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "connection_id",
+          "type": "String",
+          "foreignKey": true
+        },
+        {
+          "name": "change_type",
+          "type": "String"
+        }
+      ],
+      "tags": [],
+      "link": null
+    },
+    {
+      "name": "incremental_mar",
+      "columns": [
+        {
+          "name": "free_type",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "measured_date",
+          "type": "LocalDate",
+          "primaryKey": true
+        },
+        {
+          "name": "schema_name",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "sync_type",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "table_name",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "connection_name",
+          "type": "String",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "destination_id",
+          "type": "String",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "incremental_rows",
+          "type": "Long"
+        },
+        {
+          "name": "updated_at",
+          "type": "Instant"
+        }
+      ],
+      "tags": [],
+      "link": null
+    },
+    {
+      "name": "connector_sdk_log",
+      "columns": [
+        {
+          "name": "event_time",
+          "type": "Instant",
+          "primaryKey": true
+        },
+        {
+          "name": "id",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "connection_id",
+          "type": "String",
+          "foreignKey": true
+        },
+        {
+          "name": "level",
+          "type": "String"
+        },
+        {
+          "name": "message",
+          "type": "String"
+        },
+        {
+          "name": "message_origin",
+          "type": "String"
+        },
+        {
+          "name": "sync_id",
+          "type": "String"
+        }
+      ],
+      "tags": [],
+      "link": null
+    },
+    {
+      "name": "source_table",
+      "columns": [
+        {
+          "name": "id",
+          "type": "Long",
+          "primaryKey": true
+        },
+        {
+          "name": "connection_id",
+          "type": "String",
+          "foreignKey": true
+        },
+        {
+          "name": "schema_id",
+          "type": "Int",
+          "foreignKey": true
+        },
+        {
+          "name": "created_at",
+          "type": "Instant"
+        },
+        {
+          "name": "name",
+          "type": "String"
+        }
+      ],
+      "tags": [],
+      "link": null
+    },
+    {
+      "name": "destination_schema_change_event",
+      "columns": [
+        {
+          "name": "detected_at",
+          "type": "Instant",
+          "primaryKey": true
+        },
+        {
+          "name": "schema_id",
+          "type": "Int",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "connection_id",
+          "type": "String",
+          "foreignKey": true
+        },
+        {
+          "name": "destination_id",
+          "type": "String",
+          "foreignKey": true
+        },
+        {
+          "name": "change_type",
+          "type": "String"
+        }
+      ],
+      "tags": [],
+      "link": null
+    },
+    {
+      "name": "user",
+      "columns": [
+        {
+          "name": "id",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "created_at",
+          "type": "Instant"
+        },
+        {
+          "name": "email",
+          "type": "String"
+        },
+        {
+          "name": "email_disabled",
+          "type": "Boolean"
+        },
+        {
+          "name": "family_name",
+          "type": "String"
+        },
+        {
+          "name": "given_name",
+          "type": "String"
+        },
+        {
+          "name": "phone",
+          "type": "String"
+        },
+        {
+          "name": "verified",
+          "type": "Boolean"
+        }
+      ],
+      "tags": [],
+      "link": null
+    },
+    {
+      "name": "column_lineage",
+      "columns": [
+        {
+          "name": "destination_column_id",
+          "type": "Long",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "source_column_id",
+          "type": "Long",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "created_at",
+          "type": "Instant"
+        }
+      ],
+      "tags": [],
+      "link": null
+    },
+    {
+      "name": "role_connector_type",
+      "columns": [
+        {
+          "name": "connector_type",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "role_id",
+          "type": "String",
+          "primaryKey": true,
+          "foreignKey": true
+        }
+      ],
+      "tags": [],
+      "link": null
+    },
+    {
+      "name": "usage_cost",
+      "columns": [
+        {
+          "name": "measured_month",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "destination_id",
+          "type": "String",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "amount",
+          "type": "BigDecimal"
+        }
+      ],
+      "tags": [],
+      "link": null
+    },
+    {
+      "name": "account",
+      "columns": [
+        {
+          "name": "id",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "country",
+          "type": "String"
+        },
+        {
+          "name": "created_at",
+          "type": "Instant"
+        },
+        {
+          "name": "name",
+          "type": "String"
+        },
+        {
+          "name": "status",
+          "type": "String"
+        }
+      ],
+      "tags": [],
+      "link": null
+    },
+    {
+      "name": "team_membership",
+      "columns": [
+        {
+          "name": "role_id",
+          "type": "String",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "team_id",
+          "type": "String",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "user_id",
+          "type": "String",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "created_at",
+          "type": "Instant"
+        }
+      ],
+      "tags": [],
+      "link": null
+    },
+    {
+      "name": "transformation_runs",
+      "columns": [
+        {
+          "name": "free_type",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "job_id",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "measured_date",
+          "type": "LocalDate",
+          "primaryKey": true
+        },
+        {
+          "name": "project_type",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "destination_id",
+          "type": "String",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "job_name",
+          "type": "String"
+        },
+        {
+          "name": "model_runs",
+          "type": "Long"
+        },
+        {
+          "name": "updated_at",
+          "type": "Instant"
+        }
+      ],
+      "tags": [],
+      "link": null
+    },
+    {
+      "name": "source_column",
+      "columns": [
+        {
+          "name": "id",
+          "type": "Long",
+          "primaryKey": true
+        },
+        {
+          "name": "connection_id",
+          "type": "String",
+          "foreignKey": true
+        },
+        {
+          "name": "table_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "created_at",
+          "type": "Instant"
+        },
+        {
+          "name": "is_primary_key",
+          "type": "Boolean"
+        },
+        {
+          "name": "name",
+          "type": "String"
+        },
+        {
+          "name": "type",
+          "type": "String"
+        },
+        {
+          "name": "updated_at",
+          "type": "Instant"
+        }
+      ],
+      "tags": [],
+      "link": null
+    },
+    {
+      "name": "team",
+      "columns": [
+        {
+          "name": "id",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "account_id",
+          "type": "String",
+          "foreignKey": true
+        },
+        {
+          "name": "description",
+          "type": "String"
+        },
+        {
+          "name": "name",
+          "type": "String"
+        },
+        {
+          "name": "parent_id",
+          "type": "String"
+        }
+      ],
+      "tags": [],
+      "link": null
+    },
+    {
+      "name": "credits_used",
+      "columns": [
+        {
+          "name": "measured_month",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "destination_id",
+          "type": "String",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "credits_consumed",
+          "type": "Int"
+        }
+      ],
+      "tags": [],
+      "link": null
+    },
+    {
+      "name": "destination_schema",
+      "columns": [
+        {
+          "name": "id",
+          "type": "Int",
+          "primaryKey": true
+        },
+        {
+          "name": "destination_id",
+          "type": "String",
+          "foreignKey": true
+        },
+        {
+          "name": "connection_id",
+          "type": "String"
+        },
+        {
+          "name": "created_at",
+          "type": "Instant"
+        },
+        {
+          "name": "name",
+          "type": "String"
+        }
+      ],
+      "tags": [],
+      "link": null
+    },
+    {
+      "name": "connector_type",
+      "columns": [
+        {
+          "name": "id",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "availability",
+          "type": "String"
+        },
+        {
+          "name": "created_at",
+          "type": "Instant"
+        },
+        {
+          "name": "deleted",
+          "type": "Boolean"
+        },
+        {
+          "name": "official_connector_name",
+          "type": "String"
+        },
+        {
+          "name": "public_beta_at",
+          "type": "Instant"
+        },
+        {
+          "name": "release_at",
+          "type": "Instant"
+        },
+        {
+          "name": "type",
+          "type": "String"
+        }
+      ],
+      "tags": [],
+      "link": null
+    },
+    {
+      "name": "audit_trail",
+      "columns": [
+        {
+          "name": "captured_at",
+          "type": "Instant",
+          "primaryKey": true
+        },
+        {
+          "name": "id",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "user_id",
+          "type": "String",
+          "foreignKey": true
+        },
+        {
+          "name": "action",
+          "type": "String"
+        },
+        {
+          "name": "interaction_method",
+          "type": "String"
+        },
+        {
+          "name": "new_values",
+          "type": "String"
+        },
+        {
+          "name": "old_values",
+          "type": "String"
+        },
+        {
+          "name": "primary_resource_id",
+          "type": "String"
+        },
+        {
+          "name": "primary_resource_type",
+          "type": "String"
+        },
+        {
+          "name": "secondary_resource_id",
+          "type": "String"
+        },
+        {
+          "name": "secondary_resource_type",
+          "type": "String"
+        }
+      ],
+      "tags": [],
+      "link": null
+    },
+    {
+      "name": "source_table_change_event",
+      "columns": [
+        {
+          "name": "detected_at",
+          "type": "Instant",
+          "primaryKey": true
+        },
+        {
+          "name": "table_id",
+          "type": "Long",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "connection_id",
+          "type": "String",
+          "foreignKey": true
+        },
+        {
+          "name": "change_type",
+          "type": "String"
+        }
+      ],
+      "tags": [],
+      "link": null
+    },
+    {
+      "name": "log",
+      "columns": [
+        {
+          "name": "id",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "time_stamp",
+          "type": "Instant",
+          "primaryKey": true
+        },
+        {
+          "name": "connection_id",
+          "type": "String",
+          "foreignKey": true
+        },
+        {
+          "name": "event",
+          "type": "String"
+        },
+        {
+          "name": "message_data",
+          "type": "String"
+        },
+        {
+          "name": "message_event",
+          "type": "String"
+        },
+        {
+          "name": "sync_id",
+          "type": "String"
+        }
+      ],
+      "tags": [],
+      "link": null
+    },
+    {
+      "name": "destination_table",
+      "columns": [
+        {
+          "name": "id",
+          "type": "Long",
+          "primaryKey": true
+        },
+        {
+          "name": "destination_id",
+          "type": "String",
+          "foreignKey": true
+        },
+        {
+          "name": "schema_id",
+          "type": "Int",
+          "foreignKey": true
+        },
+        {
+          "name": "connection_id",
+          "type": "String"
+        },
+        {
+          "name": "created_at",
+          "type": "Instant"
+        },
+        {
+          "name": "name",
+          "type": "String"
+        }
+      ],
+      "tags": [],
+      "link": null
+    },
+    {
+      "name": "source_foreign_key",
+      "columns": [
+        {
+          "name": "column_id",
+          "type": "Long",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "created_at",
+          "type": "Instant"
+        },
+        {
+          "name": "foreign_key_reference",
+          "type": "String"
+        },
+        {
+          "name": "ordinal",
+          "type": "Int"
+        },
+        {
+          "name": "updated_at",
+          "type": "Instant"
+        }
+      ],
+      "tags": [],
+      "link": null
+    },
+    {
+      "name": "connection",
+      "columns": [
+        {
+          "name": "connection_id",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "connecting_user_id",
+          "type": "String",
+          "foreignKey": true
+        },
+        {
+          "name": "connector_type_id",
+          "type": "String",
+          "foreignKey": true
+        },
+        {
+          "name": "destination_id",
+          "type": "String",
+          "foreignKey": true
+        },
+        {
+          "name": "connection_name",
+          "type": "String"
+        },
+        {
+          "name": "deployment_type",
+          "type": "String"
+        },
+        {
+          "name": "paused",
+          "type": "Boolean"
+        },
+        {
+          "name": "signed_up",
+          "type": "Instant"
+        },
+        {
+          "name": "sync_frequency",
+          "type": "Int"
+        }
+      ],
+      "tags": [],
+      "link": null
+    },
+    {
+      "name": "source_schema",
+      "columns": [
+        {
+          "name": "id",
+          "type": "Int",
+          "primaryKey": true
+        },
+        {
+          "name": "connection_id",
+          "type": "String",
+          "foreignKey": true
+        },
+        {
+          "name": "created_at",
+          "type": "Instant"
+        },
+        {
+          "name": "name",
+          "type": "String"
+        }
+      ],
+      "tags": [],
+      "link": null
+    },
+    {
+      "name": "destination_column",
+      "columns": [
+        {
+          "name": "id",
+          "type": "Long",
+          "primaryKey": true
+        },
+        {
+          "name": "destination_id",
+          "type": "String",
+          "foreignKey": true
+        },
+        {
+          "name": "table_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "connection_id",
+          "type": "String"
+        },
+        {
+          "name": "created_at",
+          "type": "Instant"
+        },
+        {
+          "name": "name",
+          "type": "String"
+        },
+        {
+          "name": "type",
+          "type": "String"
+        },
+        {
+          "name": "updated_at",
+          "type": "Instant"
+        }
+      ],
+      "tags": [],
+      "link": null
+    },
+    {
+      "name": "role",
+      "columns": [
+        {
+          "name": "id",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "account_id",
+          "type": "String",
+          "foreignKey": true
+        },
+        {
+          "name": "connector_types",
+          "type": "Json"
+        },
+        {
+          "name": "description",
+          "type": "String"
+        },
+        {
+          "name": "name",
+          "type": "String"
+        }
+      ],
+      "tags": [],
+      "link": null
+    },
+    {
+      "name": "schema_lineage",
+      "columns": [
+        {
+          "name": "destination_schema_id",
+          "type": "Int",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "source_schema_id",
+          "type": "Int",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "created_at",
+          "type": "Instant"
+        }
+      ],
+      "tags": [],
+      "link": null
+    }
+  ],
+  "relations": [
+    {
+      "targetTable": "role",
+      "sourceTable": "role_permission",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "role_id"
+      ]
+    },
+    {
+      "targetTable": "account",
+      "sourceTable": "destination",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "account_id"
+      ]
+    },
+    {
+      "targetTable": "destination",
+      "sourceTable": "destination_column_change_event",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "destination_id"
+      ]
+    },
+    {
+      "targetTable": "connection",
+      "sourceTable": "destination_column_change_event",
+      "targetColumns": [
+        "connection_id"
+      ],
+      "sourceColumns": [
+        "connection_id"
+      ]
+    },
+    {
+      "targetTable": "destination_column",
+      "sourceTable": "destination_column_change_event",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "column_id"
+      ]
+    },
+    {
+      "targetTable": "destination",
+      "sourceTable": "destination_table_change_event",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "destination_id"
+      ]
+    },
+    {
+      "targetTable": "connection",
+      "sourceTable": "destination_table_change_event",
+      "targetColumns": [
+        "connection_id"
+      ],
+      "sourceColumns": [
+        "connection_id"
+      ]
+    },
+    {
+      "targetTable": "destination_table",
+      "sourceTable": "destination_table_change_event",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "table_id"
+      ]
+    },
+    {
+      "targetTable": "connection",
+      "sourceTable": "source_column_change_event",
+      "targetColumns": [
+        "connection_id"
+      ],
+      "sourceColumns": [
+        "connection_id"
+      ]
+    },
+    {
+      "targetTable": "source_column",
+      "sourceTable": "source_column_change_event",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "column_id"
+      ]
+    },
+    {
+      "targetTable": "role",
+      "sourceTable": "resource_membership",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "role_id"
+      ]
+    },
+    {
+      "targetTable": "team",
+      "sourceTable": "resource_membership",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "team_id"
+      ]
+    },
+    {
+      "targetTable": "user",
+      "sourceTable": "resource_membership",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "user_id"
+      ]
+    },
+    {
+      "targetTable": "account",
+      "sourceTable": "resource_membership",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "account_id"
+      ]
+    },
+    {
+      "targetTable": "destination",
+      "sourceTable": "resource_membership",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "destination_id"
+      ]
+    },
+    {
+      "targetTable": "connection",
+      "sourceTable": "resource_membership",
+      "targetColumns": [
+        "connection_id"
+      ],
+      "sourceColumns": [
+        "connection_id"
+      ]
+    },
+    {
+      "targetTable": "source_table",
+      "sourceTable": "table_lineage",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "source_table_id"
+      ]
+    },
+    {
+      "targetTable": "destination_table",
+      "sourceTable": "table_lineage",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "destination_table_id"
+      ]
+    },
+    {
+      "targetTable": "connection",
+      "sourceTable": "source_schema_change_event",
+      "targetColumns": [
+        "connection_id"
+      ],
+      "sourceColumns": [
+        "connection_id"
+      ]
+    },
+    {
+      "targetTable": "source_schema",
+      "sourceTable": "source_schema_change_event",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "schema_id"
+      ]
+    },
+    {
+      "targetTable": "destination",
+      "sourceTable": "incremental_mar",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "destination_id"
+      ]
+    },
+    {
+      "targetTable": "connection",
+      "sourceTable": "incremental_mar",
+      "targetColumns": [
+        "connection_name"
+      ],
+      "sourceColumns": [
+        "connection_name"
+      ]
+    },
+    {
+      "targetTable": "connection",
+      "sourceTable": "connector_sdk_log",
+      "targetColumns": [
+        "connection_id"
+      ],
+      "sourceColumns": [
+        "connection_id"
+      ]
+    },
+    {
+      "targetTable": "connection",
+      "sourceTable": "source_table",
+      "targetColumns": [
+        "connection_id"
+      ],
+      "sourceColumns": [
+        "connection_id"
+      ]
+    },
+    {
+      "targetTable": "source_schema",
+      "sourceTable": "source_table",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "schema_id"
+      ]
+    },
+    {
+      "targetTable": "destination",
+      "sourceTable": "destination_schema_change_event",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "destination_id"
+      ]
+    },
+    {
+      "targetTable": "connection",
+      "sourceTable": "destination_schema_change_event",
+      "targetColumns": [
+        "connection_id"
+      ],
+      "sourceColumns": [
+        "connection_id"
+      ]
+    },
+    {
+      "targetTable": "destination_schema",
+      "sourceTable": "destination_schema_change_event",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "schema_id"
+      ]
+    },
+    {
+      "targetTable": "source_column",
+      "sourceTable": "column_lineage",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "source_column_id"
+      ]
+    },
+    {
+      "targetTable": "destination_column",
+      "sourceTable": "column_lineage",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "destination_column_id"
+      ]
+    },
+    {
+      "targetTable": "role",
+      "sourceTable": "role_connector_type",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "role_id"
+      ]
+    },
+    {
+      "targetTable": "destination",
+      "sourceTable": "usage_cost",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "destination_id"
+      ]
+    },
+    {
+      "targetTable": "user",
+      "sourceTable": "team_membership",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "user_id"
+      ]
+    },
+    {
+      "targetTable": "team",
+      "sourceTable": "team_membership",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "team_id"
+      ]
+    },
+    {
+      "targetTable": "role",
+      "sourceTable": "team_membership",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "role_id"
+      ]
+    },
+    {
+      "targetTable": "destination",
+      "sourceTable": "transformation_runs",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "destination_id"
+      ]
+    },
+    {
+      "targetTable": "connection",
+      "sourceTable": "source_column",
+      "targetColumns": [
+        "connection_id"
+      ],
+      "sourceColumns": [
+        "connection_id"
+      ]
+    },
+    {
+      "targetTable": "source_table",
+      "sourceTable": "source_column",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "table_id"
+      ]
+    },
+    {
+      "targetTable": "account",
+      "sourceTable": "team",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "account_id"
+      ]
+    },
+    {
+      "targetTable": "destination",
+      "sourceTable": "credits_used",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "destination_id"
+      ]
+    },
+    {
+      "targetTable": "destination",
+      "sourceTable": "destination_schema",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "destination_id"
+      ]
+    },
+    {
+      "targetTable": "user",
+      "sourceTable": "audit_trail",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "user_id"
+      ]
+    },
+    {
+      "targetTable": "connection",
+      "sourceTable": "source_table_change_event",
+      "targetColumns": [
+        "connection_id"
+      ],
+      "sourceColumns": [
+        "connection_id"
+      ]
+    },
+    {
+      "targetTable": "source_table",
+      "sourceTable": "source_table_change_event",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "table_id"
+      ]
+    },
+    {
+      "targetTable": "connection",
+      "sourceTable": "log",
+      "targetColumns": [
+        "connection_id"
+      ],
+      "sourceColumns": [
+        "connection_id"
+      ]
+    },
+    {
+      "targetTable": "destination",
+      "sourceTable": "destination_table",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "destination_id"
+      ]
+    },
+    {
+      "targetTable": "destination_schema",
+      "sourceTable": "destination_table",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "schema_id"
+      ]
+    },
+    {
+      "targetTable": "source_column",
+      "sourceTable": "source_foreign_key",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "column_id"
+      ]
+    },
+    {
+      "targetTable": "user",
+      "sourceTable": "connection",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "connecting_user_id"
+      ]
+    },
+    {
+      "targetTable": "connector_type",
+      "sourceTable": "connection",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "connector_type_id"
+      ]
+    },
+    {
+      "targetTable": "destination",
+      "sourceTable": "connection",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "destination_id"
+      ]
+    },
+    {
+      "targetTable": "connection",
+      "sourceTable": "source_schema",
+      "targetColumns": [
+        "connection_id"
+      ],
+      "sourceColumns": [
+        "connection_id"
+      ]
+    },
+    {
+      "targetTable": "destination",
+      "sourceTable": "destination_column",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "destination_id"
+      ]
+    },
+    {
+      "targetTable": "destination_table",
+      "sourceTable": "destination_column",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "table_id"
+      ]
+    },
+    {
+      "targetTable": "account",
+      "sourceTable": "role",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "account_id"
+      ]
+    },
+    {
+      "targetTable": "source_schema",
+      "sourceTable": "schema_lineage",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "source_schema_id"
+      ]
+    },
+    {
+      "targetTable": "destination_schema",
+      "sourceTable": "schema_lineage",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "destination_schema_id"
+      ]
+    }
+  ],
+  "positions": {
+    "connector_sdk_log": {
+      "x": 544.0,
+      "y": 557.0
+    },
+    "destination_column_change_event": {
+      "x": 2703.0,
+      "y": 2605.0
+    },
+    "role": {
+      "x": 2144.0,
+      "y": 297.0
+    },
+    "log": {
+      "x": 544.0,
+      "y": 136.0
+    },
+    "source_column_change_event": {
+      "x": 544.0,
+      "y": 1692.0
+    },
+    "destination": {
+      "x": 2144.0,
+      "y": 1251.0
+    },
+    "team_membership": {
+      "x": 2143.896137384896,
+      "y": 8.0
+    },
+    "destination_schema_metadata": {
+      "x": 2144.0,
+      "y": 1692.0
+    },
+    "destination_table_change_event": {
+      "x": 2703.0,
+      "y": 2246.0
+    },
+    "table_lineage": {
+      "x": 1628.0,
+      "y": 2140.0
+    },
+    "destination_schema_change_event": {
+      "x": 2703.0,
+      "y": 1913.0
+    },
+    "source_schema_metadata": {
+      "x": 1124.0,
+      "y": 1692.0
+    },
+    "connector_type": {
+      "x": 1124.0,
+      "y": 486.0
+    },
+    "connection": {
+      "x": 1124.0,
+      "y": 886.0
+    },
+    "source_column_metadata": {
+      "x": 1124.0,
+      "y": 2605.0
+    },
+    "credits_used": {
+      "x": 2703.0,
+      "y": 951.0
+    },
+    "destination_column_metadata": {
+      "x": 2144.0,
+      "y": 2605.0
+    },
+    "resource_membership": {
+      "x": 2144.0,
+      "y": 683.0
+    },
+    "transformation_runs": {
+      "x": 2703.0,
+      "y": 1473.0
+    },
+    "4039966dcf": {
+      "x": 2703.0,
+      "y": 811.0
+    },
+    "team": {
+      "x": 1628.0,
+      "y": 28.0
+    },
+    "source_table_metadata": {
+      "x": 1124.0,
+      "y": 2141.0
+    },
+    "destination_table_metadata": {
+      "x": 2144.0,
+      "y": 2140.0
+    },
+    "role_connector_type": {
+      "x": 1628.0,
+      "y": 647.0
+    },
+    "schema_lineage": {
+      "x": 1628.0,
+      "y": 1692.0
+    },
+    "usage_cost": {
+      "x": 2703.0,
+      "y": 1213.0
+    },
+    "incremental_mar": {
+      "x": 1628.0,
+      "y": 1125.0
+    },
+    "audit_trail": {
+      "x": 2703.0,
+      "y": 398.0
+    },
+    "column_lineage": {
+      "x": 1628.0,
+      "y": 2605.0
+    },
+    "note-ybjhuk4zadq": {
+      "x": 1628.0,
+      "y": 305.0
+    },
+    "role_permission": {
+      "x": 1124.0,
+      "y": 249.0
+    },
+    "source_schema_change_event": {
+      "x": 544.0,
+      "y": 1005.0
+    },
+    "source_table_change_event": {
+      "x": 544.0,
+      "y": 1351.0
+    },
+    "user": {
+      "x": 2703.0,
+      "y": 8.0
+    },
+    "account": {
+      "x": 1124.0,
+      "y": -24.0
+    },
+    "source_foreign_key_metadata": {
+      "x": 527.0,
+      "y": 2605.0
+    }
+  },
+  "notes": {
+    "byTable": {
+      "log": {
+        "content": "- Log events are documented [here](https://fivetran.com/docs/logs#logevents).",
+        "width": 384.0,
+        "height": 56.0
+      }
+    },
+    "generalNotes": [
+      {
+        "id": "note-ybjhuk4zadq",
+        "content": "The following tables are only populated if RBAC is enabled:\n\n- `role`\n- `role_permission`\n- `resource_membership`\n- `team`\n- `team_membership`",
+        "width": 384.0,
+        "height": 183.0
+      }
+    ]
+  },
+  "tableGroups": [
+    {
+      "id": "4039966dcf",
+      "parentTable": "destination",
+      "tables": [],
+      "excludedTables": [
+        "transformation_runs",
+        "usage_cost",
+        "credits_used"
+      ],
+      "width": 64.0,
+      "height": 64.0
+    }
+  ]
+}

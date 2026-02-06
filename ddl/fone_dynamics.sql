@@ -1,0 +1,80 @@
+CREATE TABLE available_number (
+    _fivetran_id text,
+    country_code text,
+    numbers text,
+    PRIMARY KEY (_fivetran_id),
+    FOREIGN KEY (country_code) REFERENCES number(country_code)
+);
+
+CREATE TABLE message (
+    id text,
+    property_sid text,
+    account_sid text,
+    created text,
+    delivered text,
+    delivery_receipt text,
+    direction text,
+    froms text,
+    num_segment text,
+    received text,
+    scheduled text,
+    "status" text,
+    submitted text,
+    text text,
+    tos text,
+    PRIMARY KEY (id, property_sid),
+    FOREIGN KEY (property_sid) REFERENCES number(property_sid)
+);
+
+CREATE TABLE number (
+    id text,
+    numbers text,
+    property_sid text,
+    address_requirement text,
+    address_sid text,
+    capability text,
+    city text,
+    country_code text,
+    end_point_number text,
+    friendly text,
+    recording text,
+    region text,
+    routing_method text,
+    "status" text,
+    "type" text,
+    PRIMARY KEY (id, numbers),
+    FOREIGN KEY (property_sid) REFERENCES query_call(property_sid)
+);
+
+CREATE TABLE query_call (
+    id text,
+    attribution_campaign text,
+    attribution_content text,
+    attribution_medium text,
+    attribution_source text,
+    call_type text,
+    date_start text,
+    disposition text,
+    duration text,
+    endpoint text,
+    from_city text,
+    from_country_code text,
+    from_region text,
+    froms text,
+    google_adwords_click_id text,
+    google_analytics_client_id text,
+    note text,
+    prompts_key text,
+    property_sid text,
+    recording_uri text,
+    session_conversion_uri text,
+    session_keyword text,
+    session_landing_uri text,
+    session_traffic_type text,
+    survey_type text,
+    survey_unique_code text,
+    survey_value text,
+    to_friendly text,
+    tos text,
+    PRIMARY KEY (id)
+);

@@ -1,0 +1,758 @@
+{
+  "tables": [
+    {
+      "name": "agent_status_history",
+      "columns": [
+        {
+          "name": "agent_id",
+          "type": "Long",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "account_id",
+          "type": "Long"
+        },
+        {
+          "name": "event_id",
+          "type": "String"
+        },
+        {
+          "name": "value",
+          "type": "String"
+        }
+      ],
+      "tags": [],
+      "link": "https://developer.zendesk.com/api-reference/live-chat/chat-api/incremental_agent_events_api/"
+    },
+    {
+      "name": "agent_engagement_history",
+      "columns": [
+        {
+          "name": "agent_id",
+          "type": "Long",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "account_id",
+          "type": "Long"
+        },
+        {
+          "name": "event_id",
+          "type": "String"
+        },
+        {
+          "name": "value",
+          "type": "String"
+        }
+      ],
+      "tags": [],
+      "link": "https://developer.zendesk.com/api-reference/live-chat/chat-api/incremental_agent_events_api/"
+    },
+    {
+      "name": "engagement",
+      "columns": [
+        {
+          "name": "id",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "agent_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "chat_id",
+          "type": "String",
+          "foreignKey": true
+        },
+        {
+          "name": "department_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "accepted",
+          "type": "String"
+        },
+        {
+          "name": "assigned",
+          "type": "String"
+        },
+        {
+          "name": "comment",
+          "type": "String"
+        },
+        {
+          "name": "duration",
+          "type": "Long"
+        },
+        {
+          "name": "rating",
+          "type": "String"
+        },
+        {
+          "name": "started_by",
+          "type": "String"
+        },
+        {
+          "name": "timestamps",
+          "type": "Instant"
+        }
+      ],
+      "tags": [],
+      "link": "https://developer.zendesk.com/api-reference/live-chat/chat-api/incremental_export/"
+    },
+    {
+      "name": "visitor",
+      "columns": [
+        {
+          "name": "id",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "email",
+          "type": "String"
+        },
+        {
+          "name": "name",
+          "type": "String"
+        },
+        {
+          "name": "notes",
+          "type": "String"
+        },
+        {
+          "name": "phone",
+          "type": "String"
+        }
+      ],
+      "tags": [],
+      "link": "https://developer.zendesk.com/api-reference/live-chat/chat-api/incremental_export/"
+    },
+    {
+      "name": "chat_history",
+      "columns": [
+        {
+          "name": "index",
+          "type": "Long",
+          "primaryKey": true
+        },
+        {
+          "name": "timestamps",
+          "type": "Instant",
+          "primaryKey": true
+        },
+        {
+          "name": "chat_id",
+          "type": "String",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "agent_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "department_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "prev_department_id",
+          "type": "Long",
+          "foreignKey": true
+        },
+        {
+          "name": "channel",
+          "type": "String"
+        },
+        {
+          "name": "msg",
+          "type": "String"
+        },
+        {
+          "name": "msg_id",
+          "type": "String"
+        },
+        {
+          "name": "name",
+          "type": "String"
+        },
+        {
+          "name": "sender_type",
+          "type": "String"
+        },
+        {
+          "name": "type",
+          "type": "String"
+        }
+      ],
+      "tags": [],
+      "link": "https://developer.zendesk.com/api-reference/live-chat/chat-api/incremental_export/"
+    },
+    {
+      "name": "chat_agent",
+      "columns": [
+        {
+          "name": "agent_id",
+          "type": "Long",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "chat_id",
+          "type": "String",
+          "primaryKey": true,
+          "foreignKey": true
+        }
+      ],
+      "tags": [],
+      "link": "https://developer.zendesk.com/api-reference/live-chat/chat-api/incremental_export/"
+    },
+    {
+      "name": "chat_tag",
+      "columns": [
+        {
+          "name": "tags",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "chat_id",
+          "type": "String",
+          "primaryKey": true,
+          "foreignKey": true
+        }
+      ],
+      "tags": [],
+      "link": "https://developer.zendesk.com/api-reference/live-chat/chat-api/incremental_export/"
+    },
+    {
+      "name": "chat",
+      "columns": [
+        {
+          "name": "id",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "visitor_id",
+          "type": "String",
+          "foreignKey": true
+        },
+        {
+          "name": "comment",
+          "type": "String"
+        },
+        {
+          "name": "count_agent",
+          "type": "Long"
+        },
+        {
+          "name": "count_total",
+          "type": "Long"
+        },
+        {
+          "name": "count_visitor",
+          "type": "Long"
+        },
+        {
+          "name": "dropped",
+          "type": "Boolean"
+        },
+        {
+          "name": "duration",
+          "type": "Long"
+        },
+        {
+          "name": "missed",
+          "type": "Boolean"
+        },
+        {
+          "name": "preview",
+          "type": "String"
+        },
+        {
+          "name": "rating",
+          "type": "String"
+        },
+        {
+          "name": "response_time_avg",
+          "type": "Long"
+        },
+        {
+          "name": "response_time_first",
+          "type": "Long"
+        },
+        {
+          "name": "response_time_max",
+          "type": "Long"
+        },
+        {
+          "name": "session_browser",
+          "type": "String"
+        },
+        {
+          "name": "session_city",
+          "type": "String"
+        },
+        {
+          "name": "session_country_code",
+          "type": "String"
+        },
+        {
+          "name": "session_country_name",
+          "type": "String"
+        },
+        {
+          "name": "session_end_date",
+          "type": "Instant"
+        },
+        {
+          "name": "session_id",
+          "type": "String"
+        },
+        {
+          "name": "session_ip",
+          "type": "String"
+        },
+        {
+          "name": "session_platform",
+          "type": "String"
+        },
+        {
+          "name": "session_region",
+          "type": "String"
+        },
+        {
+          "name": "session_start_date",
+          "type": "Instant"
+        },
+        {
+          "name": "session_user_agent",
+          "type": "String"
+        },
+        {
+          "name": "started_by",
+          "type": "String"
+        },
+        {
+          "name": "timestamps",
+          "type": "Instant"
+        },
+        {
+          "name": "triggered",
+          "type": "Boolean"
+        },
+        {
+          "name": "triggered_response",
+          "type": "Boolean"
+        },
+        {
+          "name": "type",
+          "type": "String"
+        },
+        {
+          "name": "unread",
+          "type": "Boolean"
+        },
+        {
+          "name": "zendesk_ticket_id",
+          "type": "Long"
+        }
+      ],
+      "tags": [],
+      "link": "https://developer.zendesk.com/api-reference/live-chat/chat-api/incremental_export/"
+    },
+    {
+      "name": "department_member",
+      "columns": [
+        {
+          "name": "agent_id",
+          "type": "Long",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "department_id",
+          "type": "Long",
+          "primaryKey": true,
+          "foreignKey": true
+        }
+      ],
+      "tags": [],
+      "link": "https://developer.zendesk.com/api-reference/live-chat/chat-api/incremental_agent_events_api/"
+    },
+    {
+      "name": "department",
+      "columns": [
+        {
+          "name": "id",
+          "type": "Long",
+          "primaryKey": true
+        },
+        {
+          "name": "description",
+          "type": "String"
+        },
+        {
+          "name": "enabled",
+          "type": "Boolean"
+        },
+        {
+          "name": "name",
+          "type": "String"
+        }
+      ],
+      "tags": [],
+      "link": "https://developer.zendesk.com/api-reference/live-chat/chat-api/incremental_agent_events_api/"
+    },
+    {
+      "name": "ban_visitor",
+      "columns": [
+        {
+          "name": "id",
+          "type": "Long",
+          "primaryKey": true
+        },
+        {
+          "name": "visitor_id",
+          "type": "String",
+          "foreignKey": true
+        },
+        {
+          "name": "reason",
+          "type": "String"
+        }
+      ],
+      "tags": [],
+      "link": "https://developer.zendesk.com/api-reference/live-chat/chat-api/bans/"
+    },
+    {
+      "name": "ban_ip",
+      "columns": [
+        {
+          "name": "id",
+          "type": "Long",
+          "primaryKey": true
+        },
+        {
+          "name": "ip_address",
+          "type": "String"
+        },
+        {
+          "name": "reason",
+          "type": "String"
+        }
+      ],
+      "tags": [],
+      "link": "https://developer.zendesk.com/api-reference/live-chat/chat-api/bans/"
+    },
+    {
+      "name": "agent_role",
+      "columns": [
+        {
+          "name": "agent_id",
+          "type": "Long",
+          "primaryKey": true
+        },
+        {
+          "name": "role",
+          "type": "String",
+          "primaryKey": true
+        }
+      ],
+      "tags": [],
+      "link": "https://developer.zendesk.com/api-reference/live-chat/chat-api/agents/"
+    },
+    {
+      "name": "agent",
+      "columns": [
+        {
+          "name": "id",
+          "type": "Long",
+          "primaryKey": true
+        },
+        {
+          "name": "create_date",
+          "type": "Instant"
+        },
+        {
+          "name": "display_name",
+          "type": "String"
+        },
+        {
+          "name": "email",
+          "type": "String"
+        },
+        {
+          "name": "enabled",
+          "type": "Boolean"
+        },
+        {
+          "name": "first_name",
+          "type": "String"
+        },
+        {
+          "name": "im_server_id",
+          "type": "String"
+        },
+        {
+          "name": "last_login",
+          "type": "Instant"
+        },
+        {
+          "name": "last_name",
+          "type": "String"
+        },
+        {
+          "name": "login_count",
+          "type": "Long"
+        }
+      ],
+      "tags": [],
+      "link": "https://developer.zendesk.com/api-reference/live-chat/chat-api/agents/"
+    }
+  ],
+  "relations": [
+    {
+      "targetTable": "agent",
+      "sourceTable": "agent_status_history",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "agent_id"
+      ]
+    },
+    {
+      "targetTable": "agent",
+      "sourceTable": "agent_engagement_history",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "agent_id"
+      ]
+    },
+    {
+      "targetTable": "department",
+      "sourceTable": "engagement",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "department_id"
+      ]
+    },
+    {
+      "targetTable": "chat",
+      "sourceTable": "engagement",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "chat_id"
+      ]
+    },
+    {
+      "targetTable": "agent",
+      "sourceTable": "engagement",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "agent_id"
+      ]
+    },
+    {
+      "targetTable": "department",
+      "sourceTable": "chat_history",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "department_id"
+      ]
+    },
+    {
+      "targetTable": "department",
+      "sourceTable": "chat_history",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "prev_department_id"
+      ]
+    },
+    {
+      "targetTable": "agent",
+      "sourceTable": "chat_history",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "agent_id"
+      ]
+    },
+    {
+      "targetTable": "chat",
+      "sourceTable": "chat_history",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "chat_id"
+      ]
+    },
+    {
+      "targetTable": "agent",
+      "sourceTable": "chat_agent",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "agent_id"
+      ]
+    },
+    {
+      "targetTable": "chat",
+      "sourceTable": "chat_agent",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "chat_id"
+      ]
+    },
+    {
+      "targetTable": "chat",
+      "sourceTable": "chat_tag",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "chat_id"
+      ]
+    },
+    {
+      "targetTable": "visitor",
+      "sourceTable": "chat",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "visitor_id"
+      ]
+    },
+    {
+      "targetTable": "agent",
+      "sourceTable": "department_member",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "agent_id"
+      ]
+    },
+    {
+      "targetTable": "department",
+      "sourceTable": "department_member",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "department_id"
+      ]
+    },
+    {
+      "targetTable": "visitor",
+      "sourceTable": "ban_visitor",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "visitor_id"
+      ]
+    }
+  ],
+  "positions": {
+    "agent_status_history": {
+      "x": 47.06708474556498,
+      "y": 282.4940312282052
+    },
+    "agent_engagement_history": {
+      "x": 8,
+      "y": 586.4940312282051
+    },
+    "engagement": {
+      "x": 1300.433709533729,
+      "y": 977.1412387504629
+    },
+    "visitor": {
+      "x": 2401.8263226484996,
+      "y": 904
+    },
+    "chat_history": {
+      "x": 2402.027464061199,
+      "y": 276
+    },
+    "chat_agent": {
+      "x": 1300.433709533729,
+      "y": 388.4983817434861
+    },
+    "chat_tag": {
+      "x": 2401.905710834973,
+      "y": 8
+    },
+    "chat": {
+      "x": 1804.433709533729,
+      "y": 270.0521128728307
+    },
+    "department_member": {
+      "x": 292.433709533729,
+      "y": 890.4940312282052
+    },
+    "department": {
+      "x": 796.4337095337289,
+      "y": 1151.6807719747774
+    },
+    "ban_visitor": {
+      "x": 2308.433709533729,
+      "y": 1244.0016485056371
+    },
+    "ban_ip": {
+      "x": 2812.433709533729,
+      "y": 1244
+    },
+    "agent_role": {
+      "x": 769.7389935123358,
+      "y": 199.0967504065025
+    },
+    "agent": {
+      "x": 796.4337095337289,
+      "y": 467.0967504065025
+    },
+    "note-hvjqy994oc": {
+      "x": 1804,
+      "y": 1540
+    }
+  },
+  "notes": {
+    "byTable": {},
+    "generalNotes": [
+      {
+        "content": "*zendesk_ticket_id refers to the  Zendesk Ticket which you can sync through our Zendesk connector, it's available under Tickets table. Visit [Zendesk Documentation](https://fivetran.com/docs/application-integrations/zendesk) to learn more about it.",
+        "width": 384,
+        "height": 116,
+        "id": "note-hvjqy994oc"
+      }
+    ]
+  },
+  "tableGroups": []
+}

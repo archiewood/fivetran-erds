@@ -1,0 +1,1977 @@
+{
+  "tables": [
+    {
+      "name": "lambda_vpc_security_group",
+      "columns": [
+        {
+          "name": "security_group_id",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "function_arn",
+          "type": "String",
+          "primaryKey": true,
+          "foreignKey": true
+        }
+      ],
+      "tags": [],
+      "link": "https://docs.aws.amazon.com/cli/latest/reference/lambda/list-functions.html"
+    },
+    {
+      "name": "account_password_policy",
+      "columns": [
+        {
+          "name": "account_id",
+          "type": "String",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "allow_users_to_change_password",
+          "type": "Boolean"
+        },
+        {
+          "name": "expire_passwords",
+          "type": "Boolean"
+        },
+        {
+          "name": "hard_expiry",
+          "type": "Boolean"
+        },
+        {
+          "name": "max_password_age",
+          "type": "Int"
+        },
+        {
+          "name": "minimum_password_length",
+          "type": "Int"
+        },
+        {
+          "name": "password_reuse_prevention",
+          "type": "Int"
+        },
+        {
+          "name": "require_lowercase_characters",
+          "type": "Boolean"
+        },
+        {
+          "name": "require_numbers",
+          "type": "Boolean"
+        },
+        {
+          "name": "require_symbols",
+          "type": "Boolean"
+        },
+        {
+          "name": "require_uppercase_characters",
+          "type": "Boolean"
+        }
+      ],
+      "tags": [],
+      "link": "https://docs.aws.amazon.com/cli/latest/reference/iam/get-account-password-policy.html"
+    },
+    {
+      "name": "vpc",
+      "columns": [
+        {
+          "name": "id",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "cidr_block",
+          "type": "String"
+        },
+        {
+          "name": "cidr_block_association_set",
+          "type": "Json"
+        },
+        {
+          "name": "dhcp_options_id",
+          "type": "String"
+        },
+        {
+          "name": "instance_tenancy",
+          "type": "String"
+        },
+        {
+          "name": "ipv_6_cidr_block_association_set",
+          "type": "Json"
+        },
+        {
+          "name": "is_default",
+          "type": "Boolean"
+        },
+        {
+          "name": "state",
+          "type": "String"
+        },
+        {
+          "name": "tags",
+          "type": "Json"
+        }
+      ],
+      "tags": [],
+      "link": "https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeVpcs.html"
+    },
+    {
+      "name": "account_virtual_mfa_device",
+      "columns": [
+        {
+          "name": "serial_number",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "base_32_string_seed",
+          "type": "Json"
+        },
+        {
+          "name": "enable_date",
+          "type": "String"
+        },
+        {
+          "name": "q_rcode_png",
+          "type": "Json"
+        },
+        {
+          "name": "user",
+          "type": "Json"
+        }
+      ],
+      "tags": [],
+      "link": "https://docs.aws.amazon.com/cli/latest/reference/iam/list-virtual-mfa-devices.html"
+    },
+    {
+      "name": "iam_user",
+      "columns": [
+        {
+          "name": "id",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "arn",
+          "type": "String"
+        },
+        {
+          "name": "create_date",
+          "type": "Instant"
+        },
+        {
+          "name": "path",
+          "type": "String"
+        },
+        {
+          "name": "user_name",
+          "type": "String"
+        }
+      ],
+      "tags": [],
+      "link": "https://docs.aws.amazon.com/cli/latest/reference/iam/list-users.html"
+    },
+    {
+      "name": "iam_inline_user_policy",
+      "columns": [
+        {
+          "name": "policy_name",
+          "type": "String",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "user_id",
+          "type": "String",
+          "primaryKey": true,
+          "foreignKey": true
+        }
+      ],
+      "tags": [],
+      "link": "https://docs.aws.amazon.com/cli/latest/reference/iam/list-user-policies.html"
+    },
+    {
+      "name": "route_53_hosted_zone",
+      "columns": [
+        {
+          "name": "id",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "name",
+          "type": "String"
+        }
+      ],
+      "tags": [],
+      "link": null
+    },
+    {
+      "name": "config_event",
+      "columns": [
+        {
+          "name": "_file",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "_line",
+          "type": "Long",
+          "primaryKey": true
+        },
+        {
+          "name": "_modified",
+          "type": "Instant",
+          "primaryKey": true
+        },
+        {
+          "name": "index",
+          "type": "Long",
+          "primaryKey": true
+        },
+        {
+          "name": "arn",
+          "type": "String"
+        },
+        {
+          "name": "availability_zone",
+          "type": "String"
+        },
+        {
+          "name": "aws_account_id",
+          "type": "String"
+        },
+        {
+          "name": "aws_region",
+          "type": "String"
+        },
+        {
+          "name": "configuration",
+          "type": "Json"
+        },
+        {
+          "name": "configuration_item_capture_time",
+          "type": "Instant"
+        },
+        {
+          "name": "configuration_item_status",
+          "type": "String"
+        },
+        {
+          "name": "configuration_item_version",
+          "type": "String"
+        },
+        {
+          "name": "configuration_state_id",
+          "type": "Long"
+        },
+        {
+          "name": "configuration_state_md_5_hash",
+          "type": "String"
+        },
+        {
+          "name": "hash_raw",
+          "type": "Long"
+        },
+        {
+          "name": "raw",
+          "type": "Json"
+        },
+        {
+          "name": "related_events",
+          "type": "Json"
+        },
+        {
+          "name": "relationships",
+          "type": "Json"
+        },
+        {
+          "name": "resource_creation_time",
+          "type": "Instant"
+        },
+        {
+          "name": "resource_id",
+          "type": "String"
+        },
+        {
+          "name": "resource_name",
+          "type": "String"
+        },
+        {
+          "name": "resource_type",
+          "type": "String"
+        },
+        {
+          "name": "supplementary_configuration",
+          "type": "Json"
+        },
+        {
+          "name": "tags",
+          "type": "Json"
+        }
+      ],
+      "tags": [],
+      "link": "https://docs.aws.amazon.com/config/latest/APIReference/Welcome.html"
+    },
+    {
+      "name": "lambda_function",
+      "columns": [
+        {
+          "name": "arn",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "vpc_config_id",
+          "type": "String",
+          "foreignKey": true
+        },
+        {
+          "name": "code_sha_256",
+          "type": "String"
+        },
+        {
+          "name": "code_size",
+          "type": "Long"
+        },
+        {
+          "name": "dead_letter_config_target_arn",
+          "type": "String"
+        },
+        {
+          "name": "description",
+          "type": "String"
+        },
+        {
+          "name": "destination_config_on_failure_destination",
+          "type": "String"
+        },
+        {
+          "name": "destination_config_on_success_destination",
+          "type": "String"
+        },
+        {
+          "name": "event_invoke_config_max_event_age_in_seconds",
+          "type": "Int"
+        },
+        {
+          "name": "event_invoke_config_max_retry_attempt",
+          "type": "Int"
+        },
+        {
+          "name": "function_name",
+          "type": "String"
+        },
+        {
+          "name": "handler",
+          "type": "String"
+        },
+        {
+          "name": "kms_key_arn",
+          "type": "String"
+        },
+        {
+          "name": "last_modified",
+          "type": "String"
+        },
+        {
+          "name": "last_update_status",
+          "type": "String"
+        },
+        {
+          "name": "last_update_status_reason",
+          "type": "String"
+        },
+        {
+          "name": "last_update_status_reason_code",
+          "type": "String"
+        },
+        {
+          "name": "master_arn",
+          "type": "String"
+        },
+        {
+          "name": "memory_size",
+          "type": "Int"
+        },
+        {
+          "name": "package_type",
+          "type": "String"
+        },
+        {
+          "name": "policy",
+          "type": "String"
+        },
+        {
+          "name": "policy_revision_id",
+          "type": "String"
+        },
+        {
+          "name": "revision_id",
+          "type": "String"
+        },
+        {
+          "name": "role",
+          "type": "String"
+        },
+        {
+          "name": "runtime",
+          "type": "String"
+        },
+        {
+          "name": "signing_job_arn",
+          "type": "String"
+        },
+        {
+          "name": "signing_profile_version_arn",
+          "type": "String"
+        },
+        {
+          "name": "state",
+          "type": "String"
+        },
+        {
+          "name": "state_reason",
+          "type": "String"
+        },
+        {
+          "name": "state_reason_code",
+          "type": "String"
+        },
+        {
+          "name": "timeout",
+          "type": "Int"
+        },
+        {
+          "name": "tracing_config_response_mode",
+          "type": "String"
+        },
+        {
+          "name": "version",
+          "type": "String"
+        }
+      ],
+      "tags": [],
+      "link": "https://docs.aws.amazon.com/cli/latest/reference/lambda/list-functions.html"
+    },
+    {
+      "name": "lambda_vpc_subnet",
+      "columns": [
+        {
+          "name": "subnet_id",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "function_arn",
+          "type": "String",
+          "primaryKey": true,
+          "foreignKey": true
+        }
+      ],
+      "tags": [],
+      "link": "https://docs.aws.amazon.com/cli/latest/reference/lambda/list-functions.html"
+    },
+    {
+      "name": "account_summary",
+      "columns": [
+        {
+          "name": "account_id",
+          "type": "String",
+          "primaryKey": true
+        }
+      ],
+      "tags": [],
+      "link": "https://docs.aws.amazon.com/cli/latest/reference/iam/get-account-summary.html"
+    },
+    {
+      "name": "iam_policy_role",
+      "columns": [
+        {
+          "name": "role_id",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "policy_arn",
+          "type": "String",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "role_name",
+          "type": "String"
+        }
+      ],
+      "tags": [],
+      "link": "https://docs.aws.amazon.com/cli/latest/reference/iam/list-entities-for-policy.html"
+    },
+    {
+      "name": "iam_policy_version",
+      "columns": [
+        {
+          "name": "version_id",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "policy_arn",
+          "type": "String",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "create_date",
+          "type": "Instant"
+        },
+        {
+          "name": "document",
+          "type": "String"
+        },
+        {
+          "name": "is_default_version",
+          "type": "Boolean"
+        }
+      ],
+      "tags": [],
+      "link": "https://docs.aws.amazon.com/cli/latest/reference/iam/get-policy-version.html"
+    },
+    {
+      "name": "cloud_trail",
+      "columns": [
+        {
+          "name": "name",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "kms_key_id",
+          "type": "String",
+          "foreignKey": true
+        },
+        {
+          "name": "s_3_bucket_name",
+          "type": "String",
+          "foreignKey": true
+        },
+        {
+          "name": "cloud_watch_logs_log_group_arn",
+          "type": "String"
+        },
+        {
+          "name": "cloud_watch_logs_role_arn",
+          "type": "String"
+        },
+        {
+          "name": "has_custom_event_selectors",
+          "type": "Boolean"
+        },
+        {
+          "name": "has_insight_selectors",
+          "type": "Boolean"
+        },
+        {
+          "name": "home_region",
+          "type": "String"
+        },
+        {
+          "name": "include_global_service_events",
+          "type": "Boolean"
+        },
+        {
+          "name": "is_multi_region_trail",
+          "type": "Boolean"
+        },
+        {
+          "name": "is_organization_trail",
+          "type": "Boolean"
+        },
+        {
+          "name": "log_file_validation_enabled",
+          "type": "Boolean"
+        },
+        {
+          "name": "s_3_key_prefix",
+          "type": "String"
+        },
+        {
+          "name": "sns_topic_arn",
+          "type": "String"
+        },
+        {
+          "name": "trail_arn",
+          "type": "String"
+        }
+      ],
+      "tags": [],
+      "link": "https://docs.aws.amazon.com/cli/latest/reference/cloudtrail/describe-trails.html"
+    },
+    {
+      "name": "iam_user_access_key",
+      "columns": [
+        {
+          "name": "access_key_id",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "user_id",
+          "type": "String",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "create_date",
+          "type": "Instant"
+        },
+        {
+          "name": "status",
+          "type": "String"
+        }
+      ],
+      "tags": [],
+      "link": "https://docs.aws.amazon.com/cli/latest/reference/iam/list-access-keys.html"
+    },
+    {
+      "name": "load_balancer_security_group",
+      "columns": [
+        {
+          "name": "load_balancer_arn",
+          "type": "String",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "security_group_id",
+          "type": "String",
+          "primaryKey": true,
+          "foreignKey": true
+        }
+      ],
+      "tags": [],
+      "link": "https://support.criteo.com/hc/en-us/articles/360001226005-Marketing-API-details"
+    },
+    {
+      "name": "load_balancer",
+      "columns": [
+        {
+          "name": "arn",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "vpc_id",
+          "type": "String",
+          "foreignKey": true
+        },
+        {
+          "name": "canonical_hosted_zone_id",
+          "type": "String"
+        },
+        {
+          "name": "created_time",
+          "type": "Instant"
+        },
+        {
+          "name": "d_nsname",
+          "type": "String"
+        },
+        {
+          "name": "ip_address_type",
+          "type": "String"
+        },
+        {
+          "name": "load_balancer_name",
+          "type": "String"
+        },
+        {
+          "name": "schema",
+          "type": "String"
+        },
+        {
+          "name": "state_code",
+          "type": "String"
+        },
+        {
+          "name": "state_reason",
+          "type": "String"
+        },
+        {
+          "name": "type",
+          "type": "String"
+        }
+      ],
+      "tags": [],
+      "link": "https://support.criteo.com/hc/en-us/articles/360001226005-Marketing-API-details"
+    },
+    {
+      "name": "lambda_layer",
+      "columns": [
+        {
+          "name": "arn",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "function_arn",
+          "type": "String",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "code_size",
+          "type": "Long"
+        },
+        {
+          "name": "signing_job_arn",
+          "type": "String"
+        },
+        {
+          "name": "signing_profile_version_arn",
+          "type": "String"
+        }
+      ],
+      "tags": [],
+      "link": "https://docs.aws.amazon.com/cli/latest/reference/lambda/list-functions.html"
+    },
+    {
+      "name": "kms_key",
+      "columns": [
+        {
+          "name": "key_id",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "key_arn",
+          "type": "String"
+        },
+        {
+          "name": "key_rotation_enabled",
+          "type": "Boolean"
+        }
+      ],
+      "tags": [],
+      "link": "https://docs.aws.amazon.com/cli/latest/reference/kms/list-keys.html"
+    },
+    {
+      "name": "s_3_bucket_acl",
+      "columns": [
+        {
+          "name": "grantee",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "bucket_name",
+          "type": "String",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "permission",
+          "type": "String"
+        }
+      ],
+      "tags": [],
+      "link": null
+    },
+    {
+      "name": "config_recorder",
+      "columns": [
+        {
+          "name": "name",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "recording_group",
+          "type": "Json"
+        },
+        {
+          "name": "role_arn",
+          "type": "String"
+        }
+      ],
+      "tags": [],
+      "link": "https://docs.aws.amazon.com/cli/latest/reference/configservice/describe-configuration-recorders.html"
+    },
+    {
+      "name": "iam_managed_user_policy",
+      "columns": [
+        {
+          "name": "policy_name",
+          "type": "String",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "user_id",
+          "type": "String",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "policy_arn",
+          "type": "String"
+        }
+      ],
+      "tags": [],
+      "link": "https://docs.aws.amazon.com/cli/latest/reference/iam/list-attached-user-policies.html"
+    },
+    {
+      "name": "security_group_tag",
+      "columns": [
+        {
+          "name": "key",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "group_id",
+          "type": "String",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "value",
+          "type": "String"
+        }
+      ],
+      "tags": [],
+      "link": "https://docs.aws.amazon.com/cli/latest/reference/ec2/describe-security-groups.html"
+    },
+    {
+      "name": "cloud_trail_status",
+      "columns": [
+        {
+          "name": "trail_name",
+          "type": "String",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "is_logging",
+          "type": "Boolean"
+        },
+        {
+          "name": "latest_cloud_watch_logs_delivery_error",
+          "type": "String"
+        },
+        {
+          "name": "latest_cloud_watch_logs_delivery_time",
+          "type": "Instant"
+        },
+        {
+          "name": "latest_delivery_attempt_succeeded",
+          "type": "String"
+        },
+        {
+          "name": "latest_delivery_attempt_time",
+          "type": "Instant"
+        },
+        {
+          "name": "latest_delivery_error",
+          "type": "String"
+        },
+        {
+          "name": "latest_delivery_time",
+          "type": "Instant"
+        },
+        {
+          "name": "latest_digest_delivery_error",
+          "type": "String"
+        },
+        {
+          "name": "latest_digest_delivery_time",
+          "type": "Instant"
+        },
+        {
+          "name": "latest_notification_attempt_succeeded",
+          "type": "String"
+        },
+        {
+          "name": "latest_notification_attempt_time",
+          "type": "Instant"
+        },
+        {
+          "name": "latest_notification_error",
+          "type": "String"
+        },
+        {
+          "name": "latest_notification_time",
+          "type": "Instant"
+        },
+        {
+          "name": "start_logging_time",
+          "type": "Instant"
+        },
+        {
+          "name": "stop_logging_time",
+          "type": "Instant"
+        },
+        {
+          "name": "time_logging_started",
+          "type": "String"
+        },
+        {
+          "name": "time_logging_stopped",
+          "type": "String"
+        }
+      ],
+      "tags": [],
+      "link": "https://docs.aws.amazon.com/cli/latest/reference/cloudtrail/get-trail-status.html"
+    },
+    {
+      "name": "security_group",
+      "columns": [
+        {
+          "name": "id",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "vpc_id",
+          "type": "String",
+          "foreignKey": true
+        },
+        {
+          "name": "description",
+          "type": "String"
+        },
+        {
+          "name": "group_name",
+          "type": "String"
+        },
+        {
+          "name": "ip_permissions",
+          "type": "Json"
+        },
+        {
+          "name": "ip_permissions_egress",
+          "type": "Json"
+        },
+        {
+          "name": "owner_id",
+          "type": "String"
+        }
+      ],
+      "tags": [],
+      "link": "https://docs.aws.amazon.com/cli/latest/reference/ec2/describe-security-groups.html"
+    },
+    {
+      "name": "iam_policy",
+      "columns": [
+        {
+          "name": "policy_id",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "arn",
+          "type": "String"
+        },
+        {
+          "name": "attachment_count",
+          "type": "Int"
+        },
+        {
+          "name": "create_date",
+          "type": "Instant"
+        },
+        {
+          "name": "default_version_id",
+          "type": "String"
+        },
+        {
+          "name": "description",
+          "type": "String"
+        },
+        {
+          "name": "is_attachable",
+          "type": "Boolean"
+        },
+        {
+          "name": "path",
+          "type": "String"
+        },
+        {
+          "name": "permissions_boundary_usage_count",
+          "type": "Int"
+        },
+        {
+          "name": "policy_name",
+          "type": "String"
+        },
+        {
+          "name": "update_date",
+          "type": "Instant"
+        }
+      ],
+      "tags": [],
+      "link": "https://docs.aws.amazon.com/cli/latest/reference/iam/list-policies.html"
+    },
+    {
+      "name": "instance",
+      "columns": [
+        {
+          "name": "id",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "iam_instance_profile_id",
+          "type": "String",
+          "foreignKey": true
+        },
+        {
+          "name": "image_id",
+          "type": "String",
+          "foreignKey": true
+        },
+        {
+          "name": "vpc_id",
+          "type": "String",
+          "foreignKey": true
+        },
+        {
+          "name": "ami_launch_index",
+          "type": "String"
+        },
+        {
+          "name": "architecture",
+          "type": "String"
+        },
+        {
+          "name": "client_token",
+          "type": "String"
+        },
+        {
+          "name": "cpu_option_core_count",
+          "type": "Int"
+        },
+        {
+          "name": "cpu_option_threads_per_core",
+          "type": "Int"
+        },
+        {
+          "name": "ebs_optimized",
+          "type": "Boolean"
+        },
+        {
+          "name": "ena_support",
+          "type": "Boolean"
+        },
+        {
+          "name": "hypervisor",
+          "type": "String"
+        },
+        {
+          "name": "iam_instance_profile_arn",
+          "type": "String"
+        },
+        {
+          "name": "instance_lifecycle",
+          "type": "String"
+        },
+        {
+          "name": "instance_type",
+          "type": "String"
+        },
+        {
+          "name": "kernel_id",
+          "type": "String"
+        },
+        {
+          "name": "key_name",
+          "type": "String"
+        },
+        {
+          "name": "launch_time",
+          "type": "String"
+        },
+        {
+          "name": "monitoring_state",
+          "type": "String"
+        },
+        {
+          "name": "platform",
+          "type": "String"
+        },
+        {
+          "name": "private_dns_name",
+          "type": "String"
+        },
+        {
+          "name": "private_ip_address",
+          "type": "String"
+        },
+        {
+          "name": "public_dns_name",
+          "type": "String"
+        },
+        {
+          "name": "public_ip_address",
+          "type": "String"
+        },
+        {
+          "name": "ramdisk_id",
+          "type": "String"
+        },
+        {
+          "name": "root_device_name",
+          "type": "String"
+        },
+        {
+          "name": "root_device_type",
+          "type": "String"
+        },
+        {
+          "name": "source_dest_check",
+          "type": "Boolean"
+        },
+        {
+          "name": "spot_instance_request_id",
+          "type": "String"
+        },
+        {
+          "name": "sriov_net_support",
+          "type": "String"
+        },
+        {
+          "name": "state_code",
+          "type": "Int"
+        },
+        {
+          "name": "state_name",
+          "type": "String"
+        },
+        {
+          "name": "state_reason_code",
+          "type": "String"
+        },
+        {
+          "name": "state_reason_message",
+          "type": "String"
+        },
+        {
+          "name": "state_transition_reason",
+          "type": "String"
+        },
+        {
+          "name": "subnet_id",
+          "type": "String"
+        },
+        {
+          "name": "virtualization_type",
+          "type": "String"
+        },
+        {
+          "name": "placement_*",
+          "type": "",
+          "wildCard": true
+        }
+      ],
+      "tags": [],
+      "link": "https://docs.aws.amazon.com/cli/latest/reference/ec2/describe-instances.html#output"
+    },
+    {
+      "name": "account_credential_report",
+      "columns": [
+        {
+          "name": "account_id",
+          "type": "String",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "description",
+          "type": "String"
+        },
+        {
+          "name": "state",
+          "type": "String"
+        }
+      ],
+      "tags": [],
+      "link": "https://docs.aws.amazon.com/cli/latest/reference/iam/generate-credential-report.html"
+    },
+    {
+      "name": "image",
+      "columns": [
+        {
+          "name": "id",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "architecture",
+          "type": "String"
+        },
+        {
+          "name": "description",
+          "type": "String"
+        },
+        {
+          "name": "hypervisor",
+          "type": "String"
+        },
+        {
+          "name": "image_location",
+          "type": "String"
+        },
+        {
+          "name": "image_owner_alias",
+          "type": "String"
+        },
+        {
+          "name": "image_owner_id",
+          "type": "String"
+        },
+        {
+          "name": "image_state",
+          "type": "String"
+        },
+        {
+          "name": "image_type",
+          "type": "String"
+        },
+        {
+          "name": "is_public",
+          "type": "Boolean"
+        },
+        {
+          "name": "kernel_id",
+          "type": "String"
+        },
+        {
+          "name": "name",
+          "type": "String"
+        },
+        {
+          "name": "root_device_name",
+          "type": "String"
+        },
+        {
+          "name": "root_device_type",
+          "type": "String"
+        },
+        {
+          "name": "virtualization_type",
+          "type": "String"
+        }
+      ],
+      "tags": [],
+      "link": "https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeImages.html"
+    },
+    {
+      "name": "iam_user_mfa_device",
+      "columns": [
+        {
+          "name": "serial_number",
+          "type": "String",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "user_id",
+          "type": "String",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "enable_date",
+          "type": "Instant"
+        }
+      ],
+      "tags": [],
+      "link": "https://docs.aws.amazon.com/cli/latest/reference/iam/list-mfa-devices.html"
+    },
+    {
+      "name": "s_3_bucket",
+      "columns": [
+        {
+          "name": "name",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "owner_id",
+          "type": "String",
+          "foreignKey": true
+        },
+        {
+          "name": "creation_date",
+          "type": "Instant"
+        },
+        {
+          "name": "log_file_prefix",
+          "type": "String"
+        },
+        {
+          "name": "logging_destination_bucket_name",
+          "type": "String"
+        },
+        {
+          "name": "owner_display_name",
+          "type": "String"
+        },
+        {
+          "name": "policy_text",
+          "type": "String"
+        }
+      ],
+      "tags": [],
+      "link": null
+    },
+    {
+      "name": "iam_policy_group",
+      "columns": [
+        {
+          "name": "group_id",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "policy_arn",
+          "type": "String",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "group_name",
+          "type": "String"
+        }
+      ],
+      "tags": [],
+      "link": "https://docs.aws.amazon.com/cli/latest/reference/iam/list-entities-for-policy.html"
+    },
+    {
+      "name": "cloud_trail_event_selector",
+      "columns": [
+        {
+          "name": "index",
+          "type": "Int",
+          "primaryKey": true
+        },
+        {
+          "name": "trail_name",
+          "type": "String",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "data_resources",
+          "type": "Json"
+        },
+        {
+          "name": "exclude_management_event_sources",
+          "type": "Json"
+        },
+        {
+          "name": "include_management_events",
+          "type": "Boolean"
+        },
+        {
+          "name": "read_write_type",
+          "type": "String"
+        }
+      ],
+      "tags": [],
+      "link": "https://docs.aws.amazon.com/cli/latest/reference/cloudtrail/get-event-selectors.html"
+    },
+    {
+      "name": "route_53_resource_record_set",
+      "columns": [
+        {
+          "name": "name",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "type",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "hosted_zone_id",
+          "type": "String",
+          "primaryKey": true,
+          "foreignKey": true
+        }
+      ],
+      "tags": [],
+      "link": null
+    },
+    {
+      "name": "iam_user_group",
+      "columns": [
+        {
+          "name": "group_id",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "user_id",
+          "type": "String",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "arn",
+          "type": "String"
+        },
+        {
+          "name": "create_date",
+          "type": "Instant"
+        },
+        {
+          "name": "group_name",
+          "type": "String"
+        },
+        {
+          "name": "path",
+          "type": "String"
+        }
+      ],
+      "tags": [],
+      "link": "https://docs.aws.amazon.com/cli/latest/reference/iam/list-groups-for-user.html"
+    },
+    {
+      "name": "account_alias",
+      "columns": [
+        {
+          "name": "alias_name",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "account_id",
+          "type": "String",
+          "primaryKey": true,
+          "foreignKey": true
+        }
+      ],
+      "tags": [],
+      "link": "https://docs.aws.amazon.com/cli/latest/reference/iam/list-account-aliases.html"
+    },
+    {
+      "name": "iam_user_login_profile",
+      "columns": [
+        {
+          "name": "user_id",
+          "type": "String",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "create_date",
+          "type": "Instant"
+        },
+        {
+          "name": "password_reset_required",
+          "type": "Boolean"
+        }
+      ],
+      "tags": [],
+      "link": "https://docs.aws.amazon.com/cli/latest/reference/iam/get-login-profile.html"
+    }
+  ],
+  "relations": [
+    {
+      "targetTable": "lambda_function",
+      "sourceTable": "lambda_vpc_security_group",
+      "targetColumns": [
+        "arn"
+      ],
+      "sourceColumns": [
+        "function_arn"
+      ]
+    },
+    {
+      "targetTable": "account_summary",
+      "sourceTable": "account_password_policy",
+      "targetColumns": [
+        "account_id"
+      ],
+      "sourceColumns": [
+        "account_id"
+      ]
+    },
+    {
+      "targetTable": "iam_user",
+      "sourceTable": "iam_inline_user_policy",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "user_id"
+      ]
+    },
+    {
+      "targetTable": "iam_policy",
+      "sourceTable": "iam_inline_user_policy",
+      "targetColumns": [
+        "policy_id"
+      ],
+      "sourceColumns": [
+        "policy_name"
+      ]
+    },
+    {
+      "targetTable": "vpc",
+      "sourceTable": "lambda_function",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "vpc_config_id"
+      ]
+    },
+    {
+      "targetTable": "lambda_function",
+      "sourceTable": "lambda_vpc_subnet",
+      "targetColumns": [
+        "arn"
+      ],
+      "sourceColumns": [
+        "function_arn"
+      ]
+    },
+    {
+      "targetTable": "iam_policy",
+      "sourceTable": "iam_policy_role",
+      "targetColumns": [
+        "policy_id"
+      ],
+      "sourceColumns": [
+        "policy_arn"
+      ]
+    },
+    {
+      "targetTable": "iam_policy",
+      "sourceTable": "iam_policy_version",
+      "targetColumns": [
+        "policy_id"
+      ],
+      "sourceColumns": [
+        "policy_arn"
+      ]
+    },
+    {
+      "targetTable": "kms_key",
+      "sourceTable": "cloud_trail",
+      "targetColumns": [
+        "key_id"
+      ],
+      "sourceColumns": [
+        "kms_key_id"
+      ]
+    },
+    {
+      "targetTable": "s_3_bucket",
+      "sourceTable": "cloud_trail",
+      "targetColumns": [
+        "name"
+      ],
+      "sourceColumns": [
+        "s_3_bucket_name"
+      ]
+    },
+    {
+      "targetTable": "iam_user",
+      "sourceTable": "iam_user_access_key",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "user_id"
+      ]
+    },
+    {
+      "targetTable": "load_balancer",
+      "sourceTable": "load_balancer_security_group",
+      "targetColumns": [
+        "arn"
+      ],
+      "sourceColumns": [
+        "load_balancer_arn"
+      ]
+    },
+    {
+      "targetTable": "security_group",
+      "sourceTable": "load_balancer_security_group",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "security_group_id"
+      ]
+    },
+    {
+      "targetTable": "vpc",
+      "sourceTable": "load_balancer",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "vpc_id"
+      ]
+    },
+    {
+      "targetTable": "lambda_function",
+      "sourceTable": "lambda_layer",
+      "targetColumns": [
+        "arn"
+      ],
+      "sourceColumns": [
+        "function_arn"
+      ]
+    },
+    {
+      "targetTable": "s_3_bucket",
+      "sourceTable": "s_3_bucket_acl",
+      "targetColumns": [
+        "name"
+      ],
+      "sourceColumns": [
+        "bucket_name"
+      ]
+    },
+    {
+      "targetTable": "iam_user",
+      "sourceTable": "iam_managed_user_policy",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "user_id"
+      ]
+    },
+    {
+      "targetTable": "iam_policy",
+      "sourceTable": "iam_managed_user_policy",
+      "targetColumns": [
+        "policy_id"
+      ],
+      "sourceColumns": [
+        "policy_name"
+      ]
+    },
+    {
+      "targetTable": "security_group",
+      "sourceTable": "security_group_tag",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "group_id"
+      ]
+    },
+    {
+      "targetTable": "cloud_trail",
+      "sourceTable": "cloud_trail_status",
+      "targetColumns": [
+        "name"
+      ],
+      "sourceColumns": [
+        "trail_name"
+      ]
+    },
+    {
+      "targetTable": "vpc",
+      "sourceTable": "security_group",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "vpc_id"
+      ]
+    },
+    {
+      "targetTable": "image",
+      "sourceTable": "instance",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "image_id"
+      ]
+    },
+    {
+      "targetTable": "vpc",
+      "sourceTable": "instance",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "vpc_id"
+      ]
+    },
+    {
+      "targetTable": "iam_user",
+      "sourceTable": "instance",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "iam_instance_profile_id"
+      ]
+    },
+    {
+      "targetTable": "account_summary",
+      "sourceTable": "account_credential_report",
+      "targetColumns": [
+        "account_id"
+      ],
+      "sourceColumns": [
+        "account_id"
+      ]
+    },
+    {
+      "targetTable": "iam_user",
+      "sourceTable": "iam_user_mfa_device",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "user_id"
+      ]
+    },
+    {
+      "targetTable": "account_virtual_mfa_device",
+      "sourceTable": "iam_user_mfa_device",
+      "targetColumns": [
+        "serial_number"
+      ],
+      "sourceColumns": [
+        "serial_number"
+      ]
+    },
+    {
+      "targetTable": "iam_user",
+      "sourceTable": "s_3_bucket",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "owner_id"
+      ]
+    },
+    {
+      "targetTable": "iam_policy",
+      "sourceTable": "iam_policy_group",
+      "targetColumns": [
+        "policy_id"
+      ],
+      "sourceColumns": [
+        "policy_arn"
+      ]
+    },
+    {
+      "targetTable": "cloud_trail",
+      "sourceTable": "cloud_trail_event_selector",
+      "targetColumns": [
+        "name"
+      ],
+      "sourceColumns": [
+        "trail_name"
+      ]
+    },
+    {
+      "targetTable": "route_53_hosted_zone",
+      "sourceTable": "route_53_resource_record_set",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "hosted_zone_id"
+      ]
+    },
+    {
+      "targetTable": "iam_user",
+      "sourceTable": "iam_user_group",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "user_id"
+      ]
+    },
+    {
+      "targetTable": "account_summary",
+      "sourceTable": "account_alias",
+      "targetColumns": [
+        "account_id"
+      ],
+      "sourceColumns": [
+        "account_id"
+      ]
+    },
+    {
+      "targetTable": "iam_user",
+      "sourceTable": "iam_user_login_profile",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "user_id"
+      ]
+    }
+  ],
+  "positions": {
+    "lambda_vpc_security_group": {
+      "x": 1407.0177252800663,
+      "y": 2533.7668176369116
+    },
+    "account_password_policy": {
+      "x": 4016.933802292143,
+      "y": 794.3770656648869
+    },
+    "vpc": {
+      "x": 3486.365981212287,
+      "y": 1379.579032403034
+    },
+    "account_virtual_mfa_device": {
+      "x": 1265.192150885577,
+      "y": 1817.7668176369107
+    },
+    "iam_user": {
+      "x": 1974.3659812122862,
+      "y": 1034.6030049143137
+    },
+    "iam_inline_user_policy": {
+      "x": 2478.365981212286,
+      "y": 1413.1991892867647
+    },
+    "route_53_hosted_zone": {
+      "x": 329,
+      "y": 1222
+    },
+    "config_event": {
+      "x": 3990.365981212287,
+      "y": 1546.377065664887
+    },
+    "lambda_function": {
+      "x": 761.1900266541764,
+      "y": 2336
+    },
+    "lambda_vpc_subnet": {
+      "x": 1407.0177252800663,
+      "y": 2801.7668176369116
+    },
+    "account_summary": {
+      "x": 4089.532860933802,
+      "y": 1350.377065664887
+    },
+    "iam_policy_role": {
+      "x": 2415.0177252800663,
+      "y": 2333.029258311991
+    },
+    "iam_policy_version": {
+      "x": 1911.0177252800663,
+      "y": 2356.8182585801082
+    },
+    "cloud_trail": {
+      "x": 255.81900637875606,
+      "y": 1685.4916469434502
+    },
+    "iam_user_access_key": {
+      "x": 2478.365981212286,
+      "y": 641.9288436499722
+    },
+    "load_balancer_security_group": {
+      "x": 3453.8212680269817,
+      "y": 515.5791177031036
+    },
+    "load_balancer": {
+      "x": 3512.9338121929877,
+      "y": 823.579032403034
+    },
+    "lambda_layer": {
+      "x": 1407.0177252800663,
+      "y": 2157.7668176369116
+    },
+    "kms_key": {
+      "x": 257,
+      "y": 1428
+    },
+    "s_3_bucket_acl": {
+      "x": 845,
+      "y": 706
+    },
+    "config_recorder": {
+      "x": 3990.365981212287,
+      "y": 2679.7426149800776
+    },
+    "iam_managed_user_policy": {
+      "x": 1974.3659812122862,
+      "y": 1423.2855700611387
+    },
+    "security_group_tag": {
+      "x": 4526.952938545586,
+      "y": 390.4683054722758
+    },
+    "cloud_trail_status": {
+      "x": 761.1921508855769,
+      "y": 1528
+    },
+    "security_group": {
+      "x": 4022.952938545586,
+      "y": 382.3770656648869
+    },
+    "iam_policy": {
+      "x": 2415.0177252800663,
+      "y": 1777.0292583119908
+    },
+    "instance": {
+      "x": 2982.3659812122864,
+      "y": 804.2982512593436
+    },
+    "account_credential_report": {
+      "x": 4526.952938545586,
+      "y": 706.1254402082159
+    },
+    "image": {
+      "x": 3486.365981212287,
+      "y": 2152.563068891283
+    },
+    "iam_user_mfa_device": {
+      "x": 1265.192150885577,
+      "y": 1371.2448758004095
+    },
+    "s_3_bucket": {
+      "x": 845,
+      "y": 1035
+    },
+    "iam_policy_group": {
+      "x": 2919.0177252800668,
+      "y": 2332.2982512593435
+    },
+    "cloud_trail_event_selector": {
+      "x": 257.19002665417656,
+      "y": 2385.49164694345
+    },
+    "route_53_resource_record_set": {
+      "x": 329,
+      "y": 968
+    },
+    "iam_user_group": {
+      "x": 1470.3659812122862,
+      "y": 669.2550482566405
+    },
+    "account_alias": {
+      "x": 4527,
+      "y": 1004
+    },
+    "iam_user_login_profile": {
+      "x": 1974.3659812122862,
+      "y": 620.0788922038685
+    }
+  },
+  "notes": {
+    "byTable": {},
+    "generalNotes": []
+  },
+  "tableGroups": []
+}

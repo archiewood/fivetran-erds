@@ -1,0 +1,300 @@
+{
+  "tables": [
+    {
+      "name": "active_campaign",
+      "columns": [
+        {
+          "name": "id",
+          "type": "Unknown",
+          "primaryKey": true
+        },
+        {
+          "name": "name",
+          "type": "Unknown"
+        }
+      ],
+      "tags": [],
+      "link": "https://developers.heypoplar.com/endpoints/other-endpoints#fetch-active-campaigns"
+    },
+    {
+      "name": "audience",
+      "columns": [
+        {
+          "name": "id",
+          "type": "Unknown",
+          "primaryKey": true
+        },
+        {
+          "name": "description",
+          "type": "Unknown"
+        },
+        {
+          "name": "member_count",
+          "type": "Unknown"
+        },
+        {
+          "name": "name",
+          "type": "Unknown"
+        }
+      ],
+      "tags": [],
+      "link": "https://developers.heypoplar.com/endpoints/audience#fetch-audiences"
+    },
+    {
+      "name": "campaign_mailing",
+      "columns": [
+        {
+          "name": "id",
+          "type": "Unknown",
+          "primaryKey": true
+        },
+        {
+          "name": "campaign_id",
+          "type": "Unknown",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "creative_id",
+          "type": "Unknown",
+          "foreignKey": true
+        },
+        {
+          "name": "address_1",
+          "type": "Unknown"
+        },
+        {
+          "name": "address_2",
+          "type": "Unknown"
+        },
+        {
+          "name": "address_city",
+          "type": "Unknown"
+        },
+        {
+          "name": "address_company",
+          "type": "Unknown"
+        },
+        {
+          "name": "address_external_id",
+          "type": "Unknown"
+        },
+        {
+          "name": "address_name",
+          "type": "Unknown"
+        },
+        {
+          "name": "address_postal_code",
+          "type": "Unknown"
+        },
+        {
+          "name": "address_state_name",
+          "type": "Unknown"
+        },
+        {
+          "name": "back_url",
+          "type": "Unknown"
+        },
+        {
+          "name": "created_at",
+          "type": "Unknown"
+        },
+        {
+          "name": "front_url",
+          "type": "Unknown"
+        },
+        {
+          "name": "merge_tags",
+          "type": "Json"
+        },
+        {
+          "name": "pdf_url",
+          "type": "Unknown"
+        },
+        {
+          "name": "send_at",
+          "type": "Unknown"
+        },
+        {
+          "name": "state",
+          "type": "Unknown"
+        },
+        {
+          "name": "total_cost",
+          "type": "Unknown"
+        }
+      ],
+      "tags": [],
+      "link": "https://developers.heypoplar.com/endpoints/other-endpoints#fetch-campaign-mailings"
+    },
+    {
+      "name": "campaign_creative_rate",
+      "columns": [
+        {
+          "name": "index",
+          "type": "Unknown",
+          "primaryKey": true
+        },
+        {
+          "name": "campaign_id",
+          "type": "Unknown",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "creative_id",
+          "type": "Unknown",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "name",
+          "type": "Unknown"
+        },
+        {
+          "name": "offset_minimum",
+          "type": "Unknown"
+        },
+        {
+          "name": "price",
+          "type": "Unknown"
+        },
+        {
+          "name": "rate_type",
+          "type": "Unknown"
+        }
+      ],
+      "tags": [],
+      "link": "https://developers.heypoplar.com/endpoints/other-endpoints#fetch-campaign-creatives"
+    },
+    {
+      "name": "campaign_creative",
+      "columns": [
+        {
+          "name": "id",
+          "type": "Unknown",
+          "primaryKey": true
+        },
+        {
+          "name": "campaign_id",
+          "type": "Unknown",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "creative_type",
+          "type": "Unknown"
+        },
+        {
+          "name": "format",
+          "type": "Unknown"
+        },
+        {
+          "name": "image_format",
+          "type": "Unknown"
+        },
+        {
+          "name": "is_default",
+          "type": "Unknown"
+        },
+        {
+          "name": "mail_type",
+          "type": "Unknown"
+        },
+        {
+          "name": "merge_tags",
+          "type": "Json"
+        },
+        {
+          "name": "name",
+          "type": "Unknown"
+        },
+        {
+          "name": "thumbnail_url",
+          "type": "Unknown"
+        }
+      ],
+      "tags": [],
+      "link": "https://developers.heypoplar.com/endpoints/other-endpoints#fetch-campaign-creatives"
+    }
+  ],
+  "relations": [
+    {
+      "targetTable": "campaign_creative",
+      "sourceTable": "campaign_mailing",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "creative_id"
+      ]
+    },
+    {
+      "targetTable": "active_campaign",
+      "sourceTable": "campaign_mailing",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "campaign_id"
+      ]
+    },
+    {
+      "targetTable": "campaign_creative",
+      "sourceTable": "campaign_creative_rate",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "creative_id"
+      ]
+    },
+    {
+      "targetTable": "campaign_creative",
+      "sourceTable": "campaign_creative_rate",
+      "targetColumns": [
+        "campaign_id"
+      ],
+      "sourceColumns": [
+        "campaign_id"
+      ]
+    },
+    {
+      "targetTable": "active_campaign",
+      "sourceTable": "campaign_creative",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "campaign_id"
+      ]
+    }
+  ],
+  "positions": {
+    "audience": {
+      "x": -46,
+      "y": -29
+    },
+    "campaign_creative_rate": {
+      "x": -46,
+      "y": 289
+    },
+    "campaign_mailing": {
+      "x": 1126,
+      "y": -175
+    },
+    "campaign_creative": {
+      "x": 511,
+      "y": 228
+    },
+    "active_campaign": {
+      "x": 511,
+      "y": -29
+    }
+  },
+  "notes": {
+    "byTable": {},
+    "generalNotes": []
+  },
+  "tableGroups": []
+}

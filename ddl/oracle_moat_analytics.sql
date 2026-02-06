@@ -1,0 +1,15 @@
+CREATE TABLE stat (
+    _fivetran_id text,
+    brand_id text,
+    "date" text,
+    level_1_id text,
+    level_1_label text,
+    level_2_id text,
+    level_2_label text,
+    level_3_id text,
+    level_3_label text,
+    level_4_id text,
+    level_4_label text,
+    os_browser text,
+    PRIMARY KEY (_fivetran_id)
+);

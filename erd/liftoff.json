@@ -1,0 +1,332 @@
+{
+  "tables": [
+    {
+      "name": "creative",
+      "columns": [
+        {
+          "name": "id",
+          "type": "Unknown",
+          "primaryKey": true
+        },
+        {
+          "name": "created_at",
+          "type": "Unknown"
+        },
+        {
+          "name": "creative_type",
+          "type": "Unknown"
+        },
+        {
+          "name": "full_html_preview_url",
+          "type": "Unknown"
+        },
+        {
+          "name": "height",
+          "type": "Unknown"
+        },
+        {
+          "name": "name",
+          "type": "Unknown"
+        },
+        {
+          "name": "preview_url",
+          "type": "Unknown"
+        },
+        {
+          "name": "width",
+          "type": "Unknown"
+        }
+      ],
+      "tags": [],
+      "link": "https://docs.liftoff.io/advertiser/reporting_api#get-creatives"
+    },
+    {
+      "name": "app",
+      "columns": [
+        {
+          "name": "id",
+          "type": "Unknown",
+          "primaryKey": true
+        },
+        {
+          "name": "app_store_id",
+          "type": "Unknown"
+        },
+        {
+          "name": "bundle_id",
+          "type": "Unknown"
+        },
+        {
+          "name": "name",
+          "type": "Unknown"
+        },
+        {
+          "name": "optimization_event_id",
+          "type": "Unknown"
+        },
+        {
+          "name": "optimization_event_name",
+          "type": "Unknown"
+        },
+        {
+          "name": "platform",
+          "type": "Unknown"
+        },
+        {
+          "name": "state",
+          "type": "Unknown"
+        },
+        {
+          "name": "title",
+          "type": "Unknown"
+        }
+      ],
+      "tags": [],
+      "link": "https://docs.liftoff.io/advertiser/reporting_api#get-apps"
+    },
+    {
+      "name": "event",
+      "columns": [
+        {
+          "name": "id",
+          "type": "Unknown",
+          "primaryKey": true
+        },
+        {
+          "name": "app_id",
+          "type": "Unknown",
+          "foreignKey": true
+        },
+        {
+          "name": "name",
+          "type": "Unknown"
+        }
+      ],
+      "tags": [],
+      "link": "https://docs.liftoff.io/advertiser/reporting_api#get-events"
+    },
+    {
+      "name": "campaign",
+      "columns": [
+        {
+          "name": "id",
+          "type": "Unknown",
+          "primaryKey": true
+        },
+        {
+          "name": "app_id",
+          "type": "Unknown",
+          "foreignKey": true
+        },
+        {
+          "name": "campaign_type",
+          "type": "Unknown"
+        },
+        {
+          "name": "max_os_version",
+          "type": "Unknown"
+        },
+        {
+          "name": "min_os_version",
+          "type": "Unknown"
+        },
+        {
+          "name": "name",
+          "type": "Unknown"
+        },
+        {
+          "name": "state",
+          "type": "Unknown"
+        },
+        {
+          "name": "state_last_changed_at",
+          "type": "Unknown"
+        },
+        {
+          "name": "tracker_type",
+          "type": "Unknown"
+        }
+      ],
+      "tags": [],
+      "link": "https://docs.liftoff.io/advertiser/reporting_api#get-campaigns"
+    },
+    {
+      "name": "report",
+      "columns": [
+        {
+          "name": "_fivetran_id",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "app_id",
+          "type": "Unknown",
+          "foreignKey": true
+        },
+        {
+          "name": "campaign_id",
+          "type": "Unknown",
+          "foreignKey": true
+        },
+        {
+          "name": "creative_id",
+          "type": "Unknown",
+          "foreignKey": true
+        },
+        {
+          "name": "ad_format",
+          "type": "Unknown"
+        },
+        {
+          "name": "clicks",
+          "type": "Unknown"
+        },
+        {
+          "name": "country_code",
+          "type": "Unknown"
+        },
+        {
+          "name": "cpa",
+          "type": "Unknown"
+        },
+        {
+          "name": "cpc",
+          "type": "Unknown"
+        },
+        {
+          "name": "cpi",
+          "type": "Unknown"
+        },
+        {
+          "name": "cpm",
+          "type": "Unknown"
+        },
+        {
+          "name": "ctr",
+          "type": "Unknown"
+        },
+        {
+          "name": "date",
+          "type": "Unknown"
+        },
+        {
+          "name": "event_number",
+          "type": "Unknown"
+        },
+        {
+          "name": "impressions",
+          "type": "Unknown"
+        },
+        {
+          "name": "installs",
+          "type": "Unknown"
+        },
+        {
+          "name": "publisher_app_store_id",
+          "type": "Unknown"
+        },
+        {
+          "name": "publisher_name",
+          "type": "Unknown"
+        },
+        {
+          "name": "skan_installs_with_conversion_value",
+          "type": "Unknown"
+        },
+        {
+          "name": "skan_installs_with_no_conversion_value",
+          "type": "Unknown"
+        },
+        {
+          "name": "spend",
+          "type": "Unknown"
+        },
+        {
+          "name": "custom_*",
+          "type": "",
+          "wildCard": true
+        }
+      ],
+      "tags": [],
+      "link": "https://docs.liftoff.io/advertiser/reporting_api#get-reportsidstatus"
+    }
+  ],
+  "relations": [
+    {
+      "targetTable": "app",
+      "sourceTable": "event",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "app_id"
+      ]
+    },
+    {
+      "targetTable": "app",
+      "sourceTable": "campaign",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "app_id"
+      ]
+    },
+    {
+      "targetTable": "campaign",
+      "sourceTable": "report",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "campaign_id"
+      ]
+    },
+    {
+      "targetTable": "creative",
+      "sourceTable": "report",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "creative_id"
+      ]
+    },
+    {
+      "targetTable": "app",
+      "sourceTable": "report",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "app_id"
+      ]
+    }
+  ],
+  "positions": {
+    "app": {
+      "x": 512.0,
+      "y": 491.9999999999999
+    },
+    "report": {
+      "x": 1018.0,
+      "y": 24.0
+    },
+    "campaign": {
+      "x": 512.0,
+      "y": 24.0
+    },
+    "event": {
+      "x": 8.0,
+      "y": 582.6422255860109
+    },
+    "creative": {
+      "x": 1520.0,
+      "y": 313.0
+    }
+  },
+  "notes": {
+    "byTable": {},
+    "generalNotes": []
+  }
+}

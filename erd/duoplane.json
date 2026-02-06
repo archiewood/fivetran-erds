@@ -1,0 +1,878 @@
+{
+  "tables": [
+    {
+      "name": "shipment_tracking_attribute",
+      "columns": [
+        {
+          "name": "id",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "tracking",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "shipment_id",
+          "type": "String",
+          "foreignKey": true
+        },
+        {
+          "name": "tracking_url",
+          "type": "String"
+        }
+      ],
+      "link": "https://support.duoplane.com/hc/en-us/articles/360047357032-Reference-Shipment-API"
+    },
+    {
+      "name": "shipment_item_serial_code",
+      "columns": [
+        {
+          "name": "serial_code",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "shipment_item_attribute_id",
+          "type": "String",
+          "primaryKey": true,
+          "foreignKey": true
+        },
+        {
+          "name": "shipment_item_attribute_order_item_id",
+          "type": "String",
+          "primaryKey": true,
+          "foreignKey": true
+        }
+      ],
+      "link": "https://support.duoplane.com/hc/en-us/articles/360047357032-Reference-Shipment-API"
+    },
+    {
+      "name": "shipment_item_attribute",
+      "columns": [
+        {
+          "name": "id",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "order_item_id",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "shipment_id",
+          "type": "String",
+          "foreignKey": true
+        },
+        {
+          "name": "cost",
+          "type": "Double"
+        },
+        {
+          "name": "order_item_name",
+          "type": "String"
+        },
+        {
+          "name": "quantity",
+          "type": "Int"
+        }
+      ],
+      "link": "https://support.duoplane.com/hc/en-us/articles/360047357032-Reference-Shipment-API"
+    },
+    {
+      "name": "shipment",
+      "columns": [
+        {
+          "name": "id",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "created_at",
+          "type": "Instant"
+        },
+        {
+          "name": "purchase_order_id",
+          "type": "String"
+        },
+        {
+          "name": "purchase_order_public_reference",
+          "type": "String"
+        },
+        {
+          "name": "shipper_id",
+          "type": "String"
+        },
+        {
+          "name": "shipper_invoice_reference",
+          "type": "String"
+        },
+        {
+          "name": "shipper_name",
+          "type": "String"
+        },
+        {
+          "name": "shipper_scac_code",
+          "type": "String"
+        },
+        {
+          "name": "shipper_shipping_cost",
+          "type": "Double"
+        },
+        {
+          "name": "updated_at",
+          "type": "Instant"
+        },
+        {
+          "name": "vendor_handling_cost",
+          "type": "Double"
+        },
+        {
+          "name": "vendor_invoice_reference",
+          "type": "String"
+        },
+        {
+          "name": "vendor_shipping_cost",
+          "type": "Double"
+        },
+        {
+          "name": "vendor_tax_cost",
+          "type": "Double"
+        }
+      ],
+      "link": "https://support.duoplane.com/hc/en-us/articles/360047357032-Reference-Shipment-API"
+    },
+    {
+      "name": "purchase_order_item_note",
+      "columns": [
+        {
+          "name": "_fivetran_id",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "purchase_order_item_id",
+          "type": "String",
+          "foreignKey": true
+        },
+        {
+          "name": "body",
+          "type": "String"
+        },
+        {
+          "name": "title",
+          "type": "String"
+        }
+      ],
+      "link": "https://support.duoplane.com/hc/en-us/articles/360049478551-Reference-Product-API"
+    },
+    {
+      "name": "purchase_order_item_comment",
+      "columns": [
+        {
+          "name": "id",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "purchase_order_item_id",
+          "type": "String",
+          "foreignKey": true
+        },
+        {
+          "name": "body",
+          "type": "String"
+        },
+        {
+          "name": "commentator_company_name",
+          "type": "String"
+        },
+        {
+          "name": "recipient_company_name",
+          "type": "String"
+        }
+      ],
+      "link": "https://support.duoplane.com/hc/en-us/articles/360049478551-Reference-Product-API"
+    },
+    {
+      "name": "purchase_order_item",
+      "columns": [
+        {
+          "name": "id",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "purchase_order_id",
+          "type": "String",
+          "foreignKey": true
+        },
+        {
+          "name": "cost",
+          "type": "Double"
+        },
+        {
+          "name": "mpn",
+          "type": "String"
+        },
+        {
+          "name": "name",
+          "type": "String"
+        },
+        {
+          "name": "net_price",
+          "type": "Double"
+        },
+        {
+          "name": "order_id",
+          "type": "String"
+        },
+        {
+          "name": "other_barcode",
+          "type": "String"
+        },
+        {
+          "name": "price",
+          "type": "Double"
+        },
+        {
+          "name": "promise_date",
+          "type": "LocalDate"
+        },
+        {
+          "name": "quantity",
+          "type": "Int"
+        },
+        {
+          "name": "quantity_open",
+          "type": "Int"
+        },
+        {
+          "name": "retailer_product_id",
+          "type": "String"
+        },
+        {
+          "name": "retailer_sku",
+          "type": "String"
+        },
+        {
+          "name": "total_discount",
+          "type": "Double"
+        },
+        {
+          "name": "upc",
+          "type": "String"
+        },
+        {
+          "name": "vendor_sku",
+          "type": "String"
+        }
+      ],
+      "link": "https://support.duoplane.com/hc/en-us/articles/360049478551-Reference-Product-API"
+    },
+    {
+      "name": "purchase_order_note",
+      "columns": [
+        {
+          "name": "_fivetran_id",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "purchase_order_id",
+          "type": "String",
+          "foreignKey": true
+        },
+        {
+          "name": "body",
+          "type": "String"
+        },
+        {
+          "name": "title",
+          "type": "String"
+        }
+      ],
+      "link": "https://support.duoplane.com/hc/en-us/articles/360049478551-Reference-Product-API"
+    },
+    {
+      "name": "purchase_order",
+      "columns": [
+        {
+          "name": "id",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "created_at",
+          "type": "Instant"
+        },
+        {
+          "name": "customer_note",
+          "type": "String"
+        },
+        {
+          "name": "order_id",
+          "type": "String"
+        },
+        {
+          "name": "order_public_reference",
+          "type": "String"
+        },
+        {
+          "name": "ordered_at",
+          "type": "Instant"
+        },
+        {
+          "name": "promise_date",
+          "type": "LocalDate"
+        },
+        {
+          "name": "public_reference",
+          "type": "String"
+        },
+        {
+          "name": "retailer_account",
+          "type": "String"
+        },
+        {
+          "name": "retailer_id",
+          "type": "String"
+        },
+        {
+          "name": "retailer_name",
+          "type": "String"
+        },
+        {
+          "name": "sent_at",
+          "type": "Instant"
+        },
+        {
+          "name": "ship_method",
+          "type": "String"
+        },
+        {
+          "name": "shipping_address_address_1",
+          "type": "String"
+        },
+        {
+          "name": "shipping_address_address_2",
+          "type": "String"
+        },
+        {
+          "name": "shipping_address_city",
+          "type": "String"
+        },
+        {
+          "name": "shipping_address_company_name",
+          "type": "String"
+        },
+        {
+          "name": "shipping_address_country",
+          "type": "String"
+        },
+        {
+          "name": "shipping_address_email",
+          "type": "String"
+        },
+        {
+          "name": "shipping_address_first_name",
+          "type": "String"
+        },
+        {
+          "name": "shipping_address_last_name",
+          "type": "String"
+        },
+        {
+          "name": "shipping_address_phone",
+          "type": "String"
+        },
+        {
+          "name": "shipping_address_post_code",
+          "type": "String"
+        },
+        {
+          "name": "shipping_address_province",
+          "type": "String"
+        },
+        {
+          "name": "shipping_address_province_iso",
+          "type": "String"
+        },
+        {
+          "name": "status",
+          "type": "String"
+        },
+        {
+          "name": "store_name",
+          "type": "String"
+        },
+        {
+          "name": "total_shipping_revenue",
+          "type": "Double"
+        },
+        {
+          "name": "total_tax",
+          "type": "Double"
+        },
+        {
+          "name": "updated_at",
+          "type": "Instant"
+        },
+        {
+          "name": "vendor",
+          "type": "String"
+        },
+        {
+          "name": "vendor_account",
+          "type": "String"
+        },
+        {
+          "name": "vendor_id",
+          "type": "String"
+        },
+        {
+          "name": "vendor_reference",
+          "type": "String"
+        }
+      ],
+      "link": "https://support.duoplane.com/hc/en-us/articles/360047763431-Reference-Purchase-Order-API"
+    },
+    {
+      "name": "product_inventory",
+      "columns": [
+        {
+          "name": "id",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "product_id",
+          "type": "String",
+          "foreignKey": true
+        },
+        {
+          "name": "actual_leadtime_days",
+          "type": "Int"
+        },
+        {
+          "name": "backordered_until",
+          "type": "Unknown"
+        },
+        {
+          "name": "cost",
+          "type": "Double"
+        },
+        {
+          "name": "manage_inventory",
+          "type": "String"
+        },
+        {
+          "name": "purchase_name",
+          "type": "String"
+        },
+        {
+          "name": "quantity_available",
+          "type": "Int"
+        },
+        {
+          "name": "vendor_id",
+          "type": "String"
+        },
+        {
+          "name": "vendor_name",
+          "type": "String"
+        },
+        {
+          "name": "vendor_sku",
+          "type": "String"
+        }
+      ],
+      "link": "https://support.duoplane.com/hc/en-us/articles/360049478551-Reference-Product-API"
+    },
+    {
+      "name": "store_product",
+      "columns": [
+        {
+          "name": "id",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "product_id",
+          "type": "String",
+          "foreignKey": true
+        },
+        {
+          "name": "inventory_quantity_buffer",
+          "type": "String"
+        },
+        {
+          "name": "store_id",
+          "type": "String"
+        },
+        {
+          "name": "store_name",
+          "type": "String"
+        },
+        {
+          "name": "store_product_type",
+          "type": "String"
+        },
+        {
+          "name": "store_reference_unique",
+          "type": "String"
+        },
+        {
+          "name": "vendor_store_reference",
+          "type": "String"
+        }
+      ],
+      "link": "https://support.duoplane.com/hc/en-us/articles/360049478551-Reference-Product-API"
+    },
+    {
+      "name": "product",
+      "columns": [
+        {
+          "name": "id",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "created_at",
+          "type": "Instant"
+        },
+        {
+          "name": "deactivated_at",
+          "type": "Unknown"
+        },
+        {
+          "name": "mpn",
+          "type": "String"
+        },
+        {
+          "name": "name",
+          "type": "String"
+        },
+        {
+          "name": "other_barcode",
+          "type": "String"
+        },
+        {
+          "name": "price",
+          "type": "String"
+        },
+        {
+          "name": "price_map",
+          "type": "String"
+        },
+        {
+          "name": "price_msrp",
+          "type": "String"
+        },
+        {
+          "name": "product_type",
+          "type": "String"
+        },
+        {
+          "name": "retailer_sku",
+          "type": "String"
+        },
+        {
+          "name": "upc",
+          "type": "String"
+        },
+        {
+          "name": "updated_at",
+          "type": "Instant"
+        }
+      ],
+      "link": "https://support.duoplane.com/hc/en-us/articles/360049478551-Reference-Product-API"
+    },
+    {
+      "name": "order_vendor_comment",
+      "columns": [
+        {
+          "name": "id",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "purchase_order_id",
+          "type": "String",
+          "foreignKey": true
+        },
+        {
+          "name": "body",
+          "type": "String"
+        },
+        {
+          "name": "commentable_id",
+          "type": "String"
+        },
+        {
+          "name": "commentable_type",
+          "type": "String"
+        },
+        {
+          "name": "commenter_email",
+          "type": "String"
+        },
+        {
+          "name": "commenter_full_name",
+          "type": "String"
+        },
+        {
+          "name": "created_at",
+          "type": "Instant"
+        },
+        {
+          "name": "recipient_company_id",
+          "type": "String"
+        },
+        {
+          "name": "recipient_company_name",
+          "type": "String"
+        },
+        {
+          "name": "updated_at",
+          "type": "Instant"
+        }
+      ],
+      "link": "https://support.duoplane.com/hc/en-us/articles/360049480331-Reference-Comment-API"
+    },
+    {
+      "name": "order_retailer_comment",
+      "columns": [
+        {
+          "name": "id",
+          "type": "String",
+          "primaryKey": true
+        },
+        {
+          "name": "purchase_order_item_id",
+          "type": "String",
+          "foreignKey": true
+        },
+        {
+          "name": "body",
+          "type": "String"
+        },
+        {
+          "name": "commentable_id",
+          "type": "String"
+        },
+        {
+          "name": "commentable_type",
+          "type": "String"
+        },
+        {
+          "name": "commenter_email",
+          "type": "String"
+        },
+        {
+          "name": "commenter_full_name",
+          "type": "String"
+        },
+        {
+          "name": "created_at",
+          "type": "Instant"
+        },
+        {
+          "name": "recipient_company_id",
+          "type": "String"
+        },
+        {
+          "name": "recipient_company_name",
+          "type": "String"
+        },
+        {
+          "name": "updated_at",
+          "type": "Instant"
+        }
+      ],
+      "link": "https://support.duoplane.com/hc/en-us/articles/360049480331-Reference-Comment-API"
+    }
+  ],
+  "relations": [
+    {
+      "targetTable": "shipment",
+      "sourceTable": "shipment_tracking_attribute",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "shipment_id"
+      ]
+    },
+    {
+      "targetTable": "shipment_item_attribute",
+      "sourceTable": "shipment_item_serial_code",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "shipment_item_attribute_id"
+      ]
+    },
+    {
+      "targetTable": "shipment_item_attribute",
+      "sourceTable": "shipment_item_serial_code",
+      "targetColumns": [
+        "order_item_id"
+      ],
+      "sourceColumns": [
+        "shipment_item_attribute_order_item_id"
+      ]
+    },
+    {
+      "targetTable": "shipment",
+      "sourceTable": "shipment_item_attribute",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "shipment_id"
+      ]
+    },
+    {
+      "targetTable": "purchase_order_item",
+      "sourceTable": "purchase_order_item_note",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "purchase_order_item_id"
+      ]
+    },
+    {
+      "targetTable": "purchase_order_item",
+      "sourceTable": "purchase_order_item_comment",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "purchase_order_item_id"
+      ]
+    },
+    {
+      "targetTable": "purchase_order",
+      "sourceTable": "purchase_order_item",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "purchase_order_id"
+      ]
+    },
+    {
+      "targetTable": "purchase_order",
+      "sourceTable": "purchase_order_note",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "purchase_order_id"
+      ]
+    },
+    {
+      "targetTable": "product",
+      "sourceTable": "product_inventory",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "product_id"
+      ]
+    },
+    {
+      "targetTable": "product",
+      "sourceTable": "store_product",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "product_id"
+      ]
+    },
+    {
+      "targetTable": "purchase_order",
+      "sourceTable": "order_vendor_comment",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "purchase_order_id"
+      ]
+    },
+    {
+      "targetTable": "purchase_order_item",
+      "sourceTable": "order_retailer_comment",
+      "targetColumns": [
+        "id"
+      ],
+      "sourceColumns": [
+        "purchase_order_item_id"
+      ]
+    }
+  ],
+  "positions": {
+    "shipment_tracking_attribute": {
+      "x": -480,
+      "y": 4022
+    },
+    "shipment_item_serial_code": {
+      "x": -480,
+      "y": 3253
+    },
+    "shipment_item_attribute": {
+      "x": -480,
+      "y": 3593
+    },
+    "shipment": {
+      "x": 105,
+      "y": 3563
+    },
+    "purchase_order_item_note": {
+      "x": 746,
+      "y": 4129
+    },
+    "purchase_order_item_comment": {
+      "x": 1361,
+      "y": 4883
+    },
+    "purchase_order_item": {
+      "x": 746,
+      "y": 4451
+    },
+    "purchase_order_note": {
+      "x": -480,
+      "y": 5041
+    },
+    "purchase_order": {
+      "x": 105,
+      "y": 4451
+    },
+    "product_inventory": {
+      "x": 1249.7610635103576,
+      "y": 3655.4814779901544
+    },
+    "store_product": {
+      "x": 1249.7610635103576,
+      "y": 3091.7142309389083
+    },
+    "product": {
+      "x": 745.7610635103576,
+      "y": 3388.968739680917
+    },
+    "order_vendor_comment": {
+      "x": 746,
+      "y": 5263
+    },
+    "order_retailer_comment": {
+      "x": 1361,
+      "y": 4273
+    }
+  }
+}
