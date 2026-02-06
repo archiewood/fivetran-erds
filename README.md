@@ -2,7 +2,7 @@
 
 Entity Relationship Diagram schemas for Fivetran application connectors, extracted from the [Fivetran ERD API](https://fivetran.com/docs/connectors).
 
-**648** connectors with ERD links | **610** with schema | **38** empty schema
+**648** connectors with ERD links | **610** with schema | **38** no tables
 
 ## Connectors
 
@@ -59,7 +59,7 @@ Entity Relationship Diagram schemas for Fivetran application connectors, extract
 | Auth0 | `auth0` | [39 tables](ddl/auth0.sql) | [mermaid](mermaid/auth0.mermaid) |
 | Autodesk BIM 360 & Construction Cloud | `autodesk_bim_360` | [119 tables](ddl/autodesk_bim_360.sql) | [mermaid](mermaid/autodesk_bim_360.mermaid) |
 | AvantLink | `avantlink` | [26 tables](ddl/avantlink.sql) | [mermaid](mermaid/avantlink.mermaid) |
-| AVEVA PI | `aveva_pi` | empty schema |  |
+| AVEVA PI | `aveva_pi` | no tables |  |
 | Awin | `awin` | [11 tables](ddl/awin.sql) | [mermaid](mermaid/awin.mermaid) |
 | AWS CloudTrail | `aws_cloudtrail` | [1 tables](ddl/aws_cloudtrail.sql) | [mermaid](mermaid/aws_cloudtrail.mermaid) |
 | AWS Inventory | `aws_inventory` | [37 tables](ddl/aws_inventory.sql) | [mermaid](mermaid/aws_inventory.mermaid) |
@@ -79,7 +79,7 @@ Entity Relationship Diagram schemas for Fivetran application connectors, extract
 | Bizzabo | `bizzabo_app` | [42 tables](ddl/bizzabo_app.sql) | [mermaid](mermaid/bizzabo_app.mermaid) |
 | Boostr | `boostr` | [13 tables](ddl/boostr.sql) | [mermaid](mermaid/boostr.mermaid) |
 | Braintree | `braintree` | [29 tables](ddl/braintree.sql) | [mermaid](mermaid/braintree.mermaid) |
-| Braintree Sandbox | `braintree_sandbox` | empty schema |  |
+| Braintree Sandbox | `braintree_sandbox` | no tables |  |
 | Branch | `branch` | [1 tables](ddl/branch.sql) | [mermaid](mermaid/branch.mermaid) |
 | Brave Ads | `brave_ads` | [5 tables](ddl/brave_ads.sql) | [mermaid](mermaid/brave_ads.mermaid) |
 | Braze | `braze` | [45 tables](ddl/braze.sql) | [mermaid](mermaid/braze.mermaid) |
@@ -137,7 +137,7 @@ Entity Relationship Diagram schemas for Fivetran application connectors, extract
 | Codefresh | `codefresh` | [56 tables](ddl/codefresh.sql) | [mermaid](mermaid/codefresh.mermaid) |
 | Collibra | `collibra` | [55 tables](ddl/collibra.sql) | [mermaid](mermaid/collibra.mermaid) |
 | Column | `column` | [23 tables](ddl/column.sql) | [mermaid](mermaid/column.mermaid) |
-| commercetools | `commercetools` | empty schema |  |
+| commercetools | `commercetools` | no tables |  |
 | Compliance Checkpoint | `compliance_checkpoint` | [20 tables](ddl/compliance_checkpoint.sql) | [mermaid](mermaid/compliance_checkpoint.mermaid) |
 | Concord | `concord` | [68 tables](ddl/concord.sql) | [mermaid](mermaid/concord.mermaid) |
 | Confluence | `confluence` | [42 tables](ddl/confluence.sql) | [mermaid](mermaid/confluence.mermaid) |
@@ -155,7 +155,7 @@ Entity Relationship Diagram schemas for Fivetran application connectors, extract
 | Crunchbase | `crunchbase` | [28 tables](ddl/crunchbase.sql) | [mermaid](mermaid/crunchbase.mermaid) |
 | Cube | `cube_software` | [3 tables](ddl/cube_software.sql) | [mermaid](mermaid/cube_software.mermaid) |
 | Culture Amp | `culture_amp` | [9 tables](ddl/culture_amp.sql) | [mermaid](mermaid/culture_amp.mermaid) |
-| Customer.io | `customerio` | empty schema |  |
+| Customer.io | `customerio` | no tables |  |
 | Cvent | `cvent` | [71 tables](ddl/cvent.sql) | [mermaid](mermaid/cvent.mermaid) |
 | D2L Brightspace | `d2l_brightspace` | [13 tables](ddl/d2l_brightspace.sql) | [mermaid](mermaid/d2l_brightspace.mermaid) |
 | Datadog | `datadog` | [167 tables](ddl/datadog.sql) | [mermaid](mermaid/datadog.mermaid) |
@@ -225,7 +225,7 @@ Entity Relationship Diagram schemas for Fivetran application connectors, extract
 | Fulfil | `fulfil` | [18 tables](ddl/fulfil.sql) | [mermaid](mermaid/fulfil.mermaid) |
 | FullStory | `fullstory` | [12 tables](ddl/fullstory.sql) | [mermaid](mermaid/fullstory.mermaid) |
 | G2 | `g2` | [17 tables](ddl/g2.sql) | [mermaid](mermaid/g2.mermaid) |
-| Gainsight Customer Success | `gainsight_customer_success` | empty schema |  |
+| Gainsight Customer Success | `gainsight_customer_success` | no tables |  |
 | Gainsight Product Experience | `gainsight_product_experience` | [35 tables](ddl/gainsight_product_experience.sql) | [mermaid](mermaid/gainsight_product_experience.mermaid) |
 | Gem | `gem` | [47 tables](ddl/gem.sql) | [mermaid](mermaid/gem.mermaid) |
 | Genesys | `genesys` | [243 tables](ddl/genesys.sql) | [mermaid](mermaid/genesys.mermaid) |
@@ -240,7 +240,7 @@ Entity Relationship Diagram schemas for Fivetran application connectors, extract
 | Goldcast | `goldcast` | [20 tables](ddl/goldcast.sql) | [mermaid](mermaid/goldcast.mermaid) |
 | Gong | `gongio` | [49 tables](ddl/gongio.sql) | [mermaid](mermaid/gongio.mermaid) |
 | Google Ad Manager | `double_click_publishers` | [56 tables](ddl/double_click_publishers.sql) | [mermaid](mermaid/double_click_publishers.mermaid) |
-| Google Ads | `google_ads` | empty schema |  |
+| Google Ads | `google_ads` | no tables |  |
 | Google Analytics 4 | `google_analytics_4` | [6 tables](ddl/google_analytics_4.sql) | [mermaid](mermaid/google_analytics_4.mermaid) |
 | Google Analytics 4 Export | `google_analytics_4_export` | [5 tables](ddl/google_analytics_4_export.sql) | [mermaid](mermaid/google_analytics_4_export.mermaid) |
 | Google Business Profile | `google_business_profile` | [24 tables](ddl/google_business_profile.sql) | [mermaid](mermaid/google_business_profile.mermaid) |
@@ -248,7 +248,7 @@ Entity Relationship Diagram schemas for Fivetran application connectors, extract
 | Google Campaign Manager 360 | `double_click_campaign_manager` | [42 tables](ddl/double_click_campaign_manager.sql) | [mermaid](mermaid/double_click_campaign_manager.mermaid) |
 | Google Classroom | `google_classroom` | [14 tables](ddl/google_classroom.sql) | [mermaid](mermaid/google_classroom.mermaid) |
 | Google Display & Video 360 | `google_display_and_video_360` | [15 tables](ddl/google_display_and_video_360.sql) | [mermaid](mermaid/google_display_and_video_360.mermaid) |
-| Google Drive | `google_drive` | empty schema |  |
+| Google Drive | `google_drive` | no tables |  |
 | Google Search Ads 360 | `google_search_ads_360` | [19 tables](ddl/google_search_ads_360.sql) | [mermaid](mermaid/google_search_ads_360.mermaid) |
 | Google Search Console | `google_search_console` | [13 tables](ddl/google_search_console.sql) | [mermaid](mermaid/google_search_console.mermaid) |
 | Google Tasks | `google_tasks` | [3 tables](ddl/google_tasks.sql) | [mermaid](mermaid/google_tasks.mermaid) |
@@ -261,7 +261,7 @@ Entity Relationship Diagram schemas for Fivetran application connectors, extract
 | HappyFox | `happyfox` | [30 tables](ddl/happyfox.sql) | [mermaid](mermaid/happyfox.mermaid) |
 | Harvest | `harvest` | [28 tables](ddl/harvest.sql) | [mermaid](mermaid/harvest.mermaid) |
 | Healthie | `healthie` | [108 tables](ddl/healthie.sql) | [mermaid](mermaid/healthie.mermaid) |
-| Heap | `heap` | empty schema |  |
+| Heap | `heap` | no tables |  |
 | Heartland Retail POS | `heartland_retail_pos` | [19 tables](ddl/heartland_retail_pos.sql) | [mermaid](mermaid/heartland_retail_pos.mermaid) |
 | Help Scout | `helpscout` | [26 tables](ddl/helpscout.sql) | [mermaid](mermaid/helpscout.mermaid) |
 | HelpDesk | `helpdesk` | [35 tables](ddl/helpdesk.sql) | [mermaid](mermaid/helpdesk.mermaid) |
@@ -273,7 +273,7 @@ Entity Relationship Diagram schemas for Fivetran application connectors, extract
 | HighLevel | `h_level` | [22 tables](ddl/h_level.sql) | [mermaid](mermaid/h_level.mermaid) |
 | Hilti On!Track | `hilti_ontrack` | [21 tables](ddl/hilti_ontrack.sql) | [mermaid](mermaid/hilti_ontrack.mermaid) |
 | Hopin | `hopin` | [18 tables](ddl/hopin.sql) | [mermaid](mermaid/hopin.mermaid) |
-| HubSpot | `hubspot` | empty schema |  |
+| HubSpot | `hubspot` | no tables |  |
 | Ibacos | `ibacos` | [15 tables](ddl/ibacos.sql) | [mermaid](mermaid/ibacos.mermaid) |
 | iLevel | `ilevel` | [26 tables](ddl/ilevel.sql) | [mermaid](mermaid/ilevel.mermaid) |
 | Impact Brand | `impact` | [61 tables](ddl/impact.sql) | [mermaid](mermaid/impact.mermaid) |
@@ -289,7 +289,7 @@ Entity Relationship Diagram schemas for Fivetran application connectors, extract
 | Ironclad | `ironclad` | [28 tables](ddl/ironclad.sql) | [mermaid](mermaid/ironclad.mermaid) |
 | ironSource | `ironsource` | [13 tables](ddl/ironsource.sql) | [mermaid](mermaid/ironsource.mermaid) |
 | Iterable | `iterable` | [32 tables](ddl/iterable.sql) | [mermaid](mermaid/iterable.mermaid) |
-| Ivanti | `ivanti` | empty schema |  |
+| Ivanti | `ivanti` | no tables |  |
 | Jama Software | `jama_software` | [27 tables](ddl/jama_software.sql) | [mermaid](mermaid/jama_software.mermaid) |
 | Jamf | `jamf` | [94 tables](ddl/jamf.sql) | [mermaid](mermaid/jamf.mermaid) |
 | Jibble | `jibble` | [17 tables](ddl/jibble.sql) | [mermaid](mermaid/jibble.mermaid) |
@@ -325,11 +325,11 @@ Entity Relationship Diagram schemas for Fivetran application connectors, extract
 | Lightspeed Retail X-Series | `lightspeed_retail_xseries` | [29 tables](ddl/lightspeed_retail_xseries.sql) | [mermaid](mermaid/lightspeed_retail_xseries.mermaid) |
 | LINE Ads | `line_ads` | [33 tables](ddl/line_ads.sql) | [mermaid](mermaid/line_ads.mermaid) |
 | Linear | `linear` | [35 tables](ddl/linear.sql) | [mermaid](mermaid/linear.mermaid) |
-| LinkedIn Ad Analytics | `linkedin_ads` | empty schema |  |
-| LinkedIn Company Pages | `linkedin_company_pages` | empty schema |  |
+| LinkedIn Ad Analytics | `linkedin_ads` | no tables |  |
+| LinkedIn Company Pages | `linkedin_company_pages` | no tables |  |
 | LinkSquares | `linksquares` | [31 tables](ddl/linksquares.sql) | [mermaid](mermaid/linksquares.mermaid) |
 | Listen360 | `listen360` | [9 tables](ddl/listen360.sql) | [mermaid](mermaid/listen360.mermaid) |
-| LiveChat Partner | `livechat_partner` | empty schema |  |
+| LiveChat Partner | `livechat_partner` | no tables |  |
 | Lob | `lob` | [44 tables](ddl/lob.sql) | [mermaid](mermaid/lob.mermaid) |
 | Looker | `looker_source` | [48 tables](ddl/looker_source.sql) | [mermaid](mermaid/looker_source.mermaid) |
 | Loop | `loop` | [10 tables](ddl/loop.sql) | [mermaid](mermaid/loop.mermaid) |
@@ -344,7 +344,7 @@ Entity Relationship Diagram schemas for Fivetran application connectors, extract
 | Mambu | `mambu` | [73 tables](ddl/mambu.sql) | [mermaid](mermaid/mambu.mermaid) |
 | Mandrill | `mandrill` | [6 tables](ddl/mandrill.sql) | [mermaid](mermaid/mandrill.mermaid) |
 | Marin Software | `marin` | [14 tables](ddl/marin.sql) | [mermaid](mermaid/marin.mermaid) |
-| Marketo | `marketo` | empty schema |  |
+| Marketo | `marketo` | no tables |  |
 | Matomo | `matomo` | [7 tables](ddl/matomo.sql) | [mermaid](mermaid/matomo.mermaid) |
 | Maxio Chargify | `maxio_chargify` | [65 tables](ddl/maxio_chargify.sql) | [mermaid](mermaid/maxio_chargify.mermaid) |
 | Maxio SaaSOptics | `maxio_saasoptics` | [20 tables](ddl/maxio_saasoptics.sql) | [mermaid](mermaid/maxio_saasoptics.mermaid) |
@@ -352,11 +352,11 @@ Entity Relationship Diagram schemas for Fivetran application connectors, extract
 | Medallia Agile Research | `medallia_agile_research` | [31 tables](ddl/medallia_agile_research.sql) | [mermaid](mermaid/medallia_agile_research.mermaid) |
 | Megaphone | `megaphone` | [28 tables](ddl/megaphone.sql) | [mermaid](mermaid/megaphone.mermaid) |
 | Mention | `mention` | [24 tables](ddl/mention.sql) | [mermaid](mermaid/mention.mermaid) |
-| Microsoft Advertising | `bingads` | empty schema |  |
-| Microsoft Dynamics 365 Business Central | `business_central` | empty schema |  |
-| Microsoft Dynamics 365 CRM | `dynamics_365` | empty schema |  |
+| Microsoft Advertising | `bingads` | no tables |  |
+| Microsoft Dynamics 365 Business Central | `business_central` | no tables |  |
+| Microsoft Dynamics 365 CRM | `dynamics_365` | no tables |  |
 | Microsoft Entra ID | `microsoft_entra_id` | [31 tables](ddl/microsoft_entra_id.sql) | [mermaid](mermaid/microsoft_entra_id.mermaid) |
-| Microsoft Lists | `microsoft_lists` | empty schema |  |
+| Microsoft Lists | `microsoft_lists` | no tables |  |
 | Microsoft Power BI | `microsoft_power_bi` | [18 tables](ddl/microsoft_power_bi.sql) | [mermaid](mermaid/microsoft_power_bi.mermaid) |
 | Microsoft Teams | `microsoft_teams` | [7 tables](ddl/microsoft_teams.sql) | [mermaid](mermaid/microsoft_teams.mermaid) |
 | Missive | `missive` | [19 tables](ddl/missive.sql) | [mermaid](mermaid/missive.mermaid) |
@@ -371,7 +371,7 @@ Entity Relationship Diagram schemas for Fivetran application connectors, extract
 | Namely | `namely` | [23 tables](ddl/namely.sql) | [mermaid](mermaid/namely.mermaid) |
 | National Heavy Vehicle Regulator | `national_heavy_vehicle_regulator` | [30 tables](ddl/national_heavy_vehicle_regulator.sql) | [mermaid](mermaid/national_heavy_vehicle_regulator.mermaid) |
 | Navan | `navan` | [19 tables](ddl/navan.sql) | [mermaid](mermaid/navan.mermaid) |
-| NetSuite SuiteAnalytics | `netsuite_suiteanalytics` | empty schema |  |
+| NetSuite SuiteAnalytics | `netsuite_suiteanalytics` | no tables |  |
 | NetSuite SuiteProjects Pro | `oracle_netsuite_openair` | [27 tables](ddl/oracle_netsuite_openair.sql) | [mermaid](mermaid/oracle_netsuite_openair.mermaid) |
 | NICE | `nice` | [28 tables](ddl/nice.sql) | [mermaid](mermaid/nice.mermaid) |
 | Notion | `notion` | [14 tables](ddl/notion.sql) | [mermaid](mermaid/notion.mermaid) |
@@ -388,9 +388,9 @@ Entity Relationship Diagram schemas for Fivetran application connectors, extract
 | OpenAI | `openai` | [8 tables](ddl/openai.sql) | [mermaid](mermaid/openai.mermaid) |
 | Opsgenie | `atlassian_ops_genie` | [57 tables](ddl/atlassian_ops_genie.sql) | [mermaid](mermaid/atlassian_ops_genie.mermaid) |
 | Optimizely | `optimizely` | [33 tables](ddl/optimizely.sql) | [mermaid](mermaid/optimizely.mermaid) |
-| Oracle Fusion Cloud Applications - CRM | `oracle_fusion_cloud_apps_crm` | empty schema |  |
-| Oracle Fusion Cloud Applications - FSCM(ERP & SCM) | `oracle_fusion_cloud_apps_fscm` | empty schema |  |
-| Oracle Fusion Cloud Applications - HCM | `oracle_fusion_cloud_apps_hcm` | empty schema |  |
+| Oracle Fusion Cloud Applications - CRM | `oracle_fusion_cloud_apps_crm` | no tables |  |
+| Oracle Fusion Cloud Applications - FSCM(ERP & SCM) | `oracle_fusion_cloud_apps_fscm` | no tables |  |
+| Oracle Fusion Cloud Applications - HCM | `oracle_fusion_cloud_apps_hcm` | no tables |  |
 | Oracle Fusion Field Service | `oracle_fusion_field_service` | [54 tables](ddl/oracle_fusion_field_service.sql) | [mermaid](mermaid/oracle_fusion_field_service.mermaid) |
 | Oracle Moat Analytics | `oracle_moat_analytics` | [1 tables](ddl/oracle_moat_analytics.sql) | [mermaid](mermaid/oracle_moat_analytics.mermaid) |
 | Orbit | `orbit` | [20 tables](ddl/orbit.sql) | [mermaid](mermaid/orbit.mermaid) |
@@ -405,13 +405,13 @@ Entity Relationship Diagram schemas for Fivetran application connectors, extract
 | PandaDoc | `pandadoc` | [48 tables](ddl/pandadoc.sql) | [mermaid](mermaid/pandadoc.mermaid) |
 | Papershift | `papershift` | [14 tables](ddl/papershift.sql) | [mermaid](mermaid/papershift.mermaid) |
 | Pardot | `pardot` | [32 tables](ddl/pardot.sql) | [mermaid](mermaid/pardot.mermaid) |
-| Pardot Sandbox | `pardot_sandbox` | empty schema |  |
+| Pardot Sandbox | `pardot_sandbox` | no tables |  |
 | Partnerize | `partnerize` | [41 tables](ddl/partnerize.sql) | [mermaid](mermaid/partnerize.mermaid) |
 | PartnerStack Vendor | `partnerstack_vendor` | [19 tables](ddl/partnerstack_vendor.sql) | [mermaid](mermaid/partnerstack_vendor.mermaid) |
 | Paychex | `paychex` | [20 tables](ddl/paychex.sql) | [mermaid](mermaid/paychex.mermaid) |
 | Paylocity | `paylocity` | [10 tables](ddl/paylocity.sql) | [mermaid](mermaid/paylocity.mermaid) |
 | PayPal | `paypal` | [32 tables](ddl/paypal.sql) | [mermaid](mermaid/paypal.mermaid) |
-| PayPal Sandbox | `paypal_sandbox` | empty schema |  |
+| PayPal Sandbox | `paypal_sandbox` | no tables |  |
 | Pendo | `pendo` | [37 tables](ddl/pendo.sql) | [mermaid](mermaid/pendo.mermaid) |
 | PeopleForce | `peopleforce` | [38 tables](ddl/peopleforce.sql) | [mermaid](mermaid/peopleforce.mermaid) |
 | Persona | `persona` | [18 tables](ddl/persona.sql) | [mermaid](mermaid/persona.mermaid) |
@@ -487,27 +487,27 @@ Entity Relationship Diagram schemas for Fivetran application connectors, extract
 | SafeBase | `safebase` | [14 tables](ddl/safebase.sql) | [mermaid](mermaid/safebase.mermaid) |
 | SafetyCulture | `safetyculture` | [38 tables](ddl/safetyculture.sql) | [mermaid](mermaid/safetyculture.mermaid) |
 | Sage HR | `sage_hr` | [19 tables](ddl/sage_hr.sql) | [mermaid](mermaid/sage_hr.mermaid) |
-| Sage Intacct | `sage_intacct` | empty schema |  |
+| Sage Intacct | `sage_intacct` | no tables |  |
 | Sailthru | `sailthru` | [38 tables](ddl/sailthru.sql) | [mermaid](mermaid/sailthru.mermaid) |
-| Salesforce | `salesforce` | empty schema |  |
+| Salesforce | `salesforce` | no tables |  |
 | Salesforce Commerce Cloud | `salesforce_commerce_cloud` | [41 tables](ddl/salesforce_commerce_cloud.sql) | [mermaid](mermaid/salesforce_commerce_cloud.mermaid) |
 | Salesforce Marketing Cloud | `salesforce_marketing_cloud` | [21 tables](ddl/salesforce_marketing_cloud.sql) | [mermaid](mermaid/salesforce_marketing_cloud.mermaid) |
 | Salesloft | `salesloft` | [51 tables](ddl/salesloft.sql) | [mermaid](mermaid/salesloft.mermaid) |
 | Salsify | `salsify` | [6 tables](ddl/salsify.sql) | [mermaid](mermaid/salsify.mermaid) |
 | Samsara | `samsara` | [65 tables](ddl/samsara.sql) | [mermaid](mermaid/samsara.mermaid) |
 | Sana | `sana` | [16 tables](ddl/sana.sql) | [mermaid](mermaid/sana.mermaid) |
-| SAP Business ByDesign | `sap_business_by_design` | empty schema |  |
-| SAP Concur | `concur` | empty schema |  |
+| SAP Business ByDesign | `sap_business_by_design` | no tables |  |
+| SAP Concur | `concur` | no tables |  |
 | SAP SuccessFactors | `sap_success_factors` | [120 tables](ddl/sap_success_factors.sql) | [mermaid](mermaid/sap_success_factors.mermaid) |
 | SCORM | `scorm` | [24 tables](ddl/scorm.sql) | [mermaid](mermaid/scorm.mermaid) |
 | Security Journey | `security_journey` | [4 tables](ddl/security_journey.sql) | [mermaid](mermaid/security_journey.mermaid) |
 | SendGrid | `sendgrid` | [18 tables](ddl/sendgrid.sql) | [mermaid](mermaid/sendgrid.mermaid) |
 | Sentry | `sentry` | [55 tables](ddl/sentry.sql) | [mermaid](mermaid/sentry.mermaid) |
-| ServiceNow | `servicenow` | empty schema |  |
+| ServiceNow | `servicenow` | no tables |  |
 | ServiceTitan | `servicetitan` | [69 tables](ddl/servicetitan.sql) | [mermaid](mermaid/servicetitan.mermaid) |
 | ServiceTrade | `servicetrade` | [49 tables](ddl/servicetrade.sql) | [mermaid](mermaid/servicetrade.mermaid) |
 | ShareASale | `shareasale` | [3 tables](ddl/shareasale.sql) | [mermaid](mermaid/shareasale.mermaid) |
-| SharePoint | `share_point` | empty schema |  |
+| SharePoint | `share_point` | no tables |  |
 | Sharetribe | `sharetribe` | [15 tables](ddl/sharetribe.sql) | [mermaid](mermaid/sharetribe.mermaid) |
 | ShipHero | `shiphero` | [25 tables](ddl/shiphero.sql) | [mermaid](mermaid/shiphero.mermaid) |
 | ShipNetwork | `shipnetwork` | [39 tables](ddl/shipnetwork.sql) | [mermaid](mermaid/shipnetwork.mermaid) |
@@ -585,8 +585,8 @@ Entity Relationship Diagram schemas for Fivetran application connectors, extract
 | Triple Whale | `triple_whale` | [6 tables](ddl/triple_whale.sql) | [mermaid](mermaid/triple_whale.mermaid) |
 | Trisolute | `trisolute` | [19 tables](ddl/trisolute.sql) | [mermaid](mermaid/trisolute.mermaid) |
 | Twilio | `twilio` | [27 tables](ddl/twilio.sql) | [mermaid](mermaid/twilio.mermaid) |
-| Twitter Ads | `twitter_ads` | empty schema |  |
-| Twitter Organic | `twitter` | empty schema |  |
+| Twitter Ads | `twitter_ads` | no tables |  |
+| Twitter Organic | `twitter` | no tables |  |
 | Tymeshift | `tymeshift` | [21 tables](ddl/tymeshift.sql) | [mermaid](mermaid/tymeshift.mermaid) |
 | Typeform | `typeform` | [22 tables](ddl/typeform.sql) | [mermaid](mermaid/typeform.mermaid) |
 | Udemy Business | `udemy_business` | [22 tables](ddl/udemy_business.sql) | [mermaid](mermaid/udemy_business.mermaid) |
@@ -599,16 +599,16 @@ Entity Relationship Diagram schemas for Fivetran application connectors, extract
 | Uservoice | `uservoice` | [23 tables](ddl/uservoice.sql) | [mermaid](mermaid/uservoice.mermaid) |
 | Validio | `validio` | [41 tables](ddl/validio.sql) | [mermaid](mermaid/validio.mermaid) |
 | Veeqo | `veeqo` | [26 tables](ddl/veeqo.sql) | [mermaid](mermaid/veeqo.mermaid) |
-| Veeva Vault | `veeva_vault` | empty schema |  |
+| Veeva Vault | `veeva_vault` | no tables |  |
 | Venminder | `venminder` | [63 tables](ddl/venminder.sql) | [mermaid](mermaid/venminder.mermaid) |
 | Vimeo | `vimeo` | [12 tables](ddl/vimeo.sql) | [mermaid](mermaid/vimeo.mermaid) |
 | Visit by GES | `visit_by_ges` | [13 tables](ddl/visit_by_ges.sql) | [mermaid](mermaid/visit_by_ges.mermaid) |
 | Visma | `visma` | [150 tables](ddl/visma.sql) | [mermaid](mermaid/visma.mermaid) |
 | Vitally | `vitally` | [35 tables](ddl/vitally.sql) | [mermaid](mermaid/vitally.mermaid) |
-| Vonage Contact Center | `vonage_contact_center` | empty schema |  |
+| Vonage Contact Center | `vonage_contact_center` | no tables |  |
 | VTS | `vts` | [81 tables](ddl/vts.sql) | [mermaid](mermaid/vts.mermaid) |
 | VWO | `vwo` | [26 tables](ddl/vwo.sql) | [mermaid](mermaid/vwo.mermaid) |
-| Walmart DSP | `walmart_dsp` | empty schema |  |
+| Walmart DSP | `walmart_dsp` | no tables |  |
 | Walmart Marketplace | `walmart_marketplace` | [105 tables](ddl/walmart_marketplace.sql) | [mermaid](mermaid/walmart_marketplace.mermaid) |
 | Web Scraper | `web_scraper` | [5 tables](ddl/web_scraper.sql) | [mermaid](mermaid/web_scraper.mermaid) |
 | Webconnex | `webconnex` | [17 tables](ddl/webconnex.sql) | [mermaid](mermaid/webconnex.mermaid) |
@@ -619,8 +619,8 @@ Entity Relationship Diagram schemas for Fivetran application connectors, extract
 | WordPress | `wordpress` | [14 tables](ddl/wordpress.sql) | [mermaid](mermaid/wordpress.mermaid) |
 | Workable | `workable` | [33 tables](ddl/workable.sql) | [mermaid](mermaid/workable.mermaid) |
 | Workday Adaptive Planning | `workday_adaptive` | [14 tables](ddl/workday_adaptive.sql) | [mermaid](mermaid/workday_adaptive.mermaid) |
-| Workday Financial Management | `workday_financial_management` | empty schema |  |
-| Workday HCM | `workday_hcm` | empty schema |  |
+| Workday Financial Management | `workday_financial_management` | no tables |  |
+| Workday HCM | `workday_hcm` | no tables |  |
 | Workday Strategic Sourcing | `workday_strategic_sourcing` | [44 tables](ddl/workday_strategic_sourcing.sql) | [mermaid](mermaid/workday_strategic_sourcing.mermaid) |
 | Workleap Officevibe | `workleap_officevibe` | [11 tables](ddl/workleap_officevibe.sql) | [mermaid](mermaid/workleap_officevibe.mermaid) |
 | WorkRamp | `workramp` | [42 tables](ddl/workramp.sql) | [mermaid](mermaid/workramp.mermaid) |
@@ -655,4 +655,4 @@ Entity Relationship Diagram schemas for Fivetran application connectors, extract
 | Zoho Recruit | `zoho_recruit` | [22 tables](ddl/zoho_recruit.sql) | [mermaid](mermaid/zoho_recruit.mermaid) |
 | Zonka Feedback | `zonka_feedback` | [15 tables](ddl/zonka_feedback.sql) | [mermaid](mermaid/zonka_feedback.mermaid) |
 | Zoom | `zoom` | [105 tables](ddl/zoom.sql) | [mermaid](mermaid/zoom.mermaid) |
-| Zuora | `zuora` | empty schema |  |
+| Zuora | `zuora` | no tables |  |

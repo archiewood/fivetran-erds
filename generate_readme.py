@@ -66,7 +66,7 @@ def main():
         "",
         "Entity Relationship Diagram schemas for Fivetran application connectors, extracted from the [Fivetran ERD API](https://fivetran.com/docs/connectors).",
         "",
-        f"**{total}** connectors with ERD links | **{counts['with_erd']}** with schema | **{counts['empty']}** empty schema",
+        f"**{total}** connectors with ERD links | **{counts['with_erd']}** with schema | **{counts['empty']}** no tables",
         "",
         "## Connectors",
         "",
@@ -79,7 +79,7 @@ def main():
             ddl = f"[{tables} tables](ddl/{file_id}.sql)"
             mermaid = f"[mermaid](mermaid/{file_id}.mermaid)"
         else:
-            ddl = "empty schema"
+            ddl = "no tables"
             mermaid = ""
         lines.append(f"| {name} | `{cid}` | {ddl} | {mermaid} |")
 
@@ -91,7 +91,7 @@ def main():
 
     print(f"\nGenerated README.md:")
     print(f"  {counts['with_erd']} with schema")
-    print(f"  {counts['empty']} empty schema")
+    print(f"  {counts['empty']} no tables")
     print(f"  {total} total")
 
 
