@@ -6,7 +6,7 @@ Entity Relationship Diagram schemas for Fivetran application connectors, extract
 
 ## Connectors
 
-| Connector | ID | DDL | Mermaid |
+| Connector | ID | DDL Statements | Mermaid |
 |---|---|---|---|
 | 15Five | `15five` | [17 tables](ddl/15five.sql) | [mermaid](mermaid/15five.mermaid) |
 | 360Learning | `360learning` | [28 tables](ddl/360learning.sql) | [mermaid](mermaid/360learning.mermaid) |

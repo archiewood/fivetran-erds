@@ -70,7 +70,7 @@ def main():
         "",
         "## Connectors",
         "",
-        "| Connector | ID | DDL | Mermaid |",
+        "| Connector | ID | DDL Statements | Mermaid |",
         "|---|---|---|---|",
     ]
 
