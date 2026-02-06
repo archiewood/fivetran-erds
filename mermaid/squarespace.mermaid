@@ -1,0 +1,348 @@
+erDiagram
+    refund {
+        text id PK
+        text payment_id FK
+        text amount_currency
+        text amount_value
+        text external_transaction_id
+        text refunded_on
+    }
+    fee_refund {
+        text id PK
+        text processing_fee_id FK
+        text amount_currency
+        text amount_gateway_currency
+        text amount_gateway_currency_value
+        text amount_value
+        text exchange_rate
+        text external_transaction_id
+        text refunded_on
+    }
+    processing_fee {
+        text id PK
+        text payment_id FK
+        text amount_currency
+        text amount_gateway_currency
+        text amount_gateway_currency_value
+        text amount_value
+        text exchange_rate
+        text net_amount_currency
+        text net_amount_gateway_currency
+        text net_amount_gateway_currency_value
+        text net_amount_value
+        text refunded_amount_currency
+        text refunded_amount_gateway_currency
+        text refunded_amount_gateway_currency_value
+        text refunded_amount_value
+    }
+    payment {
+        text id PK
+        text transaction_id FK
+        text amount_currency
+        text amount_value
+        text credit_card_type
+        text external_customer_id
+        text external_transaction_id
+        jsonb external_transaction_properties
+        text gift_card_id
+        text net_amount_currency
+        text net_amount_value
+        text paid_on
+        text provider
+        text refunded_amount_currency
+        text refunded_amount_value
+    }
+    sale_line_item_tax {
+        text _fivetran_id PK
+        text sale_line_item_id FK
+        text amount_currency
+        text amount_value
+        text jurisdiction
+        text name
+        text rate
+    }
+    sale_line_item {
+        text id PK
+        text transaction_id FK
+        text discount_amount_currency
+        text discount_amount_value
+        text total_currency
+        text total_net_sales_currency
+        text total_net_sales_value
+        text total_sales_currency
+        text total_sales_value
+        text total_value
+    }
+    discount {
+        text _fivetran_id PK
+        text transaction_id FK
+        text amount_currency
+        text amount_value
+        text description
+        text name
+    }
+    shipping_line_item_tax {
+        text _fivetran_id PK
+        text shipping_line_item_id FK
+        text amount_currency
+        text amount_value
+        text description
+        text name
+        text rate
+    }
+    shipping_line_item {
+        text id PK
+        text transaction_id FK
+        text amount_currency
+        text amount_value
+        text description
+        text discount_amount_currency
+        text discount_amount_value
+        text net_amount_currency
+        text net_amount_value
+    }
+    transaction {
+        text id PK
+        text customer_email FK
+        text sales_order_id FK
+        text created_on
+        text modified_on
+        text payment_gateway_error
+        text sale_order_id
+        text total_currency
+        text total_net_payment_currency
+        text total_net_payment_value
+        text total_net_sales_currency
+        text total_net_sales_value
+        text total_net_shipping_currency
+        text total_net_shipping_value
+        text total_sales_currency
+        text total_sales_value
+        text total_taxes_currency
+        text total_taxes_value
+        text total_value
+        text voided
+    }
+    store_page {
+        text id PK
+        text is_enabled
+        text title
+    }
+    profile {
+        text id PK
+        text accepts_marketing
+        text address_address_1
+        text address_address_2
+        text address_city
+        text address_country_code
+        text address_first_name
+        text address_last_name
+        text address_phone
+        text address_postal_code
+        text address_state
+        timestamp created_on
+        text email
+        text first_name
+        text has_account
+        text is_customer
+        text last_name
+        text transactions_summary_donation_count
+        text transactions_summary_first_donation_submitted_on
+        text transactions_summary_first_order_submitted_on
+        text transactions_summary_last_donation_submitted_on
+        text transactions_summary_last_order_submitted_on
+        text transactions_summary_order_count
+        text transactions_summary_total_donation_amount_currency
+        text transactions_summary_total_donation_amount_value
+        text transactions_summary_total_order_amount_currency
+        text transactions_summary_total_order_amount_value
+        text transactions_summary_total_refund_amount_currency
+        text transactions_summary_total_refund_amount_value
+    }
+    inventory {
+        text variant_id PK
+        text descriptor
+        text is_unlimited
+        text quantity
+        text sku
+    }
+    image {
+        text id PK
+        text product_id FK
+        text alt_text
+        jsonb available_formats
+        text original_size_height
+        text original_size_width
+        text url
+    }
+    variant {
+        text id PK
+        text image_id FK
+        text product_id FK
+        text attributes_flavor
+        jsonb image_available_formats
+        text image_original_size_height
+        text image_original_size_width
+        text image_title
+        text image_url
+        text pricing_base_price_currency
+        text pricing_base_price_value
+        text pricing_on_sale
+        text pricing_sale_price_currency
+        text pricing_sale_price_value
+        text shipping_measurements_dimensions_height
+        text shipping_measurements_dimensions_length
+        text shipping_measurements_dimensions_unit
+        text shipping_measurements_dimensions_width
+        text shipping_measurements_weight_unit
+        text shipping_measurements_weight_value
+        text sku
+        text stock_quantity
+        text stock_unlimited
+    }
+    product {
+        text id PK
+        text store_page_id FK
+        text created_on
+        text description
+        text is_visible
+        text modified_on
+        text name
+        text seo_options_description
+        text seo_options_title
+        jsonb tags
+        text type
+        text url
+        text url_slug
+        jsonb variant_attributes
+    }
+    fulfillment {
+        text _fivetran_id PK
+        text orders_id FK
+        text carrier_name
+        text service
+        text ship_date
+        text tracking_number
+        text tracking_url
+    }
+    form_submission {
+        text _fivetran_id PK
+        text orders_id FK
+        text label
+        text value
+    }
+    discount_line {
+        text _fivetran_id PK
+        text orders_id FK
+        text amount_currency
+        text amount_value
+        text description
+        text name
+        text promo_code
+    }
+    shipping_line {
+        text _fivetran_id PK
+        text orders_id FK
+        text amount_currency
+        text amount_value
+        text method
+    }
+    internal_note {
+        text content PK
+        text orders_id FK
+    }
+    variant_option {
+        text _fivetran_id PK
+        text line_item_id FK
+        text option_name
+        text value
+    }
+    customization {
+        text _fivetran_id PK
+        text line_item_id FK
+        text label
+        text value
+    }
+    line_item {
+        text id PK
+        text orders_id FK
+        text product_id FK
+        text variant_id FK
+        text line_item_type
+        text product_name
+        text quantity
+        text sku
+        text unit_price_paid_currency
+        text unit_price_paid_value
+    }
+    orders {
+        text id PK
+        text customer_email FK
+        text billing_address_address_1
+        text billing_address_address_2
+        text billing_address_city
+        text billing_address_country_code
+        text billing_address_first_name
+        text billing_address_last_name
+        text billing_address_phone
+        text billing_address_postal_code
+        text billing_address_state
+        text channel
+        text channel_name
+        text created_on
+        text discount_total_currency
+        text discount_total_value
+        text external_order_reference
+        text fulfilled_on
+        text fulfillment_status
+        text grand_total_currency
+        text grand_total_value
+        text modified_on
+        text order_number
+        text price_tax_interpretation
+        text refunded_total_currency
+        text refunded_total_value
+        text shipping_address_address_1
+        text shipping_address_address_2
+        text shipping_address_city
+        text shipping_address_country_code
+        text shipping_address_first_name
+        text shipping_address_last_name
+        text shipping_address_phone
+        text shipping_address_postal_code
+        text shipping_address_state
+        text shipping_total_currency
+        text shipping_total_value
+        text subtotal_currency
+        text subtotal_value
+        text tax_total_currency
+        text tax_total_value
+        text test_mode
+    }
+    refund }o--|| payment : "fk"
+    fee_refund }o--|| processing_fee : "fk"
+    processing_fee }o--|| payment : "fk"
+    payment }o--|| transaction : "fk"
+    sale_line_item_tax }o--|| sale_line_item : "fk"
+    sale_line_item }o--|| transaction : "fk"
+    discount }o--|| transaction : "fk"
+    shipping_line_item_tax }o--|| shipping_line_item : "fk"
+    shipping_line_item }o--|| transaction : "fk"
+    transaction }o--|| profile : "fk"
+    transaction }o--|| orders : "fk"
+    inventory }o--|| variant : "fk"
+    image }o--|| product : "fk"
+    variant }o--|| image : "fk"
+    variant }o--|| product : "fk"
+    product }o--|| store_page : "fk"
+    fulfillment }o--|| orders : "fk"
+    form_submission }o--|| orders : "fk"
+    discount_line }o--|| orders : "fk"
+    shipping_line }o--|| orders : "fk"
+    internal_note }o--|| orders : "fk"
+    variant_option }o--|| line_item : "fk"
+    customization }o--|| line_item : "fk"
+    line_item }o--|| product : "fk"
+    line_item }o--|| variant : "fk"
+    line_item }o--|| orders : "fk"
+    orders }o--|| profile : "fk"

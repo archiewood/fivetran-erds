@@ -1,0 +1,548 @@
+erDiagram
+    location {
+        text id PK
+        text parent_location_id FK
+        text warehouse_id FK
+        text is_bulk_location
+        text is_exclusive_location
+        text location_type_color
+        text location_type_default
+        text location_type_id
+        text location_type_name
+        text name
+        text remarks
+        text type
+        text unlink_on_empty
+    }
+    price_list {
+        text id PK
+        text name
+    }
+    vat_group {
+        text id PK
+        text name
+        text percentage
+        text standard
+    }
+    supplier {
+        text id PK
+        text template_id FK
+        text active
+        text address
+        text address_2
+        text city
+        text contact_name
+        text country
+        text email_address
+        text full_address
+        text languages
+        text name
+        text region
+        text remarks
+        text telephone
+        text zip_code
+    }
+    comment_mention {
+        text _fivetran_id PK
+        text comment_id FK
+        text user_id FK
+        text mentioned_type
+        text text
+    }
+    comment {
+        text id PK
+        text customer_id FK
+        text order_id FK
+        text picklist_id FK
+        text product_id FK
+        text purchaseorder_id FK
+        text return_id FK
+        text supplier_id FK
+        text user_id FK
+        text author_type
+        text body
+        text created_at
+        text image_url
+        text receipt_id
+        text show_at_related
+        text source_type
+        text updated_at
+    }
+    return {
+        text id PK
+        text customer_id FK
+        text order_id FK
+        text template_id FK
+        text address
+        text address_2
+        text city
+        text completed_at
+        text contact_name
+        text country
+        text created_at
+        text email_address
+        text full_address
+        text languages
+        text name
+        text received_at
+        text reference
+        text region
+        text return_number
+        text return_status_id
+        text telephone
+        text tracking_code
+        text updated_at
+        text zip_code
+    }
+    stock_history {
+        text id PK
+        text location_id FK
+        text product_id FK
+        text user_id FK
+        text warehouse_id FK
+        text change_type
+        text changed_at
+        text new_stock
+        text old_stock
+        text reason
+        text stock_change
+    }
+    product_image {
+        text index PK
+        text product_id PK
+        text image_url
+    }
+    product_stock {
+        text product_id PK
+        text warehouse_id PK
+        text freestock
+        text reserved
+        text reserved_allocations
+        text reserved_back_order
+        text reserved_picklist
+        text stock
+    }
+    product_field {
+        text id PK
+        text product_id PK
+    }
+    product_price_list {
+        text id PK
+        text product_id PK
+        text price
+    }
+    product_tag {
+        text product_id PK
+        text tag_id PK
+    }
+    product {
+        text id PK
+        text supplier_id FK
+        text vat_group_id FK
+        text active
+        text analysis_abc_classification
+        text analysis_pick_amount_per_day
+        text assembled
+        text barcode
+        text code
+        text country_of_origin
+        text delivery_time
+        text description
+        text fixed_stock_price
+        text height
+        text hs_code
+        text length
+        text minimum_purchase_quantity
+        text name
+        text price
+        text product_code_supplier
+        text purchase_in_quantities_of
+        text show_on_portal
+        text type
+        text unlimited_stock
+        text weight
+        text width
+    }
+    order_product {
+        text order_product_id PK
+        text order_id PK
+        text part_of_idorder_product FK
+        text product_id FK
+        text amount
+        text amount_cancelled
+        text has_parts
+        text part_of_order_product_id
+        text price
+        text remarks
+    }
+    order_field {
+        text id PK
+        text order_id PK
+    }
+    order_price_list {
+        text order_id PK
+        text pricelist_id PK
+    }
+    order_warehouse {
+        text order_id PK
+        text warehouse_id PK
+    }
+    order_tag {
+        text order_id PK
+        text tag_id PK
+    }
+    orders {
+        text id PK
+        text customer_id FK
+        integer shipping_provider_profile_id FK
+        text template_id FK
+        text auto_split
+        text calculate_vat
+        text created
+        text customer_remarks
+        text delivery_address
+        text delivery_address_2
+        text delivery_city
+        text delivery_contact_name
+        text delivery_country
+        text delivery_name
+        text delivery_region
+        text delivery_zip_code
+        text discount
+        text email_address
+        text full_delivery_address
+        text full_invoice_address
+        text invoice_address
+        text invoice_address_2
+        text invoice_city
+        text invoice_contact_name
+        text invoice_country
+        text invoice_name
+        text invoice_region
+        text invoice_zip_code
+        text invoiced
+        text languages
+        text order_number
+        text partial_delivery
+        text pickup_point_data
+        text preferred_delivery_date
+        text public_status_page
+        text reference
+        text status
+        text telephone
+        text updated
+    }
+    customer_address {
+        text id PK
+        text customer_id PK
+        text address
+        text address_2
+        text city
+        text contact_name
+        text country
+        text default_delivery
+        text default_invoice
+        text full_address
+        text name
+        text region
+        text zip_code
+    }
+    customer_field {
+        text customer_id PK
+        text id PK
+    }
+    customer_tag {
+        text customer_id PK
+        text tag_id PK
+    }
+    customer {
+        text id PK
+        text template_id FK
+        text auto_split
+        text calculate_vat
+        text contact_name
+        text customer_number
+        text default_order_remarks
+        text discount
+        text email_address
+        text languages
+        text name
+        text partial_delivery
+        text remarks
+        text telephone
+        text vat_number
+    }
+    template {
+        text id PK
+        text custom_css
+        text defaults
+        text name
+    }
+    product_field_detailed {
+        text id PK
+        text required
+        text title
+        text type
+        jsonb values
+        text visible_invoice
+        text visible_picklist
+        text visible_portal
+        text visible_purchase_order
+        text visible_shipping_list
+    }
+    picklist_location {
+        text location_id PK
+        text picklist_id PK
+        text picklist_product_id PK
+        text amount
+    }
+    picklist_product {
+        text id PK
+        text picklist_id PK
+        text order_product_id FK
+        text product_id FK
+        text amount
+        text amount_picked
+        text has_parts
+        text part_of_picklist_product_id
+        text price
+        text remarks
+        text return_product_replacement_id
+        text stock_location
+    }
+    picklist {
+        text id PK
+        text assigned_to_user_id FK
+        text closed_by_user_id FK
+        text customer_id FK
+        text order_id FK
+        text reference FK
+        text return_id FK
+        text shipping_provider_profile_id FK
+        text template_id FK
+        text warehouse_id FK
+        text closed_at
+        text created
+        text delivery_address
+        text delivery_address_2
+        text delivery_city
+        text delivery_contact
+        text delivery_country
+        text delivery_name
+        text delivery_region
+        text delivery_zip_code
+        text email_address
+        text invoiced
+        text picklist_number
+        text preferred_delivery_date
+        text snoozed_until
+        text status
+        text telephone
+        text total_picked
+        text total_product
+        text updated
+        text urgent
+    }
+    warehouse {
+        text id PK
+        text accept_orders
+        text active
+        text counts_for_general_stock
+        text name
+        text priority
+    }
+    customer_field_detailed {
+        text id PK
+        text required
+        text title
+        text type
+        jsonb values
+    }
+    backorder {
+        text id PK
+        text customer_id FK
+        text order_id FK
+        text part_of_backorder_id FK
+        text product_id FK
+        text return_id FK
+        text warehouse_id FK
+        text amount
+        text amount_available
+        text created_at
+        text has_parts
+        text parts_per_parent
+        text priority
+    }
+    order_field_detailed {
+        text id PK
+        text required
+        text title
+        text type
+        jsonb values
+        text visible_picklist
+        text visible_portal
+    }
+    shipping_provider_profile {
+        text id PK
+        text shipping_provider_id PK
+        text active
+        text created
+        text name
+        text standard
+        text updated
+    }
+    shipping_provider {
+        text id PK
+        text active
+        text created
+        text name
+        text provider
+        text updated
+    }
+    purchase_order_product {
+        text purchase_order_product_id PK
+        text purchase_order_id PK
+        text product_id FK
+        text amount
+        text amount_received
+        text delivery_date
+        text price
+        text product_code_supplier
+    }
+    purchase_order {
+        text id PK
+        text completed_user_id FK
+        text created_user_id FK
+        text purchased_user_id FK
+        text supplier_id FK
+        text template_id FK
+        text warehouse_id FK
+        text completed_at
+        text created
+        text delivery_date
+        text languages
+        text purchase_order_number
+        text purchased_at
+        text remarks
+        text status
+        text supplier_name
+        text supplier_order_id
+        text updated
+    }
+    picking_container {
+        text id PK
+        text picklist_id FK
+        text created_at
+        text name
+        text updated_at
+    }
+    user_right {
+        text rights PK
+        text user_id PK
+        text granted
+    }
+    users {
+        text id PK
+        text active
+        text admin
+        text created_at
+        text email_address
+        text first_name
+        text full_name
+        text languages
+        text last_login_at
+        text last_name
+        text name
+        text packing_station_id
+        text updated_at
+    }
+    tags {
+        text id PK
+        text color
+        text inherit
+        text text_color
+        text title
+    }
+    location }o--|| warehouse : "fk"
+    location }o--|| location : "fk"
+    supplier }o--|| template : "fk"
+    comment_mention }o--|| users : "fk"
+    comment_mention }o--|| comment : "fk"
+    comment }o--|| product : "fk"
+    comment }o--|| users : "fk"
+    comment }o--|| return : "fk"
+    comment }o--|| picklist : "fk"
+    comment }o--|| orders : "fk"
+    comment }o--|| supplier : "fk"
+    comment }o--|| customer : "fk"
+    comment }o--|| purchase_order : "fk"
+    return }o--|| template : "fk"
+    return }o--|| orders : "fk"
+    return }o--|| customer : "fk"
+    stock_history }o--|| product : "fk"
+    stock_history }o--|| users : "fk"
+    stock_history }o--|| warehouse : "fk"
+    stock_history }o--|| location : "fk"
+    product_image }o--|| product : "fk"
+    product_stock }o--|| warehouse : "fk"
+    product_stock }o--|| product : "fk"
+    product_field }o--|| product_field_detailed : "fk"
+    product_field }o--|| product : "fk"
+    product_price_list }o--|| price_list : "fk"
+    product_price_list }o--|| product : "fk"
+    product_tag }o--|| tags : "fk"
+    product_tag }o--|| product : "fk"
+    product }o--|| vat_group : "fk"
+    product }o--|| supplier : "fk"
+    order_product }o--|| product : "fk"
+    order_product }o--|| orders : "fk"
+    order_product }o--|| order_product : "fk"
+    order_field }o--|| order_field_detailed : "fk"
+    order_field }o--|| orders : "fk"
+    order_price_list }o--|| price_list : "fk"
+    order_price_list }o--|| orders : "fk"
+    order_warehouse }o--|| warehouse : "fk"
+    order_warehouse }o--|| orders : "fk"
+    order_tag }o--|| tags : "fk"
+    order_tag }o--|| orders : "fk"
+    orders }o--|| template : "fk"
+    orders }o--|| customer : "fk"
+    orders }o--|| shipping_provider_profile : "fk"
+    customer_address }o--|| customer : "fk"
+    customer_field }o--|| customer_field_detailed : "fk"
+    customer_field }o--|| customer : "fk"
+    customer_tag }o--|| tags : "fk"
+    customer_tag }o--|| customer : "fk"
+    customer }o--|| template : "fk"
+    picklist_location }o--|| location : "fk"
+    picklist_location }o--|| picklist_product : "fk"
+    picklist_location }o--|| picklist_product : "fk"
+    picklist_product }o--|| picklist_product : "fk"
+    picklist_product }o--|| order_product : "fk"
+    picklist_product }o--|| picklist : "fk"
+    picklist }o--|| template : "fk"
+    picklist }o--|| return : "fk"
+    picklist }o--|| warehouse : "fk"
+    picklist }o--|| orders : "fk"
+    picklist }o--|| customer : "fk"
+    picklist }o--|| orders : "fk"
+    picklist }o--|| users : "fk"
+    picklist }o--|| shipping_provider_profile : "fk"
+    picklist }o--|| users : "fk"
+    backorder }o--|| product : "fk"
+    backorder }o--|| return : "fk"
+    backorder }o--|| warehouse : "fk"
+    backorder }o--|| orders : "fk"
+    backorder }o--|| customer : "fk"
+    backorder }o--|| backorder : "fk"
+    shipping_provider_profile }o--|| shipping_provider : "fk"
+    purchase_order_product }o--|| product : "fk"
+    purchase_order_product }o--|| purchase_order : "fk"
+    purchase_order }o--|| template : "fk"
+    purchase_order }o--|| users : "fk"
+    purchase_order }o--|| warehouse : "fk"
+    purchase_order }o--|| supplier : "fk"
+    purchase_order }o--|| users : "fk"
+    purchase_order }o--|| users : "fk"
+    picking_container }o--|| picklist : "fk"
+    user_right }o--|| users : "fk"

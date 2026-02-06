@@ -1,0 +1,114 @@
+erDiagram
+    media_comment {
+        text _fivetran_id PK
+        bigint media_id FK
+        timestamp created_time
+        boolean hidden
+        bigint id
+        bigint like_count
+        bigint owner_id
+        text owner_username
+        bigint parent_id
+        text text
+    }
+    user_lifetime_insights {
+        text _fivetran_id PK
+        bigint id FK
+        text date
+        text key
+        text metric
+        bigint value
+    }
+    media_insights {
+        text _fivetran_id PK
+        bigint id FK
+        bigint carousel_album_engagement
+        bigint carousel_album_follows
+        bigint carousel_album_impressions
+        bigint carousel_album_reach
+        bigint carousel_album_saved
+        bigint carousel_album_shares
+        bigint carousel_album_views
+        bigint comment_count
+        bigint like_count
+        bigint navigation
+        bigint reel_comments
+        bigint reel_likes
+        bigint reel_reach
+        bigint reel_saved
+        bigint reel_shares
+        bigint reel_total_interactions
+        bigint reel_views
+        bigint story_exits
+        bigint story_follows
+        bigint story_impressions
+        bigint story_reach
+        bigint story_replies
+        bigint story_shares
+        bigint story_swipe_forward
+        bigint story_taps_back
+        bigint story_taps_forward
+        bigint story_views
+        bigint video_photo_engagement
+        bigint video_photo_follows
+        bigint video_photo_impressions
+        bigint video_photo_reach
+        bigint video_photo_saved
+        bigint video_photo_shares
+        bigint video_photo_views
+    }
+    user_history {
+        text _fivetran_id PK
+        bigint followers_count
+        bigint follows_count
+        boolean has_profile_pic
+        bigint id
+        bigint ig_id
+        boolean is_published
+        bigint media_count
+        text name
+        text profile_picture_url
+        text username
+        text website
+    }
+    media_history {
+        text _fivetran_id PK
+        bigint user_id FK
+        text caption
+        bigint carousel_album_id
+        timestamp created_time
+        bigint id
+        bigint ig_id
+        boolean is_comment_enabled
+        boolean is_story
+        text media_product_type
+        text media_type
+        text media_url
+        bigint owner_id
+        text permalink
+        text shortcode
+        text thumbnail_url
+        text username
+    }
+    user_insights {
+        text _fivetran_id PK
+        bigint id FK
+        bigint comments
+        text date
+        bigint follower_count
+        bigint likes
+        bigint reach
+        bigint reach_28_d
+        bigint reach_7_d
+        bigint replies
+        bigint saves
+        bigint shares
+        bigint total_interactions
+        bigint unfollower_count
+        bigint views
+    }
+    media_comment }o--|| media_history : "fk"
+    user_lifetime_insights }o--|| user_history : "fk"
+    media_insights }o--|| media_history : "fk"
+    media_history }o--|| user_history : "fk"
+    user_insights }o--|| user_history : "fk"

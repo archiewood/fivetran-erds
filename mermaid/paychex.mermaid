@@ -1,0 +1,258 @@
+erDiagram
+    company_location {
+        text id PK
+        text company_id PK
+        text location_id FK
+        text city
+        text communication_id
+        text country_code
+        text country_subdivision_code
+        text dial_area
+        text dial_country
+        text dial_extension
+        text dial_number
+        text moved_in
+        text moved_out
+        text name
+        text post_office_box
+        text postal_code
+        text postal_code_extension
+        text street_line_one
+        text street_line_two
+        text type
+        text uri
+        text usage_type
+    }
+    worker_payrate {
+        text id PK
+        text worker_id PK
+        text amount
+        text defaults
+        text description
+        text effective_date
+        text in_progress_worker
+        text rate_number
+        text rate_type
+        text standard_hour
+        text standard_overtime
+        text start_date
+    }
+    company_labour_assignment {
+        text id PK
+        text company_id PK
+        text location_id FK
+        text organization_id FK
+        text end_date
+        text name
+        text position_id
+        text start_date
+    }
+    worker_assignment {
+        text labor_assignment_id PK
+        text worker_id PK
+        text job_id
+        text value
+    }
+    company_worker_status {
+        text id PK
+        text company_id PK
+        text status_reason
+        text status_type
+    }
+    relationship_type {
+        text company_contact_type_id PK
+        text id PK
+        text relationship_type_name
+    }
+    company_contact_type {
+        text _fivetran_id PK
+        text company_id PK
+        text contact_type_name
+        text id
+    }
+    worker {
+        text id PK
+        text company_id PK
+        text job_title_id FK
+        text birth_date
+        text clock_id
+        text current_status_effective_date
+        text current_status_status_reason
+        text current_status_status_type
+        text employee_id
+        text employment_type
+        text ethnicity_code
+        text exemption_type
+        text hire_date
+        text job_id
+        text job_title
+        text labor_assignment_id
+        text legal_id
+        text legal_id_type
+        text location_id
+        text name_family_name
+        text name_given_name
+        text name_middle_name
+        text name_preferred_name
+        text name_qualification_affix_code
+        text name_title_affix_code
+        text organization_children
+        text organization_id
+        text organization_level
+        text organization_name
+        text organization_number
+        text sex
+        text supervisor_name_family_name
+        text supervisor_name_given_name
+        text supervisor_name_qualification_affix_code
+        text supervisor_worker_id
+        text work_state
+        text worker_corelation_id
+        text worker_status_id
+        text worker_type
+    }
+    worker_federal_tax {
+        text id PK
+        text worker_id PK
+        text deductions_amount
+        text dependents_amount
+        text extra_withholding_amount
+        text filing_status
+        text multiple_job
+        text other_income
+        text taxes_withheld
+    }
+    company_calculation {
+        text id PK
+        text calculation_base_name
+    }
+    communication {
+        text index PK
+        text company_id PK
+        text city
+        text type
+        text usage_type
+    }
+    company {
+        text id PK
+        text legal_id_type FK
+        text display_id
+        text has_permission
+        text legal_id_value
+        text legal_name
+    }
+    company_pay_frequency {
+        text _fivetran_id PK
+        text company_id FK
+        text interval_1
+        text interval_2
+        text pay_component_frequency_applied
+        text pay_component_frequency_occurence
+        text pay_frequency
+    }
+    worker_pay_standard {
+        text _fivetran_id PK
+        text worker_id FK
+        text calculated_annual_salary
+        text calculated_pay_period
+        text overtime_factor
+        text pay_frequency
+    }
+    worker_deposit {
+        text id PK
+        text worker_id PK
+        text account_number
+        text account_type
+        text direct_deposit_type
+        text payment_type
+        text priority
+        text routing_number
+        text start_date
+        text value
+    }
+    company_organization {
+        text id PK
+        text company_id PK
+        text organization_id FK
+        text level
+        text name
+        text number
+    }
+    worker_pay_component {
+        text id PK
+        text worker_id PK
+        text calculation_base_id FK
+        text applied
+        text calculation_type
+        text classification_type
+        text component_id
+        text effect_on_pay
+        text effected_checks
+        text effective_date
+        text end_date
+        text interval_1
+        text interval_2
+        text name
+        text occurence
+        text start_date
+        text value
+    }
+    worker_communication {
+        text id PK
+        text worker_id PK
+        text city
+        text country_code
+        text country_subdivision_code
+        text dial_area
+        text dial_country
+        text dial_extension
+        text dial_number
+        text post_office_box
+        text postal_code
+        text postal_code_extension
+        text street_line_one
+        text street_line_two
+        text type
+        text uri
+        text usage_type
+    }
+    company_job_segment {
+        text id PK
+        text company_id PK
+        text name
+        text segment_length
+    }
+    company_job_title {
+        text id PK
+        text company_id PK
+        text job_title_id FK
+        text end_date
+        text start_date
+        text title
+    }
+    company_location }o--|| worker : "fk"
+    company_location }o--|| company : "fk"
+    worker_payrate }o--|| worker : "fk"
+    company_labour_assignment }o--|| company_organization : "fk"
+    company_labour_assignment }o--|| company_location : "fk"
+    company_labour_assignment }o--|| company : "fk"
+    worker_assignment }o--|| company_labour_assignment : "fk"
+    worker_assignment }o--|| worker : "fk"
+    company_worker_status }o--|| company : "fk"
+    company_contact_type }o--|| company : "fk"
+    worker }o--|| company_job_title : "fk"
+    worker }o--|| company : "fk"
+    worker_federal_tax }o--|| worker : "fk"
+    communication }o--|| company : "fk"
+    company }o--|| worker : "fk"
+    company_pay_frequency }o--|| company : "fk"
+    worker_pay_standard }o--|| worker : "fk"
+    worker_deposit }o--|| worker : "fk"
+    company_organization }o--|| worker : "fk"
+    company_organization }o--|| company : "fk"
+    worker_pay_component }o--|| company_calculation : "fk"
+    worker_pay_component }o--|| worker : "fk"
+    worker_communication }o--|| worker : "fk"
+    company_job_segment }o--|| company : "fk"
+    company_job_title }o--|| worker : "fk"
+    company_job_title }o--|| company : "fk"

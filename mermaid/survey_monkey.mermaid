@@ -1,0 +1,195 @@
+erDiagram
+%% Note
+%% Recipient and Contact can be joined using email field if you’re using contact list in Survey Monkey
+    contact {
+        text id PK
+        text email
+        text first_name
+        text last_name
+        text phone_number
+    }
+    response_answer {
+        bigint index PK
+        text question_id PK
+        text response_id PK
+        text response_page_id PK
+        text choice_id
+        text col_id
+        text content_type
+        text download_url
+        text other_id
+        text row_id
+        text text
+    }
+    response_history {
+        text id PK
+        text collector_id FK
+        text recipient_id FK
+        text survey_id FK
+        text collection_mode
+        timestamp created_at
+        text custom_value
+        text ip_address
+        text response_status
+        bigint total_time
+        timestamp updated_at
+    }
+    recipient {
+        text id PK
+        text message_id FK
+        text email
+        text mail_status
+        text phone_number
+        text remove_link
+        text survey_link
+        text survey_response_status
+    }
+    survey_history {
+        text id PK
+        text category_id FK
+        text folder_id FK
+        timestamp created_at
+        boolean footer
+        text language
+        text nickname
+        text title
+        timestamp updated_at
+    }
+    question_option_history {
+        integer position PK
+        text question_id PK
+        text description
+        text id
+        boolean is_na
+        integer quiz_option_score
+        text text
+        boolean visible
+        integer weight
+    }
+    sub_question_history {
+        integer position PK
+        text question_id PK
+        text id
+        boolean required
+        text text
+        text type
+        boolean visible
+    }
+    contact_list_contact {
+        text contact_id PK
+        text contact_list_id PK
+    }
+    survey_page_history {
+        text id PK
+        text survey_id FK
+        text description
+        bigint position
+        text title
+    }
+    message {
+        text id PK
+        text collector_id FK
+        text body
+        timestamp created_at
+        boolean embed_first_question
+        boolean is_branding_enabled
+        boolean is_scheduled
+        text recipient_status
+        timestamp scheduled_date
+        text status
+        text subject
+        text type
+    }
+    question_history {
+        text id PK
+        text survey_page_id PK
+        text family
+        boolean forced_ranking
+        bigint position
+        text required_amount
+        text required_text
+        text required_type
+        boolean sorting_ignore_last
+        text sorting_type
+        jsonb structure_metadata
+        text subtype
+        boolean visible
+    }
+    collector {
+        text id PK
+        text survey_id FK
+        boolean allow_multiple_responses
+        text anonymous_type
+        text border_color
+        timestamp close_date
+        text closed_page_message
+        timestamp created_at
+        boolean display_survey_results
+        text disqualification_message
+        text disqualification_url
+        text edit_response_type
+        text headline
+        integer height
+        boolean is_branding_enabled
+        text message
+        text name
+        boolean password_enabled
+        text primary_button_bg_color
+        text primary_button_text
+        text primary_button_text_color
+        text redirect_type
+        text redirect_url
+        text sample_rate
+        text secondary_button_bg_color
+        text secondary_button_text
+        text secondary_button_text_color
+        text sender_email
+        text status
+        text thank_you_message
+        text type
+        timestamp updated_at
+        text url
+        integer width
+    }
+    contact_list {
+        text id PK
+        text name
+    }
+    response_page {
+        text id PK
+        text response_id PK
+    }
+    survey_folder {
+        text id PK
+        text title
+    }
+    question_heading_history {
+        bigint index PK
+        text question_id PK
+        text description
+        text heading
+        text image_url
+    }
+    survey_category {
+        text id PK
+        text name
+    }
+    response_answer }o--|| question_history : "fk"
+    response_answer }o--|| response_page : "fk"
+    response_answer }o--|| response_history : "fk"
+    response_history }o--|| survey_history : "fk"
+    response_history }o--|| collector : "fk"
+    response_history }o--|| recipient : "fk"
+    recipient }o--|| message : "fk"
+    survey_history }o--|| survey_folder : "fk"
+    survey_history }o--|| survey_category : "fk"
+    question_option_history }o--|| question_history : "fk"
+    sub_question_history }o--|| question_history : "fk"
+    contact_list_contact }o--|| contact_list : "fk"
+    contact_list_contact }o--|| contact : "fk"
+    survey_page_history }o--|| survey_history : "fk"
+    message }o--|| collector : "fk"
+    question_history }o--|| survey_page_history : "fk"
+    collector }o--|| survey_history : "fk"
+    response_page }o--|| response_history : "fk"
+    question_heading_history }o--|| question_history : "fk"

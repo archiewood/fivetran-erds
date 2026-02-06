@@ -1,0 +1,90 @@
+erDiagram
+    station_zipcode {
+        bigint id PK
+        bigint station_id PK
+    }
+    station {
+        bigint id PK
+        text city
+        text connect_date
+        text county
+        text disconnect_date
+        bigint elevation
+        text ground_cover
+        text hms_latitude
+        text hms_longitude
+        boolean is_active
+        boolean is_eto_station
+        text name
+        text regional_office
+        text siting_desc
+    }
+    spatial_zipcode {
+        bigint id PK
+        text connect_date
+        text disconnect_date
+        boolean is_active
+    }
+    data_item_record {
+        text _fivetran_id PK
+        text station_id FK
+        text station_zipcode_id FK
+        text date
+        text day_air_tmp_avg_qc
+        text day_air_tmp_avg_unit
+        text day_air_tmp_avg_value
+        text day_air_tmp_max_qc
+        text day_air_tmp_max_unit
+        text day_air_tmp_max_value
+        text day_air_tmp_min_qc
+        text day_air_tmp_min_unit
+        text day_air_tmp_min_value
+        text day_asce_eto_qc
+        text day_asce_eto_unit
+        text day_asce_eto_value
+        text day_dew_pnt_qc
+        text day_dew_pnt_unit
+        text day_dew_pnt_value
+        text day_precip_qc
+        text day_precip_unit
+        text day_precip_value
+        text day_rel_hum_avg_qc
+        text day_rel_hum_avg_unit
+        text day_rel_hum_avg_value
+        text day_rel_hum_max_qc
+        text day_rel_hum_max_unit
+        text day_rel_hum_max_value
+        text day_rel_hum_min_qc
+        text day_rel_hum_min_unit
+        text day_rel_hum_min_value
+        text day_soil_tmp_avg_qc
+        text day_soil_tmp_avg_unit
+        text day_soil_tmp_avg_value
+        text day_sol_rad_avg_qc
+        text day_sol_rad_avg_unit
+        text day_sol_rad_avg_value
+        text day_vap_pres_avg_qc
+        text day_vap_pres_avg_unit
+        text day_vap_pres_avg_value
+        text day_wind_run_qc
+        text day_wind_run_unit
+        text day_wind_run_value
+        text day_wind_spd_avg_qc
+        text day_wind_spd_avg_unit
+        text day_wind_spd_avg_value
+        text julian
+        text scope
+        text standard
+    }
+    data_item {
+        text _fivetran_id PK
+        bigint station_id FK
+        text name
+        text owner
+        text type
+    }
+    station_zipcode }o--|| spatial_zipcode : "fk"
+    station_zipcode }o--|| station : "fk"
+    data_item_record }o--|| data_item : "fk"
+    data_item_record }o--|| station_zipcode : "fk"
+    data_item }o--|| station : "fk"

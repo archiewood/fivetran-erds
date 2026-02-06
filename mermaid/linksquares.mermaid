@@ -1,0 +1,238 @@
+erDiagram
+    finalize_template_question_id {
+        text finalize_template_id PK
+        text question_id PK
+    }
+    finalize_template_token_id {
+        text finalize_template_id PK
+        text token_id PK
+    }
+    finalize_template {
+        text id PK
+        text created_at
+        text description
+        text instructions
+        text kind
+        text name
+        text updated_at
+    }
+    finalize_template_question_option {
+        text id PK
+        text finalize_template_id PK
+        text finalize_template_question_id PK
+        text description
+    }
+    finalize_template_question {
+        text finalize_template_id PK
+        text id PK
+        text answer_type
+        jsonb attachment_id
+        text description
+        text required
+    }
+    finalize_template_token_option {
+        text id PK
+        text finalize_template_id PK
+        text finalize_template_token_id PK
+        text value
+    }
+    finalize_template_token {
+        text finalize_template_id PK
+        text id PK
+        text clause_category_id
+        text clause_category_name
+        text kind
+        text question
+        text required
+    }
+    finalize_agreement_collaborator {
+        text collaborator_id PK
+        text finalize_agreement_id PK
+    }
+    finalize_agreement_question {
+        text question_id PK
+        text finalize_agreement_id PK
+    }
+    finalize_agreement_token_value {
+        text token_value_id PK
+        text finalize_agreement_id PK
+    }
+    finalize_agreement_embedded_user {
+        text id PK
+        text finalize_agreement_id PK
+        text email
+        text first_name
+        text last_name
+    }
+    finalize_agreement_embedded_question_answer_selected_option {
+        text finalize_agreement_embedded_question_id PK
+        text finalize_agreement_id PK
+        text selected_option_id PK
+    }
+    finalize_agreement_embedded_question_attachment {
+        text attachment_id PK
+        text finalize_agreement_embedded_question_id PK
+        text finalize_agreement_id PK
+    }
+    finalize_agreement_embedded_question_option {
+        text id PK
+        text finalize_agreement_embedded_question_id PK
+        text finalize_agreement_id PK
+        text description
+    }
+    finalize_agreement_embedded_question {
+        text id PK
+        text finalize_agreement_id PK
+        text answer_id
+        text answer_type
+        text answer_value
+        text description
+        text required
+    }
+    finalize_agreement_embedded_token_value_selected_option {
+        text selected_option_id PK
+        text finalize_agreement_embedded_token_value_id PK
+        text finalize_agreement_id PK
+    }
+    finalize_agreement_embedded_token_value {
+        text id PK
+        text finalize_agreement_id PK
+        text token_id
+        text value
+    }
+    finalize_agreement_embedded_status {
+        text id PK
+        text finalize_agreement_id PK
+        text description
+        text internal_enum
+        text name
+    }
+    finalize_agreement {
+        text id PK
+        text status_id FK
+        text template_id FK
+        text analyze_agreement_id
+        text author_id
+        text created_at
+        text kind
+        text name
+        text owner_id
+        timestamp status_updated_at
+    }
+    analyze_clause_category {
+        text id PK
+        text created_at
+        text name
+        text updated_at
+    }
+    finalize_status {
+        text id PK
+        text description
+        text internal_enum
+        text name
+    }
+    finalize_agreement_attachment {
+        text id PK
+        text finalize_agreement_id PK
+        text created_at
+        text file_name
+    }
+    analyze_agreement_child_agreement {
+        text id PK
+        text index PK
+        text analyze_agreement_id PK
+    }
+    analyze_agreement_tag {
+        text id PK
+        text analyze_agreement_id PK
+        text name
+    }
+    analyze_agreement_term {
+        text id PK
+        text analyze_agreement_id PK
+        text kind
+        text name
+        text status
+        text value
+    }
+    analyze_agreement {
+        text id PK
+        text type_id FK
+        text name
+        text original_name
+        text parent_agreement_id
+        timestamp updated_date
+        text upload_date
+        text uploaded_by
+    }
+    analyze_user {
+        text _fivetran_id PK
+        text status
+        text timestamps
+        text users
+    }
+    finalize_user {
+        text _fivetran_id PK
+        text status
+        text timestamps
+        text users
+    }
+    analyze_agreement_type {
+        text id PK
+        text is_smart
+        text name
+    }
+    analyze_clause {
+        text id PK
+        text agreement_id FK
+        text clause_category_id FK
+        text author_name
+        text created_at
+        text name
+        text note
+        text text
+        text updated_at
+    }
+    finalize_agreement_version {
+        text id PK
+        text finalize_agreement_id PK
+        text status_id FK
+        text created_at
+        text deleted_at
+        text file_name
+    }
+    finalize_template_question_id }o--|| finalize_template_question : "fk"
+    finalize_template_question_id }o--|| finalize_template : "fk"
+    finalize_template_token_id }o--|| finalize_template_token : "fk"
+    finalize_template_token_id }o--|| finalize_template : "fk"
+    finalize_template_question_option }o--|| finalize_template_question : "fk"
+    finalize_template_question_option }o--|| finalize_template_question : "fk"
+    finalize_template_token_option }o--|| finalize_template_token : "fk"
+    finalize_template_token_option }o--|| finalize_template_token : "fk"
+    finalize_agreement_collaborator }o--|| finalize_agreement : "fk"
+    finalize_agreement_question }o--|| finalize_agreement : "fk"
+    finalize_agreement_token_value }o--|| finalize_agreement : "fk"
+    finalize_agreement_embedded_user }o--|| finalize_agreement : "fk"
+    finalize_agreement_embedded_question_answer_selected_option }o--|| finalize_agreement_embedded_question_option : "fk"
+    finalize_agreement_embedded_question_answer_selected_option }o--|| finalize_agreement_embedded_question : "fk"
+    finalize_agreement_embedded_question_answer_selected_option }o--|| finalize_agreement_embedded_question : "fk"
+    finalize_agreement_embedded_question_attachment }o--|| finalize_agreement_embedded_question : "fk"
+    finalize_agreement_embedded_question_attachment }o--|| finalize_agreement_embedded_question : "fk"
+    finalize_agreement_embedded_question_option }o--|| finalize_agreement_embedded_question : "fk"
+    finalize_agreement_embedded_question_option }o--|| finalize_agreement_embedded_question : "fk"
+    finalize_agreement_embedded_question }o--|| finalize_agreement : "fk"
+    finalize_agreement_embedded_token_value_selected_option }o--|| finalize_agreement_embedded_token_value : "fk"
+    finalize_agreement_embedded_token_value_selected_option }o--|| finalize_agreement_embedded_token_value : "fk"
+    finalize_agreement_embedded_token_value }o--|| finalize_agreement : "fk"
+    finalize_agreement_embedded_status }o--|| finalize_agreement : "fk"
+    finalize_agreement }o--|| finalize_template : "fk"
+    finalize_agreement }o--|| finalize_status : "fk"
+    finalize_agreement_attachment }o--|| finalize_agreement : "fk"
+    analyze_agreement_child_agreement }o--|| analyze_agreement : "fk"
+    analyze_agreement_tag }o--|| analyze_agreement : "fk"
+    analyze_agreement_term }o--|| analyze_agreement : "fk"
+    analyze_agreement }o--|| analyze_agreement_type : "fk"
+    analyze_clause }o--|| analyze_agreement : "fk"
+    analyze_clause }o--|| analyze_clause_category : "fk"
+    finalize_agreement_version }o--|| finalize_status : "fk"
+    finalize_agreement_version }o--|| finalize_agreement : "fk"

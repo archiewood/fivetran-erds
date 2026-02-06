@@ -1,0 +1,205 @@
+erDiagram
+    groups {
+        text id PK
+        text description
+        text name
+    }
+    environment {
+        text id PK
+        text workspace_id FK
+        text name
+        boolean production
+    }
+    change_request_comment {
+        text _fivetran_id PK
+        text change_request_id FK
+        text comment
+        text role
+        timestamp time_stamp
+        text users
+    }
+    change_request {
+        text id PK
+        text rollout_status_id FK
+        text split_id FK
+        jsonb approvers
+        text operation_type
+        text segment
+        text split_open_change_request_id
+        text split_split_id
+        text status
+        text title
+    }
+    resource_permission_view {
+        text user_id PK
+        text workspace_restriction_resource_id PK
+    }
+    workspace_restriction {
+        text resource_id PK
+        text id
+        boolean view
+    }
+    traffic_type {
+        text id PK
+        text workspace_id FK
+        text display_attribute_id
+        text name
+    }
+    split_tag {
+        text name PK
+        text split_id PK
+    }
+    split {
+        text id PK
+        text rollout_status_id FK
+        text traffic_type_id FK
+        text workspace_id FK
+        timestamp creation_time
+        text description
+        text name
+        text rollout_status_timestamp
+    }
+    rollout_status {
+        text id PK
+        text workspace_id FK
+        text description
+        text name
+    }
+    split_definition_treatment {
+        text _fivetran_id PK
+        text split_definition_environment_environment_id FK
+        text split_definition_environment_split_id FK
+        text configurations
+        text description
+        jsonb key
+        text name
+        jsonb segment
+    }
+    split_definition_rule {
+        text _fivetran_id PK
+        text split_definition_environment_environment_id FK
+        text split_definition_environment_split_id FK
+        integer size
+        text treatment
+    }
+    split_definition_rule_bucket {
+        text index PK
+        text environment_id PK
+        text split_id PK
+        integer size
+        text treatment
+    }
+    split_definition_rule_condition {
+        text _fivetran_id PK
+        text split_definition_environment_environment_id FK
+        text split_definition_environment_split_id FK
+        text combiner
+        jsonb matchers
+    }
+    split_definition_environment {
+        text environment_id PK
+        text split_id PK
+        text traffic_type_id FK
+        text workspace_id FK
+        text baseline_treatment
+        double_precision change_number
+        timestamp creation_time
+        text default_treatment
+        text killed
+        timestamp last_update_time
+        integer traffic_allocation
+    }
+    workspace {
+        text id PK
+        text name
+        boolean requires_title_and_comments
+    }
+    attribute_suggested_value {
+        text suggested_value PK
+        text attribute_id PK
+    }
+    attribute {
+        text id PK
+        text traffic_type_id FK
+        text workspace_id FK
+        text data_type
+        text display_name
+        text is_searchable
+        text organization_id
+        text set_description
+    }
+    segment_tag {
+        text name PK
+        text segment_name PK
+    }
+    segment {
+        text name PK
+        text workspace_id PK
+        text traffic_type_id FK
+        timestamp creation_time
+        text description
+    }
+    segment_environment {
+        text environment_id PK
+        text segment_name PK
+        text workspace_id PK
+        text traffic_type_id FK
+        timestamp creation_time
+    }
+    segment_key_environment {
+        text _fivetran_id PK
+        text environment_id FK
+        text segment_environment_segment_name FK
+        text key
+    }
+    user_group {
+        text group_id PK
+        text users_id PK
+    }
+    users {
+        text id PK
+        text email
+        text name
+        text status
+        boolean two_factor_authentication
+        text type
+    }
+    environment }o--|| workspace : "fk"
+    change_request_comment }o--|| change_request : "fk"
+    change_request }o--|| rollout_status : "fk"
+    change_request }o--|| split_definition_environment : "fk"
+    resource_permission_view }o--|| users : "fk"
+    resource_permission_view }o--|| workspace_restriction : "fk"
+    workspace_restriction }o--|| workspace : "fk"
+    traffic_type }o--|| workspace : "fk"
+    split_tag }o--|| split : "fk"
+    split }o--|| rollout_status : "fk"
+    split }o--|| traffic_type : "fk"
+    split }o--|| workspace : "fk"
+    rollout_status }o--|| workspace : "fk"
+    split_definition_treatment }o--|| split_definition_environment : "fk"
+    split_definition_treatment }o--|| split_definition_environment : "fk"
+    split_definition_rule }o--|| split_definition_environment : "fk"
+    split_definition_rule }o--|| split_definition_environment : "fk"
+    split_definition_rule_bucket }o--|| split_definition_environment : "fk"
+    split_definition_rule_bucket }o--|| split_definition_environment : "fk"
+    split_definition_rule_condition }o--|| split_definition_environment : "fk"
+    split_definition_rule_condition }o--|| split_definition_environment : "fk"
+    split_definition_environment }o--|| traffic_type : "fk"
+    split_definition_environment }o--|| split : "fk"
+    split_definition_environment }o--|| workspace : "fk"
+    split_definition_environment }o--|| environment : "fk"
+    attribute_suggested_value }o--|| attribute : "fk"
+    attribute }o--|| traffic_type : "fk"
+    attribute }o--|| workspace : "fk"
+    segment_tag }o--|| segment : "fk"
+    segment }o--|| traffic_type : "fk"
+    segment }o--|| workspace : "fk"
+    segment_environment }o--|| segment : "fk"
+    segment_environment }o--|| traffic_type : "fk"
+    segment_environment }o--|| environment : "fk"
+    segment_environment }o--|| workspace : "fk"
+    segment_key_environment }o--|| environment : "fk"
+    segment_key_environment }o--|| segment_environment : "fk"
+    user_group }o--|| groups : "fk"
+    user_group }o--|| users : "fk"

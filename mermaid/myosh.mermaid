@@ -1,0 +1,358 @@
+erDiagram
+    record_read_access_role {
+        text index PK
+        text record_id PK
+        text role
+    }
+    record_schedule {
+        text index PK
+        text record_id PK
+        text day_of_month
+        text hour_of_day
+        text schedule_type
+    }
+    record_field_trigger {
+        text field_id PK
+        text record_id PK
+        text first_occurence
+        text repeat_every
+    }
+    record_fields_to_question_with_answer {
+        text index PK
+        text record_id PK
+        text answer_id
+        text file
+        text image
+        text int_value
+        text linked_record_id
+        text observation
+        text question_id
+    }
+    record {
+        text id PK
+        text form_id FK
+        text module_id FK
+        text archived_step
+        text complete
+        text creation_date
+        text deleted
+        text display_text
+        jsonb fields_to_additional_values
+        jsonb fields_to_values
+        text form_version
+        text has_normal_reverse_record
+        text important
+        text important_doc_no
+        jsonb invitation
+        timestamp last_modified
+        text link_url
+        text location_lat
+        text location_lon
+        text persisted_since_last_edit
+        jsonb record
+        text scheduled_record_default_setting
+        text scheduled_record_name
+        text scheduled_record_work_flow_step
+        text source_id
+        text version_state
+        text workflow_step_histories
+        jsonb workflow_step_history
+    }
+    role {
+        text id PK
+        text manager_locale_id FK
+        text admin
+        text layout_admin
+        text manager_email
+        text manager_locale_date_format
+        text manager_locale_language_tag
+        text restrict_create_individual_tab
+        text visible_in_ui
+    }
+    risk_matrix {
+        text id PK
+        text consequence_description
+        text consequence_descriptions_en_au
+        text consequence_id
+        text consequence_name
+        text consequence_names_en_au
+        text consequence_position
+        text likelihood_description
+        text likelihood_id
+        text likelihood_name
+        text likelihood_names_en_au
+        text likelihood_position
+        text rating
+        text risk_level_background_color
+        text risk_level_category
+        text risk_level_color
+        text risk_level_descripations_en_au
+        text risk_level_id
+        text risk_level_name
+        text risk_level_names_en_au
+    }
+    competency {
+        text id PK
+        text archived
+        text author
+        text cost
+        text name
+        text proficiency
+        text training_time
+    }
+    site_area {
+        text index PK
+        text site_id PK
+        text area
+    }
+    site_supervisor {
+        text index PK
+        text site_id PK
+        text supervisor
+    }
+    site_accountable {
+        text index PK
+        text site_id PK
+        text accountable
+    }
+    site {
+        text id PK
+        text archived
+        text country
+        text last_modified
+        text site
+        text soft_deleted
+        text unid
+    }
+    form_field_group_field {
+        text index PK
+        text form_field_group_index PK
+        text form_id PK
+        text allow_new_value
+        text default_value
+        text field_label
+        text field_name
+        text field_type
+        text help
+        text hint
+        text metadata
+        text position
+        text required
+        text search_full
+        jsonb source
+        text summary_field
+        text target_form_id
+        text target_module_id
+        jsonb validation
+        jsonb visibility_conditions
+    }
+    form_field_group {
+        text index PK
+        text form_id PK
+        text field_group_name
+        text parent_key
+        text visibility_condition
+    }
+    form_next_step {
+        text index PK
+        text form_id PK
+        text form_workflow_step_id PK
+        text button_label
+        text close_on_save
+        jsonb condition
+        text next_step
+        text prompt_before_advance
+        text skip_mandatory_field_validation
+    }
+    form_field_group_read {
+        text index PK
+        text form_id PK
+        text form_workflow_step_id PK
+        text field_groups_read
+    }
+    form_field_group_edit {
+        text index PK
+        text form_id PK
+        text form_workflow_step_id PK
+        text field_groups_edit
+    }
+    form_workflow_step {
+        text id PK
+        text form_id FK
+        text background_color
+        jsonb edit_role
+        text is_archived_step
+        text is_draft
+        text is_progress
+        text is_record_read
+        text progress_user_field
+        jsonb read_role
+        text record_readable_field
+        text record_readable_field_by_manager
+        text record_readable_keyword
+        text record_readable_keyword_by_manager
+        text status_label
+    }
+    form {
+        text id PK
+        text module_id FK
+        text autopopulate_from_user_hierarchy
+        text autopopulate_hierarchy_person_field
+        text create_record
+        text default_display_option
+        text default_form
+        text delete_record
+        text edit_record
+        text enabled_for_mobile
+        text form_name
+        text full_name_field
+        text hierarchy_access_restriction_ignore_mode
+        text hierarchy_hidden_in_read_mode
+        text ignore_hierarchy_access
+        text important_conditions_enabled
+        text initial_form_type
+        text last_modified
+        text module_icon
+        text module_name
+        text module_visibility
+        text new_record_button_visible
+        text not_display_in_forms
+        text not_display_in_home_page
+        text read_record
+        text removed
+        text show_records_for
+        text sign_in_step
+        text sign_in_type
+        text sign_out_step
+        text sync_all_records
+        text version
+        text version_type
+        text visitor_form
+        text workflow_initialstep
+    }
+    module {
+        text id PK
+        text display_in_mobile
+        text icon
+        text module_name
+        text source_url
+        text type
+        text view_id
+    }
+    locale {
+        text id PK
+        text date_format
+        text language_tag
+    }
+    occupation_role {
+        text index PK
+        text occupation_id PK
+        text role
+    }
+    occupation_hierarchy_field_access {
+        text index PK
+        text occupation_id PK
+        text hierarchy_field FK
+        text value
+    }
+    occupation {
+        text id PK
+        text name
+    }
+    users_role {
+        text index PK
+        text users_id PK
+        text role
+    }
+    users {
+        text id PK
+        text locale_id FK
+        text doc_number
+        text email
+        text fields_to_values_affiliation
+        text fields_to_values_archived
+        text fields_to_values_email
+        text fields_to_values_employee_id
+        text fields_to_values_external_user
+        text fields_to_values_external_user_active
+        text fields_to_values_first_name
+        text fields_to_values_last_name
+        text fields_to_values_ldap_super_user
+        text fields_to_values_login_required
+        text fields_to_values_manager
+        text fields_to_values_manager_id
+        text fields_to_values_occupation
+        text fields_to_values_password
+        text fields_to_values_phone
+        text fields_to_values_retype_password
+        text fields_to_values_secondary_occupation
+        text fields_to_values_super_user
+        text fields_to_values_unid_domino_key
+        text fields_to_values_username
+        text first_name
+        text full_name
+        timestamp last_modified
+        text last_name
+        text pref_name
+        text preferred_language
+        jsonb read_access_roles
+        text start_date
+        text unid
+        text virtual_super_user
+    }
+    users_hierarchy {
+        text _fivetran_id PK
+        text hierarchy_field FK
+        text users_id FK
+        text type
+        text value
+    }
+    hierarchy {
+        text id PK
+        text name
+        text weight
+    }
+    hierarchy_entity {
+        text id PK
+        text hierarchy_id PK
+        text archived
+        text geofence_enabled
+        text geofence_radius
+        text is_geofence_enabled
+        text last_modified
+        text latitude
+        text longitude
+        text name
+        text names_en_au
+        text parent_value_id
+        text type
+    }
+    record_read_access_role }o--|| record : "fk"
+    record_schedule }o--|| record : "fk"
+    record_field_trigger }o--|| record : "fk"
+    record_fields_to_question_with_answer }o--|| record : "fk"
+    record }o--|| module : "fk"
+    record }o--|| form : "fk"
+    role }o--|| locale : "fk"
+    site_area }o--|| site : "fk"
+    site_supervisor }o--|| site : "fk"
+    site_accountable }o--|| site : "fk"
+    form_field_group_field }o--|| form_field_group : "fk"
+    form_field_group_field }o--|| form_field_group : "fk"
+    form_field_group }o--|| form : "fk"
+    form_next_step }o--|| form_workflow_step : "fk"
+    form_next_step }o--|| form_workflow_step : "fk"
+    form_field_group_read }o--|| form_workflow_step : "fk"
+    form_field_group_read }o--|| form_workflow_step : "fk"
+    form_field_group_edit }o--|| form_workflow_step : "fk"
+    form_field_group_edit }o--|| form_workflow_step : "fk"
+    form_workflow_step }o--|| form : "fk"
+    form }o--|| module : "fk"
+    occupation_role }o--|| occupation : "fk"
+    occupation_hierarchy_field_access }o--|| hierarchy : "fk"
+    occupation_hierarchy_field_access }o--|| occupation : "fk"
+    users_role }o--|| users : "fk"
+    users }o--|| locale : "fk"
+    users_hierarchy }o--|| hierarchy : "fk"
+    users_hierarchy }o--|| users : "fk"
+    hierarchy_entity }o--|| hierarchy : "fk"

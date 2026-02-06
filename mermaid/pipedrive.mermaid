@@ -1,0 +1,675 @@
+erDiagram
+    deal_field {
+        bigint id PK
+        bigint created_by_user_id FK
+        bigint last_updated_by_user_id FK
+        boolean active_flag
+        timestamp add_time
+        boolean add_visible_flag
+        boolean bulk_edit_allowed
+        text description
+        boolean details_visible_flag
+        boolean edit_flag
+        text field_type
+        boolean filtering_allowed
+        boolean important_flag
+        boolean index_visible_flag
+        boolean json_column_flag
+        text key
+        jsonb mandatory_flag
+        text name
+        bigint order_nr
+        boolean searchable_flag
+        boolean sortable_flag
+        timestamp update_time
+    }
+    lead_lead_label {
+        text label_id PK
+        text lead_id PK
+    }
+    subscription {
+        bigint id PK
+        bigint deal_id FK
+        bigint user_id FK
+        text cadence_type
+        timestamp created_at
+        text currency
+        double_precision cycle_amount
+        integer cycles_count
+        text description
+        text end_date
+        text final_status
+        boolean infinite
+        boolean is_active
+        double_precision lifetime_value
+        text start_date
+        timestamp update_time
+    }
+    team_user {
+        bigint team_id PK
+        bigint user_id PK
+    }
+    person_email {
+        integer index PK
+        bigint person_id PK
+        text email
+        text label
+        boolean primary
+    }
+    goal {
+        text id PK
+        bigint owner_id FK
+        bigint assignee_id
+        text assignee_type
+        text duration_end
+        text duration_start
+        bigint expected_target
+        text expected_tracking_metric
+        text interval
+        boolean is_active
+        double_precision progress
+        jsonb report_ids
+        text title
+        text type
+    }
+    lead_source {
+        bigint id PK
+        text name
+    }
+    team {
+        bigint id PK
+        bigint created_by_user_id FK
+        integer active_flag
+        timestamp created_at
+        integer deleted_flag
+        text description
+        bigint manager_id
+        text name
+    }
+    lead_history {
+        text id PK
+        bigint creator_id FK
+        bigint next_activity_id FK
+        bigint organization_id FK
+        bigint owner_id FK
+        bigint person_id FK
+        timestamp add_time
+        double_precision amount
+        text cc_email
+        text currency
+        timestamp expected_close_date
+        boolean is_archived
+        text source_name
+        text title
+        timestamp update_time
+        text visible_to
+        boolean was_seen
+    }
+    lead_label_history {
+        text id PK
+        timestamp add_time
+        text color
+        text name
+        timestamp update_time
+    }
+    person_phone {
+        integer index PK
+        bigint person_id PK
+        text label
+        text phone
+        boolean primary
+    }
+    permission_set {
+        text id PK
+        text name
+    }
+    task {
+        bigint id PK
+        bigint creator_id FK
+        bigint parent_task_id FK
+        bigint project_id FK
+        timestamp add_time
+        bigint assignee_id
+        text description
+        integer done
+        text due_date
+        timestamp marked_as_done_time
+        text title
+        timestamp update_time
+    }
+    email_to {
+        bigint recipient_id PK
+        bigint mail_message_id PK
+        bigint linked_person_id FK
+        text email_address
+    }
+    project {
+        bigint id PK
+        bigint org_id FK
+        bigint owner_id FK
+        bigint person_id FK
+        timestamp add_time
+        timestamp archive_time
+        text description
+        text end_date
+        text start_date
+        text status
+        timestamp status_change_time
+        text title
+        timestamp update_time
+    }
+    permission {
+        integer index PK
+        text permission_set_id PK
+        text content
+    }
+    subscription_payment {
+        bigint id PK
+        bigint deal_id FK
+        bigint subscription_id FK
+        double_precision amount
+        double_precision change_amount
+        timestamp created_at
+        text currency
+        text description
+        text due_at
+        boolean is_active
+        text payment_type
+        text revenue_movement_type
+        timestamp update_time
+    }
+    user {
+        bigint id PK
+        text default_currency FK
+        bigint role_id FK
+        boolean activated
+        boolean active_flag
+        timestamp created_at
+        text email
+        boolean has_created_company
+        text icon_url
+        integer is_admin
+        timestamp last_login
+        text locale
+        timestamp modified_time
+        text name
+        text phone
+        text timezone_name
+        text timezone_offset
+    }
+    filter {
+        bigint id PK
+        bigint user_id FK
+        boolean active_flag
+        timestamp created_at
+        bigint custom_view_id
+        text name
+        boolean temporary_flag
+        text type
+        timestamp update_time
+        integer visible_to
+    }
+    activity {
+        bigint id PK
+        bigint assigned_to_user_id FK
+        bigint created_by_user_id FK
+        bigint deal_id FK
+        bigint last_notification_user_id FK
+        bigint org_id FK
+        bigint update_user_id FK
+        bigint user_id FK
+        boolean active_flag
+        jsonb attendees
+        boolean busy_flag
+        timestamp created_at
+        text deal_dropbox_bcc
+        boolean done
+        text due_date
+        text due_time
+        text duration
+        timestamp last_notification_time
+        text location
+        text location_admin_area_level_1
+        text location_admin_area_level_2
+        text location_country
+        text location_formatted_address
+        text location_locality
+        text location_postal_code
+        text location_route
+        text location_street_number
+        text location_sublocality
+        text location_subpremise
+        timestamp marked_as_done_time
+        text note
+        text person_dropbox_bcc
+        text public_description
+        text reference_id
+        text reference_type
+        text source_timezone
+        text subject
+        text type
+        timestamp update_time
+    }
+    product_deal {
+        bigint id PK
+        bigint deal_id PK
+        bigint product_id FK
+        boolean active_flag
+        timestamp add_time
+        text billing_frequency
+        integer billing_frequency_cycles
+        text billing_start_date
+        text comments
+        text currency
+        double_precision discount
+        double_precision discount_percentage
+        text discount_type
+        double_precision duration
+        text duration_unit
+        boolean enabled_flag
+        double_precision item_price
+        timestamp last_edit
+        text name
+        bigint order_nr
+        bigint product_variation_id
+        double_precision quantity
+        text quantity_formatted
+        double_precision sum
+        text sum_formatted
+        double_precision sum_no_discount
+        bigint tax
+        text tax_method
+    }
+    currency {
+        text code PK
+        boolean active_flag
+        integer decimal_points
+        boolean is_custom_flag
+        text name
+        text symbol
+    }
+    filter_helper {
+        integer id PK
+        jsonb operators
+        jsonb relative_dates
+    }
+    goal_pipeline {
+        text goal_id PK
+        bigint pipeline_id PK
+    }
+    person {
+        bigint id PK
+        bigint org_id FK
+        bigint owner_id FK
+        boolean active_flag
+        text cc_email
+        timestamp created_at
+        text email
+        bigint label
+        text name
+        text phone
+        bigint picture_id
+        timestamp update_time
+        bigint visible_to
+    }
+    note {
+        bigint id PK
+        bigint deal_id FK
+        bigint last_updated_user_id FK
+        text lead_id FK
+        bigint org_id FK
+        bigint person_id FK
+        bigint user_id FK
+        boolean active_flag
+        text content
+        timestamp created_at
+        boolean pinned_to_deal_flag
+        boolean pinned_to_organization_flag
+        timestamp update_time
+    }
+    stage {
+        bigint id PK
+        bigint pipeline_id FK
+        boolean active_flag
+        timestamp created_at
+        integer deal_probability
+        text name
+        bigint order_nr
+        bigint rotten_days
+        boolean rotten_flag
+        timestamp update_time
+    }
+    project_deal {
+        bigint deal_id PK
+        bigint project_id PK
+    }
+    installment {
+        bigint id PK
+        bigint deal_id PK
+        double_precision amount
+        text billing_date
+        text description
+    }
+    pipeline {
+        bigint id PK
+        boolean active
+        timestamp created_at
+        boolean deal_probability
+        text name
+        bigint order_nr
+        boolean selected
+        timestamp update_time
+        text url_title
+    }
+    call_log {
+        text id PK
+        bigint activity_id FK
+        bigint deal_id FK
+        text lead_id FK
+        bigint org_id FK
+        bigint person_id FK
+        bigint user_id FK
+        bigint company_id
+        text duration
+        timestamp end_time
+        text from_phone_number
+        boolean has_recording
+        text note
+        text outcome
+        timestamp start_time
+        text subject
+        text to_phone_number
+    }
+    deal_field_subfield {
+        text key PK
+        bigint parent_id PK
+        boolean active_flag
+        boolean edit_flag
+        text field_type
+        text id_suffix
+        jsonb mandatory_flag
+        text name
+    }
+    product {
+        bigint id PK
+        bigint owner_id FK
+        boolean active_flag
+        text category
+        text code
+        timestamp created_at
+        text description
+        text name
+        double_precision tax
+        text unit
+        timestamp update_time
+    }
+    email_bcc {
+        bigint recipient_id PK
+        bigint mail_message_id PK
+        bigint linked_person_id FK
+        text email_address
+    }
+    file {
+        bigint id PK
+        bigint activity_id FK
+        bigint deal_id FK
+        bigint mail_message_id FK
+        bigint product_id FK
+        boolean active_flag
+        timestamp created_at
+        text description
+        text file_name
+        bigint file_size
+        boolean inline_flag
+        bigint log_id
+        text name
+        text remote_id
+        text remote_location
+        text s_3_bucket
+        timestamp update_time
+        text url
+    }
+    goal_result {
+        text id PK
+        bigint owner_id FK
+        bigint assignee_id
+        text assignee_type
+        text duration_end
+        text duration_start
+        bigint expected_target
+        text expected_tracking_metric
+        text interval
+        boolean is_active
+        double_precision progress
+        jsonb report_ids
+        text title
+        text type
+    }
+    role {
+        bigint id PK
+        boolean active_flag
+        text name
+        text parent_role_id
+    }
+    permission_assignment {
+        text permission_set_id PK
+        bigint user_id PK
+    }
+    mail_message {
+        bigint id PK
+        bigint from_linked_person_id FK
+        bigint mail_thread_id FK
+        bigint user_id FK
+        text body_url
+        timestamp created_at
+        integer deleted_flag
+        integer draft_flag
+        text from_email_address
+        integer has_attachments_flag
+        integer has_body_flag
+        integer has_inline_attachments_flag
+        integer has_real_attachments_flag
+        integer mail_link_tracking_enabled_flag
+        text mail_tracking_status
+        timestamp message_time
+        integer read_flag
+        integer sent_flag
+        integer sent_from_pipedrive_flag
+        integer smart_bcc_flag
+        text snippet
+        text subject
+        integer synced_flag
+        timestamp update_time
+        boolean write_flag
+    }
+    mail_thread {
+        bigint id PK
+        bigint deal_id FK
+    }
+    activity_type {
+        integer id PK
+        text activity_type FK
+        boolean active_flag
+        text color
+        timestamp created_at
+        text icon_key
+        boolean is_custom_flag
+        text name
+        timestamp update_time
+    }
+    product_price_history {
+        bigint id PK
+        timestamp updated_time PK
+        text currency FK
+        bigint product_id FK
+        double_precision cost
+        double_precision overhead_cost
+        double_precision price
+    }
+    email_cc {
+        bigint recipient_id PK
+        bigint mail_message_id PK
+        bigint linked_person_id FK
+        text email_address
+    }
+    activity_participant {
+        bigint activity_id PK
+        bigint person_id PK
+        boolean primary_flag
+    }
+    organization {
+        bigint id PK
+        bigint owner_id FK
+        boolean active_flag
+        text address
+        text address_admin_area_level_1
+        text address_admin_area_level_2
+        text address_country
+        text address_formatted_address
+        text address_locality
+        text address_postal_code
+        text address_route
+        text address_street_number
+        text address_sublocality
+        text address_subpremise
+        text cc_email
+        timestamp created_at
+        text label
+        text name
+        timestamp update_time
+        text visible_to
+    }
+    deal_history {
+        bigint id PK
+        bigint creator_user_id FK
+        text currency FK
+        bigint org_id FK
+        bigint person_id FK
+        bigint pipeline_id FK
+        bigint stage_id FK
+        bigint user_id FK
+        boolean active
+        text cc_email
+        timestamp close_time
+        timestamp created_at
+        boolean deleted
+        text expected_close_date
+        timestamp first_won_time
+        text formatted_value
+        text formatted_weighted_value
+        text label
+        timestamp last_incoming_mail_time
+        timestamp last_outgoing_mail_time
+        text lost_reason
+        timestamp lost_time
+        boolean org_hidden
+        boolean person_hidden
+        integer probability
+        timestamp rotten_time
+        timestamp stage_change_time
+        bigint stage_order_nr
+        text status
+        text title
+        timestamp update_time
+        double_precision value
+        bigint visible_to
+        double_precision weighted_value
+        text weighted_value_currency
+        timestamp won_time
+    }
+    deal_field_option {
+        text id PK
+        bigint deal_field_id PK
+        text label
+    }
+    deal_field }o--|| user : "fk"
+    deal_field }o--|| user : "fk"
+    lead_lead_label }o--|| lead_history : "fk"
+    lead_lead_label }o--|| lead_label_history : "fk"
+    subscription }o--|| user : "fk"
+    subscription }o--|| deal_history : "fk"
+    team_user }o--|| team : "fk"
+    team_user }o--|| user : "fk"
+    person_email }o--|| person : "fk"
+    goal }o--|| user : "fk"
+    team }o--|| user : "fk"
+    lead_history }o--|| user : "fk"
+    lead_history }o--|| user : "fk"
+    lead_history }o--|| activity : "fk"
+    lead_history }o--|| organization : "fk"
+    lead_history }o--|| person : "fk"
+    person_phone }o--|| person : "fk"
+    task }o--|| task : "fk"
+    task }o--|| project : "fk"
+    task }o--|| user : "fk"
+    email_to }o--|| mail_message : "fk"
+    email_to }o--|| person : "fk"
+    project }o--|| person : "fk"
+    project }o--|| organization : "fk"
+    project }o--|| user : "fk"
+    permission }o--|| permission_set : "fk"
+    subscription_payment }o--|| subscription : "fk"
+    subscription_payment }o--|| deal_history : "fk"
+    user }o--|| role : "fk"
+    user }o--|| currency : "fk"
+    filter }o--|| user : "fk"
+    activity }o--|| user : "fk"
+    activity }o--|| user : "fk"
+    activity }o--|| deal_history : "fk"
+    activity }o--|| user : "fk"
+    activity }o--|| organization : "fk"
+    activity }o--|| user : "fk"
+    activity }o--|| user : "fk"
+    product_deal }o--|| deal_history : "fk"
+    product_deal }o--|| product : "fk"
+    goal_pipeline }o--|| goal : "fk"
+    goal_pipeline }o--|| pipeline : "fk"
+    person }o--|| user : "fk"
+    person }o--|| organization : "fk"
+    note }o--|| user : "fk"
+    note }o--|| deal_history : "fk"
+    note }o--|| person : "fk"
+    note }o--|| user : "fk"
+    note }o--|| organization : "fk"
+    note }o--|| lead_history : "fk"
+    stage }o--|| pipeline : "fk"
+    project_deal }o--|| project : "fk"
+    project_deal }o--|| deal_history : "fk"
+    installment }o--|| deal_history : "fk"
+    call_log }o--|| activity : "fk"
+    call_log }o--|| person : "fk"
+    call_log }o--|| organization : "fk"
+    call_log }o--|| deal_history : "fk"
+    call_log }o--|| user : "fk"
+    call_log }o--|| lead_history : "fk"
+    deal_field_subfield }o--|| deal_field : "fk"
+    product }o--|| user : "fk"
+    email_bcc }o--|| mail_message : "fk"
+    email_bcc }o--|| person : "fk"
+    file }o--|| deal_history : "fk"
+    file }o--|| product : "fk"
+    file }o--|| activity : "fk"
+    file }o--|| mail_message : "fk"
+    goal_result }o--|| user : "fk"
+    permission_assignment }o--|| permission_set : "fk"
+    permission_assignment }o--|| user : "fk"
+    mail_message }o--|| mail_thread : "fk"
+    mail_message }o--|| user : "fk"
+    mail_message }o--|| person : "fk"
+    mail_thread }o--|| deal_history : "fk"
+    activity_type }o--|| activity : "fk"
+    product_price_history }o--|| product : "fk"
+    product_price_history }o--|| currency : "fk"
+    email_cc }o--|| mail_message : "fk"
+    email_cc }o--|| person : "fk"
+    activity_participant }o--|| activity : "fk"
+    activity_participant }o--|| person : "fk"
+    organization }o--|| user : "fk"
+    deal_history }o--|| user : "fk"
+    deal_history }o--|| user : "fk"
+    deal_history }o--|| person : "fk"
+    deal_history }o--|| pipeline : "fk"
+    deal_history }o--|| organization : "fk"
+    deal_history }o--|| stage : "fk"
+    deal_history }o--|| currency : "fk"
+    deal_field_option }o--|| deal_field : "fk"

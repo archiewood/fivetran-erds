@@ -1,0 +1,194 @@
+erDiagram
+    employee_absence_balance {
+        text id PK
+        text employee_id PK
+        text balance
+        jsonb category
+        text name
+    }
+    time_off_type {
+        text id PK
+        text approval_required
+        text category
+        text certification_required
+        text certification_submission_timeframe
+        text half_day_requests_enabled
+        text legacy_category
+        text name
+        text substitute_option
+        text unit
+    }
+    document_category {
+        text id PK
+        text name
+    }
+    project {
+        text id PK
+        text active
+        text created_at
+        text name
+        text updated_at
+    }
+    absence_period {
+        text id PK
+        text absence_type_id FK
+        text employee_id FK
+        text absence_type_name
+        text approved_at
+        jsonb breakdowns
+        text certificate_status
+        text comment
+        text created_at
+        text created_by
+        text effective_duration
+        text end_
+        text half_day_end
+        text half_day_start
+        text measurement_unit
+        text origin
+        text start
+        text status
+        text updated_at
+    }
+    absence_entitlement {
+        text id PK
+        text employee_id PK
+        text category
+        text entitlement
+        text name
+        text type
+    }
+    cost_center {
+        text id PK
+        text employee_id PK
+        text name
+        text percentage
+        text type
+    }
+    employee {
+        text id PK
+        text supervisor_id FK
+        text contract_end_date
+        text created_at
+        text department_id
+        text department_name
+        text email
+        text employment_type
+        text first_name
+        text fix_salary
+        text fix_salary_currency
+        text fix_salary_interval
+        text gender
+        text hire_date
+        text holiday_calendar_country
+        text holiday_calendar_id
+        text holiday_calendar_label
+        text holiday_calendar_name
+        text holiday_calendar_state
+        text hourly_salary
+        text hourly_salary_currency
+        text last_modified_at
+        text last_name
+        text last_working_day
+        text office_id
+        text office_name
+        text position
+        text probation_period_end
+        text profile_picture_url
+        text status
+        text subcompany_id
+        text subcompany_name
+        text team_id
+        text team_name
+        text termination_date
+        text termination_reason
+        text termination_type
+        text vacation_day_balance
+        text weekly_working_hours
+        text work_schedule_friday
+        text work_schedule_id
+        text work_schedule_monday
+        text work_schedule_name
+        text work_schedule_saturday
+        text work_schedule_sunday
+        text work_schedule_thursday
+        text work_schedule_tuesday
+        text work_schedule_type
+        text work_schedule_valid_from
+        text work_schedule_wednesday
+    }
+    time_off {
+        text id PK
+        text employee_id FK
+        text time_off_type_id FK
+        text certificate_status
+        text created_at
+        text created_by
+        text days_count
+        text end_date
+        text half_day_end
+        text half_day_start
+        text start_date
+        text status
+        text updated_at
+    }
+    report_column {
+        text index PK
+        text report_id PK
+        text columns
+    }
+    report_filter {
+        text index PK
+        text report_id PK
+        text columns
+        text comparison
+        text value
+    }
+    report_employee {
+        text employee_id PK
+        text report_id PK
+    }
+    report {
+        text id PK
+        text author_first_name
+        text author_last_name
+        text created_at
+        text data_refreshed_at
+        text description
+        text end_date
+        text name
+        text period_type
+        text start_date
+        text status
+        text type
+        text updated_at
+    }
+    attendance {
+        text id PK
+        text employee_id FK
+        text project_id FK
+        text break
+        text comment
+        text date
+        text end_time
+        text is_holiday
+        text is_on_time_off
+        text start_time
+        text status
+        text type
+        text updated_at
+    }
+    employee_absence_balance }o--|| employee : "fk"
+    absence_period }o--|| time_off_type : "fk"
+    absence_period }o--|| employee : "fk"
+    absence_entitlement }o--|| employee : "fk"
+    cost_center }o--|| employee : "fk"
+    employee }o--|| employee : "fk"
+    time_off }o--|| employee : "fk"
+    time_off }o--|| time_off_type : "fk"
+    report_column }o--|| report : "fk"
+    report_filter }o--|| report : "fk"
+    report_employee }o--|| employee : "fk"
+    report_employee }o--|| report : "fk"
+    attendance }o--|| employee : "fk"
+    attendance }o--|| project : "fk"

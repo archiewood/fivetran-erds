@@ -1,0 +1,393 @@
+erDiagram
+    alert_preference {
+        text _fivetran_id PK
+        text account_id PK
+        bigint alert_id PK
+        text desktop_notification_frequency
+        text email_notification_frequency
+        boolean instant_notifications_active
+        text push_notification_frequency
+        boolean stats_email_active
+        text trending_email_notification_frequency
+        text trending_sms_notification_frequency
+        bigint weight
+    }
+    alert_language {
+        text languages PK
+        bigint alert_id PK
+    }
+    alert_source {
+        text source PK
+        bigint alert_id PK
+    }
+    alert_country {
+        text country PK
+        bigint alert_id PK
+    }
+    alert_blocked_site {
+        text blocked_site PK
+        bigint alert_id PK
+    }
+    alert_included_keyword {
+        text included_keyword PK
+        bigint alert_id PK
+    }
+    alert_required_keyword {
+        text required_keyword PK
+        bigint alert_id PK
+    }
+    alert_excluded_keyword {
+        text excluded_keyword PK
+        bigint alert_id PK
+    }
+    alert_monitored_facebook_page {
+        text url PK
+        bigint alert_id PK
+        boolean block_comments
+        boolean block_self
+        text facebook_id
+        text name
+        text type
+        boolean valid
+    }
+    alert_monitored_twitter_account {
+        text url PK
+        bigint alert_id PK
+        boolean block_comments
+        boolean block_retweets
+        boolean block_self
+        text name
+        text type
+        boolean valid
+    }
+    alert {
+        bigint id PK
+        text account_id FK
+        text color
+        text connection_type
+        timestamp created_at
+        text graph_ql_id
+        text group_graph_ql_id
+        text group_id
+        bigint index_version
+        timestamp last_update
+        boolean look_for_spread
+        text name
+        boolean noise_detection
+        boolean paused
+        boolean permissions_can_use_linkedin_sources
+        boolean permissions_can_use_reviews_sources
+        boolean permissions_create_tag
+        boolean permissions_edit
+        boolean permissions_edit_mentions
+        boolean permissions_export_mentions
+        boolean permissions_list_logs
+        boolean permissions_list_tasks
+        boolean permissions_share
+        text query_type
+        bigint quota_used
+        text read_access_secret
+        text role
+        boolean sentiment_analysis
+        boolean slack_configuration_is_configured
+        bigint slack_configuration_minimal_influence_score
+        boolean slack_configuration_new_mentions
+        boolean slack_configuration_recurring_recap
+        text slack_configuration_timezone
+        bigint stats_done_tasks_total
+        bigint stats_favorite_mentions_total
+        bigint stats_logs_total
+        bigint stats_mention_folders_archive_total
+        bigint stats_mention_folders_inbox_total
+        bigint stats_mention_folders_spam_total
+        bigint stats_mention_folders_trash_total
+        bigint stats_mention_sources_total
+        bigint stats_tasks_total
+        bigint stats_todo_tasks_total
+        bigint stats_unread_mentions_total
+        bigint stats_unseen_mentions_total
+        text type
+        timestamp updated_at
+    }
+    share {
+        text id PK
+        text account_id FK
+        bigint alert_id FK
+        boolean blocked
+        timestamp created_at
+        bigint last_seen_count
+        boolean permissions_delete
+        boolean permissions_edit
+        text role
+        boolean subscriber
+        bigint weight
+    }
+    account_group {
+        text graph_ql_id PK
+        text id PK
+        text account_id PK
+    }
+    account {
+        text id PK
+        boolean application_notification_enabled
+        bigint bucket
+        text client_state
+        text company_name
+        text company_size
+        timestamp created_at
+        text default_desktop_notification_frequency
+        text default_email_notification_frequency
+        text default_push_notification_frequency
+        text default_trending_email_notification_frequency
+        text default_trending_sms_notification_frequency
+        text email
+        boolean email_subscriptions_quota_exceeded
+        boolean enabled_mfa
+        boolean extended_profile_set
+        boolean grouped_email_notification
+        boolean hide_mark_all_read_mentions
+        text language_code
+        boolean marketing_notification_enabled
+        text name
+        boolean permissions_can_access_dashboard_homepage
+        boolean permissions_can_use_linkedin_sources
+        boolean permissions_can_use_reviews_sources
+        boolean permissions_create_alert
+        boolean permissions_create_dashboard
+        boolean permissions_create_report
+        boolean permissions_create_report_blank
+        boolean permissions_create_report_facebook_comparison
+        boolean permissions_create_report_instagram_comparison
+        boolean permissions_create_report_mentions_list
+        boolean permissions_create_report_twitter_comparison
+        boolean permissions_create_scheduled_report
+        boolean permissions_create_team_request
+        boolean permissions_delete_team_reports
+        boolean permissions_edit_modules_report
+        boolean permissions_list_team_reports
+        boolean permissions_publish_access
+        boolean permissions_read_dashboards
+        boolean permissions_read_demoalert
+        boolean permissions_read_integrations
+        boolean permissions_read_plans_notifications
+        boolean permissions_read_quota_stats
+        boolean permissions_read_reports
+        boolean permissions_read_scheduled_reports
+        boolean permissions_read_social_accounts
+        boolean permissions_read_team_members
+        boolean permissions_read_team_requests
+        boolean permissions_read_team_social_accounts
+        boolean permissions_request_demo
+        boolean permissions_respond_access
+        text phone
+        boolean publish_notif_approved_post_email
+        boolean publish_notif_failure_desktop
+        boolean publish_notif_failure_email
+        boolean publish_notif_in_review_post_email
+        boolean publish_notif_ongoing_desktop
+        boolean publish_notif_ongoing_email
+        boolean publish_notif_success_desktop
+        boolean publish_notif_success_email
+        text registration_country
+        boolean respond_notif_assigned_to_you_desktop
+        boolean respond_notif_assigned_to_you_email
+        boolean respond_notif_new_message_desktop
+        boolean respond_notif_new_message_email
+        bigint seen_onboarding
+        text signup_values_job_position
+        bigint signup_values_use_case
+        boolean subscription_advanced_query_access
+        text subscription_billing_account_id
+        boolean subscription_broadcast_sources_access
+        boolean subscription_chart_access
+        boolean subscription_collaborative_features_access
+        boolean subscription_custom
+        boolean subscription_data_export_access
+        boolean subscription_facebook_keyword_access
+        boolean subscription_feature_discovery_add_alert
+        boolean subscription_feature_discovery_add_team
+        boolean subscription_feature_discovery_assign_task
+        boolean subscription_feature_discovery_check_stats
+        boolean subscription_feature_discovery_share_alert
+        boolean subscription_feature_discovery_social_account
+        boolean subscription_geofiltering_access
+        boolean subscription_has_failed_renews
+        bigint subscription_history
+        boolean subscription_history_access
+        bigint subscription_instant_notification_daily_quota
+        bigint subscription_instant_notification_monthly_quota
+        bigint subscription_instant_notification_monthly_quota_usage
+        boolean subscription_is_blocked
+        bigint subscription_max_alerts
+        bigint subscription_max_languages_per_alert
+        bigint subscription_max_members
+        bigint subscription_max_reports
+        bigint subscription_mentions_quota
+        bigint subscription_mentions_remaining
+        boolean subscription_paid_subscription
+        boolean subscription_permissions_can_manage_account
+        boolean subscription_permissions_change_plan
+        boolean subscription_permissions_manage
+        boolean subscription_permissions_manage_team_members
+        boolean subscription_permissions_use_mfa
+        boolean subscription_permissions_use_sms_for_mfa
+        boolean subscription_permissions_view_price
+        boolean subscription_pinterest_crawling_access
+        text subscription_plan_code
+        text subscription_plan_group
+        text subscription_plan_name
+        text subscription_plan_team
+        bigint subscription_prepaid_remaining
+        timestamp subscription_prepaid_until
+        boolean subscription_publish_access
+        bigint subscription_remaining_days_before_churning
+        timestamp subscription_resets_at
+        boolean subscription_respond_access
+        boolean subscription_search_access
+        bigint subscription_seen_onboarding
+        boolean subscription_sentiment_analysis_access
+        boolean subscription_spread_access
+        boolean subscription_statistics_access
+        boolean subscription_team_owner
+        boolean subscription_tiktok_crawling_access
+        boolean subscription_trial_plan
+        boolean subscription_whitelabeling
+        boolean subscription_youtube_crawling_access
+        text team_id
+        text timezone
+        bigint trial_search_count
+        timestamp updated_at
+        boolean validated_mfa
+    }
+    children_offset_title {
+        bigint title PK
+        text children_id PK
+    }
+    children_offset_description {
+        bigint description PK
+        text children_id PK
+    }
+    children_offset_description_medium {
+        bigint description_medium PK
+        text children_id PK
+    }
+    children_offset_description_short {
+        bigint description_short PK
+        text children_id PK
+    }
+    children {
+        text id PK
+        text account_id FK
+        bigint alert_id FK
+        text mention_id FK
+        jsonb children_children
+        bigint children_total
+        text country
+        timestamp created_at
+        bigint cumulative_reach
+        bigint direct_reach
+        boolean display_site
+        boolean favorite
+        text folder
+        boolean folder_set_by_user
+        text graph_ql_id
+        text language_code
+        jsonb logs
+        text metadata_twitter_id_str
+        text metadata_twitter_user_id_str
+        bigint parent_id
+        boolean permissions_change_folder
+        boolean permissions_create_task
+        boolean permissions_edit
+        boolean permissions_favorite
+        boolean permissions_share_email
+        boolean permissions_share_facebook
+        timestamp published_at
+        boolean read
+        bigint relevance_score
+        text source_type
+        jsonb tags
+        jsonb tasks
+        bigint tone
+        bigint tone_score
+        text unique_id
+        timestamp updated_at
+    }
+    mention_offset_title {
+        bigint title PK
+        text mention_id PK
+    }
+    mention_offset_description {
+        bigint description PK
+        text mention_id PK
+    }
+    mention_offset_description_medium {
+        bigint description_medium PK
+        text mention_id PK
+    }
+    mention_offset_description_short {
+        bigint description_short PK
+        text mention_id PK
+    }
+    mention {
+        text id PK
+        text account_id FK
+        bigint alert_id FK
+        text country
+        timestamp created_at
+        bigint cumulative_reach
+        bigint direct_reach
+        boolean display_site
+        boolean favorite
+        text folder
+        boolean folder_set_by_user
+        text graph_ql_id
+        text language_code
+        jsonb logs
+        text metadata_twitter_id_str
+        text metadata_twitter_user_id_str
+        boolean permissions_change_folder
+        boolean permissions_create_task
+        boolean permissions_edit
+        boolean permissions_favorite
+        boolean permissions_share_email
+        boolean permissions_share_facebook
+        timestamp published_at
+        boolean read
+        bigint relevance_score
+        text source_type
+        jsonb tags
+        jsonb tasks
+        bigint tone
+        bigint tone_score
+        text unique_id
+        timestamp updated_at
+    }
+    alert_preference }o--|| account : "fk"
+    alert_preference }o--|| alert : "fk"
+    alert_language }o--|| alert : "fk"
+    alert_source }o--|| alert : "fk"
+    alert_country }o--|| alert : "fk"
+    alert_blocked_site }o--|| alert : "fk"
+    alert_included_keyword }o--|| alert : "fk"
+    alert_required_keyword }o--|| alert : "fk"
+    alert_excluded_keyword }o--|| alert : "fk"
+    alert_monitored_facebook_page }o--|| alert : "fk"
+    alert_monitored_twitter_account }o--|| alert : "fk"
+    alert }o--|| account : "fk"
+    share }o--|| account : "fk"
+    share }o--|| alert : "fk"
+    account_group }o--|| account : "fk"
+    children_offset_title }o--|| children : "fk"
+    children_offset_description }o--|| children : "fk"
+    children_offset_description_medium }o--|| children : "fk"
+    children_offset_description_short }o--|| children : "fk"
+    children }o--|| alert : "fk"
+    children }o--|| account : "fk"
+    children }o--|| mention : "fk"
+    mention_offset_title }o--|| mention : "fk"
+    mention_offset_description }o--|| mention : "fk"
+    mention_offset_description_medium }o--|| mention : "fk"
+    mention_offset_description_short }o--|| mention : "fk"
+    mention }o--|| alert : "fk"
+    mention }o--|| account : "fk"

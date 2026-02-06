@@ -1,0 +1,186 @@
+erDiagram
+    site {
+        text id PK
+        text city
+        text country
+        text geolocation_accuracy
+        text geolocation_center
+        text geolocation_coordinate
+        text geolocation_relevance
+        text geolocation_valid_address
+        text name
+        text owner_object_id
+        text parent_id
+        text postal_code
+        text state
+        text street_address_1
+        text street_address_2
+        text time_zone
+    }
+    audit_event_property_change {
+        text index PK
+        text audit_event_uuid PK
+        text current_value
+        text previous_value
+        text property
+    }
+    audit_event {
+        text uuid PK
+        text actor_id
+        text actor_identity_type
+        text actor_name
+        text event_action_allowed
+        text event_actor_user_type_id
+        text event_credential_label
+        text event_credential_object_id
+        text event_detail
+        text event_object_id
+        text event_object_identity_type
+        text event_object_name
+        text event_object_subtype_id
+        text event_object_type_id
+        text event_user_group_name
+        text event_user_type_id
+        text object_type
+        text occurred
+        text processed
+        text security_action
+        text security_action_exception
+        text security_action_id
+    }
+    user_custom_field {
+        text id PK
+        text user_id PK
+        text field_name
+        text field_type
+        text value
+    }
+    access_event {
+        text uuid PK
+        text site_id FK
+        text actor_id
+        text actor_identity_type
+        text actor_name
+        text event_action_allowed
+        text event_credential_object_id
+        text event_detail
+        text event_object_device_type_id
+        text event_object_device_type_name
+        text event_object_group_name
+        text event_object_id
+        text event_object_name
+        text event_object_subtype_id
+        text event_object_type_id
+        text event_user_type_id
+        text object_type
+        text occurred
+        text processed
+        text security_action
+        text security_action_exception
+        text security_action_id
+    }
+    camera {
+        text id PK
+        text site_id FK
+        text name
+        text video_provider_type
+    }
+    event_subscription_criteria {
+        text id PK
+        text event_subscription_id PK
+        text operation_type
+        text type
+        text value
+    }
+    event_subscription {
+        text id PK
+        text error_email
+        text name
+        text url
+    }
+    account {
+        text id PK
+        text master_admin_email
+        text master_admin_first_name
+        text master_admin_last_name
+        text master_admin_username
+        text name
+        text number
+        text type
+    }
+    access_point {
+        text id PK
+        text site_id FK
+        text activation_enabled
+        text control_panel_id
+        text name
+        text report_live_status
+        text two_factor_enabled
+        text type
+    }
+    schedule_holiday {
+        text index PK
+        text schedule_id PK
+        text end_date
+        text name
+        text start_date
+    }
+    schedule_exception {
+        text index PK
+        text schedule_id PK
+        text enabling
+        text end_time
+        text recurrence_day
+        text recurrence_type
+        text recurrence_week_of_month
+        text start_time
+    }
+    schedule {
+        text id PK
+        text site_id FK
+        text editable
+        text enabling_group_id
+        text enabling_group_name
+        text grace_period
+        text name
+        jsonb schedule_block_friday
+        jsonb schedule_block_holiday
+        jsonb schedule_block_monday
+        jsonb schedule_block_saturday
+        jsonb schedule_block_sunday
+        jsonb schedule_block_thursday
+        jsonb schedule_block_tuesday
+        jsonb schedule_block_wednesday
+    }
+    user_email {
+        text index PK
+        text user_id PK
+        text address
+        text type
+    }
+    user_phone_number {
+        text index PK
+        text user_id PK
+        text number
+        text type
+    }
+    users {
+        text id PK
+        text ble_two_factor_exempt
+        text created
+        text first_name
+        text last_name
+        text suspended
+        text updated
+    }
+    audit_event_property_change }o--|| audit_event : "fk"
+    user_custom_field }o--|| users : "fk"
+    access_event }o--|| site : "fk"
+    camera }o--|| site : "fk"
+    event_subscription_criteria }o--|| event_subscription : "fk"
+    access_point }o--|| site : "fk"
+    schedule_holiday }o--|| schedule : "fk"
+    schedule_exception }o--|| schedule : "fk"
+    schedule }o--|| site : "fk"
+    user_email }o--|| users : "fk"
+    user_phone_number }o--|| users : "fk"

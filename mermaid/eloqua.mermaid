@@ -1,0 +1,423 @@
+erDiagram
+    contact_list_contact {
+        bigint contact_id PK
+        bigint contact_list_id PK
+    }
+    campaign {
+        bigint id PK
+        bigint created_by FK
+        text updated_by FK
+        timestamp accessed_at
+        numeric actual_cost
+        text badge_id
+        numeric budgeted_cost
+        text campaign_category
+        text campaign_type
+        text clr_end_date
+        timestamp created_at
+        text crm_id
+        text current_status
+        text description
+        timestamp end_at
+        timestamp first_activation
+        bigint folder_id
+        boolean is_email_marketing_campaign
+        boolean is_included_in_roi
+        boolean is_member_allowed_re_entry
+        boolean is_read_only
+        boolean is_synced_with_crm
+        bigint member_count
+        text name
+        text product
+        text region
+        bigint run_as_user_id
+        text scheduled_for
+        text source_template_id
+        timestamp start_at
+        timestamp updated_at
+    }
+    %% Note
+%% This table represents metadata related to a session for an event. It's essentially the template use for an even and it's sessions.
+    event_registration_session_field {
+        bigint id PK
+        bigint event_registration_id PK
+        text data_type
+        text name
+        text type
+    }
+    contact_list_segment_element {
+        bigint id PK
+        bigint segment_id PK
+        bigint contact_list_id FK
+        bigint count
+        boolean is_included
+        timestamp last_calculated_at
+        text type
+    }
+    contact_list {
+        bigint id PK
+        text created_by FK
+        text updated_by FK
+        timestamp created_at
+        text current_status
+        text data_lookup_id
+        bigint folder_id
+        text name
+        text scope
+        text type
+        timestamp updated_at
+    }
+    %% Note 
+%% This table contains the actual values and details associated with those values for a session.
+    event_registration_session_field_value {
+        bigint id PK
+        bigint event_registration_id PK
+        bigint session_id PK
+        bigint session_field_id FK
+        text type
+        text value
+    }
+    event_registration_session {
+        bigint id PK
+        bigint event_registration_id PK
+        text name
+        integer participants_limit
+        text type
+    }
+    email_form {
+        bigint email_id PK
+        bigint form_id PK
+    }
+    form {
+        bigint id PK
+        timestamp created_at
+        text current_status
+        text name
+        text processing_type
+        timestamp updated_at
+    }
+    form_submission {
+        bigint id PK
+        bigint form_id FK
+        bigint submitted_by_contact_id FK
+        timestamp submitted_at
+    }
+    option {
+        text value PK
+        bigint option_list_id PK
+        text display_name
+        text type
+    }
+    event_registration_registrant {
+        bigint id PK
+        bigint account_id FK
+        bigint contact_id FK
+        bigint event_registration_id FK
+        timestamp created_at
+        text custom_object_record_status
+        text is_mapped
+        text name
+        text type
+        text unique_code
+        timestamp updated_at
+    }
+    event_registration {
+        bigint id PK
+        bigint created_by FK
+        bigint updated_by FK
+        timestamp created_at
+        text description
+        bigint email_address_field_id
+        bigint event_group_by_field_id
+        bigint folder_id
+        text name
+        text type
+        bigint unique_code_field_id
+        timestamp updated_at
+    }
+    contact_activity {
+        text activity_type PK
+        bigint id PK
+        bigint campaign_id FK
+        bigint contact_id FK
+        bigint form_id FK
+        bigint visitor_id FK
+        timestamp activity_date
+        bigint asset_id
+        text asset_name
+        text asset_type
+        text contact_id_ext
+        bigint deployment_id
+        text duration
+        text email_address
+        text email_clicked_thru_link
+        text email_recipient_id
+        text email_send_type
+        text email_web_link
+        text external_asset_name
+        text external_asset_type
+        text external_id
+        text external_type
+        text first_page_view_url
+        text ip_address
+        text is_web_tracking_opted_in
+        bigint number_of_pages
+        text raw_data
+        text referrer_url
+        text smtp_error_code
+        text smtp_message
+        bigint smtp_status_code
+        text subject_line
+        text url
+        text visitor_external_id
+        text web_visit_id
+    }
+    account {
+        bigint id PK
+        timestamp created_at
+        text description
+        text name
+        timestamp updated_at
+    }
+    contact_segment {
+        bigint contact_id PK
+        bigint segment_id PK
+    }
+    visitor {
+        bigint id PK
+        timestamp last_visit_date_and_time PK
+        bigint contact_id FK
+        text browser_type
+        text city_from_ip
+        text company_dns_name
+        text company_name_from_ip_1
+        text country_from_ip
+        text country_name
+        timestamp created_at
+        text current_status
+        bigint current_total_pages
+        bigint current_visit_length
+        text external_id
+        text first_page_in_visit
+        timestamp first_visit_date_and_time
+        text host_name
+        text ip_address
+        text isp_from_ip
+        text last_page_in_visit
+        text latitude_from_ip
+        text longitude_from_ip
+        text name
+        text province_from_ip
+        text time_zone
+        text time_zone_offset_min
+        bigint total_pages
+        bigint total_time
+        bigint total_visits
+        text type
+        text zip_code_from_ip
+    }
+    email {
+        bigint id PK
+        text created_by FK
+        text updated_by FK
+        text archived
+        text bounce_back_email
+        timestamp created_at
+        text current_status
+        text html_content_content_source
+        text html_content_html
+        text html_content_type
+        boolean is_content_protected
+        boolean is_plain_text_editable
+        boolean is_private
+        boolean is_tracked
+        text name
+        text plain_text
+        text render_mode
+        text reply_to_email
+        text reply_to_name
+        boolean send_plain_text_only
+        text sender_email
+        text sender_name
+        text subject
+        timestamp updated_at
+    }
+    event_registration_field {
+        bigint id PK
+        bigint event_registration_id PK
+        text checked_value
+        text data_type
+        text default_value
+        text display_type
+        text internal_name
+        text name
+        text option_list_id
+        text type
+        text unchecked_value
+    }
+    contact {
+        bigint id PK
+        bigint created_by FK
+        bigint updated_by FK
+        text account_name
+        text address_1
+        text address_2
+        text address_3
+        timestamp bounceback_date
+        text business_phone
+        text city
+        text country
+        timestamp created_at
+        text current_status
+        text email_address
+        text fax
+        text first_name
+        boolean is_bounceback
+        boolean is_subscribed
+        text last_name
+        text mobile_phone
+        text name
+        text postal_code
+        text province
+        text sales_person
+        timestamp subscription_date
+        text title
+        timestamp unsubscription_date
+        timestamp updated_at
+    }
+    contact_filter {
+        bigint id PK
+        text created_by FK
+        text updated_by FK
+        timestamp created_at
+        text current_status
+        bigint folder_id
+        text name
+        text scope
+        text statement
+        text type
+        timestamp updated_at
+    }
+    segment {
+        bigint id PK
+        text created_by FK
+        text updated_by FK
+        bigint count
+        timestamp created_at
+        text current_status
+        bigint folder_id
+        boolean is_stale
+        text name
+        text type
+        timestamp updated_at
+    }
+    event_registration_registrant_field_value {
+        bigint id PK
+        bigint event_registration_id PK
+        bigint registrant_id PK
+        text name
+        text type
+        text value
+    }
+    contact_filter_segment_element {
+        bigint id PK
+        bigint segment_id PK
+        bigint contact_filter_id FK
+        bigint count
+        boolean is_included
+        timestamp last_calculated_at
+        text type
+    }
+    option_list {
+        bigint id PK
+        text created_by FK
+        text updated_by FK
+        timestamp created_at
+        text current_status
+        text description
+        text name
+        jsonb permissions
+        text type
+        timestamp updated_at
+    }
+    email_hyperlink {
+        text id PK
+        bigint email_id PK
+        text href
+        text name
+        text type
+    }
+    user_info {
+        bigint id PK
+        text city
+        text company_display_name
+        text company_url
+        text country
+        timestamp created_at
+        bigint created_by
+        text department
+        text description
+        text digital_signature_id
+        text email_address
+        text first_name
+        bigint folder_id
+        boolean is_disabled
+        text job_title
+        text last_name
+        text login_name
+        text name
+        text reply_to_address
+        text sender_display_name
+        text sender_email_address
+        text state
+        text type
+        timestamp updated_at
+        bigint updated_by
+        text zip_code
+    }
+    contact_list_contact }o--|| contact : "fk"
+    contact_list_contact }o--|| contact_list : "fk"
+    campaign }o--|| user_info : "fk"
+    campaign }o--|| user_info : "fk"
+    event_registration_session_field }o--|| event_registration : "fk"
+    contact_list_segment_element }o--|| segment : "fk"
+    contact_list_segment_element }o--|| contact_list : "fk"
+    contact_list }o--|| user_info : "fk"
+    contact_list }o--|| user_info : "fk"
+    event_registration_session_field_value }o--|| event_registration : "fk"
+    event_registration_session_field_value }o--|| event_registration_session : "fk"
+    event_registration_session_field_value }o--|| event_registration_session_field : "fk"
+    event_registration_session }o--|| event_registration : "fk"
+    email_form }o--|| email : "fk"
+    email_form }o--|| form : "fk"
+    form_submission }o--|| form : "fk"
+    form_submission }o--|| contact : "fk"
+    option }o--|| option_list : "fk"
+    event_registration_registrant }o--|| event_registration : "fk"
+    event_registration_registrant }o--|| contact : "fk"
+    event_registration_registrant }o--|| account : "fk"
+    event_registration }o--|| user_info : "fk"
+    event_registration }o--|| user_info : "fk"
+    contact_activity }o--|| campaign : "fk"
+    contact_activity }o--|| form : "fk"
+    contact_activity }o--|| contact : "fk"
+    contact_activity }o--|| visitor : "fk"
+    contact_segment }o--|| contact : "fk"
+    contact_segment }o--|| segment : "fk"
+    visitor }o--|| contact : "fk"
+    email }o--|| user_info : "fk"
+    email }o--|| user_info : "fk"
+    event_registration_field }o--|| event_registration : "fk"
+    contact }o--|| user_info : "fk"
+    contact }o--|| user_info : "fk"
+    contact_filter }o--|| user_info : "fk"
+    contact_filter }o--|| user_info : "fk"
+    segment }o--|| user_info : "fk"
+    segment }o--|| user_info : "fk"
+    event_registration_registrant_field_value }o--|| event_registration : "fk"
+    event_registration_registrant_field_value }o--|| event_registration_registrant : "fk"
+    contact_filter_segment_element }o--|| segment : "fk"
+    contact_filter_segment_element }o--|| contact_filter : "fk"
+    option_list }o--|| user_info : "fk"
+    option_list }o--|| user_info : "fk"
+    email_hyperlink }o--|| email : "fk"

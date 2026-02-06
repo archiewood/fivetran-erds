@@ -1,0 +1,293 @@
+erDiagram
+    checklist {
+        text id PK
+        text account_id
+        text cloned_by
+        text cloned_from
+        text completion_flow_id
+        text created_at
+        text created_by
+        text internal_name
+        text intro_flow_id
+        text is_dismissable
+        text is_sequential
+        jsonb items
+        text published
+        text published_and_dirty
+        text published_at
+        text published_by
+        jsonb rule
+        text state
+        text style_beacon_background_color
+        text style_beacon_horizontal_offset
+        text style_beacon_icon
+        text style_beacon_text_color
+        text style_beacon_vertical_offset
+        text style_completion_icon
+        text style_header_icon
+        text style_position
+        text style_primary_color
+        text style_success_color
+        text style_success_image_code
+        text style_type
+        text text_token_beacon_text
+        text text_token_completion_dismiss_text
+        text text_token_completion_text
+        text text_token_completion_title
+        text text_token_description_text
+        text text_token_dismiss_cancel_text
+        text text_token_dismiss_confirm_text
+        text text_token_dismiss_prompt_text
+        text text_token_dismiss_text
+        text text_token_header_text
+        text title
+        text type
+        text unpublished_at
+        text unpublished_by
+        text updated_at
+        text updated_by
+    }
+    segment {
+        text id PK
+        text created_at
+        text created_by
+        text description
+        text name
+        text updated_at
+        text updated_by
+    }
+    launch_pad_step {
+        text id PK
+        text launch_pad_id PK
+        jsonb actions
+        jsonb children
+        jsonb content
+        text content_type
+        text created_at
+        text created_by
+        text index
+        text name
+        text parent_id
+        jsonb rows
+        jsonb traits
+        text type
+        text updated_at
+        text updated_by
+    }
+    launch_pad_trait {
+        text index PK
+        text launch_pad_id PK
+        text type
+    }
+    launch_pad {
+        text id PK
+        text account_id
+        text app_id
+        text contains_localized_block
+        text created_at
+        text created_by
+        text experiment
+        text frequency
+        text locked_for_localization
+        text name
+        text platform
+        text preview_url
+        text public_name
+        text published
+        text published_at
+        text schema_version
+        jsonb tag_ids
+        jsonb tags
+        text theme
+        text type
+        text updated_at
+        text updated_by
+        text url
+    }
+    flow {
+        text id PK
+        text created_at
+        text created_by
+        text frequency
+        text name
+        text published
+        text published_at
+        text updated_at
+        text updated_by
+    }
+    pin_step {
+        text id PK
+        text pin_id PK
+        jsonb actions
+        jsonb content
+        text content_type
+        text created_at
+        text created_by
+        text index
+        text name
+        text parent_id
+        text type
+        text updated_at
+        text updated_by
+    }
+    pin_trait {
+        text type PK
+        text pin_id PK
+    }
+    pin {
+        text id PK
+        text account_id
+        text app_id
+        text created_at
+        text created_by
+        text experiment
+        text frequency
+        text locked_for_localization
+        text name
+        text platform
+        text preview_url
+        text published
+        text published_at
+        text schema_version
+        text state
+        jsonb tags
+        text theme
+        text type
+        text updated_at
+        text updated_by
+        text url
+    }
+    banner_step_trait {
+        text index PK
+        text banner_id PK
+        text banner_step_id PK
+        jsonb config
+        text type
+    }
+    banner_step {
+        text id PK
+        text banner_id PK
+        jsonb actions
+        jsonb children
+        jsonb content
+        text content_type
+        text created_at
+        text created_by
+        text index
+        text name
+        text parent_id
+        jsonb rows
+        text type
+        text updated_at
+        text updated_by
+    }
+    banner_trait {
+        text index PK
+        text banner_id PK
+        jsonb config
+        text type
+    }
+    banner {
+        text id PK
+        text account_id
+        text app_id
+        text contains_localized_block
+        text created_at
+        text created_by
+        text created_by_email
+        text experiment
+        text frequency
+        text locked_for_localization
+        text name
+        text platform
+        text preview_url
+        text public_name
+        text published
+        text published_and_dirty
+        text published_at
+        text schema_version
+        jsonb tag_ids
+        jsonb tags
+        text theme
+        text type
+        text updated_at
+        text updated_by
+        text updated_by_email
+        text url
+    }
+    tags {
+        text id PK
+        text created_at
+        text created_by
+        text name
+        text updated_at
+        text updated_by
+        text url
+    }
+    mobile_step {
+        text id PK
+        text mobile_id PK
+        jsonb actions
+        jsonb content
+        text content_type
+        text created_at
+        text created_by
+        text index
+        text name
+        text parent_id
+        text type
+        text updated_at
+        text updated_by
+    }
+    mobile_trait {
+        text type PK
+        text mobile_id PK
+    }
+    mobile {
+        text id PK
+        text account_id
+        text app_id
+        text created_at
+        text created_by
+        text experiment
+        text frequency
+        text locked_for_localization
+        text name
+        text platform
+        text preview_url
+        text published
+        text published_at
+        text schema_version
+        text state
+        jsonb tags
+        text theme
+        text type
+        text updated_at
+        text updated_by
+        text url
+    }
+    event {
+        text _fivetran_id PK
+        jsonb attributes
+        text id
+        text name
+        text timestamps
+        text user_id
+    }
+    user_profile {
+        text _fivetran_id PK
+        text email
+        text first_name
+        text last_name
+        text user_id
+    }
+    launch_pad_step }o--|| launch_pad : "fk"
+    launch_pad_trait }o--|| launch_pad : "fk"
+    pin_step }o--|| pin : "fk"
+    pin_trait }o--|| pin : "fk"
+    banner_step_trait }o--|| banner_step : "fk"
+    banner_step_trait }o--|| banner_step : "fk"
+    banner_step }o--|| banner : "fk"
+    banner_trait }o--|| banner : "fk"
+    mobile_step }o--|| mobile : "fk"
+    mobile_trait }o--|| mobile : "fk"

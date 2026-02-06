@@ -1,0 +1,336 @@
+erDiagram
+    ad_set_audience_exclusion {
+        text audience_exclusion_id PK
+        text ad_set_id PK
+        timestamp ad_set_updated_at PK
+    }
+    audience {
+        text id PK
+        timestamp updated_at PK
+        text ad_account_id PK
+        timestamp created_at
+        text description
+        text name
+        text seed_audience_id
+        integer size_max
+        integer size_min
+        text status
+        text type
+    }
+    ad_set_geo_target_dma {
+        text dma_id PK
+        text ad_set_id PK
+        timestamp ad_set_updated_at PK
+    }
+    ad_set_geo_target_post_code {
+        text post_code_id PK
+        text ad_set_id PK
+        timestamp ad_set_updated_at PK
+    }
+    video_asset {
+        text ad_account_id PK
+        text id PK
+        timestamp updated_at PK
+        text aspect_ratio
+        timestamp created_at
+        integer duration_ms
+        text file_type
+        text name
+        text status
+        text thumbnail_url
+        text url
+    }
+    ad_category {
+        text id PK
+        text name
+        text parent_category
+    }
+    audio_asset {
+        text ad_account_id PK
+        text id PK
+        timestamp updated_at PK
+        text audio_type
+        text canvas_asset_id
+        timestamp created_at
+        integer duration_ms
+        text file_type
+        text name
+        text status
+        text url
+    }
+    ad_set_interest {
+        text interest_id PK
+        text ad_set_id PK
+        timestamp ad_set_updated_at PK
+    }
+    ad_set_geo_target_city {
+        text city_id PK
+        text ad_set_id PK
+        timestamp ad_set_updated_at PK
+    }
+    ad_set {
+        text id PK
+        timestamp updated_at PK
+        text campaign_id FK
+        text category FK
+        text geo_target_country_code FK
+        text target_language FK
+        text asset_format
+        bigint bid_micro_amount
+        text bid_optimization_goal
+        text bid_strategy
+        text budget_currency
+        bigint budget_micro_amount
+        text budget_type
+        text cost_model
+        timestamp created_at
+        text delivery
+        timestamp end_time
+        text name
+        text promotion_goal
+        text promotion_target_id
+        text reject_reason
+        timestamp start_time
+        text status
+    }
+    ad_set_platform {
+        text platform PK
+        text ad_set_id PK
+        timestamp ad_set_updated_at PK
+    }
+    ad_set_artist {
+        text artist_id PK
+        text ad_set_id PK
+        timestamp ad_set_updated_at PK
+    }
+    geo_target {
+        text id PK
+        text country_code
+        text name
+        text parent_geo_name
+        text type
+    }
+    business {
+        text id PK
+        timestamp updated_at PK
+        timestamp created_at
+        text name
+        text status
+        text type
+    }
+    ad_set_placement {
+        text placement PK
+        text ad_set_id PK
+        timestamp ad_set_updated_at PK
+    }
+    ad_account {
+        text id PK
+        timestamp updated_at PK
+        text business_id FK
+        text ad_account_role
+        text billing_address_city
+        text billing_address_name
+        text billing_address_postal_code
+        text billing_address_region
+        text billing_address_street
+        text billing_address_tax_region
+        text country_code
+        timestamp created_at
+        text currency_code
+        text display_name
+        text industry
+        text legal_entity_name
+        text name
+        text status
+        text status_reason
+        text tax_id
+        text website
+    }
+    ad_set_genre {
+        text genre_id PK
+        text ad_set_id PK
+        timestamp ad_set_updated_at PK
+    }
+    artist {
+        text id PK
+        text images
+        text name
+    }
+    playlist {
+        text id PK
+        text name
+    }
+    image_asset {
+        text ad_account_id PK
+        text id PK
+        timestamp updated_at PK
+        timestamp created_at
+        text file_type
+        text image_type
+        text name
+        text status
+        text url
+    }
+    genre {
+        text id PK
+        text name
+    }
+    ad_set_playlist {
+        text playlist_id PK
+        text ad_set_id PK
+        timestamp ad_set_updated_at PK
+    }
+    ad_set_podcast_episode_topic {
+        text podcast_episode_topic_id PK
+        text ad_set_id PK
+        timestamp ad_set_updated_at PK
+    }
+    language {
+        text id PK
+        text name
+    }
+    ad {
+        text id PK
+        timestamp updated_at PK
+        text ad_account_id PK
+        text ad_set_id FK
+        text ad_preview_url
+        text advertiser_name
+        text asset_id
+        text call_to_action_clickthrough_url
+        text call_to_action_language
+        text call_to_action_text
+        text companion_asset_id
+        timestamp created_at
+        text delivery
+        text logo_asset_id
+        text name
+        text reject_reason
+        text status
+        text tagline
+        text user_uploaded_image
+    }
+    ad_set_gender {
+        text gender PK
+        text ad_set_id PK
+        timestamp ad_set_updated_at PK
+    }
+    ad_set_audience {
+        text audience_id PK
+        text ad_set_id PK
+        timestamp ad_set_updated_at PK
+    }
+    sensitive_topic {
+        text id PK
+        text name
+    }
+    interest {
+        text id PK
+        text name
+    }
+    ad_set_frequency_cap {
+        integer frequency_period PK
+        text frequency_unit PK
+        text ad_set_id PK
+        timestamp ad_set_updated_at PK
+        integer max_impressions
+    }
+    podcast_show {
+        text id PK
+        text images
+        text name
+    }
+    ad_third_party_tracking {
+        integer index PK
+        text ad_id PK
+        timestamp ad_updated_at PK
+        text measurement_partner
+        text url
+    }
+    ad_set_conversion_event {
+        integer index PK
+        text ad_set_id PK
+        timestamp ad_set_updated_at PK
+        text tracking_event_type
+        integer window_duration_ms
+    }
+    campaign {
+        text id PK
+        timestamp updated_at PK
+        text ad_account_id PK
+        timestamp created_at
+        text measurement_partner
+        text name
+        text objective
+        text purchase_order
+        text spaa_pixel_id
+        text status
+    }
+    ad_set_geo_target_region {
+        text region_id PK
+        text ad_set_id PK
+        timestamp ad_set_updated_at PK
+    }
+    podcast_episode_topic {
+        text id PK
+        text name
+    }
+    ad_set_sensitive_topic_exclusion {
+        text sensitive_topic_exclusion_id PK
+        text ad_set_id PK
+        timestamp ad_set_updated_at PK
+    }
+    ad_set_age_range {
+        integer index PK
+        text ad_set_id PK
+        timestamp ad_set_updated_at PK
+        integer max
+        integer min
+    }
+    ad_set_audience_exclusion }o--|| ad_set : "fk"
+    ad_set_audience_exclusion }o--|| ad_set : "fk"
+    audience }o--|| ad_account : "fk"
+    ad_set_geo_target_dma }o--|| ad_set : "fk"
+    ad_set_geo_target_dma }o--|| ad_set : "fk"
+    ad_set_geo_target_post_code }o--|| ad_set : "fk"
+    ad_set_geo_target_post_code }o--|| ad_set : "fk"
+    ad_set_interest }o--|| ad_set : "fk"
+    ad_set_interest }o--|| ad_set : "fk"
+    ad_set_geo_target_city }o--|| ad_set : "fk"
+    ad_set_geo_target_city }o--|| ad_set : "fk"
+    ad_set }o--|| ad_category : "fk"
+    ad_set }o--|| campaign : "fk"
+    ad_set }o--|| language : "fk"
+    ad_set }o--|| geo_target : "fk"
+    ad_set_platform }o--|| ad_set : "fk"
+    ad_set_platform }o--|| ad_set : "fk"
+    ad_set_artist }o--|| ad_set : "fk"
+    ad_set_artist }o--|| ad_set : "fk"
+    ad_set_placement }o--|| ad_set : "fk"
+    ad_set_placement }o--|| ad_set : "fk"
+    ad_account }o--|| business : "fk"
+    ad_set_genre }o--|| ad_set : "fk"
+    ad_set_genre }o--|| ad_set : "fk"
+    ad_set_playlist }o--|| ad_set : "fk"
+    ad_set_playlist }o--|| ad_set : "fk"
+    ad_set_podcast_episode_topic }o--|| ad_set : "fk"
+    ad_set_podcast_episode_topic }o--|| ad_set : "fk"
+    ad }o--|| ad_account : "fk"
+    ad }o--|| ad_set : "fk"
+    ad_set_gender }o--|| ad_set : "fk"
+    ad_set_gender }o--|| ad_set : "fk"
+    ad_set_audience }o--|| ad_set : "fk"
+    ad_set_audience }o--|| ad_set : "fk"
+    ad_set_frequency_cap }o--|| ad_set : "fk"
+    ad_set_frequency_cap }o--|| ad_set : "fk"
+    ad_third_party_tracking }o--|| ad : "fk"
+    ad_third_party_tracking }o--|| ad : "fk"
+    ad_set_conversion_event }o--|| ad_set : "fk"
+    ad_set_conversion_event }o--|| ad_set : "fk"
+    campaign }o--|| ad_account : "fk"
+    ad_set_geo_target_region }o--|| ad_set : "fk"
+    ad_set_geo_target_region }o--|| ad_set : "fk"
+    ad_set_sensitive_topic_exclusion }o--|| ad_set : "fk"
+    ad_set_sensitive_topic_exclusion }o--|| ad_set : "fk"
+    ad_set_age_range }o--|| ad_set : "fk"
+    ad_set_age_range }o--|| ad_set : "fk"

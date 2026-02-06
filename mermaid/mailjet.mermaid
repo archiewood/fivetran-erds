@@ -1,0 +1,264 @@
+erDiagram
+    contact {
+        text id PK
+        timestamp created_at
+        text delivered_count
+        text email
+        text exclusion_from_campaigns_updated_at
+        text is_excluded_from_campaigns
+        text is_opt_in_pending
+        text is_spam_complaining
+        text last_activity_at
+        text last_update_at
+        text name
+    }
+    campaign_overview {
+        text id PK
+        text clicked_count
+        text delivered_count
+        text edit_mode
+        text edit_type
+        text id_type
+        text opened_count
+        text processed_count
+        text send_time_start
+        text starred
+        text status
+        text subject
+        text title
+    }
+    campaign_draft {
+        text id PK
+        text contact_list_id FK
+        text a_x_fraction
+        text a_x_fraction_name
+        text created_at
+        text current
+        text delivered_at
+        text edit_mode
+        text is_starred
+        text is_text_part_included
+        text locale
+        text modified_at
+        text preset
+        text reply_email
+        text sender
+        text sender_email
+        text sender_name
+        text status
+        text subject
+        text title
+        text url
+        text used
+    }
+    bounce_event {
+        text id PK
+        text campaign_id FK
+        text contact_id FK
+        text bounced_at
+        text is_blocked
+        text is_state_permanent
+        text state_id
+    }
+    campaign_click_statistics {
+        text _fivetran_id PK
+        text campaign_id FK
+        text clicked_events_count
+        text clicked_messages_count
+        text position_index
+        text url
+    }
+    campaign_open_information {
+        text _fivetran_id PK
+        text campaign_id FK
+        text contact_id FK
+        text message_id FK
+        text arrived_at
+        text id
+        text opened_at
+        text user_agent_full
+        text user_agent_id
+    }
+    contact_list {
+        text id PK
+        text address
+        timestamp created_at
+        text is_deleted
+        text name
+        text subscriber_count
+    }
+    contact_filter {
+        text id PK
+        text description
+        text expression
+        text name
+        text status
+    }
+    template_category {
+        text index PK
+        text template_id PK
+        text category
+    }
+    template_preview {
+        text index PK
+        text template_id PK
+        text preview
+    }
+    template_purpose {
+        text index PK
+        text template_id PK
+        text purpose
+    }
+    template_locale_list {
+        text index PK
+        text template_id PK
+        text localelist
+    }
+    template {
+        text id PK
+        text author
+        text copyright
+        timestamp created_at
+        text description
+        text edit_mode
+        text is_starred
+        text is_text_part_generation_enabled
+        text last_updated_at
+        text locale
+        text name
+        text owner_id
+        text owner_type
+        text presets
+    }
+    campaign {
+        text id PK
+        text contact_list_id FK
+        text first_message_id FK
+        text campaign_type
+        text click_tracked
+        text created_at
+        text custom_value
+        text from_email
+        text from_id
+        text from_name
+        text has_html_count
+        text has_txt_count
+        text is_deleted
+        text is_starred
+        text news_letter_id
+        text open_tracked
+        text send_end_at
+        text send_start_at
+        text spamass_score
+        text status
+        text subject
+        text unsubscribe_tracked_count
+        text workflow_id
+    }
+    message {
+        text id PK
+        text contact_id FK
+        text arrived_at
+        text attachment_count
+        text attempt_count
+        text contact_alt
+        text delay
+        text destination_id
+        text filter_time
+        text is_click_tracked
+        text is_html_part_included
+        text is_open_tracked
+        text is_text_part_included
+        text is_unsub_tracked
+        text message_size
+        text sender_id
+        text spam_assassin_score
+        text spamass_rule
+        text state_permanent
+        text status
+        text subject
+        text uuid
+    }
+    contact_list_signup {
+        text id PK
+        text contact_id FK
+        text contact_list_id FK
+        text confirm_at
+        text confirm_ip
+        text consent_id
+        text email
+        text property
+        text signup_at
+        text signup_ip
+        text signup_key
+        text source
+        text source_id
+        text validation_response
+    }
+    click_stat {
+        text id PK
+        text contact_id FK
+        text message_id FK
+        text clicked_at
+        text clicked_delay
+        text url
+        text user_agent_id
+    }
+    geo_statistics {
+        text _fivetran_id PK
+        text clicked_count
+        text country
+        text opened_count
+    }
+    message_information {
+        text id PK
+        text campaign_id FK
+        text contact_id FK
+        text click_tracked_count
+        text created_at
+        text message_size
+        text open_tracked_count
+        text queued_count
+        text send_end_at
+        text sent_count
+        text spam_assassin_rule_alt
+        text spam_assassin_rule_id
+        text spam_assassin_score
+    }
+    toplink_clicked {
+        text _fivetran_id PK
+        text clicked_count
+        text link_id
+        text url
+    }
+    message_history {
+        text _fivetran_id PK
+        text message_id PK
+        text comment
+        text event_at
+        text event_type
+        text state
+        text user_agent
+        text user_agent_id
+    }
+    campaign_draft }o--|| contact_list : "fk"
+    bounce_event }o--|| campaign : "fk"
+    bounce_event }o--|| contact : "fk"
+    campaign_click_statistics }o--|| campaign : "fk"
+    campaign_open_information }o--|| campaign : "fk"
+    campaign_open_information }o--|| contact : "fk"
+    campaign_open_information }o--|| message : "fk"
+    template_category }o--|| template : "fk"
+    template_preview }o--|| template : "fk"
+    template_purpose }o--|| template : "fk"
+    template_locale_list }o--|| template : "fk"
+    campaign }o--|| contact_list : "fk"
+    campaign }o--|| message : "fk"
+    message }o--|| contact : "fk"
+    contact_list_signup }o--|| contact_list : "fk"
+    contact_list_signup }o--|| contact : "fk"
+    click_stat }o--|| contact : "fk"
+    click_stat }o--|| message : "fk"
+    message_information }o--|| campaign : "fk"
+    message_information }o--|| contact : "fk"
+    message_history }o--|| message : "fk"

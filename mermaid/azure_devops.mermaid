@@ -1,0 +1,554 @@
+erDiagram
+    commit_parents {
+        text commit_id PK
+        text parent_commit_id PK
+    }
+    commit_change_counts {
+        text change_counts_name PK
+        text commit_id PK
+        text change_counts_value
+    }
+    commit {
+        text id PK
+        text push_by_id FK
+        text repository_id FK
+        text author_date
+        text author_email
+        text author_name
+        text comment
+        boolean comment_truncated
+        text committed_date
+        text committed_email
+        text committed_name
+        text push_date
+        integer push_id
+        text remote_url
+        text tree_id
+        text url
+    }
+    project {
+        text id PK
+        text team_id FK
+        text abbreviation
+        text capabilities_process_template_name
+        text capabilities_process_template_type_id
+        text capabilities_version_control_git_enabled
+        text capabilities_version_control_source_control_type
+        text capabilities_version_control_tfvc_enabled
+        text default_team_image_url
+        text description
+        text last_update_time
+        text name
+        integer revision
+        text state
+        text url
+        text visibility
+    }
+    repository {
+        text id PK
+        text parent_repository_id FK
+        text project_id FK
+        text default_branch
+        boolean is_disabled
+        boolean is_fork
+        text name
+        text remote_url
+        bigint size
+        text ssh_url
+        text url
+        jsonb valid_remote_urls
+        text web_url
+    }
+    plan {
+        text id PK
+        text created_by_id FK
+        text modified_by_id FK
+        text project_id FK
+        text created_date
+        text description
+        text modified_date
+        text name
+        integer revision
+        text type
+        text user_permissions
+    }
+    item {
+        text object_id PK
+        text project_id PK
+        text repository_id PK
+        text commit_id FK
+        text latest_processed_change FK
+        text content
+        text git_object_type
+        boolean is_folder
+        boolean is_symlink
+        text original_object_id
+        text path
+        text url
+    }
+    installed_extension_scope {
+        text index PK
+        text installed_extension_id PK
+        text scope
+    }
+    installed_extension_contribution_authentication_schema {
+        text id PK
+        text installed_extension_contribution_id PK
+        text installed_extension_id PK
+        text type PK
+        text description
+        text input_mode
+        text is_confidential
+        text name
+        text validation_datatype
+        text validation_is_required
+        text value_default_value
+        text value_input_id
+        text value_is_disabled
+    }
+    installed_extension_contribution_target {
+        text index PK
+        text installed_extension_id PK
+        text target
+    }
+    installed_extension_contribution_constraint {
+        text index PK
+        text installed_extension_id PK
+        text name
+        text property_extension_id
+    }
+    installed_extension_contribution_restricted {
+        text index PK
+        text installed_extension_id PK
+        text member
+    }
+    installed_extension_contribution {
+        text id PK
+        text installed_extension_id PK
+        text description
+        text properties_attribute
+        text properties_display_name
+        text properties_name
+        text properties_version
+        text property_url_display_name
+        text property_url_help_text
+        text property_url_is_visible
+        text property_url_value
+        text type
+    }
+    installed_extension_contribution_type {
+        text id PK
+        text installed_extension_id PK
+        text description
+        text indexed
+        text name
+        jsonb properties
+        text visible_to
+    }
+    installed_extension_file {
+        text index PK
+        text installed_extension_id PK
+        text asset_type
+        text languages
+        text source
+    }
+    installed_extension {
+        text id PK
+        text base_uri
+        text extension_name
+        text fallback_base_uri
+        text install_state_flag
+        text install_state_last_updated
+        text last_published
+        text manifest_version
+        text publisher_id
+        text publisher_name
+        text registration_id
+        text version
+    }
+    query {
+        text id PK
+        text created_by_id FK
+        text last_executed_by_id FK
+        text last_modified_by_id FK
+        text project_id FK
+        text created_date
+        boolean has_children
+        boolean is_deleted
+        boolean is_folder
+        boolean is_public
+        text last_executed_date
+        text last_modified_date
+        text name
+        text path
+        text type
+    }
+    users {
+        text id PK
+        text access_level_account_license_type
+        text access_level_assignment_source
+        text access_level_git_hub_license_type
+        text access_level_license_display_name
+        text access_level_licensing_source
+        text access_level_msdn_license_type
+        text access_level_status
+        text access_level_status_message
+        text date_created
+        timestamp last_access_date
+        text user_descriptor
+        text user_directory_alias
+        text user_display_name
+        text user_domain
+        boolean user_is_deleted_in_origin
+        text user_legacy_descriptor
+        text user_mail_address
+        text user_meta_type
+        text user_origin
+        text user_origin_id
+        text user_principal_name
+        text user_subject_kind
+        text user_url
+    }
+    backlog {
+        text id PK
+        text project_id PK
+        text team_id PK
+        text color
+        boolean is_hidden
+        text name
+        integer rank
+        text type
+        integer work_item_count_limit
+    }
+    process_work_item_type_state {
+        text id PK
+        text process_work_item_type_reference_name PK
+        text color
+        text customization_type
+        text name
+        text orders
+        text state_category
+        text url
+    }
+    process_work_item_type {
+        text reference_name PK
+        text process_type_id PK
+        text color
+        text customization
+        text description
+        text icon
+        text inherit
+        text is_disabled
+        text name
+    }
+    status {
+        text geography_id PK
+        text geography_name PK
+        text service_id PK
+        text status
+    }
+    project_property {
+        text name PK
+        text project_id PK
+        jsonb value
+    }
+    backlog_work_item {
+        text backlog_id PK
+        text project_id PK
+        text team_id PK
+        text work_item_id PK
+    }
+    work_item_revision {
+        text revision PK
+        text id PK
+        text project_id PK
+        jsonb multiline_fields_format
+    }
+    users_groups {
+        text group_id PK
+        text user_id PK
+    }
+    pull_request_commit {
+        text commit_id PK
+        integer pull_request_id PK
+    }
+    pull_request_reviewer {
+        integer pull_request_id PK
+        text reviewer_id PK
+    }
+    pull_request_work_item {
+        integer pull_request_id PK
+        text work_item_id PK
+    }
+    pull_request {
+        integer id PK
+        text auto_complete_set_by FK
+        text closed_by FK
+        text created_by FK
+        text fork_source FK
+        text last_merge_commit FK
+        text last_merge_source_commit FK
+        text last_merge_target_commit FK
+        text repository_id FK
+        text artifact_id
+        text closed_date
+        integer code_review_id
+        text completion_queue_time
+        text creation_date
+        text description
+        boolean has_multiple_merge_bases
+        boolean is_draft
+        text merge_failure_message
+        text merge_failure_type
+        text merge_id
+        text merge_status
+        text remote_url
+        text source_ref_name
+        text status
+        boolean supports_iterations
+        text target_ref_name
+        text title
+        text url
+    }
+    process {
+        text process_type_id PK
+        text parent_process_type_id FK
+        text customization_type
+        text description
+        text is_default
+        text is_enabled
+        text name
+        text reference_name
+    }
+    blocked_approver {
+        text index PK
+        text approval_id PK
+        text project_id PK
+        text id FK
+        text descriptor
+        text display_name
+        text is_deleted_in_origin
+        text url
+    }
+    approval_step_history {
+        text index PK
+        text approval_id PK
+        text approval_step_index PK
+        text project_id PK
+        text assigned_to_id FK
+        text created_by_id FK
+        text comment
+        text created_on
+    }
+    approval_step {
+        text index PK
+        text approval_id PK
+        text project_id PK
+        text actual_approver_id FK
+        text assigned_approver_id FK
+        text last_modified_by_id FK
+        text comment
+        text history
+        text initiated_on
+        text last_modified_on
+        text orders
+        text permission
+        text status
+    }
+    approval {
+        text id PK
+        text project_id PK
+        text created_on
+        text execution_order
+        text instructions
+        text iteration
+        text last_modified_on
+        text last_updated_date
+        text min_required_approvers
+        text name
+        text passed_tests
+        text permission
+        text post_process_state
+        text revision
+        text started_date
+        text state
+        text status
+        text total_tests
+        text url
+    }
+    groups {
+        text id PK
+        text description
+        text descriptor
+        text display_name
+        text domain
+        text legacy_descriptor
+        text mail_address
+        text origin
+        text principal_name
+        text subject_kind
+        text url
+    }
+    label {
+        text id PK
+        integer pull_request_id PK
+        boolean active
+        text name
+        text url
+    }
+    team_identity_property {
+        text _fivetran_id PK
+        text team_id FK
+        text type
+        text value
+    }
+    team_groups {
+        text group_id PK
+        text team_id PK
+    }
+    team {
+        text id PK
+        text project_id FK
+        text description
+        text identity_custom_display_name
+        text identity_descriptor
+        text identity_is_active
+        text identity_is_container
+        jsonb identity_member_of
+        jsonb identity_members
+        text identity_meta_type_id
+        text identity_provider_display_name
+        text identity_resource_version
+        text identity_social_descriptor
+        text identity_subject_descriptor
+        text identity_unique_user_id
+        text name
+    }
+    work_item_relation {
+        text index PK
+        text work_item_id PK
+        text related_work_item_id FK
+        text attribute_is_locked
+        text attribute_name
+        text rel
+        text url
+    }
+    work_item {
+        text id PK
+        text project_id PK
+        text team_id PK
+        text revision
+        text url
+    }
+    board_row {
+        text id PK
+        text board_id FK
+        text name
+    }
+    board_column {
+        text id PK
+        text board_id FK
+        text column_type
+        text description
+        text is_split
+        text item_limit
+        text name
+        text state_mappings_epic
+    }
+    board {
+        text id PK
+        text project_id FK
+        text team_id FK
+        boolean can_edit
+        text done_field_reference_name
+        boolean is_valid
+        text name
+        integer revision
+    }
+    project_pipeline {
+        text id PK
+        text project_id PK
+        jsonb configuration
+        text folder
+        text name
+        text revision
+        text url
+    }
+    commit_parents }o--|| commit : "fk"
+    commit_parents }o--|| commit : "fk"
+    commit_change_counts }o--|| commit : "fk"
+    commit }o--|| users : "fk"
+    commit }o--|| repository : "fk"
+    project }o--|| team : "fk"
+    repository }o--|| repository : "fk"
+    repository }o--|| project : "fk"
+    plan }o--|| users : "fk"
+    plan }o--|| users : "fk"
+    plan }o--|| project : "fk"
+    item }o--|| commit : "fk"
+    item }o--|| commit : "fk"
+    item }o--|| repository : "fk"
+    installed_extension_scope }o--|| installed_extension : "fk"
+    installed_extension_contribution_target }o--|| installed_extension_contribution : "fk"
+    installed_extension_contribution_constraint }o--|| installed_extension_contribution : "fk"
+    installed_extension_contribution_restricted }o--|| installed_extension_contribution : "fk"
+    installed_extension_contribution }o--|| installed_extension : "fk"
+    installed_extension_contribution_type }o--|| installed_extension : "fk"
+    installed_extension_file }o--|| installed_extension : "fk"
+    query }o--|| users : "fk"
+    query }o--|| users : "fk"
+    query }o--|| users : "fk"
+    query }o--|| project : "fk"
+    backlog }o--|| team : "fk"
+    backlog }o--|| project : "fk"
+    process_work_item_type_state }o--|| process_work_item_type : "fk"
+    process_work_item_type }o--|| process : "fk"
+    project_property }o--|| project : "fk"
+    backlog_work_item }o--|| work_item : "fk"
+    backlog_work_item }o--|| backlog : "fk"
+    backlog_work_item }o--|| team : "fk"
+    backlog_work_item }o--|| project : "fk"
+    work_item_revision }o--|| work_item : "fk"
+    work_item_revision }o--|| project : "fk"
+    users_groups }o--|| users : "fk"
+    users_groups }o--|| groups : "fk"
+    pull_request_commit }o--|| commit : "fk"
+    pull_request_commit }o--|| pull_request : "fk"
+    pull_request_reviewer }o--|| users : "fk"
+    pull_request_reviewer }o--|| pull_request : "fk"
+    pull_request_work_item }o--|| work_item : "fk"
+    pull_request_work_item }o--|| pull_request : "fk"
+    pull_request }o--|| commit : "fk"
+    pull_request }o--|| commit : "fk"
+    pull_request }o--|| users : "fk"
+    pull_request }o--|| users : "fk"
+    pull_request }o--|| users : "fk"
+    pull_request }o--|| repository : "fk"
+    pull_request }o--|| commit : "fk"
+    pull_request }o--|| repository : "fk"
+    process }o--|| process : "fk"
+    blocked_approver }o--|| users : "fk"
+    blocked_approver }o--|| approval : "fk"
+    blocked_approver }o--|| approval : "fk"
+    approval_step_history }o--|| users : "fk"
+    approval_step_history }o--|| users : "fk"
+    approval_step_history }o--|| approval_step : "fk"
+    approval_step_history }o--|| approval_step : "fk"
+    approval_step_history }o--|| approval_step : "fk"
+    approval_step }o--|| users : "fk"
+    approval_step }o--|| users : "fk"
+    approval_step }o--|| users : "fk"
+    approval_step }o--|| approval : "fk"
+    approval_step }o--|| approval : "fk"
+    label }o--|| pull_request : "fk"
+    team_identity_property }o--|| team : "fk"
+    team_groups }o--|| groups : "fk"
+    team_groups }o--|| team : "fk"
+    team }o--|| project : "fk"
+    work_item_relation }o--|| work_item : "fk"
+    work_item_relation }o--|| work_item : "fk"
+    board_row }o--|| board : "fk"
+    board_column }o--|| board : "fk"
+    board }o--|| project : "fk"
+    board }o--|| team : "fk"
+    project_pipeline }o--|| project : "fk"

@@ -1,0 +1,433 @@
+erDiagram
+    award {
+        text id PK
+        text project_id FK
+        text cons
+        text creator_id
+        text creator_type
+        text external_id
+        text pros
+        text state
+        text title
+        text updated_at
+    }
+    attachment {
+        text id PK
+        text download_url
+        text download_url_expires_at
+        text external_id
+        text file_size
+        text title
+        text uploaded_at
+        text uploaded_by
+    }
+    payment_currency {
+        text id PK
+        text alpha
+        text external_id
+        text numeric
+    }
+    contract_custom_field {
+        text index PK
+        text contract_id PK
+        text name
+        text value
+    }
+    contract_relationship_attachment_data {
+        text id PK
+        text contract_id PK
+    }
+    contract {
+        text id PK
+        text contract_type_id FK
+        text supplier_company_id FK
+        text actual_end_date
+        text actual_spend_amount
+        text actual_start_date
+        text approval_rounds
+        text approved_at
+        text auto_renewal
+        text description
+        text external_id
+        text first_sent_for_approval_at
+        text invoiced_po_amount
+        text marked_as_needs_attention_at
+        text needs_attention
+        text needs_attention_note
+        text needs_attention_reason
+        text non_po_invoiced_amount
+        text number
+        text po_amount
+        text relationships_creator_data_id
+        text relationships_creator_data_type
+        text relationships_owner_data_id
+        text relationships_owner_data_type
+        text renew_number_of_times
+        text renewal_term_unit
+        text renewal_term_value
+        text renewal_termination_notice_date
+        text renewal_termination_notice_unit
+        text renewal_termination_notice_value
+        text renewal_termination_reminder_date
+        text renewal_termination_reminder_unit
+        text renewal_termination_reminder_value
+        text request_opened_at
+        text request_submitted_at
+        text sent_for_approval_at
+        text spend_category_id
+        text state
+        text state_label
+        text terminated_note
+        text terminated_reason
+        text title
+        text total_invoiced_amount
+        text updated_at
+    }
+    event_custom_field {
+        text index PK
+        text event_id PK
+        text name
+        text value
+    }
+    event_relationship_attachment {
+        text event_id PK
+        text id PK
+    }
+    event {
+        text id PK
+        text bid_submission_deadline
+        text duplication_state
+        text event_type
+        text external_id
+        text instant_notifications
+        text late_bids
+        jsonb relationships_commodity_codes_data
+        jsonb relationships_event_template_data
+        jsonb relationships_project_data
+        text request_type
+        text revise_bids
+        text spend_amount
+        text spend_category_id
+        text state
+        text supplier_question_deadline
+        text supplier_rsvp_deadline
+        text title
+        text updated_at
+    }
+    bid {
+        text id PK
+        text event_id FK
+        text supplier_company_id FK
+        text intend_to_bid
+        text intend_to_bid_answered_at
+        text resubmitted_at
+        text status
+        text submitted_at
+    }
+    supplier_company_risk {
+        text id PK
+        text color
+        text label
+        text orders
+        text slug
+    }
+    field_group {
+        text id PK
+        text name
+        text position
+        text target_object
+    }
+    projects_custom_field {
+        text index PK
+        text project_id PK
+        text name
+        text value
+    }
+    projects_relationship_attachment {
+        text id PK
+        text project_id PK
+    }
+    project {
+        text id PK
+        text project_type_id FK
+        text actual_end_date
+        text actual_savings_amount
+        text actual_spend_amount
+        text actual_start_date
+        text approval_rounds
+        text approved_at
+        text approved_spend_amount
+        text canceled_note
+        text canceled_reason
+        text description
+        text estimated_savings_amount
+        text estimated_spend_amount
+        text external_id
+        text first_sent_for_approval_at
+        text marked_as_needs_attention_at
+        text needs_attention
+        text needs_attention_note
+        text needs_attention_reason
+        text number
+        text on_hold_note
+        text on_hold_reason
+        text relationships_creator_data_id
+        text relationships_creator_data_type
+        text relationships_owner_data_id
+        text relationships_owner_data_type
+        text relationships_requester_data_id
+        text relationships_requester_data_type
+        text request_opened_at
+        text request_submitted_at
+        text sent_for_approval_at
+        text spend_category_id
+        text state
+        text state_label
+        text target_end_date
+        text target_start_date
+        text title
+        text updated_at
+    }
+    worksheet_column {
+        text id PK
+        text worksheet_id PK
+        text data_identifier
+        text mapping_key
+        text name
+    }
+    worksheet {
+        text id PK
+        text event_id FK
+        text budget
+        text notes
+        text title
+        text updated_at
+        text worksheet_type
+    }
+    project_type {
+        text id PK
+        text name
+        text shortcode
+    }
+    bid_line_item {
+        text _fivetran_id PK
+        text bid_id FK
+        text event_id FK
+        text line_item_id FK
+        text worksheet_id FK
+        text id
+        text updated_at
+    }
+    spend_category_usage {
+        text usage PK
+        text spend_category_id PK
+    }
+    spend_category {
+        text id PK
+        text external_id
+        text name
+    }
+    event_template {
+        text id PK
+        text event_type
+        text title
+    }
+    field {
+        text id PK
+        text field_group_id FK
+        text data_type
+        text name
+        text position
+        text required
+        text scout_data_type
+        text target_object
+    }
+    payment_term {
+        text id PK
+        text external_id
+        text name
+    }
+    supplier_company_segmentation_status {
+        text id PK
+        text icon
+        text label
+        text orders
+        text slug
+    }
+    supplier_contact_type_data {
+        text id PK
+        text supplier_contact_id PK
+    }
+    supplier_contact_phone_data {
+        text id PK
+        text supplier_contact_id PK
+    }
+    supplier_contact {
+        text id PK
+        text supplier_company_id FK
+        text email
+        text external_id
+        text first_name
+        text is_suggested
+        text job_title
+        text last_name
+        text name
+        text notes
+        text phone_number
+        text updated_at
+    }
+    contract_type {
+        text id PK
+        text external_id
+        text name
+        text shortcode
+    }
+    payment_type {
+        text id PK
+        text external_id
+        text name
+        text payment_method
+    }
+    award_line_item {
+        text id PK
+        text award_id FK
+        text supplier_company_id FK
+        text worksheet_id FK
+        text allocated_quantity
+        text is_quoted
+        text line_item_type
+        text net_savings
+        text net_savings_percentage
+        text price
+        text sought_quantity
+        text total_spend
+    }
+    line_item {
+        text id PK
+        text event_id FK
+        text worksheet_id FK
+    }
+    supplier_category {
+        text id PK
+        text external_id
+        text name
+    }
+    supplier_company_tag {
+        text tags PK
+        text supplier_company_id PK
+    }
+    supplier_company_custom_field {
+        text index PK
+        text supplier_company_id PK
+        text name
+        text value
+    }
+    supplier_company_attachment_data {
+        text id PK
+        text supplier_company_id PK
+        text attachment_id FK
+    }
+    supplier_company_supplier_group {
+        text id PK
+        text supplier_company_id PK
+        text supplier_group_id FK
+    }
+    supplier_company_supplier_classification_value {
+        text id PK
+        text supplier_company_id PK
+    }
+    supplier_company {
+        text id PK
+        text payment_currency_id FK
+        text payment_term_id FK
+        text payment_type_id FK
+        text supplier_category_id FK
+        text supplier_classification_values_id FK
+        text accept_all_currencies
+        text description
+        text external_id
+        text is_suggested
+        text name
+        text public
+        text risk
+        text segmentation
+        text segmentation_notes
+        text segmentation_status
+        text updated_at
+        text url
+    }
+    supplier_company_segmentation {
+        text id PK
+        text label
+        text orders
+        text slug
+    }
+    supplier_group {
+        text id PK
+        text external_id
+        text name
+    }
+    field_option {
+        text id PK
+        text field_id FK
+        text label
+        text position
+    }
+    supplier_classification_field {
+        text id PK
+        text supplier_classification_id PK
+    }
+    supplier_classification {
+        text id PK
+        text active
+        text codename
+        text country_alpha_2
+        text external_id
+        text name
+        text orders
+        text request_additional_information
+    }
+    award }o--|| project : "fk"
+    contract_custom_field }o--|| contract : "fk"
+    contract_relationship_attachment_data }o--|| contract : "fk"
+    contract }o--|| contract_type : "fk"
+    contract }o--|| supplier_company : "fk"
+    event_custom_field }o--|| event : "fk"
+    event_relationship_attachment }o--|| attachment : "fk"
+    event_relationship_attachment }o--|| event : "fk"
+    bid }o--|| event : "fk"
+    bid }o--|| supplier_company : "fk"
+    projects_custom_field }o--|| project : "fk"
+    projects_relationship_attachment }o--|| attachment : "fk"
+    projects_relationship_attachment }o--|| project : "fk"
+    project }o--|| project_type : "fk"
+    worksheet_column }o--|| worksheet : "fk"
+    worksheet }o--|| event : "fk"
+    bid_line_item }o--|| line_item : "fk"
+    bid_line_item }o--|| bid : "fk"
+    bid_line_item }o--|| event : "fk"
+    bid_line_item }o--|| worksheet : "fk"
+    spend_category_usage }o--|| spend_category : "fk"
+    field }o--|| field_group : "fk"
+    supplier_contact_type_data }o--|| supplier_contact : "fk"
+    supplier_contact_phone_data }o--|| supplier_contact : "fk"
+    supplier_contact }o--|| supplier_company : "fk"
+    award_line_item }o--|| supplier_company : "fk"
+    award_line_item }o--|| worksheet : "fk"
+    award_line_item }o--|| award : "fk"
+    line_item }o--|| event : "fk"
+    line_item }o--|| worksheet : "fk"
+    supplier_company_tag }o--|| supplier_company : "fk"
+    supplier_company_custom_field }o--|| supplier_company : "fk"
+    supplier_company_attachment_data }o--|| attachment : "fk"
+    supplier_company_attachment_data }o--|| supplier_company : "fk"
+    supplier_company_supplier_group }o--|| supplier_group : "fk"
+    supplier_company_supplier_group }o--|| supplier_company : "fk"
+    supplier_company_supplier_classification_value }o--|| supplier_company : "fk"
+    supplier_company }o--|| payment_currency : "fk"
+    supplier_company }o--|| payment_term : "fk"
+    supplier_company }o--|| payment_type : "fk"
+    supplier_company }o--|| supplier_category : "fk"
+    supplier_company }o--|| supplier_classification : "fk"
+    field_option }o--|| field : "fk"
+    supplier_classification_field }o--|| supplier_classification : "fk"

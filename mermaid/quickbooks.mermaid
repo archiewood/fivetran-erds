@@ -1,0 +1,1537 @@
+erDiagram
+    sales_receipt_line {
+        bigint index PK
+        text sales_receipt_id PK
+        text bundle_id FK
+        text description_tax_code_id FK
+        text discount_account_id FK
+        text discount_class_id FK
+        text discount_tax_code_id FK
+        text sales_item_account_id FK
+        text sales_item_class_id FK
+        text sales_item_item_id FK
+        text sales_item_tax_code_id FK
+        text sub_total_item_id FK
+        numeric amount
+        numeric bundle_quantity
+        text description
+        text description_service_date
+        numeric discount_discount_percent
+        boolean discount_percent_based
+        numeric sales_item_discount_amount
+        numeric sales_item_discount_rate
+        numeric sales_item_quantity
+        text sales_item_service_date
+        numeric sales_item_unit_price
+    }
+    payment_method {
+        text id PK
+        boolean active
+        timestamp created_at
+        text name
+        text sync_token
+        text type
+        timestamp updated_at
+    }
+    %% Note:
+%% CURRENCY is populated from
+%%   - account
+%%   - bill
+%%   - bill_payment
+%%   - credit_card_payment_txn
+%%   - credit_memo
+%%   - customer
+%%   - deposit
+%%   - estimate
+%%   - invoice
+%%   - journal_entry
+%%   - payment
+%%   - purchase
+%%   - purchase_order
+%%   - refund_receipt
+%%   - sales_receipt
+%%   - vendor
+%%   - vendor_credit
+    currency {
+        text id PK
+        text name
+    }
+    bill_payment {
+        text id PK
+        text check_bank_account_id FK
+        text credit_card_account_id FK
+        text currency_id FK
+        text department_id FK
+        text payable_account_id FK
+        text vendor_id FK
+        text check_print_status
+        timestamp created_at
+        text doc_number
+        numeric exchange_rate
+        text pay_type
+        text private_note
+        boolean process_bill_payment
+        text sync_token
+        numeric total_amount
+        text transaction_date
+        timestamp updated_at
+    }
+    bundle {
+        text id PK
+        boolean active
+        timestamp created_at
+        text description
+        text fully_qualified_name
+        text name
+        boolean print_grouped_items
+        numeric purchase_cost
+        text sync_token
+        boolean taxable
+        numeric unit_price
+        timestamp updated_at
+    }
+    payment {
+        text id PK
+        text currency_id FK
+        text customer_id FK
+        text deposit_to_account_id FK
+        text payment_method_id FK
+        text receivable_account_id FK
+        timestamp created_at
+        numeric credit_card_amount
+        text credit_card_auth_code
+        text credit_card_billing_address_street
+        bigint credit_card_cc_expiry_month
+        bigint credit_card_cc_expiry_year
+        text credit_card_cctrans_id
+        text credit_card_name_on_account
+        text credit_card_postal_code
+        boolean credit_card_process_payment
+        text credit_card_status
+        text credit_card_transaction_authorization_time
+        text credit_card_type
+        numeric exchange_rate
+        text private_note
+        boolean process_payment
+        text reference_number
+        text sync_token
+        numeric total_amount
+        text transaction_date
+        text transaction_source
+        text transaction_status
+        numeric unapplied_amount
+        timestamp updated_at
+    }
+    account {
+        text id PK
+        text currency_id FK
+        text parent_account_id FK
+        text tax_code_id FK
+        text account_number
+        text account_sub_type
+        text account_type
+        boolean active
+        numeric balance
+        numeric balance_with_sub_accounts
+        text classification
+        timestamp created_at
+        text description
+        text fully_qualified_name
+        text name
+        boolean sub_account
+        text sync_token
+        timestamp updated_at
+    }
+    journal_entry_tax_line {
+        bigint index PK
+        text journal_entry_id PK
+        text tax_rate_id FK
+        numeric amount
+        numeric net_amount_taxable
+        numeric override_delta_amount
+        boolean percent_based
+        numeric tax_inclusive_amount
+        numeric tax_percent
+    }
+    sales_receipt_line_bundle {
+        bigint index PK
+        text sales_receipt_id PK
+        bigint sales_receipt_line_index PK
+        text account_id FK
+        text class_id FK
+        text item_id FK
+        text tax_code_id FK
+        numeric amount
+        text description
+        numeric discount_amount
+        numeric discount_rate
+        bigint line_num
+        numeric quantity
+        text service_date
+        numeric unit_price
+    }
+    estimate_tax_line {
+        bigint index PK
+        text estimate_id PK
+        text tax_rate_id FK
+        numeric amount
+        numeric net_amount_taxable
+        numeric override_delta_amount
+        boolean percent_based
+        numeric tax_inclusive_amount
+        numeric tax_percent
+    }
+    deposit {
+        text id PK
+        text account_id FK
+        text cash_back_account_id FK
+        text currency_id FK
+        text department_id FK
+        numeric cash_back_amount
+        text cash_back_memo
+        timestamp created_at
+        text global_tax_calculation
+        numeric home_total_amount
+        text private_note
+        text sync_token
+        numeric total_amount
+        text transaction_date
+        text transaction_source
+        text transaction_status
+        timestamp updated_at
+    }
+    invoice {
+        text id PK
+        text billing_address_id FK
+        text class_id FK
+        text currency_id FK
+        text customer_id FK
+        text department_id FK
+        text deposit_to_account_id FK
+        text sales_term_id FK
+        text shipping_address_id FK
+        text tax_code_id FK
+        boolean allow_ipnpayment
+        boolean allow_online_achpayment
+        boolean allow_online_credit_card_payment
+        boolean allow_online_payment
+        boolean apply_tax_after_discount
+        numeric balance
+        text billing_bcc_email
+        text billing_cc_email
+        text billing_email
+        timestamp created_at
+        text customer_memo
+        text delivery_time
+        text delivery_type
+        numeric deposit
+        text doc_number
+        text due_date
+        text email_status
+        numeric exchange_rate
+        text global_tax_calculation
+        numeric home_balance
+        numeric home_total_amount
+        text print_status
+        text private_note
+        text ship_date
+        text sync_token
+        numeric total_amount
+        numeric total_tax
+        text tracking_number
+        text transaction_date
+        text transaction_source
+        timestamp updated_at
+    }
+    sales_receipt {
+        text id PK
+        text billing_address_id FK
+        text class_id FK
+        text currency_id FK
+        text customer_id FK
+        text department_id FK
+        text deposit_to_account_id FK
+        text payment_method_id FK
+        text payment_reference_number FK
+        text shipping_address_id FK
+        text tax_code_id FK
+        boolean apply_tax_after_discount
+        numeric balance
+        text bill_email
+        timestamp created_at
+        numeric credit_card_amount
+        text credit_card_auth_code
+        text credit_card_billing_address_street
+        bigint credit_card_cc_expiry_month
+        bigint credit_card_cc_expiry_year
+        text credit_card_cctrans_id
+        text credit_card_name_on_account
+        text credit_card_postal_code
+        boolean credit_card_process_payment
+        text credit_card_status
+        text credit_card_transaction_authorization_time
+        text credit_card_type
+        text customer_memo
+        text delivery_time
+        text delivery_type
+        text doc_number
+        text email_status
+        numeric exchange_rate
+        text global_tax_calculation
+        numeric home_balance
+        numeric home_total_amount
+        text print_status
+        text private_note
+        text ship_date
+        text sync_token
+        numeric total_amount
+        numeric total_tax
+        text tracking_number
+        text transaction_date
+        text transaction_source
+        timestamp updated_at
+    }
+    tax_rate_detail {
+        text tax_code_id PK
+        text tax_rate_id PK
+        bigint tax_order
+        text tax_type_applicable
+        text type
+    }
+    bill_linked_txn {
+        bigint index PK
+        text bill_id PK
+        text bill_payment_id FK
+    }
+    credit_card_payment_txn {
+        text id PK
+        text bank_account_id FK
+        text credit_card_account_id FK
+        text currency_id FK
+        numeric amount
+        timestamp created_at
+        numeric exchange_rate
+        text sync_token
+        text transaction_date
+        timestamp updated_at
+    }
+    invoice_line {
+        bigint index PK
+        text invoice_id PK
+        text bundle_id FK
+        text description_tax_code_id FK
+        text discount_account_id FK
+        text discount_class_id FK
+        text discount_tax_code_id FK
+        text sales_item_account_id FK
+        text sales_item_class_id FK
+        text sales_item_item_id FK
+        text sales_item_tax_code_id FK
+        text sub_total_item_id FK
+        numeric amount
+        numeric bundle_quantity
+        text description
+        text description_service_date
+        text detail_type
+        numeric discount_discount_percent
+        boolean discount_percent_based
+        text id
+        bigint line_num
+        numeric sales_item_discount_amount
+        numeric sales_item_discount_rate
+        numeric sales_item_quantity
+        text sales_item_service_date
+        numeric sales_item_unit_price
+    }
+    vendor {
+        text id PK
+        text billing_address_id FK
+        text currency_id FK
+        text term_id FK
+        text account_number
+        boolean active
+        text alternate_phone
+        numeric balance
+        text company_name
+        timestamp created_at
+        text display_name
+        text email
+        text family_name
+        text fax_number
+        text given_name
+        text middle_name
+        text mobile_phone
+        jsonb other_contacts
+        text primary_phone
+        text print_on_check_name
+        text suffix
+        text sync_token
+        text tax_identifier
+        text title
+        timestamp updated_at
+        boolean vendor_1099
+        text web_url
+    }
+    %% Note:
+%% ADDRESS is populated from:
+%%   - credit_memo
+%%   - customer
+%%   - employee
+%%   - estimate
+%%   - invoice
+%%   - purchase
+%%   - purchase_order
+%%   - refund_receipt
+%%   - sales_receipt
+%%   - vendor
+    address {
+        text id PK
+        text city
+        text country
+        text country_sub_division_code
+        text latitude
+        text line_1
+        text line_2
+        text line_3
+        text line_4
+        text line_5
+        text longitude
+        text postal_code
+    }
+    customer {
+        text id PK
+        text ar_account_id FK
+        text bill_address_id FK
+        text currency_id FK
+        text default_tax_code_id FK
+        text parent_customer_id FK
+        text payment_method_id FK
+        text sales_term_id FK
+        text shipping_address_id FK
+        boolean active
+        text alternate_phone_number
+        numeric balance
+        numeric balance_with_jobs
+        boolean bill_with_parent
+        text company_name
+        timestamp created_at
+        text customer_type_id
+        text display_name
+        text email
+        text family_name
+        text fax_number
+        text fully_qualified_name
+        text given_name
+        boolean job
+        bigint level
+        text middle_name
+        text mobile_number
+        text notes
+        text open_balance_date
+        text phone_number
+        text preferred_delivery_method
+        text print_on_check_name
+        text resale_number
+        text suffix
+        text sync_token
+        text tax_exemption_reason_id
+        boolean taxable
+        text title
+        timestamp updated_at
+        text website
+    }
+    vendor_credit {
+        text id PK
+        text currency_id FK
+        text department_id FK
+        text payable_account_id FK
+        text vendor_id FK
+        numeric balance
+        timestamp created_at
+        text doc_number
+        numeric exchange_rate
+        text global_tax_calculation
+        text private_note
+        text sync_token
+        numeric total_amount
+        text transaction_date
+        timestamp updated_at
+    }
+    purchase_line {
+        bigint index PK
+        text purchase_id PK
+        text account_expense_account_id FK
+        text account_expense_class_id FK
+        text account_expense_customer_id FK
+        text account_expense_tax_code_id FK
+        text item_expense_class_id FK
+        text item_expense_customer_id FK
+        text item_expense_item_id FK
+        text item_expense_tax_code_id FK
+        text account_expense_billable_status
+        numeric account_expense_tax_amount
+        numeric amount
+        text description
+        text item_expense_billable_status
+        numeric item_expense_quantity
+        numeric item_expense_unit_price
+    }
+    estimate_line {
+        bigint index PK
+        text estimate_id PK
+        text bundle_id FK
+        text description_tax_code_id FK
+        text discount_account_id FK
+        text discount_class_id FK
+        text discount_tax_code_id FK
+        text sales_item_account_id FK
+        text sales_item_class_id FK
+        text sales_item_item_id FK
+        text sales_item_tax_code_id FK
+        text sub_total_item_id FK
+        numeric amount
+        numeric bundle_quantity
+        text description
+        text description_service_date
+        numeric discount_discount_percent
+        boolean discount_percent_based
+        numeric sales_item_discount_amount
+        numeric sales_item_discount_rate
+        numeric sales_item_quantity
+        text sales_item_service_date
+        numeric sales_item_unit_price
+    }
+    estimate_line_bundle {
+        bigint index PK
+        text estimate_id PK
+        bigint estimate_line_index PK
+        text account_id FK
+        text class_id FK
+        text item_id FK
+        text tax_code_id FK
+        numeric amount
+        text description
+        numeric discount_amount
+        numeric discount_rate
+        bigint line_num
+        numeric quantity
+        text service_date
+        numeric unit_price
+    }
+    purchase_order_tax_line {
+        bigint index PK
+        text purchase_order_id PK
+        text tax_rate_id FK
+        numeric amount
+        numeric net_amount_taxable
+        numeric override_delta_amount
+        boolean percent_based
+        numeric tax_inclusive_amount
+        numeric tax_percent
+    }
+    budget_detail {
+        bigint index PK
+        text budget_id PK
+        text account_id FK
+        text class_id FK
+        text customer_id FK
+        text department_id FK
+        numeric amount
+        text budget_date
+    }
+    class {
+        text id PK
+        text parent_class_id FK
+        boolean active
+        timestamp created_at
+        text fully_qualified_name
+        text name
+        boolean sub_class
+        text sync_token
+        timestamp updated_at
+    }
+    time_activity {
+        text id PK
+        text class_id FK
+        text customer_id FK
+        text department_id FK
+        text employee_id FK
+        text item_id FK
+        text vendor_id FK
+        text billable_status
+        double_precision break_hours
+        double_precision break_minutes
+        timestamp created_at
+        text description
+        timestamp end_time
+        numeric hourly_rate
+        double_precision hours
+        double_precision minutes
+        text name_of
+        timestamp start_time
+        text sync_token
+        boolean taxable
+        text transaction_date
+        timestamp updated_at
+    }
+    department {
+        text id PK
+        text parent_department_id FK
+        boolean active
+        timestamp created_at
+        text fully_qualified_name
+        text name
+        boolean sub_department
+        text sync_token
+        timestamp updated_at
+    }
+    bill_line {
+        bigint index PK
+        text bill_id PK
+        text account_expense_account_id FK
+        text account_expense_class_id FK
+        text account_expense_customer_id FK
+        text account_expense_tax_code_id FK
+        text item_expense_class_id FK
+        text item_expense_customer_id FK
+        text item_expense_item_id FK
+        text item_expense_tax_code_id FK
+        text account_expense_billable_status
+        numeric account_expense_tax_amount
+        numeric amount
+        text description
+        text item_expense_billable_status
+        numeric item_expense_quantity
+        numeric item_expense_unit_price
+    }
+    payment_line {
+        bigint index PK
+        text payment_id PK
+        text credit_memo_id FK
+        text deposit_id FK
+        text invoice_id FK
+        text journal_entry_id FK
+        numeric amount
+        text check_id
+        text credit_card_charge_id
+        text credit_card_credit_id
+        text expense_id
+    }
+    deposit_line {
+        bigint index PK
+        text deposit_id PK
+        text bill_id FK
+        text deposit_account_id FK
+        text deposit_class_id FK
+        text deposit_customer_id FK
+        text deposit_payment_method_id FK
+        text deposit_tax_code_id FK
+        text invoice_id FK
+        text journal_entry_id FK
+        text payment_id FK
+        text purchase_id FK
+        text refund_receipt_id FK
+        text sales_receipt_id FK
+        text transfer_id FK
+        text vendor_credit_id FK
+        numeric amount
+        text deposit_check_number
+        text deposit_tax_applicable_on
+        text deposit_transaction_type
+        text description
+        text detail_type
+        text expense_id
+    }
+    refund_receipt_line {
+        bigint index PK
+        text refund_id PK
+        text bundle_id FK
+        text description_tax_code_id FK
+        text discount_account_id FK
+        text discount_class_id FK
+        text discount_tax_code_id FK
+        text sales_item_account_id FK
+        text sales_item_class_id FK
+        text sales_item_item_id FK
+        text sales_item_tax_code_id FK
+        text sub_total_item_id FK
+        numeric amount
+        numeric bundle_quantity
+        text description
+        text description_service_date
+        numeric discount_discount_percent
+        boolean discount_percent_based
+        numeric sales_item_discount_amount
+        numeric sales_item_discount_rate
+        numeric sales_item_quantity
+        text sales_item_service_date
+        numeric sales_item_unit_price
+    }
+    bundle_item {
+        text bundle_id PK
+        text item_id PK
+        numeric item_quantity
+    }
+    sales_receipt_tax_line {
+        bigint index PK
+        text sales_receipt_id PK
+        text tax_rate_id FK
+        numeric amount
+        numeric net_amount_taxable
+        numeric override_delta_amount
+        boolean percent_based
+        numeric tax_inclusive_amount
+        numeric tax_percent
+    }
+    purchase_order {
+        text id PK
+        text class_id FK
+        text currency_id FK
+        text payable_account_id FK
+        text sales_term_id FK
+        text shipping_address_id FK
+        text tax_code_id FK
+        text vendor_address_id FK
+        text vendor_id FK
+        timestamp created_at
+        text doc_number
+        text due_date
+        numeric exchange_rate
+        text global_tax_calculation
+        text memo
+        text private_note
+        text status
+        text sync_token
+        numeric total_amount
+        numeric total_tax
+        text transaction_date
+        timestamp updated_at
+    }
+    journal_entry_line {
+        bigint index PK
+        text journal_entry_id PK
+        text account_id FK
+        text class_id FK
+        text customer_id FK
+        text department_id FK
+        text description_tax_code_id FK
+        text employee_id FK
+        text tax_code_id FK
+        text vendor_id FK
+        numeric amount
+        text billable_status
+        text description
+        text description_service_date
+        text posting_type
+        numeric tax_amount
+        text tax_applicable_on
+    }
+    credit_memo_line {
+        bigint index PK
+        text credit_memo_id PK
+        text bundle_id FK
+        text description_tax_code_id FK
+        text discount_account_id FK
+        text discount_class_id FK
+        text discount_tax_code_id FK
+        text sales_item_account_id FK
+        text sales_item_class_id FK
+        text sales_item_item_id FK
+        text sales_item_tax_code_id FK
+        text sub_total_item_id FK
+        numeric amount
+        numeric bundle_quantity
+        text description
+        text description_service_date
+        numeric discount_discount_percent
+        boolean discount_percent_based
+        numeric sales_item_discount_amount
+        numeric sales_item_discount_rate
+        numeric sales_item_quantity
+        text sales_item_service_date
+        numeric sales_item_unit_price
+    }
+    invoice_tax_line {
+        bigint index PK
+        text invoice_id PK
+        text tax_rate_id FK
+        numeric amount
+        numeric net_amount_taxable
+        numeric override_delta_amount
+        boolean percent_based
+        numeric tax_inclusive_amount
+        numeric tax_percent
+    }
+    tax_agency {
+        text id PK
+        timestamp created_at
+        text display_name
+        text sync_token
+        text tax_registration_number
+        boolean tax_tracked_on_purchases
+        boolean tax_tracked_on_sales
+        timestamp updated_at
+    }
+    tax_code {
+        text id PK
+        boolean active
+        timestamp created_at
+        text description
+        text name
+        text sync_token
+        boolean tax_group
+        boolean taxable
+        timestamp updated_at
+    }
+    purchase_tax_line {
+        bigint index PK
+        text purchase_id PK
+        text tax_rate_id FK
+        numeric amount
+        numeric net_amount_taxable
+        numeric override_delta_amount
+        boolean percent_based
+        numeric tax_inclusive_amount
+        numeric tax_percent
+    }
+    credit_memo_line_bundle {
+        bigint index PK
+        text credit_memo_id PK
+        bigint credit_memo_line_index PK
+        text account_id FK
+        text class_id FK
+        text item_id FK
+        text tax_code_id FK
+        numeric amount
+        text description
+        numeric discount_amount
+        numeric discount_rate
+        bigint line_num
+        numeric quantity
+        text service_date
+        numeric unit_price
+    }
+    employee {
+        text id PK
+        text address_id FK
+        boolean active
+        numeric bill_rate
+        boolean billable_time
+        text birth_date
+        timestamp created_at
+        text display_name
+        text email
+        text employee_number
+        text family_name
+        text gender
+        text given_name
+        text hired_date
+        text middle_name
+        text mobile_phone
+        boolean organization
+        text phone_number
+        text print_on_check_name
+        text released_date
+        text social_security_number
+        text suffix
+        text sync_token
+        text title
+        timestamp updated_at
+    }
+    refund_receipt_tax_line {
+        bigint index PK
+        text refund_receipt_id PK
+        text tax_rate_id FK
+        numeric amount
+        numeric net_amount_taxable
+        numeric override_delta_amount
+        boolean percent_based
+        numeric tax_inclusive_amount
+        numeric tax_percent
+    }
+    invoice_line_bundle {
+        bigint index PK
+        text invoice_id PK
+        bigint invoice_line_index PK
+        text account_id FK
+        text class_id FK
+        text item_id FK
+        text tax_code_id FK
+        numeric amount
+        text description
+        numeric discount_amount
+        numeric discount_rate
+        bigint line_num
+        numeric quantity
+        text service_date
+        numeric unit_price
+    }
+    budget {
+        text id PK
+        boolean active
+        text budget_entry_type
+        text budget_type
+        timestamp created_at
+        text end_date
+        text name
+        text start_date
+        text sync_token
+        timestamp updated_at
+    }
+    tax_rate {
+        text id PK
+        text tax_agency_id FK
+        boolean active
+        timestamp created_at
+        text description
+        text display_type
+        jsonb effective_tax_rate
+        text name
+        numeric rate_value
+        text special_tax_type
+        text sync_token
+        timestamp updated_at
+    }
+    item {
+        text id PK
+        text asset_account_id FK
+        text expense_account_id FK
+        text income_account_id FK
+        text parent_item_id FK
+        text purchase_tax_code_id FK
+        text sales_tax_code_id FK
+        boolean active
+        timestamp created_at
+        text description
+        text fully_qualified_name
+        text inventory_start_date
+        bigint level
+        text name
+        numeric purchase_cost
+        text purchase_description
+        boolean purchase_tax_included
+        numeric quantity_on_hand
+        boolean sales_tax_included
+        text stock_keeping_unit
+        boolean sub_item
+        text sync_token
+        boolean taxable
+        boolean track_quantity_on_hand
+        text type
+        numeric unit_price
+        timestamp updated_at
+    }
+    bill {
+        text id PK
+        text currency_id FK
+        text department_id FK
+        text payable_account_id FK
+        text sales_term_id FK
+        text vendor_id FK
+        numeric balance
+        timestamp created_at
+        text doc_number
+        text due_date
+        numeric exchange_rate
+        text global_tax_calculation
+        numeric home_balance
+        text private_note
+        text sync_token
+        numeric total_amount
+        text transaction_date
+        timestamp updated_at
+    }
+    credit_memo_custom_field {
+        text definition_id PK
+        bigint index PK
+        text credit_memo_id PK
+        text name
+    }
+    transfer {
+        text id PK
+        text currency_id FK
+        text from_account_id FK
+        text to_account_id FK
+        numeric amount
+        timestamp created_at
+        numeric exchange_rate
+        text private_note
+        text sync_token
+        text transaction_date
+        timestamp updated_at
+    }
+    estimate_linked_txn {
+        bigint index PK
+        text estimate_id PK
+        text invoice_id FK
+    }
+    invoice_linked_txn {
+        bigint index PK
+        text invoice_id PK
+        text estimate_id FK
+        text payment_id FK
+        text time_activity_id FK
+        text charge_credit_id
+        text reimburse_charge_id
+        text statement_charge_id
+    }
+    credit_memo {
+        text id PK
+        text billing_address_id FK
+        text class_id FK
+        text currency_id FK
+        text customer_id FK
+        text department_id FK
+        text payment_method_id FK
+        text sales_term_id FK
+        text shipping_address_id FK
+        boolean apply_tax_after_discount
+        numeric balance
+        text bill_email
+        timestamp created_at
+        text customer_memo
+        text doc_number
+        text email_status
+        numeric exchange_rate
+        text global_tax_calculation
+        numeric home_balance
+        numeric home_total_amount
+        text print_status
+        text private_note
+        numeric remaining_credit
+        text sync_token
+        numeric total_amount
+        text total_tax
+        text transaction_date
+        timestamp updated_at
+    }
+    refund_receipt {
+        text id PK
+        text billing_address_id FK
+        text class_id FK
+        text currency_id FK
+        text customer_id FK
+        text department_id FK
+        text deposit_to_account_id FK
+        text payment_method_id FK
+        text payment_reference_number FK
+        text shipping_address_id FK
+        text tax_code_id FK
+        boolean apply_tax_after_discount
+        numeric balance
+        text bill_email
+        timestamp created_at
+        numeric credit_card_amount
+        text credit_card_auth_code
+        text credit_card_billing_address_street
+        bigint credit_card_cc_expiry_month
+        bigint credit_card_cc_expiry_year
+        text credit_card_cctrans_id
+        text credit_card_name_on_account
+        text credit_card_postal_code
+        boolean credit_card_process_payment
+        text credit_card_status
+        text credit_card_transaction_authorization_time
+        text credit_card_type
+        text customer_memo
+        text doc_number
+        numeric exchange_rate
+        text global_tax_calculation
+        numeric home_balance
+        numeric home_total_amount
+        text payment_type
+        text print_status
+        text private_note
+        text sync_token
+        numeric total_amount
+        numeric total_tax
+        text transaction_date
+        text transaction_source
+        timestamp updated_at
+    }
+    vendor_credit_line {
+        bigint index PK
+        text vendor_credit_id PK
+        text account_expense_account_id FK
+        text account_expense_class_id FK
+        text account_expense_customer_id FK
+        text account_expense_tax_code_id FK
+        text item_expense_class_id FK
+        text item_expense_customer_id FK
+        text item_expense_item_id FK
+        text item_expense_tax_code_id FK
+        text account_expense_billable_status
+        numeric account_expense_tax_amount
+        numeric amount
+        text description
+        text item_expense_billable_status
+        numeric item_expense_quantity
+        numeric item_expense_unit_price
+        text private_note
+    }
+    purchase_order_linked_txn {
+        bigint index PK
+        text purchase_order_id PK
+        text bill_id FK
+        text purchase_id FK
+        text vendor_credit_id FK
+    }
+    estimate {
+        text id PK
+        text billing_address_id FK
+        text class_id FK
+        text currency_id FK
+        text customer_id FK
+        text department_id FK
+        text sales_term_id FK
+        text shipping_address_id FK
+        text tax_code_id FK
+        text accepted_by
+        text accepted_date
+        boolean apply_tax_after_discount
+        text bill_email
+        timestamp created_at
+        text customer_memo
+        text delivery_type
+        text doc_number
+        text due_date
+        text email_status
+        numeric exchange_rate
+        text expiration_date
+        text global_tax_calculation
+        numeric home_total_amount
+        text print_status
+        text private_note
+        text ship_date
+        text sync_token
+        numeric total_amount
+        numeric total_tax
+        text transaction_date
+        text transaction_status
+        timestamp updated_at
+    }
+    purchase {
+        text id PK
+        text account_id FK
+        text currency_id FK
+        text customer_id FK
+        text department_id FK
+        text employee_id FK
+        text payment_method_id FK
+        text remit_to_address_id FK
+        text tax_code_id FK
+        text vendor_id FK
+        timestamp created_at
+        boolean credit
+        text doc_number
+        numeric exchange_rate
+        text global_tax_calculation
+        text payment_type
+        text print_status
+        text private_note
+        text sync_token
+        numeric total_amount
+        numeric total_tax
+        text transaction_date
+        text transaction_source
+        timestamp updated_at
+    }
+    purchase_order_line {
+        bigint index PK
+        text purchase_order_id PK
+        text account_expense_account_id FK
+        text account_expense_class_id FK
+        text account_expense_customer_id FK
+        text account_expense_tax_code_id FK
+        text item_expense_class_id FK
+        text item_expense_customer_id FK
+        text item_expense_item_id FK
+        text item_expense_tax_code_id FK
+        text account_expense_billable_status
+        numeric account_expense_tax_amount
+        numeric amount
+        text description
+        text item_expense_billable_status
+        numeric item_expense_quantity
+        numeric item_expense_unit_price
+    }
+    term {
+        text id PK
+        boolean active
+        timestamp created_at
+        bigint day_of_month_due
+        bigint discount_day_of_month
+        bigint discount_days
+        numeric discount_percent
+        bigint due_days
+        bigint due_next_month_days
+        text name
+        text sync_token
+        text type
+        timestamp updated_at
+    }
+    journal_entry {
+        text id PK
+        text currency_id FK
+        text tax_code_id FK
+        boolean adjustment
+        timestamp created_at
+        text doc_number
+        numeric exchange_rate
+        numeric home_total_amount
+        text private_note
+        text sync_token
+        numeric total_amount
+        numeric total_tax
+        text transaction_date
+        timestamp updated_at
+    }
+    bill_payment_line {
+        bigint index PK
+        text bill_payment_id PK
+        text bill_id FK
+        text deposit_id FK
+        text journal_entry_id FK
+        text linked_bill_payment_id FK
+        text purchase_id FK
+        text vendor_credit_id FK
+        numeric amount
+        text bill_payment_credit_card_id
+        text check_id
+        text credit_card_charge_id
+        text credit_card_credit_id
+        text expense_id
+    }
+    refund_receipt_line_bundle {
+        bigint index PK
+        text refund_receipt_id PK
+        bigint refund_receipt_line_index PK
+        text account_id FK
+        text class_id FK
+        text item_id FK
+        text tax_code_id FK
+        numeric amount
+        text description
+        numeric discount_amount
+        numeric discount_rate
+        bigint line_num
+        numeric quantity
+        text service_date
+        numeric unit_price
+    }
+    sales_receipt_line }o--|| sales_receipt : "fk"
+    sales_receipt_line }o--|| item : "fk"
+    sales_receipt_line }o--|| class : "fk"
+    sales_receipt_line }o--|| account : "fk"
+    sales_receipt_line }o--|| tax_code : "fk"
+    sales_receipt_line }o--|| bundle : "fk"
+    sales_receipt_line }o--|| tax_code : "fk"
+    sales_receipt_line }o--|| account : "fk"
+    sales_receipt_line }o--|| class : "fk"
+    sales_receipt_line }o--|| tax_code : "fk"
+    sales_receipt_line }o--|| item : "fk"
+    bill_payment }o--|| currency : "fk"
+    bill_payment }o--|| account : "fk"
+    bill_payment }o--|| account : "fk"
+    bill_payment }o--|| department : "fk"
+    bill_payment }o--|| vendor : "fk"
+    bill_payment }o--|| account : "fk"
+    payment }o--|| currency : "fk"
+    payment }o--|| account : "fk"
+    payment }o--|| payment_method : "fk"
+    payment }o--|| customer : "fk"
+    payment }o--|| account : "fk"
+    account }o--|| currency : "fk"
+    account }o--|| account : "fk"
+    account }o--|| tax_code : "fk"
+    journal_entry_tax_line }o--|| journal_entry : "fk"
+    journal_entry_tax_line }o--|| tax_rate : "fk"
+    sales_receipt_line_bundle }o--|| item : "fk"
+    sales_receipt_line_bundle }o--|| class : "fk"
+    sales_receipt_line_bundle }o--|| account : "fk"
+    sales_receipt_line_bundle }o--|| tax_code : "fk"
+    sales_receipt_line_bundle }o--|| sales_receipt : "fk"
+    sales_receipt_line_bundle }o--|| sales_receipt_line : "fk"
+    estimate_tax_line }o--|| estimate : "fk"
+    estimate_tax_line }o--|| tax_rate : "fk"
+    deposit }o--|| currency : "fk"
+    deposit }o--|| account : "fk"
+    deposit }o--|| department : "fk"
+    deposit }o--|| account : "fk"
+    invoice }o--|| currency : "fk"
+    invoice }o--|| tax_code : "fk"
+    invoice }o--|| address : "fk"
+    invoice }o--|| address : "fk"
+    invoice }o--|| department : "fk"
+    invoice }o--|| term : "fk"
+    invoice }o--|| customer : "fk"
+    invoice }o--|| class : "fk"
+    invoice }o--|| account : "fk"
+    sales_receipt }o--|| currency : "fk"
+    sales_receipt }o--|| address : "fk"
+    sales_receipt }o--|| address : "fk"
+    sales_receipt }o--|| tax_code : "fk"
+    sales_receipt }o--|| payment : "fk"
+    sales_receipt }o--|| payment_method : "fk"
+    sales_receipt }o--|| account : "fk"
+    sales_receipt }o--|| customer : "fk"
+    sales_receipt }o--|| department : "fk"
+    sales_receipt }o--|| class : "fk"
+    tax_rate_detail }o--|| tax_code : "fk"
+    tax_rate_detail }o--|| tax_rate : "fk"
+    bill_linked_txn }o--|| bill : "fk"
+    bill_linked_txn }o--|| bill_payment : "fk"
+    credit_card_payment_txn }o--|| currency : "fk"
+    credit_card_payment_txn }o--|| account : "fk"
+    credit_card_payment_txn }o--|| account : "fk"
+    invoice_line }o--|| item : "fk"
+    invoice_line }o--|| class : "fk"
+    invoice_line }o--|| account : "fk"
+    invoice_line }o--|| tax_code : "fk"
+    invoice_line }o--|| bundle : "fk"
+    invoice_line }o--|| tax_code : "fk"
+    invoice_line }o--|| account : "fk"
+    invoice_line }o--|| class : "fk"
+    invoice_line }o--|| tax_code : "fk"
+    invoice_line }o--|| item : "fk"
+    vendor }o--|| address : "fk"
+    vendor }o--|| currency : "fk"
+    vendor }o--|| term : "fk"
+    customer }o--|| currency : "fk"
+    customer }o--|| address : "fk"
+    customer }o--|| address : "fk"
+    customer }o--|| payment_method : "fk"
+    customer }o--|| customer : "fk"
+    customer }o--|| tax_code : "fk"
+    customer }o--|| term : "fk"
+    customer }o--|| account : "fk"
+    vendor_credit }o--|| currency : "fk"
+    vendor_credit }o--|| account : "fk"
+    vendor_credit }o--|| vendor : "fk"
+    vendor_credit }o--|| department : "fk"
+    purchase_line }o--|| purchase : "fk"
+    purchase_line }o--|| tax_code : "fk"
+    purchase_line }o--|| item : "fk"
+    purchase_line }o--|| class : "fk"
+    purchase_line }o--|| customer : "fk"
+    purchase_line }o--|| class : "fk"
+    purchase_line }o--|| tax_code : "fk"
+    purchase_line }o--|| account : "fk"
+    purchase_line }o--|| customer : "fk"
+    estimate_line }o--|| estimate : "fk"
+    estimate_line }o--|| item : "fk"
+    estimate_line }o--|| class : "fk"
+    estimate_line }o--|| account : "fk"
+    estimate_line }o--|| tax_code : "fk"
+    estimate_line }o--|| bundle : "fk"
+    estimate_line }o--|| tax_code : "fk"
+    estimate_line }o--|| account : "fk"
+    estimate_line }o--|| class : "fk"
+    estimate_line }o--|| tax_code : "fk"
+    estimate_line }o--|| item : "fk"
+    estimate_line_bundle }o--|| item : "fk"
+    estimate_line_bundle }o--|| class : "fk"
+    estimate_line_bundle }o--|| account : "fk"
+    estimate_line_bundle }o--|| tax_code : "fk"
+    estimate_line_bundle }o--|| estimate : "fk"
+    estimate_line_bundle }o--|| estimate_line : "fk"
+    purchase_order_tax_line }o--|| purchase_order : "fk"
+    purchase_order_tax_line }o--|| tax_rate : "fk"
+    budget_detail }o--|| budget : "fk"
+    budget_detail }o--|| account : "fk"
+    budget_detail }o--|| customer : "fk"
+    budget_detail }o--|| class : "fk"
+    budget_detail }o--|| department : "fk"
+    class }o--|| class : "fk"
+    time_activity }o--|| employee : "fk"
+    time_activity }o--|| item : "fk"
+    time_activity }o--|| customer : "fk"
+    time_activity }o--|| department : "fk"
+    time_activity }o--|| vendor : "fk"
+    time_activity }o--|| class : "fk"
+    department }o--|| department : "fk"
+    bill_line }o--|| tax_code : "fk"
+    bill_line }o--|| item : "fk"
+    bill_line }o--|| class : "fk"
+    bill_line }o--|| customer : "fk"
+    bill_line }o--|| class : "fk"
+    bill_line }o--|| tax_code : "fk"
+    bill_line }o--|| account : "fk"
+    bill_line }o--|| customer : "fk"
+    bill_line }o--|| bill : "fk"
+    payment_line }o--|| payment : "fk"
+    payment_line }o--|| journal_entry : "fk"
+    payment_line }o--|| credit_memo : "fk"
+    payment_line }o--|| invoice : "fk"
+    payment_line }o--|| deposit : "fk"
+    deposit_line }o--|| deposit : "fk"
+    deposit_line }o--|| tax_code : "fk"
+    deposit_line }o--|| class : "fk"
+    deposit_line }o--|| payment_method : "fk"
+    deposit_line }o--|| account : "fk"
+    deposit_line }o--|| customer : "fk"
+    deposit_line }o--|| transfer : "fk"
+    deposit_line }o--|| payment : "fk"
+    deposit_line }o--|| sales_receipt : "fk"
+    deposit_line }o--|| refund_receipt : "fk"
+    deposit_line }o--|| journal_entry : "fk"
+    deposit_line }o--|| purchase : "fk"
+    deposit_line }o--|| invoice : "fk"
+    deposit_line }o--|| vendor_credit : "fk"
+    deposit_line }o--|| bill : "fk"
+    refund_receipt_line }o--|| refund_receipt : "fk"
+    refund_receipt_line }o--|| item : "fk"
+    refund_receipt_line }o--|| class : "fk"
+    refund_receipt_line }o--|| account : "fk"
+    refund_receipt_line }o--|| tax_code : "fk"
+    refund_receipt_line }o--|| bundle : "fk"
+    refund_receipt_line }o--|| tax_code : "fk"
+    refund_receipt_line }o--|| account : "fk"
+    refund_receipt_line }o--|| class : "fk"
+    refund_receipt_line }o--|| tax_code : "fk"
+    refund_receipt_line }o--|| item : "fk"
+    bundle_item }o--|| bundle : "fk"
+    bundle_item }o--|| item : "fk"
+    sales_receipt_tax_line }o--|| sales_receipt : "fk"
+    sales_receipt_tax_line }o--|| tax_rate : "fk"
+    purchase_order }o--|| currency : "fk"
+    purchase_order }o--|| address : "fk"
+    purchase_order }o--|| address : "fk"
+    purchase_order }o--|| tax_code : "fk"
+    purchase_order }o--|| account : "fk"
+    purchase_order }o--|| vendor : "fk"
+    purchase_order }o--|| class : "fk"
+    purchase_order }o--|| term : "fk"
+    journal_entry_line }o--|| journal_entry : "fk"
+    journal_entry_line }o--|| customer : "fk"
+    journal_entry_line }o--|| vendor : "fk"
+    journal_entry_line }o--|| employee : "fk"
+    journal_entry_line }o--|| class : "fk"
+    journal_entry_line }o--|| account : "fk"
+    journal_entry_line }o--|| department : "fk"
+    journal_entry_line }o--|| tax_code : "fk"
+    journal_entry_line }o--|| tax_code : "fk"
+    credit_memo_line }o--|| credit_memo : "fk"
+    credit_memo_line }o--|| item : "fk"
+    credit_memo_line }o--|| class : "fk"
+    credit_memo_line }o--|| account : "fk"
+    credit_memo_line }o--|| tax_code : "fk"
+    credit_memo_line }o--|| bundle : "fk"
+    credit_memo_line }o--|| tax_code : "fk"
+    credit_memo_line }o--|| account : "fk"
+    credit_memo_line }o--|| class : "fk"
+    credit_memo_line }o--|| tax_code : "fk"
+    credit_memo_line }o--|| item : "fk"
+    invoice_tax_line }o--|| invoice : "fk"
+    invoice_tax_line }o--|| tax_rate : "fk"
+    purchase_tax_line }o--|| purchase : "fk"
+    purchase_tax_line }o--|| tax_rate : "fk"
+    credit_memo_line_bundle }o--|| item : "fk"
+    credit_memo_line_bundle }o--|| class : "fk"
+    credit_memo_line_bundle }o--|| account : "fk"
+    credit_memo_line_bundle }o--|| tax_code : "fk"
+    credit_memo_line_bundle }o--|| credit_memo : "fk"
+    credit_memo_line_bundle }o--|| credit_memo_line : "fk"
+    employee }o--|| address : "fk"
+    refund_receipt_tax_line }o--|| refund_receipt : "fk"
+    refund_receipt_tax_line }o--|| tax_rate : "fk"
+    invoice_line_bundle }o--|| item : "fk"
+    invoice_line_bundle }o--|| class : "fk"
+    invoice_line_bundle }o--|| account : "fk"
+    invoice_line_bundle }o--|| tax_code : "fk"
+    invoice_line_bundle }o--|| invoice : "fk"
+    invoice_line_bundle }o--|| invoice_line : "fk"
+    tax_rate }o--|| tax_agency : "fk"
+    item }o--|| account : "fk"
+    item }o--|| account : "fk"
+    item }o--|| account : "fk"
+    item }o--|| item : "fk"
+    item }o--|| tax_code : "fk"
+    item }o--|| tax_code : "fk"
+    bill }o--|| currency : "fk"
+    bill }o--|| account : "fk"
+    bill }o--|| term : "fk"
+    bill }o--|| vendor : "fk"
+    bill }o--|| department : "fk"
+    credit_memo_custom_field }o--|| credit_memo : "fk"
+    transfer }o--|| currency : "fk"
+    transfer }o--|| account : "fk"
+    transfer }o--|| account : "fk"
+    estimate_linked_txn }o--|| estimate : "fk"
+    estimate_linked_txn }o--|| invoice : "fk"
+    invoice_linked_txn }o--|| invoice : "fk"
+    invoice_linked_txn }o--|| payment : "fk"
+    invoice_linked_txn }o--|| estimate : "fk"
+    invoice_linked_txn }o--|| time_activity : "fk"
+    credit_memo }o--|| currency : "fk"
+    credit_memo }o--|| address : "fk"
+    credit_memo }o--|| address : "fk"
+    credit_memo }o--|| customer : "fk"
+    credit_memo }o--|| department : "fk"
+    credit_memo }o--|| term : "fk"
+    credit_memo }o--|| class : "fk"
+    credit_memo }o--|| payment_method : "fk"
+    refund_receipt }o--|| currency : "fk"
+    refund_receipt }o--|| tax_code : "fk"
+    refund_receipt }o--|| address : "fk"
+    refund_receipt }o--|| address : "fk"
+    refund_receipt }o--|| payment : "fk"
+    refund_receipt }o--|| account : "fk"
+    refund_receipt }o--|| department : "fk"
+    refund_receipt }o--|| payment_method : "fk"
+    refund_receipt }o--|| customer : "fk"
+    refund_receipt }o--|| class : "fk"
+    vendor_credit_line }o--|| vendor_credit : "fk"
+    vendor_credit_line }o--|| tax_code : "fk"
+    vendor_credit_line }o--|| item : "fk"
+    vendor_credit_line }o--|| class : "fk"
+    vendor_credit_line }o--|| customer : "fk"
+    vendor_credit_line }o--|| class : "fk"
+    vendor_credit_line }o--|| tax_code : "fk"
+    vendor_credit_line }o--|| account : "fk"
+    vendor_credit_line }o--|| customer : "fk"
+    purchase_order_linked_txn }o--|| purchase_order : "fk"
+    purchase_order_linked_txn }o--|| bill : "fk"
+    purchase_order_linked_txn }o--|| purchase : "fk"
+    purchase_order_linked_txn }o--|| vendor_credit : "fk"
+    estimate }o--|| currency : "fk"
+    estimate }o--|| tax_code : "fk"
+    estimate }o--|| address : "fk"
+    estimate }o--|| address : "fk"
+    estimate }o--|| department : "fk"
+    estimate }o--|| customer : "fk"
+    estimate }o--|| class : "fk"
+    estimate }o--|| term : "fk"
+    purchase }o--|| currency : "fk"
+    purchase }o--|| customer : "fk"
+    purchase }o--|| vendor : "fk"
+    purchase }o--|| employee : "fk"
+    purchase }o--|| address : "fk"
+    purchase }o--|| tax_code : "fk"
+    purchase }o--|| account : "fk"
+    purchase }o--|| department : "fk"
+    purchase }o--|| payment_method : "fk"
+    purchase_order_line }o--|| tax_code : "fk"
+    purchase_order_line }o--|| item : "fk"
+    purchase_order_line }o--|| class : "fk"
+    purchase_order_line }o--|| customer : "fk"
+    purchase_order_line }o--|| class : "fk"
+    purchase_order_line }o--|| tax_code : "fk"
+    purchase_order_line }o--|| account : "fk"
+    purchase_order_line }o--|| customer : "fk"
+    purchase_order_line }o--|| purchase_order : "fk"
+    journal_entry }o--|| currency : "fk"
+    journal_entry }o--|| tax_code : "fk"
+    bill_payment_line }o--|| bill_payment : "fk"
+    bill_payment_line }o--|| bill : "fk"
+    bill_payment_line }o--|| vendor_credit : "fk"
+    bill_payment_line }o--|| journal_entry : "fk"
+    bill_payment_line }o--|| deposit : "fk"
+    bill_payment_line }o--|| bill_payment : "fk"
+    bill_payment_line }o--|| purchase : "fk"
+    refund_receipt_line_bundle }o--|| item : "fk"
+    refund_receipt_line_bundle }o--|| class : "fk"
+    refund_receipt_line_bundle }o--|| account : "fk"
+    refund_receipt_line_bundle }o--|| tax_code : "fk"
+    refund_receipt_line_bundle }o--|| refund_receipt : "fk"
+    refund_receipt_line_bundle }o--|| refund_receipt_line : "fk"

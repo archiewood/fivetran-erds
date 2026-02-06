@@ -1,0 +1,116 @@
+erDiagram
+    signup {
+        text created_on PK
+        text customer_id PK
+        text campaign_id FK
+        text referral_code FK
+        text advocate_customer_id
+        text advocate_email
+        text advocate_name
+        text campaign_name
+        text channel
+        text email
+        text ip_address
+        text name
+        text new_customer
+        text user_agent
+    }
+    distributed_friend_incentive {
+        text friend_email PK
+        text campaign_id FK
+        text referral_code FK
+        text advocate_name
+        text campaign_name
+        text coupon_code
+        text friend_name
+        text incentive_amount
+        text incentive_type
+        text trigger
+    }
+    distributed_advocate_reward {
+        text _fivetran_id PK
+        text campaign_id FK
+        text referral_code FK
+        text advocate_customer_id
+        text advocate_name
+        text friend_customer_id
+        text reward_amount
+        text reward_type
+        text trigger
+    }
+    widget_view {
+        text campaign_id PK
+        text created_on PK
+        text customer_id FK
+        text campaign_name
+        text email
+        text ip_address
+        text user_agent
+        text widget_name
+        text widget_type
+    }
+    click {
+        text destination_url PK
+        text campaign_id FK
+        text referral_code FK
+        text advocate_name
+    }
+    share {
+        text created_on PK
+        text referral_code PK
+        text campaign_id FK
+        text advocate_email
+        text channel
+    }
+    email_capture {
+        text _fivetran_id PK
+        text campaign_id FK
+        text campaign_name
+        text created_on
+        text email
+        text email_capture_type
+        text ip_address
+        text name
+        text newsletter_opt_in
+        text widget_name
+    }
+    ledger_head {
+        text currency PK
+        text customer_id PK
+        text current_balance
+    }
+    purchase_product {
+        text index PK
+        text purchase_order_id PK
+        text name
+        text price
+        text quantity
+        text sku
+    }
+    purchase {
+        text order_id PK
+        text campaign_id FK
+        text referral_code FK
+        text advocate_name
+        text amount
+        text coupon_code
+        text customer_id
+        text email
+        text name
+        text new_customer
+    }
+    signup }o--|| widget_view : "fk"
+    signup }o--|| share : "fk"
+    distributed_friend_incentive }o--|| widget_view : "fk"
+    distributed_friend_incentive }o--|| share : "fk"
+    distributed_advocate_reward }o--|| widget_view : "fk"
+    distributed_advocate_reward }o--|| share : "fk"
+    widget_view }o--|| signup : "fk"
+    click }o--|| widget_view : "fk"
+    click }o--|| share : "fk"
+    share }o--|| widget_view : "fk"
+    email_capture }o--|| widget_view : "fk"
+    ledger_head }o--|| signup : "fk"
+    purchase_product }o--|| purchase : "fk"
+    purchase }o--|| widget_view : "fk"
+    purchase }o--|| share : "fk"

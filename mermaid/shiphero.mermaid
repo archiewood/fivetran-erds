@@ -1,0 +1,489 @@
+erDiagram
+    warehouse_product_inventory_metric {
+        text id PK
+        text warehouse_id PK
+        text warehouse_product_product_id PK
+        text account_id
+        text active
+        text allocated
+        text available
+        text backorder
+        timestamp created_at
+        text custom
+        text customs_value
+        text in_tote
+        text inventory_bin
+        text inventory_overstock_bin
+        text legacy_id
+        text non_sellable_quantity
+        text on_hand
+        text price
+        text reorder_amount
+        text reorder_level
+        text replenishment_level
+        text reserve_inventory
+        text sell_ahead
+        text sku
+        timestamp updated_at
+        text value
+        text value_currency
+        text warehouse_identifier
+    }
+    vendor {
+        text id PK
+        text account_id
+        text account_number
+        text address_address_1
+        text address_address_2
+        text address_city
+        text address_country
+        text address_name
+        text address_phone
+        text address_state
+        text address_zip
+        text created_at
+        text currency
+        text default_po_note
+        text email
+        text internal_note
+        text legacy_id
+        text logo
+        text name
+        text partner_vendor_id
+    }
+    purchase_order_line_item {
+        text index PK
+        text purchase_order_line_item_id PK
+        text vendor_id FK
+        text warehouse_id FK
+        text account_id
+        text barcode
+        timestamp created_at
+        text expected_weight_in_lbs
+        text fulfillment_status
+        text legacy_id
+        text node_id
+        text note
+        text option_title
+        text partner_line_item_id
+        text po_id
+        text po_number
+        text price
+        text product_id
+        text product_name
+        text quantity
+        text quantity_received
+        text quantity_rejected
+        text sell_ahead
+        text sku
+        timestamp updated_at
+        text variant_id
+        text vendor_sku
+    }
+    browse_order_history {
+        text id PK
+        text order_id FK
+        text account_id
+        text information
+        text order_email
+        text order_fulfillment_status
+        text order_number
+        text order_order_date
+        text order_packing_note
+        text order_profile
+        text order_required_ship_date
+        text order_shipping_address_address_1
+        text order_shipping_address_address_2
+        text order_shipping_address_city
+        text order_shipping_address_company
+        text order_shipping_address_country
+        text order_shipping_address_country_code
+        text order_shipping_address_email
+        text order_shipping_address_first_name
+        text order_shipping_address_last_name
+        text order_shipping_address_phone
+        text order_shipping_address_state
+        text order_shipping_address_state_code
+        text order_shipping_address_zip
+        text order_shop_name
+    }
+    warehouse_product {
+        text warehouse_id PK
+        text product_id PK
+        text on_hand
+    }
+    product_image {
+        text src PK
+        text product_id PK
+    }
+    product_kit_component {
+        text sku PK
+        text product_id PK
+        text quantity
+    }
+    product_tag {
+        text index PK
+        text product_id PK
+        text tags
+    }
+    product {
+        text id PK
+        text account_id
+        text active
+        text barcode
+        text country_of_manufacture
+        text created_at
+        text customs_description
+        text customs_value
+        text dimensions_height
+        text dimensions_length
+        text dimensions_weight
+        text dimensions_width
+        text dropship
+        text final_sale
+        text ignore_on_customs
+        text ignore_on_invoice
+        text kit
+        text kit_build
+        text large_thumbnail
+        text legacy_id
+        text name
+        text needs_serial_number
+        text no_air
+        text not_owned
+        text product_note
+        text sku
+        text tariff_code
+        text thumbnail
+        text updated_at
+        text virtual
+    }
+    warehouse_product_detail {
+        text id PK
+        text product_id FK
+        text warehouse_id FK
+        text account_id
+        text custom
+        text inventory_bin
+        text on_hand
+        text product_name
+        text product_sku
+        text reorder_amount
+        text reorder_level
+        text reserve_inventory
+        text warehouse_dynamic_slotting
+        text warehouse_profile
+    }
+    shipment_line_item {
+        text id PK
+        text shipment_id PK
+        text quantity
+    }
+    shipment_shipping_label {
+        text id PK
+        text shipment_id PK
+        text account_id
+        text carrier
+        text carrier_account_id
+        text cost
+        text created_date
+        text insurance_amount
+        text legacy_id
+        text packing_slip
+        text profile
+        text shipping_method
+        text shipping_name
+        text source
+        text status
+        text tracking_number
+        text warehouse
+    }
+    shipment {
+        text id PK
+        text order_id FK
+        text warehouse_id FK
+        text address_address_1
+        text address_address_2
+        text address_city
+        text address_country
+        text address_name
+        text address_phone
+        text address_state
+        text address_zip
+        text created_date
+        text dropshipment
+        text legacy_id
+        text pending_shipment_id
+        text shipped_off_shiphero
+        text user_id
+    }
+    order_history {
+        text _fivetran_id PK
+        text order_id FK
+        text created_at
+        text information
+        text user_id
+    }
+    order_line_item {
+        text sku PK
+        text order_id PK
+        text backorder_quantity
+        text price
+        text promotion_discount
+        text quantity
+        text quantity_allocated
+        text quantity_pending_fulfillment
+    }
+    orders {
+        text id PK
+        text account_id
+        text adult_signature_required
+        text alcohol
+        text allocation_priority
+        text allow_partial
+        text allow_split
+        text auto_print_return_label
+        text currency
+        text custom_invoice_url
+        text email
+        text expected_weight_in_oz
+        text flagged
+        text fulfillment_status
+        text gift_invoice
+        text has_dry_ice
+        text ignore_address_validation_errors
+        text insurance
+        text insurance_amount
+        text legacy_id
+        text order_date
+        text order_number
+        text packing_note
+        text partner_order_id
+        text priority_flag
+        text profile
+        text require_signature
+        text required_ship_date
+        text saturday_delivery
+        text shop_name
+        text source
+        text subtotal
+        text third_party_shipper_account_number
+        text third_party_shipper_country
+        text third_party_shipper_zip
+        text total_discounts
+        text total_price
+        text total_tax
+    }
+    pack_per_day {
+        text id PK
+        text order_id FK
+        text shipment_id FK
+        text warehouse_id FK
+        text barcodes_scanned
+        timestamp created_at
+        text order_number
+        text total_items
+        text unique_items
+    }
+    shipping_plan {
+        text id PK
+        text purchase_order_id PK
+        text warehouse_id FK
+        text origin_of_shipment
+        text pdf_location
+        text vendor_po_number
+        text warehouse_note
+    }
+    purchase_order {
+        text id PK
+        text vendor_id FK
+        text warehouse_id FK
+        text account_id
+        text created_at
+        text date_closed
+        text description
+        text discount
+        text fulfillment_status
+        text images
+        text legacy_id
+        text locked_by_user_id
+        text locking
+        text packing_note
+        text payment_due_by
+        text payment_method
+        text payment_note
+        text pdf
+        timestamp po_date
+        text po_note
+        text po_number
+        text shipping_carrier
+        text shipping_method
+        text shipping_name
+        text shipping_price
+        text subtotal
+        text tax
+        text total_price
+        text tracking_number
+    }
+    shipping_plan_line_item {
+        text id PK
+        text purchase_order_id PK
+        text warehouse_id FK
+        text account_id
+        text barcode
+        timestamp created_at
+        text expected_weight_in_lbs
+        text fulfillment_status
+        text legacy_id
+        text note
+        text option_title
+        text partner_line_item_id
+        text price
+        text product_id
+        text product_name
+        text quantity
+        text quantity_received
+        text quantity_rejected
+        text sell_ahead
+        text sku
+        timestamp updated_at
+        text variant_id
+        text vendor_sku
+    }
+    inventory_change {
+        text _fivetran_id PK
+        text warehouse_id FK
+        text account_id
+        text change_in_on_hand
+        timestamp created_at
+        text cycle_counted
+        text location_account_id
+        text location_created_at
+        text location_id
+        text location_is_cart
+        text location_last_counted
+        text location_legacy_id
+        text location_name
+        text location_pickable
+        text location_sellable
+        text location_temperature
+        text location_warehouse_id
+        text location_zone
+        text previous_on_hand
+        text reason
+        text sku
+        text user_id
+    }
+    return_line_item_detail {
+        text id PK
+        text return_id PK
+        text return_line_item_id PK
+        text warehouse_id FK
+        text backorder_quantity
+        text barcode
+        text created_at
+        text custom_barcode
+        text custom_options
+        text customs_value
+        text eligible_for_return
+        text fulfillment_status
+        text legacy_id
+        text locked_to_warehouse_id
+        text option_title
+        text partner_line_item_id
+        text price
+        text product_name
+        text quantity
+        text quantity_allocated
+        text quantity_pending_fulfillment
+        text quantity_shipped
+        text sku
+        text subtotal
+        text updated_at
+        text warehouse
+    }
+    return_line_item {
+        text id PK
+        text return_id PK
+        text warehouse_id FK
+        text account_id
+        text condition
+        text created_at
+        text is_component
+        text legacy_id
+        text line_item_id
+        text product_id
+        text quantity
+        text reason
+        text type
+        text updated_at
+    }
+    return {
+        text id PK
+        text order_id FK
+        text account_id
+        text cost_to_customer
+        timestamp created_at
+        text display_issue_refund
+        text label_cost
+        text label_type
+        text legacy_id
+        text partner_id
+        text reason
+        text shipping_carrier
+        text shipping_method
+        text status
+    }
+    line_item_pick {
+        text id PK
+        text order_id FK
+        text barcode_scanned
+        timestamp created_at
+        text inventory_bin
+        text line_item_id
+        text location_id
+        text order_number
+        text pick_type
+        text picked_quantity
+        text quantity
+        text sku
+        text tote_id
+        text user_first_name
+        text user_id
+        text user_last_name
+    }
+    warehouse_product_inventory_metric }o--|| warehouse_product : "fk"
+    warehouse_product_inventory_metric }o--|| warehouse_product : "fk"
+    purchase_order_line_item }o--|| vendor : "fk"
+    purchase_order_line_item }o--|| warehouse_product : "fk"
+    browse_order_history }o--|| orders : "fk"
+    warehouse_product }o--|| product : "fk"
+    product_image }o--|| product : "fk"
+    product_kit_component }o--|| product : "fk"
+    product_tag }o--|| product : "fk"
+    warehouse_product_detail }o--|| warehouse_product : "fk"
+    warehouse_product_detail }o--|| product : "fk"
+    shipment_line_item }o--|| shipment : "fk"
+    shipment_shipping_label }o--|| shipment : "fk"
+    shipment }o--|| orders : "fk"
+    shipment }o--|| warehouse_product : "fk"
+    order_history }o--|| orders : "fk"
+    order_line_item }o--|| orders : "fk"
+    pack_per_day }o--|| shipment : "fk"
+    pack_per_day }o--|| warehouse_product : "fk"
+    pack_per_day }o--|| orders : "fk"
+    shipping_plan }o--|| warehouse_product : "fk"
+    shipping_plan }o--|| purchase_order : "fk"
+    purchase_order }o--|| orders : "fk"
+    purchase_order }o--|| vendor : "fk"
+    purchase_order }o--|| warehouse_product : "fk"
+    shipping_plan_line_item }o--|| warehouse_product : "fk"
+    shipping_plan_line_item }o--|| purchase_order : "fk"
+    inventory_change }o--|| warehouse_product : "fk"
+    return_line_item_detail }o--|| warehouse_product : "fk"
+    return_line_item_detail }o--|| return_line_item : "fk"
+    return_line_item_detail }o--|| return_line_item : "fk"
+    return_line_item }o--|| warehouse_product : "fk"
+    return_line_item }o--|| return : "fk"
+    return }o--|| orders : "fk"
+    line_item_pick }o--|| orders : "fk"

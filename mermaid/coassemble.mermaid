@@ -1,0 +1,269 @@
+erDiagram
+    learner_progress_card {
+        text id PK
+        text learner_id PK
+        text category_id FK
+        text group_id FK
+        text card_image
+        text card_image_alt_text
+        text card_image_mode
+        text card_image_offset
+        text code
+        text commenced
+        text completed
+        text due_date
+        text duration
+        text end_date
+        text enrolled
+        text grading_in_progress
+        text group_type
+        text image
+        jsonb options
+        text overview
+        jsonb prerequisites
+        text progress_percent
+        text sequence
+        text starred
+        text start_date
+        text study
+        text title
+        text updated
+    }
+    learner_action {
+        text action PK
+        text learner_id PK
+    }
+    learner {
+        text id PK
+        text active
+        text avatar
+        text courses
+        text email
+        text first_name
+        text groups
+        text invitation_sent
+        text last_login
+        text last_name
+        text name
+        text removed
+        text user_name
+    }
+    groups {
+        text id PK
+        text caps_admin
+        text caps_copy
+        text caps_create
+        text caps_delete
+        text caps_disenroll
+        text caps_edit
+        text caps_enrol
+        text caps_finance
+        text caps_invite
+        text caps_manage_enrolment
+        text caps_preview
+        text caps_publish_grades
+        text caps_remove_mirror
+        text caps_report
+        text caps_study
+        text caps_teach
+        text caps_view
+        text created
+        text name
+        text updated
+    }
+    enrolment_permission {
+        text permission PK
+        text enrolment_id PK
+    }
+    enrolment {
+        text id PK
+        text course_id FK
+        text group_id FK
+        text initiator FK
+        text user_id FK
+        text action
+        text catalog_active
+        text catalog_caps_admin
+        text catalog_caps_copy
+        text catalog_caps_create
+        text catalog_caps_delete
+        text catalog_caps_disenroll
+        text catalog_caps_edit
+        text catalog_caps_enrol
+        text catalog_caps_finance
+        text catalog_caps_invite
+        text catalog_caps_manage_enrolment
+        text catalog_caps_preview
+        text catalog_caps_publish_grades
+        text catalog_caps_remove_mirror
+        text catalog_caps_report
+        text catalog_caps_study
+        text catalog_caps_teach
+        text catalog_caps_view
+        text catalog_created
+        text catalog_draft_only
+        text catalog_id
+        text catalog_invited
+        text catalog_public
+        text catalog_published
+        text catalog_published_copy
+        text catalog_published_diff
+        text catalog_revision
+        jsonb catalog_securable_identity
+        text catalog_slug
+        text catalog_title
+        text catalog_updated
+        text date
+        text dtype
+        text group_students_count
+        text group_teachers_count
+        text group_type
+        text initiator_timezone
+        text user_timezone
+    }
+    course {
+        text id PK
+        text category_id FK
+        text trainer_id FK
+        text card_image
+        text card_image_mode
+        text card_image_offset_x
+        text card_image_offset_y
+        text code
+        text cover_image
+        text cover_image_alt_text
+        text cover_image_mode
+        text cover_image_offset
+        text default_cover_image
+        text duration
+        text groups_count
+        text overview_content
+        text title
+    }
+    learner_course {
+        text course_id PK
+        text learner_id PK
+    }
+    category {
+        text id PK
+        text title
+    }
+    assignment {
+        text id PK
+        text description
+        text title
+    }
+    user_role {
+        text role_id PK
+        text users_id PK
+        text name
+        text role
+    }
+    users {
+        text id PK
+        text accreditable_id
+        text active
+        text avatar
+        text created
+        text custom_value
+        text disable_course_enrolment_notification
+        text email
+        text email_verified
+        text first_name
+        text last_login
+        text last_name
+        text last_sent
+        text local
+        text number_of_logins
+        text timezone
+        text user_name
+    }
+    result {
+        text id PK
+        text course_id FK
+        text group_id FK
+        text user_id FK
+        text accreditable_user_custom_value
+        jsonb children
+        text commenced
+        text completed
+        text passed
+        text progress_percent
+        text score_percent
+        text total_time
+        text updated
+    }
+    module_result {
+        text id PK
+        text parent_id FK
+        text user_id FK
+        text accreditable_identity_custom_value
+        text accreditable_identity_dtype
+        text commenced
+        text completed
+        text feedback
+        text lms_id
+        text module_access
+        text module_entity_type
+        text module_id
+        text module_launch
+        text module_module_type
+        text module_path
+        text module_required
+        text module_scorm_version
+        text module_title
+        text parent_access
+        text parent_commenced
+        text parent_completed
+        text parent_course_trainer
+        text parent_deleted
+        text parent_fresh
+        text parent_group_dtype
+        text parent_identifier
+        text parent_login_count
+        text parent_only_non_deleted
+        text parent_passed
+        text parent_progress_percent
+        text parent_report_url
+        text parent_score_max
+        text parent_score_percent
+        text parent_score_percentage
+        text parent_score_percentage_string
+        text parent_score_raw
+        text parent_starred
+        text parent_student_name
+        text parent_total_time
+        text parent_user_active
+        text parent_user_created
+        text parent_user_email_verified
+        text passed
+        text progress_percent
+        text score_max
+        text score_percent
+        text score_percentage
+        text score_percentage_string
+        text score_raw
+        text student_name
+        text total_time
+        text trainer
+    }
+    learner_progress_card }o--|| category : "fk"
+    learner_progress_card }o--|| groups : "fk"
+    learner_progress_card }o--|| learner : "fk"
+    learner_action }o--|| learner : "fk"
+    learner }o--|| users : "fk"
+    enrolment_permission }o--|| enrolment : "fk"
+    enrolment }o--|| users : "fk"
+    enrolment }o--|| groups : "fk"
+    enrolment }o--|| users : "fk"
+    enrolment }o--|| course : "fk"
+    course }o--|| users : "fk"
+    course }o--|| category : "fk"
+    learner_course }o--|| course : "fk"
+    learner_course }o--|| learner : "fk"
+    user_role }o--|| users : "fk"
+    result }o--|| users : "fk"
+    result }o--|| groups : "fk"
+    result }o--|| course : "fk"
+    module_result }o--|| users : "fk"
+    module_result }o--|| result : "fk"

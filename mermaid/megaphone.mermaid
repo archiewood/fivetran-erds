@@ -1,0 +1,312 @@
+erDiagram
+    organization_tag {
+        text id PK
+        text label
+        text value
+    }
+    region_country {
+        text geoname_id PK
+        text label
+        text type
+        text value
+    }
+    promo_order_advertisement {
+        text id PK
+        text promo_id PK
+        text audio_file
+        text audio_file_duration
+        text audio_file_processing
+        text audio_file_status
+        text created_at
+        text insertion_point
+        text origin_file_name
+        text position
+        text updated_at
+    }
+    order_target {
+        text index PK
+        text orders_id PK
+        text id
+        text type
+    }
+    order_frequency_cap {
+        text index PK
+        text orders_id PK
+        text day
+        text impression
+    }
+    geo_name_id_inclusion {
+        text index PK
+        text orders_id PK
+        text value
+    }
+    geo_name_id_exclusion {
+        text index PK
+        text orders_id PK
+        text value
+    }
+    order_geo_target {
+        text orders_id PK
+        text target PK
+    }
+    order_device_target {
+        text orders_id PK
+        text target PK
+    }
+    orders {
+        text id PK
+        text campaign_id FK
+        text ad_placement_type
+        text adhash
+        text audio_status
+        text copy_needed
+        text created_at
+        text end_at
+        text external_id
+        text flight_timezone
+        jsonb geo_exclusion
+        text impressions_cap
+        text impressions_goal
+        text mtm_freeze_at
+        text notes
+        text pacing_type
+        text position
+        text price_type
+        text priority
+        text promo
+        text promo_code
+        text region
+        text revenue_cents
+        text revenue_currency
+        text scheduled_at
+        text start_at
+        text state
+        text targeted_segment
+        text title
+        jsonb tracking_url
+        text updated_at
+        text vanity_url
+    }
+    campaign {
+        text id PK
+        text advertiser_id FK
+        text created_at
+        text duration_in_seconds
+        text title
+        text total_budget_cents
+        text total_budget_currency
+        text total_revenue_cent
+        text total_revenue_currency
+        timestamp updated_at
+    }
+    advertiser {
+        text id PK
+        text agency_id
+        text competitive_category
+        text created_at
+        text name
+        text updated_at
+    }
+    campaign_order_advertisement {
+        text id PK
+        text campaign_id FK
+        text order_id FK
+        text audio_file
+        text audio_file_duration
+        text audio_file_processing
+        text created_at
+        text insertion_point
+        text origin_file_name
+        text position
+        text updated_at
+    }
+    nielsen_segment {
+        text label PK
+        text value
+    }
+    network {
+        text id PK
+        text code
+        text created_at
+        text name
+    }
+    episode_advertising_tag {
+        text index PK
+        text episode_id PK
+        text advertising_tag
+    }
+    episode {
+        text id PK
+        text network_id FK
+        text podcast_id FK
+        text audio_file
+        text audio_file_processing
+        text audio_file_status
+        text audio_file_updated_at
+        text author
+        text bit_rate
+        text channel_mode
+        text clean_title
+        text created_at
+        jsonb custom_fields
+        text download_url
+        text draft
+        text duration
+        text episode_number
+        text episode_type
+        text expected_adhash
+        text external_id
+        text guid
+        text id_3_file
+        text id_3_file_processing
+        text id_3_file_size
+        text image_file
+        jsonb insertion_point
+        text link
+        text original_filename
+        text original_url
+        text post_count
+        text post_offset
+        text pre_count
+        text pre_offset
+        timestamp pubdate
+        text pubdate_timezone
+        text sample_rate
+        text season_number
+        text size
+        jsonb sound_cloud_identifier
+        text spotify_identifier
+        text status
+        text subtitle
+        text summary
+        text title
+        text uid
+        text updated_at
+        text vbr
+    }
+    device {
+        text label PK
+        text value
+    }
+    agency {
+        text id PK
+        text address
+        text billing_method
+        text city
+        text commission_percentage
+        text created_at
+        text ein
+        text external_id
+        text name
+        text payement_type
+        text state
+        text updated_at
+        text zip_code
+    }
+    advertiser_category_children {
+        text label PK
+        text parent_label PK
+        text value
+    }
+    advertiser_category {
+        text label PK
+        text value
+    }
+    podcast_itunes_category {
+        text index PK
+        text podcast_id PK
+        text category
+    }
+    podcast_excluded_category {
+        text index PK
+        text podcast_id PK
+        text category
+    }
+    podcast_advertising_tag {
+        text index PK
+        text podcast_id PK
+        text advertising_tag
+    }
+    podcast_ad_free_feed_url {
+        text index PK
+        text podcast_id PK
+        text url
+    }
+    podcast_cloned_feed_url {
+        text index PK
+        text podcast_id PK
+        text url
+    }
+    podcast {
+        text id PK
+        text network_id FK
+        text ad_free
+        text author
+        text category
+        text copyright
+        text created_at
+        jsonb default_ad_setting
+        text default_post_count
+        text default_pre_count
+        text episode_limit
+        text explicit_value
+        text external_id
+        text feed_url
+        text google_play_identifier
+        text google_podcasts_identifier
+        text iheart_identifier
+        text image_file
+        text itunes_active
+        text itunes_identifier
+        text itunes_rating
+        text languages
+        text link
+        text main_feed
+        text original_rss_url
+        text owner_email
+        text owner_name
+        text podcast_type
+        text podtrac_enabled
+        text recurring_import
+        text redirect_url
+        text redirected_at
+        text slug
+        text span_opt_in
+        text spotify_identifier
+        text stitcher_identifier
+        text subtitle
+        text summary
+        text title
+        text uid
+        timestamp updated_at
+    }
+    d_m_a {
+        text label PK
+        text value
+    }
+    promo_order_advertisement }o--|| orders : "fk"
+    order_target }o--|| orders : "fk"
+    order_frequency_cap }o--|| orders : "fk"
+    geo_name_id_inclusion }o--|| orders : "fk"
+    geo_name_id_exclusion }o--|| orders : "fk"
+    order_geo_target }o--|| region_country : "fk"
+    order_geo_target }o--|| orders : "fk"
+    order_device_target }o--|| device : "fk"
+    order_device_target }o--|| orders : "fk"
+    orders }o--|| campaign : "fk"
+    campaign }o--|| advertiser : "fk"
+    campaign_order_advertisement }o--|| orders : "fk"
+    campaign_order_advertisement }o--|| campaign : "fk"
+    nielsen_segment }o--|| orders : "fk"
+    episode_advertising_tag }o--|| episode : "fk"
+    episode }o--|| network : "fk"
+    episode }o--|| podcast : "fk"
+    advertiser_category_children }o--|| advertiser_category : "fk"
+    advertiser_category_children }o--|| advertiser_category : "fk"
+    podcast_itunes_category }o--|| podcast : "fk"
+    podcast_excluded_category }o--|| podcast : "fk"
+    podcast_advertising_tag }o--|| podcast : "fk"
+    podcast_ad_free_feed_url }o--|| podcast : "fk"
+    podcast_cloned_feed_url }o--|| podcast : "fk"
+    podcast }o--|| network : "fk"
+    d_m_a }o--|| region_country : "fk"

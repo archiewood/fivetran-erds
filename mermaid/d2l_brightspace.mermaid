@@ -1,0 +1,227 @@
+erDiagram
+    survey_category {
+        text id PK
+        text organization_id PK
+        text name
+        text sort_order
+    }
+    survey {
+        text id PK
+        text organization_id PK
+        text category_id FK
+        text activity_id
+        text allow_only_users_with_special_access
+        text description_is_displayed
+        text description_text
+        text display_in_calendar
+        text end_date
+        text footer_is_displayed
+        text footer_text
+        text has_instant_feedback
+        text is_active
+        text is_anonymous
+        text name
+        text prevent_moving_backwards
+        text shuffle
+        text sort_order
+        text start_date
+        text submission_text
+        text user_response_attempt_allowed_type_id
+        text user_response_number_of_attempts
+    }
+    survey_question_info {
+        text name PK
+        text survey_question_id PK
+        text survey_question_organization_id PK
+        text survey_question_survey_id PK
+        text value
+    }
+    survey_question {
+        text id PK
+        text organization_id PK
+        text survey_id PK
+        text bonus
+        text difficulty
+        text feedback
+        text hint
+        text last_modified
+        text last_modified_by
+        text mandatory
+        text name
+        text points
+        text section_id
+        text template_id
+        text template_version_id
+        text text
+        text type_id
+    }
+    organization {
+        text id PK
+        text code
+        text name
+        text path
+        text type_code
+        text type_id
+        text type_name
+    }
+    enrollement_class_list {
+        text id PK
+        text organization_id PK
+        text classlist_role_display_name
+        text display_name
+        text email
+        text is_online
+        text org_defined_id
+        text profile_id
+        text role_id
+    }
+    topic {
+        text id PK
+        text module_id PK
+        text organization_id PK
+        text activity_id
+        text activity_type
+        text bookmarked
+        text completion_type
+        text description_text
+        text end_date_time
+        text grade_item_id
+        text identifier
+        text is_broken
+        text is_exempt
+        text is_hidden
+        text is_locked
+        text last_modified_date
+        text sort_order
+        text start_date_time
+        text title
+        text tool_id
+        text tool_item_id
+        text type_identifier
+        text unread
+        text url
+    }
+    module {
+        text id PK
+        text organization_id PK
+        text default_path
+        text description_text
+        text end_date_time
+        text is_hidden
+        text is_locked
+        text last_modified_date
+        text pacing_end_date
+        text pacing_start_date
+        text sort_order
+        text start_date_time
+        jsonb sub_modules
+        text title
+    }
+    quiz {
+        text id PK
+        text organization_id PK
+        text activity_id
+        text allow_hints
+        text allow_only_users_with_special_access
+        text auto_export_to_grade
+        text calc_type_id
+        text category_id
+        text description_is_displayed
+        text description_text
+        text disable_pager_and_alerts
+        text disable_right_click
+        text display_in_calendar
+        text due_date
+        text end_date
+        text footer_is_displayed
+        text footer_text
+        text grade_item_id
+        text header_is_displayed
+        text header_text
+        text instructions_is_displayed
+        text instructions_text
+        text is_active
+        text is_attempts_unlimited
+        text is_auto_set_graded
+        text is_retake_incorrect_only
+        text late_limit_minutes
+        text late_submission_option
+        text name
+        text notification_email
+        text number_of_attempts_allowed
+        text password
+        text prevent_moving_backwards
+        jsonb restrict_ip_address_range
+        text shuffle
+        text sort_order
+        text start_date
+        text submission_grace_period
+        text submission_time_limit_is_enforced
+        text submission_time_limit_show_clock
+        text submission_time_limit_time_limit_value
+    }
+    completion {
+        text org_id PK
+        text topic_id PK
+        text user_id PK
+        text completion_date
+        text completion_type
+    }
+    enrollment_user {
+        text id PK
+        text organization_id PK
+        text email
+        text org_defined_id
+        text profile_badge_url
+        text profile_id
+        text role_code
+        text role_id
+        text role_name
+    }
+    users {
+        text id PK
+        text org_id PK
+        text display_name
+        text external_email
+        text first_name
+        text is_active
+        text last_accessed_date
+        text last_name
+        text middle_name
+        text org_defined_id
+        text pronoun
+        text unique_identifier
+        text user_name
+    }
+    survey_attempt {
+        text id PK
+        text organization_id PK
+        text survey_id FK
+        text user_id FK
+        text attempt_number
+        text completed
+        text started
+    }
+    survey_category }o--|| organization : "fk"
+    survey }o--|| survey_category : "fk"
+    survey }o--|| organization : "fk"
+    survey_question_info }o--|| survey_question : "fk"
+    survey_question_info }o--|| survey_question : "fk"
+    survey_question_info }o--|| survey_question : "fk"
+    survey_question }o--|| survey : "fk"
+    survey_question }o--|| organization : "fk"
+    enrollement_class_list }o--|| users : "fk"
+    enrollement_class_list }o--|| organization : "fk"
+    topic }o--|| module : "fk"
+    topic }o--|| module : "fk"
+    module }o--|| organization : "fk"
+    quiz }o--|| organization : "fk"
+    completion }o--|| users : "fk"
+    completion }o--|| organization : "fk"
+    completion }o--|| topic : "fk"
+    enrollment_user }o--|| users : "fk"
+    enrollment_user }o--|| organization : "fk"
+    users }o--|| organization : "fk"
+    survey_attempt }o--|| survey : "fk"
+    survey_attempt }o--|| users : "fk"
+    survey_attempt }o--|| organization : "fk"

@@ -1,0 +1,263 @@
+erDiagram
+    recommendation {
+        text id PK
+        text organization_id PK
+        text activity_url
+        text badge_templates_count
+        text title
+        text type
+        text updated_at
+    }
+    employee {
+        text id PK
+        text organization_id PK
+        text country
+        text created_at
+        text department
+        text email
+        text employee_state
+        text employee_state_updated_at
+        text external_id
+        text first_name
+        text full_name
+        text job_family
+        text last_invitation_sent_at
+        text last_name
+        text location
+        text manager_external_id
+        text manager_first_name
+        text manager_last_name
+        text organization_level_1
+        text organization_level_2
+        text organization_level_3
+        text photo_url
+        text position_title
+        text state_or_province
+        text team
+        text zip_code
+    }
+    recommendation_badge_template {
+        text id PK
+        text organization_id PK
+        text recommendation_id PK
+        text image_id
+        text image_url
+        text name
+        text owner_id
+        text owner_name
+        text public
+        text updated_at
+    }
+    organization_allowed_webhook {
+        text index PK
+        text organization_id PK
+        text allowed_webhook
+    }
+    organization {
+        text id PK
+        text address
+        text allow_saml_debug
+        text bio
+        text city
+        text contact_email
+        text country
+        text created_at
+        text default_page
+        text display_logo_as_circle_in_emails
+        text enable_blockchain
+        text facebook_url
+        jsonb featured_badge_templates
+        text has_employees
+        text hide_subscription
+        text industry_id
+        text integrated_with_faethm
+        text internationalize_badge_templates
+        text is_trial
+        text legal_contact_email
+        text linked_in_name
+        text linked_in_org_id
+        text linked_in_url
+        text linkedin_a_2_p_url
+        text location
+        text missing_required_info
+        text name
+        text organization_type
+        text pdf_id
+        text photo_id
+        text photo_url
+        text primary_hex_color
+        text print_method
+        text require_template_detail_attributes
+        text state_or_province
+        text support_email
+        text support_url
+        text technical_contact_email
+        text twitter_url
+        text updated_at
+        text url
+        text vanity_slug
+        text vanity_url
+        text verified
+        text verified_at
+        text webhook_url
+        text website_url
+        text workforce_enabled
+        text zip_or_postal_code
+    }
+    badge_template_alignment {
+        text id PK
+        text badge_template_id PK
+        text description
+        text name
+        text url
+    }
+    badge_template_recommendation {
+        text id PK
+        text badge_template_id PK
+        text activity_url
+        text recommended_badge_template_id
+        text recommended_badge_template_name
+        text recommended_badge_template_url
+        text title
+        text type
+    }
+    badge_template_endorsement {
+        text id PK
+        text badge_template_id PK
+        text description
+        text endorser_id
+        text url
+    }
+    badge_template_activities {
+        text id PK
+        text badge_template_id PK
+        text activity_type
+        text activity_url
+        text recommended_badge_template_id
+        text recommended_badge_template_name
+        text recommended_badge_template_url
+        text title
+    }
+    badge_template {
+        text id PK
+        text organization_id PK
+        text allow_archive
+        text allow_delete
+        text allow_duplicate_badges
+        jsonb available_locales
+        text badges_count
+        text certification
+        text cost
+        text created_at
+        text criteria_url
+        text criteria_url_name
+        text default_expires_at
+        text default_expires_at_date
+        text default_expires_at_type
+        text description
+        text earn_this_badge_url
+        text enable_detail_attribute_visibility
+        text enable_earn_this_badge
+        text get_issue_count
+        text get_variants_issue_count
+        text global_activity_url
+        text image_id
+        text image_url
+        text job_board_url
+        text level
+        text linkedin_share_default_message
+        text lock_badge_state
+        text name
+        text only_one_skill_required
+        text owner_id
+        text primary_badge_template_id
+        text printing_disabled
+        text public
+        text recipient_type
+        text record_to_blockchain
+        jsonb reporting_tags
+        jsonb required_badge_templates
+        text send_expiring_badge_notifications
+        text settings_enable_related_badges
+        text show_badge_lmi
+        text show_lmi_jobs
+        text show_skill_tag_links
+        text show_template_settings
+        jsonb skills
+        text state
+        text state_updated_at
+        text time_to_earn
+        text translatable
+        text type_category
+        text updated_at
+        text vanity_slug
+        text variant_name
+        text variant_type
+        text variants_allowed
+        text visibility
+    }
+    employee_skill_evidence {
+        text badge_id PK
+        text employee_skill_employee_id PK
+        text type
+    }
+    employee_skill {
+        text employee_id PK
+        text organization_id PK
+        text external_id
+        text skill
+    }
+    issued_badge_issuer_entity {
+        text id PK
+        text issued_badge_id PK
+        text label
+        text name
+        text primary_boolean
+        text type
+    }
+    issued_badge {
+        text id PK
+        text organization_id PK
+        text badge_template_id FK
+        text badge_url
+        text created_at
+        text created_by_id
+        text created_by_type
+        text expires_at
+        text expires_at_date
+        text issued_at
+        text issued_at_date
+        text issued_to
+        text issued_to_first_name
+        text issued_to_last_name
+        text issued_to_middle_name
+        text issuer_earner_id
+        text issuer_summary
+        text locale
+        text public
+        text recipient_email
+        text replacement_badge_id
+        text revocation_reason
+        text state
+        text state_updated_at
+        text suppress_badge_notification_email
+        text updated_at
+        text user_id
+    }
+    recommendation }o--|| organization : "fk"
+    employee }o--|| organization : "fk"
+    recommendation_badge_template }o--|| organization : "fk"
+    recommendation_badge_template }o--|| recommendation : "fk"
+    organization_allowed_webhook }o--|| organization : "fk"
+    badge_template_alignment }o--|| badge_template : "fk"
+    badge_template_recommendation }o--|| badge_template : "fk"
+    badge_template_endorsement }o--|| badge_template : "fk"
+    badge_template_activities }o--|| badge_template : "fk"
+    badge_template }o--|| organization : "fk"
+    employee_skill_evidence }o--|| issued_badge : "fk"
+    employee_skill_evidence }o--|| employee_skill : "fk"
+    employee_skill }o--|| employee : "fk"
+    employee_skill }o--|| organization : "fk"
+    issued_badge_issuer_entity }o--|| issued_badge : "fk"
+    issued_badge }o--|| badge_template : "fk"
+    issued_badge }o--|| organization : "fk"

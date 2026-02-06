@@ -1,0 +1,507 @@
+erDiagram
+    business_detail_beneficial_owner {
+        text index PK
+        text business_detail_id PK
+        text address_city
+        text address_country_code
+        text address_line_1
+        text address_line_2
+        text address_postal_code
+        text address_state
+        text date_of_birth
+        text drivers_license
+        text email
+        text first_name
+        text last_name
+        text middle_name
+        text national_id
+        jsonb passport
+        text ssn
+    }
+    business_detail {
+        text id PK
+        text address_city
+        text address_country_code
+        text address_line_1
+        text address_line_2
+        text address_postal_code
+        text address_state
+        text business_name
+        text ein
+        text industry
+        text legal_type
+        text registration_id_country_code
+        text registration_id_number
+        text website
+    }
+    payment {
+        text id PK
+        text account_id FK
+        text bank_account_id FK
+        text loan_id FK
+        text created_at
+        text currency
+        text description
+        text principal_amount
+        text status
+    }
+    event {
+        text id PK
+        text created_at
+        jsonb data
+        text type
+    }
+    counter_party {
+        text id PK
+        text local_account_number FK
+        text account_number
+        text account_type
+        text address_city
+        text address_country_code
+        text address_line_1
+        text address_line_2
+        text address_postal_code
+        text address_state
+        text beneficiary_address_city
+        text beneficiary_address_country_code
+        text beneficiary_address_line_1
+        text beneficiary_address_line_2
+        text beneficiary_address_postal_code
+        text beneficiary_address_state
+        text created_at
+        text description
+        text email
+        text is_column_account
+        text legal_id
+        text legal_type
+        text local_bank_code
+        text local_bank_country_code
+        text local_bank_name
+        text name
+        text phone
+        text routing_number
+        text routing_number_type
+        text updated_at
+        text wire_beneficiary_email
+        text wire_beneficiary_legal_id
+        text wire_beneficiary_name
+        text wire_beneficiary_phone
+        text wire_beneficiary_type
+        text wire_drawdown_allowed
+        text wire_local_account_number
+        text wire_local_bank_code
+    }
+    disbursement {
+        text id PK
+        text account_id FK
+        text bank_account_id FK
+        text loan_id FK
+        text amount
+        text created_at
+        text currency
+        text description
+        text effective_at
+        text status
+    }
+    account {
+        text id PK
+        text bank_account_id FK
+        text account_number
+        text created_at
+        text description
+        text routing_number
+    }
+    loan {
+        text id PK
+        text primary_signer_entity_id FK
+        text balances_principal_charged_off
+        text balances_principal_holding
+        text balances_principal_outstanding
+        text balances_principal_paid
+        text canceled_at
+        text charged_off_at
+        text created_at
+        text currency
+        text delinquent_at
+        text description
+        text disputed_at
+        text is_revolving
+        text maturity_date
+        text max_principal_balance
+        text paid_off_at
+        text status
+    }
+    entity {
+        text id PK
+        jsonb document
+        text is_root
+        text name
+        jsonb review_reason
+        text type
+        text verification_status
+    }
+    book_transfer {
+        text id PK
+        text receiver_account_id FK
+        text receiver_bank_account_id FK
+        text sender_account_id FK
+        text sender_bank_account_id FK
+        text allow_overdraft
+        text amount
+        text created_at
+        text currency_code
+        text description
+        text idempotency_key
+        text status
+        text updated_at
+    }
+    transfer {
+        text id PK
+        text account_id FK
+        text counterparty_id FK
+        text sender_bank_account_id FK
+        text amount
+        text completed_at
+        text created_at
+        text currency_code
+        text description
+        text external_source_bank_name
+        text external_source_sender_name
+        text idempotency_key
+        text is_incoming
+        text receiver_internal_account_account_number_id
+        text receiver_internal_account_bank_account_id
+        text sender_account_id
+        text status
+        text type
+        text updated_at
+    }
+    wire_draw_down {
+        text id PK
+        text account_id FK
+        text bank_account_id FK
+        text amount
+        text beneficiary_account_number
+        text beneficiary_counterparty_id
+        text beneficiary_name
+        text currency_code
+        text imad
+        text is_incoming
+        text message_identifier
+        text originator_account_number
+        text originator_name
+        text originator_to_beneficiary_information
+        text received_at
+        text receiver_di_name
+        text receiver_di_routing_number
+        text sender_di_name
+        text sender_di_routing_number
+        text status
+        text wire_transfer_id
+    }
+    ach_return_detail {
+        text _fivetran_id PK
+        text ach_return_id FK
+        text addenda
+        text created_at
+        text description
+        text return_code
+        text status
+        text updated_at
+    }
+    ach_return {
+        text id PK
+        text ach_transfer_id FK
+        text created_at
+        text is_incoming
+        text status
+        text updated_at
+    }
+    international_wire_charge {
+        text _fivetran_id PK
+        text international_wire_id FK
+        text agent
+        text amount
+        text currency_code
+    }
+    international_wire {
+        text id PK
+        text account_number_id FK
+        text bank_account_id FK
+        text account_id
+        text allow_overdraft
+        text amount
+        text beneficiary_account_number
+        text beneficiary_address_city
+        text beneficiary_address_country_code
+        text beneficiary_address_line_1
+        text beneficiary_address_line_2
+        text beneficiary_address_postal_code
+        text beneficiary_address_state
+        text beneficiary_fi
+        text beneficiary_name
+        text charge_bearer
+        jsonb charges
+        text completed_at
+        text counterparty_id
+        text created_at
+        text currency_code
+        text description
+        text end_to_end_id
+        text fx_quota_id
+        text fx_rate
+        text idempotency_key
+        text initiated_at
+        text instructed_amount
+        text instructed_currency_code
+        text instruction_id
+        text instruction_to_beneficiary_fi
+        text is_incoming
+        text manual_review_at
+        text originator_account_number
+        text originator_address_city
+        text originator_address_country_code
+        text originator_address_line_1
+        text originator_address_line_2
+        text originator_address_postal_code
+        text originator_address_state
+        text originator_fi
+        text originator_name
+        text pending_submission_at
+        text raw_message
+        text remittance_info_general_info
+        text return_reason
+        text returned_amount
+        text returned_at
+        text returned_currency_code
+        text settled_amount
+        text settled_currency_code
+        text settlement_date
+        text status
+        text submitted_at
+        text uetr
+        text ultimate_beneficiary_address
+        text ultimate_beneficiary_name
+        text ultimate_originator_address
+        text ultimate_originator_name
+        text updated_at
+    }
+    ach_transfer {
+        text id PK
+        text account_id FK
+        text bank_account_id FK
+        text counterparty_id FK
+        text acknowledged_at
+        text allow_overdraft
+        text amount
+        text cancelled_at
+        text company_discretionary_data
+        text company_entry_description
+        text company_id
+        text company_name
+        text completed_at
+        text created_at
+        text currency_code
+        text description
+        text effective_on
+        text entry_class_code
+        jsonb iat_foreign_correspondent_bank_info
+        text iat_foreign_payment_amount
+        text iat_foreign_trace_number
+        text iat_odfi_branch_country_code
+        text iat_odfi_identification
+        text iat_odfi_identification_number_qualifier
+        text iat_odfi_name
+        text iat_originator_city_state_province
+        text iat_originator_country_postal_code
+        text iat_originator_name
+        text iat_originator_street_address
+        text iat_payment_related_info
+        text iat_rdfi_branch_country_code
+        text iat_rdfi_identification
+        text iat_rdfi_identification_number_qualifier
+        text iat_rdfi_name
+        text iat_receiver_city_state_province
+        text iat_receiver_country_postal_code
+        text iat_receiver_identification_number
+        text iat_receiver_street_address
+        text iat_receiving_company_or_individual_name
+        text iat_transaction_type_code
+        text idempotency_key
+        text initiated_at
+        text intermediary_financial_institutions
+        text is_incoming
+        text is_on_us
+        text manual_review_at
+        text notification_of_changes
+        text nsf_deadline
+        text odfi_routing_number
+        text payment_related_info
+        text receiver_id
+        text receiver_name
+        text return_contested_at
+        jsonb return_detail
+        text return_dishonored_at
+        text returned_at
+        text reversal_pair_transfer_id
+        text same_day
+        text settled_at
+        text status
+        text submitted_at
+        text trace_number
+        text type
+        text ultimate_beneficiary_counterparty_id
+        text ultimate_originator_counterparty_id
+        text updated_at
+    }
+    check_return {
+        text id PK
+        text check_transfer_id FK
+        text created_at
+        text return_reason
+        text status
+        text updated_at
+    }
+    check_transfer {
+        text id PK
+        text account_number_id FK
+        text bank_account_id FK
+        text account_id
+        text back_image
+        text check_number
+        text created_at
+        text currency_code
+        text delivered_by_column
+        text delivery_status
+        text deposited_amount
+        text deposited_at
+        text description
+        text external_routing_number
+        text first_return_at
+        text front_image
+        text idempotency_key
+        text is_preview_pdf_available
+        text issued_at
+        text manual_review_at
+        text memo
+        text message
+        text micr_line_amount_field
+        text micr_line_auxiliary_on_us
+        text micr_line_external_processing_code
+        text micr_line_on_us
+        text micr_line_payor_bank_routing_number
+        text payee_address
+        text payee_name
+        text pending_deposit_at
+        text pending_first_return_at
+        text pending_stop_at
+        text pending_user_initiated_return_at
+        text positive_pay_amount
+        text reclear_at
+        text rejected_at
+        text second_return_at
+        text settled_at
+        text status
+        text stopped_at
+        text type
+        text updated_at
+        text user_initiated_return_dishonored_at
+        text user_initiated_return_submitted_at
+        text user_initiated_returned_at
+    }
+    person_detail {
+        text id PK
+        text address_city
+        text address_country_code
+        text address_line_1
+        text address_line_2
+        text address_postal_code
+        text address_state
+        text date_of_birth
+        text email
+        text first_name
+        text last_name
+        text middle_name
+        jsonb passport
+        text ssn
+    }
+    bank_account_owner {
+        text bank_account_id PK
+        text owner_id PK
+    }
+    bank_account {
+        text id PK
+        text default_account_id FK
+        text balances_available_amount
+        text balances_holding_amount
+        text balances_locked_amount
+        text balances_pending_amount
+        text created_at
+        text currency_code
+        text default_account_number
+        text description
+        text is_overdraftable
+        text overdraft_reserve_account_id
+        text type
+    }
+    wire_transfer {
+        text id PK
+        text account_id FK
+        text bank_account_id FK
+        text counterparty_id FK
+        text allow_overdraft
+        text amount
+        text completed_at
+        text created_at
+        text currency_code
+        text description
+        text idempotency_key
+        text initiated_at
+        text is_incoming
+        text is_on_us
+        text pending_submission_at
+        text platform_id
+        text rejected_at
+        text status
+        text submitted_at
+        text updated_at
+        text wire_drawdown_request_id
+    }
+    business_detail_beneficial_owner }o--|| business_detail : "fk"
+    business_detail }o--|| entity : "fk"
+    payment }o--|| loan : "fk"
+    payment }o--|| bank_account : "fk"
+    payment }o--|| account : "fk"
+    counter_party }o--|| account : "fk"
+    disbursement }o--|| loan : "fk"
+    disbursement }o--|| bank_account : "fk"
+    disbursement }o--|| account : "fk"
+    account }o--|| bank_account : "fk"
+    loan }o--|| entity : "fk"
+    book_transfer }o--|| bank_account : "fk"
+    book_transfer }o--|| bank_account : "fk"
+    book_transfer }o--|| account : "fk"
+    book_transfer }o--|| account : "fk"
+    transfer }o--|| bank_account : "fk"
+    transfer }o--|| counter_party : "fk"
+    transfer }o--|| account : "fk"
+    wire_draw_down }o--|| bank_account : "fk"
+    wire_draw_down }o--|| account : "fk"
+    ach_return_detail }o--|| ach_return : "fk"
+    ach_return }o--|| ach_transfer : "fk"
+    international_wire_charge }o--|| international_wire : "fk"
+    international_wire }o--|| bank_account : "fk"
+    international_wire }o--|| account : "fk"
+    ach_transfer }o--|| bank_account : "fk"
+    ach_transfer }o--|| counter_party : "fk"
+    ach_transfer }o--|| account : "fk"
+    check_return }o--|| check_transfer : "fk"
+    check_transfer }o--|| bank_account : "fk"
+    check_transfer }o--|| account : "fk"
+    person_detail }o--|| entity : "fk"
+    bank_account_owner }o--|| entity : "fk"
+    bank_account_owner }o--|| bank_account : "fk"
+    bank_account }o--|| account : "fk"
+    wire_transfer }o--|| bank_account : "fk"
+    wire_transfer }o--|| counter_party : "fk"
+    wire_transfer }o--|| account : "fk"

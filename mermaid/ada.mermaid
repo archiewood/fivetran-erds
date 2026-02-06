@@ -1,0 +1,136 @@
+erDiagram
+    message_quick_reply {
+        text target PK
+        text message_id PK
+        text button_type
+        text label
+    }
+    message_select_table {
+        text choose_prompt PK
+        text message_id PK
+    }
+    message_selected {
+        text selected PK
+        text message_id PK
+    }
+    message {
+        text id PK
+        text conversation_id FK
+        text agent_info_default_image
+        text agent_info_external_id
+        text agent_info_image_url
+        text agent_info_internal_id
+        text agent_info_name
+        text alt_text
+        bigint amount
+        text answer_id
+        text answer_title
+        text body
+        text button_type
+        text by
+        text chatter_id
+        timestamp date_created
+        text event
+        text external_chat_id
+        text external_id
+        boolean generate_link_preview
+        boolean has_forced_quick_replies
+        boolean has_variable
+        text header
+        text in_response_to
+        boolean is_expired
+        boolean is_forced
+        boolean is_handoff
+        boolean is_positive
+        text link_description
+        text link_icon
+        text link_text
+        boolean link_was_clicked
+        boolean locked
+        text meta_data_agent_id
+        text meta_data_department_id
+        text meta_data_display_name
+        text meta_data_event_type
+        text meta_data_id
+        text meta_data_name
+        text meta_data_new_value
+        text meta_data_old_value
+        text meta_data_response_id
+        text meta_data_scope
+        text meta_data_subtype
+        text meta_data_triggered_by
+        text meta_data_type
+        text meta_message_type
+        boolean multiple
+        boolean new_window
+        text pic_url
+        text prompt
+        text raw_url
+        text recipient
+        text record_last_updated
+        bigint review
+        boolean reviewable_message
+        bigint score
+        text sender
+        text style
+        text survey_type
+        text temp_message_uuid
+        text title
+        text tos
+        text type
+        text unit
+        text url
+        text window_button_label
+        bigint window_height
+        text window_title
+        text window_url
+        bigint window_width
+    }
+    conversation_feedback {
+        text feedback_message PK
+        text conversation_id PK
+    }
+    conversation {
+        text id PK
+        text agent_handle_time
+        jsonb agent_id
+        jsonb agent_name
+        text automated_resolution_classification
+        text automated_resolution_classification_reason
+        text bot_handle_time
+        text browser
+        text browser_version
+        text chatter_id
+        text csat_ces_max
+        text csat_comment
+        text csat_customer_effort_score
+        boolean csat_is_positive
+        text csat_net_promoter_score
+        boolean csat_resolved
+        bigint csat_score
+        text csat_style
+        text csat_survey_type
+        timestamp date_created
+        timestamp date_updated
+        text device
+        text end_user_id
+        text generated_topic_id
+        text generated_topic_label
+        text generated_topic_v_2_desc
+        text generated_topic_v_2_id
+        text generated_topic_v_2_parent_id
+        text generated_topic_v_2_title
+        text inquiry_summary
+        boolean is_engaged
+        boolean is_escalated
+        boolean is_test_user
+        text languages
+        text oauth_channel
+        text platform
+        text record_last_updated
+    }
+    message_quick_reply }o--|| message : "fk"
+    message_select_table }o--|| message : "fk"
+    message_selected }o--|| message : "fk"
+    message }o--|| conversation : "fk"
+    conversation_feedback }o--|| conversation : "fk"

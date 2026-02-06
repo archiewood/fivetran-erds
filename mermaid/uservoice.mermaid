@@ -1,0 +1,276 @@
+erDiagram
+    external_account {
+        bigint id PK
+        timestamp created_at
+        timestamp external_created_at
+        text external_id
+        boolean is_blocking
+        timestamp last_active_at
+        bigint ltv_cents
+        bigint mrr_cents
+        text name
+        text plan
+        timestamp updated_at
+    }
+    user_team {
+        bigint team_id PK
+        bigint user_id PK
+    }
+    label {
+        bigint id PK
+        bigint parent_id FK
+        timestamp created_at
+        text full_name
+        bigint level
+        text name
+        timestamp updated_at
+    }
+    comment {
+        bigint id PK
+        bigint created_by_id FK
+        bigint suggestion_id FK
+        text body
+        text channel
+        timestamp created_at
+        bigint inappropriate_flags_count
+        boolean is_admin_comment
+        text state
+        timestamp updated_at
+    }
+    team {
+        bigint id PK
+        timestamp created_at
+        text name
+        timestamp updated_at
+    }
+    custom_field_enum_value {
+        bigint id PK
+        boolean is_default
+        text label
+        double_precision numeric_value
+    }
+    supporter {
+        bigint id PK
+        bigint suggestion_id FK
+        bigint user_id FK
+        text channel
+        timestamp created_at
+        text how
+        boolean is_subscribed
+        timestamp updated_at
+    }
+    suggestion_label {
+        bigint label_id PK
+        bigint suggestion_id PK
+    }
+    feature_status {
+        bigint id PK
+        bigint created_by_id FK
+        timestamp created_at
+        boolean is_default
+        text name
+        timestamp updated_at
+    }
+    supporter_message {
+        bigint id PK
+        bigint created_by_id FK
+        bigint suggestion_id FK
+        text body
+        timestamp created_at
+        bigint mail_clicked_count
+        bigint mail_opened_count
+        bigint mail_sent_count
+        text notification_email_address
+        timestamp updated_at
+    }
+    request {
+        bigint id PK
+        bigint suggestion_id FK
+        bigint supporter_id FK
+        bigint user_id FK
+        text body
+        text channel
+        timestamp created_at
+        text prompt
+        text referrer
+        bigint severity
+        text source_guid
+        text source_title
+        text source_type
+        text source_url
+        timestamp updated_at
+    }
+    suggestion_history {
+        bigint id PK
+        bigint category_id FK
+        bigint created_by_id FK
+        bigint forum_id FK
+        bigint parent_suggestion_id FK
+        bigint status_id FK
+        timestamp approved_at
+        text average_engagement
+        text body
+        text channel
+        timestamp closed_at
+        timestamp created_at
+        text engagement_trend
+        timestamp first_support_at
+        bigint inappropriate_flags_count
+        boolean is_blocker
+        bigint recent_engagement
+        text state
+        text title
+        boolean unmergeable
+        timestamp updated_at
+    }
+    category {
+        bigint id PK
+        bigint forum_id FK
+        timestamp created_at
+        text name
+        timestamp updated_at
+    }
+    message {
+        bigint id PK
+        bigint comment_id FK
+        bigint note_id FK
+        bigint request_id FK
+        bigint user_id FK
+        timestamp created_at
+        boolean is_email_reply
+        text stripped_html
+        text stripped_text
+        timestamp thread_updated_at
+    }
+    user {
+        bigint id PK
+        text allowed_state
+        text city
+        boolean comment_notifications
+        text country
+        timestamp created_at
+        text email_address
+        boolean email_confirmed
+        text guid
+        boolean is_admin
+        boolean is_owner
+        text job_title
+        timestamp last_login
+        text name
+        text region
+        text state
+        boolean status_notifications
+        timestamp support_created_at
+        timestamp updated_at
+    }
+    forum {
+        bigint id PK
+        boolean category_required
+        boolean classic_voting
+        timestamp created_at
+        text example
+        boolean is_private
+        boolean is_public
+        text name
+        text prompt
+        timestamp updated_at
+        text welcome_message
+    }
+    external_user {
+        bigint id PK
+        bigint external_account_id FK
+        bigint user_id FK
+        timestamp created_at
+        text email
+        timestamp external_created_at
+        text external_id
+        text ip
+        timestamp last_seen_at
+        text name
+        bigint seen_days
+        text type
+        timestamp updated_at
+    }
+    feature_suggestion {
+        bigint feature_id PK
+        bigint suggestion_id PK
+    }
+    nps_rating {
+        bigint id PK
+        bigint user_id FK
+        text body
+        timestamp created_at
+        text prompt
+        bigint rating
+        timestamp updated_at
+    }
+    note {
+        bigint id PK
+        bigint created_by_id FK
+        bigint suggestion_id FK
+        text body
+        timestamp created_at
+        timestamp updated_at
+    }
+    product_area {
+        bigint id PK
+        bigint created_by_id FK
+        timestamp created_at
+        text name
+        timestamp updated_at
+    }
+    status {
+        bigint id PK
+        boolean allow_comments
+        timestamp created_at
+        boolean is_open
+        text name
+        timestamp updated_at
+    }
+    feature_history {
+        bigint id PK
+        bigint created_by_id FK
+        bigint feature_status_id FK
+        bigint product_area_id FK
+        timestamp created_at
+        text description
+        boolean is_blocker
+        text name
+        timestamp updated_at
+    }
+    user_team }o--|| user : "fk"
+    user_team }o--|| team : "fk"
+    label }o--|| label : "fk"
+    comment }o--|| suggestion_history : "fk"
+    comment }o--|| user : "fk"
+    supporter }o--|| user : "fk"
+    supporter }o--|| suggestion_history : "fk"
+    suggestion_label }o--|| suggestion_history : "fk"
+    suggestion_label }o--|| label : "fk"
+    feature_status }o--|| user : "fk"
+    supporter_message }o--|| suggestion_history : "fk"
+    supporter_message }o--|| user : "fk"
+    request }o--|| user : "fk"
+    request }o--|| suggestion_history : "fk"
+    request }o--|| supporter : "fk"
+    suggestion_history }o--|| category : "fk"
+    suggestion_history }o--|| user : "fk"
+    suggestion_history }o--|| forum : "fk"
+    suggestion_history }o--|| suggestion_history : "fk"
+    suggestion_history }o--|| status : "fk"
+    category }o--|| forum : "fk"
+    message }o--|| user : "fk"
+    message }o--|| request : "fk"
+    message }o--|| comment : "fk"
+    message }o--|| note : "fk"
+    external_user }o--|| user : "fk"
+    external_user }o--|| external_account : "fk"
+    feature_suggestion }o--|| feature_history : "fk"
+    feature_suggestion }o--|| suggestion_history : "fk"
+    nps_rating }o--|| user : "fk"
+    note }o--|| suggestion_history : "fk"
+    note }o--|| user : "fk"
+    product_area }o--|| user : "fk"
+    feature_history }o--|| user : "fk"
+    feature_history }o--|| feature_status : "fk"
+    feature_history }o--|| product_area : "fk"

@@ -1,0 +1,504 @@
+erDiagram
+%% Note
+%% The documentation includes additional fields that we fetch from the source.
+%% ADVERTISER_REPORTS 
+%% Full documentation of reporting tables 
+%% available in docs.
+%% ------------
+%% | Reports |
+%% |--------|
+%% | GMV_ADVERTISER_COUNTRY_REPORT_DAILY |
+    smart_plus_ad_creative_info {
+        bigint ad_material_id PK
+        bigint smart_plus_ad_id FK
+        text ad_format
+        text aigc_disclosure_type
+        text identity_authorized_bc_id
+        text identity_id
+        text identity_type
+        jsonb image_info
+        text material_name
+        text material_operation_status
+        text music_info_music_id
+        text tiktok_item_id
+        text video_info_file_name
+        text video_info_video_id
+    }
+    %% AD_Reports
+%% Full documentation of reporting tables 
+%% available in docs.
+%% ----
+%% | Reports |
+%% |--------|
+%% |AD_LANGUAGE REPORT |
+%% |AD_PLATFORM_ REPORT|
+%% |AD_REPORT_HOURLY|
+%% |AD_REPORT_DAILY|
+%% |AD_REPORT_LIFETIME|
+%% |AD_AGE_GENDER_REPORT|
+%% |AD_COUNTRY_ REPORT|
+%% |RESERVATION_AD_REPORT_HOURLY|
+%% |RESERVATION_AD_REPORT_DAILY|
+    ad_history {
+        bigint ad_id PK
+        timestamp updated_at PK
+        bigint adgroup_id FK
+        bigint advertiser_id FK
+        bigint campaign_id FK
+        text video_id FK
+        text ad_format
+        text ad_name
+        text ad_text
+        text aigc_disclosure_type
+        text app_name
+        text avatar_icon_web_uri
+        text brand_safety_postbid_partner
+        text brand_safety_vast_url
+        boolean branded_content_disabled
+        text buying_type
+        text call_to_action
+        text call_to_action_id
+        text card_id
+        integer carousel_image_index
+        text click_tracking_url
+        text cpp_url
+        timestamp create_time
+        boolean creative_authorized
+        text creative_type
+        text dark_post_status
+        text deeplink
+        text deeplink_type
+        text display_name
+        text dynamic_destination
+        text dynamic_format
+        text fallback_type
+        text identity_authorized_bc_id
+        text identity_id
+        text identity_type
+        jsonb image_ids
+        text impression_tracking_url
+        boolean is_aco
+        boolean is_new_structure
+        text item_duet_status
+        text item_stitch_status
+        text landing_page_url
+        text music_id
+        text operation_status
+        text optimization_event
+        text page_id
+        text phone_number
+        text phone_region_calling_code
+        text phone_region_code
+        text playable_url
+        text product_set_id
+        text product_specific_type
+        text profile_image_url
+        boolean promotional_music_disabled
+        text secondary_status
+        text shopping_ads_deeplink_type
+        text shopping_ads_fallback_type
+        text shopping_ads_video_package_id
+        text smart_plus_ad_id
+        text tiktok_item_id
+        text tiktok_page_category
+        text tracking_app_id
+        text tracking_pixel_id
+        boolean vast_moat_enabled
+        text vertical_video_strategy
+        text viewability_postbid_partner
+        text viewability_vast_url
+    }
+    image_history {
+        text image_id PK
+        timestamp updated_at PK
+        text advertiser_id FK
+        timestamp created_at
+        boolean displayable
+        text file_name
+        text format
+        integer height
+        text image_url
+        boolean is_carousel_usable
+        text material_id
+        text signature
+        integer size
+        integer width
+    }
+    %% CAMPAIGN_REPORTS 
+%% Full documentation of reporting tables 
+%% available in docs.
+%% ------------
+%% | Reports |
+%% |--------|
+%% | CAMPAIGN_LANGUAGE REPORT |
+%% | CAMPAIGN_PLATFORM_ REPORT|
+%% | CAMPAIGN_REPORT_HOURLY|
+%% |CAMPAIGN_REPORT_DAILY|
+%% |CAMPAIGN_REPORT_LIFETIME|
+%% |CAMPAIGN_AGE_GENDER_REPORT|
+%% |CAMPAIGN_COUNTRY_ REPORT|
+%% |RESERVATION_CAMPAIGN_REPORT_HOURLY|
+%% |RESERVATION_CAMPAIGN_REPORT_DAILY|
+%% |GMV_CAMPAIGN_COUNTRY_REPORT_DAILY|
+    campaign_history {
+        bigint campaign_id PK
+        timestamp updated_at PK
+        bigint advertiser_id FK
+        text app_id
+        text app_promotion_type
+        text bid_type
+        double_precision budget
+        text budget_mode
+        boolean budget_optimize_on
+        text buying_type
+        text campaign_app_profile_page_state
+        text campaign_name
+        text campaign_product_source
+        text campaign_type
+        timestamp create_time
+        text deep_bid_type
+        boolean is_advanced_dedicated_campaign
+        text is_new_structure
+        boolean is_search_campaign
+        boolean is_smart_performance_campaign
+        text objective
+        text objective_type
+        text operation_status
+        text optimization_goal
+        text postback_window_mode
+        text rf_campaign_type
+        double_precision roas_bid
+        text rta_id
+        boolean rta_product_selection_enabled
+        text secondary_status
+        text split_test_variable
+    }
+    gmv_max_campaign_history {
+        bigint campaign_id PK
+        timestamp updated_at PK
+        bigint advertiser_id FK
+        text campaign_name
+        timestamp create_time
+        text gmx_max_promotion_type
+        text objective_type
+        text operation_status
+        text roi_protection_compensation_status
+        text secondary_status
+    }
+    pixel_statistic {
+        text _fivetran_id PK
+        bigint advertiser_id PK
+        bigint pixel_id PK
+        bigint attributed_count
+        text pixel_event_type
+        bigint preview_count
+        bigint total_count
+    }
+    smart_plus_ad_deeplink_utm_param {
+        text _fivetran_id PK
+        bigint smart_plus_ad_id FK
+        jsonb custom_parameters
+        text utm_campaign
+        text utm_content
+        text utm_medium
+        text utm_source
+    }
+    video_history {
+        timestamp updated_at PK
+        text video_id PK
+        text advertiser_id FK
+        boolean allow_download
+        jsonb allowed_placements
+        double_precision bit_rate
+        text create_time
+        boolean displayable
+        text duration
+        text file_name
+        text format
+        integer height
+        text material_id
+        text preview_url
+        text preview_url_expire_time
+        text signature
+        integer size
+        text video_cover_url
+        integer width
+    }
+    smart_plus_ad_utm_param {
+        text _fivetran_id PK
+        bigint smart_plus_ad_id FK
+        jsonb custom_parameters
+        text utm_campaign
+        text utm_content
+        text utm_medium
+        text utm_source
+    }
+    pixel {
+        bigint id PK
+        bigint advertiser_id PK
+        boolean advanced_matching_field_email
+        boolean advanced_matching_field_phone_number
+        text code
+        timestamp create_time
+        text name
+        text partner_name
+        text script
+        text setup_mode
+    }
+    pixel_event {
+        bigint id PK
+        bigint pixel_id PK
+        text code
+        text currency
+        text currency_value
+        text custom_event_type
+        boolean deprecated
+        text name
+        text optimization_event
+        text statistic_type
+        text type
+    }
+    pixel_event_rule {
+        text _fivetran_id PK
+        bigint event_id PK
+        text operator
+        text trigger
+        text value
+        text variable
+    }
+    smart_plus_ad_history {
+        bigint smart_plus_ad_id PK
+        timestamp updated_at PK
+        bigint adgroup_id FK
+        bigint advertiser_id FK
+        bigint campaign_id FK
+        text ad_name
+        jsonb ad_text_list
+        text adgroup_name
+        jsonb auto_disclaimer_types
+        jsonb auto_message_list
+        text call_to_action_id
+        jsonb call_to_action_list
+        text campaign_name
+        boolean catalog_creative_toggle
+        timestamp create_time
+        boolean creative_auto_add_toggle
+        jsonb custom_product_page_list
+        text dark_post_status
+        jsonb deeplink_list
+        text end_card_cta
+        text fallback_type
+        text identity_id
+        text identity_type
+        jsonb interactive_add_on_list
+        jsonb landing_page_url_list
+        text operation_status
+        jsonb page_list
+        text phone_info_phone_number
+        text phone_info_phone_region_calling_code
+        text phone_info_phone_region_code
+        jsonb product_display_field_list
+        jsonb product_ids
+        jsonb product_info_selling_points
+        text product_set_id
+        text product_specific_type
+        text secondary_status
+        text tracking_info_click_tracking_url
+        text tracking_info_impression_tracking_url
+        text tracking_info_tracking_app_id
+        text tracking_info_tracking_message_event_set_id
+    }
+    %% ADGROUP_Reports
+%% Full documentation of reporting tables 
+%% available in docs.
+%% ----
+%% | Reports |
+%% |--------|
+%% |ADGROUP_REPORT_DAILY|
+%% |ADGROUP_REPORT_HOURLY|
+%% |ADGROUP_REPORT_LIFETIME|
+%% |RESERVATION_ADGROUP_REPORT_DAILY|
+%% |RESERVATION_ADGROUP_REPORT_HOURLY|
+%% ----
+%% NOTE:
+%% We specify a filter buying_types in our calls and assign the filter value to the synthetic field buying_type
+    adgroup_history {
+        bigint adgroup_id PK
+        timestamp updated_at PK
+        bigint advertiser_id FK
+        bigint campaign_id FK
+        jsonb action_categories
+        integer action_days
+        text adgroup_app_profile_page_state
+        text adgroup_name
+        jsonb age_groups
+        text app_download_url
+        bigint app_id
+        text app_name
+        text app_type
+        text attribution_event_count
+        jsonb audience
+        text audience_type
+        text bid_display_mode
+        double_precision bid_price
+        text bid_type
+        text billing_event
+        text brand_safety_partner
+        text brand_safety_type
+        double_precision budget
+        text budget_mode
+        text buying_type
+        integer category
+        text click_attribution_window
+        boolean comment_disabled
+        double_precision conversion_bid_price
+        double_precision cpm
+        text cpv_video_duration
+        timestamp create_time
+        text creative_material_mode
+        text dayparting
+        text deep_bid_type
+        double_precision deep_cpa_bid
+        text delivery_mode
+        double_precision discount_amount
+        double_precision discount_percentage
+        text discount_type
+        text display_name
+        text engaged_view_attribution_window
+        jsonb excluded_audience
+        text fallback_type
+        text feed_type
+        integer frequency
+        integer frequency_schedule
+        text gender
+        text identity_authorized_bc_id
+        text identity_id
+        text identity_type
+        jsonb interest_category_v_2
+        boolean inventory_filter_enabled
+        text ios_14_quota_type
+        text ios_14_targeting
+        integer is_comment_disable
+        boolean is_hfss
+        boolean is_new_structure
+        boolean is_smart_performance_campaign
+        jsonb keywords
+        text landing_page_url
+        jsonb languages
+        jsonb location
+        text min_android_version
+        text min_ios_version
+        jsonb network_types
+        double_precision next_day_retention
+        text open_url
+        text open_url_type
+        jsonb operating_systems
+        text operation_status
+        text optimization_event
+        text optimization_goal
+        text pacing
+        text package
+        jsonb pangle_block_app_list_id
+        bigint pixel_id
+        text placement_type
+        jsonb placements
+        double_precision pre_discount_budget
+        double_precision pre_discount_cpm
+        integer predict_impression
+        text product_source
+        text profile_image
+        text promotion_target_type
+        text promotion_type
+        text promotion_website_type
+        integer purchased_impression
+        integer purchased_reach
+        double_precision rf_estimated_cpr
+        double_precision rf_estimated_frequency
+        text rf_purchased_type
+        double_precision roas_bid
+        text saved_audience_id
+        timestamp schedule_end_time
+        timestamp schedule_start_time
+        text schedule_type
+        double_precision scheduled_budget
+        boolean search_result_enabled
+        text secondary_optimization_event
+        text secondary_status
+        boolean share_disabled
+        integer shopping_ads_retargeting_actions_days
+        text shopping_ads_retargeting_custom_audience_relation
+        text shopping_ads_retargeting_type
+        text shopping_ads_type
+        integer skip_learning_phase
+        boolean smart_audience_enabled
+        boolean smart_interest_behavior_enabled
+        text spending_power
+        text split_test_group_id
+        text split_test_status
+        text statistic_type
+        text store_authorized_bc_id
+        text store_id
+        jsonb tiktok_subplacements
+        text vbo_window
+        text vertical_sensitivity_id
+        jsonb video_actions
+        text video_download
+        boolean video_download_disabled
+        text view_attribution_window
+    }
+    advertiser {
+        bigint id PK
+        text address
+        double_precision balance
+        text cellphone_number
+        text company
+        text contacter
+        text country
+        timestamp create_time
+        text currency
+        text description
+        text email
+        text industry
+        text language
+        text license_no
+        text license_url
+        text name
+        text promotion_area
+        text rejection_reason
+        text role
+        text status
+        text telephone_number
+        text timezone
+    }
+    utm_param {
+        text _fivetran_id PK
+        bigint ad_id PK
+        jsonb custom_parameters
+        text utm_campaign
+        text utm_content
+        text utm_medium
+        text utm_source
+        text utm_term
+    }
+    smart_plus_ad_creative_info }o--|| smart_plus_ad_history : "fk"
+    ad_history }o--|| advertiser : "fk"
+    ad_history }o--|| adgroup_history : "fk"
+    ad_history }o--|| campaign_history : "fk"
+    ad_history }o--|| video_history : "fk"
+    image_history }o--|| advertiser : "fk"
+    campaign_history }o--|| advertiser : "fk"
+    gmv_max_campaign_history }o--|| advertiser : "fk"
+    pixel_statistic }o--|| pixel : "fk"
+    pixel_statistic }o--|| advertiser : "fk"
+    smart_plus_ad_deeplink_utm_param }o--|| smart_plus_ad_history : "fk"
+    video_history }o--|| advertiser : "fk"
+    smart_plus_ad_utm_param }o--|| smart_plus_ad_history : "fk"
+    pixel }o--|| advertiser : "fk"
+    pixel_event }o--|| pixel : "fk"
+    pixel_event_rule }o--|| pixel_event : "fk"
+    smart_plus_ad_history }o--|| advertiser : "fk"
+    smart_plus_ad_history }o--|| adgroup_history : "fk"
+    smart_plus_ad_history }o--|| campaign_history : "fk"
+    adgroup_history }o--|| advertiser : "fk"
+    adgroup_history }o--|| campaign_history : "fk"
+    utm_param }o--|| ad_history : "fk"

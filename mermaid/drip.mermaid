@@ -1,0 +1,189 @@
+erDiagram
+    form {
+        text id PK
+        text account_id FK
+        jsonb blacklist
+        text button_text
+        text confirmation_heading
+        text confirmation_text
+        text created_at
+        text days_between_popup
+        text days_between_popup_after_close
+        text description
+        text headline
+        text hide_on_mobile
+        text is_blacklist_enabled
+        text is_embeddable
+        text is_whitelist_enabled
+        text is_widget_enabled
+        text opacity
+        text orientation
+        text primary_color
+        text secondary_color
+        text seconds_before_popup
+        text send_ga_event
+        text show_labels
+        jsonb whitelist
+    }
+    email_series_subscriber_active {
+        text account_id PK
+        text campaign_id PK
+        text id PK
+        timestamp created_at
+    }
+    single_email_campaign {
+        text id PK
+        text account_id FK
+        text bcc
+        timestamp created_at
+        text localize_sending_time
+        text name
+        text send_at
+        text status
+        text subject
+        text text_body
+    }
+    email_series_subscriber_removed {
+        text account_id PK
+        text campaign_id PK
+        text id PK
+        timestamp created_at
+    }
+    workflow_trigger_action_required {
+        text code PK
+        text message PK
+        text workflow_trigger_id PK
+    }
+    workflow_trigger {
+        text id PK
+        text account_id FK
+        text workflow_id FK
+        text provider
+        text trigger_type
+        text type
+    }
+    account {
+        text id PK
+        timestamp created_at
+        text default_from_email
+        text default_from_name
+        text default_postal_address
+        text enable_third_party_cookies
+        text name
+        text phone_number
+        text primary_email
+        text url
+    }
+    email_series_campaign_form {
+        text campaign_id PK
+        text form_id PK
+    }
+    email_series_campaign {
+        text id PK
+        text account_id FK
+        text active_subscriber_count
+        text bcc
+        text confirmation_url
+        timestamp created_at
+        text days_of_the_week_mask
+        text double_optin
+        text email_count
+        text localize_sending_time
+        text minutes_from_midnight
+        text name
+        text notify_subscribe_email
+        text notify_unsubscribe_email
+        text send_to_confirmation_page
+        text start_immediately
+        text status
+        text unsubscribed_subscriber_count
+        text use_custom_confirmation_page
+    }
+    email_series_subscriber_unsubscribed {
+        text account_id PK
+        text campaign_id PK
+        text id PK
+        timestamp created_at
+    }
+    people_tag {
+        text id PK
+        text people_id PK
+    }
+    people {
+        text id PK
+        text account_id FK
+        text address_1
+        text address_2
+        text base_lead_score
+        text city
+        text country
+        timestamp created_at
+        text email
+        text eu_consent
+        text first_name
+        text ip_address
+        text landing_url
+        text last_name
+        text lead_score
+        text lifetime_value
+        text original_referrer
+        text phone
+        text prospect
+        text sms_consent
+        text sms_number
+        text state
+        text status
+        text time_zone
+        text user_agent
+        text utc_offset
+        text visitor_uuid
+        text zip
+    }
+    workflow {
+        text id PK
+        text account_id FK
+        timestamp created_at
+        text name
+        text status
+    }
+    event_action {
+        text event_action PK
+        text account_id PK
+    }
+    conversation {
+        text id PK
+        text account_id FK
+        text counting_method
+        timestamp created_at
+        text default_value
+        text name
+        text status
+        text url
+    }
+    custom_field_identifier {
+        text custom_field_id PK
+        text account_id PK
+    }
+    form }o--|| account : "fk"
+    email_series_subscriber_active }o--|| people : "fk"
+    email_series_subscriber_active }o--|| account : "fk"
+    email_series_subscriber_active }o--|| email_series_campaign : "fk"
+    single_email_campaign }o--|| account : "fk"
+    email_series_subscriber_removed }o--|| people : "fk"
+    email_series_subscriber_removed }o--|| account : "fk"
+    email_series_subscriber_removed }o--|| email_series_campaign : "fk"
+    workflow_trigger_action_required }o--|| workflow_trigger : "fk"
+    workflow_trigger }o--|| account : "fk"
+    workflow_trigger }o--|| workflow : "fk"
+    email_series_campaign_form }o--|| form : "fk"
+    email_series_campaign_form }o--|| email_series_campaign : "fk"
+    email_series_campaign }o--|| account : "fk"
+    email_series_subscriber_unsubscribed }o--|| people : "fk"
+    email_series_subscriber_unsubscribed }o--|| account : "fk"
+    email_series_subscriber_unsubscribed }o--|| email_series_campaign : "fk"
+    people_tag }o--|| people : "fk"
+    people }o--|| account : "fk"
+    workflow }o--|| account : "fk"
+    event_action }o--|| account : "fk"
+    conversation }o--|| account : "fk"
+    custom_field_identifier }o--|| account : "fk"

@@ -1,0 +1,255 @@
+erDiagram
+    users {
+        text id PK
+        text birth_date
+        text created_at
+        text department_id
+        text email
+        text external_user_id
+        text gender
+        boolean is_admin
+        text manager_id
+        text name
+        text preferred_name
+        text start_date
+        text status
+        text timezone
+        text title
+        text updated_at
+    }
+    goal_user {
+        text goal_id PK
+        text user_id PK
+    }
+    question_rating_scale {
+        text _fivetran_id PK
+        text question_id FK
+        text descriptor
+        double_precision value
+    }
+    question {
+        text id PK
+        text body
+        text choices
+        text description
+        boolean has_free_form_text
+    }
+    user_direct_report {
+        text report_id PK
+        text user_id PK
+    }
+    revision_question_rating_scale {
+        text _fivetran_id PK
+        text revision_question_id FK
+        text descriptor
+        double_precision value
+    }
+    revision_question {
+        text id PK
+        text body
+        text choices
+        text description
+        boolean has_free_form_text
+    }
+    review_competency {
+        text id PK
+        text description
+        text name
+    }
+    feedback_competency {
+        text id PK
+        text description
+        text name
+    }
+    task {
+        text id PK
+        text goal_id FK
+        text review_cycle_id FK
+        text user_id FK
+        bigint complete_requests_count
+        timestamp due_at
+        text object
+        bigint total_requests_count
+        text type
+    }
+    review_cycle_reviewee {
+        text reviewee_id PK
+        text review_cycle_id FK
+        text user_id FK
+    }
+    department {
+        text id PK
+        timestamp created_at
+        text description
+        text name
+    }
+    custom_attribute {
+        text id PK
+        text name
+        text type
+        text visibility
+    }
+    custom_attribute_value {
+        text id PK
+        text value
+    }
+    user_custom_attribute {
+        text custom_attribute_id PK
+        text custom_attribute_value_id PK
+        text custom_attribute_temp_users_id FK
+        text user_id
+    }
+    child_goal {
+        text child_goal_id PK
+        text goal_id PK
+    }
+    tag_goal {
+        text goal_id PK
+        text tag_id PK
+    }
+    goal {
+        text id PK
+        text department_id FK
+        text parent_goal_id FK
+        text amount_type
+        timestamp archived_at
+        timestamp completed_at
+        timestamp created_at
+        double_precision current_amount
+        text description
+        text due_date
+        double_precision ending_amount
+        text goal_type
+        boolean is_private
+        timestamp last_updated_at
+        text name
+        text priority
+        timestamp published_at
+        text start_date
+        double_precision starting_amount
+        text state
+        text status
+        timestamp updated_at
+    }
+    update_response {
+        text id PK
+        text update_id FK
+        text answer
+        text question
+    }
+    updates {
+        text id PK
+        text author_id FK
+        text manager_id FK
+        timestamp created_at
+        boolean is_public
+        timestamp published_at
+        timestamp reviewed_at
+        text sentiment_id
+        double_precision sentiment_rating
+    }
+    review {
+        text id PK
+        text competency_id FK
+        text goal_id FK
+        text question_id FK
+        text review_cycle_id FK
+        text reviewee_id FK
+        text reviewer_id FK
+        text revision_question_id FK
+        text calibrated_response_choices
+        text calibrated_response_comment
+        double_precision calibrated_response_comment_sentiment
+        timestamp calibrated_response_created_at
+        double_precision calibrated_response_rating
+        timestamp calibrated_response_updated_at
+        timestamp declined_at
+        text response_choices
+        text response_comment
+        double_precision response_comment_sentiment
+        timestamp response_created_at
+        double_precision response_rating
+        timestamp response_updated_at
+        text review_type
+        timestamp submitted_at
+    }
+    tags {
+        text id PK
+        timestamp created_at
+        text name
+        timestamp updated_at
+    }
+    feedback_target {
+        text feedback_id PK
+        text user_id PK
+    }
+    feedback_company {
+        text company_value_id PK
+        text feedback_id PK
+    }
+    feedback {
+        text id PK
+        text author_id FK
+        text competency_id FK
+        text feedback_request_author_id FK
+        text feedback_request_competency_id FK
+        text feedback_request_subject_id FK
+        text body
+        timestamp created_at
+        text feedback_request_body
+        timestamp feedback_request_created_at
+        timestamp feedback_request_fulfilled_at
+        boolean is_public
+        text visibility
+    }
+    review_cycle {
+        text id PK
+        text creator_id FK
+        timestamp created_at
+        text name
+        timestamp peer_selection_started_at
+        timestamp reviews_ended_at
+        timestamp reviews_started_at
+        text stage
+        timestamp updated_at
+    }
+    goal_user }o--|| goal : "fk"
+    goal_user }o--|| users : "fk"
+    question_rating_scale }o--|| question : "fk"
+    user_direct_report }o--|| users : "fk"
+    user_direct_report }o--|| users : "fk"
+    revision_question_rating_scale }o--|| revision_question : "fk"
+    task }o--|| goal : "fk"
+    task }o--|| review_cycle : "fk"
+    task }o--|| users : "fk"
+    review_cycle_reviewee }o--|| users : "fk"
+    review_cycle_reviewee }o--|| users : "fk"
+    review_cycle_reviewee }o--|| review_cycle : "fk"
+    user_custom_attribute }o--|| custom_attribute : "fk"
+    user_custom_attribute }o--|| custom_attribute_value : "fk"
+    user_custom_attribute }o--|| users : "fk"
+    child_goal }o--|| goal : "fk"
+    child_goal }o--|| goal : "fk"
+    tag_goal }o--|| tags : "fk"
+    tag_goal }o--|| goal : "fk"
+    goal }o--|| goal : "fk"
+    goal }o--|| department : "fk"
+    update_response }o--|| updates : "fk"
+    updates }o--|| users : "fk"
+    updates }o--|| users : "fk"
+    review }o--|| question : "fk"
+    review }o--|| revision_question : "fk"
+    review }o--|| users : "fk"
+    review }o--|| review_cycle_reviewee : "fk"
+    review }o--|| goal : "fk"
+    review }o--|| review_competency : "fk"
+    review }o--|| review_cycle : "fk"
+    feedback_target }o--|| users : "fk"
+    feedback_target }o--|| feedback : "fk"
+    feedback_company }o--|| feedback : "fk"
+    feedback }o--|| users : "fk"
+    feedback }o--|| feedback_competency : "fk"
+    feedback }o--|| users : "fk"
+    feedback }o--|| feedback_competency : "fk"
+    feedback }o--|| users : "fk"
+    review_cycle }o--|| users : "fk"

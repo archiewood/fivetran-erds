@@ -1,0 +1,357 @@
+erDiagram
+    project_template {
+        text id PK
+        text project_category_id FK
+        text created_at
+        text description
+        text name
+        text project_name
+        text updated_at
+    }
+    note_user {
+        text note_id PK
+        text user_id PK
+    }
+    note_author {
+        text id PK
+        text note_id PK
+        text license_status
+        text name
+    }
+    note_tag {
+        text note_tag_id PK
+        text note_id PK
+    }
+    note {
+        text id PK
+        text account_id FK
+        text note_category_id FK
+        text organization_id FK
+        text archived_at
+        text created_at
+        text date
+        text external_id
+        text note
+        text subject
+        text updated_at
+    }
+    project {
+        text id PK
+        text account_id FK
+        text organization_id FK
+        text project_category_id FK
+        text template_id FK
+        text actual_completion_date
+        text actual_start_date
+        text archived_at
+        text created_at
+        text duration_in_days
+        text name
+        text owned_by_user_id
+        text project_status_id
+        text target_completion_date
+        text target_start_date
+    }
+    project_category {
+        text id PK
+        text created_at
+        text name
+        text updated_at
+    }
+    custom_trait {
+        text field_type PK
+        text id PK
+        text created_at
+        text label
+        text path
+        text type
+    }
+    custom_object_field {
+        text index PK
+        text custom_object_id PK
+        text created_at
+        text id
+        text label
+        text path
+        text type
+    }
+    custom_object {
+        text id PK
+        text created_at
+        text label
+        text name
+        text sync_active
+        text updated_at
+        text write_mode
+    }
+    conversation_message_to {
+        text conversation_id PK
+        text conversation_message_id PK
+        text id PK
+        text type
+    }
+    conversation_message_cc {
+        text conversation_id PK
+        text conversation_message_id PK
+        text id PK
+        text type
+    }
+    conversation_message {
+        text conversation_id PK
+        text id PK
+        text from_id FK
+        jsonb bcc
+        text created_at
+        text external_id
+        text from_type
+        text message
+        text time_stamp
+        text type
+        text updated_at
+    }
+    conversation_account {
+        text account_id PK
+        text conversation_id PK
+    }
+    conversation_user {
+        text conversation_id PK
+        text user_id PK
+    }
+    conversation_admin {
+        text admin_id PK
+        text conversation_id PK
+        text email FK
+        text license_status
+        text name
+    }
+    conversation_organization {
+        text conversation_id PK
+        text organization_id PK
+    }
+    conversation {
+        text id PK
+        text created_at
+        text external_id
+        text external_url
+        text source
+        text subject
+        text updated_at
+    }
+    user_account {
+        text account_id PK
+        text user_id PK
+    }
+    user_segment {
+        text id PK
+        text user_id PK
+        text name
+    }
+    user_trait_site_competitor {
+        text site_competitor PK
+        text user_id PK
+    }
+    users {
+        text id PK
+        text avatar
+        text created_at
+        text deactivated_at
+        text email
+        text external_id
+        text first_known
+        text join_date
+        text last_inbound_message_timestamp
+        text last_outbound_message_timestamp
+        text last_seen_timestamp
+        text name
+        text unsubscribed_from_conversations
+        text unsubscribed_from_conversations_at
+        text updated_at
+    }
+    nps_response_account {
+        text account_id PK
+        text nps_response_id PK
+        text user_id FK
+    }
+    nps_response {
+        text id PK
+        text user_id FK
+        text created_at
+        text dismissed_at
+        text external_id
+        text feedback
+        text responded_at
+        text score
+        text updated_at
+    }
+    task_project {
+        text task_project_id PK
+        text task_id PK
+        text account_id FK
+        text organization_id FK
+        text project_category_id FK
+        text actual_completion_date
+        text actual_start_date
+        text archived_at
+        text created_at
+        text duration_in_days
+        text name
+        text owned_by_vitally_user_id
+        text project_status_id
+        text target_completion_date
+        text target_start_date
+        text updated_at
+    }
+    task_tag {
+        text task_tag_id PK
+        text task_id PK
+    }
+    task {
+        text id PK
+        text account_id FK
+        text assigned_to_user_id FK
+        text completed_by_user_id FK
+        text organization_id FK
+        text task_category_id FK
+        text archived_at
+        text completed_at
+        text created_at
+        text description
+        text due_date
+        text external_id
+        text name
+        text updated_at
+        text user_license_status
+    }
+    organization_segment {
+        text id PK
+        text organization_id PK
+        text name
+    }
+    organization {
+        text id PK
+        text account_owner_id FK
+        text churned_at
+        text created_at
+        text csm_id
+        text external_id
+        text mrr
+        text name
+        text next_renewal_date
+        jsonb segments
+        text trial_end_date
+        text updated_at
+        text users_count
+    }
+    note_category {
+        text id PK
+        text created_at
+        text name
+        text updated_at
+    }
+    task_category {
+        text id PK
+        text created_at
+        text name
+        text updated_at
+    }
+    account_segment {
+        text id PK
+        text account_id PK
+        text name
+    }
+    account_key_role_breakout {
+        text id PK
+        text account_key_role_id PK
+        text key_role_account_id PK
+        text created_at
+        text label
+    }
+    account_key_role {
+        text id PK
+        text account_id PK
+        text assigned_at
+        text created_at
+        text vitally_user
+        text vitally_user_license_status
+    }
+    account {
+        text id PK
+        text account_owner_id FK
+        text organization_id FK
+        text account_executive_id
+        text churned_at
+        text created_at
+        text csm_id
+        text external_id
+        text first_seen_timestamp
+        text health_score
+        text last_inbound_message_timestamp
+        text last_outbound_message_timestamp
+        text last_seen_timestamp
+        text mrr
+        text name
+        text next_renewal_date
+        text nps_detractor_count
+        text nps_passive_count
+        text nps_promoter_count
+        text nps_score
+        text trial_end_date
+        text updated_at
+        text users_count
+    }
+    project_template }o--|| project_category : "fk"
+    note_user }o--|| users : "fk"
+    note_user }o--|| note : "fk"
+    note_author }o--|| users : "fk"
+    note_author }o--|| note : "fk"
+    note_tag }o--|| note : "fk"
+    note }o--|| note_category : "fk"
+    note }o--|| organization : "fk"
+    note }o--|| account : "fk"
+    project }o--|| project_template : "fk"
+    project }o--|| task_project : "fk"
+    project }o--|| organization : "fk"
+    project }o--|| account : "fk"
+    project }o--|| project_category : "fk"
+    custom_object_field }o--|| custom_object : "fk"
+    conversation_message_to }o--|| users : "fk"
+    conversation_message_to }o--|| conversation_message : "fk"
+    conversation_message_to }o--|| conversation_message : "fk"
+    conversation_message_cc }o--|| users : "fk"
+    conversation_message_cc }o--|| conversation_message : "fk"
+    conversation_message_cc }o--|| conversation_message : "fk"
+    conversation_message }o--|| users : "fk"
+    conversation_account }o--|| account : "fk"
+    conversation_account }o--|| conversation : "fk"
+    conversation_user }o--|| users : "fk"
+    conversation_user }o--|| conversation : "fk"
+    conversation_admin }o--|| users : "fk"
+    conversation_admin }o--|| conversation : "fk"
+    conversation_organization }o--|| organization : "fk"
+    conversation_organization }o--|| conversation : "fk"
+    user_account }o--|| account : "fk"
+    user_account }o--|| users : "fk"
+    user_segment }o--|| users : "fk"
+    user_trait_site_competitor }o--|| users : "fk"
+    nps_response_account }o--|| nps_response : "fk"
+    nps_response_account }o--|| users : "fk"
+    nps_response_account }o--|| account : "fk"
+    nps_response }o--|| users : "fk"
+    task_project }o--|| organization : "fk"
+    task_project }o--|| account : "fk"
+    task_project }o--|| project_category : "fk"
+    task_project }o--|| task : "fk"
+    task_tag }o--|| task : "fk"
+    task }o--|| users : "fk"
+    task }o--|| organization : "fk"
+    task }o--|| task_category : "fk"
+    task }o--|| users : "fk"
+    task }o--|| account : "fk"
+    organization_segment }o--|| organization : "fk"
+    organization }o--|| users : "fk"
+    account_segment }o--|| account : "fk"
+    account_key_role_breakout }o--|| account_key_role : "fk"
+    account_key_role_breakout }o--|| account_key_role : "fk"
+    account_key_role }o--|| account : "fk"
+    account }o--|| users : "fk"
+    account }o--|| organization : "fk"

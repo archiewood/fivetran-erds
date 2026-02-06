@@ -1,0 +1,1062 @@
+erDiagram
+    meeting {
+        text uuid PK
+        text extension_id FK
+        text id
+        timestamp start_time
+        text topic
+    }
+    email_notification_email {
+        text email_address PK
+        text extension_id PK
+    }
+    message {
+        bigint id PK
+        text extension_id FK
+        text from_extension_id FK
+        text availability
+        text conversation_id
+        text cover_index
+        text cover_page_text
+        timestamp creation_time
+        text delivery_error_code
+        text direction
+        text fax_page_count
+        text fax_resolution
+        text from_location
+        timestamp last_modified_time
+        text message_status
+        boolean pg_to_department
+        text priority
+        text read_status
+        text sms_delivery_time
+        integer sms_sending_attempts_count
+        text subject
+        text type
+        text vm_transcription_status
+    }
+    meeting_setting_audio_option {
+        text value PK
+        text account_id PK
+    }
+    service_provider_config {
+        text _fivetran_id PK
+        integer bulk_max_operations
+        integer bulk_max_payload_size
+        boolean bulk_supported
+        boolean change_password_supported
+        boolean etag_supported
+        integer filter_max_results
+        boolean filter_supported
+        boolean patch_supported
+        boolean sort_supported
+        boolean xml_data_format_supported
+    }
+    call_recording_setting {
+        text account_id PK
+        boolean on_demand_enabled
+        integer on_demand_retention_period
+    }
+    account_assigned_role {
+        text id PK
+        boolean auto_assigned
+        text extension_id
+        text site_restricted
+    }
+    company_directory {
+        text id PK
+        text federated_account_id FK
+        text department
+        text email
+        text extension_number
+        text first_name
+        text job_title
+        text last_name
+        text name
+        text profile_image_etag
+        text site_code
+        text site_id
+        text site_name
+        text status
+        text type
+    }
+    extension {
+        text id PK
+        text account_id FK
+        text extension_number
+        boolean hidden
+        text name
+        boolean permissions_admin_enabled
+        boolean permissions_international_calling_enabled
+        text profile_image_content_type
+        text profile_image_etag
+        timestamp profile_image_last_modified
+        text site_code
+        text site_id
+        text site_name
+        text status
+        text sub_type
+        text type
+    }
+    forwarding_number_feature {
+        text value PK
+        text forwarding_number_id PK
+    }
+    missed_call_notification_advanced_sms_email {
+        text email_address PK
+        text extension_id PK
+    }
+    call_queue_member {
+        text id PK
+        text call_queue_id FK
+        text extension_number FK
+    }
+    meeting_assisted_user {
+        text id PK
+        text extension_id FK
+        text name
+    }
+    message_to {
+        text _fivetran_id PK
+        bigint message_id PK
+        text extension_id FK
+        text extension_number
+        text fax_error_code
+        text location
+        text message_status
+        text name
+        text phone_number
+        boolean target
+    }
+    chat_member {
+        text chat_id PK
+        text id PK
+    }
+    inbound_fax_notification_advanced_sms_email {
+        text email_address PK
+        text extension_id PK
+    }
+    user_auth_profile_scope {
+        text value PK
+        text extension_id PK
+    }
+    sms_batch_rejected {
+        bigint index PK
+        text sms_batch_id PK
+        text description
+        text error_code
+    }
+    user_conference_setting {
+        text extension_id PK
+        boolean allow_join_before_host
+        text host_code
+        text mode
+        text participant_code
+        text primary_phone_number
+        text tap_to_join_uri
+    }
+    extension_device_model_add_on {
+        text id PK
+        text extension_device_id PK
+        integer count
+        text name
+    }
+    call_monitoring_group_member {
+        text id PK
+        text call_monitoring_group_id FK
+        text extension_number FK
+    }
+    extension_device {
+        text id PK
+        text emergency_location_id FK
+        text emergency_service_address_country_id FK
+        text emergency_service_address_state_id FK
+        text extension_id FK
+        text shipping_address_country_id FK
+        text shipping_address_state_id FK
+        integer box_billing_id
+        text computer_name
+        text emergency_address_editable_status
+        text emergency_service_address_additional_customer_email
+        text emergency_service_address_additional_customer_name
+        text emergency_service_address_additional_customer_phone
+        text emergency_service_address_city
+        text emergency_service_address_customer_email
+        text emergency_service_address_customer_name
+        text emergency_service_address_customer_phone
+        text emergency_service_address_line_provisioning_status
+        boolean emergency_service_address_out_of_country
+        text emergency_service_address_street
+        text emergency_service_address_street_2
+        text emergency_service_address_sync_status
+        text emergency_service_address_tax_id
+        text emergency_service_address_zip
+        text emergency_visibility
+        boolean in_company_net
+        text last_location_report_time
+        text line_pooling
+        text name
+        text serial
+        text site_id
+        text site_name
+        text sku
+        text status
+        text type
+        boolean use_as_common_phone
+    }
+    timezone {
+        text id PK
+        text bias
+        text description
+        text name
+    }
+    permission_category {
+        text id PK
+        text description
+        text display_name
+    }
+    caller_blocking_setting {
+        text extension_id PK
+        text mode
+        text no_caller_id
+        text pay_phones
+    }
+    service_provider_config_schema {
+        text value PK
+        text service_provider_config_id PK
+    }
+    languages {
+        text id PK
+        boolean formatting_locale
+        boolean greeting
+        text iso_code
+        text locale_code
+        text name
+        boolean ui
+    }
+    user_call_handling_rule {
+        text id PK
+        text extension_id FK
+        boolean enabled
+        text name
+        integer shared_lines_timeout
+        text type
+    }
+    chat_post {
+        text id PK
+        text chat_id FK
+        text activity
+        timestamp creation_time
+        text creator_id
+        text group_id
+        text icon_emoji
+        text icon_uri
+        timestamp last_modified_time
+        text text
+        text title
+        text type
+    }
+    chat_task_attachment {
+        text id PK
+        text chat_task_id PK
+        text content_uri
+        text name
+        text type
+    }
+    message_attachment {
+        bigint id PK
+        bigint message_id PK
+        text content_type
+        text file_name
+        integer height
+        integer size
+        text type
+        integer vm_duration
+        integer width
+    }
+    meeting_recording {
+        text content_download_uri PK
+        text meeting_uuid PK
+        text content_type
+        timestamp end_time
+        text id
+        bigint size
+        timestamp start_time
+        text status
+    }
+    user_role_permission {
+        text id PK
+        text user_role_id FK
+        boolean assignable
+        boolean read_only
+        text site_compatible
+    }
+    call_monitoring_group {
+        text id PK
+        text account_id FK
+        text name
+    }
+    emergency_location {
+        text id PK
+        text account_id FK
+        text address_country_id FK
+        text address_state_id FK
+        text address_city
+        text address_customer_name
+        text address_status
+        text address_street
+        text address_street_2
+        text address_zip
+        text name
+        text site_id
+        text site_name
+        text sync_status
+        text usage_status
+        text visibility
+    }
+    extension_device_phone_line {
+        text id PK
+        text extension_device_id PK
+        text phone_info_country_id FK
+        text phone_info_extension_id FK
+        boolean emergency_address_local_only
+        boolean emergency_address_required
+        text line_type
+    }
+    post_attachment_field {
+        text style PK
+        text title PK
+        text value PK
+        text post_attachment_id PK
+    }
+    user_feature {
+        text id PK
+        text extension_id FK
+        boolean available
+        text reason_code
+        text reason_message
+        text reason_permission
+    }
+    user_call_log {
+        text id PK
+        text extension_id PK
+        text message_id FK
+        text action
+        integer billing_cost_included
+        integer billing_cost_purchased
+        text delegate_id
+        text delegate_name
+        boolean deleted
+        text direction
+        integer duration
+        text internal_type
+        timestamp last_modified_time
+        text reason
+        text reason_description
+        text recording_id
+        text recording_type
+        text result
+        text session_id
+        boolean short_recording
+        timestamp start_time
+        text telephony_session_id
+        text transport
+        text type
+    }
+    chat_note {
+        text id PK
+        text chat_id FK
+        text creator_id FK
+        text last_modified_by_id FK
+        text locked_by_id FK
+        timestamp creation_time
+        timestamp last_modified_time
+        text preview
+        text status
+        text title
+        text type
+    }
+    inbound_text_notification_advanced_email {
+        text email_address PK
+        text extension_id PK
+    }
+    call_recording_extension {
+        bigint id PK
+        text call_direction
+    }
+    meeting_service_info_dial_in_number {
+        text phone_number PK
+        text extension_id PK
+        text country_id FK
+        text formatted_number
+        text location
+    }
+    post_added_person {
+        text value PK
+        text post_id PK
+    }
+    chat {
+        text id PK
+        timestamp creation_time
+        text description
+        timestamp last_modified_time
+        text name
+        boolean public
+        text status
+        text type
+    }
+    federated_account {
+        text id PK
+        text federation_id FK
+        text company_name
+        bigint conflict_count
+        text federated_name
+        text link_creation_time
+    }
+    email_notification_sms_email {
+        text email_address PK
+        text extension_id PK
+    }
+    emergency_location_owner {
+        text emergency_location_id PK
+        text id PK
+    }
+    forwarding_number {
+        text id PK
+        text extension_id PK
+        text device_id FK
+        text flip_number
+        text label
+        text phone_number
+        text type
+    }
+    account_call_log_leg {
+        integer index PK
+        text account_call_log_id PK
+        text message_id FK
+        text action
+        integer billing_cost_included
+        integer billing_cost_purchased
+        text delegate_id
+        text delegate_name
+        text direction
+        bigint duration
+        bigint duration_ms
+        text extension_id
+        text internal_type
+        text leg_type
+        boolean master
+        text party_id
+        text reason
+        text reason_description
+        text recording_id
+        text recording_type
+        text result
+        boolean short_recording
+        text sip_uuid_info
+        timestamp start_time
+        text telephony_session_id
+        text transfer_target_telephony_session_id
+        text transferee_telephony_session_id
+        text transport
+        text type
+    }
+    account_call_log {
+        text id PK
+        text account_id FK
+        text message_id FK
+        text action
+        integer billing_cost_included
+        integer billing_cost_purchased
+        text delegate_id
+        text delegate_name
+        boolean deleted
+        text direction
+        bigint duration
+        bigint duration_ms
+        text extension_id
+        text internal_type
+        timestamp last_modified_time
+        text party_id
+        text reason
+        text reason_description
+        text recording_id
+        text recording_type
+        text result
+        text session_id
+        boolean short_recording
+        text sip_uuid_info
+        timestamp start_time
+        text telephony_session_id
+        text transfer_target_telephony_session_id
+        text transferee_telephony_session_id
+        text transport
+        text type
+    }
+    country {
+        text id PK
+        text calling_code
+        boolean emergency_calling
+        boolean free_softphone_line
+        text iso_code
+        boolean login_allowed
+        text name
+        boolean number_selling
+        boolean signup_allowed
+    }
+    sms_batch_rejected_to {
+        text value PK
+        bigint index PK
+        text sms_batch_id PK
+    }
+    meeting_assistant {
+        text id PK
+        text extension_id FK
+        text name
+    }
+    sms_opt_out_number {
+        text account_id PK
+        text creation_time
+        text from
+        text source
+        text status
+        text to
+    }
+    user_video_configuration {
+        text extension_id PK
+        text provider
+        text user_license_type
+    }
+    user_feature_param {
+        text name PK
+        text user_feature_id PK
+        text value
+    }
+    user_role {
+        text id PK
+        text account_id FK
+        boolean custom
+        text description
+        text display_name
+        boolean hidden
+        timestamp last_updated
+        text scope
+        boolean site_compatible
+    }
+    extension_device_model_feature {
+        text value PK
+        text extension_device_id PK
+    }
+    company_directory_custom_field {
+        text id PK
+        text company_directory_id PK
+        text value
+    }
+    location {
+        text _fivetran_id PK
+        text state_id FK
+        text area_code
+        text city
+        text npa
+        text nxx
+    }
+    user_notification_setting {
+        text extension_id PK
+        boolean advanced_mode
+        boolean inbound_texts_notify_by_email
+        boolean inbound_texts_notify_by_sms
+        boolean include_managers
+        boolean missed_calls_notify_by_email
+        boolean missed_calls_notify_by_sms
+        boolean outbound_faxes_notify_by_email
+        boolean outbound_faxes_notify_by_sms
+    }
+    voicemail_notification_advanced_email {
+        text email_address PK
+        text extension_id PK
+    }
+    meeting_setting {
+        text account_id PK
+        boolean telephony_third_party_audio
+    }
+    account_signup_state {
+        text value PK
+        text account_id PK
+    }
+    voicemail_notification_advanced_sms_email {
+        text email_address PK
+        text extension_id PK
+    }
+    user_call_log_leg {
+        text leg_type PK
+        text extension_id PK
+        text user_call_log_id PK
+        boolean master
+    }
+    user_conference_setting_dial_in_phone_number {
+        text phone_number PK
+        text extension_id PK
+        bigint country_id FK
+        boolean default
+        boolean has_greeting
+        text location
+        boolean premium
+    }
+    outbound_fax_notification_advanced_sms_email {
+        text email_address PK
+        text extension_id PK
+    }
+    call_queue {
+        text id PK
+        text account_id FK
+        text extension_number FK
+        text name
+    }
+    meeting_service_info {
+        text extension_id PK
+    }
+    caller_blocking_setting_greeting {
+        text preset_id PK
+        text extension_id PK
+        text preset_name
+        text type
+    }
+    user_auth_profile {
+        text extension_id PK
+        text effective_role_id
+    }
+    account_business_address {
+        text account_id PK
+        text city
+        text company
+        text country
+        text email
+        text main_site_name
+        text state
+        text street
+        text zip
+    }
+    call_monitoring_group_member_permission {
+        text value PK
+        text call_monitoring_group_member_id PK
+    }
+    inbound_fax_notification_advanced_email {
+        text email_address PK
+        text extension_id PK
+    }
+    call_standard_greeting {
+        text id PK
+        text category
+        text content_uri
+        text name
+        text text
+        text type
+        text usage_type
+    }
+    missed_call_notification_advanced_email {
+        text email_address PK
+        text extension_id PK
+    }
+    post_mention {
+        text id PK
+        text post_id PK
+        text type
+    }
+    ivr_prompt {
+        text id PK
+        text account_id FK
+        text content_type
+        text content_uri
+        text filename
+    }
+    contact {
+        text id PK
+        text extension_id FK
+        text assistant_phone
+        text availability
+        text birthday
+        text business_fax
+        text business_phone
+        text business_phone_2
+        text callback_phone
+        text car_phone
+        text company
+        text company_phone
+        text email
+        text email_2
+        text email_3
+        text first_name
+        text home_phone
+        text home_phone_2
+        text job_title
+        text last_name
+        text middle_name
+        text mobile_phone
+        text nick_name
+        text notes
+        text other_fax
+        text other_phone
+        text ringtone_index
+        text web_page
+    }
+    state {
+        text id PK
+        text country_id FK
+        text iso_code
+        text name
+    }
+    sms {
+        bigint id PK
+        text batch_id FK
+        bigint cost
+        timestamp creation_time
+        text direction
+        text error_code
+        text from
+        timestamp last_modified_time
+        text message_status
+        integer segment_count
+        text text
+    }
+    company_phone_number {
+        bigint id PK
+        text country_id FK
+        text extension_id FK
+        text contact_center_provider_id
+        text contact_center_provider_name
+        text label
+        text location
+        text payment_type
+        text phone_number
+        text status
+        text temporary_number_id
+        text type
+        text usage_type
+        text vanity_pattern
+    }
+    chat_task {
+        text id PK
+        text chat_id FK
+        text creator_id FK
+        text color
+        text completeness_condition
+        bigint completeness_percentage
+        timestamp creation_time
+        text description
+        timestamp due_date
+        timestamp last_modified_time
+        text section
+        timestamp start_date
+        text status
+        text subject
+        text type
+    }
+    user_business_hour_range {
+        text day PK
+        integer index PK
+        text extension_id PK
+        text from
+        text to
+    }
+    inbound_text_notification_advanced_sms_email {
+        text email_address PK
+        text extension_id PK
+    }
+    outbound_fax_notification_advanced_email {
+        text email_address PK
+        text extension_id PK
+    }
+    sms_to {
+        text value PK
+        bigint sms_id PK
+    }
+    account_custom_field {
+        text id PK
+        text account_id FK
+        text category
+        text display_name
+    }
+    account {
+        text id PK
+        text operator_id FK
+        text regional_settings_formatting_locale_id FK
+        text regional_settings_greeting_language_id FK
+        text regional_settings_home_country_id FK
+        text regional_settings_language_id FK
+        text regional_settings_timezone_id FK
+        text service_info_brand_home_country_id FK
+        text service_info_contracted_country_id FK
+        text bsid
+        text cfid
+        boolean federated
+        text main_number
+        integer outbound_call_prefix
+        text partner_id
+        text setup_wizard_state
+        boolean signup_info_marketing_accepted
+        boolean signup_info_tos_accepted
+        text signup_info_verification_reason
+        text status
+        text status_info_comment
+        text status_info_reason
+        text status_info_till
+    }
+    company_business_hour_range {
+        text day PK
+        integer index PK
+        text account_id PK
+        text from
+        text to
+    }
+    post_attachment {
+        text id PK
+        text post_id PK
+        boolean all_day
+        text author_icon_uri
+        text author_name
+        text color
+        text creator_id
+        text description
+        timestamp end_time
+        bigint ending_after
+        text ending_condition
+        text ending_on
+        text fallback
+        text footnote_icon_uri
+        text footnote_text
+        text footnote_time
+        text image_uri
+        text intro
+        text location
+        text recurrence
+        timestamp start_time
+        text text
+        text thumbnail_uri
+        text title
+        text type
+    }
+    user_permission {
+        text id PK
+        text category_id FK
+        boolean assignable
+        text description
+        text display_name
+        boolean read_only
+        text site_compatible
+    }
+    sms_batch {
+        text id PK
+        text account_id FK
+        integer batch_size
+        timestamp creation_time
+        text from
+        timestamp last_modified_time
+        integer processed_count
+        text status
+    }
+    call_recording_custom_greeting {
+        text custom_id PK
+        text account_id FK
+        text language_id FK
+        text type
+    }
+    included_permission {
+        text id PK
+        text user_permission_id PK
+        boolean assignable
+        boolean read_only
+        text site_compatible
+    }
+    service_provider_config_authentication_scheme {
+        text name PK
+        text service_provider_config_id PK
+        text description
+        text documentation_uri
+        boolean primary
+        text spec_uri
+    }
+    federation {
+        text id PK
+        text account_id FK
+        text creation_time
+        text display_name
+        timestamp last_modified_time
+    }
+    blocked_and_allowed_number {
+        text id PK
+        text extension_id FK
+        text label
+        text phone_number
+        text status
+    }
+    extension_grant {
+        text extension_id PK
+        boolean call_delegation
+        boolean call_monitoring
+        boolean call_on_behalf_of
+        boolean call_pickup
+        boolean call_queue_members_setup
+        boolean call_queue_messages
+        boolean call_queue_setup
+        boolean group_paging
+    }
+    chat_task_assignee {
+        text chat_task_id PK
+        text id PK
+        text status
+    }
+    company_directory_phone_number {
+        text phone_number PK
+        text company_directory_id PK
+        text formatted_phone_number
+        boolean hidden
+        text label
+        boolean primary
+        text type
+        text usage_type
+    }
+    user_template {
+        text id PK
+        text account_id FK
+        timestamp creation_time
+        timestamp last_modified_time
+        text name
+        text type
+    }
+    meeting }o--|| extension : "fk"
+    email_notification_email }o--|| extension : "fk"
+    message }o--|| extension : "fk"
+    message }o--|| extension : "fk"
+    meeting_setting_audio_option }o--|| account : "fk"
+    call_recording_setting }o--|| account : "fk"
+    account_assigned_role }o--|| user_role : "fk"
+    company_directory }o--|| federated_account : "fk"
+    extension }o--|| account : "fk"
+    forwarding_number_feature }o--|| forwarding_number : "fk"
+    missed_call_notification_advanced_sms_email }o--|| extension : "fk"
+    call_queue_member }o--|| call_queue : "fk"
+    call_queue_member }o--|| extension : "fk"
+    meeting_assisted_user }o--|| extension : "fk"
+    message_to }o--|| message : "fk"
+    message_to }o--|| extension : "fk"
+    chat_member }o--|| chat : "fk"
+    chat_member }o--|| extension : "fk"
+    inbound_fax_notification_advanced_sms_email }o--|| extension : "fk"
+    user_auth_profile_scope }o--|| extension : "fk"
+    sms_batch_rejected }o--|| sms_batch : "fk"
+    user_conference_setting }o--|| extension : "fk"
+    extension_device_model_add_on }o--|| extension_device : "fk"
+    call_monitoring_group_member }o--|| call_monitoring_group : "fk"
+    call_monitoring_group_member }o--|| extension : "fk"
+    extension_device }o--|| extension : "fk"
+    extension_device }o--|| state : "fk"
+    extension_device }o--|| country : "fk"
+    extension_device }o--|| emergency_location : "fk"
+    extension_device }o--|| state : "fk"
+    extension_device }o--|| country : "fk"
+    caller_blocking_setting }o--|| extension : "fk"
+    service_provider_config_schema }o--|| service_provider_config : "fk"
+    user_call_handling_rule }o--|| extension : "fk"
+    chat_post }o--|| chat : "fk"
+    chat_task_attachment }o--|| chat_task : "fk"
+    message_attachment }o--|| message : "fk"
+    meeting_recording }o--|| meeting : "fk"
+    user_role_permission }o--|| user_role : "fk"
+    user_role_permission }o--|| user_permission : "fk"
+    call_monitoring_group }o--|| account : "fk"
+    emergency_location }o--|| account : "fk"
+    emergency_location }o--|| country : "fk"
+    emergency_location }o--|| state : "fk"
+    extension_device_phone_line }o--|| extension_device : "fk"
+    extension_device_phone_line }o--|| country : "fk"
+    extension_device_phone_line }o--|| extension : "fk"
+    post_attachment_field }o--|| post_attachment : "fk"
+    user_feature }o--|| extension : "fk"
+    user_call_log }o--|| extension : "fk"
+    user_call_log }o--|| message : "fk"
+    chat_note }o--|| chat : "fk"
+    chat_note }o--|| extension : "fk"
+    chat_note }o--|| extension : "fk"
+    chat_note }o--|| extension : "fk"
+    inbound_text_notification_advanced_email }o--|| extension : "fk"
+    call_recording_extension }o--|| extension : "fk"
+    meeting_service_info_dial_in_number }o--|| extension : "fk"
+    meeting_service_info_dial_in_number }o--|| country : "fk"
+    post_added_person }o--|| chat_post : "fk"
+    federated_account }o--|| federation : "fk"
+    email_notification_sms_email }o--|| extension : "fk"
+    emergency_location_owner }o--|| emergency_location : "fk"
+    emergency_location_owner }o--|| extension : "fk"
+    forwarding_number }o--|| extension : "fk"
+    forwarding_number }o--|| extension_device : "fk"
+    account_call_log_leg }o--|| message : "fk"
+    account_call_log_leg }o--|| account_call_log : "fk"
+    account_call_log }o--|| message : "fk"
+    account_call_log }o--|| account : "fk"
+    sms_batch_rejected_to }o--|| sms_batch : "fk"
+    sms_batch_rejected_to }o--|| sms_batch_rejected : "fk"
+    meeting_assistant }o--|| extension : "fk"
+    sms_opt_out_number }o--|| account : "fk"
+    user_video_configuration }o--|| extension : "fk"
+    user_feature_param }o--|| user_feature : "fk"
+    user_role }o--|| account : "fk"
+    extension_device_model_feature }o--|| extension_device : "fk"
+    company_directory_custom_field }o--|| company_directory : "fk"
+    location }o--|| state : "fk"
+    user_notification_setting }o--|| extension : "fk"
+    voicemail_notification_advanced_email }o--|| extension : "fk"
+    meeting_setting }o--|| account : "fk"
+    account_signup_state }o--|| account : "fk"
+    voicemail_notification_advanced_sms_email }o--|| extension : "fk"
+    user_call_log_leg }o--|| user_call_log : "fk"
+    user_call_log_leg }o--|| extension : "fk"
+    user_conference_setting_dial_in_phone_number }o--|| extension : "fk"
+    user_conference_setting_dial_in_phone_number }o--|| country : "fk"
+    outbound_fax_notification_advanced_sms_email }o--|| extension : "fk"
+    call_queue }o--|| account : "fk"
+    call_queue }o--|| extension : "fk"
+    meeting_service_info }o--|| extension : "fk"
+    caller_blocking_setting_greeting }o--|| extension : "fk"
+    user_auth_profile }o--|| extension : "fk"
+    account_business_address }o--|| account : "fk"
+    call_monitoring_group_member_permission }o--|| call_monitoring_group_member : "fk"
+    inbound_fax_notification_advanced_email }o--|| extension : "fk"
+    missed_call_notification_advanced_email }o--|| extension : "fk"
+    post_mention }o--|| chat_post : "fk"
+    post_mention }o--|| extension : "fk"
+    ivr_prompt }o--|| account : "fk"
+    contact }o--|| extension : "fk"
+    state }o--|| country : "fk"
+    sms }o--|| sms_batch : "fk"
+    company_phone_number }o--|| country : "fk"
+    company_phone_number }o--|| extension : "fk"
+    chat_task }o--|| chat : "fk"
+    chat_task }o--|| extension : "fk"
+    user_business_hour_range }o--|| extension : "fk"
+    inbound_text_notification_advanced_sms_email }o--|| extension : "fk"
+    outbound_fax_notification_advanced_email }o--|| extension : "fk"
+    sms_to }o--|| sms : "fk"
+    account_custom_field }o--|| account : "fk"
+    account }o--|| country : "fk"
+    account }o--|| timezone : "fk"
+    account }o--|| languages : "fk"
+    account }o--|| languages : "fk"
+    account }o--|| languages : "fk"
+    account }o--|| extension : "fk"
+    account }o--|| country : "fk"
+    account }o--|| country : "fk"
+    company_business_hour_range }o--|| account : "fk"
+    post_attachment }o--|| chat_post : "fk"
+    user_permission }o--|| permission_category : "fk"
+    sms_batch }o--|| account : "fk"
+    call_recording_custom_greeting }o--|| account : "fk"
+    call_recording_custom_greeting }o--|| languages : "fk"
+    included_permission }o--|| user_permission : "fk"
+    service_provider_config_authentication_scheme }o--|| service_provider_config : "fk"
+    federation }o--|| account : "fk"
+    blocked_and_allowed_number }o--|| extension : "fk"
+    extension_grant }o--|| extension : "fk"
+    chat_task_assignee }o--|| chat_task : "fk"
+    chat_task_assignee }o--|| extension : "fk"
+    company_directory_phone_number }o--|| company_directory : "fk"
+    user_template }o--|| account : "fk"

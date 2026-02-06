@@ -1,0 +1,2163 @@
+erDiagram
+    search_submitted_event {
+        text event_id PK
+        text event_client_id
+        timestamp event_timestamp
+        text query
+    }
+    order_discount_code {
+        bigint index PK
+        bigint order_id PK
+        text code
+    }
+    collection_rule {
+        bigint index PK
+        bigint collection_id PK
+        text columns
+        text condition
+        text relation
+    }
+    inventory_quantity {
+        bigint id PK
+        text name PK
+        bigint inventory_item_id PK
+        bigint inventory_level_id PK
+        integer quantity
+        timestamp updated_at
+    }
+    customer_tax_exemption {
+        bigint index PK
+        bigint customer_id PK
+        text tax_exemption
+    }
+    media_error {
+        integer index PK
+        bigint media_id PK
+        text code
+        text details
+        text message
+    }
+    media_image {
+        bigint media_id PK
+        text mime_type
+        integer original_source_file_size
+        text original_source_url
+    }
+    dispute {
+        bigint id PK
+        bigint order_id FK
+        double_precision amount
+        text currency_code
+        timestamp evidence_due_by
+        timestamp evidence_sent_on
+        timestamp finalized_on
+        timestamp initiated_at
+        text network_reason_code
+        text reason
+        text status
+        text type
+    }
+    order_risk_fact {
+        integer index PK
+        bigint order_id PK
+        integer order_risk_assessment_index PK
+        text description
+        text sentiment
+    }
+    company_location {
+        bigint id PK
+        bigint company_id FK
+        timestamp created_at
+        text currency
+        text external_id
+        boolean has_timeline_comment
+        text locale
+        text name
+        text note
+        text phone
+        boolean tax_settings_tax_exempt
+        text tax_settings_tax_registration_id
+        double_precision total_spent_amount
+        text total_spent_currency_code
+        timestamp updated_at
+    }
+    customer {
+        bigint id PK
+        bigint last_order_id FK
+        boolean can_delete
+        timestamp created_at
+        text currency
+        boolean data_sale_opt_out
+        text display_name
+        text email
+        text email_marketing_consent_opt_in_level
+        text email_marketing_consent_state
+        timestamp email_marketing_consent_updated_at
+        text first_name
+        text last_name
+        text lifetime_duration
+        text locale
+        text multipass_identifier
+        text note
+        bigint number_of_orders
+        text phone
+        text product_subscriber_status
+        text state
+        text statistics_predicted_spend_tier
+        boolean tax_exempt
+        double_precision total_spent
+        timestamp updated_at
+        boolean valid_email_address
+        boolean verified_email
+    }
+    checkout_transaction_event {
+        bigint index PK
+        text event_id PK
+        double_precision amount
+        text currency_code
+        text gateway
+        text payment_method_name
+        text payment_method_type
+    }
+    fulfillment_service {
+        text id PK
+        bigint shop_id PK
+        bigint location_id FK
+        text callback_url
+        boolean fulfillment_orders_opt_in
+        text handle
+        boolean inventory_management
+        boolean permits_sku_sharing
+        text service_name
+        boolean tracking_support
+        text type
+    }
+    collection_viewed_product_variant_event {
+        text event_id PK
+        bigint product_variant_id PK
+    }
+    discount_customer_segment_selection {
+        bigint discount_id PK
+        text discount_type PK
+        integer index PK
+        bigint segment_id FK
+    }
+    cart_line_event {
+        bigint index PK
+        text event_id PK
+        text merchandise_id FK
+        double_precision cost_amount
+        text cost_currency_code
+        integer quantity
+    }
+    sale {
+        bigint id PK
+        bigint sales_agreement_id PK
+        text action_type
+        bigint line_item_id
+        text line_type
+        integer quantity
+        double_precision total_amount_pres_amount
+        text total_amount_pres_currency_code
+        double_precision total_amount_shop_amount
+        text total_amount_shop_currency_code
+        double_precision total_discount_amount_after_taxes_pres_amount
+        text total_discount_amount_after_taxes_pres_currency_code
+        double_precision total_discount_amount_after_taxes_shop_amount
+        text total_discount_amount_after_taxes_shop_currency_code
+        double_precision total_discount_amount_before_taxes_pres_amount
+        text total_discount_amount_before_taxes_pres_currency_code
+        double_precision total_discount_amount_before_taxes_shop_amount
+        text total_discount_amount_before_taxes_shop_currency_code
+        double_precision total_tax_amount_pres_amount
+        text total_tax_amount_pres_currency_code
+        double_precision total_tax_amount_shop_amount
+        text total_tax_amount_shop_currency_code
+    }
+    order_line_custom_attribute {
+        text key PK
+        bigint order_line_id PK
+        text value
+    }
+    app {
+        bigint id PK
+        bigint catalog_id PK
+        text app_store_app_url
+        text app_store_developer_url
+        text description
+        text developer_name
+        text developer_type
+        boolean embedded
+        jsonb features
+        text handle
+        text install_url
+        boolean is_post_purchase_app_in_use
+        boolean previously_installed
+        text pricing_details
+        text pricing_details_summary
+        text privacy_policy_url
+        boolean published
+        boolean shopify_developed
+        text title
+        text uninstall_message
+    }
+    checkout_event {
+        text event_id PK
+        boolean buyer_accepts_email_marketing
+        boolean buyer_accepts_sms_marketing
+        text currency_code
+        double_precision discounts_amount
+        text discounts_currency_code
+        text email
+        text event_client_id
+        text event_name
+        timestamp event_timestamp
+        text localization_country_iso_code
+        text localization_language_iso_code
+        text localization_market_handle
+        bigint localization_market_id
+        bigint order_customer_id
+        boolean order_customer_is_first_order
+        bigint order_id
+        text phone
+        double_precision shipping_line_price_amount
+        text shipping_line_price_currency_code
+        text sms_marketing_phone
+        double_precision subtotal_price_amount
+        text subtotal_price_currency_code
+        text token
+        double_precision total_price_amount
+        text total_price_currency_code
+        double_precision total_tax_amount
+        text total_tax_currency_code
+    }
+    media_warning {
+        integer index PK
+        bigint media_id PK
+        text code
+        text message
+    }
+    collection {
+        bigint id PK
+        boolean applied_disjunctively
+        text description
+        text description_html
+        text feedback_summary
+        text handle
+        integer products_count
+        text products_count_precision
+        text seo_description
+        text seo_title
+        text sort_order
+        text template_suffix
+        text title
+        timestamp updated_at
+    }
+    discount_code_app {
+        bigint id PK
+        bigint app_discount_type_app_id FK
+        text app_discount_type_app_bridge_create_path
+        text app_discount_type_app_bridge_details_path
+        text app_discount_type_app_key
+        text app_discount_type_description
+        text app_discount_type_discount_class
+        text app_discount_type_function_id
+        text app_discount_type_target_type
+        text app_discount_type_title
+        boolean applies_on_one_time_purchase
+        boolean applies_on_subscription
+        boolean applies_once_per_customer
+        bigint async_usage_count
+        integer codes_count_count
+        text codes_count_precision
+        boolean combines_with_order_discounts
+        boolean combines_with_product_discounts
+        boolean combines_with_shipping_discounts
+        timestamp created_at
+        boolean customer_selection_all_customers
+        text discount_class
+        bigint discount_id
+        timestamp ends_at
+        boolean has_timeline_comment
+        bigint recurring_cycle_limit
+        timestamp starts_at
+        text status
+        text title
+        double_precision total_sales_amount
+        text total_sales_currency_code
+        timestamp updated_at
+        bigint usage_limit
+    }
+    transaction {
+        bigint id PK
+        bigint order_id FK
+        bigint parent_id FK
+        bigint refund_id FK
+        bigint staff_member_id FK
+        text account_number
+        double_precision amount_rounding_set_pres_amount
+        text amount_rounding_set_pres_currency_code
+        double_precision amount_rounding_set_shop_amount
+        text amount_rounding_set_shop_currency_code
+        double_precision amount_set_pres_amount
+        text amount_set_pres_currency_code
+        double_precision amount_set_shop_amount
+        text amount_set_shop_currency_code
+        text authorization_code
+        timestamp authorization_expires_at
+        timestamp created_at
+        text error_code
+        timestamp extended_authorization_expires_at
+        text formatted_gateway
+        text gateway
+        text kind
+        boolean manual_payment_gateway
+        boolean manually_capturable
+        double_precision maximum_refundable_amount
+        text maximum_refundable_currency_code
+        boolean multi_capturable
+        timestamp processed_at
+        jsonb receipt_json
+        text refund_set_acquirer_reference_number
+        text settlement_currency
+        double_precision settlement_currency_rate
+        timestamp standard_authorization_expires_at
+        text status
+        boolean test
+        double_precision total_unsettled_set_pres_amount
+        text total_unsettled_set_pres_currency_code
+        double_precision total_unsettled_set_shop_amount
+        text total_unsettled_set_shop_currency_code
+    }
+    company {
+        bigint id PK
+        bigint main_contact_id FK
+        timestamp created_at
+        bigint default_role_id
+        text default_role_name
+        text default_role_note
+        text external_id
+        boolean has_timeline_comment
+        text name
+        text note
+        timestamp updated_at
+    }
+    fulfillment_order_line_item {
+        bigint id PK
+        bigint fulfillment_order_id PK
+        bigint inventory_item_id FK
+        bigint order_line_item_id FK
+        bigint product_variant_id FK
+        text product_title
+        integer remaining_quantity
+        boolean requires_shipping
+        text sku
+        integer total_quantity
+        text variant_title
+        text vendor
+        text weight_unit
+        double_precision weight_value
+    }
+    discount_allocation {
+        bigint index PK
+        bigint order_line_id PK
+        bigint discount_application_index FK
+        double_precision allocated_amount_set_pres_amount
+        text allocated_amount_set_pres_currency_code
+        double_precision allocated_amount_set_shop_amount
+        text allocated_amount_set_shop_currency_code
+    }
+    abandoned_checkout_tax_line {
+        bigint index PK
+        bigint checkout_id PK
+        boolean channel_liable
+        double_precision price_set_pres_amount
+        text price_set_pres_currency_code
+        double_precision price_set_shop_amount
+        text price_set_shop_currency_code
+        double_precision rate
+        double_precision rate_percentage
+        text source
+        text title
+    }
+    fulfillment_tracking_info {
+        bigint index PK
+        bigint fulfillment_id PK
+        text company
+        text number
+        text url
+    }
+    media_file_error {
+        integer index PK
+        bigint media_id PK
+        text code
+        text details
+        text message
+    }
+    media_source {
+        integer index PK
+        bigint media_id PK
+        integer file_size
+        text format
+        integer height
+        text mime_type
+        text url
+        integer width
+    }
+    collection_viewed_event {
+        text event_id PK
+        text collection_id
+        text event_client_id
+        timestamp event_timestamp
+        text title
+    }
+    discount_code_bxgy {
+        bigint id PK
+        boolean applies_once_per_customer
+        integer async_usage_count
+        integer codes_count
+        text codes_precision
+        boolean combines_with_order_discounts
+        boolean combines_with_product_discounts
+        boolean combines_with_shipping_discounts
+        timestamp created_at
+        boolean customer_selection_all_customers
+        text discount_class
+        timestamp ends_at
+        boolean has_timeline_comment
+        timestamp starts_at
+        text status
+        text summary
+        text title
+        double_precision total_sales_amount
+        text total_sales_currency_code
+        timestamp updated_at
+        bigint usage_limit
+        integer uses_per_order_limit
+    }
+    balance_transaction {
+        bigint id PK
+        bigint associated_order_id FK
+        bigint associated_payout_id FK
+        bigint source_order_transaction_id FK
+        text adjustment_reason
+        double_precision amount
+        text currency_code
+        double_precision fee_amount
+        text fee_currency_code
+        double_precision net_amount
+        text net_currency_code
+        bigint source_id
+        text source_type
+        boolean test
+        timestamp transaction_date
+        text type
+    }
+    gift_card {
+        bigint id PK
+        bigint customer_id FK
+        bigint order_id FK
+        bigint recipient_attributes_recipient_id FK
+        double_precision balance_amount
+        text balance_currency_code
+        timestamp created_at
+        timestamp deactivated_at
+        boolean enabled
+        text expires_on
+        double_precision initial_value_amount
+        text initial_value_currency_code
+        text last_characters
+        text masked_code
+        text note
+        text recipient_attributes_message
+        text recipient_attributes_preferred_name
+        timestamp recipient_attributes_send_notification_at
+        text template_suffix
+        timestamp updated_at
+    }
+    refund_shipping_line {
+        bigint id PK
+        bigint refund_id PK
+        double_precision subtotal_amount_set_pres_amount
+        text subtotal_amount_set_pres_currency_code
+        double_precision subtotal_amount_set_shop_amount
+        text subtotal_amount_set_shop_currency_code
+        double_precision tax_amount_set_pres_amount
+        text tax_amount_set_pres_currency_code
+        double_precision tax_amount_set_shop_amount
+        text tax_amount_set_shop_currency_code
+    }
+    sales_agreement {
+        bigint id PK
+        bigint app_id FK
+        bigint order_id FK
+        bigint refund_id FK
+        bigint return_id FK
+        bigint user_id FK
+        timestamp happened_at
+        text reason
+    }
+    order_risk_summary {
+        bigint order_id PK
+        text recommendation
+    }
+    product_added_to_cart_event {
+        text event_id PK
+        text merchandise_id FK
+        double_precision cost_amount
+        text cost_currency_code
+        text event_client_id
+        timestamp event_timestamp
+        integer quantity
+    }
+    discount_customer_gets_collection {
+        bigint discount_id PK
+        text discount_resource PK
+        bigint collection_id PK
+    }
+    refund {
+        bigint id PK
+        bigint order_id FK
+        bigint return_id FK
+        bigint staff_member_id FK
+        timestamp created_at
+        text note
+        double_precision total_refunded_set_pres_amount
+        text total_refunded_set_pres_currency_code
+        double_precision total_refunded_set_shop_amount
+        text total_refunded_set_shop_currency_code
+        timestamp updated_at
+    }
+    external_video {
+        bigint media_id PK
+        text embed_url
+        text host
+        text origin_url
+    }
+    product_option_value {
+        bigint id PK
+        bigint product_option_id PK
+        boolean has_variants
+        text linked_metafield_value
+        text name
+    }
+    company_location_tax_exemption {
+        text tax_exemption PK
+        bigint company_location_id PK
+    }
+    cart_viewed_event {
+        text event_id PK
+        text cart_id
+        double_precision cost_amount
+        text cost_currency_code
+        text event_client_id
+        timestamp event_timestamp
+        integer total_quantity
+    }
+    order_tag {
+        bigint index PK
+        bigint order_id PK
+        text value
+    }
+    product_variant_media {
+        bigint media_id PK
+        bigint product_variant_id PK
+    }
+    discount_code_basic {
+        bigint id PK
+        boolean applies_once_per_customer
+        integer async_usage_count
+        integer codes_count
+        text codes_precision
+        boolean combines_with_order_discounts
+        boolean combines_with_product_discounts
+        boolean combines_with_shipping_discounts
+        timestamp created_at
+        boolean customer_selection_all_customers
+        text discount_class
+        timestamp ends_at
+        boolean has_timeline_comment
+        integer minimum_requirement_greater_than_or_equal_to_quantity
+        double_precision minimum_requirement_gte_subtotal_amount
+        text minimum_requirement_gte_subtotal_currency_code
+        integer recurring_cycle_limit
+        text short_summary
+        timestamp starts_at
+        text status
+        text summary
+        text title
+        double_precision total_sales_amount
+        text total_sales_currency_code
+        timestamp updated_at
+        bigint usage_limit
+    }
+    search_result_product_variant_event {
+        text event_id PK
+        text product_variant_id PK
+    }
+    product_variant {
+        bigint id PK
+        bigint product_id PK
+        bigint inventory_item_id FK
+        boolean available_for_sale
+        text barcode
+        text compare_at_price
+        timestamp created_at
+        text display_name
+        text inventory_policy
+        integer inventory_quantity
+        bigint legacy_resource_id
+        jsonb metafield
+        integer position
+        double_precision price
+        boolean requires_components
+        integer sellable_online_quantity
+        text sku
+        text tax_code
+        boolean taxable
+        text title
+        timestamp updated_at
+    }
+    draft_order_custom_attribute {
+        text key PK
+        bigint draft_order_id PK
+        text value
+    }
+    order_shipping_tax_line {
+        bigint index PK
+        bigint order_shipping_line_id PK
+        boolean channel_liable
+        double_precision price_set_pres_amount
+        text price_set_pres_currency_code
+        double_precision price_set_shop_amount
+        text price_set_shop_currency_code
+        double_precision rate
+        double_precision rate_percentage
+        text source
+        text title
+    }
+    media {
+        bigint id PK
+        text alt
+        timestamp created_at
+        text file_status
+        text media_content_type
+        text preview_image_alt_text
+        bigint preview_image_height
+        bigint preview_image_id
+        text preview_image_url
+        bigint preview_image_width
+        text preview_status
+        text status
+        timestamp updated_at
+    }
+    discount_automatic_bxgy {
+        bigint id PK
+        bigint async_usage_count
+        boolean combines_with_order_discounts
+        boolean combines_with_product_discounts
+        boolean combines_with_shipping_discounts
+        timestamp created_at
+        text discount_class
+        timestamp ends_at
+        timestamp starts_at
+        text status
+        text summary
+        text title
+        timestamp updated_at
+        bigint uses_per_order_limit
+    }
+    company_location_catalog {
+        bigint catalog_id PK
+        bigint company_location_id PK
+    }
+    location {
+        bigint id PK
+        bigint fulfillment_service_id FK
+        boolean activatable
+        text address_1
+        text address_2
+        boolean address_verified
+        text city
+        text country
+        text country_code
+        timestamp created_at
+        boolean deactivatable
+        timestamp deactivated_at
+        boolean deletable
+        boolean fulfills_online_orders
+        boolean has_active_inventory
+        boolean has_unfulfilled_orders
+        boolean is_active
+        boolean is_fulfillment_service
+        double_precision latitude
+        text local_pickup_settings_instructions
+        text local_pickup_settings_pickup_time
+        double_precision longitude
+        text name
+        text phone
+        text province
+        text province_code
+        boolean ships_inventory
+        timestamp updated_at
+        text zip
+    }
+    company_contact {
+        bigint id PK
+        bigint company_id FK
+        bigint customer_id FK
+        timestamp created_at
+        boolean is_main_contact
+        text locale
+        text title
+        timestamp updated_at
+    }
+    refund_line_item {
+        bigint id PK
+        bigint location_id FK
+        bigint order_line_id FK
+        bigint refund_id FK
+        double_precision price_set_pres_amount
+        text price_set_pres_currency_code
+        double_precision price_set_shop_amount
+        text price_set_shop_currency_code
+        double_precision quantity
+        text restock_type
+        boolean restocked
+        double_precision subtotal_set_pres_amount
+        text subtotal_set_pres_currency_code
+        double_precision subtotal_set_shop_amount
+        text subtotal_set_shop_currency_code
+        double_precision total_tax_set_pres_amount
+        text total_tax_set_pres_currency_code
+        double_precision total_tax_set_shop_amount
+        text total_tax_set_shop_currency_code
+    }
+    metafield {
+        bigint id PK
+        bigint owner_id PK
+        timestamp created_at
+        text description
+        text key
+        text namespace
+        text owner_resource
+        text type
+        timestamp updated_at
+        text value
+    }
+    product_media {
+        bigint media_id PK
+        bigint product_id PK
+    }
+    marketing_event {
+        bigint id PK
+        bigint app_id FK
+        text channel_handle
+        text description
+        timestamp ended_at
+        text manage_url
+        text marketing_channel_type
+        text preview_url
+        text remote_id
+        timestamp scheduled_to_end_at
+        text source_and_medium
+        timestamp started_at
+        text type
+        text utm_campaign
+        text utm_medium
+        text utm_source
+    }
+    product_publication {
+        bigint product_id PK
+        bigint publication_id PK
+    }
+    alert_displayed_event {
+        text event_id PK
+        text event_client_id
+        timestamp event_timestamp
+        text message
+        text target
+        text type
+        text value
+    }
+    cart_attribute_event {
+        text key PK
+        text event_id PK
+        text value
+    }
+    discount_customer_buys_product {
+        bigint discount_id PK
+        text discount_resource PK
+        bigint product_id PK
+    }
+    discount_customer_buys_collection {
+        bigint discount_id PK
+        text discount_resource PK
+        bigint collection_id PK
+    }
+    fulfillment_line_item {
+        bigint id PK
+        bigint fulfillment_id PK
+        bigint order_line_id FK
+        bigint product_id FK
+        bigint product_variant_id FK
+        double_precision discounted_total_set_pres_amount
+        text discounted_total_set_pres_currency_code
+        double_precision discounted_total_set_shop_amount
+        text discounted_total_set_shop_currency_code
+        double_precision original_total_set_pres_amount
+        text original_total_set_pres_currency_code
+        double_precision original_total_set_shop_amount
+        text original_total_set_shop_currency_code
+        integer quantity
+    }
+    tender_transaction {
+        bigint id PK
+        bigint order_id FK
+        bigint user_id FK
+        double_precision amount
+        text currency_code
+        text payment_method
+        timestamp processed_at
+        text remote_reference
+        boolean test
+        text transaction_details_credit_card_company
+        text transaction_details_credit_card_number
+    }
+    discount_redeem_code {
+        bigint discount_id PK
+        text discount_type PK
+        bigint id PK
+        bigint created_by_id FK
+        text code
+        text created_by_description
+        text created_by_title
+    }
+    publication {
+        bigint id PK
+        bigint catalog_id FK
+        boolean auto_publish
+        boolean supports_future_publishing
+    }
+    checkout_line_item_event {
+        text id PK
+        text event_id PK
+        double_precision final_line_price_amount
+        text final_line_price_currency_code
+        integer quantity
+        bigint selling_plan_allocation_id
+        text selling_plan_allocation_name
+        text title
+        bigint variant_id
+    }
+    abandoned_checkout_line {
+        bigint index PK
+        bigint checkout_id PK
+        bigint product_id FK
+        bigint variant_id FK
+        double_precision discounted_total_price_set_pres_amount
+        text discounted_total_price_set_pres_currency_code
+        double_precision discounted_total_price_set_shop_amount
+        text discounted_total_price_set_shop_currency_code
+        double_precision discounted_total_price_with_code_pres_amount
+        text discounted_total_price_with_code_pres_currency_code
+        double_precision discounted_total_price_with_code_shop_amount
+        text discounted_total_price_with_code_shop_currency_code
+        double_precision discounted_unit_price_set_pres_amount
+        text discounted_unit_price_set_pres_currency_code
+        double_precision discounted_unit_price_set_shop_amount
+        text discounted_unit_price_set_shop_currency_code
+        double_precision discounted_unit_price_with_code_pres_amount
+        text discounted_unit_price_with_code_pres_currency_code
+        double_precision discounted_unit_price_with_code_shop_amount
+        text discounted_unit_price_with_code_shop_currency_code
+        double_precision original_total_price_set_pres_amount
+        text original_total_price_set_pres_currency_code
+        double_precision original_total_price_set_shop_amount
+        text original_total_price_set_shop_currency_code
+        double_precision original_unit_price_set_pres_amount
+        text original_unit_price_set_pres_currency_code
+        double_precision original_unit_price_set_shop_amount
+        text original_unit_price_set_shop_currency_code
+        bigint quantity
+        text sku
+        text title
+        text variant_title
+    }
+    payout {
+        bigint id PK
+        timestamp issued_at
+        double_precision net_amount
+        text net_currency_code
+        text status
+        text transaction_type
+    }
+    discount_automatic_app {
+        bigint id PK
+        bigint app_discount_type_app_id FK
+        text app_discount_type_app_bridge_create_path
+        text app_discount_type_app_bridge_details_path
+        text app_discount_type_app_key
+        text app_discount_type_description
+        text app_discount_type_discount_class
+        text app_discount_type_function_id
+        text app_discount_type_target_type
+        text app_discount_type_title
+        boolean applies_on_one_time_purchase
+        boolean applies_on_subscription
+        bigint async_usage_count
+        boolean combines_with_order_discounts
+        boolean combines_with_product_discounts
+        boolean combines_with_shipping_discounts
+        timestamp created_at
+        text discount_class
+        bigint discount_id
+        timestamp ends_at
+        bigint recurring_cycle_limit
+        timestamp starts_at
+        text status
+        text title
+        timestamp updated_at
+    }
+    discount_code_free_shipping {
+        bigint id PK
+        boolean applies_on_one_time_purchase
+        boolean applies_on_subscription
+        boolean applies_once_per_customer
+        integer async_usage_count
+        integer codes_count
+        text codes_precision
+        boolean combines_with_order_discounts
+        boolean combines_with_product_discounts
+        boolean combines_with_shipping_discounts
+        timestamp created_at
+        boolean customer_selection_all_customers
+        boolean destination_selection_all_countries
+        boolean destination_selection_include_rest_of_world
+        text discount_class
+        timestamp ends_at
+        boolean has_timeline_comment
+        double_precision maximum_shipping_price_amount
+        text maximum_shipping_price_currency_code
+        integer minimum_requirement_greater_than_or_equal_to_quantity
+        double_precision minimum_requirement_gte_subtotal_amount
+        text minimum_requirement_gte_subtotal_currency_code
+        integer recurring_cycle_limit
+        text short_summary
+        timestamp starts_at
+        text status
+        text summary
+        text title
+        double_precision total_sales_amount
+        text total_sales_currency_code
+        timestamp updated_at
+        bigint usage_limit
+    }
+    bundle_component_option_selection {
+        bigint index PK
+        bigint bundle_component_index PK
+        bigint product_id PK
+        bigint component_option_id FK
+        bigint parent_option_id FK
+        jsonb values
+    }
+    adjustment_order {
+        bigint balance_transaction_id PK
+        bigint id PK
+        double_precision amount
+        text currency_code
+        text link
+    }
+    product_variant_option_value {
+        bigint option_value_id PK
+        bigint variant_id PK
+    }
+    customer_address {
+        bigint id PK
+        bigint customer_id PK
+        text address_1
+        text address_2
+        text city
+        text company
+        boolean coordinates_validated
+        text country
+        text country_code
+        text first_name
+        boolean is_default
+        text last_name
+        text latitude
+        text longitude
+        text name
+        text phone
+        text province
+        text province_code
+        text timezone
+        text validation_result_summary
+        text zip
+    }
+    shop {
+        bigint id PK
+        bigint account_owner_id FK
+        boolean checkout_api_supported
+        text contact_email
+        jsonb countries_in_shipping_zones_country_codes
+        boolean countries_in_shipping_zones_include_rest_of_world
+        timestamp created_at
+        text currency_code
+        text customer_accounts
+        text description
+        text email
+        jsonb enabled_presentment_currencies
+        text iana_timezone
+        boolean marketing_sms_consent_enabled_at_checkout
+        text myshopify_domain
+        text name
+        text order_number_format_prefix
+        text order_number_format_suffix
+        boolean password_enabled
+        jsonb payment_settings_supported_digital_wallets
+        text plan_display_name
+        boolean plan_partner_development
+        boolean plan_shopify_plus
+        text rich_text_editor_url
+        boolean setup_required
+        jsonb ships_to_countries
+        text shop_owner_name
+        boolean tax_shipping
+        boolean taxes_included
+        text timezone_abbreviation
+        text timezone_offset
+        integer timezone_offset_minutes
+        boolean transactional_sms_disabled
+        text unit_system
+        timestamp updated_at
+        text url
+        text weight_unit
+    }
+    discount_customer_selection {
+        bigint discount_id PK
+        text discount_type PK
+        integer index PK
+        bigint customer_id FK
+    }
+    order {
+        bigint id PK
+        bigint customer_id FK
+        bigint location_id FK
+        bigint purchasing_entity_company_contact_id FK
+        bigint purchasing_entity_company_id FK
+        bigint purchasing_entity_customer_id FK
+        bigint staff_member_id FK
+        text app_icon_alt_text
+        bigint app_icon_height
+        bigint app_icon_id
+        text app_icon_url
+        bigint app_icon_width
+        bigint app_id
+        text app_name
+        boolean can_mark_as_paid
+        boolean can_notify_customer
+        text cancel_reason
+        text cancellation_staff_note
+        timestamp cancelled_at
+        boolean capturable
+        double_precision cart_discount_amount_set_pres_amount
+        text cart_discount_amount_set_pres_currency_code
+        double_precision cart_discount_amount_set_shop_amount
+        text cart_discount_amount_set_shop_currency_code
+        text channel_information_channel_definition_channel_name
+        text channel_information_channel_definition_handle
+        bigint channel_information_channel_definition_id
+        boolean channel_information_channel_definition_is_marketplace
+        text channel_information_channel_definition_sub_channel_name
+        text channel_information_channel_definition_svg_icon
+        bigint channel_information_channel_id
+        bigint channel_information_id
+        text client_ip
+        boolean closed
+        timestamp closed_at
+        text confirmation_number
+        boolean confirmed
+        timestamp created_at
+        text currency_code
+        double_precision current_cart_discount_amount_set_pres_amount
+        text current_cart_discount_amount_set_pres_currency_code
+        double_precision current_cart_discount_amount_set_shop_amount
+        text current_cart_discount_amount_set_shop_currency_code
+        double_precision current_shipping_price_set_pres_amount
+        text current_shipping_price_set_pres_currency_code
+        double_precision current_shipping_price_set_shop_amount
+        text current_shipping_price_set_shop_currency_code
+        bigint current_subtotal_line_items_quantity
+        double_precision current_subtotal_price_set_pres_amount
+        text current_subtotal_price_set_pres_currency_code
+        double_precision current_subtotal_price_set_shop_amount
+        text current_subtotal_price_set_shop_currency_code
+        double_precision current_total_additional_fees_set_pres_amount
+        text current_total_additional_fees_set_pres_currency_code
+        double_precision current_total_additional_fees_set_shop_amount
+        text current_total_additional_fees_set_shop_currency_code
+        double_precision current_total_discounts_set_pres_amount
+        text current_total_discounts_set_pres_currency_code
+        double_precision current_total_discounts_set_shop_amount
+        text current_total_discounts_set_shop_currency_code
+        double_precision current_total_duties_set_pres_amount
+        text current_total_duties_set_pres_currency_code
+        double_precision current_total_duties_set_shop_amount
+        text current_total_duties_set_shop_currency_code
+        double_precision current_total_price_set_pres_amount
+        text current_total_price_set_pres_currency_code
+        double_precision current_total_price_set_shop_amount
+        text current_total_price_set_shop_currency_code
+        double_precision current_total_tax_set_pres_amount
+        text current_total_tax_set_pres_currency_code
+        double_precision current_total_tax_set_shop_amount
+        text current_total_tax_set_shop_currency_code
+        bigint current_total_weight
+        boolean customer_accepts_marketing
+        bigint customer_journey_summary_customer_order_index
+        bigint customer_journey_summary_days_to_conversion
+        boolean customer_journey_summary_ready
+        text customer_locale
+        text discount_code
+        text display_financial_status
+        text display_fulfillment_status
+        boolean duties_included
+        boolean edited
+        text email
+        boolean estimated_taxes
+        boolean fulfillable
+        boolean fully_paid
+        boolean has_timeline_comment
+        boolean merchant_editable
+        jsonb merchant_editable_errors
+        text merchant_of_record_app_icon_alt_text
+        bigint merchant_of_record_app_icon_height
+        bigint merchant_of_record_app_icon_id
+        text merchant_of_record_app_icon_url
+        bigint merchant_of_record_app_icon_width
+        bigint merchant_of_record_app_id
+        text merchant_of_record_app_name
+        text name
+        double_precision net_payment_set_pres_amount
+        text net_payment_set_pres_currency_code
+        double_precision net_payment_set_shop_amount
+        text net_payment_set_shop_currency_code
+        text note
+        double_precision original_total_additional_fees_set_pres_amount
+        text original_total_additional_fees_set_pres_currency_code
+        double_precision original_total_additional_fees_set_shop_amount
+        text original_total_additional_fees_set_shop_currency_code
+        double_precision original_total_duties_set_pres_amount
+        text original_total_duties_set_pres_currency_code
+        double_precision original_total_duties_set_shop_amount
+        text original_total_duties_set_shop_currency_code
+        double_precision original_total_price_set_pres_amount
+        text original_total_price_set_pres_currency_code
+        double_precision original_total_price_set_shop_amount
+        text original_total_price_set_shop_currency_code
+        jsonb payment_gateway_names
+        text phone
+        text po_number
+        text presentment_currency_code
+        timestamp processed_at
+        double_precision refund_discrepancy_set_pres_amount
+        text refund_discrepancy_set_pres_currency_code
+        double_precision refund_discrepancy_set_shop_amount
+        text refund_discrepancy_set_shop_currency_code
+        boolean refundable
+        text registered_source_url
+        boolean requires_shipping
+        boolean restockable
+        text return_status
+        text shopify_protect_eligibility_status
+        text shopify_protect_status
+        text source_identifier
+        text source_name
+        text status_page_url
+        bigint subtotal_line_items_quantity
+        double_precision subtotal_price_set_pres_amount
+        text subtotal_price_set_pres_currency_code
+        double_precision subtotal_price_set_shop_amount
+        text subtotal_price_set_shop_currency_code
+        boolean tax_exempt
+        boolean taxes_included
+        boolean test
+        double_precision total_capturable_set_pres_amount
+        text total_capturable_set_pres_currency_code
+        double_precision total_capturable_set_shop_amount
+        text total_capturable_set_shop_currency_code
+        double_precision total_cash_rounding_adj_payment_set_pres_amount
+        text total_cash_rounding_adj_payment_set_pres_currency_code
+        double_precision total_cash_rounding_adj_payment_set_shop_amount
+        text total_cash_rounding_adj_payment_set_shop_currency_code
+        double_precision total_cash_rounding_adj_refund_set_pres_amount
+        text total_cash_rounding_adj_refund_set_pres_currency_code
+        double_precision total_cash_rounding_adj_refund_set_shop_amount
+        text total_cash_rounding_adj_refund_set_shop_currency_code
+        double_precision total_discounts_set_pres_amount
+        text total_discounts_set_pres_currency_code
+        double_precision total_discounts_set_shop_amount
+        text total_discounts_set_shop_currency_code
+        double_precision total_outstanding_set_pres_amount
+        text total_outstanding_set_pres_currency_code
+        double_precision total_outstanding_set_shop_amount
+        text total_outstanding_set_shop_currency_code
+        double_precision total_price_set_pres_amount
+        text total_price_set_pres_currency_code
+        double_precision total_price_set_shop_amount
+        text total_price_set_shop_currency_code
+        double_precision total_received_set_pres_amount
+        text total_received_set_pres_currency_code
+        double_precision total_received_set_shop_amount
+        text total_received_set_shop_currency_code
+        double_precision total_refunded_set_pres_amount
+        text total_refunded_set_pres_currency_code
+        double_precision total_refunded_set_shop_amount
+        text total_refunded_set_shop_currency_code
+        double_precision total_refunded_shipping_set_pres_amount
+        text total_refunded_shipping_set_pres_currency_code
+        double_precision total_refunded_shipping_set_shop_amount
+        text total_refunded_shipping_set_shop_currency_code
+        double_precision total_shipping_price_set_pres_amount
+        text total_shipping_price_set_pres_currency_code
+        double_precision total_shipping_price_set_shop_amount
+        text total_shipping_price_set_shop_currency_code
+        double_precision total_tax_set_pres_amount
+        text total_tax_set_pres_currency_code
+        double_precision total_tax_set_shop_amount
+        text total_tax_set_shop_currency_code
+        double_precision total_tip_received_set_pres_amount
+        text total_tip_received_set_pres_currency_code
+        double_precision total_tip_received_set_shop_amount
+        text total_tip_received_set_shop_currency_code
+        bigint total_weight
+        boolean unpaid
+        timestamp updated_at
+    }
+    product_option {
+        bigint id PK
+        bigint product_id FK
+        text linked_metafield_key
+        text linked_metafield_namespace
+        text name
+        bigint position
+        jsonb values
+    }
+    checkout_delivery_option_event {
+        bigint index PK
+        text event_id PK
+        double_precision cost_after_discounts_amount
+        text cost_after_discounts_currency_code
+        double_precision cost_amount
+        text cost_currency_code
+        text description
+        text handle
+        text title
+        text type
+    }
+    catalog {
+        bigint id PK
+        text status
+        text title
+    }
+    discount_automatic_free_shipping {
+        bigint id PK
+        boolean applies_on_one_time_purchase
+        boolean applies_on_subscription
+        bigint async_usage_count
+        boolean combines_with_order_discounts
+        boolean combines_with_product_discounts
+        boolean combines_with_shipping_discounts
+        timestamp created_at
+        boolean destination_selection_all_countries
+        boolean destination_selection_include_rest_of_world
+        text discount_class
+        timestamp ends_at
+        boolean has_timeline_comment
+        double_precision maximum_shipping_price_amount
+        text maximum_shipping_price_currency_code
+        integer minimum_requirement_greater_than_or_equal_to_quantity
+        double_precision minimum_requirement_gte_subtotal_amount
+        text minimum_requirement_gte_subtotal_currency_code
+        bigint recurring_cycle_limit
+        text short_summary
+        timestamp starts_at
+        text status
+        text summary
+        text title
+        double_precision total_sales_amount
+        text total_sales_currency_code
+        timestamp updated_at
+    }
+    ui_extension_errored_event {
+        text event_id PK
+        text api_version
+        bigint app_id
+        text app_name
+        text app_version
+        text event_client_id
+        timestamp event_timestamp
+        text extension_name
+        text extension_target
+        text message
+        text placement_reference
+        text trace
+        text type
+    }
+    staff_member {
+        bigint id PK
+        text account_type
+        boolean active
+        text email
+        boolean exists
+        text first_name
+        jsonb initials
+        boolean is_shop_owner
+        text last_name
+        text locale
+        text name
+        text phone
+    }
+    return {
+        bigint id PK
+        bigint order_id PK
+        text decline_note
+        text decline_reason
+        text name
+        jsonb return_shipping_fees
+        text status
+        integer total_quantity
+    }
+    abandoned_checkout {
+        bigint id PK
+        bigint customer_id FK
+        text abandoned_checkout_url
+        timestamp completed_at
+        timestamp created_at
+        text name
+        text note
+        double_precision subtotal_price_set_pres_amount
+        text subtotal_price_set_pres_currency_code
+        double_precision subtotal_price_set_shop_amount
+        text subtotal_price_set_shop_currency_code
+        boolean taxes_included
+        double_precision total_discount_set_pres_amount
+        text total_discount_set_pres_currency_code
+        double_precision total_discount_set_shop_amount
+        text total_discount_set_shop_currency_code
+        double_precision total_duties_set_pres_amount
+        text total_duties_set_pres_currency_code
+        double_precision total_duties_set_shop_amount
+        text total_duties_set_shop_currency_code
+        double_precision total_line_items_price_set_pres_amount
+        text total_line_items_price_set_pres_currency_code
+        double_precision total_line_items_price_set_shop_amount
+        text total_line_items_price_set_shop_currency_code
+        double_precision total_price_set_pres_amount
+        text total_price_set_pres_currency_code
+        double_precision total_price_set_shop_amount
+        text total_price_set_shop_currency_code
+        double_precision total_tax_set_pres_amount
+        text total_tax_set_pres_currency_code
+        double_precision total_tax_set_shop_amount
+        text total_tax_set_shop_currency_code
+        timestamp updated_at
+    }
+    discount_shareable_url {
+        bigint discount_id PK
+        text discount_type PK
+        integer index PK
+        text target_type
+        text title
+        text url
+    }
+    checkout_line_item_property_event {
+        text key PK
+        text checkout_line_item_id PK
+        text event_id PK
+        text value
+    }
+    fulfillment_order {
+        bigint id PK
+        bigint order_id PK
+        bigint assigned_location_id FK
+        bigint destination_location_id FK
+        text assigned_location_address_1
+        text assigned_location_address_2
+        text assigned_location_city
+        text assigned_location_country_code
+        text assigned_location_name
+        text assigned_location_phone
+        text assigned_location_province
+        text assigned_location_zip
+        bigint channel_id
+        timestamp created_at
+        text destination_address_1
+        text destination_address_2
+        text destination_city
+        text destination_company
+        text destination_country_code
+        text destination_email
+        text destination_first_name
+        bigint destination_id
+        text destination_last_name
+        text destination_phone
+        text destination_province
+        text destination_zip
+        timestamp fulfill_at
+        timestamp fulfill_by
+        text international_duties_incoterm
+        text order_name
+        timestamp order_processed_at
+        text request_status
+        text status
+        jsonb supported_actions
+        timestamp updated_at
+    }
+    fulfillment_event {
+        bigint id PK
+        bigint fulfillment_id FK
+        text address_1
+        text city
+        text country
+        timestamp created_at
+        timestamp estimated_delivery_at
+        timestamp happened_at
+        text latitude
+        text longitude
+        text message
+        text province
+        text status
+        text zip
+    }
+    abandoned_checkout_discount_code {
+        bigint index PK
+        bigint checkout_id PK
+        text code
+    }
+    order_adjustment {
+        bigint id PK
+        bigint refund_id FK
+        double_precision amount_set_pres_amount
+        text amount_set_pres_currency_code
+        double_precision amount_set_shop_amount
+        text amount_set_shop_currency_code
+        text reason
+        double_precision tax_amount_set_pres_amount
+        text tax_amount_set_pres_currency_code
+        double_precision tax_amount_set_shop_amount
+        text tax_amount_set_shop_currency_code
+    }
+    order_shipping_line {
+        bigint id PK
+        bigint order_id PK
+        text carrier_identifier
+        text code
+        double_precision current_discounted_price_set_pres_amount
+        text current_discounted_price_set_pres_currency_code
+        double_precision current_discounted_price_set_shop_amount
+        text current_discounted_price_set_shop_currency_code
+        boolean custom
+        text delivery_category
+        double_precision discounted_price_set_pres_amount
+        text discounted_price_set_pres_currency_code
+        double_precision discounted_price_set_shop_amount
+        text discounted_price_set_shop_currency_code
+        boolean is_removed
+        double_precision original_price_set_pres_amount
+        text original_price_set_pres_currency_code
+        double_precision original_price_set_shop_amount
+        text original_price_set_shop_currency_code
+        text phone
+        text shipping_rate_handle
+        text source
+        text title
+    }
+    discount_customer_buys_product_variant {
+        bigint discount_id PK
+        text discount_resource PK
+        bigint product_variant_id PK
+    }
+    page_viewed_event {
+        text event_id PK
+        text context_document_location_href
+        text context_document_location_search
+        text event_client_id
+        timestamp event_timestamp
+    }
+    draft_order_tax_line {
+        bigint index PK
+        bigint draft_order_id PK
+        boolean channel_liable
+        double_precision price_set_pres_amount
+        text price_set_pres_currency_code
+        double_precision price_set_shop_amount
+        text price_set_shop_currency_code
+        double_precision rate
+        double_precision rate_percentage
+        text source
+        text title
+    }
+    bundle_component_variant {
+        bigint bundle_component_index PK
+        bigint component_variant_id PK
+        bigint product_id PK
+    }
+    checkout_discount_application_event {
+        bigint index PK
+        text event_id PK
+        text allocation_method
+        text target_selection
+        text target_type
+        text title
+        text type
+        double_precision value_amount
+        text value_currency_code
+        double_precision value_percentage
+    }
+    discount_destination_selection_country {
+        bigint discount_id PK
+        text discount_type PK
+        integer index PK
+        text country_code
+    }
+    order_line {
+        bigint id PK
+        bigint order_id PK
+        bigint product_id FK
+        bigint staff_member_id FK
+        bigint variant_id FK
+        bigint current_quantity
+        double_precision discounted_total_set_pres_amount
+        text discounted_total_set_pres_currency_code
+        double_precision discounted_total_set_shop_amount
+        text discounted_total_set_shop_currency_code
+        double_precision discounted_unit_price_after_all_disc_set_pres_amount
+        text discounted_unit_price_after_all_disc_set_pres_currency_code
+        double_precision discounted_unit_price_after_all_disc_set_shop_amount
+        text discounted_unit_price_after_all_disc_set_shop_currency_code
+        double_precision discounted_unit_price_set_pres_amount
+        text discounted_unit_price_set_pres_currency_code
+        double_precision discounted_unit_price_set_shop_amount
+        text discounted_unit_price_set_shop_currency_code
+        boolean is_gift_card
+        boolean merchant_editable
+        text name
+        bigint non_fulfillable_quantity
+        double_precision original_total_set_pres_amount
+        text original_total_set_pres_currency_code
+        double_precision original_total_set_shop_amount
+        text original_total_set_shop_currency_code
+        double_precision original_unit_price_set_pres_amount
+        text original_unit_price_set_pres_currency_code
+        double_precision original_unit_price_set_shop_amount
+        text original_unit_price_set_shop_currency_code
+        bigint quantity
+        bigint refundable_quantity
+        boolean requires_shipping
+        boolean restockable
+        bigint selling_plan_id
+        text selling_plan_name
+        text sku
+        boolean taxable
+        text title
+        double_precision total_discount_set_pres_amount
+        text total_discount_set_pres_currency_code
+        double_precision total_discount_set_shop_amount
+        text total_discount_set_shop_currency_code
+        double_precision unfulfilled_discounted_total_set_pres_amount
+        text unfulfilled_discounted_total_set_pres_currency_code
+        double_precision unfulfilled_discounted_total_set_shop_amount
+        text unfulfilled_discounted_total_set_shop_currency_code
+        double_precision unfulfilled_original_total_set_pres_amount
+        text unfulfilled_original_total_set_pres_currency_code
+        double_precision unfulfilled_original_total_set_shop_amount
+        text unfulfilled_original_total_set_shop_currency_code
+        bigint unfulfilled_quantity
+        text variant_title
+        text vendor
+    }
+    inventory_level {
+        bigint id PK
+        bigint inventory_item_id PK
+        bigint location_id PK
+        boolean can_deactivate
+        timestamp created_at
+        text deactivation_alert
+        timestamp updated_at
+    }
+    return_line_item {
+        bigint id PK
+        bigint return_id PK
+        bigint order_line_id FK
+        text customer_note
+        integer quantity
+        integer refundable_quantity
+        integer refunded_quantity
+        text return_reason
+        text return_reason_note
+    }
+    draft_order_line {
+        bigint id PK
+        bigint draft_order_id PK
+        text fulfillment_service_id FK
+        bigint product_id FK
+        bigint variant_id FK
+        double_precision approximate_discounted_unit_price_set_pres_amount
+        text approximate_discounted_unit_price_set_pres_currency_code
+        double_precision approximate_discounted_unit_price_set_shop_amount
+        text approximate_discounted_unit_price_set_shop_currency_code
+        boolean custom
+        double_precision discounted_total_set_pres_amount
+        text discounted_total_set_pres_currency_code
+        double_precision discounted_total_set_shop_amount
+        text discounted_total_set_shop_currency_code
+        boolean is_gift_card
+        text name
+        double_precision original_total_set_pres_amount
+        text original_total_set_pres_currency_code
+        double_precision original_total_set_shop_amount
+        text original_total_set_shop_currency_code
+        double_precision original_unit_price_set_pres_amount
+        text original_unit_price_set_pres_currency_code
+        double_precision original_unit_price_set_shop_amount
+        text original_unit_price_set_shop_currency_code
+        double_precision original_unit_price_with_amount
+        text original_unit_price_with_currency_code
+        double_precision price_override_amount
+        text price_override_currency_code
+        bigint quantity
+        boolean requires_shipping
+        text sku
+        boolean taxable
+        text title
+        double_precision total_discount_set_pres_amount
+        text total_discount_set_pres_currency_code
+        double_precision total_discount_set_shop_amount
+        text total_discount_set_shop_currency_code
+        text variant_title
+        text vendor
+        text weight_unit
+        double_precision weight_value
+    }
+    return_shipping_fee {
+        bigint id PK
+        bigint return_id PK
+        double_precision amount_set_presentment_money_amount
+        text amount_set_presentment_money_currency_code
+        double_precision amount_set_shop_money_amount
+        text amount_set_shop_money_currency_code
+    }
+    checkout_attribute_event {
+        text key PK
+        text event_id PK
+        text value
+    }
+    product_removed_from_cart_event {
+        text event_id PK
+        text merchandise_id FK
+        double_precision cost_amount
+        text cost_currency_code
+        text event_client_id
+        timestamp event_timestamp
+        integer quantity
+    }
+    product_tag {
+        bigint index PK
+        bigint product_id PK
+        text value
+    }
+    order_risk_assessment {
+        integer index PK
+        bigint order_id PK
+        bigint provider
+        text risk_level
+    }
+    discount_customer_gets_product {
+        bigint discount_id PK
+        text discount_resource PK
+        bigint product_id PK
+    }
+    draft_order_line_custom_attribute {
+        text key PK
+        bigint draft_order_line_id PK
+        bigint draft_order_id FK
+        text value
+    }
+    customer_visit {
+        bigint id PK
+        bigint order_id FK
+        text landing_page
+        text landing_page_html
+        timestamp occurred_at
+        text referral_code
+        text referral_info_html
+        text referrer_url
+        text source
+        text source_description
+        text source_type
+        text type
+    }
+    discount_automatic_basic {
+        bigint id PK
+        bigint async_usage_count
+        boolean combines_with_order_discounts
+        boolean combines_with_product_discounts
+        boolean combines_with_shipping_discounts
+        timestamp created_at
+        text discount_class
+        timestamp ends_at
+        integer minimum_requirement_greater_than_or_equal_to_quantity
+        double_precision minimum_requirement_gte_subtotal_amount
+        text minimum_requirement_gte_subtotal_currency_code
+        bigint recurring_cycle_limit
+        text short_summary
+        timestamp starts_at
+        text status
+        text summary
+        text title
+        timestamp updated_at
+    }
+    discount_application {
+        bigint index PK
+        bigint order_id PK
+        text allocation_method
+        text code
+        text description
+        text target_selection
+        text target_type
+        text title
+        text type
+        double_precision value_amount
+        text value_currency_code
+        double_precision value_percentage
+    }
+    fulfillment_order_fulfillment_hold {
+        bigint id PK
+        bigint fulfillment_order_id PK
+        text display_reason
+        text handle
+        boolean held_by_requesting_app
+        text reason
+        text reason_notes
+    }
+    inventory_item {
+        bigint id PK
+        text country_code_of_origin
+        timestamp created_at
+        integer duplicate_sku_count
+        text harmonized_system_code
+        text inventory_history_url
+        bigint legacy_resource_id
+        bigint measurement_id
+        text measurement_weight_unit
+        text measurement_weight_value
+        text province_code_of_origin
+        boolean requires_shipping
+        text sku
+        boolean tracked
+        boolean tracked_editable_locked
+        text tracked_editable_reason
+        double_precision unit_cost_amount
+        text unit_cost_currency_code
+        timestamp updated_at
+    }
+    product {
+        bigint id PK
+        double_precision compare_at_price_range_max_variant_compare_at_price_amount
+        text compare_at_price_range_max_variant_compare_at_price_currency_code
+        double_precision compare_at_price_range_min_variant_compare_at_price_amount
+        text compare_at_price_range_min_variant_compare_at_price_currency_code
+        timestamp created_at
+        text description
+        text description_html
+        bigint featured_media_id
+        text gift_card_template_suffix
+        text handle
+        boolean has_only_default_variant
+        boolean has_out_of_stock_variants
+        boolean has_variants_that_requires_components
+        boolean is_gift_card
+        bigint legacy_resource_id
+        double_precision max_variant_price_amount
+        text max_variant_price_currency_code
+        jsonb metafield
+        double_precision min_variant_price_amount
+        text min_variant_price_currency_code
+        text online_store_preview_url
+        text product_type
+        timestamp published_at
+        boolean requires_selling_plan
+        text seo_description
+        text seo_title
+        text status
+        text template_suffix
+        text title
+        bigint total_inventory
+        boolean tracks_inventory
+        timestamp updated_at
+        text vendor
+    }
+    order_line_tax_line {
+        bigint index PK
+        bigint order_line_id PK
+        boolean channel_liable
+        double_precision price_set_pres_amount
+        text price_set_pres_currency_code
+        double_precision price_set_shop_amount
+        text price_set_shop_currency_code
+        double_precision rate
+        double_precision rate_percentage
+        text source
+        text title
+    }
+    draft_order {
+        bigint id PK
+        bigint customer_id FK
+        bigint order_id FK
+        bigint purchasing_entity_company_contact_id FK
+        bigint purchasing_entity_company_id FK
+        bigint purchasing_entity_customer_id FK
+        boolean accept_automatic_discounts
+        boolean all_variant_prices_overridden
+        boolean allow_discount_codes_in_checkout
+        boolean any_variant_prices_overridden
+        timestamp completed_at
+        timestamp created_at
+        text currency_code
+        text email
+        boolean has_timeline_comment
+        text invoice_email_template_subject
+        timestamp invoice_sent_at
+        text invoice_url
+        double_precision line_items_subtotal_price_pres_amount
+        text line_items_subtotal_price_pres_currency_code
+        double_precision line_items_subtotal_price_shop_amount
+        text line_items_subtotal_price_shop_currency_code
+        text name
+        text note
+        text phone
+        text po_number
+        text presentment_currency_code
+        boolean ready
+        timestamp reserve_inventory_until
+        text status
+        double_precision subtotal_price_set_pres_amount
+        text subtotal_price_set_pres_currency_code
+        double_precision subtotal_price_set_shop_amount
+        text subtotal_price_set_shop_currency_code
+        boolean tax_exempt
+        boolean taxes_included
+        double_precision total_discounts_set_pres_amount
+        text total_discounts_set_pres_currency_code
+        double_precision total_discounts_set_shop_amount
+        text total_discounts_set_shop_currency_code
+        double_precision total_line_items_price_set_pres_amount
+        text total_line_items_price_set_pres_currency_code
+        double_precision total_line_items_price_set_shop_amount
+        text total_line_items_price_set_shop_currency_code
+        double_precision total_price_set_pres_amount
+        text total_price_set_pres_currency_code
+        double_precision total_price_set_shop_amount
+        text total_price_set_shop_currency_code
+        bigint total_quantity_of_line_items
+        double_precision total_shipping_price_set_pres_amount
+        text total_shipping_price_set_pres_currency_code
+        double_precision total_shipping_price_set_shop_amount
+        text total_shipping_price_set_shop_currency_code
+        double_precision total_tax_set_pres_amount
+        text total_tax_set_pres_currency_code
+        double_precision total_tax_set_shop_amount
+        text total_tax_set_shop_currency_code
+        bigint total_weight
+        timestamp updated_at
+        boolean visible_to_customer
+    }
+    product_viewed_event {
+        text event_id PK
+        bigint product_variant_id FK
+        text event_client_id
+        timestamp event_timestamp
+    }
+    model_3_d {
+        bigint media_id PK
+        double_precision bounding_box_size_x
+        double_precision bounding_box_size_y
+        double_precision bounding_box_size_z
+        text file_name
+    }
+    customer_tag {
+        bigint index PK
+        bigint customer_id PK
+        text value
+    }
+    order_custom_attribute {
+        text key PK
+        bigint order_id PK
+        text value
+    }
+    discount_customer_gets_product_variant {
+        bigint discount_id PK
+        text discount_resource PK
+        bigint product_variant_id PK
+    }
+    sale_tax {
+        bigint id PK
+        bigint sale_id PK
+        double_precision pres_amount
+        text pres_currency_code
+        double_precision shop_amount
+        text shop_currency_code
+    }
+    checkout_line_item_discount_allocation_event {
+        bigint index PK
+        text checkout_line_item_id PK
+        text event_id PK
+        double_precision amount
+        text currency_code
+    }
+    bundle_component {
+        bigint index PK
+        bigint product_id PK
+        bigint component_product_id FK
+        bigint quantity_option_parent_option_id FK
+        bigint quantity
+        text quantity_option_name
+        jsonb quantity_option_values
+    }
+    customer_segment {
+        bigint id PK
+        timestamp created_at
+        text name
+        text query
+        timestamp updated_at
+    }
+    draft_order_line_tax_line {
+        bigint index PK
+        bigint draft_order_line_id PK
+        bigint draft_order_id FK
+        boolean channel_liable
+        double_precision price_set_pres_amount
+        text price_set_pres_currency_code
+        double_precision price_set_shop_amount
+        text price_set_shop_currency_code
+        double_precision rate
+        double_precision rate_percentage
+        text source
+        text title
+    }
+    draft_order_tag {
+        bigint index PK
+        bigint draft_order_id PK
+        text value
+    }
+    video {
+        bigint media_id PK
+        integer duration
+        text file_name
+    }
+    collection_product {
+        bigint collection_id PK
+        bigint product_id PK
+    }
+    fulfillment {
+        bigint id PK
+        bigint location_id FK
+        bigint order_id FK
+        text service_id FK
+        timestamp created_at
+        timestamp delivered_at
+        text display_status
+        timestamp estimated_delivery_at
+        timestamp in_transit_at
+        text name
+        boolean requires_shipping
+        text status
+        integer total_quantity
+        timestamp updated_at
+    }
+    order_discount_code }o--|| order : "fk"
+    collection_rule }o--|| collection : "fk"
+    inventory_quantity }o--|| inventory_level : "fk"
+    inventory_quantity }o--|| inventory_item : "fk"
+    customer_tax_exemption }o--|| customer : "fk"
+    media_error }o--|| media : "fk"
+    media_image }o--|| media : "fk"
+    dispute }o--|| order : "fk"
+    order_risk_fact }o--|| order : "fk"
+    order_risk_fact }o--|| order_risk_assessment : "fk"
+    company_location }o--|| company : "fk"
+    customer }o--|| order : "fk"
+    checkout_transaction_event }o--|| checkout_event : "fk"
+    fulfillment_service }o--|| location : "fk"
+    fulfillment_service }o--|| shop : "fk"
+    collection_viewed_product_variant_event }o--|| collection_viewed_event : "fk"
+    collection_viewed_product_variant_event }o--|| product_variant : "fk"
+    discount_customer_segment_selection }o--|| customer_segment : "fk"
+    cart_line_event }o--|| cart_viewed_event : "fk"
+    cart_line_event }o--|| product_variant : "fk"
+    sale }o--|| sales_agreement : "fk"
+    order_line_custom_attribute }o--|| order_line : "fk"
+    app }o--|| catalog : "fk"
+    media_warning }o--|| media : "fk"
+    discount_code_app }o--|| app : "fk"
+    transaction }o--|| order : "fk"
+    transaction }o--|| refund : "fk"
+    transaction }o--|| transaction : "fk"
+    transaction }o--|| staff_member : "fk"
+    company }o--|| company_contact : "fk"
+    fulfillment_order_line_item }o--|| order_line : "fk"
+    fulfillment_order_line_item }o--|| product_variant : "fk"
+    fulfillment_order_line_item }o--|| fulfillment_order : "fk"
+    fulfillment_order_line_item }o--|| inventory_item : "fk"
+    discount_allocation }o--|| order_line : "fk"
+    discount_allocation }o--|| discount_application : "fk"
+    abandoned_checkout_tax_line }o--|| abandoned_checkout : "fk"
+    fulfillment_tracking_info }o--|| fulfillment : "fk"
+    media_file_error }o--|| media : "fk"
+    media_source }o--|| media : "fk"
+    balance_transaction }o--|| order : "fk"
+    balance_transaction }o--|| payout : "fk"
+    balance_transaction }o--|| transaction : "fk"
+    gift_card }o--|| customer : "fk"
+    gift_card }o--|| order : "fk"
+    gift_card }o--|| customer : "fk"
+    refund_shipping_line }o--|| refund : "fk"
+    sales_agreement }o--|| order : "fk"
+    sales_agreement }o--|| app : "fk"
+    sales_agreement }o--|| refund : "fk"
+    sales_agreement }o--|| return : "fk"
+    sales_agreement }o--|| staff_member : "fk"
+    order_risk_summary }o--|| order : "fk"
+    product_added_to_cart_event }o--|| product_variant : "fk"
+    discount_customer_gets_collection }o--|| collection : "fk"
+    refund }o--|| order : "fk"
+    refund }o--|| staff_member : "fk"
+    refund }o--|| return : "fk"
+    external_video }o--|| media : "fk"
+    product_option_value }o--|| product_option : "fk"
+    company_location_tax_exemption }o--|| company_location : "fk"
+    order_tag }o--|| order : "fk"
+    product_variant_media }o--|| product_variant : "fk"
+    product_variant_media }o--|| media : "fk"
+    search_result_product_variant_event }o--|| search_submitted_event : "fk"
+    search_result_product_variant_event }o--|| product_variant : "fk"
+    product_variant }o--|| product : "fk"
+    product_variant }o--|| inventory_item : "fk"
+    draft_order_custom_attribute }o--|| draft_order : "fk"
+    order_shipping_tax_line }o--|| order_shipping_line : "fk"
+    company_location_catalog }o--|| catalog : "fk"
+    company_location_catalog }o--|| company_location : "fk"
+    location }o--|| fulfillment_service : "fk"
+    company_contact }o--|| company : "fk"
+    company_contact }o--|| customer : "fk"
+    refund_line_item }o--|| order_line : "fk"
+    refund_line_item }o--|| location : "fk"
+    refund_line_item }o--|| refund : "fk"
+    product_media }o--|| product : "fk"
+    product_media }o--|| media : "fk"
+    marketing_event }o--|| app : "fk"
+    product_publication }o--|| product : "fk"
+    product_publication }o--|| publication : "fk"
+    cart_attribute_event }o--|| cart_viewed_event : "fk"
+    discount_customer_buys_product }o--|| product : "fk"
+    discount_customer_buys_collection }o--|| collection : "fk"
+    fulfillment_line_item }o--|| product : "fk"
+    fulfillment_line_item }o--|| product_variant : "fk"
+    fulfillment_line_item }o--|| order_line : "fk"
+    fulfillment_line_item }o--|| fulfillment : "fk"
+    tender_transaction }o--|| order : "fk"
+    tender_transaction }o--|| staff_member : "fk"
+    discount_redeem_code }o--|| app : "fk"
+    publication }o--|| catalog : "fk"
+    checkout_line_item_event }o--|| checkout_event : "fk"
+    abandoned_checkout_line }o--|| product : "fk"
+    abandoned_checkout_line }o--|| product_variant : "fk"
+    abandoned_checkout_line }o--|| abandoned_checkout : "fk"
+    discount_automatic_app }o--|| app : "fk"
+    bundle_component_option_selection }o--|| bundle_component : "fk"
+    bundle_component_option_selection }o--|| product : "fk"
+    bundle_component_option_selection }o--|| product_option : "fk"
+    bundle_component_option_selection }o--|| product_option : "fk"
+    adjustment_order }o--|| balance_transaction : "fk"
+    adjustment_order }o--|| transaction : "fk"
+    product_variant_option_value }o--|| product_variant : "fk"
+    product_variant_option_value }o--|| product_option_value : "fk"
+    customer_address }o--|| customer : "fk"
+    shop }o--|| staff_member : "fk"
+    discount_customer_selection }o--|| customer : "fk"
+    order }o--|| customer : "fk"
+    order }o--|| company : "fk"
+    order }o--|| company_contact : "fk"
+    order }o--|| customer : "fk"
+    order }o--|| staff_member : "fk"
+    order }o--|| location : "fk"
+    product_option }o--|| product : "fk"
+    checkout_delivery_option_event }o--|| checkout_event : "fk"
+    return }o--|| order : "fk"
+    abandoned_checkout }o--|| customer : "fk"
+    checkout_line_item_property_event }o--|| checkout_event : "fk"
+    checkout_line_item_property_event }o--|| checkout_line_item_event : "fk"
+    fulfillment_order }o--|| location : "fk"
+    fulfillment_order }o--|| location : "fk"
+    fulfillment_order }o--|| order : "fk"
+    fulfillment_event }o--|| fulfillment : "fk"
+    abandoned_checkout_discount_code }o--|| abandoned_checkout : "fk"
+    order_adjustment }o--|| refund : "fk"
+    order_shipping_line }o--|| order : "fk"
+    discount_customer_buys_product_variant }o--|| product_variant : "fk"
+    draft_order_tax_line }o--|| draft_order : "fk"
+    bundle_component_variant }o--|| bundle_component : "fk"
+    bundle_component_variant }o--|| product : "fk"
+    bundle_component_variant }o--|| product_variant : "fk"
+    checkout_discount_application_event }o--|| checkout_event : "fk"
+    order_line }o--|| product : "fk"
+    order_line }o--|| product_variant : "fk"
+    order_line }o--|| order : "fk"
+    order_line }o--|| staff_member : "fk"
+    inventory_level }o--|| inventory_item : "fk"
+    inventory_level }o--|| location : "fk"
+    return_line_item }o--|| return : "fk"
+    return_line_item }o--|| order_line : "fk"
+    draft_order_line }o--|| product : "fk"
+    draft_order_line }o--|| product_variant : "fk"
+    draft_order_line }o--|| draft_order : "fk"
+    draft_order_line }o--|| fulfillment_service : "fk"
+    return_shipping_fee }o--|| return : "fk"
+    checkout_attribute_event }o--|| checkout_event : "fk"
+    product_removed_from_cart_event }o--|| product_variant : "fk"
+    product_tag }o--|| product : "fk"
+    order_risk_assessment }o--|| order : "fk"
+    discount_customer_gets_product }o--|| product : "fk"
+    draft_order_line_custom_attribute }o--|| draft_order_line : "fk"
+    draft_order_line_custom_attribute }o--|| draft_order : "fk"
+    customer_visit }o--|| order : "fk"
+    discount_application }o--|| order : "fk"
+    fulfillment_order_fulfillment_hold }o--|| fulfillment_order : "fk"
+    order_line_tax_line }o--|| order_line : "fk"
+    draft_order }o--|| customer : "fk"
+    draft_order }o--|| company : "fk"
+    draft_order }o--|| company_contact : "fk"
+    draft_order }o--|| customer : "fk"
+    draft_order }o--|| order : "fk"
+    product_viewed_event }o--|| product_variant : "fk"
+    model_3_d }o--|| media : "fk"
+    customer_tag }o--|| customer : "fk"
+    order_custom_attribute }o--|| order : "fk"
+    discount_customer_gets_product_variant }o--|| product_variant : "fk"
+    sale_tax }o--|| sale : "fk"
+    checkout_line_item_discount_allocation_event }o--|| checkout_event : "fk"
+    checkout_line_item_discount_allocation_event }o--|| checkout_line_item_event : "fk"
+    bundle_component }o--|| product : "fk"
+    bundle_component }o--|| product : "fk"
+    bundle_component }o--|| product_option : "fk"
+    draft_order_line_tax_line }o--|| draft_order_line : "fk"
+    draft_order_line_tax_line }o--|| draft_order : "fk"
+    draft_order_tag }o--|| draft_order : "fk"
+    video }o--|| media : "fk"
+    collection_product }o--|| collection : "fk"
+    collection_product }o--|| product : "fk"
+    fulfillment }o--|| location : "fk"
+    fulfillment }o--|| order : "fk"
+    fulfillment }o--|| fulfillment_service : "fk"

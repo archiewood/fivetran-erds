@@ -1,0 +1,397 @@
+erDiagram
+    users {
+        text id PK
+        text user_name PK
+        text active
+        text admin
+        text avatar_template
+        text can_be_deleted
+        text created_at
+        text created_at_age
+        text days_visited
+        text email
+        text last_emailed_age
+        text last_emailed_at
+        text last_seen_age
+        text last_seen_at
+        text manual_locked_trust_level
+        text moderator
+        text name
+        text post_count
+        text posts_read_count
+        jsonb secondary_emails
+        text silence_reason
+        text staged
+        text suspended_at
+        text suspended_till
+        text time_read
+        text title
+        text topics_entered
+        text trust_level
+    }
+    post_mentioned_user {
+        text id PK
+        text post_id PK
+        text avatar_template
+        text name
+        text user_name
+    }
+    post_action_summary {
+        text id PK
+        text post_id PK
+        text can_act
+    }
+    post {
+        text id PK
+        text category_id FK
+        text reply_to_user_id FK
+        text topic_id FK
+        text user_id FK
+        text accepted_answer
+        text admin
+        text avatar_template
+        jsonb badges_granted
+        text bookmarked
+        text can_accept_answer
+        text can_delete
+        text can_edit
+        text can_recover
+        text can_see_hidden_post
+        text can_unaccept_answer
+        text can_view_edit_history
+        text can_vote
+        text can_wiki
+        text cooked
+        text count
+        text created_at
+        text current_user_reaction
+        text current_user_used_main_reaction
+        text deleted_at
+        text deleted_by_avatar_template
+        text deleted_by_id
+        text deleted_by_name
+        text deleted_by_username
+        text display_username
+        text edit_reason
+        text excerpt
+        text flair_bg_color
+        text flair_color
+        text flair_group_id
+        text flair_name
+        text flair_url
+        text hidden
+        text incoming_link_count
+        text moderator
+        text name
+        text number
+        text primary_group_name
+        text quote_count
+        text raws
+        text reaction_users_count
+        jsonb reactions
+        text readers_count
+        text reads
+        text reply_count
+        text reply_to_post_number
+        text reviewable_id
+        text reviewable_score_count
+        text reviewable_score_pending_count
+        text score
+        text staff
+        text title_is_group
+        text topic_accepted_answer
+        text topic_html_title
+        text truncated
+        text trust_level
+        text type
+        text updated_at
+        text url
+        text user_birthdate
+        text user_cakedate
+        text user_deleted
+        text user_status_description
+        text user_status_emoji
+        text user_status_ends_at
+        text user_status_message_bus_last_id
+        text version
+        text wiki
+        text yours
+    }
+    group_member {
+        text id PK
+        text group_name FK
+        text user_name FK
+        text added_at
+        text admin
+        text avatar_template
+        text flair_group_id
+        text flair_name
+        text flair_url
+        text last_posted_at
+        text last_seen_at
+        text name
+        text primary_group_name
+        text temp_group_member_group_name
+        text timezone
+        text title
+        text trust_level
+    }
+    group_owner {
+        text id PK
+        text group_name PK
+        text added_at
+        text avatar_template
+        text last_posted_at
+        text last_seen_at
+        text name
+        text temp_group_member_group_name
+        text timezone
+        text title
+        text user_name
+    }
+    badge {
+        text id PK
+        text badge_grouping_id FK
+        text badge_type_id FK
+        text allow_title
+        text auto_revoke
+        text description
+        text enabled
+        text grant_count
+        text i_18_n_name
+        text icon
+        text image_upload_id
+        text image_url
+        text listable
+        text long_description
+        text manually_grantable
+        text multiple_grant
+        text name
+        text query
+        text show_in_post_header
+        text show_posts
+        text slug
+        text systems
+        text target_posts
+        text trigger
+    }
+    badge_type {
+        text id PK
+        text name
+        text sort_order
+    }
+    badge_grouping {
+        text id PK
+        text description
+        text name
+        text position
+        text systems
+    }
+    user_badge {
+        text id PK
+        text user_name PK
+        text badge_id PK
+        text badge_grouping_id FK
+        text badge_type_id FK
+        text granted_by_id FK
+        text can_favorite
+        text granted_at
+        text grouping_position
+        text is_favorite
+    }
+    granted_bies {
+        text id PK
+        text user_name PK
+        text admin
+        text avatar_template
+        text moderator
+        text name
+        text trust_level
+    }
+    groups {
+        text id PK
+        text name PK
+        text allow_membership_requests
+        text automatic
+        text bio_cooked
+        text bio_excerpt
+        text bio_raw
+        text can_admin_group
+        text can_edit_group
+        text can_see_members
+        text default_notification_level
+        text display_name
+        text flair_bg_color
+        text flair_color
+        text flair_url
+        text full_name
+        text grant_trust_level
+        text has_messages
+        text incoming_email
+        text is_group_owner
+        text is_group_user
+        text members_visibility_level
+        text membership_request_template
+        text mentionable_level
+        text messageable_level
+        text primary_group
+        text public_admission
+        text public_exit
+        text publish_read_state
+        text title
+        text user_count
+        text visibility_level
+    }
+    tags {
+        text id PK
+        text count
+        text description
+        text name
+        text pm_only
+        text target_tag
+        text text
+    }
+    topic_poster {
+        text index PK
+        text topic_id PK
+        text user_id FK
+        text description
+        text extras
+        text flair_group_id
+        text primary_group_id
+    }
+    topic {
+        text id PK
+        text category_id FK
+        text archetype
+        text archived
+        text bookmarked
+        text bumped
+        text bumped_at
+        text can_vote
+        text closed
+        text created_at
+        text excerpt
+        text fancy_title
+        text featured_link
+        text has_accepted_answer
+        text has_summary
+        text highest_post_number
+        text image_url
+        text last_posted_at
+        text last_poster_username
+        text like_count
+        text liked
+        text pinned
+        text pinned_globally
+        text posts_count
+        text reply_count
+        text slug
+        jsonb tags
+        jsonb tags_descriptions
+        text title
+        text unpinned
+        text unseen
+        text views
+        text visible
+    }
+    subcategory_list {
+        text id PK
+        text category_id PK
+        text can_edit
+        text color
+        text count
+        text default_list_filter
+        text default_top_period
+        text default_view
+        text description
+        text description_excerpt
+        text description_text
+        text has_children
+        text icon
+        text list_style
+        text minimum_required_tags
+        text name
+        text navigate_to_first_post_after_read
+        text notification_level
+        text num_featured_topics
+        text permission
+        text position
+        text post_count
+        text read_restricted
+        text show_subcategory_list
+        text slug
+        text sort_ascending
+        text sort_order
+        text style_type
+        text text_color
+        text topic_count
+        text topic_template
+        text topic_url
+        text uploaded_background
+        text uploaded_background_dark
+        text uploaded_logo
+        text uploaded_logo_dark
+    }
+    category {
+        text id PK
+        text can_edit
+        text color
+        text default_list_filter
+        text default_top_period
+        text default_view
+        text description
+        text description_excerpt
+        text description_text
+        text has_children
+        text icon
+        text is_uncategorized
+        text minimum_required_tags
+        text name
+        text navigate_to_first_post_after_read
+        text notification_level
+        text num_featured_topics
+        text permission
+        text position
+        text post_count
+        text read_restricted
+        text show_subcategory_list
+        text slug
+        text sort_ascending
+        text sort_order
+        text style_type
+        text subcategory_count
+        text subcategory_list_style
+        text text_color
+        text topic_count
+        text topic_template
+        text topic_url
+        text topics_all_time
+        text topics_day
+        text topics_month
+        text topics_week
+        text topics_year
+        text uploaded_background
+        text uploaded_background_dark
+        text uploaded_logo
+        text uploaded_logo_dark
+    }
+    post_mentioned_user }o--|| post : "fk"
+    post_action_summary }o--|| post : "fk"
+    post }o--|| users : "fk"
+    post }o--|| category : "fk"
+    post }o--|| topic : "fk"
+    post }o--|| users : "fk"
+    group_member }o--|| users : "fk"
+    group_member }o--|| groups : "fk"
+    group_owner }o--|| groups : "fk"
+    badge }o--|| badge_type : "fk"
+    badge }o--|| badge_grouping : "fk"
+    user_badge }o--|| badge : "fk"
+    user_badge }o--|| granted_bies : "fk"
+    user_badge }o--|| badge_type : "fk"
+    user_badge }o--|| badge_grouping : "fk"
+    topic_poster }o--|| users : "fk"
+    topic_poster }o--|| topic : "fk"
+    topic }o--|| category : "fk"
+    subcategory_list }o--|| category : "fk"

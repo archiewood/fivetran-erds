@@ -1,0 +1,460 @@
+erDiagram
+    campaign_repeat_error {
+        integer error_id PK
+        text campaign_repeat_id PK
+        text error
+    }
+    es_client {
+        bigint client_id PK
+        bigint account_id
+        text name
+    }
+    campaign_repeat_day_of_month {
+        text campaign_repeat_id PK
+        integer day PK
+    }
+    es_triggered_sends {
+        text message_id PK
+        bigint client_id
+        text email_md_5
+        text email_sha_256
+        text engagement
+        text event_id
+        timestamp event_time
+        text flow_id
+        boolean is_basic
+        text profile_id
+        timestamp send_time
+        timestamp signup_time
+        bigint template_id
+    }
+    es_campaign_clicks {
+        text message_id PK
+        text browser
+        bigint campaign_id
+        bigint client_id
+        bigint count
+        text email_md_5
+        text email_sha_256
+        text engagement
+        text event_id
+        timestamp event_time
+        bigint index
+        text ip
+        text ip_type
+        text is_real_click
+        text list_id
+        text profile_id
+        timestamp send_time
+        timestamp signup_time
+        text url
+        bigint url_count
+        text user_agent
+    }
+    campaign_repeat_day_of_week {
+        text campaign_repeat_id PK
+        text day PK
+    }
+    template_team {
+        integer team_id PK
+        text template_id PK
+        text team_name
+    }
+    es_campaign {
+        bigint campaign_id PK
+        bigint client_id
+        timestamp create_time
+        text data_feed_url
+        text email_hour_range
+        text from_email
+        text from_name
+        text list_name
+        text name
+        text preheader
+        text replyto_email
+        text report_email
+        timestamp schedule_time
+        timestamp start_time
+        text subject
+        text suppress_list
+        bigint template_id
+    }
+    es_triggered_opens {
+        text message_id PK
+        text browser
+        bigint client_id
+        bigint count
+        text email_md_5
+        text email_sha_256
+        text engagement
+        text event_id
+        timestamp event_time
+        text flow_id
+        text ip
+        text ip_type
+        boolean is_basic
+        text is_real_open
+        text profile_id
+        timestamp send_time
+        timestamp signup_time
+        bigint template_id
+        text user_agent
+    }
+    purchase_item {
+        integer index PK
+        text _fivetran_purchase_id PK
+        text item
+        integer quantity
+        text unit_price
+        text url
+    }
+    es_template {
+        bigint template_id PK
+        bigint client_id
+        timestamp create_time
+        text create_user
+        text data_feed_url
+        text from_email
+        text from_name
+        boolean is_basic
+        timestamp modify_time
+        text modify_user
+        text name
+        text preheader
+        text replyto_email
+        text subject
+    }
+    es_triggered_clicks {
+        text message_id PK
+        text browser
+        bigint client_id
+        bigint count
+        text email_md_5
+        text email_sha_256
+        text engagement
+        text event_id
+        timestamp event_time
+        text flow_id
+        bigint index
+        text ip
+        text ip_type
+        boolean is_basic
+        text is_real_click
+        text profile_id
+        timestamp send_time
+        timestamp signup_time
+        bigint template_id
+        text url
+        bigint url_count
+        text user_agent
+    }
+    ad_plan_schedule {
+        text day PK
+        text plan_id PK
+    }
+    campaign_seed_email {
+        integer seed_email_id PK
+        text campaign_id PK
+        text email
+    }
+    es_campaign_sends {
+        text message_id PK
+        bigint campaign_id
+        bigint client_id
+        text email_md_5
+        text email_sha_256
+        text engagement
+        text event_id
+        timestamp event_time
+        text list_id
+        text list_name
+        text profile_id
+        timestamp send_time
+        timestamp signup_time
+        text subject
+        bigint template_id
+    }
+    es_triggered_bounces {
+        text message_id PK
+        bigint client_id
+        text email_md_5
+        text email_sha_256
+        text engagement
+        text event_id
+        timestamp event_time
+        boolean is_basic
+        text message_type
+        text profile_id
+        text reason_log
+        timestamp send_time
+        timestamp signup_time
+        bigint template_id
+    }
+    campaign_query {
+        text _fivetran_campaign_query_id PK
+        text campaign_id FK
+        text user_id FK
+        timestamp click_time
+        text device
+        timestamp open_time
+        timestamp purchase_time
+        timestamp send_time
+    }
+    es_triggered_unsubscribes {
+        text message_id PK
+        bigint client_id
+        text email_md_5
+        text email_sha_256
+        text engagement
+        text event_id
+        timestamp event_time
+        boolean is_basic
+        text message_type
+        text profile_id
+        timestamp send_time
+        timestamp signup_time
+        bigint template_id
+    }
+    campaign_click {
+        integer click_id PK
+        text _fivetran_campaign_query_id PK
+        timestamp click_time
+        text click_url
+    }
+    campaign {
+        text blast_id PK
+        text list_id FK
+        text template_id FK
+        text app_badge
+        text app_data
+        text app_id
+        text app_sound
+        text content_app
+        text content_html
+        text context_text
+        text copy_template
+        text data_feed_url
+        text email_count
+        text email_hour_range
+        timestamp end_time
+        text from_email
+        text from_name
+        text is_google_analytics
+        boolean is_link_tracking
+        boolean is_public
+        text list
+        text mode
+        timestamp modify_time
+        text modify_user
+        text name
+        text replyto
+        text report_email
+        timestamp schedule_time
+        timestamp start_time
+        text status
+        text subject
+    }
+    es_lifecycle_optimizer_flow {
+        text flow_id PK
+        bigint client_id FK
+        timestamp create_time
+        timestamp modify_time
+        text name
+        text version
+    }
+    es_campaign_bounces {
+        text message_id PK
+        bigint campaign_id
+        bigint client_id
+        text email_md_5
+        text email_sha_256
+        text engagement
+        text event_id
+        timestamp event_time
+        text list_id
+        text message_type
+        text profile_id
+        text reason_log
+        timestamp send_time
+        timestamp signup_time
+    }
+    user_list {
+        text list_id PK
+        text user_id PK
+        timestamp list_signup
+    }
+    es_campaign_opens {
+        text message_id PK
+        text browser
+        bigint campaign_id
+        bigint client_id
+        bigint count
+        text email_md_5
+        text email_sha_256
+        text engagement
+        text event_id
+        timestamp event_time
+        text ip
+        text ip_type
+        text is_real_open
+        text list_id
+        text profile_id
+        timestamp send_time
+        timestamp signup_time
+        text user_agent
+    }
+    %% USER Packing and Unpacking Mode     
+%% Pack modes determine the form in which Fivetran delivers your data to your destination. We provide you the option to choose the pack mode for the custom fields of the USER tables. For more information, you can refer to the documentation here.
+    user {
+        text id PK
+        text email_hash
+        text email_status
+        timestamp last_pageview
+        timestamp optout_time
+        integer pageviews
+        timestamp profile_created_date
+        integer purchase_incomplete
+        text top_device
+    }
+    %% Packing and Unpacking Mode     
+%% Pack modes determine the form in which Fivetran delivers your data to your destination. We provide you the option to choose the pack mode for the custom fields of the LIST STAT tables. For more information, you can refer to the documentation here.
+    list_stat {
+        timestamp count_time PK
+        text list PK
+        integer active_count
+        integer disengaged_count
+        integer dormant_count
+        integer email_count
+        integer emailable_count
+        integer engaged_count
+        integer hardbounce_count
+        integer lists_count
+        integer lists_remove_count
+        integer lists_signup_count
+        integer new_count
+        integer optout_count
+        integer optout_loss_count
+        integer passive_count
+        integer spam_count
+        integer spam_loss_count
+        integer valid_count
+    }
+    template_label {
+        integer label_id PK
+        text template_id PK
+        text label_name
+    }
+    campaign_repeat {
+        text repeat_id PK
+        timestamp create_time
+        text create_user
+        text data_feed_url
+        timestamp end_date
+        timestamp error_time
+        text generate_time
+        text list
+        timestamp modify_time
+        text modify_user
+        text name
+        text report_email
+        text send_time
+        timestamp start_date
+        text status
+        text template
+    }
+    purchase {
+        text _fivetran_purchase_id PK
+        text campaign_id FK
+        text user_id FK
+        text channel
+        text date
+        text extid
+    }
+    ad_plan_zone {
+        text plan_id PK
+        integer zone PK
+        text height
+        text name
+        text width
+    }
+    template_tag {
+        integer tag_id PK
+        text template_id PK
+        text tag_name
+    }
+    campaign_supress_list {
+        text campaign_id PK
+        text list_id PK
+    }
+    ad_plan {
+        text plan_id PK
+        text list
+        text name
+    }
+    campaign_label {
+        integer label_id PK
+        text campaign_id PK
+        text label_name
+    }
+    list {
+        text list_id PK
+        timestamp create_time
+        text description
+        text list
+        boolean primary
+        text public_name
+        timestamp send_time
+        text type
+        jsonb vars
+    }
+    campaign_repeat_supress_list {
+        text campaign_repeat_id PK
+        text list_id PK
+    }
+    template {
+        text template_id PK
+        text data_feed_url
+        boolean is_disabled
+        text mode
+        timestamp modify_time
+        text name
+        text sample
+        text subject
+    }
+    es_campaign_unsubscribes {
+        text message_id PK
+        bigint campaign_id
+        bigint client_id
+        text email_md_5
+        text email_sha_256
+        text engagement
+        text event_id
+        timestamp event_time
+        text list_id
+        text message_type
+        text profile_id
+        timestamp send_time
+        timestamp signup_time
+    }
+    campaign_repeat_error }o--|| campaign_repeat : "fk"
+    template_team }o--|| template : "fk"
+    purchase_item }o--|| purchase : "fk"
+    campaign_seed_email }o--|| campaign : "fk"
+    campaign_query }o--|| campaign : "fk"
+    campaign_query }o--|| user : "fk"
+    campaign_click }o--|| campaign_query : "fk"
+    campaign }o--|| template : "fk"
+    campaign }o--|| list : "fk"
+    es_lifecycle_optimizer_flow }o--|| es_client : "fk"
+    user_list }o--|| list : "fk"
+    user_list }o--|| user : "fk"
+    list_stat }o--|| list : "fk"
+    template_label }o--|| template : "fk"
+    purchase }o--|| user : "fk"
+    purchase }o--|| campaign : "fk"
+    template_tag }o--|| template : "fk"
+    campaign_supress_list }o--|| campaign : "fk"
+    campaign_supress_list }o--|| list : "fk"
+    campaign_label }o--|| campaign : "fk"
+    campaign_repeat_supress_list }o--|| campaign_repeat : "fk"
+    campaign_repeat_supress_list }o--|| list : "fk"

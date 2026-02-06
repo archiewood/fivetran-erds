@@ -1,0 +1,916 @@
+erDiagram
+    group_workspace_member {
+        text groups_id PK
+        text id PK
+    }
+    group_workflow {
+        text groups_id PK
+        text id PK
+    }
+    groups {
+        text id PK
+        text app_url
+        text archived
+        text color
+        text color_key
+        text description
+        text display_icon_created_at
+        text display_icon_entity_type
+        text display_icon_id
+        text display_icon_updated_at
+        text display_icon_url
+        text entity_type
+        text global_id
+        text mention_name
+        text name
+        text num_epics_started
+        text num_stories
+        text num_stories_backlog
+        text num_stories_started
+    }
+    authenticated_member {
+        text id PK
+        text mention_name
+        text name
+        jsonb workspace_2_estimate_scale
+        text workspace_2_url_slug
+    }
+    custom_field_value {
+        text id PK
+        text custom_field_id PK
+        text color_key
+        text enabled
+        text entity_type
+        text position
+        text value
+    }
+    custom_field {
+        text id PK
+        text canonical_name
+        text created_at
+        text description
+        text enabled
+        text entity_type
+        text field_type
+        text fixed_position
+        text icon_set_identifier
+        text name
+        text position
+        text updated_at
+    }
+    label {
+        text id PK
+        text app_url
+        text archived
+        text color
+        text created_at
+        text description
+        text entity_type
+        text external_id
+        text global_id
+        text name
+        text stats_num_epics
+        text stats_num_epics_completed
+        text stats_num_epics_in_progress
+        text stats_num_epics_total
+        text stats_num_epics_unstarted
+        text stats_num_points_backlog
+        text stats_num_points_completed
+        text stats_num_points_in_progress
+        text stats_num_points_total
+        text stats_num_points_unstarted
+        text stats_num_related_documents
+        text stats_num_stories_backlog
+        text stats_num_stories_completed
+        text stats_num_stories_in_progress
+        text stats_num_stories_total
+        text stats_num_stories_unestimated
+        text stats_num_stories_unstarted
+        text updated_at
+    }
+    iteration_associated_group {
+        text group_id PK
+        text iteration_id PK
+        text associated_stories_count
+    }
+    iteration_label {
+        text iteration_id PK
+        text label_id PK
+    }
+    iteration_follower {
+        text iteration_id PK
+        text workspace_member_id PK
+    }
+    iteration_mention {
+        text id PK
+        text iteration_id PK
+    }
+    iteration_member_mention {
+        text id PK
+        text iteration_id PK
+    }
+    iteration_group {
+        text group_id PK
+        text iteration_id PK
+    }
+    iteration {
+        text id PK
+        jsonb group_mention_ids FK
+        text app_url
+        text created_at
+        text end_date
+        text entity_type
+        text global_id
+        text name
+        text start_date
+        text stats_num_epics
+        text stats_num_epics_completed
+        text stats_num_epics_in_progress
+        text stats_num_epics_total
+        text stats_num_epics_unstarted
+        text stats_num_points_backlog
+        text stats_num_points_completed
+        text stats_num_points_in_progress
+        text stats_num_points_total
+        text stats_num_points_unstarted
+        text stats_num_related_documents
+        text stats_num_stories_backlog
+        text stats_num_stories_completed
+        text stats_num_stories_in_progress
+        text stats_num_stories_total
+        text stats_num_stories_unestimated
+        text stats_num_stories_unstarted
+        text status
+        text updated_at
+    }
+    project_follower {
+        text project_id PK
+        text workspace_member_id PK
+    }
+    project {
+        text id PK
+        text team_id PK
+        text workflow_id FK
+        text abbreviation
+        text app_url
+        text archived
+        text color
+        text created_at
+        text days_to_thermometer
+        text description
+        text entity_type
+        text external_id
+        text iteration_length
+        text name
+        text show_thermometer
+        text start_time
+        text stats_num_points
+        text stats_num_related_documents
+        text stats_num_stories
+        text updated_at
+    }
+    epic_associated_group {
+        text epic_id PK
+        text group_id PK
+        text associated_stories_count
+    }
+    epic_objective {
+        text objective_id PK
+        text epic_id PK
+        text id FK
+    }
+    epic_label {
+        text epic_id PK
+        text id PK
+    }
+    epic_project {
+        text epic_id PK
+        text id PK
+    }
+    epic {
+        text id PK
+        text epic_state_id FK
+        text group_id FK
+        text requested_by_id FK
+        text app_url
+        text archived
+        text completed
+        text completed_at
+        text completed_at_override
+        text created_at
+        text deadline
+        text entity_type
+        text external_id
+        text global_id
+        text milestone_id
+        text name
+        text planned_start_date
+        text position
+        text productboard_id
+        text productboard_name
+        text productboard_plugin_id
+        text productboard_url
+        text started
+        text started_at
+        text started_at_override
+        text state
+        text stats_average_cycle_time
+        text stats_average_lead_time
+        text stats_last_story_update
+        text stats_num_points
+        text stats_num_points_backlog
+        text stats_num_points_done
+        text stats_num_points_started
+        text stats_num_points_unstarted
+        text stats_num_related_documents
+        text stats_num_stories_backlog
+        text stats_num_stories_done
+        text stats_num_stories_started
+        text stats_num_stories_total
+        text stats_num_stories_unestimated
+        text stats_num_stories_unstarted
+        text stories_without_projects
+        text updated_at
+    }
+    epic_comment {
+        text id PK
+        text epic_id FK
+        text app_url
+        text author_id
+        text created_at
+        text deleted
+        text entity_type
+        text external_id
+        jsonb group_mention_ids
+        jsonb member_mention_ids
+        jsonb mention_ids
+        text text
+        text updated_at
+    }
+    epic_workflow_state {
+        text id PK
+        text epic_workflow_id PK
+        text created_at
+        text description
+        text entity_type
+        text global_id
+        text name
+        text position
+        text type
+        text updated_at
+    }
+    epic_workflow {
+        text id PK
+        text default_epic_state_id FK
+        text created_at
+        text entity_type
+        text updated_at
+    }
+    category {
+        text id PK
+        text archived
+        text color
+        text created_at
+        text entity_type
+        text external_id
+        text name
+        text type
+        text updated_at
+    }
+    objective_category {
+        text id PK
+        text objective_id PK
+    }
+    objective {
+        text id PK
+        text app_url
+        text archived
+        text completed
+        text completed_at
+        text completed_at_override
+        text created_at
+        text description
+        text entity_type
+        text global_id
+        jsonb key_result_id
+        text name
+        text position
+        text started
+        text started_at
+        text started_at_override
+        text state
+        text stats_average_cycle_time
+        text stats_average_lead_time
+        text stats_num_related_documents
+        text updated_at
+    }
+    file_mention {
+        text file_id PK
+        text id PK
+    }
+    file_member_mention {
+        text file_id PK
+        text id PK
+    }
+    file_group_mention {
+        text file_id PK
+        text id PK
+    }
+    file {
+        text id PK
+        text uploader_id FK
+        text content_type
+        text created_at
+        text description
+        text entity_type
+        text external_id
+        text filename
+        text name
+        text size
+        text thumbnail_url
+        text updated_at
+        text url
+    }
+    entity_template_label {
+        text entity_template_id PK
+        text id PK
+    }
+    entity_template_follower {
+        text entity_template_id PK
+        text id PK
+    }
+    entity_template_owner {
+        text entity_template_id PK
+        text id PK
+    }
+    entity_template_task {
+        text _fivetran_id PK
+        text entity_template_id FK
+        text complete
+        text description
+        text position
+    }
+    entity_template_file {
+        text entity_template_id PK
+        text id PK
+    }
+    entity_template_linked_file {
+        text entity_template_id PK
+        text id PK
+    }
+    entity_template_external {
+        text link PK
+        text entity_template_id PK
+    }
+    entity_template {
+        text id PK
+        text author_id FK
+        text epic_id FK
+        text group_id FK
+        text project_id FK
+        text workflow_state_id FK
+        text created_at
+        text deadline
+        text description
+        text entity_type
+        text estimate
+        text external_links
+        text last_used_at
+        jsonb linked_files
+        text name
+        text story_type
+        text updated_at
+    }
+    epic_story_custom_field {
+        text id PK
+        text story_id PK
+        text value_id PK
+    }
+    epic_story_task {
+        text id PK
+        text epic_story_id PK
+    }
+    epic_story_file {
+        text epic_story_id PK
+        text id PK
+    }
+    epic_story_previous_iteration {
+        text epic_story_id PK
+        text id PK
+    }
+    epic_story_label {
+        text epic_story_id PK
+        text id PK
+    }
+    epic_story_follower {
+        text epic_story_id PK
+        text id PK
+    }
+    epic_story_owner {
+        text epic_story_id PK
+        text id PK
+    }
+    epic_story_comment {
+        text epic_story_id PK
+        text id PK
+    }
+    epic_story_linked_file {
+        text epic_story_id PK
+        text id PK
+    }
+    epic_story_mention {
+        text epic_story_id PK
+        text id PK
+    }
+    epic_story_member_mention {
+        text epic_story_id PK
+        text id PK
+    }
+    epic_story_group_mention {
+        text epic_story_id PK
+        text id PK
+    }
+    epic_story {
+        text id PK
+        text epic_id FK
+        text group_id FK
+        text iteration_id FK
+        text project_id FK
+        text requested_by_id FK
+        text workflow_id FK
+        text workflow_state_id FK
+        text app_url
+        text archived
+        text blocked
+        text blocker
+        text completed
+        text completed_at
+        text completed_at_override
+        text created_at
+        text cycle_time
+        text deadline
+        text entity_type
+        text estimate
+        text external_id
+        jsonb external_links
+        text global_id
+        text lead_time
+        text moved_at
+        text name
+        text num_tasks_completed
+        text position
+        text started
+        text started_at
+        text started_at_override
+        text stats_num_related_documents
+        text story_links
+        text story_template_id
+        text story_type
+        text updated_at
+    }
+    external_story_link {
+        text id PK
+        text external_link_stories_id PK
+        text created_at
+        text entity_type
+        text object_id
+        text subject_id
+        text subject_workflow_state_id
+        text type
+        text updated_at
+        text verb
+    }
+    external_link_stories {
+        text id PK
+        text entity_template_external_link FK
+        text created_at
+        text entity_type
+        text external_id
+        text full_name
+        text name
+        text type
+        text updated_at
+        text url
+    }
+    story_custom_field {
+        text id PK
+        text story_id PK
+        text value_id PK
+    }
+    story_owner {
+        text id PK
+        text story_id PK
+    }
+    story_comment_member_mention {
+        text id PK
+        text story_comment_id PK
+    }
+    story_comment_mention {
+        text id PK
+        text story_comment_id PK
+    }
+    story_comment_group_mention {
+        text id PK
+        text story_comment_id PK
+    }
+    story_comment {
+        text id PK
+        text author_id FK
+        text parent_id FK
+        text story_id FK
+        text app_url
+        text blocker
+        text created_at
+        text deleted
+        text entity_type
+        text external_id
+        text position
+        text text
+        text unblocks_parent
+        text updated_at
+    }
+    story_commit {
+        text id PK
+        text author_id FK
+        text repository_id FK
+        text story_id FK
+        text author_email
+        text author_identity_entity_type
+        text author_identity_name
+        text author_identity_type
+        text created_at
+        text entity_type
+        text hash
+        text message
+        text timestamps
+        text updated_at
+        text url
+    }
+    story_task_owner {
+        text id PK
+        text story_task_id PK
+    }
+    story_task_member_mention {
+        text id PK
+        text story_task_id PK
+    }
+    story_task_mention {
+        text id PK
+        text story_task_id PK
+    }
+    story_task_group_mention {
+        text id PK
+        text story_task_id PK
+    }
+    story_task {
+        text id PK
+        text story_id FK
+        text complete
+        text completed_at
+        text created_at
+        text description
+        text entity_type
+        text external_id
+        text position
+        text updated_at
+    }
+    story_branch_pr_vcs_label {
+        text id PK
+        text story_branch_pr_id FK
+        text color
+        text description
+        text entity_type
+        text name
+    }
+    story_branch_pr {
+        text id PK
+        text repository_id FK
+        text story_branch_id FK
+        text branch_id
+        text branch_name
+        text closed
+        text created_at
+        text draft
+        text entity_type
+        text has_overlapping_stories
+        text merged
+        text num_added
+        text num_commits
+        text num_modified
+        text num_removed
+        text number
+        text overlapping_stories
+        text review_status
+        text target_branch_id
+        text target_branch_name
+        text title
+        text updated_at
+        text url
+    }
+    story_branch {
+        text id PK
+        text repository_id FK
+        text story_id FK
+        text created_at
+        text deleted
+        text entity_type
+        text merged_branch_ids
+        text name
+        text persistent
+        text updated_at
+        text url
+    }
+    story_linked_file {
+        text id PK
+        text story_id FK
+    }
+    story_file {
+        text id PK
+        text story_id FK
+    }
+    story_label {
+        text id PK
+        text story_id PK
+    }
+    story {
+        text id PK
+        text epic_id FK
+        text group_id FK
+        text iteration_id FK
+        text project_id FK
+        text requested_by_id FK
+        text story_template_id FK
+        text workflow_id FK
+        text workflow_state_id FK
+        text app_url
+        text archived
+        text blocked
+        text blocker
+        text completed
+        text completed_at
+        text completed_at_override
+        text created_at
+        text cycle_time
+        text deadline
+        text description
+        text entity_type
+        text estimate
+        text external_id
+        text external_links
+        text lead_time
+        text moved_at
+        text name
+        text position
+        text started
+        text started_at
+        text started_at_override
+        text stats
+        text story_type
+        text synced_item_external_id
+        text synced_item_url
+        text updated_at
+    }
+    workspace_member_group {
+        text group_id PK
+        text workspace_member_id PK
+    }
+    workspace_member {
+        text id PK
+        text created_at
+        text created_without_invite
+        text disabled
+        text entity_type
+        text global_id
+        text profile_deactivated
+        text profile_display_icon_created_at
+        text profile_display_icon_entity_type
+        text profile_display_icon_id
+        text profile_display_icon_updated_at
+        text profile_display_icon_url
+        text profile_email_address
+        text profile_entity_type
+        text profile_gravatar_hash
+        text profile_id
+        text profile_is_owner
+        text profile_mention_name
+        text profile_name
+        text profile_two_factor_auth_activated
+        text role
+        text state
+        text updated_at
+    }
+    linked_file_group_mention {
+        text group_mention_id PK
+        text linked_file_id PK
+    }
+    linked_file_mention {
+        text id PK
+        text linked_file_id PK
+    }
+    linked_file_member_mention {
+        text id PK
+        text linked_file_id PK
+    }
+    linked_file {
+        text id PK
+        text uploader_id FK
+        text content_type
+        text created_at
+        text description
+        text entity_type
+        text name
+        text size
+        text thumbnail_url
+        text type
+        text updated_at
+        text url
+    }
+    repository {
+        text id PK
+        text created_at
+        text entity_type
+        text external_id
+        text full_name
+        text name
+        text type
+        text updated_at
+        text url
+    }
+    workflow_state {
+        text id PK
+        text workflow_id PK
+        text created_at
+        text description
+        text entity_type
+        text global_id
+        text name
+        text num_stories
+        text num_story_templates
+        text position
+        text type
+        text updated_at
+        text verb
+    }
+    workflow {
+        text id PK
+        text default_state_id FK
+        jsonb project_id FK
+        text team_id FK
+        text auto_assign_owner
+        text created_at
+        text description
+        text entity_type
+        text name
+        text updated_at
+    }
+    group_workspace_member }o--|| workspace_member : "fk"
+    group_workspace_member }o--|| groups : "fk"
+    group_workflow }o--|| workflow : "fk"
+    group_workflow }o--|| groups : "fk"
+    authenticated_member }o--|| workspace_member : "fk"
+    custom_field_value }o--|| custom_field : "fk"
+    iteration_associated_group }o--|| groups : "fk"
+    iteration_associated_group }o--|| iteration : "fk"
+    iteration_label }o--|| label : "fk"
+    iteration_label }o--|| iteration : "fk"
+    iteration_follower }o--|| workspace_member : "fk"
+    iteration_follower }o--|| iteration : "fk"
+    iteration_mention }o--|| workspace_member : "fk"
+    iteration_mention }o--|| iteration : "fk"
+    iteration_member_mention }o--|| workspace_member : "fk"
+    iteration_member_mention }o--|| iteration : "fk"
+    iteration_group }o--|| groups : "fk"
+    iteration_group }o--|| iteration : "fk"
+    iteration }o--|| groups : "fk"
+    project_follower }o--|| workspace_member : "fk"
+    project_follower }o--|| project : "fk"
+    project }o--|| workflow : "fk"
+    epic_associated_group }o--|| groups : "fk"
+    epic_associated_group }o--|| epic : "fk"
+    epic_objective }o--|| epic : "fk"
+    epic_objective }o--|| objective : "fk"
+    epic_label }o--|| label : "fk"
+    epic_label }o--|| epic : "fk"
+    epic_project }o--|| project : "fk"
+    epic_project }o--|| epic : "fk"
+    epic }o--|| workspace_member : "fk"
+    epic }o--|| groups : "fk"
+    epic }o--|| epic_workflow_state : "fk"
+    epic_comment }o--|| epic : "fk"
+    epic_workflow_state }o--|| epic_workflow : "fk"
+    epic_workflow }o--|| epic_workflow_state : "fk"
+    objective_category }o--|| category : "fk"
+    objective_category }o--|| objective : "fk"
+    file_mention }o--|| workspace_member : "fk"
+    file_mention }o--|| file : "fk"
+    file_member_mention }o--|| workspace_member : "fk"
+    file_member_mention }o--|| file : "fk"
+    file_group_mention }o--|| groups : "fk"
+    file_group_mention }o--|| file : "fk"
+    file }o--|| workspace_member : "fk"
+    entity_template_label }o--|| label : "fk"
+    entity_template_label }o--|| entity_template : "fk"
+    entity_template_follower }o--|| workspace_member : "fk"
+    entity_template_follower }o--|| entity_template : "fk"
+    entity_template_owner }o--|| workspace_member : "fk"
+    entity_template_owner }o--|| entity_template : "fk"
+    entity_template_task }o--|| entity_template : "fk"
+    entity_template_file }o--|| file : "fk"
+    entity_template_file }o--|| entity_template : "fk"
+    entity_template_linked_file }o--|| linked_file : "fk"
+    entity_template_linked_file }o--|| entity_template : "fk"
+    entity_template_external }o--|| entity_template : "fk"
+    entity_template }o--|| workspace_member : "fk"
+    entity_template }o--|| groups : "fk"
+    entity_template }o--|| epic : "fk"
+    entity_template }o--|| project : "fk"
+    entity_template }o--|| workflow_state : "fk"
+    epic_story_custom_field }o--|| custom_field_value : "fk"
+    epic_story_custom_field }o--|| epic_story : "fk"
+    epic_story_task }o--|| epic_story : "fk"
+    epic_story_file }o--|| file : "fk"
+    epic_story_file }o--|| epic_story : "fk"
+    epic_story_previous_iteration }o--|| iteration : "fk"
+    epic_story_previous_iteration }o--|| epic_story : "fk"
+    epic_story_label }o--|| label : "fk"
+    epic_story_label }o--|| epic_story : "fk"
+    epic_story_follower }o--|| workspace_member : "fk"
+    epic_story_follower }o--|| epic_story : "fk"
+    epic_story_owner }o--|| workspace_member : "fk"
+    epic_story_owner }o--|| epic_story : "fk"
+    epic_story_comment }o--|| epic_comment : "fk"
+    epic_story_comment }o--|| epic_story : "fk"
+    epic_story_linked_file }o--|| linked_file : "fk"
+    epic_story_linked_file }o--|| epic_story : "fk"
+    epic_story_mention }o--|| epic_workflow : "fk"
+    epic_story_mention }o--|| epic_story : "fk"
+    epic_story_member_mention }o--|| epic_workflow : "fk"
+    epic_story_member_mention }o--|| epic_story : "fk"
+    epic_story_group_mention }o--|| epic_workflow : "fk"
+    epic_story_group_mention }o--|| epic_story : "fk"
+    epic_story }o--|| workspace_member : "fk"
+    epic_story }o--|| groups : "fk"
+    epic_story }o--|| iteration : "fk"
+    epic_story }o--|| project : "fk"
+    epic_story }o--|| workflow_state : "fk"
+    epic_story }o--|| workflow : "fk"
+    epic_story }o--|| epic : "fk"
+    external_story_link }o--|| external_link_stories : "fk"
+    external_link_stories }o--|| entity_template_external : "fk"
+    story_custom_field }o--|| custom_field_value : "fk"
+    story_custom_field }o--|| story : "fk"
+    story_owner }o--|| workspace_member : "fk"
+    story_owner }o--|| story : "fk"
+    story_comment_member_mention }o--|| workspace_member : "fk"
+    story_comment_member_mention }o--|| story_comment : "fk"
+    story_comment_mention }o--|| workspace_member : "fk"
+    story_comment_mention }o--|| story_comment : "fk"
+    story_comment_group_mention }o--|| groups : "fk"
+    story_comment_group_mention }o--|| story_comment : "fk"
+    story_comment }o--|| workspace_member : "fk"
+    story_comment }o--|| story_comment : "fk"
+    story_comment }o--|| story : "fk"
+    story_commit }o--|| workspace_member : "fk"
+    story_commit }o--|| repository : "fk"
+    story_commit }o--|| story : "fk"
+    story_task_owner }o--|| workspace_member : "fk"
+    story_task_owner }o--|| story_task : "fk"
+    story_task_member_mention }o--|| workspace_member : "fk"
+    story_task_member_mention }o--|| story_task : "fk"
+    story_task_mention }o--|| workspace_member : "fk"
+    story_task_mention }o--|| story_task : "fk"
+    story_task_group_mention }o--|| groups : "fk"
+    story_task_group_mention }o--|| story_task : "fk"
+    story_task }o--|| story : "fk"
+    story_branch_pr_vcs_label }o--|| story_branch_pr : "fk"
+    story_branch_pr }o--|| repository : "fk"
+    story_branch_pr }o--|| story_branch : "fk"
+    story_branch }o--|| repository : "fk"
+    story_branch }o--|| story : "fk"
+    story_linked_file }o--|| linked_file : "fk"
+    story_linked_file }o--|| story : "fk"
+    story_file }o--|| file : "fk"
+    story_file }o--|| story : "fk"
+    story_label }o--|| label : "fk"
+    story_label }o--|| story : "fk"
+    story }o--|| workspace_member : "fk"
+    story }o--|| groups : "fk"
+    story }o--|| iteration : "fk"
+    story }o--|| epic : "fk"
+    story }o--|| entity_template : "fk"
+    story }o--|| project : "fk"
+    story }o--|| workflow_state : "fk"
+    story }o--|| workflow : "fk"
+    workspace_member_group }o--|| groups : "fk"
+    workspace_member_group }o--|| workspace_member : "fk"
+    linked_file_group_mention }o--|| groups : "fk"
+    linked_file_group_mention }o--|| linked_file : "fk"
+    linked_file_mention }o--|| workspace_member : "fk"
+    linked_file_mention }o--|| linked_file : "fk"
+    linked_file_member_mention }o--|| workspace_member : "fk"
+    linked_file_member_mention }o--|| linked_file : "fk"
+    linked_file }o--|| workspace_member : "fk"
+    workflow_state }o--|| workflow : "fk"
+    workflow }o--|| workflow_state : "fk"
+    workflow }o--|| project : "fk"
+    workflow }o--|| project : "fk"

@@ -1,0 +1,380 @@
+erDiagram
+    contact {
+        text id PK
+    }
+    contact_group {
+        text id PK
+    }
+    product {
+        text id PK
+    }
+    order_detail_invoice {
+        text _fivetran_id PK
+        text order_id FK
+        text due_date
+        text invoice_reference
+        text tax_date
+    }
+    order_detail_tax_error {
+        text index PK
+        text order_id PK
+        text tax_error
+    }
+    order_detail {
+        text id PK
+        text parent_order_id FK
+        text parties_billing_contact_id FK
+        text parties_customer_contact_id FK
+        text parties_supplier_contact_id FK
+        text warehouse_id FK
+        text accounting_currency_code
+        text acknowledged
+        text allocation_status_code
+        text assignment_current_channel_id
+        text assignment_current_lead_source_id
+        text assignment_current_project_id
+        text assignment_current_staff_owner_contact_id
+        text assignment_current_team_id
+        text closed_on
+        text cost_price_list_id
+        text created_by_id
+        text created_on
+        text currency_exchange_rate
+        text currency_fixed_exchange_rate
+        text delivery_date
+        text delivery_shipping_method_id
+        text historical_order
+        text order_currency_code
+        text order_payment_status
+        jsonb order_rows
+        text order_status_id
+        text order_status_name
+        text order_type_code
+        text order_weighting
+        text parties_billing_address_full_name
+        text parties_billing_address_line_1
+        text parties_billing_address_line_2
+        text parties_billing_address_line_3
+        text parties_billing_address_line_4
+        text parties_billing_company_name
+        text parties_billing_country
+        text parties_billing_country_id
+        text parties_billing_country_iso_code
+        text parties_billing_country_iso_code_3
+        text parties_billing_email
+        text parties_billing_fax
+        text parties_billing_mobile_telephone
+        text parties_billing_postal_code
+        text parties_billing_telephone
+        text parties_customer_address_full_name
+        text parties_customer_address_line_1
+        text parties_customer_address_line_2
+        text parties_customer_address_line_3
+        text parties_customer_address_line_4
+        text parties_customer_company_name
+        text parties_customer_country
+        text parties_customer_country_id
+        text parties_customer_country_iso_code
+        text parties_customer_country_iso_code_3
+        text parties_customer_email
+        text parties_customer_fax
+        text parties_customer_mobile_telephone
+        text parties_customer_postal_code
+        text parties_customer_telephone
+        text parties_supplier_address_full_name
+        text parties_supplier_address_line_1
+        text parties_supplier_address_line_2
+        text parties_supplier_address_line_3
+        text parties_supplier_address_line_4
+        text parties_supplier_company_name
+        text parties_supplier_country
+        text parties_supplier_country_id
+        text parties_supplier_country_iso_code
+        text parties_supplier_country_iso_code_3
+        text parties_supplier_email
+        text parties_supplier_mobile_telephone
+        text parties_supplier_postal_code
+        text parties_supplier_telephone
+        text placed_on
+        text price_list_id
+        text price_mode_code
+        text reference
+        text shipping_status_code
+        text state_tax
+        text stock_status_code
+        jsonb tax_errors
+        text total_value
+        text total_value_base_net
+        text total_value_base_tax_amount
+        text total_value_base_total
+        text total_value_net
+        text total_value_tax_amount
+        text updated_on
+        text version
+    }
+    good_out_note_detail_event {
+        text event_code PK
+        text goods_out_note_id PK
+        text order_id PK
+        text event_owner_id
+        text occured
+    }
+    goods_out_note_detail {
+        text order_id PK
+        text goods_out_note_id PK
+        text warehouse_id FK
+        text created_by
+        text created_on
+        text label_uri
+        text last_event_version
+        text priority
+        text release_date
+        text sequence
+        text shipping_boxes
+        text shipping_method_id
+        text shipping_references
+        text shipping_weight
+        text status_packed
+        text status_packed_by_id
+        text status_packed_on
+        text status_picked
+        text status_picked_by_id
+        text status_picked_on
+        text status_printed
+        text status_printed_by_id
+        text status_printed_on
+        text status_shipped
+        text status_shipped_by_id
+        text status_shipped_on
+        text transfer
+    }
+    goods_in_note {
+        text purchase_order_id PK
+    }
+    warehouse_weekly_operating_period {
+        text index PK
+        text warehouse_id PK
+        text closing_hours
+        text day_of_week
+        text opening_hours
+    }
+    warehouse_external_transfer_sla {
+        text external_transfer_sla_warehouse_id PK
+        text warehouse_id PK
+        text time_units
+        text value
+    }
+    warehouse {
+        text id PK
+        text address_country_id
+        text address_country_iso_code_2
+        text address_customer_id
+        text address_id
+        text click_and_collect_enabled
+        text collection_sla_time_units
+        text collection_sla_value
+        text name
+        text type_code
+        text type_description
+        text weekly_operating_period_timezone
+    }
+    company {
+        text id PK
+        text name
+    }
+    product_detail_season {
+        text index PK
+        text product_id PK
+        text season_id
+    }
+    product_detail_warehouse {
+        text product_id PK
+        text warehouse_id PK
+        text default_location_id
+        text overflow_location_id
+        text reorder_level
+        text reorder_quantity
+    }
+    product_detail_variation {
+        text option_id PK
+        text product_id PK
+        text option_name
+        text option_value
+        text option_value_id
+    }
+    product_detail_sales_channel_category {
+        text category_code PK
+        text product_id PK
+        text product_sales_channel_index PK
+    }
+    product_detail_sales_channel {
+        text index PK
+        text product_id PK
+        text description_format
+        text description_language_code
+        text description_text
+        text product_condition
+        text product_name
+        text sales_channel_name
+        text short_description_format
+        text short_description_language_code
+        text short_description_text
+    }
+    product_detail {
+        text product_id PK
+        text brand_id
+        text composition_bundle
+        text created_on
+        text featured
+        text financial_detail_tax_code
+        text financial_detail_tax_code_id
+        text identity_barcode
+        text identity_ean
+        text identity_isbn
+        text identity_sku
+        text identity_upc
+        text nominal_code_purchase
+        text nominal_code_sale
+        text nominal_code_stock
+        text primary_supplier_id
+        text product_group_id
+        text product_type_id
+        text reporting_category_id
+        text reporting_season_id
+        text reporting_sub_category_id
+        text sales_popup_message
+        text status
+        text stock_dimension_height
+        text stock_dimension_length
+        text stock_dimension_volume
+        text stock_dimension_width
+        text stock_tracked
+        text stock_weight_magnitude
+        text updated_on
+        text version
+        text warehouse_popup_message
+    }
+    contact_detail_status_history {
+        text contact_status_id PK
+        text contact_id PK
+        text contact_status_name
+        text occured_on
+        text staff_contact_id
+    }
+    contact_detail {
+        text contact_id PK
+        text assignment_current_contact_group_id FK
+        text company_id FK
+        text assignment_current_department_id
+        text assignment_current_lead_source_id
+        text assignment_current_staff_owner_contact_id
+        text communication_messaging_voips_skp
+        text communication_primary_email
+        text communication_secondary_email
+        text communication_telephone_fax
+        text communication_telephone_mobile
+        text communication_telephone_primary
+        text communication_telephone_secondary
+        text communication_tertiary_email
+        text communication_website_primary
+        text contact_tag
+        text created_by_id
+        text created_on
+        text current_contact_status_id
+        text current_contact_status_name
+        text financial_detail_credit_limit
+        text financial_detail_credit_term_days
+        text financial_detail_credit_term_type_id
+        text financial_detail_currency_id
+        text financial_detail_discount_percentage
+        text financial_detail_nominal_code
+        text financial_detail_price_list_id
+        text financial_detail_tax_code_id
+        text financial_detail_tax_number
+        text first_name
+        text is_primary_contact
+        text last_contacted_on
+        text last_name
+        text marketing_is_receive_email_newsletter
+        text organisation_id
+        text organisation_job_title
+        text organisation_name
+        text relationship_to_account_is_staff
+        text relationship_to_account_is_supplier
+        text salutation
+        text trade_status
+        text updated_on
+    }
+    good_in_note_detail_moved {
+        text goods_in_note_detail_id PK
+        text order_id PK
+        text product_id PK
+        text goods_note_id FK
+        text warehouse_id FK
+        text allocated
+        text batch_goods_note_id
+        text cleared
+        text created_by
+        text created_on
+        text destination_location_id
+        text product_value
+        text product_value_currency
+        text purchase_order_row_id
+        text quantity
+        text quarantine
+        text updated_by
+        text updated_on
+        text value_confirmed
+    }
+    good_in_note_detail {
+        text goods_note_id PK
+        text order_id PK
+        text created_by
+        text goods_note_status
+        text received_on
+        text transfer
+        text user_batch_reference
+    }
+    contact_group_detail {
+        text id PK
+        text contact_group_id PK
+        text created_by
+        text created_on
+        text description
+        text is_read_only
+        text name
+    }
+    order_detail_invoice }o--|| order_detail : "fk"
+    order_detail_tax_error }o--|| order_detail : "fk"
+    order_detail }o--|| order_detail : "fk"
+    order_detail }o--|| warehouse : "fk"
+    order_detail }o--|| contact : "fk"
+    order_detail }o--|| contact : "fk"
+    order_detail }o--|| contact : "fk"
+    good_out_note_detail_event }o--|| goods_out_note_detail : "fk"
+    good_out_note_detail_event }o--|| goods_out_note_detail : "fk"
+    goods_out_note_detail }o--|| warehouse : "fk"
+    goods_out_note_detail }o--|| goods_out_note_detail : "fk"
+    warehouse_weekly_operating_period }o--|| warehouse : "fk"
+    warehouse_external_transfer_sla }o--|| warehouse : "fk"
+    warehouse_external_transfer_sla }o--|| warehouse : "fk"
+    product_detail_season }o--|| product_detail : "fk"
+    product_detail_warehouse }o--|| warehouse : "fk"
+    product_detail_warehouse }o--|| product_detail : "fk"
+    product_detail_variation }o--|| product_detail : "fk"
+    product_detail_sales_channel_category }o--|| product_detail_sales_channel : "fk"
+    product_detail_sales_channel_category }o--|| product_detail_sales_channel : "fk"
+    product_detail_sales_channel }o--|| product_detail : "fk"
+    product_detail }o--|| product : "fk"
+    contact_detail_status_history }o--|| contact_detail : "fk"
+    contact_detail }o--|| company : "fk"
+    contact_detail }o--|| contact : "fk"
+    contact_detail }o--|| contact_group : "fk"
+    good_in_note_detail_moved }o--|| product : "fk"
+    good_in_note_detail_moved }o--|| warehouse : "fk"
+    good_in_note_detail_moved }o--|| good_in_note_detail : "fk"
+    good_in_note_detail_moved }o--|| good_in_note_detail : "fk"
+    good_in_note_detail_moved }o--|| goods_in_note : "fk"
+    good_in_note_detail }o--|| order_detail : "fk"
+    good_in_note_detail }o--|| goods_in_note : "fk"
+    contact_group_detail }o--|| contact_group : "fk"

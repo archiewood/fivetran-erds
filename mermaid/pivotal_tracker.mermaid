@@ -1,0 +1,263 @@
+erDiagram
+    iteration_story {
+        text iteration_number PK
+        text iteration_project_id PK
+        text story_id PK
+    }
+    iteration {
+        text number PK
+        text project_id PK
+        text finish
+        text length
+        text start
+        text team_strength
+    }
+    task {
+        text id PK
+        text project_id FK
+        text story_id FK
+        text complete
+        text created_at
+        text description
+        text position
+        text updated_at
+    }
+    project {
+        text id PK
+        text account_id FK
+        text current_iteration_number FK
+        text atom_enabled
+        text automatic_planning
+        text bugs_and_chores_are_estimatable
+        text created_at
+        text enable_following
+        text enable_incoming_emails
+        text enable_tasks
+        text has_google_domain
+        text initial_velocity
+        text iteration_length
+        text name
+        text number_of_done_iterations_to_show
+        text point_scale
+        text point_scale_is_custom
+        text profile_content
+        text project_type
+        text public
+        text show_priority_icon
+        text show_priority_icon_in_all_panels
+        text show_story_priority
+        text start_date
+        text start_time
+        text time_zone_kind
+        text time_zone_offsets
+        text time_zone_olson_name
+        text updated_at
+        text velocity_averaged_over
+        text version
+        text week_start_day
+    }
+    epic {
+        text id PK
+        text label_id FK
+        text project_id FK
+        text created_at
+        text name
+        text updated_at
+        text url
+    }
+    story_transition {
+        text project_id PK
+        text story_id PK
+        text occurred_at
+        text performed_by_id
+        text project_version
+        text state
+    }
+    project_integration {
+        text id PK
+        text project_id FK
+        text active
+        text base_url
+        text can_import
+        text created_at
+        text import_api_url
+        text is_other
+        text kind
+        text name
+        text story_name
+        text updated_at
+    }
+    account_membership {
+        text id PK
+        text account_id FK
+        text admin
+        text created_at
+        text email
+        text initial
+        text name
+        text owner
+        text person_id
+        text project_creator
+        text updated_at
+        text username
+    }
+    release {
+        text id PK
+        text project_id FK
+        text accepted_at
+        text created_at
+        text current_state
+        text deadline
+        jsonb labels
+        text name
+        text updated_at
+        text url
+    }
+    story_label {
+        text label_id PK
+        text story_id PK
+    }
+    story_owner {
+        text index PK
+        text story_id PK
+        text owner_id
+    }
+    story {
+        text id PK
+        text project_id PK
+        text accepted_at
+        text created_at
+        text current_state
+        text description
+        text estimate
+        text name
+        text owned_by_id
+        text requested_by_id
+        text story_priority
+        text story_type
+        text updated_at
+        text url
+    }
+    project_membership {
+        text id PK
+        text project_id PK
+        text created_at
+        text favorite
+        text kind
+        text last_viewed_at
+        text person_email
+        text person_id
+        text person_initial
+        text person_kind
+        text person_name
+        text person_username
+        text project_color
+        text role
+        text updated_at
+        text wants_comment_notification_email
+        text will_receive_mention_notification_or_email
+    }
+    comment {
+        text id PK
+        text project_id FK
+        text story_id FK
+        text created_at
+        text person_id
+        text text
+        text updated_at
+    }
+    account {
+        text id PK
+        text created_at
+        text name
+        text plan
+        text status
+        text updated_at
+    }
+    review {
+        text id PK
+        text project_id FK
+        text story_id FK
+        text created_at
+        text review_type_id
+        text status
+        text updated_at
+    }
+    label {
+        text id PK
+        text project_id FK
+        text created_at
+        text name
+        text updated_at
+    }
+    activity_change {
+        text index PK
+        text activity_guid PK
+        text change_type
+        text id
+        text name
+        jsonb new_value
+        jsonb original_value
+        text story_priority
+        text story_type
+    }
+    activity_primary_resource {
+        text index PK
+        text activity_guid PK
+        text id
+        text kind
+        text name
+        text story_priority
+        text story_type
+        text url
+    }
+    activity {
+        text guid PK
+        text project_id FK
+        text highlight
+        text message
+        text occurred_at
+        text performed_by
+        text project_version
+        jsonb secondary_resource
+    }
+    blocker {
+        text id PK
+        text project_id FK
+        text story_id FK
+        text created_at
+        text description
+        text person_id
+        text resolved
+        text updated_at
+    }
+    iteration_story }o--|| story : "fk"
+    iteration_story }o--|| iteration : "fk"
+    iteration_story }o--|| iteration : "fk"
+    iteration }o--|| project : "fk"
+    task }o--|| story : "fk"
+    task }o--|| story : "fk"
+    project }o--|| account : "fk"
+    project }o--|| iteration : "fk"
+    epic }o--|| project : "fk"
+    epic }o--|| label : "fk"
+    story_transition }o--|| story : "fk"
+    story_transition }o--|| project : "fk"
+    project_integration }o--|| project : "fk"
+    account_membership }o--|| account : "fk"
+    release }o--|| project : "fk"
+    story_label }o--|| label : "fk"
+    story_label }o--|| story : "fk"
+    story_owner }o--|| story : "fk"
+    story }o--|| project : "fk"
+    project_membership }o--|| project : "fk"
+    comment }o--|| story : "fk"
+    comment }o--|| story : "fk"
+    review }o--|| story : "fk"
+    review }o--|| story : "fk"
+    label }o--|| project : "fk"
+    activity_change }o--|| activity : "fk"
+    activity_primary_resource }o--|| activity : "fk"
+    activity }o--|| project : "fk"
+    blocker }o--|| story : "fk"
+    blocker }o--|| story : "fk"

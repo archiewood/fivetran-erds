@@ -1,0 +1,121 @@
+erDiagram
+    unsubscribe {
+        text id PK
+        text created_at
+        text source
+        text value
+    }
+    team_user {
+        text user_id PK
+        text team_id PK
+    }
+    team_beta {
+        text beta_name PK
+        text team_id PK
+    }
+    team_invited_user {
+        text invited_by PK
+        text team_id PK
+        text email
+        text invited_at
+        text role
+    }
+    team {
+        text id PK
+        text created_by FK
+        text created_at
+        text custom_domain
+        text name
+    }
+    activity {
+        text id PK
+        text campaign_id FK
+        text created_by FK
+        text send_user_id FK
+        text team_id FK
+        text campaign_name
+        text clearbit_website_page_signal
+        text company_linkedin_url
+        text company_name
+        text company_size
+        text company_url
+        text country
+        text created_at
+        text email
+        text email_id
+        text email_status
+        text email_template_id
+        text email_template_name
+        text employee
+        text error_message
+        text first_name
+        text full_name
+        text headline
+        text industry
+        text is_first
+        text job_title
+        text languages
+        text last_name
+        text lead_company_name
+        text lead_email
+        text lead_first_name
+        text lead_id
+        text lead_last_name
+        text lh_id
+        text linkedin_url
+        text location_name
+        text member_id
+        text message_id
+        text name
+        text number_of_employees
+        text profile_link
+        text related_sent_at
+        text segment_signal
+        text send_user_email
+        text send_user_name
+        text sequence_id
+        text sequence_step
+        text sequence_tested
+        text step_tested
+        text stopped
+        text sub_industry
+        text total_sequence_step
+        text type
+    }
+    campaign_label {
+        text _fivetran_id PK
+        text campaign_id FK
+        text label
+    }
+    campaign {
+        text id PK
+        text archived
+        text name
+    }
+    lead {
+        text id PK
+        text campaign_id FK
+        text company_name
+        text current_company_position
+        text domain
+        text email
+        text first_name
+        text full_name
+        text industry
+        text is_paused
+        text last_name
+        text linkedin_company_url
+        text linkedin_url
+    }
+    team_user }o--|| team : "fk"
+    team_beta }o--|| team : "fk"
+    team_invited_user }o--|| team_user : "fk"
+    team_invited_user }o--|| team : "fk"
+    team }o--|| team_user : "fk"
+    activity }o--|| team_user : "fk"
+    activity }o--|| campaign : "fk"
+    activity }o--|| team : "fk"
+    activity }o--|| team_user : "fk"
+    campaign_label }o--|| campaign : "fk"
+    lead }o--|| campaign : "fk"
+    lead }o--|| activity : "fk"

@@ -1,0 +1,322 @@
+erDiagram
+    payment {
+        text id PK
+        text invoice_number PK
+        text amount
+        text comment
+        text creation_timestamp
+        text currency_code
+        text payment_method
+        text transaction_reference
+    }
+    event_custom_field {
+        text custom_event_field_id PK
+        text event_id PK
+        text name
+        text value
+    }
+    event {
+        text id PK
+        text amendment_end_date_time
+        text amendment_start_date_time
+        text attendee_id_mode
+        text attendee_list_paged_url
+        text cancellation_end_date_time
+        text cancellation_start_date_time
+        text event_end_date_time
+        text event_name
+        text event_start_date_time
+        text event_status
+        text event_website_url
+        text registration_end_date_time
+        text registration_start_date_time
+        text session_list_url
+        text time_zone
+        text venue_address
+        text venue_description
+        text venue_image_url
+        text venue_location_url
+        text venue_name
+    }
+    orders_attendee {
+        text person_id PK
+        text order_id PK
+        text id FK
+        text attendee_registration_status
+        text category
+        text check_in_code
+        text payment_status
+    }
+    orders {
+        text id PK
+        text address_line_1
+        text address_line_2
+        text all_attendees_completed_status
+        text amount_paid
+        text company
+        text country
+        text created
+        text currency_code
+        text email
+        text first_name
+        text last_modified
+        text last_name
+        text order_reference
+        text order_status
+        text payment_status
+        text phone_number
+        text post_code
+        text total_amount
+        text total_tax_amount
+        text town
+        text us_state
+    }
+    unsubscribes {
+        text id PK
+        text email FK
+        text unsubscribed_at
+    }
+    session_abstract_co_author {
+        text abstract_id PK
+        text id PK
+        text session_id PK
+    }
+    session_abstract_uploaded_file {
+        text index PK
+        text abstract_id PK
+        text session_id PK
+        text file_url
+    }
+    session_abstract_uploaded_paper {
+        text index PK
+        text abstract_id PK
+        text session_id PK
+        text paper_url
+    }
+    session_abstract {
+        text abstract_id PK
+        text session_id PK
+        text main_author_id FK
+        text presenting_author_id FK
+        text abstract_content_url
+        text presentation_end_date_time
+        text presentation_method
+        text presentation_start_date_time
+        text reference_number
+        text summary
+        text title
+        text topic
+    }
+    session_label {
+        text label_id PK
+        text session_id PK
+        text hex_color
+        text name
+    }
+    session_restricted_category {
+        text attendee_category_id PK
+        text session_id PK
+        text attendee_category_name
+    }
+    session_presenter {
+        text person_id PK
+        text session_id PK
+        text id FK
+    }
+    session {
+        text id PK
+        text event_id PK
+        text attended_count
+        text booked_count
+        text capacity
+        text last_modified
+        text live_video_url
+        text location_name
+        text recorded_video_url
+        text session_code
+        text session_end_date_time
+        text session_name
+        text session_start_date_time
+        text session_status
+        text session_summary
+        text session_type
+        text walk_in_count
+    }
+    invoice_line_item {
+        text index PK
+        text invoice_number PK
+        text amount
+        text description
+        text quantity
+        text type
+        text unit_price
+    }
+    invoice {
+        text invoice_number PK
+        text event_id FK
+        text business_unit
+        text creation_timestamp
+        text credit_controller
+        text currency_code
+        text customer_po_number
+        text due_days
+        text external_invoice_reference
+        text grand_total
+        text invoice_address_address_line_1
+        text invoice_address_address_line_2
+        text invoice_address_address_line_3
+        text invoice_address_company
+        text invoice_address_country
+        text invoice_address_email
+        text invoice_address_first_name
+        text invoice_address_last_name
+        text invoice_address_post_code
+        text invoice_address_town
+        text invoice_address_us_state
+        text invoice_address_work_phone_number
+        text invoice_document_url
+        text invoice_recipient_details_url
+        text is_deleted
+        text marked_as_printed
+        text next_related_invoice_number
+        text number_of_attendees
+        text payment_status
+        text previous_related_invoice_number
+        text registration_reference
+        text selected_payment_method
+        text total_before_vat
+        text type
+        text vat_applied
+        text vat_registration_number
+    }
+    custom_data {
+        text index PK
+        text person_id PK
+        text code
+        text key
+        text value
+    }
+    booked_session {
+        text session_id PK
+        text person_id PK
+        text detail_url
+        text session_name
+    }
+    booked_day {
+        text day_id PK
+        text person_id PK
+        text day_name
+        text detail_url
+    }
+    attended_session {
+        text session_id PK
+        text person_id PK
+        text detail_url
+        text last_update
+        text session_name
+    }
+    attended_day {
+        text index PK
+        text person_id PK
+        text date
+        text last_update
+    }
+    custom_registration_data {
+        text index PK
+        text person_id PK
+        text code
+        text key
+        text value
+    }
+    attendee_person {
+        text person_id PK
+        text event_id PK
+        text id FK
+        text category
+        text check_in_code
+        text marketing_code
+        text payment_status
+        text person_booked_ticket
+        text registration_reference
+        text registration_status
+        text registration_timestamp
+    }
+    people_custom_data {
+        text index PK
+        text person_id PK
+        text code
+        text key
+        text value
+    }
+    people {
+        text id PK
+        text address_line_1
+        text address_line_2
+        text address_line_3
+        text company
+        text country
+        text county
+        text email
+        text external_customer_account
+        text first_name
+        text gender
+        text is_anonymized
+        text job_title
+        text last_modified
+        text last_name
+        text phone_number
+        text picture_thumbnail_url
+        text picture_url
+        text post_code
+        text superseded_by_person_id
+        text superseded_by_person_url
+        text title
+        text town
+        text us_state
+        text username
+        text work_phone_number
+    }
+    event_day {
+        text id PK
+        text event_id PK
+        text attended_attendees_url
+        text attended_count
+        text booked_attendees_url
+        text booked_count
+        text capacity
+        text date
+        text name
+        text walk_in_count
+    }
+    payment }o--|| invoice : "fk"
+    event_custom_field }o--|| event : "fk"
+    orders_attendee }o--|| orders : "fk"
+    orders_attendee }o--|| people : "fk"
+    unsubscribes }o--|| people : "fk"
+    session_abstract_co_author }o--|| people : "fk"
+    session_abstract_co_author }o--|| session_abstract : "fk"
+    session_abstract_co_author }o--|| session : "fk"
+    session_abstract_uploaded_file }o--|| session_abstract : "fk"
+    session_abstract_uploaded_file }o--|| session : "fk"
+    session_abstract_uploaded_paper }o--|| session_abstract : "fk"
+    session_abstract_uploaded_paper }o--|| session : "fk"
+    session_abstract }o--|| people : "fk"
+    session_abstract }o--|| people : "fk"
+    session_abstract }o--|| session : "fk"
+    session_label }o--|| session : "fk"
+    session_restricted_category }o--|| session : "fk"
+    session_presenter }o--|| people : "fk"
+    session_presenter }o--|| session : "fk"
+    session }o--|| event : "fk"
+    invoice_line_item }o--|| invoice : "fk"
+    invoice }o--|| event : "fk"
+    custom_data }o--|| attendee_person : "fk"
+    booked_session }o--|| attendee_person : "fk"
+    booked_day }o--|| attendee_person : "fk"
+    attended_session }o--|| attendee_person : "fk"
+    attended_day }o--|| attendee_person : "fk"
+    custom_registration_data }o--|| attendee_person : "fk"
+    attendee_person }o--|| event : "fk"
+    attendee_person }o--|| people : "fk"
+    people_custom_data }o--|| people : "fk"
+    event_day }o--|| event : "fk"

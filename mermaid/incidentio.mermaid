@@ -1,0 +1,570 @@
+erDiagram
+    incident_alert {
+        text id PK
+        text alert_id FK
+        text alert_route_id FK
+        text incident_id FK
+        text incident_external_id
+        text incident_status_category
+    }
+    incident_type {
+        text id PK
+        text create_in_triage
+        text created_at
+        text description
+        text is_default
+        text name
+        text private_incidents_only
+        text updated_at
+    }
+    identity_utility_role {
+        text identity_utility_name PK
+        text index PK
+        text identity_utility_role
+    }
+    alert_source_jira_option {
+        text jira_project_id PK
+        text alert_source_id PK
+    }
+    alert_source_attribute {
+        text alert_attribute_id PK
+        text alert_source_id PK
+    }
+    alert_source_expression {
+        text index PK
+        text alert_source_id PK
+        jsonb else_branch_result
+        text label
+        jsonb operations
+        text reference
+        text return_array
+        text return_type
+        text root_reference
+    }
+    alert_source {
+        text id PK
+        text description_label
+        text description_literal
+        text description_reference
+        text email_address
+        text name
+        text secret_token
+        text source_type
+        text title_label
+        text title_literal
+        text title_reference
+    }
+    alert_source_attribute_binding_value {
+        text index PK
+        text alert_attribute_id PK
+        text alert_source_id PK
+        text label
+        text literal
+        text reference
+    }
+    action {
+        text id PK
+        text assignee_id FK
+        text incident_id FK
+        text completed_at
+        text created_at
+        text description
+        text follow_up
+        text status
+        text updated_at
+    }
+    catalog_resource {
+        text _fivetran_id PK
+        text category
+        text description
+        text label
+        text type
+        text value_docstring
+    }
+    workflow_condition_param_binding {
+        text index PK
+        text workflow_condition_index PK
+        text workflow_id PK
+        jsonb array_value
+        text value_lable
+        text value_literal
+        text value_reference
+    }
+    workflow_condition {
+        text index PK
+        text workflow_id PK
+        text operation_label
+        text operation_value
+        text subject_label
+        text subject_reference
+    }
+    workflow_once_for {
+        text key PK
+        text workflow_id PK
+        text is_array
+        text label
+        text type
+    }
+    workflow_step {
+        text index PK
+        text workflow_id PK
+        text label
+        text name
+    }
+    workflow_expression_array_value {
+        text index PK
+        text workflow_expression_index PK
+        text workflow_id PK
+        text label
+        text literal
+        text reference
+    }
+    workflow_expression_operation_filter_condition_param_binding {
+        text index PK
+        text workflow_expression_index PK
+        text workflow_expression_operation_filter_condition_group_index PK
+        text workflow_expression_operation_index PK
+        text workflow_id PK
+        jsonb array_value
+        text value_lable
+        text value_literal
+        text value_reference
+    }
+    workflow_expression_operation_filter_condition_group {
+        text index PK
+        text workflow_expression_index PK
+        text workflow_expression_operation_index PK
+        text workflow_id PK
+        text operation_label
+        text operation_value
+        text subject_label
+        text subject_reference
+    }
+    workflow_expression_operation_branch_condition_param_binding {
+        text index PK
+        text workflow_expression_index PK
+        text workflow_expression_operation_branch_condition_index PK
+        text workflow_expression_operation_branch_index PK
+        text workflow_expression_operation_index PK
+        text workflow_id PK
+        jsonb array_value
+        text value_lable
+        text value_literal
+        text value_reference
+    }
+    workflow_expression_operation_branch_condition {
+        text index PK
+        text workflow_expression_index PK
+        text workflow_expression_operation_branch_index PK
+        text workflow_expression_operation_index PK
+        text workflow_id PK
+        text operation_label
+        text operation_value
+        text subject_label
+        text subject_reference
+    }
+    workflow_expression_operation_branch {
+        text index PK
+        text workflow_expression_index PK
+        text workflow_expression_operation_index PK
+        text workflow_id PK
+        jsonb array_value
+        text value_label
+        text value_literal
+        text value_reference
+    }
+    workflow_expression_operation {
+        text index PK
+        text workflow_expression_index PK
+        text workflow_id PK
+        text branch_return_array
+        text branch_return_type
+        text navigation_reference
+        text navigation_reference_label
+        text operation_type
+        text parse_return_array
+        text parse_return_type
+        text parse_source
+        text return_array
+        text return_type
+    }
+    workflow_expression {
+        text index PK
+        text workflow_id PK
+        text label
+        text reference
+        text result_value_label
+        text result_value_literal
+        text result_value_reference
+        text returns_array
+        text returns_type
+        text root_reference
+    }
+    workflow {
+        text id PK
+        text continue_on_step_error
+        text delay_conditions_apply_over
+        text delay_for_seconds
+        text folder
+        text include_private_incident
+        text name
+        text runs_from
+        text runs_on_incident
+        jsonb runs_on_incident_modes
+        text shortform
+        text state
+        text tigger_label
+        text tigger_name
+        text version
+    }
+    custom_field_option {
+        text id PK
+        text custom_field_id FK
+        text sort_key
+        text value
+    }
+    users {
+        text id PK
+        text email
+        text name
+        text role
+        text slack_user_id
+    }
+    incident_status {
+        text id PK
+        text category
+        text created_at
+        text description
+        text name
+        text rank
+        text updated_at
+    }
+    catalog_type_required_integration {
+        text required_intergration PK
+        text catalog_type_id PK
+    }
+    catalog_type_schema_attribute {
+        text catalog_type_id PK
+        text id PK
+        text arrays
+        text mode
+        text name
+        text type
+        text version
+    }
+    catalog_type_annotation {
+        text name PK
+        text catalog_type_id PK
+        text value
+    }
+    catalog_type {
+        text id PK
+        text color
+        text created_at
+        text description
+        text external_type
+        text icon
+        text is_editable
+        text name
+        text ranked
+        text semantic_type
+        text type_name
+        text updated_at
+    }
+    catalog_entry_aliases {
+        text index PK
+        text catalog_entry_id PK
+        text aliases
+    }
+    catalog_entry {
+        text id PK
+        text catalog_type_id FK
+        text archived_at
+        text created_at
+        text external_id
+        text name
+        text rank
+        text updated_at
+    }
+    catalog_entry_attribute_value {
+        text _fivetran_id PK
+        text attribute_id FK
+        text catalog_entry_id FK
+        text label
+        text literal
+    }
+    incident_role {
+        text id PK
+        text created_at
+        text description
+        text instructions
+        text name
+        text role_type
+        text shortform
+        text updated_at
+    }
+    alert_attribute {
+        text id PK
+        text alert_id PK
+        text is_array
+        text name
+        text type
+    }
+    alert {
+        text id PK
+        text alert_source_id FK
+        text created_at
+        text deduplication_key
+        text description
+        text resolved_at
+        text source_url
+        text status
+        text title
+        text updated_at
+    }
+    alert_attribute_value {
+        text index PK
+        text alert_attribute_id PK
+        text alert_id PK
+        text catalog_entry_id FK
+        text catalog_type_id FK
+        text label
+        text literal
+    }
+    incident_update {
+        text id PK
+        text incident_id FK
+        text new_incident_status_id FK
+        text new_severity_id FK
+        text updater_user_id FK
+        text created_at
+        text message
+    }
+    incident_attachment {
+        text id PK
+        text incident_id FK
+        text resource_external_id
+        text resource_permalink
+        text resource_title
+        text resource_type
+    }
+    severity {
+        text id PK
+        text created_at
+        text description
+        text name
+        text rank
+        text updated_at
+    }
+    custom_field {
+        text id PK
+        text catalog_type_id FK
+        text created_at
+        text description
+        text field_type
+        text name
+        text updated_at
+    }
+    incident_timestamp {
+        text id PK
+        text name
+        text rank
+    }
+    follow_up_incident {
+        text id PK
+        text assignee_id FK
+        text incident_id FK
+        text completed_at
+        text created_at
+        text description
+        text priority_description
+        text priority_id
+        text priority_name
+        text priority_rank
+        text status
+        text title
+        text updated_at
+    }
+    escalation_event_channel {
+        text index PK
+        text escalation_event_id PK
+        text escalation_id PK
+        text microsoft_teams_channel_id
+        text microsoft_teams_team_id
+        text slack_channel_id
+        text slack_team_id
+    }
+    escalation_event_user {
+        text escalation_event_id PK
+        text escalation_id PK
+        text id PK
+    }
+    escalation_event {
+        text id PK
+        text escalation_id PK
+        text event
+        text occurred_at
+        text urgency
+    }
+    escalation_related_alert {
+        text related_alert_id PK
+        text escalation_id PK
+        text id FK
+    }
+    escalation_related_incident {
+        text related_incident_id PK
+        text escalation_id PK
+        text id FK
+    }
+    escalation {
+        text id PK
+        text creator_alter_id FK
+        text creator_user_id FK
+        text creator_wrokflow_id FK
+        text created_at
+        text creator_alert_id
+        text escalation_path_id
+        text priority_name
+        text status
+        text title
+        text updated_at
+    }
+    alert_route {
+        text id PK
+        text enabled
+        text name
+    }
+    incident_role_assignment {
+        text incident_id PK
+        text incident_role_id PK
+        text action_assignee_id FK
+    }
+    incident_timestamp_value {
+        text incident_id PK
+        text incident_timestamp_id PK
+        text value
+    }
+    incident_custom_field_entry_value {
+        text _fivetran_id PK
+        text catalog_entry_id FK
+        text custom_field_id FK
+        text incident_id FK
+        text value_option_id FK
+        text value_link
+        text value_numeric
+        text value_text
+    }
+    incident {
+        text id PK
+        text creator_user_id FK
+        text incident_status_id FK
+        text incident_type_id FK
+        text severity_id FK
+        text call_url
+        text created_at
+        text external_issue_reference_issue_name
+        text external_issue_reference_issue_permalink
+        text external_issue_reference_provider
+        text mode
+        text name
+        text permalink
+        text postmortem_document_url
+        text reference
+        text slack_channel_id
+        text slack_channel_name
+        text slack_team_id
+        text summary
+        text updated_at
+        text visibility
+        text workload_minutes_late
+        text workload_minutes_sleeping
+        text workload_minutes_total
+        text workload_minutes_working
+    }
+    incident_alert }o--|| alert_route : "fk"
+    incident_alert }o--|| alert : "fk"
+    incident_alert }o--|| incident : "fk"
+    alert_source_jira_option }o--|| alert_source : "fk"
+    alert_source_attribute }o--|| alert_attribute : "fk"
+    alert_source_attribute }o--|| alert_source : "fk"
+    alert_source_expression }o--|| alert_source : "fk"
+    alert_source_attribute_binding_value }o--|| alert_source_attribute : "fk"
+    alert_source_attribute_binding_value }o--|| alert_source_attribute : "fk"
+    action }o--|| users : "fk"
+    action }o--|| incident : "fk"
+    workflow_condition_param_binding }o--|| workflow_condition : "fk"
+    workflow_condition_param_binding }o--|| workflow_condition : "fk"
+    workflow_condition }o--|| workflow : "fk"
+    workflow_once_for }o--|| workflow : "fk"
+    workflow_step }o--|| workflow : "fk"
+    workflow_expression_array_value }o--|| workflow_expression : "fk"
+    workflow_expression_array_value }o--|| workflow_expression : "fk"
+    workflow_expression_operation_filter_condition_param_binding }o--|| workflow_expression_operation_filter_condition_group : "fk"
+    workflow_expression_operation_filter_condition_param_binding }o--|| workflow_expression_operation_filter_condition_group : "fk"
+    workflow_expression_operation_filter_condition_param_binding }o--|| workflow_expression_operation_filter_condition_group : "fk"
+    workflow_expression_operation_filter_condition_param_binding }o--|| workflow_expression_operation_filter_condition_group : "fk"
+    workflow_expression_operation_filter_condition_group }o--|| workflow_expression_operation : "fk"
+    workflow_expression_operation_filter_condition_group }o--|| workflow_expression_operation : "fk"
+    workflow_expression_operation_filter_condition_group }o--|| workflow_expression_operation : "fk"
+    workflow_expression_operation_branch_condition_param_binding }o--|| workflow_expression_operation_branch_condition : "fk"
+    workflow_expression_operation_branch_condition_param_binding }o--|| workflow_expression_operation_branch_condition : "fk"
+    workflow_expression_operation_branch_condition_param_binding }o--|| workflow_expression_operation_branch_condition : "fk"
+    workflow_expression_operation_branch_condition_param_binding }o--|| workflow_expression_operation_branch_condition : "fk"
+    workflow_expression_operation_branch_condition_param_binding }o--|| workflow_expression_operation_branch_condition : "fk"
+    workflow_expression_operation_branch_condition }o--|| workflow_expression_operation_branch : "fk"
+    workflow_expression_operation_branch_condition }o--|| workflow_expression_operation_branch : "fk"
+    workflow_expression_operation_branch_condition }o--|| workflow_expression_operation_branch : "fk"
+    workflow_expression_operation_branch_condition }o--|| workflow_expression_operation_branch : "fk"
+    workflow_expression_operation_branch }o--|| workflow_expression_operation : "fk"
+    workflow_expression_operation_branch }o--|| workflow_expression_operation : "fk"
+    workflow_expression_operation_branch }o--|| workflow_expression_operation : "fk"
+    workflow_expression_operation }o--|| workflow_expression : "fk"
+    workflow_expression_operation }o--|| workflow_expression : "fk"
+    workflow_expression }o--|| workflow : "fk"
+    custom_field_option }o--|| custom_field : "fk"
+    catalog_type_required_integration }o--|| catalog_type : "fk"
+    catalog_type_annotation }o--|| catalog_type : "fk"
+    catalog_entry_aliases }o--|| catalog_entry : "fk"
+    catalog_entry }o--|| catalog_type : "fk"
+    catalog_entry_attribute_value }o--|| catalog_type_schema_attribute : "fk"
+    catalog_entry_attribute_value }o--|| catalog_entry : "fk"
+    alert_attribute }o--|| alert : "fk"
+    alert }o--|| alert_source : "fk"
+    alert_attribute_value }o--|| catalog_entry : "fk"
+    alert_attribute_value }o--|| catalog_type : "fk"
+    alert_attribute_value }o--|| alert_attribute : "fk"
+    alert_attribute_value }o--|| alert_attribute : "fk"
+    incident_update }o--|| incident : "fk"
+    incident_update }o--|| users : "fk"
+    incident_update }o--|| severity : "fk"
+    incident_update }o--|| incident_status : "fk"
+    incident_attachment }o--|| incident : "fk"
+    custom_field }o--|| catalog_type : "fk"
+    follow_up_incident }o--|| users : "fk"
+    follow_up_incident }o--|| incident : "fk"
+    escalation_event_channel }o--|| escalation_event : "fk"
+    escalation_event_channel }o--|| escalation_event : "fk"
+    escalation_event_user }o--|| users : "fk"
+    escalation_event_user }o--|| escalation_event : "fk"
+    escalation_event_user }o--|| escalation_event : "fk"
+    escalation_event }o--|| escalation : "fk"
+    escalation_related_alert }o--|| escalation : "fk"
+    escalation_related_alert }o--|| alert : "fk"
+    escalation_related_incident }o--|| escalation : "fk"
+    escalation_related_incident }o--|| incident : "fk"
+    escalation }o--|| workflow : "fk"
+    escalation }o--|| users : "fk"
+    escalation }o--|| alert : "fk"
+    incident_role_assignment }o--|| incident_role : "fk"
+    incident_role_assignment }o--|| users : "fk"
+    incident_role_assignment }o--|| incident : "fk"
+    incident_timestamp_value }o--|| incident_timestamp : "fk"
+    incident_timestamp_value }o--|| incident : "fk"
+    incident_custom_field_entry_value }o--|| catalog_entry : "fk"
+    incident_custom_field_entry_value }o--|| custom_field_option : "fk"
+    incident_custom_field_entry_value }o--|| custom_field : "fk"
+    incident_custom_field_entry_value }o--|| incident : "fk"
+    incident }o--|| incident_status : "fk"
+    incident }o--|| incident_type : "fk"
+    incident }o--|| users : "fk"
+    incident }o--|| severity : "fk"

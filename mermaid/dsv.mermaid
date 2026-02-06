@@ -1,0 +1,248 @@
+erDiagram
+    shipment {
+        text shipment_id PK
+        text actual_delivery
+        text actual_pickup
+        text barcode
+        text barcode_latest_event
+        text booking_id
+        text from_date
+        text from_date_end
+        text from_date_start
+        text from_date_type
+        text goods_total_colli
+        text goods_total_load_meter
+        text goods_total_volume
+        text goods_total_weight
+        text main_tms_shipment_id
+        text mode_of_transport
+        text requested_delivery
+        text requested_pickup
+        text status
+        text to_date
+        text to_date_end
+        text to_date_start
+        text to_date_type
+    }
+    events {
+        text index PK
+        text shipment_id PK
+        text cargo_availability
+        text cargo_cut_off
+        text code
+        text date
+        text description
+        text groups
+        text location_country_code
+        text location_place
+        text location_unlocode
+        text transport_mode
+        text type
+        text type_value
+        text vessel_name
+        text voyage_flight_no
+        text voyage_id
+    }
+    dangerous_package {
+        text _fivetran_id PK
+        text package_index FK
+        text shipment_id FK
+        text class_name
+        text empty
+        text flash_point
+        text gross_quantity
+        text gross_quantity_unit
+        text limited_quantity
+        text marine_pollutant
+        text net_quantity
+        text net_quantity_unit
+        text package_count
+        text packing_group
+        text packing_kind
+        text proper_shipping_name
+        text sub_risk
+        text technical_name
+        text technical_name_national
+        text temperature_from
+        text temperature_to
+        text tunnel_code
+        text type
+        text un_code
+    }
+    package_reference {
+        text index PK
+        text shipment_id PK
+        text package_index FK
+        text qualifier
+        text reference
+    }
+    package {
+        text index PK
+        text shipment_id PK
+        text cargo_aircraft_only
+        text container_no
+        text description
+        text goods_type
+        text gross_weight
+        text height
+        text height_uom
+        text is_dangerous
+        text length
+        text length_uom
+        text loading_meters
+        text net_weight
+        text package_type
+        text pallet_space
+        text quantity
+        text shipping_mark
+        jsonb stackable
+        text temperature_controlled
+        text temperature_max
+        text temperature_min
+        text total_volume
+        text total_weight
+        jsonb tracking_number
+        text volume_uom
+        text width
+        text width_uom
+    }
+    product_container {
+        text index PK
+        text shipment_id PK
+        text genset
+        text ref
+        text temp
+        text type
+    }
+    container {
+        text index PK
+        text shipment_id PK
+        text container_number
+        text container_type
+        text seal_number
+    }
+    issue {
+        text index PK
+        text shipment_id PK
+        text date
+        text note
+        text party_code
+        text party_description
+        text point_code
+        text point_description
+        text reason_code
+        text reason_description
+        text resolved
+        text type_code
+        text type_description
+    }
+    proof_of_delivery {
+        text document_id PK
+        text shipment_id PK
+        text create_date
+        text document_type
+        text download_url
+        text file_name
+        text file_type
+        text type_description
+    }
+    selected_service {
+        text index PK
+        text shipment_id PK
+        text code
+        jsonb detail
+        text name
+    }
+    reference {
+        text index PK
+        text shipment_id PK
+        text type
+        text value
+    }
+    child_shipment_id {
+        text index PK
+        text shipment_id PK
+        text child_shipment_id
+    }
+    shipment_detail {
+        text shipment_id PK
+        text booking_id FK
+        text booked_by
+        text carrier_tracking_id
+        jsonb customs_entry_number
+        text customs_removal_mode
+        text customs_shipped_onboard_date
+        text customs_status
+        text delivery_date
+        text delivery_end
+        text delivery_instruction
+        text delivery_start
+        text goods_description
+        text goods_gross_weight_uom
+        text goods_gross_weight_value
+        text goods_loading_meters_uom
+        text goods_loading_meters_value
+        text goods_quantity_uom
+        text goods_quantity_value
+        text goods_volume_uom
+        text goods_volume_value
+        text incoterms_code
+        text incoterms_location
+        text master_shipment_id
+        text pickup_date
+        text pickup_end
+        text pickup_instruction
+        text pickup_start
+        text product_bill_of_lading
+        text product_container_mode
+        text product_drop_off
+        text product_name
+        text public_shipment_id
+        text service_level_code
+        text service_level_description
+        text shipment_note
+        text status
+        text transport_awb
+        text transport_destination_code
+        text transport_destination_name
+        text transport_house_bill_number
+        text transport_master_bill_number
+        text transport_origin_code
+        text transport_origin_name
+    }
+    address {
+        text index PK
+        text shipment_id PK
+        text address_id
+        text address_line_1
+        text address_line_2
+        text address_line_3
+        text address_type
+        text city
+        text company_name
+        text country_code
+        text email
+        text instruction
+        text mdm
+        text name
+        text role
+        text state
+        text telephone
+        text zip_code
+    }
+    events }o--|| shipment_detail : "fk"
+    dangerous_package }o--|| package : "fk"
+    dangerous_package }o--|| package : "fk"
+    package_reference }o--|| package : "fk"
+    package_reference }o--|| package : "fk"
+    package }o--|| shipment_detail : "fk"
+    product_container }o--|| shipment_detail : "fk"
+    container }o--|| shipment_detail : "fk"
+    issue }o--|| shipment_detail : "fk"
+    proof_of_delivery }o--|| shipment_detail : "fk"
+    selected_service }o--|| shipment_detail : "fk"
+    reference }o--|| shipment_detail : "fk"
+    child_shipment_id }o--|| shipment_detail : "fk"
+    shipment_detail }o--|| shipment : "fk"
+    shipment_detail }o--|| shipment : "fk"
+    address }o--|| shipment_detail : "fk"

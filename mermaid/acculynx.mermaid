@@ -1,0 +1,316 @@
+erDiagram
+    contact_email_address {
+        text id PK
+        text contact_id PK
+        text address
+        text is_primary
+        text type
+    }
+    contact_phone_number {
+        text id PK
+        text contact_id PK
+        text ext
+        text is_primary
+        text number
+        text type
+    }
+    contact {
+        text id PK
+        text billing_address_city
+        text billing_address_country_abbreviation
+        text billing_address_country_id
+        text billing_address_country_name
+        text billing_address_state_abbreviation
+        text billing_address_state_id
+        text billing_address_state_name
+        text billing_address_street_1
+        text billing_address_street_2
+        text billing_address_zip_code
+        text company_name
+        text cross_reference
+        text first_name
+        text last_name
+        text mailing_address_city
+        text mailing_address_country_abbreviation
+        text mailing_address_country_id
+        text mailing_address_country_name
+        text mailing_address_state_abbreviation
+        text mailing_address_state_id
+        text mailing_address_state_name
+        text mailing_address_street_1
+        text mailing_address_street_2
+        text mailing_address_zip_code
+        text salutation
+    }
+    estimate_section_item {
+        text id PK
+        text estimate_id PK
+        text estimate_section_id PK
+        text description
+        text estimate_unit
+        text fixed_price
+        text labour_cost
+        text material_cost
+        text measurement_quantity
+        text name
+        text order_quantity
+        text order_unit
+        text override_name
+        text price
+        text quantity
+        text selected_unit
+        text total_price
+        text type
+        text unit_coversion
+        text waste
+    }
+    estimate_section {
+        text id PK
+        text estimate_id PK
+        text created_by_id FK
+        text modified_by_id FK
+        text created_date
+        text description
+        text modified_date
+        text profit_margin_rate
+        text profit_margin_total
+        text section_financial_overhead_rate
+        text section_financial_overhead_total
+        text section_financial_profit_rate
+        text section_financial_profit_total
+        text section_financial_tax_rate
+        text section_financial_tax_total
+        text section_financial_total_cost
+        text section_financial_total_price
+        text title
+    }
+    company_setting {
+        text company_id PK
+        text has_insurance
+        text name
+        text time_zone_info_adjusted_utc_offset
+        text time_zone_info_base_utc_offset
+        text time_zone_info_daylight_name
+        text time_zone_info_name
+        text time_zone_info_supports_daylight_saving
+    }
+    calendar_appointment {
+        text end_date PK
+        text id PK
+        text start_date PK
+        text calendar_id PK
+        text all_day
+        text event_type
+        text job_name
+        text location
+        text notes
+        text title
+    }
+    calendar {
+        text id PK
+        text name
+    }
+    users {
+        text id PK
+        text display_name
+        text email
+        text employee_id
+        text first_name
+        text initial
+        text last_name
+        text mobile_phone
+        text phone
+        text role_id
+        text role_name
+        text status
+    }
+    company_lead_source_child {
+        text id PK
+        text lead_source_id PK
+        text name
+    }
+    company_lead_source {
+        text id PK
+        text name
+    }
+    estimate {
+        text id PK
+        text created_by_id FK
+        text job_id FK
+        text modified_by_id FK
+        text created_date
+        text description
+        text estimate_number
+        text financial_overhead_rate
+        text financial_overhead_total
+        text financial_profit_rate
+        text financial_profit_total
+        text financial_tax_rate
+        text financial_tax_total
+        text financial_total_cost
+        text financial_total_price
+        text is_primary
+        text modified_date
+        text note
+        text profit_margin_rate
+        text profit_margin_total
+        text title
+    }
+    job_contact_email_address {
+        text id PK
+        text job_contact_id PK
+        text job_id PK
+    }
+    job_contact_phone_number {
+        text id PK
+        text job_contact_id PK
+        text job_id PK
+    }
+    job_contact {
+        text id PK
+        text job_id PK
+        text contact_guid
+        text is_primary
+        text relation_to_primary
+    }
+    job_trade_type {
+        text id PK
+        text job_id PK
+        text name
+    }
+    job {
+        text id PK
+        text lead_source_id FK
+        text created_date
+        text current_milestone
+        text geo_location_latitude
+        text geo_location_longitude
+        text job_category_id
+        text job_category_name
+        text job_name
+        text job_number
+        text lead_dead_reason
+        text location_address_city
+        text location_address_country_abbreviation
+        text location_address_country_id
+        text location_address_country_name
+        text location_address_state_abbreviation
+        text location_address_state_id
+        text location_address_state_name
+        text location_address_street_1
+        text location_address_street_2
+        text location_address_zip_code
+        text milestone_date
+        timestamp modified_date
+        text work_type_id
+        text work_type_name
+        text work_type_system_default
+    }
+    lead_history {
+        text _fivetran_id PK
+        text job_id FK
+        text action
+        text created_by_id
+        text created_by_link
+        text date
+        text lead_dead_reason
+    }
+    financial_worksheet {
+        text id PK
+        text financial_id PK
+        text job_id PK
+    }
+    financial_amendment {
+        text id PK
+        text financial_id PK
+        text job_id PK
+    }
+    financial {
+        text id PK
+        text job_id PK
+        text approved_job_value
+        text balance_due
+        text worksheet_id
+        text worksheet_section_total_change_order_total
+        text worksheet_section_total_discount_total
+        text worksheet_section_total_financial_total
+        text worksheet_section_total_insurance_claim_total
+        text worksheet_section_total_supplement_total
+        text worksheet_section_total_upgrade_total
+        text worksheet_section_total_work_not_doing_total
+    }
+    milestone_history {
+        text _fivetran_id PK
+        text job_id FK
+        text date
+        text name
+    }
+    invoice_section_item {
+        text id PK
+        text invoice_id PK
+        text invoice_section_id PK
+        text job_id PK
+        text parent_item_id FK
+        text hierarchy_sort_order
+        text item_name
+        text line_item_assignment
+        text price
+        text total_price
+    }
+    invoice_section {
+        text id PK
+        text invoice_id PK
+        text job_id PK
+        text invoice_worksheet_section_type
+        text total_price
+    }
+    invoice {
+        text id PK
+        text job_id PK
+        text balance_due
+        text created_date
+        text current_invoice_state
+        text due_date
+        text invoice_date
+        text invoice_name
+        text invoice_number
+        text invoice_sequence
+        text recording_classification
+        text recording_status
+        text sort_index
+        text total_price
+    }
+    contact_email_address }o--|| contact : "fk"
+    contact_phone_number }o--|| contact : "fk"
+    estimate_section_item }o--|| estimate_section : "fk"
+    estimate_section_item }o--|| estimate_section : "fk"
+    estimate_section }o--|| users : "fk"
+    estimate_section }o--|| users : "fk"
+    estimate_section }o--|| estimate : "fk"
+    calendar_appointment }o--|| calendar : "fk"
+    company_lead_source_child }o--|| company_lead_source : "fk"
+    estimate }o--|| users : "fk"
+    estimate }o--|| users : "fk"
+    estimate }o--|| job : "fk"
+    job_contact_email_address }o--|| job_contact : "fk"
+    job_contact_email_address }o--|| job_contact : "fk"
+    job_contact_phone_number }o--|| job_contact : "fk"
+    job_contact_phone_number }o--|| job_contact : "fk"
+    job_contact }o--|| contact : "fk"
+    job_contact }o--|| job : "fk"
+    job_trade_type }o--|| job : "fk"
+    job }o--|| company_lead_source : "fk"
+    lead_history }o--|| job : "fk"
+    financial_worksheet }o--|| financial : "fk"
+    financial_worksheet }o--|| financial : "fk"
+    financial_amendment }o--|| financial : "fk"
+    financial_amendment }o--|| financial : "fk"
+    financial }o--|| job : "fk"
+    milestone_history }o--|| job : "fk"
+    invoice_section_item }o--|| invoice_section_item : "fk"
+    invoice_section_item }o--|| invoice_section : "fk"
+    invoice_section_item }o--|| invoice_section : "fk"
+    invoice_section_item }o--|| invoice_section : "fk"
+    invoice_section }o--|| invoice : "fk"
+    invoice_section }o--|| invoice : "fk"
+    invoice }o--|| job : "fk"

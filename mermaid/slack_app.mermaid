@@ -1,0 +1,422 @@
+erDiagram
+    dnd_info {
+        text _fivetran_id PK
+        text user_id FK
+        boolean dnd_enabled
+        timestamp next_dnd_end_ts
+        timestamp next_dnd_start_ts
+        boolean snooze_enabled
+        timestamp snooze_endtime
+        boolean snooze_is_indefinite
+        text snooze_remaining
+    }
+    channel_pending_shared {
+        text pending_shared_id PK
+        text channel_id PK
+    }
+    channel_shared_team {
+        text shared_team_id PK
+        text channel_id PK
+    }
+    channel_internal_team {
+        text internal_team_id PK
+        text channel_id PK
+    }
+    channel_pending_connected_team {
+        text pending_connected_team_id PK
+        text channel_id PK
+    }
+    previous_channel_name {
+        text previous_name PK
+        text channel_id PK
+    }
+    channel {
+        text id PK
+        text creator FK
+        timestamp created
+        boolean is_archived
+        boolean is_channel
+        boolean is_ext_shared
+        boolean is_general
+        boolean is_group
+        boolean is_im
+        text is_moved
+        boolean is_mpim
+        boolean is_org_shared
+        boolean is_pending_ext_shared
+        boolean is_private
+        boolean is_shared
+        text name
+        text name_normalized
+        boolean parent_conversation
+        text purpose_creator
+        timestamp purpose_last_set
+        text purpose_value
+        text topic_creator
+        timestamp topic_last_set
+        text topic_value
+        text unlinked
+    }
+    profile_field_possible_value {
+        text possible_value PK
+        text profile_field_id PK
+    }
+    profile_field_option {
+        text name PK
+        text profile_field_id PK
+        text value
+    }
+    profile_field {
+        text id PK
+        text hint
+        text is_hidden
+        text label
+        text options_is_protected
+        text ordering
+        text type
+    }
+    scheduled_message {
+        text id PK
+        text channel_id FK
+        timestamp date_created
+        timestamp post_at
+        text text
+    }
+    pin {
+        text channel_id PK
+        text message_ts PK
+        text created_by FK
+        text pinned_time
+    }
+    user_group_prefs_channel {
+        text public_channel_id PK
+        text user_group_id PK
+    }
+    user_group_prefs_group {
+        text private_channel_id PK
+        text user_group_id PK
+    }
+    user_group {
+        text id PK
+        text created_by FK
+        text deleted_by FK
+        text updated_by FK
+        text auto_type
+        timestamp date_create
+        timestamp date_delete
+        timestamp date_update
+        text description
+        text handle
+        boolean is_external
+        boolean is_user_group
+        text name
+        text team_id
+        text user_count
+    }
+    team_billing {
+        text plan PK
+    }
+    message_reply_user {
+        text message_channel_id PK
+        text message_ts PK
+        text parent_message_ts PK
+        text reply_user_id PK
+    }
+    message_block_element {
+        text index PK
+        text message_block_index PK
+        text message_channel_id PK
+        text message_ts PK
+        text parent_message_ts PK
+        text elements
+        text text
+        text type
+        text verbatim
+    }
+    message_block_field {
+        text index PK
+        text message_block_index PK
+        text message_channel_id PK
+        text message_ts PK
+        text parent_message_ts PK
+        text text
+        text type
+        text verbatim
+    }
+    message_block {
+        text index PK
+        text message_channel_id PK
+        text message_ts PK
+        text parent_message_ts PK
+        text block_id
+        text type
+    }
+    message_file {
+        text id PK
+        text message_channel_id FK
+        text message_ts FK
+        text parent_message_ts FK
+        text user_id FK
+        timestamp created
+        boolean display_as_bot
+        text edit_link
+        boolean editable
+        text external_type
+        text filetype
+        boolean has_rich_preview
+        boolean is_external
+        boolean is_public
+        boolean is_starred
+        text lines
+        text lines_more
+        text mimetype
+        text mode
+        text name
+        text permalink
+        text permalink_public
+        text pretty_type
+        text preview
+        text preview_highlight
+        boolean preview_is_truncated
+        boolean public_url_shared
+        text size
+        timestamp timestamps
+        text title
+        text url_private
+        text url_private_download
+    }
+    message_attachment {
+        text _fivetran_id PK
+        text message_channel_id FK
+        text message_ts FK
+        text parent_message_ts FK
+        text fallback
+        text from_url
+        text id
+        text image_bytes
+        text image_height
+        text image_url
+        text image_width
+        text original_url
+        text service_name
+        text text
+        text title
+        text title_link
+    }
+    message_reaction_user {
+        text message_channel_id PK
+        text message_reaction_name PK
+        text message_ts PK
+        text parent_message_ts PK
+        text user_id PK
+    }
+    message_reaction {
+        text name PK
+        text message_channel_id PK
+        text message_ts PK
+        text parent_message_ts PK
+        text count
+    }
+    message {
+        text ts PK
+        text message_channel_id PK
+        text parent_message_ts PK
+        text user_id FK
+        text edited_ts
+        text edited_user
+        text is_locked
+        text last_read
+        text latest_reply
+        text reply_count
+        text reply_users_count
+        text source_team
+        text subscribed
+        text subtype
+        text team
+        text text
+        text thread_ts
+        text type
+    }
+    users {
+        text id PK
+        text color
+        boolean deleted
+        boolean is_admin
+        boolean is_app_user
+        boolean is_bot
+        boolean is_email_confirmed
+        boolean is_owner
+        boolean is_primary_owner
+        boolean is_restricted
+        boolean is_ultra_restricted
+        text locale
+        text name
+        text profile_always_active
+        text profile_app_api_id
+        text profile_avatar_hash
+        text profile_bot_id
+        text profile_display_name
+        text profile_display_name_normalized
+        text profile_email
+        jsonb profile_fields
+        text profile_first_name
+        text profile_image_192
+        text profile_image_24
+        text profile_image_32
+        text profile_image_48
+        text profile_image_512
+        text profile_image_72
+        text profile_last_name
+        text profile_phone
+        text profile_real_name_normalized
+        text profile_skype
+        text profile_start_date
+        text profile_status_emoji
+        jsonb profile_status_emoji_display_info
+        text profile_status_expiration
+        text profile_status_text
+        text profile_status_text_canonical
+        text profile_team
+        text profile_title
+        text real_name
+        text team_id
+        text time_zone
+        text time_zone_label
+        text time_zone_offset
+        text updated
+        text who_can_share_contact_card
+    }
+    bookmark {
+        text id PK
+        text channel_id FK
+        text last_updated_by_user_id FK
+        text app_id
+        timestamp date_created
+        timestamp date_updated
+        text emoji
+        text entity_id
+        text icon_url
+        text last_updated_by_team_id
+        text link
+        text rank
+        text shortcut_id
+        text title
+        text type
+    }
+    channel_member {
+        text channel_id PK
+        text user_id PK
+    }
+    remote_file_channel {
+        text remote_file_channel PK
+        text remote_file_id PK
+    }
+    remote_file {
+        text id PK
+        text channel_id PK
+        text user_id FK
+        timestamp created
+        text deanimate_gif
+        boolean display_as_bot
+        boolean editable
+        text external_type
+        text filetype
+        text image_exif_rotation
+        boolean is_external
+        boolean is_public
+        text mimetype
+        text mode
+        text name
+        text original_h
+        text original_w
+        text permalink
+        text permalink_public
+        text pjpeg
+        text pretty_type
+        boolean public_url_shared
+        text size
+        text thumb_160
+        text thumb_360
+        text thumb_360_gif
+        text thumb_360_h
+        text thumb_360_w
+        text thumb_64
+        text thumb_80
+        timestamp timestamps
+        text title
+        text url_private
+        text url_private_download
+        text username
+    }
+    user_group_user {
+        text user_group_id PK
+        text user_id PK
+    }
+    team_preference {
+        text _fivetran_id PK
+        boolean allow_message_deletion
+        text disable_file_uploads
+        boolean display_real_names
+        text msg_edit_window_mins
+        text who_can_post_general
+    }
+    dnd_info }o--|| users : "fk"
+    channel_pending_shared }o--|| channel : "fk"
+    channel_shared_team }o--|| channel : "fk"
+    channel_internal_team }o--|| channel : "fk"
+    channel_pending_connected_team }o--|| channel : "fk"
+    previous_channel_name }o--|| channel : "fk"
+    channel }o--|| users : "fk"
+    profile_field_possible_value }o--|| profile_field : "fk"
+    profile_field_option }o--|| profile_field : "fk"
+    scheduled_message }o--|| channel : "fk"
+    pin }o--|| channel : "fk"
+    pin }o--|| message : "fk"
+    pin }o--|| users : "fk"
+    user_group_prefs_channel }o--|| user_group : "fk"
+    user_group_prefs_group }o--|| user_group : "fk"
+    user_group }o--|| users : "fk"
+    user_group }o--|| users : "fk"
+    user_group }o--|| users : "fk"
+    message_reply_user }o--|| users : "fk"
+    message_reply_user }o--|| message : "fk"
+    message_reply_user }o--|| message : "fk"
+    message_reply_user }o--|| message : "fk"
+    message_block_element }o--|| message_block : "fk"
+    message_block_element }o--|| message_block : "fk"
+    message_block_element }o--|| message_block : "fk"
+    message_block_element }o--|| message_block : "fk"
+    message_block_field }o--|| message_block : "fk"
+    message_block_field }o--|| message_block : "fk"
+    message_block_field }o--|| message_block : "fk"
+    message_block_field }o--|| message_block : "fk"
+    message_block }o--|| message : "fk"
+    message_block }o--|| message : "fk"
+    message_block }o--|| message : "fk"
+    message_file }o--|| users : "fk"
+    message_file }o--|| message : "fk"
+    message_file }o--|| message : "fk"
+    message_file }o--|| message : "fk"
+    message_attachment }o--|| message : "fk"
+    message_attachment }o--|| message : "fk"
+    message_attachment }o--|| message : "fk"
+    message_reaction_user }o--|| users : "fk"
+    message_reaction_user }o--|| message_reaction : "fk"
+    message_reaction_user }o--|| message_reaction : "fk"
+    message_reaction_user }o--|| message_reaction : "fk"
+    message_reaction_user }o--|| message_reaction : "fk"
+    message_reaction }o--|| message : "fk"
+    message_reaction }o--|| message : "fk"
+    message_reaction }o--|| message : "fk"
+    message }o--|| users : "fk"
+    message }o--|| message : "fk"
+    message }o--|| channel : "fk"
+    bookmark }o--|| channel : "fk"
+    bookmark }o--|| users : "fk"
+    channel_member }o--|| users : "fk"
+    channel_member }o--|| channel : "fk"
+    remote_file_channel }o--|| remote_file : "fk"
+    remote_file }o--|| users : "fk"
+    remote_file }o--|| channel : "fk"
+    user_group_user }o--|| users : "fk"
+    user_group_user }o--|| user_group : "fk"

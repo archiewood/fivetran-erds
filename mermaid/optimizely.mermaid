@@ -1,0 +1,446 @@
+erDiagram
+    %% Note
+%% This column are only available when connector sync mode is “packed”. For more information, see our Pack Mode documentation.
+%% | Column|
+%% |--------|
+%% | attrbutes |
+    decision {
+        text id PK
+        text campaign_id FK
+        text experiment_id FK
+        text variation_id FK
+        text account_id
+        text client_engine
+        text client_version
+        boolean is_holdback
+        timestamp process_timestamp
+        text referer
+        text revision
+        text session_id
+        timestamp timestamp
+        text user_agent
+        text user_ip
+        text visitor_id
+    }
+    page {
+        bigint id PK
+        bigint project_id FK
+        text activation_code
+        text activation_type
+        boolean archived
+        text category
+        text conditions
+        timestamp created
+        text edit_url
+        text key
+        timestamp last_modified
+        text name
+        text page_type
+    }
+    %% Note 
+%% This tables are available only when connector sync mode is “unpacked”. For more information, see our Pack Mode documentation.
+    conversion_attribute {
+        text _fivetran_id PK
+        text conversion_id FK
+        text id
+        text name
+        text type
+        text value
+    }
+    campaign_history {
+        bigint id PK
+        timestamp last_modified PK
+        bigint project_id FK
+        bigint url_targeting_page_id FK
+        timestamp created
+        timestamp earliest
+        bigint holdback
+        timestamp latest
+        text name
+        text status
+        text url_targeting_activation_code
+        text url_targeting_activation_type
+        text url_targeting_conditions
+        text url_targeting_edit_url
+        text url_targeting_key
+    }
+    experiment_change_history {
+        text id PK
+        bigint experiment_id PK
+        timestamp experiment_last_modified PK
+        text action_id FK
+        boolean allow_additional_redirect
+        boolean async
+        text destination
+        text extension_id
+        text name
+        text operator
+        boolean preserve_parameters
+        text selector
+        text src
+        text type
+        text value
+    }
+    audience {
+        text id PK
+        bigint project_id FK
+        boolean archived
+        text conditions
+        timestamp created
+        text description
+        timestamp last_modified
+        text name
+        boolean segmentation
+    }
+    campaign_page_history {
+        bigint campaign_id PK
+        timestamp campaign_last_modified PK
+        bigint page_id PK
+    }
+    event {
+        bigint id PK
+        bigint project_id PK
+        bigint page_id FK
+        boolean archived
+        text category
+        timestamp created
+        text description
+        text event_type
+        boolean is_classic
+        boolean is_editable
+        text key
+        text name
+    }
+    experiment_change_dependency_history {
+        text dependent_change_id PK
+        text change_id PK
+        bigint experiment_id PK
+        timestamp experiment_last_modified PK
+    }
+    project {
+        bigint id PK
+        bigint account_id
+        double_precision confidence_threshold
+        timestamp created
+        bigint dcp_service_id
+        text description
+        boolean is_classic
+        timestamp last_modified
+        text name
+        text platform
+        text socket_token
+        text status
+    }
+    sdk {
+        bigint index PK
+        bigint project_id PK
+        text sdk_name
+    }
+    campaign_change_history {
+        text id PK
+        bigint campaign_id PK
+        timestamp campaign_last_modified PK
+        boolean async
+        text name
+        text selector
+        text src
+        text type
+        text value
+    }
+    %% Note 
+%% This tables are available only when connector sync mode is “unpacked”. For more information, see our Pack Mode documentation.
+    conversion_tag {
+        text key PK
+        text conversion_id PK
+        text value
+    }
+    product_usage {
+        bigint index PK
+        bigint plan_id PK
+        bigint allocation_term_in_months
+        timestamp end_time
+        timestamp last_update_time
+        bigint overage_cents_per_visitor
+        text product_name
+        timestamp start_time
+        bigint usage
+        bigint usage_allowance
+    }
+    extension {
+        bigint id PK
+        bigint project_id FK
+        boolean archived
+        timestamp created
+        text description
+        text edit_url
+        boolean enabled
+        timestamp last_modified
+        text name
+    }
+    field {
+        bigint index PK
+        bigint extension_id PK
+        text api_name
+        text default_value
+        text field_type
+        text label
+    }
+    group_entity {
+        bigint id PK
+        bigint group_id FK
+        text kind
+        bigint weight
+    }
+    plan {
+        bigint id PK
+        text plan_name
+        text status
+        text unit_of_measurement
+    }
+    attribute {
+        bigint id PK
+        bigint project_id FK
+        boolean archived
+        text condition_type
+        text description
+        text key
+        timestamp last_modified
+        text name
+    }
+    campaign_metric_history {
+        text _fivetran_id PK
+        bigint campaign_id PK
+        timestamp campaign_last_modified PK
+        bigint event_id FK
+        text aggregator
+        text field
+        text scope
+        text winning_direction
+    }
+    group {
+        bigint id PK
+        bigint project_id FK
+        boolean archived
+        timestamp created
+        text description
+        timestamp last_modified
+        text name
+    }
+    experiment_history {
+        bigint id PK
+        timestamp last_modified PK
+        bigint campaign_id FK
+        bigint project_id FK
+        bigint url_targeting_page_id FK
+        text allocation_policy
+        text audience_conditions
+        timestamp created
+        text description
+        timestamp earliest
+        bigint holdback
+        text key
+        timestamp latest
+        text name
+        timestamp schedule_start_time
+        timestamp schedule_stop_time
+        text schedule_time_zone
+        text status
+        text type
+        text url_targeting_activation_code
+        text url_targeting_activation_type
+        text url_targeting_conditions
+        text url_targeting_edit_url
+        text url_targeting_key
+    }
+    experiment_variation_history {
+        bigint id PK
+        bigint experiment_id PK
+        timestamp experiment_last_modified PK
+        boolean archived
+        text description
+        text key
+        text name
+        text status
+        bigint weight
+    }
+    campaign_change_dependency_history {
+        bigint campaign_id PK
+        timestamp campaign_last_modified PK
+        text change_id PK
+        text dependent_change_id PK
+    }
+    %% Note 
+%% This tables are available only when connector sync mode is “unpacked”. For more information, see our Pack Mode documentation.
+    decision_attribute {
+        text _fivetran_id PK
+        text decision_id FK
+        text id
+        text name
+        text type
+        text value
+    }
+    experiment_metric_history {
+        text _fivetran_id PK
+        bigint experiment_id PK
+        timestamp experiment_last_modified PK
+        bigint event_id FK
+        text aggregator
+        text field
+        text scope
+        text winning_direction
+    }
+    project_status {
+        timestamp last_modified PK
+        bigint project_id PK
+        text description
+        text platform
+        text status
+    }
+    list_attribute {
+        bigint id PK
+        bigint project_id FK
+        bigint account_id
+        boolean archived
+        timestamp created
+        text description
+        text key_field
+        timestamp last_modified
+        text list_type
+        text name
+        text s_3_path
+    }
+    experiment_result_history {
+        bigint experiment_id PK
+        timestamp experiment_last_modified PK
+        text metric_name PK
+        text metric_variation_id PK
+        double_precision confidence_threshold
+        timestamp end_time
+        text metric_aggregator
+        text metric_conclusion_loser
+        text metric_conclusion_winner
+        text metric_event_id
+        text metric_scope
+        boolean metric_variation_is_baseline
+        text metric_variation_level
+        jsonb metric_variation_lift_confidence_interval
+        boolean metric_variation_lift_is_most_conclusive
+        boolean metric_variation_lift_is_significant
+        text metric_variation_lift_lift_status
+        double_precision metric_variation_lift_significance
+        double_precision metric_variation_lift_value
+        text metric_variation_name
+        double_precision metric_variation_rate
+        double_precision metric_variation_samples
+        double_precision metric_variation_value
+        double_precision metric_variation_variance
+        text metric_winning_direction
+    }
+    experiment_page_history {
+        bigint experiment_id PK
+        timestamp experiment_last_modified PK
+        bigint page_id PK
+    }
+    %% Note 
+%% This tables are available only when connector sync mode is “unpacked”. For more information, see our Pack Mode documentation.
+    conversion_experiment {
+        integer index PK
+        text conversion_id PK
+        text campaign_id FK
+        text experiment_id FK
+        text variation_id FK
+        boolean is_holdback
+    }
+    %% Note
+%% These columns are only available when connector sync mode is “packed”. For more information, see our Pack Mode documentation.
+%% | Columns|
+%% |--------|
+%% | attrbutes |
+%% | experiments |
+%% | tags|
+    conversion {
+        text id PK
+        text account_id
+        text client_engine
+        text client_version
+        text entity_id
+        text event_name
+        text event_type
+        timestamp process_timestamp
+        bigint quantity
+        text referer
+        bigint revenue
+        text revision
+        text session_id
+        timestamp timestamp
+        text user_agent
+        text user_ip
+        double_precision value
+        text visitor_id
+    }
+    experiment_variation_action_history {
+        text _fivetran_id PK
+        bigint experiment_id PK
+        timestamp experiment_last_modified PK
+        bigint variation_id PK
+        bigint page_id FK
+        text share_link
+    }
+    decision }o--|| campaign_history : "fk"
+    decision }o--|| experiment_history : "fk"
+    decision }o--|| experiment_variation_history : "fk"
+    page }o--|| project : "fk"
+    conversion_attribute }o--|| conversion : "fk"
+    campaign_history }o--|| project : "fk"
+    campaign_history }o--|| page : "fk"
+    experiment_change_history }o--|| experiment_history : "fk"
+    experiment_change_history }o--|| experiment_history : "fk"
+    experiment_change_history }o--|| experiment_variation_action_history : "fk"
+    audience }o--|| project : "fk"
+    campaign_page_history }o--|| campaign_history : "fk"
+    campaign_page_history }o--|| campaign_history : "fk"
+    campaign_page_history }o--|| page : "fk"
+    event }o--|| project : "fk"
+    event }o--|| page : "fk"
+    experiment_change_dependency_history }o--|| experiment_change_history : "fk"
+    experiment_change_dependency_history }o--|| experiment_history : "fk"
+    experiment_change_dependency_history }o--|| experiment_history : "fk"
+    sdk }o--|| project : "fk"
+    campaign_change_history }o--|| campaign_history : "fk"
+    campaign_change_history }o--|| campaign_history : "fk"
+    conversion_tag }o--|| conversion : "fk"
+    product_usage }o--|| plan : "fk"
+    extension }o--|| project : "fk"
+    field }o--|| extension : "fk"
+    group_entity }o--|| group : "fk"
+    attribute }o--|| project : "fk"
+    campaign_metric_history }o--|| campaign_history : "fk"
+    campaign_metric_history }o--|| campaign_history : "fk"
+    campaign_metric_history }o--|| event : "fk"
+    group }o--|| project : "fk"
+    experiment_history }o--|| campaign_history : "fk"
+    experiment_history }o--|| project : "fk"
+    experiment_history }o--|| page : "fk"
+    experiment_variation_history }o--|| experiment_history : "fk"
+    experiment_variation_history }o--|| experiment_history : "fk"
+    campaign_change_dependency_history }o--|| campaign_change_history : "fk"
+    campaign_change_dependency_history }o--|| campaign_history : "fk"
+    campaign_change_dependency_history }o--|| campaign_history : "fk"
+    campaign_change_dependency_history }o--|| campaign_change_history : "fk"
+    decision_attribute }o--|| decision : "fk"
+    experiment_metric_history }o--|| experiment_history : "fk"
+    experiment_metric_history }o--|| experiment_history : "fk"
+    experiment_metric_history }o--|| event : "fk"
+    project_status }o--|| project : "fk"
+    list_attribute }o--|| project : "fk"
+    experiment_page_history }o--|| experiment_history : "fk"
+    experiment_page_history }o--|| experiment_history : "fk"
+    experiment_page_history }o--|| page : "fk"
+    conversion_experiment }o--|| conversion : "fk"
+    conversion_experiment }o--|| campaign_history : "fk"
+    conversion_experiment }o--|| experiment_history : "fk"
+    conversion_experiment }o--|| experiment_variation_history : "fk"
+    experiment_variation_action_history }o--|| experiment_variation_history : "fk"
+    experiment_variation_action_history }o--|| experiment_history : "fk"
+    experiment_variation_action_history }o--|| experiment_history : "fk"
+    experiment_variation_action_history }o--|| page : "fk"

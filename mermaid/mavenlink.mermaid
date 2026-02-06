@@ -1,0 +1,687 @@
+erDiagram
+    story_allocation_day {
+        bigint id PK
+        bigint assignment_id FK
+        bigint story_id FK
+        timestamp created_at
+        boolean current
+        text date
+        integer minutes
+        timestamp updated_at
+    }
+    role {
+        bigint id PK
+        timestamp created_at
+        timestamp deleted_at
+        text name
+        timestamp updated_at
+    }
+    assignment {
+        bigint id PK
+        bigint assignee_id FK
+        bigint story_id FK
+        integer allocated_minutes
+        timestamp created_at
+        boolean current
+        integer estimated_minutes
+        bigint resource_id
+        timestamp updated_at
+    }
+    workspace_invoice_preference {
+        bigint id PK
+        bigint workspace_id PK
+        text client_invoice_address
+        text client_invoice_name
+        text consultant_invoice_address
+        text consultant_invoice_name
+        text project_code
+        text purchase_order
+    }
+    time_off_entry {
+        bigint id PK
+        bigint user_id FK
+        text hours
+        text requested_date
+        text submission_date
+    }
+    holiday {
+        bigint id PK
+        text end_date
+        text name
+        boolean paid
+        text start_date
+        integer total_hours
+    }
+    invoice_time_entry {
+        bigint invoice_id PK
+        bigint time_entry_id PK
+    }
+    account_membership {
+        bigint id PK
+        bigint default_role_id FK
+        bigint manager_id FK
+        bigint user_id FK
+        bigint bill_rate_in_cents
+        bigint billability_target
+        boolean can_create_workspace
+        boolean can_view_reports
+        bigint cost_rate_in_cents
+        timestamp created_at
+        boolean default_read_only
+        timestamp disabled_at
+        boolean is_administrator
+        boolean is_backup_approver
+        boolean is_owner
+        boolean is_project_lead
+        boolean is_punch_clock_user
+        boolean manager_can_approve
+        text permission
+        boolean should_show_alert_on_timesheet_submission
+        timestamp updated_at
+    }
+    rate_card_version_history {
+        bigint id PK
+        timestamp updated_at PK
+        bigint rate_card_id FK
+        timestamp created_at
+        integer default_rate
+    }
+    skill_membership {
+        bigint id PK
+        bigint creator_id FK
+        bigint skill_id FK
+        bigint user_id FK
+        timestamp created_at
+        integer level
+        timestamp updated_at
+    }
+    account_location {
+        bigint id PK
+        boolean archived
+        boolean in_use
+        text name
+    }
+    workweek {
+        bigint id PK
+        timestamp created_at
+        boolean default
+        text end_date
+        integer friday_minutes
+        integer monday_minutes
+        integer saturday_minutes
+        text start_date
+        integer sunday_minutes
+        integer thursday_minutes
+        integer total_minutes
+        integer tuesday_minutes
+        timestamp updated_at
+        integer wednesday_minutes
+    }
+    estimate_scenario {
+        bigint id PK
+        bigint estimate_id FK
+        bigint rate_card_id FK
+        bigint budget_in_cents
+        timestamp created_at
+        text name
+        text start_date
+        integer target_margin_percent
+        timestamp updated_at
+    }
+    skill {
+        bigint id PK
+        bigint skill_category_id FK
+        timestamp created_at
+        text description
+        text max_level
+        text name
+        timestamp updated_at
+    }
+    participation {
+        bigint id PK
+        bigint workspace_id PK
+        bigint user_id FK
+        text active_role_name
+        bigint allocated_workspace_minutes
+        boolean can_invite
+        bigint cost_in_cents
+        timestamp created_at
+        bigint default_rate_in_cents
+        bigint estimated_workspace_minutes
+        boolean is_team_lead
+        text permissions
+        bigint rate_in_cents
+        text role
+        boolean show_as_read_only
+        timestamp updated_at
+    }
+    workspace_resource {
+        bigint id PK
+        bigint participation_id FK
+        bigint role_id FK
+        bigint user_id FK
+        bigint workspace_id FK
+        timestamp created_at
+        text display_label
+        text full_name
+        text label
+        text photo_path
+        text role_name
+        timestamp updated_at
+    }
+    rate_card_set_history {
+        bigint id PK
+        timestamp updated_at PK
+        boolean account_default
+        jsonb active_currencies
+        timestamp created_at
+        jsonb default_currencies
+        boolean destroyable
+        text title
+    }
+    rate_card_role_history {
+        bigint id PK
+        timestamp updated_at PK
+        bigint rate_card_version_id FK
+        bigint role_id FK
+        timestamp created_at
+        integer rate
+    }
+    user {
+        bigint id PK
+        bigint role_id FK
+        bigint account_id
+        text email_address
+        text full_name
+        text headline
+        text photo_path
+    }
+    expense {
+        bigint id PK
+        bigint expense_category_id FK
+        bigint story_id FK
+        bigint user_id FK
+        bigint workspace_id FK
+        bigint amount_in_cents
+        text category
+        timestamp created_at
+        text currency
+        integer currency_base_unit
+        text currency_symbol
+        text date
+        boolean is_billable
+        boolean is_invoiced
+        text notes
+        boolean taxable
+        timestamp updated_at
+        boolean user_can_edit
+    }
+    workspace_association {
+        bigint workspace_group_id PK
+        bigint workspace_id PK
+    }
+    billable_utilizations {
+        bigint id PK
+        bigint account_membership_id FK
+        bigint creator_id FK
+        timestamp created_at
+        text effective_date
+        integer target
+        timestamp updated_at
+    }
+    workspace {
+        bigint id PK
+        bigint account_color_id FK
+        bigint creator_id FK
+        bigint primary_workspace_group_id FK
+        bigint rate_card_id FK
+        text access_level
+        boolean account_feature_has_time_entry_role_picker
+        boolean account_feature_time_trackable
+        boolean archived
+        bigint budget_used_in_cents
+        boolean budgeted
+        boolean can_create_line_items
+        boolean can_invite
+        boolean change_orders_enabled
+        text client_role_name
+        text consultant_role_name
+        timestamp created_at
+        text currency
+        integer currency_base_unit
+        text currency_symbol
+        numeric default_rate
+        text description
+        text due_date
+        text effective_due_date
+        boolean exclude_archived_stories_percent_complete
+        boolean expenses_in_burn_rate
+        boolean has_active_expense_report_submissions
+        boolean has_active_timesheet_submissions
+        boolean has_budget_access
+        boolean over_budget
+        integer percentage_complete
+        boolean posts_require_privacy_decision
+        bigint price_in_cents
+        integer primary_counterpart_id
+        text provider_lead_name
+        boolean require_expense_approvals
+        boolean require_time_approvals
+        text start_date
+        text status_color
+        integer status_key
+        text status_message
+        boolean stories_are_fixed_fee_by_default
+        integer target_margin
+        boolean tasks_default_non_billable
+        text title
+        bigint total_expenses_in_cents
+        timestamp updated_at
+    }
+    timesheet_submission {
+        bigint id PK
+        bigint user_id FK
+        bigint workspace_id FK
+        text comment
+        timestamp created_at
+        text currency
+        integer currency_base_unit
+        text currency_symbol
+        timestamp current_resolution_created_at_date
+        integer current_resolution_creator_id
+        text current_resolution_description
+        text end_date
+        text line_item_total_formatted
+        bigint line_item_total_in_cents
+        text resolution_description
+        text start_date
+        text status
+        text title
+        text type
+        timestamp updated_at
+    }
+    story_state_change {
+        bigint id PK
+        bigint story_id FK
+        bigint user_id FK
+        timestamp created_at
+        text formatted_state
+        text state
+        timestamp updated_at
+    }
+    story {
+        bigint id PK
+        bigint creator_id FK
+        bigint parent_id FK
+        bigint root_id FK
+        bigint workspace_id FK
+        boolean archived
+        timestamp assignment_timestamped_at
+        boolean billable
+        bigint budget_estimate_in_cents
+        bigint budget_used_in_cents
+        timestamp created_at
+        timestamp deleted_at
+        text description
+        text due_date
+        boolean fixed_fee
+        boolean has_proofing_access
+        bigint invoiced_balance_in_cents
+        integer logged_billable_time_in_minutes
+        integer logged_nonbillable_time_in_minutes
+        integer percentage_complete
+        integer position
+        text priority
+        text start_date
+        text state
+        text story_type
+        integer sub_stories_billable_time_in_minutes
+        bigint sub_stories_budget_estimate_in_cents
+        bigint sub_stories_budget_used_in_cents
+        integer sub_stories_time_estimate_in_minutes
+        integer sub_story_count
+        integer subtree_depth
+        integer time_estimate_in_minutes
+        boolean time_trackable
+        text title
+        bigint uninvoiced_balance_in_cents
+        timestamp updated_at
+        integer weight
+    }
+    invoice_expense {
+        bigint expense_id PK
+        bigint invoice_id PK
+    }
+    estimate {
+        bigint id PK
+        bigint creator_id FK
+        bigint workspace_group_id FK
+        timestamp created_at
+        text currency
+        boolean is_locked
+        text name
+        timestamp updated_at
+    }
+    timesheet_submission_time_entry {
+        bigint time_entry_id PK
+        bigint timesheet_submission_id PK
+    }
+    workspace_user {
+        bigint user_id PK
+        bigint workspace_id PK
+    }
+    invoice_fixed_fee_item {
+        bigint fixed_fee_item_id PK
+        bigint invoice_id PK
+    }
+    fixed_fee_item {
+        bigint id PK
+        bigint story_id FK
+        bigint workspace_id FK
+        bigint amount_in_cents
+        text currency
+        text notes
+        boolean taxable
+    }
+    invoice_workspace {
+        bigint invoice_id PK
+        bigint workspace_id PK
+    }
+    workspace_status_change {
+        bigint id PK
+        text from_color FK
+        text to_color FK
+        bigint user_id FK
+        bigint workspace_id FK
+        timestamp created_at
+        text from_message
+        text from_status_key
+        text to_message
+        text to_status_key
+        timestamp updated_at
+    }
+    holiday_calendar_membership {
+        bigint id PK
+        bigint holiday_calendar_id FK
+        bigint user_id FK
+        timestamp created_at
+        text end_date
+        boolean in_use
+        text start_date
+        timestamp updated_at
+    }
+    holiday_calendar {
+        bigint id PK
+        boolean default
+        text name
+    }
+    time_entry {
+        bigint id PK
+        bigint location_id FK
+        bigint story_id FK
+        bigint user_id FK
+        bigint workspace_id FK
+        bigint active_submission_id
+        boolean approved
+        boolean billable
+        bigint cost_rate_in_cents
+        timestamp created_at
+        text currency
+        integer currency_base_unit
+        text currency_symbol
+        text date_performed
+        boolean is_invoiced
+        text notes
+        bigint rate_in_cents
+        boolean taxable
+        integer time_in_minutes
+        timestamp updated_at
+        boolean user_can_edit
+    }
+    account_color {
+        bigint id PK
+        timestamp created_at
+        boolean default_color
+        boolean enabled
+        text hex
+        text name
+        timestamp updated_at
+    }
+    estimate_scenario_resource {
+        bigint id PK
+        bigint estimate_scenario_id PK
+        bigint role_id FK
+        bigint user_id FK
+        bigint bill_rate
+        bigint cost_rate
+        timestamp created_at
+        bigint geography_id
+        text label
+        timestamp updated_at
+    }
+    invoice {
+        bigint id PK
+        bigint recipient_id FK
+        bigint user_id FK
+        bigint balance_in_cents
+        timestamp created_at
+        text currency
+        integer currency_base_unit
+        text currency_symbol
+        boolean draft
+        text due_date
+        text invoice_date
+        text message
+        integer payment_schedule
+        text project_code
+        text purchase_order
+        text status
+        text tax_rate
+        text title
+        timestamp updated_at
+        bigint user_invoice_number
+        text user_invoice_title
+    }
+    rate_card_history {
+        bigint id PK
+        timestamp updated_at PK
+        bigint rate_card_set_id FK
+        timestamp created_at
+        text currency
+        integer uses
+    }
+    status_reports {
+        bigint id PK
+        bigint creator_id FK
+        bigint updater_id FK
+        bigint workspace_id FK
+        text color
+        timestamp created_at
+        text description
+        timestamp updated_at
+    }
+    post {
+        bigint id PK
+        bigint story_id FK
+        bigint subject_id FK
+        bigint user_id FK
+        bigint workspace_id FK
+        timestamp created_at
+        text formatted_message
+        boolean has_attachment
+        boolean has_attachments
+        text message
+        timestamp newest_reply_at
+        boolean private
+        boolean reply
+        bigint reply_count
+        text subject_title
+        text subject_type
+        timestamp updated_at
+        text workspace_type
+    }
+    workweek_membership {
+        bigint id PK
+        bigint user_id FK
+        bigint workweek_id FK
+        timestamp created_at
+        text end_date
+        text start_date
+        timestamp updated_at
+    }
+    account_invitation {
+        bigint id PK
+        bigint default_role_id FK
+        bigint invitee_id FK
+        bigint inviter_id FK
+        bigint bill_rate_in_cents
+        bigint cost_rate_in_cents
+        timestamp created_at
+        text email_address
+        text full_name
+        boolean pending
+        text permission
+    }
+    checklist {
+        bigint id PK
+        bigint story_id PK
+        bigint completed_by_id FK
+        boolean completed
+        timestamp completed_at
+        timestamp created_at
+        text name
+        integer position
+        timestamp updated_at
+    }
+    expense_category {
+        bigint id PK
+        timestamp deleted_at
+        text name
+    }
+    holiday_calendar_association {
+        bigint holiday_calendar_id PK
+        bigint holiday_id PK
+    }
+    workspace_allocation {
+        bigint id PK
+        bigint workspace_resource_id FK
+        timestamp created_at
+        text end_date
+        boolean hard
+        integer minutes
+        text notes
+        text percentage
+        text start_date
+        timestamp updated_at
+    }
+    workspace_group {
+        bigint id PK
+        text address
+        boolean company
+        text contact_name
+        timestamp created_at
+        text email
+        text name
+        text notes
+        text phone_number
+        timestamp updated_at
+        text website
+    }
+    skill_category {
+        bigint id PK
+        text name
+    }
+    story_allocation_day }o--|| assignment : "fk"
+    story_allocation_day }o--|| story : "fk"
+    assignment }o--|| story : "fk"
+    assignment }o--|| user : "fk"
+    workspace_invoice_preference }o--|| workspace : "fk"
+    time_off_entry }o--|| user : "fk"
+    invoice_time_entry }o--|| invoice : "fk"
+    invoice_time_entry }o--|| time_entry : "fk"
+    account_membership }o--|| user : "fk"
+    account_membership }o--|| user : "fk"
+    account_membership }o--|| role : "fk"
+    rate_card_version_history }o--|| rate_card_history : "fk"
+    skill_membership }o--|| skill : "fk"
+    skill_membership }o--|| user : "fk"
+    skill_membership }o--|| user : "fk"
+    estimate_scenario }o--|| estimate : "fk"
+    estimate_scenario }o--|| rate_card_history : "fk"
+    skill }o--|| skill_category : "fk"
+    participation }o--|| workspace : "fk"
+    participation }o--|| user : "fk"
+    workspace_resource }o--|| workspace : "fk"
+    workspace_resource }o--|| user : "fk"
+    workspace_resource }o--|| role : "fk"
+    workspace_resource }o--|| participation : "fk"
+    rate_card_role_history }o--|| role : "fk"
+    rate_card_role_history }o--|| rate_card_version_history : "fk"
+    user }o--|| role : "fk"
+    expense }o--|| workspace : "fk"
+    expense }o--|| user : "fk"
+    expense }o--|| story : "fk"
+    expense }o--|| expense_category : "fk"
+    workspace_association }o--|| workspace_group : "fk"
+    workspace_association }o--|| workspace : "fk"
+    billable_utilizations }o--|| account_membership : "fk"
+    billable_utilizations }o--|| user : "fk"
+    workspace }o--|| user : "fk"
+    workspace }o--|| workspace_group : "fk"
+    workspace }o--|| rate_card_history : "fk"
+    workspace }o--|| account_color : "fk"
+    timesheet_submission }o--|| workspace : "fk"
+    timesheet_submission }o--|| user : "fk"
+    story_state_change }o--|| user : "fk"
+    story_state_change }o--|| story : "fk"
+    story }o--|| workspace : "fk"
+    story }o--|| user : "fk"
+    story }o--|| story : "fk"
+    story }o--|| story : "fk"
+    invoice_expense }o--|| invoice : "fk"
+    invoice_expense }o--|| expense : "fk"
+    estimate }o--|| user : "fk"
+    estimate }o--|| workspace_group : "fk"
+    timesheet_submission_time_entry }o--|| timesheet_submission : "fk"
+    timesheet_submission_time_entry }o--|| time_entry : "fk"
+    workspace_user }o--|| workspace : "fk"
+    workspace_user }o--|| user : "fk"
+    invoice_fixed_fee_item }o--|| invoice : "fk"
+    invoice_fixed_fee_item }o--|| fixed_fee_item : "fk"
+    fixed_fee_item }o--|| story : "fk"
+    fixed_fee_item }o--|| workspace : "fk"
+    invoice_workspace }o--|| invoice : "fk"
+    invoice_workspace }o--|| workspace : "fk"
+    workspace_status_change }o--|| user : "fk"
+    workspace_status_change }o--|| workspace : "fk"
+    workspace_status_change }o--|| account_color : "fk"
+    workspace_status_change }o--|| account_color : "fk"
+    holiday_calendar_membership }o--|| user : "fk"
+    holiday_calendar_membership }o--|| holiday_calendar : "fk"
+    time_entry }o--|| account_location : "fk"
+    time_entry }o--|| story : "fk"
+    time_entry }o--|| workspace : "fk"
+    time_entry }o--|| user : "fk"
+    estimate_scenario_resource }o--|| estimate_scenario : "fk"
+    estimate_scenario_resource }o--|| role : "fk"
+    estimate_scenario_resource }o--|| user : "fk"
+    invoice }o--|| user : "fk"
+    invoice }o--|| user : "fk"
+    rate_card_history }o--|| rate_card_set_history : "fk"
+    status_reports }o--|| user : "fk"
+    status_reports }o--|| user : "fk"
+    status_reports }o--|| workspace : "fk"
+    post }o--|| story : "fk"
+    post }o--|| workspace : "fk"
+    post }o--|| user : "fk"
+    post }o--|| post : "fk"
+    workweek_membership }o--|| workweek : "fk"
+    workweek_membership }o--|| user : "fk"
+    account_invitation }o--|| role : "fk"
+    account_invitation }o--|| user : "fk"
+    account_invitation }o--|| user : "fk"
+    checklist }o--|| story : "fk"
+    checklist }o--|| user : "fk"
+    holiday_calendar_association }o--|| holiday : "fk"
+    holiday_calendar_association }o--|| holiday_calendar : "fk"
+    workspace_allocation }o--|| workspace_resource : "fk"

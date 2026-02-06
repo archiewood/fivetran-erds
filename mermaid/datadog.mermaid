@@ -1,0 +1,1470 @@
+erDiagram
+    container_image_associated_tag {
+        text index PK
+        text container_id PK
+        text associated_tag
+    }
+    container_tag {
+        text index PK
+        text container_id PK
+        text tags
+    }
+    container {
+        text id PK
+        text host FK
+        text image_name FK
+        text created_at
+        text image_digest
+        text name
+        text started_at
+        text state
+        text uuid
+    }
+    apm_retention {
+        text id PK
+        text created_by FK
+        text modified_by FK
+        text created_at
+        text editable
+        text enabled
+        text execution_order
+        text filter_query
+        text filter_type
+        text modified_at
+        text name
+        text rate
+    }
+    service_level_objective_tag {
+        text index PK
+        text service_level_objective_id PK
+        text tags
+    }
+    service_level_objective_monitor_tag {
+        text index PK
+        text service_level_objective_id PK
+        text monitor_tag
+    }
+    service_level_objective_monitor {
+        text monitor_id PK
+        text service_level_objective_id PK
+    }
+    service_level_objective_group {
+        text index PK
+        text service_level_objective_id PK
+        text group_name
+    }
+    service_level_objective_threshold {
+        text _fivetran_id PK
+        text service_level_objective_id FK
+        text target
+        text target_display
+        text timeframe
+        text warning
+        text warning_display
+    }
+    service_level_objective {
+        text id PK
+        text creator_handle FK
+        text created_at
+        text creator_email
+        text creator_name
+        text description
+        text modified_at
+        text name
+        text query_denominator
+        text query_numerator
+        text target_threshold
+        text timeframe
+        text type
+        text type_id
+        text warning_threshold
+    }
+    aws_log_integration_lambda {
+        text _fivetran_id PK
+        text aws_log_integration_id FK
+        text arn
+    }
+    aws_log_integration_service {
+        text index PK
+        text aws_log_integration_id PK
+        text service
+    }
+    aws_log_integration_service_trigger {
+        text index PK
+        text aws_log_integration_id PK
+        text trigger
+    }
+    aws_log_integration {
+        text id PK
+        jsonb synced_by_service_id
+        text touched
+    }
+    hourly_usage_attribution {
+        text hour PK
+        text public_id PK
+        text region
+        text tag_config_source
+        jsonb tags
+        text total_usage_sum
+        text updated_at
+        text usage_type
+    }
+    gcp_integration_account_tag {
+        text index PK
+        text gcp_integration_id PK
+        text account_tag
+    }
+    gcp_integration_cloud_run_revision_filter {
+        text index PK
+        text gcp_integration_id PK
+        text cloud_run_revision_filter
+    }
+    gcp_integration_host {
+        text index PK
+        text gcp_integration_id PK
+        text host_filter
+    }
+    gcp_integration {
+        text id PK
+        text automute
+        text client_email
+        text is_cspm_enabled
+        text is_security_command_center_enabled
+        text resource_collection_enabled
+    }
+    log_archive_rehydration_tag {
+        text index PK
+        text log_archive_id PK
+        text rehydration_tag
+    }
+    log_archive_destination {
+        text name PK
+        text log_archive_id PK
+        text value
+    }
+    log_archive {
+        text id PK
+        text include_tags
+        text name
+        text query
+        text rehydration_max_scan_size_in_gb
+        text state
+    }
+    security_monitoring_rule_query {
+        text _fivetran_id PK
+        text security_monitoring_rule_id FK
+        text aggregation
+        jsonb distinct_fields
+        jsonb group_by_fields
+        text has_optional_group_by_fields
+        text name
+        text query
+    }
+    security_monitoring_rule_case_notification {
+        text index PK
+        text _fivetran_id PK
+        text notification
+    }
+    security_monitoring_rule_case {
+        text _fivetran_id PK
+        text security_monitoring_rule_id FK
+        text condition
+        text name
+        text status
+    }
+    security_monitoring_rule_tag {
+        text index PK
+        text security_monitoring_rule_id PK
+        text tags
+    }
+    security_monitoring_rule_default_tag {
+        text index PK
+        text security_monitoring_rule_id PK
+        text default_tag
+    }
+    security_monitoring_rule_filter {
+        text _fivetran_id PK
+        text security_monitoring_rule_id FK
+        text action
+        text query
+    }
+    security_monitoring_rule_group_signal {
+        text index PK
+        text security_monitoring_rule_id PK
+        text group_signal
+    }
+    security_monitoring_rule_option {
+        text name PK
+        text security_monitoring_rule_id PK
+        text value
+    }
+    security_monitoring_rule {
+        text id PK
+        text blocking
+        text compliance_signal_option_default_activation_status
+        jsonb compliance_signal_option_default_group_by_fields
+        text compliance_signal_option_user_activation_status
+        jsonb compliance_signal_option_user_group_by_fields
+        text created_at
+        text creation_author_id
+        text has_extended_title
+        text is_default
+        text is_deleted
+        text is_deprecated
+        text is_enabled
+        text is_partner
+        text message
+        text name
+        text third_party_case_name
+        text third_party_case_notifications
+        text third_party_case_query
+        text third_party_case_status
+        text type
+        text update_author_id
+        text updated_at
+        text version
+    }
+    service_level_objective_history_groups {
+        text index PK
+        text service_level_objective_history_slo_id PK
+        jsonb errors
+        text groups
+        jsonb history
+        text monitor_modified
+        text monitor_type
+        text name
+        text preview
+        text sli_value
+        text span_precision
+        text uptime
+    }
+    service_level_objective_history_monitor {
+        text index PK
+        text service_level_objective_history_slo_id PK
+        jsonb errors
+        text groups
+        jsonb histroy
+        text monitor_modified
+        text monitor_type
+        text name
+        text preview
+        text sli_value
+        text span_precision
+        text uptime
+    }
+    service_level_objective_history_threshold {
+        text index PK
+        text service_level_objective_history_slo_id PK
+        text target
+        text target_display
+        text timeframe
+        text warning
+        text warning_display
+    }
+    service_level_objective_history_series_time {
+        text time PK
+        text service_level_objective_history_slo_id PK
+    }
+    service_level_objective_history_numerator_value {
+        text numerator_value PK
+        text service_level_objective_history_slo_id PK
+    }
+    service_level_objective_history_denominator_value {
+        text denominator_value PK
+        text service_level_objective_history_slo_id PK
+    }
+    service_level_objective_history_numerator_value_unit {
+        text index PK
+        text service_level_objective_history_slo_id PK
+        text family
+        text id
+        text name
+        text plural
+        text scale_factor
+        text short_name
+    }
+    service_level_objective_history_denominator_value_unit {
+        text index PK
+        text service_level_objective_history_slo_id PK
+        text family
+        text id
+        text name
+        text plural
+        text scale_factor
+        text short_name
+    }
+    service_level_objective_history {
+        text slo_id PK
+        text denominator_metadata_aggr
+        text denominator_metadata_expression
+        text denominator_metadata_metric
+        text denominator_metadata_query_index
+        text denominator_metadata_scope
+        jsonb denominator_metadata_tag_set
+        jsonb errors
+        text from_ts
+        jsonb group_by
+        text numerator_metadata_aggr
+        text numerator_metadata_expression
+        text numerator_metadata_metric
+        text numerator_metadata_query_index
+        text numerator_metadata_scope
+        jsonb numerator_metadata_tag_set
+        jsonb overall_corrections
+        jsonb overall_errors
+        text overall_group
+        jsonb overall_history
+        text overall_monitor_modified
+        text overall_monitor_type
+        text overall_name
+        text overall_preview
+        text overall_sli_value
+        text overall_span_precision
+        text overall_state
+        text overall_uptime
+        text series_bad_series_query
+        text series_denominator_count
+        text series_denominator_query
+        text series_denominator_sum
+        text series_from_date
+        text series_graph_query
+        text series_interval
+        text series_message
+        text series_numerator_count
+        text series_numerator_query
+        text series_numerator_sum
+        text series_query
+        text series_res_type
+        text series_resp_version
+        text series_to_date
+        text to_ts
+        text type
+        text type_id
+    }
+    dashboard {
+        text id PK
+        text author_handle
+        text created_at
+        text deleted_at
+        text description
+        text is_read_only
+        text layout_type
+        text modified_at
+        text title
+        text url
+    }
+    standard_pattern_tag {
+        text index PK
+        text standard_pattern_id PK
+        text tags
+    }
+    standard_pattern_keyword {
+        text index PK
+        text standard_pattern_id PK
+        text keyword
+    }
+    standard_pattern {
+        text id PK
+        text description
+        text name
+        text pattern
+        text priority
+    }
+    metric_tag_tag {
+        text index PK
+        text metric_tag_id PK
+        text metric_type PK
+        text tags
+    }
+    metric_tag {
+        text id PK
+        text metric_type PK
+        text type
+    }
+    okta_integration {
+        text id PK
+        text auth_method
+        text client_id
+        text domain
+        text name
+    }
+    log_index_exclusion_filter {
+        text _fivetran_id PK
+        text log_index_name FK
+        text filter_query
+        text filter_sample_rate
+        text is_enabled
+        text name
+    }
+    log_index {
+        text name PK
+        text daily_limit
+        text daily_limit_reset_time
+        text daily_limit_reset_utc_offset
+        text daily_limit_warning_threshold_percentage
+        text is_rate_limited
+        text num_retention_days
+        text query_filter
+    }
+    confluent_cloud_tag {
+        text index PK
+        text confluent_cloud_id PK
+        text tags
+    }
+    confluent_cloud_resource_tag {
+        text index PK
+        text confluent_cloud_id PK
+        text confluent_cloud_resource_id PK
+        text tags
+    }
+    confluent_cloud_resource {
+        text id PK
+        text confluent_cloud_id PK
+        text enable_custom_metrics
+        text resource_type
+    }
+    confluent_cloud {
+        text id PK
+        text api_key
+    }
+    role_permission {
+        text permission_id PK
+        text role_id PK
+    }
+    role {
+        text id PK
+        text created_at
+        timestamp modified_at
+        text name
+    }
+    log {
+        text id PK
+        text host FK
+        jsonb log_attribute
+        text message
+        text service
+        text status
+        jsonb tags
+        timestamp timestamps
+    }
+    auth_n_mapping {
+        text id PK
+        text role_id FK
+        text created_at
+        text key
+        text modified_at
+        text saml_assertion_id
+        text value
+    }
+    azure_integration_error {
+        text index PK
+        text azure_integration_id PK
+        text error
+    }
+    azure_integration {
+        text id PK
+        text app_service_plan_filters
+        text automute
+        text client_secret
+        text container_app_filters
+        text cspm_enabled
+        text custom_metrics_enabled
+        text host_filters
+        text new_client_id
+        text new_tenant_name
+        text resource_collection_enabled
+        text tenant_name
+    }
+    synthetic_variable_tag {
+        text index PK
+        text synthetic_variable_id PK
+        text tags
+    }
+    synthetic_variable {
+        text id PK
+        text creator_handle FK
+        text editor_handle FK
+        text created_at
+        text creator_email
+        text creator_name
+        text description
+        text editor_email
+        text editor_name
+        text is_fido
+        text is_totp
+        text last_error
+        text modified_at
+        text name
+        text parse_test_extracted_at
+        text parse_test_name
+        text parse_test_options
+        text parse_test_public_id
+        text type
+        jsonb value_options
+        text value_secure
+    }
+    aws_integration_host_tag {
+        text index PK
+        text aws_integration_id PK
+        text host_tag
+    }
+    aws_integration_excluded_region {
+        text index PK
+        text aws_integration_id PK
+        text excluded_region
+    }
+    aws_integration_filter_tag {
+        text index PK
+        text aws_integration_id PK
+        text filter_tag
+    }
+    aws_integration_namespace_rule {
+        text name PK
+        text aws_integration_id PK
+        text value
+    }
+    aws_integration {
+        text id PK
+        text access_key_id
+        text cspm_resource_collection_enabled
+        jsonb errors
+        text extended_resource_collection_enabled
+        text metrics_collection_enabled
+        text resource_collection_enabled
+        text role_name
+        text secret_access_key
+    }
+    team_hidden_module {
+        text index PK
+        text team_id PK
+        text hidden_module
+    }
+    team_visible_module {
+        text index PK
+        text team_id PK
+        text visible_module
+    }
+    team {
+        text id PK
+        text avatar
+        text banner
+        text created_at
+        text description
+        text handle
+        text link_count
+        text modified_at
+        text name
+        text summary
+    }
+    container_image_flavor {
+        text index PK
+        text container_image_id PK
+        text built_at
+        text os_architecture
+        text os_name
+        text os_version
+        text size
+    }
+    container_image_tag {
+        text index PK
+        text container_image_id PK
+        text tags
+    }
+    container_image_image_tag {
+        text index PK
+        text container_image_id PK
+        text image_tag
+    }
+    container_image_built {
+        text index PK
+        text container_image_id PK
+        text built_at
+    }
+    container_image_os_architechure {
+        text index PK
+        text container_image_id PK
+        text os_architecture
+    }
+    container_image_os_name {
+        text index PK
+        text container_image_id PK
+        text name
+    }
+    container_image_os_version {
+        text index PK
+        text container_image_id PK
+        text version
+    }
+    container_image_size {
+        text index PK
+        text container_image_id PK
+        text size
+    }
+    container_image_source {
+        text index PK
+        text container_image_id PK
+        text source
+    }
+    container_image {
+        text id PK
+        text name
+        text published_at
+        text registry
+        text repo_digest
+        text repository
+        text short_image
+        text sizes
+        text sources
+        text vulnerability_count_asset_id
+        text vulnerability_count_critical
+        text vulnerability_count_high
+        text vulnerability_count_low
+        text vulnerability_count_medium
+        text vulnerability_count_none
+        text vulnerability_count_unknown
+    }
+    synthetic_location {
+        text id PK
+        text name
+    }
+    downtime_monitor_tag {
+        text index PK
+        text downtime_id PK
+        text monitor_tag
+    }
+    downtime_recurrence {
+        text index PK
+        text downtime_id PK
+        text duration
+        text r_rule
+        text start
+    }
+    downtime_notify_end_type {
+        text index PK
+        text downtime_id PK
+        text notify_end_type
+    }
+    downtime_notify_end_state {
+        text index PK
+        text downtime_id PK
+        text notify_end_state
+    }
+    downtime {
+        text id PK
+        text child_id FK
+        text created_by_id FK
+        text identifier_monitor_id FK
+        text monitor_id FK
+        text parent_id FK
+        text active
+        text canceled
+        text created
+        text creator_id
+        text disabled
+        text display_timezone
+        text message
+        text modified
+        text mute_first_recovery_notification
+        text recurrence
+        text schedule_end
+        text schedule_start
+        text scope
+        text status
+        text timezone
+        text type
+        text updater_id
+        text uuid
+    }
+    metric {
+        text id PK
+        text type PK
+    }
+    rum_application {
+        text id PK
+        text created_by_handle FK
+        text organization_id FK
+        text updated_by_handle FK
+        text created_at
+        text hash
+        text is_active
+        text name
+        text type
+        text updated_at
+    }
+    organization_saml_user_domain {
+        text index PK
+        text organization_id PK
+        text domain
+    }
+    organization {
+        text id PK
+        text created
+        text description
+        text name
+        text settings_custom_landing_page
+        text settings_default_landing_page
+        text settings_manage_reports
+        text settings_private_widget_share
+        text settings_saml_autocreate_access_role
+        text settings_saml_autocreate_users_domains_enabled
+        text settings_saml_can_be_enabled
+        text settings_saml_enabled
+        text settings_saml_idp_endpoint
+        text settings_saml_idp_initiated_login_enabled
+        text settings_saml_idp_metadata_uploaded
+        text settings_saml_idp_metadata_valid_until
+        text settings_saml_login_url
+        text settings_saml_strict_mode_enabled
+        text trial
+    }
+    log_metric_group_by {
+        text index PK
+        text log_metric_id PK
+        text path
+        text tag_name
+    }
+    log_metric {
+        text id PK
+        text compute_aggregation_type
+        text compute_include_percentiles
+        text compute_path
+        text filter_query
+    }
+    synthetic_test_tag {
+        text index PK
+        text synthetic_test_id PK
+        text tags
+    }
+    synthetic_test_location {
+        text index PK
+        text synthetic_test_id PK
+        text location
+    }
+    synthetic_test_assertion {
+        text _fivetran_id PK
+        text synthetic_test_id FK
+        text operator
+        text property
+        text target
+        text timing_scope
+        text type
+    }
+    synthetic_test_step {
+        text id PK
+        text synthetic_test_id PK
+        text allow_failure
+        text is_critical
+        text name
+        text no_screenshot
+        jsonb params
+        text sub_type
+        text timeout
+        text type
+    }
+    synthetic_test_config_variable {
+        text _fivetran_id PK
+        text synthetic_test_id FK
+        text example
+        text id
+        text name
+        text pattern
+        text secure
+        text type
+    }
+    synthetic_test_variable {
+        text _fivetran_id PK
+        text synthetic_test_id FK
+        text example
+        text id
+        text name
+        text pattern
+        text secure
+        text type
+    }
+    synthetic_test_config_request {
+        text name PK
+        text synthetic_test_id PK
+        text value
+    }
+    synthetic_test_option {
+        text name PK
+        text synthetic_test_id PK
+        text value
+    }
+    synthetic_test {
+        text id PK
+        text creator_handle FK
+        text monitor_id FK
+        text created_at
+        text creator_email
+        text creator_name
+        text message
+        text modified_at
+        text name
+        text status
+        text subtype
+        text type
+    }
+    span_metric_group_by {
+        text _fivetran_id PK
+        text span_metric_id FK
+        text path
+        text tag_name
+    }
+    span_metric {
+        text id PK
+        text compute_aggregation_type
+        text compute_include_percentiles
+        text compute_path
+        text filter_query
+    }
+    scanning_group_relationship {
+        text id PK
+        text scanning_group_id PK
+    }
+    scanning_group_attribute {
+        text name PK
+        text scanning_group_id PK
+        text value
+    }
+    scanning_group {
+        text id PK
+    }
+    host_alias {
+        text index PK
+        text host_id PK
+        text alias
+    }
+    host_app {
+        text index PK
+        text host_id PK
+        text app_name
+    }
+    host_source {
+        text index PK
+        text host_id PK
+        text source
+    }
+    host_metadata {
+        text name PK
+        text host_id PK
+        text value
+    }
+    host_tag_source {
+        text name PK
+        text host_id PK
+        text value
+    }
+    host {
+        text id PK
+        text aws_id
+        text aws_name
+        text is_muted
+        text last_reported_time
+        text metrics_cpu
+        text metrics_io_wait
+        text metrics_load
+        text mute_timeout
+        text name
+        text up
+    }
+    log_restriction_query {
+        text id PK
+        text created_at
+        text modified_at
+        text restriction_query
+    }
+    cloudfare_integration_resource {
+        text index PK
+        text cloudfare_integration_id PK
+        text resource
+    }
+    cloudfare_integration_zone {
+        text index PK
+        text cloudfare_integration_id PK
+        text zone
+    }
+    cloudfare_integration {
+        text id PK
+        text email
+        text name
+    }
+    cloud_cost_management_azure_cur_config_error_message {
+        text index PK
+        text azure_config_id PK
+        text cloud_cost_management_azure_cur_config_id PK
+        text message
+    }
+    cloud_cost_management_azure_cur_config {
+        text azure_config_id PK
+        text id PK
+        text account_id
+        text client_id
+        text created_at
+        text dataset_type
+        text export_name
+        text export_path
+        text scope
+        text status
+        text status_updated_at
+        text storage_account
+        text storage_container
+        text updated_at
+    }
+    other_user {
+        text other_user_id PK
+        text user_id PK
+    }
+    user_other_organization {
+        text organization_id PK
+        text user_id PK
+    }
+    user_role {
+        text role_id PK
+        text user_id PK
+    }
+    users {
+        text id PK
+        text organization_id FK
+        jsonb allowed_login_methods
+        timestamp created_at
+        text disabled
+        text email
+        text handle
+        text icon
+        text mfa_enabled
+        timestamp modified_at
+        text name
+        text service_account
+        text status
+        text title
+        text verified
+    }
+    service_level_objective_correction {
+        text id PK
+        text creator_id FK
+        text modifier_id FK
+        text service_level_objective_id FK
+        text category
+        text created_at
+        text description
+        text duration
+        text ends
+        text modified_at
+        text rule
+        text start
+        text timezone
+    }
+    ip_allow_list_entry {
+        text id PK
+        text ip_allow_list_id PK
+        text cidr_block
+        text created_at
+        text modified_at
+        text note
+        text type
+    }
+    ip_allow_list {
+        text id PK
+        text enabled
+        text type
+    }
+    dashboard_list {
+        text id PK
+        text author_handle FK
+        text author_email
+        text author_name
+        text created
+        text is_favorite
+        text modified
+        text name
+    }
+    service_definition_schema_contact {
+        text _fivetran_id PK
+        text service_definition_id FK
+        text contact
+        text name
+        text type
+    }
+    service_definition_schema_link {
+        text _fivetran_id PK
+        text service_definition_id FK
+        text name
+        text provider
+        text type
+        text url
+    }
+    service_definition_schema_tag {
+        text index PK
+        text service_definition_id PK
+        text tags
+    }
+    service_definition_schema_language {
+        text index PK
+        text service_definition_id PK
+        text languages
+    }
+    service_definition_warning {
+        text _fivetran_id PK
+        text service_definition_id FK
+        text instance_location
+        text keyword_location
+        text message
+    }
+    service_definition {
+        text id PK
+        text meta_github_html_url
+        text meta_ingested_schema_version
+        text meta_ingestion_source
+        text meta_last_modified_time
+        text meta_origin
+        text meta_origin_detail
+        text schema_dd_service
+        text schema_docs
+        text schema_extensions
+        jsonb schema_integrations
+        text schema_repos
+        text schema_team
+        text schema_version
+    }
+    log_pipeline_processor {
+        text index PK
+        text log_pipeline_id PK
+        text grok_match_rules
+        text grok_support_rules
+        text is_enabled
+        text name
+        jsonb samples
+    }
+    log_pipeline {
+        text id PK
+        text filter_query
+        text is_enabled
+        text is_read_only
+        text name
+    }
+    opsgenie_integration {
+        text id PK
+        text custom_url
+        text name
+        text region
+    }
+    cloud_cost_management_aws_cur_config_error_message {
+        text index PK
+        text cloud_cost_management_aws_cur_config_id PK
+        text message
+    }
+    cloud_cost_management_aws_cur_config {
+        text id PK
+        text account_id
+        text bucket_name
+        text bucket_region
+        text created_at
+        text months
+        text report_name
+        text report_prefix
+        text status
+        text status_updated_at
+        text updated_at
+    }
+    rum_event {
+        text id PK
+        jsonb rum_event_attrubute
+        text service
+        jsonb tags
+        timestamp timestamps
+    }
+    incident_service {
+        text id PK
+        text created_by_id FK
+        text last_modified_by_id FK
+        text created
+        text modified
+        text name
+    }
+    permission {
+        text id PK
+        text created
+        text description
+        text display_name
+        text display_type
+        text group_name
+        text name
+        text restricted
+    }
+    monitor_tag {
+        text index PK
+        text monitor_id PK
+        text tags
+    }
+    monitor_matching_downtime_scope {
+        text index PK
+        text monitor_matching_downtime_id PK
+        text monitor_id PK
+        text scope
+    }
+    monitor_matching_downtime {
+        text index PK
+        text monitor_id PK
+        text active
+        text ends_at
+        jsonb groups
+        text id
+        text start
+    }
+    monitor_option {
+        text name PK
+        text monitor_id PK
+        text value
+    }
+    monitor {
+        text id PK
+        text creator_handle FK
+        text organization_id FK
+        text created
+        text created_at
+        text creator_email
+        text creator_id
+        text creator_name
+        text deleted
+        text message
+        text modified
+        text multi
+        text name
+        text overall_state
+        text overall_state_modified
+        text priority
+        text query
+        text restricted_roles
+        text type
+    }
+    incident_impact_summary_field {
+        text name PK
+        text incident_id PK
+        text incident_impact_summary_id PK
+        text value
+    }
+    incident_impact_summary {
+        text id PK
+        text incident_id PK
+        text created_user_id FK
+        text modified_user_id FK
+        text created
+        text description
+        text end_at
+        text modified
+        text start_at
+        text type
+    }
+    embedded_grapgh {
+        text id PK
+        text dash_name
+        text dash_url
+        text html
+        text revoked
+        text shared_by
+        jsonb template_variables
+        text tiledef
+        text title
+    }
+    security_monitoring_exclusion_filter {
+        text index PK
+        text security_monitoring_filter_id PK
+        text name
+        text query
+    }
+    security_monitoring_filter {
+        text id PK
+        text filtered_data_type
+        text is_builtin
+        text is_enabled
+        text name
+        text query
+        text version
+    }
+    incident_notification {
+        text _fivetran_id PK
+        text handle FK
+        text incident_id FK
+        text created_at
+        text display_name
+    }
+    incident_attachment {
+        text id PK
+        text incident_id PK
+        text type
+    }
+    incident_responder {
+        text id PK
+        text incident_id PK
+        text type
+    }
+    incident_impact {
+        text id PK
+        text incident_id PK
+        text type
+    }
+    incident_integration {
+        text id PK
+        text incident_id PK
+        text type
+    }
+    incident_user_defined_field {
+        text id PK
+        text incident_id PK
+        text type
+    }
+    incident_field {
+        text name PK
+        text incident_id PK
+        text value
+    }
+    incident {
+        text id PK
+        text commander_user_id FK
+        text created_user_id FK
+        text modified_user_id FK
+        text archived
+        text case_id
+        text created
+        text created_by_uuid
+        text creation_idempotency_key
+        text customer_impact_duration
+        text customer_impact_end
+        text customer_impact_scope
+        text customer_impact_start
+        text customer_impacted
+        text detected
+        text field_analytics
+        text incident_type_uuid
+        text last_modified_by_uuid
+        text modified
+        text non_datadog_creator
+        text non_datadog_creator_image_48_px
+        text non_datadog_creator_name
+        text public_id
+        text resolved
+        text severity
+        text state
+        text time_to_detect
+        text time_to_internal_response
+        text time_to_repair
+        text time_to_resolve
+        text title
+        text visibility
+    }
+    fastly_account_service_tag {
+        text fastly_account_id PK
+        text fastly_account_service_id PK
+        text index PK
+        text tags
+    }
+    fastly_account {
+        text id PK
+        text name
+    }
+    metric_volume_attribute {
+        text name PK
+        text metric_volume_id PK
+        text metric_volume_metric_type PK
+        text value
+    }
+    metric_volume {
+        text id PK
+        text metric_type PK
+        text type
+    }
+    audit_tag {
+        text index PK
+        text audit_id PK
+        text tags
+    }
+    audit_attribute {
+        text name PK
+        text audit_id PK
+        text value
+    }
+    audit {
+        text id PK
+        text message
+        text service
+        timestamp timestamps
+    }
+    event {
+        text id PK
+        jsonb event_attribute
+        text message
+        jsonb tags
+        timestamp timestamps
+    }
+    ci_visibility_pipeline {
+        text id PK
+        text ci_level
+        jsonb ci_visibility_pipeline_attribute
+        jsonb tags
+    }
+    ci_visibility_test {
+        text id PK
+        jsonb ci_visibility_test_attribute
+        jsonb tags
+        text test_level
+    }
+    container_image_associated_tag }o--|| container : "fk"
+    container_tag }o--|| container : "fk"
+    container }o--|| host : "fk"
+    container }o--|| container_image : "fk"
+    apm_retention }o--|| dashboard : "fk"
+    apm_retention }o--|| dashboard : "fk"
+    service_level_objective_tag }o--|| service_level_objective : "fk"
+    service_level_objective_monitor_tag }o--|| service_level_objective : "fk"
+    service_level_objective_monitor }o--|| monitor : "fk"
+    service_level_objective_monitor }o--|| service_level_objective : "fk"
+    service_level_objective_group }o--|| service_level_objective : "fk"
+    service_level_objective_threshold }o--|| service_level_objective : "fk"
+    service_level_objective }o--|| dashboard : "fk"
+    aws_log_integration_lambda }o--|| aws_log_integration : "fk"
+    aws_log_integration_service }o--|| aws_log_integration : "fk"
+    aws_log_integration_service_trigger }o--|| aws_log_integration : "fk"
+    hourly_usage_attribution }o--|| organization : "fk"
+    gcp_integration_account_tag }o--|| gcp_integration : "fk"
+    gcp_integration_cloud_run_revision_filter }o--|| gcp_integration : "fk"
+    gcp_integration_host }o--|| gcp_integration : "fk"
+    log_archive_rehydration_tag }o--|| log_archive : "fk"
+    log_archive_destination }o--|| log_archive : "fk"
+    security_monitoring_rule_query }o--|| security_monitoring_rule : "fk"
+    security_monitoring_rule_case_notification }o--|| security_monitoring_rule_case : "fk"
+    security_monitoring_rule_case }o--|| security_monitoring_rule : "fk"
+    security_monitoring_rule_tag }o--|| security_monitoring_rule : "fk"
+    security_monitoring_rule_default_tag }o--|| security_monitoring_rule : "fk"
+    security_monitoring_rule_filter }o--|| security_monitoring_rule : "fk"
+    security_monitoring_rule_group_signal }o--|| security_monitoring_rule : "fk"
+    security_monitoring_rule_option }o--|| security_monitoring_rule : "fk"
+    service_level_objective_history_groups }o--|| service_level_objective_history : "fk"
+    service_level_objective_history_monitor }o--|| service_level_objective_history : "fk"
+    service_level_objective_history_threshold }o--|| service_level_objective_history : "fk"
+    service_level_objective_history_series_time }o--|| service_level_objective_history : "fk"
+    service_level_objective_history_numerator_value }o--|| service_level_objective_history : "fk"
+    service_level_objective_history_denominator_value }o--|| service_level_objective_history : "fk"
+    service_level_objective_history_numerator_value_unit }o--|| service_level_objective_history : "fk"
+    service_level_objective_history_denominator_value_unit }o--|| service_level_objective_history : "fk"
+    service_level_objective_history }o--|| service_level_objective : "fk"
+    standard_pattern_tag }o--|| standard_pattern : "fk"
+    standard_pattern_keyword }o--|| standard_pattern : "fk"
+    metric_tag_tag }o--|| metric_tag : "fk"
+    metric_tag_tag }o--|| metric_tag : "fk"
+    metric_tag }o--|| metric : "fk"
+    metric_tag }o--|| metric : "fk"
+    log_index_exclusion_filter }o--|| log_index : "fk"
+    confluent_cloud_tag }o--|| confluent_cloud : "fk"
+    confluent_cloud_resource_tag }o--|| confluent_cloud_resource : "fk"
+    confluent_cloud_resource_tag }o--|| confluent_cloud_resource : "fk"
+    confluent_cloud_resource }o--|| confluent_cloud : "fk"
+    role_permission }o--|| permission : "fk"
+    role_permission }o--|| role : "fk"
+    log }o--|| host : "fk"
+    auth_n_mapping }o--|| role : "fk"
+    azure_integration_error }o--|| azure_integration : "fk"
+    synthetic_variable_tag }o--|| synthetic_variable : "fk"
+    synthetic_variable }o--|| dashboard : "fk"
+    synthetic_variable }o--|| dashboard : "fk"
+    aws_integration_host_tag }o--|| aws_integration : "fk"
+    aws_integration_excluded_region }o--|| aws_integration : "fk"
+    aws_integration_filter_tag }o--|| aws_integration : "fk"
+    aws_integration_namespace_rule }o--|| aws_integration : "fk"
+    team_hidden_module }o--|| team : "fk"
+    team_visible_module }o--|| team : "fk"
+    container_image_flavor }o--|| container_image : "fk"
+    container_image_tag }o--|| container_image : "fk"
+    container_image_image_tag }o--|| container_image : "fk"
+    container_image_built }o--|| container_image : "fk"
+    container_image_os_architechure }o--|| container_image : "fk"
+    container_image_os_name }o--|| container_image : "fk"
+    container_image_os_version }o--|| container_image : "fk"
+    container_image_size }o--|| container_image : "fk"
+    container_image_source }o--|| container_image : "fk"
+    downtime_monitor_tag }o--|| downtime : "fk"
+    downtime_recurrence }o--|| downtime : "fk"
+    downtime_notify_end_type }o--|| downtime : "fk"
+    downtime_notify_end_state }o--|| downtime : "fk"
+    downtime }o--|| users : "fk"
+    downtime }o--|| monitor : "fk"
+    downtime }o--|| downtime : "fk"
+    downtime }o--|| downtime : "fk"
+    downtime }o--|| monitor : "fk"
+    rum_application }o--|| dashboard : "fk"
+    rum_application }o--|| organization : "fk"
+    rum_application }o--|| dashboard : "fk"
+    organization_saml_user_domain }o--|| organization : "fk"
+    log_metric_group_by }o--|| log_metric : "fk"
+    synthetic_test_tag }o--|| synthetic_test : "fk"
+    synthetic_test_location }o--|| synthetic_test : "fk"
+    synthetic_test_assertion }o--|| synthetic_test : "fk"
+    synthetic_test_step }o--|| synthetic_test : "fk"
+    synthetic_test_config_variable }o--|| synthetic_test : "fk"
+    synthetic_test_variable }o--|| synthetic_test : "fk"
+    synthetic_test_config_request }o--|| synthetic_test : "fk"
+    synthetic_test_option }o--|| synthetic_test : "fk"
+    synthetic_test }o--|| monitor : "fk"
+    synthetic_test }o--|| dashboard : "fk"
+    span_metric_group_by }o--|| span_metric : "fk"
+    scanning_group_relationship }o--|| scanning_group : "fk"
+    scanning_group_attribute }o--|| scanning_group : "fk"
+    host_alias }o--|| host : "fk"
+    host_app }o--|| host : "fk"
+    host_source }o--|| host : "fk"
+    host_metadata }o--|| host : "fk"
+    host_tag_source }o--|| host : "fk"
+    cloudfare_integration_resource }o--|| cloudfare_integration : "fk"
+    cloudfare_integration_zone }o--|| cloudfare_integration : "fk"
+    cloud_cost_management_azure_cur_config_error_message }o--|| cloud_cost_management_azure_cur_config : "fk"
+    cloud_cost_management_azure_cur_config_error_message }o--|| cloud_cost_management_azure_cur_config : "fk"
+    other_user }o--|| users : "fk"
+    other_user }o--|| users : "fk"
+    user_other_organization }o--|| organization : "fk"
+    user_other_organization }o--|| users : "fk"
+    user_role }o--|| role : "fk"
+    user_role }o--|| users : "fk"
+    users }o--|| organization : "fk"
+    service_level_objective_correction }o--|| service_level_objective : "fk"
+    service_level_objective_correction }o--|| users : "fk"
+    service_level_objective_correction }o--|| users : "fk"
+    ip_allow_list_entry }o--|| ip_allow_list : "fk"
+    dashboard_list }o--|| dashboard : "fk"
+    service_definition_schema_contact }o--|| service_definition : "fk"
+    service_definition_schema_link }o--|| service_definition : "fk"
+    service_definition_schema_tag }o--|| service_definition : "fk"
+    service_definition_schema_language }o--|| service_definition : "fk"
+    service_definition_warning }o--|| service_definition : "fk"
+    log_pipeline_processor }o--|| log_pipeline : "fk"
+    cloud_cost_management_aws_cur_config_error_message }o--|| cloud_cost_management_aws_cur_config : "fk"
+    incident_service }o--|| users : "fk"
+    incident_service }o--|| users : "fk"
+    monitor_tag }o--|| monitor : "fk"
+    monitor_matching_downtime_scope }o--|| monitor_matching_downtime : "fk"
+    monitor_matching_downtime }o--|| monitor : "fk"
+    monitor_option }o--|| monitor : "fk"
+    monitor }o--|| organization : "fk"
+    monitor }o--|| dashboard : "fk"
+    incident_impact_summary_field }o--|| incident_impact_summary : "fk"
+    incident_impact_summary_field }o--|| incident_impact_summary : "fk"
+    incident_impact_summary }o--|| users : "fk"
+    incident_impact_summary }o--|| users : "fk"
+    incident_impact_summary }o--|| incident : "fk"
+    security_monitoring_exclusion_filter }o--|| security_monitoring_filter : "fk"
+    incident_notification }o--|| dashboard : "fk"
+    incident_notification }o--|| incident : "fk"
+    incident_attachment }o--|| incident : "fk"
+    incident_responder }o--|| incident : "fk"
+    incident_impact }o--|| incident : "fk"
+    incident_integration }o--|| incident : "fk"
+    incident_user_defined_field }o--|| incident : "fk"
+    incident_field }o--|| incident : "fk"
+    incident }o--|| users : "fk"
+    incident }o--|| users : "fk"
+    incident }o--|| users : "fk"
+    metric_volume_attribute }o--|| metric_volume : "fk"
+    metric_volume_attribute }o--|| metric_volume : "fk"
+    metric_volume }o--|| metric : "fk"
+    metric_volume }o--|| metric : "fk"
+    audit_tag }o--|| audit : "fk"
+    audit_attribute }o--|| audit : "fk"

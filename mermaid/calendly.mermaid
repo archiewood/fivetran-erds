@@ -1,0 +1,244 @@
+erDiagram
+    activity_log_entry {
+        text uri PK
+        text action
+        text actor_alternative_identifier
+        text actor_display_name
+        text actor_group_name
+        text actor_group_role
+        text actor_group_uri
+        text actor_organization_role
+        text actor_organization_uri
+        text actor_type
+        text actor_uri
+        jsonb details
+        text fully_qualified_name
+        text namespace
+        text occurred_at
+        text organization
+    }
+    users {
+        text uri PK
+        text avatar_url
+        text created_at
+        text current_organization
+        text email
+        text name
+        text scheduling_url
+        text slug
+        text timezone
+        text updated_at
+    }
+    user_availability_schedule_rule_interval {
+        text index PK
+        text user_availability_schedule_rule_index PK
+        text user_availability_schedule_uri PK
+        text from_time
+        text to_time
+    }
+    user_availability_schedule_rule {
+        text index PK
+        text user_availability_schedule_uri PK
+        text date
+        text type
+        text wday
+    }
+    user_availability_schedule {
+        text uri PK
+        text user_uri FK
+        text defaults
+        text name
+        text timezone
+    }
+    organization_invitation {
+        text uri PK
+        text user_uri FK
+        text created_at
+        text email
+        text last_sent_at
+        text organization_uri
+        text status
+        text updated_at
+    }
+    answer_choice {
+        text index PK
+        text custom_question_name PK
+        text custom_question_position PK
+        text event_type_uri PK
+        text answer_choice
+    }
+    custom_question {
+        text name PK
+        text position PK
+        text event_type_uri PK
+        text enabled
+        text include_other
+        text required
+        text type
+    }
+    event_type {
+        text uri PK
+        text profile_owner FK
+        text active
+        text booking_method
+        text color
+        text created_at
+        text description_html
+        text description_plain
+        text duration
+        text internal_note
+        text kind
+        text name
+        text pooling_type
+        text profile_name
+        text profile_type
+        text scheduling_url
+        text secret
+        text slug
+        text type
+        text updated_at
+    }
+    routing_form_question_answer_choice {
+        text answer_choice PK
+        text routing_form_question_uuid PK
+        text routing_form_uri PK
+    }
+    routing_form_question {
+        text uuid PK
+        text routing_form_uri PK
+        text name
+        text required
+        text type
+    }
+    routing_form {
+        text uri PK
+        text created_at
+        text name
+        text organization
+        text status
+        text updated_at
+    }
+    question_and_answer {
+        text position PK
+        text event_invitee_uri PK
+        text answer
+        text question
+    }
+    event_invitee {
+        text uri PK
+        text event_uri FK
+        text cancel_reason
+        text cancel_url
+        text canceled_by
+        text canceler_type
+        text created_at
+        text email
+        text first_name
+        text last_name
+        text name
+        text new_invitee
+        text no_show_created_at
+        text no_show_uri
+        text old_invitee
+        text payment_amount
+        text payment_currency
+        text payment_external_id
+        text payment_provider
+        text payment_successful
+        text payment_terms
+        text reconfirmation_confirmed_at
+        text reconfirmation_created_at
+        text reschedule_url
+        text rescheduled
+        text status
+        text text_reminder_number
+        text timezone
+        text tracking_salesforce_uuid
+        text tracking_utm_campaign
+        text tracking_utm_content
+        text tracking_utm_medium
+        text tracking_utm_source
+        text tracking_utm_term
+        text updated_at
+    }
+    organization_membership {
+        text uri PK
+        text user_uri FK
+        text created_at
+        text role
+        text updated_at
+    }
+    event_type_availability_schedule_rule_interval {
+        text index PK
+        text event_type_availability_schedule_rule_index PK
+        text event_type_availability_schedule_uri PK
+        text from_time
+        text to_time
+    }
+    event_type_availability_schedule_rule {
+        text index PK
+        text event_type_availability_schedule_uri PK
+        text date
+        text type
+        text wday
+    }
+    event_type_availability_schedule {
+        text uri PK
+        text event_type_uri FK
+        text user_uri FK
+        text availability_setting
+        text name
+        text timezone
+    }
+    event_guest {
+        text email PK
+        text event_uri PK
+        text created_at
+        text updated_at
+    }
+    event_membership {
+        text event_uri PK
+        text user_uri PK
+    }
+    event {
+        text uri PK
+        text event_type_uri FK
+        text cancel_reason
+        text canceled_by
+        text canceler_type
+        text created_at
+        text end_time
+        text invitees_active
+        text invitees_limit
+        text location
+        text location_type
+        text name
+        text start_time
+        text status
+        text updated_at
+    }
+    user_availability_schedule_rule_interval }o--|| user_availability_schedule_rule : "fk"
+    user_availability_schedule_rule_interval }o--|| user_availability_schedule_rule : "fk"
+    user_availability_schedule_rule }o--|| user_availability_schedule : "fk"
+    user_availability_schedule }o--|| users : "fk"
+    organization_invitation }o--|| users : "fk"
+    answer_choice }o--|| event_type : "fk"
+    answer_choice }o--|| custom_question : "fk"
+    answer_choice }o--|| custom_question : "fk"
+    custom_question }o--|| event_type : "fk"
+    event_type }o--|| users : "fk"
+    routing_form_question_answer_choice }o--|| routing_form_question : "fk"
+    routing_form_question_answer_choice }o--|| routing_form_question : "fk"
+    routing_form_question }o--|| routing_form : "fk"
+    question_and_answer }o--|| event_invitee : "fk"
+    event_invitee }o--|| event : "fk"
+    organization_membership }o--|| users : "fk"
+    event_type_availability_schedule_rule_interval }o--|| event_type_availability_schedule_rule : "fk"
+    event_type_availability_schedule_rule_interval }o--|| event_type_availability_schedule_rule : "fk"
+    event_type_availability_schedule_rule }o--|| event_type_availability_schedule : "fk"
+    event_type_availability_schedule }o--|| users : "fk"
+    event_type_availability_schedule }o--|| event_type : "fk"
+    event_guest }o--|| event : "fk"
+    event_membership }o--|| users : "fk"
+    event_membership }o--|| event : "fk"
+    event }o--|| event_type : "fk"

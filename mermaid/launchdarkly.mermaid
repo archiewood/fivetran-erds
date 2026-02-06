@@ -1,0 +1,554 @@
+erDiagram
+    audit_log_access {
+        text index PK
+        text audit_log_id PK
+        text action
+        text resource
+    }
+    audit_log_target_resource {
+        text index PK
+        text audit_log_id PK
+        text resource
+    }
+    audit_log {
+        text id PK
+        text account_id
+        text app_id
+        text app_is_scim
+        text app_maintainer_name
+        text app_name
+        text comment
+        text date
+        text description
+        text kind
+        text member_email
+        text member_first_name
+        text member_id
+        text member_last_name
+        text name
+        text parent_name
+        text parent_resource
+        text short_description
+        text subject_avatar_url
+        text subject_name
+        text target_name
+        text title
+        text title_verb
+        text token_ending
+        text token_id
+        text token_name
+        text token_service_token
+    }
+    project_tag {
+        text index PK
+        text project_key PK
+        text tags
+    }
+    project {
+        text key PK
+        text id
+        text include_in_snippet_by_default
+        text name
+        text using_environment_id
+        text using_mobile_key
+    }
+    flag_default_project_tag {
+        text index PK
+        text _fivetran_id PK
+        text tags
+    }
+    flag_default_project {
+        text _fivetran_id PK
+        text project_key FK
+        text false_description
+        text false_display_name
+        text off_variation
+        text on_variation
+        text temporary
+        text true_description
+        text true_display_name
+        text using_environment_id
+        text using_mobile_key
+    }
+    tags {
+        text index PK
+        text environment_key PK
+        text tags
+    }
+    required_approval_tag {
+        text index PK
+        text environment_key PK
+        text tags
+    }
+    environment {
+        text key PK
+        text project_key FK
+        text bypass_approvals_for_pending_changes
+        text can_apply_declined_changes
+        text can_review_own_request
+        text color
+        text confirm_change
+        text default_track_event
+        text default_ttl
+        text id
+        text min_num_approvals
+        text name
+        text require_comment
+        text required
+        text secure_mode
+        jsonb service_config
+        text service_kind
+    }
+    feature_flag_variation {
+        text id PK
+        text feature_flag_key PK
+        text feature_flag_project_key PK
+        text description
+        text name
+        text value
+    }
+    feature_flag_tag {
+        text index PK
+        text feature_flag_key PK
+        text feature_flag_project_key PK
+        text tags
+    }
+    feature_flag_experiment_environment {
+        text index PK
+        text feature_flag_key PK
+        text feature_flag_project_key PK
+        text main_metric_key PK
+        text environment
+    }
+    feature_flag_experiment {
+        text feature_flag_key PK
+        text feature_flag_project_key PK
+        text main_metric_key PK
+        text metric_key FK
+    }
+    feature_flag_environment_rule_clause {
+        text id PK
+        text feature_flag_environment_index PK
+        text feature_flag_environment_rule_id PK
+        text feature_flag_key PK
+        text feature_flag_project_key PK
+        text attribute
+        text context_kind
+        text negate
+        text op
+        jsonb values
+    }
+    feature_flag_environment_rule_rollout_variation {
+        text index PK
+        text feature_flag_environment_index PK
+        text feature_flag_environment_rule_id PK
+        text feature_flag_key PK
+        text feature_flag_project_key PK
+        text untracked
+        text variation
+        text weight
+    }
+    feature_flag_environment_rule {
+        text id PK
+        text feature_flag_environment_index PK
+        text feature_flag_key PK
+        text feature_flag_project_key PK
+        text description
+        text ref
+        text rollout_bucket_by
+        text rollout_context_kind
+        text rollout_experiment_allocation_can_reshuffle
+        text rollout_experiment_allocation_default_variation
+        text rollout_seed
+        text track_event
+        text variation
+    }
+    feature_flag_environment_fallthrough_rollout_variation {
+        text index PK
+        text feature_flag_environment_index PK
+        text feature_flag_key PK
+        text feature_flag_project_key PK
+        text untracked
+        text variation
+        text weight
+    }
+    feature_flag_environment_target {
+        text index PK
+        text feature_flag_environment_index PK
+        text feature_flag_key PK
+        text feature_flag_project_key PK
+        text context_kind
+        jsonb values
+        text variation
+    }
+    feature_flag_environment_context_target {
+        text index PK
+        text feature_flag_environment_index PK
+        text feature_flag_key PK
+        text feature_flag_project_key PK
+        text context_kind
+        jsonb values
+        text variation
+    }
+    feature_flag_environment_prerequisite {
+        text index PK
+        text feature_flag_environment_index PK
+        text feature_flag_key PK
+        text feature_flag_project_key PK
+        text key
+        text variation
+    }
+    feature_flag_environment_action_denied {
+        text index PK
+        text feature_flag_environment_index PK
+        text feature_flag_key PK
+        text feature_flag_project_key PK
+        text action
+        jsonb reason
+    }
+    feature_flag_environment_action_allowed {
+        text index PK
+        text feature_flag_environment_index PK
+        text feature_flag_key PK
+        text feature_flag_project_key PK
+        text action
+        jsonb reason
+    }
+    feature_flag_environment_evaluation {
+        text index PK
+        text feature_flag_environment_index PK
+        text feature_flag_key PK
+        text feature_flag_project_key PK
+        text context_kind
+    }
+    feature_flag_environment {
+        text index PK
+        text feature_flag_key PK
+        text feature_flag_project_key PK
+        text archived
+        text debug_events_until_date
+        text environment_name
+        text fallthrough_rollout_bucket_by
+        text fallthrough_rollout_context_kind
+        text fallthrough_rollout_experiment_allocation_can_reshuffle
+        text fallthrough_rollout_experiment_allocation_default_variation
+        text fallthrough_rollout_seed
+        text fallthrough_variation
+        text is_on
+        text last_modified
+        text migration_setting_check_ratio
+        text off_variation
+        text salt
+        text sel
+        text site_href
+        text site_type
+        text summary_prerequisite
+        text track_event
+        text track_event_fallthrough
+        text version
+    }
+    feature_flag {
+        text key PK
+        text project_key PK
+        text associated_maintainer_id FK
+        text associated_maintainer_team_key FK
+        text maintainer_id FK
+        text maintainer_team_key FK
+        text archived
+        text archived_date
+        text baseline_idx
+        text creation_date
+        text deprecated
+        text deprecated_date
+        text description
+        text include_in_snippet
+        text kind
+        text maintainer_email
+        text maintainer_first_name
+        text maintainer_last_name
+        text maintainer_role
+        text migration_setting_context_kind
+        text migration_setting_stage_count
+        text name
+        text off_variation
+        text on_variation
+        text purpose
+        text temporary
+        text using_environment_id
+        text using_mobile_key
+        text version
+    }
+    rule_clause {
+        text id PK
+        text environment_key PK
+        text project_key PK
+        text segment_key PK
+        text segment_rule_id PK
+        text attribute
+        text negate
+        text op
+        jsonb values
+    }
+    segment_rule {
+        text id PK
+        text environment_key PK
+        text project_key PK
+        text segment_key PK
+        text bucket_by
+        text rollout_context_kind
+        text weight
+    }
+    segment_tags {
+        text index PK
+        text environment_key PK
+        text project_key PK
+        text segment_key PK
+        text tags
+    }
+    segment_flag {
+        text environment_key PK
+        text key PK
+        text project_key PK
+        text segment_key PK
+    }
+    segment_included_contexts {
+        text index PK
+        text environment_key PK
+        text project_key PK
+        text segment_key PK
+        text context_kind
+        jsonb values
+    }
+    segment_excluded_contexts {
+        text index PK
+        text environment_key PK
+        text project_key PK
+        text segment_key PK
+        text context_kind
+        jsonb values
+    }
+    segment {
+        text key PK
+        text environment_key PK
+        text project_key PK
+        text creation_date
+        text deleted
+        text description
+        text external
+        text external_link
+        text generation
+        text import_in_progress
+        text name
+        text unbounded
+        text unbounded_context_kind
+        text version
+    }
+    segment_access {
+        text _fivetran_id PK
+        text environment_key FK
+        text project_key FK
+        text segment_key FK
+        text access_type
+        text action
+        jsonb actions
+        text effect
+        jsonb not_actions
+        jsonb not_resources
+        jsonb resources
+        text role_name
+    }
+    segment_target {
+        text index PK
+        text target_key PK
+        text environment_key PK
+        text project_key PK
+        text segment_key PK
+        text object_type
+    }
+    metric_tag {
+        text index PK
+        text metric_key PK
+        text tags
+    }
+    metric_randomization_unit {
+        text index PK
+        text metric_key PK
+        text randomization_unit
+    }
+    metric {
+        text key PK
+        text associated_maintainer_id FK
+        text maintainer_id FK
+        text project_key FK
+        text attached_flag_count
+        text creation_date
+        text description
+        text event_key
+        text experiment_count
+        text id
+        text is_numeric
+        text kind
+        text last_modified_date
+        text name
+        text success_criteria
+        text unit
+    }
+    metric_access {
+        text _fivetran_id PK
+        text metric_key FK
+        text access_type
+        text action
+        jsonb actions
+        text effect
+        jsonb not_actions
+        jsonb not_resources
+        jsonb resources
+        text role_name
+    }
+    role_project {
+        text project_key PK
+        text role_key PK
+        text role_team_key PK
+    }
+    role {
+        text key PK
+        text team_key PK
+        text applied_on
+        text name
+    }
+    team_project {
+        text key PK
+        text team_key PK
+    }
+    maintainer {
+        text id PK
+        text team_key PK
+        text email
+        text first_name
+        text last_name
+        text role
+    }
+    team {
+        text key PK
+        text creation_date
+        text description
+        text identity_provider_sync
+        text last_modified
+        text maintainers_total_count
+        text members_total_count
+        text name
+        text project_total_count
+        text roles_total_count
+        text version
+    }
+    team_access {
+        text _fivetran_id PK
+        text team_key FK
+        text access_type
+        text action
+        jsonb actions
+        text effect
+        jsonb not_actions
+        jsonb not_resources
+        jsonb resources
+        text role_name
+    }
+    audit_log_access }o--|| audit_log : "fk"
+    audit_log_target_resource }o--|| audit_log : "fk"
+    project_tag }o--|| project : "fk"
+    flag_default_project_tag }o--|| flag_default_project : "fk"
+    flag_default_project }o--|| project : "fk"
+    tags }o--|| environment : "fk"
+    required_approval_tag }o--|| environment : "fk"
+    environment }o--|| project : "fk"
+    feature_flag_variation }o--|| feature_flag : "fk"
+    feature_flag_variation }o--|| feature_flag : "fk"
+    feature_flag_tag }o--|| feature_flag : "fk"
+    feature_flag_tag }o--|| feature_flag : "fk"
+    feature_flag_experiment_environment }o--|| feature_flag_experiment : "fk"
+    feature_flag_experiment_environment }o--|| feature_flag_experiment : "fk"
+    feature_flag_experiment_environment }o--|| feature_flag_experiment : "fk"
+    feature_flag_experiment }o--|| metric : "fk"
+    feature_flag_experiment }o--|| metric : "fk"
+    feature_flag_experiment }o--|| feature_flag : "fk"
+    feature_flag_experiment }o--|| feature_flag : "fk"
+    feature_flag_environment_rule_clause }o--|| feature_flag_environment_rule : "fk"
+    feature_flag_environment_rule_clause }o--|| feature_flag_environment_rule : "fk"
+    feature_flag_environment_rule_clause }o--|| feature_flag_environment_rule : "fk"
+    feature_flag_environment_rule_clause }o--|| feature_flag_environment_rule : "fk"
+    feature_flag_environment_rule_rollout_variation }o--|| feature_flag_environment_rule : "fk"
+    feature_flag_environment_rule_rollout_variation }o--|| feature_flag_environment_rule : "fk"
+    feature_flag_environment_rule_rollout_variation }o--|| feature_flag_environment_rule : "fk"
+    feature_flag_environment_rule_rollout_variation }o--|| feature_flag_environment_rule : "fk"
+    feature_flag_environment_rule }o--|| feature_flag_environment : "fk"
+    feature_flag_environment_rule }o--|| feature_flag_environment : "fk"
+    feature_flag_environment_rule }o--|| feature_flag_environment : "fk"
+    feature_flag_environment_fallthrough_rollout_variation }o--|| feature_flag_environment : "fk"
+    feature_flag_environment_fallthrough_rollout_variation }o--|| feature_flag_environment : "fk"
+    feature_flag_environment_fallthrough_rollout_variation }o--|| feature_flag_environment : "fk"
+    feature_flag_environment_target }o--|| feature_flag_environment : "fk"
+    feature_flag_environment_target }o--|| feature_flag_environment : "fk"
+    feature_flag_environment_target }o--|| feature_flag_environment : "fk"
+    feature_flag_environment_context_target }o--|| feature_flag_environment : "fk"
+    feature_flag_environment_context_target }o--|| feature_flag_environment : "fk"
+    feature_flag_environment_context_target }o--|| feature_flag_environment : "fk"
+    feature_flag_environment_prerequisite }o--|| feature_flag_environment : "fk"
+    feature_flag_environment_prerequisite }o--|| feature_flag_environment : "fk"
+    feature_flag_environment_prerequisite }o--|| feature_flag_environment : "fk"
+    feature_flag_environment_action_denied }o--|| feature_flag_environment : "fk"
+    feature_flag_environment_action_denied }o--|| feature_flag_environment : "fk"
+    feature_flag_environment_action_denied }o--|| feature_flag_environment : "fk"
+    feature_flag_environment_action_allowed }o--|| feature_flag_environment : "fk"
+    feature_flag_environment_action_allowed }o--|| feature_flag_environment : "fk"
+    feature_flag_environment_action_allowed }o--|| feature_flag_environment : "fk"
+    feature_flag_environment_evaluation }o--|| feature_flag_environment : "fk"
+    feature_flag_environment_evaluation }o--|| feature_flag_environment : "fk"
+    feature_flag_environment_evaluation }o--|| feature_flag_environment : "fk"
+    feature_flag_environment }o--|| feature_flag : "fk"
+    feature_flag_environment }o--|| feature_flag : "fk"
+    feature_flag }o--|| team : "fk"
+    feature_flag }o--|| team : "fk"
+    feature_flag }o--|| maintainer : "fk"
+    feature_flag }o--|| maintainer : "fk"
+    rule_clause }o--|| segment_rule : "fk"
+    rule_clause }o--|| segment_rule : "fk"
+    rule_clause }o--|| segment_rule : "fk"
+    rule_clause }o--|| segment_rule : "fk"
+    segment_rule }o--|| segment : "fk"
+    segment_rule }o--|| segment : "fk"
+    segment_rule }o--|| segment : "fk"
+    segment_tags }o--|| segment : "fk"
+    segment_tags }o--|| segment : "fk"
+    segment_tags }o--|| segment : "fk"
+    segment_flag }o--|| feature_flag : "fk"
+    segment_flag }o--|| segment : "fk"
+    segment_flag }o--|| segment : "fk"
+    segment_flag }o--|| segment : "fk"
+    segment_included_contexts }o--|| segment : "fk"
+    segment_included_contexts }o--|| segment : "fk"
+    segment_included_contexts }o--|| segment : "fk"
+    segment_excluded_contexts }o--|| segment : "fk"
+    segment_excluded_contexts }o--|| segment : "fk"
+    segment_excluded_contexts }o--|| segment : "fk"
+    segment }o--|| project : "fk"
+    segment }o--|| environment : "fk"
+    segment_access }o--|| segment : "fk"
+    segment_access }o--|| segment : "fk"
+    segment_access }o--|| segment : "fk"
+    segment_target }o--|| segment : "fk"
+    segment_target }o--|| segment : "fk"
+    segment_target }o--|| segment : "fk"
+    metric_tag }o--|| metric : "fk"
+    metric_randomization_unit }o--|| metric : "fk"
+    metric }o--|| maintainer : "fk"
+    metric }o--|| maintainer : "fk"
+    metric }o--|| project : "fk"
+    metric_access }o--|| metric : "fk"
+    role_project }o--|| project : "fk"
+    role_project }o--|| role : "fk"
+    role_project }o--|| role : "fk"
+    role }o--|| team : "fk"
+    team_project }o--|| project : "fk"
+    team_project }o--|| team : "fk"
+    maintainer }o--|| team : "fk"
+    team_access }o--|| team : "fk"

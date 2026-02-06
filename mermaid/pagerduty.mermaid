@@ -1,0 +1,812 @@
+erDiagram
+    business_service_subscriber {
+        text id PK
+        text business_service_id PK
+        text account_id
+        text subscriber_type
+    }
+    maintenance_window_service {
+        text maintenance_window_id PK
+        text service_id PK
+    }
+    maintenance_window_team {
+        text maintenance_window_id PK
+        text team_id PK
+    }
+    maintenance_window {
+        text id PK
+        text created_by_id FK
+        text description
+        text end_time
+        text html_url
+        text sequence_number
+        text start_time
+        text summary
+    }
+    escalation_policy_target {
+        text id PK
+        text escalation_policy_rule_id PK
+        text html_url
+        text summary
+        text type
+    }
+    escalation_policy_rule {
+        text id PK
+        text escalation_policy_id PK
+        text escalation_delay_in_minutes
+    }
+    escalation_policy_service {
+        text escalation_policy_id PK
+        text service_id PK
+    }
+    escalation_policy_team {
+        text escalation_policy_id PK
+        text team_id PK
+    }
+    escalation_policy {
+        text id PK
+        text description
+        text html_url
+        text name
+        text num_loops
+        text on_call_handoff_notifications
+        text privilege
+        text summary
+    }
+    notification {
+        text id PK
+        text user_id PK
+        text address
+        text started_at
+        text type
+    }
+    incident_custom_field_value {
+        text id PK
+        text incident_id PK
+        text data_type
+        text description
+        text display_name
+        text enabled
+        text field_type
+        text name
+        text type
+        text value
+    }
+    extension_schema_option {
+        text _fivetran_id PK
+        text extension_schema_id FK
+        text label
+        text value
+    }
+    extension_schema_send_type {
+        text _fivetran_id PK
+        text extension_schema_id FK
+        text send_type
+    }
+    extension_feature {
+        text name PK
+        text extension_schema_id PK
+    }
+    extension_schema {
+        text id PK
+        text addon_id FK
+        text authorizable
+        jsonb buttons
+        text config_snow_password_encrypted
+        text config_snow_password_label
+        text config_snow_password_type
+        text config_snow_user_label
+        text config_sync_options_defaults
+        text config_sync_options_help_tip
+        text config_sync_options_label
+        text config_sync_options_type
+        text config_target_label
+        text config_target_placeholder
+        text description
+        text guide_url
+        text html_url
+        text icon_url
+        text key
+        text label
+        text logo_url
+        text summary
+        text url
+    }
+    ruleset_routing_key {
+        text routing_key PK
+        text ruleset_id PK
+    }
+    ruleset {
+        text id PK
+        text creator_id FK
+        text team_id FK
+        text updater_id FK
+        text created_at
+        text creator_type
+        text name
+        text type
+        text updated_at
+        text updater_type
+    }
+    business_service {
+        text id PK
+        text team_id FK
+        text description
+        text html_url
+        text name
+        text point_of_contact
+        text summary
+        text type
+    }
+    users_contact_method {
+        text id PK
+        text users_id PK
+        text address
+        text html_url
+        text summary
+        text type
+    }
+    users_notification_rule {
+        text id PK
+        text users_id PK
+        text html_url
+        text summary
+        text type
+    }
+    users_team {
+        text team_id PK
+        text users_id PK
+    }
+    users {
+        text id PK
+        text avatar_url
+        text billed
+        text color
+        text coordinated_incidents
+        text description
+        text email
+        text html_url
+        text invitation_sent
+        text job_title
+        text name
+        text role
+        text summary
+        text time_zone
+        text type
+    }
+    tags {
+        text id PK
+        text html_url
+        text label
+        text summary
+        text type
+    }
+    license_valid_role {
+        text valid_role PK
+        text license_id PK
+    }
+    license {
+        text id PK
+        text allocations_available
+        text current_value
+        text description
+        text html_url
+        text name
+        text role_group
+        text summary
+        text type
+    }
+    template {
+        text id PK
+        text created_by_id PK
+        text updated_by_id PK
+        text created_at
+        text created_by_type
+        text description
+        text name
+        text template_type
+        text updated_at
+        text updated_by_type
+    }
+    extension_object {
+        text id PK
+        text extension_id PK
+        text html_url
+        text summary
+        text type
+    }
+    extension {
+        text id PK
+        text extension_schema_id PK
+        text endpoint_url
+        text name
+        text summary
+        text type
+    }
+    addon {
+        text id PK
+        text html_url
+        text name
+        text src
+        text summary
+    }
+    on_call {
+        text _fivetran_id PK
+        text escalation_policy_id FK
+        text schedule_id FK
+        text user_id FK
+        text ends
+        text escalation_level
+        text start
+    }
+    vendor {
+        text id PK
+        text alert_creation_default
+        text alert_creation_editable
+        text connectable
+        text description
+        text developer_name
+        text documentation_url
+        text emits_change_events
+        text generic_service_type
+        text html_url
+        text integration_guide_url
+        text is_pd_cef
+        text is_pd_change_event
+        text logo_url
+        text long_name
+        text name
+        text summary
+        text support_email
+        text support_portal
+        text thumbnail_url
+        text type
+        text website_url
+    }
+    analytics_metric_service {
+        text range_start PK
+        text aggregate_unit
+        text created_at_end
+        text created_at_start
+        text mean_assignment_count
+        text mean_engaged_seconds
+        text mean_engaged_user_count
+        text mean_seconds_to_engage
+        text mean_seconds_to_first_ack
+        text mean_seconds_to_mobilize
+        text mean_seconds_to_resolve
+        text mean_user_defined_engaged_seconds
+        text total_business_hour_interruptions
+        text total_down_time_minutes
+        text total_engaged_seconds
+        text total_escalation_count
+        text total_high_urgency_incidents
+        text total_incident_count
+        text total_incidents_acknowledged
+        text total_incidents_auto_resolved
+        text total_incidents_escalated
+        text total_incidents_manual_escalated
+        text total_incidents_reassigned
+        text total_incidents_timeout_escalated
+        text total_interruptions
+        text total_low_urgency_incidents
+        text total_major_incidents
+        text total_notifications
+        text total_off_hour_interruptions
+        text total_sleep_hour_interruptions
+        text total_snoozed_seconds
+        text total_user_defined_engaged_seconds
+        text up_time_pct
+    }
+    audit_record_actor {
+        text id PK
+        text audit_record_id PK
+        text summary
+        text type
+    }
+    audit_record_field {
+        text _fivetran_id PK
+        text audit_record_id FK
+        text name
+        text value
+    }
+    reference_removed {
+        text id PK
+        text reference_id PK
+        text summary
+        text type
+    }
+    reference_added {
+        text id PK
+        text reference_id PK
+        text summary
+        text type
+    }
+    reference {
+        text name PK
+        text audit_record_id PK
+    }
+    audit_record {
+        text id PK
+        text action
+        text details_resource_id
+        text details_resource_summary
+        text details_resource_type
+        text execution_context_remote_address
+        text execution_context_request_id
+        text execution_time
+        text method_description
+        text method_truncated_token
+        text method_type
+        text root_resource_id
+        text root_resource_summary
+        text root_resource_type
+    }
+    users_session {
+        text id PK
+        text user_id PK
+        text created_at
+        text html_url
+        text summary
+        text type
+    }
+    change_event_service {
+        text change_event_id PK
+        text service_id PK
+        text type
+    }
+    change_event {
+        text id PK
+        text custom_details_build_number
+        text custom_details_build_state
+        text custom_details_run_time
+        text integration_id
+        text integration_type
+        text source
+        text summary
+        text time_stamp
+    }
+    raw_incident_response {
+        text responder_id PK
+        text id PK
+        text incident_created_at
+        text incident_number
+        text incident_priority_id
+        text incident_priority_name
+        text incident_priority_order
+        text incident_type_id
+        text incident_urgency
+        text mean_time_to_acknowledge_seconds
+        text responder_name
+        text service_id
+        text service_name
+        text total_acknowledgements
+        text total_business_hour_interruptions
+        text total_engaged_seconds
+        text total_interruptions
+        text total_manual_escalations_from
+        text total_manual_escalations_to
+        text total_off_hour_interruptions
+        text total_reassignments_from
+        text total_reassignments_to
+        text total_sleep_hour_interruptions
+        text total_timeout_escalations_from
+        text total_timeout_escalations_to
+    }
+    paused_incident_resolved_after_pause_alert {
+        text id PK
+        text _fivetran_id PK
+        text service_id PK
+        text created_at
+    }
+    paused_incident_triggered_after_pause_alert {
+        text id PK
+        text _fivetran_id PK
+        text service_id PK
+        text created_at
+    }
+    paused_incident_reporting_alert {
+        text _fivetran_id PK
+        text since
+        text until
+    }
+    team {
+        text id PK
+        text default_role
+        text description
+        text html_url
+        text name
+        text parent
+        text summary
+        text type
+    }
+    incident_workflow_team {
+        text id PK
+        text incident_workflow_id FK
+        text type
+    }
+    action_input {
+        text index PK
+        text incident_workflow_action_id PK
+        text name
+        text parameter_type
+        text value
+    }
+    action_output {
+        text index PK
+        text incident_workflow_action_id PK
+        text name
+        text parameter_type
+        text value
+    }
+    incident_workflow_action {
+        text id PK
+        text incident_workflow_step_id FK
+        text description
+    }
+    incident_workflow_step {
+        text id PK
+        text incident_workflow_id FK
+        text description
+        text html_url
+        text name
+        text summary
+        text type
+    }
+    incident_workflow {
+        text id PK
+        text created_at
+        text description
+        text html_url
+        text name
+    }
+    schedule_escalation_policy {
+        text escalation_policy_id PK
+        text schedule_id PK
+    }
+    schedule_users {
+        text schedule_id PK
+        text user_id PK
+    }
+    schedule {
+        text id PK
+        text description
+        text html_url
+        text name
+        text summary
+        text time_zone
+    }
+    raw_incident_assigned_user_id {
+        text assigned_user_id PK
+        text raw_incident_id PK
+    }
+    raw_incident_assigned_user_name {
+        text assigned_user_name PK
+        text raw_incident_id PK
+    }
+    raw_incident_acknowledged_user_name {
+        text acknowledged_user_name PK
+        text raw_incident_id PK
+    }
+    raw_incident_acknowledged_user_id {
+        text acknowledged_user_id PK
+        text raw_incident_id PK
+    }
+    raw_incident {
+        text id PK
+        text team_id FK
+        text acknowledgement_count
+        text active_user_count
+        text assignment_count
+        text auto_resolved
+        text business_hour_interruptions
+        text created_at
+        text description
+        text engaged_seconds
+        text engaged_user_count
+        text escalation_count
+        text escalation_policy_id
+        text escalation_policy_name
+        text incident_number
+        text incident_type_id
+        text incident_type_name
+        text major
+        text major_incident
+        text manual_escalation_count
+        text off_hour_interruptions
+        text pd_advance_used
+        text priority_id
+        text priority_name
+        text priority_order
+        text reassignment_count
+        text resolved_at
+        text resolved_by_user_id
+        text resolved_by_user_name
+        text seconds_to_engage
+        text seconds_to_first_ack
+        text seconds_to_mobilize
+        text seconds_to_resolve
+        text service_id
+        text service_name
+        text sleep_hour_interruptions
+        text snoozed_seconds
+        text status
+        text timeout_escalation_count
+        text total_interruptions
+        text total_notifications
+        text updated_at
+        text urgency
+        text user_defined_effort_seconds
+    }
+    tag_entity {
+        text tags_id PK
+        text team_id PK
+        text type
+    }
+    users_notification_subscription {
+        text id PK
+        text users_id PK
+        text account_id
+        text subscribable_id
+        text subscribable_name
+        text subscribable_type
+        text subscriber_type
+    }
+    service_team {
+        text service_id PK
+        text team_id PK
+    }
+    service_days_of_week {
+        text _fivetran_id PK
+        text service_id FK
+        text days_of_week
+    }
+    service_integration {
+        text id PK
+        text service_id PK
+        text html_url
+        text summary
+    }
+    service_scheduled_action {
+        text _fivetran_id PK
+        text service_id FK
+        text at_name
+        text at_type
+        text to_urgency
+        text type
+    }
+    service {
+        text id PK
+        text escalation_policy_id FK
+        text acknowledgement_timeout
+        text alert_creation
+        text alert_grouping
+        text alert_grouping_parameters_config_recommended_time_window
+        text alert_grouping_parameters_config_time_window
+        text alert_grouping_parameters_type
+        text auto_grouping
+        text auto_grouping_timeout
+        text auto_pause_notifications_parameters_enabled
+        text auto_pause_notifications_parameters_timeout
+        text auto_resolve_timeout
+        text created_at
+        text description
+        text html_url
+        text name
+        text response_play
+        text status
+        text summary
+        text support_hours_end_time
+        text support_hours_start_time
+        text support_hours_time_zone
+        text support_hours_type
+        text updated_at
+    }
+    event_orchestration {
+        text id PK
+        text created_by_id FK
+        text team_id FK
+        text updated_by_id FK
+        text created_at
+        text created_by_type
+        text description
+        text name
+        text routes
+        text updated_at
+        text updated_by_type
+        text version
+    }
+    users_handoff_notification_rule {
+        text id PK
+        text users_id PK
+        text contact_method_id
+        text contact_method_summary
+        text contact_method_type
+        text handoff_type
+        text notify_advance_in_minutes
+    }
+    incident_team {
+        text incident_id PK
+        text team_id PK
+    }
+    incident {
+        text id PK
+        text escalation_policy_id FK
+        text service_id FK
+        jsonb acknowledgements
+        text alert_counts_all
+        text alert_counts_resolved
+        text alert_counts_triggered
+        text alert_grouping_active
+        text alert_grouping_ended_at
+        text alert_grouping_started_at
+        text alerts_grouping_type
+        text assigned_via
+        jsonb assignments
+        text basic_alert_grouping_expires_at
+        jsonb body_details
+        text conference_bridge_conference_number
+        text conference_bridge_conference_url
+        text created_at
+        text first_trigger_log_entry_html_url
+        text first_trigger_log_entry_id
+        text first_trigger_log_entry_summary
+        text html_url
+        text incident_key
+        text incident_number
+        text incident_type_name
+        text is_basic_alert_grouping
+        text last_status_change_at
+        text last_status_change_by_html_url
+        text last_status_change_by_id
+        text last_status_change_by_summary
+        text priority_account_id
+        text priority_color
+        text priority_created_at
+        text priority_description
+        text priority_html_url
+        text priority_id
+        text priority_name
+        text priority_order
+        text priority_schema_version
+        text priority_self
+        text priority_summary
+        text priority_type
+        text priority_updated_at
+        text status
+        text summary
+        text title
+        text urgency
+    }
+    log_entry_team {
+        text id PK
+        text log_entries_id PK
+        text html_url
+        text summary
+        text type
+    }
+    log_entry_assignee {
+        text id PK
+        text log_entries_id PK
+        text html_url
+        text summary
+        text type
+    }
+    log_entries {
+        text id PK
+        text escalation_policy_id FK
+        text incident_id FK
+        text responder_id FK
+        text service_id FK
+        text user_id FK
+        text agent_html_url
+        text agent_id
+        text agent_summary
+        text agent_type
+        text channel_changeset_application_fields_id
+        text channel_changeset_application_fields_name
+        text channel_changeset_application_fields_namespace
+        text channel_changeset_application_fields_old_value
+        text channel_changeset_application_fields_value
+        text channel_changeset_customer_fields_id
+        text channel_changeset_customer_fields_name
+        text channel_changeset_customer_fields_namespace
+        text channel_changeset_customer_fields_old_value
+        text channel_changeset_customer_fields_value
+        text channel_notification_address
+        text channel_notification_conference_address
+        text channel_notification_status
+        text channel_notification_type
+        text channel_type
+        jsonb contexts
+        text created_at
+        text event_details_description
+        text html_url
+        text summary
+    }
+    business_service_subscriber }o--|| business_service : "fk"
+    maintenance_window_service }o--|| service : "fk"
+    maintenance_window_service }o--|| maintenance_window : "fk"
+    maintenance_window_team }o--|| team : "fk"
+    maintenance_window_team }o--|| maintenance_window : "fk"
+    maintenance_window }o--|| users : "fk"
+    escalation_policy_target }o--|| escalation_policy_rule : "fk"
+    escalation_policy_rule }o--|| escalation_policy : "fk"
+    escalation_policy_service }o--|| service : "fk"
+    escalation_policy_service }o--|| escalation_policy : "fk"
+    escalation_policy_team }o--|| team : "fk"
+    escalation_policy_team }o--|| escalation_policy : "fk"
+    notification }o--|| users : "fk"
+    incident_custom_field_value }o--|| incident : "fk"
+    extension_schema_option }o--|| extension_schema : "fk"
+    extension_schema_send_type }o--|| extension_schema : "fk"
+    extension_feature }o--|| extension_schema : "fk"
+    extension_schema }o--|| addon : "fk"
+    ruleset_routing_key }o--|| ruleset : "fk"
+    ruleset }o--|| team : "fk"
+    ruleset }o--|| users : "fk"
+    ruleset }o--|| users : "fk"
+    business_service }o--|| team : "fk"
+    users_contact_method }o--|| users : "fk"
+    users_notification_rule }o--|| users : "fk"
+    users_team }o--|| team : "fk"
+    users_team }o--|| users : "fk"
+    license_valid_role }o--|| license : "fk"
+    template }o--|| users : "fk"
+    template }o--|| users : "fk"
+    extension_object }o--|| extension : "fk"
+    extension }o--|| extension_schema : "fk"
+    on_call }o--|| escalation_policy : "fk"
+    on_call }o--|| schedule : "fk"
+    on_call }o--|| users : "fk"
+    audit_record_actor }o--|| audit_record : "fk"
+    audit_record_field }o--|| audit_record : "fk"
+    reference_removed }o--|| reference : "fk"
+    reference_added }o--|| reference : "fk"
+    reference }o--|| audit_record : "fk"
+    users_session }o--|| users : "fk"
+    change_event_service }o--|| service : "fk"
+    change_event_service }o--|| change_event : "fk"
+    raw_incident_response }o--|| raw_incident : "fk"
+    paused_incident_resolved_after_pause_alert }o--|| service : "fk"
+    paused_incident_resolved_after_pause_alert }o--|| paused_incident_reporting_alert : "fk"
+    paused_incident_triggered_after_pause_alert }o--|| service : "fk"
+    paused_incident_triggered_after_pause_alert }o--|| paused_incident_reporting_alert : "fk"
+    incident_workflow_team }o--|| incident_workflow : "fk"
+    action_input }o--|| incident_workflow_action : "fk"
+    action_output }o--|| incident_workflow_action : "fk"
+    incident_workflow_action }o--|| incident_workflow_step : "fk"
+    incident_workflow_step }o--|| incident_workflow : "fk"
+    schedule_escalation_policy }o--|| escalation_policy : "fk"
+    schedule_escalation_policy }o--|| schedule : "fk"
+    schedule_users }o--|| users : "fk"
+    schedule_users }o--|| schedule : "fk"
+    raw_incident_assigned_user_id }o--|| raw_incident : "fk"
+    raw_incident_assigned_user_name }o--|| raw_incident : "fk"
+    raw_incident_acknowledged_user_name }o--|| raw_incident : "fk"
+    raw_incident_acknowledged_user_id }o--|| raw_incident : "fk"
+    raw_incident }o--|| team : "fk"
+    tag_entity }o--|| team : "fk"
+    tag_entity }o--|| tags : "fk"
+    users_notification_subscription }o--|| users : "fk"
+    service_team }o--|| team : "fk"
+    service_team }o--|| service : "fk"
+    service_days_of_week }o--|| service : "fk"
+    service_integration }o--|| service : "fk"
+    service_scheduled_action }o--|| service : "fk"
+    service }o--|| escalation_policy : "fk"
+    event_orchestration }o--|| team : "fk"
+    event_orchestration }o--|| users : "fk"
+    event_orchestration }o--|| users : "fk"
+    users_handoff_notification_rule }o--|| users : "fk"
+    incident_team }o--|| team : "fk"
+    incident_team }o--|| incident : "fk"
+    incident }o--|| escalation_policy : "fk"
+    incident }o--|| service : "fk"
+    log_entry_team }o--|| log_entries : "fk"
+    log_entry_assignee }o--|| log_entries : "fk"
+    log_entries }o--|| escalation_policy : "fk"
+    log_entries }o--|| users : "fk"
+    log_entries }o--|| service : "fk"
+    log_entries }o--|| incident : "fk"
+    log_entries }o--|| users : "fk"

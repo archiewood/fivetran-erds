@@ -1,0 +1,500 @@
+erDiagram
+    group_user {
+        text index PK
+        text group_id PK
+        text user_id FK
+    }
+    groups {
+        text id PK
+        text name
+    }
+    dataset_variable {
+        text id PK
+        text dataset_id PK
+        text name
+        text value
+    }
+    dataset {
+        text id PK
+        text project_id FK
+        text name
+    }
+    case_field_config_project {
+        text index PK
+        text case_field_config_id PK
+        text case_field_id PK
+        text project_id FK
+    }
+    case_field_config {
+        text id PK
+        text case_field_id PK
+        text context_is_global
+        text options_default_value
+        text options_format
+        text options_has_additional
+        text options_has_expected
+        text options_has_reference
+        text options_is_required
+        text options_item
+        text options_row
+    }
+    case_field_template {
+        text index PK
+        text case_field_id PK
+        text template_id FK
+    }
+    case_field {
+        text id PK
+        text description
+        text display_order
+        text include_all
+        text is_active
+        text label
+        text name
+        text system_name
+        text type_id
+    }
+    priority {
+        text id PK
+        text is_default
+        text name
+        text priority
+        text short_name
+    }
+    milestone {
+        text id PK
+        text parent_id FK
+        text project_id FK
+        text completed_on
+        text description
+        text due_on
+        text is_completed
+        text is_started
+        jsonb milestones
+        text name
+        text refs
+        text start_on
+        text started_on
+        text url
+    }
+    plan {
+        text id PK
+        text milestone_id FK
+        text project_id FK
+        text assigned_to_id
+        text blocked_count
+        text completed_on
+        text created_by
+        text created_on
+        text custom_status_1_count
+        text custom_status_2_count
+        text custom_status_3_count
+        text custom_status_4_count
+        text custom_status_5_count
+        text custom_status_6_count
+        text custom_status_7_count
+        text description
+        text failed_count
+        text is_completed
+        text name
+        text passed_count
+        text refs
+        text retest_count
+        text untested_count
+        text url
+    }
+    status {
+        text id PK
+        text color_bright
+        text color_dark
+        text color_medium
+        text is_final
+        text is_system
+        text is_untested
+        text label
+        text name
+    }
+    case_status {
+        text case_status_id PK
+        text abbreviation
+        text is_approved
+        text is_default
+        text name
+    }
+    template {
+        text id PK
+        text project_id FK
+        text is_default
+        text name
+    }
+    shared_custom_step {
+        text index PK
+        text shared_step_id PK
+        text additional_info
+        text content
+        text expected
+        text refs
+    }
+    shared_step_case_id {
+        text index PK
+        text shared_step_id PK
+        text case_id FK
+    }
+    shared_step {
+        text id PK
+        text project_id FK
+        text created_by
+        text created_on
+        text title
+        text updated_by
+        timestamp updated_on
+    }
+    suite {
+        text id PK
+        text project_id FK
+        text completed_on
+        text description
+        text is_baseline
+        text is_completed
+        text is_master
+        text name
+        text url
+    }
+    project {
+        text id PK
+        text announcement
+        text case_statuses_enabled
+        text completed_on
+        text default_role
+        text default_role_id
+        jsonb groups
+        text is_completed
+        text name
+        text show_announcement
+        text suite_mode
+        text url
+    }
+    shared_history_custom_step {
+        text index PK
+        text shared_step_history_id PK
+        text additional_info
+        text content
+        text expected
+        text refs
+    }
+    shared_step_history {
+        text id PK
+        text shared_step_id PK
+        text user_id FK
+        text time_stamp
+        text title
+    }
+    configuration_config {
+        text id PK
+        text configuration_id PK
+        text project_id PK
+        text group_id FK
+        text name
+    }
+    configuration {
+        text id PK
+        text project_id PK
+        text name
+    }
+    result_field_config_project {
+        text index PK
+        text result_field_config_id PK
+        text result_field_id PK
+        text project_id FK
+    }
+    result_field_config {
+        text id PK
+        text result_field_id PK
+        text context_is_global
+        text options_format
+        text options_has_actual
+        text options_has_expected
+        text options_is_required
+        text options_row
+    }
+    result_field_template {
+        text index PK
+        text result_field_id PK
+        text template_id FK
+    }
+    result_field {
+        text id PK
+        text description
+        text display_order
+        text include_all
+        text is_active
+        text label
+        text name
+        text system_name
+        text type_id
+    }
+    run_config_id {
+        text index PK
+        text run_id PK
+        text config_id
+    }
+    run {
+        text id PK
+        text dataset_id FK
+        text milestone_id FK
+        text plan_id FK
+        text project_id FK
+        text suite_id FK
+        text assigned_to_id
+        text blocked_count
+        text completed_on
+        text config
+        jsonb config_ids
+        text created_by
+        text created_on
+        text custom_status_1_count
+        text custom_status_2_count
+        text custom_status_3_count
+        text custom_status_4_count
+        text custom_status_5_count
+        text custom_status_6_count
+        text custom_status_7_count
+        text description
+        text failed_count
+        text include_all
+        text is_completed
+        text name
+        text passed_count
+        text refs
+        text retest_count
+        text untested_count
+        timestamp updated_on
+        text url
+    }
+    report {
+        text id PK
+        text cases_id FK
+        text project_id FK
+        text cases_filter
+        text cases_groupby
+        text cases_include_new
+        text cases_include_updated
+        text cases_limit
+        text changes_daterange
+        text changes_daterange_from
+        text changes_daterange_to
+        text content_hide_link
+        text description
+        text name
+        text notify_attachment
+        text notify_attachment_html_format
+        text notify_attachment_pdf_format
+        text notify_attachment_recipient
+        text notify_link
+        text notify_link_recipient
+        text notify_user
+        jsonb section_id
+        text sections_include
+        jsonb suite_id
+        text suites_include
+    }
+    cases_custom_step_separated {
+        text index PK
+        text cases_id PK
+        text additional_info
+        text content
+        text expected
+        text refs
+    }
+    cases {
+        text id PK
+        text case_assigned_to_id FK
+        text milestone_id FK
+        text priority_id FK
+        text project_id FK
+        text section_id FK
+        text suite_id FK
+        text template_id FK
+        text type_id FK
+        jsonb comments
+        text created_by
+        text created_on
+        text custom_automation_type
+        text custom_component
+        text custom_description
+        text custom_expected
+        text custom_goal
+        text custom_mission
+        text custom_precond
+        text custom_result
+        text custom_step
+        text custom_team
+        text custom_testrail_bdd_scenario
+        text display_order
+        text estimate
+        text estimate_forecast
+        text is_deleted
+        text refs
+        text title
+        text updated_by
+        timestamp updated_on
+    }
+    case_type {
+        text id PK
+        text is_default
+        text name
+    }
+    roles {
+        text id PK
+        text is_default
+        text is_project_admin
+        text name
+    }
+    test_custom_step {
+        text index PK
+        text test_id PK
+        text additional_info
+        text content
+        text expected
+        text refs
+        text shared_step_id
+    }
+    test {
+        text id PK
+        text case_assigned_to_id FK
+        text case_id FK
+        text milestone_id FK
+        text priority_id FK
+        text run_id FK
+        text status_id FK
+        text template_id FK
+        text type_id FK
+        text assigned_to_id
+        jsonb case_comments
+        text cases_display_order
+        text custom_automation_type
+        text custom_component
+        text custom_description
+        text custom_expected
+        text custom_goal
+        text custom_mission
+        text custom_precond
+        text custom_result
+        text custom_step
+        text custom_team
+        text custom_testrail_bdd_scenario
+        text estimate
+        text estimate_forecast
+        text refs
+        text sections_display_order
+        text title
+    }
+    user_assigned_project {
+        text index PK
+        text users_id PK
+        text assigned_project FK
+    }
+    users {
+        text id PK
+        text project_id PK
+        text role_id FK
+        text email
+        text email_notification
+        jsonb group_ids
+        text is_active
+        text is_admin
+        text mfa_required
+        text name
+        text role
+        text sso_enabled
+    }
+    result {
+        text id PK
+        text test_id PK
+        text status_id FK
+        text assigned_to_id
+        jsonb attachment_ids
+        text comment
+        text created_by
+        text created_on
+        jsonb custom_step_results
+        text defect
+        text elapsed
+        text version
+    }
+    section {
+        text id PK
+        text parent_id FK
+        text suite_id FK
+        text depth
+        text description
+        text display_order
+        text name
+    }
+    group_user }o--|| users : "fk"
+    group_user }o--|| groups : "fk"
+    dataset_variable }o--|| dataset : "fk"
+    dataset }o--|| project : "fk"
+    case_field_config_project }o--|| project : "fk"
+    case_field_config_project }o--|| case_field_config : "fk"
+    case_field_config_project }o--|| case_field_config : "fk"
+    case_field_config }o--|| case_field : "fk"
+    case_field_template }o--|| template : "fk"
+    case_field_template }o--|| case_field : "fk"
+    milestone }o--|| project : "fk"
+    milestone }o--|| milestone : "fk"
+    plan }o--|| milestone : "fk"
+    plan }o--|| project : "fk"
+    template }o--|| project : "fk"
+    shared_custom_step }o--|| shared_step : "fk"
+    shared_step_case_id }o--|| cases : "fk"
+    shared_step_case_id }o--|| shared_step : "fk"
+    shared_step }o--|| project : "fk"
+    suite }o--|| project : "fk"
+    shared_history_custom_step }o--|| shared_step_history : "fk"
+    shared_step_history }o--|| users : "fk"
+    shared_step_history }o--|| shared_step : "fk"
+    configuration_config }o--|| groups : "fk"
+    configuration_config }o--|| configuration : "fk"
+    configuration_config }o--|| configuration : "fk"
+    configuration }o--|| project : "fk"
+    result_field_config_project }o--|| project : "fk"
+    result_field_config_project }o--|| result_field_config : "fk"
+    result_field_config_project }o--|| result_field_config : "fk"
+    result_field_config }o--|| result_field : "fk"
+    result_field_template }o--|| template : "fk"
+    result_field_template }o--|| result_field : "fk"
+    run_config_id }o--|| run : "fk"
+    run }o--|| plan : "fk"
+    run }o--|| milestone : "fk"
+    run }o--|| dataset : "fk"
+    run }o--|| suite : "fk"
+    run }o--|| project : "fk"
+    report }o--|| cases : "fk"
+    report }o--|| project : "fk"
+    cases_custom_step_separated }o--|| cases : "fk"
+    cases }o--|| template : "fk"
+    cases }o--|| section : "fk"
+    cases }o--|| users : "fk"
+    cases }o--|| milestone : "fk"
+    cases }o--|| suite : "fk"
+    cases }o--|| case_type : "fk"
+    cases }o--|| priority : "fk"
+    cases }o--|| project : "fk"
+    test_custom_step }o--|| test : "fk"
+    test }o--|| template : "fk"
+    test }o--|| users : "fk"
+    test }o--|| status : "fk"
+    test }o--|| milestone : "fk"
+    test }o--|| cases : "fk"
+    test }o--|| run : "fk"
+    test }o--|| case_type : "fk"
+    test }o--|| priority : "fk"
+    user_assigned_project }o--|| project : "fk"
+    user_assigned_project }o--|| users : "fk"
+    users }o--|| roles : "fk"
+    users }o--|| project : "fk"
+    result }o--|| status : "fk"
+    result }o--|| test : "fk"
+    section }o--|| suite : "fk"
+    section }o--|| section : "fk"

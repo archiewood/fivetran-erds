@@ -1,0 +1,178 @@
+erDiagram
+    group_bsds {
+        text bsds PK
+        text group_guid PK
+    }
+    groups {
+        text guid PK
+        text organization_guid FK
+        text created
+        text is_active
+        text modified
+        text name
+        jsonb reference
+        text role
+    }
+    group_preference {
+        text group_guid PK
+        text domain_preference
+    }
+    organization_bsds {
+        text bsds PK
+        text organization_guid PK
+    }
+    organization {
+        text guid PK
+        text created
+        text is_active
+        text modified
+        text name
+        jsonb reference
+        text role
+        text tier
+        text tier_display_name
+        text tier_family
+    }
+    qr_code_png {
+        text id PK
+        text bitlink_id PK
+        text group_guid FK
+        text created
+        text customization_color
+        text customization_exclude_bitly_logo
+        text customization_image_format
+        text customization_is_hidden
+        text customization_logo_image_guid
+        text has_stored
+        text is_customized
+        text is_hidden
+        text link
+        text logo_image_url
+        text modified
+        text qr_code
+        text type
+    }
+    link_click {
+        timestamp date PK
+        text bitlink_id PK
+        text clicks
+    }
+    channel {
+        text guid PK
+        text created
+        text group_guid
+        text modified
+        text name
+        jsonb reference
+    }
+    qr_code_svg {
+        text id PK
+        text bitlink_id PK
+        text group_guid FK
+        text created
+        text customization_color
+        text customization_exclude_bitly_logo
+        text customization_image_format
+        text customization_is_hidden
+        text customization_logo_image_guid
+        text has_stored
+        text is_customized
+        text is_hidden
+        text link
+        text logo_image_url
+        text modified
+        text qr_code
+        text type
+    }
+    bitlink_tag {
+        text tags PK
+        text bitlink_id PK
+        text group_guid PK
+    }
+    bitlink_launchpad {
+        text launchpad_id PK
+        text bitlink_id PK
+        text group_guid PK
+    }
+    bitlink_deep_link {
+        text guid PK
+        text bitlink_id PK
+        text group_guid PK
+        text app_guid
+        text app_uri_path
+        text bitlink
+        text brand_guid
+        text created
+        text install_type
+        text install_url
+        text modified
+        text os
+    }
+    bitlink_campaign {
+        text bitlink_id PK
+        text campaign_id PK
+        text group_guid PK
+    }
+    bitlink {
+        text id PK
+        text group_guid PK
+        text archived
+        text client_id
+        text created_at
+        text created_by
+        jsonb custom_bitlinks
+        text link
+        text long_url
+        jsonb reference
+        text title
+    }
+    user_email {
+        text email PK
+        text user_login PK
+        text is_primary
+        text is_verified
+    }
+    users {
+        text login PK
+        text default_group_guid FK
+        text created
+        text is_2_fa_enabled
+        text is_active
+        text is_sso_user
+        text modified
+        text name
+    }
+    campaign {
+        text guid PK
+        text created_by FK
+        text group_guid FK
+        text created
+        text description
+        text modified
+        text name
+        jsonb reference
+    }
+    group_bsds }o--|| groups : "fk"
+    groups }o--|| organization : "fk"
+    group_preference }o--|| groups : "fk"
+    organization_bsds }o--|| organization : "fk"
+    qr_code_png }o--|| groups : "fk"
+    qr_code_png }o--|| bitlink : "fk"
+    link_click }o--|| bitlink : "fk"
+    channel }o--|| groups : "fk"
+    qr_code_svg }o--|| groups : "fk"
+    qr_code_svg }o--|| bitlink : "fk"
+    bitlink_tag }o--|| bitlink : "fk"
+    bitlink_tag }o--|| bitlink : "fk"
+    bitlink_launchpad }o--|| bitlink : "fk"
+    bitlink_launchpad }o--|| bitlink : "fk"
+    bitlink_deep_link }o--|| bitlink : "fk"
+    bitlink_deep_link }o--|| bitlink : "fk"
+    bitlink_campaign }o--|| campaign : "fk"
+    bitlink_campaign }o--|| bitlink : "fk"
+    bitlink_campaign }o--|| bitlink : "fk"
+    bitlink }o--|| groups : "fk"
+    user_email }o--|| users : "fk"
+    users }o--|| groups : "fk"
+    campaign }o--|| groups : "fk"
+    campaign }o--|| users : "fk"

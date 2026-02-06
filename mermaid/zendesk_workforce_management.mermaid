@@ -1,0 +1,93 @@
+erDiagram
+    agent_attendance {
+        text end_time PK
+        text interval PK
+        text start_time PK
+        text agent_id PK
+        text attendance_rate
+        text attendance_time
+        text late_occurrence
+        text late_time
+        text left_early_occurrence
+        text left_early_time
+        text occupancy_rate
+        text overtime_occurrence
+        text overtime_time
+        text scheduled_time
+        text team_id
+        text team_is_deleted
+        text team_name
+        text total_time
+        text unpaid_general_task_time
+    }
+    activity_type_id {
+        text activity_id PK
+        text activity_type_id PK
+    }
+    activity {
+        text id PK
+        text agent_id
+        text color
+        text duration
+        text end_time
+        text event_type
+        text is_paid
+        text lock_interval
+        text name
+        text start_time
+        text ticket_id
+        text type
+    }
+    agent {
+        text id PK
+        text deactivated
+        text email
+        text is_deleted
+        text name
+    }
+    activity_type {
+        text id PK
+        text color
+        text is_deleted
+        text name
+    }
+    agent_time_off {
+        text end_time PK
+        text interval PK
+        text start_time PK
+        text time_off_reason_id PK
+        text agent_id PK
+        text planned_time_off_occurrence
+        text planned_time_off_time
+        text time_off_reason_is_deleted
+        text time_off_reason_name
+        text time_off_reason_type
+        text total_time_off_occurrence
+        text total_time_off_time
+        text unplanned_time_off_occurrence
+        text unplanned_time_off_time
+    }
+    agent_activity {
+        text end_time PK
+        text interval PK
+        text start_time PK
+        text activity_type_id PK
+        text agent_id PK
+        text adherence_rate
+        text assigned_point
+        text attend_point
+        text escalate_point
+        text paid_general_task_time
+        text paid_time
+        text reopen_point
+        text scheduled_time
+        text solved_point
+        text total_time
+        text unpaid_general_task_time
+    }
+    agent_attendance }o--|| agent : "fk"
+    activity_type_id }o--|| activity_type : "fk"
+    activity_type_id }o--|| activity : "fk"
+    agent_time_off }o--|| agent : "fk"
+    agent_activity }o--|| agent : "fk"
+    agent_activity }o--|| activity_type : "fk"

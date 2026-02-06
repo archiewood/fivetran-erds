@@ -1,0 +1,326 @@
+erDiagram
+    job_activity {
+        text action PK
+        text job_id PK
+        text candidate_id FK
+        text member_id FK
+        text body
+        text created_at
+        text stage_name
+    }
+    job_stage {
+        text job_id PK
+        text position PK
+    }
+    candidate_education_entry {
+        text id PK
+        text candidate_id PK
+        text degree
+        text end_date
+        text field_of_study
+        text school
+        text start_date
+    }
+    candidate_experience_entry {
+        text id PK
+        text candidate_id PK
+        text company
+        text current
+        text end_date
+        text industry
+        text start_date
+        text summary
+        text title
+    }
+    candidate_social_profile {
+        text index PK
+        text candidate_id PK
+        text name
+        text type
+        text url
+        text username
+    }
+    candidate_answer {
+        text _fivetran_id PK
+        text candidate_id PK
+        text question
+    }
+    candidate {
+        text id PK
+        text job_shortcode FK
+        text account_name
+        text account_sub_domain
+        text address
+        text cover_letter
+        text created_at
+        text disqualification_reason
+        text disqualified
+        text disqualified_at
+        text domain
+        text email
+        text first_name
+        text head_line
+        text hired_at
+        text last_name
+        text location_city
+        text location_country
+        text location_country_code
+        text location_region
+        text location_region_code
+        text location_str
+        text location_zip_code
+        text name
+        text originating_candidate_id
+        text phone
+        text resume_url
+        jsonb skills
+        text sourced
+        text stage
+        text summary
+        text updated_at
+        text uploader_id
+    }
+    event_member {
+        text event_id PK
+        text id PK
+    }
+    event {
+        text id PK
+        text candidate_id FK
+        text job_shortcode FK
+        text description
+        text ends_at
+        text starts_at
+        text title
+        text type
+    }
+    member {
+        text id PK
+        text email
+        text head_line
+        text name
+        text role
+    }
+    recruiter {
+        text id PK
+        text email
+        text name
+    }
+    requisition_approver {
+        text id PK
+        text requisition_approval_group_id FK
+        text decision
+        text name
+    }
+    requisition_approval_group {
+        text id PK
+        text requisition_id FK
+    }
+    requisition {
+        text id PK
+        text department_id FK
+        text hiring_manager_id FK
+        text job_id FK
+        text owner_id FK
+        text codes
+        text employment_type
+        text location_city
+        text location_country
+        text location_country_code
+        text location_region
+        text location_region_code
+        text location_str
+        text location_zip_code
+        text plan_date
+        text reason
+        text requester_id
+        text requester_name
+        text salary_range_currency
+        text salary_range_frequency
+        text salary_range_salary_from
+        text salary_range_salary_to
+        text start_date
+        text state
+    }
+    job_member {
+        text id PK
+        text job_id PK
+    }
+    candidate_document_variable {
+        text _fivetran_id PK
+        text candidate_offer_candidate_id FK
+        text name
+        text slug
+    }
+    candidate_offer_document {
+        text _fivetran_id PK
+        text candidate_offer_candidate_id FK
+        text kind
+        text name
+        text preview_url
+    }
+    candidate_offer {
+        text candidate_id PK
+        text created_at
+        text state
+    }
+    job_deparment_hierarchy {
+        text id PK
+        text job_id FK
+        text name
+    }
+    job_keyword {
+        text keyword PK
+        text job_id PK
+    }
+    job {
+        text id PK
+        text application_url
+        text benefits
+        text code
+        text created_at
+        text department
+        text education
+        text employment_type
+        text experience
+        text full_description
+        text full_title
+        text function
+        text industry
+        text location_city
+        text location_country
+        text location_country_code
+        text location_region
+        text location_region_code
+        text location_str
+        text location_telecommuting
+        text location_zip_code
+        text requirements
+        text shortcode
+        text shortlink
+        text state
+        text title
+    }
+    job_question_choice {
+        text id PK
+        text job_question_id PK
+        text body
+    }
+    job_question_file_type {
+        text index PK
+        text job_question_id PK
+        text file_type
+    }
+    job_question {
+        text id PK
+        text job_id PK
+        text body
+        text max_file_size
+        text required
+        text single_answer
+        text type
+    }
+    stage {
+        text position PK
+        text name
+        text slug
+    }
+    job_recruiter {
+        text id PK
+        text job_id PK
+    }
+    job_application_supported_file_type {
+        text index PK
+        text job_application_form_key PK
+        text job_id PK
+        text file_type
+    }
+    job_application_field {
+        text key PK
+        text job_application_form_key PK
+        text job_id PK
+        text label
+        text required
+        text type
+    }
+    job_application_form {
+        text key PK
+        text job_id PK
+        text label
+        text max_file_size
+        text multiple
+        text required
+        text type
+    }
+    candidate_activity {
+        text id PK
+        text candidate_id PK
+        text member_id FK
+        text action
+        text body
+        text created_at
+        text stage_name
+    }
+    job_custom_attribute_choice {
+        text id PK
+        text job_custom_attribute_id PK
+        text body
+    }
+    job_custom_attribute_file_type {
+        text index PK
+        text job_custom_attribute_id PK
+        text file_type
+    }
+    job_custom_attribute {
+        text id PK
+        text job_id PK
+        text label
+        text max_file_size
+        text provider
+        text required
+        text single_answer
+        text type
+    }
+    job_activity }o--|| candidate : "fk"
+    job_activity }o--|| member : "fk"
+    job_activity }o--|| job : "fk"
+    job_stage }o--|| stage : "fk"
+    job_stage }o--|| job : "fk"
+    candidate_education_entry }o--|| candidate : "fk"
+    candidate_experience_entry }o--|| candidate : "fk"
+    candidate_social_profile }o--|| candidate : "fk"
+    candidate_answer }o--|| candidate : "fk"
+    candidate }o--|| job : "fk"
+    event_member }o--|| member : "fk"
+    event_member }o--|| event : "fk"
+    event }o--|| job : "fk"
+    event }o--|| candidate : "fk"
+    requisition_approver }o--|| member : "fk"
+    requisition_approver }o--|| requisition_approval_group : "fk"
+    requisition_approval_group }o--|| requisition : "fk"
+    requisition }o--|| member : "fk"
+    requisition }o--|| member : "fk"
+    requisition }o--|| job : "fk"
+    requisition }o--|| job_deparment_hierarchy : "fk"
+    job_member }o--|| member : "fk"
+    job_member }o--|| job : "fk"
+    candidate_document_variable }o--|| candidate_offer : "fk"
+    candidate_offer_document }o--|| candidate_offer : "fk"
+    candidate_offer }o--|| candidate : "fk"
+    job_deparment_hierarchy }o--|| job : "fk"
+    job_keyword }o--|| job : "fk"
+    job_question_choice }o--|| job_question : "fk"
+    job_question_file_type }o--|| job_question : "fk"
+    job_question }o--|| job : "fk"
+    job_recruiter }o--|| recruiter : "fk"
+    job_recruiter }o--|| job : "fk"
+    job_application_supported_file_type }o--|| job_application_form : "fk"
+    job_application_supported_file_type }o--|| job_application_form : "fk"
+    job_application_field }o--|| job_application_form : "fk"
+    job_application_field }o--|| job_application_form : "fk"
+    job_application_form }o--|| job : "fk"
+    candidate_activity }o--|| member : "fk"
+    candidate_activity }o--|| candidate : "fk"
+    job_custom_attribute_choice }o--|| job_custom_attribute : "fk"
+    job_custom_attribute_file_type }o--|| job_custom_attribute : "fk"
+    job_custom_attribute }o--|| job : "fk"

@@ -1,0 +1,809 @@
+erDiagram
+    project_milestone {
+        text id PK
+        text project_id FK
+        timestamp created_at
+        text description
+        text due_date
+        boolean expired
+        bigint iid
+        text start_date
+        text state
+        text title
+        timestamp updated_at
+        text web_url
+    }
+    project_member {
+        text id PK
+        text project_id PK
+        text created_by_id FK
+        bigint access_level
+        text avatar_url
+        timestamp created_at
+        text expires_at
+        text group_saml_identity_extern_uid
+        text group_saml_identity_provider
+        text group_saml_identity_saml_provider_id
+        text membership_state
+        text name
+        text state
+        text username
+        text web_url
+    }
+    project_topic {
+        text topic PK
+        text project_id PK
+    }
+    project_compliance_framework {
+        text compliance_framework PK
+        text project_id PK
+    }
+    project_shared_with_group {
+        text _fivetran_id PK
+        text project_id FK
+        text compliance_frameworks
+        text group_access_level
+        text group_full_path
+        text group_name
+    }
+    project {
+        text id PK
+        text namespace_id FK
+        text _links_cluster_agents
+        text _links_events
+        text _links_issues
+        text _links_labels
+        text _links_members
+        text _links_merge_requests
+        text _links_repo_branches
+        text _links_self
+        boolean allow_merge_on_skipped_pipeline
+        text analytics_access_level
+        text archived
+        text auto_cancel_pending_pipelines
+        text auto_devops_deploy_strategy
+        text auto_devops_enabled
+        boolean autoclose_referenced_issues
+        text avatar_url
+        text build_coverage_regex
+        text build_timeout
+        text builds_access_level
+        boolean can_create_merge_request_in
+        text ci_config_path
+        text ci_default_git_depth
+        boolean ci_forward_deployment_enabled
+        boolean ci_job_token_scope_enabled
+        boolean ci_separated_caches
+        text container_expiration_policy_cadence
+        text container_expiration_policy_enabled
+        text container_expiration_policy_keep_n
+        text container_expiration_policy_name_regex
+        text container_expiration_policy_name_regex_keep
+        text container_expiration_policy_next_run_at
+        text container_expiration_policy_older_than
+        text container_registry_access_level
+        text container_registry_image_prefix
+        timestamp created_at
+        text creator_id
+        text default_branch
+        text description
+        text emails_disabled
+        text empty_repo
+        boolean enforce_auth_checks_on_uploads
+        text external_authorization_classification_label
+        text forking_access_level
+        text forks_count
+        text http_url_to_repo
+        text import_status
+        text import_type
+        text import_url
+        text issues_access_level
+        boolean issues_enabled
+        boolean jobs_enabled
+        boolean keep_latest_artifact
+        timestamp last_activity_at
+        boolean lfs_enabled
+        text marked_for_deletion_on
+        text merge_commit_template
+        text merge_method
+        text merge_requests_access_level
+        boolean merge_requests_enabled
+        text name
+        text name_with_namespace
+        text namespace_avatar_url
+        text namespace_full_path
+        text namespace_kind
+        text namespace_name
+        text namespace_parent_id
+        text namespace_path
+        text namespace_web_url
+        boolean only_allow_merge_if_all_discussions_are_resolved
+        boolean only_allow_merge_if_pipeline_succeeds
+        text open_issues_count
+        text operations_access_level
+        timestamp owner_created_at
+        text owner_id
+        text owner_name
+        text packages_enabled
+        text pages_access_level
+        text path
+        text path_with_namespace
+        text permissions_group_access_access_level
+        text permissions_group_access_notification_level
+        text permissions_project_access_access_level
+        text permissions_project_access_notification_level
+        boolean printing_merge_request_link_enabled
+        boolean public_jobs
+        text readme_url
+        boolean remove_source_branch_after_merge
+        text repository_access_level
+        boolean request_access_enabled
+        text requirements_access_level
+        boolean requirements_enabled
+        text resolve_outdated_diff_discussions
+        boolean restrict_user_defined_variables
+        text runner_token_expiration_interval
+        text runners_token
+        text security_and_compliance_access_level
+        boolean security_and_compliance_enabled
+        text service_desk_address
+        boolean service_desk_enabled
+        boolean shared_runners_enabled
+        text snippets_access_level
+        boolean snippets_enabled
+        text squash_commit_template
+        text squash_option
+        text ssh_url_to_repo
+        text star_count
+        bigint statistics_commit_count
+        bigint statistics_job_artifacts_size
+        bigint statistics_lfs_objects_size
+        bigint statistics_packages_size
+        bigint statistics_pipeline_artifacts_size
+        bigint statistics_repository_size
+        bigint statistics_snippets_size
+        bigint statistics_storage_size
+        bigint statistics_uploads_size
+        bigint statistics_wiki_size
+        text suggestion_commit_message
+        text visibility
+        text web_url
+        text wiki_access_level
+        boolean wiki_enabled
+    }
+    groups_label {
+        text id PK
+        text groups_id PK
+        bigint closed_issues_count
+        text color
+        text description
+        text description_html
+        text name
+        bigint open_issues_count
+        bigint open_merge_requests_count
+        boolean subscribed
+        text text_color
+    }
+    project_vulnerability {
+        text id PK
+        text author_id FK
+        text project_id FK
+        text confidence
+        timestamp created_at
+        text description
+        text dismissed_at
+        text dismissed_by_id
+        text finding_confidence
+        text finding_created_at
+        text finding_id
+        text finding_location_fingerprint
+        text finding_metadata_version
+        text finding_name
+        text finding_primary_identifier_id
+        text finding_project_id
+        text finding_raw_metadata
+        text finding_report_type
+        text finding_scanner_id
+        text finding_severity
+        text finding_updated_at
+        text finding_uuid
+        text finding_vulnerability_id
+        text project_default_branch
+        text report_type
+        text resolved_at
+        text resolved_by_id
+        text resolved_on_default_branch
+        text severity
+        text state
+        text title
+        timestamp updated_at
+    }
+    project_repo_tag_parent_id {
+        text parent_id PK
+        text project_repo_tag_fivetran_id PK
+    }
+    project_repo_tag {
+        text _fivetran_id PK
+        text commit_id FK
+        text project_id FK
+        text message
+        text name
+        text protected
+        text release_description
+        text release_tag_name
+        text target
+    }
+    project_commit_parent_id {
+        text parent_id PK
+        text project_commit_id PK
+        text project_id PK
+    }
+    project_commit {
+        text id PK
+        text project_id PK
+        text author_email
+        text author_name
+        timestamp authored_date
+        timestamp committed_date
+        text committer_email
+        text committer_name
+        timestamp created_at
+        jsonb extended_trailers
+        text message
+        text short_id
+        text stats_addition
+        text stats_deletion
+        text stats_total
+        text title
+        jsonb trailers
+        text web_url
+    }
+    project_job_tag_list {
+        text tag_list PK
+        text project_job_id PK
+    }
+    project_job_artifact {
+        text _fivetran_id PK
+        text project_job_id FK
+        text file_format
+        text file_type
+        text filename
+        text size
+    }
+    project_job {
+        text id PK
+        text project_id PK
+        text commit_id FK
+        text user_id FK
+        boolean allow_failure
+        timestamp artifacts_expire_at
+        text artifacts_file_filename
+        text artifacts_file_size
+        text coverage
+        timestamp created_at
+        text duration
+        text failure_reason
+        timestamp finished_at
+        text name
+        text pipeline_id
+        text pipeline_project_id
+        text pipeline_ref
+        text pipeline_sha
+        text pipeline_status
+        text queued_duration
+        text ref
+        boolean runner_active
+        text runner_description
+        text runner_id
+        text runner_ip_address
+        boolean runner_is_shared
+        text runner_name
+        boolean runner_online
+        boolean runner_paused
+        text runner_runner_type
+        text runner_status
+        text stage
+        timestamp started_at
+        text status
+        boolean tags
+        text web_url
+    }
+    groups {
+        text id PK
+        boolean auto_devops_enabled
+        text avatar_url
+        timestamp created_at
+        bigint default_branch_protection
+        text description
+        text emails_disabled
+        bigint file_template_project_id
+        text full_name
+        text full_path
+        text ldap_access
+        text ldap_cn
+        boolean lfs_enabled
+        text mentions_disabled
+        text name
+        text parent_id
+        text path
+        text project_creation_level
+        boolean request_access_enabled
+        boolean require_two_factor_authentication
+        boolean share_with_group_lock
+        bigint statistics_job_artifacts_size
+        bigint statistics_lfs_objects_size
+        bigint statistics_packages_size
+        bigint statistics_pipeline_artifacts_size
+        bigint statistics_repository_size
+        bigint statistics_snippets_size
+        bigint statistics_storage_size
+        bigint statistics_uploads_size
+        bigint statistics_wiki_size
+        text subgroup_creation_level
+        bigint two_factor_grace_period
+        text visibility
+        text web_url
+    }
+    project_merge_request_assignee {
+        text id PK
+        text project_merge_request_id PK
+        text avatar_url
+        text name
+        text state
+        text username
+        text web_url
+    }
+    project_merge_request_reviewer {
+        text id PK
+        text project_merge_request_id PK
+        text avatar_url
+        text name
+        text state
+        text username
+        text web_url
+    }
+    project_merge_request_label {
+        text label PK
+        text project_merge_request_id PK
+    }
+    project_merge_request {
+        text id PK
+        text author_id FK
+        text milestone_id FK
+        text project_id FK
+        text allow_collaboration
+        text allow_maintainer_to_push
+        text assignee_avatar_url
+        text assignee_id
+        text assignee_name
+        text assignee_state
+        text assignee_username
+        text assignee_web_url
+        text blocking_discussions_resolved
+        timestamp closed_at
+        text closed_by
+        timestamp created_at
+        text description
+        text discussion_locked
+        text downvotes
+        text draft
+        text force_remove_source_branch
+        text has_conflicts
+        bigint iid
+        text merge_commit_sha
+        text merge_status
+        text merge_user_avatar_url
+        text merge_user_id
+        text merge_user_name
+        text merge_user_state
+        text merge_user_username
+        text merge_user_web_url
+        text merge_when_pipeline_succeeds
+        text merged_at
+        text merged_by_avatar_url
+        text merged_by_id
+        text merged_by_name
+        text merged_by_state
+        text merged_by_username
+        text merged_by_web_url
+        text references_full
+        text references_relative
+        text references_short
+        text sha
+        text should_remove_source_branch
+        text source_branch
+        text source_project_id
+        text squash
+        text squash_commit_sha
+        text state
+        text target_branch
+        text target_project_id
+        text task_completion_status_completed_count
+        text task_completion_status_count
+        text time_stats_human_time_estimate
+        text time_stats_human_total_time_spent
+        text time_stats_time_estimate
+        text time_stats_total_time_spent
+        text title
+        timestamp updated_at
+        text upvotes
+        text user_notes_count
+        text web_url
+        text work_in_progress
+    }
+    project_label {
+        text id PK
+        text project_id FK
+        text color
+        text description
+        text description_html
+        boolean is_project_label
+        text name
+        text priority
+        boolean subscribed
+        text text_color
+    }
+    groups_milestone {
+        text id PK
+        text group_id FK
+        timestamp created_at
+        text description
+        text due_date
+        boolean expired
+        bigint iid
+        text start_date
+        text state
+        text title
+        timestamp updated_at
+        text web_url
+    }
+    project_user_identity {
+        text extern_uid PK
+        text project_user_id PK
+        text provider
+    }
+    project_user {
+        text id PK
+        text project_id PK
+        text avatar_url
+        text bio
+        boolean can_create_group
+        boolean can_create_project
+        text color_scheme_id
+        timestamp confirmed_at
+        timestamp created_at
+        timestamp current_sign_in_at
+        text current_sign_in_ip
+        text email
+        boolean external
+        boolean is_admin
+        text job_title
+        text last_activity_on
+        timestamp last_sign_in_at
+        text last_sign_in_ip
+        text linkedin
+        text location
+        text name
+        text namespace_id
+        text note
+        text organization
+        boolean private_profile
+        bigint projects_limit
+        text skype
+        text state
+        bigint theme_id
+        text twitter
+        boolean two_factor_enabled
+        text username
+        text web_url
+        text website_url
+    }
+    project_issue_assignee {
+        text id PK
+        text project_issue_id PK
+        text avatar_url
+        text name
+        text state
+        text username
+        text web_url
+    }
+    project_issue_label {
+        text label PK
+        text project_issue_id PK
+    }
+    project_issue {
+        text id PK
+        text author_id FK
+        text milestone_id FK
+        text project_id FK
+        text _links_award_emoji
+        text _links_notes
+        text _links_project
+        text _links_self
+        text assignee_avatar_url
+        text assignee_id
+        text assignee_name
+        text assignee_state
+        text assignee_username
+        text assignee_web_url
+        timestamp closed_at
+        text closed_by_avatar_url
+        text closed_by_id
+        text closed_by_name
+        text closed_by_state
+        text closed_by_username
+        text closed_by_web_url
+        text confidential
+        timestamp created_at
+        text description
+        text discussion_locked
+        text downvotes
+        text due_date
+        boolean has_tasks
+        bigint iid
+        text issue_type
+        text merge_requests_count
+        text references_full
+        text references_relative
+        text references_short
+        text severity
+        text state
+        text task_completion_status_completed_count
+        text task_completion_status_count
+        text task_status
+        text time_stats_human_time_estimate
+        text time_stats_human_total_time_spent
+        text time_stats_time_estimate
+        text time_stats_total_time_spent
+        text title
+        text type
+        timestamp updated_at
+        text upvotes
+        text user_notes_count
+        text web_url
+        text weight
+    }
+    project_release_parent_id {
+        text parent_id PK
+        text project_release_fivetran_id PK
+    }
+    project_release_asset_source {
+        text _fivetran_id PK
+        text project_release_fivetran_id FK
+        text format
+        text url
+    }
+    project_release_asset_link {
+        text id PK
+        text project_release_fivetran_id PK
+        text external
+        text link_type
+        text name
+        text url
+    }
+    project_release_evidence {
+        text _fivetran_id PK
+        text project_release_fivetran_id PK
+        text collected_at
+        text filepath
+        text sha
+    }
+    project_release_milestone {
+        text id PK
+        text project_release_fivetran_id PK
+        timestamp created_at
+        text description
+        text due_date
+        bigint iid
+        text issue_stats_closed
+        text issue_stats_total
+        text project_id
+        text start_date
+        text state
+        text title
+        timestamp updated_at
+        text web_url
+    }
+    project_release {
+        text _fivetran_id PK
+        text project_id PK
+        text author_id FK
+        text commit_id FK
+        text assets_count
+        text assets_evidence_file_path
+        text commit_path
+        text created_at
+        text description
+        text name
+        timestamp released_at
+        text tag_name
+        text tag_path
+    }
+    epic_issue_label {
+        text label PK
+        text epic_issue_id PK
+    }
+    epic_issue {
+        text id PK
+        text author_id FK
+        text group_id FK
+        text _links_epic_issues
+        text _links_group
+        text _links_parent
+        text _links_self
+        timestamp closed_at
+        text color
+        text confidential
+        timestamp created_at
+        text description
+        bigint downvotes
+        text due_date
+        text due_date_fixed
+        text due_date_from_inherited_source
+        text due_date_from_milestones
+        boolean due_date_is_fixed
+        text end_date
+        bigint iid
+        text parent_id
+        bigint parent_iid
+        text reference
+        text references_full
+        text references_relative
+        text references_short
+        text start_date
+        text start_date_fixed
+        text start_date_from_inherited_source
+        text start_date_from_milestones
+        boolean start_date_is_fixed
+        text state
+        text text_color
+        text title
+        timestamp updated_at
+        bigint upvotes
+        text web_edit_url
+        text web_url
+    }
+    project_branch_parent_id {
+        text parent_id PK
+        text project_branch_fivetran_id PK
+    }
+    project_branch {
+        text _fivetran_id PK
+        text commit_id FK
+        text project_id FK
+        boolean can_push
+        boolean defaults
+        boolean developers_can_merge
+        boolean developers_can_push
+        boolean merged
+        text name
+        boolean protected
+        text web_url
+    }
+    group_member {
+        text id PK
+        text groups_id PK
+        text created_by_id FK
+        bigint access_level
+        text avatar_url
+        timestamp created_at
+        text expires_at
+        text group_saml_identity_extern_uid
+        text group_saml_identity_provider
+        bigint group_saml_identity_saml_provider_id
+        text membership_state
+        text name
+        text state
+        text username
+        text web_url
+    }
+    project_merge_request_discussion_note {
+        text id PK
+        text project_id PK
+        bigint project_merge_request_iid PK
+        text project_merge_request_discussion_id PK
+        text author_id FK
+        text attachment
+        text author_avatar_url
+        text author_name
+        text author_state
+        text author_username
+        text author_web_url
+        text body
+        timestamp created_at
+        boolean is_system
+        text noteable_id
+        text noteable_iid
+        text noteable_type
+        text position_base_sha
+        text position_head_sha
+        jsonb position_line_range
+        text position_new_line
+        text position_new_path
+        text position_old_line
+        text position_old_path
+        text position_position_type
+        text position_start_sha
+        boolean resolvable
+        boolean resolved
+        timestamp resolved_at
+        jsonb resolved_by
+        jsonb suggestions
+        text type
+        timestamp updated_at
+    }
+    project_merge_request_discussion {
+        text id PK
+        text project_id PK
+        bigint project_merge_request_iid PK
+        boolean individual_note
+    }
+    project_pipeline {
+        text id PK
+        text project_id FK
+        timestamp created_at
+        bigint iid
+        text ref
+        text sha
+        text source
+        text status
+        timestamp updated_at
+        text web_url
+    }
+    project_milestone }o--|| project : "fk"
+    project_member }o--|| project_user : "fk"
+    project_member }o--|| project : "fk"
+    project_topic }o--|| project : "fk"
+    project_compliance_framework }o--|| project : "fk"
+    project_shared_with_group }o--|| project : "fk"
+    project }o--|| groups : "fk"
+    groups_label }o--|| groups : "fk"
+    project_vulnerability }o--|| project_user : "fk"
+    project_vulnerability }o--|| project : "fk"
+    project_repo_tag_parent_id }o--|| project_repo_tag : "fk"
+    project_repo_tag }o--|| project_commit : "fk"
+    project_repo_tag }o--|| project : "fk"
+    project_commit_parent_id }o--|| project_commit : "fk"
+    project_commit_parent_id }o--|| project_commit : "fk"
+    project_commit }o--|| project : "fk"
+    project_job_tag_list }o--|| project_job : "fk"
+    project_job_artifact }o--|| project_job : "fk"
+    project_job }o--|| project_user : "fk"
+    project_job }o--|| project_commit : "fk"
+    project_job }o--|| project : "fk"
+    project_merge_request_assignee }o--|| project_merge_request : "fk"
+    project_merge_request_reviewer }o--|| project_merge_request : "fk"
+    project_merge_request_label }o--|| project_merge_request : "fk"
+    project_merge_request }o--|| project_user : "fk"
+    project_merge_request }o--|| project_milestone : "fk"
+    project_merge_request }o--|| project : "fk"
+    project_label }o--|| project : "fk"
+    groups_milestone }o--|| groups : "fk"
+    project_user_identity }o--|| project_user : "fk"
+    project_user }o--|| project : "fk"
+    project_issue_assignee }o--|| project_issue : "fk"
+    project_issue_label }o--|| project_issue : "fk"
+    project_issue }o--|| project_user : "fk"
+    project_issue }o--|| project_milestone : "fk"
+    project_issue }o--|| project : "fk"
+    project_release_parent_id }o--|| project_release : "fk"
+    project_release_asset_source }o--|| project_release : "fk"
+    project_release_asset_link }o--|| project_release : "fk"
+    project_release_evidence }o--|| project_release : "fk"
+    project_release_milestone }o--|| project_release : "fk"
+    project_release }o--|| project_user : "fk"
+    project_release }o--|| project_commit : "fk"
+    project_release }o--|| project : "fk"
+    epic_issue_label }o--|| epic_issue : "fk"
+    epic_issue }o--|| project_user : "fk"
+    epic_issue }o--|| groups : "fk"
+    project_branch_parent_id }o--|| project_branch : "fk"
+    project_branch }o--|| project_commit : "fk"
+    project_branch }o--|| project : "fk"
+    group_member }o--|| project_user : "fk"
+    group_member }o--|| groups : "fk"
+    project_merge_request_discussion_note }o--|| project_user : "fk"
+    project_merge_request_discussion_note }o--|| project_merge_request_discussion : "fk"
+    project_merge_request_discussion }o--|| project_merge_request : "fk"
+    project_merge_request_discussion }o--|| project_merge_request : "fk"
+    project_pipeline }o--|| project : "fk"

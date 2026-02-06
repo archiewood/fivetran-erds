@@ -1,0 +1,360 @@
+erDiagram
+    conversation_form {
+        text id PK
+        text created_at
+        text form_fields
+        text is_default
+        text is_enabled
+        text title
+        text updated_at
+    }
+    trigger {
+        text id PK
+        text conversation_form_id FK
+        text expression_neq_queue
+        text form_id
+        text is_enabled
+        text order_index
+        text times_triggered
+        text title
+    }
+    disposition_field_name {
+        text disposition_form_id PK
+        text field_id PK
+        text disposition_id
+        text disposition_value
+    }
+    disposition {
+        text form_id PK
+        text conversation_form_id FK
+        text conversation_id FK
+    }
+    agent {
+        text id PK
+        text availability
+        text created_at
+        text display_name
+        text enabled
+        text role
+        text status
+        text updated_at
+    }
+    waiting_strategy_client_type {
+        text client_types PK
+        text waiting_strategy_id PK
+    }
+    waiting_strategy {
+        text id PK
+        text announcement_message_audio_source_type
+        text announcement_message_enabled
+        text announcement_message_repeat_interval_unit
+        text announcement_message_repeat_interval_value
+        text announcement_message_tts_audio_source_languages
+        text announcement_message_tts_audio_source_speech_rate
+        text announcement_message_tts_audio_source_text
+        text announcement_message_tts_audio_source_voice_gender
+        text announcement_message_tts_audio_source_voice_name
+        jsonb applications
+        text created_at
+        jsonb did_numbers
+        text greeting_message_audio_source_type
+        text greeting_message_enabled
+        text greeting_message_tts_audio_source_languages
+        text greeting_message_tts_audio_source_speech_rate
+        text greeting_message_tts_audio_source_text
+        text greeting_message_tts_audio_source_voice_gender
+        text greeting_message_tts_audio_source_voice_name
+        text maximum_wait_time_message_audio_source_type
+        text maximum_wait_time_message_enabled
+        text maximum_wait_time_message_tts_audio_source_languages
+        text maximum_wait_time_message_tts_audio_source_speech_rate
+        text maximum_wait_time_message_tts_audio_source_text
+        text maximum_wait_time_message_tts_audio_source_voice_gender
+        text maximum_wait_time_message_tts_audio_source_voice_name
+        text maximum_wait_time_unit
+        text maximum_wait_time_value
+        text music_on_hold_enabled
+        text name
+        text updated_at
+        text version
+    }
+    message {
+        text id PK
+        text conversation_id FK
+        text channel
+        text content_text
+        text content_type
+        text created_at
+        text direction
+        text froms
+        jsonb single_send_message
+        text tos
+        text updated_at
+    }
+    note {
+        text id PK
+        text agent_id FK
+        text conversation_id FK
+        text content
+        text created_at
+        text type
+        text updated_at
+    }
+    routings {
+        text id PK
+        text queue_id FK
+        text created_at
+        text enabled
+        jsonb expresssion
+        text name
+        text orders
+        text priority
+        text queue_name
+        text route_only_during_working_hours
+        text updated_at
+    }
+    hold_config_queue {
+        text hold_config_id PK
+        text queue_id PK
+    }
+    hold_config {
+        text id PK
+        text announcement_message_audio_source_type
+        text announcement_message_duration_unit
+        text announcement_message_duration_value
+        text announcement_message_file_audio_source_file_descriptor
+        text announcement_message_tts_audio_source_file_descriptor
+        text announcement_message_tts_audio_source_languages
+        text announcement_message_tts_audio_source_speech_rate
+        text announcement_message_tts_audio_source_text
+        text announcement_message_tts_audio_source_voice_gender
+        text announcement_message_tts_audio_source_voice_name
+        text created_at
+        text defaults
+        text enabled
+        text name
+        text on_hold_music_enabled
+        text on_hold_music_file_audio_source_file_descriptor
+        text on_hold_music_use_default
+        text updated_at
+    }
+    agent_wrap_up {
+        text _fivetran_id PK
+        text agent_id FK
+        text is_active
+        text wrap_up_seconds
+    }
+    person_email {
+        text address PK
+        text person_id PK
+    }
+    person_phone {
+        text number PK
+        text person_id PK
+    }
+    person_push {
+        text application_id PK
+        text person_id PK
+        text additional_data_birthdate
+        text additional_data_email
+        text additional_data_first_name
+        text additional_data_gender
+        text additional_data_last_name
+        text additional_data_middle_name
+        text registration_id
+    }
+    person_shopping_cart_list {
+        text _fivetran_id PK
+        text person_id FK
+        text product_category
+        text product_image
+        text product_name
+        text product_price
+    }
+    person {
+        text id PK
+        text address
+        text birth_date
+        text city
+        text company_id
+        text country
+        text created_at
+        text external_id
+        text first_name
+        text gender
+        text last_name
+        text middle_name
+        text modified_at
+        text modified_from
+        text origin
+        text profile_picture
+        text type
+    }
+    person_social_account {
+        text application_id PK
+        text person_id PK
+        text type
+        text user_id
+    }
+    bot {
+        text id PK
+        text channel
+        text destination
+        text display_name
+        text enabled
+        text message_persistence_policy
+        text session_timeout_in_sec
+        jsonb webhook_event_headers
+        text webhook_event_url
+        text webhook_url
+    }
+    field_operator {
+        text operator_name PK
+        text field_id PK
+    }
+    field_options {
+        text option_name PK
+        text field_id PK
+    }
+    field {
+        text id PK
+        text created_at
+        boolean is_default
+        text is_enabled
+        text regex
+        text title
+        text type
+        text updated_at
+    }
+    agent_conversation {
+        text id PK
+        text agent_id FK
+        text queue_id FK
+        text closed_at
+        text created_at
+        text pending_since
+        text priority
+        text status
+        text summary
+        text topic
+        text updated_at
+    }
+    account_wrap_up {
+        text _fivetran_id PK
+        text is_active
+        text wrap_up_seconds
+    }
+    queue {
+        text id PK
+        text working_hours_id FK
+        text created_at
+        text deleted_at
+        text enabled_agents_count
+        text enabled_routes_count
+        text is_auto_assignment_enabled
+        text is_sticky_auto_assignment_enabled
+        text name
+        text sticky_agent_timeout_days
+        text updated_at
+    }
+    company_domain {
+        text domain_name PK
+        text company_id PK
+    }
+    company {
+        text id PK
+        text account_manager
+        text country
+        text created_at
+        text custom_attributes_contract_expiry
+        text customer_stage
+        text industry
+        text modified_at
+        text modified_from
+        text name
+        text notes
+        text origin
+        text region
+        text segment
+        jsonb service_data
+        text vat_number
+    }
+    eligible_queue {
+        text _fivetran_id PK
+        text queue_id FK
+        text active
+        text auto_assignment_enabled
+        text queue_name
+    }
+    agent_recording {
+        text agent_id PK
+        text id FK
+        text enabled
+        text enabled_changed_at
+        text inbound
+        text media_type
+        text outbound
+        text use_default
+    }
+    account_recording {
+        text _fivetran_id PK
+        text enabled
+        text enabled_changed_at
+        text inbound
+        text media_type
+        text outbound
+        text video_download_preparation
+    }
+    working_hour {
+        text id PK
+        text close_conversations
+        text enabled
+        jsonb holidays
+        text is_default
+        text message
+        text name
+        text timezone
+        jsonb work_week
+    }
+    conversation {
+        text id PK
+        text agent_id FK
+        text queue_id FK
+        text closed_at
+        text created_at
+        text pending_since
+        text priority
+        text status
+        text summary
+        text topic
+        text updated_at
+    }
+    trigger }o--|| conversation_form : "fk"
+    disposition_field_name }o--|| field : "fk"
+    disposition_field_name }o--|| disposition : "fk"
+    disposition }o--|| conversation : "fk"
+    disposition }o--|| conversation_form : "fk"
+    waiting_strategy_client_type }o--|| waiting_strategy : "fk"
+    message }o--|| conversation : "fk"
+    note }o--|| conversation : "fk"
+    note }o--|| agent : "fk"
+    routings }o--|| queue : "fk"
+    hold_config_queue }o--|| queue : "fk"
+    hold_config_queue }o--|| hold_config : "fk"
+    agent_wrap_up }o--|| agent : "fk"
+    person_email }o--|| person : "fk"
+    person_phone }o--|| person : "fk"
+    person_push }o--|| person : "fk"
+    person_shopping_cart_list }o--|| person : "fk"
+    person }o--|| company : "fk"
+    person_social_account }o--|| person : "fk"
+    field_operator }o--|| field : "fk"
+    field_options }o--|| field : "fk"
+    agent_conversation }o--|| queue : "fk"
+    agent_conversation }o--|| agent : "fk"
+    queue }o--|| working_hour : "fk"
+    company_domain }o--|| company : "fk"
+    eligible_queue }o--|| queue : "fk"
+    agent_recording }o--|| agent : "fk"
+    conversation }o--|| queue : "fk"
+    conversation }o--|| agent : "fk"

@@ -1,0 +1,477 @@
+erDiagram
+%% See the full list of available metrics in the Pinterest Developer docs:
+%%   - Account analytics reports
+%%   - Pin analytics report
+    pin_media {
+        text _fivetran_id PK
+        text _fivetran_pin_id PK
+        text cover_image_url
+        text description
+        bigint duration
+        integer height
+        text item_type
+        text link
+        text title
+        integer width
+    }
+    pin_history {
+        text _fivetran_id PK
+        text board_id FK
+        text board_section_id FK
+        text parent_pin_id FK
+        text ad_creative_type
+        text alt_text
+        text board_owner_username
+        timestamp created_at
+        text description
+        text dominant_color
+        text id
+        boolean is_standard
+        text link
+        text media_type
+        text title
+    }
+    catalog_product_groups_history {
+        text id PK
+        timestamp last_update PK
+        text feed_profile_id FK
+        timestamp created_at
+        text description
+        jsonb filters
+        boolean is_featured
+        text name
+        text status
+        text type
+    }
+    pin_promotion_history {
+        text id PK
+        timestamp updated_time PK
+        text ad_group_id FK
+        text campaign_id FK
+        text pin_id FK
+        text ad_account_id
+        text android_deep_link
+        text click_tracking_url
+        text collection_items_destination_url_template
+        timestamp created_time
+        text creative_type
+        text destination_url
+        text ios_deep_link
+        boolean is_pin_deleted
+        boolean is_removable
+        text name
+        text review_status
+        text status
+        text summary_status
+        text view_tracking_url
+    }
+    ad_group_history {
+        text id PK
+        timestamp updated_time PK
+        text ad_account_id FK
+        text campaign_id FK
+        boolean auto_targeting_enabled
+        bigint bid_in_micro_currency
+        text bid_strategy_type
+        text billable_event
+        bigint budget_in_micro_currency
+        text budget_type
+        text conversion_learning_mode_type
+        timestamp created_time
+        timestamp end_time
+        text feed_profile_id
+        integer lifetime_frequency_cap
+        text name
+        text pacing_delivery_type
+        text placement_group
+        timestamp start_time
+        text status
+        text summary_status
+        text upgrade_status
+    }
+    customer_list_history {
+        text id PK
+        timestamp updated_time PK
+        text advertiser_id FK
+        timestamp created_time
+        text exceptions
+        text name
+        bigint num_batches
+        bigint num_removed_user_records
+        bigint num_uploaded_user_records
+        text status
+    }
+    pin_analytics_report {
+        timestamp date PK
+        text device_type PK
+        text id PK
+        text advertiser_id FK
+    }
+    pin_promotion_report {
+        timestamp date PK
+        text ad_group_id PK
+        text advertiser_id PK
+        text campaign_id PK
+        text pin_promotion_id PK
+    }
+    ad_group_report {
+        timestamp date PK
+        text ad_group_id PK
+        text advertiser_id PK
+    }
+    advertiser_history {
+        text id PK
+        timestamp updated_time PK
+        jsonb account_permissions
+        text country
+        timestamp created_time
+        text currency
+        text name
+        text owner_user_id
+        text owner_username
+    }
+    mmm_ad_group_targeting_daily_report {
+        text app_type PK
+        text date PK
+        text gender PK
+        text location_code PK
+        text ad_group_id PK
+        text advertiser_id PK
+        text country
+        double_precision cpc
+        text creative_type
+        double_precision ctr
+        integer earned_impressions
+        integer earned_pin_clicks
+        double_precision ecpm
+        double_precision engagement_rate
+        integer engagements
+        integer impressions
+        text location
+        integer paid_impressions
+        integer paid_pin_clicks
+        integer pin_clicks
+        double_precision spend
+        double_precision spend_in_account_currency
+        text spend_order_line_id
+        text spend_order_line_paid_type
+    }
+    pin_media_image {
+        text property_name PK
+        text _fivetran_media_id PK
+        text _fivetran_pin_id PK
+        integer height
+        text url
+        integer width
+    }
+    targeting_gender {
+        text id PK
+        text name
+    }
+    board_section {
+        text board_id PK
+        text id PK
+        text name
+    }
+    conversion_tag_history {
+        text _fivetran_id PK
+        text advertiser_id FK
+        text code_snippet
+        text enhanced_match_status
+        text id
+        text last_fired_time_ms
+        text name
+        text status
+        text version
+    }
+    campaign_report {
+        timestamp date PK
+        text advertiser_id PK
+        text campaign_id PK
+    }
+    campaign_history {
+        text id PK
+        timestamp updated_time PK
+        text advertiser_id FK
+        timestamp created_time
+        bigint daily_spend_cap
+        bigint default_ad_group_budget_in_micro_currency
+        timestamp end_time
+        boolean is_automated_campaign
+        boolean is_campaign_budget_optimization
+        boolean is_flexible_daily_budgets
+        bigint lifetime_spend_cap
+        text name
+        text objective_type
+        text order_line_id
+        timestamp start_time
+        text status
+        text summary_status
+    }
+    targeting_age_bucket {
+        text id PK
+        text name
+    }
+    product_group_targeting_report {
+        timestamp date PK
+        text targeting_type PK
+        text targeting_value PK
+        text advertiser_id PK
+        text product_group_id PK
+    }
+    board_pin_thumbnail_url {
+        text url PK
+        text board_id PK
+    }
+    board_history {
+        text _fivetran_id PK
+        timestamp board_pins_modified_at
+        integer collaborator_count
+        timestamp created_at
+        text description
+        integer follower_count
+        text id
+        text media_image_cover_url
+        text name
+        text owner_username
+        integer pin_count
+        text privacy
+    }
+    mmm_campaign_targeting_daily_report {
+        text app_type PK
+        text date PK
+        text gender PK
+        text location_code PK
+        text advertiser_id PK
+        text campaign_id PK
+        text country
+        double_precision cpc
+        text creative_type
+        double_precision ctr
+        integer earned_impressions
+        integer earned_pin_clicks
+        double_precision ecpm
+        double_precision engagement_rate
+        integer engagements
+        integer impressions
+        text location
+        integer paid_impressions
+        integer paid_pin_clicks
+        integer pin_clicks
+        double_precision spend
+        double_precision spend_in_account_currency
+        text spend_order_line_id
+        text spend_order_line_paid_type
+    }
+    rejected_reason_history {
+        integer index PK
+        text pin_promotion_id PK
+        timestamp updated_time PK
+        text reason
+    }
+    targeting_app_type {
+        text id PK
+        text name
+    }
+    audience_history {
+        text audience_type PK
+        text id PK
+        timestamp updated_time PK
+        text advertiser_id PK
+        timestamp created_time
+        text description
+        text name
+        jsonb rule
+        integer size
+        text status
+    }
+    conversion_tag_config {
+        text conversion_tag_fivetran_id PK
+        boolean aem_db_enabled
+        boolean aem_enabled
+        boolean aem_fnln_enabled
+        boolean aem_ge_enabled
+        boolean aem_loc_enabled
+        boolean aem_ph_enabled
+        double_precision md_frequency
+    }
+    targeting_locale {
+        text id PK
+        text name
+    }
+    targeting_geo_region {
+        text region_id PK
+        text country_id FK
+        text region_name
+    }
+    catalog_feed_history {
+        text id PK
+        timestamp updated_at PK
+        timestamp created_at
+        text default_availability
+        text default_country
+        text default_currency
+        text default_locale
+        text format
+        text location
+        text name
+        text preferred_processing_schedule_time
+        text preferred_processing_schedule_timezone
+        text status
+    }
+    advertiser_report {
+        timestamp date PK
+        text advertiser_id PK
+    }
+    product_group_report {
+        timestamp date PK
+        text ad_group_id PK
+        text advertiser_id PK
+        text campaign_id PK
+        text product_group_id PK
+    }
+    targeting_interest {
+        text id PK
+        integer level
+        text name
+        text parent_id
+    }
+    pin_promotion_targeting_report {
+        timestamp date PK
+        text targeting_type PK
+        text targeting_value PK
+        text ad_group_id PK
+        text advertiser_id PK
+        text campaign_id PK
+        text pin_promotion_id PK
+    }
+    targeting_geo_metro {
+        text metro_id PK
+        text country_id FK
+        text metro_name
+    }
+    targeting_location {
+        text id PK
+        text name
+    }
+    keyword_history {
+        text _fivetran_id PK
+        text ad_group_id FK
+        text advertiser_id FK
+        text campaign_id FK
+        boolean archived
+        bigint bid
+        text id
+        text match_type
+        text parent_type
+        text value
+    }
+    ad_rejected_label_history {
+        text label PK
+        text pin_promotion_id PK
+        timestamp updated_time PK
+    }
+    targeting_geo {
+        text country_id PK
+        text country_name
+    }
+    keyword_report {
+        timestamp date PK
+        text keyword_id PK
+        text ad_group_id PK
+        text advertiser_id PK
+        text campaign_id PK
+        text pin_id PK
+        text pin_promotion_id PK
+    }
+    product_group_history {
+        text _fivetran_id PK
+        text ad_group_id FK
+        text catalog_product_group_id FK
+        text parent_id FK
+        bigint bid_in_micro_currency
+        text collections_hero_destination_url
+        text collections_hero_pin_id
+        text creative_type
+        text definition
+        text id
+        boolean included
+        boolean is_mdl
+        text relative_definition
+        text slideshow_collections_description
+        text slideshow_collections_title
+        text status
+        text tracking_url
+    }
+    product_item_report {
+        timestamp date PK
+        text product_item_id PK
+        text ad_group_id PK
+        text advertiser_id PK
+        text campaign_id PK
+        text pin_id PK
+    }
+    pin_media }o--|| pin_history : "fk"
+    pin_history }o--|| board_history : "fk"
+    pin_history }o--|| board_section : "fk"
+    pin_history }o--|| pin_history : "fk"
+    catalog_product_groups_history }o--|| catalog_feed_history : "fk"
+    pin_promotion_history }o--|| ad_group_history : "fk"
+    pin_promotion_history }o--|| campaign_history : "fk"
+    pin_promotion_history }o--|| pin_history : "fk"
+    ad_group_history }o--|| campaign_history : "fk"
+    ad_group_history }o--|| advertiser_history : "fk"
+    customer_list_history }o--|| advertiser_history : "fk"
+    pin_analytics_report }o--|| pin_history : "fk"
+    pin_analytics_report }o--|| advertiser_history : "fk"
+    pin_promotion_report }o--|| pin_promotion_history : "fk"
+    pin_promotion_report }o--|| advertiser_history : "fk"
+    pin_promotion_report }o--|| campaign_history : "fk"
+    pin_promotion_report }o--|| ad_group_history : "fk"
+    ad_group_report }o--|| ad_group_history : "fk"
+    ad_group_report }o--|| advertiser_history : "fk"
+    mmm_ad_group_targeting_daily_report }o--|| advertiser_history : "fk"
+    mmm_ad_group_targeting_daily_report }o--|| ad_group_history : "fk"
+    pin_media_image }o--|| pin_history : "fk"
+    pin_media_image }o--|| pin_media : "fk"
+    conversion_tag_history }o--|| advertiser_history : "fk"
+    campaign_report }o--|| campaign_history : "fk"
+    campaign_report }o--|| advertiser_history : "fk"
+    campaign_history }o--|| advertiser_history : "fk"
+    product_group_targeting_report }o--|| product_group_history : "fk"
+    product_group_targeting_report }o--|| advertiser_history : "fk"
+    board_pin_thumbnail_url }o--|| board_history : "fk"
+    mmm_campaign_targeting_daily_report }o--|| advertiser_history : "fk"
+    mmm_campaign_targeting_daily_report }o--|| campaign_history : "fk"
+    rejected_reason_history }o--|| pin_promotion_history : "fk"
+    rejected_reason_history }o--|| pin_promotion_history : "fk"
+    audience_history }o--|| advertiser_history : "fk"
+    conversion_tag_config }o--|| conversion_tag_history : "fk"
+    targeting_geo_region }o--|| targeting_geo : "fk"
+    advertiser_report }o--|| advertiser_history : "fk"
+    product_group_report }o--|| product_group_history : "fk"
+    product_group_report }o--|| advertiser_history : "fk"
+    product_group_report }o--|| campaign_history : "fk"
+    product_group_report }o--|| ad_group_history : "fk"
+    pin_promotion_targeting_report }o--|| pin_promotion_history : "fk"
+    pin_promotion_targeting_report }o--|| advertiser_history : "fk"
+    pin_promotion_targeting_report }o--|| campaign_history : "fk"
+    pin_promotion_targeting_report }o--|| ad_group_history : "fk"
+    targeting_geo_metro }o--|| targeting_geo : "fk"
+    keyword_history }o--|| advertiser_history : "fk"
+    keyword_history }o--|| campaign_history : "fk"
+    keyword_history }o--|| ad_group_history : "fk"
+    ad_rejected_label_history }o--|| pin_promotion_history : "fk"
+    ad_rejected_label_history }o--|| pin_promotion_history : "fk"
+    keyword_report }o--|| campaign_history : "fk"
+    keyword_report }o--|| advertiser_history : "fk"
+    keyword_report }o--|| ad_group_history : "fk"
+    keyword_report }o--|| pin_promotion_history : "fk"
+    keyword_report }o--|| pin_history : "fk"
+    product_group_history }o--|| ad_group_history : "fk"
+    product_group_history }o--|| product_group_history : "fk"
+    product_group_history }o--|| catalog_product_groups_history : "fk"
+    product_item_report }o--|| advertiser_history : "fk"
+    product_item_report }o--|| campaign_history : "fk"
+    product_item_report }o--|| ad_group_history : "fk"
+    product_item_report }o--|| pin_history : "fk"

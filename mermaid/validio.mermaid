@@ -1,0 +1,548 @@
+erDiagram
+    namespace_user {
+        text namespace_id PK
+        text user_id PK
+        text role
+    }
+    namespace_team {
+        text namespace_id PK
+        text team_id PK
+        text role
+    }
+    namespace {
+        text id PK
+        text avatar
+        text avatar_thumbnail
+        text created_at
+        text description
+        text name
+        text updated_at
+    }
+    validator_incident {
+        text incident_id PK
+        text source_id PK
+        text validator_id PK
+    }
+    validator_segment {
+        text segment_id PK
+        text source_id PK
+        text validator_id PK
+    }
+    validator_tag {
+        text source_id PK
+        text tag_id PK
+        text validator_id PK
+    }
+    validator {
+        text id PK
+        text source_id PK
+        text filter_id FK
+        text namespace_id FK
+        text owner_id FK
+        text reference_filter_id FK
+        text reference_window_id FK
+        text segmentation_id FK
+        text window_id FK
+        text config_initialize_with_backfill
+        text config_metadata_enabled
+        text config_metric
+        text config_minimum_reference_data_point
+        text config_minimum_relative_difference_percent
+        text config_mininum_absolute_difference
+        text config_query
+        text config_reference_source_field
+        text config_sensitivity
+        text config_source_field
+        text config_source_field_minuend
+        text config_source_field_subtrahend
+        jsonb config_source_fields
+        text config_threshold_adaption_rate
+        text config_threshold_decision_bounds_type
+        text config_threshold_difference_type
+        text config_threshold_number_of_window
+        text config_threshold_operator
+        text config_threshold_sensitivity
+        text config_threshold_value
+        text created_at
+        text data_quality
+        text data_quality_diff
+        text data_quality_incident_count
+        text data_quality_total_count
+        text description
+        text metric_value_format
+        text name
+        text progress_percentage
+        text progress_processed
+        text progress_total
+        text reference_source_config_filter
+        text reference_source_config_history
+        text reference_source_config_offset
+        text resource_name
+        text state
+        text state_updated_at
+        text stats_last_artifact_at
+        text stats_last_incident_at
+        text updated_at
+    }
+    incident {
+        text id PK
+        text backfill_mode
+        text created_at
+        text deviation
+        text end_time
+        text lower_bound
+        text severity
+        text start_time
+        text status
+        text updated_at
+        text upper_bound
+        text value
+    }
+    lineage_graph_edge {
+        text id PK
+        text source_catalog_asset_id PK
+        text downstream_field
+        text sql_query
+        text upstream_field
+    }
+    lineage_graph {
+        text source_catalog_asset_id PK
+        text total_asset_count
+        text total_edge_count
+        text total_source_count
+    }
+    validator_metric {
+        text _fivetran_id PK
+        text segment_id FK
+        text validator_id FK
+        text bound
+        text decision_bounds_type
+        text end_time
+        text is_burn_in
+        text is_incident
+        text lower_bound
+        text operator
+        text severity
+        text start_time
+        text upper_bound
+        text value
+    }
+    incident_group_comment {
+        text id PK
+        text incident_group_id PK
+        text author_id FK
+        text body
+        text created_at
+        text updated_at
+    }
+    incident_group {
+        text id PK
+        text owner_id FK
+        text source_id FK
+        text validator_id FK
+        text comment_count
+        text first_seen_at
+        text last_seen_at
+        text mute_until
+        text priority
+        text severity_stat_high_count
+        text severity_stat_low_count
+        text severity_stat_medium_count
+        text severity_stat_total_count
+        text status
+    }
+    notification_rule_owner_condition {
+        text user_id PK
+        text notification_rule_id PK
+        text id FK
+    }
+    notification_rule_segment_condition {
+        text id PK
+        text notification_rule_id PK
+        jsonb config_segment
+        text created_at
+        text updated_at
+    }
+    notification_rule_source_condition {
+        text source_id PK
+        text notification_rule_id PK
+        text id FK
+    }
+    notification_rule_tag_condition {
+        text notification_rule_id PK
+        text tag_id PK
+    }
+    notification_rule {
+        text id PK
+        text channel_id FK
+        text namespace_id FK
+        text config_owner_condition_created_at
+        text config_owner_condition_id
+        text config_owner_condition_updated_at
+        jsonb config_severity_condition
+        text config_severity_condition_created_at
+        text config_severity_condition_id
+        text config_severity_condition_updated_at
+        text config_source_condition_created_at
+        text config_source_condition_id
+        text config_source_condition_updated_at
+        text config_tag_condition_created_at
+        text config_tag_condition_id
+        text config_tag_condition_updated_at
+        jsonb config_type_condition
+        text config_type_condition_created_at
+        text config_type_condition_id
+        text config_type_condition_updated_at
+        text created_at
+        text name
+        text resource_name
+        text updated_at
+    }
+    segment {
+        text id PK
+        text segmentation_id PK
+        text data_quality
+        text data_quality_diff
+        text data_quality_incident_count
+        text data_quality_total_count
+        jsonb field
+    }
+    filter {
+        text id PK
+        text namespace_id FK
+        text config_field
+        text config_operator
+        text config_query
+        text config_value
+        jsonb config_values
+        text created_at
+        text name
+        text resource_name
+        text updated_at
+    }
+    window {
+        text id PK
+        text namespace_id FK
+        text config_batch_size
+        text config_batch_timeout_secs
+        text config_segment_retention_period_days
+        text config_segmented_batching
+        text config_time_unit
+        text config_window_size
+        text config_window_timout_disabled
+        text created_at
+        text data_time_field
+        text name
+        text resource_name
+        text updated_at
+    }
+    channel_notification_rule {
+        text channel_id PK
+        text notification_rule_id PK
+    }
+    channel {
+        text id PK
+        text namespace_id FK
+        text config_application_link_url
+        text config_auth_address
+        text config_auth_encryption
+        text config_auth_port
+        text config_auth_username
+        text config_interactive_message_enabled
+        text config_microsoft_teams_channel_id
+        jsonb config_recipient_address
+        text config_sender_address
+        text config_slack_channel_id
+        text created_at
+        text name
+        text resource_name
+        text updated_at
+    }
+    source_catalog_asset_description {
+        text index PK
+        text source_catalog_asset_id PK
+        text source_id PK
+        text description
+        text origin
+    }
+    source_catalog_asset_tag {
+        text source_catalog_asset_id PK
+        text source_id PK
+        text tag_id PK
+    }
+    source_catalog_asset_external_tag {
+        text source_catalog_asset_id PK
+        text source_id PK
+        text tag_id PK
+    }
+    source_catalog_asset_joined_table {
+        text id PK
+        text source_id PK
+    }
+    source_catalog_asset {
+        text id PK
+        text source_id PK
+        text asset_type
+        text config_bucket
+        text config_catalog
+        text config_dashboard_id
+        text config_database
+        text config_dataset
+        text config_explore_id
+        text config_folder
+        text config_prefix
+        text config_project
+        text config_schema
+        text config_stream_name
+        text config_subscription_id
+        text config_table
+        text config_tile_id
+        text config_title
+        text config_topic
+        text config_workbook_id
+        text created_at
+        text description
+        text field_count
+        text is_dbt_model
+        text name
+        jsonb query_user
+        text stats_number_of_reads
+        text stats_number_of_writes
+        text stats_utilization
+        text updated_at
+    }
+    source_window {
+        text source_id PK
+        text window_id PK
+    }
+    source_tag {
+        text source_id PK
+        text tag_id PK
+    }
+    source_filter {
+        text filter_id PK
+        text source_id PK
+    }
+    source_segmentation {
+        text segmentation_id PK
+        text source_id PK
+    }
+    source {
+        text id PK
+        text credential_id FK
+        text namespace_id FK
+        text owner_id FK
+        text config_bucket
+        text config_catalog
+        text config_csv_delimiter
+        text config_csv_null_marker
+        text config_cursor_field
+        text config_database
+        text config_dataset
+        text config_file_format
+        text config_file_pattern
+        text config_folder
+        text config_http_path
+        text config_job_name
+        text config_look_back_day
+        text config_message_format
+        text config_message_format_schema
+        text config_prefix
+        text config_project
+        text config_project_name
+        text config_region
+        text config_role
+        text config_schedule
+        text config_schema
+        text config_stream_name
+        text config_subscription_id
+        text config_table
+        text config_topic
+        text config_warehouse
+        text created_at
+        text description
+        text jtd_schema_additional_property
+        text jtd_schema_nullable
+        jsonb jtd_schema_optional_property
+        text name
+        text resource_name
+        text state
+        text state_updated_at
+        text updated_at
+    }
+    segmentation_field {
+        text index PK
+        text segmentation_id PK
+        text field
+    }
+    segmentation {
+        text id PK
+        text filter_id FK
+        text namespace_id FK
+        text source_id FK
+        text created_at
+        text name
+        text resource_name
+        text updated_at
+    }
+    credential {
+        text id PK
+        text namespace_id FK
+        text config_account
+        text config_account_id
+        text config_api_base_url
+        text config_application_link_url
+        text config_auth_client_id
+        text config_auth_tenant_id
+        text config_auth_user
+        text config_backend_type
+        text config_base_url
+        text config_boot_strap_server
+        text config_ca_certificate
+        text config_client_id
+        text config_database
+        text config_default_database
+        text config_host
+        text config_http_path
+        text config_port
+        text config_protocol
+        text config_query_result_location
+        text config_region
+        text config_role
+        text config_secret_id
+        text config_site
+        text config_token_name
+        text config_user
+        text config_username
+        text config_warehouse
+        text created_at
+        text enable_catalog
+        text name
+        text resource_name
+        text updated_at
+    }
+    team {
+        text id PK
+        text avatar
+        text avatar_thumbnail
+        text created_at
+        text description
+        text name
+        text updated_at
+    }
+    user_team {
+        text team_id PK
+        text user_id PK
+    }
+    user_identity {
+        text id PK
+        text user_id PK
+        text created_at
+        text idp_config_cert
+        text idp_config_entity_id
+        text idp_config_entry_point
+        text idp_created_at
+        text idp_disabled
+        text idp_id
+        text idp_name
+        text idp_resource_name
+        text idp_updated_at
+    }
+    users {
+        text id PK
+        text avatar
+        text avatar_thumbnail
+        text created_at
+        text display_name
+        text email
+        text full_name
+        text global_role
+        text last_login_at
+        text login_type
+        text resource_name
+        text status
+        text updated_at
+    }
+    tags {
+        text id PK
+        text created_at
+        text key
+        text origin
+        text updated_at
+        text value
+    }
+    namespace_user }o--|| users : "fk"
+    namespace_user }o--|| namespace : "fk"
+    namespace_team }o--|| team : "fk"
+    namespace_team }o--|| namespace : "fk"
+    validator_incident }o--|| incident : "fk"
+    validator_incident }o--|| validator : "fk"
+    validator_incident }o--|| validator : "fk"
+    validator_segment }o--|| segment : "fk"
+    validator_segment }o--|| validator : "fk"
+    validator_segment }o--|| validator : "fk"
+    validator_tag }o--|| tags : "fk"
+    validator_tag }o--|| validator : "fk"
+    validator_tag }o--|| validator : "fk"
+    validator }o--|| segmentation : "fk"
+    validator }o--|| window : "fk"
+    validator }o--|| filter : "fk"
+    validator }o--|| users : "fk"
+    validator }o--|| namespace : "fk"
+    validator }o--|| filter : "fk"
+    validator }o--|| window : "fk"
+    validator }o--|| source : "fk"
+    lineage_graph_edge }o--|| lineage_graph : "fk"
+    lineage_graph }o--|| source_catalog_asset : "fk"
+    validator_metric }o--|| validator_segment : "fk"
+    validator_metric }o--|| validator_segment : "fk"
+    incident_group_comment }o--|| users : "fk"
+    incident_group_comment }o--|| incident_group : "fk"
+    incident_group }o--|| users : "fk"
+    incident_group }o--|| source : "fk"
+    incident_group }o--|| validator : "fk"
+    notification_rule_owner_condition }o--|| users : "fk"
+    notification_rule_owner_condition }o--|| notification_rule : "fk"
+    notification_rule_segment_condition }o--|| notification_rule : "fk"
+    notification_rule_source_condition }o--|| source : "fk"
+    notification_rule_source_condition }o--|| notification_rule : "fk"
+    notification_rule_tag_condition }o--|| tags : "fk"
+    notification_rule_tag_condition }o--|| notification_rule : "fk"
+    notification_rule }o--|| namespace : "fk"
+    notification_rule }o--|| channel : "fk"
+    segment }o--|| segmentation : "fk"
+    filter }o--|| namespace : "fk"
+    window }o--|| namespace : "fk"
+    channel_notification_rule }o--|| notification_rule : "fk"
+    channel_notification_rule }o--|| channel : "fk"
+    channel }o--|| namespace : "fk"
+    source_catalog_asset_description }o--|| source_catalog_asset : "fk"
+    source_catalog_asset_description }o--|| source_catalog_asset : "fk"
+    source_catalog_asset_tag }o--|| tags : "fk"
+    source_catalog_asset_tag }o--|| source_catalog_asset : "fk"
+    source_catalog_asset_tag }o--|| source_catalog_asset : "fk"
+    source_catalog_asset_external_tag }o--|| tags : "fk"
+    source_catalog_asset_external_tag }o--|| source_catalog_asset : "fk"
+    source_catalog_asset_external_tag }o--|| source_catalog_asset : "fk"
+    source_catalog_asset_joined_table }o--|| source_catalog_asset : "fk"
+    source_catalog_asset_joined_table }o--|| source_catalog_asset : "fk"
+    source_catalog_asset }o--|| source : "fk"
+    source_window }o--|| window : "fk"
+    source_window }o--|| source : "fk"
+    source_tag }o--|| tags : "fk"
+    source_tag }o--|| source : "fk"
+    source_filter }o--|| filter : "fk"
+    source_filter }o--|| source : "fk"
+    source_segmentation }o--|| segmentation : "fk"
+    source_segmentation }o--|| source : "fk"
+    source }o--|| credential : "fk"
+    source }o--|| users : "fk"
+    source }o--|| namespace : "fk"
+    segmentation_field }o--|| segmentation : "fk"
+    segmentation }o--|| namespace : "fk"
+    segmentation }o--|| source : "fk"
+    segmentation }o--|| filter : "fk"
+    credential }o--|| namespace : "fk"
+    user_team }o--|| team : "fk"
+    user_team }o--|| users : "fk"
+    user_identity }o--|| users : "fk"

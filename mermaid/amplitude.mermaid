@@ -1,0 +1,81 @@
+erDiagram
+    event {
+        text device_id PK
+        bigint id PK
+        timestamp server_upload_time PK
+        bigint event_type_id FK
+        text _insert_id
+        text ad_id
+        text amplitude_event_type
+        bigint amplitude_id
+        text app
+        text city
+        timestamp client_event_time
+        timestamp client_upload_time
+        text country
+        jsonb data
+        text device_brand
+        text device_carrier
+        text device_family
+        text device_manufacturer
+        text device_model
+        text device_type
+        text dma
+        jsonb event_properties
+        timestamp event_time
+        text event_type
+        jsonb group_properties
+        jsonb groups
+        text idfa
+        text ip_address
+        boolean is_attribution_event
+        text language
+        text library
+        text location_lat
+        text location_lng
+        text os_name
+        text os_version
+        boolean paying
+        text platform
+        timestamp processed_time
+        text project_name
+        text region
+        integer sample_rate
+        integer schema
+        timestamp server_received_time
+        bigint session_id
+        text start_version
+        timestamp user_creation_time
+        text user_id
+        jsonb user_properties
+        text uuid
+        text version_name
+    }
+    event_type {
+        bigint id PK
+        text project_name PK
+        boolean autohidden
+        boolean deleted
+        text display
+        boolean flow_hidden
+        boolean hidden
+        boolean in_waitroom
+        text name
+        boolean non_active
+        boolean timeline_hidden
+        integer totals
+        bigint totals_delta
+        text value
+        text waitroom_approved
+    }
+    event_amplitude_attribution_id {
+        text amplitude_attribution_id PK
+        text device_id PK
+        bigint event_id PK
+        timestamp server_upload_time PK
+        timestamp client_event_time
+    }
+    event }o--|| event_type : "fk"
+    event_amplitude_attribution_id }o--|| event : "fk"
+    event_amplitude_attribution_id }o--|| event : "fk"
+    event_amplitude_attribution_id }o--|| event : "fk"

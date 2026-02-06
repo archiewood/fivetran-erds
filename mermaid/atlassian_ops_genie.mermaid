@@ -1,0 +1,636 @@
+erDiagram
+    team_log {
+        text _fivetran_id PK
+        text team_id FK
+        text created_date
+        text log
+        text owner
+    }
+    incident_responder {
+        text id PK
+        text incident_id PK
+        text type
+    }
+    incident_tag {
+        text index PK
+        text incident_id PK
+        text tags
+    }
+    incident_service {
+        text index PK
+        text incident_id PK
+        text service_id FK
+    }
+    incident {
+        text id PK
+        text created_at
+        text impact_detect_date
+        text impact_end_date
+        text impact_start_date
+        text message
+        text priority
+        text region
+        text server_name
+        text status
+        text tiny_id
+        text updated_at
+    }
+    alert_tag {
+        text index PK
+        text alert_id PK
+        text tag_name
+    }
+    alert_responder {
+        text index PK
+        text alert_id PK
+        text type
+        text type_id
+    }
+    alert_action {
+        text index PK
+        text alert_id PK
+        text action
+    }
+    alert {
+        text id PK
+        text acknowledged
+        text alias
+        text count
+        text created_at
+        text description
+        text details_region
+        text details_server_name
+        text entity
+        text integration_id
+        text integration_name
+        text integration_type
+        text is_seen
+        text last_occurred_at
+        text message
+        text owner
+        text priority
+        text report_ack_time
+        text report_acknowledged_by
+        text report_close_time
+        text report_closed_by
+        text snoozed
+        text snoozed_until
+        text source
+        text status
+        text tiny_id
+        timestamp updated_at
+    }
+    incident_template {
+        text incident_id PK
+        text description
+        jsonb details
+        jsonb impacted_service
+        text message
+        text name
+        text priority
+        text stake_holder_description
+        text stake_holder_enabled
+        text stake_holder_message
+        jsonb tags
+    }
+    forwarding_rule {
+        text id PK
+        text from_user_id FK
+        text to_user_id FK
+        text alias
+        text end_date
+        text start_date
+    }
+    account {
+        text _fivetran_id PK
+        text is_yearly
+        text max_user_count
+        text name
+        text plan_name
+        text user_count
+    }
+    service {
+        text id PK
+        text team_id FK
+        text description
+        text is_external
+        text name
+        jsonb tags
+    }
+    schedule_participant {
+        text _fivetran_id PK
+        text id FK
+        text schedule_id FK
+        text schedule_rotation_id FK
+        text type
+    }
+    schedule_rotation {
+        text id PK
+        text schedule_id PK
+        text end_date
+        text length
+        text name
+        text start_date
+        text type
+    }
+    schedule {
+        text id PK
+        text team_id FK
+        text description
+        text enabled
+        text name
+        text timezone
+    }
+    incident_request {
+        text incident_id PK
+        text integration_id FK
+        text action
+        text is_success
+        text processed_at
+        text status
+        text success
+    }
+    maintenance_rule {
+        text id PK
+        text maintenance_id PK
+        text state
+        text type
+    }
+    maintenance {
+        text id PK
+        text description
+        text end_date
+        text start_date
+        text status
+        text type
+    }
+    policy_condition {
+        text field_ PK
+        text policy_id PK
+        text expected_value
+        text not_
+        text operation
+        text orders
+    }
+    policy {
+        text id PK
+        text delay_action_duration
+        text delay_action_option
+        text delay_action_until_hour
+        text delay_action_until_minute
+        text enabled
+        text filter_type
+        text name
+        text policy_description
+        text suppress
+        text time_restriction_end_hour
+        text time_restriction_end_min
+        text time_restriction_start_hour
+        text time_restriction_start_min
+        text time_restriction_type
+        text type
+    }
+    service_condition {
+        text index PK
+        text service_id PK
+        text service_incident_id PK
+        text expected_value
+        text field
+        text not_
+        text operation
+    }
+    service_incident_tag {
+        text index PK
+        text service_id PK
+        text service_incident_id PK
+        text tags
+    }
+    service_incident {
+        text id PK
+        text service_id PK
+        text condition_match_type
+        text incident_description
+        jsonb incident_details
+        text incident_message
+        text incident_priority
+        text orders
+        text stakeholder_description
+        text stakeholder_enabled
+        text stakeholder_message
+    }
+    incident_note {
+        text _fivetran_id PK
+        text incident_id FK
+        text created_at
+        text note
+        text offsets
+        text owner
+    }
+    user_tag {
+        text index PK
+        text user_id PK
+        text tags
+    }
+    users {
+        text id PK
+        text role_id FK
+        text blocked
+        text city
+        text country
+        text created_at
+        text full_name
+        text line
+        text locale
+        text skype_username
+        text state
+        text time_zone
+        text username
+        text verified
+        text zip_code
+    }
+    incident_timeline {
+        text id PK
+        text incident_id FK
+        text actor_name
+        text actor_type
+        text description_name
+        text description_type
+        text edit_time
+        text event_time
+        text groups
+        text hidden
+        text last_editname
+        text last_edittype
+        text type
+    }
+    heartbeat {
+        text _fivetran_id PK
+        text team_id FK
+        text alert_message
+        text alert_priority
+        jsonb alert_tag
+        text description
+        text enabled
+        text interval
+        text interval_unit
+        text name
+    }
+    role_grant_right {
+        text index PK
+        text role_id PK
+        text granted_right
+    }
+    role_disallow_right {
+        text index PK
+        text role_id PK
+        text disallow_right
+    }
+    role {
+        text id PK
+        text extended_role
+        text name
+    }
+    routing_condition {
+        text index PK
+        text team_routing_rule_id PK
+        text expected_value
+        text field
+        text key
+        text not_
+        text operation
+        text order_
+    }
+    routing_restriction {
+        text index PK
+        text team_routing_rule_id PK
+        text end_day
+        text end_hour
+        text end_min
+        text start_day
+        text start_hour
+        text start_min
+    }
+    team_routing_rule {
+        text id PK
+        text notify_id FK
+        text team_id FK
+        text criteria_type
+        text is_default
+        text name
+        text notify_name
+        text notify_type
+        text order_
+        text time_restriction_type
+        text timezone
+    }
+    user_notification_rule_time {
+        text index PK
+        text user_id PK
+        text user_notification_rule_id PK
+        text notification_time
+    }
+    user_notification_rule_step {
+        text id PK
+        text user_id PK
+        text user_notification_rule_id PK
+        text contact_method
+        text contact_to
+        text enabled
+        text parent_name
+        text send_time
+        text send_time_unit
+    }
+    user_notification_rule_schedule {
+        text id PK
+        text user_id PK
+        text user_notification_rule_id PK
+        text name
+        text type
+    }
+    user_notification_rule {
+        text id PK
+        text user_id PK
+        text action_type
+        text criteria_type
+        text enabled
+        text name
+        text orders
+        text repeat_enabled
+        text restriction_end_hour
+        text restriction_end_min
+        text restriction_start_hour
+        text restriction_start_min
+        text restriction_type
+    }
+    escalation_rule {
+        text index PK
+        text escalation_id PK
+        text condition
+        text delay_time
+        text delay_time_unit
+        text notify_type
+        text recipient_id
+        text recipient_name
+        text recipient_type
+    }
+    escalation {
+        text id PK
+        text team_id FK
+        text close_alert_after_all
+        text count
+        text description
+        text name
+        text reset_recipient_states
+        text wait_interval
+    }
+    incident_log {
+        text _fivetran_id PK
+        text incident_id FK
+        text created_at
+        text log
+        text offsets
+        text owner
+        text type
+    }
+    user_contact {
+        text id PK
+        text user_id PK
+        text apply_order
+        text contact_method
+        text disabled_reason
+        text enabled
+        text to_
+    }
+    integration_read_only {
+        text index PK
+        text integration_id PK
+        text read_only
+    }
+    integration {
+        text id PK
+        text advanced
+        jsonb alert_action
+        jsonb alert_filter
+        text allow_configuration_access
+        text allow_delete_access
+        text allow_read_access
+        text allow_write_access
+        text custom_priority
+        text enabled
+        jsonb extra_property
+        text ignore_extra_property_from_payload
+        text ignore_recipient_from_payload
+        text ignore_responder_from_payload
+        text ignore_tag_from_payload
+        text ignore_team_from_payload
+        text is_advanced
+        text is_default_integration
+        text is_global
+        text name
+        text priority
+        jsonb recipient
+        jsonb responder
+        text send_alert_action
+        text suppress_notification
+        jsonb tags
+        text type
+    }
+    integration_action_info_acknowledge_condition {
+        text index PK
+        text integration_action_info_acknowledge_index PK
+        text integration_action_info_acknowledge_type PK
+        text integration_id PK
+        text expected_value
+        text field
+        text is_not
+        text operation
+    }
+    integration_action_info_acknowledge {
+        text index PK
+        text type PK
+        text integration_id PK
+        text alias
+        text condition_match_type
+        text id
+        text name
+        text note
+        text orders
+        text users
+    }
+    integration_action_info_addnote_condition {
+        text index PK
+        text integration_action_info_addnote_index PK
+        text integration_id PK
+        text type PK
+        text expected_value
+        text field
+        text is_not
+        text operation
+    }
+    integration_action_info_addnote {
+        text index PK
+        text type PK
+        text integration_id PK
+        text alias
+        text condition_match_type
+        text id
+        text name
+        text note
+        text orders
+        text users
+    }
+    integration_action_info_close_condition {
+        text index PK
+        text integration_action_info_close_index PK
+        text integration_id PK
+        text type PK
+        text expected_value
+        text field
+        text is_not
+        text operation
+    }
+    integration_action_info_close {
+        text index PK
+        text type PK
+        text integration_id PK
+        text alias
+        text condition_match_type
+        text id
+        text name
+        text note
+        text orders
+        text users
+    }
+    integration_action_create_condition {
+        text index PK
+        text integration_action_create_index PK
+        text integration_id PK
+        text type PK
+        text expected_value
+        text field
+        text is_not
+        text operation
+    }
+    integration_action_create {
+        text index PK
+        text type PK
+        text integration_id PK
+        jsonb alert_action
+        text alias
+        text append_attachment
+        text condition_match_type
+        text custom_priority
+        text description
+        text entity
+        jsonb extra_property
+        text id
+        text ignore_alert_action_payload
+        text ignore_extra_property_payload
+        text ignore_recipient_payload
+        text ignore_responder_payload
+        text ignore_tag_payload
+        text ignore_team_payload
+        text message
+        text name
+        text note
+        text orders
+        text priority
+        jsonb recipient
+        jsonb responder
+        text source
+        jsonb tags
+        text users
+    }
+    integration_action {
+        text integration_id PK
+        jsonb ignored
+        text version
+    }
+    team_role {
+        text role_id PK
+        text team_id PK
+        text name
+    }
+    team_member {
+        text team_id PK
+        text user_id PK
+        text role
+    }
+    team {
+        text id PK
+        text description
+        text name
+    }
+    team_log }o--|| team : "fk"
+    incident_responder }o--|| team : "fk"
+    incident_responder }o--|| incident : "fk"
+    incident_tag }o--|| incident : "fk"
+    incident_service }o--|| service : "fk"
+    incident_service }o--|| incident : "fk"
+    alert_tag }o--|| alert : "fk"
+    alert_responder }o--|| alert : "fk"
+    alert_action }o--|| alert : "fk"
+    incident_template }o--|| incident : "fk"
+    forwarding_rule }o--|| users : "fk"
+    forwarding_rule }o--|| users : "fk"
+    service }o--|| team : "fk"
+    schedule_participant }o--|| team : "fk"
+    schedule_participant }o--|| schedule_rotation : "fk"
+    schedule_participant }o--|| schedule_rotation : "fk"
+    schedule_rotation }o--|| schedule : "fk"
+    schedule }o--|| team : "fk"
+    incident_request }o--|| incident : "fk"
+    incident_request }o--|| integration : "fk"
+    maintenance_rule }o--|| policy : "fk"
+    maintenance_rule }o--|| maintenance : "fk"
+    policy_condition }o--|| policy : "fk"
+    service_condition }o--|| service_incident : "fk"
+    service_condition }o--|| service_incident : "fk"
+    service_incident_tag }o--|| service_incident : "fk"
+    service_incident_tag }o--|| service_incident : "fk"
+    service_incident }o--|| service : "fk"
+    incident_note }o--|| incident : "fk"
+    user_tag }o--|| users : "fk"
+    users }o--|| role : "fk"
+    incident_timeline }o--|| incident : "fk"
+    heartbeat }o--|| team : "fk"
+    role_grant_right }o--|| role : "fk"
+    role_disallow_right }o--|| role : "fk"
+    routing_condition }o--|| team_routing_rule : "fk"
+    routing_restriction }o--|| team_routing_rule : "fk"
+    team_routing_rule }o--|| schedule : "fk"
+    team_routing_rule }o--|| team : "fk"
+    user_notification_rule_time }o--|| user_notification_rule : "fk"
+    user_notification_rule_time }o--|| user_notification_rule : "fk"
+    user_notification_rule_step }o--|| user_notification_rule : "fk"
+    user_notification_rule_step }o--|| user_notification_rule : "fk"
+    user_notification_rule_schedule }o--|| user_notification_rule : "fk"
+    user_notification_rule_schedule }o--|| user_notification_rule : "fk"
+    user_notification_rule }o--|| users : "fk"
+    escalation_rule }o--|| escalation : "fk"
+    escalation }o--|| team : "fk"
+    incident_log }o--|| incident : "fk"
+    user_contact }o--|| users : "fk"
+    user_contact }o--|| users : "fk"
+    integration_read_only }o--|| integration : "fk"
+    integration_action_info_acknowledge_condition }o--|| integration_action_info_acknowledge : "fk"
+    integration_action_info_acknowledge_condition }o--|| integration_action_info_acknowledge : "fk"
+    integration_action_info_acknowledge_condition }o--|| integration_action_info_acknowledge : "fk"
+    integration_action_info_acknowledge }o--|| integration_action : "fk"
+    integration_action_info_addnote_condition }o--|| integration_action_info_addnote : "fk"
+    integration_action_info_addnote_condition }o--|| integration_action_info_addnote : "fk"
+    integration_action_info_addnote_condition }o--|| integration_action_info_addnote : "fk"
+    integration_action_info_addnote }o--|| integration_action : "fk"
+    integration_action_info_close_condition }o--|| integration_action_info_close : "fk"
+    integration_action_info_close_condition }o--|| integration_action_info_close : "fk"
+    integration_action_info_close_condition }o--|| integration_action_info_close : "fk"
+    integration_action_info_close }o--|| integration_action : "fk"
+    integration_action_create_condition }o--|| integration_action_create : "fk"
+    integration_action_create_condition }o--|| integration_action_create : "fk"
+    integration_action_create_condition }o--|| integration_action_create : "fk"
+    integration_action_create }o--|| integration_action : "fk"
+    integration_action }o--|| integration : "fk"
+    team_role }o--|| role : "fk"
+    team_role }o--|| team : "fk"
+    team_member }o--|| users : "fk"
+    team_member }o--|| team : "fk"

@@ -1,0 +1,993 @@
+erDiagram
+    organization_detail_email_domain {
+        text _fivetran_id PK
+        text organization_detail_id FK
+        text domain
+        text verified
+    }
+    organization_detail {
+        text id PK
+        text admin_oversight
+        text all_tags_visible
+        text ask_for_tag
+        text can_collaborator_sign
+        text contact_info_city
+        text contact_info_country
+        text contact_info_email
+        text contact_info_function
+        text contact_info_mobile
+        text contact_info_mobile_code
+        text contact_info_name
+        text contact_info_phone
+        text contact_info_phone_code
+        text contact_info_state
+        text contact_info_street
+        text contact_info_zip_code
+        text created_at
+        text deleted
+        text description
+        text name
+        text parent_id
+        text password_strategy
+        text region
+        text send_invitation_with_document
+        text signing_authentication_colleague
+        text signing_authentication_third_party
+        text subscription
+        jsonb subsidiary
+        jsonb whilelisted_ip
+    }
+    signature {
+        text id PK
+        text agreement_uuid PK
+        text reservation_organization_id FK
+        text reservation_user_id FK
+        text reservation_email
+        text reservation_group_deleted
+        text reservation_group_id
+        text reservation_group_name
+        text reservation_type
+        text signature_date
+        text signature_info_email
+        text signature_info_font
+        text signature_info_image
+        text signature_info_job
+        text signature_info_name
+        text signature_info_organization
+        text signature_info_signature
+        text signature_type
+    }
+    event {
+        text id PK
+        text organization_id FK
+        text actor_email
+        text actor_has_avatar
+        text actor_id
+        text actor_job
+        text actor_name
+        text actor_organization
+        text actor_type
+        text created_at
+        text event_id
+        text event_name
+        text event_status
+        text event_type
+        text type
+    }
+    organization_member_group {
+        text _fivetran_id PK
+        text id PK
+        text organization_id FK
+    }
+    organization_member {
+        text _fivetran_id PK
+        text organization_id FK
+        text user_id FK
+        text created_at
+        text invitation
+        text invitation_created_at
+        text invitation_email
+        text invitation_id
+        text invitation_uuid
+        text job
+        text type
+    }
+    folder_user {
+        text folder_id PK
+        text id PK
+        text job
+        text pictures_normal
+        text pictures_small
+        text pictures_special
+    }
+    folder_team_user {
+        text folder_id PK
+        text folder_team_id PK
+        text id PK
+    }
+    folder_team_invitation {
+        text folder_id PK
+        text folder_team_id PK
+        text id PK
+    }
+    folder_team {
+        text id PK
+        text folder_id FK
+        text organization_id FK
+        text description
+        text name
+    }
+    folder_invitation {
+        text id PK
+        text folder_id PK
+        text created_at
+        text email
+        text uuid
+    }
+    folder_children {
+        text id PK
+        text parent_id FK
+    }
+    folder {
+        text id PK
+        text organization_id FK
+        text parent_id FK
+        text access_all_user_organization_access
+        text document_count
+        text name
+    }
+    organization_group_user {
+        text id PK
+        text organization_group_id PK
+    }
+    organization_group_invitation {
+        text id PK
+        text organization_group_id PK
+        text created_at
+        text email
+        text uuid
+    }
+    organization_group {
+        text id PK
+        text organization_id FK
+        text name
+    }
+    organization_workflow_rule_validation {
+        text id PK
+        text organization_workflow_id PK
+        text organization_workflow_rule_id PK
+        text user_id FK
+        text user_organization_id FK
+        text groups
+        text result
+        text status
+        text type
+        text user_job
+    }
+    organization_workflow_rule {
+        text id PK
+        text organization_workflow_id PK
+        text active
+        jsonb condition
+        text result
+        text status
+        text type
+    }
+    organization_workflow {
+        text id PK
+        text organization_id FK
+        text block_thirdparty_signature
+        text deletable
+        text description
+        text title
+    }
+    agreement_comment_reply {
+        text _fivetran_id PK
+        text agreement_comment_uuid FK
+        text created_at
+        text created_by_haspicture
+        text created_by_id
+        text created_by_name
+        text display_version
+        text text
+        text version
+    }
+    agreement_comment {
+        text uuid PK
+        text agreement_uuid FK
+        text organization_id FK
+        text commented_text
+        text created_at
+        text created_by_has_picture
+        text created_by_id
+        text created_by_name
+        text display_version
+        text resolved
+        text text
+        text version
+        text visibility
+        text word_dataauthor
+        text word_datadate
+    }
+    agreement_member {
+        text _fivetran_id PK
+        text agreement_uuid FK
+        text organization_id FK
+        text user_id FK
+        text last_access_at
+        text permission
+        text relation
+        text status
+        text user_sign_status
+    }
+    user_authority {
+        text index PK
+        text users_id PK
+        text authority
+    }
+    users {
+        text id PK
+        text current_organization_id FK
+        text contact_cellphone
+        text contact_cellphone_code
+        text contact_workphone
+        text contact_workphone_code
+        text created_at
+        text email
+        text full_name
+        text has_password
+        text has_picture
+        text name
+        text timezone
+    }
+    tag_user {
+        text id PK
+        text tags_id PK
+        text job
+        text pictures_normal
+        text pictures_small
+        text pictures_special
+    }
+    tag_user_group_member {
+        text id PK
+        text tag_user_group_id PK
+        text tags_id PK
+    }
+    tag_uer_group_invitation {
+        text id PK
+        text tag_user_group_id PK
+        text tags_id PK
+    }
+    tag_user_group {
+        text id PK
+        text tags_id PK
+        text description
+        text name
+    }
+    tag_invitation {
+        text id PK
+        text tags_id PK
+        text created_at
+        text email
+        text uuid
+    }
+    tags {
+        text id PK
+        text organization_id FK
+        text access_rule
+        text access_rule_all_user_organization_access
+        text access_rule_id
+        text count_contract_count
+        text count_draft_count
+        text count_id
+        text count_negotiation_count
+        text count_template_count
+        text counts
+        text in_access_rule
+        text name
+    }
+    organization_branding {
+        text _fivetran_id PK
+        text organization_id FK
+        text custom_agreement_view_enabled
+        text custom_email_content_enabled
+        text custom_email_content_organization_name
+        text custom_email_content_url
+        text custom_email_sender_email
+        text custom_email_sender_enabled
+        text custom_email_sender_name
+    }
+    agreement_version_pdf_field {
+        text _fivetran_id PK
+        text agreement_version_id FK
+        text name
+        text placeholder
+        text type
+        text value
+    }
+    agreement_version_signature_field {
+        text _fivetran_id PK
+        text agreement_version_id FK
+        text item_id
+        text name
+        text page
+        text x
+        text y
+    }
+    agreement_version {
+        text id PK
+        text agreement_uuid FK
+        text organization_id FK
+        text user_id FK
+        text comment
+        text creation_creator_active
+        text creation_creator_id
+        text creation_creator_job
+        text creation_date
+        text date
+        text display_version
+        text fillable_field
+        text pdf
+        text type
+        text version
+        text visibility
+    }
+    agreement_summary_signed_with_label {
+        text index PK
+        text agreement_summary_id PK
+        text signed_with_label
+    }
+    agreement_summary_clause {
+        text id PK
+        text agreement_summary_id PK
+        text deadline
+        text event_duration
+        text financial_data_amount_unit
+        text financial_data_amount_value
+        text financial_data_before_tax
+        text financial_data_credit
+        text financial_data_percent
+        text financial_data_percent_from
+        text financial_data_percent_value
+        text length_unit
+        text length_value
+        text period_custom_end
+        text period_custom_start
+        text period_type
+        text period_unit
+        text period_value
+        text title
+    }
+    agreement_summary_link_permission {
+        text index PK
+        text agreement_summary_id PK
+        text agreement_summary_link_id PK
+        text link_permission
+    }
+    agreement_summary_link {
+        text id PK
+        text agreement_summary_id PK
+        text owner_has_access
+        text owner_id
+        text owner_status
+        text owner_title
+        text owner_uid
+        text target_has_access
+        text target_id
+        text target_status
+        text target_title
+        text target_uid
+        text type
+    }
+    agreement_summary_end_clause {
+        text id PK
+        text agreement_summary_id PK
+        text agreement_uid FK
+        text after_renewal_auto_generate
+        text after_renewal_custom_start_date
+        text after_renewal_deadline
+        text after_renewal_duration_unit
+        text after_renewal_duration_value
+        text after_renewal_event
+        text auto_generated
+        text contract_id
+        text contract_renewal_type
+        text created_at
+        text created_by_full_name
+        text created_by_id
+        text createdby_email
+        text createdby_haspicture
+        text custom_start_date
+        text deadline
+        text early_termination_notice_period_unit
+        text early_termination_notice_period_value
+        text event_duration
+        text length_unit
+        text length_value
+        text modified_at
+        text modified_by_email
+        text modified_by_fullname
+        text modified_by_haspicture
+        text modified_by_id
+        text modified_by_name
+        text next_end_clause_id
+        text notice_period_unit
+        text notice_period_value
+        text period_custom_end
+        text period_custom_start
+        text period_type
+        text period_unit
+        text previous_end_clause_id
+        text renewal_count_remaining
+        text start_date
+        text type
+    }
+    agreement_summary {
+        text id PK
+        text agreement_uid FK
+        text organization_id FK
+        text description
+        text lifecycle_calculated_end
+        text lifecycle_effect_date
+        text lifecycle_effect_type
+        text lifecycle_signature_date
+        text lifecycle_signature_date_unknown
+        text lifecycle_terminate
+        text lifecycle_termination_at_end
+        text lifecycle_termination_date
+        text lifecycle_termination_notified_at
+        text lifecycle_termination_notified_by_email
+        text lifecycle_termination_notified_by_fullname
+        text lifecycle_termination_notified_by_id
+    }
+    organization_subsidary {
+        text id PK
+        text organization_id PK
+        text name
+        text subscription
+    }
+    organization {
+        text id PK
+        text created_at
+        text featuresaccess_rule
+        text featuresadmin_oversight
+        text featuresamendment
+        text featuresanalytics
+        text featuresapi
+        text featuresaudit_trail
+        text featuresauto_template
+        text featuresbulk_upload
+        text featuresclause_library
+        text featurescomplex_password
+        text featurescustom_branding
+        text featurescustom_role
+        text featuresdata_localization
+        text featuresdedicated_encryption_key
+        text featuresdrafting
+        text featuresexecution
+        text featuresinternal_workflow
+        text featuresorganization_field_item
+        text featuresreport
+        text featuressend_invitation_with_document
+        text featuressignature
+        text featuressubsidiaries
+        text featuresuser_group
+        text featuresversioning
+        text featureswhitelisted_ip
+        text featuresworkflow_center
+        text is_parent
+        text is_subsidiary
+        text name
+        text parent_id
+        text rightsaccess_all_agreement
+        text rightscontract_access
+        text rightscontract_attachment
+        text rightscontract_create
+        text rightscontract_create_bulk
+        text rightscontract_delete
+        text rightscontract_update
+        text rightsdraft_comment_add
+        text rightsdraft_comment_reply
+        text rightsdraft_comment_resolve
+        text rightsdraft_organization_workflow_use
+        text rightsdraft_workflow_create
+        text rightsdraft_workflow_delete
+        text rightsdraft_workflow_update
+        text rightsfill_field
+        text rightsfolder_create
+        text rightsfolder_delete
+        text rightsfolder_list
+        text rightsfolder_update
+        text rightsgroup_create
+        text rightsgroup_delete
+        text rightsgroup_update
+        text rightsgroup_update_user
+        text rightsnegotiation_add_comment
+        text rightsnegotiation_attachment
+        text rightsnegotiation_break
+        text rightsnegotiation_comment_add
+        text rightsnegotiation_comment_reply
+        text rightsnegotiation_comment_resolve
+        text rightsnegotiation_create
+        text rightsnegotiation_invite
+        text rightsnegotiation_organization_workflow_use
+        text rightsnegotiation_sign
+        text rightsnegotiation_update
+        text rightsnegotiation_update_metadata
+        text rightsnegotiation_workflow_create
+        text rightsnegotiation_workflow_delete
+        text rightsnegotiation_workflow_update
+        text rightsorg_access_all_contract
+        text rightsorg_access_all_negotiation
+        text rightsorg_access_all_template
+        text rightsorg_access_rule_modify
+        text rightsorg_access_rule_view
+        text rightsorg_add_user
+        text rightsorg_billing
+        text rightsorg_create
+        text rightsorg_invite_user
+        text rightsorg_remove_user
+        text rightsorg_update
+        text rightsorganization_clause_create
+        text rightsorganization_clause_delete
+        text rightsorganization_clause_list
+        text rightsorganization_clause_update
+        text rightsorganization_field_item_create
+        text rightsorganization_field_item_delete
+        text rightsorganization_field_item_get
+        text rightsorganization_field_item_update
+        text rightsorganization_workflow_create
+        text rightsorganization_workflow_delete
+        text rightsorganization_workflow_list
+        text rightsorganization_workflow_update
+        text rightsrole_create
+        text rightsrole_delete
+        text rightsrole_update
+        text rightsrole_update_user
+        text rightstag_create
+        text rightstag_delete
+        text rightstag_list_all
+        text rightstag_update
+        text rightstemplate_attachment
+        text rightstemplate_comment_add
+        text rightstemplate_comment_reply
+        text rightstemplate_comment_resolve
+        text rightstemplate_create
+        text rightstemplate_delete
+        text rightstemplate_organization_workflow_use
+        text rightstemplate_update
+        text rightstemplate_update_tag
+        text rightstemplate_update_user
+        text rightstemplate_use
+        text rightstemplate_workflow_create
+        text rightstemplate_workflow_delete
+        text rightstemplate_workflow_update
+        text sign_double_authcoworker
+        text sign_double_auththird_party
+        text subscription
+        text user_features_exports_advanced
+        text user_features_exports_simple
+        text user_features_integrations_box
+        text user_features_integrations_docusign
+        text user_features_integrations_dropbox
+        text user_features_integrations_facebook
+        text user_features_integrations_gdrive
+        text user_features_integrations_google
+        text user_features_integrations_linkedin
+        text user_features_integrations_salesforce
+        text user_features_integrations_saml
+        text user_features_integrations_webhook
+        text user_role_description
+        text user_role_id
+        text user_role_name
+        text user_role_type
+    }
+    agreement_summary_field {
+        text id PK
+        text agreement_uuid PK
+        text organization_id PK
+        text name
+        text value
+    }
+    agreement_party {
+        text index PK
+        text agreement_uuid PK
+        text party
+    }
+    agreement_tag {
+        text name PK
+        text agreement_uuid PK
+    }
+    agreement_field {
+        text _fivetran_id PK
+        text agreement_uuid FK
+        text organization_field_item_uuid
+        jsonb value
+    }
+    agreement {
+        text uuid PK
+        text organization_id FK
+        text access_from_role
+        text access_type
+        text created_at
+        text created_by
+        text created_by_is_active
+        text created_by_name
+        text description
+        text document_type
+        text end_date
+        text end_date_unknown
+        text has_signed
+        text id
+        text is_inboxed
+        text modified_at
+        text must_validate
+        text signature_block_enabled
+        text signature_count
+        text signature_date
+        text signature_date_unknown
+        text signature_required
+        text status
+        text title
+        text unread
+        text validated
+        text validation_count
+        text validation_required
+    }
+    agreement_version_last_field_value {
+        text index PK
+        text agreement_uuid PK
+        text agreement_version_last_field_uuid PK
+        text value
+    }
+    agreement_version_last_field_option {
+        text key PK
+        text agreement_uuid PK
+        text agreement_version_last_field_uuid PK
+        text clause_id
+        text clause_version
+        text description
+        text title
+        text value
+    }
+    agreement_version_last_field {
+        text uuid PK
+        text agreement_uuid PK
+        text reservation_organization_id FK
+        text reservation_user_id FK
+        text locked
+        text metadata
+        text organization_field_item_uuid
+        text placeholder
+        text required
+        text reservation_email
+        text reservation_group
+        text reservation_group_id
+        text reservation_signature_slot
+        text reservation_slot_id
+        text reservation_type
+        text source_type
+        text type
+    }
+    subscription_seat {
+        text _fivetran_id PK
+        text subscription_id FK
+        text invited
+        text subscribed
+        text type
+        text used
+    }
+    subscription {
+        text id PK
+        text organization_id FK
+        text billing_type
+        text customer_id
+        text feature_level
+        text status
+        text subscription_name
+        text type
+    }
+    report_filter_status {
+        text index PK
+        text organization_id PK
+        text report_id PK
+        text status
+    }
+    report_filter_created_by {
+        text index PK
+        text organization_id PK
+        text report_id PK
+        text created_by FK
+    }
+    report {
+        text id PK
+        text organization_id PK
+        text description
+        text filter_created_at_is_after
+        text filter_created_at_is_before
+        text filter_created_at_is_between_from
+        text filter_created_at_is_between_to
+        text filter_created_at_is_blank
+        text filter_created_at_is_more_than
+        text filter_created_at_is_within_the_last
+        text filter_created_at_is_within_the_next
+        text filter_end_at_is_after
+        text filter_end_at_is_before
+        text filter_end_at_is_between_from
+        text filter_end_at_is_between_to
+        text filter_end_at_is_blank
+        text filter_end_at_is_more_than
+        text filter_end_at_is_within_the_last
+        text filter_end_at_is_within_the_next
+        text filter_modified_at_is_after
+        text filter_modified_at_is_before
+        text filter_modified_at_is_between_from
+        text filter_modified_at_is_between_to
+        text filter_modified_at_is_blank
+        text filter_modified_at_is_more_than
+        text filter_modified_at_is_within_the_last
+        text filter_modified_at_is_within_the_next
+        text filter_signature_date_is_after
+        text filter_signature_date_is_before
+        text filter_signature_date_is_between_from
+        text filter_signature_date_is_between_to
+        text filter_signature_date_is_blank
+        text filter_signature_date_is_more_than
+        text filter_signature_date_is_within_the_last
+        text filter_signature_date_is_within_the_next
+        text filters_inboxed
+        text filters_no_tag
+        text filters_search
+        jsonb filters_tag_name
+        text last_updated_at
+        text name
+    }
+    agreement_attachment {
+        text id PK
+        text agreement_uuid FK
+        text organization_id FK
+        text created_at
+        text created_by_email
+        text created_by_has_mfa
+        text created_by_has_picture
+        text created_by_id
+        text created_by_name
+        text description
+        text file_name
+        text name
+        text url
+    }
+    agreement_track_change_amendment {
+        text _fivetran_id PK
+        text agreement_track_change_id FK
+        text created_at
+        text created_by_has_picture
+        text created_by_id
+        text created_by_name
+        text display_version
+        text text
+    }
+    agreement_track_change {
+        text id PK
+        text agreement_uuid FK
+        text organization_id FK
+        text amendment
+        text change_id
+        text created_at
+        text created_by_has_picture
+        text created_by_id
+        text created_by_name
+        text display_version
+        text modified_at
+        text modified_by_has_picture
+        text modified_by_id
+        text modified_by_name
+        text status
+        text text
+        text type
+        text version
+        text word_dataauthor
+        text word_datadate
+    }
+    agreement_approval_validation {
+        text id PK
+        text _fivetran_id PK
+        text agreement_approval_rule_id PK
+        text user_id FK
+        text user_organization_id FK
+        text groups
+        text result
+        text status
+        text type
+        text user_job
+    }
+    agreement_approval_rule {
+        text id PK
+        text _fivetran_id PK
+        text active
+        jsonb condition
+        text request_sent
+        text result
+        text status
+        text type
+    }
+    agreement_approval {
+        text _fivetran_id PK
+        text agreement_uuid FK
+        text organization_id FK
+        text auto_notification_enabled
+        text block_thirdparty_signature
+        text organization_workflow_id
+        text organization_workflow_title
+        text status
+    }
+    organization_clause {
+        text id PK
+        text organization_id FK
+        text content
+        text created_at
+        text description
+        text number_of_templates_linked
+        text presigned_url
+        text title
+        text version
+    }
+    agreement_path_user {
+        text agreement_path_id PK
+        text id PK
+        text job
+        text pictures_normal
+        text pictures_small
+        text pictures_special
+    }
+    agreement_path_team_user {
+        text agreement_path_id PK
+        text agreement_path_team_id PK
+        text id PK
+    }
+    agreement_path_team_invitation {
+        text agreement_path_id PK
+        text agreement_path_team_id PK
+        text id PK
+    }
+    agreement_path_team {
+        text id PK
+        text agreement_path_id PK
+        text organization_id FK
+        text description
+        text name
+    }
+    agreement_path_invitation {
+        text id PK
+        text agreement_path_id PK
+        text created_at
+        text email
+        text uuid
+    }
+    agreement_path {
+        text id PK
+        text agreement_uuid FK
+        text organization_id FK
+        text parent_id FK
+        text access_all_user_in_organization_access
+        text document_count
+        text name
+    }
+    organization_detail_email_domain }o--|| organization_detail : "fk"
+    organization_detail }o--|| organization : "fk"
+    signature }o--|| users : "fk"
+    signature }o--|| organization : "fk"
+    signature }o--|| agreement : "fk"
+    event }o--|| organization : "fk"
+    organization_member_group }o--|| organization_group : "fk"
+    organization_member_group }o--|| organization_member : "fk"
+    organization_member_group }o--|| organization_member : "fk"
+    organization_member }o--|| users : "fk"
+    organization_member }o--|| organization : "fk"
+    folder_user }o--|| users : "fk"
+    folder_user }o--|| folder : "fk"
+    folder_team_user }o--|| folder_user : "fk"
+    folder_team_user }o--|| folder : "fk"
+    folder_team_user }o--|| folder_team : "fk"
+    folder_team_invitation }o--|| folder_invitation : "fk"
+    folder_team_invitation }o--|| folder : "fk"
+    folder_team_invitation }o--|| folder_team : "fk"
+    folder_team }o--|| folder : "fk"
+    folder_team }o--|| organization : "fk"
+    folder_invitation }o--|| folder : "fk"
+    folder_children }o--|| folder : "fk"
+    folder }o--|| folder : "fk"
+    folder }o--|| organization : "fk"
+    organization_group_user }o--|| users : "fk"
+    organization_group_user }o--|| organization_group : "fk"
+    organization_group_invitation }o--|| organization_group : "fk"
+    organization_group }o--|| organization : "fk"
+    organization_workflow_rule_validation }o--|| users : "fk"
+    organization_workflow_rule_validation }o--|| organization : "fk"
+    organization_workflow_rule_validation }o--|| organization_workflow : "fk"
+    organization_workflow_rule_validation }o--|| organization_workflow_rule : "fk"
+    organization_workflow_rule }o--|| organization_workflow : "fk"
+    organization_workflow }o--|| organization : "fk"
+    agreement_comment_reply }o--|| agreement_comment : "fk"
+    agreement_comment }o--|| agreement : "fk"
+    agreement_comment }o--|| organization : "fk"
+    agreement_member }o--|| users : "fk"
+    agreement_member }o--|| organization : "fk"
+    agreement_member }o--|| agreement : "fk"
+    user_authority }o--|| users : "fk"
+    users }o--|| organization : "fk"
+    tag_user }o--|| users : "fk"
+    tag_user }o--|| tags : "fk"
+    tag_user_group_member }o--|| tag_user : "fk"
+    tag_user_group_member }o--|| tags : "fk"
+    tag_user_group_member }o--|| tag_user_group : "fk"
+    tag_uer_group_invitation }o--|| tag_invitation : "fk"
+    tag_uer_group_invitation }o--|| tags : "fk"
+    tag_uer_group_invitation }o--|| tag_user_group : "fk"
+    tag_user_group }o--|| tags : "fk"
+    tag_invitation }o--|| tags : "fk"
+    tags }o--|| organization : "fk"
+    organization_branding }o--|| organization : "fk"
+    agreement_version_pdf_field }o--|| agreement_version : "fk"
+    agreement_version_signature_field }o--|| agreement_version : "fk"
+    agreement_version }o--|| users : "fk"
+    agreement_version }o--|| organization : "fk"
+    agreement_version }o--|| agreement : "fk"
+    agreement_summary_signed_with_label }o--|| agreement_summary : "fk"
+    agreement_summary_clause }o--|| agreement_summary : "fk"
+    agreement_summary_link_permission }o--|| agreement_summary : "fk"
+    agreement_summary_link_permission }o--|| agreement_summary_link : "fk"
+    agreement_summary_link }o--|| agreement_summary : "fk"
+    agreement_summary_end_clause }o--|| agreement : "fk"
+    agreement_summary_end_clause }o--|| agreement_summary : "fk"
+    agreement_summary }o--|| agreement : "fk"
+    agreement_summary }o--|| organization : "fk"
+    organization_subsidary }o--|| organization : "fk"
+    agreement_summary_field }o--|| agreement : "fk"
+    agreement_summary_field }o--|| organization : "fk"
+    agreement_party }o--|| agreement : "fk"
+    agreement_tag }o--|| agreement : "fk"
+    agreement_field }o--|| agreement : "fk"
+    agreement }o--|| organization : "fk"
+    agreement_version_last_field_value }o--|| agreement_version_last_field : "fk"
+    agreement_version_last_field_value }o--|| agreement_version_last_field : "fk"
+    agreement_version_last_field_option }o--|| agreement_version_last_field : "fk"
+    agreement_version_last_field_option }o--|| agreement_version_last_field : "fk"
+    agreement_version_last_field }o--|| organization : "fk"
+    agreement_version_last_field }o--|| users : "fk"
+    agreement_version_last_field }o--|| agreement : "fk"
+    subscription_seat }o--|| subscription : "fk"
+    subscription }o--|| organization : "fk"
+    report_filter_status }o--|| report : "fk"
+    report_filter_status }o--|| report : "fk"
+    report_filter_created_by }o--|| users : "fk"
+    report_filter_created_by }o--|| report : "fk"
+    report_filter_created_by }o--|| report : "fk"
+    report }o--|| organization : "fk"
+    agreement_attachment }o--|| agreement : "fk"
+    agreement_attachment }o--|| organization : "fk"
+    agreement_track_change_amendment }o--|| agreement_track_change : "fk"
+    agreement_track_change }o--|| agreement : "fk"
+    agreement_track_change }o--|| organization : "fk"
+    agreement_approval_validation }o--|| users : "fk"
+    agreement_approval_validation }o--|| organization : "fk"
+    agreement_approval_validation }o--|| agreement_approval_rule : "fk"
+    agreement_approval_validation }o--|| agreement_approval_rule : "fk"
+    agreement_approval_rule }o--|| agreement_approval : "fk"
+    agreement_approval }o--|| agreement : "fk"
+    agreement_approval }o--|| organization : "fk"
+    organization_clause }o--|| organization : "fk"
+    agreement_path_user }o--|| users : "fk"
+    agreement_path_user }o--|| agreement_path : "fk"
+    agreement_path_team_user }o--|| agreement_path_user : "fk"
+    agreement_path_team_user }o--|| agreement_path : "fk"
+    agreement_path_team_user }o--|| agreement_path_team : "fk"
+    agreement_path_team_invitation }o--|| agreement_path_invitation : "fk"
+    agreement_path_team_invitation }o--|| agreement_path : "fk"
+    agreement_path_team_invitation }o--|| agreement_path_team : "fk"
+    agreement_path_team }o--|| organization : "fk"
+    agreement_path_team }o--|| agreement_path : "fk"
+    agreement_path_invitation }o--|| agreement_path : "fk"
+    agreement_path }o--|| agreement_path : "fk"
+    agreement_path }o--|| agreement : "fk"
+    agreement_path }o--|| organization : "fk"

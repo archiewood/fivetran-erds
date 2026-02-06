@@ -1,0 +1,214 @@
+erDiagram
+    pre_condition {
+        text id PK
+        text assignee_account_id FK
+        text reporter_account_id FK
+        text assignee_account_type
+        text assignee_active
+        text assignee_display_name
+        text assignee_pixel_16_16
+        text assignee_pixel_24_24
+        text assignee_pixel_32_32
+        text assignee_pixel_48_48
+        text assignee_self
+        text assignee_time_zone
+        text definition
+        text kind
+        text name
+        text reporter_account_type
+        text reporter_active
+        text reporter_display_name
+        text reporter_pixel_16_16
+        text reporter_pixel_24_24
+        text reporter_pixel_32_32
+        text reporter_pixel_48_48
+        text reporter_self
+        text reporter_time_zone
+    }
+    test_run {
+        text id PK
+        text execution_test_id FK
+        text status_name FK
+        text test_id FK
+        text assignee_id
+        text examples
+        text executed_by_id
+        text finished_on
+        text gherkin
+        text last_modified
+        text started_on
+        text status_color
+        text status_description
+    }
+    test_execution {
+        text id PK
+        text assignee_account_id FK
+        text reporter_account_id FK
+        text assignee_account_type
+        text assignee_active
+        text assignee_display_name
+        text assignee_pixel_16_16
+        text assignee_pixel_24_24
+        text assignee_pixel_32_32
+        text assignee_pixel_48_48
+        text assignee_self
+        text assignee_time_zone
+        text reporter_account_type
+        text reporter_active
+        text reporter_display_name
+        text reporter_pixel_16_16
+        text reporter_pixel_24_24
+        text reporter_pixel_32_32
+        text reporter_pixel_48_48
+        text reporter_self
+        text reporter_time_zone
+    }
+    test_set {
+        text id PK
+        text assignee_account_id FK
+        text reporter_account_id FK
+        text assignee_account_type
+        text assignee_active
+        text assignee_display_name
+        text assignee_pixel_16_16
+        text assignee_pixel_24_24
+        text assignee_pixel_32_32
+        text assignee_pixel_48_48
+        text assignee_self
+        text assignee_time_zone
+        text reporter_account_type
+        text reporter_active
+        text reporter_display_name
+        text reporter_pixel_16_16
+        text reporter_pixel_24_24
+        text reporter_pixel_32_32
+        text reporter_pixel_48_48
+        text reporter_self
+        text reporter_time_zone
+    }
+    status_detail {
+        text _fivetran_id PK
+        text color
+        text description
+        text final
+        text name
+        text object
+    }
+    test_plan {
+        text id PK
+        text assignee_account_id FK
+        text reporter_account_id FK
+        text assignee_account_type
+        text assignee_active
+        text assignee_display_name
+        text assignee_pixel_16_16
+        text assignee_pixel_24_24
+        text assignee_pixel_32_32
+        text assignee_pixel_48_48
+        text assignee_self
+        text assignee_time_zone
+        text reporter_account_type
+        text reporter_active
+        text reporter_display_name
+        text reporter_pixel_16_16
+        text reporter_pixel_24_24
+        text reporter_pixel_32_32
+        text reporter_pixel_48_48
+        text reporter_self
+        text reporter_time_zone
+    }
+    test_step_attachment {
+        text id PK
+        text test_step_id PK
+        text filename
+    }
+    test_step {
+        text id PK
+        text test_id FK
+        text action
+        text data
+        text result
+    }
+    test {
+        text id PK
+        text assignee_account_id
+        text assignee_account_type
+        text assignee_active
+        text assignee_display_name
+        text assignee_pixel_16_16
+        text assignee_pixel_24_24
+        text assignee_pixel_32_32
+        text assignee_pixel_48_48
+        text assignee_self
+        text assignee_time_zone
+        text kind
+        text name
+        text reporter_account_id
+        text reporter_account_type
+        text reporter_active
+        text reporter_display_name
+        text reporter_pixel_16_16
+        text reporter_pixel_24_24
+        text reporter_pixel_32_32
+        text reporter_pixel_48_48
+        text reporter_self
+        text reporter_time_zone
+    }
+    expanded_test_attachment {
+        text id PK
+        text expanded_test_step_id PK
+        text filename
+    }
+    expanded_test_step {
+        text id PK
+        text expanded_test_id FK
+        text action
+        text called_test_issue_id
+        text data
+        text parent_test_issue_id
+        text result
+    }
+    expanded_test {
+        text id PK
+        text assignee_account_id FK
+        text reporter_account_id FK
+        text assignee_account_type
+        text assignee_active
+        text assignee_display_name
+        text assignee_pixel_16_16
+        text assignee_pixel_24_24
+        text assignee_pixel_32_32
+        text assignee_pixel_48_48
+        text assignee_self
+        text assignee_time_zone
+        text kind
+        text name
+        text reporter_account_type
+        text reporter_active
+        text reporter_display_name
+        text reporter_pixel_16_16
+        text reporter_pixel_24_24
+        text reporter_pixel_32_32
+        text reporter_pixel_48_48
+        text reporter_self
+        text reporter_time_zone
+        jsonb warnings
+    }
+    pre_condition }o--|| test : "fk"
+    pre_condition }o--|| test : "fk"
+    test_run }o--|| test : "fk"
+    test_run }o--|| expanded_test : "fk"
+    test_run }o--|| status_detail : "fk"
+    test_execution }o--|| test_plan : "fk"
+    test_execution }o--|| test : "fk"
+    test_execution }o--|| test : "fk"
+    test_set }o--|| test : "fk"
+    test_set }o--|| test : "fk"
+    test_plan }o--|| test : "fk"
+    test_plan }o--|| test : "fk"
+    test_step_attachment }o--|| test_step : "fk"
+    test_step }o--|| test : "fk"
+    expanded_test_attachment }o--|| expanded_test_step : "fk"
+    expanded_test_step }o--|| expanded_test : "fk"
+    expanded_test }o--|| test : "fk"
+    expanded_test }o--|| test : "fk"

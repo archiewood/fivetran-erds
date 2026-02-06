@@ -1,0 +1,245 @@
+erDiagram
+    keyword_rank {
+        text index PK
+        text keyword_id PK
+        text line_item_id PK
+        text rank
+    }
+    keyword_negative_broad {
+        text index PK
+        text keyword_id PK
+        text line_item_id PK
+        text negative_broad
+    }
+    keyword_negative_exact {
+        text index PK
+        text keyword_id PK
+        text line_item_id PK
+        text negative_exact
+    }
+    keyword_positive_exact {
+        text index PK
+        text keyword_id PK
+        text line_item_id PK
+        text positive_exact
+    }
+    keyword {
+        text id PK
+        text line_item_id PK
+        text keyword_bid
+        text keyword_created_at
+        text keyword_match_type
+        text keyword_review_state
+        text keyword_updated_at
+        text type
+    }
+    retailer_campaign_eligibility {
+        text index PK
+        text retailer_id PK
+        text campaign_eligibility
+    }
+    retailer {
+        text id PK
+        text account_id FK
+        text attribute_name
+        text type
+    }
+    balance {
+        text id PK
+        text account_id FK
+        text attribute_balance_type
+        text attribute_created_at
+        text attribute_deposited
+        text attribute_end_date
+        text attribute_memo
+        text attribute_name
+        text attribute_po_number
+        text attribute_private_market_billing_type
+        text attribute_remaining
+        text attribute_sales_force_id
+        text attribute_spend_type
+        text attribute_spent
+        text attribute_start_date
+        text attribute_status
+        text attribute_updated_at
+        text type
+    }
+    brand {
+        text id PK
+        text account_id FK
+        text attribute_name
+        text type
+    }
+    account_country {
+        text index PK
+        text account_id PK
+        text country
+    }
+    account {
+        text id PK
+        text attribute_company_name
+        text attribute_currency
+        text attribute_name
+        text attribute_parent_account_label
+        text attribute_subtype
+        text attribute_time_zone
+        text attribute_type
+        text type
+    }
+    target_keyword {
+        text _fivetran_id PK
+        text line_item_id FK
+        text keyword_additional_prop
+        text type
+    }
+    line_item {
+        text id PK
+        text account_id FK
+        text attribute_budget
+        text attribute_budget_remaining
+        text attribute_budget_spent
+        text attribute_campaign_id
+        text attribute_created_at
+        text attribute_end_date
+        text attribute_name
+        text attribute_start_date
+        text attribute_status
+        text attribute_target_retailer_id
+        text attribute_type
+        text attribute_updated_at
+        text type
+    }
+    balance_campaign {
+        text id PK
+        text balance_id FK
+        text type
+    }
+    campaign_promote_brand {
+        text index PK
+        text campaign_id PK
+        text campaign_attribute_account_id FK
+        text promoted_brand_id
+    }
+    campaign_drawable_balance {
+        text index PK
+        text campaign_id PK
+        text campaign_attributes_account_id FK
+        text drawable_balance_id
+    }
+    campaign {
+        text id PK
+        text attribute_account_id FK
+        text attribute_budget
+        text attribute_budget_remaining
+        text attribute_budget_spent
+        text attribute_click_attribution_scope
+        text attribute_click_attribution_window
+        text attribute_company_name
+        text attribute_created_at
+        text attribute_daily_pacing
+        text attribute_end_date
+        text attribute_is_auto_daily_pacing
+        text attribute_monthly_pacing
+        text attribute_name
+        text attribute_start_date
+        text attribute_status
+        text attribute_type
+        text attribute_updated_at
+        text attribute_view_attribution_scope
+        text attribute_view_attribution_window
+        text type
+    }
+    report_line_item {
+        text _fivetran_id PK
+        text line_item_id PK
+        text id FK
+        text adv_product_category
+        text adv_product_id
+        text adv_product_name
+        text assisted_sale
+        text assisted_unit
+        text attributed_order
+        text attributed_sale
+        text attributed_unit
+        text brand_id
+        text brand_name
+        text campaign_name
+        text campaign_type_name
+        text clicks
+        text cpc
+        text cpm
+        text cpo
+        text ctr
+        text date
+        text environment
+        text frequency
+        text hour
+        text impressions
+        text keyword
+        text page_type_name
+        text retailer_id
+        text retailer_name
+        text roas
+        text sales_channel
+        text spend
+        text unique_visitor
+    }
+    report_campaign {
+        text _fivetran_id PK
+        text id FK
+        text adv_product_category
+        text adv_product_id
+        text adv_product_name
+        text assisted_sale
+        text assisted_unit
+        text attributed_order
+        text attributed_sale
+        text attributed_unit
+        text brand_id
+        text brand_name
+        text campaign_name
+        text campaign_type_name
+        text clicks
+        text cpc
+        text cpm
+        text cpo
+        text ctr
+        text date
+        text environment
+        text frequency
+        text hour
+        text impressions
+        text keyword
+        text page_type_name
+        text retailer_id
+        text retailer_name
+        text roas
+        text sales_channel
+        text spend
+        text unique_visitor
+    }
+    keyword_rank }o--|| keyword : "fk"
+    keyword_rank }o--|| keyword : "fk"
+    keyword_negative_broad }o--|| keyword : "fk"
+    keyword_negative_broad }o--|| keyword : "fk"
+    keyword_negative_exact }o--|| keyword : "fk"
+    keyword_negative_exact }o--|| keyword : "fk"
+    keyword_positive_exact }o--|| keyword : "fk"
+    keyword_positive_exact }o--|| keyword : "fk"
+    keyword }o--|| line_item : "fk"
+    retailer_campaign_eligibility }o--|| retailer : "fk"
+    retailer }o--|| account : "fk"
+    balance }o--|| account : "fk"
+    brand }o--|| account : "fk"
+    account_country }o--|| account : "fk"
+    target_keyword }o--|| line_item : "fk"
+    line_item }o--|| account : "fk"
+    balance_campaign }o--|| balance : "fk"
+    campaign_promote_brand }o--|| campaign : "fk"
+    campaign_promote_brand }o--|| campaign : "fk"
+    campaign_drawable_balance }o--|| campaign : "fk"
+    campaign_drawable_balance }o--|| campaign : "fk"
+    campaign }o--|| account : "fk"
+    report_line_item }o--|| campaign : "fk"
+    report_line_item }o--|| line_item : "fk"
+    report_campaign }o--|| campaign : "fk"

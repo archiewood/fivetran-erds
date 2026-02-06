@@ -1,0 +1,112 @@
+erDiagram
+    profile {
+        text email_id PK
+        text history_id
+        text total_message
+        text total_thread
+    }
+    label {
+        text id PK
+        text background_color
+        text label_list_visibility
+        text message_list_visibility
+        text name
+        text text_color
+        text total_message
+        text total_thread
+        text type
+        text unread_message
+        text unread_thread
+    }
+    thread {
+        text id PK
+        text history_id
+        text snippet
+    }
+    message_sub_part_header {
+        text index PK
+        text message_id PK
+        text part_id PK
+        text sub_part_id PK
+        text name
+        text value
+    }
+    message_payload_sub_part_body {
+        text sub_nested_part_id PK
+        text message_id PK
+        text part_id PK
+        text sub_part_id PK
+        text attachment_id
+        text data
+        text filename
+        jsonb headers
+        text mime_type
+        jsonb parts
+        text size
+    }
+    message_payload_sub_part {
+        text sub_part_id PK
+        text message_id PK
+        text part_id PK
+        text attachment_id
+        text data
+        text filename
+        text mime_type
+        text size
+    }
+    message_payload_part_header {
+        text index PK
+        text message_id PK
+        text part_id PK
+        text name
+        text value
+    }
+    message_payload_part {
+        text part_id PK
+        text message_id PK
+        text attachment_id
+        text data
+        text filename
+        text mime_type
+        text size
+    }
+    payload_header {
+        text index PK
+        text message_id PK
+        text name
+        text value
+    }
+    message_label {
+        text index PK
+        text message_id PK
+        text label_id FK
+    }
+    message {
+        text id PK
+        text thread_id FK
+        text history_id
+        text internal_date
+        text payload_attachment_id
+        text payload_body_data
+        text payload_body_size
+        text payload_file_name
+        text payload_mime_type
+        text payload_part_id
+        text size_estimate
+        text snippet
+    }
+    message_sub_part_header }o--|| message_payload_sub_part : "fk"
+    message_sub_part_header }o--|| message_payload_sub_part : "fk"
+    message_sub_part_header }o--|| message_payload_sub_part : "fk"
+    message_payload_sub_part_body }o--|| message_payload_sub_part : "fk"
+    message_payload_sub_part_body }o--|| message_payload_sub_part : "fk"
+    message_payload_sub_part_body }o--|| message_payload_sub_part : "fk"
+    message_payload_sub_part }o--|| message_payload_part : "fk"
+    message_payload_sub_part }o--|| message_payload_part : "fk"
+    message_payload_part_header }o--|| message_payload_part : "fk"
+    message_payload_part_header }o--|| message_payload_part : "fk"
+    message_payload_part }o--|| message : "fk"
+    payload_header }o--|| message : "fk"
+    message_label }o--|| label : "fk"
+    message_label }o--|| message : "fk"
+    message }o--|| thread : "fk"

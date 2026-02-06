@@ -1,0 +1,97 @@
+erDiagram
+%% param_ and user_property_ columns are populated if sync mode is Columns.
+%% params and user_properties columns are populated if the sync mode is JSON.
+    item_param {
+        text name PK
+        text _fivetran_id PK
+        text value
+    }
+    item {
+        integer index PK
+        text _fivetran_id PK
+        text affiliation
+        text brand
+        text category
+        text category_2
+        text category_3
+        text category_4
+        text category_5
+        text coupon
+        text creative_name
+        text creative_slot
+        timestamp event_timestamp
+        text id
+        text list_id
+        text list_index
+        text list_name
+        text location_id
+        text name
+        double_precision price
+        double_precision price_in_usd
+        text promotion_id
+        text promotion_name
+        bigint quantity
+        double_precision refund
+        double_precision refund_in_usd
+        double_precision revenue
+        double_precision revenue_in_usd
+        text variant
+    }
+    event_param {
+        text name PK
+        text _fivetran_id PK
+        text value
+    }
+    user_property {
+        text name PK
+        text _fivetran_id PK
+        text value
+    }
+    event {
+        text _fivetran_id PK
+        bigint batch_event_index
+        bigint batch_ordering_id
+        bigint batch_page_id
+        bigint bundle_sequence_id
+        text date
+        text event_dimensions_hostname
+        boolean is_active_user
+        boolean is_intraday
+        text name
+        text platform
+        timestamp previous_timestamp
+        text privacy_info_ads_storage
+        text privacy_info_analytics_storage
+        text privacy_info_uses_transient_token
+        timestamp server_timestamp_offset
+        text session_traffic_source_last_click_google_ads_campaign_account_name
+        text session_traffic_source_last_click_google_ads_campaign_ad_group_id
+        text session_traffic_source_last_click_google_ads_campaign_ad_group_name
+        text session_traffic_source_last_click_google_ads_campaign_campaign_id
+        text session_traffic_source_last_click_google_ads_campaign_campaign_name
+        text session_traffic_source_last_click_google_ads_campaign_customer_id
+        text session_traffic_source_last_click_manual_campaign_campaign_id
+        text session_traffic_source_last_click_manual_campaign_campaign_name
+        text session_traffic_source_last_click_manual_campaign_content
+        text session_traffic_source_last_click_manual_campaign_creative_format
+        text session_traffic_source_last_click_manual_campaign_marketing_tactic
+        text session_traffic_source_last_click_manual_campaign_medium
+        text session_traffic_source_last_click_manual_campaign_source
+        text session_traffic_source_last_click_manual_campaign_source_platform
+        text session_traffic_source_last_click_manual_campaign_term
+        text stream_id
+        timestamp timestamp
+        text traffic_source_medium
+        text traffic_source_name
+        text traffic_source_source
+        timestamp user_first_touch_timestamp
+        text user_id
+        text user_ltv_currency
+        double_precision user_ltv_revenue
+        text user_pseudo_id
+        double_precision value_in_usd
+    }
+    item_param }o--|| item : "fk"
+    item }o--|| event : "fk"
+    event_param }o--|| event : "fk"
+    user_property }o--|| event : "fk"

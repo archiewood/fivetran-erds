@@ -1,0 +1,544 @@
+erDiagram
+    archive_reason {
+        text id PK
+        text text
+    }
+    requisition_offer {
+        text offer_id PK
+        text requisition_id PK
+    }
+    requisition_posting {
+        text posting_id PK
+        text requisition_id PK
+    }
+    requisition {
+        text id PK
+        text creator_id FK
+        text hiring_manager_id FK
+        text owner_id FK
+        text approval_account_id
+        text approval_created_by
+        text approval_id
+        text approval_image_format
+        text approval_started_at
+        text approval_status
+        text backfill
+        timestamp closed_at
+        text compensation_band_currency
+        text compensation_band_interval
+        text compensation_band_max
+        text compensation_band_min
+        timestamp created_at
+        text employment_status
+        text head_count_hired
+        text head_count_infinite
+        text head_count_total
+        text internal_notes
+        text location
+        text name
+        text requisition_code
+        text status
+        text team
+    }
+    referral_form_field {
+        text field_index PK
+        text value_index PK
+        text referral_form_id PK
+        text value_file_id FK
+        text code_language
+        text currency
+        text type
+        timestamp value_date
+        text value_decimal
+        text value_number
+        text value_text
+    }
+    referral_form_score_card_sub_field {
+        text sub_field_index PK
+        text field_index PK
+        text id PK
+        text description
+        text text
+    }
+    referral_form_template_field {
+        text field_index PK
+        text id PK
+        text description
+        text required
+        text type
+    }
+    referral_form {
+        text id PK
+        text creator_id FK
+        text opportunity_id FK
+        text referrer_id FK
+        text stage_id FK
+        text template_id FK
+        timestamp completed_at
+        timestamp created_at
+        text instructions
+        text text
+        text type
+    }
+    users {
+        text id PK
+        text access_role
+        timestamp created_at
+        timestamp deactivated_at
+        text email
+        text external_directory_id
+        text name
+        text photo
+        text username
+    }
+    offer_field {
+        text index PK
+        text offer_id PK
+        text identifier
+        text text
+        text value
+    }
+    offer {
+        text id PK
+        text opportunity_id PK
+        text creator_id FK
+        timestamp created_at
+        text status
+    }
+    posting_form_field {
+        text field_index PK
+        text value_index PK
+        text posting_form_id PK
+        text value_file_id FK
+        text code_language
+        text currency
+        text type
+        timestamp value_date
+        text value_decimal
+        text value_number
+        text value_text
+    }
+    posting_form_score_card_sub_field {
+        text sub_field_index PK
+        text field_index PK
+        text id PK
+        text description
+        text text
+    }
+    posting_form_template_field {
+        text field_index PK
+        text id PK
+        text description
+        text required
+        text type
+    }
+    posting_form {
+        text id PK
+        text application_id FK
+        text creator_id FK
+        text opportunity_id FK
+        text template_id FK
+        timestamp completed_at
+        timestamp created_at
+        text text
+        text type
+    }
+    application {
+        text id PK
+        text archived_reason_id FK
+        text opportunity_id FK
+        text posting_hiring_manager_id FK
+        text posting_id FK
+        text posting_owner_id FK
+        text referrer_id FK
+        text requisition_for_hire_id FK
+        timestamp archived_at
+        text comments
+        text company
+        timestamp created_at
+        jsonb links
+        text requisition_for_hire_code
+        text requisition_for_hire_manager
+        text type
+    }
+    opportunity_position {
+        text index PK
+        text resume_id PK
+        text end_month
+        text end_year
+        text location
+        text org
+        text start_month
+        text start_year
+        text summary
+        text title
+    }
+    opportunity_school {
+        text index PK
+        text resume_id PK
+        text degree
+        text end_month
+        text end_year
+        text field
+        text org
+        text start_month
+        text start_year
+        text summary
+    }
+    resume {
+        text id PK
+        text opportunity_id FK
+        timestamp created_at
+        text file_ext
+        text file_name
+        text file_status
+        timestamp file_uploaded_at
+    }
+    note_field {
+        text index PK
+        text note_id PK
+        text creator_id FK
+        text stage_id FK
+        timestamp created_at
+        text text
+        text value
+    }
+    note {
+        text id PK
+        text creator_id FK
+        text opportunity_id FK
+        timestamp completed_at
+        timestamp created_at
+        timestamp deleted_at
+        text secret
+        text text
+    }
+    posting_tag {
+        text tags PK
+        text posting_id PK
+    }
+    posting_content_list {
+        text index PK
+        text posting_id PK
+        text content
+        text text
+    }
+    posting_distribution_channel {
+        text distribution_channel PK
+        text posting_id PK
+    }
+    posting {
+        text id PK
+        text creator_id FK
+        text hiring_manager_id FK
+        text owner_id FK
+        text categories_commitment
+        text categories_department
+        text categories_level
+        text categories_location
+        text categories_team
+        text content_closing
+        text content_closing_html
+        text content_description
+        text content_description_html
+        timestamp created_at
+        text requisition_code
+        text state
+        text text
+        timestamp updated_at
+    }
+    file {
+        text id PK
+        text contact_id PK
+        text download_url
+        text ext
+        text name
+        timestamp uploaded_at
+    }
+    panel_application {
+        text application_id PK
+        text panel_id PK
+    }
+    panel_interview {
+        text interview_id PK
+        text panel_id PK
+    }
+    panel {
+        text id PK
+        text opportunity_id PK
+        text creator_id FK
+        text stage_id FK
+        timestamp canceled_at
+        timestamp created_at
+        text ends
+        text external_url
+        text externally_managed
+        text feedback_reminder
+        text note
+        text start
+        text timezone
+    }
+    stage {
+        text id PK
+        text text
+    }
+    profile_form_field {
+        text field_index PK
+        text value_index PK
+        text profile_form_id PK
+        text value_file_id FK
+        text code_language
+        text currency
+        text type
+        timestamp value_date
+        text value_decimal
+        text value_number
+        text value_text
+    }
+    profile_form_score_card_sub_field {
+        text sub_field_index PK
+        text field_index PK
+        text id PK
+        text description
+        text text
+    }
+    profile_form_template_field {
+        text field_index PK
+        text id PK
+        text description
+        text required
+        text type
+    }
+    profile_form {
+        text id PK
+        text creator_id FK
+        text opportunity_id FK
+        text stage_id FK
+        text template_id FK
+        timestamp completed_at
+        timestamp created_at
+        timestamp deleted_at
+        text instructions
+        text text
+        text type
+    }
+    interview_user {
+        text interview_id PK
+        text user_id PK
+    }
+    interview_feedback {
+        text feedback_form_id PK
+        text interview_id PK
+    }
+    posting_interview {
+        text interview_id PK
+        text posting_id PK
+    }
+    interview {
+        text id PK
+        text creator_id FK
+        text opportunity_id FK
+        text stage_id FK
+        timestamp canceled_at
+        timestamp created_at
+        timestamp date
+        text duration
+        text feedback_reminder
+        text gcal_event_url
+        text location
+        text note
+        text panel_id
+        text subject
+        text timezone
+    }
+    feedback_form_field {
+        text field_index PK
+        text value_index PK
+        text feedback_form_id PK
+        text value_file_id FK
+        text code_language
+        text currency
+        text type
+        timestamp value_date
+        text value_decimal
+        text value_number
+        text value_text
+    }
+    feedback_form_score_card_sub_field {
+        text sub_field_index PK
+        text field_index PK
+        text id PK
+        text description
+        text text
+    }
+    feedback_form_template_field {
+        text field_index PK
+        text id PK
+        text description
+        text required
+        text type
+    }
+    feedback_form {
+        text id PK
+        text creator_id FK
+        text interview_id FK
+        text opportunity_id FK
+        text template_id FK
+        timestamp completed_at
+        timestamp created_at
+        timestamp deleted_at
+        text instructions
+        text score_system_value
+        text text
+        text type
+    }
+    opportunity_tag {
+        text tags PK
+        text opportunity_id PK
+    }
+    opportunity_source {
+        text source PK
+        text opportunity_id PK
+    }
+    opportunity_stage_history {
+        timestamp updated_at PK
+        text opportunity_id PK
+        text stage_id FK
+        text updater_id FK
+    }
+    contact_phone {
+        text index PK
+        text contact_id PK
+        text type
+        text value
+    }
+    contact_email {
+        text email PK
+        text contact_id PK
+    }
+    contact {
+        text id PK
+        text headline
+        text location
+        text name
+    }
+    contact_link {
+        text _fivetran_id PK
+        text contact_id PK
+        text link
+    }
+    opportunity {
+        text id PK
+        text archived_reason_id FK
+        text contact FK
+        text owner_id FK
+        text stage_id FK
+        timestamp archived_at
+        timestamp created_at
+        text data_protection_contact_allowed
+        timestamp data_protection_contact_expires_at
+        text data_protection_store_allowed
+        timestamp data_protection_store_expires_at
+        text headline
+        text is_anonymized
+        timestamp last_advanced_at
+        timestamp last_interaction_at
+        text location
+        text name
+        text origin
+        text snoozed_until
+        timestamp updated_at
+    }
+    requisition_offer }o--|| offer : "fk"
+    requisition_offer }o--|| requisition : "fk"
+    requisition_posting }o--|| posting : "fk"
+    requisition_posting }o--|| requisition : "fk"
+    requisition }o--|| users : "fk"
+    requisition }o--|| users : "fk"
+    requisition }o--|| users : "fk"
+    referral_form_field }o--|| file : "fk"
+    referral_form_field }o--|| referral_form : "fk"
+    referral_form_score_card_sub_field }o--|| referral_form_template_field : "fk"
+    referral_form_score_card_sub_field }o--|| referral_form_template_field : "fk"
+    referral_form }o--|| referral_form_template_field : "fk"
+    referral_form }o--|| stage : "fk"
+    referral_form }o--|| users : "fk"
+    referral_form }o--|| users : "fk"
+    referral_form }o--|| opportunity : "fk"
+    offer_field }o--|| offer : "fk"
+    offer }o--|| users : "fk"
+    offer }o--|| opportunity : "fk"
+    posting_form_field }o--|| file : "fk"
+    posting_form_field }o--|| posting_form : "fk"
+    posting_form_score_card_sub_field }o--|| posting_form_template_field : "fk"
+    posting_form_score_card_sub_field }o--|| posting_form_template_field : "fk"
+    posting_form }o--|| users : "fk"
+    posting_form }o--|| opportunity : "fk"
+    posting_form }o--|| posting_form_template_field : "fk"
+    posting_form }o--|| application : "fk"
+    application }o--|| opportunity : "fk"
+    application }o--|| posting : "fk"
+    application }o--|| users : "fk"
+    application }o--|| users : "fk"
+    application }o--|| users : "fk"
+    application }o--|| requisition : "fk"
+    application }o--|| archive_reason : "fk"
+    opportunity_position }o--|| resume : "fk"
+    opportunity_school }o--|| resume : "fk"
+    resume }o--|| opportunity : "fk"
+    note_field }o--|| users : "fk"
+    note_field }o--|| stage : "fk"
+    note_field }o--|| note : "fk"
+    note }o--|| users : "fk"
+    note }o--|| opportunity : "fk"
+    posting_tag }o--|| posting : "fk"
+    posting_content_list }o--|| posting : "fk"
+    posting_distribution_channel }o--|| posting : "fk"
+    posting }o--|| users : "fk"
+    posting }o--|| users : "fk"
+    posting }o--|| users : "fk"
+    file }o--|| contact : "fk"
+    panel_application }o--|| application : "fk"
+    panel_application }o--|| panel : "fk"
+    panel_interview }o--|| interview : "fk"
+    panel_interview }o--|| panel : "fk"
+    panel }o--|| stage : "fk"
+    panel }o--|| users : "fk"
+    panel }o--|| opportunity : "fk"
+    profile_form_field }o--|| file : "fk"
+    profile_form_field }o--|| profile_form : "fk"
+    profile_form_score_card_sub_field }o--|| profile_form_template_field : "fk"
+    profile_form_score_card_sub_field }o--|| profile_form_template_field : "fk"
+    profile_form }o--|| profile_form_template_field : "fk"
+    profile_form }o--|| stage : "fk"
+    profile_form }o--|| users : "fk"
+    profile_form }o--|| opportunity : "fk"
+    interview_user }o--|| users : "fk"
+    interview_user }o--|| interview : "fk"
+    interview_feedback }o--|| feedback_form : "fk"
+    interview_feedback }o--|| interview : "fk"
+    posting_interview }o--|| posting : "fk"
+    posting_interview }o--|| interview : "fk"
+    interview }o--|| stage : "fk"
+    interview }o--|| users : "fk"
+    interview }o--|| opportunity : "fk"
+    feedback_form_field }o--|| file : "fk"
+    feedback_form_field }o--|| feedback_form : "fk"
+    feedback_form_score_card_sub_field }o--|| feedback_form_template_field : "fk"
+    feedback_form_score_card_sub_field }o--|| feedback_form_template_field : "fk"
+    feedback_form }o--|| feedback_form_template_field : "fk"
+    feedback_form }o--|| users : "fk"
+    feedback_form }o--|| interview : "fk"
+    feedback_form }o--|| opportunity : "fk"
+    opportunity_tag }o--|| opportunity : "fk"
+    opportunity_source }o--|| opportunity : "fk"
+    opportunity_stage_history }o--|| stage : "fk"
+    opportunity_stage_history }o--|| users : "fk"
+    opportunity_stage_history }o--|| opportunity : "fk"
+    contact_phone }o--|| contact : "fk"
+    contact_email }o--|| contact : "fk"
+    contact_link }o--|| contact : "fk"
+    opportunity }o--|| stage : "fk"
+    opportunity }o--|| users : "fk"
+    opportunity }o--|| contact : "fk"
+    opportunity }o--|| archive_reason : "fk"

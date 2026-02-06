@@ -1,0 +1,375 @@
+erDiagram
+    space_document {
+        text id PK
+        text project_id PK
+        text created_by_user_id FK
+        text space_id FK
+        text updated_by_user_id FK
+        text created_at
+        text name
+        text private
+        text template_id
+        text template_name
+        text type
+        timestamp updated_at
+        text url
+    }
+    project_partner_company {
+        text id PK
+        text project_id PK
+        text name
+        text url
+    }
+    project_team_member {
+        text id PK
+        text project_id PK
+        text email_id
+        text first_name
+        text last_name
+    }
+    project_team_customer {
+        text id PK
+        text project_id PK
+        text email_id
+        text first_name
+        text last_name
+    }
+    project_field {
+        text id PK
+        text project_id PK
+        text label
+        text value
+        text value_label
+    }
+    project_current_phase {
+        text id PK
+        text project_id PK
+        text name
+    }
+    project_source {
+        text template_id PK
+        text project_id PK
+        text prefix
+        text start_date
+        text template_name
+    }
+    project {
+        text id PK
+        text created_by_id FK
+        text customer_champion_user_id FK
+        text customer_company_id FK
+        text owner_id FK
+        text updated_by_id FK
+        text allocated_hours
+        text allocated_minute
+        text annualized_recurring_revenue
+        text archived
+        text auto_allocation
+        text billable_hour
+        text billable_minute
+        text budgeted_hours
+        timestamp created_at
+        text currency_code
+        text currency_name
+        text currency_symbol
+        text customer_company_name
+        text customer_company_url
+        text customers_invited
+        text customers_joined
+        text due_date
+        text due_date_actual
+        text external_reference_id
+        text fee
+        text financial_contract_type
+        text financial_fixed_fee
+        text financial_metrics_actual_cost
+        text financial_metrics_actual_profit
+        text financial_metrics_actual_profit_margin
+        text financial_metrics_actual_revenue
+        text financial_metrics_estimate_at_completion
+        text financial_metrics_estimated_cost
+        text financial_metrics_estimated_profit
+        text financial_metrics_estimated_profit_margin
+        text financial_metrics_estimated_revenue
+        text financial_metrics_estimation_to_completion_in_hours
+        text financial_subscription_contract_frequency
+        text financial_subscription_contract_no_of_periods
+        text financial_subscription_contract_period_budget
+        text financial_subscription_contract_period_minute
+        text financial_subscription_contract_start_date
+        text financial_time_and_material_contract_project_budget
+        text financial_time_and_material_contract_rate_card_id
+        text financial_time_and_material_contract_rate_card_name
+        text inferred_progress
+        text name
+        text non_billable_hour
+        text non_billable_minute
+        text percentage_budget_consumed
+        text planned_duration_in_days
+        text progress_percentage
+        text project_age_in_days
+        text start_date
+        text start_date_actual
+        text status_label
+        text status_value
+        text tracked_hours
+        text tracked_minute
+        timestamp updated_at
+        text visibility
+    }
+    space {
+        text id PK
+        text project_id PK
+        text created_by_user_id FK
+        text updated_by_user_id FK
+        text created_at
+        text name
+        text private
+        timestamp updated_at
+    }
+    timeoff_user_notification {
+        text time_off_id PK
+        text user_id PK
+    }
+    time_off {
+        text id PK
+        text user_id FK
+        timestamp created_at
+        text duration_in_minutes
+        text end_date
+        text note
+        text project_owners
+        text start_date
+        text type
+    }
+    resource_allocation_task {
+        text resource_allocation_fivetran_id PK
+        text task_id PK
+    }
+    resource_allocation {
+        text _fivetran_id PK
+        text created_by_user_id FK
+        text project_id FK
+        text updated_by_user_id FK
+        text user_id FK
+        text allocation_for
+        text allocation_type
+        text created_at
+        text duration_days_consider
+        text duration_hours
+        text duration_minutes
+        text duration_seconds
+        text end_date
+        text hours_per_day
+        text minutes_per_day
+        text placeholder_id
+        text placeholder_name
+        text role_id
+        text role_name
+        text seconds_per_day
+        text start_date
+        timestamp updated_at
+    }
+    phase {
+        text id PK
+        text project_id PK
+        text created_by_user_id FK
+        text updated_by_user_id FK
+        text created_at
+        text due_date
+        text due_date_actual
+        text name
+        text private
+        text start_date
+        text start_date_actual
+        text status_label
+        text status_value
+        timestamp updated_at
+    }
+    time_entry {
+        text id PK
+        text project_id FK
+        text project_phase_id FK
+        text task_id FK
+        text user_id FK
+        text activity_name
+        text bill_rate
+        text bill_rate_currency
+        text billable
+        text category_id
+        text category_name
+        text cost_rate
+        text cost_rate_currency
+        text created_at
+        text date
+        boolean deleted
+        text minutes
+        text notes
+        text source_type
+        text status
+        timestamp updated_at
+    }
+    task_field {
+        text id PK
+        text task_id PK
+        text label
+        text value
+        text value_label
+    }
+    task_assignee_member {
+        text id PK
+        text task_id PK
+    }
+    task_assignee_placeholder {
+        text id PK
+        text task_id PK
+        text name
+        text role_id
+        text role_name
+    }
+    task_follower_member {
+        text id PK
+        text task_id PK
+    }
+    task_follower_placeholder {
+        text id PK
+        text task_id PK
+        text name
+        text role_id
+        text role_name
+    }
+    task_dependency {
+        text index PK
+        text task_dependency_id PK
+        text task_id PK
+    }
+    task {
+        text id PK
+        text created_by_id FK
+        text project_id FK
+        text updated_by_id FK
+        text archived
+        text at_risk
+        text billable
+        timestamp created_at
+        text csat_enabled
+        text description
+        text due_date
+        text due_date_actual
+        text effort_in_minutes
+        text external_reference_id
+        text name
+        text parent_task_id
+        text parent_task_name
+        text phase_id
+        text phase_name
+        text priority_label
+        text priority_value
+        text progress
+        text start_date
+        text start_date_actual
+        text status_label
+        text status_value
+        text task_private_note
+        text time_entry_category_id
+        text time_entry_category_name
+        text type
+        timestamp updated_at
+    }
+    field {
+        text id PK
+        text created_by_id FK
+        text updated_by_id FK
+        text created_at
+        text description
+        text enabled
+        text label
+        text object_type
+        text private
+        text rating_scale
+        text type
+        timestamp updated_at
+    }
+    user_field {
+        text id PK
+        text users_id PK
+        text field_value
+        text field_value_label
+    }
+    users {
+        text id PK
+        text created_by_user_id FK
+        text updated_by_user_id FK
+        text calender_id
+        text calender_name
+        text capacity_in_minute
+        text company_id
+        text company_name
+        text created_at
+        text email
+        text first_name
+        text last_name
+        text permission_id
+        text permission_name
+        text profile_picture_url
+        text role_id
+        text role_name
+        text status
+        text type
+        timestamp updated_at
+    }
+    space_document }o--|| space : "fk"
+    space_document }o--|| users : "fk"
+    space_document }o--|| users : "fk"
+    space_document }o--|| project : "fk"
+    project_partner_company }o--|| project : "fk"
+    project_team_member }o--|| project : "fk"
+    project_team_customer }o--|| project : "fk"
+    project_field }o--|| field : "fk"
+    project_field }o--|| project : "fk"
+    project_current_phase }o--|| project : "fk"
+    project_source }o--|| project : "fk"
+    project }o--|| project_partner_company : "fk"
+    project }o--|| project_team_member : "fk"
+    project }o--|| project_team_customer : "fk"
+    project }o--|| project_team_member : "fk"
+    project }o--|| project_team_member : "fk"
+    space }o--|| users : "fk"
+    space }o--|| users : "fk"
+    space }o--|| project : "fk"
+    timeoff_user_notification }o--|| users : "fk"
+    timeoff_user_notification }o--|| time_off : "fk"
+    time_off }o--|| users : "fk"
+    resource_allocation_task }o--|| task : "fk"
+    resource_allocation_task }o--|| resource_allocation : "fk"
+    resource_allocation }o--|| users : "fk"
+    resource_allocation }o--|| users : "fk"
+    resource_allocation }o--|| users : "fk"
+    resource_allocation }o--|| project : "fk"
+    phase }o--|| users : "fk"
+    phase }o--|| users : "fk"
+    phase }o--|| project : "fk"
+    time_entry }o--|| project_team_member : "fk"
+    time_entry }o--|| task : "fk"
+    time_entry }o--|| project_current_phase : "fk"
+    time_entry }o--|| project : "fk"
+    task_field }o--|| field : "fk"
+    task_field }o--|| task : "fk"
+    task_assignee_member }o--|| project_team_member : "fk"
+    task_assignee_member }o--|| task : "fk"
+    task_assignee_placeholder }o--|| project_team_member : "fk"
+    task_assignee_placeholder }o--|| task : "fk"
+    task_follower_member }o--|| project_team_member : "fk"
+    task_follower_member }o--|| task : "fk"
+    task_follower_placeholder }o--|| project_team_member : "fk"
+    task_follower_placeholder }o--|| task : "fk"
+    task_dependency }o--|| task : "fk"
+    task }o--|| project_team_member : "fk"
+    task }o--|| project_team_member : "fk"
+    task }o--|| project : "fk"
+    field }o--|| project_team_member : "fk"
+    field }o--|| project_team_member : "fk"
+    user_field }o--|| field : "fk"
+    user_field }o--|| users : "fk"
+    users }o--|| users : "fk"
+    users }o--|| users : "fk"

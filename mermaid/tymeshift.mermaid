@@ -1,0 +1,246 @@
+erDiagram
+    report_data_metrics {
+        text index PK
+        text report_data_fivetran_id PK
+        text key
+        text type
+        text value
+    }
+    report_data {
+        text _fivetran_id PK
+        text report_template_id FK
+        jsonb children
+        text end_date
+        text item_key
+        text item_value
+        text start_date
+    }
+    agent_team {
+        text index PK
+        text agent_id PK
+        text team_id
+    }
+    agent {
+        text id PK
+        text deactivated
+        text default_group_id
+        text email
+        text group_id
+        text is_deleted
+        text location_id
+        text name
+        text photo
+        text role_id
+        text shift_template_id
+        text tymeshift_account_id
+        text user_id
+    }
+    agent_activity {
+        text id PK
+        text agent_id FK
+        text duration
+        text end_time
+        text event_type
+        text general_task_id
+        text is_paid
+        text lock_interval
+        text start_time
+        text ticket_id
+        text type
+        text user_id
+        jsonb workstreams
+    }
+    report_template {
+        text id PK
+        jsonb agent_id
+        text created_at
+        text created_by
+        jsonb dimension_group_by
+        text dimension_interval
+        text file_structure
+        text filter_activity_type_id
+        jsonb filter_group_id
+        jsonb filter_interval
+        jsonb filter_location_id
+        jsonb filter_scopes
+        jsonb filter_status
+        jsonb filter_tags
+        jsonb filter_team_id
+        jsonb filter_ticket_customfield_option_key
+        jsonb filter_ticket_id
+        jsonb filter_ticket_via_type
+        jsonb filter_timeoff_reason_id
+        text is_default
+        jsonb metrics
+        text name
+        text timezone
+        text tymeshift_account_id
+        text type
+    }
+    published_schedule_workstream {
+        text id PK
+        text published_schedule_id PK
+        text taskable_id FK
+        text color
+        text created_at
+        text end_time
+        text name
+        text shift_id
+        text start_time
+        text taskable_type
+    }
+    published_schedule_general_task {
+        text id PK
+        text published_schedule_id PK
+        text taskable_id FK
+        text created_at
+        text end_time
+        text shift_id
+        text start_time
+        text taskable_type
+    }
+    published_schedule_task {
+        text id PK
+        text published_schedule_id PK
+        text color
+        text created_at
+        text end_time
+        text name
+        text shift_id
+        text start_time
+        text taskable_id
+        text taskable_type
+    }
+    published_schedule {
+        text id PK
+        text agent_id FK
+        text end_time
+        text parent_id
+        text published
+        text schedule_id
+        text start_time
+        text tymeshift_account_id
+    }
+    time_off {
+        text id PK
+        jsonb time_off
+    }
+    contact_method_key {
+        text index PK
+        text workstream_id PK
+        text contact_method_key
+    }
+    workstream_condition_all {
+        text index PK
+        text workstream_id PK
+        text field
+        text operator
+        text value
+    }
+    workstream_condition_any {
+        text index PK
+        text workstream_id PK
+        text field
+        text operator
+        text value
+    }
+    inbound_volume_adjustment {
+        text id PK
+        text workstream_id PK
+        text active
+        text change
+        text change_type
+        text end_time
+        text name
+        text start_time
+        text tymeshift_account_id
+    }
+    availability_hour {
+        text index PK
+        text workstream_id PK
+        text day_of_the_week
+        text end_time
+        text is_active
+        text start_time
+    }
+    workstream_agent {
+        text agent_id PK
+        text workstream_id PK
+    }
+    workstream {
+        text id PK
+        text actual_algorithm
+        text color
+        text condition_id
+        text condition_tymeshift_account_id
+        text contact_method_group
+        text deleted_at
+        text description
+        text exclude_inbound_volume_outliers
+        text forecast_algorithm
+        text full_time_equivalent_availability
+        text full_time_equivalent_availability_timezone
+        text full_time_equivalent_average_handle_time
+        text full_time_equivalent_average_handle_time_type
+        text full_time_equivalent_channel
+        text full_time_equivalent_concurrency
+        text full_time_equivalent_id
+        text full_time_equivalent_max_occupancy_rate
+        text full_time_equivalent_minimum_staffing
+        text full_time_equivalent_shrinkage
+        text full_time_equivalent_target_service_level
+        text full_time_equivalent_target_time
+        text full_time_equivalent_tymeshift_account_id
+        text full_time_equivalent_workstream_id
+        text ignore_data_prior_to_date
+        text imported_historical_volume
+        jsonb inbound_volume_outlier
+        text is_deleted
+        text name
+        text orders
+        text priority
+        text tymeshift_account_id
+        text use_all_zendesk_data
+        text visible
+    }
+    task_permitted_team {
+        text permitted_team_id PK
+        text general_task_id PK
+    }
+    task_permitted_team_without_scoping {
+        text permitted_team_id_without_scoping PK
+        text general_task_id PK
+    }
+    general_task {
+        text id PK
+        text color
+        text deleted_at
+        text exclude_occupancy
+        text is_deleted
+        text is_paid
+        text job_id
+        text name
+        text permitted_team_preset
+        text productive_time
+        text talk_status
+    }
+    report_data_metrics }o--|| report_data : "fk"
+    report_data }o--|| report_template : "fk"
+    agent_team }o--|| agent : "fk"
+    agent_activity }o--|| agent : "fk"
+    published_schedule_workstream }o--|| workstream : "fk"
+    published_schedule_workstream }o--|| published_schedule : "fk"
+    published_schedule_general_task }o--|| general_task : "fk"
+    published_schedule_general_task }o--|| published_schedule : "fk"
+    published_schedule_task }o--|| published_schedule : "fk"
+    published_schedule }o--|| agent : "fk"
+    time_off }o--|| agent : "fk"
+    contact_method_key }o--|| workstream : "fk"
+    workstream_condition_all }o--|| workstream : "fk"
+    workstream_condition_any }o--|| workstream : "fk"
+    inbound_volume_adjustment }o--|| workstream : "fk"
+    availability_hour }o--|| workstream : "fk"
+    workstream_agent }o--|| agent : "fk"
+    workstream_agent }o--|| workstream : "fk"
+    task_permitted_team }o--|| general_task : "fk"
+    task_permitted_team_without_scoping }o--|| general_task : "fk"

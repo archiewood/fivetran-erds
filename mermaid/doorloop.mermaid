@@ -1,0 +1,950 @@
+erDiagram
+    vendor_bill_line {
+        text id PK
+        text vendor_bill_id PK
+        text account_id FK
+        text linked_resource_id FK
+        text property_id FK
+        text unit_id FK
+        text amount
+        text balance
+        text memo
+    }
+    vendor_bill {
+        text id PK
+        text created_by_id FK
+        text updated_by_id FK
+        text vendor_id FK
+        text batch
+        text created_at
+        text date
+        text due_date
+        text memo
+        text reference
+        jsonb register
+        text total_amount
+        text total_balance
+        text updated_at
+    }
+    lease_reversed_payment_line {
+        text id PK
+        text lease_reversed_payment_id PK
+        text account_id FK
+        text amount
+        text balance
+        text memo
+    }
+    lease_reversed_payment {
+        text id PK
+        text lease_id FK
+        text lease_payment_id FK
+        text batch
+        text created_at
+        text date
+        text deposit_status
+        text memo
+        text processor_fee
+        text reference
+        jsonb register
+        text updated_at
+    }
+    report_cash_flow_statement {
+        text _fivetran_id PK
+        text account_id FK
+        text parent_account_id FK
+        text abs_total_with_sub_accounts
+        text group_by
+        text root_account
+        text total
+        text total_with_sub_accounts
+        text type
+    }
+    owner_email {
+        text index PK
+        text owner_id PK
+        text address
+        text type
+    }
+    owner_phone {
+        text index PK
+        text owner_id PK
+        text number
+        text type
+    }
+    owner {
+        text id PK
+        text created_by_id FK
+        text updated_by_id FK
+        text active
+        text company
+        text company_name
+        text created_at
+        text date_of_birth
+        text federal_tax_info_address_city
+        text federal_tax_info_address_country
+        text federal_tax_info_address_for_1099_same_as_primary_address
+        text federal_tax_info_address_latitude
+        text federal_tax_info_address_longitude
+        text federal_tax_info_address_street_1
+        text federal_tax_info_address_street_2
+        text federal_tax_info_address_zip
+        text federal_tax_info_payer_id
+        text federal_tax_info_payer_name
+        text first_name
+        text full_name
+        text gender
+        text job_title
+        text last_name
+        text management_end_date
+        text management_start_date
+        text middle_name
+        text name
+        text notes
+        text picture_url
+        text portal_info_allow_access
+        text portal_info_login_email
+        text portal_info_mobile_phone
+        text primary_address_city
+        text primary_address_country
+        text primary_address_latitude
+        text primary_address_longitude
+        text primary_address_street_1
+        text primary_address_street_2
+        text primary_address_zip
+        jsonb properties
+        text timezone
+        text updated_at
+    }
+    default_account_for {
+        text index PK
+        text account_id PK
+        text account_action
+    }
+    account {
+        text id PK
+        text created_by_id FK
+        text updated_by_id FK
+        text active
+        text cash_flow_activity
+        text class
+        text created_at
+        text description
+        text fully_qualified_name
+        text name
+        text system_account
+        text type
+        text updated_at
+    }
+    lease_charge_line {
+        text id PK
+        text lease_charge_id PK
+        text account_id FK
+        text amount
+        text balance
+        text memo
+    }
+    lease_charge {
+        text id PK
+        text created_by_id FK
+        text lease_id FK
+        text updated_by_id FK
+        text batch
+        text created_at
+        text date
+        text last_late_fees_processed_date
+        text memo
+        text recurring_transaction
+        text reference
+        jsonb register
+        text total_amount
+        text total_balance
+        text updated_at
+    }
+    task_assigned_to_user {
+        text assigned_to_user_id PK
+        text task_id PK
+    }
+    task {
+        text id PK
+        text created_by_id FK
+        text linked_resource_id FK
+        text property_id FK
+        text requested_by_owner_id FK
+        text requested_by_tenant_id FK
+        text requested_by_user_id FK
+        text unit_id FK
+        text updated_by_id FK
+        text vendor_bill_id FK
+        text vendor_id FK
+        text work_order_assigned_vendor_id FK
+        text work_order_vendor_bill_id FK
+        text completed_at
+        text created_at
+        text date_type
+        text description
+        text due_date
+        text entry_notes
+        text entry_permission
+        text notify_assignees
+        text notify_tenant
+        text priority
+        text reference
+        text status
+        text subject
+        text type
+        text updated_at
+        text work_order_approved_by_owner
+        text work_order_billed
+        text work_order_instructions_to_vendor
+        text work_order_vendor_id
+    }
+    unit_picture {
+        text index PK
+        text unit_id PK
+        text rank
+        text url
+    }
+    unit_amenity {
+        text index PK
+        text unit_id PK
+        text amenity
+    }
+    unit {
+        text id PK
+        text created_by_id FK
+        text property_id FK
+        text updated_by_id FK
+        text active
+        text active_listing
+        text address_city
+        text address_country
+        text address_latitude
+        text address_longitude
+        text address_same_as_property
+        text address_street_1
+        text address_street_2
+        text address_zip
+        text batch
+        text baths
+        text beds
+        text created_at
+        text description
+        text in_eviction
+        text listing_contact
+        text listing_date_available
+        text listing_deposit
+        text listing_lease_length
+        text listing_listing
+        text listing_rent
+        text market_rent
+        text name
+        text size
+        text updated_at
+    }
+    property_owner {
+        text index PK
+        text property_id PK
+        text user_id FK
+        text ownership_percentage
+    }
+    property_picture {
+        text file_id PK
+        text property_id PK
+        text rank
+        text url
+    }
+    property_amenity {
+        text index PK
+        text property_id PK
+        text amenity
+    }
+    property_setting {
+        text name PK
+        text property_id PK
+        text value
+    }
+    property {
+        text id PK
+        text created_by_id FK
+        text updated_by_id FK
+        text active
+        text address_city
+        text address_country
+        text address_latitude
+        text address_longitude
+        text address_street_1
+        text address_street_2
+        text address_zip
+        text batch
+        text class
+        text created_at
+        text description
+        text name
+        text num_active_units
+        text type
+        text updated_at
+    }
+    report_rent_roll_picture {
+        text id PK
+        text _fivetran_id PK
+        text file
+        text rank
+        text url
+    }
+    report_rent_roll {
+        text _fivetran_id PK
+        text lease_id FK
+        text next_lease_id FK
+        text property_id FK
+        text unit_id FK
+        text active
+        text baths
+        text beds
+        text end_date
+        text last_payment_amount
+        text last_payment_date
+        text last_returned_payment_amount
+        text last_returned_payment_date
+        text market_rent
+        text occupied
+        text renewal_stage
+        text rent_per_size
+        text rollover_to_at_will
+        text size
+        text start
+        text term
+        text total_balance_due
+        text total_deposits_held
+        text total_recurring_charges
+        text total_recurring_credits
+        text total_recurring_payments
+        text total_recurring_rent
+    }
+    user_email {
+        text index PK
+        text user_id PK
+        text address
+        text type
+    }
+    user_phone {
+        text index PK
+        text user_id PK
+        text number
+        text type
+    }
+    users {
+        text id PK
+        text created_by_id FK
+        text updated_by_id FK
+        text active
+        jsonb bank_accounts
+        text company
+        text company_name
+        text created_at
+        text date_of_birth
+        text first_name
+        text full_name
+        text gender
+        text invitation_last_sent_at
+        text job_title
+        text last_name
+        text last_seen_at
+        text login_email
+        text middle_name
+        text name
+        text notes
+        text owner
+        text picture_url
+        text primary_address_city
+        text primary_address_country
+        text primary_address_latitude
+        text primary_address_longitude
+        text primary_address_street_1
+        text primary_address_street_2
+        text primary_address_zip
+        jsonb properties
+        jsonb property_groups
+        text role
+        text status
+        text timezone
+        text updated_at
+    }
+    communication_clicked_at {
+        text index PK
+        text communication_id PK
+        text clicked_at
+    }
+    communication_opened_at {
+        text index PK
+        text communication_id PK
+        text opened_at
+    }
+    communication_bcc {
+        text communication_id PK
+        text linked_to_id PK
+        text address
+        text display_name
+    }
+    communication_cc {
+        text communication_id PK
+        text linked_to_id PK
+        text address
+        text display_name
+    }
+    communication_to {
+        text communication_id PK
+        text linked_to_id PK
+        text address
+        text display_name
+    }
+    communication {
+        text id PK
+        text announcement
+        text body_html
+        text body_preview
+        text bounced_at
+        text created_at
+        text external_id
+        text from_address
+        text from_display_name
+        text from_linked_to_type
+        text sent_at
+        text status
+        text subject
+        text thread_id
+        text type
+        text updated_at
+    }
+    report_balance_sheet_summary {
+        text _fivetran_id PK
+        text account_id FK
+        text parent_account_id FK
+        text abs_total_with_sub_accounts
+        text group_by
+        text root_account
+        text total
+        text total_with_sub_accounts
+        text type
+    }
+    report_profit_and_loss_summary {
+        text _fivetran_id PK
+        text account_id FK
+        text parent_account_id FK
+        text abs_total_with_sub_accounts
+        text group_by
+        text root_account
+        text total
+        text total_with_sub_accounts
+        text type
+    }
+    lease_credit_line {
+        text id PK
+        text lease_credit_id PK
+        text account_id FK
+        text amount
+        text balance
+        text memo
+    }
+    lease_credit {
+        text id PK
+        text created_by_id FK
+        text lease_id FK
+        text updated_by_id FK
+        text batch
+        text created_at
+        text date
+        text memo
+        text reference
+        jsonb register
+        text total_amount
+        text total_balance
+        text updated_at
+    }
+    lease_tenant_unit {
+        text lease_tenant_id PK
+        text unit_id PK
+    }
+    lease_tenant {
+        text id PK
+        text lease_id FK
+        text property_id FK
+        text tenant_id FK
+        text move_in_at
+        text move_out_at
+        text move_out_notice_at
+        text name
+        text portal_enabled
+        text status
+    }
+    note_tag {
+        text index PK
+        text note_id PK
+        text tags
+    }
+    note {
+        text id PK
+        text linked_resource_id FK
+        text body
+        text created_at
+        text created_by
+        text linked_resource_type
+        text title
+    }
+    portfolio_property {
+        text portfolio_id PK
+        text property_id PK
+    }
+    portfolio {
+        text id PK
+        text created_by_id FK
+        text updated_by_id FK
+        text created_at
+        text name
+        text updated_at
+    }
+    vendor_credit_line {
+        text id PK
+        text vendor_credit_id PK
+        text account_id FK
+        text linked_resource_id FK
+        text amount
+        text balance
+        text memo
+    }
+    vendor_credit {
+        text id PK
+        text vendor_id FK
+        text batch
+        text date
+        text due_date
+        text memo
+        text reference
+        text total_amount
+        text total_balance
+    }
+    tenant_dependant {
+        text index PK
+        text tenant_id PK
+        text date_of_birth
+        text first_name
+        text last_name
+        text middle_name
+        text relationship
+    }
+    tenant_email {
+        text index PK
+        text tenant_id PK
+        text address
+        text type
+    }
+    tenant_emergency_contact {
+        text index PK
+        text tenant_id PK
+        text email
+        text name
+        text phone
+        text relationship
+    }
+    tenant_pet {
+        text index PK
+        text tenant_id PK
+        text age
+        text breed
+        text color
+        text gender
+        text is_service_animal
+        text is_spayed_or_neutered
+        text name
+        text notes
+        text type
+        text weight
+    }
+    tenant_phone {
+        text index PK
+        text tenant_id PK
+        text number
+        text type
+    }
+    tenant_prospect_info_interest {
+        text property_id PK
+        text tenant_id PK
+        text unit_id PK
+    }
+    tenant_vehicle {
+        text index PK
+        text tenant_id PK
+        text color
+        text license_platae
+        text make
+        text model
+        text notes
+        text state
+        text year
+    }
+    tenant_unit {
+        text tenant_id PK
+        text unit_id PK
+    }
+    tenant {
+        text id PK
+        text created_by_id FK
+        text updated_by_id FK
+        text batch
+        text company
+        text company_name
+        text created_at
+        text date_of_birth
+        text first_name
+        text gender
+        text job_title
+        text last_name
+        text middle_name
+        text name
+        text notes
+        text picture_url
+        text portal_info_allow_access
+        text portal_info_invitation_last_sent_at
+        text portal_info_last_seen_at
+        text portal_info_login_email
+        text portal_info_mobile_phone
+        text portal_info_status
+        text primary_address_city
+        text primary_address_country
+        text primary_address_latitude
+        text primary_address_longitude
+        text primary_address_street_1
+        text primary_address_street_2
+        text primary_address_zip
+        text prospect_info_assigned_to_user
+        text prospect_info_campaign_content
+        text prospect_info_campaign_medium
+        text prospect_info_campaign_name
+        text prospect_info_campaign_source
+        text prospect_info_campaign_term
+        text prospect_info_credit_score
+        text prospect_info_expected_move_in_date
+        text prospect_info_lead_source
+        text prospect_info_max_rent
+        text prospect_info_min_bathrooms
+        text prospect_info_min_bedrooms
+        text prospect_info_monthly_income
+        text prospect_info_next_task_date
+        text prospect_info_status
+        text timezone
+        text type
+        text updated_at
+    }
+    lease_payment_linked_charge {
+        text index PK
+        text lease_payment_id PK
+        text account_id FK
+        text amount
+        text linked_transaction
+        text linked_transaction_line
+    }
+    lease_payment_e_pay {
+        text name PK
+        text lease_payment_id PK
+        text value
+    }
+    lease_payment {
+        text id PK
+        text created_by_id FK
+        text deposit_to_account_id FK
+        text lease_id FK
+        text received_from_tenant_id FK
+        text updated_by_id FK
+        text amount_applied_to_charges
+        text amount_applied_to_credits
+        text amount_not_applied_to_charges
+        text amount_received
+        text auto_apply_payment_on_charges
+        text auto_deposit
+        jsonb check_info
+        text created_at
+        text deposit_entry
+        text deposit_status
+        text is_files_shared_with_tenant
+        jsonb linked_credits
+        text payment_method
+        text reference
+        jsonb register
+        text reversed_payment
+        text updated_at
+    }
+    lease_unit {
+        text lease_id PK
+        text unit_id PK
+    }
+    lease_renewal_history {
+        text index PK
+        text lease_id PK
+        text unit_id FK
+        text new_rent
+        text previous_rent
+        text renewal_date
+    }
+    lease_setting {
+        text name PK
+        text lease_id PK
+        text value
+    }
+    lease {
+        text id PK
+        text created_by_id FK
+        text property_id FK
+        text updated_by_id FK
+        text created_at
+        text ends
+        text evicton_pending
+        text last_late_fees_processed_date
+        text name
+        text notes
+        text proof_of_insurance_required
+        text recurring_rent_frequency
+        text reference
+        text renewal_stage
+        text rollover_to_at_will
+        text start
+        text status
+        text term
+        text total_balance_due
+        text total_deposits_held
+        text total_recurring_charges
+        text total_recurring_credits
+        text total_recurring_payments
+        text total_recurring_rent
+        text updated_at
+    }
+    expense_line {
+        text id PK
+        text expense_id PK
+        text account_id FK
+        text linked_resource_id FK
+        text property_id FK
+        text amount
+        text balance
+    }
+    expense_register {
+        text index PK
+        text expense_id PK
+        text cleared
+        text plaid_transaction
+    }
+    expense {
+        text id PK
+        text created_by_id FK
+        text updated_by_id FK
+        text batch
+        jsonb check_info
+        text created_at
+        text date
+        text memo
+        text pay_from_account
+        text pay_to_resource_id
+        text pay_to_resource_type
+        text payment_method
+        text recurring_transaction
+        text reference
+        jsonb register
+        text total_amount
+        text total_balance
+        text updated_at
+    }
+    vendor_email {
+        text index PK
+        text vendor_id PK
+        text address
+        text type
+    }
+    vendor_phone {
+        text index PK
+        text vendor_id PK
+        text number
+        text type
+    }
+    vendor_property {
+        text property_id PK
+        text vendor_id PK
+    }
+    vendor {
+        text id PK
+        text created_by_id FK
+        text updated_by_id FK
+        text active
+        text balance
+        text company
+        text company_name
+        text created_at
+        text date_of_birth
+        text federal_tax_info_address_city
+        text federal_tax_info_address_country
+        text federal_tax_info_address_for_1099_same_as_primary_address
+        text federal_tax_info_address_latitude
+        text federal_tax_info_address_longitude
+        text federal_tax_info_address_street_1
+        text federal_tax_info_address_street_2
+        text federal_tax_info_address_zip
+        text federal_tax_info_payer_id
+        text federal_tax_info_payer_name
+        text first_name
+        text full_name
+        text gender
+        text insurance_info_coverage
+        text insurance_info_effective_date
+        text insurance_info_expiration_date
+        text insurance_info_policy_number
+        text insurance_info_provider
+        text job_title
+        text last_name
+        text management_end_date
+        text management_start_date
+        text middle_name
+        text name
+        text notes
+        text picture_url
+        text primary_address_city
+        text primary_address_country
+        text primary_address_latitude
+        text primary_address_longitude
+        text primary_address_street_1
+        text primary_address_street_2
+        text primary_address_zip
+        text timezone
+        text updated_at
+    }
+    vendor_bill_line }o--|| account : "fk"
+    vendor_bill_line }o--|| property : "fk"
+    vendor_bill_line }o--|| unit : "fk"
+    vendor_bill_line }o--|| property : "fk"
+    vendor_bill_line }o--|| vendor_bill : "fk"
+    vendor_bill }o--|| vendor : "fk"
+    vendor_bill }o--|| users : "fk"
+    vendor_bill }o--|| users : "fk"
+    lease_reversed_payment_line }o--|| account : "fk"
+    lease_reversed_payment_line }o--|| lease_reversed_payment : "fk"
+    lease_reversed_payment }o--|| lease : "fk"
+    lease_reversed_payment }o--|| lease_payment : "fk"
+    report_cash_flow_statement }o--|| account : "fk"
+    report_cash_flow_statement }o--|| account : "fk"
+    owner_email }o--|| owner : "fk"
+    owner_phone }o--|| owner : "fk"
+    owner }o--|| users : "fk"
+    owner }o--|| users : "fk"
+    default_account_for }o--|| account : "fk"
+    account }o--|| users : "fk"
+    account }o--|| users : "fk"
+    lease_charge_line }o--|| account : "fk"
+    lease_charge_line }o--|| lease_charge : "fk"
+    lease_charge }o--|| lease : "fk"
+    lease_charge }o--|| users : "fk"
+    lease_charge }o--|| users : "fk"
+    task_assigned_to_user }o--|| users : "fk"
+    task_assigned_to_user }o--|| task : "fk"
+    task }o--|| owner : "fk"
+    task }o--|| unit : "fk"
+    task }o--|| tenant : "fk"
+    task }o--|| property : "fk"
+    task }o--|| users : "fk"
+    task }o--|| users : "fk"
+    task }o--|| unit : "fk"
+    task }o--|| users : "fk"
+    task }o--|| vendor : "fk"
+    task }o--|| vendor_bill : "fk"
+    task }o--|| vendor : "fk"
+    task }o--|| vendor_bill : "fk"
+    unit_picture }o--|| unit : "fk"
+    unit_amenity }o--|| unit : "fk"
+    unit }o--|| property : "fk"
+    unit }o--|| users : "fk"
+    unit }o--|| users : "fk"
+    property_owner }o--|| users : "fk"
+    property_owner }o--|| property : "fk"
+    property_picture }o--|| property : "fk"
+    property_amenity }o--|| property : "fk"
+    property_setting }o--|| property : "fk"
+    property }o--|| users : "fk"
+    property }o--|| users : "fk"
+    report_rent_roll_picture }o--|| report_rent_roll : "fk"
+    report_rent_roll }o--|| lease : "fk"
+    report_rent_roll }o--|| property : "fk"
+    report_rent_roll }o--|| unit : "fk"
+    report_rent_roll }o--|| lease : "fk"
+    user_email }o--|| users : "fk"
+    user_phone }o--|| users : "fk"
+    users }o--|| users : "fk"
+    users }o--|| users : "fk"
+    communication_clicked_at }o--|| communication : "fk"
+    communication_opened_at }o--|| communication : "fk"
+    communication_bcc }o--|| users : "fk"
+    communication_bcc }o--|| communication : "fk"
+    communication_cc }o--|| users : "fk"
+    communication_cc }o--|| communication : "fk"
+    communication_to }o--|| users : "fk"
+    communication_to }o--|| communication : "fk"
+    report_balance_sheet_summary }o--|| account : "fk"
+    report_balance_sheet_summary }o--|| account : "fk"
+    report_profit_and_loss_summary }o--|| account : "fk"
+    report_profit_and_loss_summary }o--|| account : "fk"
+    lease_credit_line }o--|| account : "fk"
+    lease_credit_line }o--|| lease_credit : "fk"
+    lease_credit }o--|| lease : "fk"
+    lease_credit }o--|| users : "fk"
+    lease_credit }o--|| users : "fk"
+    lease_tenant_unit }o--|| unit : "fk"
+    lease_tenant_unit }o--|| lease_tenant : "fk"
+    lease_tenant }o--|| lease : "fk"
+    lease_tenant }o--|| property : "fk"
+    lease_tenant }o--|| tenant : "fk"
+    note_tag }o--|| note : "fk"
+    note }o--|| task : "fk"
+    portfolio_property }o--|| property : "fk"
+    portfolio_property }o--|| portfolio : "fk"
+    portfolio }o--|| users : "fk"
+    portfolio }o--|| users : "fk"
+    vendor_credit_line }o--|| account : "fk"
+    vendor_credit_line }o--|| property : "fk"
+    vendor_credit_line }o--|| vendor_credit : "fk"
+    vendor_credit }o--|| vendor : "fk"
+    tenant_dependant }o--|| tenant : "fk"
+    tenant_email }o--|| tenant : "fk"
+    tenant_emergency_contact }o--|| tenant : "fk"
+    tenant_pet }o--|| tenant : "fk"
+    tenant_phone }o--|| tenant : "fk"
+    tenant_prospect_info_interest }o--|| property : "fk"
+    tenant_prospect_info_interest }o--|| unit : "fk"
+    tenant_prospect_info_interest }o--|| tenant : "fk"
+    tenant_vehicle }o--|| tenant : "fk"
+    tenant_unit }o--|| unit : "fk"
+    tenant_unit }o--|| tenant : "fk"
+    tenant }o--|| users : "fk"
+    tenant }o--|| users : "fk"
+    lease_payment_linked_charge }o--|| account : "fk"
+    lease_payment_linked_charge }o--|| lease_payment : "fk"
+    lease_payment_e_pay }o--|| lease_payment : "fk"
+    lease_payment }o--|| lease : "fk"
+    lease_payment }o--|| tenant : "fk"
+    lease_payment }o--|| users : "fk"
+    lease_payment }o--|| users : "fk"
+    lease_payment }o--|| tenant : "fk"
+    lease_unit }o--|| unit : "fk"
+    lease_unit }o--|| lease : "fk"
+    lease_renewal_history }o--|| unit : "fk"
+    lease_renewal_history }o--|| lease : "fk"
+    lease_setting }o--|| lease : "fk"
+    lease }o--|| property : "fk"
+    lease }o--|| users : "fk"
+    lease }o--|| users : "fk"
+    expense_line }o--|| account : "fk"
+    expense_line }o--|| property : "fk"
+    expense_line }o--|| property : "fk"
+    expense_line }o--|| expense : "fk"
+    expense_register }o--|| expense : "fk"
+    expense }o--|| users : "fk"
+    expense }o--|| users : "fk"
+    vendor_email }o--|| vendor : "fk"
+    vendor_phone }o--|| vendor : "fk"
+    vendor_property }o--|| property : "fk"
+    vendor_property }o--|| vendor : "fk"
+    vendor }o--|| users : "fk"
+    vendor }o--|| users : "fk"

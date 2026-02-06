@@ -1,0 +1,95 @@
+erDiagram
+    project {
+        text id PK
+        text last_scan_id FK
+        text archived
+        text completed_scans
+        text critical
+        text high
+        text language
+        text last_scan_time
+        text low
+        text medium
+        text name
+        text note
+        text organization_id
+    }
+    vulnerability_physical_location {
+        text _fivetran_id PK
+        text vulnerability_id FK
+        text artifact_location_uri
+        text context_region_snippet_rendered_text
+        text context_region_snippet_text
+        text context_region_start_line
+        text region_snippet_rendered_text
+        text region_snippet_text
+        text region_start_line
+    }
+    vulnerability_code_flow_logical_location {
+        text _fivetran_id PK
+        text vulnerability_id FK
+        text fully_qualified_name
+        text name
+    }
+    vulnerability_code_flow_location {
+        text vulnerability_id PK
+        text vulnerability_code_flow_index FK
+        text artifact_location_uri
+        text artifact_location_uri_base_id
+        text importance
+        text location_message_text
+        text location_regionsnippet_rendered_text
+        text location_regionsnippet_text
+        text location_regionstart_line
+    }
+    vulnerability_code_flow {
+        text index PK
+        text vulnerability_id PK
+        text message_text
+    }
+    vulnerability {
+        text id PK
+        text project_id FK
+        text scan_id FK
+        text advice
+        jsonb cwe
+        text description
+        text first_created_time
+        text is_new
+        text issue
+        text last_seen_time
+        text last_updated_time
+        jsonb learn
+        text level
+        text message_text
+        text name
+        text organization_id
+        jsonb owasp
+        text recommendation
+        jsonb reference
+        text risk
+        text rule_id
+        text severity
+        text status
+    }
+    scan {
+        text id PK
+        text project_id FK
+        text code_artifact_id
+        text completed_time
+        text created_time
+        text error_message
+        text label
+        text started_time
+        text status
+        text total_time
+    }
+    project }o--|| scan : "fk"
+    vulnerability_physical_location }o--|| vulnerability : "fk"
+    vulnerability_code_flow_logical_location }o--|| vulnerability_code_flow_location : "fk"
+    vulnerability_code_flow_location }o--|| vulnerability_code_flow : "fk"
+    vulnerability_code_flow_location }o--|| vulnerability_code_flow : "fk"
+    vulnerability_code_flow }o--|| vulnerability : "fk"
+    vulnerability }o--|| scan : "fk"
+    vulnerability }o--|| project : "fk"
+    scan }o--|| project : "fk"

@@ -1,0 +1,638 @@
+erDiagram
+    booking_daily_allocation {
+        text date PK
+        text booking_allocation_booking_id PK
+        text booking_allocation_index PK
+        text effort_minutes
+    }
+    booking_allocation {
+        text index PK
+        text booking_id PK
+        text user_id FK
+        text mode
+        text placeholder_id
+        double_precision total_effort
+    }
+    booking {
+        text id PK
+        text folder_id FK
+        text placeholder_id FK
+        text responsible_id FK
+        double_precision booking_duration
+        text booking_finish_date
+        text booking_start_date
+        boolean booking_work_on_weekends
+        text title
+    }
+    job_role {
+        text id PK
+        boolean is_deleted
+        text short_title
+        text title
+    }
+    access_role {
+        text id PK
+        text description
+        text title
+    }
+    space_task_dependency_id {
+        text index PK
+        text space_task_id PK
+        text dependency_id
+    }
+    space_task_super_parent_id {
+        text index PK
+        text space_task_id PK
+        text super_parent_id
+    }
+    space_task_sub_task_id {
+        text index PK
+        text space_task_id PK
+        text sub_task_id
+    }
+    space_task_super_task_id {
+        text index PK
+        text space_task_id PK
+        text space_super_task_id
+    }
+    space_task_parent_id {
+        text index PK
+        text space_task_id PK
+        text parent_id
+    }
+    space_task_responsible_id {
+        text index PK
+        text space_task_id PK
+        text responsible_id
+    }
+    space_task_responsible_placeholder_id {
+        text index PK
+        text space_task_id PK
+        text responsible_placeholder_id
+    }
+    space_task_author_id {
+        text index PK
+        text space_task_id PK
+        text author_id
+    }
+    space_task_follower_id {
+        text index PK
+        text space_task_id PK
+        text follower_id
+    }
+    space_task_custom_field {
+        text id PK
+        text space_task_id PK
+        text value
+    }
+    space_task {
+        text id PK
+        text account_id FK
+        text attachment_count
+        text billing_type
+        text brief_description
+        text completed_date
+        text created_date
+        text date_type
+        text description
+        text due_date
+        text duration
+        text effort_allocation_allocated_effort
+        text effort_allocation_daily_allocation_percentage
+        text effort_allocation_mode
+        text effort_allocation_total_effort
+        text followed_by_me
+        text has_attachment
+        text importance
+        text permalink
+        text priority
+        text recurrent
+        jsonb responsible_allocation
+        text scope
+        jsonb shared_id
+        text start_date
+        text status
+        text title
+        text updated_date
+        text work_on_weekend
+    }
+    space_member {
+        text contact_id PK
+        text space_id PK
+        text access_role_id FK
+        boolean is_manager
+    }
+    space_project_workflow {
+        text space_id PK
+        text workflow_id PK
+    }
+    space_task_workflow {
+        text space_id PK
+        text workflow_id PK
+    }
+    space {
+        text id PK
+        text default_project_workflow_id FK
+        text default_task_workflow_id FK
+        text guest_role_id FK
+        text access_type
+        boolean archived
+        text description
+        text title
+    }
+    folder_finance {
+        text id PK
+        text actual_cost
+        text actual_fees
+        text budget
+        text currency
+        text planned_cost
+        text planned_fees
+    }
+    contact_member {
+        text contact_id PK
+        text member_id PK
+    }
+    contact_profile {
+        text account_id PK
+        text contact_id PK
+        boolean admin
+        text email
+        boolean external
+        boolean owner
+        text role
+    }
+    contact {
+        text id PK
+        text job_role_id FK
+        text work_schedule_id FK
+        text company_name
+        text current_bill_rate_source
+        double_precision current_bill_rate_value
+        text current_cost_rate_source
+        double_precision current_cost_rate_value
+        boolean deleted
+        text first_name
+        text last_name
+        text locale
+        text location
+        boolean me
+        boolean my_team
+        text phone
+        text timezone
+        text title
+        text type
+    }
+    custom_item_type {
+        text id PK
+        text space_id FK
+        text description
+        text related_type
+        text title
+    }
+    timelog_category {
+        text id PK
+        boolean hidden
+        text name
+        integer orders
+    }
+    workflow_custom_status {
+        text id PK
+        text workflow_id PK
+        text groups
+        boolean hidden
+        text name
+        boolean standard
+        boolean standard_name
+    }
+    workflow {
+        text id PK
+        text space_id FK
+        boolean hidden
+        text name
+        boolean standard
+    }
+    invitation {
+        text id PK
+        text account_id FK
+        text inviter_id FK
+        boolean external
+        timestamp invitation_date
+        timestamp resolved_date
+        text status
+    }
+    user_schedule_exception {
+        text id PK
+        text contact_id FK
+        text exclusion_type
+        text from_date
+        text is_work_days
+        text to_date
+    }
+    folder_task_dependency_id {
+        text index PK
+        text folder_task_id PK
+        text dependency_id
+    }
+    folder_task_super_parent_id {
+        text index PK
+        text folder_task_id PK
+        text super_parent_id
+    }
+    folder_task_sub_task_id {
+        text index PK
+        text folder_task_id PK
+        text sub_task_id
+    }
+    folder_task_super_task_id {
+        text index PK
+        text folder_task_id PK
+        text folder_super_task_id
+    }
+    folder_task_parent_id {
+        text index PK
+        text folder_task_id PK
+        text parent_id
+    }
+    folder_task_responsible_id {
+        text index PK
+        text folder_task_id PK
+        text responsible_id
+    }
+    folder_task_responsible_placeholder_id {
+        text index PK
+        text folder_task_id PK
+        text responsible_placeholder_id
+    }
+    folder_task_author_id {
+        text index PK
+        text folder_task_id PK
+        text author_id
+    }
+    folder_task_follower_id {
+        text index PK
+        text folder_task_id PK
+        text follower_id
+    }
+    folder_task_custom_field {
+        text id PK
+        text folder_task_id PK
+        text value
+    }
+    folder_task {
+        text id PK
+        text account_id FK
+        text attachment_count
+        text billing_type
+        text brief_description
+        text completed_date
+        text created_date
+        text date_type
+        text description
+        text due_date
+        text duration
+        text effort_allocation_allocated_effort
+        text effort_allocation_daily_allocation_percentage
+        text effort_allocation_mode
+        text effort_allocation_total_effort
+        text finance_actual_cost
+        text finance_actual_fees
+        text finance_currency
+        text finance_planned_cost
+        text finance_planned_fees
+        text followed_by_me
+        text has_attachment
+        text importance
+        text permalink
+        text priority
+        text recurrent
+        jsonb responsible_allocation
+        text scope
+        jsonb shared_id
+        text start_date
+        text status
+        text title
+        text updated_date
+        text work_on_weekends
+    }
+    folder_project_owner {
+        text folder_project_id PK
+        text owner_id PK
+    }
+    folder_project_child {
+        text child_id PK
+        text folder_project_id PK
+    }
+    folder_project_share {
+        text folder_project_id PK
+        text shared_id PK
+    }
+    folder_project_parent {
+        text folder_project_id PK
+        text parent_id PK
+    }
+    folder_project_super_parent {
+        text folder_project_id PK
+        text super_parent_id PK
+    }
+    folder_project_custom_field {
+        text custom_column_id PK
+        text folder_project_id PK
+        text custom_field_value
+    }
+    folder_project {
+        text id PK
+        text account_id FK
+        text project_author_id FK
+        text project_custom_status_id FK
+        text workflow_id FK
+        text attachment_count
+        timestamp created_date
+        text description
+        boolean has_attachment
+        text permalink
+        timestamp project_completed_date
+        text project_contract_type
+        timestamp project_created_date
+        text project_end_date
+        jsonb project_owner_id
+        text project_start_date
+        text project_status
+        text scope
+        boolean space
+        text title
+        timestamp updated_date
+    }
+    workweek_schedule {
+        text _fivetran_id PK
+        text work_schedule_id FK
+        text capacity_minutes
+        jsonb work_day
+    }
+    user_work_schedule {
+        text user_id PK
+        text work_schedule_id PK
+    }
+    work_schedule {
+        text id PK
+        text schedule_type
+        text title
+    }
+    attachment_review {
+        text review_id PK
+        text attachment_id PK
+    }
+    attachment {
+        text id PK
+        text author_id FK
+        text comment_id FK
+        text current_attachment_id FK
+        text folder_id FK
+        text task_id FK
+        text content_type
+        timestamp created_date
+        text name
+        text type
+        double_precision version
+    }
+    placeholder {
+        text id PK
+        text job_role_id FK
+        boolean deleted
+        text short_title
+        text title
+    }
+    custom_field_share {
+        text custom_field_id PK
+        text share_id PK
+    }
+    custom_field_contact {
+        text contact_id PK
+        text custom_field_id PK
+    }
+    custom_field {
+        text id PK
+        text account_id FK
+        text space_id FK
+        text setting_aggregation
+        boolean setting_allow_other_values
+        boolean setting_allow_time
+        text setting_currency
+        double_precision setting_decimal_places
+        text setting_inheritance_type
+        boolean setting_read_only
+        text setting_timezone
+        boolean setting_use_thousands_separator
+        jsonb setting_values
+        text title
+        text type
+    }
+    approval_attachment {
+        text approval_id PK
+        text attachment_id PK
+    }
+    approval_decision {
+        text approval_id PK
+        text approver_id PK
+        text comment
+        text status
+        timestamp updated_date
+    }
+    approval {
+        text id PK
+        text author_id FK
+        text finisher_id FK
+        text folder_id FK
+        text task_id FK
+        boolean auto_finish_on_approve
+        boolean auto_finish_on_reject
+        text description
+        text due_date
+        boolean finished
+        text review_id
+        text status
+        text title
+        text type
+        timestamp updated_date
+    }
+    parent_group {
+        text group_id PK
+        text parent_id PK
+    }
+    child_group {
+        text child_id PK
+        text group_id PK
+    }
+    member_group {
+        text group_id PK
+        text member_id PK
+    }
+    groups {
+        text id PK
+        text account_id FK
+        boolean my_team
+        text title
+    }
+    timelog {
+        text id PK
+        text category_id FK
+        text task_id FK
+        text user_id FK
+        text billing_type
+        timestamp created_date
+        double_precision finance_actual_cost
+        double_precision finance_actual_fees
+        text finance_currency
+        double_precision hours
+        text tracked_date
+        timestamp updated_date
+    }
+    comment {
+        text id PK
+        text author_id FK
+        text folder_id FK
+        text task_id FK
+        timestamp created_date
+        text direction
+        text email_subject
+        text external_requester_first_name
+        text external_requester_id
+        text external_requester_last_name
+        text text
+        text type
+        timestamp updated_date
+    }
+    account_custom_field {
+        text account_id PK
+        text custom_field_id PK
+    }
+    account_workday {
+        text workday PK
+        text account_id PK
+    }
+    account {
+        text id PK
+        text recycle_bin_id FK
+        text root_folder_id FK
+        timestamp created_date
+        text date_format
+        text first_day_of_week
+        timestamp joined_date
+        text name
+        boolean subscription_paid
+        boolean subscription_suspended
+        text subscription_type
+        double_precision subscription_user_limit
+    }
+    booking_daily_allocation }o--|| booking_allocation : "fk"
+    booking_daily_allocation }o--|| booking_allocation : "fk"
+    booking_allocation }o--|| contact : "fk"
+    booking_allocation }o--|| booking : "fk"
+    booking }o--|| folder_project : "fk"
+    booking }o--|| placeholder : "fk"
+    booking }o--|| contact : "fk"
+    space_task_dependency_id }o--|| space_task : "fk"
+    space_task_super_parent_id }o--|| space_task : "fk"
+    space_task_sub_task_id }o--|| space_task : "fk"
+    space_task_super_task_id }o--|| space_task : "fk"
+    space_task_parent_id }o--|| space_task : "fk"
+    space_task_responsible_id }o--|| space_task : "fk"
+    space_task_responsible_placeholder_id }o--|| space_task : "fk"
+    space_task_author_id }o--|| space_task : "fk"
+    space_task_follower_id }o--|| space_task : "fk"
+    space_task_custom_field }o--|| space_task : "fk"
+    space_task }o--|| space : "fk"
+    space_task }o--|| account : "fk"
+    space_member }o--|| contact : "fk"
+    space_member }o--|| access_role : "fk"
+    space_member }o--|| space : "fk"
+    space_project_workflow }o--|| workflow : "fk"
+    space_project_workflow }o--|| space : "fk"
+    space_task_workflow }o--|| workflow : "fk"
+    space_task_workflow }o--|| space : "fk"
+    space }o--|| access_role : "fk"
+    space }o--|| workflow : "fk"
+    space }o--|| workflow : "fk"
+    folder_finance }o--|| folder_project : "fk"
+    contact_member }o--|| contact : "fk"
+    contact_member }o--|| contact : "fk"
+    contact_profile }o--|| account : "fk"
+    contact_profile }o--|| contact : "fk"
+    contact }o--|| job_role : "fk"
+    contact }o--|| work_schedule : "fk"
+    custom_item_type }o--|| space : "fk"
+    workflow_custom_status }o--|| workflow : "fk"
+    workflow }o--|| space : "fk"
+    invitation }o--|| account : "fk"
+    invitation }o--|| contact : "fk"
+    user_schedule_exception }o--|| contact : "fk"
+    folder_task_dependency_id }o--|| folder_task : "fk"
+    folder_task_super_parent_id }o--|| folder_task : "fk"
+    folder_task_sub_task_id }o--|| folder_task : "fk"
+    folder_task_super_task_id }o--|| folder_task : "fk"
+    folder_task_parent_id }o--|| folder_task : "fk"
+    folder_task_responsible_id }o--|| folder_task : "fk"
+    folder_task_responsible_placeholder_id }o--|| folder_task : "fk"
+    folder_task_author_id }o--|| folder_task : "fk"
+    folder_task_follower_id }o--|| folder_task : "fk"
+    folder_task_custom_field }o--|| folder_task : "fk"
+    folder_task }o--|| folder_project : "fk"
+    folder_task }o--|| account : "fk"
+    folder_project_owner }o--|| contact : "fk"
+    folder_project_owner }o--|| folder_project : "fk"
+    folder_project_child }o--|| folder_project : "fk"
+    folder_project_child }o--|| folder_project : "fk"
+    folder_project_share }o--|| contact : "fk"
+    folder_project_share }o--|| folder_project : "fk"
+    folder_project_parent }o--|| folder_project : "fk"
+    folder_project_parent }o--|| folder_project : "fk"
+    folder_project_super_parent }o--|| folder_project : "fk"
+    folder_project_super_parent }o--|| folder_project : "fk"
+    folder_project_custom_field }o--|| custom_field : "fk"
+    folder_project_custom_field }o--|| folder_project : "fk"
+    folder_project }o--|| workflow : "fk"
+    folder_project }o--|| account : "fk"
+    folder_project }o--|| workflow_custom_status : "fk"
+    folder_project }o--|| contact : "fk"
+    workweek_schedule }o--|| work_schedule : "fk"
+    user_work_schedule }o--|| contact : "fk"
+    user_work_schedule }o--|| work_schedule : "fk"
+    attachment_review }o--|| attachment : "fk"
+    attachment }o--|| folder_project : "fk"
+    attachment }o--|| space_task : "fk"
+    attachment }o--|| contact : "fk"
+    attachment }o--|| comment : "fk"
+    attachment }o--|| attachment : "fk"
+    placeholder }o--|| job_role : "fk"
+    custom_field_share }o--|| contact : "fk"
+    custom_field_share }o--|| custom_field : "fk"
+    custom_field_contact }o--|| contact : "fk"
+    custom_field_contact }o--|| custom_field : "fk"
+    custom_field }o--|| account : "fk"
+    custom_field }o--|| space : "fk"
+    approval_attachment }o--|| attachment : "fk"
+    approval_attachment }o--|| approval : "fk"
+    approval_decision }o--|| contact : "fk"
+    approval_decision }o--|| approval : "fk"
+    approval }o--|| folder_project : "fk"
+    approval }o--|| folder_task : "fk"
+    approval }o--|| contact : "fk"
+    approval }o--|| contact : "fk"
+    parent_group }o--|| contact : "fk"
+    parent_group }o--|| groups : "fk"
+    child_group }o--|| contact : "fk"
+    child_group }o--|| groups : "fk"
+    member_group }o--|| contact : "fk"
+    member_group }o--|| groups : "fk"
+    groups }o--|| account : "fk"
+    timelog }o--|| contact : "fk"
+    timelog }o--|| timelog_category : "fk"
+    timelog }o--|| space_task : "fk"
+    comment }o--|| folder_project : "fk"
+    comment }o--|| space_task : "fk"
+    comment }o--|| contact : "fk"
+    account_custom_field }o--|| custom_field : "fk"
+    account_custom_field }o--|| account : "fk"
+    account_workday }o--|| account : "fk"
+    account }o--|| folder_project : "fk"
+    account }o--|| folder_project : "fk"

@@ -1,0 +1,1391 @@
+erDiagram
+    product_identifier {
+        text product_id PK
+        text feed_id PK
+        text feed_item_detail_index PK
+        text product_id_type
+    }
+    feed_item_detail {
+        text index PK
+        text feed_id PK
+        text ingestion_status
+        text itemid
+        text mart_id
+        text sku
+        text wpid
+    }
+    feed_item_status {
+        text feed_id PK
+        text additional_attribute
+        text feed_status
+        text feed_submission_date
+        text ingestion_error
+        text items_failed
+        text items_processing
+        text items_received
+        text items_succeeded
+        text submitted_by
+    }
+    inbound_shipment_item {
+        text inbound_order_id PK
+        text shipment_id PK
+        text sku FK
+        text damaged_qty
+        text expected_delivery_date
+        text fill_rate
+        text gtin
+        text inner_pack_quantity
+        text item_desc
+        text item_quantity
+        text received_qty
+        text updated_expected_delivery_date
+        text vendor_pack_quantity
+    }
+    wfs_inventory_log {
+        text id PK
+        text gtin PK
+        text changed_unit
+        text fc_name
+        text shipment_id
+        text transaction_location
+        text transaction_reason_code
+        text transaction_reason_desc
+        text transaction_time
+        text transaction_type
+    }
+    wfs_inventory_log_payload {
+        text gtin PK
+        text product_name
+        text vendor_sku
+    }
+    distributor_supported_service {
+        text distributor_supported_service PK
+        text ship_node PK
+    }
+    two_day_shipping_detail {
+        text index PK
+        text fulfillment_center_ship_node PK
+        text carrier_method_name
+        text carrier_method_type
+    }
+    calendar_day_configuration {
+        text index PK
+        text ship_node PK
+        text additional_days_off
+        text carrier_weekend_calendar_saturday_working_day
+        text carrier_weekend_calendar_sunday_working_day
+        text standard_processing_schedule_friday_cut_off_time
+        text standard_processing_schedule_friday_is_working_day
+        text standard_processing_schedule_monday_cut_off_time
+        text standard_processing_schedule_monday_is_working_day
+        text standard_processing_schedule_saturday_cut_off_time
+        text standard_processing_schedule_saturday_is_working_day
+        text standard_processing_schedule_sunday_cut_off_time
+        text standard_processing_schedule_sunday_is_working_day
+        text standard_processing_schedule_thursday_cut_off_time
+        text standard_processing_schedule_thursday_is_working_day
+        text standard_processing_schedule_tuesday_cut_off_time
+        text standard_processing_schedule_tuesday_is_working_day
+        text standard_processing_schedule_wednesday_cut_off_time
+        text standard_processing_schedule_wednesday_is_working_day
+    }
+    fulfillment_center {
+        text ship_node PK
+        text custom_node_id
+        text node_type
+        text postal_address_address_line_1
+        text postal_address_city
+        text postal_address_country
+        text postal_address_postal_code
+        text postal_address_state
+        text ship_node_name
+        text status
+        text time_zone
+    }
+    fulfillment_order_line_quantity_info {
+        text index PK
+        text fulfillment_order_line_index PK
+        text seller_order_id PK
+        text status
+        text status_description
+        text status_measurement_value
+        text status_unit_of_measure
+    }
+    fulfillment_order_line {
+        text index PK
+        text seller_order_id PK
+        text address_type
+        text addressline_one
+        text addressline_two
+        text city
+        text complete_name
+        text country_code
+        text first_name
+        text fulfillment_type
+        text last_modified
+        text last_name
+        text order_product_name
+        text ordered_quantity_measure_unit
+        text ordered_quantity_measurement_value
+        text postal_code
+        text shipping_method
+        text shipping_tier
+        text state_or_province_code
+        text state_or_province_name
+    }
+    fulfillment_order_shipment_line {
+        text index PK
+        text seller_order_id PK
+        text shipment_no PK
+        text fulfiller_line_id
+        text measurement_value
+        text shipment_line_no
+        text unit_of_measure
+    }
+    fulfillment_order_shipment_date {
+        text index PK
+        text seller_order_id PK
+        text shipment_no PK
+        text actual_date
+        text datetype_id
+        text expected_date
+    }
+    fulfillment_order_shipment {
+        text shipment_no PK
+        text seller_order_id PK
+        text actual_shipment_date
+        text carrier_description
+        text carrier_service_code
+        text external_tracking_url
+        text last_modified
+        text package_asn
+        text package_id
+        text purchase_order_id
+        text scac
+        text status
+        text status_description
+        text tracking_no
+    }
+    fulfillment_order_status {
+        text seller_order_id PK
+        text buyer_first_name
+        text buyer_last_name
+        text order_channel_id
+        text order_date
+        text order_type
+        text status
+    }
+    unpublished_item {
+        text _fivetran_id PK
+        text gtin FK
+        text sku FK
+        text brand
+        text conversion_rate
+        text customer_rating
+        text gmv_amount
+        text gmv_amount_currency
+        text item_id
+        text lifecycle_status
+        text market_price_amount
+        text market_price_currency
+        text market_trending
+        text offer_end_date
+        text offer_start_date
+        text page_view
+        text price_amount
+        text price_currency
+        text product_name
+        text product_type
+        text publish_status
+        text unpublish_reason
+        text unpublished_date
+    }
+    order_line_status {
+        text index PK
+        text order_line_index PK
+        text purchase_order_id PK
+        text cancellation_reason
+        text return_center_address
+        text return_center_address_address_1
+        text return_center_address_address_2
+        text return_center_address_city
+        text return_center_address_country
+        text return_center_address_email_id
+        text return_center_address_name
+        text return_center_address_postal_code
+        text return_center_address_state
+        text status
+        text status_quantity_amount
+        text status_quantity_unit_of_measurement
+        text sub_seller_id
+        text tracking_info_carrier_name
+        text tracking_info_method_code
+        text tracking_info_ship_date_time
+        text tracking_info_tracking_number
+        text tracking_info_tracking_url
+    }
+    orders {
+        text purchase_order_id PK
+        text buyer_id
+        text customer_email_id
+        text customer_order_id
+        text is_guest
+        text mart
+        text order_date
+        text order_type
+        text original_customer_order_id
+        text payment_type
+        text ship_node_id
+        text ship_node_name
+        text ship_node_type
+        text shipnode_type
+        text shipping_info_estimated_delivery_date
+        text shipping_info_estimated_ship_date
+        text shipping_info_method_code
+        text shipping_info_phone
+        text shipping_info_postal_address_address_1
+        text shipping_info_postal_address_address_2
+        text shipping_info_postal_address_address_type
+        text shipping_info_postal_address_city
+        text shipping_info_postal_address_country
+        text shipping_info_postal_address_name
+        text shipping_info_postal_address_postal_code
+        text shipping_info_postal_address_state
+    }
+    order_line {
+        text index PK
+        text purchase_order_id PK
+        text item_sku FK
+        text return_order_id FK
+        text config_id
+        text fulfillment_fulfillment_option
+        text fulfillment_pickup_by
+        text fulfillment_pickup_date_time
+        text fulfillment_ship_method
+        text fulfillment_shipping_programtype
+        text fulfillment_store_id
+        text intent_to_cancel
+        text item_condition
+        text item_image_url
+        text item_product_name
+        text item_weight_unit
+        text item_weight_value
+        text line_number
+        text orderlinequantity_amount
+        text orderlinequantity_unitof_measurement
+        text reference_line_id
+        text refund_comment
+        text refund_id
+        text seller_order_id
+        text serial_number
+        text status_date
+    }
+    order_pickup_person {
+        text index PK
+        text purchase_order_id PK
+        text name_complete_name
+        text name_empty
+        text name_first_name
+        text name_general_suffix
+        text name_last_name
+        text name_maturity_suffix
+        text name_middle_name
+        text name_title_of_respect
+        text phone_area_code
+        text phone_complete_number
+        text phone_country_code
+        text phone_extension
+        text phone_id
+        text phone_subscriber_number
+        text phone_type
+        text phone_validity_validated_by
+        text phone_validity_validated_date
+        text phone_validity_validation_status
+        text phone_validity_validation_type
+    }
+    order_line_refund_charge {
+        text index PK
+        text order_line_index PK
+        text purchase_order_id PK
+        text charge_amount
+        text charge_amount_currency
+        text charge_name
+        text charge_type
+        text refund_reason
+        text tax_amount
+        text tax_name
+        text taxamount_currency
+    }
+    order_line_charge {
+        text index PK
+        text order_line_index PK
+        text purchase_order_id PK
+        text charge_amount
+        text charge_amount_currency
+        text charge_name
+        text charge_type
+        text tax_amount
+        text tax_name
+        text taxamount_currency
+    }
+    label_detail_box_item {
+        text sku PK
+        text purchase_order_id PK
+        text line_number
+        text quantity
+    }
+    label_detail_add_on {
+        text index PK
+        text purchase_order_id PK
+        text charge_amount
+        text charge_currency
+        text declared_amount
+        text declared_currency
+        text name
+        text ref_link
+        text status
+    }
+    label_detail_by_purchase_order {
+        text purchase_order_id PK
+        text carrier_full_name
+        text carrier_name
+        text carrier_service_type
+        text tracking_no
+        text tracking_url
+    }
+    item_unpublished_reason {
+        text index PK
+        text sku PK
+        text unpublished_reason
+    }
+    item_additional_attribute_value {
+        text index PK
+        text item_additional_attribute_index PK
+        text sku PK
+        text groups
+        text is_variant
+        text rank
+        text source
+        text value
+    }
+    item_additional_attribute {
+        text index PK
+        text sku PK
+        text is_variant
+        text name
+        text type
+        text variant_resource_type
+    }
+    item {
+        text sku PK
+        text condition
+        text gtin
+        text lifecycle_status
+        text mart
+        text price_amount
+        text price_currency
+        text product_name
+        text product_type
+        text published_status
+        text shelf
+        text upc
+        text variant_group_id
+        text variant_group_info_grouping_attributes_name
+        text variant_group_info_grouping_attributes_value
+        text variant_group_info_is_primary
+        text variant_group_info_primary
+        text wpid
+    }
+    shipment_package {
+        text index PK
+        text carrier_rate_quote_quote_id PK
+        text assessorial_charge
+        text billing_weight
+        text height
+        text label_information_ep_tracker_id
+        text label_information_label_data
+        text label_information_label_format
+        text label_information_master
+        text label_information_master_tracking_code
+        text label_information_package_asn
+        text label_information_reference_tracking_code
+        text label_information_shipment_id
+        text label_information_tracking_code
+        text length
+        text length_uom
+        text net_charge
+        text no_of_package
+        text nominal_charge
+        text package_sequence_number
+        text package_type
+        text service_charge
+        text stackable
+        text weight
+        text weight_uom
+        text width
+    }
+    carrier_rate_quote {
+        text quote_id PK
+        text shipment_id FK
+        text carrier_id
+        text carrier_name
+        text destination_location_address_address_line_1
+        text destination_location_address_address_line_2
+        text destination_location_address_city
+        text destination_location_address_country_code
+        text destination_location_address_phone
+        text destination_location_address_postal_code
+        text destination_location_address_state_code
+        text destination_location_location_id
+        text destination_location_location_name
+        text origin_location_address_address_line_1
+        text origin_location_address_address_line_2
+        text origin_location_address_city
+        text origin_location_address_country_code
+        text origin_location_address_phone
+        text origin_location_address_postal_code
+        text origin_location_address_state_code
+        text origin_location_location_id
+        text origin_location_location_name
+        text quote_creation_date
+        text rate_quote_assessorial_charge
+        text rate_quote_currency
+        text rate_quote_declared_value
+        text rate_quote_discount_charge
+        text rate_quote_effective_date
+        text rate_quote_equipment_type_code
+        text rate_quote_estimated_delivery_date_time
+        text rate_quote_expiry_date
+        text rate_quote_freight_charge
+        text rate_quote_freight_ready_date
+        text rate_quote_fuel_charge
+        text rate_quote_minimum_charge
+        text rate_quote_mixed_sku
+        text rate_quote_mode
+        text rate_quote_net_charge
+        text rate_quote_nominal_charge
+        text rate_quote_number_of_pallet
+        text rate_quote_seller_freight_classcode
+        text rate_quote_service_charge
+        text rate_quote_service_code
+        text rate_quote_single_sku
+        text rate_quote_status
+        text rate_quote_sur_charge_type
+        text rate_quote_sur_charge_value
+        text rate_quote_total_billing_weight
+        text rate_quote_total_volume
+        text rate_quote_total_weight
+        text rate_quote_transit_day
+        text return_location_address_address_line_1
+        text return_location_address_address_line_2
+        text return_location_address_city
+        text return_location_address_country_code
+        text return_location_address_phone
+        text return_location_address_postal_code
+        text return_location_address_state_code
+        text return_location_location_name
+    }
+    shipping_configuration_category {
+        text index PK
+        text shipping_configuration_fivetran_id PK
+        text shipping_detail_index PK
+        text fulfillment_lag_time
+        text name
+    }
+    shipping_configuration_detail {
+        text index PK
+        text shipping_configuration_fivetran_id PK
+        text configuration_name
+    }
+    shipping_configuration {
+        text _fivetran_id PK
+        text partner_id FK
+        text business_reg_number
+        text country_of_incorporation
+        text partner_display_name
+        text partner_name
+        text partner_store_id
+    }
+    lag_time {
+        text _fivetran_id PK
+        text sku FK
+        text fulfillment_lag_time
+    }
+    simulation_result {
+        text _fivetran_id PK
+        text rule_id FK
+        text rule_status
+        text simulation_count
+    }
+    inbound_shipment_error {
+        text index PK
+        text inbound_order_id PK
+        text category
+        text code
+        text description
+        text field
+        text info
+        text severity
+    }
+    add_on_service {
+        text index PK
+        text inbound_order_id PK
+        text product_id PK
+        text add_on_service
+    }
+    dimension {
+        text dimension PK
+        text inbound_order_id PK
+    }
+    inbound_shipment_order_item {
+        text product_id PK
+        text inbound_order_id PK
+        text expected_delivery_date
+        text inner_pack_quantity
+        text item_desc
+        text item_nbr
+        text item_quantity
+        text non_sort_item
+        text product_type
+        text ship_node
+        text sku
+        text vendor_pack_quantity
+    }
+    inbound_shipment_error_payload {
+        text inbound_order_id PK
+        text created_date
+        text return_address_address_line_1
+        text return_address_address_line_2
+        text return_address_city
+        text return_address_country_code
+        text return_address_postal_code
+        text return_address_state_code
+    }
+    quality_issue_product_type {
+        text index PK
+        text category PK
+        text offer_count
+        text product_type_name
+    }
+    item_count_listing_quality_issue {
+        text category PK
+        text name
+        text offer_count
+    }
+    third_party_fulfillment_provider {
+        text ship_node PK
+        text ship_node_name
+    }
+    price_incentive {
+        text incentive_status PK
+        text sku_id PK
+        text base_referral_fee
+        text current_price
+        text enrollment_date
+        text enrollment_type
+        text expiration_date
+        text incentive_id
+        text incentive_type
+        text inventory_count
+        text item_id
+        text offer_id
+        text product_image_url
+        text product_name
+        text product_url
+        text reduced_referral_fee
+        text shipping_price
+        text start_date
+        text target_price
+    }
+    coverage_area {
+        text coverage_area PK
+        text ship_node PK
+    }
+    fulfillment_center_coverage {
+        text ship_node PK
+        text shipnode_name
+    }
+    top_trending_item {
+        text item_id PK
+        text taxanomy_department_department_id FK
+        text brand
+        text category_name
+        text department_name
+        text exists_for_seller
+        text is_two_day_eligible
+        text isbn
+        text issn
+        text product_name
+        text rank
+        text sub_category_name
+        text super_department_name
+        text total_offer
+    }
+    return_line {
+        text index PK
+        text customer_order_id PK
+        text return_id PK
+        text return_line_group_index PK
+        text return_order_line_number
+    }
+    return_line_group_carrier_info_list {
+        text carrier_id PK
+        text customer_order_id PK
+        text return_id PK
+        text return_line_group_index PK
+        text return_line_label_index PK
+        text carrier_name
+        text service_type
+        text tracking_no
+    }
+    return_line_label {
+        text index PK
+        text customer_order_id PK
+        text return_id PK
+        text return_line_group_index PK
+        text label_image_url
+    }
+    return_line_group {
+        text index PK
+        text customer_order_id PK
+        text return_id PK
+        text group_no
+        text return_expected_flag
+    }
+    return_order_line_charge_tax {
+        text index PK
+        text return_id PK
+        text return_order_line_charge_index PK
+        text return_order_line_index PK
+        text excess_tax_currency_amount
+        text excess_tax_currency_unit
+        text tax_name
+        text tax_per_unit_currency_amount
+        text tax_per_unit_currency_unit
+    }
+    return_order_line_charge_reference {
+        text index PK
+        text return_id PK
+        text return_order_line_charge_index PK
+        text return_order_line_index PK
+        text name
+        text value
+    }
+    return_order_line_charge {
+        text index PK
+        text return_id PK
+        text return_order_line_index PK
+        text charge_category
+        text charge_name
+        text chargeperunit_currency_amount
+        text chargeperunit_currency_unit
+        text excess_charge_currency_amount
+        text excess_charge_currency_unit
+        text is_billable
+        text is_discount
+    }
+    return_order_line_charge_total {
+        text index PK
+        text return_id PK
+        text return_order_line_index PK
+        text currency_amount
+        text currency_unit
+        text name
+    }
+    return_order_line_refund_channel {
+        text index PK
+        text return_id PK
+        text return_order_line_index PK
+        text quantity_measurement_value
+        text refund_channel_name
+    }
+    return_order_line_tracking_reference {
+        text index PK
+        text return_id PK
+        text return_order_line_index PK
+        text return_order_line_tracking_detail_index PK
+        text name
+        text value
+    }
+    return_order_line_tracking_detail {
+        text index PK
+        text return_id PK
+        text return_order_line_index PK
+        text event_description
+        text event_tag
+        text event_time
+        text sequence_no
+    }
+    return_order_line_current_tracking_status {
+        text index PK
+        text return_id PK
+        text return_order_line_index PK
+        text current_refund_status
+        text quantity_measurement_value
+        text quantity_unit_of_measure
+        text status
+        text status_time
+    }
+    return_order_line {
+        text index PK
+        text return_id PK
+        text purchase_order_id FK
+        text seller_order_id FK
+        text cancellable_qty
+        text current_delivery_status
+        text current_refund_status
+        text exception_item_type
+        text is_fast_replacement
+        text is_keep_it
+        text is_return_for_exception
+        text item_condition
+        text item_product_name
+        text item_sku
+        text item_weight_measurement_value
+        text item_weight_unit_of_measure
+        text last_item
+        text purchase_order_line_number
+        text quantity_measurement_value
+        text quantity_unit_of_measure
+        text recharge_reason
+        text rechargeable_qty
+        text refund_channel
+        text refunded_qty
+        text return_cancellation_reason
+        text return_expected_flag
+        text return_order_line_number
+        text return_reason
+        text sales_order_line_number
+        text status
+        text status_time
+        text unit_price_currency_amount
+        text unit_price_currency_unit
+    }
+    return {
+        text id PK
+        text customer_order_id PK
+        text customer_email_id
+        text customer_first_name
+        text customer_last_name
+        text refund_mode
+        text replacement_customer_order_id
+        text return_by_date
+        text return_order_date
+        text returnchannel_name
+        text total_refund_currency_amount
+        text total_refund_currency_unit
+    }
+    item_taxonomy_subcategory {
+        text sub_category_id PK
+        text item_taxonomy_category_id PK
+        text sub_category_name
+    }
+    item_taxonomy {
+        text category_id PK
+        text category_name
+    }
+    partner_throttle_configuration {
+        text index PK
+        text partner_id PK
+        text filesize_unitofmeasurement
+        text filesize_value
+        text rate_count
+        text replenish_timewindow_unitofmeasurement
+        text replenish_timewindow_value
+        text type
+    }
+    partner_configuration_value {
+        text index PK
+        text partner_id PK
+        text feed_type
+    }
+    partner_configuration {
+        text index PK
+        text partner_id PK
+        text configuration_name
+        text configuration_status
+    }
+    partner_configuration_detail {
+        text partner_id PK
+        text business_regnumber
+        text country_of_incorporation
+        text partner_display_name
+        text partner_name
+        text partner_store_id
+    }
+    shipment_tracking_no {
+        text tracking_no PK
+        text shipment_id PK
+    }
+    shipment {
+        text id PK
+        text inbound_order_id PK
+        text carrier_name
+        text created_date
+        text expected_delivery_date
+        text received_unit
+        text return_address_address_line_1
+        text return_address_address_line_2
+        text return_address_city
+        text return_address_country_code
+        text return_address_postal_code
+        text return_address_state_code
+        text ship_to_address_address_line_1
+        text ship_to_address_city
+        text ship_to_address_country_code
+        text ship_to_address_fc_name
+        text ship_to_address_postal_code
+        text ship_to_address_state_code
+        text shipment_unit
+        text status
+        text updated_expected_delivery_date
+    }
+    rule_exception {
+        text sku_id PK
+    }
+    rule_area_state {
+        text index PK
+        text region_code PK
+        text state_subregion_code
+        text state_subregion_name
+    }
+    rule_area {
+        text region_code PK
+        text region_name
+    }
+    taxanomy_department_category {
+        text category_id PK
+        text taxanomy_dept_id PK
+        text category_name
+    }
+    taxanomy_department_payload {
+        text department_id PK
+        text department_name
+    }
+    performance_report {
+        text partner_id PK
+        text payload_14_day_cancellation_customer_fault
+        text payload_14_day_cancellation_seller_fault
+        text payload_14_day_otd
+        text payload_14_day_ots
+        text payload_14_day_refund_rate_customer_fault
+        text payload_14_day_refund_rate_seller_fault
+        text payload_14_day_vtr
+        text payload_30_day_cancellation_customer_fault
+        text payload_30_day_cancellation_seller_fault
+        text payload_30_day_otd
+        text payload_30_day_ots
+        text payload_30_day_refund_rate_customer_fault
+        text payload_30_day_refund_rate_seller_fault
+        text payload_30_day_vtr
+        text payload_60_day_cancellation_customer_fault
+        text payload_60_day_cancellation_seller_fault
+        text payload_60_day_otd
+        text payload_60_day_ots
+        text payload_60_day_refund_rate_customer_fault
+        text payload_60_day_refund_rate_seller_fault
+        text payload_60_day_vtr
+        text payload_7_day_cancellation_customer_fault
+        text payload_7_day_cancellation_seller_fault
+        text payload_7_day_otd
+        text payload_7_day_ots
+        text payload_7_day_refund_rate_customer_fault
+        text payload_7_day_refund_rate_seller_fault
+        text payload_7_day_vtr
+        text payload_90_day_cancellation_customer_fault
+        text payload_90_day_cancellation_seller_fault
+        text payload_90_day_otd
+        text payload_90_day_ots
+        text payload_90_day_refund_rate_customer_fault
+        text payload_90_day_refund_rate_seller_fault
+        text payload_90_day_vtr
+        text status
+    }
+    repricer_strategy {
+        text index PK
+        text collection_id PK
+        text adjustment_type
+        text adjustment_value
+        text strategy_type
+    }
+    repricer_strategy_collection {
+        text id PK
+        text assigned_count
+        text enable_repricer_for_promotion
+        text enabled
+        text repricer_strategy
+    }
+    rule_condition {
+        text index PK
+        text rule_id PK
+        text name
+        text operator
+        text value
+    }
+    rule_action_sub_region {
+        text index PK
+        text rule_action_index PK
+        text sub_region_code FK
+    }
+    rule_action {
+        text index PK
+        text rule_id PK
+        text region_code FK
+    }
+    rule {
+        text id PK
+        text description
+        text name
+        text priority
+        text rule_status
+        text sku_processing_status
+    }
+    inventory_node {
+        text ship_node PK
+        text inventory_sku PK
+        text avail_tosell_quantity_amount
+        text avail_tosell_quantity_unit
+        text input_quantity_amount
+        text input_quantity_unit
+        text reserved_quantity_amount
+        text reserved_quantity_unit
+    }
+    inventory {
+        text sku PK
+    }
+    shipping_method_state_sub_region {
+        text index PK
+        text shipping_template_id PK
+        text state_sub_region_index PK
+        text state_subregion_code
+        text state_subregion_name
+    }
+    shipping_method_sub_region_state {
+        text index PK
+        text shipping_template_id PK
+        text sub_region_index PK
+        text state_code
+        text state_name
+    }
+    shipping_method_sub_region {
+        text index PK
+        text shipping_method_region_index PK
+        text shipping_template_id PK
+        text sub_region_code
+        text sub_region_name
+    }
+    shipping_method_region {
+        text index PK
+        text shiiping_configuration_index PK
+        text shipping_template_id PK
+        text region_code
+        text region_name
+    }
+    shipping_method_address_type {
+        text address_type PK
+        text shipping_configuration_index PK
+        text template_id PK
+    }
+    shipping_method_tiered_shipping_charge {
+        text index PK
+        text shipping_configuration_index PK
+        text template_id PK
+        text maximum_limit
+        text minimum_limit
+        text shipcharge_amount
+        text shipcharge_currency
+    }
+    shipping_method_configuration {
+        text index PK
+        text shipping_method_index PK
+        text template_id PK
+        text address_type
+        text per_shipping_charge_charge_per_item_amount
+        text per_shipping_charge_charge_per_item_currency
+        text per_shipping_charge_charge_per_weight_ammount
+        text per_shipping_charge_charge_per_weight_currency
+        text per_shipping_charge_shipping_and_handling_amount
+        text per_shipping_charge_shipping_and_handling_currency
+        text per_shipping_charge_unit_of_measure
+        text transit_time
+    }
+    shipping_method {
+        text index PK
+        text template_id PK
+        text ship_method
+        text status
+    }
+    shipping_template {
+        text id PK
+        text created_by
+        text created_date
+        text modified_by
+        text modified_date
+        text name
+        text rate_model_type
+        text status
+        text type
+    }
+    seller_listing_quality_score {
+        text _fivetran_id PK
+        text listing_quality
+        text overall_quality
+        text post_purchase_qualitydefect_ratio
+        text post_purchase_qualityitem_defect_count
+        text score_content_score
+        text score_offer_score
+        text score_rating_review_score
+    }
+    recon_report {
+        text _fivetran_id PK
+        text available_report_date FK
+        text amount
+        text amount_type
+        text commission_rule
+        text contract_category
+        text currency
+        text customer_order_line_no
+        text customer_order_no
+        text fulfillment_detail
+        text fulfillment_type
+        text partner_gtin
+        text partner_item_id
+        text partner_item_name
+        text period_end_date
+        text period_start_date
+        text product_tax_code
+        text product_type
+        text purchase_order_line_no
+        text purchase_order_no
+        text ship_quantity
+        text ship_to_city
+        text ship_to_state
+        text ship_to_zipcode
+        text shipping_method
+        text total_payable
+        text transaction_description
+        text transaction_key
+        text transaction_posted_timestamp
+        text transaction_type
+    }
+    payment_statement_report {
+        text partner_id PK
+        text error
+        text payload_closing_balance
+        text payload_hold_amount
+        text payload_hold_dates
+        text payload_last_updated_date
+        text payload_net_payable
+        text payload_opening_balance
+        text payload_order_activity
+        text payload_other_activities
+        text payload_outstanding_mca_balance
+        text payload_paid_to_you
+        text payload_partner_transaction_netpayable
+        text payload_partner_transaction_review
+        text payload_payment_processor
+        text payload_refund_commission_savings
+        text payload_refund_net_comm
+        text payload_refund_net_payable
+        text payload_refund_net_tax_collected
+        text payload_refund_net_tax_withheld
+        text payload_refund_pricing_adjustment
+        text payload_refund_product_price
+        text payload_refund_product_tax_collected
+        text payload_refund_product_tax_withheld
+        text payload_refund_shipping
+        text payload_refund_shipping_tax_collected
+        text payload_refund_shipping_tax_withheld
+        text payload_refund_total_base_commission
+        text payload_refund_total_sf_amt
+        text payload_reserve
+        text payload_reserve_to_date
+        text payload_return_ship_service_charge
+        text payload_sale_aggregate_commission_savings
+        text payload_sale_aggregate_net_comm
+        text payload_sale_aggregate_net_payable
+        text payload_sale_aggregate_net_tax_collected
+        text payload_sale_aggregate_net_tax_withheld
+        text payload_sale_aggregate_netfee_collected
+        text payload_sale_aggregate_pricing_adjustment
+        text payload_sale_aggregate_product_price
+        text payload_sale_aggregate_product_tax_collected
+        text payload_sale_aggregate_product_tax_withheld
+        text payload_sale_aggregate_shipping
+        text payload_sale_aggregate_shipping_tax_collected
+        text payload_sale_aggregate_shipping_tax_withheld
+        text payload_sale_aggregate_total_base_commission
+        text payload_sale_aggregate_total_s_f_amt
+        text payload_scheduled_settlement_date
+        text payload_seller_payment_status
+        text payload_seller_status
+        text payload_seller_store_front_url
+        text payload_settle_cycle
+        text payload_tenure
+        text payload_walmart_fulfillment_services
+        text payload_wfs_fullfillment_fee
+        text payload_wfs_inventory_removalfee
+        text payload_wfs_net_payable
+        text payload_wfs_return_shipping_fee
+        text payload_wfs_storagefee
+        text status
+        text status_code
+    }
+    available_report_date {
+        text available_report_date PK
+    }
+    carrier_method {
+        text id PK
+        text display_description
+        text method_name
+        text method_type
+    }
+    taxanomy_department {
+        text department_id PK
+        text taxanomy_super_dept_id PK
+        text department_name
+    }
+    taxanomy_super_department {
+        text super_department_id PK
+        text super_department
+    }
+    feed_status {
+        text feed_id PK
+        text partner_id FK
+        text batch_id
+        text channel_type
+        text feed_date
+        text feed_source
+        text feed_status
+        text feed_type
+        text file_name
+        text item_data_error_count
+        text item_system_error_count
+        text item_timeout_error_count
+        text items_failed
+        text items_processing
+        text items_received
+        text items_succeeded
+        text modified_dtm
+        text org_id
+    }
+    promotional_pricing {
+        text index PK
+        text sku PK
+        text comparison_price_max_unit_value_amount
+        text comparison_price_max_unit_value_currency
+        text comparison_price_max_unit_value_value
+        text comparison_price_max_value_amount
+        text comparison_price_max_value_currency
+        text comparison_price_max_value_value
+        text comparison_price_min_unit_value_amount
+        text comparison_price_min_unit_value_currency
+        text comparison_price_min_unit_value_value
+        text comparison_price_min_value_amount
+        text comparison_price_min_value_currency
+        text comparison_price_min_value_value
+        text comparison_price_per_unit_value_amount
+        text comparison_price_per_unit_value_currency
+        text comparison_price_per_unit_value_value
+        text comparison_price_type
+        text comparison_price_uom_type
+        text comparison_price_value_amount
+        text comparison_price_value_currency
+        text current_price_max_unit_value_amount
+        text current_price_max_unit_value_currency
+        text current_price_max_unit_value_value
+        text current_price_max_value_amount
+        text current_price_max_value_currency
+        text current_price_max_value_value
+        text current_price_min_unit_value_amount
+        text current_price_min_unit_value_currency
+        text current_price_min_unit_value_value
+        text current_price_min_value_amount
+        text current_price_min_value_currency
+        text current_price_min_value_value
+        text current_price_per_unit_value_amount
+        text current_price_per_unit_value_currency
+        text current_price_per_unit_value_value
+        text current_price_type
+        text current_price_uom_type
+        text current_price_value_amount
+        text current_price_value_currency
+        text effective_date
+        text expiration_date
+        text pickup_discount_is_pickup_discount_eligible
+        text pickup_discount_pickup_discount_amount
+        text pickup_discount_pickup_discount_currency
+        text pickup_discount_pickup_discount_value
+        text pid
+        text price_display_codes_hide_price_for_soi
+        text price_display_codes_is_clearance
+        text price_display_codes_is_eligible_for_associate_discount
+        text price_display_codes_is_reduced_price
+        text price_display_codes_is_rollback
+        text price_display_codes_is_strikethrough
+        text price_display_codes_submap_type
+        text process_mode
+        text promo_id
+        text savings_amount
+        text savings_percent
+    }
+    promotional_price_additional_attribute {
+        text index PK
+        text sku PK
+        text name
+        text value
+    }
+    promotional_price {
+        text sku PK
+        text item_id
+        text max_sales_retail_price_amount
+        text max_sales_retail_price_currency
+        text max_sales_retail_price_value
+        text min_advt_price
+        text min_advt_price_amount
+        text min_advt_price_currency
+        text min_advt_price_value
+        text offer_id
+        text pricing_list_replace_all
+        text product_type
+        text rebate_end_date
+        text rebate_info_url
+        text rebate_rebate_amount
+        text rebate_rebate_currency
+        text rebate_rebate_type
+        text rebate_rebate_value
+        text rebate_start_date
+        text wpid
+    }
+    product_identifier }o--|| feed_item_detail : "fk"
+    product_identifier }o--|| feed_item_detail : "fk"
+    feed_item_detail }o--|| feed_item_status : "fk"
+    feed_item_status }o--|| feed_status : "fk"
+    inbound_shipment_item }o--|| item : "fk"
+    inbound_shipment_item }o--|| shipment : "fk"
+    wfs_inventory_log }o--|| wfs_inventory_log_payload : "fk"
+    wfs_inventory_log_payload }o--|| item : "fk"
+    distributor_supported_service }o--|| fulfillment_center : "fk"
+    two_day_shipping_detail }o--|| fulfillment_center : "fk"
+    calendar_day_configuration }o--|| fulfillment_center : "fk"
+    fulfillment_order_line_quantity_info }o--|| fulfillment_order_line : "fk"
+    fulfillment_order_line_quantity_info }o--|| fulfillment_order_line : "fk"
+    fulfillment_order_line }o--|| fulfillment_order_status : "fk"
+    fulfillment_order_shipment_line }o--|| fulfillment_order_shipment : "fk"
+    fulfillment_order_shipment_line }o--|| fulfillment_order_shipment : "fk"
+    fulfillment_order_shipment_date }o--|| fulfillment_order_shipment : "fk"
+    fulfillment_order_shipment_date }o--|| fulfillment_order_shipment : "fk"
+    fulfillment_order_shipment }o--|| fulfillment_order_status : "fk"
+    unpublished_item }o--|| item : "fk"
+    unpublished_item }o--|| item : "fk"
+    order_line_status }o--|| order_line : "fk"
+    order_line_status }o--|| order_line : "fk"
+    order_line }o--|| item : "fk"
+    order_line }o--|| orders : "fk"
+    order_line }o--|| return : "fk"
+    order_pickup_person }o--|| orders : "fk"
+    order_line_refund_charge }o--|| order_line : "fk"
+    order_line_refund_charge }o--|| order_line : "fk"
+    order_line_charge }o--|| order_line : "fk"
+    order_line_charge }o--|| order_line : "fk"
+    label_detail_box_item }o--|| label_detail_by_purchase_order : "fk"
+    label_detail_add_on }o--|| label_detail_by_purchase_order : "fk"
+    label_detail_by_purchase_order }o--|| orders : "fk"
+    item_unpublished_reason }o--|| item : "fk"
+    item_additional_attribute_value }o--|| item_additional_attribute : "fk"
+    item_additional_attribute_value }o--|| item_additional_attribute : "fk"
+    item_additional_attribute }o--|| item : "fk"
+    shipment_package }o--|| carrier_rate_quote : "fk"
+    carrier_rate_quote }o--|| shipment : "fk"
+    shipping_configuration_category }o--|| shipping_configuration_detail : "fk"
+    shipping_configuration_category }o--|| shipping_configuration_detail : "fk"
+    shipping_configuration_detail }o--|| shipping_configuration : "fk"
+    shipping_configuration }o--|| partner_configuration_detail : "fk"
+    lag_time }o--|| item : "fk"
+    simulation_result }o--|| rule : "fk"
+    inbound_shipment_error }o--|| inbound_shipment_error_payload : "fk"
+    add_on_service }o--|| inbound_shipment_order_item : "fk"
+    add_on_service }o--|| inbound_shipment_order_item : "fk"
+    dimension }o--|| inbound_shipment_order_item : "fk"
+    inbound_shipment_order_item }o--|| inbound_shipment_error_payload : "fk"
+    inbound_shipment_error_payload }o--|| inbound_shipment_item : "fk"
+    quality_issue_product_type }o--|| item_count_listing_quality_issue : "fk"
+    third_party_fulfillment_provider }o--|| fulfillment_center : "fk"
+    price_incentive }o--|| item : "fk"
+    coverage_area }o--|| fulfillment_center_coverage : "fk"
+    fulfillment_center_coverage }o--|| fulfillment_center : "fk"
+    top_trending_item }o--|| taxanomy_department : "fk"
+    return_line }o--|| return_line_group : "fk"
+    return_line }o--|| return_line_group : "fk"
+    return_line }o--|| return_line_group : "fk"
+    return_line_group_carrier_info_list }o--|| return_line_label : "fk"
+    return_line_group_carrier_info_list }o--|| return_line_label : "fk"
+    return_line_group_carrier_info_list }o--|| return_line_label : "fk"
+    return_line_group_carrier_info_list }o--|| return_line_label : "fk"
+    return_line_label }o--|| return_line_group : "fk"
+    return_line_label }o--|| return_line_group : "fk"
+    return_line_label }o--|| return_line_group : "fk"
+    return_line_group }o--|| return : "fk"
+    return_line_group }o--|| return : "fk"
+    return_order_line_charge_tax }o--|| return_order_line_charge : "fk"
+    return_order_line_charge_tax }o--|| return_order_line_charge : "fk"
+    return_order_line_charge_tax }o--|| return_order_line_charge : "fk"
+    return_order_line_charge_reference }o--|| return_order_line_charge : "fk"
+    return_order_line_charge_reference }o--|| return_order_line_charge : "fk"
+    return_order_line_charge_reference }o--|| return_order_line_charge : "fk"
+    return_order_line_charge }o--|| return_order_line : "fk"
+    return_order_line_charge }o--|| return_order_line : "fk"
+    return_order_line_charge_total }o--|| return_order_line : "fk"
+    return_order_line_charge_total }o--|| return_order_line : "fk"
+    return_order_line_refund_channel }o--|| return_order_line : "fk"
+    return_order_line_refund_channel }o--|| return_order_line : "fk"
+    return_order_line_tracking_reference }o--|| return_order_line_tracking_detail : "fk"
+    return_order_line_tracking_reference }o--|| return_order_line_tracking_detail : "fk"
+    return_order_line_tracking_reference }o--|| return_order_line_tracking_detail : "fk"
+    return_order_line_tracking_detail }o--|| return_order_line : "fk"
+    return_order_line_tracking_detail }o--|| return_order_line : "fk"
+    return_order_line_current_tracking_status }o--|| return_order_line : "fk"
+    return_order_line_current_tracking_status }o--|| return_order_line : "fk"
+    return_order_line }o--|| order_line : "fk"
+    return_order_line }o--|| orders : "fk"
+    return_order_line }o--|| return : "fk"
+    return }o--|| orders : "fk"
+    item_taxonomy_subcategory }o--|| item_taxonomy : "fk"
+    partner_throttle_configuration }o--|| partner_configuration_value : "fk"
+    partner_configuration_value }o--|| partner_configuration : "fk"
+    partner_configuration }o--|| partner_configuration_detail : "fk"
+    shipment_tracking_no }o--|| shipment : "fk"
+    rule_area_state }o--|| rule_area : "fk"
+    taxanomy_department_category }o--|| taxanomy_department_payload : "fk"
+    taxanomy_department_payload }o--|| taxanomy_department : "fk"
+    performance_report }o--|| partner_configuration_detail : "fk"
+    repricer_strategy }o--|| repricer_strategy_collection : "fk"
+    rule_condition }o--|| rule : "fk"
+    rule_action_sub_region }o--|| rule_area_state : "fk"
+    rule_action_sub_region }o--|| rule_action : "fk"
+    rule_action }o--|| rule_area : "fk"
+    rule_action }o--|| rule : "fk"
+    inventory_node }o--|| inventory : "fk"
+    inventory }o--|| item : "fk"
+    shipping_method_state_sub_region }o--|| shipping_method_sub_region_state : "fk"
+    shipping_method_state_sub_region }o--|| shipping_method_sub_region_state : "fk"
+    shipping_method_sub_region_state }o--|| shipping_method_sub_region : "fk"
+    shipping_method_sub_region_state }o--|| shipping_method_sub_region : "fk"
+    shipping_method_sub_region }o--|| shipping_method_region : "fk"
+    shipping_method_sub_region }o--|| shipping_method_region : "fk"
+    shipping_method_region }o--|| shipping_method_configuration : "fk"
+    shipping_method_region }o--|| shipping_method_configuration : "fk"
+    shipping_method_address_type }o--|| shipping_method_configuration : "fk"
+    shipping_method_address_type }o--|| shipping_method_configuration : "fk"
+    shipping_method_tiered_shipping_charge }o--|| shipping_method_configuration : "fk"
+    shipping_method_tiered_shipping_charge }o--|| shipping_method_configuration : "fk"
+    shipping_method_configuration }o--|| shipping_method : "fk"
+    shipping_method_configuration }o--|| shipping_method : "fk"
+    shipping_method }o--|| shipping_template : "fk"
+    recon_report }o--|| available_report_date : "fk"
+    payment_statement_report }o--|| partner_configuration_detail : "fk"
+    taxanomy_department }o--|| taxanomy_super_department : "fk"
+    feed_status }o--|| partner_configuration_detail : "fk"
+    promotional_pricing }o--|| promotional_price : "fk"
+    promotional_price_additional_attribute }o--|| promotional_price : "fk"
+    promotional_price }o--|| item : "fk"

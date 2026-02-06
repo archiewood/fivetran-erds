@@ -1,0 +1,517 @@
+erDiagram
+    registered_customer {
+        text id PK
+        text company
+        timestamp created_at
+        text email
+        text fax
+        text first_name
+        text last_name
+        text phone
+        timestamp updated_at
+        text website
+    }
+    customer_address {
+        text id PK
+        text customer_id FK
+        text company
+        text country_code_numeric
+        text country_name
+        text first_name
+        text last_name
+        text locality
+        text postal_code
+        text region
+        text street_address
+    }
+    dispute_status_history {
+        integer _index PK
+        text dispute_id PK
+        timestamp disbursement_date
+        timestamp effective_date
+        text status
+        timestamp timestamp
+    }
+    masterpass_card_details {
+        text transaction_id PK
+        text bin
+        text card_type
+        text cardholder_name
+        text commercial
+        text country_of_issuance
+        text debit
+        text durbin_regulated
+        text expiration_date
+        text expiration_month
+        text expiration_year
+        text healthcare
+        text image_url
+        text issuing_bank
+        text last_4
+        text payroll
+        text prepaid
+        text product_id
+        text token
+    }
+    transaction_line_item {
+        text _fivetran_id PK
+        text transaction_id PK
+        text commodity_code
+        text description
+        numeric discount_amount
+        text kind
+        text name
+        text product_code
+        text quantity
+        numeric tax_amount
+        numeric total_amount
+        numeric unit_amount
+        text unit_of_measure
+        numeric unit_tax_amount
+        text url
+    }
+    apple_pay_card {
+        text transaction_id PK
+        text bin
+        text card_type
+        text cardholder_name
+        text commercial
+        text country_of_issuance
+        text debit
+        text expiration_month
+        text expiration_year
+        text healthcare
+        text issuing_bank
+        text last_4
+        text payment_instrument_name
+        text payroll
+        text prepaid
+        text source_description
+        text token
+    }
+    subscription_status_history {
+        integer _index PK
+        text subscription_id PK
+        numeric balance
+        numeric price
+        text source
+        text status
+        timestamp timestamp
+        text user
+    }
+    plan {
+        text id PK
+        integer billing_day_of_month
+        integer billing_frequency
+        timestamp created_at
+        text currency_iso_code
+        text description
+        text name
+        integer number_of_billing_cycles
+        numeric price
+        integer trial_duration
+        text trial_duration_unit
+        timestamp updated_at
+    }
+    us_bank_account_details {
+        text transaction_id PK
+        text account_holder_name
+        text account_type
+        text ach_mandate
+        text bank_name
+        text image_url
+        text last_4
+        text routing_number
+        text token
+    }
+    decision_reason {
+        text decision_reason PK
+        text risk_data_id PK
+    }
+    local_payment_details {
+        text transaction_id PK
+        text capture_id
+        text custom_field
+        text debug_id
+        text description
+        text funding_source
+        text payer_id
+        text payment_id
+        text refund_from_transaction_fee_amount
+        text refund_from_transaction_fee_currency_iso_code
+        text refund_id
+        text transaction_fee_amount
+        text transaction_fee_currency_iso_code
+    }
+    paypal_here_details {
+        text transaction_id PK
+        text authorization_id
+        text capture_id
+        text invoice_id
+        text payment_id
+        text payment_type
+        text refund_id
+        text transaction_fee_amount
+        text transaction_fee_currency_iso_code
+        text transaction_initiation_date
+        text transaction_updated_date
+    }
+    visa_checkout_details {
+        text transaction_id PK
+        text bin
+        text call_id
+        text card_type
+        text cardholder_name
+        text commercial
+        text country_of_issuance
+        text debit
+        text durbin_regulated
+        text expiration_month
+        text expiration_year
+        text healthcare
+        text image_url
+        text issuing_bank
+        text last_4
+        text payroll
+        text prepaid
+        text product_id
+        text token
+    }
+    subscription {
+        text id PK
+        text merchant_account_id FK
+        text plan_id FK
+        numeric balance
+        integer billing_day_of_month
+        timestamp billing_period_end_date
+        timestamp billing_period_start_date
+        timestamp created_at
+        integer current_billing_cycle
+        integer days_past_due
+        text description
+        text descriptor_name
+        text descriptor_phone
+        text descriptor_url
+        integer failure_count
+        timestamp first_billing_date
+        boolean has_trial_period
+        boolean never_expires
+        timestamp next_billing_date
+        numeric next_billing_period_amount
+        integer number_of_billing_cycles
+        timestamp paid_through_date
+        text payment_method_token
+        numeric price
+        text status
+        integer trial_duration
+        text trial_duration_unit
+        timestamp updated_at
+    }
+    transaction_discount {
+        text id PK
+        text plan_id FK
+        text transaction_id FK
+        numeric amount
+        integer current_billing_cycle
+        text description
+        text kind
+        text name
+        boolean never_expires
+        integer number_of_billing_cycles
+        integer quantity
+    }
+    transaction_status_history {
+        integer _index PK
+        text transaction_id PK
+        numeric amount
+        text source
+        text status
+        timestamp timestamp
+        text user
+    }
+    paypal_details {
+        text transaction_id PK
+        text authorization_id
+        text capture_id
+        text custom_field
+        text debug_id
+        text description
+        text image_url
+        text payee_email
+        text payer_email
+        text payer_first_name
+        text payer_id
+        text payer_last_name
+        text payer_status
+        text payment_id
+        text refund_id
+        text seller_protection_status
+        text token
+        text transaction_fee_amount
+        text transaction_fee_currency_iso_code
+    }
+    subscription_add_on {
+        text id PK
+        text subscription_id PK
+        text plan_id FK
+        numeric amount
+        integer current_billing_cycle
+        text description
+        text kind
+        text name
+        boolean never_expires
+        integer number_of_billing_cycles
+        integer quantity
+    }
+    venmo_details {
+        text transaction_id PK
+        text image_url
+        text source_description
+        text token
+        text username
+        text venmo_user_id
+    }
+    dispute {
+        text id PK
+        text merchant_account_id FK
+        text transaction_id FK
+        numeric amount
+        numeric amount_won
+        text case_number
+        timestamp created_date
+        text currency_iso_code
+        numeric dispute_amount
+        text kind
+        timestamp opened_date
+        text original_dispute_id
+        text processor_comments
+        text reason
+        text reason_code
+        text reason_description
+        timestamp received_date
+        text reference_number
+        timestamp reply_by_date
+        text status
+        timestamp updated_date
+        timestamp won_date
+    }
+    unregistered_customer {
+        text transaction_id PK
+        text company
+        text email
+        text first_name
+        text last_name
+        text phone
+        text website
+    }
+    subscription_discount {
+        text id PK
+        text subscription_id PK
+        text plan_id FK
+        numeric amount
+        integer current_billing_cycle
+        text description
+        text kind
+        text name
+        boolean never_expires
+        integer number_of_billing_cycles
+        integer quantity
+    }
+    transaction {
+        text id PK
+        text customer_id FK
+        text merchant_account_id FK
+        text plan_id FK
+        text subscription_id FK
+        numeric amount
+        timestamp authorization_expires_at
+        text authorized_transaction_id
+        timestamp billing_period_end_date
+        timestamp billing_period_start_date
+        text channel
+        timestamp created_at
+        text currency_iso_code
+        text descriptor_name
+        text descriptor_phone
+        text descriptor_url
+        text escrow_status
+        text gateway_rejection_reason
+        text network_response_code
+        text network_response_text
+        text network_transaction_id
+        text order_id
+        text payment_instrument_type
+        boolean processed_with_network_token
+        text processor_authorization_code
+        text processor_response_code
+        text processor_response_text
+        text processor_response_type
+        text processor_settlement_response_code
+        text processor_settlement_response_text
+        text purchase_order_number
+        boolean recurring
+        text refunded_transaction_id
+        text retrieval_reference_number
+        numeric service_fee_amount
+        text settlement_batch_id
+        numeric shipping_amount
+        text shipping_from_postal_code
+        text status
+        numeric tax_amount
+        boolean tax_exempt
+        text type
+        timestamp updated_at
+        text voice_referral_number
+    }
+    samsung_pay_card_details {
+        text transaction_id PK
+        text bin
+        text card_holder_name
+        text card_type
+        text commercial
+        text country_of_issuance
+        text debit
+        text durbin_regulated
+        text expiration_date
+        text expiration_month
+        text expiration_year
+        text health_care
+        text image_url
+        text issuing_bank
+        text last_4
+        text payroll
+        text prepaid
+        text product_id
+        text token
+    }
+    credit_card {
+        text transaction_id PK
+        text bin
+        text card_type
+        text cardholder_name
+        text commercial
+        text country_of_issuance
+        timestamp created_at
+        text customer_id
+        text customer_location
+        text debit
+        text durbin_regulated
+        text expiration_date
+        text expiration_month
+        text expiration_year
+        text healthcare
+        text image_url
+        boolean is_default
+        boolean is_expired
+        boolean is_venmo_sdk
+        text issuing_bank
+        text last_4
+        text payroll
+        text prepaid
+        text product_id
+        text token
+        text unique_number_identifier
+        timestamp updated_at
+    }
+    android_pay_details {
+        text transaction_id PK
+        text bin
+        text card_type
+        text commercial
+        text country_of_issuance
+        text debit
+        text expiration_month
+        text expiration_year
+        text google_transaction_id
+        text healthcare
+        text image_url
+        text issuing_bank
+        text last_4
+        boolean network_tokenized
+        text payroll
+        text prepaid
+        text source_card_last_4
+        text source_card_type
+        text source_description
+        text token
+        text virtual_card_last_4
+        text virtual_card_type
+    }
+    credit_card_verification {
+        text id PK
+        text credit_card_unique_number_identifier PK
+        text merchant_account_id FK
+        numeric amount
+        text avs_error_response_code
+        text avs_postal_code_response_code
+        text avs_street_address_response_code
+        timestamp created_at
+        text currency_iso_code
+        text cvv_response_code
+        text gateway_rejection_reason
+        text network_response_code
+        text network_response_text
+        text processor_response_code
+        text processor_response_text
+        text processor_response_type
+        text status
+    }
+    merchant_account {
+        text id PK
+        text currency_iso_code
+        text date_of_birth
+        text email
+        text first_name
+        boolean is_default
+        text last_name
+        text phone
+        text status
+    }
+    transaction_add_on {
+        text id PK
+        text transaction_id PK
+        text plan_id FK
+        numeric amount
+        integer current_billing_cycle
+        text description
+        text kind
+        text name
+        boolean never_expires
+        integer number_of_billing_cycles
+        integer quantity
+    }
+    customer_address }o--|| registered_customer : "fk"
+    dispute_status_history }o--|| dispute : "fk"
+    masterpass_card_details }o--|| transaction : "fk"
+    transaction_line_item }o--|| transaction : "fk"
+    apple_pay_card }o--|| transaction : "fk"
+    subscription_status_history }o--|| subscription : "fk"
+    us_bank_account_details }o--|| transaction : "fk"
+    local_payment_details }o--|| transaction : "fk"
+    paypal_here_details }o--|| transaction : "fk"
+    visa_checkout_details }o--|| transaction : "fk"
+    subscription }o--|| merchant_account : "fk"
+    subscription }o--|| plan : "fk"
+    transaction_discount }o--|| transaction : "fk"
+    transaction_discount }o--|| plan : "fk"
+    transaction_status_history }o--|| transaction : "fk"
+    paypal_details }o--|| transaction : "fk"
+    subscription_add_on }o--|| subscription : "fk"
+    subscription_add_on }o--|| plan : "fk"
+    venmo_details }o--|| transaction : "fk"
+    dispute }o--|| transaction : "fk"
+    dispute }o--|| merchant_account : "fk"
+    unregistered_customer }o--|| transaction : "fk"
+    subscription_discount }o--|| subscription : "fk"
+    subscription_discount }o--|| plan : "fk"
+    transaction }o--|| registered_customer : "fk"
+    transaction }o--|| merchant_account : "fk"
+    transaction }o--|| plan : "fk"
+    transaction }o--|| subscription : "fk"
+    samsung_pay_card_details }o--|| transaction : "fk"
+    credit_card }o--|| transaction : "fk"
+    android_pay_details }o--|| transaction : "fk"
+    credit_card_verification }o--|| credit_card : "fk"
+    credit_card_verification }o--|| merchant_account : "fk"
+    transaction_add_on }o--|| transaction : "fk"
+    transaction_add_on }o--|| plan : "fk"

@@ -1,0 +1,143 @@
+erDiagram
+    company_review_invitation {
+        text id PK
+        text customer_email
+        text customer_name
+        text date_send
+        text email_sent
+        text order_id
+        text resent
+        text status
+    }
+    product_review_invitation {
+        text product_id PK
+        text service_feedback_email_id FK
+        text brand
+        text description
+        text image
+        text name
+        text sku
+    }
+    survey {
+        text id PK
+        text active
+        text date_created
+        text date_updated
+        text question_count
+        text responses_count
+        text title
+    }
+    review_nugget {
+        text id PK
+        text review_id FK
+        text date_created_nugget
+        text rating
+        text text
+        text type
+    }
+    review_photo {
+        text index PK
+        text review_and_question_id PK
+        text photo
+    }
+    review_video {
+        text index PK
+        text review_and_question_id PK
+        text thumbnail
+        text video
+    }
+    review_tag {
+        text index PK
+        text review_and_question_id PK
+        text tags
+    }
+    review_reply {
+        text index PK
+        text review_and_question_id PK
+        text author_avatar
+        text author_name
+        text comment
+        text date_created
+    }
+    review_and_question {
+        text id PK
+        text author_location
+        text author_name
+        text comment
+        text date_created
+        text helpful_count
+        text nps
+        text order_id
+        text product_name
+        text rating
+        text sku
+        text source
+        text title
+        text type
+        text type_label
+    }
+    review_attribute {
+        text id PK
+        text review_and_question_id PK
+        text kind
+        text label
+        text option
+        text type
+        text value
+    }
+    survey_response_answer {
+        text question_id PK
+        text res_id PK
+        text survey_id PK
+        text survey_response_id PK
+        text question
+        text res_image_url
+        text res_response
+        text res_store_widget_survey_submission_id
+        text type
+        text widget_survey_active
+        text widget_survey_active_in_shopify
+        text widget_survey_answer_conditions
+        text widget_survey_condition_default
+        text widget_survey_date_created
+        text widget_survey_date_updated
+        text widget_survey_deleted
+        text widget_survey_filters
+        text widget_survey_follow_up
+        text widget_survey_image_capture
+        text widget_survey_mandatory
+        text widget_survey_options
+        text widget_survey_shopify
+        text widget_survey_show_as_button
+        text widget_survey_show_as_images
+        text widget_survey_show_follow_up
+        text widget_survey_store_id
+        text widget_survey_store_widget_survey_campaign_id
+        text widget_survey_thank_you
+        text widget_survey_title
+    }
+    survey_response {
+        text id PK
+        text survey_id PK
+        text browser
+        text completion_time
+        text country_code
+        text date_created
+        text date_updated
+        text href
+        text ip_address
+        text order_count
+        text tags
+        text total_price
+        text user_id
+    }
+    product_review_invitation }o--|| company_review_invitation : "fk"
+    review_nugget }o--|| review_and_question : "fk"
+    review_photo }o--|| review_and_question : "fk"
+    review_video }o--|| review_and_question : "fk"
+    review_tag }o--|| review_and_question : "fk"
+    review_reply }o--|| review_and_question : "fk"
+    review_attribute }o--|| review_and_question : "fk"
+    survey_response_answer }o--|| survey_response : "fk"
+    survey_response_answer }o--|| survey_response : "fk"
+    survey_response }o--|| survey : "fk"

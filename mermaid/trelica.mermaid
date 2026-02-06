@@ -1,0 +1,241 @@
+erDiagram
+    application_users {
+        text id PK
+        text application_id PK
+        text deleted
+        text email
+        text last_login_dtm
+        text last_modified_dtm
+        text status
+    }
+    application_license {
+        text index PK
+        text application_id PK
+        text last_modified_dtm
+        text name
+        text renewal_date
+        text start_date
+        text terminated_date
+    }
+    application_role_member {
+        text application_role_index PK
+        text user_id PK
+        text email
+        text name
+    }
+    application_role {
+        text index PK
+        text application_id PK
+        text name
+    }
+    application {
+        text id PK
+        text created_by_user_id FK
+        text created_dtm
+        text deleted
+        text last_modified_dtm
+        text name
+        text risk_level
+        text status
+        text vendor_name
+    }
+    audit_log_target {
+        text id PK
+        text audit_log_id FK
+        text alternate_id
+        text display_name
+        text type
+    }
+    audit_log {
+        text id PK
+        text actor_id FK
+        jsonb details
+        text event_type
+        text published
+    }
+    contract_lineitem {
+        text index PK
+        text contract_id PK
+        text amount
+        text base_amount
+        text base_currency
+        text currency
+        text description
+        text end_date
+        text start_date
+        text unit_count
+    }
+    contract_document {
+        text index PK
+        text contract_id PK
+        text description
+        text link_url
+    }
+    contract {
+        text id PK
+        text created_by_user_id FK
+        text last_modified_by_user_id FK
+        text agreement_date
+        text business_owner_email
+        text created_dtm
+        text is_automatic_renewal
+        text last_modified_dtm
+        text ref
+        text renewal_date
+        text type
+        text vendor_name
+    }
+    asset {
+        text id PK
+        text created_by_user_id FK
+        text last_modified_by_user_id FK
+        text asset_tag
+        text created_dtm
+        jsonb custom_fields
+        text device_name
+        text hardware_vendor
+        text is_encrypted
+        text last_modified_dtm
+        text location_country_code
+        text location_name
+        text model_name
+        text serial_number
+        text status
+    }
+    people_team {
+        text id PK
+        text people_id PK
+        text name
+    }
+    people_aliases {
+        text index PK
+        text people_id PK
+        text aliases
+    }
+    people {
+        text id PK
+        text cost_center
+        text created_by
+        text created_dtm
+        text email
+        text first_name
+        text job_title
+        text last_modified_by
+        text last_modified_dtm
+        text last_name
+        text leaving_date
+        text location
+        text person_type
+        text start_date
+    }
+    users_schema {
+        text index PK
+        text users_id PK
+        text schemas
+    }
+    users_email {
+        text index PK
+        text users_id PK
+        text primaries
+        text type
+        text value
+    }
+    users_phone_number {
+        text index PK
+        text users_id PK
+        text type
+        text value
+    }
+    users_role {
+        text index PK
+        text users_id PK
+        text primaries
+        text value
+    }
+    users {
+        text id PK
+        text active
+        text display_name
+        text external_id
+        text locale
+        text meta_created
+        text meta_resource_type
+        text preferred_language
+        text user_name
+    }
+    workflow_run_step {
+        text id PK
+        text workflow_run_id PK
+        jsonb completed
+        jsonb failed
+        text name
+        text status
+        text type
+        jsonb waiting
+    }
+    workflow_run {
+        text id PK
+        text created_by_user_id FK
+        text last_modified_by_user_id FK
+        text workflow_id FK
+        jsonb context
+        text created_dtm
+        text deleted
+        text last_modified_dtm
+        text name
+        text status
+        jsonb trigger
+        text waiting_until_dtm
+    }
+    workflow_step {
+        text id PK
+        text workflow_id PK
+        text name
+        text type
+    }
+    workflow {
+        text id PK
+        text created_by_user_id FK
+        text last_modified_by_user_id FK
+        text created_dtm
+        text enabled
+        text last_modified_dtm
+        text name
+        text trigger_day_of_week
+        text trigger_every_n_periods
+        text trigger_hour
+        text trigger_id
+        text trigger_name
+        text trigger_period
+        text trigger_start_date
+        text trigger_type
+    }
+    application_users }o--|| application : "fk"
+    application_license }o--|| application : "fk"
+    application_role_member }o--|| users : "fk"
+    application_role_member }o--|| application_role : "fk"
+    application_role }o--|| application : "fk"
+    application }o--|| users : "fk"
+    audit_log_target }o--|| application : "fk"
+    audit_log_target }o--|| audit_log : "fk"
+    audit_log }o--|| users : "fk"
+    contract_lineitem }o--|| contract : "fk"
+    contract_document }o--|| contract : "fk"
+    contract }o--|| users : "fk"
+    contract }o--|| users : "fk"
+    asset }o--|| users : "fk"
+    asset }o--|| users : "fk"
+    people_team }o--|| people : "fk"
+    people_aliases }o--|| people : "fk"
+    people }o--|| users : "fk"
+    users_schema }o--|| users : "fk"
+    users_email }o--|| users : "fk"
+    users_phone_number }o--|| users : "fk"
+    users_role }o--|| users : "fk"
+    workflow_run_step }o--|| workflow_run : "fk"
+    workflow_run }o--|| users : "fk"
+    workflow_run }o--|| users : "fk"
+    workflow_run }o--|| workflow : "fk"
+    workflow_step }o--|| workflow : "fk"
+    workflow }o--|| users : "fk"
+    workflow }o--|| users : "fk"

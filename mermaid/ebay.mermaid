@@ -1,0 +1,232 @@
+erDiagram
+    orders_fulfillment_start_instruction {
+        text index PK
+        text order_id PK
+        text ebay_supported_fulfillment
+        text fulfillment_instructions_type
+        text max_estimated_delivery_date
+        text min_estimated_delivery_date
+        text ship_to_contact_address_city
+        text ship_to_contact_address_country_code
+        text ship_to_contact_address_line_1
+        text ship_to_contact_address_line_2
+        text ship_to_contact_address_postalcode
+        text ship_to_contact_address_state
+        text ship_to_email
+        text ship_to_fullname
+        text ship_to_phone_number
+        text shipping_service_code
+    }
+    orders_line_item_refund {
+        text index PK
+        text orders_line_item_id PK
+        text orders_line_item_order_id PK
+        text amount_currency
+        text amount_value
+        text converted_from_currency
+        text converted_from_value
+        text refund_date
+        text refund_id
+        text refund_reference_id
+        text refund_status
+    }
+    orders_line_item_promotion {
+        text promotion_id PK
+        text orders_line_item_id PK
+        text orders_line_item_order_id PK
+        text amount_currency
+        text amount_value
+        text converted_from_currency
+        text converted_from_value
+        text description
+    }
+    orders_line_item_tax {
+        text tax_type PK
+        text orders_line_item_id PK
+        text orders_line_item_order_id PK
+        text amount_currency
+        text amount_value
+        text converted_from_currency
+        text converted_from_value
+    }
+    orders_line_item_variation_aspect {
+        text index PK
+        text orders_line_item_id PK
+        text orders_line_item_order_id PK
+        text name
+        text value
+    }
+    orders_line_item {
+        text id PK
+        text order_id PK
+        text buyer_protection
+        text cost_currency
+        text cost_value
+        text fulfillment_status
+        text guaranteed_delivery
+        text item_country_code
+        text item_location
+        text item_postal_code
+        text legacy_item_id
+        text legacy_variation_id
+        text listing_marketplace_id
+        text max_estimated_delivery_date
+        text min_estimated_delivery_date
+        text purchase_marketplace_id
+        text quantity
+        text ship_by_date
+        text shipping_cost_currency
+        text shipping_cost_value
+        text sku
+        text sold_format
+        text sold_via_ad_campaign
+        text title
+        text total_currency
+        text total_value
+    }
+    orders_payment_refund {
+        text index PK
+        text orders_payment_order_id PK
+        text orders_payment_reference_id PK
+        text amount_currency
+        text amount_value
+        text converted_from_currency
+        text converted_from_value
+        text refund_date
+        text refund_id
+        text refund_reference_id
+        text refund_status
+    }
+    orders_payment_hold {
+        text index PK
+        text orders_payment_order_id PK
+        text orders_payment_reference_id PK
+        text amount_currency
+        text amount_value
+        text expected_release_date
+        text reason
+        text release_date
+        text seller_action_to_release
+        text state
+    }
+    orders_payment {
+        text reference_id PK
+        text order_id PK
+        text amount_currency
+        text amount_value
+        text date
+        text method
+        text status
+    }
+    order_history {
+        text id PK
+        text adjustment_currency
+        text adjustment_value
+        text buyer_contact_address_city
+        text buyer_contact_address_country_code
+        text buyer_contact_address_line_1
+        text buyer_contact_address_postal_code
+        text buyer_contact_address_state
+        text buyer_email
+        text buyer_fullname
+        text buyer_phone_number
+        text buyer_secondary_phone_number
+        text buyer_tax_address_city
+        text buyer_tax_address_country_code
+        text buyer_tax_address_postal_code
+        text buyer_tax_address_state
+        text buyer_username
+        jsonb cancel_request
+        text cancel_state
+        text creation_date
+        text delivery_cost_currency
+        text delivery_cost_value
+        text delivery_discount_currency
+        text delivery_discount_value
+        text ebay_collect_and_remit_tax
+        text fee_currency
+        text fee_value
+        jsonb fulfillment_href
+        text last_modified_date
+        text legacy_order_id
+        text order_fulfillment_status
+        text order_payment_status
+        jsonb payment_refund
+        text payment_total_due_seller_currency
+        text payment_total_due_seller_value
+        text price_discount_currency
+        text price_discount_value
+        text price_subtotal_currency
+        text price_subtotal_value
+        text sales_record_reference
+        text seller_id
+        text tax_currency
+        text tax_value
+        text total_currency
+        text total_fee_basis_amountcurrency
+        text total_fee_basis_amountvalue
+        text total_marketplace_feecurrency
+        text total_marketplace_feevalue
+        text total_value
+    }
+    shipping_fulfillment_line_item {
+        text line_item_id PK
+        text shipping_fulfillment_fivetran_id PK
+        text quantity
+    }
+    shipping_fulfillment {
+        text _fivetran_id PK
+        text order_id FK
+        text carrier_code
+        text fulfillment_id
+        text service_code
+        text shipped_date
+        text tracking_number
+    }
+    payment_dispute_activity {
+        text activity_date PK
+        text payment_dispute_id PK
+        text activity_type
+        text actor
+    }
+    payment_dispute_line_item {
+        text line_item_id PK
+        text payment_dispute_id PK
+        text item_id
+    }
+    payment_dispute {
+        text id PK
+        text order_id FK
+        text amount_currency
+        text amount_value
+        text buyer_provided_note
+        text buyer_username
+        text open_date
+        text reason
+        text respond_by_date
+        text revision
+        text seller_response
+        text status
+    }
+    orders_fulfillment_start_instruction }o--|| order_history : "fk"
+    orders_line_item_refund }o--|| orders_line_item : "fk"
+    orders_line_item_refund }o--|| orders_line_item : "fk"
+    orders_line_item_promotion }o--|| orders_line_item : "fk"
+    orders_line_item_promotion }o--|| orders_line_item : "fk"
+    orders_line_item_tax }o--|| orders_line_item : "fk"
+    orders_line_item_tax }o--|| orders_line_item : "fk"
+    orders_line_item_variation_aspect }o--|| orders_line_item : "fk"
+    orders_line_item_variation_aspect }o--|| orders_line_item : "fk"
+    orders_line_item }o--|| order_history : "fk"
+    orders_payment_refund }o--|| orders_payment : "fk"
+    orders_payment_refund }o--|| orders_payment : "fk"
+    orders_payment_hold }o--|| orders_payment : "fk"
+    orders_payment_hold }o--|| orders_payment : "fk"
+    orders_payment }o--|| order_history : "fk"
+    shipping_fulfillment_line_item }o--|| orders_line_item : "fk"
+    shipping_fulfillment_line_item }o--|| shipping_fulfillment : "fk"
+    shipping_fulfillment }o--|| order_history : "fk"
+    payment_dispute_activity }o--|| payment_dispute : "fk"
+    payment_dispute_line_item }o--|| orders_line_item : "fk"
+    payment_dispute_line_item }o--|| payment_dispute : "fk"
+    payment_dispute }o--|| order_history : "fk"

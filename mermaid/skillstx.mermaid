@@ -1,0 +1,79 @@
+erDiagram
+    account_lor {
+        text index PK
+        text account_id PK
+        text lor
+    }
+    account_skill_level {
+        text index PK
+        text account_id PK
+        text account_skill_index PK
+        text level
+        text value
+    }
+    account_skill {
+        text index PK
+        text account_id PK
+        jsonb attributes
+        text skill_code
+    }
+    account {
+        text id PK
+        text active
+        text answered_questions
+        text email
+        text endorsed_by
+        text endorsement_last_approved_by
+        text endorsement_last_approved_on
+        text endorsement_last_approved_version
+        text endorsement_last_reviewed_by
+        text endorsement_last_reviewed_on
+        text endorsement_last_reviewed_version
+        text endorsement_last_updated_by
+        text endorsement_last_updated_on
+        text endorsement_last_updated_version
+        text endorsement_status
+        text first_name
+        text fluency_rating
+        text invitation_email_sent
+        text invited_on
+        text is_assigned
+        text is_invited
+        text last_name
+        text percentage
+        text preferred_name
+        text reference
+        text status
+        text total_questions
+        text total_time_taken
+    }
+    evidence_skill_level {
+        text index PK
+        text evidence_id PK
+        text skill_level
+    }
+    evidence_lor_level {
+        text index PK
+        text evidence_id PK
+        text lor_level
+    }
+    evidence {
+        text id PK
+        text account_share_key FK
+        text account_email
+        text account_reference
+        text created_on
+        text evidence_type
+        text expiry_on
+        text file_data
+        text file_name
+        text label
+        text link
+    }
+    account_lor }o--|| account : "fk"
+    account_skill_level }o--|| account_skill : "fk"
+    account_skill_level }o--|| account_skill : "fk"
+    account_skill }o--|| account : "fk"
+    evidence_skill_level }o--|| evidence : "fk"
+    evidence_lor_level }o--|| evidence : "fk"
+    evidence }o--|| account : "fk"

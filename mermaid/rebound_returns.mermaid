@@ -1,0 +1,108 @@
+erDiagram
+    return_item_reason {
+        text index PK
+        text return_id PK
+        text return_item_sku_code PK
+        text action
+        text additional_title
+        text additional_value
+        text reason
+        text wish
+    }
+    return_item {
+        text sku_code PK
+        text return_id PK
+        text cost_price
+        text cost_price_currency
+        text country_code
+        text dangerous_goods
+        text days_for_return
+        text dimensions_uom
+        text export_awb
+        text export_carrier_name
+        text export_date
+        text final_dest_addr_1
+        text final_dest_addr_2
+        text final_dest_addr_3
+        text final_dest_city
+        text final_dest_company_name
+        text final_dest_country
+        text final_dest_id
+        text final_dest_name
+        text final_dest_neighborhood
+        text final_dest_state
+        text final_dest_suburb
+        text final_dest_zip
+        text final_disposition
+        text height
+        text hs_code
+        text img_path
+        text length
+        text non_returnable
+        text non_returnable_message
+        text price
+        text quantity
+        text sku_desc
+        text tracking
+        text verification_entity
+        text weight
+        text weight_uom
+        text width
+    }
+    return {
+        text id PK
+        text tracking FK
+        text addr_1
+        text addr_2
+        text addr_3
+        text barcode_number
+        text carrier
+        text city
+        text company_name
+        text country
+        text current_tracking_status
+        text customer_name
+        text date_added
+        text display_id
+        text email
+        text external_id
+        text final_dest_addr_1
+        text final_dest_addr_2
+        text final_dest_addr_3
+        text final_dest_city
+        text final_dest_company_name
+        text final_dest_country
+        text final_dest_id
+        text final_dest_name
+        text final_dest_state
+        text final_dest_zip
+        text label
+        text order_reference
+        text phone
+        text state
+        text tracking_last_update
+        text verification_entity
+        text zip
+    }
+    tracking_event {
+        text dt PK
+        text tracking_number PK
+        text location_city
+        text location_country
+        text location_state
+        text status
+    }
+    tracking {
+        text tracking_number PK
+        text carrier_name
+        text external_id
+        text order_reference
+        text pallet_number
+        text service_id
+        text source_country
+    }
+    return_item_reason }o--|| return_item : "fk"
+    return_item_reason }o--|| return_item : "fk"
+    return_item }o--|| return : "fk"
+    return }o--|| tracking : "fk"
+    tracking_event }o--|| tracking : "fk"

@@ -1,0 +1,185 @@
+erDiagram
+    conference_data_entrypoint {
+        text index PK
+        text event_id PK
+        text access_code
+        text entrypoint_type
+        text label
+        text meeting_code
+        text passcode
+        text password
+        text pin
+        text uri
+    }
+    reminder_override {
+        text index PK
+        text event_id PK
+        text method
+        text minutes
+    }
+    attendee {
+        text email PK
+        text event_id PK
+        text additional_guests
+        text comment
+        text display_name
+        text optional
+        text organizer
+        text resource
+        text response_status
+        text self
+    }
+    attachment {
+        text _fivetran_id PK
+        text event_id FK
+        text file_id
+        text file_url
+        text icon_link
+        text mime_type
+        text title
+    }
+    recurrence {
+        text recurrence PK
+        text event_id PK
+    }
+    event_gadget_preference {
+        text name PK
+        text event_id PK
+        text value
+    }
+    event_private_property {
+        text name PK
+        text event_id PK
+        text value
+    }
+    event_shared_property {
+        text name PK
+        text event_id PK
+        text value
+    }
+    event {
+        text id PK
+        text calendar_list_id FK
+        text recurring_event_id FK
+        text anyone_can_add_self
+        text attendees_omitted
+        text conference_id
+        text conference_solution_type
+        text created
+        text creator_display_name
+        text creator_email
+        text creator_id
+        text creator_self
+        text description
+        text end_date
+        text end_date_time
+        text end_time_unspecified
+        text end_time_zone
+        text etag
+        text event_type
+        text gadget_display
+        text gadget_height
+        text gadget_icon_link
+        text gadget_link
+        text gadget_title
+        text gadget_type
+        text gadget_width
+        text guests_can_invite_others
+        text guests_can_modify
+        text guests_can_see_other_guests
+        text hangout_link
+        text html_link
+        text i_cal_uid
+        text icon_uri
+        text kind
+        text location
+        text locked
+        text name
+        text notes
+        text organizer_display_name
+        text organizer_email
+        text organizer_id
+        text organizer_self
+        text original_start_date
+        text original_start_time_date
+        text original_start_time_zone
+        text private_copy
+        text request_id
+        text sequence
+        text signature
+        text start_date
+        text start_date_time
+        text start_time_zone
+        text status
+        text status_code
+        text summary
+        text title
+        text transparency
+        text type
+        timestamp updated
+        text url
+        text use_default
+        text visibility
+    }
+    access_control_list {
+        text id PK
+        text calendar_list_id FK
+        text etag
+        text kind
+        text role
+        text scope_type
+        text scope_value
+    }
+    setting {
+        text id PK
+        text etag
+        text kind
+        text value
+    }
+    default_reminder {
+        text _fivetran_id PK
+        text calendar_list_id FK
+        text method
+        text minutes
+    }
+    allowed_conference_solution_type {
+        text solution_type PK
+        text calendar_list_id PK
+    }
+    notification_setting {
+        text _fivetran_id PK
+        text calendar_list_id FK
+        text method
+        text type
+    }
+    calendar_list {
+        text id PK
+        text access_role
+        text background_color
+        text deleted
+        text description
+        text etag
+        text foreground_color
+        text hidden
+        text is_primary
+        text kind
+        text location
+        text selected
+        text summary
+        text summary_override
+        text time_zone
+    }
+    conference_data_entrypoint }o--|| event : "fk"
+    reminder_override }o--|| event : "fk"
+    attendee }o--|| event : "fk"
+    attachment }o--|| event : "fk"
+    recurrence }o--|| event : "fk"
+    event_gadget_preference }o--|| event : "fk"
+    event_private_property }o--|| event : "fk"
+    event_shared_property }o--|| event : "fk"
+    event }o--|| event : "fk"
+    event }o--|| calendar_list : "fk"
+    access_control_list }o--|| calendar_list : "fk"
+    default_reminder }o--|| calendar_list : "fk"
+    allowed_conference_solution_type }o--|| calendar_list : "fk"
+    notification_setting }o--|| calendar_list : "fk"

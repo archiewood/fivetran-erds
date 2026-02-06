@@ -1,0 +1,255 @@
+erDiagram
+    worklog_attribute_value {
+        text _fivetran_id PK
+        text key FK
+        bigint worklog_worklog_id FK
+        text value
+    }
+    worklog {
+        bigint worklog_id PK
+        text author_account_id
+        bigint billable_seconds
+        timestamp created_at
+        text description
+        bigint issue_id
+        text issue_key
+        bigint jira_worklog_id
+        text start_date
+        text start_time
+        bigint time_spent_seconds
+        timestamp updated_at
+    }
+    workload_scheme_day {
+        text _fivetran_id PK
+        bigint workload_scheme_id FK
+        text day
+        bigint required_seconds
+    }
+    workload_scheme {
+        bigint id PK
+        boolean default_scheme
+        text description
+        bigint member_count
+        text name
+    }
+    global_configuration {
+        text _fivetran_id PK
+        boolean allow_logging_on_closed_account
+        text approval_period
+        bigint approval_week_start
+        bigint max_hours_per_day_per_user
+        bigint number_of_days_allowed_into_future
+        boolean remaining_estimate_optional
+        bigint week_start
+        boolean worklog_description_optional
+    }
+    plan_period_value {
+        text _fivetran_id PK
+        bigint plan_id FK
+        text from
+        bigint planned_seconds
+        text to
+    }
+    planned_time_day_value {
+        text _fivetran_id PK
+        bigint plan_id FK
+        text date
+        bigint planned_seconds
+    }
+    plan {
+        bigint id PK
+        bigint account_id FK
+        text assignee_id
+        text assignee_type
+        text description
+        text end_date
+        boolean include_non_working_days
+        bigint period_count
+        text plan_approval_account_id
+        text plan_approval_status
+        integer plan_item_id
+        text plan_item_type
+        bigint planned_seconds_per_day
+        bigint planned_time_day_count
+        text recurrence_end_date
+        text rule
+        text start_date
+        bigint total_planned_seconds_in_scope
+    }
+    role {
+        bigint id PK
+        boolean default
+        text name
+    }
+    account {
+        bigint id PK
+        bigint customer_id FK
+        bigint category_id
+        text category_key
+        text category_name
+        text category_type_name
+        text contact_account_id
+        text contact_type
+        boolean global
+        text key
+        text lead_account_id
+        bigint monthly_budget
+        text name
+        text status
+    }
+    permission_access_entity {
+        bigint id PK
+        bigint permission_role_id FK
+    }
+    permission {
+        text key PK
+        bigint permission_role_id FK
+    }
+    permission_role {
+        bigint id PK
+        text access_type
+        boolean editable
+        text name
+        text permitted_account_id
+    }
+    holiday {
+        bigint id PK
+        bigint scheme_id FK
+        text date
+        text description
+        bigint duration_seconds
+        text name
+        text type
+    }
+    work_attribute {
+        text key PK
+        text name
+        boolean required
+        text some_value
+        text type
+        jsonb values
+    }
+    customer {
+        bigint id PK
+        text key
+        text name
+    }
+    holiday_scheme {
+        bigint id PK
+        boolean default_scheme
+        text description
+        bigint member_count
+        text name
+    }
+    generic_resource {
+        bigint id PK
+        bigint team_id FK
+        text name
+    }
+    global_permission_access_entity {
+        bigint id PK
+        bigint global_permission_role_id PK
+    }
+    global_permission {
+        text key PK
+        bigint global_permission_role_id PK
+    }
+    global_permitted_user {
+        text account_id PK
+        bigint global_permission_role_id PK
+    }
+    global_permission_role {
+        bigint id PK
+        text access_type
+        boolean editable
+        text name
+    }
+    team_membership {
+        bigint id PK
+        bigint role_id FK
+        bigint team_id FK
+        bigint commitment_percent
+        text from
+        text member_account_id
+        text to
+    }
+    workload_member {
+        text _fivetran_id PK
+        bigint workload_scheme_id FK
+        text account_id
+    }
+    timesheet_approval {
+        text _fivetran_id PK
+        bigint team_id FK
+        text period_from
+        text period_to
+        bigint required_seconds
+        text reviewer_account_id
+        text status_account_id
+        text status_comment
+        text status_key
+        bigint status_required_seconds_at_submit
+        bigint status_time_spent_seconds_at_submit
+        timestamp status_updated_at
+        bigint time_spent_seconds
+        text user_account_id
+    }
+    holiday_member {
+        text _fivetran_id PK
+        bigint holiday_scheme_id FK
+        text account_id
+    }
+    team {
+        bigint id PK
+        bigint program_id FK
+        text lead_account_id
+        text name
+        text summary
+    }
+    user_schedule {
+        text _fivetran_id PK
+        bigint holiday_id FK
+        bigint scheme_id FK
+        text date
+        bigint required_seconds
+        text type
+    }
+    timesheet_reviewer {
+        text _fivetran_id PK
+        bigint account_id FK
+        text account_id
+    }
+    program_team_value {
+        bigint program_id PK
+        bigint team_id PK
+    }
+    program {
+        bigint id PK
+        text manager_account_id
+        text name
+    }
+    worklog_attribute_value }o--|| work_attribute : "fk"
+    worklog_attribute_value }o--|| worklog : "fk"
+    workload_scheme_day }o--|| workload_scheme : "fk"
+    plan_period_value }o--|| plan : "fk"
+    planned_time_day_value }o--|| plan : "fk"
+    plan }o--|| account : "fk"
+    account }o--|| customer : "fk"
+    permission_access_entity }o--|| permission_role : "fk"
+    permission }o--|| permission_role : "fk"
+    holiday }o--|| holiday_scheme : "fk"
+    generic_resource }o--|| team : "fk"
+    global_permission_access_entity }o--|| global_permission_role : "fk"
+    global_permission }o--|| global_permission_role : "fk"
+    global_permitted_user }o--|| global_permission_role : "fk"
+    team_membership }o--|| team : "fk"
+    team_membership }o--|| role : "fk"
+    workload_member }o--|| workload_scheme : "fk"
+    timesheet_approval }o--|| team : "fk"
+    holiday_member }o--|| holiday_scheme : "fk"
+    team }o--|| program : "fk"
+    user_schedule }o--|| holiday : "fk"
+    user_schedule }o--|| holiday_scheme : "fk"
+    timesheet_reviewer }o--|| account : "fk"
+    program_team_value }o--|| team : "fk"
+    program_team_value }o--|| program : "fk"

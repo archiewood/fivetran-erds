@@ -1,0 +1,604 @@
+erDiagram
+    channel_member {
+        text id PK
+        text channel_id PK
+        text name
+    }
+    channel {
+        text id PK
+        text name
+    }
+    office_phone_number {
+        text index PK
+        text office_id PK
+        text phone_number
+    }
+    office_routing_option_closed_dtmf {
+        text index PK
+        text office_id PK
+        text input
+        text option_action
+        text option_action_target_id
+        text option_action_target_type
+    }
+    office_routing_option_open_dtmf {
+        text index PK
+        text office_id PK
+        text input
+        text option_action
+        text option_action_target_id
+        text option_action_target_type
+    }
+    office {
+        text id PK
+        text availability_status
+        text country
+        text e_911_address_address
+        text e_911_address_address_2
+        text e_911_address_city
+        text e_911_address_country
+        text e_911_address_state
+        text e_911_address_zip
+        text first_action
+        jsonb friday_hours
+        jsonb monday_hours
+        text name
+        text no_operators_action
+        text ring_seconds
+        text routing_option_closed_action
+        text routing_option_closed_operator_routing
+        text routing_option_closed_try_dial_operator
+        text routing_option_open_action
+        text routing_option_open_action_target_id
+        text routing_option_open_action_target_type
+        text routing_option_open_operator_routing
+        text routing_option_open_try_dial_operator
+        text setting_allow_device_guest_login
+        text setting_block_caller_id_disabled
+        text setting_bridged_target_recording_allowed
+        text setting_disable_desk_phone_self_provision
+        text setting_disable_ivr_voicemail
+        text setting_no_recording_message_on_user_call
+        text setting_set_caller_id_disabled
+        text state
+        jsonb thursday_hours
+        text timezone
+        jsonb tuesday_hours
+        jsonb wednesday_hours
+    }
+    number {
+        text id PK
+        text company_id FK
+        text office_id FK
+        text target_id FK
+        text area_code
+        text status
+        text target_type
+        text type
+    }
+    call_center_phone_number {
+        text index PK
+        text call_center_id PK
+        text phone_number
+    }
+    call_center_routing_option_closed_dtmf {
+        text index PK
+        text call_center_id PK
+        text input
+        text option_action
+        text option_action_target_id
+        text option_action_target_type
+    }
+    call_center_routing_option_open_dtmf {
+        text index PK
+        text call_center_id PK
+        text input
+        text option_action
+        text option_action_target_id
+        text option_action_target_type
+    }
+    call_center {
+        text id PK
+        text office_id FK
+        text advanced_setting_auto_call_recording_inbound
+        text advanced_setting_auto_call_recording_outbound
+        text advanced_setting_max_wrap_up_seconds
+        text alert_cc_service_level
+        text alert_cc_service_level_seconds
+        text availability_status
+        text country
+        text first_action
+        jsonb friday_hours
+        text group_description
+        text hold_queue_announce_position
+        text hold_queue_announcement_interval_seconds
+        text hold_queue_max_hold_count
+        text hold_queue_max_hold_seconds
+        text hold_queue_queue_callback_dtmf
+        text hold_queue_queue_callback_threshold
+        text hold_queue_queue_escape_dtmf
+        text hours_on
+        jsonb monday_hours
+        text name
+        text no_operators_action
+        text ring_second
+        text routing_option_closed_action
+        text routing_option_closed_operator_routing
+        text routing_option_closed_try_dial_operator
+        text routing_option_open_action
+        text routing_option_open_action_target_id
+        text routing_option_open_action_target_type
+        text routing_option_open_operator_routing
+        text routing_option_open_try_dial_operator
+        text state
+        jsonb thursday_hours
+        text timezone
+        jsonb tuesday_hours
+        text voice_intelligence_allow_pause
+        text voice_intelligence_auto_start
+        jsonb wednesday_hours
+    }
+    call_transcript {
+        text _fivetran_id PK
+        text call_id FK
+        text contact_id
+        text content
+        text name
+        text time
+        text type
+        text user_id
+    }
+    contact_phone_number {
+        text index PK
+        text contact_id PK
+        text phone_number
+    }
+    contact_email {
+        text index PK
+        text contact_id PK
+        text email
+    }
+    contact {
+        text id PK
+        text company_name
+        text display_name
+        text extension
+        text first_name
+        text job_title
+        text last_name
+        text owner_id
+        text primary_email
+        text primary_phone
+        text trunk_group
+        text type
+        jsonb urls
+    }
+    company {
+        text id PK
+        text account_type
+        text country
+        text domain
+        text name
+    }
+    department_phone_number {
+        text index PK
+        text department_id PK
+        text phone_number FK
+    }
+    department_routing_option_closed_dtmf {
+        text index PK
+        text department_id PK
+        text input
+        text option_action
+        text option_action_target_id
+        text option_action_target_type
+    }
+    department_routing_option_open_dtmf {
+        text index PK
+        text department_id PK
+        text input
+        text option_action
+        text option_action_target_id
+        text option_action_target_type
+    }
+    department {
+        text id PK
+        text office_id FK
+        text auto_call_recording
+        text availability_status
+        text country
+        text first_action
+        jsonb friday_hours
+        text group_description
+        text hold_queue_allow_queuing
+        text hold_queue_max_hold_count
+        text hold_queue_max_hold_seconds
+        text hours_on
+        jsonb monday_hours
+        text name
+        text no_operators_action
+        text ring_seconds
+        text routing_option_closed_action
+        text routing_option_closed_operator_routing
+        text routing_option_closed_try_dial_operator
+        text routing_option_open_action
+        text routing_option_open_action_target_id
+        text routing_option_open_action_target_type
+        text routing_option_open_operator_routing
+        text routing_option_open_try_dial_operator
+        text state
+        jsonb thursday_hours
+        text timezone
+        jsonb tuesday_hours
+        text voice_intelligence_allow_pause
+        text voice_intelligence_auto_start
+        jsonb wednesday_hours
+    }
+    call_center_operator_duty_status {
+        text operator_id PK
+        text duty_status_reason
+        text duty_status_started
+        text on_duty
+        text on_duty_started
+        text on_duty_status
+    }
+    call_router {
+        text id PK
+        text office_id FK
+        text default_target_id
+        text default_target_type
+        text enabled
+        text name
+        text routing_url
+        text signature_algo
+        text signature_secret
+        text signature_type
+    }
+    office_license {
+        text _fivetran_id PK
+        text office_id FK
+        text additional_number_line
+        text contact_center_line
+        text fax_line
+        text room_line
+        text sell_line
+        text talk_line
+        text tollfree_additional_number_line
+        text tollfree_room_line
+        text uberconference_line
+    }
+    call_center_operator_skill {
+        text call_center_id PK
+        text user_id PK
+        text skill_level
+    }
+    user_admin_office_id {
+        text index PK
+        text user_id PK
+        text id FK
+    }
+    user_forward_number {
+        text index PK
+        text user_id PK
+        text number
+    }
+    user_group_detail {
+        text index PK
+        text user_id PK
+        text do_not_disturb
+        text id
+        text role
+        text type
+    }
+    user_phone_number {
+        text index PK
+        text user_id PK
+        text phone_number FK
+    }
+    users {
+        text id PK
+        text company_id FK
+        text office_id FK
+        text country
+        text date_active
+        text date_added
+        text date_first_login
+        text do_not_disturb
+        text extension
+        text first_name
+        text image_url
+        text is_admin
+        text is_available
+        text is_on_duty
+        text is_online
+        text is_super_admin
+        text job_title
+        text languages
+        text last_name
+        text license
+        text location
+        text muted
+        text state
+        text status_message
+        text timezone
+    }
+    room_phone_number {
+        text index PK
+        text room_id PK
+        text phone_number
+    }
+    room {
+        text id PK
+        text company_id FK
+        text office_id FK
+        text country
+        text image_url
+        text is_free
+        text is_on_duty
+        text name
+        text state
+    }
+    call_center_operator_admin {
+        text index PK
+        text call_center_operator_id PK
+        text office_id FK
+    }
+    call_center_operator_forwarded_number {
+        text index PK
+        text call_center_operator_id PK
+        text number
+    }
+    call_center_operator_email {
+        text index PK
+        text call_center_operator_id PK
+        text email
+    }
+    call_center_operator_group_detail {
+        text id PK
+        text call_center_operator_id PK
+        text do_not_disturb
+        text role
+        text type
+    }
+    call_center_operator_phone_number {
+        text index PK
+        text call_center_operator_id PK
+        text phone_number
+    }
+    call_center_operator {
+        text id PK
+        text call_center_id PK
+        text company_id FK
+        text office_id FK
+        text country
+        text date_active
+        text date_added
+        text date_first_login
+        text do_not_disturb
+        text duty_status_reason
+        text duty_status_started
+        text extension
+        text first_name
+        text image_url
+        text is_admin
+        text is_available
+        text is_on_duty
+        text is_online
+        text is_super_admin
+        text job_title
+        text languages
+        text last_name
+        text license
+        text location
+        text muted
+        text on_duty_started
+        text on_duty_status
+        text state
+        text status_message
+        text timezone
+    }
+    room_deskphone {
+        text id PK
+        text room_id PK
+        text byod
+        text mac_address
+        text name
+        text owner_id
+        text owner_type
+        text port
+        text realm
+        text ring_notification
+        text type
+    }
+    coaching_team {
+        text id PK
+        text company_id FK
+        text office_id FK
+        text allow_trainee_eavesdrop
+        text country
+        text name
+        jsonb phone_numbers
+        text ring_seconds
+        text state
+        text team_description
+    }
+    coaching_team_member_admin {
+        text index PK
+        text coaching_team_id PK
+        text coaching_team_member_id PK
+        text office_id FK
+    }
+    coaching_team_member_forward_number {
+        text index PK
+        text coaching_team_id PK
+        text coaching_team_member_id PK
+        text number
+    }
+    coaching_team_member_email {
+        text index PK
+        text coaching_team_id PK
+        text coaching_team_member_id PK
+        text email
+    }
+    coaching_team_member_phone_number {
+        text index PK
+        text coaching_team_id PK
+        text coaching_team_member_id PK
+        text phone_number
+    }
+    coaching_team_member {
+        text id PK
+        text coaching_team_id PK
+        text company_id FK
+        text office_id FK
+        text country
+        text date_active
+        text date_added
+        text date_first_login
+        text do_not_disturb
+        text extension
+        text first_name
+        text image_url
+        text is_admin
+        text is_available
+        text is_on_duty
+        text is_online
+        text is_super_admin
+        text job_title
+        text languages
+        text last_name
+        text license
+        text location
+        text muted
+        text name
+        text role
+        text state
+        text status_message
+        text timezone
+    }
+    call_recording_detail {
+        text id PK
+        text call_id PK
+        text duration
+        text recording_type
+        text start_time
+        text url
+    }
+    call_routing_breadcrumb {
+        text index PK
+        text call_id PK
+        text breadcrumb_type
+        text date
+        jsonb request
+        jsonb response
+        text url
+    }
+    call {
+        text id PK
+        text contact_id FK
+        jsonb admin_call_recording_share_links
+        jsonb call_recording_share_links
+        jsonb csat_recording_urls
+        text csat_score
+        jsonb csat_transcriptions
+        text custom_data
+        text date_connected
+        text date_ended
+        text date_rang
+        text date_started
+        text direction
+        text duration
+        text entry_point_call_id
+        text entry_point_target_email
+        text entry_point_target_id
+        text entry_point_target_name
+        text entry_point_target_phone
+        text entry_point_target_type
+        text event_timestamp
+        text external_number
+        text group_id
+        text internal_number
+        text is_transferred
+        jsonb labels
+        text master_call_id
+        text mos_score
+        text operator_call_id
+        text proxy_target_email
+        text proxy_target_id
+        text proxy_target_name
+        text proxy_target_phone
+        text proxy_target_type
+        jsonb screen_recording_urls
+        text state
+        text target_email
+        text target_id
+        text target_name
+        text target_phone
+        text target_type
+        text total_duration
+        text transcription_text
+        text voicemail_share_link
+        text was_recorded
+    }
+    channel_member }o--|| channel : "fk"
+    office_phone_number }o--|| office : "fk"
+    office_routing_option_closed_dtmf }o--|| office : "fk"
+    office_routing_option_open_dtmf }o--|| office : "fk"
+    number }o--|| company : "fk"
+    number }o--|| office : "fk"
+    number }o--|| users : "fk"
+    call_center_phone_number }o--|| call_center : "fk"
+    call_center_routing_option_closed_dtmf }o--|| call_center : "fk"
+    call_center_routing_option_open_dtmf }o--|| call_center : "fk"
+    call_center }o--|| office : "fk"
+    call_transcript }o--|| call : "fk"
+    contact_phone_number }o--|| contact : "fk"
+    contact_email }o--|| contact : "fk"
+    department_phone_number }o--|| number : "fk"
+    department_phone_number }o--|| department : "fk"
+    department_routing_option_closed_dtmf }o--|| department : "fk"
+    department_routing_option_open_dtmf }o--|| department : "fk"
+    department }o--|| office : "fk"
+    call_center_operator_duty_status }o--|| call_center_operator : "fk"
+    call_router }o--|| office : "fk"
+    office_license }o--|| office : "fk"
+    call_center_operator_skill }o--|| call_center : "fk"
+    call_center_operator_skill }o--|| call_center_operator : "fk"
+    user_admin_office_id }o--|| office : "fk"
+    user_admin_office_id }o--|| users : "fk"
+    user_forward_number }o--|| users : "fk"
+    user_group_detail }o--|| users : "fk"
+    user_phone_number }o--|| number : "fk"
+    user_phone_number }o--|| users : "fk"
+    users }o--|| company : "fk"
+    users }o--|| office : "fk"
+    room_phone_number }o--|| room : "fk"
+    room }o--|| company : "fk"
+    room }o--|| office : "fk"
+    call_center_operator_admin }o--|| office : "fk"
+    call_center_operator_admin }o--|| call_center_operator : "fk"
+    call_center_operator_forwarded_number }o--|| call_center_operator : "fk"
+    call_center_operator_email }o--|| call_center_operator : "fk"
+    call_center_operator_group_detail }o--|| call_center_operator : "fk"
+    call_center_operator_phone_number }o--|| call_center_operator : "fk"
+    call_center_operator }o--|| company : "fk"
+    call_center_operator }o--|| office : "fk"
+    call_center_operator }o--|| call_center : "fk"
+    room_deskphone }o--|| room : "fk"
+    coaching_team }o--|| company : "fk"
+    coaching_team }o--|| office : "fk"
+    coaching_team_member_admin }o--|| office : "fk"
+    coaching_team_member_admin }o--|| coaching_team_member : "fk"
+    coaching_team_member_admin }o--|| coaching_team_member : "fk"
+    coaching_team_member_forward_number }o--|| coaching_team_member : "fk"
+    coaching_team_member_forward_number }o--|| coaching_team_member : "fk"
+    coaching_team_member_email }o--|| coaching_team_member : "fk"
+    coaching_team_member_email }o--|| coaching_team_member : "fk"
+    coaching_team_member_phone_number }o--|| coaching_team_member : "fk"
+    coaching_team_member_phone_number }o--|| coaching_team_member : "fk"
+    coaching_team_member }o--|| company : "fk"
+    coaching_team_member }o--|| office : "fk"
+    coaching_team_member }o--|| coaching_team : "fk"
+    call_recording_detail }o--|| call : "fk"
+    call_routing_breadcrumb }o--|| call : "fk"
+    call }o--|| contact : "fk"

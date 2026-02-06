@@ -1,0 +1,316 @@
+erDiagram
+    site {
+        text id PK
+        text is_deleted
+        text publisher_account_id
+        text title
+        text url
+    }
+    zone {
+        text id PK
+        text site_id FK
+        text is_deleted
+        text name
+    }
+    creative {
+        text id PK
+        text ad_type_id FK
+        text advertiser_id FK
+        text alt
+        text body
+        text image_link
+        text image_name
+        text is_active
+        text is_deleted
+        text is_html_js
+        text is_network_ad
+        text is_no_track
+        text is_sync
+        text metadata
+        text script_body
+        text title
+        text url
+    }
+    flight {
+        text id PK
+        text campaign_id FK
+        text can_passback
+        text cap_type
+        text created
+        text daily_cap_amount
+        text daily_cap_amount_decimal
+        text delivery_status
+        text dont_affect_parent_freq_cap
+        text end_date
+        text end_date_iso
+        text freq_cap
+        text freq_cap_duration
+        text freq_cap_type
+        text geo_distance_targeting
+        text goal_type
+        text impressions
+        text is_active
+        text is_companion
+        text is_deleted
+        text is_full_speed
+        text is_no_duplicates
+        text is_tracking_conversions
+        text is_unlimited
+        text last_modified
+        text name
+        text option_type
+        text price
+        text priority_id
+        text rate_type
+        text require_strict_location
+        text start_date
+        text start_date_iso
+        text time_zone
+        text version
+    }
+    channel_ad_type {
+        text index PK
+        text channel_id PK
+        text type
+    }
+    channel {
+        text id PK
+        text commission
+        text cpm
+        text created
+        text custom_targeting
+        text engine
+        text is_deleted
+        text last_modified
+        text title
+        text version
+    }
+    ad_type {
+        text id PK
+        text height
+        text name
+        text width
+    }
+    campaign {
+        text id PK
+        text advertiser_id FK
+        text cap_type
+        text created
+        text daily_cap_amount
+        jsonb flights
+        text freq_cap
+        text freq_cap_duration
+        text freq_cap_type
+        text is_active
+        text is_archived
+        text is_deleted
+        text last_modified
+        text life_time_cap_amount
+        text name
+        text price
+        text salesperson_id
+        text start_date
+        text start_date_iso
+        text version
+    }
+    advertiser {
+        text id PK
+        text created
+        text freq_cap_type
+        text is_active
+        text is_deleted
+        text last_modified
+        text title
+        text version
+    }
+    report_group {
+        text index PK
+        text report_id PK
+        text groups
+    }
+    report_record_detail {
+        text _fivetran_id PK
+        text grouping_ad_type_id FK
+        text grouping_brand_id FK
+        text grouping_campaign_id FK
+        text grouping_channel_id FK
+        text grouping_creative_id FK
+        text grouping_option_id FK
+        text grouping_priority_id FK
+        text grouping_site_id FK
+        text grouping_zone_id FK
+        text index FK
+        text report_id FK
+        text _title
+        text bot_filtering_disabled_requests
+        text clicks
+        text ctr
+        text date
+        text date_type
+        text decision_requests
+        jsonb details
+        text duplicate_impression_bucket_clicks
+        text duplicate_ip_bucket_clicks
+        text ecpm
+        jsonb events
+        text fill_rate
+        text first_date
+        text gmv
+        text grouping_ad_id
+        text grouping_ad_type
+        text grouping_advertised_os
+        text grouping_advertiser
+        text grouping_brand_name
+        text grouping_browser
+        text grouping_browser_major_version
+        text grouping_browser_minor_version
+        text grouping_campaign
+        text grouping_channel
+        text grouping_city
+        text grouping_country_code
+        text grouping_creative
+        text grouping_date
+        text grouping_date_type
+        text grouping_flight
+        text grouping_form_factor
+        text grouping_keyword
+        text grouping_metro_code
+        text grouping_model_name
+        text grouping_os_major_version
+        text grouping_os_minor_version
+        text grouping_price
+        text grouping_priority
+        text grouping_product_brand_id
+        text grouping_product_brand_name
+        text grouping_product_main_category_id
+        text grouping_product_main_category_name
+        text grouping_product_merchant_id
+        text grouping_product_merchant_name
+        text grouping_product_sku_id
+        text grouping_product_sku_name
+        text grouping_publisher_account
+        text grouping_publisher_account_id
+        text grouping_rate_type_id
+        text grouping_region
+        text grouping_site
+        text grouping_zone
+        text impressions
+        text invalid_ua_bucket_clicks
+        text invalid_ua_impressions
+        text invalid_user_agent_requests
+        text last_date
+        text passback_requests
+        text raw_bucket_clicks
+        text requests
+        text revenue
+        text roas
+        text rtb_bid_requests
+        text rtb_matched_requests
+        text rtb_requests
+        text suspicious_bucket_clicks
+        text test_bucket_clicks
+        text title
+        text true_revenue
+        text unfiltered_impressions
+        text unique_bucket_clicks
+        text unique_ctr
+        text valid_user_agent_requests
+    }
+    report_record {
+        text index PK
+        text report_id PK
+        text _title
+        text bot_filtering_disabled_requests
+        text clicks
+        text ctr
+        text date
+        text date_type
+        text decision_requests
+        text ecpm
+        jsonb events
+        text fill_rate
+        text first_date
+        text gmv
+        text grouping
+        text impressions
+        text invalid_ua_impressions
+        text invalid_user_agent_requests
+        text last_date
+        text passback_requests
+        text raw_bucket_clicks
+        text requests
+        text revenue
+        text roas
+        text rtb_bid_requests
+        text rtb_matched_requests
+        text rtb_requests
+        text suspicious_bucket_clicks
+        text title
+        text true_revenue
+        text unfiltered_impressions
+        text unique_bucket_clicks
+        text unique_ctr
+        text valid_user_agent_requests
+    }
+    report {
+        text id PK
+        jsonb critiera
+        text end_date
+        text end_date_iso
+        text is_total
+        text login_id
+        jsonb option_records
+        text record_title
+        text result_report_id
+        text start_date
+        text start_date_iso
+        text status
+        text title
+        text total_bot_filtering_disabled_requests
+        text total_clicks
+        text total_ctr
+        text total_decision_requests
+        text total_duplicate_impression_bucket_clicks
+        text total_duplicate_ip_bucket_clicks
+        text total_ecpm
+        text total_fill_rate
+        text total_gmv
+        text total_impressions
+        text total_invalid_ua_bucket_clicks
+        text total_invalid_ua_impressions
+        text total_invalid_user_agent_requests
+        text total_passback_requests
+        text total_raw_bucket_clicks
+        text total_requests
+        text total_revenue
+        text total_roas
+        text total_rtb_bid_requests
+        text total_rtb_matched_requests
+        text total_rtb_requests
+        text total_supicious_bucket_clicks
+        text total_test_bucket_clicks
+        text total_true_revenue
+        text total_unfiltered_impressions
+        text total_unique_bucket_clicks
+        text total_unique_ctr
+        text total_valid_user_agent_requests
+    }
+    zone }o--|| site : "fk"
+    creative }o--|| ad_type : "fk"
+    creative }o--|| advertiser : "fk"
+    flight }o--|| campaign : "fk"
+    channel_ad_type }o--|| channel : "fk"
+    campaign }o--|| advertiser : "fk"
+    report_group }o--|| report : "fk"
+    report_record_detail }o--|| ad_type : "fk"
+    report_record_detail }o--|| channel : "fk"
+    report_record_detail }o--|| campaign : "fk"
+    report_record_detail }o--|| zone : "fk"
+    report_record_detail }o--|| flight : "fk"
+    report_record_detail }o--|| advertiser : "fk"
+    report_record_detail }o--|| creative : "fk"
+    report_record_detail }o--|| flight : "fk"
+    report_record_detail }o--|| site : "fk"
+    report_record_detail }o--|| report_record : "fk"
+    report_record_detail }o--|| report_record : "fk"
+    report_record }o--|| report : "fk"

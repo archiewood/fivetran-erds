@@ -1,0 +1,534 @@
+erDiagram
+    tag_object {
+        bigint object_id PK
+        bigint tag_id PK
+    }
+    opportunity_prospect {
+        bigint opportunity_id PK
+        bigint prospect_id PK
+        timestamp updated_at
+    }
+    email_template {
+        bigint id PK
+        bigint campaign_id FK
+        bigint created_by_id FK
+        bigint updated_by_id FK
+        timestamp created_at
+        bigint folder_id
+        text html_message
+        boolean is_auto_responder_email
+        boolean is_drip_email
+        boolean is_list_email
+        boolean is_one_to_one_email
+        text name
+        text subject
+        text tag_replacement_language
+        text text_message
+        bigint tracker_domain_id
+        text type
+        timestamp updated_at
+    }
+    visitor_activity {
+        bigint id PK
+        bigint campaign_id FK
+        bigint email_id FK
+        bigint email_template_id FK
+        bigint list_email_id FK
+        text opportunity_id FK
+        bigint prospect_id FK
+        bigint visit_id FK
+        bigint visitor_id FK
+        timestamp created_at
+        bigint custom_redirect_id
+        text details
+        bigint file_id
+        bigint form_handler_id
+        bigint form_id
+        bigint landing_page_id
+        bigint multivariate_test_variation_id
+        bigint paid_search_ad_id
+        bigint site_search_query_id
+        bigint type
+        text type_name
+        timestamp updated_at
+        bigint visitor_page_view_id
+    }
+    lifecycle_stage {
+        bigint id PK
+        timestamp created_at
+        boolean is_locked
+        text match_type
+        text name
+        integer position
+        timestamp updated_at
+    }
+    reply_to_option {
+        text _fivetran_id PK
+        bigint account_custom_field_id FK
+        bigint email_template_id FK
+        bigint prospect_custom_field_id FK
+        bigint user_id FK
+        text address
+        text type
+    }
+    form_handler {
+        bigint id PK
+        bigint campaign_id FK
+        bigint created_by_id FK
+        bigint updated_by_id FK
+        timestamp created_at
+        text embed_code
+        text error_location
+        bigint folder_id
+        boolean is_always_email
+        boolean is_cookieless
+        boolean is_data_forwarded
+        boolean is_deleted
+        text name
+        text salesforce_id
+        text success_location
+        bigint tracker_domain_id
+        timestamp updated_at
+    }
+    prospect {
+        bigint id PK
+        bigint campaign_id FK
+        bigint prospect_account_id FK
+        bigint user_id FK
+        text address_one
+        text address_two
+        text annual_revenue
+        text city
+        text comments
+        text company
+        text country
+        timestamp created_at
+        text crm_account_fid
+        text crm_contact_fid
+        timestamp crm_last_sync
+        text crm_lead_fid
+        text crm_owner_fid
+        text crm_url
+        text department
+        text email
+        text employees
+        text fax
+        text first_name
+        text grade
+        text industry
+        boolean is_do_not_call
+        boolean is_do_not_email
+        boolean is_permanently_deleted
+        boolean is_reviewed
+        boolean is_starred
+        text job_title
+        timestamp last_activity_at
+        text last_name
+        text notes
+        boolean opted_out
+        text password
+        text phone
+        text recent_interaction
+        text salutation
+        bigint score
+        text source
+        text state
+        text territory
+        timestamp updated_at
+        text website
+        text years_in_business
+        text zip
+    }
+    form_field_progressive {
+        text prospect_api_field_id PK
+        bigint form_field_id PK
+    }
+    form_field {
+        bigint id PK
+        bigint created_by_id FK
+        bigint form_id FK
+        bigint updated_by_id FK
+        timestamp created_at
+        text css_classes
+        text data_format
+        text error_message
+        boolean has_dependents
+        boolean has_progressives
+        boolean has_values
+        boolean is_always_display
+        boolean is_do_not_prefill
+        boolean is_maintain_initial_value
+        boolean is_required
+        text label
+        text prospect_api_field_id
+        integer sort_order
+        text type
+        timestamp updated_at
+    }
+    email {
+        bigint id PK
+        bigint list_email_id FK
+        bigint campaign_id
+        text client_type
+        timestamp created_at
+        bigint created_by_id
+        bigint list_id
+        text name
+        bigint prospect_id
+        text subject
+    }
+    engagement_studio_program {
+        bigint id PK
+        bigint created_by_id FK
+        bigint schedule_created_by_id FK
+        bigint updated_by_id FK
+        timestamp created_at
+        text description
+        bigint folder_id
+        text name
+        integer prospects_multiple_entry_maximum_entries
+        integer prospects_multiple_entry_minimum_duration_in_days
+        text recipient_list_ids
+        text salesforce_id
+        timestamp schedule_created_at
+        timestamp schedule_start_on
+        timestamp schedule_stop_on
+        text status
+        text suppression_list_ids
+        timestamp updated_at
+    }
+    visitor_page_view {
+        bigint id PK
+        bigint campaign_id FK
+        bigint visit_id FK
+        bigint visitor_id FK
+        timestamp created_at
+        bigint duration_in_seconds
+        text salesforce_id
+        text title
+        text url
+    }
+    form_field_dependent {
+        bigint dependent_form_field_id PK
+        bigint form_field_id PK
+        text value
+    }
+    external_activity {
+        bigint id PK
+        bigint created_by_id FK
+        bigint prospect_id FK
+        timestamp activity_date
+        timestamp created_at
+        text extension
+        text extension_salesforce_id
+        text type
+        text type_salesforce_id
+        text value
+    }
+    opportunity {
+        bigint id PK
+        bigint campaign_id FK
+        timestamp closed_at
+        timestamp created_at
+        text name
+        bigint probability
+        text stage
+        text status
+        text type
+        timestamp updated_at
+        double_precision value
+    }
+    visit {
+        bigint id PK
+        bigint prospect_id FK
+        bigint visitor_id FK
+        text campaign_parameter
+        text content_parameter
+        timestamp created_at
+        bigint duration_in_seconds
+        timestamp first_visitor_page_view_at
+        timestamp last_visitor_page_view_at
+        text medium_parameter
+        text source_parameter
+        text term_parameter
+        timestamp updated_at
+        bigint visitor_page_view_count
+    }
+    custom_field {
+        bigint id PK
+        bigint created_by_id FK
+        bigint updated_by_id FK
+        timestamp created_at
+        text field_id
+        boolean is_analytics_synced
+        boolean is_record_multiple_responses
+        boolean is_required
+        boolean is_use_values
+        text name
+        text salesforce_id
+        text type
+        timestamp updated_at
+    }
+    custom_redirect {
+        bigint id PK
+        bigint campaign_id FK
+        bigint created_by_id FK
+        bigint updated_by_id FK
+        boolean bitly_is_personalized
+        text bitly_short_url
+        timestamp created_at
+        text destination_url
+        bigint folder_id
+        text ga_campaign
+        text ga_content
+        text ga_medium
+        text ga_source
+        text ga_term
+        text name
+        text salesforce_id
+        text tracked_url
+        bigint tracker_domain_id
+        timestamp updated_at
+        text url
+        text vanity_url
+        text vanity_url_path
+    }
+    lifecycle_history {
+        bigint id PK
+        bigint next_stage_id FK
+        bigint previous_stage_id FK
+        bigint prospect_id FK
+        timestamp created_at
+        integer seconds_elapsed
+    }
+    campaign {
+        bigint id PK
+        bigint created_by_id FK
+        text parent_campaign_id FK
+        bigint updated_by_id FK
+        bigint cost
+        timestamp created_at
+        bigint folder_id
+        text name
+        text salesforce_id
+        timestamp updated_at
+    }
+    prospect_account {
+        bigint id PK
+        text name
+    }
+    sender_option {
+        text _fivetran_id PK
+        bigint account_custom_field_id FK
+        bigint email_template_id FK
+        bigint prospect_custom_field_id FK
+        bigint user_id FK
+        text address
+        text name
+        text type
+    }
+    list {
+        bigint id PK
+        bigint campaign_id FK
+        bigint created_by_id FK
+        bigint updated_by_id FK
+        timestamp created_at
+        text description
+        bigint folder_id
+        boolean is_dynamic
+        boolean is_public
+        text name
+        text title
+        timestamp updated_at
+    }
+    list_email {
+        bigint id PK
+        bigint campaign_id FK
+        bigint email_template_id FK
+        text client_type
+        timestamp created_at
+        bigint created_by_id
+        text html_message
+        boolean is_deleted
+        boolean is_paused
+        boolean is_sent
+        text name
+        boolean operational_email
+        timestamp sent_at
+        text subject
+        text text_message
+        bigint tracker_domain_id
+        timestamp updated_at
+        bigint updated_by_id
+    }
+    form_handler_field {
+        bigint id PK
+        bigint created_by_id FK
+        bigint form_handler_id FK
+        timestamp created_at
+        text data_format
+        text error_message
+        boolean is_maintain_initial_value
+        boolean is_required
+        text name
+        text prospect_api_field_id
+    }
+    user {
+        bigint id PK
+        integer account
+        timestamp created_at
+        text email
+        text first_name
+        text job_title
+        text last_name
+        text role
+        timestamp updated_at
+    }
+    tag {
+        bigint id PK
+        timestamp created_at
+        text name
+        timestamp updated_at
+    }
+    list_membership {
+        bigint id PK
+        bigint created_by_id FK
+        bigint list_id FK
+        bigint prospect_id FK
+        bigint updated_by_id FK
+        timestamp created_at
+        boolean opted_out
+        timestamp updated_at
+    }
+    visitor {
+        bigint id PK
+        bigint campaign_id FK
+        bigint prospect_id FK
+        text campaign_parameter
+        text content_parameter
+        timestamp created_at
+        boolean do_not_sell
+        text hostname
+        text ip_address
+        boolean is_identified
+        text medium_parameter
+        bigint page_view_count
+        text source_parameter
+        text term_parameter
+        timestamp updated_at
+    }
+    form_field_value {
+        bigint sort_order PK
+        bigint form_field_id PK
+        bigint list_id FK
+        text label
+        bigint profile_id
+        text value
+    }
+    form {
+        bigint id PK
+        bigint campaign_id FK
+        bigint created_by_id FK
+        bigint updated_by_id FK
+        text after_form_content
+        text before_form_content
+        text checkbox_alignment
+        timestamp created_at
+        text embed_code
+        bigint folder_id
+        text font_color
+        text font_family
+        text font_size
+        boolean is_always_display
+        boolean is_captcha_enabled
+        boolean is_cookieless
+        boolean is_use_redirect_location
+        text label_alignment
+        text layout_template_id
+        text name
+        text radio_alignment
+        text redirect_location
+        text required_character
+        text salesforce_id
+        boolean show_not_prospect
+        text submit_button_text
+        text thank_you_code
+        text thank_you_content
+        bigint tracker_domain_id
+        timestamp updated_at
+    }
+    tag_object }o--|| tag : "fk"
+    opportunity_prospect }o--|| opportunity : "fk"
+    opportunity_prospect }o--|| prospect : "fk"
+    email_template }o--|| campaign : "fk"
+    email_template }o--|| user : "fk"
+    email_template }o--|| user : "fk"
+    visitor_activity }o--|| prospect : "fk"
+    visitor_activity }o--|| visitor : "fk"
+    visitor_activity }o--|| email : "fk"
+    visitor_activity }o--|| opportunity : "fk"
+    visitor_activity }o--|| visit : "fk"
+    visitor_activity }o--|| campaign : "fk"
+    visitor_activity }o--|| list_email : "fk"
+    visitor_activity }o--|| email_template : "fk"
+    reply_to_option }o--|| email_template : "fk"
+    reply_to_option }o--|| user : "fk"
+    reply_to_option }o--|| custom_field : "fk"
+    reply_to_option }o--|| custom_field : "fk"
+    form_handler }o--|| user : "fk"
+    form_handler }o--|| user : "fk"
+    form_handler }o--|| campaign : "fk"
+    prospect }o--|| campaign : "fk"
+    prospect }o--|| user : "fk"
+    prospect }o--|| prospect_account : "fk"
+    form_field_progressive }o--|| form_field : "fk"
+    form_field }o--|| form : "fk"
+    form_field }o--|| user : "fk"
+    form_field }o--|| user : "fk"
+    email }o--|| list_email : "fk"
+    engagement_studio_program }o--|| user : "fk"
+    engagement_studio_program }o--|| user : "fk"
+    engagement_studio_program }o--|| user : "fk"
+    visitor_page_view }o--|| visit : "fk"
+    visitor_page_view }o--|| visitor : "fk"
+    visitor_page_view }o--|| campaign : "fk"
+    form_field_dependent }o--|| form_field : "fk"
+    form_field_dependent }o--|| form_field : "fk"
+    external_activity }o--|| prospect : "fk"
+    external_activity }o--|| user : "fk"
+    opportunity }o--|| campaign : "fk"
+    visit }o--|| visitor : "fk"
+    visit }o--|| prospect : "fk"
+    custom_field }o--|| user : "fk"
+    custom_field }o--|| user : "fk"
+    custom_redirect }o--|| user : "fk"
+    custom_redirect }o--|| user : "fk"
+    custom_redirect }o--|| campaign : "fk"
+    lifecycle_history }o--|| prospect : "fk"
+    lifecycle_history }o--|| lifecycle_stage : "fk"
+    lifecycle_history }o--|| lifecycle_stage : "fk"
+    campaign }o--|| campaign : "fk"
+    campaign }o--|| user : "fk"
+    campaign }o--|| user : "fk"
+    sender_option }o--|| email_template : "fk"
+    sender_option }o--|| user : "fk"
+    sender_option }o--|| custom_field : "fk"
+    sender_option }o--|| custom_field : "fk"
+    list }o--|| campaign : "fk"
+    list }o--|| user : "fk"
+    list }o--|| user : "fk"
+    list_email }o--|| campaign : "fk"
+    list_email }o--|| email_template : "fk"
+    form_handler_field }o--|| form_handler : "fk"
+    form_handler_field }o--|| user : "fk"
+    list_membership }o--|| list : "fk"
+    list_membership }o--|| prospect : "fk"
+    list_membership }o--|| user : "fk"
+    list_membership }o--|| user : "fk"
+    visitor }o--|| prospect : "fk"
+    visitor }o--|| campaign : "fk"
+    form_field_value }o--|| form_field : "fk"
+    form_field_value }o--|| list : "fk"
+    form }o--|| user : "fk"
+    form }o--|| user : "fk"
+    form }o--|| campaign : "fk"

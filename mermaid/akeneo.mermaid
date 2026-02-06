@@ -1,0 +1,253 @@
+erDiagram
+    reference_entity {
+        text code PK
+        text image
+        jsonb labels
+    }
+    channel {
+        text code PK
+        text category_tree
+        jsonb conversion_units
+        jsonb currencies
+        jsonb labels
+        jsonb locales
+    }
+    asset_family_transformation {
+        text index PK
+        text asset_family_code PK
+        text filename_suffix
+        text label
+        jsonb operations
+        jsonb source
+        jsonb target
+    }
+    asset_family_product_link_rule {
+        text index PK
+        text asset_family_code PK
+        jsonb assign_assets_to
+        jsonb product_selections
+    }
+    asset_family {
+        text code PK
+        text attribute_as_main_media
+        jsonb labels
+        text naming_convention_abort_asset_creation_on_error
+        text naming_convention_pattern
+        jsonb naming_convention_source
+        text sharing_enabled
+    }
+    association_type {
+        text code PK
+        text is_quantified
+        text is_two_way
+        jsonb labels
+    }
+    reference_entity_attribute {
+        text code PK
+        text reference_entity PK
+        jsonb allowed_extensions
+        text decimals_allowed
+        text is_required_for_completeness
+        text is_rich_text_editor
+        text is_textarea
+        jsonb labels
+        text max_characters
+        text max_file_size
+        text max_value
+        text min_value
+        text type
+        text validation_regexp
+        text validation_rule
+        text value_per_channel
+        text value_per_locale
+    }
+    attribute_table_configuration_option {
+        text index PK
+        text attribute_table_configuration_code PK
+        text attribute_table_configuration_index PK
+        text code
+        jsonb labels
+    }
+    attribute_table_configuration {
+        text index PK
+        text attribute_code PK
+        text code
+        text data_type
+        text is_required_for_completeness
+        jsonb labels
+        jsonb validations
+    }
+    attribute {
+        text code PK
+        jsonb allowed_extensions
+        text attribute_group
+        text auto_option_sorting
+        jsonb available_locales
+        text date_max
+        text date_min
+        text decimals_allowed
+        text default_metric_unit
+        text default_value
+        jsonb group_labels
+        jsonb guidelines
+        text is_main_identifier
+        text is_read_only
+        text is_unique
+        jsonb labels
+        text localizable
+        text max_characters
+        text max_file_size
+        text metric_family
+        text minimum_input_length
+        text negative_allowed
+        text number_max
+        text number_min
+        text reference_data_name
+        text remove_html_tags
+        text scopable
+        text sort_order
+        text type
+        text useable_as_grid_filter
+        text validation_regexp
+        text validation_rule
+        text wysiwyg_enabled
+    }
+    product_model_quality_score {
+        text index PK
+        text product_model_code PK
+        text data
+        text locale
+        text scope
+    }
+    product_model {
+        text code PK
+        text family_code FK
+        text parent_code FK
+        jsonb associations
+        jsonb categories
+        text created
+        text family_variant_code
+        jsonb quantified_associations
+        text updated
+        jsonb values
+    }
+    product_media_files {
+        text _fivetran_id PK
+        text code
+        text extension
+        text mime_type
+        text original_filename
+        text size
+    }
+    family_variant {
+        text code PK
+        text family_code PK
+        jsonb labels
+        jsonb variant_attribute_sets
+    }
+    product_quality_score {
+        text index PK
+        text product_uuid PK
+        text data
+        text locale
+        text scope
+    }
+    product_completeness {
+        text index PK
+        text product_uuid PK
+        text data
+        text locale
+        text scope
+    }
+    product {
+        text uuid PK
+        text parent_code FK
+        jsonb associations
+        jsonb categories
+        text created
+        text family_code
+        jsonb groups
+        text is_enabled
+        jsonb quantified_associations
+        text updated
+        jsonb values
+    }
+    reference_entity_attribute_option {
+        text code PK
+        text reference_entity_attribute_code PK
+        text reference_entity_attribute_reference_entity PK
+        jsonb labels
+    }
+    attribute_option {
+        text code PK
+        text attribute_code PK
+        text attribute
+        jsonb labels
+        text sort_order
+    }
+    attribute_group_attribute_code {
+        text attribute_group_code PK
+        text code PK
+    }
+    attribute_group {
+        text code PK
+        jsonb attributes
+        jsonb labels
+        text sort_order
+    }
+    asset {
+        text code PK
+        text asset_family_code PK
+        text created
+        text updated
+        jsonb values
+    }
+    family_attribute_code {
+        text code PK
+        text family_code PK
+    }
+    family {
+        text code PK
+        text attribute_as_image
+        text attribute_as_label
+        jsonb attribute_requirements
+        jsonb labels
+    }
+    category {
+        text code PK
+        text parent_code FK
+        jsonb labels
+        text position
+        text updated
+        jsonb values
+    }
+    reference_entity_record {
+        text code PK
+        text reference_entity_code PK
+        text created
+        text updated
+        jsonb values
+    }
+    asset_family_transformation }o--|| asset_family : "fk"
+    asset_family_product_link_rule }o--|| asset_family : "fk"
+    reference_entity_attribute }o--|| reference_entity : "fk"
+    attribute_table_configuration_option }o--|| attribute_table_configuration : "fk"
+    attribute_table_configuration_option }o--|| attribute_table_configuration : "fk"
+    attribute_table_configuration }o--|| attribute : "fk"
+    product_model_quality_score }o--|| product_model : "fk"
+    product_model }o--|| family : "fk"
+    product_model }o--|| product_model : "fk"
+    family_variant }o--|| family : "fk"
+    product_quality_score }o--|| product : "fk"
+    product_completeness }o--|| product : "fk"
+    product }o--|| product_model : "fk"
+    reference_entity_attribute_option }o--|| reference_entity_attribute : "fk"
+    reference_entity_attribute_option }o--|| reference_entity_attribute : "fk"
+    attribute_option }o--|| attribute : "fk"
+    attribute_group_attribute_code }o--|| attribute : "fk"
+    attribute_group_attribute_code }o--|| attribute_group : "fk"
+    asset }o--|| asset_family : "fk"
+    family_attribute_code }o--|| attribute : "fk"
+    family_attribute_code }o--|| family : "fk"
+    category }o--|| category : "fk"
+    reference_entity_record }o--|| reference_entity : "fk"

@@ -1,0 +1,88 @@
+erDiagram
+    activity {
+        text id PK
+        text owner_id FK
+        text action
+        text created_at
+        text trackable_id
+        text trackable_type
+    }
+    groups_users {
+        text group_id PK
+        text user_id PK
+    }
+    groups {
+        text id PK
+        jsonb auto_groups
+        text created_at
+        text name
+        text smart_load
+    }
+    category_published_question {
+        text question_id PK
+        text category_id PK
+        text name
+        text url
+        text views
+    }
+    category {
+        text id PK
+        text parent_id FK
+        text accessibility
+        text codename
+        text description
+        jsonb hierarchy
+        text icon
+        text image_url
+        text name
+        jsonb sub_categories
+        text url
+    }
+    users {
+        text id PK
+        text created_at
+        text email
+        text first_name
+        text last_name
+        text name
+        text role_id
+        text updated_at
+    }
+    article_answer {
+        text index PK
+        text article_id PK
+        text body
+        text body_txt
+        text format
+        text updated_at
+    }
+    article_keyword {
+        text id PK
+        text article_id PK
+        text name
+    }
+    article {
+        text id PK
+        text author_id FK
+        text category_id FK
+        text accessibility
+        text codename
+        text created_at
+        text description
+        text hierarchy_id
+        text name
+        text next_expiration_on
+        text published
+        timestamp updated_at
+        text url
+        text views
+    }
+    activity }o--|| users : "fk"
+    groups_users }o--|| users : "fk"
+    groups_users }o--|| groups : "fk"
+    category_published_question }o--|| category : "fk"
+    category }o--|| category : "fk"
+    article_answer }o--|| article : "fk"
+    article_keyword }o--|| article : "fk"
+    article }o--|| category : "fk"
+    article }o--|| users : "fk"

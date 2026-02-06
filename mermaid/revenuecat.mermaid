@@ -1,0 +1,88 @@
+erDiagram
+    app {
+        text id PK
+        text project_id FK
+        text amazon_package_name
+        text app_store_bundle_id
+        text created_at
+        text mac_app_store_store_bundle_id
+        text name
+        text play_store_store_bundle_id
+        text type
+    }
+    package_product {
+        text offering_id PK
+        text package_id PK
+        text product_id PK
+        text eligibility_criteria
+    }
+    package {
+        text id PK
+        text offering_id PK
+        text project_id FK
+        text created_at
+        text display_name
+        text lookup_key
+        text object
+        text position
+    }
+    offering {
+        text id PK
+        text project_id FK
+        text created_at
+        text display_name
+        text is_current
+        text lookup_key
+    }
+    project {
+        text id PK
+        text created_at
+        text name
+    }
+    entitlement_product {
+        text entitlement_id PK
+        text product_id PK
+    }
+    entitlement {
+        text id PK
+        text project_id FK
+        text created_at
+        text display_name
+        text lookup_key
+    }
+    product {
+        text id PK
+        text app_id FK
+        text project_id FK
+        text created_at
+        text display_name
+        text store_identifier
+        text subscription_duration
+        text subscription_grace_period_duration
+        text subscription_trial_duration
+        text type
+    }
+    metric_overview {
+        text id PK
+        text project_id FK
+        text description
+        text last_updated_at
+        text last_updated_at_iso_8601
+        text name
+        text period
+        text unit
+        text value
+    }
+    app }o--|| project : "fk"
+    package_product }o--|| product : "fk"
+    package_product }o--|| package : "fk"
+    package_product }o--|| package : "fk"
+    package }o--|| offering : "fk"
+    package }o--|| project : "fk"
+    offering }o--|| project : "fk"
+    entitlement_product }o--|| product : "fk"
+    entitlement_product }o--|| entitlement : "fk"
+    entitlement }o--|| project : "fk"
+    product }o--|| app : "fk"
+    product }o--|| project : "fk"
+    metric_overview }o--|| project : "fk"

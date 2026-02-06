@@ -1,0 +1,412 @@
+erDiagram
+    task_member {
+        text id PK
+        text task_id FK
+    }
+    task_assignee {
+        text id PK
+        text task_id FK
+        text avatar_url
+        text email
+        text full_name
+    }
+    task {
+        text id PK
+        text segment_id FK
+        text tenant_id FK
+        jsonb activity
+        text body
+        text created_at
+        text created_by_id
+        text deleted_at
+        text due_date
+        text import_hash
+        text name
+        text status
+        text type
+        text updated_at
+        text updated_by_id
+    }
+    member_attribute_setting_option {
+        text index PK
+        text member_attribute_setting_id PK
+        text option
+    }
+    member_attribute_setting {
+        text id PK
+        text can_delete
+        text created_at
+        text created_by_id
+        text label
+        text name
+        text show
+        text type
+        timestamp updated_at
+        text updated_by_id
+    }
+    tags {
+        text id PK
+        text tenant_id FK
+        text created_at
+        text created_by_id
+        text deleted_at
+        text import_hash
+        text name
+        timestamp updated_at
+        text updated_by_id
+    }
+    conversation {
+        text id PK
+        text conversation_starter_id FK
+        text segment_id FK
+        text tenant_id FK
+        text channel
+        text created_at
+        text created_by_id
+        text last_active
+        text platform
+        text published
+        text slug
+        text title
+        timestamp updated_at
+        text updated_by_id
+    }
+    member_email {
+        text index PK
+        text member_id PK
+        text email
+    }
+    member_enriched_by {
+        text index PK
+        text member_id PK
+        text enriched_by
+    }
+    member_organization {
+        text id PK
+        text member_id PK
+    }
+    member_segment {
+        text id PK
+        text member_id PK
+        text description
+        text grandparent_name
+        text grandparent_slug
+        text name
+        text parent_name
+        text parent_slug
+        text slug
+        text source_id
+        text source_parent_id
+        text status
+        text url
+    }
+    member_active_on {
+        text index PK
+        text member_id PK
+        text active_on
+    }
+    member_identity {
+        text index PK
+        text member_id PK
+        text identities
+    }
+    member_tag {
+        text id PK
+        text member_id PK
+    }
+    member {
+        text id PK
+        text last_activity_id FK
+        text active_days_count
+        jsonb affiliation
+        text avatar_url_default
+        text avatar_url_discord
+        text avatar_url_enrichment
+        text avatar_url_github
+        text average_sentiment
+        text bio_default
+        text bio_enrichment
+        text bio_github
+        jsonb contribution
+        text country_default
+        text country_enrichment
+        text created_at
+        text created_by_id
+        text deleted_at
+        text display_name
+        text import_hash
+        text is_hireable_default
+        text is_hireable_github
+        text is_organization_default
+        text is_organization_linkedin
+        text is_team_member_default
+        text joined_at
+        text karma_default
+        text karma_hacker_news
+        text last_active
+        text last_enriched
+        text location_default
+        text location_enrichment
+        text location_github
+        text manually_created
+        jsonb no_merge
+        jsonb note
+        text number_of_open_source_contribution
+        text reach_github
+        text reach_total
+        text reach_twitter
+        text score
+        text seniority_level_default
+        text seniority_level_enrichment
+        text source_id_default
+        text source_id_discord
+        text source_id_hacker_news
+        jsonb task
+        text tenant_id
+        jsonb to_merge
+        text updated_at
+        text updated_by_id
+        text url_default
+        text url_github
+        text url_linkedin
+        text url_twitter
+        text website_url_default
+        text website_url_github
+        text years_of_experience_default
+        text years_of_experience_enrichment
+    }
+    member_username {
+        text index PK
+        text member_id PK
+        text table_name
+        text username
+    }
+    member_education {
+        text index PK
+        text member_id PK
+        text campus
+        text end_date
+        text specialization
+        text start_date
+        text table_name
+    }
+    member_expertise {
+        text index PK
+        text member_id PK
+        text expertise
+        text table_name
+    }
+    member_attribute_programming_language {
+        text index PK
+        text member_id PK
+        text programming_language
+        text table_name
+    }
+    member_work_experience {
+        text index PK
+        text member_id PK
+        text company
+        text end_date
+        text location
+        text start_date
+        text table_name
+        text title
+    }
+    member_skill {
+        text index PK
+        text member_id PK
+        text skill
+        text table_name
+    }
+    organization_active_on {
+        text index PK
+        text organization_id PK
+        text active_on
+    }
+    organization_identity {
+        text _fivetran_id PK
+        text organization_id FK
+        text created_at
+        text integration_id
+        text name
+        text platform
+        text source_id
+        text updated_at
+        text url
+    }
+    organization_email {
+        text index PK
+        text organization_id PK
+        text email
+    }
+    organization_phone_number {
+        text index PK
+        text organization_id PK
+        text phone_number
+    }
+    organization_tag {
+        text index PK
+        text organization_id PK
+        text tags
+    }
+    organization {
+        text id PK
+        text tenant_id FK
+        text activity_count
+        jsonb address
+        text affiliated_profile
+        text all_subsidiaries
+        text alternative_domain
+        text alternative_name
+        jsonb attribute
+        text average_employee_tenure
+        text average_tenure_by_level
+        text average_tenure_by_role
+        text created_at
+        text created_by_id
+        text crunchbase_handle
+        text deleted_at
+        text description
+        text direct_subsidiary
+        text display_name
+        text employee
+        text employee_churn_rate
+        text employee_count_by_country
+        text employee_count_by_month
+        text employee_count_by_month_by_level
+        text employee_count_by_month_by_role
+        text employee_growth_rate
+        text founded
+        jsonb geo_location
+        text gics_sector
+        text github_handle
+        text gross_additions_by_month
+        text gross_departures_by_month
+        text headline
+        text immediate_parent
+        jsonb import_hash
+        text industry
+        text is_team_organization
+        text joined_at
+        text last_active
+        text last_enriched_at
+        text linkedin_handle
+        text linkedin_url
+        text location
+        text manually_created
+        text naics
+        text profile
+        text revenue_range_max
+        text revenue_range_min
+        text segment_id
+        text size
+        text ticker
+        text twitter_bio
+        text twitter_follower
+        text twitter_following
+        text twitter_handle
+        text twitter_location
+        text type
+        text ultimate_parent
+        text updated_at
+        text updated_by_id
+        jsonb weak_identity
+        text website
+    }
+    member_note {
+        text id PK
+        text note_id FK
+    }
+    note {
+        text id PK
+        text tenant_id FK
+        text body
+        text created_at
+        text created_by_id
+        text deleted_at
+        text import_hash
+        text updated_at
+        text updated_by_id
+    }
+    activity {
+        text id PK
+        text conversation_id FK
+        text member_id FK
+        text organization_id FK
+        text parent_id FK
+        text segment_id FK
+        text tenant_id FK
+        text body
+        text channel
+        text created_at
+        text created_by_id
+        text deleted_at
+        text display_channel
+        text display_default
+        jsonb display_formatter
+        text display_short
+        text import_hash
+        text is_contribution
+        text object_member
+        text object_member_id
+        text object_member_username
+        text platform
+        text score
+        text sentiment_label
+        text sentiment_mixed
+        text sentiment_negative
+        text sentiment_neutral
+        text sentiment_positive
+        text sentiment_sentiment
+        text source_id
+        text source_parent_id
+        jsonb task
+        text timestamps
+        text title
+        text type
+        text updated_at
+        text updated_by_id
+        text url
+        text username
+    }
+    task_member }o--|| member : "fk"
+    task_member }o--|| task : "fk"
+    task_assignee }o--|| task : "fk"
+    task }o--|| member_segment : "fk"
+    task }o--|| member : "fk"
+    member_attribute_setting_option }o--|| member_attribute_setting : "fk"
+    tags }o--|| member : "fk"
+    conversation }o--|| member_segment : "fk"
+    conversation }o--|| activity : "fk"
+    conversation }o--|| member : "fk"
+    member_email }o--|| member : "fk"
+    member_enriched_by }o--|| member : "fk"
+    member_organization }o--|| organization : "fk"
+    member_organization }o--|| member : "fk"
+    member_segment }o--|| member : "fk"
+    member_active_on }o--|| member : "fk"
+    member_identity }o--|| member : "fk"
+    member_tag }o--|| tags : "fk"
+    member_tag }o--|| member : "fk"
+    member }o--|| activity : "fk"
+    member_username }o--|| member : "fk"
+    member_education }o--|| member : "fk"
+    member_expertise }o--|| member : "fk"
+    member_attribute_programming_language }o--|| member : "fk"
+    member_work_experience }o--|| member : "fk"
+    member_skill }o--|| member : "fk"
+    organization_active_on }o--|| organization : "fk"
+    organization_identity }o--|| organization : "fk"
+    organization_email }o--|| organization : "fk"
+    organization_phone_number }o--|| organization : "fk"
+    organization_tag }o--|| organization : "fk"
+    organization }o--|| member : "fk"
+    member_note }o--|| member : "fk"
+    member_note }o--|| note : "fk"
+    note }o--|| member : "fk"
+    activity }o--|| member_segment : "fk"
+    activity }o--|| member : "fk"
+    activity }o--|| organization : "fk"
+    activity }o--|| member : "fk"
+    activity }o--|| conversation : "fk"
+    activity }o--|| activity : "fk"

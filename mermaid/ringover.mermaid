@@ -1,0 +1,387 @@
+erDiagram
+    group_user {
+        text group_id PK
+        text user_id PK
+        text orders
+        text ring_duration
+    }
+    groups {
+        text id PK
+        text color
+        text is_jumper
+        text name
+        text total_users_count
+    }
+    ivr {
+        text id PK
+        text color
+        text name
+    }
+    call_survey {
+        text _fivetran_id PK
+        text call_id FK
+        text channel_id
+        text name
+        text value
+    }
+    profile {
+        text profile_id PK
+        text name
+    }
+    call_tag {
+        text call_id PK
+        text id PK
+        text team_id PK
+        text user_id PK
+    }
+    call {
+        text call_id PK
+        text team_id PK
+        text user_id PK
+        text call_user_id FK
+        text conference_id FK
+        text contact_id FK
+        text ivr_id FK
+        text amd
+        text answered_time
+        text cdr_id
+        text channel_id
+        text contact_number
+        text direction
+        text end_time
+        text fax
+        text from_number
+        text incall_duration
+        text is_archived
+        text last_state
+        text note
+        text record
+        text scenario_id
+        text scenario_name
+        text star
+        text start_time
+        text to_number
+        text total_duration
+        text type
+        text voicemail
+    }
+    ivr_scenario {
+        text ivr_id PK
+        text scenario_id PK
+        text id FK
+        text color
+        text is_default
+        text name
+        text scenario_type
+    }
+    conversation_member {
+        text conversation_user_id PK
+        text conversation_id PK
+        text contact_id FK
+        text coversation_id FK
+        text group_id FK
+        text ivr_id FK
+        text number_raw FK
+        text user_id FK
+        text alphanumeric
+        text is_administrator
+        text picture
+        text table_name
+    }
+    conversation_star {
+        text index PK
+        text conversation_id PK
+        text team_id PK
+        text user_id PK
+        text star
+    }
+    conversation_tag {
+        text index PK
+        text conversation_id PK
+        text team_id PK
+        text user_id PK
+        text tags
+    }
+    conversation {
+        text id PK
+        text team_id PK
+        text user_id PK
+        text last_message_id FK
+        text adminrules_can_invite
+        text adminrules_can_join
+        text adminrules_can_kick
+        text adminrules_can_leave
+        text adminrules_can_view_history
+        text can_thread_in
+        text creation_date
+        text favorite
+        text is_archived
+        text is_commented_by
+        text is_mms_write
+        text is_sms_write
+        text name
+        text purpose
+        text total_messages_count
+        text type
+        text unread_comment
+        text unread_messages_count
+        text update_date
+        jsonb user_list
+    }
+    number {
+        text id PK
+        text conference_id FK
+        text ivr_id FK
+        text user_id FK
+        text format_country
+        text format_country_code
+        text format_e_164_format
+        text format_international
+        text format_international_alt
+        text format_is_short_code
+        text format_national
+        text format_national_alt
+        text format_raw
+        text format_rfc_3966_format
+        text is_callable
+        text is_sms
+        text is_sms_write
+        text label
+        text type
+    }
+    user_snooze_log_list {
+        text index PK
+        text team_id PK
+        text user_id PK
+        text comment
+        text creation_date
+        text end_date
+        text label
+        text label_en
+        text label_es
+        text label_fr
+        text name
+        text state
+    }
+    user_snooze_log {
+        text team_id PK
+        text user_id PK
+    }
+    transcription {
+        text id PK
+        text call_id FK
+        text team_id FK
+        text user_id FK
+        text creation_date
+        text provider
+        text standard_id
+        text transcription_cdn_path
+        text transcription_status
+    }
+    conversation_message_list {
+        text message_id PK
+        text conversation_id PK
+        text conference_id FK
+        text contact_id FK
+        text conversation_user_id FK
+        text number_raw FK
+        text team_id FK
+        text user_id FK
+        text archive_date
+        text buffer
+        text creation_date
+        text direction
+        text is_archived
+        text is_failed
+        text mdr_uuid
+        text nb_fragment
+        text thread_buffer_section
+        text thread_conversation_id_linked
+        text thread_conversation_sms_id_linked
+        text thread_nb_response
+        text thread_thread_uuid
+        text total_plan
+        text total_price
+        text update_date
+    }
+    conversation_message {
+        text conversation_id PK
+        text team_id PK
+        text user_id PK
+        text creation_date
+        text is_archived
+        text is_sms_write
+        text name
+        text purpose
+        text type
+        text unread_messages_count
+        text update_date
+    }
+    user_planning_time_range {
+        text index PK
+        text user_id PK
+        text day
+        text ends
+        text start
+    }
+    user_planning {
+        text user_id PK
+        text team_id FK
+        text is_planning
+        text is_snooze
+        text planning_enable
+        text tz_identifier
+        text tz_now
+    }
+    blacklist {
+        text number PK
+        text team_id PK
+        text user_id PK
+        text comment
+        text direction
+    }
+    team_number {
+        text id PK
+        text team_id PK
+    }
+    team_ivr {
+        text id PK
+        text team_id PK
+    }
+    team_tag {
+        text id PK
+        text team_id PK
+    }
+    team_group {
+        text id PK
+        text team_id PK
+    }
+    team_conference {
+        text id PK
+        text team_id PK
+        text name
+    }
+    team {
+        text id PK
+        text name
+    }
+    users {
+        text id PK
+        text team_id FK
+        text color
+        text company
+        text concat_name
+        text email
+        text first_name
+        text initial
+        text last_name
+        text picture
+    }
+    contact_number {
+        text contact_id PK
+        text id PK
+        text team_id PK
+        text user_id PK
+        text team_id FK
+        text user_id FK
+    }
+    contact {
+        text id PK
+        text team_id PK
+        text user_id PK
+        text team_id FK
+        text user_id FK
+        text color
+        text company
+        text concat_name
+        text creation_date
+        text first_name
+        text im_owner
+        text initial
+        text is_shared
+        text last_name
+        text profile_picture
+        text social_data
+        text social_profile_url
+        text social_service
+        text social_service_id
+    }
+    tags {
+        text id PK
+        text color
+        text creation_date
+        text description
+        text name
+    }
+    group_user }o--|| users : "fk"
+    group_user }o--|| groups : "fk"
+    call_survey }o--|| call : "fk"
+    call_tag }o--|| tags : "fk"
+    call_tag }o--|| call : "fk"
+    call_tag }o--|| call : "fk"
+    call_tag }o--|| call : "fk"
+    call }o--|| team_conference : "fk"
+    call }o--|| users : "fk"
+    call }o--|| ivr : "fk"
+    call }o--|| contact : "fk"
+    call }o--|| users : "fk"
+    call }o--|| team : "fk"
+    ivr_scenario }o--|| ivr : "fk"
+    conversation_member }o--|| users : "fk"
+    conversation_member }o--|| groups : "fk"
+    conversation_member }o--|| ivr : "fk"
+    conversation_member }o--|| number : "fk"
+    conversation_member }o--|| contact : "fk"
+    conversation_member }o--|| conversation : "fk"
+    conversation_member }o--|| conversation : "fk"
+    conversation_star }o--|| conversation : "fk"
+    conversation_star }o--|| conversation : "fk"
+    conversation_star }o--|| conversation : "fk"
+    conversation_tag }o--|| conversation : "fk"
+    conversation_tag }o--|| conversation : "fk"
+    conversation_tag }o--|| conversation : "fk"
+    conversation }o--|| conversation_message_list : "fk"
+    number }o--|| users : "fk"
+    number }o--|| team_conference : "fk"
+    number }o--|| ivr : "fk"
+    user_snooze_log_list }o--|| user_snooze_log : "fk"
+    user_snooze_log_list }o--|| user_snooze_log : "fk"
+    user_snooze_log }o--|| users : "fk"
+    user_snooze_log }o--|| team : "fk"
+    transcription }o--|| users : "fk"
+    transcription }o--|| team : "fk"
+    transcription }o--|| call : "fk"
+    conversation_message_list }o--|| users : "fk"
+    conversation_message_list }o--|| team_conference : "fk"
+    conversation_message_list }o--|| team : "fk"
+    conversation_message_list }o--|| conversation_member : "fk"
+    conversation_message_list }o--|| number : "fk"
+    conversation_message_list }o--|| conversation_message : "fk"
+    conversation_message_list }o--|| contact : "fk"
+    conversation_message }o--|| users : "fk"
+    conversation_message }o--|| team : "fk"
+    conversation_message }o--|| conversation : "fk"
+    user_planning_time_range }o--|| user_planning : "fk"
+    user_planning }o--|| users : "fk"
+    user_planning }o--|| team : "fk"
+    blacklist }o--|| users : "fk"
+    blacklist }o--|| team : "fk"
+    blacklist }o--|| number : "fk"
+    team_number }o--|| number : "fk"
+    team_number }o--|| team : "fk"
+    team_ivr }o--|| ivr : "fk"
+    team_ivr }o--|| team : "fk"
+    team_tag }o--|| tags : "fk"
+    team_tag }o--|| team : "fk"
+    team_group }o--|| groups : "fk"
+    team_group }o--|| team : "fk"
+    team_conference }o--|| team : "fk"
+    users }o--|| team : "fk"
+    contact_number }o--|| number : "fk"
+    contact_number }o--|| users : "fk"
+    contact_number }o--|| team : "fk"
+    contact_number }o--|| contact : "fk"
+    contact_number }o--|| contact : "fk"
+    contact_number }o--|| contact : "fk"
+    contact }o--|| users : "fk"
+    contact }o--|| team : "fk"

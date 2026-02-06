@@ -1,0 +1,199 @@
+erDiagram
+    business_benchmark {
+        text _fivetran_id PK
+        text average_comments
+        text average_engagement_rate
+        text average_follower_count
+        text average_follower_growth
+        text average_likes
+        text average_shares
+        text average_video_count
+        text average_video_views
+        text business_category
+    }
+    profile_audience_age {
+        text index PK
+        text profile_username PK
+        text age
+        text percentage
+    }
+    profile_audience_country {
+        text index PK
+        text profile_username PK
+        text country
+        text percentage
+    }
+    profile_audience_city {
+        text index PK
+        text profile_username PK
+        text city_name
+        text percentage
+    }
+    profile_metric_audience_activity {
+        text hour PK
+        text date PK
+        text profile_username PK
+        text count
+    }
+    profile_metric {
+        text date PK
+        text profile_username PK
+        text address_clicks
+        text app_download_clicks
+        text bio_link_clicks
+        text comments
+        text daily_lost_followers
+        text daily_new_followers
+        text daily_total_followers
+        text email_clicks
+        text engaged_audience
+        text followers_count
+        text lead_submissions
+        text likes
+        text phone_number_clicks
+        text profile_views
+        text shares
+        text unique_video_views
+        text video_views
+    }
+    profile_audience_gender {
+        text index PK
+        text profile_username PK
+        text gender
+        text percentage
+    }
+    profile {
+        text username PK
+        text bio_description
+        text display_name
+        text followers_count
+        text following_count
+        text is_business_account
+        text is_verified
+        text profile_deep_link
+        text profile_image
+        text total_likes
+        text videos_count
+    }
+    replies_to_comment {
+        text id PK
+        text parent_comment_id FK
+        text username FK
+        text video_id FK
+        timestamp create_time
+        text display_name
+        text liked
+        text likes
+        text owner
+        text pinned
+        text profile_image
+        text replies
+        text status
+        text text
+        text unique_identifier
+    }
+    video_impression_source {
+        text index PK
+        text video_id PK
+        text impression_source
+        text percentage
+    }
+    video_audience_gender {
+        text index PK
+        text video_id PK
+        text gender
+        text percentage
+    }
+    video_audience_type {
+        text index PK
+        text video_id PK
+        text percentage
+        text type
+    }
+    video_engagement_like {
+        text index PK
+        text video_id PK
+        text percentage
+        text second
+    }
+    video_audience_city {
+        text index PK
+        text video_id PK
+        text city_name
+        text percentage
+    }
+    video_audience_country {
+        text index PK
+        text video_id PK
+        text country
+        text percentage
+    }
+    video_view_retention {
+        text index PK
+        text video_id PK
+        text percentage
+        text second
+    }
+    video {
+        text id PK
+        text address_clicks
+        text app_download_clicks
+        text average_time_watched
+        text caption
+        text comments
+        text create_time
+        text email_clicks
+        text embed_url
+        text favorites
+        text full_video_watched_rate
+        text lead_submissions
+        text likes
+        text new_followers
+        text phone_number_clicks
+        text profile_views
+        text reach
+        text share_url
+        text shares
+        text thumbnail_url
+        text total_time_watched
+        text video_duration
+        text video_views
+        text website_clicks
+    }
+    comment {
+        text id PK
+        text parent_comment_id FK
+        text username FK
+        text video_id FK
+        timestamp create_time
+        text display_name
+        text liked
+        text likes
+        text owner
+        text pinned
+        text profile_image
+        text replies
+        text status
+        text text
+        text unique_identifier
+    }
+    profile_audience_age }o--|| profile : "fk"
+    profile_audience_country }o--|| profile : "fk"
+    profile_audience_city }o--|| profile : "fk"
+    profile_metric_audience_activity }o--|| profile_metric : "fk"
+    profile_metric_audience_activity }o--|| profile_metric : "fk"
+    profile_metric }o--|| profile : "fk"
+    profile_audience_gender }o--|| profile : "fk"
+    replies_to_comment }o--|| profile : "fk"
+    replies_to_comment }o--|| comment : "fk"
+    replies_to_comment }o--|| video : "fk"
+    video_impression_source }o--|| video : "fk"
+    video_audience_gender }o--|| video : "fk"
+    video_audience_type }o--|| video : "fk"
+    video_engagement_like }o--|| video : "fk"
+    video_audience_city }o--|| video : "fk"
+    video_audience_country }o--|| video : "fk"
+    video_view_retention }o--|| video : "fk"
+    comment }o--|| profile : "fk"
+    comment }o--|| comment : "fk"
+    comment }o--|| video : "fk"

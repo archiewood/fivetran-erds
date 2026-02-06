@@ -1,0 +1,285 @@
+erDiagram
+    payment {
+        text id PK
+        text customer_id FK
+        text billing_address
+        text cc_exp_date
+        text cc_holder
+        text cc_number_ending
+        text cc_type
+        text created
+        text label
+        text last_updated
+        text live
+        text payment_method
+        text token_id
+    }
+    offer_profile_offer_id {
+        text offer_id PK
+        text offer_profile_id PK
+    }
+    offer_profile_initial_coupon_discount {
+        text id PK
+        text offer_profile_id PK
+        text coupon
+        text field
+        text has_condition
+        text name
+        text object
+        text threshold_field
+        text threshold_value
+        text type
+        text value
+    }
+    offer_profile_recurring_coupon_discount {
+        text id PK
+        text offer_profile_id PK
+        text coupon
+        text field
+        text has_condition
+        text name
+        text object
+        text threshold_field
+        text threshold_value
+        text type
+        text value
+    }
+    offer_profile {
+        text id PK
+        text initial_coupon_code
+        text initial_coupon_has_condition
+        text initial_coupon_name
+        text initial_coupon_public_id
+        text live
+        text merchant
+        text name
+        text recurring_coupon_code
+        text recurring_coupon_has_condition
+        text recurring_coupon_name
+        text recurring_coupon_public_id
+        text weight
+    }
+    item {
+        text id PK
+        text offer_id FK
+        text order_id FK
+        text product_id FK
+        text subscription_id FK
+        jsonb component
+        text extra_cost
+        text first_placed
+        text frozen
+        text one_time
+        text order_placed_end_date
+        text order_placed_start_date
+        text price
+        text product_attribute
+        text quantity
+        text subscription_component
+        text total_price
+    }
+    product_group {
+        text _fivetran_id PK
+        text product_id PK
+        text group_type
+        text name
+    }
+    product_selection_rule_element {
+        text id PK
+        text product_id PK
+        text product_selection_rule_id PK
+        text starting_date
+    }
+    product_selection_rule {
+        text id PK
+        text product_id PK
+        text selection_rule_type
+    }
+    product {
+        text id PK
+        text autoship_by_default
+        text autoship_enabled
+        text created
+        text detail_url
+        text discontinued
+        text every
+        text every_period
+        jsonb extra_data
+        text image_url
+        text incentive_group
+        text last_update
+        text live
+        text merchant
+        text name
+        text offer_profile
+        text premier_enabled
+        text prepaid_eligible
+        text price
+        text product_type
+        text sku
+    }
+    address {
+        text id PK
+        text customer_id FK
+        text address
+        text address_2
+        text city
+        text company_name
+        text country_code
+        text created
+        text fax
+        text first_name
+        text label
+        text last_name
+        text live
+        text phone
+        text state_province_code
+        text store_public_id
+        text token_id
+        text zip_postal_code
+    }
+    customer {
+        text id PK
+        text created
+        text email
+        text extra_data
+        text first_name
+        text last_login
+        text last_name
+        text last_updated
+        text live
+        text locale
+        text merchant
+        text phone_number
+        text phone_type
+        text price_code
+        text session_id
+        text user_token_id
+    }
+    incentive {
+        text id PK
+        text customer_id FK
+        text order_id FK
+        text created
+        text description
+        text discount_type
+        text expires
+        text external_code
+        text field
+        text item
+        text last_updated
+        text merchant
+        text name
+        text public_id
+        text stacking_type
+        text target
+        text threshold_field
+        text threshold_value
+        text type
+        text value
+    }
+    merchant_cancel_reason {
+        text _fivetran_id PK
+        text application
+        text cancel_reason
+    }
+    subscription_component {
+        text id PK
+        text subscription_id PK
+        text product_id FK
+        text quantity
+    }
+    subscription {
+        text id PK
+        text customer_id FK
+        text payment_id FK
+        text product_id FK
+        text shipping_address FK
+        text cancel_reason
+        text cancel_reason_code
+        text cancelled
+        text club
+        text created
+        text currency_code
+        text customer_rep
+        text every
+        text every_period
+        text external_id
+        text extra_data_commitment_committed
+        text extra_data_commitment_version
+        text extra_data_migration_sub_id
+        text extra_data_shopify_contract_id
+        text frequency_days
+        text iteration
+        text live
+        text merchant
+        text merchant_order_id
+        text offer
+        text prepaid_subscription_context
+        text price
+        text product_attribute
+        text quantity
+        text raw_subscription_type
+        text reminder_days
+        text sequence
+        text session_id
+        text start_date
+        text subscription_type
+        text updated
+    }
+    orders {
+        text id PK
+        text customer_id FK
+        text payment_id FK
+        text shipping_address FK
+        text cancelled
+        text created
+        text currency_code
+        text discount_total
+        text extra_data
+        text generic_error_count
+        text locked
+        text merchant
+        text oos_free_shipping
+        text order_merchant_id
+        text place
+        text rejected_message
+        text shipping_total
+        text status
+        text sub_total
+        text tax_total
+        text total
+        text tries
+        text type
+        text updated
+    }
+    subscription_discount {
+        text _fivetran_id PK
+        text subscription_id PK
+        text title
+    }
+    payment }o--|| customer : "fk"
+    offer_profile_offer_id }o--|| offer_profile : "fk"
+    offer_profile_initial_coupon_discount }o--|| offer_profile : "fk"
+    offer_profile_recurring_coupon_discount }o--|| offer_profile : "fk"
+    item }o--|| product : "fk"
+    item }o--|| subscription : "fk"
+    item }o--|| orders : "fk"
+    item }o--|| offer_profile : "fk"
+    product_group }o--|| product : "fk"
+    product_selection_rule_element }o--|| product_selection_rule : "fk"
+    product_selection_rule_element }o--|| product_selection_rule : "fk"
+    product_selection_rule }o--|| product : "fk"
+    address }o--|| customer : "fk"
+    incentive }o--|| orders : "fk"
+    incentive }o--|| customer : "fk"
+    subscription_component }o--|| product : "fk"
+    subscription_component }o--|| subscription : "fk"
+    subscription }o--|| product : "fk"
+    subscription }o--|| payment : "fk"
+    subscription }o--|| customer : "fk"
+    subscription }o--|| address : "fk"
+    orders }o--|| payment : "fk"
+    orders }o--|| customer : "fk"
+    orders }o--|| address : "fk"
+    subscription_discount }o--|| subscription : "fk"

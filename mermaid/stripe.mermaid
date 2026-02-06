@@ -1,0 +1,1752 @@
+erDiagram
+    invoice_discount {
+        text id PK
+        text invoice_id PK
+        text coupon_id FK
+        text customer_id FK
+        text invoice_item_id FK
+        text subscription_id FK
+        text checkout_session
+        timestamp end
+        text promotion_code
+        timestamp start
+    }
+    transaction {
+        text id PK
+        text authorization_id FK
+        text balance_transaction_id FK
+        text card_id FK
+        text dispute_id FK
+        bigint amount
+        text cardholder
+        timestamp created
+        text currency
+        boolean livemode
+        jsonb metadata
+        text type
+    }
+    ideal {
+        text payment_method_id PK
+        text bank
+        text bic
+    }
+    cash_balance_transaction {
+        text id PK
+        text customer_id PK
+        text adjusted_for_overdraft_balance_transaction
+        text adjusted_for_overdraft_linked_transaction
+        text applied_to_payment_intent
+        timestamp created
+        text currency
+        bigint ending_balance
+        text funded_bank_transfer_eu_bank_transfer_bic
+        text funded_bank_transfer_eu_bank_transfer_iban_last_4
+        text funded_bank_transfer_eu_bank_transfer_sender_name
+        text funded_bank_transfer_gb_bank_transfer_account_number_last_4
+        text funded_bank_transfer_gb_bank_transfer_sender_name
+        text funded_bank_transfer_gb_bank_transfer_sort_code
+        text funded_bank_transfer_jp_bank_transfer_sender_bank
+        text funded_bank_transfer_jp_bank_transfer_sender_branch
+        text funded_bank_transfer_jp_bank_transfer_sender_name
+        text funded_bank_transfer_reference
+        text funded_bank_transfer_type
+        text funded_bank_transfer_us_bank_transfer_network
+        text funded_bank_transfer_us_bank_transfer_sender_name
+        boolean livemode
+        bigint net_amount
+        text refunded_from_payment_refund
+        text transferred_to_balance_transaction
+        text type
+        text unapplied_from_payment_intent
+    }
+    invoice_line_item_proration_details_credited_item {
+        text credited_invoice_line_item_id PK
+        text invoice_id PK
+        text invoice_line_item PK
+        text credited_invoice_id
+    }
+    customer_discount {
+        text customer_id PK
+        text id PK
+        text coupon_id FK
+        text invoice_id FK
+        text invoice_item_id FK
+        text subscription_id FK
+        text checkout_session
+        timestamp end
+        text promotion_code
+        timestamp start
+    }
+    credit_note_line_item_tax_rate {
+        text credit_note_id PK
+        text credit_note_line_item_id PK
+        text tax_rate_id PK
+    }
+    upcoming_invoice_line_item_tax_rate {
+        text subscription_id PK
+        text tax_rate_id PK
+        text upcoming_invoice_line_item_id PK
+    }
+    authorization {
+        text id PK
+        text card_id FK
+        bigint amount
+        double_precision amount_details_atm_fee
+        boolean approved
+        text authorization_method
+        text cardholder
+        timestamp created
+        text currency
+        bigint held_amount
+        text held_currency
+        boolean is_held_amount_controllable
+        boolean livemode
+        jsonb metadata
+        bigint pending_authorized_amount
+        bigint pending_held_amount
+        text status
+        text wallet_provider
+    }
+    source {
+        text id PK
+        text connected_account_id FK
+        text customer_id FK
+        bigint amount
+        bigint code_verificationattempts_remaining
+        text code_verificationstatus
+        timestamp created
+        text currency
+        text flow
+        boolean livemode
+        jsonb metadata
+        text statement_descriptor
+        text status
+        text type
+        text usage
+    }
+    upcoming_invoice_custom_field {
+        text name PK
+        text subscription PK
+        text value
+    }
+    setup_intent {
+        text id PK
+        text customer_id FK
+        text on_behalf_of FK
+        text payment_method_id FK
+        text application
+        text cancellation_reason
+        timestamp created
+        text description
+        boolean livemode
+        text mandate
+        jsonb metadata
+        text single_use_mandate
+        text status
+        text usage
+    }
+    shipping_rate {
+        text id PK
+        boolean active
+        integer amount
+        timestamp created
+        text currency
+        text delivery_estimate_maximum_unit
+        integer delivery_estimate_maximum_value
+        text delivery_estimate_minimum_unit
+        integer delivery_estimate_minimum_value
+        text display_name
+        boolean livemode
+        text tax_behavior
+        text tax_code
+        text type
+    }
+    bank_account {
+        text id PK
+        text connected_account_id FK
+        text customer_id FK
+        text account
+        text account_holder_name
+        text account_holder_type
+        text bank_name
+        text country
+        text currency
+        text fingerprint
+        boolean is_deleted
+        text last_4
+        jsonb metadata
+        text routing_number
+        text status
+    }
+    dispute {
+        text id PK
+        text charge_id FK
+        text connected_account_id FK
+        bigint amount
+        text balance_transaction
+        timestamp created
+        text currency
+        boolean is_charge_refundable
+        boolean livemode
+        jsonb metadata
+        text reason
+        text status
+    }
+    tier {
+        integer index PK
+        text id PK
+        bigint flat_amount
+        text flat_amount_decimal
+        bigint unit_amount
+        text unit_amount_decimal
+        bigint up_to
+    }
+    checkout_session_shipping_option {
+        text checkout_session_id PK
+        text shipping_rate_id PK
+        integer shipping_amount
+    }
+    price_currency_option {
+        text currency PK
+        text price_id PK
+        bigint custom_unit_amount_maximum
+        bigint custom_unit_amount_minimum
+        bigint custom_unit_amount_preset
+        text tax_behavior
+        bigint unit_amount
+        text unit_amount_decimal
+    }
+    invoice_custom_field {
+        text name PK
+        text invoice_id PK
+        text value
+    }
+    attribute {
+        text name PK
+        text id PK
+        text value
+    }
+    payment_method {
+        text id PK
+        text customer_id FK
+        timestamp created
+        boolean livemode
+        jsonb metadata
+        text type
+    }
+    plan {
+        text id PK
+        text product_id FK
+        boolean active
+        text aggregate_usage
+        bigint amount
+        text billing_scheme
+        timestamp created
+        text currency
+        text interval
+        bigint interval_count
+        boolean is_deleted
+        boolean livemode
+        jsonb metadata
+        text nickname
+        text tiers_mode
+        integer transform_usage_divide_by
+        text transform_usage_round
+        integer trial_period_days
+        text usage_type
+    }
+    au_becs_debit {
+        text payment_method_id PK
+        text bsb_number
+        text fingerprint
+        text last_4
+    }
+    order_return {
+        text id PK
+        text refund_id FK
+        bigint amount
+        timestamp created
+        text currency
+        boolean livemode
+        text order_id
+    }
+    charge_payment_method_details {
+        text payment_method_type PK
+        text charge_id PK
+        jsonb value
+    }
+    quote_tax_rate {
+        text quote_id PK
+        text tax_rate_id PK
+    }
+    topup {
+        text id PK
+        text balance_transaction_id FK
+        text source_id FK
+        bigint amount
+        timestamp created
+        text currency
+        text description
+        timestamp expected_availability_date
+        text failure_code
+        text failure_message
+        boolean livemode
+        jsonb metadata
+        text statement_descriptor
+        text status
+        text transfer_group
+    }
+    checkout_session_line_item_tax_rate {
+        text checkout_session_line_item_id PK
+        text tax_rate_id PK
+        integer amount
+    }
+    order_return_item {
+        integer index PK
+        text order_return_id PK
+        text discount_id FK
+        text sku_id FK
+        bigint amount
+        text currency
+        text description
+        bigint quantity
+        text type
+    }
+    subscription_history {
+        text id PK
+        text customer_id FK
+        text default_payment_method_id FK
+        text default_source_id FK
+        text latest_invoice_id FK
+        text pending_setup_intent_id FK
+        double_precision application_fee_percent
+        text billing
+        timestamp billing_cycle_anchor
+        bigint billing_threshold_amount_gte
+        boolean billing_threshold_reset_billing_cycle_anchor
+        timestamp cancel_at
+        boolean cancel_at_period_end
+        timestamp canceled_at
+        text cancellation_details_comment
+        text cancellation_details_feedback
+        text cancellation_details_reason
+        text collection_method
+        timestamp created
+        timestamp current_period_end
+        timestamp current_period_start
+        bigint days_until_due
+        timestamp ended_at
+        boolean livemode
+        jsonb metadata
+        text pause_collection_behavior
+        timestamp pause_collection_resumes_at
+        bigint quantity
+        timestamp start
+        timestamp start_date
+        text status
+        double_precision tax_percent
+        timestamp trial_end
+        timestamp trial_start
+    }
+    setup_attempt {
+        text id PK
+        text setup_intent_id PK
+        text default_payment_method_id FK
+        text on_behalf_of FK
+        text application
+        timestamp created
+        boolean livemode
+        text status
+        text usage
+    }
+    cardholder {
+        text id PK
+        text billing_address_city
+        text billing_address_country
+        text billing_address_line_1
+        text billing_address_line_2
+        text billing_address_postal_code
+        text billing_address_state
+        text billing_name
+        timestamp created
+        text email
+        boolean is_default
+        boolean livemode
+        jsonb metadata
+        text name
+        text phone_number
+        text status
+        text type
+    }
+    credit_note_line_item {
+        text id PK
+        text credit_note_id PK
+        bigint amount
+        bigint amount_excluding_tax
+        text description
+        text invoice_line_item
+        boolean livemode
+        bigint quantity
+        text type
+        bigint unit_amount
+        text unit_amount_decimal
+        text unit_amount_excluding_tax
+    }
+    customer_balance_transaction {
+        text id PK
+        text customer_id PK
+        text invoice_id FK
+        bigint amount
+        timestamp created
+        text credit_note
+        text currency
+        text description
+        bigint ending_balance
+        boolean livemode
+        jsonb metadata
+        text type
+    }
+    sepa_debit {
+        text payment_method_id PK
+        text bank_code
+        text branch_code
+        text country
+        text fingerprint
+        text last_4
+    }
+    subscription_discount {
+        text id PK
+        text subscription_id PK
+        text coupon_id FK
+        text customer_id FK
+        text invoice_id FK
+        text invoice_item_id FK
+        text checkout_session
+        timestamp end
+        text promotion_code
+        timestamp start
+    }
+    card {
+        text id PK
+        text account_id FK
+        text connected_account_id FK
+        text customer_id FK
+        text address_city
+        text address_country
+        text address_line_1
+        text address_line_1_check
+        text address_line_2
+        text address_state
+        text address_zip
+        text address_zip_check
+        text brand
+        text country
+        timestamp created
+        text currency
+        text cvc_check
+        text description
+        text dynamic_last_4
+        integer exp_month
+        integer exp_year
+        text fingerprint
+        text funding
+        text iin
+        boolean is_deleted
+        text issuer
+        text last_4
+        jsonb metadata
+        text name
+        text network
+        text recipient
+        text three_d_secure
+        text tokenization_method
+        text wallet_type
+    }
+    issuing_card {
+        text id PK
+        text cardholder_id FK
+        text connected_account_id FK
+        text brand
+        text cancellation_reason
+        timestamp created
+        text currency
+        integer exp_month
+        integer exp_year
+        text last_4
+        boolean livemode
+        jsonb metadata
+        text name
+        text number
+        text replaced_by
+        text replacement_for
+        text replacement_reason
+        text status
+        text type
+    }
+    fee {
+        integer index PK
+        text balance_transaction_id PK
+        text connected_account_id FK
+        bigint amount
+        text application
+        text currency
+        text description
+        text type
+    }
+    coupon_product {
+        text coupon_id PK
+        text product_id PK
+    }
+    invoice_line_item_tax_rate {
+        text invoice_id PK
+        text invoice_line_item PK
+        text tax_rate_id PK
+    }
+    application_fee_refund {
+        text id PK
+        text application_fee_id PK
+        text balance_transaction_id FK
+        bigint amount
+        timestamp created
+        text currency
+        jsonb metadata
+    }
+    credit_note {
+        text id PK
+        text customer_balance_transaction_id FK
+        text customer_id FK
+        text invoice_id FK
+        text refund_id FK
+        bigint amount
+        bigint amount_shipping
+        timestamp created
+        text currency
+        timestamp effective_at
+        boolean livemode
+        text memo
+        jsonb metadata
+        text number
+        bigint out_of_band_amount
+        text pdf
+        text reason
+        text status
+        bigint subtotal
+        bigint subtotal_excluding_tax
+        bigint total
+        bigint total_excluding_tax
+        text type
+        timestamp voided_at
+    }
+    file_link {
+        text id PK
+        text file_id FK
+        timestamp created
+        boolean expired
+        timestamp expires_at
+        boolean livemode
+        jsonb metadata
+        text url
+    }
+    early_fraud_warning {
+        text id PK
+        text charge_id FK
+        boolean actionable
+        timestamp created
+        text fraud_type
+        boolean livemode
+    }
+    sku {
+        text id PK
+        text product_id FK
+        boolean active
+        timestamp created
+        text currency
+        text image
+        integer inventory_quantity
+        text inventory_type
+        text inventory_value
+        boolean is_deleted
+        boolean livemode
+        jsonb metadata
+        double_precision price
+        timestamp updated
+    }
+    invoice_account_tax_id {
+        text id PK
+        text invoice_id PK
+    }
+    checkout_session_payment_method {
+        text payment_method_type PK
+        text checkout_session_id PK
+    }
+    subscription_tax_rate {
+        text subscription_id PK
+        text tax_rate_id PK
+    }
+    quote_line_item {
+        text id PK
+        text quote_id PK
+        text price_id FK
+        bigint amount_subtotal
+        bigint amount_tax
+        bigint amount_total
+        text currency
+        text description
+        bigint quantity
+    }
+    file {
+        text id PK
+        timestamp created
+        text filename
+        text purpose
+        bigint size
+        text title
+        text type
+        text url
+    }
+    payment_intent {
+        text id PK
+        text connected_account_id FK
+        text customer_id FK
+        text last_payment_error_charge_id FK
+        text last_payment_error_source_id FK
+        text on_behalf_of FK
+        text payment_method_id FK
+        text source_id FK
+        text transfer_data_destination FK
+        bigint amount
+        bigint amount_capturable
+        bigint amount_received
+        text application
+        bigint application_fee_amount
+        timestamp canceled_at
+        text cancellation_reason
+        text capture_method
+        text confirmation_method
+        timestamp created
+        text currency
+        text description
+        text last_payment_error_code
+        text last_payment_error_decline_code
+        text last_payment_error_doc_url
+        text last_payment_error_message
+        text last_payment_error_param
+        text last_payment_error_type
+        boolean livemode
+        jsonb metadata
+        jsonb payment_method_types
+        text receipt_email
+        text statement_descriptor
+        text status
+        text transfer_group
+    }
+    price {
+        text id PK
+        text invoice_item_id FK
+        text product_id FK
+        boolean active
+        text billing_scheme
+        timestamp created
+        text currency
+        boolean is_deleted
+        boolean livemode
+        text lookup_key
+        jsonb metadata
+        text nickname
+        text tiers_mode
+        integer transform_quantity_divide_by
+        text transform_quantity_round
+        text type
+        bigint unit_amount
+        text unit_amount_decimal
+    }
+    usage_record {
+        text id PK
+        text subscription_item_id PK
+        text invoice_id
+        boolean livemode
+        bigint period_end
+        bigint period_start
+        timestamp timestamp
+        bigint total_usage
+    }
+    application_fee {
+        text id PK
+        text account_id FK
+        text balance_transaction_id FK
+        text charge_id FK
+        text originating_transaction FK
+        bigint amount
+        bigint amount_refunded
+        text application
+        timestamp created
+        text currency
+        boolean livemode
+        boolean refunded
+    }
+    tax_amount {
+        integer index PK
+        text type PK
+        text type_id PK
+        text tax_rate_id FK
+        bigint amount
+        boolean inclusive
+        text taxability_reason
+        bigint taxable_amount
+    }
+    upcoming_invoice_line_item_proration_details_credited_item {
+        text invoice_line_item PK
+        text subscription_id PK
+        text upcoming_invoice_line_item_id PK
+        text invoice
+    }
+    refund {
+        text id PK
+        text balance_transaction_id FK
+        text charge_id FK
+        text connected_account_id FK
+        text failure_balance_transaction_id FK
+        text payment_intent_id FK
+        bigint amount
+        timestamp created
+        text currency
+        text description
+        text failure_reason
+        jsonb metadata
+        text reason
+        text receipt_number
+        text status
+    }
+    upcoming_invoice {
+        text subscription_id PK
+        text charge_id FK
+        text customer_id FK
+        text default_payment_method_id FK
+        text default_source_id FK
+        text payment_intent_id FK
+        text account_country
+        text account_name
+        bigint amount_due
+        bigint amount_paid
+        bigint amount_remaining
+        integer amount_shipping
+        text application
+        bigint application_fee_amount
+        bigint attempt_count
+        boolean attempted
+        boolean auto_advance
+        boolean automatic_tax_enabled
+        text automatic_tax_liability_account
+        text automatic_tax_liability_type
+        text automatic_tax_status
+        text billing_reason
+        text collection_method
+        timestamp created
+        text currency
+        text description
+        timestamp due_date
+        bigint ending_balance
+        text footer
+        text from_invoice_action
+        text from_invoice_invoice
+        text hosted_invoice_url
+        text invoice_pdf
+        text latest_revision
+        boolean livemode
+        jsonb metadata
+        timestamp next_payment_attempt
+        text number
+        text on_behalf_of
+        boolean paid
+        boolean paid_out_of_band
+        text payment_settings_default_mandate
+        text payment_settings_payment_method_options_acss_debit_mandate_options_transaction_type
+        text payment_settings_payment_method_options_acss_debit_verification_method
+        text payment_settings_payment_method_options_bancontact_preferred_language
+        boolean payment_settings_payment_method_options_card_installments_enabled
+        text payment_settings_payment_method_options_card_request_three_d_secure
+        text payment_settings_payment_method_options_customer_balance_bank_transfer_eu_bank_transfer_country
+        text payment_settings_payment_method_options_customer_balance_bank_transfer_type
+        text payment_settings_payment_method_options_customer_balance_funding_type
+        jsonb payment_settings_payment_method_options_us_bank_account_financial_connections_permissions
+        jsonb payment_settings_payment_method_options_us_bank_account_financial_connections_prefetch
+        text payment_settings_payment_method_options_us_bank_account_verification_method
+        jsonb payment_settings_payment_method_types
+        timestamp period_end
+        timestamp period_start
+        integer post_payment_credit_notes_amount
+        integer pre_payment_credit_notes_amount
+        text quote
+        text receipt_number
+        text rendering_amount_tax_display
+        text rendering_pdf_page_size
+        bigint starting_balance
+        text statement_descriptor
+        text status
+        integer subscription_proration_date
+        bigint subtotal
+        bigint subtotal_excluding_tax
+        bigint tax
+        numeric tax_percent
+        text test_clock
+        bigint threshold_reason_amount_gte
+        bigint total
+        bigint total_excluding_tax
+        integer transfer_data_amount
+        text transfer_data_destination
+        timestamp webhooks_delivered_at
+    }
+    account {
+        text id PK
+        text individual_id FK
+        text business_type
+        boolean charges_enabled
+        text country
+        timestamp created
+        text default_currency
+        boolean details_submitted
+        text email
+        boolean is_deleted
+        jsonb metadata
+        boolean payouts_enabled
+        timestamp tos_acceptance_date
+        text tos_acceptance_ip
+        text tos_acceptance_user_agent
+        text type
+    }
+    customer {
+        text id PK
+        text bank_account_id FK
+        text default_card_id FK
+        text source_id FK
+        bigint account_balance
+        bigint balance
+        timestamp created
+        text currency
+        boolean delinquent
+        text description
+        text email
+        text invoice_prefix
+        text invoice_settings_default_payment_method
+        text invoice_settings_footer
+        boolean is_deleted
+        boolean livemode
+        jsonb metadata
+        text name
+        text phone
+        text tax_exempt
+        text tax_info_tax_id
+        text tax_info_type
+        text tax_info_verification_status
+        text tax_info_verification_verified_name
+    }
+    invoice {
+        text id PK
+        text charge_id FK
+        text customer_id FK
+        text default_payment_method_id FK
+        text default_source_id FK
+        text payment_intent_id FK
+        text subscription_id FK
+        text account_country
+        text account_name
+        bigint amount_due
+        bigint amount_paid
+        bigint amount_remaining
+        bigint amount_shipping
+        text application
+        bigint application_fee_amount
+        bigint attempt_count
+        boolean attempted
+        boolean auto_advance
+        boolean automatic_tax_enabled
+        text automatic_tax_status
+        text billing_reason
+        text collection_method
+        timestamp created
+        text currency
+        text description
+        timestamp due_date
+        timestamp effective_at
+        bigint ending_balance
+        text footer
+        text from_invoice_action
+        text from_invoice_invoice
+        text hosted_invoice_url
+        text invoice_pdf
+        boolean is_deleted
+        text latest_revision
+        boolean livemode
+        jsonb metadata
+        timestamp next_payment_attempt
+        text number
+        text on_behalf_of
+        boolean paid
+        boolean paid_out_of_band
+        text payment_settings_default_mandate
+        text payment_settings_payment_method_options_acss_debit_mandate_options_transaction_type
+        text payment_settings_payment_method_options_acss_debit_verification_method
+        text payment_settings_payment_method_options_bancontact_preferred_language
+        boolean payment_settings_payment_method_options_card_installments_enabled
+        text payment_settings_payment_method_options_card_request_three_d_secure
+        text payment_settings_payment_method_options_customer_balance_bank_transfer_eu_bank_transfer_country
+        text payment_settings_payment_method_options_customer_balance_bank_transfer_type
+        text payment_settings_payment_method_options_customer_balance_funding_type
+        jsonb payment_settings_payment_method_options_us_bank_account_financial_connections_filters_account_subcategories
+        jsonb payment_settings_payment_method_options_us_bank_account_financial_connections_permissions
+        jsonb payment_settings_payment_method_options_us_bank_account_financial_connections_prefetch
+        text payment_settings_payment_method_options_us_bank_account_verification_method
+        jsonb payment_settings_payment_method_types
+        timestamp period_end
+        timestamp period_start
+        integer post_payment_credit_notes_amount
+        integer pre_payment_credit_notes_amount
+        text receipt_number
+        text rendering_amount_tax_display
+        text rendering_pdf_page_size
+        bigint starting_balance
+        text statement_descriptor
+        text status
+        integer subscription_proration_date
+        bigint subtotal
+        bigint subtotal_excluding_tax
+        bigint tax
+        numeric tax_percent
+        text test_clock
+        bigint threshold_reason_amount_gte
+        bigint total
+        bigint total_excluding_tax
+        timestamp webhooks_delivered_at
+    }
+    review {
+        text id PK
+        text charge_id FK
+        text payment_intent_id FK
+        text billing_zip
+        text closed_reason
+        timestamp created
+        text ip_address
+        boolean livemode
+        boolean open
+        text opened_reason
+        text reason
+    }
+    phase_plan {
+        timestamp end_date PK
+        timestamp start_date PK
+        text plan_id PK
+        text subscription_schedule_id PK
+        bigint quantity
+    }
+    discount {
+        text id PK
+        text type PK
+        text type_id PK
+        text checkout_session_id FK
+        text checkout_session_line_item_id FK
+        text coupon_id FK
+        text credit_note_line_item_id FK
+        text customer_id FK
+        text invoice_id FK
+        text invoice_item_id FK
+        text subscription_id FK
+        bigint amount
+        timestamp end
+        text promotion_code
+        timestamp start
+    }
+    cash_balance {
+        text customer_id PK
+        jsonb available
+        boolean livemode
+        text settings_reconciliation_mode
+        boolean settings_using_merchant_default
+    }
+    upcoming_invoice_line_item {
+        text id PK
+        text subscription_id PK
+        text customer_id FK
+        text plan_id FK
+        text price_id FK
+        text subscription_item_id FK
+        bigint amount
+        text currency
+        text description
+        boolean discountable
+        text invoice_item_id
+        boolean livemode
+        jsonb metadata
+        timestamp period_end
+        timestamp period_start
+        boolean proration
+        bigint quantity
+        text type
+    }
+    upcoming_invoice_account_tax_id {
+        text id PK
+        text subscription_id PK
+    }
+    product {
+        text id PK
+        boolean active
+        text caption
+        timestamp created
+        text description
+        boolean is_deleted
+        boolean livemode
+        jsonb metadata
+        text name
+        boolean shippable
+        text statement_descriptor
+        text type
+        text unit_label
+        timestamp updated
+        text url
+    }
+    promotion_code {
+        text id PK
+        text coupon_id FK
+        text customer_id FK
+        boolean active
+        text code
+        timestamp created
+        timestamp expires_at
+        boolean first_time_transaction
+        boolean livemode
+        bigint max_redemptions
+        jsonb metadata
+        integer minimum_amount
+        text minimum_amount_currency
+        bigint times_redeemed
+    }
+    checkout_session_line_item {
+        text id PK
+        text checkout_session_id PK
+        text price_id FK
+        bigint amount_discount
+        double_precision amount_subtotal
+        bigint amount_tax
+        double_precision amount_total
+        text currency
+        text description
+        text object
+        bigint quantity
+    }
+    phase {
+        timestamp end_date PK
+        timestamp start_date PK
+        text subscription_schedule_id PK
+        double_precision application_fee_percent
+        bigint billing_thresholds_amount_gte
+        boolean billing_thresholds_reset_billing_cycle_anchor
+        text collection_method
+        text coupon_id
+        text default_payment_method
+        bigint invoice_settings_days_until_due
+        double_precision tax_percent
+        timestamp trial_end
+    }
+    transfer_reversal {
+        text id PK
+        text transfer_id PK
+        text balance_transaction_id FK
+        text source_refund_id FK
+        bigint amount
+        timestamp created
+        text currency
+        text destination_payment_refund
+        jsonb metadata
+    }
+    person {
+        text id PK
+        text account FK
+        timestamp created
+        integer dob_day
+        integer dob_month
+        integer dob_year
+        text email
+        text first_name
+        text first_name_kana
+        text first_name_kanji
+        text gender
+        boolean id_number_provided
+        boolean is_deleted
+        text last_name
+        text last_name_kana
+        text last_name_kanji
+        text maiden_name
+        text phone
+        boolean ssn_last_4_provided
+    }
+    issuing_transaction {
+        text id PK
+        text authorization_id FK
+        text balance_transaction FK
+        text card FK
+        text cardholder FK
+        text dispute FK
+        bigint amount
+        jsonb amount_details
+        timestamp created
+        text currency
+        boolean livemode
+        bigint merchant_amount
+        text merchant_currency
+        jsonb merchant_data
+        jsonb metadata
+        text object
+        text type
+        text wallets
+    }
+    transfer {
+        text id PK
+        text balance_transaction_id FK
+        text destination FK
+        text source_transaction FK
+        text source_transaction_id FK
+        bigint amount
+        bigint amount_reversed
+        timestamp created
+        text currency
+        text description
+        text destination_payment
+        text destination_payment_id
+        boolean livemode
+        jsonb metadata
+        boolean reversed
+        text source_type
+        text transfer_group
+    }
+    payment_method_card {
+        text payment_method_id PK
+        text charge_id FK
+        text brand
+        text description
+        text fingerprint
+        text funding
+        boolean three_d_secure_usage_supported
+        text type
+        text wallet_type
+    }
+    payout_balance_transaction {
+        text balance_transaction_id PK
+        text payout_id PK
+    }
+    checkout_session_shipping_address_allowed_countries {
+        text allowed_country_code PK
+        text checkout_session_id PK
+    }
+    payout {
+        text id PK
+        text balance_transaction_id FK
+        text connected_account_id FK
+        text destination_bank_account_id FK
+        text destination_card_id FK
+        text failure_balance_transaction_id FK
+        bigint amount
+        timestamp arrival_date
+        boolean automatic
+        timestamp created
+        text currency
+        text description
+        text failure_code
+        text failure_message
+        boolean livemode
+        jsonb metadata
+        text method
+        text reconciliation_status
+        text source_type
+        text statement_descriptor
+        text status
+        text type
+    }
+    charge {
+        text id PK
+        text balance_transaction_id FK
+        text bank_account_id FK
+        text card_id FK
+        text connected_account_id FK
+        text customer_id FK
+        text destination FK
+        text invoice_id FK
+        text on_behalf_of FK
+        text payment_intent_id FK
+        text payment_method_id FK
+        text source_id FK
+        text source_transfer FK
+        text transfer_data_destination FK
+        text transfer_id FK
+        bigint amount
+        bigint amount_refunded
+        text application
+        bigint application_fee_amount
+        text calculated_statement_descriptor
+        boolean captured
+        timestamp created
+        text currency
+        text description
+        text failure_code
+        text failure_message
+        text fraud_details_stripe_report
+        text fraud_details_user_report
+        boolean livemode
+        jsonb metadata
+        boolean paid
+        text receipt_email
+        text receipt_number
+        text receipt_url
+        boolean refunded
+        text statement_descriptor
+        text status
+        text transfer_group
+    }
+    checkout_session {
+        text id PK
+        text customer_id FK
+        text payment_intent_id FK
+        text setup_intent_id FK
+        text subscription_id FK
+        boolean after_expiration_allow_promotion_codes
+        boolean after_expiration_enabled
+        timestamp after_expiration_expires_at
+        text after_expiration_url
+        boolean allow_promotion_codes
+        boolean automatic_tax_enabled
+        text automatic_tax_status
+        text billing_address_collection
+        text cancel_url
+        text client_reference_id
+        text consent_collection_promotions
+        text consent_promotions
+        text currency
+        timestamp expires_at
+        boolean livemode
+        text locale
+        jsonb metadata
+        text mode
+        text object
+        text payment_link
+        text payment_status
+        boolean phone_number_collection_enabled
+        text recovered_from
+        text shipping_city
+        text shipping_country
+        text shipping_line_1
+        text shipping_line_2
+        text shipping_name
+        text shipping_postal_code
+        text shipping_state
+        text status
+        text submit_type
+        text success_url
+        boolean tax_id_collection_enabled
+        text url
+    }
+    quote_computed_upfront_line_item {
+        text id PK
+        text quote_id PK
+        text price_id FK
+        bigint amount_subtotal
+        bigint amount_tax
+        bigint amount_total
+        text currency
+        text description
+        bigint quantity
+    }
+    upcoming_invoice_tax_rate {
+        text subscription PK
+        text tax_rate_id PK
+    }
+    quote {
+        text id PK
+        text customer_id FK
+        text invoice_id FK
+        text subscription_id FK
+        text subscription_schedule_id FK
+        bigint amount_subtotal
+        bigint amount_total
+        text application
+        bigint application_fee_amount
+        double_precision application_fee_percent
+        boolean automatic_tax_enabled
+        text automatic_tax_liability_account
+        text automatic_tax_liability_type
+        text automatic_tax_status
+        text collection_method
+        bigint computed_recurring_amount_subtotal
+        bigint computed_recurring_amount_total
+        text computed_recurring_interval
+        bigint computed_recurring_interval_count
+        bigint computed_recurring_total_details_amount_discount
+        bigint computed_recurring_total_details_amount_shipping
+        bigint computed_recurring_total_details_amount_tax
+        bigint computed_upfront_amount_subtotal
+        bigint computed_upfront_amount_total
+        bigint computed_upfront_total_details_amount_discount
+        bigint computed_upfront_total_details_amount_shipping
+        bigint computed_upfront_total_details_amount_tax
+        timestamp created
+        text currency
+        text description
+        timestamp expires_at
+        text footer
+        boolean from_quote_is_revision
+        text from_quote_quote
+        text header
+        bigint invoice_settings_days_until_due
+        text invoice_settings_issuer_account
+        text invoice_settings_issuer_type
+        boolean livemode
+        jsonb metadata
+        text number
+        text on_behalf_of
+        text status
+        timestamp status_transitions_accepted_at
+        timestamp status_transitions_canceled_at
+        timestamp status_transitions_finalized_at
+        text test_clock
+        bigint transfer_data_amount
+        double_precision transfer_data_amount_percent
+        text transfer_data_destination
+    }
+    fpx {
+        text payment_method_id PK
+        text bank
+    }
+    customer_tax {
+        text id PK
+        text customer_id PK
+        text owner_account_id FK
+        text owner_customer_id FK
+        text country
+        timestamp created
+        boolean livemode
+        text object
+        text owner_type
+        text type
+        text value
+        text verification_status
+        text verification_verified_address
+        text verification_verified_name
+    }
+    invoice_tax_rate {
+        text invoice_id PK
+        text tax_rate_id PK
+    }
+    checkout_session_line_item_discount {
+        text discount_id PK
+        text checkout_session_line_item_id PK
+        text coupon_id FK
+        text customer_id FK
+        text invoice_id FK
+        text invoice_item_id FK
+        text subscription_id FK
+        bigint amount
+        text checkout_session
+        timestamp end
+        text promotion_code
+        timestamp start
+    }
+    invoice_line_item {
+        text unique_id PK
+        text invoice_id PK
+        text plan_id FK
+        text price_id FK
+        text subscription_id FK
+        text subscription_item_id FK
+        bigint amount
+        bigint amount_excluding_tax
+        text currency
+        text description
+        boolean discountable
+        text id
+        text invoice_item_id
+        boolean livemode
+        jsonb metadata
+        timestamp period_end
+        timestamp period_start
+        boolean proration
+        bigint quantity
+        text type
+        text unit_amount_excluding_tax
+    }
+    tax_rate {
+        text id PK
+        boolean active
+        timestamp created
+        text description
+        text display_name
+        boolean inclusive
+        text jurisdiction
+        boolean livemode
+        jsonb metadata
+        double_precision percentage
+    }
+    invoice_item_tax_rate {
+        text invoice_item_id PK
+        text tax_rate_id PK
+    }
+    subscription_item {
+        text id PK
+        text subscription_id PK
+        text plan_id FK
+        bigint billing_thresholds_amount_gte
+        boolean billing_thresholds_reset_billing_cycle_anchor
+        timestamp created
+        timestamp current_period_end
+        timestamp current_period_start
+        jsonb metadata
+        bigint quantity
+    }
+    checkout_session_tax_rate {
+        text checkout_session_id PK
+        text tax_rate_id PK
+        integer amount
+    }
+    balance_transaction {
+        text id PK
+        text connected_account_id FK
+        text payout_id FK
+        bigint amount
+        timestamp available_on
+        timestamp created
+        text currency
+        text description
+        double_precision exchange_rate
+        bigint fee
+        bigint net
+        text reporting_category
+        text source
+        text status
+        text type
+    }
+    apple_pay_domain {
+        text id PK
+        text connected_account_id FK
+        timestamp created
+        text domain_name
+        boolean livemode
+    }
+    issuing_dispute {
+        text id PK
+        text connected_account_id FK
+        text evidence_fraudlent_uncategorized_file FK
+        text evidence_other_uncategorized_file FK
+        bigint amount
+        timestamp created
+        text currency
+        text evidence_fraudlent_dispute_explanation
+        text evidence_other_dispute_explanation
+        boolean livemode
+        jsonb metadata
+        text reason
+        text status
+    }
+    dispute_balance_transaction {
+        text balance_transaction_id PK
+        text dispute_id PK
+    }
+    coupon {
+        text id PK
+        bigint amount_off
+        timestamp created
+        text currency
+        text duration
+        bigint duration_in_months
+        boolean is_deleted
+        boolean livemode
+        bigint max_redemptions
+        jsonb metadata
+        text name
+        double_precision percent_off
+        timestamp redeem_by
+        bigint times_redeemed
+        boolean valid
+    }
+    invoice_item {
+        text id PK
+        text customer_id FK
+        text invoice_id FK
+        text plan_id FK
+        text price_id FK
+        text subscription_id FK
+        text subscription_item_id FK
+        bigint amount
+        text currency
+        timestamp date
+        text description
+        boolean discountable
+        boolean is_deleted
+        boolean livemode
+        jsonb metadata
+        bigint period_end
+        bigint period_start
+        boolean proration
+        bigint quantity
+        text test_clock
+        bigint unit_amount
+        text unit_amount_decimal
+    }
+    subscription_schedule {
+        text id PK
+        text customer_id FK
+        text subscription_id FK
+        timestamp canceled_at
+        timestamp completed_at
+        timestamp created
+        timestamp current_phase_end_date
+        timestamp current_phase_start_date
+        text end_behavior
+        boolean livemode
+        jsonb metadata
+        timestamp released_at
+        text released_subscription
+        text status
+    }
+    invoice_discount }o--|| coupon : "fk"
+    invoice_discount }o--|| invoice_item : "fk"
+    invoice_discount }o--|| customer : "fk"
+    invoice_discount }o--|| subscription_history : "fk"
+    transaction }o--|| authorization : "fk"
+    transaction }o--|| balance_transaction : "fk"
+    transaction }o--|| card : "fk"
+    transaction }o--|| dispute : "fk"
+    ideal }o--|| payment_method : "fk"
+    cash_balance_transaction }o--|| customer : "fk"
+    invoice_line_item_proration_details_credited_item }o--|| invoice_line_item : "fk"
+    invoice_line_item_proration_details_credited_item }o--|| invoice : "fk"
+    customer_discount }o--|| coupon : "fk"
+    customer_discount }o--|| invoice_item : "fk"
+    customer_discount }o--|| subscription_history : "fk"
+    customer_discount }o--|| invoice : "fk"
+    credit_note_line_item_tax_rate }o--|| credit_note : "fk"
+    credit_note_line_item_tax_rate }o--|| tax_rate : "fk"
+    credit_note_line_item_tax_rate }o--|| credit_note_line_item : "fk"
+    upcoming_invoice_line_item_tax_rate }o--|| subscription_history : "fk"
+    upcoming_invoice_line_item_tax_rate }o--|| tax_rate : "fk"
+    upcoming_invoice_line_item_tax_rate }o--|| upcoming_invoice_line_item : "fk"
+    authorization }o--|| card : "fk"
+    source }o--|| account : "fk"
+    source }o--|| customer : "fk"
+    upcoming_invoice_custom_field }o--|| subscription_history : "fk"
+    setup_intent }o--|| account : "fk"
+    setup_intent }o--|| payment_method : "fk"
+    setup_intent }o--|| customer : "fk"
+    bank_account }o--|| account : "fk"
+    bank_account }o--|| customer : "fk"
+    dispute }o--|| account : "fk"
+    dispute }o--|| charge : "fk"
+    tier }o--|| plan : "fk"
+    checkout_session_shipping_option }o--|| checkout_session : "fk"
+    checkout_session_shipping_option }o--|| shipping_rate : "fk"
+    price_currency_option }o--|| price : "fk"
+    invoice_custom_field }o--|| invoice : "fk"
+    attribute }o--|| sku : "fk"
+    payment_method }o--|| customer : "fk"
+    plan }o--|| product : "fk"
+    au_becs_debit }o--|| payment_method : "fk"
+    order_return }o--|| refund : "fk"
+    charge_payment_method_details }o--|| charge : "fk"
+    quote_tax_rate }o--|| quote : "fk"
+    quote_tax_rate }o--|| tax_rate : "fk"
+    topup }o--|| source : "fk"
+    topup }o--|| balance_transaction : "fk"
+    checkout_session_line_item_tax_rate }o--|| tax_rate : "fk"
+    checkout_session_line_item_tax_rate }o--|| checkout_session_line_item : "fk"
+    order_return_item }o--|| order_return : "fk"
+    order_return_item }o--|| sku : "fk"
+    order_return_item }o--|| discount : "fk"
+    subscription_history }o--|| customer : "fk"
+    subscription_history }o--|| source : "fk"
+    subscription_history }o--|| payment_method : "fk"
+    subscription_history }o--|| invoice : "fk"
+    subscription_history }o--|| setup_intent : "fk"
+    setup_attempt }o--|| account : "fk"
+    setup_attempt }o--|| payment_method : "fk"
+    setup_attempt }o--|| setup_intent : "fk"
+    credit_note_line_item }o--|| credit_note : "fk"
+    customer_balance_transaction }o--|| customer : "fk"
+    customer_balance_transaction }o--|| invoice : "fk"
+    sepa_debit }o--|| payment_method : "fk"
+    subscription_discount }o--|| coupon : "fk"
+    subscription_discount }o--|| invoice_item : "fk"
+    subscription_discount }o--|| customer : "fk"
+    subscription_discount }o--|| invoice : "fk"
+    card }o--|| account : "fk"
+    card }o--|| account : "fk"
+    card }o--|| customer : "fk"
+    issuing_card }o--|| account : "fk"
+    issuing_card }o--|| cardholder : "fk"
+    fee }o--|| balance_transaction : "fk"
+    fee }o--|| account : "fk"
+    coupon_product }o--|| coupon : "fk"
+    coupon_product }o--|| product : "fk"
+    invoice_line_item_tax_rate }o--|| invoice : "fk"
+    invoice_line_item_tax_rate }o--|| tax_rate : "fk"
+    invoice_line_item_tax_rate }o--|| invoice_line_item : "fk"
+    application_fee_refund }o--|| balance_transaction : "fk"
+    application_fee_refund }o--|| application_fee : "fk"
+    credit_note }o--|| customer_balance_transaction : "fk"
+    credit_note }o--|| customer : "fk"
+    credit_note }o--|| invoice : "fk"
+    credit_note }o--|| refund : "fk"
+    file_link }o--|| file : "fk"
+    early_fraud_warning }o--|| charge : "fk"
+    sku }o--|| product : "fk"
+    invoice_account_tax_id }o--|| invoice : "fk"
+    checkout_session_payment_method }o--|| checkout_session : "fk"
+    subscription_tax_rate }o--|| subscription_history : "fk"
+    subscription_tax_rate }o--|| tax_rate : "fk"
+    quote_line_item }o--|| quote : "fk"
+    quote_line_item }o--|| price : "fk"
+    payment_intent }o--|| account : "fk"
+    payment_intent }o--|| source : "fk"
+    payment_intent }o--|| charge : "fk"
+    payment_intent }o--|| account : "fk"
+    payment_intent }o--|| account : "fk"
+    payment_intent }o--|| payment_method : "fk"
+    payment_intent }o--|| customer : "fk"
+    payment_intent }o--|| source : "fk"
+    price }o--|| invoice_item : "fk"
+    price }o--|| product : "fk"
+    usage_record }o--|| subscription_item : "fk"
+    application_fee }o--|| charge : "fk"
+    application_fee }o--|| account : "fk"
+    application_fee }o--|| balance_transaction : "fk"
+    application_fee }o--|| charge : "fk"
+    tax_amount }o--|| tax_rate : "fk"
+    upcoming_invoice_line_item_proration_details_credited_item }o--|| upcoming_invoice_line_item : "fk"
+    upcoming_invoice_line_item_proration_details_credited_item }o--|| subscription_history : "fk"
+    refund }o--|| account : "fk"
+    refund }o--|| balance_transaction : "fk"
+    refund }o--|| charge : "fk"
+    refund }o--|| balance_transaction : "fk"
+    refund }o--|| payment_intent : "fk"
+    upcoming_invoice }o--|| subscription_history : "fk"
+    upcoming_invoice }o--|| customer : "fk"
+    upcoming_invoice }o--|| charge : "fk"
+    upcoming_invoice }o--|| source : "fk"
+    upcoming_invoice }o--|| payment_method : "fk"
+    upcoming_invoice }o--|| payment_intent : "fk"
+    account }o--|| person : "fk"
+    customer }o--|| bank_account : "fk"
+    customer }o--|| source : "fk"
+    customer }o--|| card : "fk"
+    invoice }o--|| charge : "fk"
+    invoice }o--|| customer : "fk"
+    invoice }o--|| source : "fk"
+    invoice }o--|| payment_method : "fk"
+    invoice }o--|| payment_intent : "fk"
+    invoice }o--|| subscription_history : "fk"
+    review }o--|| charge : "fk"
+    review }o--|| payment_intent : "fk"
+    phase_plan }o--|| subscription_schedule : "fk"
+    phase_plan }o--|| plan : "fk"
+    discount }o--|| checkout_session_line_item : "fk"
+    discount }o--|| credit_note_line_item : "fk"
+    discount }o--|| coupon : "fk"
+    discount }o--|| invoice_item : "fk"
+    discount }o--|| checkout_session : "fk"
+    discount }o--|| customer : "fk"
+    discount }o--|| subscription_history : "fk"
+    discount }o--|| invoice : "fk"
+    cash_balance }o--|| customer : "fk"
+    upcoming_invoice_line_item }o--|| plan : "fk"
+    upcoming_invoice_line_item }o--|| price : "fk"
+    upcoming_invoice_line_item }o--|| subscription_history : "fk"
+    upcoming_invoice_line_item }o--|| customer : "fk"
+    upcoming_invoice_line_item }o--|| subscription_item : "fk"
+    upcoming_invoice_account_tax_id }o--|| subscription_history : "fk"
+    promotion_code }o--|| coupon : "fk"
+    promotion_code }o--|| customer : "fk"
+    checkout_session_line_item }o--|| checkout_session : "fk"
+    checkout_session_line_item }o--|| price : "fk"
+    phase }o--|| subscription_schedule : "fk"
+    transfer_reversal }o--|| balance_transaction : "fk"
+    transfer_reversal }o--|| refund : "fk"
+    transfer_reversal }o--|| transfer : "fk"
+    person }o--|| account : "fk"
+    issuing_transaction }o--|| authorization : "fk"
+    issuing_transaction }o--|| balance_transaction : "fk"
+    issuing_transaction }o--|| card : "fk"
+    issuing_transaction }o--|| cardholder : "fk"
+    issuing_transaction }o--|| dispute : "fk"
+    transfer }o--|| account : "fk"
+    transfer }o--|| charge : "fk"
+    transfer }o--|| charge : "fk"
+    transfer }o--|| balance_transaction : "fk"
+    payment_method_card }o--|| payment_method : "fk"
+    payment_method_card }o--|| charge : "fk"
+    payout_balance_transaction }o--|| payout : "fk"
+    payout_balance_transaction }o--|| balance_transaction : "fk"
+    checkout_session_shipping_address_allowed_countries }o--|| checkout_session : "fk"
+    payout }o--|| account : "fk"
+    payout }o--|| bank_account : "fk"
+    payout }o--|| card : "fk"
+    payout }o--|| balance_transaction : "fk"
+    payout }o--|| balance_transaction : "fk"
+    charge }o--|| account : "fk"
+    charge }o--|| account : "fk"
+    charge }o--|| account : "fk"
+    charge }o--|| card : "fk"
+    charge }o--|| bank_account : "fk"
+    charge }o--|| source : "fk"
+    charge }o--|| transfer : "fk"
+    charge }o--|| account : "fk"
+    charge }o--|| balance_transaction : "fk"
+    charge }o--|| customer : "fk"
+    charge }o--|| invoice : "fk"
+    charge }o--|| payment_intent : "fk"
+    charge }o--|| payment_method : "fk"
+    charge }o--|| transfer : "fk"
+    checkout_session }o--|| customer : "fk"
+    checkout_session }o--|| payment_intent : "fk"
+    checkout_session }o--|| setup_intent : "fk"
+    checkout_session }o--|| subscription_history : "fk"
+    quote_computed_upfront_line_item }o--|| quote : "fk"
+    quote_computed_upfront_line_item }o--|| price : "fk"
+    upcoming_invoice_tax_rate }o--|| tax_rate : "fk"
+    upcoming_invoice_tax_rate }o--|| subscription_history : "fk"
+    quote }o--|| customer : "fk"
+    quote }o--|| invoice : "fk"
+    quote }o--|| subscription_history : "fk"
+    quote }o--|| subscription_schedule : "fk"
+    fpx }o--|| payment_method : "fk"
+    customer_tax }o--|| account : "fk"
+    customer_tax }o--|| customer : "fk"
+    customer_tax }o--|| customer : "fk"
+    invoice_tax_rate }o--|| invoice : "fk"
+    invoice_tax_rate }o--|| tax_rate : "fk"
+    checkout_session_line_item_discount }o--|| checkout_session_line_item : "fk"
+    checkout_session_line_item_discount }o--|| coupon : "fk"
+    checkout_session_line_item_discount }o--|| customer : "fk"
+    checkout_session_line_item_discount }o--|| subscription_history : "fk"
+    checkout_session_line_item_discount }o--|| invoice : "fk"
+    checkout_session_line_item_discount }o--|| invoice_item : "fk"
+    invoice_line_item }o--|| invoice : "fk"
+    invoice_line_item }o--|| plan : "fk"
+    invoice_line_item }o--|| price : "fk"
+    invoice_line_item }o--|| subscription_history : "fk"
+    invoice_line_item }o--|| subscription_item : "fk"
+    invoice_item_tax_rate }o--|| invoice_item : "fk"
+    invoice_item_tax_rate }o--|| tax_rate : "fk"
+    subscription_item }o--|| plan : "fk"
+    subscription_item }o--|| subscription_history : "fk"
+    checkout_session_tax_rate }o--|| tax_rate : "fk"
+    checkout_session_tax_rate }o--|| checkout_session : "fk"
+    balance_transaction }o--|| account : "fk"
+    balance_transaction }o--|| payout : "fk"
+    apple_pay_domain }o--|| account : "fk"
+    issuing_dispute }o--|| account : "fk"
+    issuing_dispute }o--|| file : "fk"
+    issuing_dispute }o--|| file : "fk"
+    dispute_balance_transaction }o--|| dispute : "fk"
+    dispute_balance_transaction }o--|| balance_transaction : "fk"
+    invoice_item }o--|| plan : "fk"
+    invoice_item }o--|| price : "fk"
+    invoice_item }o--|| customer : "fk"
+    invoice_item }o--|| invoice : "fk"
+    invoice_item }o--|| subscription_history : "fk"
+    invoice_item }o--|| subscription_item : "fk"
+    subscription_schedule }o--|| customer : "fk"
+    subscription_schedule }o--|| subscription_history : "fk"

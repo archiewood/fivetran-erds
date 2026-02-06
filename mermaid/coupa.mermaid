@@ -1,0 +1,3916 @@
+erDiagram
+    expense_trip {
+        bigint id PK
+        timestamp created_at
+        jsonb custom_fields
+        bigint expense_trip_mileage_id
+        timestamp updated_at
+    }
+    online_store {
+        bigint id PK
+        bigint created_by_id FK
+        bigint updated_by_id FK
+        timestamp created_at
+        jsonb custom_fields
+        text login
+        text password
+        timestamp updated_at
+        text url
+    }
+    supplier_information_address {
+        bigint id PK
+        text account_type_item
+        boolean active
+        text address_name
+        text bank_account_number
+        text bank_address
+        text bank_city
+        text bank_code
+        bigint bank_country_id
+        text bank_postal_code
+        text bank_routing_number
+        text bank_state_region
+        text bic
+        text bic_routing_code
+        text bsb_number
+        text city
+        bigint country_id
+        text created_at
+        bigint created_by_id
+        bigint csp_rta_id
+        jsonb custom_field_1
+        jsonb custom_field_10
+        jsonb custom_field_11
+        jsonb custom_field_12
+        jsonb custom_field_13
+        jsonb custom_field_14
+        jsonb custom_field_15
+        jsonb custom_field_16
+        jsonb custom_field_17
+        jsonb custom_field_18
+        jsonb custom_field_19
+        jsonb custom_field_2
+        jsonb custom_field_20
+        jsonb custom_field_3
+        jsonb custom_field_4
+        jsonb custom_field_5
+        jsonb custom_field_6
+        jsonb custom_field_7
+        jsonb custom_field_8
+        jsonb custom_field_9
+        text email
+        text iban_number
+        text ifsc
+        text intermediary_bank_name
+        text international_bank_account_number
+        text kind
+        text location_code
+        text name_on_bank_account
+        text payment_method_item
+        text po_box
+        text po_box_postal_code
+        text postal_code
+        text sort_code
+        text state_iso_code
+        text state_region
+        text street_address
+        text street_address_2
+        text street_address_3
+        text street_address_4
+        bigint supplier_information_id
+        text swift_code
+        text transit_number_and_institution_number
+        timestamp updated_at
+        bigint updated_by_id
+        text virtual_card_email
+        text wire_routing_number
+    }
+    payment_business_group_mapping {
+        bigint business_group_id PK
+        bigint payment_id PK
+    }
+    remit_to_address {
+        bigint id PK
+        boolean active
+        text city
+        bigint country_id
+        timestamp created_at
+        bigint created_by_id
+        jsonb custom_fields
+        text external_src_name
+        text external_src_ref
+        text local_tax_number
+        text name
+        text postal_code
+        text remit_to_code
+        text state
+        text street_1
+        text street_2
+        timestamp updated_at
+        bigint updated_by_id
+        bigint vat_country_id
+        text vat_number
+    }
+    contact {
+        bigint id PK
+        timestamp created_at
+        bigint created_by_id
+        jsonb custom_fields
+        text email
+        text name_additional
+        text name_family
+        text name_fullname
+        text name_given
+        text name_prefix
+        text name_suffix
+        text notes
+        text photo
+        timestamp updated_at
+        bigint updated_by_id
+    }
+    shipping_term_business_group_mapping {
+        bigint business_group_id PK
+        bigint shipping_term_id PK
+    }
+    cp_account_type_mapping {
+        bigint account_id PK
+        bigint account_type_id PK
+        bigint cp_payment_id PK
+    }
+    address_business_group_relation {
+        bigint address_id PK
+        bigint business_group_id PK
+    }
+    period {
+        bigint id PK
+        bigint account_type_id
+        timestamp created_at
+        bigint created_by_id
+        jsonb custom_fields
+        timestamp end_date
+        boolean is_open
+        text name
+        text segment_1
+        text segment_10
+        text segment_11
+        text segment_12
+        text segment_13
+        text segment_14
+        text segment_15
+        text segment_16
+        text segment_17
+        text segment_18
+        text segment_19
+        text segment_2
+        text segment_20
+        text segment_3
+        text segment_4
+        text segment_5
+        text segment_6
+        text segment_7
+        text segment_8
+        text segment_9
+        timestamp start_date
+        timestamp updated_at
+        bigint updated_by_id
+    }
+    approval {
+        bigint id PK
+        bigint easy_form_id FK
+        bigint approvable_id
+        text approvable_type
+        bigint approval_chain_id
+        timestamp approval_date
+        bigint approved_by_id
+        timestamp created_at
+        bigint created_by_id
+        jsonb custom_fields
+        bigint delegate_id
+        text note
+        bigint parent_approval_id
+        bigint position
+        text status
+        text type
+        timestamp updated_at
+        bigint updated_by_id
+    }
+    expense_per_diem_config {
+        bigint id PK
+        bigint country_id
+        timestamp created_at
+        jsonb custom_fields
+        text deductions_section_label
+        text policy_description
+        text policy_title
+        text rule_set_type
+        text scope
+        timestamp updated_at
+    }
+    expense_violation {
+        bigint id PK
+        bigint expense_report_id FK
+        timestamp created_at
+        bigint created_by_id
+        jsonb custom_fields
+        double_precision limit_exceeded
+        boolean receipt_missing
+        timestamp updated_at
+        bigint updated_by_id
+    }
+    expense_artifact {
+        bigint id PK
+        bigint expense_line_id FK
+        timestamp created_at
+        bigint created_by_id
+        jsonb custom_fields
+        text external_src_ref
+        text image_content_type
+        text image_file_name
+        text image_file_size
+        text ocr_status
+        text source_content_type
+        text source_file_name
+        text source_file_size
+        timestamp updated_at
+        bigint updated_by_id
+        text url
+    }
+    order_pad_business_group_mapping {
+        bigint business_group_id PK
+        bigint order_pad_id PK
+    }
+    payable_allocation {
+        bigint id PK
+        bigint payable_from_currency_id FK
+        bigint payable_to_currency_id FK
+        boolean bypass_strict_validations
+        boolean exported
+        timestamp last_exported_at
+        double_precision payable_from_amount
+        integer payable_from_id
+        text payable_from_type
+        double_precision payable_to_amount
+        bigint payable_to_id
+        text payable_to_type
+        bigint payment_reference_id
+        text payment_reference_type
+        text reason_code
+        text source
+        text source_transaction_from_id
+        text source_transaction_from_reference
+        text source_transaction_from_type
+        text source_transaction_to_id
+        text source_transaction_to_reference
+        text source_transaction_to_type
+        text status
+    }
+    quote_request_line_attribute {
+        bigint id PK
+        boolean completed
+        timestamp created_at
+        bigint created_by_id
+        jsonb custom_fields
+        timestamp end_date
+        bigint manager_id
+        timestamp start_date
+        text type
+        timestamp updated_at
+        bigint updated_by_id
+        text work_confirmer_email
+    }
+    requisition_line {
+        bigint id PK
+        bigint requisition_header_id PK
+        bigint order_line_id FK
+        bigint account_id
+        bigint commodity_id
+        bigint contract_id
+        timestamp created_at
+        bigint created_by_id
+        bigint currency_id
+        jsonb custom_fields
+        text description
+        text end_date
+        bigint item_id
+        bigint line_num
+        text line_type
+        timestamp need_by_date
+        bigint order_pad_line_id
+        bigint payment_term_id
+        bigint period_id
+        bigint punchout_site_id
+        double_precision quantity
+        boolean receipt_required
+        bigint shipping_term_id
+        text source
+        text source_part_num
+        text source_type
+        text start_date
+        text status
+        bigint sub_line_num
+        text supp_aux_part_num
+        bigint supplier_id
+        bigint supplier_site_id
+        double_precision total
+        text transmission_emails
+        text transmission_method_override
+        double_precision unit_price
+        text unspsc_code
+        bigint uom_id
+        timestamp updated_at
+        bigint updated_by_id
+    }
+    contract_term {
+        bigint id PK
+        bigint contract_id FK
+        text contract_term_type
+        timestamp created_at
+        bigint created_by_id
+        jsonb custom_fields
+        text name
+        double_precision tier_10_disc_pct
+        double_precision tier_10_upper_bound
+        double_precision tier_11_disc_pct
+        double_precision tier_11_upper_bound
+        double_precision tier_12_disc_pct
+        double_precision tier_12_upper_bound
+        double_precision tier_13_disc_pct
+        double_precision tier_13_upper_bound
+        double_precision tier_14_disc_pct
+        double_precision tier_14_upper_bound
+        double_precision tier_15_disc_pct
+        double_precision tier_15_upper_bound
+        double_precision tier_16_disc_pct
+        double_precision tier_16_upper_bound
+        double_precision tier_17_disc_pct
+        double_precision tier_17_upper_bound
+        double_precision tier_18_disc_pct
+        double_precision tier_18_upper_bound
+        double_precision tier_19_disc_pct
+        double_precision tier_19_upper_bound
+        double_precision tier_1_disc_pct
+        double_precision tier_1_upper_bound
+        double_precision tier_20_disc_pct
+        double_precision tier_20_upper_bound
+        double_precision tier_2_disc_pct
+        double_precision tier_2_upper_bound
+        double_precision tier_3_disc_pct
+        double_precision tier_3_upper_bound
+        double_precision tier_4_disc_pct
+        double_precision tier_4_upper_bound
+        double_precision tier_5_disc_pct
+        double_precision tier_5_upper_bound
+        double_precision tier_6_disc_pct
+        double_precision tier_6_upper_bound
+        double_precision tier_7_disc_pct
+        double_precision tier_7_upper_bound
+        double_precision tier_8_disc_pct
+        double_precision tier_8_upper_bound
+        double_precision tier_9_disc_pct
+        double_precision tier_9_upper_bound
+        text type
+        timestamp updated_at
+        bigint updated_by_id
+        boolean use_pct_discounts
+    }
+    project {
+        bigint id PK
+        boolean active
+        text additional_negotiated_savings
+        text additional_planned_savings
+        text additional_realized_savings
+        text allow_users_to_view_member
+        bigint commodity_id
+        bigint completion_percentage
+        bigint copy_project_id
+        timestamp created_at
+        bigint created_by_id
+        jsonb custom_fields
+        text description
+        boolean display_date_range_warning
+        jsonb enabled_tabs
+        timestamp end_date
+        text external_reference_number
+        text mention_name
+        text name
+        boolean open
+        bigint project_id
+        boolean show_contracts_rollup_fields
+        boolean show_sourcing_rollup_fields
+        boolean show_suppliers_rollup_fields
+        timestamp start_date
+        text status
+        jsonb template_group
+        timestamp updated_at
+        bigint updated_by_id
+    }
+    expense_attendee_type {
+        bigint id PK
+        bigint expense_category_id FK
+        text attendee_src
+        timestamp created_at
+        jsonb custom_fields
+        text name
+        timestamp updated_at
+    }
+    approval_limit {
+        bigint id PK
+        double_precision amount
+        timestamp created_at
+        bigint created_by_id
+        bigint currency_id
+        jsonb custom_fields
+        text name
+        text subject
+        timestamp updated_at
+        bigint updated_by_id
+    }
+    department {
+        bigint id PK
+        text active
+        timestamp created_at
+        bigint created_by_id
+        jsonb custom_fields
+        text name
+        timestamp updated_at
+        bigint updated_by_id
+    }
+    account_type {
+        bigint id PK
+        boolean active
+        timestamp created_at
+        bigint created_by_id
+        bigint currency_id
+        jsonb custom_fields
+        text legal_entity_name
+        text name
+        bigint primary_address_id
+        bigint primary_contact_id
+        timestamp updated_at
+        bigint updated_by_id
+    }
+    requisition_header {
+        bigint id PK
+        bigint receiving_warehouse_id FK
+        bigint approver_id
+        text buyer_note
+        timestamp created_at
+        bigint created_by_id
+        bigint currency_id
+        bigint current_approval_id
+        jsonb custom_fields
+        bigint department_id
+        boolean exported
+        text justification
+        bigint line_count
+        double_precision mobile_total
+        timestamp need_by_date
+        bigint pcard_id
+        boolean price_hidden
+        text reject_reason_comment
+        text req_title
+        bigint requested_by_id
+        bigint ship_to_address_id
+        text ship_to_attention
+        text status
+        text submitted_at
+        double_precision total
+        timestamp updated_at
+        bigint updated_by_id
+    }
+    invoice_charge_allocation {
+        bigint id PK
+        bigint invoice_charge_id FK
+        bigint account_id
+        double_precision amount
+        text billing_note
+        timestamp created_at
+        bigint created_by_id
+        jsonb custom_fields
+        double_precision pct
+        timestamp updated_at
+        bigint updated_by_id
+    }
+    payment_term {
+        bigint id PK
+        boolean active
+        text code
+        timestamp created_at
+        bigint created_by_id
+        jsonb custom_fields
+        bigint days_for_discount_payment
+        bigint days_for_net_payment
+        text description
+        double_precision discount_rate
+        timestamp updated_at
+        bigint updated_by_id
+    }
+    virtual_card_partner_account_type_mapping {
+        bigint account_type_id PK
+        bigint virtual_card_partner_id PK
+    }
+    invoice_reconciliation_line {
+        bigint id PK
+        bigint invoice_header_id FK
+        double_precision amount
+        double_precision amount_paid
+        text category
+        timestamp created_at
+        bigint created_by_id
+        jsonb custom_fields
+        text notes
+        bigint payable_id
+        text payable_type
+        timestamp payment_date
+        timestamp updated_at
+        bigint updated_by_id
+    }
+    supplier_restricted_account_type_mapping {
+        bigint restricted_account_type_id PK
+        bigint supplier_id PK
+    }
+    currency {
+        bigint id PK
+        text code
+        bigint created_by_id
+        jsonb custom_fields
+        bigint decimals
+        boolean enabled
+        text name
+        text symbol
+        bigint updated_by_id
+    }
+    comment_attachment_mapping {
+        bigint attachment_id PK
+        bigint comment_id PK
+    }
+    expense_line {
+        bigint id PK
+        bigint expense_line_mileage_id FK
+        bigint expense_report_id FK
+        bigint order_line_id FK
+        bigint receipt_total_currency_id FK
+        bigint account_id
+        double_precision accounting_total
+        bigint accounting_total_currency_id
+        double_precision amount
+        double_precision approved_amount
+        timestamp created_at
+        bigint created_by_id
+        bigint currency_id
+        jsonb custom_field_1
+        jsonb custom_field_10
+        jsonb custom_field_11
+        jsonb custom_field_12
+        jsonb custom_field_13
+        jsonb custom_field_14
+        jsonb custom_field_15
+        jsonb custom_field_16
+        jsonb custom_field_17
+        jsonb custom_field_18
+        jsonb custom_field_19
+        jsonb custom_field_2
+        jsonb custom_field_3
+        jsonb custom_field_4
+        jsonb custom_field_5
+        jsonb custom_field_6
+        jsonb custom_field_7
+        jsonb custom_field_8
+        jsonb custom_field_9
+        jsonb custom_fields
+        text description
+        double_precision divisor
+        boolean employee_reimbursable
+        timestamp end_date
+        double_precision exchange_rate
+        text expense_category_custom_field_1
+        text expense_category_custom_field_10
+        text expense_category_custom_field_2
+        text expense_category_custom_field_3
+        text expense_category_custom_field_4
+        text expense_category_custom_field_5
+        text expense_category_custom_field_6
+        text expense_category_custom_field_7
+        text expense_category_custom_field_8
+        text expense_category_custom_field_9
+        bigint expense_category_id
+        timestamp expense_date
+        bigint expense_line_imported_data_id
+        bigint expense_line_per_diem_id
+        bigint expense_line_preapproval_id
+        bigint expense_trip_id
+        text external_src_data
+        text external_src_name
+        text external_src_ref
+        double_precision foreign_currency_amount
+        bigint foreign_currency_id
+        text frugality
+        bigint integration_id
+        bigint line_number
+        text merchant
+        boolean over_limit
+        bigint parent_expense_line_id
+        text parent_external_src_data
+        text parent_external_src_name
+        text parent_external_src_ref
+        bigint period_id
+        text reason
+        double_precision receipt_total_amount
+        double_precision reporting_total
+        boolean requires_receipt
+        timestamp start_date
+        text status
+        bigint suggested_exchange_rate_id
+        text type
+        timestamp updated_at
+        bigint updated_by_id
+    }
+    project_business_group_mapping {
+        bigint business_group_id PK
+        bigint project_id PK
+    }
+    lookup {
+        bigint id PK
+        boolean active
+        timestamp created_at
+        bigint created_by_id
+        jsonb custom_fields
+        text description
+        boolean fixed_depth
+        text level_10_name
+        text level_1_name
+        text level_2_name
+        text level_3_name
+        text level_4_name
+        text level_5_name
+        text level_6_name
+        text level_7_name
+        text level_8_name
+        text level_9_name
+        text name
+        bigint updated_by_id
+    }
+    expense_report {
+        bigint id PK
+        bigint audit_score
+        text auditor_note
+        timestamp created_at
+        bigint created_by_id
+        bigint currency_id
+        jsonb custom_fields
+        bigint expensed_by_id
+        boolean exported
+        text external_src_name
+        text external_src_ref
+        text last_exported_at
+        boolean paid
+        boolean past_due
+        text payment_channel
+        bigint payment_id
+        double_precision reimbursable_total_amount
+        bigint reimbursable_total_currency_id
+        text reject_reason
+        text report_due_date
+        text status
+        timestamp submitted_at
+        bigint submitted_by_id
+        text title
+        double_precision total
+        timestamp updated_at
+        bigint updated_by_id
+    }
+    account_group {
+        bigint id PK
+        bigint account_type_id
+        timestamp created_at
+        bigint created_by_id
+        jsonb custom_fields
+        text name
+        text segment_10_col
+        text segment_10_op
+        text segment_10_val
+        text segment_11_col
+        text segment_11_op
+        text segment_11_val
+        text segment_12_col
+        text segment_12_op
+        text segment_12_val
+        text segment_13_col
+        text segment_13_op
+        text segment_13_val
+        text segment_14_col
+        text segment_14_op
+        text segment_14_val
+        text segment_15_col
+        text segment_15_op
+        text segment_15_val
+        text segment_16_col
+        text segment_16_op
+        text segment_16_val
+        text segment_17_col
+        text segment_17_op
+        text segment_17_val
+        text segment_18_col
+        text segment_18_op
+        text segment_18_val
+        text segment_19_col
+        text segment_19_op
+        text segment_19_val
+        text segment_1_col
+        text segment_1_op
+        text segment_1_val
+        text segment_20_col
+        text segment_20_op
+        text segment_20_val
+        text segment_2_col
+        text segment_2_op
+        text segment_2_val
+        text segment_3_col
+        text segment_3_op
+        text segment_3_val
+        text segment_4_col
+        text segment_4_op
+        text segment_4_val
+        text segment_5_col
+        text segment_5_op
+        text segment_5_val
+        text segment_6_col
+        text segment_6_op
+        text segment_6_val
+        text segment_7_col
+        text segment_7_op
+        text segment_7_val
+        text segment_8_col
+        text segment_8_op
+        text segment_8_val
+        text segment_9_col
+        text segment_9_op
+        text segment_9_val
+        timestamp updated_at
+        bigint updated_by_id
+    }
+    invoice_email {
+        bigint id PK
+        bigint created_by_id FK
+        bigint updated_by_id FK
+        timestamp created_at
+        jsonb custom_fields
+        text email
+        boolean send_notification
+        timestamp updated_at
+    }
+    inspection_code {
+        bigint id PK
+        text code
+        timestamp created_at
+        bigint created_by_id
+        jsonb custom_fields
+        text description
+        timestamp updated_at
+        bigint updated_by_id
+    }
+    user_group {
+        bigint id PK
+        boolean active
+        boolean can_approve
+        timestamp created_at
+        bigint created_by_id
+        jsonb custom_fields
+        text description
+        text mention_name
+        text name
+        boolean open
+        bigint owner_id
+        text type
+        timestamp updated_at
+        bigint updated_by_id
+    }
+    tag {
+        bigint id PK
+        bigint invoice_line_id FK
+        bigint quote_request_id FK
+        bigint requisition_header_id FK
+        bigint requisition_line_id FK
+        timestamp created_at
+        bigint created_by_id
+        jsonb custom_fields
+        text name
+        boolean system_tag
+        timestamp updated_at
+        bigint updated_by_id
+    }
+    expense_line_daily_per_diem {
+        bigint id PK
+        bigint expense_line_per_diem_id FK
+        timestamp created_at
+        jsonb custom_fields
+        bigint expense_per_diem_rate_type_id
+        text max_rate
+        text per_diem_rate
+        text rate_applied
+        text rate_destination
+        timestamp updated_at
+    }
+    supplier_information_artifact_attachment_mapping {
+        bigint attachment_id PK
+        bigint supplier_information_artifact_id PK
+    }
+    integration_run {
+        bigint id PK
+        timestamp created_at
+        jsonb custom_fields
+        timestamp end_time
+        bigint integration_id
+        bigint records_processed
+        timestamp start_time
+        text status
+        bigint total_records
+        timestamp updated_at
+    }
+    invoice_charge {
+        bigint id PK
+        double_precision accounting_total_currency_id FK
+        bigint invoice_header_id FK
+        bigint account_id
+        text billing_note
+        timestamp created_at
+        bigint created_by_id
+        jsonb custom_fields
+        text description
+        boolean distributed
+        bigint line_num
+        double_precision pct
+        bigint period_id
+        double_precision total
+        text type
+        timestamp updated_at
+        bigint updated_by_id
+    }
+    project_user_mapping {
+        bigint project_id PK
+        bigint user_id PK
+    }
+    expense_line_imported_data {
+        bigint id PK
+        double_precision amount
+        jsonb custom_fields
+        text description
+    }
+    tagging {
+        bigint id PK
+        bigint created_by_id FK
+        boolean active
+        timestamp created_at
+        jsonb custom_fields
+        text description
+        bigint tag_id
+    }
+    exchange_rate {
+        bigint id PK
+        timestamp created_at
+        bigint created_by_id
+        jsonb custom_fields
+        bigint from_currency_id
+        double_precision rate
+        timestamp rate_date
+        bigint to_currency_id
+        timestamp updated_at
+        bigint updated_by_id
+    }
+    cp_payment_detail_allocation_mapping {
+        bigint payable_allocation_id PK
+        bigint payment_detail_id PK
+        bigint payment_id PK
+    }
+    lookup_value {
+        bigint id PK
+        bigint lookup_id FK
+        bigint account_type_id
+        boolean active
+        timestamp created_at
+        bigint created_by_id
+        jsonb custom_fields
+        bigint depth
+        text description
+        text external_ref_code
+        text external_ref_num
+        boolean is_default
+        text name
+        bigint parent_id
+        timestamp updated_at
+        bigint updated_by_id
+    }
+    requisition_line_asset_tag_mapping {
+        bigint asset_tag_id PK
+        bigint requisition_line_id PK
+    }
+    easy_form_data {
+        bigint easy_form_id PK
+        bigint id PK
+        bigint created_by_id FK
+        bigint requested_by_id FK
+        bigint updated_by_id FK
+        timestamp created_at
+        text name
+        boolean rejected
+        text status
+        jsonb subject
+        bigint subject_id
+        timestamp submitted_at
+        timestamp updated_at
+    }
+    order_line_change_allocation {
+        bigint id PK
+        bigint order_line_change_id FK
+        bigint period_id FK
+        bigint account_id
+        double_precision amount
+        timestamp created_at
+        bigint created_by_id
+        jsonb custom_fields
+        double_precision pct
+        timestamp updated_at
+        bigint updated_by_id
+    }
+    pcard {
+        bigint id PK
+        boolean active
+        timestamp created_at
+        bigint created_by_id
+        jsonb custom_fields
+        text cvv
+        text expiry
+        text name
+        text nickname
+        text number
+        boolean shared
+        timestamp updated_at
+        bigint updated_by_id
+    }
+    invoice_header_attachment_mapping {
+        bigint attachment_id PK
+        bigint invoice_header_id PK
+    }
+    supplier_information_business_group_mapping {
+        bigint business_group_id PK
+        bigint supplier_information_id PK
+    }
+    user_approval_group_mapping {
+        bigint approval_group_id PK
+        bigint user_id PK
+    }
+    requisition_header_attachment_mapping {
+        bigint attachment_id PK
+        bigint requisition_header_id PK
+    }
+    virtual_card {
+        bigint id PK
+        bigint order_header_id FK
+        text card_number
+        text card_type
+        bigint coupa_pay_id
+        timestamp created_at
+        bigint created_by_id
+        text credit_account
+        bigint currency_id
+        jsonb custom_fields
+        bigint document_id
+        text document_type
+        bigint expiry_month
+        bigint expiry_year
+        text external_ref_id
+        text name
+        bigint payment_partner_id
+        bigint requested_by_id
+        text status
+        double_precision total_booked
+        double_precision total_charged
+        timestamp updated_at
+        bigint updated_by_id
+        timestamp valid_from
+        timestamp valid_to
+    }
+    expense_mileage_vehicle_type {
+        bigint id PK
+        timestamp created_at
+        jsonb custom_fields
+        text name
+        timestamp updated_at
+    }
+    order_header_change_order_line_change_mapping {
+        bigint order_header_change PK
+        bigint order_line_change PK
+    }
+    commodity {
+        bigint id PK
+        boolean active
+        text category
+        timestamp created_at
+        bigint created_by_id
+        jsonb custom_fields
+        text deductibility
+        text name
+        bigint parent_id
+        text subcategory
+        timestamp updated_at
+        bigint updated_by_id
+    }
+    order_line_change {
+        bigint id PK
+        bigint order_header_change_id FK
+        bigint order_line_id FK
+        bigint commodity_id
+        timestamp created_at
+        jsonb custom_fields
+        text description
+        text line_num
+        timestamp need_by_date
+        boolean pending_delete
+        double_precision price
+        double_precision quantity
+        double_precision savings_pct
+        text source_part_num
+        double_precision total
+        timestamp updated_at
+    }
+    invoice_payment_receipt {
+        bigint id PK
+        bigint invoice_header_id FK
+        double_precision amount
+        text clearance_document
+        timestamp created_at
+        jsonb custom_fields
+        text document_uuid
+        double_precision exchange_rate
+        bigint legal_payment_receipt_id
+        text payment_method
+        timestamp updated_at
+    }
+    asn_line {
+        bigint id PK
+        bigint asn_header_id PK
+        text comments
+        timestamp created_at
+        bigint created_by_id
+        jsonb custom_fields
+        text description
+        bigint invoice_line_id
+        bigint item_id
+        text line_num
+        text match_reference
+        bigint order_line_id
+        double_precision quantity
+        double_precision received_qty
+        text review_reason
+        boolean soft_close_for_receiving
+        text status
+        text supplier_aux_part_num
+        text supplier_part_num
+        bigint uom_id
+        timestamp updated_at
+        bigint updated_by_id
+    }
+    supplier_information_address_mapping {
+        bigint address_id PK
+        bigint supplier_information_id PK
+    }
+    contract_party {
+        bigint id PK
+        bigint bill_to_address_id
+        text business_name
+        bigint clma_id
+        text contact_name
+        text contact_title
+        text counterparty_role
+        timestamp created_at
+        jsonb custom_fields
+        text email
+        text entity_name
+        bigint mail_to_address_id
+        timestamp updated_at
+    }
+    statement {
+        bigint id PK
+        bigint coupa_pay_id
+        timestamp created_at
+        bigint created_by_id
+        bigint currency_id
+        jsonb custom_fields
+        boolean exported
+        text external_ref_id
+        timestamp last_exported_at
+        text name
+        bigint number_of_lines
+        bigint payment_partner_id
+        timestamp statement_date
+        double_precision total
+        timestamp updated_at
+        bigint updated_by_id
+    }
+    supplier_preferred_commodities_mapping {
+        bigint commodity_id PK
+        bigint supplier_id PK
+    }
+    business_group_contract_mapping {
+        bigint business_group_id PK
+        bigint contract_id PK
+    }
+    expense_mileage_config {
+        bigint id PK
+        timestamp accumulation_period_start_day_month
+        bigint country_id
+        timestamp created_at
+        jsonb custom_fields
+        text distance_unit
+        jsonb expense_mileage_tier_rules
+        boolean mileage_accumulation_rule_enabled
+        text passenger_count_prompt
+        boolean passenger_count_rule_enabled
+        text region_prompt
+        boolean region_rule_enabled
+        boolean require_address
+        boolean show_map
+        double_precision simple_fixed_rate_amount
+        bigint simple_fixed_rate_currency_id
+        boolean simple_fixed_rate_enabled
+        timestamp updated_at
+        text vehicle_type_prompt
+        boolean vehicle_type_rule_enabled
+    }
+    order_header_change {
+        bigint id PK
+        timestamp acknowledged_at
+        timestamp created_at
+        bigint created_by_id
+        bigint current_approval_id
+        jsonb custom_fields
+        bigint department_id
+        boolean exported
+        text justification
+        bigint order_header_id
+        text payment_method
+        text po_number
+        boolean price_hidden
+        bigint reject_reason_id
+        bigint requisition_header_id
+        text ship_to_attention
+        text status
+        boolean supplier_initiated
+        text transmission_emails
+        text transmission_method_override
+        timestamp updated_at
+        bigint version
+    }
+    expense_per_diem_rule_condition {
+        bigint id PK
+        bigint expense_per_diem_rule_id FK
+        text comparator
+        timestamp created_at
+        jsonb custom_fields
+        text lhs
+        text rhs
+        timestamp updated_at
+    }
+    cp_payment_detail {
+        bigint id PK
+        bigint cp_payment_id PK
+        bigint created_by_id FK
+        bigint currency_id FK
+        bigint updated_by_id FK
+        double_precision adjustment_total
+        timestamp created_at
+        jsonb custom_fields
+        text discount_total
+        text payable_document_type
+        bigint payable_id
+        text payable_type
+        text payment_id
+        double_precision payment_total
+        text source_transaction_id
+        text source_transaction_reference
+        text source_transaction_type
+        text supplier_site
+        double_precision transaction_total
+        timestamp updated_at
+    }
+    integration_error {
+        bigint id PK
+        bigint integration_run_id FK
+        text contact_alert_type
+        timestamp created_at
+        bigint created_by_id
+        text creation_method
+        jsonb custom_fields
+        bigint document_id
+        bigint document_revision
+        text document_status
+        text document_type
+        text external_id
+        text integration_filename
+        bigint integration_id
+        boolean resolved
+        text status
+        timestamp updated_at
+        bigint updated_by_id
+    }
+    user_business_group_mapping {
+        bigint business_group_id PK
+        bigint user_id PK
+    }
+    per_diem_deduction {
+        bigint id PK
+        bigint expense_line_daily_per_diem_id FK
+        bigint expense_per_diem_deduction_id FK
+        timestamp created_at
+        jsonb custom_fields
+        text deduction_applied
+        timestamp updated_at
+    }
+    user {
+        bigint id PK
+        bigint manager_id FK
+        bigint account_security_type
+        boolean active
+        boolean aic_user
+        boolean analytics_user
+        boolean api_user
+        bigint approval_limit_id
+        text authentication_method
+        text avatar_thumb_url
+        text business_function
+        bigint business_group_security_type
+        boolean ccw_user
+        bigint contract_approval_limit_id
+        bigint contract_self_approval_limit_id
+        boolean contracts_user
+        bigint country_of_residence_id
+        timestamp created_at
+        bigint created_by_id
+        bigint default_account_id
+        bigint default_account_type_id
+        bigint default_address_id
+        bigint default_currency_id
+        text default_locale
+        bigint department_id
+        boolean edit_invoice_on_quick_entry
+        text email
+        text employee_number
+        text employee_payment_channel
+        bigint escalation_threshold_id
+        bigint expense_approval_limit_id
+        bigint expense_self_approval_limit_id
+        boolean expense_user
+        text firstname
+        text fullname
+        text generate_password_and_notify
+        boolean inventory_user
+        bigint invoice_approval_limit_id
+        bigint invoice_self_approval_limit_id
+        text lastname
+        text login
+        text mention_name
+        text password
+        bigint pcard_id
+        boolean purchasing_user
+        bigint requisition_approval_limit_id
+        bigint requisition_self_approval_limit_id
+        boolean salesforce_enabled
+        text salesforce_id
+        bigint self_approval_limit_id
+        text seniority_level
+        boolean sourcing_user
+        boolean spend_guard_user
+        text sso_identifier
+        timestamp updated_at
+        bigint updated_by_id
+        bigint work_confirmation_approval_limit_id
+    }
+    req_line_allocation {
+        bigint id PK
+        bigint created_by_id FK
+        bigint requisition_line_id FK
+        bigint updated_by_id FK
+        bigint account_id
+        double_precision amount
+        timestamp created_at
+        jsonb custom_fields
+        double_precision pct
+        timestamp updated_at
+    }
+    legal_payment_receipt {
+        bigint id PK
+        double_precision amount
+        text buyer_bank_name
+        text buyer_bank_reference
+        text buyer_tax_number
+        text check_number
+        timestamp created_at
+        bigint currency_id
+        jsonb custom_fields
+        text document_date
+        text form_of_payment
+        text payment_received_date
+        text supplier_bank_reference
+        text supplier_tax_number
+        timestamp updated_at
+        text uuid
+    }
+    expense_attendee {
+        bigint id PK
+        bigint expense_line_id PK
+        bigint user_id FK
+        boolean active
+        text company
+        timestamp created_at
+        bigint created_by_id
+        jsonb custom_fields
+        text expense_attendee_type_custom_field_1
+        text expense_attendee_type_custom_field_10
+        text expense_attendee_type_custom_field_2
+        text expense_attendee_type_custom_field_3
+        text expense_attendee_type_custom_field_4
+        text expense_attendee_type_custom_field_5
+        text expense_attendee_type_custom_field_6
+        text expense_attendee_type_custom_field_7
+        text expense_attendee_type_custom_field_8
+        text expense_attendee_type_custom_field_9
+        bigint expense_attendee_type_id
+        text expense_attendee_type_name
+        text first_name
+        text last_name
+        text title
+        timestamp updated_at
+        bigint updated_by_id
+    }
+    supplier_remit_to_address_mapping {
+        bigint remit_to_address_id PK
+        bigint supplier_id PK
+    }
+    contract_current_parallel_approval_mapping {
+        bigint approval_id PK
+        bigint contract_id PK
+    }
+    expense_report_comment_mapping {
+        bigint comment_id PK
+        bigint expense_report_id PK
+    }
+    tax_rate {
+        bigint id PK
+        boolean active
+        bigint country_id
+        timestamp created_at
+        bigint created_by_id
+        jsonb custom_fields
+        boolean customer_accounting
+        timestamp effective_date
+        boolean exempt
+        timestamp expiration_date
+        double_precision percentage
+        boolean reverse_charge
+        text tax_description
+        bigint tax_rate_type_id
+        timestamp updated_at
+        bigint updated_by_id
+    }
+    purpose {
+        bigint id PK
+        bigint address_id FK
+        bigint contact_id FK
+        timestamp created_at
+        jsonb custom_fields
+        text kind
+        text name
+        timestamp updated_at
+    }
+    virtual_card_partner {
+        bigint id PK
+        text configuration
+        timestamp created_at
+        bigint created_by_id
+        bigint currency_id
+        jsonb custom_fields
+        text issuing_bank
+        text name
+        text notes
+        text payment_partner_type
+        bigint support_contact_id
+        text type
+        timestamp updated_at
+        bigint updated_by_id
+    }
+    order_pad {
+        bigint id PK
+        boolean add_all_items
+        boolean any_supplier
+        double_precision base_value
+        bigint base_value_currency_id
+        timestamp created_at
+        bigint created_by_id
+        jsonb custom_fields
+        boolean locked
+        text name
+        timestamp updated_at
+        bigint updated_by_id
+        boolean use_base_value
+    }
+    quote_request_attachment_mapping {
+        bigint attachment_id PK
+        bigint quote_request_attachment_id PK
+    }
+    contract_party_contract_mapping {
+        bigint contract_id PK
+        bigint contract_party_id PK
+    }
+    expense_report_event_history {
+        bigint id PK
+        bigint expense_report_id FK
+        timestamp created_at
+        bigint created_by_id
+        jsonb custom_fields
+        text status
+        timestamp updated_at
+        bigint updated_by_id
+    }
+    cp_account {
+        bigint id PK
+        bigint created_by_id FK
+        bigint currency_id FK
+        bigint payment_partner_id FK
+        bigint updated_by_id FK
+        text account_kind
+        text account_name
+        text account_type_ids
+        bigint coupa_pay_id
+        timestamp created_at
+        jsonb custom_fields
+        text digital_check_signature_viewpost_status
+        jsonb document_types
+        text payment_option
+        boolean physical_check_signature_presence
+        text pmx_disbursing_id
+        jsonb positive_pay_partner
+        text print_and_mail_partner_name
+        text source_name
+        text source_reference
+        text status
+        jsonb supported_transfer_types
+        timestamp updated_at
+    }
+    order_line {
+        bigint id PK
+        bigint order_header_id PK
+        bigint currency_id FK
+        bigint extra_line_attribute_id FK
+        bigint account_id
+        double_precision accounting_total
+        bigint accounting_total_currency_id
+        bigint bulk_price_id
+        bigint commodity_id
+        bigint contract_id
+        timestamp created_at
+        bigint created_by_id
+        jsonb custom_fields
+        bigint department_id
+        text description
+        text end_date
+        boolean invoice_stop
+        double_precision invoiced
+        bigint item_id
+        text line_num
+        text match_type
+        timestamp need_by_date
+        text order_header_number
+        bigint period_id
+        double_precision price
+        double_precision quantity
+        boolean receipt_required
+        double_precision received
+        bigint receiving_warehouse_id
+        double_precision reporting_total
+        bigint requester_id
+        double_precision savings_pct
+        text service_type
+        text source_part_num
+        text start_date
+        text status
+        bigint sub_line_num
+        text supp_aux_part_num
+        text supplier_order_number
+        bigint supplier_site_id
+        double_precision total
+        text type
+        bigint uom_id
+        timestamp updated_at
+        bigint updated_by_id
+        bigint version
+    }
+    shipping_term {
+        bigint id PK
+        boolean active
+        text code
+        timestamp created_at
+        bigint created_by_id
+        jsonb custom_fields
+        text description
+        timestamp updated_at
+        bigint updated_by_id
+    }
+    inventory_txn_allocation {
+        bigint id PK
+        bigint inventory_transaction_id FK
+        bigint account_id
+        double_precision amount
+        timestamp created_at
+        bigint created_by_id
+        jsonb custom_fields
+        double_precision pct
+        bigint period_id
+        timestamp updated_at
+        bigint updated_by_id
+    }
+    order_header_change_approval_mapping {
+        bigint approval_id PK
+        bigint order_header_change_id PK
+    }
+    integration_contacts {
+        bigint id PK
+        bigint supplier_id FK
+        text contact_alert_type
+        bigint contactable_id
+        text contactable_type
+        timestamp created_at
+        bigint created_by_id
+        jsonb custom_fields
+        timestamp updated_at
+        bigint updated_by_id
+    }
+    invoice_line_allocation {
+        bigint id PK
+        bigint invoice_header_id PK
+        bigint invoice_line_id PK
+        bigint account_id
+        double_precision amount
+        text billing_note
+        timestamp created_at
+        bigint created_by_id
+        jsonb custom_fields
+        double_precision handling_distribution_total
+        double_precision misc_distribution_total
+        double_precision pct
+        bigint period_id
+        double_precision shipping_distribution_total
+        double_precision tax_distribution_total
+        timestamp updated_at
+        bigint updated_by_id
+    }
+    payment_partner_account_type_mapping {
+        bigint account_id PK
+        bigint account_type_id PK
+        bigint payment_id PK
+        bigint payment_partner_id PK
+    }
+    contract_template {
+        bigint id PK
+        boolean active
+        text authoring_method
+        timestamp created_at
+        bigint created_by_id
+        jsonb custom_fields
+        text description
+        text hierarchy_type
+        text name
+        timestamp updated_at
+        bigint updated_by_id
+    }
+    expense_line_preapproval {
+        bigint id PK
+        double_precision amount
+        timestamp created_at
+        bigint currency_id
+        jsonb custom_fields
+        bigint expense_report_preapproval_id
+        timestamp updated_at
+    }
+    expense_line_mileage_allocation {
+        bigint id PK
+        bigint expense_line_mileage_id FK
+        double_precision applied_distance
+        text applied_distance_
+        double_precision applied_rate
+        timestamp created_at
+        jsonb custom_fields
+        bigint expense_mileage_rate_type_id
+        timestamp updated_at
+    }
+    charge_allocation {
+        bigint id PK
+        bigint charge_id FK
+        bigint account_id
+        double_precision amount
+        timestamp created_at
+        bigint created_by_id
+        bigint currency_id
+        jsonb custom_fields
+        double_precision pct
+        bigint period_id
+        timestamp updated_at
+        bigint updated_by_id
+    }
+    invoice_charge_tax_line_mapping {
+        bigint invoice_charge_id PK
+        bigint tax_line_id PK
+    }
+    invoice_failed_tolerance {
+        bigint id PK
+        bigint invoice_line_id FK
+        bigint account_type_id
+        text breach_amount
+        text breach_detail_1
+        text breach_detail_2
+        text breach_detail_3
+        text breach_detail_4
+        text breach_limit
+        text code
+        timestamp created_at
+        jsonb custom_fields
+        bigint failable_id
+        text failable_type
+        text resolution_strategy
+        boolean resolved
+        timestamp updated_at
+    }
+    charge {
+        bigint id PK
+        text account_type_id FK
+        bigint accounting_currency_id FK
+        bigint order_header_id FK
+        bigint payment_partner_id FK
+        bigint supplier_id FK
+        bigint virtual_card_id FK
+        double_precision accounting_total
+        text card_provider_account
+        timestamp charge_date
+        text coupa_pay_id
+        text coupa_pay_statement_id
+        timestamp created_at
+        bigint created_by_id
+        jsonb custom_fields
+        bigint document_id
+        text document_type
+        bigint expense_holding_account_id
+        boolean exported
+        text external_ref_id
+        bigint holding_account_id
+        text issuer_reconciliation_id
+        timestamp last_exported_at
+        text legal_entity_name
+        text mcc
+        bigint merchant_currency_id
+        text merchant_reference
+        double_precision merchant_total
+        text order_header_currency
+        text order_header_number
+        text order_header_total
+        timestamp posting_date
+        bigint statement_id
+        text statement_name
+        text supplier_name
+        double_precision total
+        timestamp updated_at
+        bigint updated_by_id
+    }
+    integration_record_response {
+        bigint id PK
+        bigint integration_error_id FK
+        bigint integration_history_record_id FK
+        timestamp created_at
+        bigint created_by_id
+        jsonb custom_fields
+        text response_code
+        text response_message
+        timestamp updated_at
+        bigint updated_by_id
+    }
+    quote_request {
+        bigint id PK
+        boolean allow_award_individual_line_items
+        boolean allow_multiple_response
+        boolean automatic_bid_unsealing
+        text comments
+        bigint commodity_id
+        jsonb custom_fields
+        text description
+        timestamp end_time
+        text event_type
+        boolean sealed_bids
+        text sealing_type
+        boolean start_on_submit
+        timestamp start_time
+        text timezone
+    }
+    address {
+        bigint id PK
+        boolean active
+        text attention
+        text business_group_name
+        text city
+        bigint country_id
+        timestamp created_at
+        bigint created_by_id
+        jsonb custom_fields
+        text external_src_name
+        text external_src_ref
+        text local_tax_number
+        text location_code
+        text name
+        text postal_code
+        text state
+        text state_iso_code
+        text street_1
+        text street_2
+        text street_3
+        text street_4
+        timestamp updated_at
+        bigint updated_by_id
+        bigint vat_country_id
+        text vat_number
+    }
+    easy_form_approval_mapping {
+        bigint approval_id PK
+        bigint easy_form_id PK
+    }
+    expense_mileage_region {
+        bigint id PK
+        bigint country_id
+        timestamp created_at
+        jsonb custom_fields
+        text location_id
+        text name
+        timestamp updated_at
+    }
+    easy_form_widget_data {
+        bigint easy_form_widget_id PK
+        bigint id PK
+        bigint created_by_id FK
+        bigint easy_form_id FK
+        bigint easy_form_response_id FK
+        bigint updated_by_id FK
+        jsonb answer
+        timestamp created_at
+        jsonb encrypted_answer
+        text field_name
+        text type
+        timestamp updated_at
+        text widget_label
+        text widget_type
+    }
+    reason_insight_event {
+        bigint id PK
+        bigint contract_id FK
+        text comment
+        timestamp created_at
+        bigint created_by_id
+        jsonb custom_fields
+        bigint eventable_id
+        text eventable_type
+        bigint reason_insight_id
+        timestamp updated_at
+        bigint updated_by_id
+    }
+    user_address_mapping {
+        bigint address_id PK
+        bigint user_id PK
+    }
+    expense_line_allocation {
+        bigint id PK
+        bigint expense_line_id FK
+        bigint account_id
+        double_precision amount
+        timestamp created_at
+        bigint created_by_id
+        jsonb custom_fields
+        double_precision pct
+        boolean read_only
+        timestamp updated_at
+        bigint updated_by_id
+    }
+    account {
+        bigint id PK
+        bigint account_type_id
+        boolean active
+        text code
+        timestamp created_at
+        bigint created_by_id
+        jsonb custom_fields
+        text name
+        text segment_1
+        text segment_10
+        text segment_11
+        text segment_12
+        text segment_13
+        text segment_14
+        text segment_15
+        text segment_16
+        text segment_17
+        text segment_18
+        text segment_19
+        text segment_2
+        text segment_20
+        text segment_3
+        text segment_4
+        text segment_5
+        text segment_6
+        text segment_7
+        text segment_8
+        text segment_9
+        timestamp updated_at
+        bigint updated_by_id
+    }
+    expense_line_per_diem {
+        bigint id PK
+        timestamp created_at
+        jsonb custom_fields
+        text destination
+        timestamp end_at
+        text end_at_timezone
+        timestamp start_at
+        text start_at_timezone
+        timestamp updated_at
+    }
+    warehouse_type {
+        bigint id PK
+        timestamp created_at
+        bigint created_by_id
+        jsonb custom_fields
+        text description
+        text name
+        timestamp updated_at
+        bigint updated_by_id
+    }
+    expense_category {
+        bigint id PK
+        boolean active
+        boolean attendee_tracking_enabled
+        timestamp created_at
+        bigint created_by_id
+        jsonb custom_fields
+        bigint expense_mileage_config_id
+        bigint expense_per_diem_config_id
+        bigint expense_policy_id
+        text name
+        text scope
+        boolean tax_enabled
+        text type
+        timestamp updated_at
+        bigint updated_by_id
+    }
+    country {
+        bigint id PK
+        text code
+        jsonb custom_fields
+        text name
+    }
+    supplier_item {
+        bigint id PK
+        bigint contract_id FK
+        bigint contract_term_id FK
+        bigint created_by_id FK
+        bigint currency_id FK
+        bigint item_id FK
+        bigint supplier_id FK
+        bigint updated_by_id FK
+        text availability
+        timestamp availability_date
+        timestamp created_at
+        jsonb custom_fields
+        bigint lead_time
+        text manufacturer
+        double_precision minimum_order_quantity
+        double_precision order_increment
+        boolean preferred
+        double_precision price
+        text price_change
+        double_precision price_tier_1
+        double_precision price_tier_10
+        double_precision price_tier_11
+        double_precision price_tier_12
+        double_precision price_tier_13
+        double_precision price_tier_14
+        double_precision price_tier_15
+        double_precision price_tier_16
+        double_precision price_tier_17
+        double_precision price_tier_18
+        double_precision price_tier_19
+        double_precision price_tier_2
+        double_precision price_tier_20
+        double_precision price_tier_3
+        double_precision price_tier_4
+        double_precision price_tier_5
+        double_precision price_tier_6
+        double_precision price_tier_7
+        double_precision price_tier_8
+        double_precision price_tier_9
+        double_precision savings_pct
+        text supplier_aux_part_num
+        text supplier_part_num
+        text unspsc_code
+        timestamp updated_at
+    }
+    asset_tag {
+        bigint id PK
+        timestamp created_at
+        bigint created_by_id
+        jsonb custom_fields
+        bigint inventory_balance_id
+        text note
+        bigint order_line_id
+        text owner
+        boolean received
+        bigint requisition_line_id
+        text serial_number
+        text tag
+        timestamp updated_at
+        bigint updated_by_id
+    }
+    expense_preapproval {
+        bigint id PK
+        bigint available_amount_currency_id FK
+        bigint created_by_id FK
+        bigint currency_id FK
+        bigint for_user_id FK
+        bigint updated_by_id FK
+        double_precision amount
+        boolean available
+        double_precision available_amount
+        timestamp created_at
+        jsonb custom_fields
+        text description
+        timestamp end_date
+        timestamp start_date
+        text type
+        timestamp updated_at
+    }
+    quote_request_business_group_mapping {
+        bigint business_group_id PK
+        bigint quote_request_id PK
+    }
+    expense_per_diem_deduction {
+        bigint id PK
+        bigint expense_per_diem_config_id FK
+        timestamp created_at
+        jsonb custom_fields
+        timestamp effective_date
+        boolean enabled
+        bigint expense_per_diem_deduction_type_id
+        text label
+        timestamp updated_at
+    }
+    registered_company {
+        bigint id PK
+        text authorized_person_address
+        text authorized_person_name
+        text authorized_person_vat_id
+        text chairman_of_the_board
+        text commercial_register_number
+        text company_registration_number
+        text company_type
+        bigint country_id
+        text court_of_registration
+        timestamp created_at
+        jsonb custom_fields
+        timestamp date_of_registration
+        text legal_type
+        text liable_company
+        text license_number
+        text liquidation_remark
+        text liquidator_name
+        text managing_directors
+        text name
+        text permit_date
+        text permit_number
+        text place_of_registration
+        text register_legal_entities
+        text registered_seat
+        text registration_authority
+        text share_capital
+        text sole_registration_code
+        text tax_regime
+        text unique_shareholder
+        timestamp updated_at
+    }
+    user_group_membership {
+        bigint id PK
+        bigint user_group_id FK
+        bigint user_id FK
+        timestamp created_at
+        jsonb custom_fields
+        boolean owner
+        boolean participant
+        timestamp updated_at
+    }
+    supplier_business_group_mapping {
+        bigint business_group_id PK
+        bigint supplier_id PK
+    }
+    cp_payment {
+        bigint id PK
+        bigint created_by_id FK
+        bigint pay_from_account_id FK
+        bigint pay_from_currency_id FK
+        bigint pay_to_account_id FK
+        bigint pay_to_currency_id FK
+        bigint reporting_currency_id FK
+        bigint updated_by_id FK
+        timestamp created_at
+        jsonb custom_fields
+        text digital_check_check_number
+        bigint digital_check_id
+        text digital_check_status
+        text error_text
+        double_precision exchange_rate
+        boolean exported
+        bigint external_ref_id
+        timestamp last_exported_at
+        bigint line_num
+        double_precision pay_from_total
+        double_precision pay_to_total
+        text payment_batch_description
+        bigint payment_batch_id
+        text payment_batch_status
+        timestamp released_at
+        double_precision reporting_pay_from_total
+        double_precision reporting_pay_to_total
+        text status
+        timestamp updated_at
+    }
+    address_tax_registration_relation {
+        bigint address_id PK
+        bigint tax_registration_id PK
+    }
+    remit_to_address_tax_registration_mapping {
+        bigint remit_to_address_id PK
+        bigint tax_registration_id PK
+    }
+    user_address {
+        bigint id PK
+        boolean active
+        text attention
+        text business_group_name
+        text city
+        bigint country_id
+        timestamp created_at
+        bigint created_by_id
+        jsonb custom_fields
+        text external_src_name
+        text external_src_ref
+        text local_tax_number
+        text location_code
+        text name
+        text postal_code
+        text state
+        text state_iso_code
+        text street_1
+        text street_2
+        text street_3
+        text street_4
+        timestamp updated_at
+        bigint updated_by_id
+        bigint vat_country_id
+        text vat_number
+    }
+    contract_type {
+        bigint id PK
+        boolean active
+        timestamp created_at
+        bigint created_by_id
+        jsonb custom_fields
+        text description
+        text name
+        timestamp updated_at
+        bigint updated_by_id
+    }
+    inventory_organization_warehouse_mapping {
+        bigint inventory_organization_id PK
+        bigint warehouse_id PK
+    }
+    user_account_group_mapping {
+        bigint account_group_id PK
+        bigint user_id PK
+    }
+    expense_trip_mileage_allocation {
+        bigint id PK
+        bigint expense_trip_mileage_id PK
+        text allocation_applied_distance_distance
+        text allocation_applied_distance_unit
+        text allocation_applied_rate_amount
+        text allocation_applied_rate_currency_code
+        timestamp created_at
+        jsonb custom_fields
+        bigint expense_mileage_rate_type_id
+        timestamp updated_at
+    }
+    upload_error {
+        bigint id PK
+        timestamp created_at
+        bigint created_by_id
+        jsonb custom_fields
+        jsonb field_errors
+        text field_with_error
+        text first_column
+        bigint row
+        text type
+        timestamp updated_at
+        bigint updated_by_id
+        text value
+    }
+    expense_trip_mileage {
+        bigint id PK
+        timestamp created_at
+        jsonb custom_fields
+        bigint expense_mileage_region_id
+        bigint expense_mileage_vehicle_type_id
+        text original_distance
+        bigint passenger_count
+        text total_distance
+        text total_distance_unit
+        timestamp updated_at
+    }
+    supplier_contact_mapping {
+        bigint contact_id PK
+        bigint supplier_id PK
+    }
+    tax_rate_type {
+        bigint id PK
+        boolean active
+        bigint country_id
+        timestamp created_at
+        bigint created_by_id
+        jsonb custom_fields
+        text description
+        timestamp effective_date
+        timestamp expiration_date
+        timestamp updated_at
+        bigint updated_by_id
+    }
+    approver_group_user_mapping {
+        bigint approver_id PK
+        bigint user_id PK
+    }
+    expense_line_mileage {
+        bigint id PK
+        timestamp created_at
+        jsonb custom_fields
+        text description
+        double_precision distance
+        text distance_unit
+        text end_address
+        bigint expense_mileage_region_id
+        bigint expense_mileage_vehicle_type_id
+        text name
+        bigint passenger_count
+        boolean round_trip
+        text start_address
+        timestamp updated_at
+    }
+    order_line_allocation {
+        bigint id PK
+        bigint order_line_id FK
+        bigint account_id
+        double_precision amount
+        timestamp created_at
+        bigint created_by_id
+        jsonb custom_fields
+        double_precision pct
+        timestamp updated_at
+        bigint updated_by_id
+    }
+    invoice_line {
+        bigint id PK
+        bigint invoice_header_id PK
+        bigint order_line_commodity_id FK
+        bigint order_line_id FK
+        bigint account_id
+        double_precision accounting_total
+        bigint accounting_total_currency_id
+        text billing_note
+        bigint bulk_price_id
+        text category
+        bigint commodity_id
+        text company_uom
+        bigint contract_id
+        timestamp created_at
+        bigint created_by_id
+        bigint currency_id
+        jsonb custom_fields
+        text customs_declaration_number
+        text deductibility
+        text delivery_note_number
+        text description
+        double_precision discount_amount
+        text end_date
+        double_precision handling_distribution_total
+        text hsn_sac_code
+        bigint line_num
+        text line_type
+        text match_reference
+        double_precision misc_distribution_total
+        double_precision net_weight
+        text order_header_num
+        text order_line_num
+        text order_line_source_part_num
+        text original_date_of_supply
+        bigint period_id
+        text po_number
+        double_precision price
+        double_precision price_per_uom
+        text property_tax_account
+        double_precision quantity
+        double_precision shipping_distribution_total
+        text source_part_num
+        text start_date
+        text status
+        text subcategory
+        double_precision tax_amount
+        text tax_amount_engine
+        bigint tax_code_id
+        text tax_description
+        double_precision tax_distribution_total
+        text tax_location
+        text tax_rate
+        timestamp tax_supply_date
+        double_precision total
+        text type
+        text unspsc
+        bigint uom_id
+        timestamp updated_at
+        bigint updated_by_id
+        bigint weight_uom_id
+    }
+    warehouse_location {
+        bigint id PK
+        bigint warehouse_id FK
+        text aisle
+        text bin
+        timestamp created_at
+        bigint created_by_id
+        jsonb custom_fields
+        text level
+        text name
+        timestamp updated_at
+        bigint updated_by_id
+        text warehouse_name
+    }
+    expense_report_preapproval {
+        bigint id PK
+        bigint expense_report_id FK
+        double_precision amount
+        timestamp created_at
+        bigint currency_id
+        jsonb custom_fields
+        bigint expense_preapproval_id
+        timestamp updated_at
+    }
+    budget_line {
+        bigint id PK
+        double_precision amount
+        timestamp created_at
+        bigint created_by_id
+        bigint currency_id
+        jsonb custom_fields
+        text description
+        boolean error_on_overrun
+        text notes
+        bigint overrun_calculation
+        bigint owner_id
+        bigint owner_is_approver
+        bigint period_id
+        double_precision remaining
+        double_precision remaining_budget
+        text segment_1
+        text segment_10
+        text segment_11
+        text segment_12
+        text segment_13
+        text segment_14
+        text segment_15
+        text segment_16
+        text segment_17
+        text segment_18
+        text segment_19
+        text segment_2
+        text segment_20
+        text segment_3
+        text segment_4
+        text segment_5
+        text segment_6
+        text segment_7
+        text segment_8
+        text segment_9
+        timestamp updated_at
+        bigint updated_by_id
+    }
+    dispute_reason {
+        bigint id PK
+        bigint invoice_header_id PK
+        text code
+        timestamp created_at
+        bigint created_by_id
+        jsonb custom_fields
+        text description
+        timestamp updated_at
+        bigint updated_by_id
+    }
+    invoice_header {
+        bigint id PK
+        bigint abandon_reason_id
+        bigint account_type_id
+        double_precision advance_payment_received_amount
+        double_precision amount_due
+        bigint bill_to_address_id
+        bigint buyer_tax_registration_id
+        boolean canceled
+        text cash_accounting_scheme_reference
+        text channel
+        text clearance_document
+        text comments
+        boolean compliant
+        text confirmation
+        bigint contract_id
+        text coupa_accelerate_status
+        timestamp created_at
+        bigint created_by_id
+        double_precision credit_note_differences_with_original_invoice
+        text credit_reason
+        bigint currency_id
+        jsonb custom_fields
+        double_precision customer_accounting_tax
+        timestamp customs_declaration_date
+        text customs_declaration_number
+        text customs_office
+        timestamp date_of_discovery_of_facts_decisive_for_correction
+        timestamp date_received
+        timestamp delivery_date
+        text delivery_number
+        bigint destination_country_id
+        double_precision discount_amount
+        timestamp discount_due_date
+        double_precision discount_percent
+        text dispute_method
+        text document_type
+        text early_payment_provisions
+        double_precision exchange_rate
+        boolean exported
+        text folio_number
+        text form_of_payment
+        double_precision gross_total
+        double_precision handling_amount
+        text image_scan
+        text image_scan_url
+        text inbox_name
+        text internal_note
+        timestamp invoice_date
+        bigint invoice_from_address_id
+        text invoice_number
+        text issuance_place
+        text last_exported_at
+        text late_payment_penalties
+        bigint legal_destination_country_id
+        boolean line_level_taxation
+        bigint lock_version_key
+        text margin_scheme
+        double_precision misc_amount
+        text net_due_date
+        bigint origin_country_id
+        double_precision origin_currency_gross
+        double_precision origin_currency_net
+        timestamp original_invoice_date
+        text original_invoice_number
+        boolean paid
+        text payment_channel
+        timestamp payment_date
+        text payment_method
+        text payment_notes
+        text payment_order_reference
+        bigint payment_term_id
+        bigint remit_to_address_id
+        bigint requested_by_id
+        text reverse_charge_reference
+        text self_billing_reference
+        text sender_email
+        text series
+        bigint ship_from_address_id
+        bigint ship_to_address_id
+        double_precision shipping_amount
+        bigint shipping_term_id
+        boolean show_tax_information
+        text status
+        text supplier_created
+        bigint supplier_id
+        text supplier_note
+        bigint supplier_remit_to_id
+        bigint supplier_tax_registration_id
+        double_precision supplier_total
+        double_precision tax_amount
+        text tax_amount_engine
+        bigint tax_code_id
+        double_precision tax_due_to_supplier
+        text tax_rate
+        double_precision taxes_in_origin_country_currency
+        text tolerance_failures
+        double_precision total_with_taxes
+        text type_of_receipt
+        text type_of_relationship
+        timestamp updated_at
+        bigint updated_by_id
+        text use_of_invoice
+        double_precision withholding_tax_override
+    }
+    expense_report_approval_mapping {
+        bigint approval_id PK
+        bigint expense_report_id PK
+    }
+    supplier_address {
+        bigint id PK
+        boolean active
+        text attention
+        text business_group_name
+        text city
+        bigint country_id
+        timestamp created_at
+        bigint created_by_id
+        jsonb custom_fields
+        text external_src_name
+        text external_src_ref
+        text local_tax_number
+        text location_code
+        text name
+        text postal_code
+        text state
+        text state_iso_code
+        text street_1
+        text street_2
+        text street_3
+        text street_4
+        timestamp updated_at
+        bigint updated_by_id
+        bigint vat_country_id
+        text vat_number
+    }
+    matching_allocation {
+        bigint id PK
+        bigint asn_line_id FK
+        bigint inventory_transaction_id FK
+        bigint invoice_line_id FK
+        bigint order_line_id FK
+        bigint uom_id FK
+        double_precision amount
+        timestamp created_at
+        jsonb custom_fields
+        text inventory_transaction_match_reference
+        double_precision invoice_line_total
+        bigint manual_match
+        double_precision quantity
+        text status
+        text status_reason
+        timestamp updated_at
+    }
+    expense_per_diem_time_range_condition {
+        bigint id PK
+        text conjunction
+        timestamp created_at
+        jsonb custom_fields
+        timestamp end_after
+        timestamp end_before
+        timestamp start_after
+        timestamp start_before
+        timestamp updated_at
+    }
+    inventory_transaction {
+        bigint id PK
+        bigint account_id
+        bigint asn_header_id
+        bigint asn_line_id
+        text barcode
+        timestamp created_at
+        bigint created_by_id
+        bigint currency_id
+        jsonb custom_fields
+        boolean exported
+        bigint from_warehouse_id
+        bigint from_warehouse_location_id
+        bigint inspection_code_id
+        bigint item_id
+        timestamp last_exported_at
+        text match_reference
+        bigint order_line_id
+        double_precision price
+        double_precision quantity
+        bigint receipt_id
+        bigint receipts_batch_id
+        double_precision received_weight
+        text rfid_tag
+        boolean soft_close_for_receiving
+        text status
+        bigint to_warehouse_id
+        bigint to_warehouse_location_id
+        double_precision total
+        timestamp transaction_date
+        text type
+        bigint uom_id
+        timestamp updated_at
+    }
+    enterprise {
+        bigint id PK
+        boolean active_flag
+        text code
+        timestamp created_at
+        bigint created_by_id
+        jsonb custom_fields
+        text description
+        text name
+        boolean system_flag
+        text tax_coding_enabled
+        timestamp updated_at
+        bigint updated_by_id
+        text vendor_remit_to_required
+    }
+    expense_policy {
+        bigint id PK
+        boolean active
+        boolean allow_divisor
+        boolean allow_divisor_end_date
+        boolean allow_itemization
+        timestamp created_at
+        bigint created_by_id
+        jsonb custom_fields
+        text divisor_end_name
+        text divisor_start_name
+        text divisor_uom_name
+        double_precision limit_amount
+        text limit_type
+        boolean requires_receipt
+        boolean restrict_itemization_categories
+        text summary
+        text text
+        timestamp updated_at
+        bigint updated_by_id
+    }
+    order_header_attachment_mapping {
+        bigint attachment_id PK
+        bigint order_header_id PK
+    }
+    supplier {
+        bigint id PK
+        text account_number
+        boolean allow_change_requests
+        text allow_csp_access_without_two_factor
+        boolean allow_cxml_invoicing
+        boolean allow_inv_choose_billing_account
+        boolean allow_inv_from_connect
+        boolean allow_inv_no_backing_doc_from_connect
+        boolean allow_inv_unbacked_lines_from_connect
+        boolean buyer_hold
+        bigint commodity_id
+        text corporate_url
+        text coupa_connect_secret
+        timestamp created_at
+        bigint created_by_id
+        jsonb custom_fields
+        text cxml_domain
+        text cxml_http_password
+        text cxml_http_username
+        text cxml_identity
+        text cxml_invoice_buyer_domain
+        text cxml_invoice_buyer_identity
+        text cxml_invoice_secret
+        text cxml_invoice_supplier_domain
+        text cxml_invoice_supplier_identity
+        text cxml_protocol
+        text cxml_secret
+        text cxml_ssl_version
+        text cxml_supplier_domain
+        text cxml_supplier_identity
+        text cxml_url
+        text default_locale
+        boolean disable_cert_verify
+        text display_name
+        text duns
+        bigint enterprise_id
+        boolean hold_invoices_for_ap_review
+        text invoice_matching_level
+        text name
+        text number
+        boolean on_hold
+        bigint parent_id
+        text payment_method
+        bigint payment_term_id
+        text po_change_method
+        text po_email
+        text po_method
+        bigint primary_address_id
+        bigint primary_contact_id
+        double_precision savings_pct
+        boolean send_invoices_to_approvals
+        bigint shipping_term_id
+        text status
+        text storefront_url
+        bigint tax_code_id
+        text tax_id
+        timestamp updated_at
+        bigint updated_by_id
+        text website
+    }
+    supplier_address_mapping {
+        bigint address_id PK
+        bigint supplier_id PK
+    }
+    tax_registration {
+        bigint id PK
+        boolean active
+        bigint country_id
+        timestamp created_at
+        bigint created_by_id
+        jsonb custom_fields
+        boolean local
+        text number
+        bigint owner_id
+        text owner_type
+        timestamp updated_at
+        bigint updated_by_id
+    }
+    supplier_information {
+        bigint id PK
+        text commodity_id FK
+        bigint currency_id FK
+        bigint default_commodity_id FK
+        bigint payment_term_id FK
+        bigint shipping_term_id FK
+        bigint supplier_id FK
+        bigint tax_code_id FK
+        bigint user_id FK
+        boolean allow_cxml_invoicing
+        boolean allow_inv_choose_billing_account
+        boolean allow_inv_from_connect
+        boolean allow_inv_no_backing_doc_from_connect
+        boolean allow_inv_unbacked_lines_from_connect
+        text backend_system_catalog
+        text backend_system_invoicing
+        boolean buyer_hold
+        bigint buyer_id
+        jsonb classification_detail
+        text comment
+        text comment_source
+        bigint country_of_operation_id
+        timestamp created_at
+        bigint created_by_id
+        jsonb custom_fields
+        text cxml_domain
+        text cxml_http_username
+        text cxml_identity
+        text cxml_protocol
+        text cxml_secret
+        text cxml_ssl_version
+        text cxml_supplier_domain
+        text cxml_supplier_identity
+        text cxml_url
+        text default_invoice_email
+        boolean disable_cert_verify
+        text display_name
+        jsonb diversities
+        text duns_number
+        boolean duplicate_exists
+        jsonb enterprise_detail
+        double_precision estimated_spend_amount
+        boolean fed_reportable
+        text federal_tax_num
+        text goods_services_provided
+        text govt_agency_interaction
+        boolean govt_agency_interaction_indicator
+        text govt_allegation_fraud_bribery
+        boolean govt_allegation_fraud_bribery_indicator
+        boolean hold_invoices_for_ap_review
+        text hold_payment
+        boolean hold_payment_indicator
+        text inbound_invoice_domain
+        text inco_terms
+        text income_type
+        text industry
+        jsonb insurance_detail
+        text intl_other_explanation
+        text intl_tax_classification
+        text intl_tax_num
+        text invoice_amount_limit
+        text invoice_inbound_emails
+        text invoice_matching_level
+        text last_exported_at
+        text logo_content_type
+        text logo_file_name
+        bigint logo_file_size
+        timestamp logo_updated_at
+        bigint minority_designation_id
+        boolean minority_indicator
+        bigint minority_type_id
+        text name
+        boolean one_time_supplier
+        text organization_type
+        text parent_company_name
+        text pay_group
+        bigint payment_terms_id
+        text po_change_method
+        text po_email
+        text po_method
+        text policy_for_bribery_corruption
+        boolean policy_for_bribery_corruption_indicator
+        bigint preferred_currency_id
+        bigint preferred_language_id
+        jsonb risk_detail
+        double_precision savings_pct
+        boolean scope_three_emissions
+        boolean send_invoices_to_approvals
+        boolean separate_remit_to
+        text status
+        text supplier_name
+        text supplier_number
+        text supplier_region
+        text tax_classification
+        jsonb tax_detail
+        text tax_exempt_other_explanation
+        text tax_region
+        text third_party_interaction
+        boolean third_party_interaction_indicator
+        timestamp updated_at
+        bigint updated_by_id
+        text website
+    }
+    inventory_transaction_valuation {
+        bigint id PK
+        bigint inventory_transaction_id FK
+        jsonb custom_fields
+        double_precision price
+        double_precision quantity
+        bigint uom_id
+    }
+    order_pad_line {
+        bigint id PK
+        bigint order_pad_id PK
+        bigint supplier_id FK
+        double_precision amount
+        timestamp created_at
+        bigint created_by_id
+        jsonb custom_fields
+        bigint item_id
+        boolean key_item
+        text order_amount_method
+        bigint order_pad_section_id
+        double_precision par_level
+        bigint position
+        timestamp updated_at
+        bigint updated_by_id
+    }
+    order_pad_section {
+        bigint id PK
+        timestamp created_at
+        jsonb custom_fields
+        text name
+        bigint position
+        timestamp updated_at
+    }
+    item {
+        bigint id PK
+        boolean active
+        boolean allow_partial_quantity
+        bigint commodity_id
+        bigint connect_item_id
+        bigint consumption_quantity
+        bigint consumption_uom_id
+        timestamp created_at
+        bigint created_by_id
+        jsonb custom_fields
+        text description
+        text external_image_url
+        text image_url
+        boolean inventory_lot_tracking_enabled
+        text item_number
+        text item_type
+        text manufacturer_name
+        text manufacturer_part_number
+        text name
+        double_precision net_weight
+        bigint net_weight_uom_id
+        double_precision pack_qty
+        bigint pack_uom_id
+        double_precision pack_weight
+        boolean receive_catch_weight
+        bigint receiving_form_id
+        double_precision reorder_point
+        boolean require_asset_tag
+        boolean require_inspection
+        bigint storage_quantity
+        bigint storage_uom_id
+        bigint uom_id
+        timestamp updated_at
+        bigint updated_by_id
+        boolean use_pack_weight
+    }
+    expense_policy_violation {
+        bigint id PK
+        bigint expense_report_id FK
+        timestamp created_at
+        bigint created_by_id
+        jsonb custom_fields
+        double_precision limit_exceeded
+        boolean receipt_missing
+        timestamp updated_at
+        bigint updated_by_id
+    }
+    user_group_user_mapping {
+        bigint user_group_id PK
+        bigint user_id PK
+    }
+    approver {
+        bigint id PK
+        bigint approval_id PK
+        boolean active
+        text approver_type
+        boolean can_approve
+        timestamp created_at
+        bigint created_by_id
+        text description
+        text mention_name
+        text name
+        boolean open
+        text type
+        timestamp updated_at
+        bigint updated_by_id
+    }
+    account_validation_rule {
+        bigint id PK
+        bigint account_type_id
+        boolean active
+        timestamp created_at
+        bigint created_by_id
+        jsonb custom_fields
+        text description
+        text error_message
+        text name
+        text segment_10_condition
+        text segment_10_max
+        text segment_11_condition
+        text segment_11_max
+        text segment_11_min
+        text segment_12_condition
+        text segment_12_max
+        text segment_12_min
+        text segment_13_condition
+        text segment_13_max
+        text segment_13_min
+        text segment_14_condition
+        text segment_14_max
+        text segment_14_min
+        text segment_15_condition
+        text segment_15_max
+        text segment_15_min
+        text segment_16_condition
+        text segment_16_max
+        text segment_16_min
+        text segment_17_condition
+        text segment_17_max
+        text segment_17_min
+        text segment_18_condition
+        text segment_18_max
+        text segment_18_min
+        text segment_19_condition
+        text segment_19_max
+        text segment_19_min
+        text segment_1_condition
+        text segment_1_max
+        text segment_1_min
+        text segment_20_condition
+        text segment_20_max
+        text segment_20_min
+        text segment_2_condition
+        text segment_2_max
+        text segment_2_min
+        text segment_3_condition
+        text segment_3_max
+        text segment_3_min
+        text segment_4_condition
+        text segment_4_max
+        text segment_4_min
+        text segment_5_condition
+        text segment_5_max
+        text segment_5_min
+        text segment_6_condition
+        text segment_6_max
+        text segment_6_min
+        text segment_7_condition
+        text segment_7_max
+        text segment_7_min
+        text segment_8_condition
+        text segment_8_max
+        text segment_8_min
+        text segment_9_condition
+        text segment_9_max
+        text segment_9_min
+        timestamp updated_at
+        bigint updated_by_id
+    }
+    payment {
+        bigint id PK
+        double_precision amount_paid
+        text check_number
+        timestamp created_at
+        bigint created_by_id
+        jsonb custom_fields
+        text notes
+        bigint payable_id
+        text payable_type
+        timestamp payment_date
+        timestamp updated_at
+        bigint updated_by_id
+    }
+    user_can_expense_for_mapping {
+        bigint can_expense_for_id PK
+        bigint user_id PK
+    }
+    reason_insight {
+        bigint id PK
+        text code
+        timestamp created_at
+        bigint created_by_id
+        jsonb custom_fields
+        text description
+        text reason_type
+        timestamp updated_at
+        bigint updated_by_id
+    }
+    user_role_mapping {
+        bigint role_id PK
+        bigint user_id PK
+    }
+    order_line_asset_tag_mapping {
+        bigint asset_tag_id PK
+        bigint order_line_id PK
+    }
+    supplier_information_artifact {
+        bigint id PK
+        bigint supplier_information_id PK
+        bigint supplier_id FK
+        text artifact_meta_type
+        text artifact_type
+        timestamp created_at
+        bigint created_by_id
+        text description
+        timestamp effective_date
+        timestamp expiry_date
+        text type
+        timestamp updated_at
+        bigint updated_by_id
+    }
+    data_file_source {
+        bigint id PK
+        timestamp created_at
+        bigint created_by_id
+        jsonb custom_fields
+        timestamp end_time
+        text file_content_type
+        text file_file_name
+        text file_file_size
+        bigint integration_id
+        bigint integration_run_id
+        bigint progress
+        bigint records_count
+        bigint records_created
+        bigint records_updated
+        text result_text
+        text source_for
+        timestamp start_time
+        text status
+        text type
+        timestamp updated_at
+        bigint updated_by_id
+        bigint upload_error_count
+    }
+    business_group {
+        bigint id PK
+        timestamp created_at
+        bigint created_by_id
+        jsonb custom_fields
+        text description
+        text name
+        timestamp updated_at
+        bigint updated_by_id
+    }
+    expense_mileage_rate_type {
+        bigint id PK
+        timestamp created_at
+        jsonb custom_fields
+        text name
+        text rate_type
+        timestamp updated_at
+    }
+    withholding_tax_line {
+        bigint id PK
+        bigint invoice_line_id FK
+        double_precision amount
+        double_precision base
+        double_precision basis
+        text code
+        bigint code_id
+        timestamp created_at
+        bigint created_by_id
+        jsonb custom_fields
+        text kind_of_factor
+        text nature_of_tax
+        double_precision rate
+        double_precision supplier_rate
+        bigint tax_code_id
+        double_precision taxable_amount
+        text type
+        timestamp updated_at
+        bigint updated_by_id
+        double_precision withholding_amount
+    }
+    quote_request_lot {
+        bigint id PK
+        jsonb custom_fields
+        bigint expected_quantity
+        text name
+    }
+    bulk_price {
+        bigint id PK
+        double_precision conversion_denominator
+        double_precision conversion_numerator
+        jsonb custom_fields
+        double_precision price
+        double_precision qty
+        bigint uom_id
+    }
+    supplier_remit_to {
+        bigint id PK
+        text city
+        text company_registration_number
+        bigint country_id
+        timestamp created_at
+        jsonb custom_fields
+        text disclosure
+        text name
+        text postal_code
+        text preferred_language
+        bigint registered_company_id
+        text state
+        text street_1
+        text street_2
+        text supplier_name
+        text tax_number
+        text tax_prefix
+        timestamp updated_at
+    }
+    inventory_transaction_asset_tag_mapping {
+        bigint asset_tag_id PK
+        bigint inventory_transaction_id PK
+    }
+    form {
+        bigint id PK
+        bigint quote_request_id FK
+        timestamp created_at
+        bigint created_by_id
+        jsonb custom_fields
+        text form_type
+        text name
+        text status
+        timestamp updated_at
+        bigint updated_by_id
+    }
+    integration {
+        bigint id PK
+        text business_object
+        text code
+        timestamp created_at
+        jsonb custom_fields
+        text direction
+        text end_system
+        text end_system_type
+        text integration_type
+        text name
+        boolean standard
+        timestamp updated_at
+    }
+    quote_supplier {
+        bigint id PK
+        bigint quote_request_id FK
+        text contact_name
+        timestamp created_at
+        bigint created_by_id
+        jsonb custom_fields
+        text display_name
+        text email
+        text name
+        bigint supplier_id
+        timestamp updated_at
+        bigint updated_by_id
+    }
+    inventory_transaction_attachment_mapping {
+        bigint attachment_id PK
+        bigint inventory_transaction_id PK
+    }
+    budget_line_adjustment {
+        bigint id PK
+        bigint budget_line_id FK
+        double_precision accounting_total
+        bigint adjuster_id
+        text adjuster_type
+        double_precision adjustment_amount
+        double_precision amount
+        double_precision budget_remaining
+        timestamp created_at
+        bigint created_by_id
+        bigint currency_id
+        text description
+        double_precision price
+        double_precision quantity
+        text reason
+    }
+    payment_partner {
+        bigint id PK
+        bigint created_by_id FK
+        bigint currency_id FK
+        bigint support_contact_id FK
+        bigint updated_by_id FK
+        text code
+        timestamp created_at
+        jsonb custom_fields
+        text description
+        boolean is_active
+        boolean is_default
+        boolean is_deleted
+        text issuing_bank
+        text name
+        text payment_partner_type
+        text type
+        timestamp updated_at
+    }
+    user_working_warehouse_mapping {
+        bigint user_id PK
+        bigint warehouse_id PK
+    }
+    commodity_translation {
+        bigint id PK
+        bigint commodity_id
+        timestamp created_at
+        jsonb custom_fields
+        text locale
+        text name
+        timestamp updated_at
+    }
+    supplier_information_contact_mapping {
+        bigint contact_id PK
+        bigint supplier_information_id PK
+    }
+    warehouse {
+        bigint id PK
+        bigint address_id FK
+        boolean active_flag
+        timestamp created_at
+        bigint created_by_id
+        bigint currency_id
+        jsonb custom_fields
+        text description
+        text name
+        timestamp updated_at
+        bigint updated_by_id
+        bigint warehouse_type_id
+    }
+    quote_request_attachment {
+        bigint id PK
+        bigint quote_request_id FK
+        boolean allow_to_respond
+        jsonb custom_fields
+        text instruction
+        text name
+        boolean response_required
+    }
+    expense_mileage_tier_rule {
+        bigint id PK
+        bigint expense_mileage_config_id FK
+        timestamp created_at
+        jsonb custom_fields
+        bigint distance_range_start
+        bigint expense_mileage_rate_type_id
+        text name
+        timestamp updated_at
+    }
+    quote_request_line {
+        bigint id PK
+        bigint commodity_id FK
+        bigint quote_request_id FK
+        bigint quote_request_lot_id FK
+        bigint creatable_form_id
+        text creatable_form_type
+        timestamp created_at
+        bigint created_by_id
+        jsonb custom_fields
+        text description
+        bigint extra_line_attribute_id
+        text need_by_date
+        double_precision price_amount
+        bigint price_currency_id
+        double_precision quantity
+        double_precision reporting_price_amount
+        text type
+        bigint uom_id
+        timestamp updated_at
+        bigint updated_by_id
+        bigint weight
+    }
+    tax_line {
+        bigint id PK
+        bigint charge_id FK
+        bigint invoice_line_id FK
+        double_precision amount
+        double_precision base
+        text code
+        bigint code_id
+        timestamp created_at
+        bigint created_by_id
+        jsonb custom_fields
+        text description
+        text kind_of_factor
+        text nature_of_tax
+        double_precision rate
+        double_precision supplier_rate
+        bigint tax_code_id
+        double_precision taxable_amount
+        text type
+        timestamp updated_at
+        bigint updated_by_id
+        double_precision withholding_amount
+    }
+    requisition_header_approval_mapping {
+        bigint approval_id PK
+        bigint requisition_header_id PK
+    }
+    role {
+        bigint id PK
+        timestamp created_at
+        bigint created_by_id
+        jsonb custom_fields
+        text description
+        text name
+        boolean omnipotent
+        boolean system_role
+        timestamp updated_at
+        bigint updated_by_id
+    }
+    invoice_header_approval_mapping {
+        bigint approval_id PK
+        bigint invoice_header_id PK
+    }
+    tax_code {
+        bigint id PK
+        boolean active
+        text code
+        bigint country_id
+        timestamp created_at
+        bigint created_by_id
+        jsonb custom_fields
+        text description
+        timestamp effective_date
+        double_precision percentage
+        bigint tax_rate_id
+        timestamp updated_at
+        bigint updated_by_id
+    }
+    expense_line_tax {
+        bigint id PK
+        bigint expense_line_id FK
+        double_precision amount
+        bigint country_id
+        timestamp created_at
+        bigint created_by_id
+        bigint currency_id
+        jsonb custom_fields
+        double_precision std_amount
+        bigint tax_code_id
+        timestamp updated_at
+        bigint updated_by_id
+    }
+    contract {
+        bigint id PK
+        text amended_contract_type
+        boolean auto_extend_end_date_for_renewal
+        bigint clma_id
+        text consent
+        bigint contract_owner_id
+        text contract_type_custom_field_1
+        text contract_type_custom_field_10
+        text contract_type_custom_field_2
+        text contract_type_custom_field_3
+        text contract_type_custom_field_4
+        text contract_type_custom_field_5
+        text contract_type_custom_field_6
+        text contract_type_custom_field_7
+        text contract_type_custom_field_8
+        text contract_type_custom_field_9
+        bigint contract_type_id
+        timestamp created_at
+        bigint created_by_id
+        bigint currency_id
+        bigint current_approval_id
+        jsonb custom_fields
+        bigint default_account_id
+        bigint department_id
+        text description
+        timestamp end_date
+        timestamp execution_date
+        text external_contract_id
+        boolean fill_with_counterparty
+        boolean is_default
+        text legal_agreement_url
+        text length_of_notice_unit
+        text length_of_notice_value
+        bigint master_contract_id
+        double_precision max_commit
+        double_precision maximum_value
+        double_precision min_commit
+        double_precision minimum_value
+        text name
+        text no_of_renewals
+        text number
+        text order_window_tz
+        bigint parent_id
+        bigint payment_term_id
+        text po_message
+        boolean preferred
+        bigint proxy_supplier_id
+        text published_date
+        bigint quote_response_id
+        text renewal_length_unit
+        text renewal_length_value
+        text requisition_message
+        double_precision savings_pct
+        bigint shipping_term_id
+        text source
+        text source_id
+        text source_type
+        timestamp start_date
+        text status
+        text stop_spend_based_on_max_value
+        boolean strict_invoicing_rules
+        bigint submitter_id
+        text supplier_account
+        bigint supplier_id
+        boolean supplier_invoiceable
+        text term_type
+        boolean terminated
+        text termination_notice
+        text termination_notice_length_unit
+        text termination_notice_length_value
+        text terms
+        text type
+        timestamp updated_at
+        bigint updated_by_id
+        boolean use_online_signing
+        boolean use_order_window
+        boolean used_for_buying
+        bigint version
+        text whose_paper
+    }
+    comment {
+        bigint id PK
+        bigint created_by_id FK
+        bigint commentable_id
+        text commentable_type
+        text comments
+        timestamp created_at
+        jsonb custom_fields
+        text reason_code
+        boolean to_supplier
+        text type
+        timestamp updated_at
+        bigint updated_by_id
+    }
+    receipt {
+        bigint id PK
+        timestamp created_at
+        bigint created_by_id
+        bigint currency_id
+        jsonb custom_fields
+        boolean exported
+        double_precision quantity
+        timestamp receipt_date
+        text receivable
+        bigint receivable_id
+        text receivable_type
+        double_precision total
+        double_precision unit_price
+        bigint uom_id
+        timestamp updated_at
+        bigint updated_by_id
+    }
+    asn_header {
+        bigint id PK
+        text asn_number
+        text bill_of_landing
+        text container
+        timestamp created_at
+        bigint created_by_id
+        jsonb custom_fields
+        timestamp delivery_date
+        boolean export_flag
+        double_precision gross_weight
+        text packing_slip
+        text ship_date
+        text ship_method
+        text ship_note
+        bigint ship_to_address_id
+        bigint ship_to_user_id
+        bigint ship_to_warehouse_id
+        text standard_carrier_alpha_code
+        text status
+        bigint supplier_id
+        text tracking_number
+        text trailer
+        text uom
+        timestamp updated_at
+        bigint updated_by_id
+    }
+    user_expenses_delegated_to_mapping {
+        bigint expenses_delgated_to_id PK
+        bigint user_id PK
+    }
+    unit_of_measure {
+        bigint id PK
+        boolean active
+        bigint allowable_precision
+        text code
+        timestamp created_at
+        bigint created_by_id
+        jsonb custom_fields
+        text name
+        timestamp updated_at
+        bigint updated_by_id
+    }
+    inventory_organization {
+        bigint id PK
+        bigint user_id FK
+        timestamp created_at
+        bigint currency_id
+        jsonb custom_fields
+        text fulfillment_type
+        timestamp updated_at
+    }
+    punchout_site {
+        bigint id PK
+        bigint created_by_id FK
+        bigint updated_by_id FK
+        bigint contract_id
+        timestamp created_at
+        jsonb custom_fields
+        boolean disable_cert_verify
+        text domain
+        text identity
+        boolean is_from_coupa_checkout
+        text name
+        text protocol
+        text secret
+        text sender_domain
+        text sender_identity
+        text ssl_version
+        bigint supplier_id
+        boolean supports_edit
+        boolean supports_inspect
+        timestamp updated_at
+        text url
+    }
+    expense_trip_segment {
+        bigint id PK
+        bigint expense_trip_mileage_id PK
+        timestamp created_at
+        jsonb custom_fields
+        timestamp end_at
+        text end_location
+        text end_location_id
+        boolean is_travel_segment
+        text segment_type
+        timestamp start_at
+        text start_location
+        text start_location_id
+        timestamp updated_at
+    }
+    lookup_business_group_mapping {
+        bigint business_group_id PK
+        bigint lookup_id PK
+    }
+    expense_per_diem_rule {
+        bigint id PK
+        bigint expense_per_diem_config_id FK
+        timestamp created_at
+        jsonb custom_fields
+        timestamp effective_date
+        boolean enabled
+        timestamp end_after
+        timestamp end_before
+        bigint expense_per_diem_rate_type_id
+        bigint expense_per_diem_time_range_condition_id
+        double_precision hours
+        text label
+        bigint rank
+        text rate_frequency
+        text rate_location_type
+        bigint rate_logic
+        double_precision rate_percentage
+        text rule_type
+        timestamp start_after
+        timestamp start_before
+        timestamp updated_at
+    }
+    supplier_risk_aware_feed {
+        bigint id PK
+        timestamp created_at
+        jsonb custom_fields
+        double_precision number_field_01
+        double_precision number_field_02
+        double_precision number_field_03
+        double_precision number_field_04
+        double_precision number_field_05
+        double_precision number_field_06
+        double_precision number_field_07
+        double_precision number_field_08
+        double_precision number_field_09
+        double_precision number_field_10
+        bigint supplier_id
+        timestamp updated_at
+    }
+    order_header {
+        bigint id PK
+        text acknowledged_at
+        boolean acknowledged_flag
+        text change_type
+        text coupa_accelerate_status
+        timestamp created_at
+        bigint created_by_id
+        bigint currency_id
+        jsonb custom_fields
+        boolean exported
+        bigint internal_revision
+        boolean invoice_stop
+        timestamp last_exported_at
+        text payment_method
+        bigint payment_term_id
+        bigint pcard_id
+        text po_number
+        boolean price_hidden
+        bigint requester_id
+        bigint requisition_header_id
+        bigint ship_to_address_id
+        text ship_to_attention
+        bigint ship_to_user_id
+        bigint shipping_term_id
+        text status
+        bigint supplier_id
+        text transmission_emails
+        text transmission_method_override
+        text transmission_status
+        text type
+        timestamp updated_at
+        bigint updated_by_id
+        bigint version
+    }
+    quote_request_user {
+        bigint id PK
+        bigint quote_request_id FK
+        bigint user_id FK
+        text attitude
+        jsonb custom_fields
+    }
+    order_line_attribute {
+        bigint id PK
+        bigint order_line_id FK
+        timestamp created_at
+        bigint created_by_id
+        jsonb custom_fields
+        timestamp end_date
+        timestamp start_date
+        timestamp updated_at
+        bigint updated_by_id
+        text work_confirmer_email
+    }
+    contract_template_business_group_mapping {
+        bigint business_group_id PK
+        bigint contract_template_id PK
+    }
+    integration_history_record {
+        bigint id PK
+        bigint integration_run_id FK
+        bigint inventory_transaction_id FK
+        bigint invoice_header_id FK
+        bigint order_header_id FK
+        text contact_alert_type
+        timestamp created_at
+        bigint created_by_id
+        text creation_method
+        jsonb custom_fields
+        bigint document_id
+        bigint document_revision
+        text document_status
+        text document_type
+        text external_id
+        bigint integration_id
+        boolean resolved
+        text status
+        timestamp updated_at
+        bigint updated_by_id
+    }
+    attachment {
+        bigint id PK
+        timestamp created_at
+        jsonb custom_fields
+        text file_url
+        text intent
+        text linked_to
+        text text
+        text type
+        timestamp updated_at
+        text url
+    }
+    online_store }o--|| user : "fk"
+    online_store }o--|| user : "fk"
+    payment_business_group_mapping }o--|| payment : "fk"
+    payment_business_group_mapping }o--|| business_group : "fk"
+    shipping_term_business_group_mapping }o--|| shipping_term : "fk"
+    shipping_term_business_group_mapping }o--|| business_group : "fk"
+    cp_account_type_mapping }o--|| cp_payment : "fk"
+    cp_account_type_mapping }o--|| cp_account : "fk"
+    cp_account_type_mapping }o--|| account_type : "fk"
+    address_business_group_relation }o--|| address : "fk"
+    address_business_group_relation }o--|| business_group : "fk"
+    approval }o--|| easy_form_data : "fk"
+    expense_violation }o--|| expense_report : "fk"
+    expense_artifact }o--|| expense_line : "fk"
+    order_pad_business_group_mapping }o--|| business_group : "fk"
+    order_pad_business_group_mapping }o--|| order_pad : "fk"
+    payable_allocation }o--|| currency : "fk"
+    payable_allocation }o--|| currency : "fk"
+    requisition_line }o--|| requisition_header : "fk"
+    requisition_line }o--|| order_line : "fk"
+    contract_term }o--|| contract : "fk"
+    expense_attendee_type }o--|| expense_category : "fk"
+    requisition_header }o--|| warehouse : "fk"
+    invoice_charge_allocation }o--|| invoice_charge : "fk"
+    virtual_card_partner_account_type_mapping }o--|| virtual_card_partner : "fk"
+    virtual_card_partner_account_type_mapping }o--|| account_type : "fk"
+    invoice_reconciliation_line }o--|| invoice_header : "fk"
+    supplier_restricted_account_type_mapping }o--|| supplier : "fk"
+    supplier_restricted_account_type_mapping }o--|| account_type : "fk"
+    comment_attachment_mapping }o--|| attachment : "fk"
+    comment_attachment_mapping }o--|| comment : "fk"
+    expense_line }o--|| expense_line_mileage : "fk"
+    expense_line }o--|| expense_report : "fk"
+    expense_line }o--|| order_line : "fk"
+    expense_line }o--|| currency : "fk"
+    project_business_group_mapping }o--|| project : "fk"
+    project_business_group_mapping }o--|| business_group : "fk"
+    invoice_email }o--|| user : "fk"
+    invoice_email }o--|| user : "fk"
+    tag }o--|| invoice_line : "fk"
+    tag }o--|| quote_request : "fk"
+    tag }o--|| requisition_line : "fk"
+    tag }o--|| requisition_header : "fk"
+    expense_line_daily_per_diem }o--|| expense_line_per_diem : "fk"
+    supplier_information_artifact_attachment_mapping }o--|| supplier_information_artifact : "fk"
+    supplier_information_artifact_attachment_mapping }o--|| attachment : "fk"
+    invoice_charge }o--|| currency : "fk"
+    invoice_charge }o--|| invoice_header : "fk"
+    project_user_mapping }o--|| project : "fk"
+    project_user_mapping }o--|| user : "fk"
+    tagging }o--|| user : "fk"
+    cp_payment_detail_allocation_mapping }o--|| cp_payment : "fk"
+    cp_payment_detail_allocation_mapping }o--|| cp_payment_detail : "fk"
+    cp_payment_detail_allocation_mapping }o--|| payable_allocation : "fk"
+    lookup_value }o--|| lookup : "fk"
+    requisition_line_asset_tag_mapping }o--|| requisition_line : "fk"
+    requisition_line_asset_tag_mapping }o--|| asset_tag : "fk"
+    easy_form_data }o--|| user : "fk"
+    easy_form_data }o--|| user : "fk"
+    easy_form_data }o--|| user : "fk"
+    order_line_change_allocation }o--|| period : "fk"
+    order_line_change_allocation }o--|| order_line_change : "fk"
+    invoice_header_attachment_mapping }o--|| invoice_header : "fk"
+    invoice_header_attachment_mapping }o--|| attachment : "fk"
+    supplier_information_business_group_mapping }o--|| supplier_information : "fk"
+    supplier_information_business_group_mapping }o--|| business_group : "fk"
+    user_approval_group_mapping }o--|| user : "fk"
+    user_approval_group_mapping }o--|| user_group : "fk"
+    requisition_header_attachment_mapping }o--|| requisition_header : "fk"
+    requisition_header_attachment_mapping }o--|| attachment : "fk"
+    virtual_card }o--|| order_header : "fk"
+    order_header_change_order_line_change_mapping }o--|| order_header_change : "fk"
+    order_header_change_order_line_change_mapping }o--|| order_line_change : "fk"
+    order_line_change }o--|| order_header_change : "fk"
+    order_line_change }o--|| order_line : "fk"
+    invoice_payment_receipt }o--|| invoice_header : "fk"
+    asn_line }o--|| asn_header : "fk"
+    supplier_information_address_mapping }o--|| supplier_information : "fk"
+    supplier_information_address_mapping }o--|| supplier_information_address : "fk"
+    supplier_preferred_commodities_mapping }o--|| supplier : "fk"
+    supplier_preferred_commodities_mapping }o--|| commodity : "fk"
+    business_group_contract_mapping }o--|| business_group : "fk"
+    business_group_contract_mapping }o--|| contract : "fk"
+    expense_per_diem_rule_condition }o--|| expense_per_diem_rule : "fk"
+    cp_payment_detail }o--|| cp_payment : "fk"
+    cp_payment_detail }o--|| currency : "fk"
+    cp_payment_detail }o--|| user : "fk"
+    cp_payment_detail }o--|| user : "fk"
+    integration_error }o--|| integration_run : "fk"
+    user_business_group_mapping }o--|| user : "fk"
+    user_business_group_mapping }o--|| business_group : "fk"
+    per_diem_deduction }o--|| expense_line_daily_per_diem : "fk"
+    per_diem_deduction }o--|| expense_per_diem_deduction : "fk"
+    user }o--|| user : "fk"
+    req_line_allocation }o--|| user : "fk"
+    req_line_allocation }o--|| user : "fk"
+    req_line_allocation }o--|| requisition_line : "fk"
+    expense_attendee }o--|| user : "fk"
+    expense_attendee }o--|| expense_line : "fk"
+    supplier_remit_to_address_mapping }o--|| supplier : "fk"
+    supplier_remit_to_address_mapping }o--|| remit_to_address : "fk"
+    contract_current_parallel_approval_mapping }o--|| contract : "fk"
+    contract_current_parallel_approval_mapping }o--|| approval : "fk"
+    expense_report_comment_mapping }o--|| expense_report : "fk"
+    expense_report_comment_mapping }o--|| comment : "fk"
+    purpose }o--|| address : "fk"
+    purpose }o--|| contact : "fk"
+    quote_request_attachment_mapping }o--|| quote_request_attachment : "fk"
+    quote_request_attachment_mapping }o--|| attachment : "fk"
+    contract_party_contract_mapping }o--|| contract_party : "fk"
+    contract_party_contract_mapping }o--|| contract : "fk"
+    expense_report_event_history }o--|| expense_report : "fk"
+    cp_account }o--|| currency : "fk"
+    cp_account }o--|| payment_partner : "fk"
+    cp_account }o--|| user : "fk"
+    cp_account }o--|| user : "fk"
+    order_line }o--|| order_header : "fk"
+    order_line }o--|| order_line_attribute : "fk"
+    order_line }o--|| currency : "fk"
+    inventory_txn_allocation }o--|| inventory_transaction : "fk"
+    order_header_change_approval_mapping }o--|| order_header_change : "fk"
+    order_header_change_approval_mapping }o--|| approval : "fk"
+    integration_contacts }o--|| supplier : "fk"
+    invoice_line_allocation }o--|| invoice_header : "fk"
+    invoice_line_allocation }o--|| invoice_line : "fk"
+    payment_partner_account_type_mapping }o--|| cp_payment : "fk"
+    payment_partner_account_type_mapping }o--|| cp_account : "fk"
+    payment_partner_account_type_mapping }o--|| payment_partner : "fk"
+    payment_partner_account_type_mapping }o--|| account_type : "fk"
+    expense_line_mileage_allocation }o--|| expense_line_mileage : "fk"
+    charge_allocation }o--|| charge : "fk"
+    invoice_charge_tax_line_mapping }o--|| invoice_charge : "fk"
+    invoice_charge_tax_line_mapping }o--|| tax_line : "fk"
+    invoice_failed_tolerance }o--|| invoice_line : "fk"
+    charge }o--|| account_type : "fk"
+    charge }o--|| order_header : "fk"
+    charge }o--|| supplier : "fk"
+    charge }o--|| virtual_card : "fk"
+    charge }o--|| currency : "fk"
+    charge }o--|| payment_partner : "fk"
+    integration_record_response }o--|| integration_error : "fk"
+    integration_record_response }o--|| integration_history_record : "fk"
+    easy_form_approval_mapping }o--|| easy_form_data : "fk"
+    easy_form_approval_mapping }o--|| approval : "fk"
+    easy_form_widget_data }o--|| easy_form_data : "fk"
+    easy_form_widget_data }o--|| easy_form_data : "fk"
+    easy_form_widget_data }o--|| user : "fk"
+    easy_form_widget_data }o--|| user : "fk"
+    reason_insight_event }o--|| contract : "fk"
+    user_address_mapping }o--|| user : "fk"
+    user_address_mapping }o--|| address : "fk"
+    expense_line_allocation }o--|| expense_line : "fk"
+    supplier_item }o--|| contract : "fk"
+    supplier_item }o--|| contract_term : "fk"
+    supplier_item }o--|| user : "fk"
+    supplier_item }o--|| user : "fk"
+    supplier_item }o--|| currency : "fk"
+    supplier_item }o--|| item : "fk"
+    supplier_item }o--|| supplier : "fk"
+    expense_preapproval }o--|| currency : "fk"
+    expense_preapproval }o--|| user : "fk"
+    expense_preapproval }o--|| currency : "fk"
+    expense_preapproval }o--|| user : "fk"
+    expense_preapproval }o--|| user : "fk"
+    quote_request_business_group_mapping }o--|| quote_request : "fk"
+    quote_request_business_group_mapping }o--|| business_group : "fk"
+    expense_per_diem_deduction }o--|| expense_per_diem_config : "fk"
+    user_group_membership }o--|| user_group : "fk"
+    user_group_membership }o--|| user : "fk"
+    supplier_business_group_mapping }o--|| supplier : "fk"
+    supplier_business_group_mapping }o--|| business_group : "fk"
+    cp_payment }o--|| cp_account : "fk"
+    cp_payment }o--|| cp_account : "fk"
+    cp_payment }o--|| currency : "fk"
+    cp_payment }o--|| currency : "fk"
+    cp_payment }o--|| currency : "fk"
+    cp_payment }o--|| user : "fk"
+    cp_payment }o--|| user : "fk"
+    address_tax_registration_relation }o--|| address : "fk"
+    address_tax_registration_relation }o--|| tax_registration : "fk"
+    remit_to_address_tax_registration_mapping }o--|| remit_to_address : "fk"
+    remit_to_address_tax_registration_mapping }o--|| tax_registration : "fk"
+    inventory_organization_warehouse_mapping }o--|| inventory_organization : "fk"
+    inventory_organization_warehouse_mapping }o--|| warehouse : "fk"
+    user_account_group_mapping }o--|| user : "fk"
+    user_account_group_mapping }o--|| account_group : "fk"
+    expense_trip_mileage_allocation }o--|| expense_trip_mileage : "fk"
+    supplier_contact_mapping }o--|| supplier : "fk"
+    supplier_contact_mapping }o--|| contact : "fk"
+    approver_group_user_mapping }o--|| user : "fk"
+    approver_group_user_mapping }o--|| approver : "fk"
+    order_line_allocation }o--|| order_line : "fk"
+    invoice_line }o--|| invoice_header : "fk"
+    invoice_line }o--|| commodity : "fk"
+    invoice_line }o--|| order_line : "fk"
+    warehouse_location }o--|| warehouse : "fk"
+    expense_report_preapproval }o--|| expense_report : "fk"
+    dispute_reason }o--|| invoice_header : "fk"
+    expense_report_approval_mapping }o--|| expense_report : "fk"
+    expense_report_approval_mapping }o--|| approval : "fk"
+    matching_allocation }o--|| inventory_transaction : "fk"
+    matching_allocation }o--|| asn_line : "fk"
+    matching_allocation }o--|| invoice_line : "fk"
+    matching_allocation }o--|| order_line : "fk"
+    matching_allocation }o--|| unit_of_measure : "fk"
+    order_header_attachment_mapping }o--|| order_header : "fk"
+    order_header_attachment_mapping }o--|| attachment : "fk"
+    supplier_address_mapping }o--|| supplier : "fk"
+    supplier_address_mapping }o--|| address : "fk"
+    supplier_information }o--|| commodity : "fk"
+    supplier_information }o--|| currency : "fk"
+    supplier_information }o--|| commodity : "fk"
+    supplier_information }o--|| payment_term : "fk"
+    supplier_information }o--|| shipping_term : "fk"
+    supplier_information }o--|| supplier : "fk"
+    supplier_information }o--|| tax_code : "fk"
+    supplier_information }o--|| user : "fk"
+    inventory_transaction_valuation }o--|| inventory_transaction : "fk"
+    order_pad_line }o--|| order_pad : "fk"
+    order_pad_line }o--|| supplier : "fk"
+    expense_policy_violation }o--|| expense_report : "fk"
+    user_group_user_mapping }o--|| user : "fk"
+    user_group_user_mapping }o--|| user_group : "fk"
+    approver }o--|| approval : "fk"
+    user_can_expense_for_mapping }o--|| user : "fk"
+    user_can_expense_for_mapping }o--|| user : "fk"
+    user_role_mapping }o--|| user : "fk"
+    user_role_mapping }o--|| role : "fk"
+    order_line_asset_tag_mapping }o--|| order_line : "fk"
+    order_line_asset_tag_mapping }o--|| asset_tag : "fk"
+    supplier_information_artifact }o--|| supplier_information : "fk"
+    supplier_information_artifact }o--|| supplier : "fk"
+    withholding_tax_line }o--|| invoice_line : "fk"
+    inventory_transaction_asset_tag_mapping }o--|| inventory_transaction : "fk"
+    inventory_transaction_asset_tag_mapping }o--|| asset_tag : "fk"
+    form }o--|| quote_request : "fk"
+    quote_supplier }o--|| quote_request : "fk"
+    inventory_transaction_attachment_mapping }o--|| inventory_transaction : "fk"
+    inventory_transaction_attachment_mapping }o--|| attachment : "fk"
+    budget_line_adjustment }o--|| budget_line : "fk"
+    payment_partner }o--|| currency : "fk"
+    payment_partner }o--|| contact : "fk"
+    payment_partner }o--|| user : "fk"
+    payment_partner }o--|| user : "fk"
+    user_working_warehouse_mapping }o--|| user : "fk"
+    user_working_warehouse_mapping }o--|| warehouse : "fk"
+    supplier_information_contact_mapping }o--|| supplier_information : "fk"
+    supplier_information_contact_mapping }o--|| contact : "fk"
+    warehouse }o--|| address : "fk"
+    quote_request_attachment }o--|| quote_request : "fk"
+    expense_mileage_tier_rule }o--|| expense_mileage_config : "fk"
+    quote_request_line }o--|| commodity : "fk"
+    quote_request_line }o--|| quote_request : "fk"
+    quote_request_line }o--|| quote_request_lot : "fk"
+    tax_line }o--|| invoice_line : "fk"
+    tax_line }o--|| charge : "fk"
+    requisition_header_approval_mapping }o--|| requisition_header : "fk"
+    requisition_header_approval_mapping }o--|| approval : "fk"
+    invoice_header_approval_mapping }o--|| invoice_header : "fk"
+    invoice_header_approval_mapping }o--|| approval : "fk"
+    expense_line_tax }o--|| expense_line : "fk"
+    comment }o--|| user : "fk"
+    user_expenses_delegated_to_mapping }o--|| user : "fk"
+    user_expenses_delegated_to_mapping }o--|| user : "fk"
+    inventory_organization }o--|| user : "fk"
+    punchout_site }o--|| user : "fk"
+    punchout_site }o--|| user : "fk"
+    expense_trip_segment }o--|| expense_trip_mileage : "fk"
+    lookup_business_group_mapping }o--|| lookup : "fk"
+    lookup_business_group_mapping }o--|| business_group : "fk"
+    expense_per_diem_rule }o--|| expense_per_diem_config : "fk"
+    quote_request_user }o--|| user : "fk"
+    quote_request_user }o--|| quote_request : "fk"
+    order_line_attribute }o--|| order_line : "fk"
+    contract_template_business_group_mapping }o--|| contract_party : "fk"
+    contract_template_business_group_mapping }o--|| business_group : "fk"
+    integration_history_record }o--|| integration_run : "fk"
+    integration_history_record }o--|| inventory_transaction : "fk"
+    integration_history_record }o--|| invoice_header : "fk"
+    integration_history_record }o--|| order_header : "fk"

@@ -1,0 +1,193 @@
+erDiagram
+    contact {
+        text id PK
+        text address_city
+        text address_country
+        text address_email
+        text address_mobile
+        text address_phone
+        text address_state
+        text address_street_1
+        text address_street_2
+        text address_zip
+        text created_at
+        text created_by
+        text deleted_at
+        text name
+        text position
+        text title
+        text type
+        text updated_at
+        text updated_by
+        text works_at
+    }
+    account_client_contact {
+        text account_id PK
+        text id PK
+        text is_active
+        text is_primary
+    }
+    account_team {
+        text id PK
+        text account_id PK
+        text email
+        text name
+        text role
+        text share
+        text type
+    }
+    account_type {
+        text index PK
+        text account_id PK
+        text type
+    }
+    account {
+        text id PK
+        text parent_account_id FK
+        text address_city
+        text address_country
+        text address_email
+        text address_mobile
+        text address_phone
+        text address_state
+        text address_street_1
+        text address_street_2
+        text address_zip
+        text category
+        text created_at
+        text created_by
+        text deleted_at
+        text discount
+        text holding_company
+        text legacy_id
+        text name
+        text note
+        text region
+        text segment
+        text shell_record
+        text sub_category
+        text updated_at
+        text updated_by
+        text website
+    }
+    deal_member {
+        text id PK
+        text deal_id PK
+        text user_id FK
+        text product
+        text role
+        text seller_type
+        text share
+    }
+    deal_contact {
+        text deal_id PK
+        text id PK
+        text email
+        text role
+    }
+    deal_integration {
+        text id PK
+        text deal_id PK
+        text external_id
+        text external_type
+    }
+    deal {
+        text id PK
+        text advertiser_id
+        text advertiser_name
+        text agency_id
+        text agency_name
+        text budget
+        text budget_loc
+        text closed_at
+        text closed_comments
+        text closed_reason
+        text created_at
+        text created_by
+        text currency
+        text deleted_at
+        text end_date
+        text lead_id
+        text name
+        text next_steps
+        text source
+        text stage_id
+        text stage_name
+        text start_date
+        text type
+        text updated_at
+        text updated_by
+    }
+    user_team_member {
+        text id PK
+        text users_id PK
+    }
+    users {
+        text id PK
+        text average_deal_size
+        text created_at
+        text created_by
+        text email
+        text employee_id
+        text first_name
+        text is_active
+        text last_name
+        text team_created_at
+        text team_deleted_at
+        text team_id
+        text team_leader_email
+        text team_leader_id
+        text team_members_count
+        text team_name
+        text team_parent_id
+        text team_parent_name
+        text team_top_parent_id
+        text team_top_parent_name
+        text team_type
+        text team_updated_at
+        text title
+        text type
+        text updated_at
+        text updated_by
+        text win_rate
+    }
+    activity_contact {
+        text activity_id PK
+        text id PK
+    }
+    activity {
+        text id PK
+        text deal_id FK
+        text advertiser_id
+        text advertiser_name
+        text agency_id
+        text agency_name
+        text comment
+        text created_at
+        text created_by
+        text happened_at
+        text lead_id
+        text lead_name
+        text publisher_id
+        text publisher_name
+        text type_id
+        text type_name
+        text updated_at
+        text updated_by
+        text user_name
+    }
+    account_client_contact }o--|| contact : "fk"
+    account_client_contact }o--|| account : "fk"
+    account_team }o--|| account : "fk"
+    account_type }o--|| account : "fk"
+    account }o--|| account : "fk"
+    deal_member }o--|| users : "fk"
+    deal_member }o--|| deal : "fk"
+    deal_contact }o--|| contact : "fk"
+    deal_contact }o--|| deal : "fk"
+    deal_integration }o--|| deal : "fk"
+    user_team_member }o--|| users : "fk"
+    user_team_member }o--|| users : "fk"
+    activity_contact }o--|| contact : "fk"
+    activity_contact }o--|| activity : "fk"
+    activity }o--|| deal : "fk"

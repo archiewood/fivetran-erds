@@ -1,0 +1,272 @@
+erDiagram
+    analysis_report {
+        text date PK
+        text analysis_id FK
+        text brand_id FK
+        text custom_sector_label FK
+        text metric FK
+        text query_id FK
+        text region FK
+        text brand_label
+        text custom_sector_uuid
+        text negatives
+        text negatives_neutrals
+        text neutrals
+        text positives
+        text positives_neutrals
+        text query_index
+        text score
+        text sector_id
+        text sector_label
+        text volume
+    }
+    analysis_query {
+        text id PK
+        text analysis_id PK
+        text entity_brand_id FK
+        text entity_region FK
+        text entity_sector_id FK
+        text confidence_bound
+        jsonb entity
+        jsonb filters
+        text is_market_scanner
+        jsonb metrics_score_types
+        text moving_average
+        jsonb period_end_date
+        jsonb period_start_date
+        jsonb properties_meta_filter
+        text resample_size
+        text resample_type
+        text scoring
+        text title
+        text uuid
+        text visualization_attributes_color
+        jsonb visualization_attributes_metrics
+    }
+    analysis_tags {
+        text analysis_id PK
+        text label PK
+        text uuid
+    }
+    analysis {
+        text id PK
+        text created_at
+        text has_market_scanner
+        text is_listed
+        text is_public
+        text resource_meta_author_email
+        text resource_meta_author_first_name
+        text resource_meta_author_last_name
+        text resource_meta_author_uuid
+        text title
+        text updated_at
+        text uuid
+        text visualization_attributes_chart
+        text visualization_attributes_confidence_bounds
+        jsonb visualization_attributes_options
+        text visualization_attributes_type
+        text visualization_attributes_use_all_entities
+        text visualization_attributes_use_all_filters
+        text visualization_attributes_use_all_metrics
+    }
+    ranking {
+        text id PK
+        jsonb comparison_period_end_date
+        jsonb comparison_period_start_date
+        text created_at
+        jsonb entities
+        jsonb filters
+        text is_listed
+        text is_market_scanner
+        text is_public
+        jsonb metrics_score_types
+        jsonb period_end_date_days
+        jsonb period_start_date
+        text resource_meta_author_email
+        text resource_meta_author_first_name
+        text resource_meta_author_last_name
+        text resource_meta_author_uuid
+        text scoring
+        jsonb significance_percentages
+        text title
+        text updated_at
+        text uuid
+        text visualization_attributes_type
+    }
+    event_tags {
+        text event_label PK
+        text label PK
+        text uuid
+    }
+    event_context {
+        text index PK
+        text event_label PK
+        text brand_id FK
+        text metric FK
+        text region FK
+        text sector_id FK
+    }
+    event {
+        text label PK
+        text created_at
+        text description
+        text end_date
+        text is_global
+        text is_listed
+        text is_public
+        text resource_meta_author_email
+        text resource_meta_author_first_name
+        text resource_meta_author_last_name
+        text resource_meta_author_uuid
+        text updated_at
+        text uuid
+    }
+    profiles_dataseries_language {
+        text code PK
+        text profiles_dataseries_name PK
+    }
+    region_sector {
+        text id PK
+        text region PK
+        text industry_label FK
+        text is_active
+        text is_market_scanner
+        text label
+    }
+    custom_sector_brand {
+        text custom_sector_label PK
+        text region_sector_brand_id PK
+    }
+    custom_sector_tags {
+        text custom_sector_label PK
+        text label PK
+    }
+    custom_sector {
+        text label PK
+        text created_at
+        text has_market_scanner
+        text is_listed
+        text is_public
+        text resource_meta_author_email
+        text resource_meta_author_first_name
+        text resource_meta_author_last_name
+        text resource_meta_author_uuid
+        text updated_at
+        text uuid
+    }
+    metric {
+        text name PK
+        text label
+        text type
+    }
+    industry_tree_children_brand {
+        text id PK
+        text industry_tree_children_label PK
+        text industry_tree_label PK
+    }
+    industry_tree_children {
+        text label PK
+        text industry_tree_label PK
+        jsonb children
+        text created_at
+        text parent_uuid
+        text updated_at
+        text uuid
+    }
+    industry_tree_brand {
+        text id PK
+        text industry_tree_label PK
+    }
+    industry_tree {
+        text label PK
+        text region_name PK
+        text parent_uuid FK
+        text created_at
+        text updated_at
+        text uuid
+    }
+    region {
+        text name PK
+        text has_market_scanner
+        text label
+        text permitted
+    }
+    region_sector_brand {
+        text id PK
+        text region PK
+        text sector_id PK
+        text is_active
+        text label
+        text validity_period_end_date
+        text validity_period_start_date
+    }
+    filter_composite_tags {
+        text filter_composite_label PK
+        text label PK
+        text uuid
+    }
+    filter_composite_response {
+        text label PK
+        text filter_composite_label PK
+        text expression
+        text uuid
+    }
+    filter_composite {
+        text label PK
+        text region_name FK
+        text created_at
+        text is_listed
+        text is_public
+        text resource_meta_author_email
+        text resource_meta_author_first_name
+        text resource_meta_author_last_name
+        text resource_meta_author_uuid
+        text updated_at
+        text uuid
+        jsonb valid_in_sectors
+    }
+    tags {
+        text label PK
+        text user_uuid
+        text uuid
+        jsonb visualization_attributes
+    }
+    analysis_report }o--|| analysis : "fk"
+    analysis_report }o--|| region : "fk"
+    analysis_report }o--|| analysis_query : "fk"
+    analysis_report }o--|| custom_sector : "fk"
+    analysis_report }o--|| region_sector_brand : "fk"
+    analysis_report }o--|| metric : "fk"
+    analysis_query }o--|| analysis : "fk"
+    analysis_query }o--|| region_sector_brand : "fk"
+    analysis_query }o--|| region : "fk"
+    analysis_query }o--|| region_sector : "fk"
+    analysis_tags }o--|| tags : "fk"
+    analysis_tags }o--|| analysis : "fk"
+    event_tags }o--|| tags : "fk"
+    event_tags }o--|| event : "fk"
+    event_context }o--|| region : "fk"
+    event_context }o--|| region_sector : "fk"
+    event_context }o--|| region_sector_brand : "fk"
+    event_context }o--|| metric : "fk"
+    event_context }o--|| event : "fk"
+    region_sector }o--|| region : "fk"
+    region_sector }o--|| industry_tree : "fk"
+    custom_sector_brand }o--|| region_sector_brand : "fk"
+    custom_sector_brand }o--|| custom_sector : "fk"
+    custom_sector_tags }o--|| tags : "fk"
+    custom_sector_tags }o--|| custom_sector : "fk"
+    industry_tree_children_brand }o--|| region_sector_brand : "fk"
+    industry_tree_children_brand }o--|| industry_tree : "fk"
+    industry_tree_children_brand }o--|| industry_tree_children : "fk"
+    industry_tree_children }o--|| industry_tree : "fk"
+    industry_tree_brand }o--|| region_sector_brand : "fk"
+    industry_tree_brand }o--|| industry_tree : "fk"
+    industry_tree }o--|| industry_tree : "fk"
+    industry_tree }o--|| region : "fk"
+    region_sector_brand }o--|| region : "fk"
+    region_sector_brand }o--|| region_sector : "fk"
+    filter_composite_tags }o--|| tags : "fk"
+    filter_composite_tags }o--|| filter_composite : "fk"
+    filter_composite_response }o--|| filter_composite : "fk"
+    filter_composite }o--|| region : "fk"

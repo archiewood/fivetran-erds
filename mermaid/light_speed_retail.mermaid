@@ -1,0 +1,975 @@
+erDiagram
+    item_shop_history {
+        bigint id PK
+        timestamp updated_time PK
+        bigint item_id FK
+        bigint shop_id FK
+        integer backorder
+        integer component_backorder
+        integer component_qoh
+        integer qoh
+        integer reorder_level
+        integer reorder_point
+    }
+    payment_type {
+        bigint id PK
+        bigint refund_as_payment_type_id FK
+        boolean archived
+        boolean internal_reserved
+        text name
+        boolean require_customer
+        text type
+    }
+    price_level {
+        bigint id PK
+        boolean archived
+        boolean can_be_archived
+        text name
+        text type
+    }
+    employee_role {
+        bigint id PK
+        boolean archived
+        text name
+        boolean system
+    }
+    order_history {
+        bigint id PK
+        timestamp updated_time PK
+        bigint shop_id FK
+        bigint vendor_id FK
+        boolean archived
+        timestamp arrival_date
+        boolean complete
+        double_precision discount
+        text note
+        bigint note_id
+        boolean note_is_public
+        timestamp note_updated_time
+        timestamp ordered_date
+        double_precision other_cost
+        timestamp received_date
+        text reference_number
+        double_precision ship_cost
+        text ship_instructions
+        text stock_instructions
+        double_precision total_discount
+        integer total_quantity
+    }
+    customer_history {
+        bigint id PK
+        timestamp updated_time PK
+        bigint credit_account_id FK
+        bigint customer_type_id FK
+        bigint discount_id FK
+        bigint tax_category_id FK
+        text address_1
+        text address_2
+        boolean archived
+        text city
+        text company
+        text company_registration_number
+        text country
+        text country_code
+        timestamp created_time
+        text custom
+        timestamp dob
+        text first_name
+        text last_name
+        boolean no_email
+        boolean no_mail
+        boolean no_phone
+        text note
+        boolean note_is_public
+        timestamp note_updated_time
+        text state
+        text state_code
+        text title
+        text vat_number
+        text website_url
+        text zip
+    }
+    quote {
+        bigint id PK
+        bigint employee_id FK
+        bigint sale_id FK
+        boolean archived
+        timestamp issue_date
+        text notes
+    }
+    register_count {
+        bigint id PK
+        bigint close_employee_id FK
+        bigint open_employee_id FK
+        bigint register_id FK
+        timestamp created_time
+        text notes
+        timestamp open_time
+    }
+    inventory_count_reconcile {
+        bigint id PK
+        bigint inventory_count_id FK
+        bigint item_id FK
+        double_precision cost_change
+        timestamp created_time
+        integer qoh_change
+    }
+    item_vendor_num_history {
+        bigint id PK
+        timestamp updated_time PK
+        bigint item_id FK
+        bigint vendor_id FK
+        text value
+    }
+    order_by_tax_class {
+        text date PK
+        bigint order_id PK
+        bigint tax_class_id PK
+        bigint shop_id FK
+        bigint vendor_id FK
+        double_precision cost
+        text tax_class_name
+        double_precision total_other_cost
+        double_precision total_ship_cost
+        text vendor_name
+    }
+    sale_history {
+        bigint id PK
+        timestamp updated_time PK
+        bigint customer_id FK
+        bigint discount_id FK
+        bigint employee_id FK
+        bigint quote_id FK
+        bigint register_id FK
+        bigint ship_to_id FK
+        bigint shop_id FK
+        bigint tax_category_id FK
+        boolean archived
+        double_precision balance
+        double_precision calc_avg_cost
+        double_precision calc_discount
+        double_precision calc_fifocost
+        double_precision calc_non_taxable
+        double_precision calc_payments
+        double_precision calc_subtotal
+        double_precision calc_tax_1
+        double_precision calc_tax_2
+        double_precision calc_taxable
+        double_precision calc_total
+        double_precision change
+        timestamp complete_time
+        boolean completed
+        timestamp created_time
+        double_precision discount_percent
+        double_precision displayable_subtotal
+        double_precision displayable_total
+        boolean enable_promotions
+        boolean is_tax_inclusive
+        text receipt_preference
+        text reference_number
+        text reference_number_source
+        double_precision tax_1_rate
+        double_precision tax_2_rate
+        double_precision tax_total
+        text ticket_number
+        double_precision total
+        double_precision total_due
+        boolean voided
+    }
+    work_order_history {
+        bigint id PK
+        timestamp updated_time PK
+        bigint customer_id FK
+        bigint discount_id FK
+        bigint employee_id FK
+        bigint sale_id FK
+        bigint sale_line_id FK
+        bigint serialized_id FK
+        bigint shop_id FK
+        bigint workorder_status_id FK
+        boolean archived
+        boolean assign_employee_to_all
+        timestamp eta_out
+        text hook_in
+        text hook_out
+        text note
+        boolean save_parts
+        text system_sku
+        boolean tax
+        timestamp time_in
+        boolean warranty
+    }
+    ship_to_history {
+        bigint id PK
+        timestamp updated_time PK
+        bigint customer_id FK
+        bigint sale_id FK
+        text address_1
+        text address_2
+        text city
+        text company
+        text country
+        text country_code
+        text custom
+        text email_address
+        text email_use_type
+        text first_name
+        text last_name
+        text secondary_email_address
+        text secondary_email_use_type
+        text ship_note
+        text state
+        text state_code
+        text website_url
+        text zip
+    }
+    vendor_email_history {
+        text use_type PK
+        bigint vendor_id PK
+        timestamp vendor_updated_time PK
+        text address
+    }
+    inventory_count_calculation {
+        bigint id PK
+        timestamp updated_time PK
+        bigint inventory_count_id FK
+        bigint item_id FK
+        integer calculated_qoh
+        integer counted_qoh
+    }
+    item_matrix_tag_history {
+        text tag PK
+        bigint item_matrix_id PK
+        timestamp item_matrix_updated_time PK
+    }
+    item_tag_history {
+        text tag PK
+        bigint item_id PK
+        timestamp item_updated_time PK
+    }
+    employee_right {
+        bigint id PK
+        bigint employee_role_id PK
+        text name
+    }
+    credit_account_history {
+        bigint id PK
+        timestamp updated_time PK
+        bigint customer_id FK
+        boolean archived
+        double_precision balance
+        text code
+        double_precision credit_limit
+        text description
+        boolean gift_card
+        text name
+    }
+    attribute_value {
+        text attribute_type PK
+        integer index PK
+        bigint item_matrix_id PK
+        text value
+    }
+    customer_email_history {
+        text use_type PK
+        bigint customer_id PK
+        timestamp customer_updated_time PK
+        text address
+    }
+    tax_category_history {
+        bigint id PK
+        timestamp updated_time PK
+        boolean is_tax_inclusive
+        text tax_1_name
+        double_precision tax_1_rate
+        text tax_2_name
+        double_precision tax_2_rate
+    }
+    register_calculated {
+        bigint payment_type_id PK
+        bigint register_id PK
+        timestamp register_open_time PK
+        double_precision add
+        double_precision payment
+        double_precision withdraw
+    }
+    register_count_amount {
+        bigint id PK
+        bigint payment_type_id FK
+        bigint register_count_id FK
+        double_precision actual
+        double_precision calculated
+    }
+    serial_history {
+        bigint id PK
+        timestamp updated_time PK
+        bigint customer_id FK
+        bigint item_id FK
+        bigint sale_line_id FK
+        text color_name
+        text description
+        text serial
+        text size_name
+    }
+    item_history {
+        bigint id PK
+        timestamp updated_time PK
+        bigint category_id FK
+        bigint default_vendor_id FK
+        bigint item_attribute_set_id FK
+        bigint item_matrix_id FK
+        bigint manufacturer_id FK
+        bigint tax_class_id FK
+        boolean archived
+        text attribute_1
+        text attribute_2
+        text attribute_3
+        double_precision avg_cost
+        timestamp created_time
+        text custom_sku
+        double_precision default_cost
+        bigint department_id
+        text description
+        boolean discountable
+        text ean
+        text item_type
+        text manufacturer_sku
+        integer model_year
+        text note
+        boolean note_is_public
+        timestamp note_updated_time
+        boolean publish_to_ecom
+        bigint season_id
+        boolean serialized
+        bigint system_sku
+        boolean tax
+        text upc
+    }
+    discount_by_day {
+        text date PK
+        bigint shop_id PK
+        double_precision discount
+    }
+    employee_hours {
+        bigint id PK
+        bigint employee_id FK
+        bigint shop_id FK
+        timestamp check_in
+        timestamp check_out
+    }
+    item_attribute_set {
+        bigint id PK
+        boolean archived
+        text attribute_name_1
+        text attribute_name_2
+        text attribute_name_3
+        text name
+        boolean system
+    }
+    work_order_status {
+        bigint id PK
+        text html_color
+        text name
+        text sort_order
+        text system_value
+    }
+    customer_type {
+        bigint id PK
+        bigint discount_id FK
+        bigint tax_category_id FK
+        text name
+    }
+    customer_phone_history {
+        text use_type PK
+        bigint customer_id PK
+        timestamp customer_updated_time PK
+        text number
+    }
+    phone_history {
+        text use_type PK
+        bigint contact_id PK
+        timestamp contact_updated_time PK
+        text number
+    }
+    contact_history {
+        bigint id PK
+        timestamp updated_time PK
+        text address_1
+        text address_2
+        text city
+        text country
+        text country_code
+        text custom
+        boolean no_email
+        boolean no_mail
+        boolean no_phone
+        text state
+        text state_code
+        text website_url
+        text zip
+    }
+    work_order_line_history {
+        bigint id PK
+        timestamp updated_time PK
+        bigint discount_id FK
+        bigint employee_id FK
+        bigint item_id FK
+        bigint sale_id FK
+        bigint sale_line_id FK
+        bigint tax_class_id FK
+        bigint workorder_id FK
+        boolean approved
+        boolean done
+        integer hours
+        integer minutes
+        text note
+        boolean tax
+        double_precision unit_cost
+        double_precision unit_price_override
+        integer unit_quantity
+        boolean warranty
+    }
+    item_tag {
+        text tag PK
+        bigint item_id PK
+    }
+    tax_by_day {
+        text date PK
+        bigint index PK
+        bigint shop_id PK
+        bigint tax_category_id FK
+        double_precision tax
+        text tax_category_name
+    }
+    item_matrix_history {
+        bigint id PK
+        timestamp updated_time PK
+        bigint category_id FK
+        bigint default_vendor_id FK
+        bigint item_attribute_set_id FK
+        bigint manufacturer_id FK
+        bigint tax_class_id FK
+        boolean archived
+        double_precision default_cost
+        text description
+        text item_type
+        integer model_year
+        boolean serialized
+        boolean tax
+    }
+    discount_history {
+        bigint id PK
+        timestamp updated_time PK
+        boolean archived
+        text discount_amount
+        text discount_percent
+        text name
+        boolean require_customer
+    }
+    sale_line_history {
+        bigint id PK
+        timestamp updated_time PK
+        bigint customer_id FK
+        bigint discount_id FK
+        bigint employee_id FK
+        bigint item_id FK
+        bigint parent_sale_line_id FK
+        bigint sale_id FK
+        bigint shop_id FK
+        bigint tax_category_id FK
+        bigint tax_class_id FK
+        double_precision avg_cost
+        double_precision calc_subtotal
+        double_precision calc_tax_1
+        double_precision calc_tax_2
+        double_precision calc_total
+        double_precision calc_transaction_discount
+        double_precision calculated_line_discount
+        timestamp created_time
+        double_precision discount_amount
+        double_precision discount_percent
+        double_precision displayable_subtotal
+        double_precision displayable_unit_price
+        double_precision fifo_cost
+        boolean is_layaway
+        boolean is_special_order
+        boolean is_workorder
+        double_precision normal_unit_price
+        text note
+        bigint note_id
+        boolean note_is_public
+        timestamp note_updated_time
+        boolean tax
+        double_precision tax_1_rate
+        double_precision tax_2_rate
+        double_precision unit_price
+        integer unit_quantity
+    }
+    category_history {
+        bigint id PK
+        timestamp updated_time PK
+        bigint parent_id FK
+        timestamp created_time
+        text full_path_name
+        integer left_node
+        text name
+        integer node_depth
+        integer right_node
+    }
+    item_matrix_tag {
+        text tag PK
+        bigint item_matrix_id PK
+    }
+    email_history {
+        text use_type PK
+        bigint contact_id PK
+        timestamp contact_updated_time PK
+        text address
+    }
+    register_withdraw {
+        bigint id PK
+        bigint employee_id FK
+        bigint payment_type_id FK
+        bigint register_id FK
+        double_precision amount
+        timestamp created_time
+        text notes
+    }
+    ship_to_phone_history {
+        text use_type PK
+        bigint ship_to_id PK
+        timestamp ship_to_updated_time PK
+        text number
+    }
+    shop_history {
+        bigint id PK
+        timestamp updated_time PK
+        bigint contact_id FK
+        bigint price_level_id FK
+        bigint tax_category_id FK
+        boolean archived
+        bigint cc_gateway_id
+        text company_registration_number
+        text gateway_config_id
+        boolean label_msrp
+        text label_title
+        text name
+        bigint receipt_setup_id
+        double_precision service_rate
+        boolean tax_labor
+        text time_zone
+        text vat_number
+        boolean zebra_browser_print
+    }
+    cc_charge_history {
+        bigint id PK
+        timestamp updated_time PK
+        bigint sale_id FK
+        double_precision amount
+        text auth_code
+        boolean auth_only
+        text card_type
+        text cardholder_name
+        text communication_key
+        boolean declined
+        text entry_method
+        text expiry_date
+        text gateway_transaction_id
+        boolean is_debit
+        double_precision refunded
+        boolean voided
+        text xnum
+    }
+    employee_history {
+        bigint id PK
+        timestamp updated_time PK
+        bigint clock_in_employee_hours_id FK
+        bigint contact_id FK
+        bigint employee_role_id FK
+        bigint last_register_id FK
+        bigint last_sale_id FK
+        bigint last_shop_id FK
+        bigint limit_to_shop_id FK
+        boolean archived
+        text first_name
+        text last_name
+        boolean lock_out
+    }
+    inventory_count_item_history {
+        bigint id PK
+        timestamp updated_time PK
+        bigint employee_id FK
+        bigint inventory_count_id FK
+        bigint item_id FK
+        integer quantity
+    }
+    tax_class_sales_by_day {
+        text date PK
+        bigint shop_id PK
+        bigint tax_class_id PK
+        double_precision avg_cost
+        double_precision fifo_cost
+        double_precision subtotal
+        text tax_class_name
+    }
+    item_matrix_price {
+        integer use_type_id PK
+        bigint item_matrix_id PK
+        double_precision amount
+        text use_type
+    }
+    work_order_item_history {
+        bigint id PK
+        timestamp updated_time PK
+        bigint discount_id FK
+        bigint employee_id FK
+        bigint item_id FK
+        bigint sale_id FK
+        bigint sale_line_id FK
+        bigint workorder_id FK
+        boolean approved
+        boolean is_special_order
+        text note
+        boolean tax
+        double_precision unit_price
+        integer unit_quantity
+        boolean warranty
+    }
+    manufacturer_history {
+        bigint id PK
+        timestamp updated_time PK
+        timestamp created_time
+        text name
+    }
+    item_price {
+        bigint item_id PK
+        integer use_type_id PK
+        double_precision amount
+        text use_type
+    }
+    item_price_history {
+        integer use_type_id PK
+        bigint item_id PK
+        timestamp item_updated_time PK
+        double_precision amount
+        text use_type
+    }
+    register_history {
+        bigint id PK
+        timestamp open_time PK
+        bigint open_employee_id FK
+        bigint shop_id FK
+        boolean archived
+        text cc_terminal_id
+        text name
+        boolean open
+    }
+    sale_void {
+        bigint id PK
+        bigint employee_id FK
+        bigint sale_id FK
+        bigint shop_id FK
+        timestamp created_time
+        text reason
+    }
+    item_matrix_price_history {
+        integer use_type_id PK
+        bigint item_matrix_id PK
+        timestamp item_matrix_updated_time PK
+        double_precision amount
+        text use_type
+    }
+    payment_by_day {
+        text date PK
+        bigint payment_type_id PK
+        bigint shop_id PK
+        double_precision amount
+        text payment_type_name
+    }
+    inventory_count_history {
+        bigint id PK
+        timestamp updated_time PK
+        bigint shop_id FK
+        boolean archived
+        text name
+    }
+    sale_payment {
+        bigint id PK
+        bigint cc_charge_id FK
+        bigint credit_account_id FK
+        bigint employee_id FK
+        bigint payment_type_id FK
+        bigint ref_payment_id FK
+        bigint register_id FK
+        bigint sale_id FK
+        double_precision amount
+        boolean archived
+        timestamp created_time
+        text payment_id
+        text remote_reference
+    }
+    vendor_history {
+        bigint id PK
+        timestamp updated_time PK
+        text account_number
+        text address_1
+        text address_2
+        boolean archived
+        text city
+        text country
+        text country_code
+        text custom
+        text name
+        boolean no_email
+        boolean no_mail
+        boolean no_phone
+        text price_level
+        text rep_first_name
+        text rep_last_name
+        boolean share_sell_through
+        text state
+        text state_code
+        boolean update_cost
+        boolean update_description
+        boolean update_price
+        text website_url
+        text zip
+    }
+    vendor_phone_history {
+        text use_type PK
+        bigint vendor_id PK
+        timestamp vendor_updated_time PK
+        text number
+    }
+    attribute_value_history {
+        text attribute_type PK
+        integer index PK
+        bigint item_matrix_id PK
+        timestamp item_matrix_updated_time PK
+        text value
+    }
+    tax_class_history {
+        bigint id PK
+        timestamp updated_time PK
+        text name
+    }
+    inventory_transfer_history {
+        bigint id PK
+        timestamp updated_time PK
+        bigint created_by_employee_id FK
+        bigint receiving_shop_id FK
+        bigint sending_shop_id FK
+        bigint sent_by_employee_id FK
+        boolean archived
+        timestamp created_time
+        timestamp need_by
+        text note
+        timestamp sent_on
+        text status
+    }
+    transfer_item_history {
+        bigint id PK
+        timestamp updated_time PK
+        bigint item_id FK
+        bigint transfer_id FK
+        text comment
+        integer received
+        double_precision received_value
+        integer sent
+        double_precision sent_value
+        integer to_receive
+        integer to_send
+    }
+    special_order_history {
+        bigint id PK
+        timestamp updated_time PK
+        bigint customer_id FK
+        bigint order_line_id FK
+        bigint sale_line_id FK
+        bigint shop_id FK
+        bigint transfer_item_id FK
+        boolean completed
+        boolean contacted
+        text status
+        integer unit_quantity
+    }
+    order_line_history {
+        bigint id PK
+        timestamp updated_time PK
+        bigint item_id FK
+        bigint order_id FK
+        integer checked_in
+        integer num_received
+        double_precision original_price
+        double_precision price
+        integer quantity
+        double_precision total
+    }
+    item_shop_history }o--|| item_history : "fk"
+    item_shop_history }o--|| shop_history : "fk"
+    payment_type }o--|| payment_type : "fk"
+    order_history }o--|| vendor_history : "fk"
+    order_history }o--|| shop_history : "fk"
+    customer_history }o--|| credit_account_history : "fk"
+    customer_history }o--|| customer_type : "fk"
+    customer_history }o--|| discount_history : "fk"
+    customer_history }o--|| tax_category_history : "fk"
+    quote }o--|| employee_history : "fk"
+    quote }o--|| sale_history : "fk"
+    register_count }o--|| register_history : "fk"
+    register_count }o--|| employee_history : "fk"
+    register_count }o--|| employee_history : "fk"
+    inventory_count_reconcile }o--|| inventory_count_history : "fk"
+    inventory_count_reconcile }o--|| item_history : "fk"
+    item_vendor_num_history }o--|| item_history : "fk"
+    item_vendor_num_history }o--|| vendor_history : "fk"
+    order_by_tax_class }o--|| order_history : "fk"
+    order_by_tax_class }o--|| tax_class_history : "fk"
+    order_by_tax_class }o--|| shop_history : "fk"
+    order_by_tax_class }o--|| vendor_history : "fk"
+    sale_history }o--|| customer_history : "fk"
+    sale_history }o--|| discount_history : "fk"
+    sale_history }o--|| employee_history : "fk"
+    sale_history }o--|| quote : "fk"
+    sale_history }o--|| register_history : "fk"
+    sale_history }o--|| ship_to_history : "fk"
+    sale_history }o--|| shop_history : "fk"
+    sale_history }o--|| tax_category_history : "fk"
+    work_order_history }o--|| customer_history : "fk"
+    work_order_history }o--|| discount_history : "fk"
+    work_order_history }o--|| employee_history : "fk"
+    work_order_history }o--|| serial_history : "fk"
+    work_order_history }o--|| shop_history : "fk"
+    work_order_history }o--|| sale_history : "fk"
+    work_order_history }o--|| sale_line_history : "fk"
+    work_order_history }o--|| work_order_status : "fk"
+    ship_to_history }o--|| customer_history : "fk"
+    ship_to_history }o--|| sale_history : "fk"
+    vendor_email_history }o--|| vendor_history : "fk"
+    vendor_email_history }o--|| vendor_history : "fk"
+    inventory_count_calculation }o--|| inventory_count_history : "fk"
+    inventory_count_calculation }o--|| item_history : "fk"
+    item_matrix_tag_history }o--|| item_matrix_history : "fk"
+    item_matrix_tag_history }o--|| item_matrix_history : "fk"
+    item_tag_history }o--|| item_history : "fk"
+    item_tag_history }o--|| item_history : "fk"
+    employee_right }o--|| employee_role : "fk"
+    credit_account_history }o--|| customer_history : "fk"
+    attribute_value }o--|| item_matrix_history : "fk"
+    customer_email_history }o--|| customer_history : "fk"
+    customer_email_history }o--|| customer_history : "fk"
+    register_calculated }o--|| register_history : "fk"
+    register_calculated }o--|| register_history : "fk"
+    register_calculated }o--|| payment_type : "fk"
+    register_count_amount }o--|| register_count : "fk"
+    register_count_amount }o--|| payment_type : "fk"
+    serial_history }o--|| item_history : "fk"
+    serial_history }o--|| customer_history : "fk"
+    serial_history }o--|| sale_line_history : "fk"
+    item_history }o--|| category_history : "fk"
+    item_history }o--|| tax_class_history : "fk"
+    item_history }o--|| item_matrix_history : "fk"
+    item_history }o--|| manufacturer_history : "fk"
+    item_history }o--|| vendor_history : "fk"
+    item_history }o--|| item_attribute_set : "fk"
+    discount_by_day }o--|| shop_history : "fk"
+    employee_hours }o--|| employee_history : "fk"
+    employee_hours }o--|| shop_history : "fk"
+    customer_type }o--|| tax_category_history : "fk"
+    customer_type }o--|| discount_history : "fk"
+    customer_phone_history }o--|| customer_history : "fk"
+    customer_phone_history }o--|| customer_history : "fk"
+    phone_history }o--|| contact_history : "fk"
+    phone_history }o--|| contact_history : "fk"
+    work_order_line_history }o--|| work_order_history : "fk"
+    work_order_line_history }o--|| employee_history : "fk"
+    work_order_line_history }o--|| sale_line_history : "fk"
+    work_order_line_history }o--|| sale_history : "fk"
+    work_order_line_history }o--|| item_history : "fk"
+    work_order_line_history }o--|| discount_history : "fk"
+    work_order_line_history }o--|| tax_class_history : "fk"
+    item_tag }o--|| item_history : "fk"
+    tax_by_day }o--|| shop_history : "fk"
+    tax_by_day }o--|| tax_category_history : "fk"
+    item_matrix_history }o--|| item_attribute_set : "fk"
+    item_matrix_history }o--|| manufacturer_history : "fk"
+    item_matrix_history }o--|| category_history : "fk"
+    item_matrix_history }o--|| vendor_history : "fk"
+    item_matrix_history }o--|| tax_class_history : "fk"
+    sale_line_history }o--|| tax_category_history : "fk"
+    sale_line_history }o--|| customer_history : "fk"
+    sale_line_history }o--|| discount_history : "fk"
+    sale_line_history }o--|| employee_history : "fk"
+    sale_line_history }o--|| item_history : "fk"
+    sale_line_history }o--|| sale_line_history : "fk"
+    sale_line_history }o--|| shop_history : "fk"
+    sale_line_history }o--|| tax_category_history : "fk"
+    sale_line_history }o--|| sale_history : "fk"
+    category_history }o--|| category_history : "fk"
+    item_matrix_tag }o--|| item_matrix_history : "fk"
+    email_history }o--|| contact_history : "fk"
+    email_history }o--|| contact_history : "fk"
+    register_withdraw }o--|| employee_history : "fk"
+    register_withdraw }o--|| payment_type : "fk"
+    register_withdraw }o--|| register_history : "fk"
+    ship_to_phone_history }o--|| ship_to_history : "fk"
+    ship_to_phone_history }o--|| ship_to_history : "fk"
+    shop_history }o--|| contact_history : "fk"
+    shop_history }o--|| tax_category_history : "fk"
+    shop_history }o--|| price_level : "fk"
+    cc_charge_history }o--|| sale_history : "fk"
+    employee_history }o--|| contact_history : "fk"
+    employee_history }o--|| employee_hours : "fk"
+    employee_history }o--|| employee_role : "fk"
+    employee_history }o--|| shop_history : "fk"
+    employee_history }o--|| shop_history : "fk"
+    employee_history }o--|| sale_history : "fk"
+    employee_history }o--|| register_history : "fk"
+    inventory_count_item_history }o--|| inventory_count_history : "fk"
+    inventory_count_item_history }o--|| item_history : "fk"
+    inventory_count_item_history }o--|| employee_history : "fk"
+    tax_class_sales_by_day }o--|| tax_class_history : "fk"
+    tax_class_sales_by_day }o--|| shop_history : "fk"
+    item_matrix_price }o--|| item_matrix_history : "fk"
+    work_order_item_history }o--|| work_order_history : "fk"
+    work_order_item_history }o--|| employee_history : "fk"
+    work_order_item_history }o--|| sale_line_history : "fk"
+    work_order_item_history }o--|| sale_history : "fk"
+    work_order_item_history }o--|| item_history : "fk"
+    work_order_item_history }o--|| discount_history : "fk"
+    item_price_history }o--|| item_history : "fk"
+    item_price_history }o--|| item_history : "fk"
+    register_history }o--|| employee_history : "fk"
+    register_history }o--|| shop_history : "fk"
+    sale_void }o--|| sale_history : "fk"
+    sale_void }o--|| employee_history : "fk"
+    sale_void }o--|| shop_history : "fk"
+    item_matrix_price_history }o--|| item_matrix_history : "fk"
+    item_matrix_price_history }o--|| item_matrix_history : "fk"
+    payment_by_day }o--|| payment_type : "fk"
+    payment_by_day }o--|| shop_history : "fk"
+    inventory_count_history }o--|| shop_history : "fk"
+    sale_payment }o--|| sale_history : "fk"
+    sale_payment }o--|| payment_type : "fk"
+    sale_payment }o--|| cc_charge_history : "fk"
+    sale_payment }o--|| sale_payment : "fk"
+    sale_payment }o--|| register_history : "fk"
+    sale_payment }o--|| employee_history : "fk"
+    sale_payment }o--|| credit_account_history : "fk"
+    vendor_phone_history }o--|| vendor_history : "fk"
+    vendor_phone_history }o--|| vendor_history : "fk"
+    attribute_value_history }o--|| item_matrix_history : "fk"
+    attribute_value_history }o--|| item_matrix_history : "fk"
+    inventory_transfer_history }o--|| shop_history : "fk"
+    inventory_transfer_history }o--|| employee_history : "fk"
+    inventory_transfer_history }o--|| shop_history : "fk"
+    inventory_transfer_history }o--|| employee_history : "fk"
+    transfer_item_history }o--|| inventory_transfer_history : "fk"
+    transfer_item_history }o--|| item_history : "fk"
+    special_order_history }o--|| customer_history : "fk"
+    special_order_history }o--|| shop_history : "fk"
+    special_order_history }o--|| sale_line_history : "fk"
+    special_order_history }o--|| order_line_history : "fk"
+    special_order_history }o--|| transfer_item_history : "fk"
+    order_line_history }o--|| order_history : "fk"
+    order_line_history }o--|| item_history : "fk"

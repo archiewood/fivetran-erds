@@ -1,0 +1,203 @@
+erDiagram
+    processed_task_count_value {
+        text id PK
+        text realm_id FK
+        text closed
+        text created_at
+        text latest_task_update_datetime
+        text oldest_open_task_datetime
+        text open_task_count
+        text pending
+        text realm_name
+        text realm_tier
+        text total
+        text type
+        text updated_at
+    }
+    processed_task_count_values_resource {
+        text id PK
+        text parent_id FK
+        text explicit_value
+        text name
+        text tier
+        text type
+    }
+    users {
+        text id PK
+        text created_at
+        text email
+        text name
+        text status
+        text type
+        text updated
+        text updated_at
+    }
+    user_resource {
+        text id PK
+        text parent_id FK
+        text explicit_value
+        text name
+        text tier
+        text type
+    }
+    scorecard_order_override {
+        text id PK
+        text scorecard_id PK
+        text type
+        text value
+    }
+    scorecard_value_label {
+        text index PK
+        text scorecard_id PK
+        text label
+        text value
+    }
+    scorecard {
+        text id PK
+        text owner_realm_id FK
+        text active
+        text created_at
+        text edition_id
+        text has_assessments
+        text has_scores
+        text name
+        text type
+        text updated_at
+    }
+    scorecard_resource {
+        text id PK
+        text parent_id FK
+        text config_display_percentage
+        text config_max_score
+        text config_min_score
+        text created_at
+        text deleted_at
+        text edition_type
+        text explicit_value
+        text image
+        text latest_id
+        text links_self
+        text name
+        text owner_realm_id
+        text status
+        text tier
+        text type
+        text updated_at
+        text user_can_edit
+    }
+    scored_value {
+        text id PK
+        text assessment_id FK
+        text scorecard_id FK
+        text calculated_score
+        text checklist_id
+        text checkpoint_id
+        text created_at
+        text criteria
+        text depth
+        text display_score
+        text display_value
+        text filters
+        text images
+        text name
+        text notes
+        text orders
+        text status
+        text superset_id
+        text system_id
+        text template_score_id
+        text template_unchanged
+        text type
+        timestamp updated_at
+        text value
+    }
+    task {
+        text id PK
+        text scorecard_score_id FK
+        text checkpoint_id
+        text client_id
+        text created_at
+        text description
+        text due_date
+        text meta_notes_required
+        text meta_photos_required
+        text name
+        text status
+        text type
+        text updated_at
+        text vendor_id
+    }
+    task_resource {
+        text id PK
+        text collection_name
+        text created_at
+        text custom_properties_generated_conversions_thumb
+        text download_url
+        text file_name
+        text full_url
+        text media_id
+        text name
+        text order_column
+        text thumb_url
+        text type
+        text updated_at
+        text url
+    }
+    assessment_score {
+        text index PK
+        text assessment_id PK
+        text calculated_score
+        text display_value
+        text name
+        text score
+    }
+    assessment_forecast_score {
+        text index PK
+        text assessment_id PK
+        text calculated_score
+        text display_value
+        text forecast_score
+        text name
+    }
+    assessment {
+        text id PK
+        text access_realm_id FK
+        text realm_id FK
+        text client_id
+        text completion_date
+        text created_at
+        text description
+        text end_date
+        text forecast_origin_id
+        text locked
+        text name
+        text start_date
+        text status
+        text type
+        timestamp updated_at
+        text vendor_id
+        text visibility
+    }
+    realm {
+        text id PK
+        text realm_parent_id FK
+        text explicit_value
+        text name
+        text tier
+        text type
+    }
+    processed_task_count_value }o--|| realm : "fk"
+    processed_task_count_values_resource }o--|| processed_task_count_values_resource : "fk"
+    user_resource }o--|| user_resource : "fk"
+    scorecard_order_override }o--|| scorecard : "fk"
+    scorecard_value_label }o--|| scorecard : "fk"
+    scorecard }o--|| realm : "fk"
+    scorecard_resource }o--|| scorecard_resource : "fk"
+    scored_value }o--|| assessment : "fk"
+    scored_value }o--|| scorecard : "fk"
+    task }o--|| scored_value : "fk"
+    assessment_score }o--|| assessment : "fk"
+    assessment_forecast_score }o--|| assessment : "fk"
+    assessment }o--|| realm : "fk"
+    assessment }o--|| realm : "fk"
+    realm }o--|| realm : "fk"

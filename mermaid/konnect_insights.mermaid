@@ -1,0 +1,203 @@
+erDiagram
+    groups {
+        text id PK
+        text name
+    }
+    classification {
+        text id PK
+        text group_id FK
+        text parent_classification_id FK
+        text profile_id FK
+        text created_at
+        text hierarchy
+        text level
+        text name
+    }
+    additional_info {
+        text conversation_custom_field_id PK
+        text group_id FK
+        text created_at
+        text field
+        text field_name
+        text field_type
+        text field_values
+        text type
+    }
+    topic {
+        text id PK
+        text group_id FK
+        text created_at
+        text created_by
+        text name
+    }
+    message_cluster {
+        text id PK
+        text cluster_id FK
+        text group_id FK
+        text case_type
+        text classification_1
+        text classification_1_sentiment
+        text classification_2
+        text classification_3
+        text classification_msg
+        text classified_by
+        text classified_comment
+        text classified_date
+        text gender
+        text is_classification_automated
+        text is_classified
+        text languages
+        text likes_count
+        text link
+        text media_type
+        text message_title
+        text profile_id
+        text profile_name
+        text publish_date
+        text sentiment
+        text star_rating
+        text ticket_date
+        text ticket_id
+        text ticket_status
+        text title
+        text unique_contact_id
+        text unique_message_id
+        text user_favourites_count
+        text user_image_url
+        text user_name
+        text user_profile_url
+        text user_unique_name
+    }
+    profile {
+        text id PK
+        text group_id FK
+        text created_at
+        text created_by
+        text location_data
+        text logo_html
+        text media
+        text name
+        text page_user_id
+    }
+    message_profile {
+        text id PK
+        text group_id FK
+        text profile_id FK
+        text case_type
+        text classification_1
+        text classification_1_sentiment
+        text classification_2
+        text classification_3
+        text classification_msg
+        text classified_by
+        text classified_comment
+        text classified_date
+        text gender
+        text is_classification_automated
+        text is_classified
+        text languages
+        text likes_count
+        text link
+        text media_type
+        text message_title
+        text profile_name
+        text publish_date
+        text sentiment
+        text star_rating
+        text ticket_date
+        text ticket_id
+        text ticket_status
+        text title
+        text unique_contact_id
+        text unique_message_id
+        text user_favourites_count
+        text user_image_url
+        text user_name
+        text user_profile_url
+        text user_unique_name
+    }
+    message_topic {
+        text id PK
+        text group_id FK
+        text topic_id FK
+        text case_type
+        text classification_1
+        text classification_1_sentiment
+        text classification_2
+        text classification_3
+        text country
+        text gender
+        text is_classification_automated
+        text is_classified
+        text is_replied_tweet
+        text is_retweeted_tweet
+        text languages
+        text likes_count
+        text media_type
+        text profile_id
+        text profile_name
+        text sentiment
+        text shares_count
+        text star_rating
+        text ticket_date
+        text ticket_id
+        text ticket_status
+        text title
+        text unique_contact_id
+        text unique_message_id
+        text user_favourites_count
+    }
+    commenter_type {
+        text id PK
+        text group_id FK
+        text type
+    }
+    commenter_level {
+        text id PK
+        text group_id FK
+        text level
+    }
+    conversation_type {
+        text id PK
+        text group_id FK
+        text type
+    }
+    cluster {
+        text id PK
+        text group_id FK
+        text created_at
+        text created_by
+        text name
+    }
+    severity {
+        text id PK
+        text type PK
+        text group_id FK
+        text and_contain
+        text color
+        text contain
+        text created_at
+        text display_name
+        text does_not_contain
+        text followers_greater_than
+        text followers_less_than
+        text sentiment_name
+        text sentiments
+    }
+    classification }o--|| profile : "fk"
+    classification }o--|| classification : "fk"
+    classification }o--|| groups : "fk"
+    additional_info }o--|| groups : "fk"
+    topic }o--|| groups : "fk"
+    message_cluster }o--|| groups : "fk"
+    message_cluster }o--|| cluster : "fk"
+    profile }o--|| groups : "fk"
+    message_profile }o--|| profile : "fk"
+    message_profile }o--|| groups : "fk"
+    message_topic }o--|| groups : "fk"
+    message_topic }o--|| topic : "fk"
+    commenter_type }o--|| groups : "fk"
+    commenter_level }o--|| groups : "fk"
+    conversation_type }o--|| groups : "fk"
+    cluster }o--|| groups : "fk"
+    severity }o--|| groups : "fk"

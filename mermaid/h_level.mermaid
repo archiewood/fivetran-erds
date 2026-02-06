@@ -1,0 +1,351 @@
+erDiagram
+    calendar_availability {
+        text index PK
+        text calendar_id PK
+        text date
+        text deleted
+        jsonb hours
+    }
+    calendar_location_configuration {
+        text meeting_id PK
+        text calendar_id PK
+        text kind
+        text location
+    }
+    calendar_team_member_location_configuration {
+        text meeting_id PK
+        text calendar_id PK
+        text calendar_team_member_id PK
+        text kind
+        text location
+    }
+    calendar_team_member {
+        text id PK
+        text calendar_id PK
+        text is_primary
+        text priority
+    }
+    calendar {
+        text id PK
+        text form_id FK
+        text alert_email
+        text allow_booking_after
+        text allow_booking_after_unit
+        text allow_booking_for
+        text allow_booking_for_unit
+        text allow_cancellation
+        text allow_reschedule
+        text appointment_per_day
+        text appointment_per_slot
+        text auto_confirm
+        text availability_type
+        text calendar_cover_image
+        text calendar_type
+        text consent_label
+        text description
+        text enable_recurring
+        text event_color
+        text event_title
+        text event_type
+        text form_submit_redirect_url
+        text form_submit_thanks_message
+        text form_submit_type
+        text google_invitation_emails
+        text group_id
+        text guest_type
+        text is_active
+        text is_live_payment_mode
+        text location_id
+        text look_busy_config_default_value
+        text look_busy_config_enabled
+        text look_busy_config_percentage
+        text name
+        text notes
+        jsonb open_hour
+        text pixel_id
+        text pre_buffer
+        text pre_buffer_unit
+        text recurring_booking_option
+        text recurring_booking_overlap_default_status
+        text recurring_count
+        text recurring_freq
+        text should_assign_contact_to_team_member
+        text should_send_alert_emails_to_assigned_member
+        text should_skip_assigning_contact_for_existing
+        text slot_buffer_unit
+        text slot_duration
+        text slot_duration_unit
+        text slot_interval
+        text slug
+        text sticky_contact
+        text widget_slug
+        text widget_type
+    }
+    note {
+        text id PK
+        text contact_id PK
+        text body
+        timestamp date_added
+        text user_id
+    }
+    calendar_event_user {
+        text id PK
+        text calendar_event_id PK
+    }
+    calendar_event {
+        text id PK
+        text calendar_id FK
+        text contact_id FK
+        text address
+        text appointment_status
+        jsonb assigned_resources
+        text assigned_user_id
+        text created_by_source
+        text created_by_user_id
+        timestamp date_added
+        timestamp date_updated
+        text description
+        timestamp end_time
+        text group_id
+        text is_recurring
+        text location_id
+        text master_event_id
+        text note
+        text rrule
+        timestamp start_time
+        text title
+    }
+    funnel {
+        text id PK
+        timestamp date_added
+        timestamp date_updated
+        text deleted
+        text domain_id
+        text fav_icon_url
+        text global_sections_path
+        text global_sections_url
+        text is_store_active
+        text location_id
+        text name
+        text order_form_version
+        text origin_id
+        jsonb steps
+        text tracking_code_body
+        text tracking_code_head
+        text type
+        timestamp updated_at
+        text url
+    }
+    opportunity_task {
+        text id PK
+        text opportunity_id PK
+        text body
+        text business_id
+        text completed
+        timestamp created_at
+        text created_by_channel
+        text created_by_source
+        text created_by_source_id
+        timestamp date_added
+        timestamp date_updated
+        text description
+        timestamp due_date
+        text last_updated_by_channel
+        text last_updated_by_source
+        text last_updated_by_source_id
+        text location_id
+        text recurring_task_id
+        jsonb relations
+        text title
+        timestamp updated_at
+    }
+    opportunity_note {
+        text id PK
+        text opportunity_id PK
+        text body
+        text body_text
+        text company_id
+        text created_by_channel
+        text created_by_source
+        text created_by_time_stamp
+        text created_by_user_id
+        timestamp date_added
+        timestamp date_updated
+        text deleted
+        text last_updated_by_channel
+        text last_updated_by_source
+        text last_updated_by_time_stamp
+        text last_updated_by_user_id
+        text location_id
+        jsonb relations
+        text updated_at
+        text user_id
+    }
+    opportunity_relation {
+        text index PK
+        text opportunity_id PK
+        text association_id
+        text attributed
+        text company_name
+        text contact_name
+        text email
+        text full_name
+        text is_primary
+        text object_key
+        text phone
+        text record_id
+        text relation_id
+        jsonb tags
+    }
+    opportunity_custom_field {
+        text id PK
+        text opportunity_id PK
+        jsonb field_value
+    }
+    opportunity {
+        text id PK
+        text contact_id FK
+        text pipeline_id FK
+        text assigned_to
+        jsonb attributions
+        jsonb calendar
+        text contact_name
+        jsonb contact_score
+        timestamp created_at
+        jsonb followers
+        text index_version
+        timestamp last_action_date
+        timestamp last_stage_change_at
+        timestamp last_status_change_at
+        text location_id
+        text lost_reason_id
+        text monetary_value
+        text name
+        text pipeline_stage_id
+        text pipeline_stage_uid
+        text source
+        text status
+        timestamp updated_at
+    }
+    pipeline_stage {
+        text id PK
+        text pipeline_id PK
+        text name
+        text position
+        text show_in_funnel
+        text show_in_pie_chart
+    }
+    pipeline {
+        text id PK
+        timestamp date_added
+        timestamp date_updated
+        text location_id
+        text name
+        text show_in_funnel
+        text show_in_pie_chart
+    }
+    task {
+        text id PK
+        text contact_id PK
+        text assigned_to
+        text body
+        text completed
+        timestamp due_date
+        text title
+    }
+    form {
+        text id PK
+        text location_id
+        text name
+    }
+    contact_custom_field {
+        text id PK
+        text contact_id PK
+        jsonb value
+    }
+    contact {
+        text id PK
+        jsonb additional_email
+        jsonb additional_phones
+        text address
+        text assigned_to
+        text business_id
+        text business_name
+        text city
+        text company_name
+        text country
+        timestamp date_added
+        text date_of_birth
+        timestamp date_updated
+        text dnd
+        jsonb dnd_setting
+        text email
+        text first_name
+        jsonb followers
+        text last_name
+        text location_id
+        text phone
+        text phone_label
+        text postal_code
+        text source
+        text state
+        jsonb tags
+        text type
+        text valid_email
+        text website
+    }
+    submission {
+        text id PK
+        text contact_id FK
+        text form_id FK
+        timestamp created_at
+        text email
+        text location_id
+        text name
+        jsonb others
+    }
+    conversation {
+        text id PK
+        text contact_id FK
+        text attributed
+        text company_name
+        text contact_name
+        timestamp date_added
+        timestamp date_updated
+        text email
+        jsonb followers
+        text full_name
+        text is_last_message_internal_comment
+        text last_message_body
+        timestamp last_message_date
+        text last_message_type
+        text location_id
+        text phone
+        text profile_photo
+        jsonb scoring
+        jsonb tags
+        text type
+        text unread_count
+    }
+    calendar_availability }o--|| calendar : "fk"
+    calendar_location_configuration }o--|| calendar : "fk"
+    calendar_team_member_location_configuration }o--|| calendar_team_member : "fk"
+    calendar_team_member_location_configuration }o--|| calendar_team_member : "fk"
+    calendar_team_member }o--|| calendar : "fk"
+    calendar }o--|| form : "fk"
+    note }o--|| contact : "fk"
+    calendar_event_user }o--|| calendar_event : "fk"
+    calendar_event }o--|| calendar : "fk"
+    calendar_event }o--|| contact : "fk"
+    opportunity_task }o--|| opportunity : "fk"
+    opportunity_note }o--|| opportunity : "fk"
+    opportunity_relation }o--|| opportunity : "fk"
+    opportunity_custom_field }o--|| opportunity : "fk"
+    opportunity }o--|| pipeline : "fk"
+    opportunity }o--|| contact : "fk"
+    pipeline_stage }o--|| pipeline : "fk"
+    task }o--|| contact : "fk"
+    contact_custom_field }o--|| contact : "fk"
+    submission }o--|| contact : "fk"
+    submission }o--|| form : "fk"
+    conversation }o--|| contact : "fk"

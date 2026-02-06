@@ -1,0 +1,364 @@
+erDiagram
+    transaction_type_relationship {
+        text id PK
+        text cash_transaction_type_id PK
+        text type
+    }
+    cash_transaction_type {
+        text id PK
+        text calculation_type
+        text can_be_deleted
+        text can_be_renamed
+        text category
+        text data_item_name
+        text is_exposed
+        text is_positive_operator
+        text name
+        text preferred_currency
+        text require_alignment
+        text require_rmv
+    }
+    valuation_iteration {
+        text id PK
+        text last_modified_date
+        text name
+        text status
+        text valuation_period
+    }
+    periodic_data_relationship {
+        text id PK
+        text periodic_data_id PK
+        text type
+    }
+    periodic_data {
+        text id PK
+        text as_of_date
+        text comment
+        text currency
+        text data_item
+        text data_source
+        text data_value_type
+        text investment
+        text is_relationship_deleted
+        text last_modified_date
+        text owner
+        text period_end
+        text period_length
+        text period_length_code
+        text relationship_path
+        text scenario
+        text security
+        text segment
+        text submitted_by
+        text submitted_date
+        text value
+    }
+    entity_asset {
+        text id PK
+        text acquisition_as_of
+        text acquisition_date
+        text asset_type
+        text calendar_type
+        text excel_ticker
+        text exit_as_of
+        text exit_date
+        text geography
+        text industry
+        text initial_period
+        text is_public
+        text last_modified_date
+        text lead_investment_professional
+        text long_description
+        text name
+        text reporting_currency
+        text short_description
+        text status
+        text website
+    }
+    entity_group {
+        text id PK
+        text applicable_to
+        text entities_count
+        text entity_category_type
+        text entity_group_category_data_id
+        text entity_group_category_data_type
+        text entity_ids
+        text name
+    }
+    entity_fund {
+        text id PK
+        text benchmark_vintage
+        text calendar_type
+        text commitment
+        text default_pme_index
+        text default_pme_liquidity_premium
+        text description
+        text final_close_date
+        text fund_size
+        text general_partner
+        text include_in_workflow
+        text initial_close_date
+        text initial_poeriod
+        text last_modified_date
+        text long_name
+        text name
+        text owner_type
+        text reporting_currency
+        text status
+        text strategy
+        text sub_strategy
+        text total_committed_capital
+        text vintage
+    }
+    document_relationship {
+        text id PK
+        text document_id PK
+        text type
+    }
+    document {
+        text id PK
+        text available_for_publishing
+        text event_date
+        text is_available_to_all_users
+        text last_modified_by
+        text location
+        text period_end
+        text period_length
+        text size
+        text tags
+        text upload_date
+        text uploaded_by
+    }
+    currency {
+        text id PK
+        text name
+        text symbol
+    }
+    document_folder {
+        text id PK
+        text created_date
+        text last_modified_date
+        text name
+        text parent_folder_id
+        text parent_folder_type
+    }
+    segment_relationship {
+        text id PK
+        text segment_id PK
+        text type
+    }
+    segment {
+        text id PK
+        text is_active
+        text is_allow_rollup
+        text is_global
+        text last_modified_date
+        text name
+        text null_replacement
+    }
+    data_item_relationship {
+        text id PK
+        text data_item_id PK
+        text type
+    }
+    data_item {
+        text id PK
+        text aggregation_null_replacement
+        text aggregation_type
+        text applied_to_all_asset
+        jsonb calculation_type
+        text category
+        text description
+        text excel_ticker
+        text exchange_rate
+        text format_type
+        text is_carrybackward
+        text is_carryover
+        text is_monetary
+        text is_number_comma_separated
+        text is_putable
+        text is_scalable
+        text last_modified_date
+        text name
+        text number_of_decimal_place
+        jsonb option
+        text rc_resolves_to
+        text value_type
+    }
+    data_item_category_relationship {
+        text id PK
+        text data_item_category_id PK
+        text type
+    }
+    data_item_category {
+        text id PK
+        text name
+        text sequence_number
+    }
+    valuation_static_detal {
+        text id PK
+        text name
+    }
+    deal {
+        text id PK
+        text from_entity_data_id FK
+        text security_data_id FK
+        text to_entity_data_id FK
+        text acquisition_date
+        text currency
+        text deal_type
+        text exit_date
+        text from_entity_data_type
+        text investment_amount
+        text investment_name
+        text last_modified_date
+        text object_relationship_data_id
+        text object_relationship_data_type
+        text owner_name
+        text ownership
+        text security_data_type
+        text security_name
+        text status
+        text to_entity_data_type
+    }
+    cash_transaction {
+        text id PK
+        text investment_object_data_id FK
+        text owner_object_data_id FK
+        text scenario_object_data_id FK
+        text security_object_data_id FK
+        text transaction_type_object_data_id FK
+        text as_of_date
+        text base_amount
+        text base_currency
+        text client
+        text client_object_data_id
+        text client_object_data_type
+        text cost_per_share
+        text custom_1
+        text custom_2
+        text custom_3
+        text custom_4
+        text custom_5
+        text custom_6
+        text description
+        text group_id
+        text investment
+        text investment_object_data_type
+        text last_modified_by
+        text last_modified_date
+        text local_amount
+        text local_currency
+        text original_id
+        text owner
+        text owner_object_data_type
+        text scenario
+        text scenario_object_data_type
+        text security
+        text security_object_data_type
+        text share
+        text transaction_category
+        text transaction_date
+        text transaction_type
+        text transaction_type_object_data_type
+        text type
+        text value_per_share
+    }
+    valuation_dataitem {
+        text id PK
+        text category
+        text name
+        text value_type
+    }
+    security_ownership {
+        text entity_id PK
+        text security_id PK
+        text amount_held
+        text cost_basis
+        text entity_name
+        text shares_held
+    }
+    security {
+        text id PK
+        text asset_data_id FK
+        text asset_data_type
+        text asset_name
+        text dividends_days_in_year
+        text dividends_frequency
+        text dividends_paid_upon
+        text dividends_type
+        text fundamental_authorized_option
+        text fundamental_closed_date
+        text fundamental_commencement_date
+        text fundamental_conversion_ratio_denominator
+        text fundamental_conversion_ratio_numerator
+        text fundamental_converts_to
+        text fundamental_currency
+        text fundamental_exercise_price
+        text fundamental_maturity_date
+        text fundamental_options_available_for_grant
+        text fundamental_options_issued
+        text fundamental_outstanding_principal
+        text fundamental_outstanding_share
+        text fundamental_outstanding_unit
+        text fundamental_outstanding_warrant
+        text fundamental_price_per_share
+        text has_ownership
+        text interest_days_in_year
+        text interest_frequency
+        text interest_type
+        text is_active
+        text last_modified_date
+        text liquidation_preference_price_per_share
+        text liquidation_preference_type
+        text name
+        text participation_include_dividends
+        text participation_price_per_share
+        text participation_type
+        text rank
+        text short_name
+        text subtype
+        text type
+    }
+    scenario {
+        text id PK
+        text last_modified_date
+        text name
+        text short_name
+    }
+    users {
+        text id PK
+        jsonb advanced_role
+        text business_unit
+        text cell_phone
+        text department
+        text email
+        text fax
+        text federation_id
+        text first_name
+        text is_active
+        text last_modified_by
+        text last_modified_date
+        text last_name
+        text middle_name
+        text office_address
+        text phone
+        jsonb roles
+        text title
+    }
+    transaction_type_relationship }o--|| cash_transaction_type : "fk"
+    periodic_data_relationship }o--|| periodic_data : "fk"
+    document_relationship }o--|| document : "fk"
+    segment_relationship }o--|| segment : "fk"
+    data_item_relationship }o--|| data_item : "fk"
+    data_item_category_relationship }o--|| data_item_category : "fk"
+    deal }o--|| entity_fund : "fk"
+    deal }o--|| entity_asset : "fk"
+    deal }o--|| security : "fk"
+    cash_transaction }o--|| entity_fund : "fk"
+    cash_transaction }o--|| entity_asset : "fk"
+    cash_transaction }o--|| security : "fk"
+    cash_transaction }o--|| scenario : "fk"
+    cash_transaction }o--|| cash_transaction_type : "fk"
+    security_ownership }o--|| security : "fk"
+    security }o--|| entity_asset : "fk"

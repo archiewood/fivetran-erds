@@ -1,0 +1,202 @@
+erDiagram
+%% Event Email        
+%% The email in the EVENT table is the email of the RECIPIENT
+    unsubscribe_group {
+        bigint id PK
+        text description
+        boolean is_default
+        timestamp last_email_sent_at
+        text name
+        bigint unsubscribes
+    }
+    event {
+        text _fivetran_id PK
+        bigint campaign_id FK
+        text singlesend_id FK
+        bigint attempt
+        text campaign_split_id
+        text campaign_version
+        text cert_err
+        text email
+        text event
+        text ip
+        text mc_stats
+        text phase_id
+        text pool_id
+        text pool_name
+        text post_type
+        text reason
+        text response
+        text send_at
+        text sg_event_id
+        boolean sg_machine_open
+        text sg_message_id
+        text sg_user_id
+        text singlesend_name
+        text smtp_id
+        text status
+        timestamp timestamp
+        text tls
+        text type
+        text url
+        bigint url_offset_index
+        text url_offset_type
+        text useragent
+    }
+    contact {
+        text id PK
+        text address_line_1
+        text address_line_2
+        text city
+        text country
+        timestamp created_at
+        text email
+        text facebook
+        text first_name
+        text last_name
+        text line
+        text phone_number
+        text postal_code
+        text state_province_region
+        text unique_name
+        timestamp updated_at
+        text whatsapp
+    }
+    campaign_segment {
+        text campaign_id PK
+        text segment_id PK
+    }
+    recipient_list {
+        text list_id PK
+        text recipient_id PK
+    }
+    %% Legacy table
+    campaign {
+        text id PK
+        bigint sender_id FK
+        integer unsubscribe_group_id FK
+        text custom_unsubscribe_url
+        text editor
+        text html_content
+        text ip_pool
+        text plain_content
+        text status
+        text subject
+        text title
+    }
+    segment_condition {
+        text field PK
+        text segment_id PK
+        text operator
+        text value
+    }
+    campaign_list {
+        text campaign_id PK
+        text list_id PK
+    }
+    sender {
+        bigint id PK
+        text address
+        text address_2
+        text city
+        text country
+        timestamp created_at
+        text from_email
+        text from_name
+        boolean locked
+        text nickname
+        text reply_to_email
+        text reply_to_name
+        text state
+        timestamp updated_at
+        text verified_reason
+        boolean verified_status
+        text zip
+    }
+    list {
+        text id PK
+        text name
+    }
+    segment {
+        text id PK
+        text list_id FK
+        text condition
+        timestamp created_at
+        text name
+        timestamp sample_updated_at
+        timestamp updated_at
+    }
+    contact_list {
+        text contact_id PK
+        text list_id PK
+    }
+    single_send {
+        text id PK
+        bigint email_config_sender_id FK
+        integer email_config_unsubscribe_group_id FK
+        text created_at
+        text email_config_custom_unsubscribe_url
+        text email_config_editor
+        text email_config_html_content
+        text email_config_ip_pool
+        text email_config_plain_content
+        text email_config_subject
+        text name
+        text send_at
+        text status
+        text updated_at
+    }
+    single_send_list {
+        text list_id PK
+        text single_send_id PK
+    }
+    contact_alternate_email {
+        text alternate_email PK
+        text contact_id PK
+    }
+    category {
+        integer index PK
+        text event_id PK
+        bigint campaign_id FK
+        text singlesend_id FK
+        text category
+    }
+    single_send_segment {
+        text segment_id PK
+        text single_send_id PK
+    }
+    recipient {
+        text id PK
+        timestamp created_at
+        text email
+        text first_name
+        timestamp last_clicked
+        timestamp last_emailed
+        text last_name
+        timestamp last_opened
+        timestamp updated_at
+    }
+    event }o--|| single_send : "fk"
+    event }o--|| campaign : "fk"
+    campaign_segment }o--|| segment : "fk"
+    campaign_segment }o--|| campaign : "fk"
+    recipient_list }o--|| list : "fk"
+    recipient_list }o--|| recipient : "fk"
+    campaign }o--|| sender : "fk"
+    campaign }o--|| unsubscribe_group : "fk"
+    segment_condition }o--|| segment : "fk"
+    campaign_list }o--|| list : "fk"
+    campaign_list }o--|| campaign : "fk"
+    segment }o--|| list : "fk"
+    contact_list }o--|| contact : "fk"
+    contact_list }o--|| list : "fk"
+    single_send }o--|| sender : "fk"
+    single_send }o--|| unsubscribe_group : "fk"
+    single_send_list }o--|| list : "fk"
+    single_send_list }o--|| single_send : "fk"
+    contact_alternate_email }o--|| contact : "fk"
+    category }o--|| event : "fk"
+    category }o--|| single_send : "fk"
+    category }o--|| campaign : "fk"
+    single_send_segment }o--|| segment : "fk"
+    single_send_segment }o--|| single_send : "fk"

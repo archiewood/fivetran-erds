@@ -1,0 +1,1822 @@
+erDiagram
+    feed {
+        text feed_id PK
+        timestamp created_time
+        text feed_type
+        timestamp processing_end_time
+        timestamp processing_start_time
+        text processing_status
+        text result_feed_document_id
+    }
+    order_item {
+        text order_item_id PK
+        text amazon_order_id PK
+        text asin
+        text buyer_requested_cancel_buyer_cancel_reason
+        boolean buyer_requested_cancel_is_buyer_requested_cancel
+        text condition_id
+        text condition_note
+        text condition_subtype_id
+        text deemed_reseller_category
+        text ioss_number
+        boolean is_gift
+        boolean is_transparency
+        text item_approval_context_approval_status
+        text item_approval_context_approval_type
+        text item_price_amount
+        text item_price_currency_code
+        text item_tax_amount
+        text item_tax_currency_code
+        text points_granted_monetary_amount
+        text points_granted_monetary_currency_code
+        bigint points_granted_points_number
+        text price_designation
+        bigint product_info_detail_number_of_items
+        text promotion_discount_amount
+        text promotion_discount_currency_code
+        text promotion_discount_tax_amount
+        text promotion_discount_tax_currency_code
+        bigint quantity_ordered
+        bigint quantity_shipped
+        text scheduled_delivery_end_date
+        text scheduled_delivery_start_date
+        text seller_sku
+        boolean serial_number_required
+        text shipping_discount_amount
+        text shipping_discount_currency_code
+        text shipping_discount_tax_amount
+        text shipping_discount_tax_currency_code
+        text shipping_price_amount
+        text shipping_price_currency_code
+        text shipping_tax_amount
+        text shipping_tax_currency_code
+        text store_chain_store_id
+        text tax_collection_model
+        text tax_collection_responsible_party
+        text title
+    }
+    financial_failed_adhoc_disbursement_event {
+        text _fivetran_id PK
+        text financial_event_group_id FK
+        text disbursement_id
+        text funds_transfers_type
+        text payment_disbursement_type
+        timestamp posted_date
+        text status
+        double_precision transfer_amount_currency_amount
+        text transfer_amount_currency_code
+        text transfer_id
+    }
+    outbound_seller_feature {
+        text feature_name PK
+        text feature_description
+        boolean seller_eligible
+    }
+    item_offer_count_type {
+        text type PK
+        text asin PK
+        text condition
+        text fullfillment_channel
+        bigint offer_count
+    }
+    item_image {
+        text link PK
+        text variant PK
+        text asin PK
+        text marketplace_id PK
+        bigint height
+        bigint width
+    }
+    easyship_package_item_serial_number {
+        text order_item_serial_number PK
+        text order_item_id PK
+        text package_id PK
+    }
+    fulfillment_order {
+        text seller_fulfillment_order_id PK
+        text cod_charge_currency_code
+        text cod_charge_taxcurrency_code
+        text cod_charge_taxvalue
+        text cod_charge_value
+        timestamp delivery_window_end_date
+        timestamp delivery_window_start_date
+        text displayable_order_comment
+        timestamp displayable_order_date
+        text displayable_order_id
+        text fulfillment_action
+        text fulfillment_order_status
+        text fulfillment_policy
+        boolean is_cod_required
+        text marketplace_id
+        timestamp received_date
+        text shipping_charge_currency_code
+        text shipping_charge_taxcurrency_code
+        text shipping_charge_taxvalue
+        text shipping_charge_value
+        text shipping_speed_category
+        timestamp status_updated_date
+    }
+    available_shipping_service_option {
+        text carrier_will_pick_up_option PK
+        text shipment_id PK
+        double_precision charge_amount
+        text charge_currency_code
+        text shipping_service_id
+    }
+    partnered_small_parcel_package_output {
+        integer index PK
+        text shipment_id PK
+        text carrier_name
+        text package_status
+        text tracking_id
+        text weight_unit
+        double_precision weight_value
+    }
+    financial_shipment_event_item_promotion {
+        integer index PK
+        text type PK
+        text financial_shipment_event_item_id PK
+        double_precision amount_currency_amount
+        text amount_currency_code
+        text id
+        text promotion_kind
+    }
+    financial_imaging_services_fee_event {
+        text _fivetran_id PK
+        text financial_event_group_id FK
+        text asin
+        text imaging_request_billing_item_id
+        timestamp posted_date
+    }
+    fulfillment_order_feature_settings {
+        text feature_name PK
+        text seller_fulfillment_order_id PK
+        text feature_fulfillment_policy
+    }
+    item_fulfillment_availability {
+        text fulfillment_channel_code PK
+        text sku PK
+        bigint quantity
+    }
+    container_packed_item {
+        bigint index PK
+        text container_sequence_number PK
+        text container_type PK
+        text transaction_date PK
+        text vendor_shipment_identifier PK
+        text buyer_product_identifier
+        text item_sequence_number
+        text packed_item_details_expiry_duration_duration_unit
+        text packed_item_details_expiry_duration_duration_value
+        text packed_item_details_expiry_expiry_date
+        text packed_item_details_expiry_manufacture_date
+        text packed_item_details_lot_number
+        text packed_item_details_purchase_order_number
+        bigint packed_quantity_amount
+        text packed_quantity_unit_of_measure
+        bigint packed_quantity_unit_size
+        text vendor_product_identifier
+    }
+    vendor_direct_fulfillment_customer_invoice {
+        text purchase_order_number PK
+        text content
+    }
+    vendor_retail_procurement_order_item_status {
+        text item_sequence_number PK
+        text purchase_order_number PK
+        bigint accepted_quantity_amount
+        text accepted_quantity_unit_of_measure
+        bigint accepted_quantity_unit_size
+        text buyer_product_identifier
+        text confirmation_status
+        timestamp last_receive_date
+        double_precision list_price_amount
+        text list_price_currency_code
+        double_precision net_cost_amount
+        text net_cost_currency_code
+        bigint ordered_quantity_amount
+        text ordered_quantity_unit_of_measure
+        bigint ordered_quantity_unit_size
+        text receive_status
+        bigint received_quantity_amount
+        text received_quantity_unit_of_measure
+        bigint received_quantity_unit_size
+        bigint rejected_quantity_amount
+        text rejected_quantity_unit_of_measure
+        bigint rejected_quantity_unit_size
+    }
+    inbound_shipment_item {
+        text shipment_id PK
+        text fulfillment_network_sku
+        bigint quantity_in_case
+        bigint quantity_received
+        bigint quantity_shipped
+        text release_date
+        text seller_sku
+    }
+    transport_content {
+        text shipment_id PK
+        text error_code
+        text error_description
+        boolean is_partnered
+        text seller_id
+        text shipment_type
+        text transport_status
+    }
+    preorder_info_result {
+        text shipment_id PK
+        text confirmed_fulfillable_date
+        text need_by_date
+        boolean shipment_confirmed_for_preorder
+        boolean shipment_contains_preorderable_items
+    }
+    ordered_quantity_details {
+        bigint index PK
+        text item_sequence_number PK
+        text purchase_order_number PK
+        bigint cancelled_amount
+        text cancelled_unit_of_measure
+        bigint cancelled_unit_size
+        bigint ordered_amount
+        text ordered_unit_of_measure
+        bigint ordered_unit_size
+        timestamp updated_date
+    }
+    partnered_ltl_data_output_pallet {
+        integer index PK
+        text shipment_id PK
+        boolean is_stacked
+        text weight_unit
+        double_precision weight_value
+    }
+    label_format_option {
+        text label_format PK
+        text shipment_id PK
+        boolean include_packing_slip_with_label
+        text shipping_service_id
+    }
+    easyship_package_item {
+        text order_item_id PK
+        text package_id PK
+    }
+    financial_shipment_event_item {
+        text _fivetran_id PK
+        text financial_shipment_event_id FK
+        double_precision cost_of_points_granted_currency_amount
+        text cost_of_points_granted_currency_code
+        double_precision cost_of_points_returned_currency_amount
+        text cost_of_points_returned_currency_code
+        integer index
+        text item_kind
+        text order_adjustment_item_id
+        text order_item_id
+        bigint quantity_shipped
+        text seller_sku
+    }
+    listed_item_issue {
+        text code PK
+        text sku PK
+        jsonb attribute_names
+        text message
+        text severity
+    }
+    fba_inventory_researching_quantity_entry {
+        text name PK
+        text inventory_summary_id PK
+        text granularity_id
+        text granularity_type
+        integer quantity
+    }
+    regulated_information_field {
+        text id PK
+        text amazon_order_id PK
+        text field_label
+        text field_type
+        text field_value
+    }
+    financial_tds_reimbursement_event {
+        text _fivetran_id PK
+        text financial_event_group_id FK
+        timestamp posted_date
+        double_precision reimbursed_amount_currency_amount
+        text reimbursed_amount_currency_code
+        text tdsorder_id
+    }
+    container_identification {
+        text container_identification_number PK
+        text container_identification_type PK
+        text container_sequence_number PK
+        text container_type PK
+        text transaction_date PK
+        text vendor_shipment_identifier PK
+    }
+    item_vendor_detail {
+        text asin PK
+        text marketplace_id PK
+        text manufacturer_code
+        text manufacturer_code_parent
+        text product_categorydisplay_name
+        text product_categoryvalue
+        text product_group
+        text product_subcategorydisplay_name
+        text product_subcategoryvalue
+        text replenishment_category
+    }
+    item_summary {
+        text asin PK
+        text marketplace_id PK
+        boolean adult_product
+        boolean autographed
+        text brand
+        text classification_id
+        text color
+        jsonb contributors
+        text display_name
+        text item_classification
+        text item_name
+        text manufacturer
+        boolean memorabilia
+        text model_number
+        bigint package_quantity
+        text part_number
+        text release_date
+        text size
+        text style
+        boolean trade_in_eligible
+        text website_display_group
+        text website_display_group_name
+    }
+    competitive_price_type {
+        text id PK
+        text asin PK
+        boolean belongs_to_requester
+        text condition
+        double_precision landed_amount
+        text landed_currency_code
+        double_precision listing_amount
+        text listing_currency_code
+        text offer_type
+        double_precision points_monetary_value_amount
+        text points_monetary_value_currency_code
+        bigint points_number
+        text quantity_discount_type
+        bigint quantity_tier
+        text seller_id
+        double_precision shipping_amount
+        text shipping_currency_code
+        text subcondition
+    }
+    item_sales_rank_type {
+        text asin PK
+        text product_category_id
+        text rank
+    }
+    cpt_trade_in_value {
+        text asin PK
+        double_precision amount
+        text currency_code
+    }
+    financial_loan_servicing_event {
+        text _fivetran_id PK
+        text financial_event_group_id FK
+        double_precision loan_amount_currency_amount
+        text loan_amount_currency_code
+        text source_business_event_type
+    }
+    item_identifier {
+        text identifier PK
+        text identifier_type PK
+        text asin PK
+        text marketplace_id PK
+    }
+    tracking {
+        text id PK
+        text alternate_leg_tracking_id
+        timestamp promised_delivery_date
+        text tracking_summary_status
+    }
+    listed_item_summary {
+        text asin PK
+        text marketplace_id PK
+        text sku PK
+        text condition_type
+        timestamp created_date
+        text fn_sku
+        integer height
+        text item_name
+        timestamp last_updated_date
+        text link
+        text product_type
+        jsonb status
+        integer width
+    }
+    financial_seller_review_enrollment_payment_event {
+        text _fivetran_id PK
+        text financial_event_group_id FK
+        text enrollment_id
+        text parent_asin
+        timestamp posted_date
+        double_precision total_amount_currency_amount
+        text total_amount_currency_code
+    }
+    vendor_shipping_order {
+        text purchase_order_date PK
+        text purchase_order_number PK
+        text transaction_date PK
+        text vendor_shipment_identifier PK
+        text ship_window
+    }
+    network_commingling_transaction_event {
+        text _fivetran_id PK
+        text financial_event_group_id FK
+        text asin
+        text marketplace_id
+        text net_co_transaction_id
+        timestamp posted_date
+        text swap_reason
+        double_precision tax_amount_currency_amount
+        text tax_amount_currency_code
+        double_precision tax_exclusive_amount_currency_amount
+        text tax_exclusive_amount_currency_code
+        text transaction_type
+    }
+    item_product_type {
+        text product_type PK
+        text asin PK
+        text marketplace_id PK
+    }
+    acknowledgement_status_details {
+        bigint index PK
+        text item_sequence_number PK
+        text purchase_order_number PK
+        bigint accepted_quantity_amount
+        text accepted_quantity_unit_of_measure
+        bigint accepted_quantity_unit_size
+        timestamp acknowledgement_date
+        bigint rejected_quantity_amount
+        text rejected_quantity_unit_of_measure
+        bigint rejected_quantity_unit_size
+    }
+    service_job_appointment {
+        text appointment_id PK
+        bigint service_job_id FK
+        text poa_poa_type
+        timestamp poa_upload_time
+        text poa_uploading_technician
+        text rescheduled_appointment_id
+    }
+    vendor_retail_procurement_order_status {
+        text purchase_order_number PK
+        timestamp last_updated_date
+        timestamp purchase_order_date
+        text purchase_order_status
+    }
+    package_tracking_event {
+        text code PK
+        bigint package_number PK
+        text address_city
+        text address_country
+        text address_state
+        timestamp date
+        text description
+    }
+    merchant_fulfillment_shipment {
+        text id PK
+        text amazon_order_id FK
+        timestamp created_date
+        double_precision insurance_amount
+        text insurance_currency_code
+        timestamp last_updated_date
+        text seller_order_id
+        text status
+        text tracking_id
+        text weight_unit
+        double_precision weight_value
+    }
+    item_offer_detail {
+        bigint index PK
+        text sub_condition PK
+        text asin PK
+        text availability_type
+        timestamp available_date
+        text condition_notes
+        text country
+        text feedback_count
+        boolean is_buy_box_winner
+        boolean is_featured_merchant
+        boolean is_fulfilled_by_amazon
+        boolean is_national_prime
+        boolean is_prime
+        double_precision listing_price_amount
+        text listing_price_currency_code
+        bigint maximum_hours
+        bigint minimum_hours
+        text offer_type
+        double_precision points_monetary_value_amount
+        text points_monetary_value_currency_code
+        bigint points_number
+        text seller_id
+        text seller_positive_feedback_rating
+        double_precision shipping_amount
+        text shipping_currency_code
+        text state
+    }
+    financial_pay_with_amazon_event {
+        text _fivetran_id PK
+        text financial_event_group_id FK
+        text amount_description
+        text business_object_type
+        text fulfillment_channel
+        text payment_amount_type
+        text sales_channel
+        text seller_order_id
+        text store_name
+        timestamp transaction_posted_date
+    }
+    inner_container_sequence_number {
+        text container_sequence_number PK
+        text container_type PK
+        text transaction_date PK
+        text vendor_shipment_identifier PK
+    }
+    fba_inventory_summary {
+        text _fivetran_id PK
+        text asin FK
+        bigint carrier_damaged_quantity
+        text condition
+        bigint customer_damaged_quantity
+        bigint defective_quantity
+        bigint distributor_damaged_quantity
+        bigint expired_quantity
+        bigint fc_processing_quantity
+        text fn_sku
+        bigint fulfillable_quantity
+        text granularity_id
+        text granularity_type
+        bigint inbound_receiving_quantity
+        bigint inbound_shipped_quantity
+        bigint inbound_working_quantity
+        timestamp last_updated_time
+        bigint pending_customer_order_quantity
+        bigint pending_transshipment_quantity
+        text product_name
+        text seller_sku
+        bigint total_quantity
+        bigint total_reserved_quantity
+        bigint total_unfulfillable_quantity
+        bigint warehouse_damaged_quantity
+    }
+    item_relationship {
+        text type PK
+        text child_asin PK
+        text parent_asin PK
+    }
+    financial_shipment_event {
+        text _fivetran_id PK
+        text financial_event_group_id FK
+        text amazon_order_id
+        text event_type
+        text marketplace_name
+        timestamp posted_date
+        text seller_order_id
+    }
+    financial_safet_reimbursement_item {
+        text _fivetran_id PK
+        integer index PK
+        text safet_reimbursement_event_id PK
+        text product_description
+        text quantity
+    }
+    financial_removal_shipment_item_adjustment {
+        text removal_shipment_item_id PK
+        text removal_shipment_adjustment_event_id PK
+        bigint adjusted_quantity
+        text fulfillment_network_sku
+        double_precision revenue_adjustment_currency_amount
+        text revenue_adjustment_currency_code
+        double_precision tax_amount_adjustment_currency_amount
+        text tax_amount_adjustment_currency_code
+        text tax_collection_model
+        double_precision tax_withheld_adjustment_currency_amount
+        text tax_withheld_adjustment_currency_code
+    }
+    financial_adhoc_disbursement_event {
+        text _fivetran_id PK
+        text financial_event_group_id FK
+        timestamp posted_date
+        double_precision transaction_amount_currency_amount
+        text transaction_amount_currency_code
+        text transaction_id
+        text transaction_type
+    }
+    sku_inbound_guidance {
+        text seller_sku PK
+        text asin
+        text inbound_guidance
+    }
+    order_item_serial_number {
+        text serial_number PK
+        text amazon_order_id PK
+        text order_item_id PK
+    }
+    financial_retro_charge_event {
+        text _fivetran_id PK
+        text financial_event_group_id FK
+        text amazon_order_id
+        double_precision base_tax_currency_amount
+        text base_tax_currency_code
+        text marketplace_name
+        timestamp posted_date
+        text retrocharge_event_type
+        double_precision shipping_tax_currency_amount
+        text shipping_tax_currency_code
+    }
+    content_badge_set {
+        text content_badge PK
+        text content_reference_key PK
+    }
+    financial_removal_shipment_adjustment_event {
+        text _fivetran_id PK
+        text adjustment_event_id PK
+        text financial_event_group_id FK
+        text merchant_order_id
+        text order_id
+        timestamp posted_date
+        text transaction_type
+    }
+    financial_removal_shipment_event {
+        text _fivetran_id PK
+        text financial_event_group_id FK
+        text merchant_order_id
+        text order_id
+        timestamp posted_date
+        text transaction_type
+    }
+    partnered_ltl_data_output {
+        text shipment_id PK
+        text amazon_calculated_value_currency_code
+        text amazon_calculated_value_value
+        text amazon_reference_id
+        bigint box_count
+        text carrier_name
+        text freight_ready_date
+        boolean is_bill_of_landing_available
+        text partnered_estimate_confirm_deadline
+        text partnered_estimate_currency_code
+        text partnered_estimate_value
+        text partnered_estimate_void_deadline
+        bigint preview_freight_class
+        timestamp preview_pickup_date
+        text seller_declared_currency_code
+        text seller_declared_value
+        bigint seller_fright_class
+        text total_weight_unit
+        double_precision total_weight_value
+    }
+    vendor_direct_fulfillment_shipping_label_data {
+        text package_identifier PK
+        text purchase_order_number PK
+        text content
+        text ship_method
+        text ship_method_name
+        text tracking_number
+    }
+    prep_instruction {
+        text seller_sku PK
+        text asin
+        text barcode_instruction
+        text prep_guidance
+        jsonb prep_instruction_list
+    }
+    financial_event_group {
+        text financial_event_group_id PK
+        text account_tail
+        double_precision beginning_balance_currency_amount
+        text beginning_balance_currency_code
+        double_precision converted_total_currency_amount
+        text converted_total_currency_code
+        timestamp financial_event_group_end
+        timestamp financial_event_group_start
+        timestamp fund_transfer_date
+        text fund_transfer_status
+        double_precision original_total_currency_amount
+        text original_total_currency_code
+        text processing_status
+        text trace_id
+    }
+    financial_debt_recovery_item {
+        integer index PK
+        text debt_recovery_event_id PK
+        timestamp group_begin_date
+        timestamp group_end_date
+        double_precision recovery_amount_currency_amount
+        text recovery_amount_currency_code
+    }
+    financial_capacity_reservation_billing_event {
+        text _fivetran_id PK
+        text financial_event_group_id FK
+        text description
+        timestamp posted_date
+        double_precision transaction_amount_currency_amount
+        text transaction_amount_currency_code
+        text transaction_type
+    }
+    service_job_appointment_time {
+        bigint service_job_id PK
+        bigint duration_in_minutes
+        timestamp start_time
+        text type
+    }
+    financial_adjustment_event {
+        text _fivetran_id PK
+        text financial_event_group_id FK
+        double_precision adjustment_amount_currency_amount
+        text adjustment_amount_currency_code
+        text adjustment_type
+        timestamp posted_date
+    }
+    orders {
+        text amazon_order_id PK
+        text automated_shipping_setting_automated_carrier
+        text automated_shipping_setting_automated_ship_method
+        boolean automated_shipping_setting_has_automated_shipping_settings
+        text buyer_invoice_preference
+        text cba_displayable_shipping_label
+        timestamp earliest_delivery_date
+        timestamp earliest_ship_date
+        text easy_ship_shipment_status
+        text electronic_invoice_status
+        text fulfillment_channel
+        text fulfillment_supply_source_id
+        boolean has_regulated_items
+        boolean is_access_point_order
+        boolean is_business_order
+        boolean is_estimated_ship_date_set
+        boolean is_global_express_enabled
+        boolean is_iba
+        boolean is_ispu
+        boolean is_premium_order
+        boolean is_prime
+        boolean is_replacement_order
+        boolean is_sold_by_ab
+        timestamp last_update_date
+        timestamp latest_delivery_date
+        timestamp latest_ship_date
+        text marketplace_id
+        bigint number_of_items_shipped
+        bigint number_of_items_unshipped
+        text order_channel
+        text order_status
+        text order_total_amount
+        text order_total_currency_code
+        text order_type
+        text payment_method
+        text promise_response_due_date
+        timestamp purchase_date
+        text replaced_order_id
+        text sales_channel
+        text seller_display_name
+        text seller_order_id
+        text ship_service_level
+        text shipment_service_level_category
+    }
+    vendor_direct_fulfillment_order_item {
+        text item_sequence_number PK
+        text customer_order_number PK
+        text purchase_order_number PK
+        bigint amount
+        text buyer_product_identifier
+        text customized_url
+        timestamp earliest_nominated_delivery_date
+        text gift_message
+        text gift_wrap_id
+        timestamp latest_nominated_delivery_date
+        double_precision net_price_amount
+        text net_price_currency_code
+        text scheduled_delivery_service_type
+        text title
+        double_precision total_price_amount
+        text total_price_currency_code
+        text unit_of_measure
+        bigint unit_size
+        text vendor_product_identifier
+    }
+    item_offer_lowest_price_type {
+        text asin PK
+        text condition
+        text fulfillment_channel
+        double_precision landed_price_amount
+        text landed_price_currency_code
+        double_precision listing_price_amount
+        text listing_price_currency_code
+        text offer_type
+        bigint points_points_number
+        double_precision pointspoints_monetary_value_amount
+        text pointspoints_monetary_value_currency_code
+        text quantity_discount_type
+        bigint quantity_tier
+        double_precision shipping_amount
+        text shipping_currency_code
+    }
+    item_dimension {
+        text asin PK
+        text marketplace_id PK
+    }
+    non_partnered_ltl_data_output {
+        text shipment_id PK
+        text carrier_name
+        text pro_number
+    }
+    fulfillment_order_notification_email {
+        text email PK
+        text seller_fulfillment_order_id PK
+    }
+    order_item_promotion_id {
+        text promotion_id PK
+        text amazon_order_id PK
+        text order_item_id PK
+    }
+    financial_safet_reimbursement_event {
+        text _fivetran_id PK
+        text financial_event_group_id FK
+        timestamp posted_date
+        text reason_code
+        double_precision reimbursed_amount_currency_amount
+        text reimbursed_amount_currency_code
+        text safetclaim_id
+    }
+    order_regulated_info {
+        text amazon_order_id PK
+        text external_reviewer_id
+        text rejection_reason
+        text rejection_reason_description
+        text rejection_reason_id
+        boolean requires_dosage_label
+        boolean requires_merchant_action
+        timestamp review_date
+        text status
+        jsonb valid_rejection_reasons
+    }
+    vendor_retail_procurement_container {
+        text container_sequence_number PK
+        text container_type PK
+        text transaction_date PK
+        text vendor_shipment_identifier PK
+        bigint block
+        text container_count
+        bigint tier
+        text tracking_number
+        text weight_unit_of_measure
+        double_precision weight_value
+    }
+    item_contributor {
+        text value PK
+        text asin PK
+        text marketplace_id PK
+        text role_display_name
+        text role_value
+    }
+    cod_payment_execution_detail {
+        bigint index PK
+        text amazon_order_id PK
+        text payment_amount
+        text payment_currency_code
+        text payment_method
+    }
+    approval_support_data_element {
+        text name PK
+        text amazon_order_id PK
+        text order_item_id PK
+        text value
+    }
+    financial_seller_deal_payment_event {
+        text _fivetran_id PK
+        text financial_event_group_id FK
+        text deal_description
+        text deal_id
+        text event_type
+        double_precision fee_amount_currency_amount
+        text fee_amount_currency_code
+        text fee_type
+        timestamp posted_date
+        double_precision tax_amount_currency_amount
+        text tax_amount_currency_code
+        double_precision total_amount_currency_amount
+        text total_amount_currency_code
+    }
+    financial_service_fee_event {
+        text _fivetran_id PK
+        text financial_event_group_id PK
+        text amazon_order_id
+        text asin
+        text fee_description
+        text fee_reason
+        text fn_sku
+        text seller_sku
+    }
+    asin_inbound_guidance {
+        text asin PK
+        text inbound_guidance
+    }
+    tracking_event_history {
+        text event_code PK
+        text tracking_id PK
+        timestamp event_time
+    }
+    vendor_direct_fulfillment_tax_detail {
+        text type PK
+        text customer_order_number PK
+        text purchase_order_number PK
+        double_precision tax_amount
+        text tax_currency_code
+        double_precision tax_rate
+        double_precision taxable_amount
+        text taxable_currency_code
+    }
+    financial_tax_withholding_event {
+        text _fivetran_id PK
+        text financial_event_group_id FK
+        double_precision base_amount_currency_amount
+        text base_amount_currency_code
+        timestamp posted_date
+        timestamp tax_with_holding_period_end_date
+        timestamp tax_with_holding_period_start_date
+        double_precision with_held_amount_currency_amount
+        text with_held_amount_currency_code
+    }
+    item_buy_box_price_type {
+        text asin PK
+        text condition
+        double_precision landed_price_amount
+        text landed_price_currency_code
+        double_precision listing_price_amount
+        text listing_price_currency_code
+        text offer_type
+        bigint points_points_number
+        double_precision pointspoints_monetary_value_amount
+        text pointspoints_monetary_value_currency_code
+        text quantity_discount_type
+        bigint quantity_tier
+        text seller_id
+        double_precision shipping_price_amount
+        text shipping_price_currency_code
+    }
+    vendor_retail_procurement_order_item {
+        text item_sequence_number PK
+        text purchase_order_number PK
+        text amazon_product_identifier
+        bigint amount
+        boolean is_back_order_allowed
+        double_precision list_price_amount
+        text list_price_currency_code
+        double_precision net_cost_amount
+        text net_cost_currency_code
+        text unit_of_measure
+        bigint unit_size
+        text vendor_product_identifier
+    }
+    package_tracking_detail {
+        bigint package_number PK
+        text additional_location_info
+        text carrier_code
+        text carrier_phone_number
+        text carrier_url
+        text current_status
+        text current_status_description
+        text customer_tracking_link
+        timestamp estimated_arrival_date
+        timestamp ship_date
+        text ship_to_city
+        text ship_to_country
+        text ship_to_state
+        text signed_for_by
+        text tracking_number
+    }
+    item_classification_sales_rank {
+        text classification_id PK
+        text asin PK
+        text link
+        text rank
+        text title
+    }
+    financial_removal_shipment_item {
+        text removal_shipment_item_id PK
+        text removal_shipment_event_id PK
+        double_precision fee_amount_currency_amount
+        text fee_amount_currency_code
+        text fulfillment_network_sku
+        bigint quantity
+        double_precision revenue_currency_amount
+        text revenue_currency_code
+        double_precision tax_amount_currency_amount
+        text tax_amount_currency_code
+        text tax_collection_model
+        double_precision tax_with_held_currency_amount
+        text tax_with_held_currency_code
+    }
+    financial_charge_component {
+        text charge_kind PK
+        text charge_type PK
+        integer index PK
+        text linked_to PK
+        text linked_to_id PK
+        double_precision currency_amount
+        text currency_code
+    }
+    service_job {
+        bigint service_job_id PK
+        text asin
+        timestamp create_time
+        text marketplace_id
+        bigint quantity
+        jsonb required_skills
+        text seller_id
+        text service_job_provider_id
+        text service_job_status
+        text service_location_address_line_1
+        text service_location_address_line_2
+        text service_location_address_line_3
+        text service_location_address_type
+        text service_location_city
+        text service_location_country
+        text service_location_country_code
+        text service_location_district
+        text service_location_district_or_county
+        text service_location_municipality
+        text service_location_name
+        text service_location_phone
+        text service_location_postal_code
+        text service_location_service_location_type
+        text service_location_state_or_region
+        text service_order_id
+        text store_id
+        text title
+    }
+    marketplace_tax_classification {
+        text name PK
+        text amazon_order_id PK
+        text value
+    }
+    technician {
+        text technician_id PK
+        bigint service_id PK
+        text name
+    }
+    small_and_light_enrollment_status {
+        text marketplace_id PK
+        text seller_sku PK
+        text status
+    }
+    inventory_feature {
+        text seller_sku PK
+        text feature_name PK
+        text asin
+        text fn_sku
+        jsonb overlapping_skus
+        bigint sku_count
+    }
+    shipment_status_detail {
+        integer index PK
+        text transaction_date PK
+        text vendor_shipment_identifier PK
+        text shipment_status
+        text shipment_status_date
+    }
+    financial_adjustment_item {
+        integer index PK
+        text adjustment_event_id PK
+        text asin
+        text fn_sku
+        double_precision per_unit_amount_currency_amount
+        text per_unit_amount_currency_code
+        text product_description
+        text quantity
+        text seller_sku
+        double_precision total_amount_currency_amount
+        text total_amount_currency_code
+    }
+    catalog {
+        text asin PK
+        text marketplace_id
+    }
+    item_display_group_sales_rank {
+        text website_display_group PK
+        text asin PK
+        text link
+        text rank
+        text title
+    }
+    marketplace_participation {
+        text id PK
+        text merchant_id PK
+        text country_code
+        text default_currency_code
+        text default_language_code
+        text domain_name
+        text name
+    }
+    tracking_additional_input {
+        text rate_id PK
+    }
+    inbound_shipment_info {
+        text shipment_id PK
+        boolean are_cases_required
+        text box_content_source
+        text box_contents_fee_details_fee_per_unit_currency_code
+        text box_contents_fee_details_fee_per_unit_value
+        text box_contents_fee_details_total_fee_currency_code
+        text box_contents_fee_details_total_fee_value
+        bigint box_contents_fee_details_total_units
+        text confirmed_needby_date
+        text destination_fulfillment_center_id
+        text label_prep_type
+        text shipment_name
+        text shipment_status
+    }
+    financial_rental_transaction_event {
+        text _fivetran_id PK
+        text financial_event_group_id FK
+        text amazon_order_id
+        bigint extension_length
+        text marketplace_name
+        timestamp posted_date
+        text rental_event_type
+        double_precision rental_initial_value_currency_amount
+        text rental_initial_value_currency_code
+        double_precision rental_reimbursement_currency_amount
+        text rental_reimbursement_currency_code
+    }
+    financial_fee_component {
+        text fee_kind PK
+        text fee_type PK
+        integer index PK
+        text linked_to PK
+        text linked_to_id PK
+        double_precision currency_amount
+        text currency_code
+    }
+    item_variation_theme {
+        text theme PK
+        text asin PK
+        jsonb attribute
+    }
+    financial_coupon_payment_event {
+        text _fivetran_id PK
+        text financial_event_group_id FK
+        bigint clip_or_redemption_count
+        text coupon_id
+        text payment_event_id
+        timestamp posted_date
+        text seller_coupon_description
+        double_precision total_amount_currency_amount
+        text total_amount_currency_code
+    }
+    payment_method_detail_item {
+        text method PK
+        text amazon_order_id PK
+    }
+    financial_product_ads_payment_event {
+        text _fivetran_id PK
+        text financial_event_group_id FK
+        double_precision base_value_currency_amount
+        text base_value_currency_code
+        text invoice_id
+        timestamp posted_date
+        double_precision tax_value_currency_amount
+        text tax_value_currency_code
+        text transaction_type
+        double_precision transaction_value_currency_amount
+        text transaction_value_currency_code
+    }
+    available_delivery_experience_option {
+        text delivery_experience_option PK
+        text shipment_id PK
+        double_precision charge_amount
+        text charge_currency_code
+    }
+    item_quantity_discount_price_type {
+        text asin PK
+        double_precision listing_price_amount
+        text listing_price_currency_code
+        text quantity_discount_type
+        bigint quantity_tier
+    }
+    tax_registration_details {
+        text party_id PK
+        text tax_registration_number PK
+        text tax_registration_type PK
+    }
+    financial_charge_refund_event {
+        text _fivetran_id PK
+        text financial_event_group_id FK
+        timestamp posted_date
+        text reason_code
+        text reason_code_description
+    }
+    financial_debt_recovery_event {
+        text _fivetran_id PK
+        text financial_event_group_id FK
+        text debt_recovery_type
+        double_precision over_payment_credit_currency_amount
+        text over_payment_credit_currency_code
+        double_precision recovery_amount_currency_amount
+        text recovery_amount_currency_code
+    }
+    financial_fba_liquidation_event {
+        text _fivetran_id PK
+        text financial_event_group_id FK
+        double_precision liquidation_fee_amount_currency_amount
+        text liquidation_fee_amount_currency_code
+        double_precision liquidation_proceeds_amount_currency_amount
+        text liquidation_proceeds_amount_currency_code
+        text original_removal_order_id
+        timestamp posted_date
+    }
+    vendor_direct_fulfillment_shipping_label {
+        text purchase_order_number PK
+        text label_format
+        text selling_party_address_address_line_1
+        text selling_party_address_address_line_2
+        text selling_party_address_address_line_3
+        text selling_party_address_attention
+        text selling_party_address_city
+        text selling_party_address_country_code
+        text selling_party_address_county
+        text selling_party_address_district
+        text selling_party_address_name
+        text selling_party_address_phone
+        text selling_party_address_postal_code
+        text selling_party_address_state_or_region
+        text selling_party_party_id
+        text ship_from_party_address_address_line_1
+        text ship_from_party_address_address_line_2
+        text ship_from_party_address_address_line_3
+        text ship_from_party_address_attention
+        text ship_from_party_address_city
+        text ship_from_party_address_country_code
+        text ship_from_party_address_county
+        text ship_from_party_address_district
+        text ship_from_party_address_name
+        text ship_from_party_address_phone
+        text ship_from_party_address_postal_code
+        text ship_from_party_address_state_or_region
+        text ship_from_party_party_id
+    }
+    cpt_offer_listing_count_type {
+        text asin PK
+        text condition
+        text count
+    }
+    financial_solution_provider_credit_event {
+        text _fivetran_id PK
+        text financial_event_group_id FK
+        text marketplace_country_code
+        text marketplace_id
+        text provider_id
+        text provider_store_name
+        text provider_transaction_type
+        text seller_id
+        text seller_order_id
+        text seller_store_name
+        double_precision transaction_amount_currency_amount
+        text transaction_amount_currency_code
+        timestamp transaction_creation_date
+    }
+    return_reason_code {
+        text return_reason_code PK
+        text description
+        text translated_description
+    }
+    vendor_direct_fulfillment_order {
+        text customer_order_number PK
+        text purchase_order_number PK
+        text address_address_line_1
+        text address_address_line_2
+        text address_address_line_3
+        text address_attention
+        text address_city
+        text address_country_code
+        text address_county
+        text address_district
+        text address_name
+        text address_phone
+        text address_postal_code
+        text address_state_or_region
+        text bill_to_party_address_address_line_1
+        text bill_to_party_address_address_line_2
+        text bill_to_party_address_address_line_3
+        text bill_to_party_address_attention
+        text bill_to_party_address_city
+        text bill_to_party_address_country_code
+        text bill_to_party_address_county
+        text bill_to_party_address_district
+        text bill_to_party_address_name
+        text bill_to_party_address_phone
+        text bill_to_party_address_postal_code
+        text bill_to_party_address_state_or_region
+        text bill_to_party_party_id
+        text bill_to_party_tax_registration_tax_registration_number
+        text bill_to_party_tax_registration_tax_registration_type
+        boolean is_gift
+        boolean is_priority_shipment
+        boolean is_pslip_required
+        boolean is_scheduled_delivery_shipment
+        text message_to_customer
+        timestamp order_date
+        text order_status
+        timestamp promised_delivery_date
+        timestamp required_ship_date
+        text selling_party_address_address_line_1
+        text selling_party_address_address_line_2
+        text selling_party_address_address_line_3
+        text selling_party_address_attention
+        text selling_party_address_city
+        text selling_party_address_country_code
+        text selling_party_address_county
+        text selling_party_address_district
+        text selling_party_address_name
+        text selling_party_address_phone
+        text selling_party_address_postal_code
+        text selling_party_address_state_or_region
+        text selling_party_party_id
+        text selling_party_tax_registration_tax_registration_number
+        text selling_party_tax_registration_tax_registration_type
+        text ship_from_party_address_address_line_1
+        text ship_from_party_address_address_line_2
+        text ship_from_party_address_address_line_3
+        text ship_from_party_address_attention
+        text ship_from_party_address_city
+        text ship_from_party_address_country_code
+        text ship_from_party_address_county
+        text ship_from_party_address_district
+        text ship_from_party_address_name
+        text ship_from_party_address_phone
+        text ship_from_party_address_postal_code
+        text ship_from_party_address_state_or_region
+        text ship_from_party_party_id
+        text ship_from_party_tax_registration_tax_registration_number
+        text ship_from_party_tax_registration_tax_registration_type
+        text ship_method
+    }
+    merchant_fulfillment_shipment_item {
+        text order_item_id PK
+        text shipment_id PK
+        text item_description
+        text item_weight_unit
+        double_precision item_weight_value
+        bigint quantity
+    }
+    shipment_document {
+        text shipment_id PK
+        text type PK
+        text tracking_id FK
+        text contents
+        text format
+        text package_client_reference_id
+    }
+    vendor_retail_procurement_shipment {
+        text transaction_date PK
+        text vendor_shipment_identifier PK
+        text bill_of_lading_number
+        text buyer_reference_number
+        text carrier_assignment_date
+        text carrier_details_code
+        text carrier_details_email
+        text carrier_details_name
+        text carrier_details_phone
+        text carrier_details_shipment_reference_number
+        text current_shipment_status
+        text currentshipment_status_date
+        text estimated_delivery_date
+        text package_label_create_date
+        text requested_pick_up
+        text scheduled_pick_up
+        text selling_party_address_line_1
+        text selling_party_address_line_2
+        text selling_party_address_line_3
+        text selling_party_attention
+        text selling_party_city
+        text selling_party_country_code
+        text selling_party_county
+        text selling_party_district
+        text selling_party_name
+        text selling_party_party_id
+        text selling_party_phone
+        text selling_party_postal_code
+        text selling_party_state_or_region
+        text ship_from_party_address_line_1
+        text ship_from_party_address_line_2
+        text ship_from_party_address_line_3
+        text ship_from_party_attention
+        text ship_from_party_city
+        text ship_from_party_country_code
+        text ship_from_party_county
+        text ship_from_party_district
+        text ship_from_party_name
+        text ship_from_party_party_id
+        text ship_from_party_phone
+        text ship_from_party_postal_code
+        text ship_from_party_state_or_region
+        text ship_mode
+        text ship_to_party_address_line_1
+        text ship_to_party_address_line_2
+        text ship_to_party_address_line_3
+        text ship_to_party_attention
+        text ship_to_party_city
+        text ship_to_party_country_code
+        text ship_to_party_county
+        text ship_to_party_district
+        text ship_to_party_name
+        text ship_to_party_party_id
+        text ship_to_party_phone
+        text ship_to_party_postal_code
+        text ship_to_party_state_or_region
+        text shipment_confirm_date
+        text shipment_create_date
+        text shipment_delivery_date
+        text shipment_freight_term
+        text shipped_date
+        text transaction_type
+        text transportation_mode
+    }
+    financial_affordability_expense_event {
+        text _fivetran_id PK
+        text financial_event_group_id FK
+        text amazon_order_id
+        double_precision base_expense_currency_amount
+        text base_expense_currency_code
+        text event_type
+        text marketplace_id
+        timestamp posted_date
+        double_precision tax_type_cgst_currency_amount
+        text tax_type_cgst_currency_code
+        double_precision tax_type_igst_currency_amount
+        text tax_type_igst_currency_code
+        double_precision tax_type_sgst_currency_amount
+        text tax_type_sgst_currency_code
+        double_precision total_expense_currency_amount
+        text total_expense_currency_code
+        text transaction_type
+    }
+    financial_trial_shipment_event {
+        text _fivetran_id PK
+        text financial_event_group_id FK
+        text amazon_order_id
+        timestamp posted_date
+        text sku
+    }
+    non_partnered_small_parcel_package_output {
+        integer index PK
+        text shipment_id PK
+        text carrier_name
+        text package_status
+        text tracking_id
+    }
+    financial_charge_instrument {
+        integer index PK
+        text debt_recovery_event_id PK
+        double_precision amount_currency_amount
+        text amount_currency_code
+        text description
+        text tail
+    }
+    easyship_package {
+        text package_id PK
+        text amazon_order_id PK
+        timestamp invoice_invoice_date
+        text invoice_invoice_number
+        text package_identifier
+        text package_status
+        text tracking_id
+    }
+    listed_item {
+        text sku PK
+        text item_procurement_amount
+        text item_procurement_currency_code
+    }
+    amazon_prep_fees_detail {
+        integer index PK
+        text seller_sku PK
+        text fee_per_unit_currency_code
+        text fee_per_unit_value
+        text prep_instruction
+    }
+    financial_value_added_service_charge_event {
+        text _fivetran_id PK
+        text financial_event_group_id FK
+        text description
+        timestamp posted_date
+        double_precision transaction_amount_currency_amount
+        text transaction_amount_currency_code
+        text transaction_type
+    }
+    content_meta_data_record {
+        text content_reference_key PK
+        text marketplace_id PK
+        text name
+        text status
+        timestamp update_time
+    }
+    item_offer_summary {
+        text asin PK
+        double_precision competitive_price_threshold_amount
+        text competitive_price_threshold_currency_code
+        double_precision list_price_amount
+        text list_price_currency_code
+        timestamp offers_available_time
+        double_precision suggested_lower_price_plus_shipping_amount
+        text suggested_lower_price_plus_shipping_currency_code
+        bigint total_offer_count
+    }
+    vendor_retail_procurement_order {
+        timestamp purchase_order_date PK
+        text purchase_order_number PK
+        text bill_to_party_address_line_1
+        text bill_to_party_address_line_2
+        text bill_to_party_address_line_3
+        text bill_to_party_address_type
+        text bill_to_party_city
+        text bill_to_party_country
+        text bill_to_party_country_code
+        text bill_to_party_district
+        text bill_to_party_district_or_county
+        text bill_to_party_municipality
+        text bill_to_party_name
+        text bill_to_party_party_id
+        text bill_to_party_phone
+        text bill_to_party_postal_code
+        text bill_to_party_state_or_region
+        text bill_to_party_tax_registration_number
+        text bill_to_party_tax_registration_type
+        text billable_weight_unit_of_measure
+        double_precision billable_weight_value
+        text buying_party_address_line_1
+        text buying_party_address_line_2
+        text buying_party_address_line_3
+        text buying_party_address_type
+        text buying_party_city
+        text buying_party_country
+        text buying_party_country_code
+        text buying_party_district
+        text buying_party_district_or_county
+        text buying_party_municipality
+        text buying_party_name
+        text buying_party_party_id
+        text buying_party_phone
+        text buying_party_postal_code
+        text buying_party_state_or_region
+        text buying_party_tax_registration_number
+        text buying_party_tax_registration_type
+        text deal_code
+        text delivery_window
+        text estimated_ship_by_date
+        text handling_instructions
+        text import_containers
+        text international_commercial_terms
+        text method_of_payment
+        text payment_method
+        text port_of_delivery
+        timestamp purchase_order_changed_date
+        text purchase_order_state
+        timestamp purchase_order_state_changed_date
+        text purchase_order_type
+        text seal_number
+        text selling_party_address_line_1
+        text selling_party_address_line_2
+        text selling_party_address_line_3
+        text selling_party_address_type
+        text selling_party_city
+        text selling_party_country
+        text selling_party_country_code
+        text selling_party_district
+        text selling_party_district_or_county
+        text selling_party_municipality
+        text selling_party_name
+        text selling_party_party_id
+        text selling_party_phone
+        text selling_party_postal_code
+        text selling_party_state_or_region
+        text selling_party_tax_registration_number
+        text selling_party_tax_registration_type
+        text ship_to_party_address_line_1
+        text ship_to_party_address_line_2
+        text ship_to_party_address_line_3
+        text ship_to_party_address_type
+        text ship_to_party_city
+        text ship_to_party_country
+        text ship_to_party_country_code
+        text ship_to_party_district
+        text ship_to_party_district_or_county
+        text ship_to_party_municipality
+        text ship_to_party_name
+        text ship_to_party_party_id
+        text ship_to_party_phone
+        text ship_to_party_postal_code
+        text ship_to_party_state_or_region
+        text ship_to_party_tax_registration_number
+        text ship_to_party_tax_registration_type
+        text ship_window
+        text shipping_instructions
+    }
+    financial_shipment_direct_payment {
+        integer index PK
+        text shipment_event_id PK
+        double_precision currency_amount
+        text currency_code
+        text payment_type
+        text shipment_event_type
+    }
+    inbound_shipment_item_prep_detail {
+        integer index PK
+        text shipment_id PK
+        text prep_instruction
+        text prep_owner
+    }
+    additional_seller_input {
+        text additional_input_field_name PK
+        text shipment_id PK
+        text data_type
+        text value_as_address_address_line_1
+        text value_as_address_address_line_2
+        text value_as_address_address_line_3
+        text value_as_address_city
+        text value_as_address_country_code
+        text value_as_address_district_or_county
+        text value_as_address_email
+        text value_as_address_name
+        text value_as_address_phone
+        text value_as_address_postal_code
+        text value_as_address_state_or_province_code
+        boolean value_as_boolean
+        double_precision value_as_currency_amount
+        text value_as_currency_currency_code
+        text value_as_dimension_unit
+        bigint value_as_dimension_value
+        bigint value_as_integer
+        text value_as_string
+        timestamp value_as_timestamp
+        text value_as_weight_unit
+        double_precision value_as_weight_value
+    }
+    listed_item_offers {
+        text marketplace_id PK
+        text offer_type PK
+        text sku PK
+        bigint points_number
+        text price_amount
+        text price_currency_code
+    }
+    partnered_small_parcel {
+        text shipment_id PK
+        text partnered_estimate_confirm_deadline
+        text partnered_estimate_currency_code
+        text partnered_estimate_value
+        text partnered_estimate_void_deadline
+    }
+    order_item }o--|| orders : "fk"
+    financial_failed_adhoc_disbursement_event }o--|| financial_event_group : "fk"
+    item_offer_count_type }o--|| catalog : "fk"
+    item_image }o--|| catalog : "fk"
+    item_image }o--|| catalog : "fk"
+    easyship_package_item_serial_number }o--|| easyship_package : "fk"
+    easyship_package_item_serial_number }o--|| order_item : "fk"
+    available_shipping_service_option }o--|| merchant_fulfillment_shipment : "fk"
+    partnered_small_parcel_package_output }o--|| transport_content : "fk"
+    financial_shipment_event_item_promotion }o--|| financial_shipment_event_item : "fk"
+    financial_imaging_services_fee_event }o--|| financial_event_group : "fk"
+    fulfillment_order_feature_settings }o--|| fulfillment_order : "fk"
+    item_fulfillment_availability }o--|| listed_item : "fk"
+    container_packed_item }o--|| vendor_retail_procurement_container : "fk"
+    container_packed_item }o--|| vendor_retail_procurement_container : "fk"
+    container_packed_item }o--|| vendor_retail_procurement_container : "fk"
+    container_packed_item }o--|| vendor_retail_procurement_container : "fk"
+    vendor_direct_fulfillment_customer_invoice }o--|| vendor_direct_fulfillment_order : "fk"
+    vendor_retail_procurement_order_item_status }o--|| vendor_retail_procurement_order_status : "fk"
+    inbound_shipment_item }o--|| inbound_shipment_info : "fk"
+    transport_content }o--|| inbound_shipment_info : "fk"
+    preorder_info_result }o--|| inbound_shipment_info : "fk"
+    ordered_quantity_details }o--|| vendor_retail_procurement_order_item : "fk"
+    ordered_quantity_details }o--|| vendor_retail_procurement_order_item : "fk"
+    partnered_ltl_data_output_pallet }o--|| partnered_ltl_data_output_pallet : "fk"
+    label_format_option }o--|| merchant_fulfillment_shipment : "fk"
+    easyship_package_item }o--|| easyship_package : "fk"
+    easyship_package_item }o--|| order_item : "fk"
+    financial_shipment_event_item }o--|| financial_shipment_event : "fk"
+    listed_item_issue }o--|| listed_item : "fk"
+    fba_inventory_researching_quantity_entry }o--|| fba_inventory_summary : "fk"
+    regulated_information_field }o--|| orders : "fk"
+    financial_tds_reimbursement_event }o--|| financial_event_group : "fk"
+    container_identification }o--|| vendor_retail_procurement_container : "fk"
+    container_identification }o--|| vendor_retail_procurement_container : "fk"
+    container_identification }o--|| vendor_retail_procurement_container : "fk"
+    container_identification }o--|| vendor_retail_procurement_container : "fk"
+    item_vendor_detail }o--|| catalog : "fk"
+    item_vendor_detail }o--|| catalog : "fk"
+    item_summary }o--|| catalog : "fk"
+    item_summary }o--|| catalog : "fk"
+    competitive_price_type }o--|| catalog : "fk"
+    item_sales_rank_type }o--|| catalog : "fk"
+    cpt_trade_in_value }o--|| catalog : "fk"
+    financial_loan_servicing_event }o--|| financial_event_group : "fk"
+    item_identifier }o--|| catalog : "fk"
+    item_identifier }o--|| catalog : "fk"
+    listed_item_summary }o--|| listed_item : "fk"
+    financial_seller_review_enrollment_payment_event }o--|| financial_event_group : "fk"
+    vendor_shipping_order }o--|| vendor_retail_procurement_shipment : "fk"
+    vendor_shipping_order }o--|| vendor_retail_procurement_shipment : "fk"
+    vendor_shipping_order }o--|| vendor_retail_procurement_order : "fk"
+    vendor_shipping_order }o--|| vendor_retail_procurement_order : "fk"
+    network_commingling_transaction_event }o--|| financial_event_group : "fk"
+    item_product_type }o--|| catalog : "fk"
+    item_product_type }o--|| catalog : "fk"
+    acknowledgement_status_details }o--|| vendor_retail_procurement_order_item : "fk"
+    acknowledgement_status_details }o--|| vendor_retail_procurement_order_item : "fk"
+    service_job_appointment }o--|| service_job : "fk"
+    package_tracking_event }o--|| package_tracking_detail : "fk"
+    merchant_fulfillment_shipment }o--|| orders : "fk"
+    item_offer_detail }o--|| catalog : "fk"
+    financial_pay_with_amazon_event }o--|| financial_event_group : "fk"
+    inner_container_sequence_number }o--|| vendor_retail_procurement_container : "fk"
+    inner_container_sequence_number }o--|| vendor_retail_procurement_container : "fk"
+    inner_container_sequence_number }o--|| vendor_retail_procurement_container : "fk"
+    inner_container_sequence_number }o--|| vendor_retail_procurement_container : "fk"
+    fba_inventory_summary }o--|| catalog : "fk"
+    item_relationship }o--|| catalog : "fk"
+    item_relationship }o--|| catalog : "fk"
+    financial_shipment_event }o--|| financial_event_group : "fk"
+    financial_safet_reimbursement_item }o--|| financial_safet_reimbursement_event : "fk"
+    financial_removal_shipment_item_adjustment }o--|| financial_removal_shipment_adjustment_event : "fk"
+    financial_adhoc_disbursement_event }o--|| financial_event_group : "fk"
+    order_item_serial_number }o--|| order_item : "fk"
+    order_item_serial_number }o--|| order_item : "fk"
+    financial_retro_charge_event }o--|| financial_event_group : "fk"
+    content_badge_set }o--|| content_meta_data_record : "fk"
+    financial_removal_shipment_adjustment_event }o--|| financial_event_group : "fk"
+    financial_removal_shipment_event }o--|| financial_event_group : "fk"
+    partnered_ltl_data_output }o--|| transport_content : "fk"
+    vendor_direct_fulfillment_shipping_label_data }o--|| vendor_direct_fulfillment_shipping_label : "fk"
+    financial_debt_recovery_item }o--|| financial_debt_recovery_event : "fk"
+    financial_capacity_reservation_billing_event }o--|| financial_event_group : "fk"
+    service_job_appointment_time }o--|| service_job : "fk"
+    financial_adjustment_event }o--|| financial_event_group : "fk"
+    vendor_direct_fulfillment_order_item }o--|| vendor_direct_fulfillment_order : "fk"
+    vendor_direct_fulfillment_order_item }o--|| vendor_direct_fulfillment_order : "fk"
+    item_offer_lowest_price_type }o--|| catalog : "fk"
+    item_dimension }o--|| catalog : "fk"
+    item_dimension }o--|| catalog : "fk"
+    non_partnered_ltl_data_output }o--|| non_partnered_small_parcel_package_output : "fk"
+    fulfillment_order_notification_email }o--|| fulfillment_order : "fk"
+    order_item_promotion_id }o--|| order_item : "fk"
+    order_item_promotion_id }o--|| orders : "fk"
+    financial_safet_reimbursement_event }o--|| financial_event_group : "fk"
+    order_regulated_info }o--|| orders : "fk"
+    vendor_retail_procurement_container }o--|| vendor_retail_procurement_shipment : "fk"
+    vendor_retail_procurement_container }o--|| vendor_retail_procurement_shipment : "fk"
+    item_contributor }o--|| catalog : "fk"
+    item_contributor }o--|| catalog : "fk"
+    cod_payment_execution_detail }o--|| orders : "fk"
+    approval_support_data_element }o--|| order_item : "fk"
+    approval_support_data_element }o--|| order_item : "fk"
+    financial_seller_deal_payment_event }o--|| financial_event_group : "fk"
+    financial_service_fee_event }o--|| financial_event_group : "fk"
+    tracking_event_history }o--|| tracking : "fk"
+    vendor_direct_fulfillment_tax_detail }o--|| vendor_direct_fulfillment_order : "fk"
+    vendor_direct_fulfillment_tax_detail }o--|| vendor_direct_fulfillment_order : "fk"
+    financial_tax_withholding_event }o--|| financial_event_group : "fk"
+    item_buy_box_price_type }o--|| catalog : "fk"
+    vendor_retail_procurement_order_item }o--|| vendor_retail_procurement_order : "fk"
+    item_classification_sales_rank }o--|| catalog : "fk"
+    financial_removal_shipment_item }o--|| financial_removal_shipment_event : "fk"
+    marketplace_tax_classification }o--|| orders : "fk"
+    technician }o--|| service_job : "fk"
+    inventory_feature }o--|| outbound_seller_feature : "fk"
+    shipment_status_detail }o--|| vendor_retail_procurement_shipment : "fk"
+    shipment_status_detail }o--|| vendor_retail_procurement_shipment : "fk"
+    financial_adjustment_item }o--|| financial_adjustment_event : "fk"
+    item_display_group_sales_rank }o--|| catalog : "fk"
+    financial_rental_transaction_event }o--|| financial_event_group : "fk"
+    item_variation_theme }o--|| catalog : "fk"
+    financial_coupon_payment_event }o--|| financial_event_group : "fk"
+    payment_method_detail_item }o--|| orders : "fk"
+    financial_product_ads_payment_event }o--|| financial_event_group : "fk"
+    available_delivery_experience_option }o--|| merchant_fulfillment_shipment : "fk"
+    item_quantity_discount_price_type }o--|| catalog : "fk"
+    financial_charge_refund_event }o--|| financial_event_group : "fk"
+    financial_debt_recovery_event }o--|| financial_event_group : "fk"
+    financial_fba_liquidation_event }o--|| financial_event_group : "fk"
+    vendor_direct_fulfillment_shipping_label }o--|| vendor_direct_fulfillment_order : "fk"
+    financial_solution_provider_credit_event }o--|| financial_event_group : "fk"
+    merchant_fulfillment_shipment_item }o--|| merchant_fulfillment_shipment : "fk"
+    merchant_fulfillment_shipment_item }o--|| order_item : "fk"
+    shipment_document }o--|| tracking : "fk"
+    financial_affordability_expense_event }o--|| financial_event_group : "fk"
+    financial_trial_shipment_event }o--|| financial_event_group : "fk"
+    financial_charge_instrument }o--|| financial_debt_recovery_event : "fk"
+    easyship_package }o--|| orders : "fk"
+    financial_value_added_service_charge_event }o--|| financial_event_group : "fk"
+    item_offer_summary }o--|| catalog : "fk"
+    financial_shipment_direct_payment }o--|| financial_shipment_event : "fk"
+    inbound_shipment_item_prep_detail }o--|| inbound_shipment_info : "fk"
+    additional_seller_input }o--|| merchant_fulfillment_shipment : "fk"
+    listed_item_offers }o--|| listed_item : "fk"
+    partnered_small_parcel }o--|| transport_content : "fk"

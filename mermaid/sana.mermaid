@@ -1,0 +1,202 @@
+erDiagram
+    path_content {
+        text index PK
+        text path_id PK
+        text content FK
+    }
+    path {
+        text id PK
+        text description
+        text image_url
+        text title
+    }
+    groups {
+        text id PK
+        text name
+        text type
+    }
+    group_assignment {
+        text _fivetran_id PK
+        text group_id FK
+        text content_id
+        text content_type
+        text identity_id
+        text identity_type
+    }
+    course {
+        text id PK
+        text description
+        text duration_in_minutes
+        text external_id
+        text image_url
+        text level
+        text link
+        text title
+        text type
+    }
+    group_user_list {
+        text group_id PK
+        text user_id PK
+        text role
+    }
+    user_assignment {
+        text _fivetran_id PK
+        text user_id FK
+        text assignment_time
+        text content_id
+        text content_type
+        text due_date_absolute
+        text identity_id
+        text identity_type
+        text is_status_completed
+        text passed_time
+    }
+    users {
+        text id PK
+        text activated_at
+        text created_at
+        text disabled
+        text email
+        text first_name
+        text is_manager
+        text is_sso_email
+        text languages
+        text last_invite_sent_at
+        text last_name
+        text manager_id
+        text role
+        text status
+    }
+    exercise_submission_report {
+        text exercise_id PK
+        text submission_id PK
+        text content_id FK
+        text attempt
+        text content_progress
+        text content_title
+        text due_date
+        text email
+        text exercise_name
+        text first_name
+        text last_name
+        text response_id
+        text response_text
+        text reviewer
+        text status
+        text submission_date
+    }
+    interactive_element_report {
+        text interactive_element_id PK
+        text content_id PK
+        text card_id
+        text card_title
+        text completion_rate
+        text content_title
+        text content_type
+        text first_attempt_correct_rate
+        text interactive_element_text
+        text interactive_element_type
+        text is_mandatory
+        text learners_attempted
+    }
+    course_completion_report {
+        text course_id PK
+        text user_id PK
+        text first_name
+        text last_name
+        text time_stamp
+        text title
+    }
+    content_report {
+        text content_id PK
+        text assignments
+        text average_rating
+        text completion_rate
+        text content_type
+        text description
+        text duration_in_minute
+        text image
+        text is_visible
+        text learners
+        text number_of_ratings
+        text progress_rate_25
+        text progress_rate_50
+        text progress_rate_75
+        text skill
+        text start_rate
+        text title
+    }
+    user_report {
+        text user_id PK
+        text activated_at
+        text assigned_courses
+        text created_at
+        text disabled_at
+        text progress_percentage
+        text time_spent_in_minutes
+    }
+    learner_progress_report {
+        text content_id PK
+        text user_id PK
+        text group_id FK
+        text assigned_to_user_directly
+        text assignment_method
+        text assignment_time
+        text content_title
+        text content_type
+        text due_date
+        text email
+        text first_attempt_correct_rate
+        text first_name
+        text group_name
+        text included_in_path
+        text last_name
+        text last_progress_time
+        text passed_time
+        text progress
+        text start_time
+        text user_status
+    }
+    reflection_response_report {
+        text reflection_id PK
+        text response_id PK
+        text content_id FK
+        text user_id FK
+        text content_title
+        text created_at
+        text edited_at
+        text email
+        text first_name
+        text is_anonymous
+        text last_name
+        text reflection_text
+        text response_text
+    }
+    poll_result_aggregate_report {
+        text answer_id PK
+        text poll_id PK
+        text course_id FK
+        text answer
+        text answer_count
+        text course_title
+        text poll_version_id
+        text question
+    }
+    path_content }o--|| course : "fk"
+    path_content }o--|| path : "fk"
+    group_assignment }o--|| groups : "fk"
+    group_user_list }o--|| users : "fk"
+    group_user_list }o--|| groups : "fk"
+    user_assignment }o--|| users : "fk"
+    exercise_submission_report }o--|| course : "fk"
+    interactive_element_report }o--|| course : "fk"
+    course_completion_report }o--|| course : "fk"
+    course_completion_report }o--|| users : "fk"
+    content_report }o--|| course : "fk"
+    user_report }o--|| users : "fk"
+    learner_progress_report }o--|| users : "fk"
+    learner_progress_report }o--|| groups : "fk"
+    learner_progress_report }o--|| course : "fk"
+    reflection_response_report }o--|| users : "fk"
+    reflection_response_report }o--|| course : "fk"
+    poll_result_aggregate_report }o--|| course : "fk"

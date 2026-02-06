@@ -1,0 +1,427 @@
+erDiagram
+    board_item {
+        text index PK
+        text board_id PK
+        text type
+    }
+    board_groups_shared_with {
+        text index PK
+        text board_id PK
+        text groups_shared_with
+    }
+    board {
+        text id PK
+        text collection_id FK
+        text last_modified_by_user FK
+        text board_group_id
+        boolean default_list
+        text description
+        boolean favorited
+        timestamp favorited_date
+        timestamp last_modified
+        bigint number_of_facts
+        boolean removed
+        text slug
+        text title
+    }
+    collection_team_domain {
+        text domain PK
+        text collection_id PK
+        boolean capture
+        text domain
+        text verification_code
+        boolean verified
+    }
+    collection {
+        text id PK
+        text default_group_id FK
+        bigint billable_users
+        boolean clear_profile_pic
+        boolean collection_created
+        text company_name
+        timestamp date_created
+        text default_user_type
+        boolean deleted
+        text domain
+        text edition_code
+        text edition_features
+        text edition_id
+        text edition_key
+        text edition_name
+        text edition_usage
+        boolean file_sharing_disabled
+        text hubspot_contact_data
+        text name
+        text profile_pic_url
+        boolean sfdc_integration_installed
+        text sfdc_integration_state
+        boolean slack_command_installed
+        text slack_command_state
+        text status
+        text team_creation_token
+        bigint total_users
+        text trial_expiration_date
+        text use_case
+        text user_role
+        boolean zendesk_assist_installed
+        text zendesk_assist_state
+        boolean zendesk_knowledge_installed
+        text zendesk_knowledge_state
+        text zoom_chat_state
+    }
+    user_group_member {
+        text id PK
+        text user_group_id PK
+    }
+    user_group {
+        text id PK
+        timestamp date_created
+        bigint expert_id_rank
+        text group_identifier
+        boolean managed_by_scim
+        boolean modifiable
+        text name
+        bigint number_of_cards_as_verifier
+        bigint number_of_members
+        text role
+        boolean single_user
+        boolean user_modifiable
+    }
+    team_member_group {
+        text group_id PK
+        text team_member_id PK
+    }
+    team_member_user_profile_use_case_list {
+        text index PK
+        text team_member_id PK
+        text description
+    }
+    team_member {
+        text id PK
+        text highest_role
+        boolean managed_by_scim
+        bigint number_of_cards_as_verifier
+        text token
+        text user_attributes
+        text user_email
+        text user_first_name
+        text user_last_name
+        text user_profile_pic_url
+        text user_profile_role
+        text user_profile_role_level
+        text user_role
+        text user_status
+    }
+    alert {
+        text id PK
+        text card_id FK
+        text group_id FK
+        text sent_by_user FK
+        text card_title
+        text collection_hex_color
+        timestamp date_sent
+        text note
+        bigint percent_read
+        bigint read_count
+        bigint unread_count
+        text user_role
+        text user_role_level
+    }
+    event {
+        text _fivetran_id PK
+        text team_id FK
+        text user FK
+        timestamp event_date
+        text event_type
+        text id
+        text type
+    }
+    card_tag {
+        text card_id PK
+        text tag_id PK
+    }
+    card_collaborator {
+        text card_id PK
+        text id PK
+        text date_created
+        boolean removed
+        text type
+    }
+    card_verifier {
+        text card_id PK
+        text id PK
+        timestamp date_created
+        text type
+    }
+    card_board {
+        text card_id PK
+        text id PK
+    }
+    card_attachment {
+        text id PK
+        text card_id PK
+        text extension
+        text filename
+        text link
+        text mimetype
+        boolean previewable
+        bigint size
+        text thumbnail_link
+    }
+    card {
+        text id PK
+        text card_template_id FK
+        text collection_id FK
+        text last_modified_by_user FK
+        text last_verified_by_user FK
+        text original_owner_email FK
+        text verification_initiator_email FK
+        boolean archived
+        text card_info_analytics
+        bigint card_info_members_with_card_view
+        bigint card_info_members_without_card_view
+        text card_type
+        bigint comment_count
+        text content
+        timestamp date_created
+        boolean favorited
+        timestamp favorited_date
+        timestamp last_modified
+        timestamp last_verified
+        timestamp last_viewed
+        timestamp next_verification_date
+        text owner_email
+        text preferred_phrase
+        boolean public_link_allowed
+        text share_status
+        text slug
+        boolean suppress_verification
+        text sync_info_content_sync_type
+        text sync_info_external_url
+        timestamp sync_info_last_sync_date
+        timestamp sync_info_last_update_date
+        text team_id
+        text verification_initiation_date
+        bigint verification_interval
+        text verification_reason
+        jsonb verification_reasons
+        text verification_state
+        text verification_type
+        bigint version
+    }
+    card_comment_reply {
+        text id PK
+        text card_comment_card_id FK
+        text card_comment_id FK
+        text content
+        timestamp date_created
+        boolean deleted
+        timestamp last_modified
+    }
+    card_comment {
+        text id PK
+        text card_id PK
+        text owner_email FK
+        text reply_owner_email FK
+        text content
+        timestamp date_created
+        boolean deleted
+        timestamp last_modified
+        text status
+        bigint total_replies
+    }
+    task {
+        text id PK
+        text card_id FK
+        text comment_id FK
+        text comment_reply_id FK
+        text creator FK
+        timestamp date_sent
+        text mention
+        text user_task_id
+        boolean viewed
+    }
+    tags {
+        text id PK
+        text category_id FK
+        text category_name
+        bigint number_of_cards
+        text value
+    }
+    tag_category {
+        text id PK
+        text collection_id FK
+        text created_by_user FK
+        timestamp date_created
+        boolean default_category
+        text name
+    }
+    card_template_tag {
+        text id PK
+        text template_id PK
+        text category_id FK
+        text category_name
+        bigint number_of_cards
+        text value
+    }
+    card_template_board {
+        text board_id PK
+        text card_template_id PK
+    }
+    card_template {
+        text id PK
+        text card_verifier_id FK
+        text collection_id FK
+        text created_by_user FK
+        text last_modified_by_user FK
+        text card_title
+        timestamp card_verifier_date_created
+        text card_verifier_id
+        text card_verifier_type
+        text content
+        text content_model_version_value
+        timestamp date_created
+        text description
+        text json_content
+        timestamp last_modified
+        text share_status
+        text template_title
+        bigint verification_interval
+    }
+    ticket_link {
+        text _fivetran_id PK
+        text card_id FK
+        text user_email FK
+        text conversation_id
+        timestamp date
+        text platform
+    }
+    team_domain {
+        text domain PK
+        text team_id PK
+        boolean capture
+        text verification_code
+        boolean verified
+    }
+    team {
+        text id PK
+        text team_default_group_id FK
+        text users_email FK
+        bigint billable_users
+        boolean clear_profile_pic
+        boolean collection_created
+        text company_name
+        timestamp date_created
+        text default_group_id
+        text default_user_type
+        boolean deleted
+        text domain
+        text edition_code
+        text edition_features
+        text edition_id
+        text edition_key
+        text edition_name
+        text edition_usage
+        boolean file_sharing_disabled
+        text hubspot_contact_data
+        text name
+        text profile_pic_url
+        boolean sfdc_integration_installed
+        text sfdc_integration_state
+        boolean slack_command_installed
+        text slack_command_state
+        text status
+        text team_creation_token
+        bigint total_users
+        text trial_expiration_date
+        text use_case
+        text user_role
+        boolean zendesk_assist_installed
+        text zendesk_assist_state
+        boolean zendesk_knowledge_installed
+        text zendesk_knowledge_state
+        text zoom_chat_state
+    }
+    users {
+        text email PK
+        text collection_id FK
+        boolean collection_administrator
+        bigint collection_boards
+        bigint collection_cards
+        text collection_color
+        timestamp collection_date_created
+        text collection_default_verifier
+        text collection_description
+        timestamp collection_last_synced_date
+        bigint collection_public_cards
+        text collection_public_cards_enabled
+        text collection_slug
+        text collection_stats_additional_prop_type
+        text collection_sync_type
+        boolean collection_sync_verification_enabled
+        bigint collection_tags
+        text collection_token
+        text collection_top_level_sync_location
+        text collection_type
+        text collection_type_detail
+        bigint collection_verification_interval
+        text token_type
+    }
+    board_item }o--|| board : "fk"
+    board_groups_shared_with }o--|| board : "fk"
+    board }o--|| team_member : "fk"
+    board }o--|| collection : "fk"
+    collection_team_domain }o--|| collection : "fk"
+    collection }o--|| user_group : "fk"
+    user_group_member }o--|| team_member : "fk"
+    user_group_member }o--|| user_group : "fk"
+    team_member_group }o--|| user_group : "fk"
+    team_member_group }o--|| team_member : "fk"
+    team_member_user_profile_use_case_list }o--|| team_member : "fk"
+    alert }o--|| user_group : "fk"
+    alert }o--|| card : "fk"
+    alert }o--|| team_member : "fk"
+    event }o--|| team_member : "fk"
+    event }o--|| team : "fk"
+    card_tag }o--|| tags : "fk"
+    card_tag }o--|| card : "fk"
+    card_collaborator }o--|| team_member : "fk"
+    card_collaborator }o--|| card : "fk"
+    card_verifier }o--|| team_member : "fk"
+    card_verifier }o--|| card : "fk"
+    card_board }o--|| board : "fk"
+    card_board }o--|| card : "fk"
+    card_attachment }o--|| card : "fk"
+    card }o--|| team_member : "fk"
+    card }o--|| team_member : "fk"
+    card }o--|| collection : "fk"
+    card }o--|| team_member : "fk"
+    card }o--|| card_template : "fk"
+    card }o--|| team_member : "fk"
+    card_comment_reply }o--|| card_comment : "fk"
+    card_comment_reply }o--|| card_comment : "fk"
+    card_comment }o--|| team_member : "fk"
+    card_comment }o--|| team_member : "fk"
+    card_comment }o--|| card : "fk"
+    task }o--|| card_comment : "fk"
+    task }o--|| card : "fk"
+    task }o--|| team_member : "fk"
+    task }o--|| card_comment_reply : "fk"
+    tags }o--|| tag_category : "fk"
+    tag_category }o--|| collection : "fk"
+    tag_category }o--|| team_member : "fk"
+    card_template_tag }o--|| tag_category : "fk"
+    card_template_tag }o--|| card_template : "fk"
+    card_template_board }o--|| board : "fk"
+    card_template_board }o--|| card_template : "fk"
+    card_template }o--|| team_member : "fk"
+    card_template }o--|| team_member : "fk"
+    card_template }o--|| collection : "fk"
+    card_template }o--|| team_member : "fk"
+    ticket_link }o--|| card : "fk"
+    ticket_link }o--|| team_member : "fk"
+    team_domain }o--|| team : "fk"
+    team_domain }o--|| team : "fk"
+    team }o--|| users : "fk"
+    team }o--|| user_group : "fk"
+    users }o--|| collection : "fk"

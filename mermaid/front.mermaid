@@ -1,0 +1,272 @@
+erDiagram
+    tag {
+        text id PK
+        timestamp created_at
+        text description
+        text highlight
+        boolean is_private
+        boolean is_visible_in_conversation_lists
+        text name
+        text parent_tag_id
+        timestamp updated_at
+    }
+    contact_link {
+        integer index PK
+        text contact_id PK
+        text link
+    }
+    conversation {
+        text id PK
+        text last_message_id FK
+        text teammate_id FK
+        timestamp created_at
+        text recipient_handle
+        text recipient_role
+        text status
+        text status_category
+        text subject
+    }
+    inbox {
+        text id PK
+        text address
+        text name
+        text send_as
+        text type
+    }
+    follower {
+        text conversation_id PK
+        text teammate_id PK
+    }
+    inbox_channel {
+        text channel_id PK
+        text inbox_id PK
+    }
+    conversation_tag {
+        text conversation_id PK
+        text tag_id PK
+    }
+    account {
+        text id PK
+        timestamp created_at
+        text description
+        jsonb domains
+        text external_id
+        text logo_url
+        text name
+        timestamp updated_at
+    }
+    rule_action {
+        integer index PK
+        text rule_id PK
+        text action
+    }
+    shift {
+        text id PK
+        timestamp created_at
+        text name
+        jsonb times
+        text timezone
+        timestamp updated_at
+    }
+    conversation_inbox {
+        text conversation_id PK
+        text inbox_id PK
+    }
+    conversation_link {
+        text conversation_id PK
+        text link_id PK
+    }
+    contact_handle {
+        integer index PK
+        text contact_id PK
+        text handle
+        text source
+    }
+    list {
+        text id PK
+        text name
+    }
+    conversation_tag_history {
+        text tag_id PK
+        timestamp updated_at PK
+        text conversation_id PK
+        text source_rule_id FK
+        text source_teammate_id FK
+        text event_type
+        text source_type
+    }
+    rule {
+        text id PK
+        text name
+    }
+    message {
+        text id PK
+        text author_id FK
+        text conversation_id FK
+        text blurb
+        text body
+        timestamp created_at
+        integer duration
+        boolean have_been_answered
+        boolean have_been_favorited
+        boolean have_been_retweeted
+        jsonb headers
+        text intercom_url
+        boolean is_inbound
+        boolean is_retweet
+        text text
+        text thread_ref
+        text twitter_url
+        text type
+    }
+    team_inbox {
+        text inbox_id PK
+        text team_id PK
+    }
+    channel {
+        text id PK
+        text address
+        text send_as
+        jsonb settings
+        text type
+    }
+    comment {
+        text id PK
+        text conversation_id FK
+        text author_id
+        text body
+        timestamp posted_at
+    }
+    message_recipient {
+        integer index PK
+        text message_id PK
+        text contact_id FK
+        text handle
+        text role
+    }
+    teammate {
+        text id PK
+        text email
+        text first_name
+        boolean is_admin
+        boolean is_available
+        text last_name
+        text username
+    }
+    comment_mention {
+        text teammate_id PK
+        text comment_id PK
+    }
+    team_teammate {
+        text team_id PK
+        text teammate_id PK
+    }
+    contact_list {
+        text contact_id PK
+        text list_id PK
+    }
+    conversation_link_history {
+        text link_id PK
+        timestamp updated_at PK
+        text conversation_id PK
+        text source_rule_id FK
+        text source_teammate_id FK
+        text event_type
+        text source_type
+    }
+    contact {
+        text id PK
+        text account_id FK
+        text avatar_url
+        text description
+        text name
+    }
+    attachment {
+        integer index PK
+        text message_id PK
+        text cid
+        text content_type
+        text filename
+        boolean is_inline
+        integer size
+        text url
+    }
+    shift_teammate {
+        text shift_id PK
+        text teammate_id PK
+    }
+    inbox_teammate {
+        text inbox_id PK
+        text teammate_id PK
+    }
+    link {
+        text id PK
+        text external_url
+        text name
+        text type
+    }
+    contact_note {
+        integer index PK
+        text contact_id PK
+        text author_id FK
+        text body
+        timestamp created_at
+    }
+    conversation_status_history {
+        text status PK
+        timestamp updated_at PK
+        text conversation_id PK
+        text source_rule_id FK
+        text source_teammate_id FK
+        text target_teammate_id FK
+        text source_type
+    }
+    team {
+        text id PK
+        text name
+    }
+    contact_link }o--|| contact : "fk"
+    conversation }o--|| teammate : "fk"
+    conversation }o--|| message : "fk"
+    follower }o--|| conversation : "fk"
+    follower }o--|| teammate : "fk"
+    inbox_channel }o--|| inbox : "fk"
+    inbox_channel }o--|| channel : "fk"
+    conversation_tag }o--|| conversation : "fk"
+    conversation_tag }o--|| tag : "fk"
+    rule_action }o--|| rule : "fk"
+    conversation_inbox }o--|| conversation : "fk"
+    conversation_inbox }o--|| inbox : "fk"
+    conversation_link }o--|| conversation : "fk"
+    conversation_link }o--|| link : "fk"
+    contact_handle }o--|| contact : "fk"
+    conversation_tag_history }o--|| conversation : "fk"
+    conversation_tag_history }o--|| teammate : "fk"
+    conversation_tag_history }o--|| rule : "fk"
+    message }o--|| conversation : "fk"
+    message }o--|| teammate : "fk"
+    team_inbox }o--|| team : "fk"
+    team_inbox }o--|| inbox : "fk"
+    comment }o--|| conversation : "fk"
+    message_recipient }o--|| message : "fk"
+    message_recipient }o--|| contact : "fk"
+    comment_mention }o--|| comment : "fk"
+    team_teammate }o--|| team : "fk"
+    team_teammate }o--|| teammate : "fk"
+    contact_list }o--|| contact : "fk"
+    contact_list }o--|| list : "fk"
+    conversation_link_history }o--|| conversation : "fk"
+    conversation_link_history }o--|| teammate : "fk"
+    conversation_link_history }o--|| rule : "fk"
+    contact }o--|| account : "fk"
+    attachment }o--|| attachment : "fk"
+    shift_teammate }o--|| shift : "fk"
+    shift_teammate }o--|| teammate : "fk"
+    inbox_teammate }o--|| inbox : "fk"
+    inbox_teammate }o--|| teammate : "fk"
+    contact_note }o--|| contact : "fk"
+    contact_note }o--|| teammate : "fk"
+    conversation_status_history }o--|| conversation : "fk"
+    conversation_status_history }o--|| teammate : "fk"
+    conversation_status_history }o--|| teammate : "fk"
+    conversation_status_history }o--|| rule : "fk"

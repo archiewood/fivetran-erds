@@ -1,0 +1,448 @@
+erDiagram
+    segment_definition {
+        text id PK
+        text ims_org_id FK
+        text merge_policy_id FK
+        timestamp creation_time
+        text data_governance_policy_exclude_opt_out
+        text description
+        text evalutioninfo_batch_enabled
+        text evalutioninfo_continuous_enabled
+        text evalutioninfo_synchronous_enabled
+        text expression_format
+        text expression_type
+        text expression_value
+        text name
+        text payload_schema
+        text profile_instance_id
+        timestamp update_epoch
+        timestamp update_time
+    }
+    dataset_label_optional_label {
+        text index PK
+        text dataset_id PK
+        jsonb labels
+        text option_content_type
+        text option_id
+        text option_schema_path
+    }
+    dataset_label_parent {
+        text index PK
+        text dataset_id PK
+        text id
+        text namespace
+        text type
+    }
+    alert {
+        text id PK
+        text alert_type
+        text asset_id
+        text status
+    }
+    merge_policy {
+        text id PK
+        jsonb attribute_merge_order
+        text attribute_merge_type
+        text identity_graph_type
+        text is_active_on_edge
+        text is_default
+        text name
+        text schema_name
+        text version
+    }
+    connection_database {
+        text index PK
+        text connection_username PK
+        text db_name
+        text name
+    }
+    connection {
+        text username PK
+        text disable_psql_creds
+        text host
+        text port
+        text version
+        text websocket_host
+    }
+    query_template {
+        text id PK
+        text last_updated_by
+        jsonb links
+        text name
+        jsonb query_parameters
+        text sql
+        timestamp updated
+        text user_id
+    }
+    destination_configuaration_custom_data_field {
+        text index PK
+        text destination_configuaration_id PK
+        text description
+        jsonb enum
+        text is_required
+        text name
+        text title
+        text type
+    }
+    destination_configuaration_profile_field {
+        text index PK
+        text destination_configuaration_id PK
+        text defaults
+        text description
+        text format
+        text hidden
+        text is_required
+        text name
+        text pattern
+        text read_only
+        text title
+        text type
+    }
+    destination_configuaration_delivery {
+        text index PK
+        text destination_configuaration_id PK
+        text authentication_id
+        text authentication_rule
+        text destination_server_id
+    }
+    destination_configuaration {
+        text id PK
+        text ims_org FK
+        text aggregation_type
+        text backfill_historical_profile_data
+        text batch_config_allow_dedupe_key_field_selection
+        text batch_config_allow_mandatory_field_selection
+        text batch_config_allowed_export_modes
+        jsonb batch_config_allowed_filename_append_options
+        text batch_config_allowed_schedule_frequency
+        text batch_config_default_export_mode
+        text batch_config_default_filename
+        jsonb batch_config_default_filename_append_options
+        text batch_config_default_frequency
+        text batch_config_default_start_time
+        text batch_config_segment_grouping_enabled
+        text best_effort_aggregation
+        text best_effort_aggregation_max_users_per_request
+        text best_effort_aggregation_split_user_by_id
+        text configurable_aggregation_aggregation_key
+        text configurable_aggregation_max_batch_age_in_secs
+        text configurable_aggregation_max_num_events_in_batch
+        text configurable_aggregation_split_user_by_id
+        timestamp created_date
+        text customer_authentication_configuration
+        text description
+        text destination_delivery
+        jsonb dule_labels
+        text identity_another_attribute
+        text identity_another_custom_namespace
+        text identity_external_attribute
+        text identity_external_custom_namespace
+        jsonb identity_external_global_namespaces
+        text identity_external_transformation
+        timestamp last_modified_date
+        jsonb marketing_actions
+        text name
+        text schema_config_identity_required
+        text schema_config_profile_required
+        jsonb schema_config_segment_namespace_allow_list
+        jsonb schema_config_segment_namespace_deny_list
+        text schema_config_segment_required
+        text segment_config_audience_template_id
+        text segment_config_map_experience_platform_segment_id
+        text segment_config_map_experience_platform_segment_name
+        text segment_config_map_user_input
+        text status
+        text ui_attributes_category
+        text ui_attributes_connection_type
+        text ui_attributes_documentation_link
+        text ui_attributes_frequency
+    }
+    flow_source_connection {
+        text id PK
+        text flow_id PK
+        text base_connection_spec_id FK
+        text connection_spec_id FK
+        text base_connection_id
+        text base_connection_spec_version
+        text connection_spec_version
+    }
+    flow_target_connection {
+        text id PK
+        text flow_id PK
+        text connection_spec_id FK
+        text connection_spec_version
+    }
+    flow_transformation {
+        text index PK
+        text flow_id PK
+        text mapping_id
+        text mapping_version
+        text name
+    }
+    flow {
+        text id PK
+        text ims_org_id FK
+        text provider_ref_id FK
+        timestamp created_at
+        text created_by
+        text created_client
+        text description
+        text etag
+        text flow_spec_id
+        text flow_spec_version
+        text is_source_flow
+        jsonb labels
+        text last_operation_operation
+        timestamp last_operation_started
+        text last_operation_updated
+        timestamp last_run_details_completed_at_utc
+        text last_run_details_id
+        timestamp last_run_details_started_at_utc
+        text last_run_details_state
+        text name
+        jsonb record_type
+        text runs
+        text schedule_params_backfill
+        text schedule_params_frequency
+        text schedule_params_interval
+        timestamp schedule_params_start_time
+        text state
+        timestamp updated_at
+        text updated_by
+        text updated_client
+        text version
+    }
+    connection_spec_permissions_manage {
+        text index PK
+        text connection_spec_id PK
+        text name
+        jsonb permission
+        text type
+    }
+    connection_spec_permissions_view {
+        text index PK
+        text connection_spec_id PK
+        text name
+        jsonb permission
+        text type
+    }
+    connection_spec {
+        text id PK
+        text name
+        text provider_id
+        text version
+    }
+    audience_label {
+        text index PK
+        text audience_id PK
+        text label
+    }
+    audience {
+        text id PK
+        text dataset_id FK
+        text merge_policy_id FK
+        timestamp create_epoch
+        text created_by
+        timestamp creation_time
+        text data_governance_policy_exclude_opt_out
+        jsonb dependencies
+        jsonb dependents
+        text description
+        text evaluation_info_batch_enabled
+        text evaluation_info_continuous_enabled
+        text evaluation_info_synchronous_enabled
+        text expression_format
+        text expression_type
+        text expression_value
+        text is_system
+        text lifecycle_state
+        text linked_audience_ref_flow_id
+        text name
+        text profile_instance_id
+        text type
+        timestamp update_epoch
+        timestamp update_time
+    }
+    schedule {
+        text id PK
+        text query_template_id FK
+        timestamp created
+        text query_ctas_parameters_dataset_name
+        text query_ctas_parameters_description
+        text query_ctas_parameters_target_schema_title
+        text query_db_name
+        text query_description
+        text query_insert_into_parameters_dataset_name
+        text schedule
+        text schedule_end_date
+        text schedule_max_active_runs
+        text schedule_start_date
+        text state
+        timestamp updated
+        text updated_user_id
+        text user_id
+    }
+    destination_server {
+        text id PK
+        text adls_gen_2_destination_path_templating_strategy
+        text adls_gen_2_destination_path_value
+        text azure_blob_destination_container_templating_strategy
+        text azure_blob_destination_container_value
+        text azure_blob_destination_path_templating_strategy
+        text azure_blob_destination_path_value
+        text created_date
+        text destination_server_type
+        text destination_url_templating_strategy
+        text destination_url_value
+        text dlz_destination_path_templating_strategy
+        text dlz_destination_path_value
+        text dlz_destination_use_case
+        text google_cloud_storage_destination_bucket_templating_strategy
+        text google_cloud_storage_destination_bucket_value
+        text google_cloud_storage_destination_path_templating_strategy
+        text google_cloud_storage_destination_path_value
+        text http_template_content_type
+        text http_template_headers
+        text http_template_http_method
+        text http_template_query_parameters_templating_strategy
+        text http_template_query_parameters_value
+        text http_template_request_body_templating_strategy
+        text http_template_request_body_value
+        text last_modified_date
+        text name
+        text s_3_destination_bucket_templating_strategy
+        text s_3_destination_bucket_value
+        text s_3_destination_path_templating_strategy
+        text s_3_destination_path_value
+        text sftp_destination_encryption_mode
+        text sftp_destination_host_name_templating_strategy
+        text sftp_destination_host_name_value
+        text sftp_destination_port
+        text sftp_destination_root_directory_templating_strategy
+        text sftp_destination_root_directory_value
+    }
+    computed_attribute_defined {
+        text index PK
+        text computed_attribute_id PK
+        text meta_container_id
+        text meta_resource_type
+    }
+    computed_attribute {
+        text id PK
+        text ims_org_id FK
+        timestamp create_epoch
+        text created_by
+        text description
+        text display_name
+        text expression_format
+        text expression_type
+        text expression_value
+        text keep_current
+        text last_evaluation_ts
+        text merge_function_value
+        text name
+        text path
+        text return_schema_meta_xdm_type
+        text schema_name
+        text status
+        text type
+        timestamp update_epoch
+    }
+    schema_registry_class {
+        text id PK
+        text alt_id
+        text description
+        text resource_type
+        text title
+        text type
+        text version
+    }
+    dataset {
+        text id PK
+        text ims_org_id FK
+        text base_path
+        text classification_data_behavior
+        text classification_managed_by
+        timestamp created
+        text created_client
+        text created_user
+        text data_ingested
+        text data_source_id
+        text datastream_source
+        text description
+        text enable_error_diagnostics
+        text extensions_adobe_lakehouse_metrics_as_of
+        text extensions_adobe_lakehouse_metrics_row_count
+        text extensions_adobe_lakehouse_metrics_storage_size
+        text file
+        text file_description_charset
+        text file_description_delimiters
+        text file_description_escapes
+        text file_description_format
+        text file_description_header
+        text file_description_null_markers
+        text file_description_quotes
+        text ingestion_type
+        text last_batch_id
+        text last_batch_status
+        text last_failed_batch
+        text last_successful_batch
+        text name
+        jsonb observable_schema
+        text persistence_adls_location
+        text persistence_adls_type
+        text schema
+        text schema_ref_content_type
+        text schema_ref_id
+        jsonb tags
+        timestamp updated
+        text updated_user
+        text version
+        text view_id
+    }
+    entity_identity {
+        text index PK
+        text entity_id PK
+        text id
+        text is_primary
+        text namespace_code
+    }
+    entity {
+        text id PK
+        timestamp last_modified_at
+        text person_first_name
+        text person_last_name
+        text person_middle_name
+        text work_email_address
+        text work_email_is_primary
+        text work_email_label
+        text work_email_status
+        text work_email_type
+    }
+    segment_definition }o--|| merge_policy : "fk"
+    segment_definition }o--|| connection : "fk"
+    dataset_label_optional_label }o--|| dataset : "fk"
+    dataset_label_parent }o--|| dataset : "fk"
+    connection_database }o--|| connection : "fk"
+    destination_configuaration_custom_data_field }o--|| destination_configuaration : "fk"
+    destination_configuaration_profile_field }o--|| destination_configuaration : "fk"
+    destination_configuaration_delivery }o--|| destination_configuaration : "fk"
+    destination_configuaration }o--|| connection : "fk"
+    flow_source_connection }o--|| connection_spec : "fk"
+    flow_source_connection }o--|| connection_spec : "fk"
+    flow_source_connection }o--|| flow : "fk"
+    flow_target_connection }o--|| connection_spec : "fk"
+    flow_target_connection }o--|| flow : "fk"
+    flow_transformation }o--|| flow : "fk"
+    flow }o--|| connection : "fk"
+    flow }o--|| dataset : "fk"
+    connection_spec_permissions_manage }o--|| connection_spec : "fk"
+    connection_spec_permissions_view }o--|| connection_spec : "fk"
+    audience_label }o--|| audience : "fk"
+    audience }o--|| merge_policy : "fk"
+    audience }o--|| dataset : "fk"
+    schedule }o--|| query_template : "fk"
+    computed_attribute_defined }o--|| computed_attribute : "fk"
+    computed_attribute }o--|| connection : "fk"
+    dataset }o--|| connection : "fk"
+    entity_identity }o--|| entity : "fk"

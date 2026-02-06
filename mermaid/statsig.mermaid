@@ -1,0 +1,637 @@
+erDiagram
+    first_exposures_report {
+        text _fivetran_id PK
+        text group_id FK
+        text as_of_pst_date
+        text company_id
+        text experiment_group
+        text exposure_type
+        text first_exposure_pst_date
+        timestamp first_exposure_utc
+        text name
+        double_precision percents
+        bigint rollout
+        text rule
+        text stable_id
+        text unit_id
+        text unit_type
+        jsonb user_dimensions
+        text user_id
+    }
+    ingestion_run_granular_history {
+        text ingestion_run_id PK
+        text source PK
+        text status PK
+        text status_timestamp
+    }
+    ingestion_run {
+        text id PK
+        text created_at
+        text last_updated_at
+        text latest_status
+        text trigger
+    }
+    audit_log {
+        text id PK
+        text action_type
+        text change_log
+        text date
+        text modifier_email
+        text name
+        jsonb tags
+        text target_app_id
+        text time
+        text updated_by
+        text updated_by_user_id
+    }
+    audit_log_change_rule {
+        text id PK
+        text rule_type PK
+        text audit_log_id PK
+        jsonb enabled_enviroment
+        text environment
+        text group_name
+        text percentage_pass
+        jsonb rollouts
+        text salt
+    }
+    audit_log_change_rule_condition {
+        text _fivetran_id PK
+        text audit_log_change_rule_id FK
+        text audit_log_id FK
+        text rule_type FK
+        text condition_type
+        jsonb extra_config
+        text operator
+        jsonb value
+    }
+    dynamic_config_holdout {
+        text index PK
+        text dynamic_config_id PK
+        text holdout_id FK
+    }
+    dynamic_config_rule_condition {
+        text index PK
+        text dynamic_config_id PK
+        text dynamic_config_rule_name PK
+        text custom_id
+        text field
+        text operator
+        jsonb target_value
+        text type
+    }
+    dynamic_config_rule {
+        text name PK
+        text dynamic_config_id PK
+        jsonb environments
+        text pass_percentage
+        jsonb return_value_key
+    }
+    dynamic_config_tag {
+        text index PK
+        text dynamic_config_id PK
+        text tags
+    }
+    dynamic_config {
+        text id PK
+        text created_time
+        text creator_email
+        text creator_id
+        text creator_name
+        jsonb default_value_key
+        text description
+        text id_type
+        text is_enabled
+        text last_modified_time
+        text last_modifier_email
+        text last_modifier_id
+        text last_modifier_name
+        text name
+        text status
+        jsonb target_apps
+        text team
+        text type
+        text type_reason
+    }
+    experiment_holdout {
+        text index PK
+        text experiment_id PK
+        text holdout_id FK
+    }
+    experiment_group {
+        text _fivetran_id PK
+        text experiment_id FK
+        text description
+        text id
+        text name
+        text size
+    }
+    experiment_health_check {
+        text index PK
+        text experiment_id PK
+        text description
+        jsonb metadata
+        text name
+        text status
+        text type
+    }
+    experiment_primary_metric {
+        text experiment_id PK
+        text name PK
+        text type
+    }
+    experiment_primary_metric_tag {
+        text index PK
+        text experiment_id PK
+        text tags FK
+    }
+    experiment_secondary_metric {
+        text experiment_id PK
+        text name PK
+        text type
+    }
+    experiment_secondary_metric_tag {
+        text index PK
+        text experiment_id PK
+        text tags FK
+    }
+    experiment_tag {
+        text index PK
+        text experiment_id PK
+        text tags
+    }
+    experiment_allowed_reviewer {
+        text id PK
+        text experiment_id PK
+        text email
+        text name
+    }
+    experiment_other_matrix {
+        text index PK
+        text experiment_id PK
+        text name FK
+        text direction
+        text hypothesized_value
+        text type
+    }
+    experiment_assignment_source_filter {
+        text index PK
+        text experiment_id PK
+        text columns
+        text condition
+        jsonb values
+    }
+    experiment_link {
+        text index PK
+        text experiment_id PK
+        text title
+        text url
+    }
+    experiment {
+        text id PK
+        text layer_id FK
+        text targeting_gate_id FK
+        text active_review_description
+        text active_review_id
+        text active_review_status
+        text allocation
+        text allocation_duration
+        text analysis_end_time
+        text analytics_type
+        text assignment_source_experiment_name
+        text assignment_source_name
+        text benjamini_hochberg_per_metric
+        text benjamini_hochberg_per_variant
+        text benjamini_primary_metrics_only
+        text bonferroni_correction
+        text bonferroni_correction_per_metric
+        text cohort_wait_until_end_to_include
+        text cohorted_analysis_duration
+        text cohorted_metrics_mature_after_end
+        text control_group_id
+        text created_time
+        text creator_email
+        text creator_id
+        text creator_name
+        text decision_reason
+        text decision_time
+        text default_confidence_interval
+        text description
+        text duration
+        text end_time
+        text external_experiment_name
+        text fixed_analysis_duration
+        text health_check_status
+        text hypothesis
+        text id_type
+        text identifier_mapping_mode
+        text identity_resolution_source
+        text inline_targeting_rules_json
+        text is_analysis_only
+        text last_modified_time
+        text last_modifier_email
+        text last_modifier_id
+        text last_modifier_name
+        text launched_group_id
+        text name
+        text owner_email
+        text owner_id
+        text owner_name
+        text owner_type
+        text review_settings_required_review
+        text scheduled_reload_hour
+        text scheduled_reload_type
+        text secondary_id_type
+        text sequential_testing
+        text start_time
+        text status
+        text subtype
+        jsonb target_apps
+        text target_exposure
+        text team
+        text team_id
+        text version
+    }
+    pulse_daily_report {
+        text _fivetran_id PK
+        double_precision absolute_delta
+        double_precision absolute_standard_error
+        text company_id
+        double_precision control_mean
+        double_precision control_standard_error
+        bigint control_units
+        text experiment_group
+        double_precision mean
+        text metric_dimension
+        text metric_name
+        text metric_type
+        text name
+        bigint participating_units
+        text pst_date
+        double_precision relative_delta
+        double_precision relative_standard_error
+        text rule
+        double_precision standard_deviation
+        double_precision standard_error
+        double_precision test_mean
+        double_precision test_standard_error
+        bigint test_units
+        double_precision total
+        bigint units
+        double_precision varpop
+        double_precision z_score
+    }
+    holdout_tag {
+        text index PK
+        text holdout_id PK
+        text tags
+    }
+    holdout {
+        text id PK
+        text created_time
+        text creator_email
+        text creator_id
+        text creator_name
+        text description
+        text id_type
+        text is_enabled
+        text is_global
+        text last_modified_time
+        text last_modifier_email
+        text last_modifier_id
+        text last_modifier_name
+        text name
+        text pass_percentage
+        jsonb target_apps
+        text targeting_gate_id
+        text team
+    }
+    autotune_holdout {
+        text index PK
+        text autotune_id PK
+        text holdout_id FK
+    }
+    autotune_tag {
+        text index PK
+        text autotune_id PK
+        text tags
+    }
+    autotune_variant {
+        text id PK
+        text autotune_id PK
+        jsonb json
+        text name
+    }
+    autotune {
+        text id PK
+        text attribution_window
+        text created_time
+        text creator_email
+        text creator_id
+        text creator_name
+        text description
+        text exploration_window
+        text id_type
+        text is_started
+        text last_modified_time
+        text last_modifier_email
+        text last_modifier_id
+        text last_modifier_name
+        text name
+        text success_event
+        text success_event_value
+        jsonb target_apps
+        text winner
+        text winner_threshold
+    }
+    segment_holdout {
+        text index PK
+        text segment_id PK
+        text holdout_id FK
+    }
+    segment_tag {
+        text index PK
+        text segment_id PK
+        text tags
+    }
+    segment_rule_condition_target_value {
+        text _fivetran_id PK
+        text segment_id FK
+        text segment_rule_condition_index FK
+        text segment_rule_name FK
+        text target_value
+    }
+    segment_rule_condition {
+        text index PK
+        text segment_id PK
+        text segment_rule_name PK
+        text custom_id
+        text field
+        text operator
+        text type
+    }
+    segment_rule {
+        text name PK
+        text segment_id PK
+        jsonb environments
+        text pass_percentage
+    }
+    segment {
+        text id PK
+        text count
+        text created_time
+        text creator_email
+        text creator_id
+        text creator_name
+        text description
+        text id_type
+        text is_enabled
+        text last_modified_time
+        text last_modifier_email
+        text last_modifier_id
+        text last_modifier_name
+        text name
+        text status
+        jsonb target_apps
+        text team
+        text type
+        text type_reason
+    }
+    ingestion_status {
+        text _fivetran_id PK
+        text date_stamp
+        text ingestion_dataset
+        text ingestion_source
+        text message
+        text row_count
+        text status
+        text time_stamp
+    }
+    metric_unit_type {
+        text index PK
+        text metric_id PK
+        text unit_type
+    }
+    metric_tag {
+        text index PK
+        text metric_id PK
+        text tags
+    }
+    metric {
+        text id PK
+        text created_time
+        text creator_email
+        text creator_name
+        text description
+        text is_hidden
+        jsonb lineage_events
+        jsonb lineage_metrics
+        text name
+        text owner_name
+        jsonb tags
+        text team
+        text type
+    }
+    gate_holdout {
+        text index PK
+        text gate_id PK
+        text holdout_id FK
+    }
+    gate_rule_condition_target_value {
+        text _fivetran_id PK
+        text gate_id FK
+        text gate_rule_condition_index FK
+        text gate_rule_name FK
+        text target_value
+    }
+    gate_rule_condition {
+        text index PK
+        text gate_id PK
+        text gate_rule_name PK
+        text custom_id
+        text field
+        text operator
+        text type
+    }
+    gate_rule {
+        text name PK
+        text gate_id PK
+        jsonb environments
+        text pass_percentage
+    }
+    gate_tag {
+        text index PK
+        text gate_id PK
+        text tags
+    }
+    gate_allowed_reviewer {
+        text id PK
+        text gate_id PK
+        text email
+        text name
+    }
+    gate_monitoring_metric {
+        text index PK
+        text gate_id PK
+        text name
+        text type
+    }
+    gate {
+        text id PK
+        text active_review_description
+        text active_review_id
+        text active_review_status
+        text checks_per_hour
+        text created_time
+        text creator_email
+        text creator_id
+        text creator_name
+        text description
+        text id_type
+        text is_enabled
+        text last_modified_time
+        text last_modifier_email
+        text last_modifier_id
+        text last_modifier_name
+        text measure_metric_lifts
+        text name
+        text owner_email
+        text owner_id
+        text owner_name
+        text owner_type
+        text release_pipeline_id
+        text review_settings_required_review
+        text status
+        jsonb target_apps
+        text team
+        text team_id
+        text type
+        text type_reason
+        text version
+    }
+    layer_tag {
+        text index PK
+        text layer_id PK
+        text tags
+    }
+    layer_holdout {
+        text index PK
+        text layer_id PK
+        text holdout_id FK
+    }
+    layer_parameter {
+        text index PK
+        text layer_id PK
+        text default_value
+        text name
+        text type
+    }
+    layer {
+        text id PK
+        text created_time
+        text creator_email
+        text creator_id
+        text creator_name
+        text description
+        text id_type
+        text is_implicit_layer
+        text last_modified_time
+        text last_modifier_email
+        text last_modifier_id
+        text last_modifier_name
+        text pass_percentage
+        jsonb target_apps
+        text team
+    }
+    event_updated {
+        text time_uuid PK
+        text event_name
+        text stable_id
+        text statsig_metadata_sdk_type
+        text statsig_metadata_sdk_version
+        text statsig_metadata_statsig_request_id
+        text statsig_metadata_statsig_tier
+        text time_stamp
+        text user_agent
+        text user_app_version
+        text user_browser_name
+        text user_browser_version
+        text user_country
+        text user_email
+        text user_id
+        text user_ip
+        text user_locale
+        text user_system_name
+        text user_system_version
+        text value
+    }
+    event_config_change {
+        text _fivetran_id PK
+        text event_name
+        text time_stamp
+        text time_uuid
+        text user_email
+        text user_name
+    }
+    first_exposures_report }o--|| experiment_group : "fk"
+    audit_log_change_rule }o--|| audit_log : "fk"
+    audit_log_change_rule_condition }o--|| audit_log_change_rule : "fk"
+    audit_log_change_rule_condition }o--|| audit_log_change_rule : "fk"
+    audit_log_change_rule_condition }o--|| audit_log_change_rule : "fk"
+    dynamic_config_holdout }o--|| holdout : "fk"
+    dynamic_config_holdout }o--|| dynamic_config : "fk"
+    dynamic_config_rule_condition }o--|| dynamic_config_rule : "fk"
+    dynamic_config_rule_condition }o--|| dynamic_config_rule : "fk"
+    dynamic_config_rule }o--|| dynamic_config : "fk"
+    dynamic_config_tag }o--|| dynamic_config : "fk"
+    experiment_holdout }o--|| holdout : "fk"
+    experiment_holdout }o--|| experiment : "fk"
+    experiment_group }o--|| experiment : "fk"
+    experiment_health_check }o--|| experiment : "fk"
+    experiment_primary_metric }o--|| metric : "fk"
+    experiment_primary_metric }o--|| experiment : "fk"
+    experiment_primary_metric_tag }o--|| metric_tag : "fk"
+    experiment_primary_metric_tag }o--|| experiment : "fk"
+    experiment_secondary_metric }o--|| metric : "fk"
+    experiment_secondary_metric }o--|| experiment : "fk"
+    experiment_secondary_metric_tag }o--|| metric_tag : "fk"
+    experiment_secondary_metric_tag }o--|| experiment : "fk"
+    experiment_tag }o--|| experiment : "fk"
+    experiment_allowed_reviewer }o--|| experiment : "fk"
+    experiment_other_matrix }o--|| metric : "fk"
+    experiment_other_matrix }o--|| experiment : "fk"
+    experiment_assignment_source_filter }o--|| experiment : "fk"
+    experiment_link }o--|| experiment : "fk"
+    experiment }o--|| layer : "fk"
+    experiment }o--|| gate : "fk"
+    holdout_tag }o--|| holdout : "fk"
+    autotune_holdout }o--|| holdout : "fk"
+    autotune_holdout }o--|| autotune : "fk"
+    autotune_tag }o--|| autotune : "fk"
+    autotune_variant }o--|| autotune : "fk"
+    segment_holdout }o--|| holdout : "fk"
+    segment_holdout }o--|| segment : "fk"
+    segment_tag }o--|| segment : "fk"
+    segment_rule_condition_target_value }o--|| segment_rule_condition : "fk"
+    segment_rule_condition_target_value }o--|| segment_rule_condition : "fk"
+    segment_rule_condition_target_value }o--|| segment_rule_condition : "fk"
+    segment_rule_condition }o--|| segment_rule : "fk"
+    segment_rule_condition }o--|| segment_rule : "fk"
+    segment_rule }o--|| segment : "fk"
+    metric_unit_type }o--|| metric : "fk"
+    metric_tag }o--|| metric : "fk"
+    gate_holdout }o--|| holdout : "fk"
+    gate_holdout }o--|| gate : "fk"
+    gate_rule_condition_target_value }o--|| gate_rule_condition : "fk"
+    gate_rule_condition_target_value }o--|| gate_rule_condition : "fk"
+    gate_rule_condition_target_value }o--|| gate_rule_condition : "fk"
+    gate_rule_condition }o--|| gate_rule : "fk"
+    gate_rule_condition }o--|| gate_rule : "fk"
+    gate_rule }o--|| gate : "fk"
+    gate_tag }o--|| gate : "fk"
+    gate_allowed_reviewer }o--|| gate : "fk"
+    gate_monitoring_metric }o--|| gate : "fk"
+    layer_tag }o--|| layer : "fk"
+    layer_holdout }o--|| holdout : "fk"
+    layer_holdout }o--|| layer : "fk"
+    layer_parameter }o--|| layer : "fk"

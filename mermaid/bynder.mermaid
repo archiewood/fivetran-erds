@@ -1,0 +1,96 @@
+erDiagram
+    collection {
+        text id PK
+        text cover_large
+        text cover_thumbnail
+        text date_created
+        text date_modified
+        text description
+        text filename
+        text is_embeddable
+        text is_public
+        text name
+        text user_id
+        text user_name
+    }
+    asset_item {
+        text index PK
+        text asset_id PK
+        text additional_id
+        text file_name
+        text name
+        text public_url
+        text type
+    }
+    asset_property_option {
+        text index PK
+        text asset_id PK
+        text property_option
+    }
+    asset {
+        text id PK
+        text brand_id FK
+        text archive
+        text copyright
+        text date_created
+        text date_modified
+        text date_published
+        text description
+        jsonb extension
+        text file_size
+        text height
+        text id_hash
+        text is_public
+        text limited
+        text name
+        text orientation
+        text original
+        jsonb property_3_d_ai_generated
+        jsonb property_access_right
+        jsonb property_asset_family
+        jsonb property_asset_type
+        jsonb property_brand
+        jsonb property_bu_owner
+        jsonb property_campaign_program
+        jsonb property_central_team
+        jsonb property_content_type
+        jsonb property_context_of_use
+        text property_copyright
+        jsonb property_file_type
+        jsonb property_geographical_areas_authorized
+        jsonb property_marketing_program_name
+        jsonb property_selling_type
+        jsonb property_status
+        jsonb property_supports_authorized
+        text thumbnail_mini
+        text thumbnail_thul
+        text thumbnail_webimage
+        text transform_base_url
+        text type
+        text user_created
+        jsonb video_preview_url
+        text watermarked
+        text width
+    }
+    sub_brand {
+        text id PK
+        text brand_id PK
+        text description
+        text image
+        text name
+    }
+    brand {
+        text id PK
+        text description
+        text image
+        text name
+    }
+    tags {
+        text id PK
+        text media_count
+        text tag_name
+    }
+    asset_item }o--|| asset : "fk"
+    asset_property_option }o--|| asset : "fk"
+    asset }o--|| brand : "fk"
+    sub_brand }o--|| brand : "fk"

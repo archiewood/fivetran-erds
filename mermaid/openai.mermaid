@@ -1,0 +1,93 @@
+erDiagram
+    embedding {
+        text api_key_id PK
+        text end_time PK
+        text model PK
+        text start_time PK
+        text project_id PK
+        text user_id PK
+        text input_token
+        text num_model_request
+        text object
+    }
+    project {
+        text id PK
+        text archived_at
+        text created_at
+        text name
+        text object
+        text status
+    }
+    completion {
+        text api_key_id PK
+        text end_time PK
+        text model PK
+        text start_time PK
+        text project_id PK
+        text user_id PK
+        text batch
+        text input_audio_token
+        text input_cached_token
+        text input_token
+        text num_model_request
+        text object
+        text output_audio_token
+        text output_token
+    }
+    users {
+        text id PK
+        text added_at
+        text email
+        text name
+        text object
+        text role
+    }
+    audio_speech {
+        text api_key_id PK
+        text end_time PK
+        text model PK
+        text start_time PK
+        text project_id PK
+        text user_id PK
+        text character
+        text input_token
+        text num_model_request
+        text object
+    }
+    cost {
+        text _fivetran_id PK
+        text project_id FK
+        text amount_currency
+        text amount_value
+        text end_time
+        text line_item
+        text object
+        text organization_id
+        text start_time
+    }
+    project_user {
+        text id PK
+        text project_id PK
+    }
+    audio_transcription {
+        text api_key_id PK
+        text end_time PK
+        text model PK
+        text start_time PK
+        text project_id PK
+        text user_id PK
+        text num_model_request
+        text object
+        text second
+    }
+    embedding }o--|| project : "fk"
+    embedding }o--|| users : "fk"
+    completion }o--|| users : "fk"
+    completion }o--|| project : "fk"
+    audio_speech }o--|| project : "fk"
+    audio_speech }o--|| users : "fk"
+    cost }o--|| project : "fk"
+    project_user }o--|| users : "fk"
+    project_user }o--|| project : "fk"
+    audio_transcription }o--|| project : "fk"
+    audio_transcription }o--|| users : "fk"

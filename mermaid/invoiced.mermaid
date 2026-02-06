@@ -1,0 +1,609 @@
+erDiagram
+    payment {
+        text id PK
+        text charge_customer_id FK
+        text charge_payment_source_customer_id FK
+        text customer_id FK
+        text ach_sender_id
+        text amount
+        jsonb applied_to
+        text balance
+        text charge_amount
+        text charge_amount_refunded
+        text charge_created_at
+        text charge_currency
+        text charge_disputed
+        text charge_failure_message
+        text charge_gateway
+        text charge_gateway_id
+        text charge_id
+        text charge_payment_source_account_holder_name
+        text charge_payment_source_account_holder_type
+        text charge_payment_source_bank_name
+        text charge_payment_source_chargeable
+        text charge_payment_source_country
+        text charge_payment_source_created_at
+        text charge_payment_source_currency
+        text charge_payment_source_failure_reason
+        text charge_payment_source_gateway
+        text charge_payment_source_gateway_customer
+        text charge_payment_source_gateway_id
+        text charge_payment_source_id
+        text charge_payment_source_last_4_card_digits
+        text charge_payment_source_merchant_account
+        text charge_payment_source_receipt_email
+        text charge_payment_source_routing_number
+        text charge_payment_source_type
+        text charge_payment_source_updated_at
+        text charge_payment_source_verified
+        text charge_receipt_email
+        jsonb charge_refund
+        text charge_refunded
+        text charge_status
+        text charge_updated_at
+        text created_at
+        text currency
+        text date
+        text matched
+        text method
+        text note
+        text pdf_url
+        text reference
+        text source
+        text updated_at
+        text voided
+    }
+    contact {
+        text id PK
+        text customer_id FK
+        text address_1
+        text address_2
+        text city
+        text country
+        text created_at
+        text department
+        text email
+        text is_primary
+        text name
+        text phone
+        text postal_code
+        text role
+        text send_new_invoice
+        text sms_enabled
+        text state
+        text title
+        text updated_at
+    }
+    credit_note_attachment {
+        text id PK
+        text credit_note_id FK
+        text created_at
+        text file_created_at
+        text file_id
+        text file_name
+        text file_size
+        text file_type
+        text file_updated_at
+        text file_url
+        text updated_at
+    }
+    plan_tier {
+        text index PK
+        text plan_id PK
+        text max_qty
+        text min_qty
+        text unit_cost
+    }
+    plan {
+        text id PK
+        text amount
+        text catalog_item
+        text created_at
+        text currency
+        text interval
+        text interval_count
+        text name
+        text pricing_mode
+        text quantity_type
+        text updated_at
+    }
+    credit_balance_adjustment {
+        text id PK
+        text customer_id FK
+        text amount
+        text created_at
+        text currency
+        text date
+        text note
+        text updated_at
+    }
+    event {
+        text id PK
+        text timestamps
+        text type
+    }
+    note {
+        text id PK
+        text customer_id FK
+        text invoice_id FK
+        text created_at
+        text note
+        timestamp updated_at
+        text user_created_at
+        text user_email
+        text user_first_name
+        text user_id
+        text user_last_name
+        text user_registered
+        text user_two_factor_enabled
+        text user_updated_at
+    }
+    customer {
+        text id PK
+        text parent_customer FK
+        text payment_source_id FK
+        text ach_gateway
+        text ach_gateway_id
+        text active
+        text address_1
+        text address_2
+        text attention_to
+        text autopay
+        text autopay_delay_days
+        text avalara_entity_use_code
+        text avalara_exemption_number
+        text bill_to_parent
+        text cc_gateway
+        text cc_gateway_id
+        text chase
+        text chasing_cadence
+        text city
+        text consolidated
+        text convenience_fee
+        text country
+        text created_at
+        text credit_hold
+        text credit_limit
+        text currency
+        text email
+        text languages
+        text late_fee_schedule
+        text late_fee_schedule_id
+        text name
+        text network_connection
+        text network_connection_id
+        text next_chase_step
+        text note
+        text number
+        text owner
+        text payment_term
+        text phone
+        text postal_code
+        text sign_up_page
+        text sign_up_url
+        text state
+        text statement_pdf_url
+        text statement_url
+        jsonb tax
+        text tax_id
+        text taxable
+        text type
+        text updated_at
+    }
+    current_balance_history {
+        text index PK
+        text _fivetran_id PK
+        text balance
+        text currency
+        text timestamps
+    }
+    current_balance {
+        text _fivetran_id PK
+        text customer_id FK
+        text available_credit
+        text currency
+        text due_now
+        text open_credit_note
+        text past_due
+        text total_outstanding
+    }
+    task {
+        text id PK
+        text customer_id FK
+        text action
+        text chase_step_id
+        text complete
+        text completed_by_user_id
+        text completed_date
+        text created_at
+        text due_date
+        text name
+        timestamp updated_at
+        text user_id
+    }
+    payment_plan_installment {
+        text id PK
+        text payment_plan_id PK
+        text amount
+        text balance
+        text date
+    }
+    payment_plan {
+        text id PK
+        text invoice_id FK
+        text approval_id
+        text approval_ip
+        text approval_timestamps
+        text approval_user_agent
+        text created_at
+        text status
+        text updated_at
+    }
+    estimate_attachment {
+        text id PK
+        text estimate_id FK
+        text created_at
+        text file_created_at
+        text file_id
+        text file_name
+        text file_size
+        text file_type
+        text file_updated_at
+        text file_url
+        text updated_at
+    }
+    subscription_addon {
+        text id PK
+        text subscription_id PK
+        text created_at
+        text description
+        text plan
+        text quantity
+        text updated_at
+    }
+    subscription {
+        text id PK
+        text customer_id FK
+        text plan_id FK
+        text bill_in
+        text bill_in_advance_day
+        text cancel_at_period_end
+        text canceled_at
+        text contract_period_end
+        text contract_period_start
+        text contract_renewal_cycle
+        text contract_renewal_mode
+        text created_at
+        text cycle
+        jsonb discount
+        text mrr
+        text paused
+        text period_end
+        text period_start
+        text quantity
+        text recurring_total
+        jsonb ship_to
+        text start_date
+        text status
+        jsonb taxes
+        text updated_at
+        text url
+    }
+    pending_line_item {
+        text id PK
+        text customer_id FK
+        text amount
+        text catalog_item
+        text description
+        jsonb discount
+        text discountable
+        jsonb metadata
+        text name
+        text quantity
+        text taxable
+        jsonb taxes
+        text type
+        text unit_cost
+        text updated_at
+    }
+    invoice_item {
+        text id PK
+        text invoice_id PK
+        text amount
+        text catalog_item
+        text created_at
+        text description
+        jsonb discount
+        text discountable
+        text plan_id
+        text quantity
+        text taxable
+        jsonb taxes
+        text type
+        text unit_cost
+        text updated_at
+    }
+    invoice_tax {
+        text id PK
+        text invoice_id PK
+        text amount
+        jsonb tax_rate
+        text updated_at
+    }
+    invoice_discount {
+        text id PK
+        text invoice_id PK
+        text amount
+        jsonb coupon
+        text expire
+        text from_payment_term
+        text updated_at
+    }
+    invoice_shipping {
+        text index PK
+        text invoice_id PK
+        text address_1
+        text address_2
+        text attention_to
+        text city
+        text country
+        text created_at
+        text name
+        text postal_code
+        text state
+        text updated_at
+    }
+    invoice {
+        text id PK
+        text customer_id FK
+        text payment_plan_id FK
+        text subscription_id FK
+        text attempt_count
+        text autopay
+        text balance
+        text chase
+        text closed
+        text created_at
+        text csv_url
+        text currency
+        text date
+        text draft
+        text due_date
+        text late_fees
+        text name
+        text needs_attention
+        text network_document
+        text network_document_id
+        text next_chase_on
+        text next_payment_attempt
+        text note
+        text number
+        text paid
+        text payment_source
+        text payment_term
+        text payment_url
+        text pdf_url
+        text purchase_order
+        text ship_to_address_1
+        text ship_to_address_2
+        text ship_to_attention_to
+        text ship_to_city
+        text ship_to_country
+        text ship_to_created_at
+        text ship_to_name
+        text ship_to_postal_code
+        text ship_to_state
+        text ship_to_updated_at
+        text status
+        text subscription
+        text subtotal
+        text total
+        text updated_at
+        text url
+    }
+    invoice_attachment {
+        text id PK
+        text invoice_id FK
+        text created_at
+        text file_created_at
+        text file_id
+        text file_name
+        text file_size
+        text file_type
+        text file_updated_at
+        text file_url
+        text updated_at
+    }
+    payment_source {
+        text id PK
+        text customer_id FK
+        text bank_name
+        text brand
+        text currency
+        text expiry_month
+        text expiry_year
+        text funding
+        text last_4_card_digits
+        text object
+        text routing_number
+        text updated_at
+        text verified
+    }
+    item {
+        text id PK
+        text avalara_location_code
+        text avalara_tax_code
+        text created_at
+        text currency
+        text description
+        text discountable
+        text gl_account
+        text name
+        text taxable
+        text type
+        text unit_cost
+        text updated_at
+    }
+    coupon {
+        text id PK
+        text created_at
+        text currency
+        text duration
+        text exclusive
+        text expiration_date
+        text is_percent
+        text max_redemption
+        text name
+        text updated_at
+        text value
+    }
+    tax_rate {
+        text id PK
+        text created_at
+        text currency
+        text inclusive
+        text is_percent
+        text name
+        text updated_at
+        text value
+    }
+    credit_note_item {
+        text id PK
+        text credit_note_id PK
+        text amount
+        text catalog_item
+        text created_at
+        text description
+        jsonb discount
+        text discountable
+        text name
+        text quantity
+        text taxable
+        jsonb taxes
+        text type
+        text unit_cost
+        text updated_at
+    }
+    credit_note_tax {
+        text id PK
+        text credit_note_id PK
+        text amount
+        jsonb tax_rate
+    }
+    credit_note {
+        text id PK
+        text customer_id FK
+        text invoice_id FK
+        text balance
+        text closed
+        text created_at
+        text currency
+        text date
+        jsonb discount
+        text draft
+        text name
+        text network_document
+        text network_document_id
+        text note
+        text number
+        text paid
+        text pdf_url
+        text purchase_order
+        jsonb shipping
+        text status
+        text subtotal
+        text total
+        text updated_at
+        text url
+    }
+    estimate_item {
+        text id PK
+        text estimate_id PK
+        text amount
+        text catalog_item
+        text created_at
+        text description
+        jsonb discount
+        text discountable
+        text name
+        text quantity
+        text taxable
+        text type
+        text unit_cost
+        text updated_at
+    }
+    estimate_tax {
+        text id PK
+        text estimate_id PK
+        text amount
+        jsonb tax_rate
+    }
+    estimate {
+        text id PK
+        text customer_id FK
+        text invoice_id FK
+        text approval
+        text approved
+        text closed
+        text created_at
+        text currency
+        text date
+        text deposit
+        text deposit_paid
+        jsonb discount
+        text draft
+        text expiration_date
+        text name
+        text network_document
+        text network_document_id
+        text note
+        text number
+        text payment_terms
+        text pdf_url
+        text purchase_order
+        jsonb ship_to
+        jsonb shipping
+        text status
+        text subtotal
+        text total
+        text updated_at
+        text url
+    }
+    payment }o--|| customer : "fk"
+    payment }o--|| customer : "fk"
+    payment }o--|| customer : "fk"
+    contact }o--|| customer : "fk"
+    credit_note_attachment }o--|| credit_note : "fk"
+    plan_tier }o--|| plan : "fk"
+    credit_balance_adjustment }o--|| customer : "fk"
+    note }o--|| customer : "fk"
+    note }o--|| invoice : "fk"
+    customer }o--|| customer : "fk"
+    customer }o--|| payment_source : "fk"
+    current_balance_history }o--|| current_balance : "fk"
+    current_balance }o--|| customer : "fk"
+    task }o--|| customer : "fk"
+    payment_plan_installment }o--|| payment_plan : "fk"
+    payment_plan }o--|| invoice : "fk"
+    estimate_attachment }o--|| estimate : "fk"
+    subscription_addon }o--|| subscription : "fk"
+    subscription }o--|| plan : "fk"
+    subscription }o--|| customer : "fk"
+    pending_line_item }o--|| customer : "fk"
+    invoice_item }o--|| invoice : "fk"
+    invoice_tax }o--|| invoice : "fk"
+    invoice_discount }o--|| invoice : "fk"
+    invoice_shipping }o--|| invoice : "fk"
+    invoice }o--|| subscription : "fk"
+    invoice }o--|| payment_plan : "fk"
+    invoice }o--|| customer : "fk"
+    invoice_attachment }o--|| invoice : "fk"
+    payment_source }o--|| customer : "fk"
+    credit_note_item }o--|| credit_note : "fk"
+    credit_note_tax }o--|| credit_note : "fk"
+    credit_note }o--|| invoice : "fk"
+    credit_note }o--|| customer : "fk"
+    estimate_item }o--|| estimate : "fk"
+    estimate_tax }o--|| estimate : "fk"
+    estimate }o--|| invoice : "fk"
+    estimate }o--|| customer : "fk"

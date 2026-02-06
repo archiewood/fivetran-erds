@@ -1,0 +1,752 @@
+erDiagram
+    scope_domain {
+        text domain_id PK
+        text scope_id PK
+    }
+    scope_community {
+        text community_id PK
+        text scope_id PK
+    }
+    scope {
+        text id PK
+        text created_by FK
+        text last_modified_by FK
+        timestamp created_on
+        text description
+        boolean is_system
+        timestamp last_modified_on
+        text name
+        text resource_type
+    }
+    relation_type {
+        text id PK
+        text created_by FK
+        text last_modified_by FK
+        text source_type_id FK
+        text target_type_id FK
+        text co_role
+        timestamp created_on
+        boolean is_system
+        timestamp last_modified_on
+        text resource_type
+        text role
+    }
+    status {
+        text id PK
+        text created_by FK
+        text last_modified_by FK
+        timestamp created_on
+        boolean is_system
+        timestamp last_modified_on
+        text name
+        text resource_type
+    }
+    issue {
+        text id PK
+        text created_by FK
+        text domain_id FK
+        text last_modified_by FK
+        text status_id FK
+        text type_id FK
+        double_precision articulation_score
+        double_precision avg_rating
+        timestamp created_on
+        text display_name
+        boolean excluded_from_auto_hyperlinking
+        boolean is_system
+        timestamp last_modified_on
+        text name
+        bigint ratings_count
+        text resource_type
+    }
+    community {
+        text id PK
+        text created_by FK
+        text last_modified_by FK
+        text parent_id FK
+        timestamp created_on
+        boolean is_system
+        timestamp last_modified_on
+        text name
+        text parent_name
+        text parent_resource_type
+        text resource_type
+    }
+    mapping {
+        text id PK
+        text created_by FK
+        text last_modified_by FK
+        text mapped_resource_id FK
+        timestamp created_on
+        text description
+        text external_entity_id
+        text external_entity_url
+        text external_system_id
+        boolean is_system
+        timestamp last_modified_on
+        timestamp last_sync_date
+        text resource_type
+        text sync_action
+    }
+    domain_type {
+        text id PK
+        text created_by FK
+        text last_modified_by FK
+        text parent_id FK
+        timestamp created_on
+        text description
+        boolean is_system
+        timestamp last_modified_on
+        text name
+        text parent_name
+        text parent_resource_type
+        text resource_type
+    }
+    job {
+        text id PK
+        text created_by FK
+        text last_modified_by FK
+        text user_id FK
+        boolean cancelable
+        timestamp created_on
+        timestamp end_date
+        boolean is_system
+        timestamp last_modified_on
+        text message
+        text name
+        double_precision progress_percentage
+        text resource_type
+        text result
+        timestamp start_date
+        text state
+        text type
+        bigint visibility
+    }
+    attribute {
+        text id PK
+        text asset_id FK
+        text created_by FK
+        text last_modified_by FK
+        text type_id FK
+        timestamp created_on
+        boolean is_system
+        timestamp last_modified_on
+        text resource_type
+        text value
+    }
+    search_view_aggregation {
+        text index PK
+        text search_view_id PK
+        text field
+        text limits
+    }
+    search_in_fields_field {
+        text index PK
+        text search_in_field_index PK
+        text search_view_id PK
+        text field
+    }
+    search_in_field {
+        text index PK
+        text search_view_id PK
+        text resource_type
+    }
+    search_view_filter_value {
+        text index PK
+        text search_view_filter_index PK
+        text search_view_id PK
+        text value
+    }
+    search_view_filter {
+        text index PK
+        text search_view_id PK
+        text field
+    }
+    search_view {
+        text id PK
+        text name
+        text search_request_keywords
+        text search_request_sort_field
+        text search_request_sort_order
+    }
+    rating {
+        text id PK
+        text asset_id FK
+        text created_by FK
+        text last_modified_by FK
+        timestamp created_on
+        boolean is_system
+        timestamp last_modified_on
+        double_precision rating
+        text resource_type
+        text review
+    }
+    view_permission {
+        text id PK
+        text base_resource_id FK
+        text created_by FK
+        text last_modified_by FK
+        text user_group_id FK
+        text user_id FK
+        timestamp created_on
+        boolean is_system
+        timestamp last_modified_on
+    }
+    user_additional_email_address {
+        text email_address PK
+        text user_id PK
+        text created_by FK
+        text last_modified_by FK
+        timestamp created_on
+        boolean is_system
+        timestamp last_modified_on
+        text name
+        text resource_type
+    }
+    user_phone_number {
+        text phone_number PK
+        text user_id PK
+        text created_by FK
+        text last_modified_by FK
+        timestamp created_on
+        boolean is_system
+        timestamp last_modified_on
+        text resource_type
+        text type
+    }
+    user_address {
+        text _fivetran_id PK
+        text created_by FK
+        text last_modified_by FK
+        text user_id FK
+        text city
+        text country
+        timestamp created_on
+        boolean is_system
+        timestamp last_modified_on
+        text number
+        text postal_type
+        text resource_type
+        text state
+        text street
+        text type
+    }
+    user_instant_messaging_account {
+        text account PK
+        text user_id PK
+        text created_by FK
+        text last_modified_by FK
+        timestamp created_on
+        boolean is_system
+        timestamp last_modified_on
+        text resource_type
+        text type
+    }
+    user_website {
+        text url PK
+        text user_id PK
+        text created_by FK
+        text last_modified_by FK
+        timestamp created_on
+        boolean is_system
+        timestamp last_modified_on
+        text resource_type
+        text type
+    }
+    users {
+        text id PK
+        text created_by FK
+        text last_modified_by FK
+        boolean activated
+        text api_user
+        timestamp created_on
+        text email_address
+        boolean enabled
+        text first_name
+        text gender
+        text guest_user
+        boolean is_system
+        text languages
+        timestamp last_modified_on
+        text last_name
+        text ldap_user
+        text license_type
+        text resource_type
+        text user_name
+        text user_source
+    }
+    tags {
+        text id PK
+        text created_by FK
+        text last_modified_by FK
+        bigint assets_count
+        timestamp created_on
+        boolean is_system
+        timestamp last_modified_on
+        text name
+        text resource_type
+    }
+    domain {
+        text id PK
+        text community_id FK
+        text created_by FK
+        text last_modified_by FK
+        text type_id FK
+        timestamp created_on
+        text description
+        boolean excluded_from_auto_hyperlinking
+        boolean is_system
+        timestamp last_modified_on
+        text name
+        text resource_type
+    }
+    attachment {
+        text id PK
+        text base_resource_id FK
+        text created_by FK
+        text last_modified_by FK
+        timestamp created_on
+        text file_content_type
+        text file_id
+        text file_name
+        boolean is_system
+        timestamp last_modified_on
+        text resource_type
+    }
+    attribute_type {
+        text id PK
+        text created_by FK
+        text last_modified_by FK
+        timestamp created_on
+        text description
+        boolean is_system
+        timestamp last_modified_on
+        text name
+        text resource_type
+        text string_type
+    }
+    user_group {
+        text id PK
+        text created_by FK
+        text last_modified_by FK
+        timestamp created_on
+        boolean is_system
+        timestamp last_modified_on
+        boolean locally_managed
+        text name
+        text resource_type
+    }
+    comment_mentioned_user {
+        text comment_id PK
+        text user_id PK
+        text base_resource_id
+        text base_resource_type
+        text parent_id
+        text parent_resource_type
+    }
+    comment {
+        text id PK
+        text base_resource_id FK
+        text created_by FK
+        text last_modified_by FK
+        text content
+        timestamp created_on
+        boolean is_system
+        timestamp last_modified_on
+        text resource_type
+    }
+    role_permission {
+        text permission PK
+        text role_id PK
+    }
+    role {
+        text id PK
+        text created_by FK
+        text last_modified_by FK
+        timestamp created_on
+        text description
+        boolean global
+        boolean is_system
+        timestamp last_modified_on
+        text name
+        text resource_type
+    }
+    import {
+        text synchronization_id PK
+    }
+    assignment_asset_type_status {
+        text assignment_asset_type_id PK
+        text status_id PK
+    }
+    assignment_asset_type_domain_type {
+        text assignment_asset_type_id PK
+        text domain_type_id PK
+    }
+    assignment_asset_type_characteristic_type {
+        text id PK
+        text assignment_asset_type_id PK
+        text attribute_type_id FK
+        text assigned_resource_id
+        text assigned_resource_type
+        boolean is_system
+        bigint maximum_occurences
+        bigint minimum_occurences
+        boolean read_only
+    }
+    assignment_asset_type_articulation_rule {
+        text id PK
+        text assignment_asset_type_id PK
+        text created_by FK
+        text last_modified_by FK
+        text status_id FK
+        timestamp created_on
+        boolean is_system
+        timestamp last_modified_on
+        text operation
+        text resource_type
+        double_precision score
+    }
+    assignment_asset_type_data_quality_rule {
+        text assignment_asset_type_id PK
+        text data_quality_rule_id PK
+    }
+    assignment_asset_type_validation_rule {
+        text id PK
+        text assignment_asset_type_id PK
+        text name
+        text resource_type
+    }
+    assignment_asset_type {
+        text id PK
+        text asset_type_id FK
+        text created_by FK
+        text default_status_id FK
+        text last_modified_by FK
+        text scope_id FK
+        timestamp created_on
+        boolean is_system
+        timestamp last_modified_on
+        text resource_type
+    }
+    asset_type {
+        text id PK
+        text created_by FK
+        text last_modified_by FK
+        text parent_id FK
+        timestamp created_on
+        text description
+        boolean display_name_enabled
+        boolean is_system
+        timestamp last_modified_on
+        text name
+        text parent_resource
+        boolean rating_enabled
+        text resource_type
+        text symbol_data_acronym_code
+        text symbol_data_color
+        text symbol_data_symbol_type
+    }
+    data_quality_rule_relation_trace_entry {
+        text _fivetran_id PK
+        text relation_type_id FK
+        boolean out_bound_role_direction
+        boolean role_direction
+    }
+    data_quality_metric {
+        text id PK
+        text attribute_type_id FK
+        text created_by FK
+        text last_modified_by FK
+        text count_operation
+        timestamp created_on
+        boolean is_system
+        timestamp last_modified_on
+        text resource_type
+    }
+    data_quality_rule {
+        text id PK
+        text categorization_relation_type_id FK
+        text created_by FK
+        text last_modified_by FK
+        text relation_trace_created_by FK
+        text relation_trace_last_modified_by FK
+        timestamp created_on
+        boolean is_system
+        timestamp last_modified_on
+        text name
+        timestamp relation_trace_created_on
+        text relation_trace_id
+        boolean relation_trace_is_system
+        timestamp relation_trace_last_modified_on
+        text relation_trace_resource_type
+        text resource_type
+    }
+    complex_relation_attribute {
+        text id PK
+        text asset_id FK
+        text created_by FK
+        text last_modified_by FK
+        text type_id FK
+        timestamp created_on
+        boolean is_system
+        timestamp last_modified_on
+        text resource_type
+        text value
+    }
+    complex_relation_leg {
+        text id PK
+        text asset_id FK
+        text asset_reference_id FK
+        text asset_type_id FK
+        text complex_relation_id FK
+        text co_role
+        boolean is_system
+        text resource_type
+        text role
+    }
+    complex_relation {
+        text id PK
+        text created_by FK
+        text last_modified_by FK
+        text type_id FK
+        timestamp created_on
+        boolean is_system
+        timestamp last_modified_on
+        text resource_type
+    }
+    relation {
+        text id PK
+        text created_by FK
+        text last_modified_by FK
+        text source_id FK
+        text target_id FK
+        text type_id FK
+        timestamp created_on
+        boolean is_system
+        timestamp last_modified_on
+        text resource_type
+    }
+    asset {
+        text id PK
+        text created_by FK
+        text domain_id FK
+        text last_modified_by FK
+        text status_id FK
+        text type_id FK
+        double_precision articulation_score
+        double_precision avg_rating
+        timestamp created_on
+        text description
+        text display_name
+        boolean excluded_from_auto_hyperlinking
+        boolean is_system
+        timestamp last_modified_on
+        text name
+        bigint ratings_count
+        text resource_type
+    }
+    responsibility {
+        text id PK
+        text base_resource_id FK
+        text created_by FK
+        text last_modified_by FK
+        text owner_id FK
+        text role_id FK
+        timestamp created_on
+        boolean is_system
+        timestamp last_modified_on
+        text resource_type
+    }
+    complex_relation_type_attribute_type {
+        text id PK
+        text attribute_type_id FK
+        text complex_relation_type_id FK
+        text created_by FK
+        text last_modified_by FK
+        timestamp created_on
+        boolean is_system
+        timestamp last_modified_on
+        bigint maximum_occurences
+        bigint minimum_occurences
+        boolean read_only
+        text resource_type
+    }
+    complex_relation_type_leg_type {
+        text id PK
+        text asset_type_id FK
+        text complex_relation_type_id FK
+        text relation_type_id FK
+        text co_role
+        boolean is_system
+        bigint maximum_occurences
+        bigint minimum_occurences
+        text resource_type
+        text role
+    }
+    complex_relation_type {
+        text id PK
+        text created_by FK
+        text last_modified_by FK
+        timestamp created_on
+        text description
+        boolean is_system
+        timestamp last_modified_on
+        text name
+        text resource_type
+        text symbol_data_acronym_code
+        text symbol_data_color
+        text symbol_data_icon_code
+        text symbol_data_symbol_type
+    }
+    scope_domain }o--|| domain : "fk"
+    scope_domain }o--|| scope : "fk"
+    scope_community }o--|| community : "fk"
+    scope_community }o--|| scope : "fk"
+    scope }o--|| users : "fk"
+    scope }o--|| users : "fk"
+    relation_type }o--|| asset_type : "fk"
+    relation_type }o--|| users : "fk"
+    relation_type }o--|| users : "fk"
+    relation_type }o--|| asset_type : "fk"
+    status }o--|| users : "fk"
+    status }o--|| users : "fk"
+    issue }o--|| users : "fk"
+    issue }o--|| asset : "fk"
+    issue }o--|| users : "fk"
+    issue }o--|| status : "fk"
+    issue }o--|| domain : "fk"
+    issue }o--|| asset_type : "fk"
+    community }o--|| users : "fk"
+    community }o--|| users : "fk"
+    community }o--|| community : "fk"
+    mapping }o--|| users : "fk"
+    mapping }o--|| users : "fk"
+    mapping }o--|| asset : "fk"
+    domain_type }o--|| users : "fk"
+    domain_type }o--|| users : "fk"
+    domain_type }o--|| domain_type : "fk"
+    job }o--|| users : "fk"
+    job }o--|| users : "fk"
+    job }o--|| users : "fk"
+    attribute }o--|| users : "fk"
+    attribute }o--|| users : "fk"
+    attribute }o--|| asset : "fk"
+    attribute }o--|| attribute_type : "fk"
+    search_view_aggregation }o--|| search_view : "fk"
+    search_in_fields_field }o--|| search_in_field : "fk"
+    search_in_fields_field }o--|| search_in_field : "fk"
+    search_in_field }o--|| search_view : "fk"
+    search_view_filter_value }o--|| search_view_filter : "fk"
+    search_view_filter_value }o--|| search_view_filter : "fk"
+    search_view_filter }o--|| search_view : "fk"
+    rating }o--|| users : "fk"
+    rating }o--|| users : "fk"
+    rating }o--|| asset : "fk"
+    view_permission }o--|| user_group : "fk"
+    view_permission }o--|| users : "fk"
+    view_permission }o--|| users : "fk"
+    view_permission }o--|| users : "fk"
+    view_permission }o--|| community : "fk"
+    user_additional_email_address }o--|| users : "fk"
+    user_additional_email_address }o--|| users : "fk"
+    user_additional_email_address }o--|| users : "fk"
+    user_phone_number }o--|| users : "fk"
+    user_phone_number }o--|| users : "fk"
+    user_phone_number }o--|| users : "fk"
+    user_address }o--|| users : "fk"
+    user_address }o--|| users : "fk"
+    user_address }o--|| users : "fk"
+    user_instant_messaging_account }o--|| users : "fk"
+    user_instant_messaging_account }o--|| users : "fk"
+    user_instant_messaging_account }o--|| users : "fk"
+    user_website }o--|| users : "fk"
+    user_website }o--|| users : "fk"
+    user_website }o--|| users : "fk"
+    users }o--|| users : "fk"
+    users }o--|| users : "fk"
+    tags }o--|| users : "fk"
+    tags }o--|| users : "fk"
+    domain }o--|| community : "fk"
+    domain }o--|| users : "fk"
+    domain }o--|| users : "fk"
+    domain }o--|| domain_type : "fk"
+    attachment }o--|| asset : "fk"
+    attachment }o--|| users : "fk"
+    attachment }o--|| users : "fk"
+    attribute_type }o--|| users : "fk"
+    attribute_type }o--|| users : "fk"
+    user_group }o--|| users : "fk"
+    user_group }o--|| users : "fk"
+    comment_mentioned_user }o--|| users : "fk"
+    comment_mentioned_user }o--|| comment : "fk"
+    comment }o--|| users : "fk"
+    comment }o--|| users : "fk"
+    comment }o--|| asset : "fk"
+    role_permission }o--|| role : "fk"
+    role }o--|| users : "fk"
+    role }o--|| users : "fk"
+    assignment_asset_type_status }o--|| status : "fk"
+    assignment_asset_type_status }o--|| assignment_asset_type : "fk"
+    assignment_asset_type_domain_type }o--|| domain_type : "fk"
+    assignment_asset_type_domain_type }o--|| assignment_asset_type : "fk"
+    assignment_asset_type_characteristic_type }o--|| attribute_type : "fk"
+    assignment_asset_type_characteristic_type }o--|| assignment_asset_type : "fk"
+    assignment_asset_type_articulation_rule }o--|| users : "fk"
+    assignment_asset_type_articulation_rule }o--|| users : "fk"
+    assignment_asset_type_articulation_rule }o--|| status : "fk"
+    assignment_asset_type_articulation_rule }o--|| assignment_asset_type : "fk"
+    assignment_asset_type_data_quality_rule }o--|| data_quality_rule : "fk"
+    assignment_asset_type_data_quality_rule }o--|| assignment_asset_type : "fk"
+    assignment_asset_type_validation_rule }o--|| assignment_asset_type : "fk"
+    assignment_asset_type }o--|| asset_type : "fk"
+    assignment_asset_type }o--|| users : "fk"
+    assignment_asset_type }o--|| scope : "fk"
+    assignment_asset_type }o--|| users : "fk"
+    assignment_asset_type }o--|| status : "fk"
+    asset_type }o--|| users : "fk"
+    asset_type }o--|| users : "fk"
+    asset_type }o--|| asset_type : "fk"
+    data_quality_rule_relation_trace_entry }o--|| relation_type : "fk"
+    data_quality_metric }o--|| users : "fk"
+    data_quality_metric }o--|| users : "fk"
+    data_quality_metric }o--|| attribute_type : "fk"
+    data_quality_rule }o--|| users : "fk"
+    data_quality_rule }o--|| users : "fk"
+    data_quality_rule }o--|| users : "fk"
+    data_quality_rule }o--|| users : "fk"
+    data_quality_rule }o--|| relation_type : "fk"
+    complex_relation_attribute }o--|| users : "fk"
+    complex_relation_attribute }o--|| users : "fk"
+    complex_relation_attribute }o--|| complex_relation : "fk"
+    complex_relation_attribute }o--|| attribute_type : "fk"
+    complex_relation_leg }o--|| asset : "fk"
+    complex_relation_leg }o--|| asset : "fk"
+    complex_relation_leg }o--|| asset_type : "fk"
+    complex_relation_leg }o--|| complex_relation : "fk"
+    complex_relation }o--|| users : "fk"
+    complex_relation }o--|| users : "fk"
+    complex_relation }o--|| complex_relation_type : "fk"
+    relation }o--|| users : "fk"
+    relation }o--|| users : "fk"
+    relation }o--|| asset : "fk"
+    relation }o--|| asset : "fk"
+    relation }o--|| relation_type : "fk"
+    asset }o--|| users : "fk"
+    asset }o--|| users : "fk"
+    asset }o--|| status : "fk"
+    asset }o--|| domain : "fk"
+    asset }o--|| asset_type : "fk"
+    responsibility }o--|| users : "fk"
+    responsibility }o--|| users : "fk"
+    responsibility }o--|| users : "fk"
+    responsibility }o--|| role : "fk"
+    responsibility }o--|| asset : "fk"
+    complex_relation_type_attribute_type }o--|| users : "fk"
+    complex_relation_type_attribute_type }o--|| users : "fk"
+    complex_relation_type_attribute_type }o--|| attribute_type : "fk"
+    complex_relation_type_attribute_type }o--|| complex_relation_type : "fk"
+    complex_relation_type_leg_type }o--|| asset_type : "fk"
+    complex_relation_type_leg_type }o--|| relation_type : "fk"
+    complex_relation_type_leg_type }o--|| complex_relation_type : "fk"
+    complex_relation_type }o--|| users : "fk"
+    complex_relation_type }o--|| users : "fk"

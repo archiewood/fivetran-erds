@@ -1,0 +1,220 @@
+erDiagram
+    user_project {
+        text project_id PK
+        text user_id PK
+        text slug
+    }
+    team_project {
+        text project_id PK
+        text team_id PK
+    }
+    project_version {
+        text version PK
+        text project_id PK
+    }
+    project_global {
+        text index PK
+        text project_id PK
+        jsonb condition
+        text fingerprint
+        text title
+    }
+    project_ai {
+        text index PK
+        text project_id PK
+        jsonb condition
+        text fingerprint
+        text title
+    }
+    project_setting_data_custom {
+        text name PK
+        text project_id PK
+        text value
+    }
+    project {
+        text id PK
+        text account_id
+        text auto_upgrade
+        text date_created
+        text date_modified
+        text encryption_at_rest_enabled
+        text encryption_at_rest_enabled_at
+        text encryption_at_rest_enabled_at_creation
+        text encryption_at_rest_key
+        jsonb integrations_additional_prop
+        text integrations_asana_api_key_user_id
+        text integrations_asana_enabled
+        text integrations_asana_project_id
+        text integrations_asana_team_id
+        text integrations_asana_workspace_id
+        jsonb integrations_azuredevops
+        jsonb integrations_bitbucket
+        jsonb integrations_campfire
+        jsonb integrations_ciscospark
+        jsonb integrations_clubhouse
+        jsonb integrations_datadog
+        text integrations_email_enabled
+        text integrations_email_scrub_params
+        jsonb integrations_flowdock
+        text integrations_github_default_branch
+        text integrations_github_project_root
+        text integrations_github_scm_owner_access_token_user_id
+        jsonb integrations_gitlab
+        jsonb integrations_hipchat
+        text integrations_jira_credentials_user_id
+        jsonb integrations_jira_custom_fields
+        text integrations_jira_default_create_credentials
+        text integrations_jira_enabled
+        text integrations_jira_issue_active_status
+        text integrations_jira_issue_resolved_status
+        text integrations_jira_issue_type
+        text integrations_jira_project_key
+        jsonb integrations_launchdarkly
+        jsonb integrations_lightstep
+        text integrations_pagerduty_enabled
+        jsonb integrations_pivotal
+        text integrations_slack_access_token_user_id
+        text integrations_slack_bot_token_team_id
+        text integrations_slack_channel_id
+        text integrations_slack_default_actions_enabled
+        text integrations_slack_enabled
+        jsonb integrations_sprintly
+        jsonb integrations_trello
+        jsonb integrations_victorops
+        jsonb integrations_webhook
+        text name
+        text settings_data_scm_provider
+        text settings_data_time_format
+        text settings_data_timezone
+        text status
+    }
+    item_occurrence {
+        text id PK
+        text item_id FK
+        text project_id FK
+        text billable
+        jsonb data
+        text timestamps
+        text version
+    }
+    environment {
+        text id PK
+        text project_id FK
+        text environment
+        text visible
+    }
+    query_language_job {
+        text id PK
+        text project_id FK
+        text date_created
+        text date_modified
+        text job_hash
+        text query_string
+        text status
+    }
+    team_user {
+        text team_id PK
+        text user_id PK
+    }
+    invitation {
+        text id PK
+        text from_user_id FK
+        text team_id FK
+        text date_created
+        text date_redeemed
+        text status
+        text to_email
+    }
+    item {
+        text id PK
+        text activating_occurrence_id FK
+        text assigned_user_id FK
+        text environment FK
+        text first_occurrence_id FK
+        text group_item_id FK
+        text last_occurrence_id FK
+        text project_id FK
+        text public_item_id FK
+        text resolved_in_version FK
+        text controlling_id
+        text counter
+        text first_occurrence_timestamp
+        text framework
+        text group_status
+        text hash
+        text integrations_data
+        text last_activated_timestamp
+        text last_modified_by
+        text last_occurrence_timestamp
+        text last_resolved_timestamp
+        text level
+        text level_lock
+        text platform
+        text status
+        text title
+        text title_lock
+        text total_occurrences
+        text unique_occurrences
+    }
+    project_occurrence {
+        text id PK
+        text item_id FK
+        text project_id FK
+        text billable
+        jsonb data
+        text timestamps
+        text version
+    }
+    team {
+        text id PK
+        text account_id FK
+        text access_level
+        text name
+    }
+    deploy {
+        text id PK
+        text environment FK
+        text project_id FK
+        text user_id FK
+        text comment
+        text finish_time
+        text revision
+        text start_time
+        text status
+    }
+    users {
+        text id PK
+        text email
+        text username
+    }
+    user_project }o--|| project : "fk"
+    user_project }o--|| users : "fk"
+    team_project }o--|| team : "fk"
+    team_project }o--|| project : "fk"
+    project_version }o--|| project : "fk"
+    project_global }o--|| project : "fk"
+    project_ai }o--|| project : "fk"
+    project_setting_data_custom }o--|| project : "fk"
+    item_occurrence }o--|| project : "fk"
+    item_occurrence }o--|| item : "fk"
+    environment }o--|| project : "fk"
+    query_language_job }o--|| project : "fk"
+    team_user }o--|| team : "fk"
+    team_user }o--|| users : "fk"
+    invitation }o--|| users : "fk"
+    invitation }o--|| team : "fk"
+    item }o--|| users : "fk"
+    item }o--|| item : "fk"
+    item }o--|| item_occurrence : "fk"
+    item }o--|| item_occurrence : "fk"
+    item }o--|| environment : "fk"
+    item }o--|| project : "fk"
+    item }o--|| project_version : "fk"
+    item }o--|| item : "fk"
+    item }o--|| item_occurrence : "fk"
+    project_occurrence }o--|| project : "fk"
+    project_occurrence }o--|| item : "fk"
+    team }o--|| project : "fk"
+    deploy }o--|| users : "fk"
+    deploy }o--|| environment : "fk"
+    deploy }o--|| project : "fk"

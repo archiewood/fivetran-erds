@@ -1,0 +1,97 @@
+erDiagram
+    subscriber_reward {
+        text id PK
+        text list_id PK
+        text subscriber_id PK
+        text coupon_code FK
+        text coupon_group
+        text created_at
+        text recurring_count
+        text referrals
+        text referrals_type
+        text signup_type
+        text status
+    }
+    coupon {
+        text index PK
+        text coupon_group_id PK
+        text list_id PK
+        text available
+        text code
+        text created_at
+        text email_id
+        text sent_at
+    }
+    coupon_group {
+        text id PK
+        text list_id PK
+        text active
+        text created_at
+        text name
+    }
+    list {
+        text id PK
+        text created_at
+        text name
+        text type
+    }
+    subscriber {
+        text id PK
+        text list_id PK
+        text code FK
+        text referred_by_id FK
+        text conversion_amount
+        text created_at
+        text crypto_wallet_address
+        text crypto_wallet_provider
+        text device
+        text email
+        text extra_field
+        text extra_field_2
+        text host
+        text last_updated_at
+        text level_2_confirmed_referrals
+        text level_3_confirmed_referrals
+        text name
+        text option_field
+        text other_identifier_value
+        text pending_referrals
+        text people_referred
+        text phone_number
+        text points
+        text position
+        text promoted
+        text referral_link
+        text referral_status
+        text referral_status_at
+        text referred
+        text referred_by_points
+        text risk_level
+        text source
+        text unconfirmed_referrals
+        text verified
+        text verified_at
+    }
+    reward {
+        text id PK
+        text list_id PK
+        text category
+        text description
+        text header
+        text image
+        text label
+        text points
+        text referrals
+        text signup_type
+        text title
+    }
+    subscriber_reward }o--|| coupon : "fk"
+    subscriber_reward }o--|| subscriber : "fk"
+    subscriber_reward }o--|| subscriber : "fk"
+    coupon }o--|| coupon_group : "fk"
+    coupon }o--|| coupon_group : "fk"
+    coupon_group }o--|| list : "fk"
+    subscriber }o--|| coupon : "fk"
+    subscriber }o--|| subscriber : "fk"
+    subscriber }o--|| list : "fk"
+    reward }o--|| list : "fk"

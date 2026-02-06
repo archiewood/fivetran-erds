@@ -1,0 +1,305 @@
+erDiagram
+    country {
+        text id PK
+        text partition_id PK
+        text continent_code
+        text continent_label
+        text label
+    }
+    medium_consumption_cost {
+        timestamp timestamps PK
+        text medium_consumption_list_id PK
+        text partition_id PK
+        text value
+    }
+    equipment_type {
+        text id PK
+        text partition_id PK
+        text parent_id FK
+        text create_by
+        timestamp created_at
+        text deprecated
+        text description
+        text domain
+        text iri
+        text name
+        timestamp updated_at
+        text updated_by
+    }
+    medium_consumption_list {
+        text id PK
+        text partition_id PK
+        jsonb base_discipline
+        text base_unit
+        text entity_name
+        text entity_reference_id
+        text entity_reference_type
+    }
+    point {
+        text id PK
+        text device_id PK
+        text partition_id PK
+        text commanding_semantic
+        text create_by
+        timestamp created_at
+        text data_type
+        text description
+        jsonb enum
+        text function
+        text is_active
+        text maximum
+        text minimum
+        text name
+        text precision
+        text source_type
+        jsonb system_attributes
+        jsonb tags
+        timestamp timestamps
+        text unit
+        timestamp updated_at
+        text updated_by
+        text value
+    }
+    point_value {
+        text id PK
+        text partition_id PK
+        text point_id PK
+        text quality_of_value
+        text target_value
+        timestamp timestamps
+        text value
+    }
+    medium_consumption_emission {
+        timestamp timestamps PK
+        text medium_consumption_list_id PK
+        text partition_id PK
+        text value
+    }
+    point_group {
+        text id PK
+        text partition_id PK
+        text create_by
+        timestamp created_at
+        text entity_id
+        text entity_type
+        text name
+        timestamp updated_at
+        text updated_by
+    }
+    event {
+        text id PK
+        text device_id PK
+        text partition_id PK
+        text produced_by_id FK
+        text source_id FK
+        text active
+        text category
+        timestamp created_at
+        text message
+        text opens
+        text state
+        text type
+        timestamp updated_at
+    }
+    address {
+        text id PK
+        text partition_id PK
+        text country_code FK
+        text country_name
+        text create_by
+        timestamp created_at
+        text locality
+        text postal_code
+        text region
+        text street
+        timestamp updated_at
+        text updated_by
+    }
+    team_member {
+        text id PK
+        text partition_id PK
+        text team_id PK
+        text type
+    }
+    equipment_relationship_control {
+        text equipment_id PK
+        text id PK
+    }
+    equipment_feed {
+        text id PK
+        text equipment_id PK
+    }
+    equipment {
+        text id PK
+        text equipment_type_id FK
+        text location_id FK
+        text partition_id FK
+        text create_by
+        timestamp created_at
+        text external_id
+        text installation_date
+        text manufactured_by
+        text manufacturing_year
+        text model
+        text name
+        text notes
+        text part_of_id
+        text part_of_type
+        text partition_type
+        text serial_number
+        timestamp updated_at
+        text updated_by
+    }
+    team_location {
+        text id PK
+        text team_id PK
+        text partition_id FK
+    }
+    team {
+        text id PK
+        text partition_id PK
+        text create_by
+        timestamp created_at
+        text customer_id
+        text customer_type
+        text description
+        text domain
+        text location_count
+        text member_count
+        text name
+        timestamp updated_at
+        text updated_by
+    }
+    time_zone {
+        text id PK
+        text partition_id PK
+        text label
+    }
+    account_user_group_relationship_access {
+        text id PK
+        text account_user_group_id PK
+        text type
+    }
+    account_user_group_relationship_authorized_role {
+        text id PK
+        text account_user_group_id PK
+        text type
+    }
+    account_user_group {
+        text id PK
+        text description
+        text is_machine_enabled
+        text is_system_defined
+        text name
+        text owned_by_id
+        text owned_by_type
+    }
+    medium_consumption {
+        timestamp timestamps PK
+        text medium_consumption_list_id PK
+        text partition_id PK
+        text value
+    }
+    location_tag_user_defined_value {
+        text user_defined_value PK
+        text location_id PK
+        text partition_id PK
+    }
+    location {
+        text id PK
+        text partition_id PK
+        text postal_address_id FK
+        text create_by
+        timestamp created_at
+        text description
+        text external_id
+        jsonb geo_area_geometry_coordinates
+        text geo_area_geometry_type
+        jsonb geo_location_geometry_coordinates
+        text geo_location_geometry_type
+        text label
+        text primary_contact_email
+        text primary_contact_name
+        text primary_contact_phone
+        text time_zone
+        text type
+        timestamp updated_at
+        text updated_by
+        text user_defined_marker_tag
+    }
+    device_feature {
+        text id PK
+        text device_id PK
+        text device_partition_id PK
+        text type
+    }
+    device {
+        text id PK
+        text partition_id PK
+        text location_id FK
+        text gateway_id
+        text gateway_type
+        text model_name
+        text profile_external_id
+        text profile_name
+        text profile_notes
+        text serial_number
+    }
+    device_connectivity {
+        text id PK
+        text partition_id PK
+        text device_id FK
+        timestamp last_seen_at
+        text status
+        text status_note
+    }
+    building_type {
+        text id PK
+        text partition_id PK
+        text label
+    }
+    country }o--|| account_user_group_relationship_access : "fk"
+    medium_consumption_cost }o--|| medium_consumption_list : "fk"
+    medium_consumption_cost }o--|| account_user_group_relationship_access : "fk"
+    equipment_type }o--|| equipment_type : "fk"
+    equipment_type }o--|| account_user_group_relationship_access : "fk"
+    medium_consumption_list }o--|| account_user_group_relationship_access : "fk"
+    point }o--|| account_user_group_relationship_access : "fk"
+    point }o--|| device : "fk"
+    point_value }o--|| point : "fk"
+    point_value }o--|| account_user_group_relationship_access : "fk"
+    medium_consumption_emission }o--|| medium_consumption_list : "fk"
+    medium_consumption_emission }o--|| account_user_group_relationship_access : "fk"
+    point_group }o--|| account_user_group_relationship_access : "fk"
+    event }o--|| device : "fk"
+    event }o--|| point : "fk"
+    event }o--|| device : "fk"
+    event }o--|| account_user_group_relationship_access : "fk"
+    address }o--|| country : "fk"
+    address }o--|| account_user_group_relationship_access : "fk"
+    team_member }o--|| team : "fk"
+    team_member }o--|| account_user_group_relationship_access : "fk"
+    equipment_relationship_control }o--|| device : "fk"
+    equipment_relationship_control }o--|| equipment : "fk"
+    equipment_feed }o--|| equipment : "fk"
+    equipment }o--|| equipment_type : "fk"
+    equipment }o--|| location : "fk"
+    equipment }o--|| account_user_group_relationship_access : "fk"
+    team_location }o--|| location : "fk"
+    team_location }o--|| account_user_group_relationship_access : "fk"
+    team_location }o--|| team : "fk"
+    team }o--|| account_user_group_relationship_access : "fk"
+    time_zone }o--|| account_user_group_relationship_access : "fk"
+    account_user_group_relationship_access }o--|| account_user_group : "fk"
+    account_user_group_relationship_authorized_role }o--|| account_user_group : "fk"
+    medium_consumption }o--|| medium_consumption_list : "fk"
+    medium_consumption }o--|| account_user_group_relationship_access : "fk"
+    location_tag_user_defined_value }o--|| location : "fk"
+    location_tag_user_defined_value }o--|| location : "fk"
+    location }o--|| address : "fk"
+    location }o--|| account_user_group_relationship_access : "fk"
+    device_feature }o--|| device : "fk"
+    device_feature }o--|| device : "fk"
+    device }o--|| location : "fk"
+    device_connectivity }o--|| device : "fk"
+    building_type }o--|| account_user_group_relationship_access : "fk"

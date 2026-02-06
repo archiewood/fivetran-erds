@@ -1,0 +1,292 @@
+erDiagram
+    incident_notification {
+        text id PK
+        text incident_id PK
+        text attempted_at
+        text queued_at
+    }
+    incident_breakdown {
+        text index PK
+        text incident_id PK
+        text id
+        text name
+        text value
+    }
+    incident {
+        text id PK
+        text affected_views
+        text affected_views_per_hour
+        text affected_views_per_hour_on_open
+        text description
+        text error_description
+        text impact
+        text incident_key
+        text measured_value
+        text measured_value_on_close
+        text measurement
+        jsonb notification_rules
+        text resolved_at
+        text sample_size
+        text sample_size_unit
+        text severity
+        text started_at
+        text status
+        text threshold
+    }
+    space_broadcast {
+        text id PK
+        text space_id PK
+        text live_stream_id FK
+        text background
+        text layout
+        text passthrough
+        text resolution
+        text status
+    }
+    space {
+        text id PK
+        text active_session_id
+        text created_at
+        text passthrough
+        text status
+        text type
+    }
+    error {
+        text id PK
+        text code
+        text count
+        text description
+        text last_seen
+        text message
+        text notes
+        text percentage
+    }
+    delivery_usage {
+        text _fivetran_id PK
+        text id FK
+        text live_stream_id FK
+        text asset_id
+        text asset_state
+        text created_at
+        text deleted_at
+        text delivered_seconds
+        text delivered_seconds_by_resolution_tier_1080_p
+        text delivered_seconds_by_resolution_tier_720_p
+        text delivered_seconds_by_resolution_tier_audio_only
+        text passthrough
+    }
+    related_incident {
+        text related_incident_id PK
+        text incident_id PK
+    }
+    asset_track {
+        text id PK
+        text asset_id PK
+        text closed_captions
+        text language_code
+        text max_channel_layout
+        text max_channels
+        text max_frame_rate
+        text max_height
+        text max_width
+        text name
+        text passthrough
+        text status
+        text text_source
+        text text_type
+        text type
+    }
+    asset_error_message {
+        text message PK
+        text asset_id PK
+    }
+    asset_static_renditions_file {
+        text _fivetran_id PK
+        text asset_id FK
+        text bitrate
+        text ext
+        text filesize
+        text height
+        text name
+        text width
+    }
+    asset_recording_time {
+        text _fivetran_id PK
+        text asset_id FK
+        text duration
+        text started_at
+        text type
+    }
+    asset {
+        text id PK
+        text live_stream_id FK
+        text aspect_ratio
+        text created_at
+        text duration
+        text error_type
+        text is_live
+        text master_access
+        text master_status
+        text master_url
+        text max_stored_frame_rate
+        text max_stored_resolution
+        text mp_4_support
+        text non_standard_input_reasons_audio_codec
+        text non_standard_input_reasons_audio_edit_list
+        text non_standard_input_reasons_pixel_aspect_ratio
+        text non_standard_input_reasons_unexpected_media_file_parameters
+        text non_standard_input_reasons_unsupported_pixel_format
+        text non_standard_input_reasons_video_bitrate
+        text non_standard_input_reasons_video_codec
+        text non_standard_input_reasons_video_edit_list
+        text non_standard_input_reasons_video_frame_rate
+        text non_standard_input_reasons_video_gop_size
+        text non_standard_input_reasons_video_resolution
+        text normalize_audio
+        text passthrough
+        text source_asset_id
+        text static_renditions_status
+        text status
+        text test
+        text upload_id
+    }
+    playback {
+        text id PK
+        text type PK
+        text parent_id PK
+        text policy
+    }
+    livestream_playback_policy {
+        text playback_policies PK
+        text live_stream_id PK
+    }
+    simulcast_target {
+        text id PK
+        text live_stream_id PK
+        text passthrough
+        text status
+        text stream_key
+        text url
+    }
+    livestream_embedded_subtitle {
+        text index PK
+        text live_stream_id PK
+        text language_channel
+        text language_code
+        text name
+        text passthrough
+    }
+    livestream_generated_subtitle_transcription_vocabulary {
+        text transcription_vocabulary_id PK
+        text livestream_generated_subtitle_index PK
+        text livestream_generated_subtitle_live_stream_id PK
+    }
+    livestream_generated_subtitle {
+        text index PK
+        text live_stream_id PK
+        text language_code
+        text name
+        text passthrough
+    }
+    live_stream {
+        text id PK
+        text active_asset_id FK
+        text audio_only
+        text created_at
+        text latency_mode
+        text max_continuous_duration
+        text passthrough
+        text reconnect_slate_url
+        text reconnect_window
+        text status
+        text stream_key
+        text test
+        text use_slate_for_standard_latency
+    }
+    asset_input_info_track {
+        text index PK
+        text _fivetran_id PK
+        text channels
+        text duration
+        text encoding
+        text frame_rate
+        text height
+        text sample_rate
+        text sample_size
+        text type
+        text width
+    }
+    asset_input_info {
+        text _fivetran_id PK
+        text asset_id FK
+        text file_container_format
+        text settings_url
+    }
+    video_view_event {
+        text _fivetran_id PK
+        text video_view_id FK
+        text event_time
+        text name
+        text playback_time
+        text viewer_time
+    }
+    video_view {
+        text view_id PK
+        text live_stream_id FK
+        text video_id FK
+        text asn
+        text city
+        text country_name
+        text exit_before_video_start
+        text player_error_code
+        text player_error_message
+        text player_mux_plugin_name
+        text player_source_host_name
+        text player_source_url
+        text view_end
+        text view_max_downscale_percentage
+        text view_max_playhead_position
+        text view_max_upscale_percentage
+        text view_playing_time
+        text view_start
+        text view_total_content_playback_time
+        text viewer_device_model
+        text viewer_os_version
+        text weighted_average_bitrate
+    }
+    referrer_allowed_domain {
+        text allowed_domain PK
+        text playback_restriction_id PK
+    }
+    playback_restriction {
+        text id PK
+        text created_at
+        text referrer_allow_no_referrer
+        text updated_at
+    }
+    incident_notification }o--|| incident : "fk"
+    incident_breakdown }o--|| incident : "fk"
+    space_broadcast }o--|| live_stream : "fk"
+    space_broadcast }o--|| space : "fk"
+    delivery_usage }o--|| live_stream : "fk"
+    delivery_usage }o--|| asset : "fk"
+    related_incident }o--|| incident : "fk"
+    asset_track }o--|| asset : "fk"
+    asset_error_message }o--|| asset : "fk"
+    asset_static_renditions_file }o--|| asset : "fk"
+    asset_recording_time }o--|| asset : "fk"
+    asset }o--|| live_stream : "fk"
+    playback }o--|| live_stream : "fk"
+    livestream_playback_policy }o--|| live_stream : "fk"
+    simulcast_target }o--|| live_stream : "fk"
+    livestream_embedded_subtitle }o--|| live_stream : "fk"
+    livestream_generated_subtitle_transcription_vocabulary }o--|| livestream_generated_subtitle : "fk"
+    livestream_generated_subtitle_transcription_vocabulary }o--|| livestream_generated_subtitle : "fk"
+    livestream_generated_subtitle }o--|| live_stream : "fk"
+    live_stream }o--|| asset : "fk"
+    asset_input_info_track }o--|| asset_input_info : "fk"
+    asset_input_info }o--|| asset : "fk"
+    video_view_event }o--|| video_view : "fk"
+    video_view }o--|| live_stream : "fk"
+    video_view }o--|| asset : "fk"
+    referrer_allowed_domain }o--|| playback_restriction : "fk"

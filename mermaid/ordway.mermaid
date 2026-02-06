@@ -1,0 +1,1032 @@
+erDiagram
+    statement {
+        text statement_id PK
+        text customer_id FK
+        text company_id
+        text created_by
+        text created_date
+        text end_date
+        text integer
+        text start_date
+        text statement_date
+        text template_id
+        text updated_by
+        text updated_date
+        text url
+    }
+    credit_line_item {
+        text line_no PK
+        text credit_id PK
+        text product_id FK
+        text credit_account
+        text description
+        text effective_price
+        text line_tax
+        text product_name
+        text quantity
+        text tax_override
+        text taxable
+        text unit_price
+    }
+    credit_subtotal {
+        text _fivetran_id PK
+        text credit_id FK
+        text subtotal_name
+        text value
+    }
+    credit_invoice {
+        text credit_id PK
+        text id PK
+        text amount_applied
+        text created_by
+        text created_date
+        text updated_by
+        text updated_date
+    }
+    credit_custom_field {
+        text name PK
+        text credit_id PK
+        text value
+    }
+    credit {
+        text id PK
+        text customer_id FK
+        text applied_amount
+        text auto_apply
+        text billing_contact_address_1
+        text billing_contact_address_2
+        text billing_contact_city
+        text billing_contact_country
+        text billing_contact_county
+        text billing_contact_department
+        text billing_contact_display_name
+        text billing_contact_email
+        text billing_contact_first_name
+        text billing_contact_job_title
+        text billing_contact_last_name
+        text billing_contact_mobile
+        text billing_contact_notes
+        text billing_contact_phone
+        text billing_contact_state
+        text billing_contact_zip
+        text conversion_rate
+        text created_by
+        text created_date
+        text credit_amount
+        text credit_date
+        text credit_tax
+        text credit_type
+        text currency
+        text gl_account
+        text l_grouping_for_calculations
+        text notes
+        text reference_number
+        jsonb refunds
+        text reversed_on
+        text shipping_contact_address_1
+        text shipping_contact_address_2
+        text shipping_contact_city
+        text shipping_contact_country
+        text shipping_contact_county
+        text shipping_contact_department
+        text shipping_contact_display_name
+        text shipping_contact_email
+        text shipping_contact_first_name
+        text shipping_contact_job_title
+        text shipping_contact_last_name
+        text shipping_contact_mobile
+        text shipping_contact_notes
+        text shipping_contact_phone
+        text shipping_contact_state
+        text shipping_contact_zip
+        text status
+        text subtotal
+        text unapplied_amount
+        text updated_by
+        timestamp updated_date
+    }
+    revenue_rule_custom_field {
+        text name PK
+        text revenue_rule_id PK
+        text value
+    }
+    revenue_rule {
+        text id PK
+        text created_by
+        text created_date
+        text name
+        text posting_day
+        text posting_method
+        text recognition_method
+        text recognition_schedule_period
+        text recognition_term
+        text status
+        text updated_by
+        text updated_date
+    }
+    plan_charge_transaction_posting_entries {
+        text _fivetran_id PK
+        text plan_charge_id PK
+        text plan_id PK
+        text credit_account
+        text debit_account
+        text transaction_type
+    }
+    plan_charge_tier {
+        text _fivetran_id PK
+        text plan_charge_id PK
+        text plan_id PK
+        text ending_unit
+        text price
+        text starting_unit
+        text tier
+        text type
+    }
+    plan_charge_custom_field {
+        text name PK
+        text plan_charge_id PK
+        text plan_id PK
+        text value
+    }
+    plan_charge {
+        text id PK
+        text plan_id PK
+        text product_id FK
+        text revenue_rule_id FK
+        text auto_refill_prepayment_units
+        text backcharge_current_period
+        text billing_day
+        text billing_period
+        text billing_period_start_alignment
+        text charge_billing_date
+        text charge_inherited_product
+        text dealhub_name
+        text defaults_from_product
+        text description
+        text effective_date
+        text included_units
+        text line_no
+        text list_price
+        text name
+        text original_type
+        text prepaid_units_enable
+        text prepaid_units_expiry
+        text prepayment_amount
+        text prepayment_periods
+        text pricing_model
+        text recognition_start_date
+        text refill_prepaid_units_for
+        text refill_qty
+        text refund_units_on_cancel
+        text salesforce_charge_id
+        text salesforce_id
+        text timing
+        text transaction_price
+        text type
+        text unit_of_measure
+        text unused_prepayment_units
+    }
+    plan_custom_field {
+        text name PK
+        text plan_id PK
+        text value
+    }
+    plan {
+        text id PK
+        text created_by
+        text created_date
+        text description
+        text discount_tiers
+        text historical_zuora_id
+        text name
+        text public_url
+        text salesforce_id
+        text status
+        text updated_by
+        timestamp updated_date
+    }
+    product_transaction_posting_entry {
+        text _fivetran_id PK
+        text product_id FK
+        text credit_account
+        text debit_account
+        text transaction_type
+    }
+    product_custom_field {
+        text name PK
+        text product_id PK
+        text value
+    }
+    product {
+        text id PK
+        text revenue_rule_id FK
+        text country
+        text created_by
+        text created_date
+        text currency
+        text description
+        text location_id
+        text name
+        text price
+        text primary_tag
+        text product_code
+        text recognition_start_date
+        text region
+        text salesforce_id
+        text show_revenue_schedules
+        text sku
+        text status
+        text taxable
+        text updated_by
+        text updated_date
+    }
+    orders_line_item_custom_field {
+        text name PK
+        text orders_line_item_line_no PK
+        text orders_line_item_orders_id PK
+        text value
+    }
+    orders_line_item {
+        text line_no PK
+        text orders_id PK
+        text product_id FK
+        text description
+        text discount
+        text effective_price
+        text product_name
+        text quantity
+        text unit_price
+    }
+    orders_custom_field {
+        text name PK
+        text orders_id PK
+        text value
+    }
+    orders {
+        text id PK
+        text coupon_code FK
+        text customer_id FK
+        text invoice_id FK
+        text bill_contact_id
+        text company_name
+        text created_by
+        text created_date
+        text currency
+        text notes
+        text order_amount
+        text order_date
+        text payment_terms
+        text separate_invoice
+        text shipping_contact_id
+        text status
+        text updated_by
+        timestamp updated_date
+    }
+    refund {
+        text id PK
+        text credit_id FK
+        text customer_id FK
+        text invoice_id FK
+        text payment_id FK
+        text created_by
+        text created_date
+        text currency
+        text notes
+        text reference_number
+        text refund_amount
+        text refund_date
+        text refund_status
+        text refund_type
+        text updated_by
+        timestamp updated_date
+    }
+    chart_of_account_custom_field {
+        text name PK
+        text chart_of_account_code PK
+        text value
+    }
+    chart_of_account {
+        text code PK
+        text account_type
+        text created_by
+        text created_date
+        text description
+        text name
+        text parent_account
+        text status
+        text sub_type
+        text updated_by
+        timestamp updated_date
+    }
+    payments_run {
+        text id PK
+        text created_by
+        text currency
+        text failure_count
+        jsonb filter_options
+        text payments_failed_value
+        text payments_success_value
+        text payments_total_value
+        text refunds_failed_value
+        text refunds_success_value
+        text refunds_total_value
+        text status
+        text success_count
+        text target_date
+        text updated_by
+    }
+    billing_run {
+        text id PK
+        text charge_type
+        text created_by
+        text created_date
+        text currency
+        text customer_filter_options
+        jsonb filter_options
+        text invoice_date
+        text invoices_count
+        text invoices_total
+        text status
+        jsonb subscription_filter_options
+        text target_date
+        text updated_by
+        timestamp updated_date
+    }
+    subscription_plan_transaction_posting_entries {
+        text _fivetran_id PK
+        text subscription_id FK
+        text subscription_plan_id FK
+        text subscription_plan_index FK
+        text subscription_version FK
+        text credit_account
+        text debit_account
+        text transaction_type
+    }
+    subscription_plan_custom_field {
+        text name PK
+        text subscription_id PK
+        text subscription_plan_index PK
+        text subscription_version PK
+        text subscription_plan_id FK
+        text value
+    }
+    subscription_plan {
+        text index PK
+        text id PK
+        text subscription_id PK
+        text subscription_version PK
+        text charge_id FK
+        text product_id FK
+        text revenue_rule_id FK
+        text revenue_schedule_id FK
+        text backcharge_current_period
+        text billing_day
+        text billing_period
+        text billing_period_start_alignment
+        text billing_schedule_id
+        text charge_billing_date
+        text charge_end_date
+        text charge_start_date
+        text charge_timing
+        text charge_type
+        text completion_date
+        text current_period_end_date
+        text current_period_start_date
+        text defaults_from_plan
+        text discount
+        text discount_tiers
+        text effective_date
+        text effective_price
+        text included_units
+        text l_grouping_for_calculations
+        text list_price
+        text list_price_base
+        text original_type
+        text override_renewal_increment_percent
+        text prepayment_enabled
+        text price_base
+        text pricing_model
+        text product_code
+        text prorate_partial_periods
+        text quantity
+        text recognition_start_date
+        text refund_units_on_cancel
+        text region
+        text remove_units_on_cancel
+        text renewal_increment_percent
+        text rewards_discount_eligible
+        text salesforce_id
+        text subscription_line_id
+        text transaction_price
+        text true_up_eligible
+        text unit_of_measure
+        text updated_transaction_price
+    }
+    subscription_custom_field {
+        text name PK
+        text subscription_id PK
+        text subscription_version PK
+        text value
+    }
+    subscription {
+        text id PK
+        text version PK
+        text customer_id FK
+        text auto_renew
+        text bill_contact_id
+        text bill_contact_sf_id
+        text billing_start_date
+        text cancellation_date
+        text cancellation_type
+        text cmrr
+        text contract_effective_date
+        text contract_term
+        text coupon_code
+        text created_by
+        text created_date
+        text currency
+        text current_term_end_date
+        text current_term_start_date
+        text customer_salesforce_id
+        text defer_start_date
+        text discounted_cmrr
+        text historical_zuora_id
+        text min_commited_value
+        text min_commited_value_docv
+        text min_commited_value_idv
+        text min_commited_value_kyb
+        text min_commited_value_mobile_id
+        text min_commited_value_utility_id
+        text min_commited_value_watchlist
+        text min_commitment_end_date
+        text min_commitment_end_date_docv
+        text min_commitment_end_date_idv
+        text min_commitment_end_date_kyb
+        text min_commitment_end_date_mobile_id
+        text min_commitment_end_date_utility_id
+        text min_commitment_end_date_watchlist
+        text mrr
+        text notes
+        text order_placed_at
+        text payment_terms
+        text renewal_increment_percent
+        text renewal_term
+        text salesforce_id
+        text separate_invoice
+        text service_start_date
+        text shipping_contact_id
+        text shipping_contact_sf_id
+        text status
+        text tcv
+        text updated_by
+        timestamp updated_date
+        text version_type
+    }
+    billing_schedule_line_custom_field {
+        text name PK
+        text billing_schedule_line_id PK
+        text value
+    }
+    billing_schedule_line {
+        text id PK
+        text billing_schedule_id PK
+        text amount
+        text charge_ready_date
+        text created_by
+        text created_date
+        text description
+        text discount
+        text end_date
+        text expired_units
+        text invoiced
+        text l_grouping_for_calculations
+        text line_type
+        text list_price
+        text list_price_base
+        text quantity
+        text start_date
+        text unit_price
+        text unused_prepayment_units
+        text updated_by
+        text updated_date
+        jsonb usages
+    }
+    billing_schedule_custom_field {
+        text name PK
+        text billing_schedule_id PK
+        text value
+    }
+    billing_schedule {
+        text id PK
+        text charge_id FK
+        text customer_id FK
+        text product_id FK
+        text subscription_id FK
+        text created_by
+        text created_date
+        text currency
+        text end_date
+        text key_metrics_amount_invoiced
+        text key_metrics_annual_contract_revenue
+        text key_metrics_monthly_recurring_revenue
+        text key_metrics_total_contract_revenue
+        text start_date
+        text updated_by
+        timestamp updated_date
+    }
+    coupon {
+        text id PK
+        text code
+        text created_by
+        text created_date
+        text criteria_value
+        text discount_criteria
+        text discount_type
+        text discount_value
+        text display_text
+        text duration_period
+        text expiration_date
+        text status
+        text trial_type
+        text trial_value
+        text updated_by
+        text updated_date
+        text usage_count
+        text usage_limit
+    }
+    revenue_schedule_line {
+        text _fivetran_id PK
+        text revenue_schedule_id FK
+        text amount
+        text currency
+        jsonb custom_fields
+        text exchange_rate
+        text financial_period
+        text period_revenue
+        text posted
+        text posting_date
+    }
+    revenue_schedule {
+        text id PK
+        text charge_id FK
+        text customer_id FK
+        text plan_id FK
+        text product_id FK
+        text charge_timing
+        text created_by
+        text created_date
+        text end_date
+        text recognized_revenue
+        text source_transaction
+        text start_date
+        text total_revenue
+        text unrecognized_revenue
+        text updated_by
+        timestamp updated_date
+    }
+    customer_contact_custom_field {
+        text name PK
+        text customer_contact_customer_id PK
+        text customer_contact_id PK
+        text value
+    }
+    customer_contact {
+        text id PK
+        text customer_id PK
+        text address_1
+        text address_2
+        text city
+        text country
+        text county
+        text created_by
+        text created_date
+        text department
+        text display_name
+        text email
+        text first_name
+        text is_unrelated_contact
+        text job_title
+        text last_name
+        text mobile
+        text notes
+        text phone
+        text salesforce_id
+        text state
+        text updated_by
+        text updated_date
+        text zip
+    }
+    customer_custom_field {
+        text name PK
+        text customer_id PK
+        text value
+    }
+    customer {
+        text id PK
+        text ach_enabled
+        text auto_pay
+        text balance
+        text banking_info
+        text billing_batch
+        text billing_contact_email
+        text billing_contact_id
+        text billing_cycle_day
+        text child_customers
+        text cmrr
+        text created_by
+        text created_date
+        text credit_enabled
+        text cumulative_rewards
+        text currency
+        text customer_type
+        text description
+        text discount_amt
+        text discount_month
+        text discount_tiers
+        text discount_tiers_docv
+        text discount_tiers_idv
+        text discount_tiers_kyb
+        text discount_tiers_mobile_id
+        text discount_tiers_utility_id
+        text discount_tiers_watchlist
+        text discounted_cmrr
+        text edit_auto_pay
+        text email
+        text email_preference
+        text flat_discount_percent
+        text flat_discount_percent_docv
+        text flat_discount_percent_idv
+        text flat_discount_percent_kyb
+        text flat_discount_percent_mobile_id
+        text flat_discount_percent_utility_id
+        text flat_discount_percent_watchlist
+        text historical_zuora_id
+        text last_day_previous_month
+        text name
+        text open_invoices_url
+        text participating_in_rewards_discount
+        text participating_in_true_up
+        text pay_now_url
+        text payment_gateway_id
+        text payment_terms
+        text print
+        text print_preference
+        text salesforce_id
+        text shipping_contact_email
+        text shipping_contact_id
+        text status
+        text suspended
+        text tax_exempt
+        text true_up_start_date
+        text update_payment_method_url
+        text updated_by
+        timestamp updated_date
+        text vip
+        text website
+        text zero_balance_needed
+    }
+    payments_invoice {
+        text id PK
+        text payments_id PK
+        text amount_applied
+        text created_by
+        text created_date
+        text updated_by
+        text updated_date
+    }
+    payments_refund {
+        text id PK
+        text payments_id PK
+        text amount_applied
+        text created_by
+        text created_date
+        text updated_by
+        text updated_date
+    }
+    payments_custom_field {
+        text name PK
+        text payments_id PK
+        text value
+    }
+    payments {
+        text id PK
+        text customer_id FK
+        text payment_run_id FK
+        text applied_amount
+        text auto_apply
+        text conversion_rate
+        text created_by
+        text created_date
+        text currency
+        text email_status
+        text failed_attempt
+        text failure_reason
+        text fee_amount
+        text gl_account
+        text notes
+        jsonb opt
+        text payment_amount
+        text payment_date
+        text payment_method
+        text payment_type
+        text reference_number
+        text refunded_amount
+        text retried_attempts
+        text status
+        text unapplied_amount
+        text updated_by
+        timestamp updated_date
+    }
+    journal_entry_custom_field {
+        text name PK
+        text journal_entry_journal_id PK
+        text journal_entry_line_no PK
+        text value
+    }
+    journal_entry {
+        text line_no PK
+        text journal_id PK
+        text customer_id FK
+        text account
+        text credit
+        text customer_name
+        text debit
+        text description
+    }
+    journal {
+        text id PK
+        text conversion_rate
+        text created_by
+        text created_date
+        text date
+        text description
+        text source_id
+        text source_type
+        text transaction_amount
+        text transaction_currency
+        text updated_by
+        timestamp updated_date
+    }
+    invoice_line_item_tax_line {
+        text _fivetran_id PK
+        text invoice_line_item_line_no FK
+        text name
+        text value
+    }
+    invoice_line_item_custom_field {
+        text name PK
+        text invoice_line_item_invoice_id PK
+        text invoice_line_item_line_no PK
+        text value
+    }
+    invoice_line_item {
+        text line_no PK
+        text invoice_id PK
+        text charge_id FK
+        text customer_id FK
+        text plan_id FK
+        text product_id FK
+        text subscription_id FK
+        text subscription_line_id FK
+        jsonb applied_tiers
+        text charge_type
+        text description
+        text discount
+        text effective_price
+        text end_date
+        text included_quantity
+        text line_tax
+        text list_price
+        text list_price_base
+        text quantity
+        text start_date
+        text taxable
+        text unit_price
+    }
+    invoice_subtotal {
+        text _fivetran_id PK
+        text invoice_id FK
+        text subtotal_name
+        text value
+    }
+    invoice_custom_field {
+        text name PK
+        text invoice_id PK
+        text value
+    }
+    invoice {
+        text id PK
+        text customer_id FK
+        text balance
+        text billing_contact_address_1
+        text billing_contact_address_2
+        text billing_contact_city
+        text billing_contact_country
+        text billing_contact_county
+        text billing_contact_department
+        text billing_contact_display_name
+        text billing_contact_email
+        text billing_contact_first_name
+        text billing_contact_job_title
+        text billing_contact_last_name
+        text billing_contact_mobile
+        text billing_contact_phone
+        text billing_contact_state
+        text billing_contact_zip
+        text billing_run_id
+        text created_by
+        text created_date
+        jsonb credits
+        text currency
+        text discount_display_name
+        text due_date
+        text emailed
+        text end_date
+        text exchange_rate
+        text invoice_amount
+        text invoice_date
+        text invoice_tax
+        text notes
+        text paid_amount
+        text payment_term_id
+        text payment_terms
+        jsonb payments
+        jsonb refunds
+        text shipping_contact_address_1
+        text shipping_contact_address_2
+        text shipping_contact_city
+        text shipping_contact_country
+        text shipping_contact_county
+        text shipping_contact_department
+        text shipping_contact_display_name
+        text shipping_contact_email
+        text shipping_contact_first_name
+        text shipping_contact_job_title
+        text shipping_contact_last_name
+        text shipping_contact_mobile
+        text shipping_contact_phone
+        text shipping_contact_state
+        text shipping_contact_zip
+        text start_date
+        text status
+        text subtotal
+        text updated_by
+        timestamp updated_date
+    }
+    usage_custom_field {
+        text name PK
+        text usage_id PK
+        text value
+    }
+    usage {
+        text id PK
+        text charge_id FK
+        text customer_id FK
+        text subscription_id FK
+        text subscription_line_id FK
+        text created_by
+        text created_date
+        text currency
+        text date
+        text description
+        text error_message
+        text invoiced
+        text l_grouping_for_calculations
+        text quantity
+        text status
+        text unit_of_measure
+        text updated_by
+        text updated_date
+    }
+    payments_method {
+        text id PK
+        text customer_id FK
+        text customer_payment_gateway_id FK
+        text account_holder_name
+        text account_number
+        text country
+        text cvc
+        text defaults
+        text expiry
+        text payment_method_id
+        text payment_type
+        text status
+        text type
+        text url
+    }
+    customer_note {
+        text id PK
+        text customer_id FK
+        text company_id
+        text created_at
+        text description
+        text file_upload_content_type
+        text file_upload_file_name
+        text file_upload_file_size
+        text file_upload_updated_at
+        text has_versions
+        text title
+        text updated_at
+        text user_id
+    }
+    statement }o--|| customer : "fk"
+    credit_line_item }o--|| product : "fk"
+    credit_line_item }o--|| credit : "fk"
+    credit_subtotal }o--|| credit : "fk"
+    credit_invoice }o--|| invoice : "fk"
+    credit_invoice }o--|| credit : "fk"
+    credit_custom_field }o--|| credit : "fk"
+    credit }o--|| customer : "fk"
+    revenue_rule_custom_field }o--|| revenue_rule : "fk"
+    plan_charge_transaction_posting_entries }o--|| plan_charge : "fk"
+    plan_charge_transaction_posting_entries }o--|| plan_charge : "fk"
+    plan_charge_tier }o--|| plan_charge : "fk"
+    plan_charge_tier }o--|| plan_charge : "fk"
+    plan_charge_custom_field }o--|| plan_charge : "fk"
+    plan_charge_custom_field }o--|| plan_charge : "fk"
+    plan_charge }o--|| product : "fk"
+    plan_charge }o--|| revenue_rule : "fk"
+    plan_charge }o--|| plan : "fk"
+    plan_custom_field }o--|| plan : "fk"
+    product_transaction_posting_entry }o--|| product : "fk"
+    product_custom_field }o--|| product : "fk"
+    product }o--|| revenue_rule : "fk"
+    orders_line_item_custom_field }o--|| orders_line_item : "fk"
+    orders_line_item_custom_field }o--|| orders_line_item : "fk"
+    orders_line_item }o--|| product : "fk"
+    orders_line_item }o--|| orders : "fk"
+    orders_custom_field }o--|| orders : "fk"
+    orders }o--|| invoice : "fk"
+    orders }o--|| customer : "fk"
+    orders }o--|| coupon : "fk"
+    refund }o--|| credit : "fk"
+    refund }o--|| payments : "fk"
+    refund }o--|| invoice : "fk"
+    refund }o--|| customer : "fk"
+    chart_of_account_custom_field }o--|| chart_of_account : "fk"
+    subscription_plan_transaction_posting_entries }o--|| subscription_plan : "fk"
+    subscription_plan_transaction_posting_entries }o--|| subscription_plan : "fk"
+    subscription_plan_transaction_posting_entries }o--|| subscription_plan : "fk"
+    subscription_plan_transaction_posting_entries }o--|| subscription_plan : "fk"
+    subscription_plan_custom_field }o--|| subscription_plan : "fk"
+    subscription_plan_custom_field }o--|| subscription_plan : "fk"
+    subscription_plan_custom_field }o--|| subscription_plan : "fk"
+    subscription_plan_custom_field }o--|| subscription_plan : "fk"
+    subscription_plan }o--|| product : "fk"
+    subscription_plan }o--|| plan : "fk"
+    subscription_plan }o--|| revenue_schedule : "fk"
+    subscription_plan }o--|| plan_charge : "fk"
+    subscription_plan }o--|| revenue_rule : "fk"
+    subscription_plan }o--|| subscription : "fk"
+    subscription_plan }o--|| subscription : "fk"
+    subscription_custom_field }o--|| subscription : "fk"
+    subscription_custom_field }o--|| subscription : "fk"
+    subscription }o--|| customer : "fk"
+    billing_schedule_line_custom_field }o--|| billing_schedule_line : "fk"
+    billing_schedule_line }o--|| billing_schedule : "fk"
+    billing_schedule_custom_field }o--|| billing_schedule : "fk"
+    billing_schedule }o--|| product : "fk"
+    billing_schedule }o--|| subscription : "fk"
+    billing_schedule }o--|| customer : "fk"
+    billing_schedule }o--|| plan_charge : "fk"
+    revenue_schedule_line }o--|| revenue_schedule : "fk"
+    revenue_schedule }o--|| product : "fk"
+    revenue_schedule }o--|| plan : "fk"
+    revenue_schedule }o--|| customer : "fk"
+    revenue_schedule }o--|| plan_charge : "fk"
+    customer_contact_custom_field }o--|| customer_contact : "fk"
+    customer_contact_custom_field }o--|| customer_contact : "fk"
+    customer_contact }o--|| customer : "fk"
+    customer_custom_field }o--|| customer : "fk"
+    payments_invoice }o--|| invoice : "fk"
+    payments_invoice }o--|| payments : "fk"
+    payments_refund }o--|| refund : "fk"
+    payments_refund }o--|| payments : "fk"
+    payments_custom_field }o--|| payments : "fk"
+    payments }o--|| payments_run : "fk"
+    payments }o--|| customer : "fk"
+    journal_entry_custom_field }o--|| journal_entry : "fk"
+    journal_entry_custom_field }o--|| journal_entry : "fk"
+    journal_entry }o--|| customer : "fk"
+    journal_entry }o--|| journal : "fk"
+    invoice_line_item_tax_line }o--|| invoice_line_item : "fk"
+    invoice_line_item_custom_field }o--|| invoice_line_item : "fk"
+    invoice_line_item_custom_field }o--|| invoice_line_item : "fk"
+    invoice_line_item }o--|| product : "fk"
+    invoice_line_item }o--|| subscription : "fk"
+    invoice_line_item }o--|| subscription_plan : "fk"
+    invoice_line_item }o--|| plan : "fk"
+    invoice_line_item }o--|| customer : "fk"
+    invoice_line_item }o--|| plan_charge : "fk"
+    invoice_line_item }o--|| invoice : "fk"
+    invoice_subtotal }o--|| invoice : "fk"
+    invoice_custom_field }o--|| invoice : "fk"
+    invoice }o--|| customer : "fk"
+    usage_custom_field }o--|| usage : "fk"
+    usage }o--|| subscription : "fk"
+    usage }o--|| subscription_plan : "fk"
+    usage }o--|| customer : "fk"
+    usage }o--|| plan_charge : "fk"
+    payments_method }o--|| customer : "fk"
+    payments_method }o--|| customer : "fk"
+    customer_note }o--|| customer : "fk"

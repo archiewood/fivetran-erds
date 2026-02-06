@@ -1,0 +1,177 @@
+erDiagram
+    question_answer_choice {
+        text id PK
+        text question_id PK
+        text survey_id PK
+        text content
+    }
+    question {
+        text id PK
+        text survey_id PK
+        text introduction
+        text question
+        text type
+    }
+    response {
+        text uuid PK
+        text survey_id FK
+        text collected_at
+        text device_type
+        text languages
+        text operating_system
+        jsonb respondent_attributes
+        text respondent_uuid
+        text url
+    }
+    nps_response {
+        text question_id PK
+        text response_uuid PK
+        text survey_id FK
+        text answer_content
+        text answer_tag
+    }
+    text_response {
+        text question_id PK
+        text response_uuid PK
+        text survey_id FK
+        text answer
+    }
+    smiley_scale_response {
+        text question_id PK
+        text response_uuid PK
+        text survey_id FK
+        text answer_content
+        text answer_id
+        text answer_rating
+    }
+    ranking_response {
+        text answer_id PK
+        text question_id PK
+        text response_uuid PK
+        text answer_content
+        text answer_rank
+        text survey_id
+    }
+    form_response {
+        text _fivetran_id PK
+        text response_uuid FK
+        text survey_id FK
+        text field_content
+        text field_type
+        text question_id
+    }
+    button_next_response {
+        text question_id PK
+        text response_uuid PK
+        text survey_id FK
+        text action_performed
+    }
+    empty_response {
+        text question_id PK
+        text response_uuid PK
+        text survey_id FK
+        text action_performed
+    }
+    single_response {
+        text answer_id PK
+        text question_id PK
+        text response_uuid PK
+        text survey_id FK
+        text answer_comment
+        text answer_content
+    }
+    numerical_scale_response {
+        text question_id PK
+        text response_uuid PK
+        text survey_id FK
+        text answer_comment
+        text answer_content
+        text answer_disclaimer_accepted
+        text answer_id
+        text answer_rating
+        text answer_translated_comment
+    }
+    matrix_response {
+        text answer_id PK
+        text question_id PK
+        text response_uuid PK
+        text answer_content
+        text answer_score
+        text survey_id
+    }
+    rating_response {
+        text question_id PK
+        text response_uuid PK
+        text survey_id FK
+        text answer_content
+        text answer_id
+        text answer_rating
+    }
+    date_response {
+        text question_id PK
+        text response_uuid PK
+        text survey_id FK
+        text answer
+    }
+    multiple_response {
+        text answer_id PK
+        text question_id PK
+        text response_uuid PK
+        text survey_id FK
+        text answer_comment
+        text answer_content
+        text question_type
+    }
+    dropdown_response {
+        text answer_id PK
+        text question_id PK
+        text response_uuid PK
+        text survey_id FK
+        text answer_comment
+        text answer_content
+    }
+    survey {
+        text id PK
+        text created_at
+        text enabled
+        text launch_end_at
+        text launch_response_limit
+        text launch_start_at
+        text name
+        text response
+        text type
+    }
+    respondent_attribute {
+        text id PK
+        text name
+        text response_respondent_uuid
+        text value
+    }
+    question_answer_choice }o--|| question : "fk"
+    question_answer_choice }o--|| question : "fk"
+    question }o--|| survey : "fk"
+    response }o--|| survey : "fk"
+    nps_response }o--|| response : "fk"
+    nps_response }o--|| response : "fk"
+    text_response }o--|| response : "fk"
+    text_response }o--|| response : "fk"
+    smiley_scale_response }o--|| response : "fk"
+    smiley_scale_response }o--|| response : "fk"
+    form_response }o--|| response : "fk"
+    form_response }o--|| response : "fk"
+    button_next_response }o--|| response : "fk"
+    button_next_response }o--|| response : "fk"
+    empty_response }o--|| response : "fk"
+    empty_response }o--|| response : "fk"
+    single_response }o--|| response : "fk"
+    single_response }o--|| response : "fk"
+    numerical_scale_response }o--|| response : "fk"
+    numerical_scale_response }o--|| response : "fk"
+    rating_response }o--|| response : "fk"
+    rating_response }o--|| response : "fk"
+    date_response }o--|| response : "fk"
+    date_response }o--|| response : "fk"
+    multiple_response }o--|| response : "fk"
+    multiple_response }o--|| response : "fk"
+    dropdown_response }o--|| response : "fk"
+    dropdown_response }o--|| response : "fk"

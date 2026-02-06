@@ -1,0 +1,269 @@
+erDiagram
+    campaign_bounce {
+        text _fivetran_id PK
+        text campaign_id FK
+        text client_id FK
+        text list_id FK
+        text bounce_type
+        text date
+        text email_address
+        text reason
+    }
+    sent_campaign_tag {
+        text client_id PK
+        text client_sent_campaign_campaign_id PK
+        text sent_tag PK
+    }
+    client_sent_campaign {
+        text campaign_id PK
+        text client_id PK
+        text from_email
+        text from_name
+        text name
+        text reply_to
+        text sent_date
+        text subject
+        bigint total_recipients
+        text web_version_text_url
+        text web_version_url
+    }
+    client_segment {
+        text segment_id PK
+        text client_id FK
+        text list_id FK
+        text title
+    }
+    scheduled_campaign_tag {
+        text client_scheduled_campaign_campaign_id PK
+        text scheduled_tag PK
+        text client_id FK
+    }
+    client_scheduled_campaign {
+        text campaign_id PK
+        text client_id FK
+        text date_created
+        text date_scheduled
+        text from_email
+        text from_name
+        text name
+        text preview_text_url
+        text preview_url
+        text reply_to
+        text scheduled_time_zone
+        text subject
+    }
+    campaign_recipient {
+        text _fivetran_id PK
+        text campaign_id FK
+        text client_id FK
+        text list_id FK
+        text email_address
+    }
+    campaign_click {
+        text _fivetran_id PK
+        text campaign_id FK
+        text client_id FK
+        text list_id FK
+        text city
+        text country_code
+        text country_name
+        text date
+        text email_address
+        text ip_address
+        double_precision latitude
+        double_precision longitude
+        text region
+        text url
+    }
+    campaign_open {
+        text _fivetran_id PK
+        text campaign_id FK
+        text client_id FK
+        text list_id FK
+        text city
+        text country_code
+        text country_name
+        text date
+        text email_address
+        text ip_address
+        double_precision latitude
+        double_precision longitude
+        text region
+    }
+    client_suppression_list {
+        text _fivetran_id PK
+        text client_id FK
+        text date
+        text email_address
+        text state
+        text suppression_reason
+    }
+    draft_campaign_tag {
+        text client_draft_campaign_campaign_id PK
+        text draft_tag PK
+        text client_id FK
+    }
+    client_draft_campaign {
+        text campaign_id PK
+        text client_id FK
+        text date_created
+        text from_email
+        text from_name
+        text name
+        text preview_text_url
+        text preview_url
+        text reply_to
+        text subject
+    }
+    account_client {
+        text client_id PK
+        double_precision base_delivery_rate
+        double_precision base_design_spam_test_rate
+        double_precision base_rate_per_recipient
+        boolean can_purchase_credits
+        boolean client_pays
+        text company_name
+        text contact_email_address
+        text contact_name
+        text country
+        double_precision credits
+        text currency
+        double_precision markup_on_delivery
+        double_precision markup_on_design_spam_test
+        double_precision markup_per_recipient
+        text name
+        text time_zone
+    }
+    client_subscriber_list {
+        text list_id PK
+        text client_id FK
+        text name
+    }
+    campaign_summary {
+        text _fivetran_id PK
+        text campaign_id FK
+        text client_id FK
+        bigint bounced
+        bigint clicks
+        bigint forwards
+        bigint likes
+        bigint mentions
+        text name
+        bigint recipients
+        bigint spam_complaints
+        bigint total_opened
+        bigint unique_opened
+        bigint unsubscribed
+        text webversion_text_url
+        text webversion_url
+        text worldview_url
+    }
+    campaign_unsubscribe {
+        text _fivetran_id PK
+        text campaign_id FK
+        text client_id FK
+        text list_id FK
+        text date
+        text email_address
+        text ip_address
+    }
+    campaign_segment {
+        text segment_id PK
+        text campaign_id PK
+        text client_id PK
+        text list_id FK
+        text title
+    }
+    campaign_list {
+        text list_id PK
+        text campaign_id PK
+        text client_id PK
+        text name
+    }
+    client_people {
+        text email_address PK
+        text client_id FK
+        bigint access_level
+        text name
+        text status
+    }
+    account_administrator {
+        text email_address PK
+        text name
+        text status
+    }
+    client_tag {
+        text name PK
+        text client_id PK
+        bigint number_of_campaign
+    }
+    campaign_spam_complaint {
+        text _fivetran_id PK
+        text campaign_id FK
+        text client_id FK
+        text list_id FK
+        text date
+        text email_address
+    }
+    campaign_email_client {
+        text _fivetran_id PK
+        text campaign_id FK
+        text client_id FK
+        text client
+        double_precision percentage
+        bigint subscribers
+        text version
+    }
+    client_template {
+        text template_id PK
+        text client_id FK
+        text name
+        text preview_url
+        text screenshot_url
+    }
+    campaign_bounce }o--|| campaign_list : "fk"
+    campaign_bounce }o--|| client_sent_campaign : "fk"
+    campaign_bounce }o--|| client_sent_campaign : "fk"
+    sent_campaign_tag }o--|| client_tag : "fk"
+    sent_campaign_tag }o--|| client_sent_campaign : "fk"
+    sent_campaign_tag }o--|| account_client : "fk"
+    client_sent_campaign }o--|| account_client : "fk"
+    client_segment }o--|| client_subscriber_list : "fk"
+    client_segment }o--|| account_client : "fk"
+    scheduled_campaign_tag }o--|| client_tag : "fk"
+    scheduled_campaign_tag }o--|| client_scheduled_campaign : "fk"
+    scheduled_campaign_tag }o--|| account_client : "fk"
+    client_scheduled_campaign }o--|| account_client : "fk"
+    campaign_recipient }o--|| campaign_list : "fk"
+    campaign_recipient }o--|| client_sent_campaign : "fk"
+    campaign_recipient }o--|| client_sent_campaign : "fk"
+    campaign_click }o--|| campaign_list : "fk"
+    campaign_click }o--|| client_sent_campaign : "fk"
+    campaign_click }o--|| client_sent_campaign : "fk"
+    campaign_open }o--|| campaign_list : "fk"
+    campaign_open }o--|| client_sent_campaign : "fk"
+    campaign_open }o--|| client_sent_campaign : "fk"
+    client_suppression_list }o--|| account_client : "fk"
+    draft_campaign_tag }o--|| client_tag : "fk"
+    draft_campaign_tag }o--|| client_draft_campaign : "fk"
+    draft_campaign_tag }o--|| account_client : "fk"
+    client_draft_campaign }o--|| account_client : "fk"
+    client_subscriber_list }o--|| account_client : "fk"
+    campaign_summary }o--|| client_sent_campaign : "fk"
+    campaign_summary }o--|| client_sent_campaign : "fk"
+    campaign_unsubscribe }o--|| campaign_list : "fk"
+    campaign_unsubscribe }o--|| client_sent_campaign : "fk"
+    campaign_unsubscribe }o--|| client_sent_campaign : "fk"
+    campaign_segment }o--|| campaign_list : "fk"
+    campaign_segment }o--|| campaign_list : "fk"
+    campaign_segment }o--|| campaign_list : "fk"
+    campaign_list }o--|| client_sent_campaign : "fk"
+    campaign_list }o--|| client_sent_campaign : "fk"
+    client_people }o--|| account_client : "fk"
+    client_tag }o--|| account_client : "fk"
+    campaign_spam_complaint }o--|| campaign_list : "fk"
+    campaign_spam_complaint }o--|| client_sent_campaign : "fk"
+    campaign_spam_complaint }o--|| client_sent_campaign : "fk"
+    campaign_email_client }o--|| client_sent_campaign : "fk"
+    campaign_email_client }o--|| client_sent_campaign : "fk"
+    client_template }o--|| account_client : "fk"

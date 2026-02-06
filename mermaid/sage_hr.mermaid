@@ -1,0 +1,215 @@
+erDiagram
+    employee {
+        text id PK
+        text position_id FK
+        text reports_to_employee_id FK
+        text team_id FK
+        text city
+        text country
+        text date_of_birth
+        text email
+        text employee_number
+        text employment_start_date
+        text employment_status
+        text first_name
+        text gender
+        text home_phone
+        text is_terminated
+        text last_name
+        text marital_status
+        text mobile_phone
+        text nationality
+        text personal_identification_number
+        text picture_url
+        text position
+        text post_code
+        text street_first
+        text street_second
+        text tax_number
+        text termination_date
+        text work_phone
+    }
+    individual_team_quarterly_goal {
+        text _fivetran_id PK
+        text name FK
+        text progress_actual
+        text progress_to_date
+        text quarterly_data_progress_actual
+        text quarterly_data_progress_to_date
+        text title
+        text type
+    }
+    position {
+        text id PK
+        text code
+        text description
+        text title
+    }
+    employee_custom_field_option {
+        text custom_field_option PK
+        text employee_custom_field_employee_id PK
+        text employee_custom_field_id PK
+    }
+    employee_custom_field_value {
+        text custom_field_value PK
+        text employee_custom_field_employee_id PK
+        text employee_custom_field_id PK
+    }
+    employee_custom_field {
+        text id PK
+        text employee_id PK
+        text label
+        text type
+    }
+    kit_day_of_employee_in_policy {
+        text id PK
+        text employee_id FK
+        text leave_policy_id FK
+        text end_date
+        text start_date
+        text status
+    }
+    employee_team_history {
+        text employee_id PK
+        text team_id PK
+        text end_date
+        text start_date
+    }
+    employee_history {
+        text employee_id PK
+        text parent_id PK
+        text employment_status_name
+        text end_date
+        text start_date
+        text type
+    }
+    time_off_request_field {
+        text title PK
+        text time_off_request_id PK
+        text answer
+    }
+    time_off_request {
+        text id PK
+        text employee_id FK
+        text policy_id FK
+        text approval_date
+        text details
+        text end_date
+        text first_part_of_day
+        text hours
+        text is_multi_date
+        text is_part_of_day
+        text is_single_day
+        text request_date
+        text second_part_of_day
+        text start_date
+        text status
+        text status_code
+    }
+    employee_compensation {
+        text _fivetran_id PK
+        text employee_id FK
+        text amount
+        text category
+        text comment
+        text currency
+        text end_date
+        text period
+        text start_date
+    }
+    quarterly_company_data {
+        text _fivetran_id PK
+        text progress_actual
+        text progress_to_date
+        text title
+    }
+    individual_allowance_eligibility {
+        text individual_allowance_id PK
+        text policy_id PK
+        text carryover
+        text quantity
+        text unit
+    }
+    report_with_individual_allowance {
+        text employee_id PK
+        text full_name
+    }
+    team_employee {
+        text employee_id PK
+        text team_id PK
+    }
+    team_manager {
+        text manager_id PK
+        text team_id PK
+    }
+    team {
+        text id PK
+        text name
+    }
+    leave_policy {
+        text id PK
+        text accrue_at_start
+        text accrue_type
+        text additional_field
+        text auto_approves
+        text blocks_enabled
+        text child_allowance_enabled
+        text color
+        text default_allowance
+        text do_not_accrue
+        text dont_allow_negative_amount
+        text enable_attachment
+        text enable_dependent_policy
+        text enable_details
+        text enable_duplicate_time_offs
+        text enable_employee_access
+        text enable_limited_days
+        text enable_minimum_days
+        text enable_monthly_expiration
+        text enable_negative_carryover
+        text enable_probation_period
+        text enable_replacement
+        text enable_replacement_away
+        text enable_scopped_replacement
+        text enable_service_accruals
+        text enable_specific_approvers
+        text max_accrual
+        text max_carryover
+        text name
+        text no_reset
+        text only_full_days
+        text override_approvers_enabled
+        text replacement_required
+        text requests_in_advance_required
+        text require_details
+        text starter_monthly_accrual_limitation
+        text starter_yearly_accrual_limitation
+        text termination_recalculation
+        text unit
+    }
+    employee }o--|| position : "fk"
+    employee }o--|| team : "fk"
+    employee }o--|| employee : "fk"
+    individual_team_quarterly_goal }o--|| team : "fk"
+    employee_custom_field_option }o--|| employee_custom_field : "fk"
+    employee_custom_field_option }o--|| employee_custom_field : "fk"
+    employee_custom_field_value }o--|| employee_custom_field : "fk"
+    employee_custom_field_value }o--|| employee_custom_field : "fk"
+    employee_custom_field }o--|| employee : "fk"
+    kit_day_of_employee_in_policy }o--|| leave_policy : "fk"
+    kit_day_of_employee_in_policy }o--|| employee : "fk"
+    employee_team_history }o--|| team : "fk"
+    employee_team_history }o--|| employee : "fk"
+    employee_history }o--|| position : "fk"
+    employee_history }o--|| employee : "fk"
+    time_off_request_field }o--|| time_off_request : "fk"
+    time_off_request }o--|| leave_policy : "fk"
+    time_off_request }o--|| employee : "fk"
+    employee_compensation }o--|| employee : "fk"
+    individual_allowance_eligibility }o--|| leave_policy : "fk"
+    individual_allowance_eligibility }o--|| report_with_individual_allowance : "fk"
+    report_with_individual_allowance }o--|| employee : "fk"
+    team_employee }o--|| employee : "fk"
+    team_employee }o--|| team : "fk"
+    team_manager }o--|| employee : "fk"
+    team_manager }o--|| team : "fk"

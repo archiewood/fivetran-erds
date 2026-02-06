@@ -1,0 +1,179 @@
+erDiagram
+    sub_team_user {
+        text team_id PK
+        text user_id PK
+        text manager_id FK
+        text parent_team_id FK
+    }
+    team_user_tag {
+        text index PK
+        text team_id PK
+        text user_id PK
+        text tags
+    }
+    team_user {
+        text id PK
+        text team_id PK
+        text manager_id FK
+        text parent_team_id FK
+        text parent_team_manager_id FK
+        text primary_team_id FK
+    }
+    item {
+        text id PK
+        text item_category
+        text item_type
+        text short_description
+        text title
+    }
+    channel {
+        text id PK
+        text title
+    }
+    verb {
+        text id PK
+        text name
+    }
+    learn_list {
+        text id PK
+        text description
+        text name
+    }
+    team_secondary_manager {
+        text id PK
+        text team_id PK
+    }
+    team {
+        text id PK
+        text manager_id FK
+        text name
+        text parent_team_id
+    }
+    task {
+        text id PK
+        text assigner_id FK
+        text set_for_id FK
+        text taskable_added_by_user_id FK
+        text assigned_at
+        text certificate_awarded_at
+        text certificate_expires_at
+        text certificate_id
+        text completed
+        text completed_at
+        text created_at
+        text deadline
+        text expired
+        text expired_at
+        text lifecycle
+        text mandatory
+        text overdue
+        text started_at
+        text taskable_display_added_by
+        text taskable_id
+        text taskable_name
+        text taskable_short_description
+        jsonb taskable_tags
+        text taskable_total_time_estimate
+        text taskable_type
+        text type_label
+    }
+    event {
+        text id PK
+        text created_at
+        text name
+        text short_description
+        text updated_at
+    }
+    enrollment {
+        text id PK
+        text enrolled_by_id FK
+        text event_id FK
+        text host_id FK
+        text user_id FK
+        text attendance
+        text created_at
+        text enrolled_at
+        text enrollment_deadline
+        text enrollment_type
+        text event_session_created_at
+        text event_session_ends_at
+        text event_session_id
+        text event_session_location_address
+        text event_session_location_type
+        text event_session_starts_at
+        text event_session_updated_at
+        text is_host
+        text space
+        text status
+        text updated_at
+    }
+    user_secondary_team {
+        text id PK
+        text user_id PK
+    }
+    users {
+        text id PK
+        text manager_id FK
+        text primary_team_id FK
+        text department
+        text email
+        text first_name
+        text hire_date
+        text job_title
+        text languages
+        text last_name
+        text location
+        text role
+        text status
+        text time
+        text time_zone
+    }
+    activity {
+        text id PK
+        text activityable_added_by_user_id FK
+        text user_id FK
+        text activityable_display_added_by
+        text activityable_id
+        text activityable_name
+        text activityable_short_description
+        jsonb activityable_tags
+        text activityable_total_time_estimate
+        text activityable_type
+        text certificate_awarded_at
+        text certificate_expires_at
+        text certificate_id
+        text completed
+        text created_at
+        text expired
+        text expired_at
+        text result
+        text score
+        text total_time
+        text verb
+    }
+    sub_team_user }o--|| team : "fk"
+    sub_team_user }o--|| users : "fk"
+    sub_team_user }o--|| team_user : "fk"
+    team_user_tag }o--|| team_user : "fk"
+    team_user_tag }o--|| team_user : "fk"
+    team_user }o--|| users : "fk"
+    team_user }o--|| team : "fk"
+    team_user }o--|| team : "fk"
+    team_user }o--|| users : "fk"
+    team_user }o--|| team : "fk"
+    team_secondary_manager }o--|| users : "fk"
+    team_secondary_manager }o--|| team : "fk"
+    team }o--|| users : "fk"
+    task }o--|| users : "fk"
+    task }o--|| users : "fk"
+    task }o--|| users : "fk"
+    enrollment }o--|| event : "fk"
+    enrollment }o--|| users : "fk"
+    enrollment }o--|| users : "fk"
+    enrollment }o--|| users : "fk"
+    user_secondary_team }o--|| team : "fk"
+    user_secondary_team }o--|| users : "fk"
+    users }o--|| team : "fk"
+    users }o--|| users : "fk"
+    activity }o--|| users : "fk"
+    activity }o--|| users : "fk"

@@ -1,0 +1,269 @@
+erDiagram
+    data_source {
+        text uuid PK
+        text created_at
+        text name
+        text status
+        text systems
+    }
+    plan_group {
+        text uuid PK
+        text name
+        bigint plans_count
+    }
+    plan {
+        text uuid PK
+        text data_source_uuid FK
+        text external_id
+        bigint interval_count
+        text interval_unit
+        text name
+    }
+    mrr_churn_rate {
+        text date PK
+        double_precision mrr_churn_rate
+        double_precision percentage_change
+    }
+    account {
+        text _fivetran_id PK
+        text currency
+        text name
+        text time_zone
+        text week_start_on
+    }
+    annualized_run_rate {
+        text date PK
+        bigint arr
+        double_precision percentage_change
+    }
+    customer_data_source_uuids {
+        text customer_uuid PK
+        text data_source_uuid PK
+    }
+    customer_attribute_tag {
+        text tags PK
+        text customer_uuid PK
+    }
+    customer_external_ids {
+        text external_id PK
+        text customer_uuid PK
+    }
+    customer {
+        text uuid PK
+        text data_source_uuid FK
+        text address_address_zip
+        text address_city
+        text address_country
+        text address_state
+        bigint arr
+        text attributes_clearbit_company_category_industry
+        text attributes_clearbit_company_category_industry_group
+        text attributes_clearbit_company_category_sector
+        text attributes_clearbit_company_category_sub_industry
+        text attributes_clearbit_company_domain
+        text attributes_clearbit_company_legal_name
+        bigint attributes_clearbit_company_metrics_alexa_global_rank
+        bigint attributes_clearbit_company_metrics_employees
+        bigint attributes_clearbit_company_metrics_google_rank
+        text attributes_clearbit_company_metrics_market_cap
+        bigint attributes_clearbit_company_metrics_raised
+        text attributes_clearbit_company_name
+        text attributes_clearbit_company_url
+        text attributes_clearbit_person_employment_name
+        text attributes_clearbit_person_name_full_name
+        boolean attributes_stripe_coupon
+        bigint attributes_stripe_uid
+        text billing_system_type
+        text billing_system_url
+        text chartmogul_url
+        text city
+        text company
+        text country
+        text currency
+        text currency_sign
+        text customer_since
+        text email
+        text external_id
+        text free_trial_started_at
+        bigint id
+        text lead_created_at
+        bigint mrr
+        text name
+        text state
+        text status
+        text zip
+    }
+    customer_churn_rate {
+        text date PK
+        double_precision customer_churn_rate
+        double_precision percentage_change
+    }
+    plan_in_plan_group {
+        text plan_group_uuid PK
+        text uuid PK
+        text data_source_uuid FK
+        text external_id
+        bigint interval_count
+        text interval_unit
+        text name
+    }
+    customer_count {
+        text date PK
+        bigint customers
+        double_precision percentage_change
+    }
+    customer_lifetime_value {
+        text date PK
+        bigint ltv
+        double_precision percentage_change
+    }
+    cancellation_date {
+        text cancellation_date PK
+        text subscription_uuid PK
+    }
+    subscription {
+        text uuid PK
+        text customer_uuid PK
+        text data_source_uuid FK
+        text plan_uuid FK
+        text external_id
+        text subscription_set_external_id
+    }
+    average_sale_price {
+        text date PK
+        bigint asp
+        double_precision percentage_change
+    }
+    invoice_line_item {
+        text uuid PK
+        text data_source_uuid FK
+        text invoice_uuid FK
+        text plan_uuid FK
+        text subscription_uuid FK
+        text account_code
+        bigint amount_in_cents
+        bigint discount_amount_in_cents
+        text discount_code
+        text discount_description
+        bigint event_order
+        text external_id
+        boolean prorated
+        text proration_type
+        bigint quantity
+        text service_period_end
+        text service_period_start
+        text subscription_external_id
+        text subscription_set_external_id
+        bigint tax_amount_in_cents
+        text transaction_fees_currency
+        bigint transaction_fees_in_cents
+        text type
+    }
+    invoice_transaction {
+        text uuid PK
+        text invoice_uuid FK
+        bigint amount_in_cent
+        text date
+        text external_id
+        text result
+        text transaction_fees_currency
+        bigint transaction_fees_in_cent
+        text type
+    }
+    invoice {
+        text uuid PK
+        text customer_uuid FK
+        text currency
+        text date
+        text due_date
+        text external_id
+    }
+    average_revenue_per_account {
+        text date PK
+        bigint arpa
+        double_precision percentage_change
+    }
+    metric_subscription {
+        bigint id PK
+        text customer_uuid FK
+        bigint arr
+        text billing_cycle
+        bigint billing_cycle_count
+        text currency
+        text currency_sign
+        text end_date
+        text external_id
+        bigint mrr
+        text plan
+        bigint quantity
+        text start_date
+        text status
+    }
+    monthly_recurring_revenue {
+        text date PK
+        bigint mrr
+        bigint mrr_churn
+        bigint mrr_contraction
+        bigint mrr_expansion
+        bigint mrr_new_business
+        bigint mrr_reactivation
+        double_precision percentage_change
+    }
+    subscription_event {
+        bigint id PK
+        text data_source_uuid FK
+        text amount_in_cents
+        text created_at
+        text currency
+        text data_source_customer_external_id
+        text effective_date
+        jsonb errors
+        text event_date
+        text event_type
+        text external_id
+        text plan_external_id
+        text quantity
+        text retracted_event_id
+        text subscription_external_id
+        text subscription_set_external_id
+        bigint tax_amount_in_cents
+        text updated_at
+    }
+    activity {
+        text uuid PK
+        text customer_uuid FK
+        text active_subscription_quantity
+        text activity_mrr
+        text activity_mrr_movement
+        text billing_connector_uuid
+        text currency
+        text customer_external_id
+        text customer_name
+        text date
+        text description
+        text plan_external_id
+        text subscription_external_id
+        text type
+    }
+    plan }o--|| data_source : "fk"
+    customer_data_source_uuids }o--|| data_source : "fk"
+    customer_data_source_uuids }o--|| customer : "fk"
+    customer_attribute_tag }o--|| customer : "fk"
+    customer_external_ids }o--|| customer : "fk"
+    customer }o--|| data_source : "fk"
+    plan_in_plan_group }o--|| plan : "fk"
+    plan_in_plan_group }o--|| data_source : "fk"
+    plan_in_plan_group }o--|| plan_group : "fk"
+    cancellation_date }o--|| subscription : "fk"
+    subscription }o--|| data_source : "fk"
+    subscription }o--|| plan : "fk"
+    subscription }o--|| customer : "fk"
+    invoice_line_item }o--|| subscription : "fk"
+    invoice_line_item }o--|| plan : "fk"
+    invoice_line_item }o--|| invoice : "fk"
+    invoice_line_item }o--|| data_source : "fk"
+    invoice_transaction }o--|| invoice : "fk"
+    invoice }o--|| customer : "fk"
+    metric_subscription }o--|| customer : "fk"
+    subscription_event }o--|| data_source : "fk"
+    activity }o--|| customer : "fk"

@@ -1,0 +1,444 @@
+erDiagram
+    candidate_screening_answer_record_value {
+        text id PK
+        text candidate_screening_answer_id PK
+        text candidate_screening_answer_record_id PK
+        text label
+    }
+    candidate_screening_answer_record {
+        text id PK
+        text candidate_screening_answer_id PK
+        text label
+    }
+    candidate_screening_answer {
+        text candidate_primary_assignment_job_id PK
+        text id PK
+        text candidate_id PK
+        text category
+        text label
+        text name
+        text type
+    }
+    offer {
+        text id PK
+        text candidate_id FK
+        text job_id FK
+        text created_on
+        text status
+        text updated_on
+    }
+    candidate_status_history {
+        text changed_on PK
+        text candidate_id PK
+        text job_id PK
+        text status
+        text sub_status
+    }
+    candidate_education {
+        text _fivetran_id PK
+        text candidate_id PK
+        text current
+        text degree
+        text description
+        text end_date
+        text institution
+        text location
+        text major
+        text start_date
+    }
+    candidate_experience {
+        text _fivetran_id PK
+        text candidate_id PK
+        text company
+        text current
+        text description
+        text end_date
+        text location
+        text start_date
+        text title
+    }
+    candidate_secondary_assignment {
+        text candidate_id PK
+        text job_id PK
+        text job_title
+        text reason_of_rejection_id
+        text reason_of_rejection_label
+        text reason_of_withdrawal_id
+        text reason_of_withdrawal_label
+        text source
+        text starts_on
+        text status
+        text sub_status
+    }
+    candidate {
+        text id PK
+        text primary_assignment_job_id FK
+        text created_on
+        text email
+        text first_name
+        text internal
+        text last_name
+        text location_city
+        text location_country
+        text location_country_code
+        text location_latitude
+        text location_longitude
+        text location_region
+        text location_region_code
+        text phone_number
+        text primary_assignment_job_title
+        text primary_assignment_reason_of_rejection_id
+        text primary_assignment_reason_of_rejection_label
+        text primary_assignment_reason_of_withdrawal_id
+        text primary_assignment_reason_of_withdrawal_label
+        text primary_assignment_source
+        text primary_assignment_starts_on
+        text primary_assignment_status
+        text primary_assignment_sub_status
+        jsonb tags
+        text updated_on
+        text web_facebook
+        text web_linkedin
+        text web_skype
+        text web_twitter
+        text web_website
+    }
+    reviews {
+        text id PK
+        text candidate_id FK
+        text job_id FK
+        text reviewer_id FK
+        text comment
+        text created_on
+        text overall_rating
+        text updated_on
+    }
+    hiring_process_substatus_in_review {
+        text index PK
+        text hiring_process_id PK
+        text value
+    }
+    hiring_process_substatus_interview {
+        text index PK
+        text hiring_process_id PK
+        text value
+    }
+    hiring_process_substatus_offered {
+        text index PK
+        text hiring_process_id PK
+        text value
+    }
+    hiring_process {
+        text id PK
+        text active
+        text name
+    }
+    company {
+        text id PK
+        text industry_id
+        text industry_label
+        text location_address
+        text location_city
+        text location_country
+        text location_country_code
+        text location_latitude
+        text location_longitude
+        text location_postal_code
+        text location_region
+        text location_region_code
+        text logo
+        text name
+        text website
+    }
+    department {
+        text id PK
+        text archived
+        text description
+        text label
+    }
+    candidate_application {
+        text id PK
+        text candidate_id FK
+        text job_id FK
+        text source FK
+        text reason_of_rejection_id
+        text reason_of_rejection_label
+        text reason_of_withdrawal_id
+        text reason_of_withdrawal_label
+        text start_on
+        text status
+        text sub_status
+    }
+    approval_step_approver {
+        text id PK
+        text approval_id PK
+        text decided_on
+        text decision
+    }
+    approval_step {
+        text index PK
+        text approval_id PK
+        text status
+    }
+    approval {
+        text id PK
+        text job_approval_request_id PK
+        text decision_mode
+        text status
+        text subject_id
+        text subject_type
+        text type
+    }
+    job_position {
+        text id PK
+        text job_id PK
+        text created_on
+        text incumbent_name
+        text position_id
+        text position_open_date
+        text status
+        text target_start_date
+        text type
+    }
+    job_status_history {
+        text status PK
+        text job_id PK
+        text user_id FK
+        text changed_on
+    }
+    users_access_groups {
+        text group_id PK
+        text users_id PK
+    }
+    users_seats {
+        text value PK
+        text users_id PK
+    }
+    users {
+        text id PK
+        text active
+        text email
+        text exteral_data
+        text first_name
+        text language_code
+        text last_name
+        text sso_identifier
+        text sso_login_mode
+        text system_role_id
+        text system_role_name
+        text updated_on
+    }
+    candidate_source {
+        text id PK
+        text source_type_id PK
+        text label
+        text source_subtype_id
+    }
+    company_active_posting_custom_field {
+        text index PK
+        text company_active_posting_id PK
+        text field_id
+        text field_label
+        text value_id
+        text value_label
+    }
+    company_active_posting {
+        text id PK
+        text company_id FK
+        text job_id FK
+        text creator_name
+        text default_job_ad
+        text name
+        text ref
+        text ref_number
+        text released_date
+        text uuid
+        text visibility
+    }
+    job_application {
+        text job_id PK
+        text profile_id PK
+        text create_date
+        text source_identifier
+        text status
+        text sub_status
+    }
+    job_approval_position {
+        text index PK
+        text job_approval_request_id PK
+        text job_approval_request_job_id PK
+        text job_position_id FK
+    }
+    job_approval_request {
+        text id PK
+        text job_id PK
+        text salary_range_currency
+        text salary_range_max
+        text salary_range_min
+    }
+    job_property {
+        text id PK
+        text job_id PK
+        text label
+        text value_id
+        text value_label
+    }
+    job {
+        text id PK
+        text creator_id FK
+        text department_id FK
+        text compensation_currency
+        text compensation_max
+        text compensation_min
+        text created_on
+        text eeo_category_id
+        text eeo_category_label
+        text employment_type_id
+        text employment_type_label
+        text experience_level_id
+        text experience_level_label
+        text function_id
+        text function_label
+        text industry_id
+        text industry_label
+        text job_ad_additionl_information_text
+        text job_ad_additionl_information_title
+        text job_ad_company_text
+        text job_ad_company_title
+        text job_ad_job_text
+        text job_ad_job_title
+        text job_ad_qualification_text
+        text job_ad_qualification_title
+        jsonb job_ad_videos
+        text language_code
+        text language_label
+        text language_label_native
+        text last_activity_on
+        text location_address
+        text location_city
+        text location_country
+        text location_country_code
+        text location_latitude
+        text location_longitude
+        text location_manual
+        text location_postal_code
+        text location_region
+        text location_region_code
+        text location_remote
+        text posting_status
+        text ref_number
+        text status
+        text target_hiring_date
+        text template
+        text title
+        text updated_on
+    }
+    candidate_property {
+        text id PK
+        text candidate_id PK
+        text job_id PK
+        text label
+        text type
+        text value
+        text value_label
+    }
+    interviewer {
+        text interview_id PK
+        text interview_timeslot_id PK
+        text interviewer_id PK
+        text status
+    }
+    interview_timeslot {
+        text id PK
+        text interview_id PK
+        text candidate_status
+        text ends_on
+        text interview_type
+        text no_show
+        text place
+        text starts_on
+        text title
+    }
+    interview {
+        text id PK
+        text candidate_application_id FK
+        text candidate_id FK
+        text job_id FK
+        text organizer_id FK
+        text created_on
+        text location
+        text ref_url
+        text source
+        text timezone
+    }
+    job_publication {
+        text _fivetran_id PK
+        text job_id PK
+        text source_name FK
+        text posting_id
+        text published_on
+        text type
+        text unpublished_on
+    }
+    job_hiring_team {
+        text id PK
+        text job_id PK
+        text user_id FK
+        text role
+    }
+    candidate_screening_answer_record_value }o--|| candidate_screening_answer_record : "fk"
+    candidate_screening_answer_record_value }o--|| candidate_screening_answer_record : "fk"
+    candidate_screening_answer_record }o--|| candidate_screening_answer : "fk"
+    candidate_screening_answer }o--|| candidate : "fk"
+    offer }o--|| candidate : "fk"
+    offer }o--|| job : "fk"
+    candidate_status_history }o--|| candidate : "fk"
+    candidate_status_history }o--|| job : "fk"
+    candidate_education }o--|| candidate : "fk"
+    candidate_experience }o--|| candidate : "fk"
+    candidate_secondary_assignment }o--|| job : "fk"
+    candidate_secondary_assignment }o--|| candidate : "fk"
+    candidate }o--|| job : "fk"
+    reviews }o--|| candidate : "fk"
+    reviews }o--|| job : "fk"
+    reviews }o--|| users : "fk"
+    hiring_process_substatus_in_review }o--|| hiring_process : "fk"
+    hiring_process_substatus_interview }o--|| hiring_process : "fk"
+    hiring_process_substatus_offered }o--|| hiring_process : "fk"
+    candidate_application }o--|| candidate_source : "fk"
+    candidate_application }o--|| candidate : "fk"
+    candidate_application }o--|| job : "fk"
+    approval_step_approver }o--|| approval_step : "fk"
+    approval_step }o--|| approval : "fk"
+    approval }o--|| job_approval_request : "fk"
+    job_position }o--|| job : "fk"
+    job_status_history }o--|| users : "fk"
+    job_status_history }o--|| job : "fk"
+    users_access_groups }o--|| users : "fk"
+    users_seats }o--|| users : "fk"
+    company_active_posting_custom_field }o--|| company_active_posting : "fk"
+    company_active_posting }o--|| job : "fk"
+    company_active_posting }o--|| company : "fk"
+    job_application }o--|| candidate_application : "fk"
+    job_application }o--|| job : "fk"
+    job_approval_position }o--|| job_position : "fk"
+    job_approval_position }o--|| job_approval_request : "fk"
+    job_approval_position }o--|| job_approval_request : "fk"
+    job_approval_request }o--|| job : "fk"
+    job_property }o--|| job : "fk"
+    job }o--|| department : "fk"
+    job }o--|| users : "fk"
+    candidate_property }o--|| candidate : "fk"
+    candidate_property }o--|| job : "fk"
+    interviewer }o--|| users : "fk"
+    interviewer }o--|| interview_timeslot : "fk"
+    interviewer }o--|| interview_timeslot : "fk"
+    interview_timeslot }o--|| interview : "fk"
+    interview }o--|| users : "fk"
+    interview }o--|| job : "fk"
+    interview }o--|| candidate : "fk"
+    interview }o--|| candidate_application : "fk"
+    job_publication }o--|| candidate_source : "fk"
+    job_publication }o--|| job : "fk"
+    job_hiring_team }o--|| users : "fk"
+    job_hiring_team }o--|| job : "fk"

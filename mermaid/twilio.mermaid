@@ -1,0 +1,395 @@
+erDiagram
+    participant {
+        text id PK
+        text account_id FK
+        text chat_service_id FK
+        text conversation_id FK
+        text role_id FK
+        text attributes
+        timestamp created_at
+        integer last_read_message_index
+        timestamp last_read_timestamp
+        text participant_identity
+        timestamp updated_at
+    }
+    call {
+        text id PK
+        text account_id FK
+        text outgoing_caller_id FK
+        text parent_call_id FK
+        text trunk_id FK
+        text annotation
+        text answered_by
+        text caller_name
+        timestamp created_at
+        text direction
+        text duration
+        timestamp end_time
+        text forwarded_from
+        text from
+        text from_formatted
+        text group_id
+        text price
+        text price_unit
+        text queue_time
+        timestamp start_time
+        text status
+        text to
+        text to_formatted
+        timestamp updated_at
+    }
+    usage_record {
+        text category PK
+        text end_date PK
+        text start_date PK
+        text account_id PK
+        timestamp as_of
+        text count
+        text count_unit
+        text description
+        text price
+        text price_unit
+        text usage
+        text usage_unit
+    }
+    coached_call {
+        text call_id PK
+        text coach_id PK
+    }
+    verification_service {
+        text id PK
+        text account_id FK
+        integer code_length
+        timestamp created_at
+        boolean custom_code_enabled
+        text default_template_sid
+        boolean do_not_share_warning_enabled
+        boolean dtmf_input_required
+        text friendly_name
+        boolean lookup_enabled
+        text mailer_sid
+        boolean psd_2_enabled
+        text push_apn_credential_sid
+        text push_fcm_credential_sid
+        boolean push_include_date
+        boolean skip_sms_to_landlines
+        text tts_name
+        timestamp updated_at
+        boolean verify_event_subscription_enabled
+    }
+    execution {
+        text id PK
+        text flow_id FK
+        text contact_channel_address
+        jsonb context
+        timestamp created_at
+        text status
+        timestamp updated_at
+    }
+    message {
+        text id PK
+        text account_id FK
+        text messaging_service_sid FK
+        text body
+        timestamp created_at
+        timestamp date_sent
+        text direction
+        text error_code
+        text error_message
+        text from
+        text num_media
+        text num_segments
+        text price
+        text price_unit
+        text status
+        text to
+        timestamp updated_at
+    }
+    execution_step {
+        text id PK
+        text execution_id FK
+        jsonb context
+        timestamp created_at
+        text name
+        text transitioned_from
+        text transitioned_to
+        timestamp updated_at
+    }
+    conversation_message {
+        text id PK
+        text account_id FK
+        text conversation_id FK
+        text participant_id FK
+        text service_id FK
+        text author
+        text body
+        timestamp created_at
+        text index
+        timestamp updated_at
+    }
+    verification_attempt {
+        text id PK
+        text account_id FK
+        text service_id FK
+        text channel
+        text conversion_status
+        timestamp created_at
+        text price_currency
+        numeric price_value
+        timestamp updated_at
+        text verification_id
+    }
+    messaging_service {
+        text id PK
+        text account_id FK
+        boolean area_code_geomatch
+        timestamp created_at
+        text fallback_method
+        boolean fallback_to_long_code
+        text fallback_url
+        text friendly_name
+        text inbound_method
+        text inbound_request_url
+        boolean mms_converter
+        text scan_message_content
+        boolean smart_encoding
+        text status_callback
+        boolean sticky_sender
+        boolean synchronous_validation
+        timestamp updated_at
+        boolean us_app_to_person_registered
+        boolean use_inbound_webhook_on_number
+        text usecase
+        integer validity_period
+    }
+    role {
+        text id PK
+        text account_id FK
+        text chat_service_id FK
+        timestamp created_at
+        text friendly_name
+        text type
+        timestamp updated_at
+    }
+    service {
+        text id PK
+        text account_id FK
+        timestamp created_at
+        text friendly_name
+        timestamp updated_at
+    }
+    conference_participant {
+        text call_id PK
+        text conference_id PK
+        text call_id_to_coach FK
+        boolean coaching
+        timestamp created_at
+        boolean end_conference_on_exit
+        boolean hold
+        boolean muted
+        boolean start_conference_on_enter
+        text status
+        timestamp updated_at
+    }
+    incoming_phone_number {
+        text id PK
+        text account_id FK
+        text address_id FK
+        text emergency_address_id FK
+        text trunk_id FK
+        text address_requirements
+        boolean beta
+        boolean capabilities_mms
+        boolean capabilities_sms
+        boolean capabilities_voice
+        timestamp created_at
+        text emergency_status
+        text friendly_name
+        text origin
+        text phone_number
+        timestamp updated_at
+        boolean voice_caller_id_lookup
+        text voice_url
+    }
+    trunk {
+        text id PK
+        text account_id FK
+        text auth_type
+        jsonb auth_type_set
+        boolean cnam_lookup_enabled
+        timestamp created_at
+        text domain_name
+        text friendly_name
+        jsonb recording
+        boolean secure
+        timestamp updated_at
+    }
+    conference {
+        text id PK
+        timestamp created_at
+        text friendly_name
+        text region
+        text status
+        timestamp updated_at
+    }
+    address {
+        text id PK
+        text account_id FK
+        text city
+        timestamp created_at
+        text customer_name
+        boolean emergency_enabled
+        text friendly_name
+        text iso_country
+        text postal_code
+        text region
+        text street
+        timestamp updated_at
+        boolean validated
+        boolean verified
+    }
+    receipt {
+        text id PK
+        text account_id FK
+        text conversation_id FK
+        text message_id FK
+        text participant_id FK
+        text service_id FK
+        text channel_message_id
+        timestamp created_at
+        integer error_code
+        text status
+        timestamp updated_at
+    }
+    account_history {
+        text id PK
+        timestamp updated_at PK
+        text owner_account_id FK
+        timestamp created_at
+        text friendly_name
+        text status
+        text type
+    }
+    conversation_user {
+        text id PK
+        text account_id FK
+        text chat_service_id FK
+        text role_id FK
+        timestamp created_at
+        text friendly_name
+        boolean is_notifiable
+        boolean is_online
+        timestamp updated_at
+        text user_identity
+    }
+    flow_history {
+        text id PK
+        timestamp updated_at PK
+        text account_id FK
+        timestamp created_at
+        text friendly_name
+        text status
+        bigint version
+    }
+    role_permission {
+        text permission PK
+        text role_id PK
+    }
+    conversation {
+        text id PK
+        text account_id FK
+        text chat_service_id FK
+        timestamp created_at
+        text friendly_name
+        text messaging_service_id
+        text state
+        text unique_name
+        timestamp updated_at
+    }
+    outgoing_caller_id {
+        text id PK
+        timestamp created_at
+        text friendly_name
+        text phone_number
+        timestamp updated_at
+    }
+    recording {
+        text id PK
+        text call_id FK
+        text conference_id FK
+        text api_version
+        integer channels
+        timestamp created_at
+        text duration
+        integer error_code
+        text price
+        text price_unit
+        text source
+        timestamp start_time
+        text status
+        timestamp updated_at
+    }
+    conference_participant_extended {
+        text id PK
+        text call_id FK
+        text conference_id FK
+        text call_type
+        boolean end_conference_on_exit
+        boolean is_coach
+        boolean is_moderator
+        text label
+        text participant_region
+        boolean start_conference_on_enter
+    }
+    participant }o--|| account_history : "fk"
+    participant }o--|| service : "fk"
+    participant }o--|| conversation : "fk"
+    participant }o--|| role : "fk"
+    call }o--|| account_history : "fk"
+    call }o--|| call : "fk"
+    call }o--|| outgoing_caller_id : "fk"
+    call }o--|| trunk : "fk"
+    usage_record }o--|| account_history : "fk"
+    coached_call }o--|| call : "fk"
+    coached_call }o--|| conference_participant_extended : "fk"
+    verification_service }o--|| account_history : "fk"
+    execution }o--|| flow_history : "fk"
+    message }o--|| messaging_service : "fk"
+    message }o--|| account_history : "fk"
+    execution_step }o--|| execution : "fk"
+    conversation_message }o--|| account_history : "fk"
+    conversation_message }o--|| service : "fk"
+    conversation_message }o--|| conversation : "fk"
+    conversation_message }o--|| participant : "fk"
+    verification_attempt }o--|| account_history : "fk"
+    verification_attempt }o--|| verification_service : "fk"
+    messaging_service }o--|| account_history : "fk"
+    role }o--|| account_history : "fk"
+    role }o--|| service : "fk"
+    service }o--|| account_history : "fk"
+    conference_participant }o--|| call : "fk"
+    conference_participant }o--|| conference_participant : "fk"
+    conference_participant }o--|| conference : "fk"
+    incoming_phone_number }o--|| account_history : "fk"
+    incoming_phone_number }o--|| address : "fk"
+    incoming_phone_number }o--|| address : "fk"
+    incoming_phone_number }o--|| trunk : "fk"
+    trunk }o--|| account_history : "fk"
+    address }o--|| account_history : "fk"
+    receipt }o--|| account_history : "fk"
+    receipt }o--|| service : "fk"
+    receipt }o--|| conversation : "fk"
+    receipt }o--|| conversation_message : "fk"
+    receipt }o--|| participant : "fk"
+    account_history }o--|| account_history : "fk"
+    conversation_user }o--|| account_history : "fk"
+    conversation_user }o--|| service : "fk"
+    conversation_user }o--|| role : "fk"
+    flow_history }o--|| account_history : "fk"
+    role_permission }o--|| role : "fk"
+    conversation }o--|| account_history : "fk"
+    conversation }o--|| service : "fk"
+    recording }o--|| call : "fk"
+    recording }o--|| conference : "fk"
+    conference_participant_extended }o--|| call : "fk"
+    conference_participant_extended }o--|| conference : "fk"

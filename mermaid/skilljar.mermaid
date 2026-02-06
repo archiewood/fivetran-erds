@@ -1,0 +1,293 @@
+erDiagram
+    domain {
+        text id PK
+        text access
+        text access_code_message_html
+        text catalog_title
+        text marketing_message
+        text name
+        text private
+    }
+    course_series {
+        text domain_name PK
+        text id PK
+        text offer
+        text published_course_count
+        text series_url
+        text title
+        text visible_on_catalog
+    }
+    groups {
+        text id PK
+        text name
+        text user_count
+    }
+    users_published_course_all_enrollment {
+        text enrollment_id PK
+        text user_id PK
+        text user_published_course_id PK
+        text active
+        text course_progress_id
+        text expires_at
+    }
+    users_published_course {
+        text course_id PK
+        text id PK
+        text user_id PK
+        text domain_name FK
+        text enrollment_id FK
+        text certificate
+        text course_lesson_count
+        text course_progress_completed_at
+        text course_progress_completed_lesson_count
+        text course_progress_completed_required_lesson_count
+        text course_progress_credit_unit_plural
+        text course_progress_credits_earned
+        text course_progress_id
+        text course_progress_latest_activity
+        text course_progress_max_score
+        text course_progress_score
+        text course_progress_success_status
+        text course_required_lesson_count
+        text enrolled_at
+    }
+    signup_field_option {
+        text domain_name PK
+        text id PK
+        text signup_field_id PK
+        text value
+    }
+    signup_field {
+        text domain_name PK
+        text id PK
+        text active
+        text help_text
+        text label
+        text orders
+        text regex_validator
+        text regex_validator_error_text
+        text required
+        text type
+    }
+    offer {
+        text id PK
+        text domain_name PK
+        text course_series_id FK
+        text plan_id FK
+        text published_course_id FK
+        text active
+        text currency_code
+        text ends_at
+        text max_quantity
+        text price_cents
+        text sku
+        text starts_at
+        text type
+    }
+    domain_user {
+        text domain_name PK
+        text user_id PK
+        text access_code
+        text access_code_id
+        text active
+        text enrolled_at
+        text expires_at
+        text marketing_option
+        text pool_id
+        text pool_name
+    }
+    published_course_enrollment {
+        text domain_name PK
+        text id PK
+        text published_course_id PK
+        text user_id FK
+        text active
+        text enrolled_at
+        text expires_at
+        text offer_price_amount
+        text offer_price_currency_code
+        text order_id
+        text payment_processor
+        text purchase_id
+        text purchase_price_amount
+        text purchase_price_currency_code
+        text purchase_state
+        text purchased_at
+        text quantity
+        text tax_price_cents
+    }
+    plan {
+        text domain_name PK
+        text id PK
+        text offer_id FK
+        text hidden
+        text name
+        text short_description
+        text slug
+        text title
+        text url
+    }
+    published_course {
+        text domain_name PK
+        text id PK
+        text course_id PK
+        text offer_id FK
+        text course_lesson_count
+        text course_required_lesson_count
+        text course_url
+        text hidden
+        text registration_ends_at
+        text registration_required
+        text registration_starts_at
+        text slug
+        text timezone
+    }
+    course_label {
+        text index PK
+        text course_id PK
+        text label
+    }
+    course {
+        text id PK
+        text enforce_sequential_navigation
+        text long_description_html
+        text short_description
+        text title
+    }
+    domain_access_code {
+        text domain_access_code_pool_domain_name PK
+        text id PK
+        text domain_access_code_pool_id PK
+        text active
+        text code
+        text duration
+        text duration_unit
+        text max_uses
+        text use_count
+    }
+    quiz {
+        text id PK
+        text html
+        text limit_question_count
+        text max_attempts
+        text name
+        text passing_percentage_correct
+        text randomize_answer
+        text randomize_question
+        text require_correct_response
+        text show_question_feedback
+        text show_results_on_failure
+        text time_limit_seconds
+    }
+    group_user {
+        text group_id PK
+        text user_id PK
+        text created_at
+    }
+    domain_access_code_pool {
+        text domain_name PK
+        text id PK
+        text active
+        text channel
+        text end_date
+        text expire_domain_membership
+        text name
+        text start_date
+    }
+    published_path {
+        text domain_name PK
+        text id PK
+        text offer_id FK
+        text path_id
+        text path_path_item_count
+        text path_title
+        text path_url
+    }
+    published_path_enrollment {
+        text domain_name PK
+        text id PK
+        text published_path_id PK
+        text user_id FK
+        text active
+        text enrolled_at
+        text expires_at
+        text offer_price_amount
+        text offer_price_currency_code
+        text order_id
+        text payment_processor
+        text purchase_id
+        text purchase_price_amount
+        text purchase_price_currency_code
+        text purchase_state
+        text purchased_at
+        text quantity
+        text tax_price_cents
+    }
+    plan_enrollment {
+        text id PK
+        text domain_name PK
+        text plan_id PK
+        text user_id FK
+        text active
+        text enrolled_at
+        text expires_at
+        text offer_price_amount
+        text offer_price_currency_code
+        text order_id
+        text payment_processor
+        text purchase_id
+        text purchase_price_amount
+        text purchase_price_currency_code
+        text purchase_state
+        text purchased_at
+        text quantity
+        text tax_price_cents
+    }
+    users {
+        text id PK
+        text completion_count
+        text email
+        text first_name
+        text last_name
+        text latest_activity
+        text registration_count
+        text signed_up_at
+    }
+    domain_user_invite {
+        text domain_name PK
+        text id PK
+        text user_id PK
+        text invite_url
+        text sent_at
+        text token
+        text used_at
+    }
+    users_published_course_all_enrollment }o--|| published_course_enrollment : "fk"
+    users_published_course_all_enrollment }o--|| users_published_course : "fk"
+    users_published_course_all_enrollment }o--|| users_published_course : "fk"
+    users_published_course }o--|| published_course : "fk"
+    users_published_course }o--|| course : "fk"
+    users_published_course }o--|| domain : "fk"
+    users_published_course }o--|| published_course_enrollment : "fk"
+    users_published_course }o--|| users : "fk"
+    signup_field_option }o--|| signup_field : "fk"
+    offer }o--|| course_series : "fk"
+    offer }o--|| domain : "fk"
+    offer }o--|| plan : "fk"
+    offer }o--|| published_course : "fk"
+    published_course_enrollment }o--|| users : "fk"
+    published_course_enrollment }o--|| published_course : "fk"
+    plan }o--|| offer : "fk"
+    published_course }o--|| offer : "fk"
+    published_course }o--|| course : "fk"
+    course_label }o--|| course : "fk"
+    domain_access_code }o--|| domain_access_code_pool : "fk"
+    group_user }o--|| users : "fk"
+    group_user }o--|| groups : "fk"
+    published_path }o--|| offer : "fk"
+    published_path_enrollment }o--|| users : "fk"
+    published_path_enrollment }o--|| published_path : "fk"
+    plan_enrollment }o--|| users : "fk"
+    plan_enrollment }o--|| plan : "fk"
+    plan_enrollment }o--|| plan : "fk"
+    domain_user_invite }o--|| domain_user : "fk"

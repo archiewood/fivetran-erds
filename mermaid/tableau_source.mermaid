@@ -1,0 +1,690 @@
+erDiagram
+    workbook_revision {
+        text revision_number PK
+        text workbook_id PK
+        text site_id FK
+        text user_id FK
+        text is_current
+        text is_deleted
+        text published_at
+        text size_in_byte
+    }
+    data_source_permission_grantee_capabilities_capability {
+        text index PK
+        text data_source_permission_grantee_capability_index PK
+        text data_source_permission_id PK
+        text mode
+        text name
+    }
+    data_source_permission_grantee_capability {
+        text index PK
+        text data_source_permission_id PK
+        text group_id
+        text user_id
+    }
+    data_source_permission {
+        text id PK
+        text parent_id FK
+        text site_id FK
+        text datasource_owner_id
+        text name
+        text parent_type
+    }
+    project {
+        text id PK
+        text controlling_permissions_project_id FK
+        text owner_id FK
+        text parent_project_id FK
+        text site_id FK
+        text content_permission
+        text created_at
+        text datasource_count
+        text description
+        text name
+        text project_count
+        text top_level_project
+        text updated_at
+        text view_count
+        text workbook_count
+        text writeable
+    }
+    flow_connection {
+        text id PK
+        text flow_id FK
+        text site_id FK
+        text embed_password
+        text query_tagging_enabled
+        text server_address
+        text type
+        text user_name
+    }
+    view {
+        text id PK
+        text owner_id FK
+        text site_id FK
+        text workbook_id FK
+        text content_url
+        text name
+    }
+    extract_refresh_task {
+        text id PK
+        text datasource_id FK
+        text schedule_id FK
+        text site_id FK
+        text workbook_id FK
+        text consecutive_failed_count
+        text priority
+        text schedule_frequency
+        jsonb schedule_frequency_details_interval_weekday
+        text schedule_frequency_details_start
+        text schedule_next_run_at
+        text type
+    }
+    server_schedule {
+        text id PK
+        text site_id FK
+        text created_at
+        text end_schedule_at
+        text frequency
+        text name
+        text next_run_at
+        text priority
+        text state
+        text type
+        text updated_at
+    }
+    virtual_connection_permission_grantee_capabilities_capability {
+        text index PK
+        text virtual_connection_permission_grantee_capability_index PK
+        text virtual_connection_permission_id PK
+        text mode
+        text name
+    }
+    virtual_connection_permission_grantee_capability {
+        text index PK
+        text virtual_connection_permission_id PK
+        text group_id
+        text user_id
+    }
+    virtual_connection_permission {
+        text id PK
+        text site_id FK
+        text name
+        text virtual_connection_owner_id
+    }
+    connected_app {
+        text _fivetran_id PK
+        text owner_id FK
+        text site_id FK
+        text workbook_id FK
+        text content_url
+        text id
+        text name
+    }
+    data_source_connection {
+        text id PK
+        text data_source_id FK
+        text site_id FK
+        text authentication_type
+        text embed_password
+        text query_tagging_enabled
+        text server_address
+        text server_port
+        text type
+        text use_oauth_managed_key_chain
+        text user_name
+    }
+    users_personal_access_token {
+        text id PK
+        text site_id FK
+        text expires_at
+        text last_used_at
+        text token_name
+    }
+    flow_parameter {
+        text id PK
+        text flow_id PK
+        text description
+        text domain_type
+        text domain_xsi_type
+        text name
+        text site_id
+        text type
+    }
+    flow_tag {
+        text index PK
+        text flow_id PK
+        text label
+    }
+    flow {
+        text id PK
+        text owner_id FK
+        text project_id FK
+        text site_id FK
+        text created_at
+        text description
+        text file_type
+        text name
+        text updated_at
+        text webpage_url
+    }
+    databases_default_permission_capability {
+        text index PK
+        text databases_default_permission_id PK
+        text mode
+        text name
+    }
+    databases_default_permission {
+        text id PK
+        text site_id FK
+        text grantee_capabilities_user_id
+        text name
+        text project_owner_id
+    }
+    table_default_permission_capability {
+        text index PK
+        text table_default_permission_id PK
+        text mode
+        text name
+    }
+    table_default_permission {
+        text id PK
+        text site_id FK
+        text grantee_capabilities_user_id
+        text name
+        text project_owner_id
+    }
+    users {
+        text id PK
+        text site_id FK
+        text auth_setting
+        text domain_name
+        text email
+        text external_auth_user_id
+        text full_name
+        text languages
+        text last_login
+        text locale
+        text name
+        text site_role
+    }
+    data_source_tag {
+        text label PK
+        text data_source_id PK
+        text site_id
+    }
+    data_source {
+        text id PK
+        text owner_id FK
+        text project_id FK
+        text site_id FK
+        text content_url
+        text created_at
+        text description
+        text encrypt_extract
+        text has_extract
+        text is_certified
+        text name
+        text updated_at
+        text use_remote_query_agent
+        text webpage_url
+    }
+    workbook_connection {
+        text id PK
+        text site_id FK
+        text workbook_id FK
+        text authentication_type
+        text datasource_id
+        text datasource_name
+        text embed_password
+        text query_tagging_enabled
+        text server_address
+        text server_port
+        text type
+        text use_oauth_managed_key_chain
+        text user_name
+    }
+    virtual_connection_database_connection {
+        text id PK
+        text site_id FK
+        text virtual_connection_id FK
+        text db_class
+        text port
+        text server
+        text server_address
+        text server_port
+        text user_name
+    }
+    data_source_revision {
+        text revision_number PK
+        text data_source_id PK
+        text site_id FK
+        text user_id FK
+        text is_current
+        text is_deleted
+        text published_at
+        text size_in_byte
+    }
+    job {
+        text id PK
+        text site_id FK
+        timestamp created_at
+        text ended_at
+        text job_type
+        text priority
+        text started_at
+        text status
+    }
+    favorite {
+        text label PK
+        text users_id PK
+        text datasource_id FK
+        text site_id FK
+        text view_id FK
+        text workbook_id FK
+        text view_created_at
+        text view_updated_at
+        text view_url_name
+    }
+    user_notification {
+        text _fivetran_id PK
+        text site_id FK
+        text channel
+        text disabled_by_override
+        text enabled
+        text id
+        text notification_type
+    }
+    subscription {
+        text id PK
+        text schedule_id FK
+        text site_id FK
+        text user_id FK
+        text attach_image
+        text attach_pdf
+        text content_id
+        text content_send_if_view_empty
+        text content_type
+        text page_orientation
+        text page_size_option
+        text schedule_frequency_details_interval_weekday
+        text schedule_frequency_details_start
+        text subject
+        text suspended
+    }
+    view_permission_grantee_capabilities_capability {
+        text index PK
+        text view_permission_grantee_capability_index PK
+        text view_permission_id PK
+        text mode
+        text name
+    }
+    view_permission_grantee_capability {
+        text index PK
+        text view_permission_id PK
+        text group_id
+        text user_id
+    }
+    view_permission {
+        text id PK
+        text site_id FK
+        text view_owner_id FK
+        text name
+    }
+    virtual_connection_default_permission_capability {
+        text index PK
+        text virtual_connection_default_permission_id PK
+        text mode
+        text name
+    }
+    virtual_connection_default_permission {
+        text id PK
+        text site_id FK
+        text grantee_capabilities_user_id
+        text name
+        text project_owner_id
+    }
+    workbook_default_permission_capability {
+        text index PK
+        text workbook_default_permission_id PK
+        text mode
+        text name
+    }
+    workbook_default_permission {
+        text id PK
+        text project_owner_id FK
+        text site_id FK
+        text grantee_capabilities_user_id
+        text name
+    }
+    data_source_default_permission_capability {
+        text index PK
+        text data_source_default_permission_id PK
+        text mode
+        text name
+    }
+    data_source_default_permission {
+        text id PK
+        text site_id FK
+        text grantee_capabilities_user_id
+        text name
+        text project_owner_id
+    }
+    metric_default_permission_capability {
+        text index PK
+        text metric_default_permission_id PK
+        text mode
+        text name
+    }
+    metric_default_permission {
+        text id PK
+        text site_id FK
+        text grantee_capabilities_user_id
+        text name
+        text project_owner_id
+    }
+    flow_default_permission_capability {
+        text index PK
+        text flow_default_permission_id PK
+        text mode
+        text name
+    }
+    flow_default_permission {
+        text id PK
+        text site_id FK
+        text grantee_capabilities_user_id
+        text name
+        text project_owner_id
+    }
+    workbook_tag {
+        text label PK
+        text workbook_id PK
+        text site_id
+    }
+    workbook {
+        text id PK
+        text owner_id FK
+        text project_id FK
+        text site_id FK
+        text acceleration_enabled
+        text acceleration_last_updated_at
+        text acceleration_status
+        text content_url
+        text created_at
+        text default_view_id
+        text description
+        text encrypt_extract
+        text location_id
+        text location_name
+        text location_type
+        text name
+        text show_tab
+        text size
+        text updated_at
+        text webpage_url
+    }
+    flow_permission_grantee_capabilities_capability {
+        text index PK
+        text flow_permission_grantee_capability_index PK
+        text flow_permission_id PK
+        text mode
+        text name
+    }
+    flow_permission_grantee_capability {
+        text index PK
+        text flow_permission_id PK
+        text group_id
+        text user_id
+    }
+    flow_permission {
+        text id PK
+        text parent_id FK
+        text site_id FK
+        text flow_owner_id
+        text name
+        text parent_type
+    }
+    groups {
+        text id PK
+        text user_id PK
+        text site_id FK
+        text domain_name
+        text import_domain_name
+        text import_grant_license_mode
+        text import_site_role
+        text import_source
+        text name
+    }
+    virtual_connection {
+        text id PK
+        text site_id FK
+        timestamp created_at
+        text has_extracts
+        text is_certified
+        text name
+        text updated_at
+        text webpage_url
+    }
+    site {
+        text id PK
+        text admin_mode
+        text allow_subscription_attachments
+        text ask_data_mode
+        text cache_warmup_enabled
+        text cataloging_enabled
+        text commenting_enabled
+        text content_url
+        text derived_permissions_enabled
+        text disable_subscriptions
+        text dqw_subscriptions_enabled
+        text editing_flows_enabled
+        text explain_data_enabled
+        text extract_encryption_mode
+        text guest_access_enabled
+        text is_data_alerts_enabled
+        text name
+        text request_access_enabled
+        text revision_history_enabled
+        text revision_limit
+        text run_now_enabled
+        text scheduling_flows_enabled
+        text state
+        text status_reason
+        text storage_quota
+        text subscribe_others_enabled
+        text time_zone
+        text use_default_time_zone
+        text user_quota
+    }
+    data_driven_alert {
+        text id PK
+        text created_id FK
+        text project_id FK
+        text site_id FK
+        text workbook_id FK
+        text created_at
+        text frequency
+        text owner_id
+        text public
+        text subject
+        text updated_at
+    }
+    user_workbook {
+        text id PK
+        text owner_id FK
+        text project_id FK
+        text site_id FK
+        text content_url
+        text created_at
+        text data_acceleration_config
+        text default_view_id
+        text description
+        text encrypt_extract
+        text location_id
+        text location_name
+        text location_type
+        text name
+        text show_tabs
+        text size
+        jsonb tags
+        text updated_at
+        text webpage_url
+    }
+    project_permission_grantee_capabilities_capability {
+        text index PK
+        text project_permission_grantee_capability_index PK
+        text project_permission_id PK
+        text mode
+        text name
+    }
+    project_permission_grantee_capability {
+        text index PK
+        text project_permission_id PK
+        text group_id
+        text user_id
+    }
+    project_permission {
+        text id PK
+        text project_owner_id FK
+        text site_id FK
+        text name
+    }
+    workbook_permission_grantee_capabilities_capability {
+        text index PK
+        text workbook_permission_grantee_capability_index PK
+        text workbook_permission_id PK
+        text mode
+        text name
+    }
+    workbook_permission_grantee_capability {
+        text index PK
+        text workbook_permission_id PK
+        text group_id
+        text user_id
+    }
+    workbook_permission {
+        text id PK
+        text site_id FK
+        text name
+        text workbook_owner_id
+    }
+    workbook_revision }o--|| users : "fk"
+    workbook_revision }o--|| site : "fk"
+    workbook_revision }o--|| workbook : "fk"
+    data_source_permission_grantee_capabilities_capability }o--|| data_source_permission_grantee_capability : "fk"
+    data_source_permission_grantee_capabilities_capability }o--|| data_source_permission_grantee_capability : "fk"
+    data_source_permission_grantee_capability }o--|| data_source_permission : "fk"
+    data_source_permission }o--|| data_source : "fk"
+    data_source_permission }o--|| project : "fk"
+    data_source_permission }o--|| site : "fk"
+    project }o--|| project : "fk"
+    project }o--|| users : "fk"
+    project }o--|| project : "fk"
+    project }o--|| site : "fk"
+    flow_connection }o--|| site : "fk"
+    flow_connection }o--|| flow : "fk"
+    view }o--|| workbook : "fk"
+    view }o--|| users : "fk"
+    view }o--|| site : "fk"
+    extract_refresh_task }o--|| data_source : "fk"
+    extract_refresh_task }o--|| workbook : "fk"
+    extract_refresh_task }o--|| server_schedule : "fk"
+    extract_refresh_task }o--|| site : "fk"
+    server_schedule }o--|| site : "fk"
+    virtual_connection_permission_grantee_capabilities_capability }o--|| virtual_connection_permission_grantee_capability : "fk"
+    virtual_connection_permission_grantee_capabilities_capability }o--|| virtual_connection_permission_grantee_capability : "fk"
+    virtual_connection_permission_grantee_capability }o--|| virtual_connection_permission : "fk"
+    virtual_connection_permission }o--|| virtual_connection : "fk"
+    virtual_connection_permission }o--|| site : "fk"
+    connected_app }o--|| workbook : "fk"
+    connected_app }o--|| users : "fk"
+    connected_app }o--|| site : "fk"
+    data_source_connection }o--|| site : "fk"
+    data_source_connection }o--|| data_source : "fk"
+    users_personal_access_token }o--|| site : "fk"
+    flow_parameter }o--|| flow : "fk"
+    flow_tag }o--|| flow : "fk"
+    flow }o--|| users : "fk"
+    flow }o--|| project : "fk"
+    flow }o--|| site : "fk"
+    databases_default_permission_capability }o--|| databases_default_permission : "fk"
+    databases_default_permission }o--|| project : "fk"
+    databases_default_permission }o--|| site : "fk"
+    table_default_permission_capability }o--|| table_default_permission : "fk"
+    table_default_permission }o--|| project : "fk"
+    table_default_permission }o--|| site : "fk"
+    users }o--|| site : "fk"
+    data_source_tag }o--|| data_source : "fk"
+    data_source }o--|| users : "fk"
+    data_source }o--|| project : "fk"
+    data_source }o--|| site : "fk"
+    workbook_connection }o--|| site : "fk"
+    workbook_connection }o--|| workbook : "fk"
+    virtual_connection_database_connection }o--|| site : "fk"
+    virtual_connection_database_connection }o--|| virtual_connection : "fk"
+    data_source_revision }o--|| users : "fk"
+    data_source_revision }o--|| site : "fk"
+    data_source_revision }o--|| data_source : "fk"
+    job }o--|| site : "fk"
+    favorite }o--|| view : "fk"
+    favorite }o--|| data_source : "fk"
+    favorite }o--|| workbook : "fk"
+    favorite }o--|| site : "fk"
+    favorite }o--|| users : "fk"
+    user_notification }o--|| site : "fk"
+    subscription }o--|| users : "fk"
+    subscription }o--|| server_schedule : "fk"
+    subscription }o--|| site : "fk"
+    view_permission_grantee_capabilities_capability }o--|| view_permission_grantee_capability : "fk"
+    view_permission_grantee_capabilities_capability }o--|| view_permission_grantee_capability : "fk"
+    view_permission_grantee_capability }o--|| view_permission : "fk"
+    view_permission }o--|| view : "fk"
+    view_permission }o--|| users : "fk"
+    view_permission }o--|| site : "fk"
+    virtual_connection_default_permission_capability }o--|| virtual_connection_default_permission : "fk"
+    virtual_connection_default_permission }o--|| project : "fk"
+    virtual_connection_default_permission }o--|| site : "fk"
+    workbook_default_permission_capability }o--|| workbook_default_permission : "fk"
+    workbook_default_permission }o--|| project : "fk"
+    workbook_default_permission }o--|| users : "fk"
+    workbook_default_permission }o--|| site : "fk"
+    data_source_default_permission_capability }o--|| data_source_default_permission : "fk"
+    data_source_default_permission }o--|| project : "fk"
+    data_source_default_permission }o--|| site : "fk"
+    metric_default_permission_capability }o--|| metric_default_permission : "fk"
+    metric_default_permission }o--|| project : "fk"
+    metric_default_permission }o--|| site : "fk"
+    flow_default_permission_capability }o--|| flow_default_permission : "fk"
+    flow_default_permission }o--|| project : "fk"
+    flow_default_permission }o--|| site : "fk"
+    workbook_tag }o--|| workbook : "fk"
+    workbook }o--|| users : "fk"
+    workbook }o--|| project : "fk"
+    workbook }o--|| site : "fk"
+    flow_permission_grantee_capabilities_capability }o--|| flow_permission_grantee_capability : "fk"
+    flow_permission_grantee_capabilities_capability }o--|| flow_permission_grantee_capability : "fk"
+    flow_permission_grantee_capability }o--|| flow_permission : "fk"
+    flow_permission }o--|| flow : "fk"
+    flow_permission }o--|| project : "fk"
+    flow_permission }o--|| site : "fk"
+    groups }o--|| site : "fk"
+    groups }o--|| users : "fk"
+    virtual_connection }o--|| site : "fk"
+    data_driven_alert }o--|| users : "fk"
+    data_driven_alert }o--|| workbook : "fk"
+    data_driven_alert }o--|| project : "fk"
+    data_driven_alert }o--|| site : "fk"
+    user_workbook }o--|| users : "fk"
+    user_workbook }o--|| project : "fk"
+    user_workbook }o--|| site : "fk"
+    project_permission_grantee_capabilities_capability }o--|| project_permission_grantee_capability : "fk"
+    project_permission_grantee_capabilities_capability }o--|| project_permission_grantee_capability : "fk"
+    project_permission_grantee_capability }o--|| project_permission : "fk"
+    project_permission }o--|| project : "fk"
+    project_permission }o--|| users : "fk"
+    project_permission }o--|| site : "fk"
+    workbook_permission_grantee_capabilities_capability }o--|| workbook_permission_grantee_capability : "fk"
+    workbook_permission_grantee_capabilities_capability }o--|| workbook_permission_grantee_capability : "fk"
+    workbook_permission_grantee_capability }o--|| workbook_permission : "fk"
+    workbook_permission }o--|| workbook : "fk"
+    workbook_permission }o--|| site : "fk"

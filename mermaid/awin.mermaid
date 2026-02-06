@@ -1,0 +1,194 @@
+erDiagram
+    reports_aggregated_by_campaign {
+        text _fivetran_id PK
+        text advertiser_id PK
+        text publisher_id FK
+        text campaign
+        text commission_amount_approved
+        text commission_amount_bonus
+        text commission_amount_declined
+        text commission_amount_pending
+        text commission_amount_total
+        text date
+        text end_date
+        text publisher_name
+        text quantity_approved
+        text quantity_bonus
+        text quantity_click
+        text quantity_declined
+        text quantity_pending
+        text quantity_total
+        text sale_amount_approved
+        text sale_amount_bonus
+        text sale_amount_declined
+        text sale_amount_pending
+        text sale_amount_total
+        text start_date
+    }
+    sales_region {
+        text index PK
+        text publisher_id PK
+        text sales_region
+    }
+    publisher {
+        text id PK
+        text advertiser_account_id PK
+        text name
+        text primary_region
+        text primary_type
+    }
+    advertiser_account {
+        text id PK
+        text account_name
+        text account_type
+        text user_role
+    }
+    basket_product {
+        text product_id PK
+        text transaction_id PK
+        text category
+        text commission_group_code
+        text product_name
+        text quantity
+        text sku_code
+        text unit_price
+    }
+    tracked_part {
+        text index PK
+        text transaction_id PK
+        text transaction_part_commission_group_id PK
+        text amount
+        text code
+        text currency
+    }
+    transaction_part {
+        text commission_group_id PK
+        text transaction_id PK
+        text advertiser_cost
+        text amount
+        text commission_amount
+        text commission_group_code
+        text commission_group_name
+    }
+    custom_parameter {
+        text key PK
+        text transaction_id PK
+        text value
+    }
+    transaction {
+        text id PK
+        text advertiser_id FK
+        text publisher_id FK
+        text advertiser_cost_amount
+        text advertiser_cost_currency
+        text advertiser_country
+        text amend_reason
+        text amended
+        text campaign
+        text click_date
+        text click_device
+        text click_ref
+        text commission_amount
+        text commission_currency
+        text commission_sharing_publisher_id
+        text commission_sharing_selected_rate_publisher_id
+        text commission_status
+        text customer_acquisition
+        text customer_country
+        text decline_reason
+        text ip_hash
+        text lapse_time
+        text network_fee_amount
+        text network_fee_currency
+        text old_commission_amount
+        text old_sale_amount
+        text order_ref
+        text original_sale_amount
+        text paid_to_publisher
+        text payment_id
+        text publisher_url
+        text sale_amount
+        text sale_currency
+        text site_name
+        text tracked_amount
+        text tracked_currency
+        text transaction_date
+        text transaction_device
+        text transaction_query_id
+        text type
+        text url
+        text validation_date
+        text voucher_code
+        text voucher_code_used
+    }
+    reports_aggregated_by_creative {
+        text _fivetran_id PK
+        text advertiser_id FK
+        text publisher_id FK
+        text advertiser_name
+        text bonus_commission
+        text bonus_number
+        text bonus_value
+        text click
+        text confirmed_commission
+        text confirmed_number
+        text confirmed_value
+        text creative_id
+        text creative_name
+        text currency
+        text declined_commission
+        text declined_number
+        text declined_value
+        text impression
+        text pending_commission
+        text pending_number
+        text pending_value
+        text publisher_name
+        text region
+        text tag_name
+        text total_commission
+        text total_number
+        text total_value
+    }
+    reports_aggregated_by_publisher {
+        text _fivetran_id PK
+        text advertiser_id FK
+        text publisher_id FK
+        text advertiser_name
+        text bonus_commission
+        text bonus_number
+        text bonus_value
+        text click
+        text confirmed_commission
+        text confirmed_number
+        text confirmed_value
+        text currency
+        text declined_commission
+        text declined_number
+        text declined_value
+        text impression
+        text pending_commission
+        text pending_number
+        text pending_value
+        text publisher_name
+        text region
+        jsonb tags
+        text total_commission
+        text total_number
+        text total_value
+    }
+    reports_aggregated_by_campaign }o--|| publisher : "fk"
+    reports_aggregated_by_campaign }o--|| advertiser_account : "fk"
+    sales_region }o--|| publisher : "fk"
+    publisher }o--|| advertiser_account : "fk"
+    basket_product }o--|| transaction : "fk"
+    tracked_part }o--|| transaction_part : "fk"
+    tracked_part }o--|| transaction_part : "fk"
+    transaction_part }o--|| transaction : "fk"
+    custom_parameter }o--|| transaction : "fk"
+    transaction }o--|| advertiser_account : "fk"
+    transaction }o--|| publisher : "fk"
+    reports_aggregated_by_creative }o--|| advertiser_account : "fk"
+    reports_aggregated_by_creative }o--|| publisher : "fk"
+    reports_aggregated_by_publisher }o--|| advertiser_account : "fk"
+    reports_aggregated_by_publisher }o--|| publisher : "fk"

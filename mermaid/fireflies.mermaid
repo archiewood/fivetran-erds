@@ -1,0 +1,188 @@
+erDiagram
+    user_integration {
+        text integration_id PK
+        text users_id PK
+    }
+    user_group_member {
+        text id PK
+        text user_group_id PK
+        text users_id PK
+        text email
+        text first_name
+        text last_name
+    }
+    user_group {
+        text id PK
+        text users_id PK
+        text handle
+        text name
+    }
+    users {
+        text id PK
+        text email
+        boolean is_admin
+        text minutes_consumed
+        text name
+        text recent_meeting
+    }
+    transcript_sentence {
+        text index PK
+        text transcript_id PK
+        text ai_filters_date_and_time
+        text ai_filters_metric
+        text ai_filters_pricing
+        text ai_filters_question
+        text ai_filters_sentiment
+        text ai_filters_task
+        text ai_filters_text_cleanup
+        text end_time
+        text raw_text
+        text speaker_id
+        text speaker_name
+        text start_time
+        text text
+    }
+    transcript_app_preview_output {
+        text index PK
+        text transcript_id PK
+        text user_id FK
+        text app_id
+        text created_at
+        text prompt
+        text response
+        text title
+    }
+    transcript_meeting_attendee {
+        text index PK
+        text transcript_id PK
+        text display_name
+        text email
+        text name
+        text phone_number
+    }
+    transcript_meeting_attendance {
+        text index PK
+        text transcript_id PK
+        timestamp join_time
+        timestamp leave_time
+        text name
+    }
+    transcript_speaker {
+        text id PK
+        text transcript_id PK
+        text name
+    }
+    transcript_analytics_speaker {
+        text id PK
+        text transcript_id PK
+        text duration
+        text duration_pct
+        text filler_words
+        text longest_monologue
+        text monologues_count
+        text name
+        text questions
+        text word_count
+        text words_per_minute
+    }
+    transcript {
+        text id PK
+        text user_id FK
+        text audio_url
+        text cal_id
+        text calendar_id
+        text calendar_type
+        jsonb channels
+        timestamp created_date
+        text date_times
+        text duration
+        jsonb fireflies_users
+        timestamp meeting_date
+        boolean meeting_info_is_bot_joined
+        boolean meeting_info_is_silent_meeting
+        text meeting_info_summary_status
+        text meeting_link
+        text metrics
+        text negative_pct
+        text neutral_pct
+        text organizer_email
+        jsonb participants
+        text positive_pct
+        text privacy
+        text questions
+        text summary_action_items
+        text summary_bullet_gist
+        jsonb summary_extended_sections
+        text summary_gist
+        jsonb summary_keywords
+        text summary_meeting_type
+        text summary_notes
+        text summary_outline
+        text summary_overview
+        text summary_short_overview
+        text summary_short_summary
+        text summary_shorthand_bullet
+        jsonb summary_topics_discussed
+        jsonb summary_transcript_chapters
+        text tasks
+        text title
+        text transcript_url
+        text video_url
+    }
+    bite_caption {
+        text index PK
+        text bite_id PK
+        timestamp end_time
+        text speaker_id
+        text speaker_name
+        timestamp start_time
+        text text
+    }
+    bite_source {
+        text index PK
+        text bite_id PK
+        text src
+        text type
+    }
+    bite_privacy {
+        text privacy_id PK
+        text bite_id PK
+    }
+    bite {
+        text id PK
+        text transcript_id PK
+        text created_from_id FK
+        text user_id FK
+        timestamp created_at
+        text created_from_description
+        text created_from_duration
+        text created_from_name
+        text created_from_type
+        text end_time
+        text media_type
+        text name
+        text preview
+        text start_time
+        text status
+        text summary
+        text summary_status
+        text thumbnail
+    }
+    user_integration }o--|| users : "fk"
+    user_group_member }o--|| user_group : "fk"
+    user_group_member }o--|| user_group : "fk"
+    user_group }o--|| users : "fk"
+    transcript_sentence }o--|| transcript : "fk"
+    transcript_app_preview_output }o--|| users : "fk"
+    transcript_app_preview_output }o--|| transcript : "fk"
+    transcript_meeting_attendee }o--|| transcript : "fk"
+    transcript_meeting_attendance }o--|| transcript : "fk"
+    transcript_speaker }o--|| transcript : "fk"
+    transcript_analytics_speaker }o--|| transcript : "fk"
+    transcript }o--|| users : "fk"
+    bite_caption }o--|| bite : "fk"
+    bite_source }o--|| bite : "fk"
+    bite_privacy }o--|| bite : "fk"
+    bite }o--|| users : "fk"
+    bite }o--|| transcript : "fk"
+    bite }o--|| transcript : "fk"

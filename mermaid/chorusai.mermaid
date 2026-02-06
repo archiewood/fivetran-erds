@@ -1,0 +1,96 @@
+erDiagram
+    scorecard_score {
+        bigint question_id PK
+        text scorecard_id PK
+        text comment_text
+        text question_text
+        bigint score
+    }
+    scorecard {
+        text id PK
+        text attributes_engagement_id FK
+        bigint attributes_recipient_user_id FK
+        bigint attributes_reviewer_user_id FK
+        text attributes_initiative_description
+        bigint attributes_initiative_id
+        text attributes_initiative_name
+        text attributes_initiative_url
+        boolean attributes_seen
+        text attributes_submitted
+        text attributes_url
+        text type
+    }
+    engagement_participant {
+        bigint person_id PK
+        text engagement_id PK
+        bigint user_id FK
+        text company_name
+        text title
+        text type
+    }
+    engagement_tracker_match {
+        text _fivetran_id PK
+        text engagement_id FK
+        text name
+        bigint num_matches
+        text type
+    }
+    engagement {
+        text id PK
+        bigint user_id FK
+        text account_id
+        text account_name
+        text call_state
+        text compliance
+        double_precision date_time
+        boolean disposition_connected
+        boolean disposition_gatekeeper
+        boolean disposition_tree
+        boolean disposition_voicemail
+        double_precision duration
+        text engagement_type
+        text initiator
+        text languages
+        boolean no_show
+        bigint num_cust_questions
+        bigint num_engaging_questions
+        text opportunity_id
+        text opportunity_name
+        text processing_state
+        text subject
+        text url
+    }
+    user_team {
+        bigint team_id PK
+        bigint user_id PK
+    }
+    users {
+        bigint id PK
+        bigint manager_id FK
+        bigint active
+        bigint autojoin
+        text created_on
+        text email
+        text first_name
+        text invalidated
+        text last_name
+        text license_type
+        text name
+        text onboarding_status
+        bigint primary_team
+        text provisioning_type
+        text role
+        bigint sync_calendar
+        bigint sync_email
+        text title
+    }
+    scorecard_score }o--|| scorecard : "fk"
+    scorecard }o--|| engagement : "fk"
+    scorecard }o--|| users : "fk"
+    scorecard }o--|| users : "fk"
+    engagement_participant }o--|| users : "fk"
+    engagement_participant }o--|| engagement : "fk"
+    engagement_tracker_match }o--|| engagement : "fk"
+    engagement }o--|| users : "fk"
+    user_team }o--|| users : "fk"
+    users }o--|| users : "fk"

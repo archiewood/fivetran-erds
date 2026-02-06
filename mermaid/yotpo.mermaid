@@ -1,0 +1,142 @@
+erDiagram
+    review {
+        text id PK
+        text comment
+        text content
+        text created_at
+        text external_order_id
+        text external_product_id
+        jsonb images_data
+        text incentive_type
+        text is_incentivized
+        text order_id
+        text published
+        text score
+        text source_review_id
+        text title
+        text user_display_name
+        text user_email
+        text user_id
+        text user_last_email_sent
+        text user_social_image
+        text user_type
+        text verified_buyer
+        text votes_down
+        text votes_up
+    }
+    customer_list {
+        text id PK
+        text customer_fivetran_id PK
+        text since
+    }
+    customer_ugc_top_topic {
+        text index PK
+        text customer_fivetran_id PK
+        text topic
+    }
+    customer_sms_response_message {
+        text id PK
+        text customer_fivetran_id PK
+        text flow_id
+        text keyword
+        text timestamps
+    }
+    customer {
+        text _fivetran_id PK
+        text accepts_email_marketing
+        text accepts_sms_marketing
+        text account_created_at
+        text account_status
+        text account_updated_at
+        text address_1
+        text address_2
+        text address_city
+        text address_company
+        text address_country_code
+        text address_phone_number
+        text address_province_code
+        text address_state
+        text address_zip
+        text default_currency
+        text default_language
+        text email
+        text email_last_converted
+        text email_last_delivered
+        text email_last_engaged
+        text email_last_opened
+        text email_last_promotional_sent
+        text email_last_sent
+        text email_last_spam
+        text email_marketing_consent
+        text email_marketing_suppression_reason
+        text email_marketing_suppression_timestamp
+        text email_marketing_timestamp
+        text external_id
+        text first_name
+        text gender
+        text last_name
+        text loyalty_credit_balance_amount
+        text loyalty_credit_balance_customer_currency
+        text loyalty_has_store_account
+        text loyalty_is_opt_in
+        text loyalty_is_referred_by_other_customer
+        text loyalty_last_seen_at
+        text loyalty_opt_in_date
+        text loyalty_opt_out_date
+        text loyalty_points_balance
+        text loyalty_points_earned
+        text loyalty_points_expire_date
+        text loyalty_referrals_made_and_clicked
+        text loyalty_referred_by_customer
+        text loyalty_successful_referral
+        text loyalty_total_points_redeemed
+        text loyalty_total_redemption
+        text loyalty_vip_entry_date
+        text loyalty_vip_expiration_date
+        text loyalty_vip_tier_name
+        text phone_number
+        text sms_last_converted
+        text sms_last_engaged
+        text sms_last_sent
+        text sms_marketing_consent
+        text sms_marketing_timestamp
+        text tags
+        text ugc_avg_product_rating
+        text ugc_avg_site_rating
+        text ugc_last_review_date
+        text ugc_last_sentiment
+        text ugc_last_star_rating
+        text ugc_sentiment_avg_product
+        text ugc_sentiment_avg_site
+        text ugc_total_avg_rating
+        text ugc_total_avg_sentiment
+        text ugc_total_reviews
+    }
+    customer_subscription {
+        text index PK
+        text type PK
+        text customer_fivetran_id PK
+        text external_product_id
+        text external_variant_id
+    }
+    customer_campaign {
+        text id PK
+        text type PK
+        text customer_fivetran_id PK
+        text clicked
+        text converted
+    }
+    customer_flow {
+        text id PK
+        text type PK
+        text customer_fivetran_id PK
+        text clicked
+        text converted
+        text opened
+    }
+    customer_list }o--|| customer : "fk"
+    customer_ugc_top_topic }o--|| customer : "fk"
+    customer_sms_response_message }o--|| customer : "fk"
+    customer_subscription }o--|| customer : "fk"
+    customer_campaign }o--|| customer : "fk"
+    customer_flow }o--|| customer : "fk"

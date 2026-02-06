@@ -1,0 +1,243 @@
+erDiagram
+    waitlist_variant {
+        text index PK
+        text waitlist_id PK
+        text available
+        text buy_size
+        text committed
+        text sku
+        text variant_id
+    }
+    waitlist {
+        text id PK
+        text availability_product_available
+        text availability_product_buy_size
+        text availability_product_committed
+        text availability_product_id
+        text created_at
+        text earliest_ship_date
+        jsonb labels
+        text latest_ship_date
+        text launch_date
+        text state
+        text updated_at_min
+    }
+    pre_order_count_unit_sku {
+        text sku PK
+        text at_time
+        text canceled_units
+        text exported_units
+        text open_units
+    }
+    fullfillement_order_line_item_tax {
+        text index PK
+        text fulfillment_order_id PK
+        text fulfillment_order_line_item_index PK
+        text price
+        text rate
+        text title
+    }
+    fulfillment_order_line_item {
+        text index PK
+        text fulfillment_order_id PK
+        text id
+        text name
+        text price
+        text product_id
+        text quantity
+        text sku
+        text taxable
+        text total
+        text total_discount
+        text variant_id
+    }
+    fullfillement_order_shipping_line_tax {
+        text index PK
+        text fulfillment_order_id PK
+        text fulfillment_order_shipping_line_index PK
+        text price
+        text rate
+        text title
+    }
+    fulfillment_order_shipping_line {
+        text index PK
+        text fulfillment_order_id PK
+        text code
+        text id
+        text price
+        text title
+        text total
+    }
+    fulfillment_order {
+        text id PK
+        timestamp created_at
+        text currency
+        text customer_default_address_address_1
+        text customer_default_address_address_2
+        text customer_default_address_city
+        text customer_default_address_country
+        text customer_default_address_country_code
+        text customer_default_address_first_name
+        text customer_default_address_last_name
+        text customer_default_address_phone
+        text customer_default_address_postal_code
+        text customer_default_address_province_code
+        text customer_email
+        text customer_external_id
+        text customer_first_name
+        text customer_last_name
+        jsonb customer_tags
+        text note
+        text purchased_at
+        text reference
+        text shipping_address_address_1
+        text shipping_address_address_2
+        text shipping_address_city
+        text shipping_address_country
+        text shipping_address_country_code
+        text shipping_address_first_name
+        text shipping_address_last_name
+        text shipping_address_phone
+        text shipping_address_postal_code
+        text shipping_address_province_code
+        text subtotal_price
+        text tax_included
+        text total_discounts
+        text total_price
+        text total_tax
+    }
+    pre_order_line_item_tax {
+        text index PK
+        text pre_order_id PK
+        text pre_order_line_item_index PK
+        text inclusive
+        text price
+        text rate
+        text title
+    }
+    pre_order_line_item {
+        text index PK
+        text pre_order_id PK
+        text cancelled
+        text cancelled_at
+        jsonb discount_allocations
+        text earliest_ship_date
+        text id
+        text latest_ship_date
+        text name
+        text price
+        text product_id
+        text quantity
+        text shopify_line_item_id
+        text sku
+        text taxable
+        text total
+        text total_discount
+        text unit_price
+        text unit_total
+        text variant_id
+    }
+    pre_order_tax_line {
+        text index PK
+        text pre_order_id PK
+        text price
+        text rate
+        text title
+    }
+    pre_order_shipping_line_discount_allocation {
+        text index PK
+        text pre_order_id PK
+        text pre_order_shipping_line_index PK
+        text amount
+        text discount_application_index
+    }
+    pre_order_shipping_line_tax {
+        text index PK
+        text pre_order_id PK
+        text pre_order_shipping_line_index PK
+        text inclusive
+        text price
+        text rate
+        text title
+    }
+    pre_order_shipping_line_item {
+        text index PK
+        text pre_order_id PK
+        text pre_order_shipping_line_index PK
+        text line_item_id
+    }
+    pre_order_shipping_line {
+        text index PK
+        text pre_order_id PK
+        text code
+        text price
+        text title
+        text total
+    }
+    pre_order_exported_line_item {
+        text index PK
+        text pre_order_exported_index PK
+        text pre_order_id PK
+        text id
+        text line_item_id
+    }
+    pre_order_exported {
+        text index PK
+        text pre_order_id PK
+        text created_at
+        text id
+        text order_number
+        text type
+    }
+    pre_order {
+        text id PK
+        text cancel_reason
+        text cancelled_at
+        text created_at
+        text currency
+        text customer_email
+        text customer_external_id
+        jsonb discount_applications
+        jsonb discount_codes
+        text email
+        text number
+        text reference
+        text shipping_address_address_1
+        text shipping_address_address_2
+        text shipping_address_city
+        text shipping_address_country
+        text shipping_address_country_code
+        text shipping_address_first_name
+        text shipping_address_last_name
+        text shipping_address_phone
+        text shipping_address_postal_code
+        text shipping_address_province_code
+        text subtotal_price
+        text tax_included
+        text total_discounts
+        text total_price
+        text total_refunded
+        text total_tax
+        text updated_at_min
+    }
+    waitlist_variant }o--|| waitlist : "fk"
+    fullfillement_order_line_item_tax }o--|| fulfillment_order : "fk"
+    fullfillement_order_line_item_tax }o--|| fulfillment_order_line_item : "fk"
+    fulfillment_order_line_item }o--|| fulfillment_order : "fk"
+    fullfillement_order_shipping_line_tax }o--|| fulfillment_order : "fk"
+    fullfillement_order_shipping_line_tax }o--|| fulfillment_order_shipping_line : "fk"
+    fulfillment_order_shipping_line }o--|| fulfillment_order : "fk"
+    pre_order_line_item_tax }o--|| pre_order : "fk"
+    pre_order_line_item_tax }o--|| pre_order_line_item : "fk"
+    pre_order_line_item }o--|| pre_order : "fk"
+    pre_order_tax_line }o--|| pre_order : "fk"
+    pre_order_shipping_line_discount_allocation }o--|| pre_order : "fk"
+    pre_order_shipping_line_discount_allocation }o--|| pre_order_shipping_line : "fk"
+    pre_order_shipping_line_tax }o--|| pre_order : "fk"
+    pre_order_shipping_line_tax }o--|| pre_order_shipping_line : "fk"
+    pre_order_shipping_line_item }o--|| pre_order : "fk"
+    pre_order_shipping_line_item }o--|| pre_order_shipping_line : "fk"
+    pre_order_shipping_line }o--|| pre_order : "fk"
+    pre_order_exported_line_item }o--|| pre_order : "fk"
+    pre_order_exported_line_item }o--|| pre_order_exported : "fk"
+    pre_order_exported }o--|| pre_order : "fk"

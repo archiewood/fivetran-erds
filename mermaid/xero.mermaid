@@ -1,0 +1,837 @@
+erDiagram
+    purchase_order_line_item_has_tracking_category {
+        text line_item_id PK
+        text purchase_order_id PK
+        text tracking_category_id PK
+        text option
+    }
+    tax_rate_component {
+        text name PK
+        text _fivetran_id PK
+        boolean is_compound
+        boolean is_non_recoverable
+        numeric rate
+    }
+    organization {
+        text organisation_id PK
+        text apikey
+        text base_currency
+        text class
+        text country_code
+        timestamp created_date_utc
+        text default_purchases_tax
+        text default_sales_tax
+        text edition
+        text employer_identification_number
+        text end_of_year_lock_date
+        integer financial_year_end_day
+        integer financial_year_end_month
+        boolean is_demo_company
+        text legal_name
+        text line_of_business
+        text name
+        text organisation_entity_type
+        text organisation_status
+        text organisation_type
+        boolean pays_tax
+        text period_lock_date
+        text registration_number
+        text sales_tax_basis
+        text sales_tax_period
+        text short_code
+        text tax_number
+        text tax_number_name
+        text timezone
+        text version
+    }
+    employee {
+        text employee_id PK
+        text first_name
+        text last_name
+        text status
+        timestamp updated_date_utc
+    }
+    aus_payroll_employee {
+        text employee_id PK
+        timestamp date_of_birth
+        text email
+        text first_name
+        text last_name
+        text ordinary_earnings_rate_id
+        text payroll_calendar_id
+        text phone
+        timestamp start_date
+        text status
+        timestamp updated_date_utc
+    }
+    settings {
+        text asset_number_sequence PK
+        text asset_number_prefix
+        timestamp asset_start_date
+        text default_capital_gain_on_disposal_account_id
+        text default_gain_on_disposal_account_id
+        text default_loss_on_disposal_account_id
+        timestamp last_depreciation_date
+        boolean opt_in_for_tax
+    }
+    prepayment {
+        text prepayment_id PK
+        numeric applied_amount
+        text contact_id
+        text currency_code
+        numeric currency_rate
+        text date
+        timestamp fully_paid_on_date
+        boolean has_attachments
+        text line_amount_types
+        text reference
+        numeric remaining_credit
+        text status
+        numeric sub_total
+        numeric total
+        numeric total_tax
+        text type
+        timestamp updated_date_utc
+    }
+    payment {
+        text payment_id PK
+        text account_id FK
+        text credit_note_id FK
+        text expense_claim_id FK
+        text invoice_id FK
+        text overpayment_id FK
+        text prepayment_id FK
+        numeric amount
+        numeric bank_amount
+        numeric currency_rate
+        text date
+        boolean has_account
+        boolean has_validation_errors
+        boolean is_reconciled
+        text payment_type
+        text reference
+        text status
+        timestamp updated_date_utc
+    }
+    purchase_order {
+        text purchase_order_id PK
+        text branding_theme_id FK
+        text contact_id FK
+        text attention_to
+        text currency_code
+        double_precision currency_rate
+        timestamp date
+        text delivery_address
+        timestamp delivery_date
+        text delivery_instructions
+        boolean is_discounted
+        text line_amount_types
+        text purchase_order_number
+        text reference
+        text status
+        double_precision sub_total
+        text telephone
+        double_precision total
+        double_precision total_tax
+        text type
+        timestamp updated_date_utc
+    }
+    aus_payroll_leave_period {
+        bigint index_id PK
+        text leave_application_id PK
+        text leave_period_status
+        double_precision number_of_units
+        timestamp pay_period_end_date
+        timestamp pay_period_start_date
+    }
+    expense_claim {
+        text expense_claim_id PK
+        text user_id FK
+        numeric amount_due
+        numeric amount_paid
+        text payment_due_date
+        text reporting_date
+        text status
+        numeric total
+        timestamp updated_date_utc
+    }
+    contact {
+        text contact_id PK
+        text branding_theme_id FK
+        text account_number
+        text accounts_payable_tax_type
+        text accounts_receivable_tax_type
+        numeric balances_accounts_payable_outstanding
+        numeric balances_accounts_payable_overdue
+        numeric balances_accounts_receivable_outstanding
+        numeric balances_accounts_receivable_overdue
+        text bank_account_details
+        text contact_number
+        text contact_status
+        text default_currency
+        integer discount
+        text email_address
+        text first_name
+        boolean has_attachments
+        boolean has_validation_errors
+        boolean is_customer
+        boolean is_supplier
+        text last_name
+        text name
+        text purchases_default_account_code
+        text sales_default_account_code
+        text skype_user_name
+        text tax_number
+        timestamp updated_date_utc
+        text website
+        text xero_network_key
+    }
+    repeating_invoice {
+        text repeating_invoice_id PK
+        text branding_theme_id FK
+        text contact_id FK
+        text currency_code
+        boolean has_attachments
+        text id
+        text line_amount_types
+        text reference
+        text status
+        numeric sub_total
+        numeric total
+        numeric total_discount
+        numeric total_tax
+        text type
+    }
+    purchase_order_line_item {
+        text line_item_id PK
+        text purchase_order_id PK
+        text account_code
+        text description
+        numeric discount_rate
+        text item_code
+        numeric line_amount
+        numeric quantity
+        numeric tax_amount
+        text tax_type
+        numeric unit_amount
+    }
+    overpayment_line_item {
+        text line_item_id PK
+        text overpayment_id PK
+        text account_code
+        text description
+        boolean discount_entered_as_percent
+        text item_code
+        numeric line_amount
+        numeric quantity
+        numeric tax_amount
+        text tax_type
+        numeric unit_amount
+        jsonb validation_errors
+    }
+    bank_transaction_line_item_has_tracking_category {
+        text bank_transaction_id PK
+        text line_item_id PK
+        text tracking_category_id PK
+        text option
+    }
+    asset_type {
+        text asset_type_id PK
+        text accumulated_depreciation_account_id
+        text asset_type_name
+        text depreciation_expense_account_id
+        text fixed_asset_account_id
+        boolean lock_private_use_account
+        integer locks
+    }
+    invoice_line_item {
+        text line_item_id PK
+        text invoice_id PK
+        text item_id FK
+        text account_code
+        text description
+        boolean discount_entered_as_percent
+        integer discount_rate
+        text item_code
+        numeric line_amount
+        numeric quantity
+        numeric tax_amount
+        text tax_type
+        numeric unit_amount
+        jsonb validation_errors
+    }
+    branding_theme {
+        text branding_theme_id PK
+        timestamp created_date_utc
+        text name
+        integer sort_order
+    }
+    credit_note_line_item {
+        integer line_index PK
+        text credit_note_id PK
+        text account_code
+        text description
+        boolean discount_entered_as_percent
+        text item_code
+        numeric line_amount
+        numeric quantity
+        numeric tax_amount
+        text tax_type
+        numeric unit_amount
+        jsonb validation_errors
+    }
+    manual_journal {
+        text manual_journal_id PK
+        text date
+        boolean has_attachments
+        text line_amount_types
+        text narration
+        boolean show_on_cash_basis_reports
+        text status
+        timestamp updated_date_utc
+    }
+    overpayment_line_item_has_tracking_category {
+        text line_item_id PK
+        text overpayment_id PK
+        text tracking_category_id PK
+        text option
+    }
+    tax_rate {
+        text _fivetran_id PK
+        boolean can_apply_to_assets
+        boolean can_apply_to_equity
+        boolean can_apply_to_expenses
+        boolean can_apply_to_liabilities
+        boolean can_apply_to_revenue
+        numeric display_tax_rate
+        numeric effective_rate
+        text name
+        text report_tax_type
+        text status
+        text tax_type
+    }
+    receipt {
+        text receipt_id PK
+        text contact_id FK
+        text expense_claim_id FK
+        text user_id FK
+        text date
+        boolean has_attachments
+        text id
+        text line_amount_types
+        integer receipt_number
+        text reference
+        text status
+        numeric sub_total
+        numeric total
+        numeric total_tax
+        timestamp updated_date_utc
+    }
+    user {
+        text user_id PK
+        text email_address
+        text first_name
+        boolean is_subscriber
+        text last_name
+        text organisation_role
+        timestamp updated_date_utc
+    }
+    contact_group_member {
+        text contact_group_id PK
+        text contact_id PK
+    }
+    manual_journal_line {
+        integer line PK
+        text manual_journal_id PK
+        text account_id FK
+        text account_code
+        text description
+        boolean is_blank
+        numeric line_amount
+        numeric tax_amount
+        text tax_type
+    }
+    repeating_invoice_line_item_has_tracking_category {
+        text line_item_id PK
+        text repeating_invoice_id PK
+        text tracking_category_id PK
+        text option
+    }
+    bank_transfer {
+        text bank_transfer_id PK
+        text from_bank_account_id FK
+        text from_bank_transaction_id FK
+        text to_bank_account_id FK
+        text to_bank_transaction_id FK
+        numeric amount
+        timestamp created_date_utc
+        timestamp created_date_utcstring
+        numeric currency_rate
+        text date
+        boolean has_attachments
+    }
+    aus_payroll_leave_application {
+        text leave_application_id PK
+        text employee_id FK
+        timestamp end_date
+        text leave_type_id
+        timestamp start_date
+        text title
+        timestamp updated_date_utc
+    }
+    bank_linked_transactions {
+        text linked_transaction_id PK
+        text contact_id FK
+        text source_line_item_id FK
+        text source_transaction_id FK
+        text target_line_item_id FK
+        text target_transaction_id FK
+        text source_transaction_type_code
+        text status
+        text type
+        text updated_date_utc
+    }
+    receipt_line_item_has_tracking_category {
+        integer line PK
+        text receipt_id PK
+        text tracking_category_id PK
+        text tracking_category_option_id FK
+        text option
+    }
+    currency {
+        text code PK
+        text description
+    }
+    invoice_linked_transactions {
+        text linked_transaction_id PK
+        text contact_id FK
+        text invoice_id FK
+        text invoice_line_item_id FK
+        text source_transaction_type_code
+        text status
+        text type
+        text updated_date_utc
+    }
+    overpayment {
+        text overpayment_id PK
+        numeric applied_amount
+        text contact_id
+        text currency_code
+        numeric currency_rate
+        text date
+        timestamp fully_paid_on_date
+        boolean has_attachments
+        text line_amount_types
+        text reference
+        numeric remaining_credit
+        text status
+        numeric sub_total
+        numeric total
+        numeric total_tax
+        text type
+        timestamp updated_date_utc
+    }
+    prepayment_line_item_has_tracking_category {
+        text line_item_id PK
+        text pre_payment_id PK
+        text tracking_category_id PK
+        text option
+    }
+    receipt_line_item {
+        integer line PK
+        text receipt_id PK
+        text account_code
+        text description
+        boolean discount_entered_as_percent
+        numeric discount_rate
+        numeric line_amount
+        numeric quantity
+        numeric tax_amount
+        text tax_type
+        numeric unit_amount
+    }
+    manual_journal_line_has_tracking_category {
+        text manual_journal_id PK
+        text manual_journal_line_id PK
+        text tracking_category_id PK
+        text option
+    }
+    bank_transaction {
+        text bank_transaction_id PK
+        text bank_account_id FK
+        text contact_id FK
+        text overpayment_id FK
+        text prepayment_id FK
+        text currency_code
+        numeric currency_rate
+        text date
+        text external_link_provider_name
+        boolean has_attachments
+        boolean is_reconciled
+        text line_amount_types
+        text reference
+        text status
+        numeric sub_total
+        numeric total
+        numeric total_tax
+        text type
+        timestamp updated_date_utc
+        text url
+    }
+    credit_note {
+        text credit_note_id PK
+        text branding_theme_id FK
+        text contact_id FK
+        numeric applied_amount
+        text credit_note_number
+        text currency_code
+        numeric currency_rate
+        text date
+        text due_date
+        text fully_paid_on_date
+        boolean has_attachments
+        text line_amount_types
+        text reference
+        numeric remaining_credit
+        boolean sent_to_contact
+        text status
+        numeric sub_total
+        numeric total
+        numeric total_tax
+        text type
+        timestamp updated_date_utc
+    }
+    tracking_category_option {
+        text tracking_option_id PK
+        boolean has_validation_errors
+        boolean is_active
+        boolean is_archived
+        boolean is_deleted
+        text name
+        text status
+    }
+    bank_account {
+        text account_id PK
+        text code
+        text name
+    }
+    tracking_category {
+        text tracking_category_id PK
+        text name
+        text status
+    }
+    invoice_line_item_has_tracking_category {
+        text invoice_id PK
+        text line_item_id PK
+        text tracking_category_id PK
+        text option
+    }
+    repeating_invoice_line_item {
+        text line_item_id PK
+        text repeating_invoice_id PK
+        text account_code
+        text description
+        boolean discount_entered_as_percent
+        numeric discount_rate
+        text item_code
+        numeric line_amount
+        numeric quantity
+        numeric tax_amount
+        text tax_type
+        numeric unit_amount
+        jsonb validation_errors
+    }
+    allocation {
+        text allocation_id PK
+        bigint index PK
+        text credit_note_id FK
+        text invoice_id FK
+        text overpayment_id FK
+        text prepayment_id FK
+        numeric amount
+        text date
+    }
+    journal {
+        text journal_id PK
+        timestamp created_date_utc
+        text journal_date
+        integer journal_number
+        text reference
+        text source_id
+        text source_type
+    }
+    contact_address {
+        integer _index PK
+        text contact_id PK
+        text address_line_1
+        text address_line_2
+        text address_line_3
+        text address_line_4
+        text address_type
+        text attention_to
+        text city
+        text country
+        text postal_code
+        text region
+    }
+    journal_line_has_tracking_category {
+        text journal_id PK
+        text journal_line_id PK
+        text tracking_category_id PK
+        text tracking_category_option_id FK
+        text option
+    }
+    prepayment_line_item {
+        text line_item_id PK
+        text prepayment_id PK
+        text account_code
+        text description
+        boolean discount_entered_as_percent
+        text item_code
+        numeric line_amount
+        numeric quantity
+        numeric tax_amount
+        text tax_type
+        numeric unit_amount
+        jsonb validation_errors
+    }
+    asset {
+        text id PK
+        text asset_type_id FK
+        numeric accounting_book_value
+        text asset_name
+        text asset_number
+        text asset_status
+        boolean can_rollback
+        numeric current_accum_depreciation_amount
+        text description
+        timestamp disposal_date
+        numeric disposal_price
+        boolean is_delete_enabled_for_date
+        numeric prior_accum_depreciation_amount
+        timestamp purchase_date
+        numeric purchase_price
+        text serial_number
+        timestamp warranty_expiry_date
+    }
+    bank_transaction_line_items {
+        text line_item_id PK
+        text bank_transaction_id PK
+        text account_code
+        text description
+        text item_code
+        numeric line_amount
+        numeric quantity
+        numeric tax_amount
+        text tax_type
+        numeric unit_amount
+    }
+    contact_group {
+        text contact_group_id PK
+        boolean has_validation_errors
+        text name
+        text status
+    }
+    aus_payroll_timesheet_line {
+        bigint index_id PK
+        text timesheet_id PK
+        text earnings_rate_id
+        jsonb number_of_units
+        timestamp updated_date_utc
+    }
+    aus_payroll_timesheet {
+        text id PK
+        text employee_id FK
+        timestamp end_date
+        double_precision hours
+        timestamp start_date
+        text status
+        timestamp updated_date_utc
+    }
+    invoice {
+        text invoice_id PK
+        text branding_theme_id FK
+        text contact_id FK
+        text repeating_invoice_id FK
+        numeric amount_credited
+        numeric amount_due
+        numeric amount_paid
+        numeric cisdeduction
+        text currency_code
+        numeric currency_rate
+        text date
+        text due_date
+        timestamp expected_payment_date
+        text fully_paid_on_date
+        boolean has_attachments
+        boolean has_errors
+        text invoice_number
+        boolean is_discounted
+        text line_amount_types
+        timestamp planned_payment_date
+        text reference
+        boolean sent_to_contact
+        text status
+        numeric sub_total
+        numeric total
+        numeric total_tax
+        text type
+        timestamp updated_date_utc
+        text url
+    }
+    tracking_category_has_option {
+        text tracking_category_id PK
+        text tracking_option_id PK
+    }
+    credit_note_line_item_has_tracking_category {
+        integer line_itemindex PK
+        text credit_note_id PK
+        text tracking_category_id PK
+        text tracking_category_option_id FK
+        text option
+    }
+    item {
+        text item_id PK
+        text code
+        text description
+        text inventory_asset_account_code
+        boolean is_purchased
+        boolean is_sold
+        boolean is_tracked_as_inventory
+        text name
+        text purchase_description
+        numeric quantity_on_hand
+        numeric total_cost_pool
+        timestamp updated_date_utc
+    }
+    account {
+        text account_id PK
+        boolean add_to_watchlist
+        text bank_account_number
+        text bank_account_type
+        text class
+        text code
+        text currency_code
+        text description
+        boolean enable_payments_to_account
+        boolean has_attachments
+        text name
+        text reporting_code
+        text reporting_code_name
+        boolean show_in_expense_claims
+        text status
+        text system_account
+        text tax_type
+        text type
+        timestamp updated_date_utc
+    }
+    journal_line {
+        text journal_line_id PK
+        text account_id FK
+        text journal_id FK
+        text account_code
+        text account_name
+        text account_type
+        text description
+        numeric gross_amount
+        numeric net_amount
+        numeric tax_amount
+        text tax_name
+        text tax_type
+    }
+    purchase_order_line_item_has_tracking_category }o--|| tracking_category : "fk"
+    purchase_order_line_item_has_tracking_category }o--|| purchase_order : "fk"
+    purchase_order_line_item_has_tracking_category }o--|| purchase_order_line_item : "fk"
+    tax_rate_component }o--|| tax_rate : "fk"
+    payment }o--|| expense_claim : "fk"
+    payment }o--|| credit_note : "fk"
+    payment }o--|| overpayment : "fk"
+    payment }o--|| prepayment : "fk"
+    payment }o--|| account : "fk"
+    payment }o--|| invoice : "fk"
+    purchase_order }o--|| branding_theme : "fk"
+    purchase_order }o--|| contact : "fk"
+    aus_payroll_leave_period }o--|| aus_payroll_leave_application : "fk"
+    expense_claim }o--|| user : "fk"
+    contact }o--|| branding_theme : "fk"
+    repeating_invoice }o--|| branding_theme : "fk"
+    repeating_invoice }o--|| contact : "fk"
+    purchase_order_line_item }o--|| purchase_order : "fk"
+    overpayment_line_item }o--|| overpayment : "fk"
+    bank_transaction_line_item_has_tracking_category }o--|| tracking_category : "fk"
+    bank_transaction_line_item_has_tracking_category }o--|| bank_transaction : "fk"
+    bank_transaction_line_item_has_tracking_category }o--|| bank_transaction_line_items : "fk"
+    invoice_line_item }o--|| invoice : "fk"
+    invoice_line_item }o--|| item : "fk"
+    credit_note_line_item }o--|| credit_note : "fk"
+    overpayment_line_item_has_tracking_category }o--|| tracking_category : "fk"
+    overpayment_line_item_has_tracking_category }o--|| overpayment : "fk"
+    overpayment_line_item_has_tracking_category }o--|| overpayment_line_item : "fk"
+    receipt }o--|| expense_claim : "fk"
+    receipt }o--|| contact : "fk"
+    receipt }o--|| user : "fk"
+    contact_group_member }o--|| contact_group : "fk"
+    contact_group_member }o--|| contact : "fk"
+    manual_journal_line }o--|| manual_journal : "fk"
+    manual_journal_line }o--|| account : "fk"
+    repeating_invoice_line_item_has_tracking_category }o--|| tracking_category : "fk"
+    repeating_invoice_line_item_has_tracking_category }o--|| repeating_invoice : "fk"
+    repeating_invoice_line_item_has_tracking_category }o--|| repeating_invoice_line_item : "fk"
+    bank_transfer }o--|| bank_transaction : "fk"
+    bank_transfer }o--|| bank_transaction : "fk"
+    bank_transfer }o--|| bank_account : "fk"
+    bank_transfer }o--|| bank_account : "fk"
+    aus_payroll_leave_application }o--|| employee : "fk"
+    bank_linked_transactions }o--|| bank_transaction : "fk"
+    bank_linked_transactions }o--|| bank_transaction_line_items : "fk"
+    bank_linked_transactions }o--|| bank_transaction : "fk"
+    bank_linked_transactions }o--|| bank_transaction_line_items : "fk"
+    bank_linked_transactions }o--|| contact : "fk"
+    receipt_line_item_has_tracking_category }o--|| tracking_category : "fk"
+    receipt_line_item_has_tracking_category }o--|| tracking_category_option : "fk"
+    receipt_line_item_has_tracking_category }o--|| receipt : "fk"
+    receipt_line_item_has_tracking_category }o--|| receipt_line_item : "fk"
+    invoice_linked_transactions }o--|| invoice : "fk"
+    invoice_linked_transactions }o--|| invoice_line_item : "fk"
+    invoice_linked_transactions }o--|| contact : "fk"
+    prepayment_line_item_has_tracking_category }o--|| tracking_category : "fk"
+    prepayment_line_item_has_tracking_category }o--|| prepayment : "fk"
+    prepayment_line_item_has_tracking_category }o--|| prepayment_line_item : "fk"
+    receipt_line_item }o--|| receipt : "fk"
+    manual_journal_line_has_tracking_category }o--|| tracking_category : "fk"
+    manual_journal_line_has_tracking_category }o--|| manual_journal : "fk"
+    manual_journal_line_has_tracking_category }o--|| manual_journal_line : "fk"
+    bank_transaction }o--|| overpayment : "fk"
+    bank_transaction }o--|| prepayment : "fk"
+    bank_transaction }o--|| contact : "fk"
+    bank_transaction }o--|| bank_account : "fk"
+    credit_note }o--|| branding_theme : "fk"
+    credit_note }o--|| contact : "fk"
+    invoice_line_item_has_tracking_category }o--|| tracking_category : "fk"
+    invoice_line_item_has_tracking_category }o--|| invoice : "fk"
+    invoice_line_item_has_tracking_category }o--|| invoice_line_item : "fk"
+    repeating_invoice_line_item }o--|| repeating_invoice : "fk"
+    allocation }o--|| credit_note : "fk"
+    allocation }o--|| overpayment : "fk"
+    allocation }o--|| prepayment : "fk"
+    allocation }o--|| invoice : "fk"
+    contact_address }o--|| contact : "fk"
+    journal_line_has_tracking_category }o--|| tracking_category : "fk"
+    journal_line_has_tracking_category }o--|| tracking_category_option : "fk"
+    journal_line_has_tracking_category }o--|| journal : "fk"
+    journal_line_has_tracking_category }o--|| journal_line : "fk"
+    prepayment_line_item }o--|| prepayment : "fk"
+    asset }o--|| asset_type : "fk"
+    bank_transaction_line_items }o--|| bank_transaction : "fk"
+    aus_payroll_timesheet_line }o--|| aus_payroll_timesheet : "fk"
+    aus_payroll_timesheet }o--|| employee : "fk"
+    invoice }o--|| branding_theme : "fk"
+    invoice }o--|| repeating_invoice : "fk"
+    invoice }o--|| contact : "fk"
+    tracking_category_has_option }o--|| tracking_category : "fk"
+    tracking_category_has_option }o--|| tracking_category_option : "fk"
+    credit_note_line_item_has_tracking_category }o--|| tracking_category : "fk"
+    credit_note_line_item_has_tracking_category }o--|| tracking_category_option : "fk"
+    credit_note_line_item_has_tracking_category }o--|| credit_note : "fk"
+    journal_line }o--|| account : "fk"
+    journal_line }o--|| journal : "fk"

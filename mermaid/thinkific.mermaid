@@ -1,0 +1,281 @@
+erDiagram
+    collection {
+        text id PK
+        text created_at
+        text defaults
+        text description
+        text name
+        text slug
+    }
+    groups {
+        text id PK
+        text created_at
+        text name
+        text token
+    }
+    group_analyst {
+        text group_analyst PK
+        text temp_group_analyst_group_id PK
+    }
+    course_administrator_user {
+        text administrator_user_id PK
+        text course_id PK
+    }
+    course_chapter {
+        text chapter_id PK
+        text course_id PK
+    }
+    course {
+        text id PK
+        text instructor_id FK
+        text product_id FK
+        text user_id FK
+        text banner_image_url
+        text contact_information
+        text course_card_image_url
+        text course_card_text
+        text description
+        text duration
+        text intro_video_wistia_identifier
+        text intro_video_youtube
+        text keyword
+        text name
+        text reviews_enabled
+        text slug
+        text subtitle
+    }
+    instructor {
+        text id PK
+        text user_id FK
+        text avatar_url
+        text bio
+        text created_at
+        text email
+        text first_name
+        text last_name
+        text slug
+        text title
+    }
+    enrollment {
+        text id PK
+        text course_id FK
+        text user_id FK
+        text activated_at
+        text completed
+        text completed_at
+        text created_at
+        text expired
+        text expiry_date
+        text is_free_trial
+        text percentage_completed
+        text started_at
+        text updated_at
+    }
+    product_collection {
+        text collection_id PK
+        text product_id PK
+    }
+    product_price {
+        text id PK
+        text product_id FK
+        text currency
+        text custom_first_price
+        text days_until_expiry
+        text interval
+        text interval_count
+        text is_primary
+        text label
+        text number_of_payments
+        text pay_button_text
+        text payment_type
+        text price
+        text price_name
+        text trial_interval
+        text trial_interval_count
+    }
+    related_product {
+        text product_id PK
+        text related_product_id PK
+    }
+    product {
+        text id PK
+        text card_image_url
+        text created_at
+        text days_until_expiry
+        text description
+        text has_certificate
+        text hidden
+        text instructor_name
+        text keyword
+        text name
+        text position
+        text price
+        text private
+        text productable_id
+        text productable_type
+        text seo_description
+        text seo_title
+        text slug
+        text status
+        text subscription
+    }
+    orders {
+        text id PK
+        text coupon_id FK
+        text product_id FK
+        text user_id FK
+        text affiliate_referral_code
+        text amount_cent
+        text amount_dollar
+        text coupon_code
+        text created_at
+        text status
+        text subscription
+    }
+    content {
+        text id PK
+        text chapter_id FK
+        text contentable_type
+        text free
+        text name
+        text position
+        text take_url
+    }
+    product_publish_request_coupon {
+        text coupon_id PK
+        text product_publish_request_id PK
+    }
+    product_publish_request {
+        text id PK
+        text amount
+        text description
+        text discount_type
+        text duration
+        text expires_at
+        text name
+        text starts_at
+    }
+    custom_profile_field_definition {
+        text id PK
+        text field_type
+        text label
+        text required
+    }
+    site_script_page_scope {
+        text index PK
+        text site_script_id PK
+        text page_scope
+    }
+    site_script {
+        text id PK
+        text category
+        text description
+        text load_method
+        text location
+        text name
+        text src
+    }
+    coupon {
+        text id PK
+        text promotion_id FK
+        text code
+        text created_at
+        text note
+        text quantity
+        text quantity_used
+    }
+    chapter_content {
+        text content_id PK
+        text chapter_id PK
+    }
+    chapter {
+        text id PK
+        text description
+        text duration_in_second
+        text name
+        text position
+    }
+    promotion {
+        text id PK
+        text amount
+        text description
+        text discount_type
+        text duration
+        text expires_at
+        text name
+        text starts_at
+    }
+    course_review {
+        text id PK
+        text course_id FK
+        text user_id FK
+        text approved
+        text created_at
+        text rating
+        text review_text
+        text title
+    }
+    users_role {
+        text index PK
+        text users_id PK
+        text role
+    }
+    users_administered_course {
+        text administered_course_id PK
+        text users_id PK
+    }
+    users_custom_profile_field {
+        text id PK
+        text users_id PK
+        text custom_profile_field_definition_id FK
+        text label
+        text value
+    }
+    users {
+        text id PK
+        text affiliate_code
+        text affiliate_commission
+        text affiliate_commission_type
+        text affiliate_payout_email
+        text avatar_url
+        text bio
+        text company
+        text created_at
+        text email
+        text external_source
+        text first_name
+        text full_name
+        text headline
+        text last_name
+    }
+    course_administrator_user }o--|| users : "fk"
+    course_administrator_user }o--|| course : "fk"
+    course_chapter }o--|| chapter : "fk"
+    course_chapter }o--|| course : "fk"
+    course }o--|| product : "fk"
+    course }o--|| users : "fk"
+    course }o--|| instructor : "fk"
+    instructor }o--|| users : "fk"
+    enrollment }o--|| users : "fk"
+    enrollment }o--|| course : "fk"
+    product_collection }o--|| collection : "fk"
+    product_collection }o--|| product : "fk"
+    product_price }o--|| product : "fk"
+    related_product }o--|| product : "fk"
+    related_product }o--|| product : "fk"
+    orders }o--|| product : "fk"
+    orders }o--|| users : "fk"
+    orders }o--|| coupon : "fk"
+    content }o--|| chapter : "fk"
+    product_publish_request_coupon }o--|| coupon : "fk"
+    product_publish_request_coupon }o--|| product_publish_request : "fk"
+    site_script_page_scope }o--|| site_script : "fk"
+    coupon }o--|| promotion : "fk"
+    chapter_content }o--|| chapter : "fk"
+    course_review }o--|| users : "fk"
+    course_review }o--|| course : "fk"
+    users_role }o--|| users : "fk"
+    users_administered_course }o--|| course : "fk"
+    users_administered_course }o--|| users : "fk"
+    users_custom_profile_field }o--|| custom_profile_field_definition : "fk"
+    users_custom_profile_field }o--|| users : "fk"

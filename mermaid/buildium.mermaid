@@ -1,0 +1,581 @@
+erDiagram
+    listing_property_feature {
+        text index PK
+        text listing_id PK
+        text feature
+    }
+    listing_include_in_rent {
+        text index PK
+        text listing_id PK
+        text include_in_rent
+    }
+    listing_property_file {
+        text index PK
+        text listing_id PK
+        text name
+        text type
+        text url
+    }
+    listing_unit_feature {
+        text index PK
+        text listing_id PK
+        text feature
+    }
+    listing_unit_file {
+        text index PK
+        text listing_id PK
+        text name
+        text type
+        text url
+    }
+    listing {
+        text listing_id PK
+        text property_id FK
+        text address_line_1
+        text address_line_2
+        text address_line_3
+        text available_date
+        text city
+        text contact_email
+        text contact_id
+        text contact_name
+        text contact_phone_number
+        text contact_website
+        text country
+        text deposit
+        text description
+        text lease_terms
+        text listing_date
+        text market_rent
+        text postal_code
+        text property_name
+        text property_number_units
+        text property_structure_description
+        text property_year_built
+        text rent
+        text state
+        text unit_address_line_1
+        text unit_address_line_2
+        text unit_address_line_3
+        text unit_bathrooms
+        text unit_bedrooms
+        text unit_city
+        text unit_country
+        text unit_id
+        text unit_number
+        text unit_postal_code
+        text unit_size
+        text unit_state
+    }
+    lease_renewal_tenant {
+        text lease_id PK
+        text lease_renewal_id PK
+        text tenant_id PK
+    }
+    lease_renewal {
+        text id PK
+        text lease_id PK
+        text rent_id FK
+        text lease_from_date
+        text lease_status
+        text lease_to_date
+        text lease_type
+        text rent
+    }
+    lease_rent_schedule_charge {
+        text id PK
+        text lease_id PK
+        text lease_rent_schedule_id PK
+        text gl_account_id FK
+        text amount
+        text due_on_day_of_the_month
+        text first_charge_date
+        text memo
+        text post_days_in_advance
+    }
+    lease_rent_schedule {
+        text id PK
+        text lease_id PK
+        text backdate_charge
+        text created_by_user_id
+        text created_date_time
+        text end_date
+        text rent_cycle
+        text start_date
+        text total_amount
+    }
+    property {
+        text id PK
+        text property_group_id PK
+        text href
+        text type
+    }
+    property_group {
+        text id PK
+        text created_by_user_first_name
+        text created_by_user_href
+        text created_by_user_id
+        text created_by_user_last_name
+        text description
+        text name
+    }
+    bank_account_transaction_paid_by {
+        text id PK
+        text bank_account_id PK
+        text bank_account_transaction_id PK
+        text accounting_entity_type
+        text amount
+        text href
+        text unit
+    }
+    bank_account_transaction_paid_to {
+        text id PK
+        text bank_account_id PK
+        text bank_account_transaction_id PK
+        text href
+        text name
+        text type
+    }
+    bank_account_transaction {
+        text id PK
+        text bank_account_id PK
+        text amount
+        text balance
+        text check_number
+        text entry_date
+        text memo
+        text reconciliation_status
+        text transaction_type
+    }
+    lease_outstanding_balance {
+        text all_outstanding_lease_balance_lease_id PK
+        text gl_account_id PK
+        text total_balance
+    }
+    all_outstanding_lease_balance {
+        text lease_id PK
+        text property_id FK
+        text balance_0_to_30_day
+        text balance_31_to_60_day
+        text balance_61_to_90_day
+        text balance_over_90_day
+        text eviction_pending_date
+        text is_notice_given
+        text past_due_email_sent_date
+        text total_balance
+        text unit_id
+    }
+    lease_transaction_recurring_charge {
+        text id PK
+        text lease_recurring_transaction_id PK
+        text gl_account_id FK
+        text lease_id FK
+        text rent_id FK
+        text amount
+        text duration
+        text first_occurrence_date
+        text frequency
+        text memo
+        text next_occurrence_date
+        text occurrences_remaining
+        text post_days_in_advance
+    }
+    gl_payment_transaction {
+        text id PK
+        text gl_account_id PK
+        text gl_transaction_id PK
+        text accounting_entity_id
+        text accounting_entity_type
+        text href
+        text unit_href
+        text unit_id
+    }
+    gl_transaction_journal_line {
+        text index PK
+        text gl_transaction_id PK
+        text gl_account_id FK
+        text accounting_entity_href
+        text accounting_entity_id
+        text accounting_entity_type
+        text accounting_entity_unit_href
+        text accounting_entity_unit_id
+        text amount
+        text is_cash_posting
+        text memo
+        text reference_number
+    }
+    gl_transaction {
+        text id PK
+        text gl_account_id PK
+        text check_number
+        text date
+        text deposit_details_bank_gl_account_id
+        text journal_memo
+        text last_updated_date_time
+        text payee_href
+        text payee_id
+        text payee_name
+        text payee_type
+        text payment_detail_internal_transaction_status
+        text payment_detail_is_internal_transaction
+        text payment_detail_payment_method
+        text total_amount
+        text transaction_type
+        text unit_agreement_href
+        text unit_agreement_id
+        text unit_agreement_type
+        text unit_id
+        text unit_number
+    }
+    tenant_phone_number {
+        text index PK
+        text tenant_id PK
+        text number
+        text type
+    }
+    tenant {
+        text id PK
+        text address_line_1
+        text address_line_2
+        text address_line_3
+        text alternaate_email
+        text alternate_address_line_1
+        text alternate_address_line_2
+        text alternate_address_line_3
+        text alternate_city
+        text alternate_country
+        text alternate_postal_code
+        text alternate_state
+        text city
+        text comment
+        text country
+        text created_date_time
+        text date_of_birth
+        text email
+        text emergency_contact_email
+        text emergency_contact_name
+        text emergency_contact_phone
+        text emergency_contact_relationship_description
+        text first_name
+        text last_name
+        text mailing_preference
+        text postal_code
+        text sms_opt_in_status
+        text state
+        text tax_id
+    }
+    gl_account_balance_sub_account {
+        text id PK
+        text gl_account_id PK
+    }
+    gl_account {
+        text id PK
+        text account_number
+        text cash_flow_classification
+        text default_account_name
+        text description
+        text exclude_from_cash_balance
+        text is_active
+        text is_bank_account
+        text is_contra_account
+        text is_default_gl_account
+        text name
+        text parent_gl_account_id
+        text sub_type
+        text type
+    }
+    bank_account {
+        text id PK
+        text account_number
+        text account_number_unmasked
+        text balance
+        text bank_account_type
+        text check_layout_type
+        text country
+        text credit_card_service_fee_percentage
+        text credit_monthly_limit
+        text credit_transaction_limit
+        text debit_monthly_limit
+        text debit_transaction_limit
+        text description
+        text enable_local_check_printing
+        text enable_remote_check_printing
+        text fractional_number
+        text is_active
+        text is_credit_card_service_fee_paid_by_resident
+        text name
+        text resident_credit_card_convenience_fee_amount
+        text resident_eft_convience_fee_amount
+        text routing_number
+        text signature_heading
+    }
+    lease_move_out_data {
+        text lease_id PK
+        text tenant_id PK
+        text move_out_date
+        text notice_given_date
+    }
+    lease_cosigner_phone_number {
+        text index PK
+        text lease_cosigner_id PK
+        text lease_id PK
+        text number
+        text type
+    }
+    lease_cosigner {
+        text id PK
+        text lease_id PK
+        text address_line_1
+        text address_line_2
+        text address_line_3
+        text alternate_address_line_1
+        text alternate_address_line_2
+        text alternate_address_line_3
+        text alternate_city
+        text alternate_country
+        text alternate_email
+        text alternate_postal_code
+        text alternate_state
+        text city
+        text country
+        text created_date_time
+        text email
+        text first_name
+        text last_name
+        text mailing_preference
+        text postal_code
+        text state
+    }
+    lease_current_tenant_phone_number {
+        text index PK
+        text lease_current_tenent_id PK
+        text lease_id PK
+        text number
+        text type
+    }
+    lease_current_tenant {
+        text lease_id PK
+        text tenant_id PK
+        text address_line_1
+        text address_line_2
+        text address_line_3
+        text alternate_address
+        text city
+        text comment
+        text country
+        text created_date_time
+        text current_number_of_occupant
+        text date_of_birth
+        text email
+        text emergency_contact_email
+        text emergency_contact_name
+        text emergency_contact_phone
+        text emergency_contact_relationship_description
+        text first_name
+        text last_name
+        text lease
+        text mailing_preference
+        text postal_code
+        text sms_opt_in_status
+        text state
+        text tax_id
+    }
+    lease_tenant {
+        text lease_id PK
+        text tenant_id PK
+        text move_in_date
+        text status
+    }
+    lease {
+        text id PK
+        text property_id FK
+        text account_details_rent
+        text account_details_security_deposit
+        text automatically_move_out_tenant
+        text created_date_time
+        text current_number_of_occupant
+        text is_eviction_pending
+        text last_updated_date_time
+        text lease_from_date
+        text lease_status
+        text lease_to_date
+        text lease_type
+        text payment_due_day
+        text renewal_offer_status
+        text term_type
+        text unit_id
+        text unit_number
+    }
+    lease_transaction_journal_line {
+        text lease_id PK
+        text gl_account_id PK
+        text lease_transaction_id PK
+        text property_id FK
+        text amount
+        text is_cash_posting
+        text memo
+        text reference_number
+        text unit_id
+    }
+    lease_transaction {
+        text id PK
+        text lease_id FK
+        text check_number
+        text date
+        text journal_memo
+        text payee_tenant_id
+        text payment_method
+        text total_amount
+        text transaction_type
+        text transaction_type_enum
+    }
+    lease_note {
+        text id PK
+        text lease_id PK
+        text last_updated_by_user_first_name
+        text last_updated_by_user_href
+        text last_updated_by_user_id
+        text last_updated_by_user_last_name
+        text last_updated_by_user_updated_date_time
+        text note
+    }
+    gl_accounting_entity_balance {
+        text id PK
+        text gl_account_balance_id PK
+        text accounting_entity_href
+        text accounting_entity_type
+        text accounting_entity_unit
+        text balance
+    }
+    gl_account_balance {
+        text id PK
+        text total_balance
+    }
+    lease_recurring_transaction_line {
+        text gl_account_id PK
+        text lease_id PK
+        text lease_recurring_transaction_id PK
+        text amount
+    }
+    lease_recurring_transaction {
+        text id PK
+        text lease_id PK
+        text offsetting_gl_account_id FK
+        text rent_id FK
+        text amount
+        text duration
+        text frequency
+        text is_expired
+        text memo
+        text next_occurrence_date
+        text post_days_in_advance
+        text transaction_type
+    }
+    rental_owner_phone_number {
+        text index PK
+        text rental_owner_id PK
+        text number
+        text type
+    }
+    rental_owner_property {
+        text index PK
+        text rental_owner_id PK
+        text property_id FK
+    }
+    rental_owner {
+        text id PK
+        text address_line_1
+        text address_line_2
+        text address_line_3
+        text alternate_email
+        text city
+        text comment
+        text company_name
+        text country
+        text email
+        text first_name
+        text include_in_1099
+        text is_active
+        text is_company
+        text last_name
+        text management_agreement_end_date
+        text management_agreement_start_date
+        text postal_code
+        text state
+        text tax_information_address_line_1
+        text tax_information_address_line_2
+        text tax_information_address_line_3
+        text tax_information_city
+        text tax_information_country
+        text tax_information_postal_code
+        text tax_information_state
+        text tax_payer_id
+        text tax_payer_id_type
+        text tax_payer_name_1
+        text tax_payer_name_2
+    }
+    listing_property_feature }o--|| listing : "fk"
+    listing_include_in_rent }o--|| listing : "fk"
+    listing_property_file }o--|| listing : "fk"
+    listing_unit_feature }o--|| listing : "fk"
+    listing_unit_file }o--|| listing : "fk"
+    listing }o--|| property : "fk"
+    lease_renewal_tenant }o--|| tenant : "fk"
+    lease_renewal_tenant }o--|| lease_renewal : "fk"
+    lease_renewal_tenant }o--|| lease_renewal : "fk"
+    lease_renewal }o--|| lease_rent_schedule : "fk"
+    lease_renewal }o--|| lease : "fk"
+    lease_rent_schedule_charge }o--|| gl_account : "fk"
+    lease_rent_schedule_charge }o--|| lease_rent_schedule : "fk"
+    lease_rent_schedule_charge }o--|| lease_rent_schedule : "fk"
+    lease_rent_schedule }o--|| lease : "fk"
+    property }o--|| property_group : "fk"
+    bank_account_transaction_paid_by }o--|| bank_account_transaction : "fk"
+    bank_account_transaction_paid_by }o--|| bank_account_transaction : "fk"
+    bank_account_transaction_paid_to }o--|| bank_account_transaction : "fk"
+    bank_account_transaction_paid_to }o--|| bank_account_transaction : "fk"
+    bank_account_transaction }o--|| bank_account : "fk"
+    lease_outstanding_balance }o--|| gl_account : "fk"
+    lease_outstanding_balance }o--|| all_outstanding_lease_balance : "fk"
+    all_outstanding_lease_balance }o--|| lease : "fk"
+    all_outstanding_lease_balance }o--|| property : "fk"
+    lease_transaction_recurring_charge }o--|| lease_recurring_transaction : "fk"
+    lease_transaction_recurring_charge }o--|| lease_rent_schedule : "fk"
+    lease_transaction_recurring_charge }o--|| gl_account : "fk"
+    lease_transaction_recurring_charge }o--|| lease_recurring_transaction : "fk"
+    gl_payment_transaction }o--|| gl_transaction : "fk"
+    gl_payment_transaction }o--|| gl_transaction : "fk"
+    gl_transaction_journal_line }o--|| gl_account : "fk"
+    gl_transaction_journal_line }o--|| gl_transaction : "fk"
+    gl_transaction }o--|| gl_account : "fk"
+    tenant_phone_number }o--|| tenant : "fk"
+    gl_account_balance_sub_account }o--|| gl_account : "fk"
+    bank_account }o--|| gl_account : "fk"
+    lease_move_out_data }o--|| tenant : "fk"
+    lease_move_out_data }o--|| lease : "fk"
+    lease_cosigner_phone_number }o--|| lease_cosigner : "fk"
+    lease_cosigner_phone_number }o--|| lease_cosigner : "fk"
+    lease_cosigner }o--|| lease : "fk"
+    lease_current_tenant_phone_number }o--|| lease_current_tenant : "fk"
+    lease_current_tenant_phone_number }o--|| lease_current_tenant : "fk"
+    lease_current_tenant }o--|| tenant : "fk"
+    lease_current_tenant }o--|| lease : "fk"
+    lease_tenant }o--|| tenant : "fk"
+    lease_tenant }o--|| lease : "fk"
+    lease }o--|| property : "fk"
+    lease_transaction_journal_line }o--|| gl_account : "fk"
+    lease_transaction_journal_line }o--|| property : "fk"
+    lease_transaction_journal_line }o--|| lease_transaction : "fk"
+    lease_transaction }o--|| lease : "fk"
+    lease_note }o--|| lease : "fk"
+    gl_accounting_entity_balance }o--|| gl_account_balance : "fk"
+    gl_account_balance }o--|| gl_account : "fk"
+    lease_recurring_transaction_line }o--|| gl_account : "fk"
+    lease_recurring_transaction_line }o--|| lease_recurring_transaction : "fk"
+    lease_recurring_transaction_line }o--|| lease_recurring_transaction : "fk"
+    lease_recurring_transaction }o--|| lease_rent_schedule : "fk"
+    lease_recurring_transaction }o--|| gl_account : "fk"
+    lease_recurring_transaction }o--|| lease : "fk"
+    rental_owner_phone_number }o--|| rental_owner : "fk"
+    rental_owner_property }o--|| property : "fk"
+    rental_owner_property }o--|| rental_owner : "fk"

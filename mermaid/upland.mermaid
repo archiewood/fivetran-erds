@@ -1,0 +1,236 @@
+erDiagram
+    call {
+        text id PK
+        text mconnect_id FK
+        text profile_id FK
+        text call_status
+        text carrier_name
+        text connection_source
+        text destination_number
+        text duration
+        text email
+        text end_time
+        text handset_number
+        text legislator_district
+        text legislator_first_name
+        text legislator_last_name
+        text legislator_party
+        text legislator_state
+        text profile_status_at_call_time
+        text start_time
+        text transcription
+        text voicemail
+        text voicemail_duration
+        text voip_number
+    }
+    web_click {
+        text id PK
+        text tiny_url_id PK
+        text profile_id FK
+        text clicked_url
+        text created_at
+        text http_referer
+        text remote_addr
+        text url
+        text user_agent
+    }
+    groups {
+        text id PK
+        text hint
+        text name
+        text size
+        text status
+        text type
+    }
+    tiny_url {
+        text id PK
+        text created_at
+        text description
+        text host
+        text key
+        text mode
+        text name
+        text url
+    }
+    message {
+        text id PK
+        text campaign_id FK
+        text profile FK
+        text approved
+        text body
+        text carrier_name
+        text mms
+        text multipart
+        text next_id
+        text previous_id
+        text received_at
+        text template_id
+        text type
+    }
+    mconnect {
+        text id PK
+        text tag_name FK
+        text active
+        text autoroute
+        text call_timeout
+        text call_type
+        text crm_alert_id
+        text destination_description
+        text destination_number
+        text failover_number
+        text failover_text
+        text name
+        text nonsubscriber_follow_up
+        text shortcode
+        text subscriber_follow_up
+        text transcribe
+        text voicemail
+        text voip_number
+    }
+    keyword {
+        text id PK
+        text active
+        text created_at
+        text ended_at
+        text name
+        text opted_in_path_id
+        text updated_at
+    }
+    mdata {
+        text id PK
+        text name
+        text type
+        text uuid
+    }
+    profile_subscription {
+        text _fivetran_id PK
+        text campaign_id FK
+        text opted_in_path_id FK
+        text profile_id FK
+        text activated_at
+        text created_at
+        text opted_in_source
+        text opted_out_at
+        text opted_out_source
+        text status
+    }
+    profile_custom_column {
+        text _fivetran_id PK
+        text profile_id FK
+        text created_at
+        text name
+        text text
+        text updated_at
+    }
+    profile {
+        text id PK
+        text address_city
+        text address_country
+        text address_postal_code
+        text address_state
+        text address_street_1
+        text address_street_2
+        text congressional_district
+        text created_at
+        text email
+        text first_name
+        text integration
+        text last_name
+        text location_city
+        text location_country
+        text location_latitude
+        text location_longitude
+        text location_postal_code
+        text location_precision
+        text location_state
+        text phone_number
+        text source_email
+        text source_id
+        text source_name
+        text source_type
+        text split_district
+        text state_lower_district
+        text state_upper_district
+        text status
+        text updated_at
+    }
+    broadcast_excluded_group {
+        text broadcast_id PK
+        text group_id PK
+    }
+    broadcast_included_group {
+        text broadcast_id PK
+        text group_id PK
+    }
+    broadcast {
+        text id PK
+        text campaign_id FK
+        text tag_name FK
+        text automated
+        text body
+        text delivery_time
+        text estimated_recipients_count
+        text include_subscriber
+        text localtimes
+        text name
+        text opted_outs_count
+        text replies_count
+        text status
+        text throttled
+    }
+    campaign_subscriber {
+        text id PK
+        text campaign_id FK
+        text profile_id FK
+        text activated_at
+        text opted_out_at
+    }
+    mdata_entry {
+        text id PK
+        text mdata_id FK
+        text created_at
+        text input
+        text output
+    }
+    campaign_tag {
+        text campaign_id PK
+        text tag_name PK
+    }
+    campaign {
+        text id PK
+        text active
+        text description
+        text name
+    }
+    tag_taggable {
+        text id PK
+        text tag_id PK
+        text type
+    }
+    tags {
+        text id PK
+        text name
+    }
+    call }o--|| mconnect : "fk"
+    call }o--|| profile : "fk"
+    web_click }o--|| profile : "fk"
+    web_click }o--|| tiny_url : "fk"
+    message }o--|| campaign : "fk"
+    message }o--|| profile : "fk"
+    mconnect }o--|| tags : "fk"
+    profile_subscription }o--|| campaign : "fk"
+    profile_subscription }o--|| keyword : "fk"
+    profile_subscription }o--|| profile : "fk"
+    profile_custom_column }o--|| profile : "fk"
+    broadcast_excluded_group }o--|| groups : "fk"
+    broadcast_excluded_group }o--|| broadcast : "fk"
+    broadcast_included_group }o--|| groups : "fk"
+    broadcast_included_group }o--|| broadcast : "fk"
+    broadcast }o--|| campaign : "fk"
+    broadcast }o--|| tags : "fk"
+    campaign_subscriber }o--|| profile : "fk"
+    campaign_subscriber }o--|| campaign : "fk"
+    mdata_entry }o--|| mdata : "fk"
+    campaign_tag }o--|| tags : "fk"
+    campaign_tag }o--|| campaign : "fk"
+    tag_taggable }o--|| tags : "fk"

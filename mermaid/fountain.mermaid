@@ -1,0 +1,403 @@
+erDiagram
+    worker_data_collection_check {
+        text id PK
+        text worker_id FK
+        text canceled_at
+        text confirmed_at
+        text confirmed_user
+        text rejected_at
+        text requested_at
+        text status
+        text uploaded_at
+    }
+    worker {
+        text id PK
+        text approved_at
+        text email
+        text is_active
+        text name
+    }
+    note {
+        text id PK
+        text applicant_id FK
+        text user_id FK
+        text content
+        text created_at
+        text updated_at
+    }
+    timestamp_funnel {
+        text funnel_id PK
+        text timestamp_id PK
+    }
+    timestamp_data_key {
+        text data_key PK
+        text timestamps_id PK
+    }
+    timestamps {
+        text id PK
+        text busy
+        text lower_bound
+        text number_of_days
+        text title
+        text type
+        text upper_bound
+    }
+    user_activity {
+        text id PK
+        text applicant_id FK
+        text user_id FK
+        text activity_field
+        text activity_funnel_id
+        text activity_funnel_title
+        text activity_stage_id
+        text activity_stage_title
+        text activity_type
+        text created_at
+        text key
+        text owner_id
+        text owner_type
+    }
+    template_funnel {
+        text funnel_id PK
+        text template_id PK
+    }
+    template_field {
+        text field PK
+        text template_id PK
+    }
+    template {
+        text id PK
+        text title
+    }
+    applicant_label {
+        text _fivetran_id PK
+        text applicant_id FK
+        text completed
+        text title
+    }
+    interview_session {
+        text id PK
+        text applicant_id FK
+        text stage_title FK
+        text booked_time
+        text end_time
+        text instructions
+        text location
+        text recruiter
+        text showed_up
+        text start_time
+    }
+    applicant_background_check {
+        text index PK
+        text applicant_id PK
+        text background_applicant_id
+        text candidate_id
+        text check_id
+        text report_id
+        text status
+        text title
+        text updated_at
+        text vendor
+    }
+    applicant_partner_data {
+        text _fivetran_id PK
+        text applicant_id FK
+        text description
+        jsonb example
+        text type
+    }
+    applicant_document_signature {
+        text signature_id PK
+        text applicant_id FK
+        text file_url
+        text status
+        text vendor
+    }
+    applicant_lessonly_result {
+        text index PK
+        text applicant_id PK
+        text completed_at
+        text lesson_name
+        text lesson_url
+        text report_card_url
+        text score_percent
+    }
+    applicant_path_result {
+        text index PK
+        text applicant_id PK
+        text goal
+        text path_name
+        text progress
+        text url
+    }
+    applicant_course_result {
+        text index PK
+        text applicant_id PK
+        text course_name
+        text goal
+        text progress
+        text url
+    }
+    applicant_address {
+        text _fivetran_id PK
+        text applicant_id FK
+        text address_2
+        text city
+        text country
+        text latitude
+        text longitude
+        text state
+        text street_name
+        text zip_code
+    }
+    applicant_file_upload_request {
+        text id PK
+        text applicant_id FK
+        text created_at
+        text document_name
+        text recollection_reason
+    }
+    applicant_score_card_result_answer {
+        text _fivetran_id PK
+        text applicant_id FK
+        text applicant_score_card_result_user_id FK
+        text note
+        text question_text
+        text question_weight
+        text score
+    }
+    applicant_score_card_result {
+        text applicant_id PK
+        text user_id PK
+        text created_at
+        text score
+        text template_name
+        text template_type
+        text template_weighted
+    }
+    applicant_partner_language {
+        text languages PK
+        text applicant_id PK
+    }
+    applicant_data {
+        text name PK
+        text applicant_id PK
+        text value
+    }
+    applicant {
+        text id PK
+        text funnel_id FK
+        text stage_id FK
+        text bank_account_number
+        text bank_name
+        text bank_routing_number
+        text can_receive_sms
+        text can_work_in_us
+        text certifications_license
+        text citizenship
+        text city
+        text country
+        text created_at
+        text date_of_birth
+        text desired_employment_duration
+        text desired_hours_per_week
+        text did_apply_multiple_time
+        text driver_license_expiration_date
+        text driver_license_number
+        text driver_license_state
+        text earnings_expectations
+        text education
+        text email
+        text emergency_contact_name
+        text emergency_contact_phone
+        text emergency_contact_relationship
+        text ethnicity
+        text facebook
+        text first_language
+        text first_name
+        text gender
+        text have_prior_experience
+        text have_transportation
+        text income_income_tax_dollar_amount
+        text income_medicare_tax
+        text income_salary
+        text income_ss_tax
+        text income_taxpayer_identification_number
+        text insurance_benefactor_first_name
+        text insurance_benefactor_last_name
+        text insurance_benefactor_middle_name
+        text insurance_city_of_issue
+        text insurance_company_group_id
+        text insurance_company_of_issue
+        text insurance_country_of_issue
+        text insurance_expiration_date
+        text insurance_issue_date
+        text insurance_member_id
+        text insurance_type
+        text is_duplicate
+        text last_name
+        text last_transitioned_at
+        text linkedin
+        text name
+        text national_identification_number
+        text normalized_phone_number
+        text on_hold_reason
+        text passport_city_of_issue
+        text passport_country_of_issue
+        text passport_expiration_date
+        text passport_issue_date
+        text passport_number
+        text phone_number
+        text phone_number_country_code
+        text phone_platform
+        text previous_work
+        text receive_automated_email
+        text referral_source
+        text rejection_reason
+        jsonb secure_data
+        text ssn
+        text state
+        text street
+        text success_in_job
+        text team_or_solo
+        text twitter
+        text updated_at
+        text vehicle_make
+        text vehicle_model
+        text vehicle_registration_plate_number
+        text vehicle_vin_number
+        text vehicle_year
+        text w_4_federal_additional_properties
+        text w_4_federal_description
+        text w_4_federal_form_url
+        jsonb w_4_federal_required
+        text w_4_federal_status
+        text w_4_federal_type
+        text w_4_state_additional_properties
+        text w_4_state_description
+        text w_4_state_form_url
+        jsonb w_4_state_required
+        text w_4_state_status
+        text w_4_state_type
+        text why_should_we_hire_you
+        text work_availability
+        text zip_code
+    }
+    transition {
+        text _fivetran_id PK
+        text applicant_id FK
+        text parent_stage_id FK
+        text stage_id FK
+        text sub_stage_id FK
+        text user_id FK
+        text created_at
+        text transitioned_by
+    }
+    funnel_field {
+        text _fivetran_id PK
+        text funnel_id FK
+        text key
+        text question
+        text type
+    }
+    stage {
+        text id PK
+        text funnel_id FK
+        text parent_id FK
+        text title
+        text type
+    }
+    funnel {
+        text id PK
+        text owner_id FK
+        text active
+        text additional_info
+        text address
+        text apply_url
+        text brand
+        text compensation
+        text compensation_currency_code
+        text compensation_type
+        text created_at
+        text custom_id
+        text description
+        text is_private
+        text job_hours
+        text job_industry
+        text job_type
+        text location_group_id
+        text location_group_name
+        text location_id
+        text location_latitude
+        text location_longitude
+        text location_name
+        text name
+        text requirements
+        text time_zone
+        text title
+    }
+    applicant_file {
+        text id PK
+        text applicant_id FK
+        text stage_id FK
+        text approved
+        text filename
+        text friendly_name
+        text name
+        text public_url
+        text size
+        text stage_form_description
+    }
+    stage_label {
+        text _fivetran_id PK
+        text stage_id FK
+        text completed
+        text title
+    }
+    users {
+        text id PK
+        text email
+        text name
+    }
+    worker_data_collection_check }o--|| worker : "fk"
+    note }o--|| users : "fk"
+    note }o--|| applicant : "fk"
+    timestamp_funnel }o--|| funnel : "fk"
+    timestamp_funnel }o--|| timestamps : "fk"
+    timestamp_data_key }o--|| timestamps : "fk"
+    user_activity }o--|| applicant : "fk"
+    user_activity }o--|| users : "fk"
+    template_funnel }o--|| funnel : "fk"
+    template_funnel }o--|| template : "fk"
+    template_field }o--|| template : "fk"
+    applicant_label }o--|| applicant : "fk"
+    interview_session }o--|| stage : "fk"
+    interview_session }o--|| applicant : "fk"
+    applicant_background_check }o--|| applicant : "fk"
+    applicant_partner_data }o--|| applicant : "fk"
+    applicant_document_signature }o--|| applicant : "fk"
+    applicant_lessonly_result }o--|| applicant : "fk"
+    applicant_path_result }o--|| applicant : "fk"
+    applicant_course_result }o--|| applicant : "fk"
+    applicant_address }o--|| applicant : "fk"
+    applicant_file_upload_request }o--|| applicant : "fk"
+    applicant_score_card_result_answer }o--|| applicant_score_card_result : "fk"
+    applicant_score_card_result_answer }o--|| applicant : "fk"
+    applicant_score_card_result }o--|| users : "fk"
+    applicant_score_card_result }o--|| applicant : "fk"
+    applicant_partner_language }o--|| applicant : "fk"
+    applicant_data }o--|| applicant : "fk"
+    applicant }o--|| stage : "fk"
+    applicant }o--|| funnel : "fk"
+    transition }o--|| users : "fk"
+    transition }o--|| stage : "fk"
+    transition }o--|| stage : "fk"
+    transition }o--|| stage : "fk"
+    transition }o--|| applicant : "fk"
+    funnel_field }o--|| funnel : "fk"
+    stage }o--|| stage : "fk"
+    stage }o--|| funnel : "fk"
+    funnel }o--|| users : "fk"
+    applicant_file }o--|| stage : "fk"
+    applicant_file }o--|| applicant : "fk"
+    stage_label }o--|| stage : "fk"

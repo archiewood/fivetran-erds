@@ -1,0 +1,1452 @@
+erDiagram
+    channel {
+        text id PK
+        bigint channel_settings_allow_to_add_external_users
+        boolean channel_settings_new_members_can_see_previous_messages_files
+        bigint channel_settings_posting_permissions
+        text jid
+        text name
+        text type
+    }
+    meeting_report_custom_key {
+        text key PK
+        text meeting_report_uuid PK
+        text value
+    }
+    meeting_report_tracking {
+        text field PK
+        text meeting_report_uuid PK
+        text value
+    }
+    meeting_report {
+        text uuid PK
+        text dept
+        bigint duration
+        timestamp end_time
+        bigint meeting_id
+        bigint participants_count
+        timestamp start_time
+        text topic
+        bigint total_minutes
+        text type
+        text user_email
+        text user_name
+    }
+    meeting {
+        text uuid PK
+        text host_id FK
+        timestamp created_at
+        bigint duration
+        bigint id
+        text join_url
+        timestamp start_time
+        text timezone
+        text topic
+        bigint type
+    }
+    event_survey_report_question_answer {
+        text index PK
+        text event_id PK
+        text event_survey_report_fivetran_id PK
+        text answer
+        text question
+    }
+    event_survey_report {
+        text _fivetran_id PK
+        text event_id PK
+        text email
+        text session_id
+        text session_name
+    }
+    account_parent_team {
+        text id PK
+        text account_team_id PK
+        text name
+    }
+    account_team {
+        text id PK
+        text description
+        text leaf
+        text member_size
+        text name
+        text supervisor_size
+        text type
+    }
+    event_attendance_report_ticket_question {
+        text index PK
+        text event_attendance_fivetran_id PK
+        text event_attendance_report_ticket_id PK
+        text event_id PK
+        text answer
+        text title
+    }
+    event_attendance_report_ticket {
+        text ticket_id PK
+        text event_attendance_fivetran_id PK
+        text event_id PK
+        text ticket_type_id
+        text ticket_type_name
+    }
+    event_attendance_report_session_attendance {
+        text session_id PK
+        text event_attendance_report_fivetran_id PK
+        text event_id PK
+        text chat_messages_sent
+        text duration_spent_in_session
+        text live_streaming_view
+        text live_streaming_view_duration
+        text material_download
+        text recording_view
+        text recording_view_duration
+        text session_attendance
+        text session_name
+    }
+    event_attendance_report {
+        text _fivetran_id PK
+        text event_id PK
+        jsonb attendance_type
+        text connection_made
+        text display_name
+        text email
+        text event_attendance
+        text first_name
+        text last_name
+        text lobby_attendance
+        text lobby_chat_sent
+        text marketing_consent_prechecked
+        text number_of_tickets
+        text opt_in_marketing
+        text personal_chats
+        text profile_created
+        text role
+        text survey_taken
+        text total_sessions_joined
+    }
+    webinar_participant {
+        text user_id PK
+        text webinar_uuid PK
+        text participant_user_id FK
+        text customer_key
+        bigint duration
+        boolean failover
+        timestamp join_time
+        timestamp leave_time
+        text name
+        text registrant_id
+        text status
+        text user_email
+    }
+    event {
+        text id PK
+        text access_level
+        text attendance_type
+        jsonb blocked_countries
+        jsonb calendar
+        jsonb categories
+        text contact_email
+        text contact_name
+        text description
+        timestamp end_time
+        text event_status_type
+        text event_type
+        text event_url
+        text hub_id
+        timestamp lobby_end_time
+        timestamp lobby_start_time
+        text meeting_type
+        text name
+        text physical_location
+        text recurrence_duration
+        text recurrence_end_date_time
+        text recurrence_end_times
+        text recurrence_monthly_days
+        text recurrence_monthly_week
+        text recurrence_monthly_week_day
+        text recurrence_repeat_interval
+        text recurrence_type
+        text recurrence_weekly_days
+        text role_type
+        timestamp start_time
+        text status
+        text tagline
+        jsonb tags
+        text timezone
+    }
+    webinar_question_and_answer_question_detail {
+        text _fivetran_id PK
+        bigint webinar_question_and_answer_id FK
+        text webinar_question_and_answer_question_index FK
+        text webinar_uuid FK
+        text answer
+        text question
+    }
+    webinar_question_and_answer_question {
+        text index PK
+        bigint webinar_question_and_answer_id PK
+        text webinar_uuid PK
+        text email
+        text name
+    }
+    webinar_question_and_answer {
+        bigint id PK
+        text webinar_uuid PK
+        timestamp start_time
+        text uuid
+    }
+    webinar_absentee {
+        text registrant_id PK
+        text webinar_uuid PK
+        text email FK
+    }
+    phone_sms_mms_charge_usage_report {
+        text message_id PK
+        text session_id PK
+        text billing_number
+        text cost_center
+        text currency
+        text department
+        text from_display_name
+        text from_extension_number
+        text from_number
+        text message_type
+        text rate
+        text sent_time
+        text to_display_name
+        text to_extension_number
+        text to_number
+        text total_charge
+    }
+    webinar_panelist {
+        text user_id PK
+        text webinar_uuid PK
+        text email
+        text join_url
+        text name
+        text name_tag_description
+        text name_tag_id
+        text name_tag_name
+        text name_tag_pronouns
+        text virtual_background_id
+    }
+    event_registration_ticket_question {
+        text index PK
+        text event_id PK
+        text event_registration_fivetran_id PK
+        text event_registration_ticket_id PK
+        text answer
+        text title
+    }
+    event_registration_ticket {
+        text ticket_id PK
+        text event_id PK
+        text event_registration_fivetran_id PK
+        text authentication_method
+        text external_ticket_id
+        text ticket_type_id
+        text ticket_type_name
+    }
+    event_registration {
+        text _fivetran_id PK
+        text event_id PK
+        jsonb attendance_type
+        text display_name
+        text email
+        text event_attendance
+        text first_name
+        text last_name
+        text marketing_consent_prechecked
+        text opt_in_marketing
+        text register_date
+        text registration_method
+        text registration_source
+    }
+    disposition {
+        text id PK
+        text modified_by FK
+        text disposition_description
+        text disposition_name
+        text disposition_type
+        timestamp last_modified_time
+        text queue_count
+        text status
+    }
+    webinar_poll_question_answer {
+        text _fivetran_id PK
+        text webinar_poll_id FK
+        text webinar_poll_question_index FK
+        text webinar_uuid FK
+        text answer
+    }
+    webinar_poll_question_prompt {
+        text _fivetran_id PK
+        text webinar_poll_id FK
+        text webinar_poll_question_index FK
+        text webinar_uuid FK
+        text prompt_question
+        jsonb prompt_right_answers
+    }
+    webinar_poll_question {
+        text index PK
+        text webinar_poll_id PK
+        text webinar_uuid PK
+        bigint answer_max_character
+        bigint answer_min_character
+        boolean answer_required
+        boolean case_sensitive
+        text name
+        text rating_max_label
+        bigint rating_max_value
+        text rating_min_label
+        bigint rating_min_value
+        jsonb right_answers
+        boolean show_as_dropdown
+        text type
+    }
+    webinar_poll {
+        text id PK
+        text webinar_uuid PK
+        boolean anonymous
+        bigint poll_type
+        text status
+        text title
+    }
+    webinar_registrant_custom_question {
+        text index PK
+        text user_id PK
+        text webinar_uuid PK
+        text title
+        text value
+    }
+    webinar_registrant {
+        text user_id PK
+        text webinar_uuid PK
+        text email FK
+        text address
+        text city
+        text comments
+        text country
+        timestamp create_time
+        text industry
+        text job_title
+        text join_url
+        text no_of_employees
+        text org
+        text phone
+        text purchasing_time_frame
+        text role_in_purchase_process
+        text state
+        text zip
+    }
+    phone_call_path {
+        text id PK
+        text phone_call_history_id PK
+        text callee_country_code
+        text callee_country_iso_code
+        text callee_device_type
+        text callee_number_type
+        text caller_country_code
+        text caller_country_iso_code
+        text caller_device_type
+        text caller_number_type
+        text client_code
+        text device_private_ip
+        text device_public_ip
+        text event
+        text hold_time
+        text is_node
+        text node
+        text operator_ext_id
+        text operator_ext_number
+        text operator_ext_type
+        text operator_name
+        text press_key
+        text recording_id
+        text recording_type
+        text result
+        text result_reason
+        text segment
+        text voicemail_id
+        text waiting_time
+    }
+    webinar_tracking_source {
+        text id PK
+        text webinar_uuid PK
+        bigint registrationr_count
+        text source_name
+        text tracking_url
+        bigint visitor_count
+    }
+    phone_call_history {
+        text call_id PK
+        text id PK
+        text group_id FK
+        text answer_time
+        text call_result
+        text call_type
+        text callee_country_code
+        text callee_country_iso_code
+        text callee_device_type
+        text callee_did_number
+        text callee_email
+        text callee_ext_id
+        text callee_ext_number
+        text callee_ext_type
+        text callee_name
+        text callee_number_type
+        text caller_country_code
+        text caller_country_iso_code
+        text caller_device_type
+        text caller_did_number
+        text caller_email
+        text caller_ext_id
+        text caller_ext_number
+        text caller_ext_type
+        text caller_name
+        text caller_number_type
+        text client_code
+        text connect_type
+        text cost_center
+        text department
+        text direction
+        text duration
+        timestamp end_time
+        text international
+        text recording_status
+        text sbc_id
+        text sbc_name
+        text sip_group_id
+        text sip_group_name
+        text site_id
+        text site_name
+        text spam
+        timestamp start_time
+    }
+    webinar {
+        text uuid PK
+        text host_id FK
+        timestamp created_at
+        bigint duration
+        bigint id
+        text join_url
+        timestamp start_time
+        text timezone
+        text topic
+        bigint type
+    }
+    user_group {
+        text group_id PK
+        text user_id PK
+    }
+    user_im_group {
+        text im_group_id PK
+        text user_id PK
+    }
+    user_custom_attribute {
+        text key PK
+        text user_id PK
+        text name
+        text value
+    }
+    users {
+        text id PK
+        timestamp created_at
+        text dept
+        text email
+        text employee_unique_id
+        text first_name
+        text host_key
+        text languages
+        text last_client_version
+        timestamp last_login_time
+        text last_name
+        text phone_number
+        text plan_united_type
+        bigint pmi
+        text role_id
+        text status
+        text timezone
+        bigint type
+        bigint verified
+    }
+    webinar_report_custom_key {
+        text key PK
+        text webinar_report_uuid PK
+        text value
+    }
+    webinar_report_tracking {
+        text field PK
+        text webinar_report_uuid PK
+        text value
+    }
+    webinar_report {
+        text uuid PK
+        text dept
+        bigint duration
+        timestamp end_time
+        text id
+        bigint participants_count
+        timestamp start_time
+        text topic
+        bigint total_minutes
+        text type
+        text user_email
+        text user_name
+    }
+    phone_call_charge_usage_report {
+        text call_log_id PK
+        text billing_number
+        text call_type
+        text callee_billing_number
+        text callee_number
+        text caller_billing_number
+        text caller_number
+        text calling_party_name
+        text charge_mode
+        text cost_center
+        text currency
+        text department
+        text duration
+        text employee_id
+        timestamp end_time
+        text forward_number_billing
+        text rate
+        text service_type
+        text total_charge
+    }
+    meeting_participant {
+        text meeting_uuid PK
+        text user_id PK
+        text participant_user_id FK
+        text bo_mtg_id
+        text customer_key
+        bigint duration
+        boolean failover
+        timestamp join_time
+        timestamp leave_time
+        text name
+        text registrant_id
+        text status
+        text user_email
+    }
+    room {
+        text id PK
+        text account_type
+        text calender_name
+        text camera
+        text device_ip
+        text email
+        text health
+        jsonb issues
+        text last_start_time
+        text location
+        text location_id
+        text microphone
+        text room_name
+        text speaker
+        text status
+    }
+    voice_historical_detail_report_channel {
+        text index PK
+        text engagement_id PK
+        text channel
+        text channel_source
+    }
+    voice_historical_detail_report_flow {
+        text flow_id PK
+        text engagement_id PK
+        text flow_name
+        text flow_version
+    }
+    voice_historical_detail_report_queue {
+        text cc_queue_id PK
+        text engagement_id PK
+        text queue_name
+    }
+    voice_historical_detail_report_agent {
+        text index PK
+        text engagement_id PK
+        text display_name
+        text user_id
+    }
+    voice_historical_detail_report_required_skill {
+        text skill_id PK
+        text engagement_id PK
+        text minimum_proficiency_level
+        text skill_name
+    }
+    voice_historical_detail_report_optional_skill {
+        text skill_id PK
+        text engagement_id PK
+        text minimum_proficiency_level
+        text skill_name
+    }
+    voice_historical_detail_report_agent_skill {
+        text skill_id PK
+        text engagement_id PK
+        text minimum_proficiency_level
+        text skill_name
+    }
+    voice_historical_detail_report {
+        text engagement_id PK
+        text disposition_id FK
+        text agent_first_message_speed
+        text callback_pending_duration
+        text callback_waiting_duration
+        text channel
+        text consumer_id
+        text consumer_name
+        text consumer_number
+        jsonb dialed_numbers
+        text direction
+        text disposition_name
+        text handling_duration
+        text hold_duration
+        text ivr_duration
+        text last_widget_name
+        text queue_wait_type
+        text results
+        text ring_duration
+        timestamp start_time
+        text talking_duration
+        text total_duration
+        text total_flow_duration
+        text waiting_duration
+        text wrap_up_duration
+    }
+    voice_historical_queue_report {
+        text cc_queue_id PK
+        text queue_name
+        text total_completed
+        text total_inbound
+        text total_transferred_in
+        text total_transferred_out
+        text voice_average_outbound_answer_duration
+        text voice_average_outbound_hold_duration
+        text voice_average_outbound_wrap_up_duration
+        text voice_end_time_interval
+        text voice_hangup_outbound
+        text voice_hold_abandoned
+        text voice_inbound_average_talking_duration
+        text voice_inbound_average_waiting_duration
+        text voice_inbound_average_wrap_up_duration
+        text voice_inbound_longest_talking_duration
+        text voice_inbound_longest_waiting_duration
+        text voice_inbound_longest_wrap_up_duration
+        text voice_inbound_shortest_talking_duration
+        text voice_inbound_shortest_waiting_duration
+        text voice_inbound_shortest_wrap_up_duration
+        text voice_long_abandoned
+        text voice_long_outbound
+        text voice_service_level
+        text voice_short_abandoned
+        text voice_short_outbound
+        text voice_start_time_interval
+        text voice_total_abandoned_duration
+        text voice_total_answer_duration
+        text voice_total_answered_users
+        text voice_total_hold_duration
+        text voice_total_missed
+        text voice_total_outbound
+        text voice_total_outbound_answer_duration
+        text voice_total_outbound_hold_duration
+        text voice_total_outbound_wrap_up_duration
+        text voice_total_overflowed
+        text voice_total_queue_wait_duration
+        text voice_total_wrap_up_duration
+        text voice_upgraded_to_video_call
+    }
+    phone_sms_session_participant {
+        text index PK
+        text phone_sms_session_id PK
+        text display_name
+        text extension_deleted_time
+        text extension_status
+        text is_session_owner
+        text owner_id
+        text owner_type
+        text phone_number
+    }
+    phone_sms_session {
+        text id PK
+        text last_access_time
+        text session_type
+    }
+    messaging_historical_queue_report {
+        text cc_queue_id PK
+        text messaging_average_agent_first_message_speed
+        text messaging_average_outbound_answer_duration
+        text messaging_average_outbound_wrap_up_duration
+        text messaging_average_sent
+        jsonb messaging_channel_sources
+        text messaging_end_time_interval
+        text messaging_inbound_average_messaging_duration
+        text messaging_inbound_average_waiting_duration
+        text messaging_inbound_longest_messaging_duration
+        text messaging_inbound_longest_waiting_duration
+        text messaging_inbound_shortest_messaging_duration
+        text messaging_inbound_shortest_waiting_duration
+        text messaging_longest_agent_first_message_speed
+        text messaging_service_level
+        text messaging_shortest_agent_first_message_speed
+        text messaging_start_time_interval
+        text messaging_total_abandoned
+        text messaging_total_auto_closed
+        text messaging_total_outbound
+        text messaging_total_outbound_answer_duration
+        text messaging_total_outbound_wrap_up_duration
+        text messaging_total_overflowed
+        text messaging_total_released
+        text messaging_total_sent
+        text messaging_upgraded_to_video_call
+        text messaging_upgraded_to_voice_call
+        text queue_name
+        text total_completed
+        text total_inbound
+        text total_transferred_in
+        text total_transferred_out
+    }
+    video_historical_queue_report {
+        text cc_queue_id PK
+        text queue_name
+        text total_completed
+        text total_inbound
+        text total_transferred_in
+        text total_transferred_out
+        text video_average_talking_duration
+        text video_average_waiting_duration
+        text video_average_wrap_up_duration
+        text video_end_time_interval
+        text video_hold_abandoned
+        text video_long_abandoned
+        text video_longest_talking_duration
+        text video_longest_waiting_duration
+        text video_longest_wrap_up_duration
+        text video_service_level
+        text video_short_abandoned
+        text video_shortest_talking_duration
+        text video_shortest_waiting_duration
+        text video_shortest_wrap_up_duration
+        text video_start_time_interval
+        text video_total_missed
+        text video_total_overflowed
+    }
+    phone_call_log {
+        text call_id PK
+        text callee_codec
+        text callee_device_private_ip
+        text callee_device_public_ip
+        text callee_device_type
+        text callee_extension_number
+        text callee_headset
+        text callee_isp
+        text callee_microphone
+        text callee_phone_number
+        text callee_site_id
+        text caller_codec
+        text caller_device_private_ip
+        text caller_device_public_ip
+        text caller_device_type
+        text caller_extension_number
+        text caller_headset
+        text caller_isp
+        text caller_microphone
+        text caller_phone_number
+        text caller_site_id
+        text date_time
+        text direction
+        text duration
+        text mos
+    }
+    agent_status_history {
+        text _fivetran_id PK
+        text user_id FK
+        text display_name
+        text duration
+        timestamp end_time
+        jsonb occupied_engagements
+        timestamp start_time
+        text status_id
+        text status_name
+        text sub_status_id
+        text sub_status_name
+    }
+    deal {
+        text id PK
+        text owner_id FK
+        text account_name
+        text account_type
+        text amount
+        text close_date
+        timestamp create_time
+        text currency_type
+        text description
+        text is_closed
+        text is_private
+        timestamp last_activity_time
+        text name
+        text number_of_conversations
+        text owner_email
+        text owner_name
+        text stage
+        text time_in_stage
+    }
+    messaging_agent_leg_report {
+        text _fivetran_id PK
+        text cc_queue_id FK
+        text disposition_id FK
+        text engagement_id FK
+        text agent_end_time
+        text agent_first_response_duration
+        text agent_offered
+        text agent_start_time
+        text channel
+        text channel_source
+        text conference_count
+        text conference_duration
+        text conversation_duration
+        text direct_transfer
+        text display_name
+        text disposition_name
+        text handle_duration
+        text handled_engagement
+        text hold_count
+        text hold_duration
+        text queue_name
+        text refused_engagement
+        text ring_duration
+        text user_email
+        text user_id
+        text warm_conference
+        text warm_conference_duration
+        text warm_transfer_completed
+        text warm_transfer_duration
+        text warm_transfer_initiated
+        text wrap_up_duration
+    }
+    agent_time_sheet {
+        text _fivetran_id PK
+        text user_id FK
+        text average_video_call_talking_duration
+        text average_wrap_up_duration
+        text display_name
+        text end_time_interval
+        text inbound_average_voice_call_talking_duration
+        text not_ready_duration
+        text not_ready_percentage
+        text occupied_duration
+        text occupied_percentage
+        text offline_duration
+        text online_duration
+        text ready_duration
+        text ready_percentage
+        text start_time_interval
+        text total_inbound_voice_call
+        text total_inbound_voice_call_duration
+        text total_outbound_voice_call
+        text total_outbound_voice_call_duration
+    }
+    voice_agent_leg_report {
+        text _fivetran_id PK
+        text cc_queue_id FK
+        text disposition_id FK
+        text engagement_id FK
+        text agent_end_time
+        text agent_first_response_duration
+        text agent_offered
+        text agent_start_time
+        text channel
+        text channel_source
+        text conference_count
+        text conference_duration
+        text conversation_duration
+        text direct_transfer
+        text display_name
+        text disposition_name
+        text handle_duration
+        text handled_engagement
+        text hold_count
+        text hold_duration
+        text queue_name
+        text refused_engagement
+        text ring_duration
+        text user_email
+        text user_id
+        text warm_conference
+        text warm_conference_duration
+        text warm_transfer_completed
+        text warm_transfer_duration
+        text warm_transfer_initiated
+        text wrap_up_duration
+    }
+    conversation {
+        text id PK
+        text deal_id FK
+        text host_id FK
+        text meeting_uuid FK
+        text conversation_topic
+        text conversation_type
+        text duration
+        text duration_sec
+        text engagement_score
+        text engaging_questions_count
+        text filler_words_count
+        text iq_processed_time
+        text meeting_id
+        text meeting_start_time
+        text next_steps_count
+        text processing_analysis
+        text sentiment_score
+        text topic
+    }
+    email_historical_queue_report {
+        text cc_queue_id PK
+        text email_end_time_interval
+        text email_inbound_average_agent_first_reply_duration
+        text email_inbound_average_agent_reply_duration
+        text email_inbound_average_inactive_duration
+        text email_inbound_average_messaging_duration
+        text email_inbound_average_waiting_duration
+        text email_inbound_longest_agent_first_reply_duration
+        text email_inbound_longest_agent_reply_duration
+        text email_inbound_longest_inactive_duration
+        text email_inbound_longest_messaging_duration
+        text email_inbound_longest_waiting_duration
+        text email_inbound_shortest_agent_first_reply_duration
+        text email_inbound_shortest_agent_reply_duration
+        text email_inbound_shortest_inactive_duration
+        text email_inbound_shortest_messaging_duration
+        text email_inbound_shortest_waiting_duration
+        text email_service_level
+        text email_start_time_interval
+        text email_total_auto_closed
+        text email_total_handled
+        text email_total_offered
+        text email_total_offers
+        text email_total_offers_acd
+        text email_total_offers_answered
+        text email_total_offers_declined
+        text email_total_offers_missed
+        text email_total_offers_non_acd
+        text email_total_overflowed
+        text email_total_released
+        text email_total_transferred_in_to_agent
+        text email_total_transferred_in_to_queue
+        text email_total_transferred_out_of_queue
+        text email_total_transferred_out_within_queue
+        text queue_name
+        text total_completed
+        text total_inbound
+        text total_transferred_in
+        text total_transferred_out
+    }
+    email_historical_detail_report_channel {
+        text index PK
+        text engagement_id PK
+        text channel
+        text channel_source
+    }
+    email_historical_detail_report_flow {
+        text flow_id PK
+        text engagement_id PK
+        text flow_name
+        text flow_version
+    }
+    email_historical_detail_report_queue {
+        text cc_queue_id PK
+        text engagement_id PK
+        text queue_name
+    }
+    email_historical_detail_report_agent {
+        text index PK
+        text engagement_id PK
+        text display_name
+        text user_id
+    }
+    email_historical_detail_report_required_skill {
+        text skill_id PK
+        text engagement_id PK
+        text minimum_proficiency_level
+        text skill_name
+    }
+    email_historical_detail_report_optional_skill {
+        text skill_id PK
+        text engagement_id PK
+        text minimum_proficiency_level
+        text skill_name
+    }
+    email_historical_detail_report_agent_skill {
+        text skill_id PK
+        text engagement_id PK
+        text minimum_proficiency_level
+        text skill_name
+    }
+    email_historical_detail_report {
+        text engagement_id PK
+        text disposition_id FK
+        text agent_first_message_speed
+        text callback_pending_duration
+        text callback_waiting_duration
+        text channel
+        text consumer_id
+        text consumer_name
+        text consumer_number
+        jsonb dialed_numbers
+        text direction
+        text disposition_name
+        text handling_duration
+        text hold_duration
+        text ivr_duration
+        text last_widget_name
+        text queue_wait_type
+        text results
+        text ring_duration
+        timestamp start_time
+        text talking_duration
+        text total_duration
+        text total_flow_duration
+        text waiting_duration
+        text wrap_up_duration
+    }
+    video_historical_detail_report_channel {
+        text index PK
+        text engagement_id PK
+        text channel
+        text channel_source
+    }
+    video_historical_detail_report_flow {
+        text flow_id PK
+        text engagement_id PK
+        text flow_name
+        text flow_version
+    }
+    video_historical_detail_report_queue {
+        text cc_queue_id PK
+        text engagement_id PK
+        text queue_name
+    }
+    video_historical_detail_report_agent {
+        text index PK
+        text engagement_id PK
+        text display_name
+        text user_id
+    }
+    video_historical_detail_report_required_skill {
+        text skill_id PK
+        text engagement_id PK
+        text minimum_proficiency_level
+        text skill_name
+    }
+    video_historical_detail_report_optional_skill {
+        text skill_id PK
+        text engagement_id PK
+        text minimum_proficiency_level
+        text skill_name
+    }
+    video_historical_detail_report_agent_skill {
+        text skill_id PK
+        text engagement_id PK
+        text minimum_proficiency_level
+        text skill_name
+    }
+    video_historical_detail_report {
+        text engagement_id PK
+        text disposition_id FK
+        text agent_first_message_speed
+        text callback_pending_duration
+        text callback_waiting_duration
+        text channel
+        text consumer_id
+        text consumer_name
+        text consumer_number
+        jsonb dialed_numbers
+        text direction
+        text disposition_name
+        text handling_duration
+        text hold_duration
+        text ivr_duration
+        text last_widget_name
+        text queue_wait_type
+        text results
+        text ring_duration
+        timestamp start_time
+        text talking_duration
+        text total_duration
+        text total_flow_duration
+        text waiting_duration
+        text wrap_up_duration
+    }
+    messaging_historical_detail_report_channel {
+        text index PK
+        text engagement_id PK
+        text channel
+        text channel_source
+    }
+    messaging_historical_detail_report_flow {
+        text flow_id PK
+        text engagement_id PK
+        text flow_name
+        text flow_version
+    }
+    messaging_historical_detail_report_queue {
+        text cc_queue_id PK
+        text engagement_id PK
+        text queue_name
+    }
+    messaging_historical_detail_report_agent {
+        text index PK
+        text engagement_id PK
+        text display_name
+        text user_id
+    }
+    messaging_historical_detail_report_required_skill {
+        text skill_id PK
+        text engagement_id PK
+        text minimum_proficiency_level
+        text skill_name
+    }
+    messaging_historical_detail_report_optional_skill {
+        text skill_id PK
+        text engagement_id PK
+        text minimum_proficiency_level
+        text skill_name
+    }
+    messaging_historical_detail_report_agent_skill {
+        text skill_id PK
+        text engagement_id PK
+        text minimum_proficiency_level
+        text skill_name
+    }
+    messaging_historical_detail_report {
+        text engagement_id PK
+        text disposition_id FK
+        text agent_first_message_speed
+        text callback_pending_duration
+        text callback_waiting_duration
+        text channel
+        text consumer_id
+        text consumer_name
+        text consumer_number
+        jsonb dialed_numbers
+        text direction
+        text disposition_name
+        text handling_duration
+        text hold_duration
+        text ivr_duration
+        text last_widget_name
+        text queue_wait_type
+        text results
+        text ring_duration
+        timestamp start_time
+        text talking_duration
+        text total_duration
+        text total_flow_duration
+        text waiting_duration
+        text wrap_up_duration
+    }
+    deal_activity {
+        text _fivetran_id PK
+        text deal_id PK
+        text conversation_id FK
+        text host_id FK
+        text activity_type
+        text conversation_topic
+        text direction
+        text duration
+        text engagement_score
+        text message_id
+        text number_of_message_in_thread
+        text processing_analysis
+        text sentiment_score
+        text stage
+        text stage_during_conversation
+        timestamp start_date
+    }
+    conversation_scorecard_question {
+        text question_id PK
+        text conversation_id PK
+        text conversation_scorecard_id PK
+        text max_score_label
+        text min_score_label
+        text question_comment
+        text question_description
+        text question_title
+        text score
+    }
+    conversation_scorecard {
+        text id PK
+        text conversation_id PK
+        text user_id FK
+        text average_score
+        text rate_time
+        text rater_display_name
+        text rater_email
+        text rater_user_id
+        text scorecard_description
+        text scorecard_name
+    }
+    engagement_survey_result {
+        text question_id PK
+        text engagement_id PK
+        text survey_id PK
+        text answer
+        text date_time
+        text file_url
+        text question_name
+        text question_order
+        text question_type
+    }
+    engagement_survey {
+        text survey_id PK
+        text engagement_id PK
+        text flow_id FK
+        text queue_id FK
+        text flow_name
+        text queue_name
+        text survey_name
+        text survey_trigger_level
+    }
+    engagement_channel {
+        text index PK
+        text engagement_id PK
+        text channel
+        text channel_source
+    }
+    engagement_customer {
+        text id PK
+        text engagement_id PK
+        text consumer_display_name
+        text consumer_number
+    }
+    engagement_flow {
+        text id PK
+        text engagement_id PK
+        text flow_name
+        text flow_version
+    }
+    engagement_queues {
+        text id PK
+        text engagement_id PK
+        text queue_name
+    }
+    engagement_agent {
+        text engagement_id PK
+        text id PK
+        text display_name
+    }
+    engagement_event_skills {
+        text skill_category_id PK
+        text skill_id PK
+        text engagement_id PK
+        text skill_category_name
+        text skill_name
+        text skill_proficiency_level
+    }
+    engagement_event {
+        text _fivetran_id PK
+        text engagement_id PK
+        text transfer_to_user_id FK
+        text user_id FK
+        text accept_type
+        text cc_queue_id
+        text channel
+        text channel_source
+        text conference_type
+        text consumer_display_name
+        text consumer_id
+        text crm_call_status
+        text crm_type
+        text direction
+        text duration
+        jsonb email_reply_bcc
+        jsonb email_reply_cc
+        jsonb email_reply_to
+        text event_type
+        text flow_id
+        text flow_name
+        text inbox_id
+        text inbox_name
+        text invitee
+        text invitee_type
+        text queue_name
+        text start_time
+        text supervisor_display_name
+        text supervisor_id
+        text transfer_to_cc_queue_id
+        text transfer_to_flow_id
+        text transfer_to_flow_name
+        text transfer_to_number
+        text transfer_to_queue_name
+        text transfer_to_user_display_name
+        text transfer_type
+        text upgraded_to_channel_type
+        text user_display_name
+    }
+    engagement_disposition {
+        text engagement_id PK
+        text id PK
+        text disposition_name
+    }
+    engagement_notes {
+        text id PK
+        text user_id PK
+        text engagement_id PK
+        text last_modified_time
+        text note
+    }
+    engagement {
+        text id PK
+        text channel_types
+        text direction
+        text duration
+        text end_time
+        text flow_duration
+        text handling_duration
+        text queue_wait_type
+        text start_time
+        text survey_id
+        text talk_duration
+        text transcript_url
+        text transfer_count
+        text voice_mail
+        text waiting_duration
+        text wrap_up_duration
+    }
+    meeting_report_custom_key }o--|| meeting_report : "fk"
+    meeting_report_tracking }o--|| meeting_report : "fk"
+    meeting_report }o--|| meeting : "fk"
+    meeting }o--|| users : "fk"
+    event_survey_report_question_answer }o--|| event_survey_report : "fk"
+    event_survey_report_question_answer }o--|| event_survey_report : "fk"
+    event_survey_report }o--|| event : "fk"
+    account_parent_team }o--|| account_team : "fk"
+    event_attendance_report_ticket_question }o--|| event_attendance_report_ticket : "fk"
+    event_attendance_report_ticket_question }o--|| event_attendance_report_ticket : "fk"
+    event_attendance_report_ticket_question }o--|| event_attendance_report_ticket : "fk"
+    event_attendance_report_ticket }o--|| event_attendance_report : "fk"
+    event_attendance_report_ticket }o--|| event_attendance_report : "fk"
+    event_attendance_report_session_attendance }o--|| event_attendance_report : "fk"
+    event_attendance_report_session_attendance }o--|| event_attendance_report : "fk"
+    event_attendance_report }o--|| event : "fk"
+    webinar_participant }o--|| users : "fk"
+    webinar_participant }o--|| users : "fk"
+    webinar_participant }o--|| webinar : "fk"
+    webinar_question_and_answer_question_detail }o--|| webinar_question_and_answer_question : "fk"
+    webinar_question_and_answer_question_detail }o--|| webinar_question_and_answer_question : "fk"
+    webinar_question_and_answer_question_detail }o--|| webinar_question_and_answer_question : "fk"
+    webinar_question_and_answer_question }o--|| webinar_question_and_answer : "fk"
+    webinar_question_and_answer_question }o--|| webinar_question_and_answer : "fk"
+    webinar_question_and_answer }o--|| webinar : "fk"
+    webinar_absentee }o--|| webinar_registrant : "fk"
+    webinar_absentee }o--|| users : "fk"
+    webinar_absentee }o--|| webinar : "fk"
+    webinar_panelist }o--|| users : "fk"
+    webinar_panelist }o--|| webinar : "fk"
+    event_registration_ticket_question }o--|| event_registration_ticket : "fk"
+    event_registration_ticket_question }o--|| event_registration_ticket : "fk"
+    event_registration_ticket_question }o--|| event_registration_ticket : "fk"
+    event_registration_ticket }o--|| event_registration : "fk"
+    event_registration_ticket }o--|| event_registration : "fk"
+    event_registration }o--|| event : "fk"
+    disposition }o--|| users : "fk"
+    webinar_poll_question_answer }o--|| webinar_poll_question : "fk"
+    webinar_poll_question_answer }o--|| webinar_poll_question : "fk"
+    webinar_poll_question_answer }o--|| webinar_poll_question : "fk"
+    webinar_poll_question_prompt }o--|| webinar_poll_question : "fk"
+    webinar_poll_question_prompt }o--|| webinar_poll_question : "fk"
+    webinar_poll_question_prompt }o--|| webinar_poll_question : "fk"
+    webinar_poll_question }o--|| webinar_poll : "fk"
+    webinar_poll_question }o--|| webinar_poll : "fk"
+    webinar_poll }o--|| webinar : "fk"
+    webinar_registrant_custom_question }o--|| webinar_registrant : "fk"
+    webinar_registrant_custom_question }o--|| webinar_registrant : "fk"
+    webinar_registrant }o--|| users : "fk"
+    webinar_registrant }o--|| users : "fk"
+    webinar_registrant }o--|| webinar : "fk"
+    phone_call_path }o--|| phone_call_history : "fk"
+    webinar_tracking_source }o--|| webinar : "fk"
+    phone_call_history }o--|| user_group : "fk"
+    webinar }o--|| users : "fk"
+    user_group }o--|| users : "fk"
+    user_im_group }o--|| users : "fk"
+    user_custom_attribute }o--|| users : "fk"
+    webinar_report_custom_key }o--|| webinar_report : "fk"
+    webinar_report_tracking }o--|| webinar_report : "fk"
+    webinar_report }o--|| webinar : "fk"
+    meeting_participant }o--|| users : "fk"
+    meeting_participant }o--|| users : "fk"
+    meeting_participant }o--|| meeting : "fk"
+    voice_historical_detail_report_channel }o--|| voice_historical_detail_report : "fk"
+    voice_historical_detail_report_flow }o--|| voice_historical_detail_report : "fk"
+    voice_historical_detail_report_queue }o--|| voice_historical_queue_report : "fk"
+    voice_historical_detail_report_queue }o--|| voice_historical_detail_report : "fk"
+    voice_historical_detail_report_agent }o--|| voice_historical_detail_report : "fk"
+    voice_historical_detail_report_required_skill }o--|| voice_historical_detail_report : "fk"
+    voice_historical_detail_report_optional_skill }o--|| voice_historical_detail_report : "fk"
+    voice_historical_detail_report_agent_skill }o--|| voice_historical_detail_report : "fk"
+    voice_historical_detail_report }o--|| disposition : "fk"
+    phone_sms_session_participant }o--|| phone_sms_session : "fk"
+    agent_status_history }o--|| users : "fk"
+    deal }o--|| users : "fk"
+    messaging_agent_leg_report }o--|| engagement : "fk"
+    messaging_agent_leg_report }o--|| disposition : "fk"
+    messaging_agent_leg_report }o--|| messaging_historical_queue_report : "fk"
+    agent_time_sheet }o--|| users : "fk"
+    voice_agent_leg_report }o--|| engagement : "fk"
+    voice_agent_leg_report }o--|| disposition : "fk"
+    voice_agent_leg_report }o--|| voice_historical_queue_report : "fk"
+    conversation }o--|| deal : "fk"
+    conversation }o--|| meeting : "fk"
+    conversation }o--|| users : "fk"
+    email_historical_detail_report_channel }o--|| email_historical_detail_report : "fk"
+    email_historical_detail_report_flow }o--|| email_historical_detail_report : "fk"
+    email_historical_detail_report_queue }o--|| email_historical_queue_report : "fk"
+    email_historical_detail_report_queue }o--|| email_historical_detail_report : "fk"
+    email_historical_detail_report_agent }o--|| email_historical_detail_report : "fk"
+    email_historical_detail_report_required_skill }o--|| email_historical_detail_report : "fk"
+    email_historical_detail_report_optional_skill }o--|| email_historical_detail_report : "fk"
+    email_historical_detail_report_agent_skill }o--|| email_historical_detail_report : "fk"
+    email_historical_detail_report }o--|| disposition : "fk"
+    video_historical_detail_report_channel }o--|| video_historical_detail_report : "fk"
+    video_historical_detail_report_flow }o--|| video_historical_detail_report : "fk"
+    video_historical_detail_report_queue }o--|| video_historical_queue_report : "fk"
+    video_historical_detail_report_queue }o--|| video_historical_detail_report : "fk"
+    video_historical_detail_report_agent }o--|| video_historical_detail_report : "fk"
+    video_historical_detail_report_required_skill }o--|| video_historical_detail_report : "fk"
+    video_historical_detail_report_optional_skill }o--|| video_historical_detail_report : "fk"
+    video_historical_detail_report_agent_skill }o--|| video_historical_detail_report : "fk"
+    video_historical_detail_report }o--|| disposition : "fk"
+    messaging_historical_detail_report_channel }o--|| messaging_historical_detail_report : "fk"
+    messaging_historical_detail_report_flow }o--|| messaging_historical_detail_report : "fk"
+    messaging_historical_detail_report_queue }o--|| messaging_historical_queue_report : "fk"
+    messaging_historical_detail_report_queue }o--|| messaging_historical_detail_report : "fk"
+    messaging_historical_detail_report_agent }o--|| messaging_historical_detail_report : "fk"
+    messaging_historical_detail_report_required_skill }o--|| messaging_historical_detail_report : "fk"
+    messaging_historical_detail_report_optional_skill }o--|| messaging_historical_detail_report : "fk"
+    messaging_historical_detail_report_agent_skill }o--|| messaging_historical_detail_report : "fk"
+    messaging_historical_detail_report }o--|| disposition : "fk"
+    deal_activity }o--|| conversation : "fk"
+    deal_activity }o--|| users : "fk"
+    deal_activity }o--|| deal : "fk"
+    conversation_scorecard_question }o--|| conversation_scorecard : "fk"
+    conversation_scorecard_question }o--|| conversation_scorecard : "fk"
+    conversation_scorecard }o--|| conversation : "fk"
+    conversation_scorecard }o--|| users : "fk"
+    engagement_survey_result }o--|| engagement_survey : "fk"
+    engagement_survey_result }o--|| engagement_survey : "fk"
+    engagement_survey }o--|| engagement : "fk"
+    engagement_survey }o--|| engagement_queues : "fk"
+    engagement_survey }o--|| engagement_flow : "fk"
+    engagement_channel }o--|| engagement : "fk"
+    engagement_customer }o--|| engagement : "fk"
+    engagement_flow }o--|| engagement : "fk"
+    engagement_queues }o--|| engagement : "fk"
+    engagement_agent }o--|| users : "fk"
+    engagement_agent }o--|| engagement : "fk"
+    engagement_event_skills }o--|| engagement : "fk"
+    engagement_event }o--|| users : "fk"
+    engagement_event }o--|| users : "fk"
+    engagement_event }o--|| engagement : "fk"
+    engagement_disposition }o--|| disposition : "fk"
+    engagement_disposition }o--|| engagement : "fk"
+    engagement_notes }o--|| engagement : "fk"
+    engagement }o--|| engagement : "fk"

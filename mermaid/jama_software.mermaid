@@ -1,0 +1,377 @@
+erDiagram
+    user_group {
+        text id PK
+        text project_id FK
+        text description
+        text name
+        text type
+        text uid
+    }
+    attachment {
+        text id PK
+        text created_by FK
+        text modified_by FK
+        text parent_item_id FK
+        text parent_project_id FK
+        text project_id FK
+        text attachment_id
+        text created_date
+        text description
+        text document_key
+        text file_name
+        text file_size
+        text global_id
+        text item_type
+        text last_activity_date
+        text last_locked_date
+        text locked
+        text locked_by
+        text mime_type
+        text modified_date
+        text name
+        text type
+    }
+    test_cycle {
+        text id PK
+        text attachment_id FK
+        text created_by FK
+        text modified_by FK
+        text parent_item_id FK
+        text parent_project_id FK
+        text project_id FK
+        text created_date
+        text description
+        text document_key
+        text global_id
+        text item_type
+        text last_activity_date
+        text modified_date
+        text name
+        text status
+        text type
+    }
+    item {
+        text id PK
+        text created_by FK
+        text modified_by FK
+        text parent_item_id FK
+        text parent_project_id FK
+        text project_id FK
+        text child_item_type
+        text created_date
+        text description
+        text document_key
+        text global_id
+        text global_sort_order
+        text item_type
+        text last_activity_date
+        text last_locked_date
+        text locked
+        text locked_by
+        text modified_date
+        text name
+        text sequence
+        text sort_order
+        text status
+        text type
+    }
+    comment {
+        text id PK
+        text created_by FK
+        text item_id FK
+        text modified_by FK
+        text project_id FK
+        text body_text
+        text comment_type
+        text created_date
+        text deleted
+        text in_reply_to
+        text status
+    }
+    category {
+        text path_id PK
+        text name
+        text path
+    }
+    item_type_widget {
+        text index PK
+        text item_type_id PK
+        text name
+        text synchronize
+    }
+    item_type_field {
+        text id PK
+        text item_type_id PK
+        text parent_item_type_id FK
+        text picklist_id FK
+        text control_style
+        text field_type
+        text infotip
+        text label
+        text name
+        text pick_list_id
+        text read_only
+        text read_only_allow_overwrite
+        text required
+        text synchronize
+        text text_type
+        text trigger_suspect
+    }
+    item_type {
+        text id PK
+        text category
+        text description
+        text display
+        text display_plural
+        text image
+        text is_system
+        text type_key
+    }
+    relationship_set_mapped_project {
+        text project_id PK
+        text relationship_set_id PK
+        text active
+        text name
+    }
+    relationship_set_rule {
+        text id PK
+        text relationship_set_id PK
+        text from_item_type_id FK
+        text relationship_type_id FK
+        text to_item_type_id FK
+        text for_coverage
+    }
+    relationship_set {
+        text id PK
+        text is_exclusive
+        text name
+    }
+    picklist {
+        text id PK
+        text description
+        text name
+        text picklist_type
+    }
+    test_run_baselined_applied_category_snapshot {
+        text index PK
+        text test_run_id PK
+        text category_path_sequence
+        text item_version_number_applied
+    }
+    test_run_group {
+        text index PK
+        text test_run_id PK
+        text groups
+    }
+    test_run {
+        text id PK
+        text created_by FK
+        text item_type_id FK
+        text modified_by FK
+        text project_id FK
+        text created_date
+        text document_key
+        text fields_key
+        text global_id
+        text last_activity_date
+        text modified_date
+        text sort_order_from_test_group
+        text test_case_version_number
+    }
+    project {
+        text id PK
+        text created_by FK
+        text modified_by FK
+        text parent_id FK
+        text project_manager_id FK
+        text created_date
+        text description
+        text is_folder
+        text modified_date
+        text name
+        text project_group
+        text project_key
+        text status_id
+        text text_1
+    }
+    picklist_option {
+        text id PK
+        text picklist_id FK
+        text active
+        text archived
+        text color
+        text defaults
+        text description
+        text info_tip
+        text name
+        text sort_order
+        text value
+    }
+    release {
+        text id PK
+        text project_id PK
+        text active
+        text archived
+        text date
+        text deleted
+        text description
+        text item_count
+        text name
+        text type
+    }
+    base_line {
+        text id PK
+        text project_id PK
+        text created_by FK
+        text origin_item_id FK
+        text origin_project_id FK
+        text origin_release_id FK
+        text origin_test_cycle_id FK
+        text origin_test_plan_id FK
+        text baseline_key
+        text baseline_pick_list_option
+        text created_date
+        text description
+        text filter
+        text name
+        text origin_simple_filter
+        text signed
+        text source
+        text source_key
+        text source_name
+        text type
+    }
+    test_plan_baselined_applied_category_snapshot {
+        text index PK
+        text test_plan_id PK
+        text category_path_sequence
+        text item_version_number_applied
+    }
+    test_plan {
+        text id PK
+        text project_id PK
+        text created_by FK
+        text item_type_id FK
+        text modified_by FK
+        text archived
+        text created_date
+        text document_key
+        text fields_key
+        text global_id
+        text last_activity_date
+        text modified_date
+    }
+    relationship_type {
+        text id PK
+        text is_default
+        text name
+        text type
+    }
+    relationship {
+        text id PK
+        text project_id PK
+        text from_item FK
+        text relationship_type FK
+        text to_item FK
+        text suspect
+    }
+    users {
+        text id PK
+        text active
+        text authentication_id
+        text authentication_name
+        jsonb custom_data
+        text email
+        text first_name
+        text last_name
+        text license_type
+        text location
+        text phone
+        text title
+        text type
+        text uid
+        text username
+    }
+    activity {
+        text id PK
+        text project_id PK
+        text item_id FK
+        text item_type_id FK
+        text user_id FK
+        text action
+        text date
+        text details
+        text event_type
+        text object_type
+        text user_comment
+        text user_name
+    }
+    tags {
+        text id PK
+        text project_id PK
+        text name
+    }
+    user_group }o--|| project : "fk"
+    attachment }o--|| users : "fk"
+    attachment }o--|| project : "fk"
+    attachment }o--|| users : "fk"
+    attachment }o--|| project : "fk"
+    attachment }o--|| item : "fk"
+    test_cycle }o--|| users : "fk"
+    test_cycle }o--|| project : "fk"
+    test_cycle }o--|| users : "fk"
+    test_cycle }o--|| attachment : "fk"
+    test_cycle }o--|| project : "fk"
+    test_cycle }o--|| item : "fk"
+    item }o--|| users : "fk"
+    item }o--|| project : "fk"
+    item }o--|| users : "fk"
+    item }o--|| item : "fk"
+    item }o--|| project : "fk"
+    comment }o--|| users : "fk"
+    comment }o--|| item : "fk"
+    comment }o--|| project : "fk"
+    comment }o--|| users : "fk"
+    item_type_widget }o--|| item_type : "fk"
+    item_type_field }o--|| item_type : "fk"
+    item_type_field }o--|| picklist : "fk"
+    item_type_field }o--|| item_type : "fk"
+    relationship_set_mapped_project }o--|| project : "fk"
+    relationship_set_mapped_project }o--|| relationship_set : "fk"
+    relationship_set_rule }o--|| item_type : "fk"
+    relationship_set_rule }o--|| item_type : "fk"
+    relationship_set_rule }o--|| relationship_type : "fk"
+    relationship_set_rule }o--|| relationship_set : "fk"
+    test_run_baselined_applied_category_snapshot }o--|| test_run : "fk"
+    test_run_group }o--|| test_run : "fk"
+    test_run }o--|| users : "fk"
+    test_run }o--|| project : "fk"
+    test_run }o--|| users : "fk"
+    test_run }o--|| item_type : "fk"
+    project }o--|| project : "fk"
+    project }o--|| users : "fk"
+    project }o--|| users : "fk"
+    project }o--|| users : "fk"
+    picklist_option }o--|| picklist : "fk"
+    release }o--|| project : "fk"
+    base_line }o--|| users : "fk"
+    base_line }o--|| item : "fk"
+    base_line }o--|| test_cycle : "fk"
+    base_line }o--|| release : "fk"
+    base_line }o--|| test_plan : "fk"
+    base_line }o--|| project : "fk"
+    base_line }o--|| project : "fk"
+    test_plan_baselined_applied_category_snapshot }o--|| test_plan : "fk"
+    test_plan }o--|| users : "fk"
+    test_plan }o--|| users : "fk"
+    test_plan }o--|| item_type : "fk"
+    test_plan }o--|| project : "fk"
+    relationship }o--|| item : "fk"
+    relationship }o--|| item : "fk"
+    relationship }o--|| relationship_type : "fk"
+    relationship }o--|| project : "fk"
+    activity }o--|| users : "fk"
+    activity }o--|| item : "fk"
+    activity }o--|| item_type : "fk"
+    activity }o--|| project : "fk"
+    tags }o--|| project : "fk"

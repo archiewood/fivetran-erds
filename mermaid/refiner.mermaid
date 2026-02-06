@@ -1,0 +1,96 @@
+erDiagram
+    rating_report {
+        timestamp date_range_end PK
+        timestamp date_range_start PK
+        text average
+        text count
+        jsonb data
+        text sum
+    }
+    nps_report {
+        timestamp date_range_end PK
+        timestamp date_range_start PK
+        text count
+        text detractors
+        text nps
+        text passives
+        text promoters
+    }
+    csat_report {
+        timestamp date_range_end PK
+        timestamp date_range_start PK
+        text count
+        text csat
+        text data_neutral
+        text data_satisfied
+        text data_unsatisfied
+        text data_very_satisfied
+        text data_very_unsatisfied
+    }
+    form {
+        text id PK
+        text archived_at
+        jsonb channels
+        timestamp created_at
+        text first_form_view_at
+        text folder
+        text last_form_view_at
+        text name
+        timestamp published_at
+        timestamp updated_at
+    }
+    distribution_report {
+        timestamp date_range_end PK
+        timestamp date_range_start PK
+        jsonb data
+        text datapoints
+        text responses
+    }
+    response {
+        text id PK
+        text contact_id FK
+        text form_id FK
+        text completed_at
+        text data_first_question
+        text data_second_question
+        text dismissed_at
+        text first_data_reception_at
+        text first_shown_at
+        text last_data_reception_at
+        text last_shown_at
+        text received_at
+        text show_counter
+    }
+    segment {
+        text id PK
+        text is_manual
+        text name
+    }
+    contact_segment {
+        text contact_id PK
+        text id PK
+    }
+    contact {
+        text id PK
+        text account_display_name
+        text account_domain
+        timestamp account_first_seen_at
+        text account_id
+        timestamp account_last_seen_at
+        text account_remote_id
+        text display_name
+        text email
+        timestamp first_seen_at
+        timestamp last_seen_at
+        text remote_id
+    }
+    count_report {
+        timestamp date_range_end PK
+        timestamp date_range_start PK
+        text responses
+        text views
+    }
+    response }o--|| form : "fk"
+    response }o--|| contact : "fk"
+    contact_segment }o--|| segment : "fk"
+    contact_segment }o--|| contact : "fk"

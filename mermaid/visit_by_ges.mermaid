@@ -1,0 +1,254 @@
+erDiagram
+    partner_contact_address {
+        text index PK
+        text partner_id PK
+        text address
+        text city
+        text country
+        text house_number
+        text house_number_suffix
+        text name
+        text postal_code
+        text state
+        text type
+    }
+    partner_tag {
+        text index PK
+        text partner_id PK
+        text tag_name
+    }
+    partner {
+        text id PK
+        text expo_id FK
+        text booth_number
+        text booth_size
+        text contact_coc_number
+        text contact_comments
+        text contact_company
+        text contact_company_fax
+        text contact_company_name
+        text contact_company_phone
+        text contact_company_website
+        text contact_department
+        text contact_dob
+        text contact_email
+        text contact_fax
+        text contact_first_initials
+        text contact_first_name
+        text contact_gender
+        text contact_id
+        text contact_job_function
+        text contact_last_name
+        text contact_last_name_prefix
+        text contact_nationality
+        text contact_phone_1
+        text contact_phone_2
+        text contact_reference
+        text contact_social_security_number
+        text contact_suffix
+        text contact_title
+        text contact_vat_number
+        text contact_website
+        text deleted
+        text license_download_url
+        jsonb licenses
+        text name
+        text registration_type_id
+        text registration_type_level
+        text registration_type_name
+        text registration_type_reference
+        text registration_url
+        text revision
+        text translation_id
+        text translation_iso
+        text translation_language
+        text translation_name
+    }
+    event {
+        text id PK
+        text contact_email
+        text description
+        text ends
+        text name
+        text reference
+        text revision
+        text start
+        text timezone
+    }
+    visitor_contact_address {
+        text index PK
+        text visitor_id PK
+        text address
+        text city
+        text country
+        text house_number
+        text house_number_suffix
+        text name
+        text postal_code
+        text state
+        text type
+    }
+    visitor_ordered_item {
+        text index PK
+        text visitor_id PK
+        text amount_name
+        text count
+        text name
+        text reference
+        text shop_item_id
+        text text
+        text total_amount
+        text total_amount_vat
+    }
+    visitor_ordered_payment {
+        text index PK
+        text visitor_id PK
+        text amount
+        text code
+        text payment_method
+        text payment_method_info
+        text payment_state
+        text reference
+        text time
+    }
+    visitor_policy {
+        text index PK
+        text visitor_id PK
+        text checked
+        text type
+    }
+    visitor_activity {
+        text index PK
+        text content_id FK
+        text partner_id FK
+        text visitor_id FK
+        text action
+        text location_direction
+        text location_id
+        text location_name
+        text time
+        text type
+    }
+    visitor_question_answer {
+        text id PK
+        text question_id PK
+        text visitor_id PK
+        text reference
+        text type
+        text value
+    }
+    visitor_question {
+        text id PK
+        text visitor_id PK
+        text level
+        text name
+        text reference
+        text type
+    }
+    visitor {
+        text id PK
+        text expo_id FK
+        text action_code_name
+        text action_code_type
+        text action_code_value
+        text comments
+        text confirmation_document_url
+        text contact_coc_number
+        text contact_comments
+        text contact_company
+        text contact_company_fax
+        text contact_company_name
+        text contact_company_phone
+        text contact_company_website
+        text contact_department
+        text contact_dob
+        text contact_email
+        text contact_fax
+        text contact_first_initials
+        text contact_first_name
+        text contact_gender
+        text contact_id
+        text contact_job_function
+        text contact_last_name
+        text contact_last_name_prefix
+        text contact_nationality
+        text contact_phone_1
+        text contact_phone_2
+        text contact_reference
+        text contact_social_security_number
+        text contact_suffix
+        text contact_title
+        text contact_vat_number
+        text contact_website
+        text data_use_1
+        text data_use_2
+        text data_use_3
+        text deleted
+        text dwelling_dwelling_time
+        text dwelling_first_entry_time
+        text dwelling_last_exit_time
+        text embedded_digital_badge_url
+        text form_id
+        text form_name
+        text form_url
+        text mailing
+        text master_visitor_id
+        text method
+        text ordered_code
+        text ordered_currency
+        text ordered_total
+        text ordered_total_due
+        text ordered_total_paid
+        text ordered_total_sub
+        text ordered_total_vat
+        text partner
+        text partner_association
+        text picture_url
+        text reference
+        text register_time
+        text registration_state
+        text registration_type_id
+        text registration_type_level
+        text registration_type_name
+        text registration_type_reference
+        text registration_url
+        text revision
+        jsonb timeslots
+        text tracking_utm_campaign
+        text tracking_utm_content
+        text tracking_utm_medium
+        text tracking_utm_source
+        text tracking_utm_term
+        text translation_id
+        text translation_iso
+        text translation_language
+        text translation_name
+        text visit_discover_url
+        text visit_time
+    }
+    content {
+        text id PK
+        text expo_id FK
+        text partner_id FK
+        text name
+        text revision
+        text source
+        text summary
+        text type
+    }
+    partner_contact_address }o--|| partner : "fk"
+    partner_tag }o--|| partner : "fk"
+    partner }o--|| event : "fk"
+    visitor_contact_address }o--|| visitor : "fk"
+    visitor_ordered_item }o--|| visitor : "fk"
+    visitor_ordered_payment }o--|| visitor : "fk"
+    visitor_policy }o--|| visitor : "fk"
+    visitor_activity }o--|| partner : "fk"
+    visitor_activity }o--|| content : "fk"
+    visitor_activity }o--|| visitor : "fk"
+    visitor_question_answer }o--|| visitor_question : "fk"
+    visitor_question_answer }o--|| visitor_question : "fk"
+    visitor_question }o--|| visitor : "fk"
+    visitor }o--|| event : "fk"
+    content }o--|| event : "fk"
+    content }o--|| partner : "fk"

@@ -1,0 +1,235 @@
+erDiagram
+    project_analyse_event {
+        text key PK
+        text project_analyse_key PK
+        text category
+        text description
+        text name
+    }
+    project_analyse {
+        text key PK
+        text project_key PK
+        text build_string
+        timestamp date
+        boolean manual_new_code_period_baseline
+        text project_version
+        text revision
+    }
+    measures_component {
+        text component_key PK
+        text metric_key PK
+        text best_value
+        text period_best_value
+        text period_index
+        text period_value
+        text value
+    }
+    groups {
+        text name PK
+        boolean defaults
+        text description
+        text managed
+        integer members_count
+    }
+    metric {
+        text id PK
+        text key PK
+        boolean custom
+        text description
+        integer direction
+        text domain
+        boolean hidden
+        text name
+        boolean qualitative
+        text type
+    }
+    issue_comment {
+        text key PK
+        text issue_key PK
+        text login FK
+        timestamp created_at
+        text html_text
+        text markdown
+        boolean updatable
+    }
+    issue_flow_location {
+        text _fivetran_id PK
+        text issue_key PK
+        text component
+        integer end_line
+        integer end_offset
+        text msg
+        integer start_line
+        integer start_offset
+    }
+    issue_tag {
+        text tags PK
+        text issue_key PK
+    }
+    issue {
+        text key PK
+        text project PK
+        text rule PK
+        text author
+        text component
+        timestamp creation_date
+        text debt
+        text effort
+        integer end_line
+        integer end_offset
+        text hash
+        integer line
+        text message
+        text resolution
+        text scope
+        text severity
+        integer start_line
+        integer start_offset
+        text status
+        text type
+        timestamp update_date
+    }
+    project_branch {
+        text name PK
+        text project_key PK
+        timestamp analysis_date
+        boolean excluded_from_purge
+        boolean is_main
+        text quality_gate_status
+        text type
+    }
+    rule_param {
+        text key PK
+        text rule_key PK
+        text default_value
+        text description
+        text html_desc
+        text type
+    }
+    rule_tag {
+        text tags PK
+        text rule_key PK
+    }
+    rule_sys_tag {
+        text sys_tag PK
+        text rule_key PK
+    }
+    rule {
+        text key PK
+        timestamp created_at
+        text gap_description
+        text html_desc
+        text html_note
+        boolean is_external
+        boolean is_template
+        text lang
+        text lang_name
+        text name
+        text repo
+        text scope
+        text severity
+        text status
+        text type
+        timestamp updated_at
+    }
+    project_link {
+        text id PK
+        text project_key PK
+        text name
+        text type
+        text url
+    }
+    project_pull_request {
+        text key PK
+        text project_key PK
+        timestamp analysis_date
+        text base
+        text branch
+        integer bugs
+        integer code_smells
+        text quality_gate_status
+        text target
+        text title
+        text url
+        integer vulnerabilities
+    }
+    project {
+        text key PK
+        timestamp last_analysis_date
+        text name
+        text qualifier
+        text revision
+        text visibility
+    }
+    measures_component_tree {
+        text key PK
+        text metric_key PK
+        text base_component_key FK
+        text best_value
+        text name
+        text path
+        text period_best_value
+        text period_index
+        text period_value
+        text qualifier
+        text value
+    }
+    component_tag {
+        text tags PK
+        text component_key PK
+    }
+    component {
+        text key PK
+        text project FK
+        timestamp analysis_date
+        timestamp leak_period_date
+        text name
+        text qualifier
+        text version
+        text visibility
+    }
+    user_group {
+        text group_name PK
+        text users_login PK
+    }
+    user_scm_account {
+        text scm_account PK
+        text users_login PK
+    }
+    users {
+        text login PK
+        boolean active
+        text avatar
+        text email
+        text external_identity
+        text external_provider
+        timestamp last_connection_date
+        boolean local
+        text managed
+        text name
+        text sonar_lint_last_connection_date
+        integer tokens_count
+    }
+    project_analyse_event }o--|| project_analyse : "fk"
+    project_analyse }o--|| project : "fk"
+    measures_component }o--|| metric : "fk"
+    measures_component }o--|| component : "fk"
+    issue_comment }o--|| users : "fk"
+    issue_comment }o--|| issue : "fk"
+    issue_flow_location }o--|| issue : "fk"
+    issue_tag }o--|| issue : "fk"
+    issue }o--|| rule : "fk"
+    issue }o--|| project : "fk"
+    project_branch }o--|| project : "fk"
+    rule_param }o--|| rule : "fk"
+    rule_tag }o--|| rule : "fk"
+    rule_sys_tag }o--|| rule : "fk"
+    project_link }o--|| project : "fk"
+    project_pull_request }o--|| project : "fk"
+    measures_component_tree }o--|| metric : "fk"
+    measures_component_tree }o--|| component : "fk"
+    component_tag }o--|| component : "fk"
+    component }o--|| project : "fk"
+    user_group }o--|| groups : "fk"
+    user_group }o--|| users : "fk"
+    user_scm_account }o--|| users : "fk"

@@ -1,0 +1,534 @@
+erDiagram
+    recipient_stage {
+        text _fivetran_id PK
+        text recipient_id FK
+        text accepted
+        text bounced
+        text click
+        text declined
+        text download
+        text failed_error
+        text from_email
+        text from_name
+        text has_files
+        text has_link
+        text has_open
+        text initial_scheduled_at
+        text opens
+        text ordinal
+        text processed_at
+        text replied
+        text schedule
+        text scheduled_at
+        text scheduled_end
+        text scheduled_start
+        text scheduled_timezone
+        text sender_replied
+        text sending_error
+        text sent_at
+        text stage_id
+        text state
+        text task_assignee
+        text task_created_at
+        text task_id
+        text task_message_status
+        text task_status
+        text tentative
+        text trigger
+        text type
+    }
+    recipient {
+        text id PK
+        text sequence_id FK
+        text completed_reason
+        text created_at
+        text event_click
+        text event_download
+        text event_open
+        text last_stage_sent_ordinal
+        text rst_failed
+        text state
+        text to_email
+        text to_name
+        text user_id
+    }
+    contact {
+        text id PK
+        text email
+        text google_contact_id
+        text name
+        text saleforce_id
+        text time_stamp
+        text used_count
+        text user_id
+    }
+    groups {
+        text id PK
+        text name
+        jsonb shared
+        text url
+        text user_id
+    }
+    contact_group {
+        text contact_id PK
+        text groups_id PK
+        text google_contact_id
+    }
+    meeting_invite_event {
+        text _fivetran_id PK
+        text meeting_invite_id FK
+        text message_id FK
+        text custom_
+        text guest_email
+        text guest_name
+        text id
+        text ip_address
+        text responded_at
+        text user_agent
+    }
+    meeting_invite_timeslot {
+        text index PK
+        text meeting_invite_id PK
+        text end_
+        text start
+    }
+    meeting_invite {
+        text id PK
+        jsonb additional_guest
+        text allow_double_booking
+        jsonb any_room_in_building
+        text calendar_id
+        text calendar_name
+        text created_by
+        text creation_date
+        text description
+        text guest_can_modify
+        text include_message_link
+        text integration_zoom
+        text locale
+        text location
+        text meeting_type_id
+        jsonb room_and_resource
+        text timezone
+        text title
+        text user_id
+    }
+    sequence_search_stage {
+        text id PK
+        text sequence_search_id PK
+        text delegator_email
+        text delegator_name
+        text did_exit_from
+        text did_unsubscribe_from
+        text failed_error
+        text from_email
+        text from_name
+        text initial_scheduled_at
+        text is_active
+        text is_completed
+        text is_last_processed_stage
+        text is_next_stage
+        text is_paused
+        text is_scheduled
+        text message_id
+        text num_click
+        text num_delivered
+        text num_download
+        text num_open
+        text ordinal
+        text processed_at
+        text saleforce_task_assignee
+        text saleforce_task_created_at
+        text saleforce_task_id
+        text saleforce_task_status
+        text scheduled_at
+        text sending_error
+        text sent_at
+        text state
+        text task_assignee_id
+        text task_created_at
+        text task_id
+        text task_status
+        text trigger
+        text type
+        text was_accepted
+        text was_bounced
+        text was_clicked
+        text was_declined
+        text was_delivered
+        text was_delivered_with_tracked_file
+        text was_delivered_with_tracked_invite
+        text was_delivered_with_tracked_link
+        text was_delivered_with_tracked_open
+        text was_downloaded
+        text was_opened
+        text was_processed
+        text was_replied
+        text was_sender_replied
+        text was_sent
+        text was_task_created
+        text was_task_deleted
+        text was_tentative
+    }
+    sequence_search {
+        text id PK
+        text completed_at
+        text completed_reason
+        text created_at
+        text domain
+        text email
+        text last_stage_sent_ordinal
+        text last_stage_sent_processed_at
+        text name
+        text recipient_id
+        text sequence_id
+        text sequence_name
+        text state
+        text to_email
+        text to_name
+        text user_id
+    }
+    insight_report {
+        text id PK
+        text user_id FK
+        text created_at
+        text query
+        jsonb shared
+        text title
+        text type
+        text updated_at
+    }
+    snippet {
+        text id PK
+        text archived_at
+        text created_at
+        text custom_shortcut
+        text deleted_at
+        text is_inline
+        text name
+        text saved_at
+        text saved_by
+        jsonb shared
+        text source
+        text tag_id
+        text tag_name
+        text title
+        text user_id
+    }
+    sequence_folder {
+        text sequence_id PK
+        text folder_id PK
+    }
+    folder {
+        text id PK
+        text created_at
+        text name
+        text saved_at
+        jsonb shared
+        text user_id
+    }
+    unsubscribe {
+        text id PK
+        text message_id FK
+        text team_id FK
+        text email
+        text name
+    }
+    message_team {
+        text message_id PK
+        text team_id PK
+    }
+    message_snippet {
+        text message_id PK
+        text snippet_id PK
+    }
+    message_crms_connected {
+        text index PK
+        text message_id PK
+        text log_to
+        text name
+    }
+    message_to {
+        text index PK
+        text message_id PK
+        text email
+        text name
+    }
+    message_cc {
+        text index PK
+        text message_id PK
+        text email
+        text name
+    }
+    message_bcc {
+        text index PK
+        text message_id PK
+        text email
+        text name
+    }
+    message_attachment {
+        text index PK
+        text message_id PK
+        text name
+        text size
+        text type
+    }
+    message {
+        text id PK
+        text sequence_id FK
+        text body
+        text created
+        text error_response
+        text file_tracking_enabled
+        text follow_up_description
+        text follow_up_trigger
+        text follow_up_unparsed_date
+        text from_email
+        text from_is_delegated
+        text from_name
+        text link_tracking_enabled
+        text notification_enabled
+        text scheduled
+        text sending_error
+        text sent
+        text subject
+        text sync_to_org
+        text tracking_enabled
+        text updated_at
+        text user_has_modified
+        text user_id
+    }
+    code_snippet {
+        text id PK
+        text background
+        text code
+        text created_at
+        text html
+        text languages
+        text theme
+        text title
+        text user_id
+    }
+    sequence_variable {
+        text index PK
+        text sequence_id PK
+        text variable
+    }
+    sequence_stage {
+        text index PK
+        text sequence_id PK
+        text stage_id
+    }
+    sequence_bcc {
+        text index PK
+        text sequence_id PK
+        text email
+        text name
+    }
+    sequence_cc {
+        text index PK
+        text sequence_id PK
+        text email
+        text name
+    }
+    sequence {
+        text id PK
+        text created_at
+        text file_track_enabled
+        text link_track_enabled
+        text name
+        text notification_enabled
+        text sync_org
+        text timezone
+        text updated_at
+        text user_id
+    }
+    live_feed_event {
+        text _fivetran_id PK
+        text message_id FK
+        text city
+        text country
+        text file_name
+        text id
+        text is_mobile
+        text link_text
+        text link_url
+        text opereting_system
+        text program
+        text recipient_email
+        text recipient_name
+        text region
+        text time_stamp
+        text type
+    }
+    rule_action {
+        text id PK
+        text rule_id FK
+        text body
+        text created_at
+        text delta_
+        text delta_unit
+        text is_paused
+        text modified_at
+        text subject
+        text type
+    }
+    rule {
+        text id PK
+        text created_at
+        text filter
+        text is_paused
+        text modified_at
+        text name
+        text trigger_event_name
+        text trigger_type
+        text user_id
+    }
+    meeting_type_guest {
+        text index PK
+        text meeting_type_id PK
+        text email
+        text name
+        text required
+    }
+    meeting_type_custom {
+        text index PK
+        text meeting_type_id PK
+        text label
+        text label_valid
+        text required
+        text type
+    }
+    meeting_type_calendar {
+        text calendar_id PK
+        text meeting_type_id PK
+    }
+    meeting_type_rule {
+        text meeting_type_id PK
+        text rule_id PK
+    }
+    meeting_type {
+        text id PK
+        jsonb any_room_in_building
+        text buffer
+        text copy_of
+        text created_at
+        text day_end
+        text day_start
+        text day_unit
+        text description
+        text duration_min
+        text end_date
+        text guest_can_modify_invite
+        text include_message_link
+        text integration_zoom
+        text link
+        text location
+        text name
+        text page_title
+        jsonb prevent_book
+        text reduced_interval
+        jsonb room_and_resource
+        jsonb round_queue
+        text start_date
+        text title
+        text updated_at
+        text use_specific_date
+        text user_id
+    }
+    meeting_type_day {
+        text _fivetran_id PK
+        text meeting_type_id PK
+        text day
+        text enabled
+        text end_time
+        text start_time
+    }
+    live_feed_recipient {
+        text index PK
+        text live_feed_id PK
+        text email
+        text name
+    }
+    live_feed {
+        text id PK
+        text message_id FK
+        text from_email
+        text from_name
+        text include_in_team_live_feed
+        text last_event_at
+        text last_event_by_email
+        text last_event_by_name
+        text last_event_type
+        text num_click
+        text num_download
+        text num_open
+        text perma_link
+        text sent
+        text service
+        text service_thread_id
+        text show_content_team_feed
+        text subject
+        text tracking_muted
+        text user_id
+        text was_accepted
+        text was_bounced
+        text was_declined
+        text was_replied
+        text was_tentative
+    }
+    team_member {
+        text member_id PK
+        text team_id FK
+        text accepted
+        text accepted_at
+        text created_at
+        text email
+        text invited_at
+        text name
+        text role
+        text user_id
+    }
+    team {
+        text id PK
+        text created_at
+        text modified_at
+        text name
+    }
+    recipient_stage }o--|| recipient : "fk"
+    recipient }o--|| sequence : "fk"
+    contact_group }o--|| contact : "fk"
+    contact_group }o--|| groups : "fk"
+    meeting_invite_event }o--|| message : "fk"
+    meeting_invite_event }o--|| meeting_invite_timeslot : "fk"
+    meeting_invite_timeslot }o--|| meeting_invite : "fk"
+    sequence_search_stage }o--|| sequence_search : "fk"
+    insight_report }o--|| contact : "fk"
+    sequence_folder }o--|| folder : "fk"
+    unsubscribe }o--|| team : "fk"
+    unsubscribe }o--|| message : "fk"
+    message_team }o--|| team : "fk"
+    message_team }o--|| message : "fk"
+    message_snippet }o--|| snippet : "fk"
+    message_snippet }o--|| message : "fk"
+    message_crms_connected }o--|| message : "fk"
+    message_to }o--|| message : "fk"
+    message_cc }o--|| message : "fk"
+    message_bcc }o--|| message : "fk"
+    message_attachment }o--|| message : "fk"
+    message }o--|| sequence : "fk"
+    sequence_variable }o--|| sequence : "fk"
+    sequence_stage }o--|| sequence : "fk"
+    sequence_bcc }o--|| sequence : "fk"
+    sequence_cc }o--|| sequence : "fk"
+    live_feed_event }o--|| message : "fk"
+    rule_action }o--|| rule : "fk"
+    meeting_type_guest }o--|| meeting_type : "fk"
+    meeting_type_custom }o--|| meeting_type : "fk"
+    meeting_type_calendar }o--|| meeting_invite : "fk"
+    meeting_type_calendar }o--|| meeting_type : "fk"
+    meeting_type_rule }o--|| rule : "fk"
+    meeting_type_rule }o--|| meeting_type : "fk"
+    live_feed_recipient }o--|| live_feed : "fk"
+    live_feed }o--|| message : "fk"
+    team_member }o--|| team : "fk"

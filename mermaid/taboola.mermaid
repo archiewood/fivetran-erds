@@ -1,0 +1,355 @@
+erDiagram
+    campaign {
+        bigint id PK
+        bigint account_id PK
+        text approval_state
+        text bid_strategy
+        text branding_text
+        text campaign_item_type
+        text campaign_profile
+        double_precision cpa_goal
+        double_precision cpc
+        text daily_ad_delivery_model
+        double_precision daily_cap
+        text end_date
+        text end_date_in_utc
+        boolean is_active
+        text is_spend_guard_active
+        text learning_state
+        text marketing_objective
+        text min_expected_conversions_for_cpa_goal
+        text name
+        text pricing_model
+        double_precision roas_goal
+        text safety_rating
+        double_precision spending_limit
+        text spending_limit_model
+        double_precision spent
+        text start_date
+        text start_date_in_utc
+        text status
+        double_precision target_cpa
+        text tracking_code
+        text traffic_allocation_ab_test_end_date
+        text traffic_allocation_mode
+        text type
+    }
+    content_provider_platform_report {
+        text _fivetran_id PK
+        bigint account_id FK
+        bigint content_provider_id FK
+        integer campaigns_num
+        integer clicks
+        text content_provider
+        text content_provider_name
+        double_precision conversions_value
+        double_precision cpa
+        integer cpa_actions_num
+        integer cpa_actions_num_from_clicks
+        integer cpa_actions_num_from_views
+        double_precision cpa_clicks
+        double_precision cpa_conversion_rate
+        double_precision cpa_conversion_rate_clicks
+        double_precision cpa_conversion_rate_views
+        double_precision cpa_views
+        double_precision cpc
+        double_precision cpm
+        double_precision ctr
+        text currency
+        text date
+        bigint impressions
+        text platform
+        double_precision roas
+        double_precision spent
+        text timezone
+        double_precision vcpm
+        double_precision vctr
+        integer visible_impressions
+    }
+    targeting_sub_country {
+        integer index PK
+        bigint campaign_id PK
+        text type
+        text value
+    }
+    group {
+        integer index PK
+        bigint account_id PK
+        text id
+    }
+    platform_report {
+        text _fivetran_id PK
+        bigint campaign_id FK
+        integer clicks
+        double_precision conversions_value
+        double_precision cpa
+        integer cpa_actions_num
+        integer cpa_actions_num_from_clicks
+        integer cpa_actions_num_from_views
+        double_precision cpa_clicks
+        double_precision cpa_conversion_rate
+        double_precision cpa_conversion_rate_clicks
+        double_precision cpa_conversion_rate_views
+        double_precision cpa_views
+        double_precision cpc
+        double_precision cpm
+        double_precision ctr
+        text currency
+        text date
+        bigint impressions
+        text platform
+        text platform_name
+        double_precision roas
+        double_precision spent
+        text timezone
+        double_precision vcpm
+        double_precision vctr
+        integer visible_impressions
+    }
+    targeting_platform {
+        integer index PK
+        bigint campaign_id PK
+        text type
+        text value
+    }
+    targeting_publisher {
+        integer index PK
+        bigint campaign_id PK
+        text type
+        text value
+    }
+    top_campaign_content_report {
+        text _fivetran_id PK
+        bigint campaign_id FK
+        bigint item FK
+        double_precision actions
+        integer actions_num_from_clicks
+        integer actions_num_from_views
+        integer clicks
+        double_precision conversions_value
+        double_precision cpa
+        double_precision cpa_clicks
+        double_precision cpa_views
+        double_precision cpc
+        double_precision cpm
+        text create_time
+        double_precision ctr
+        text currency
+        double_precision cvr
+        double_precision cvr_clicks
+        double_precision cvr_views
+        text date
+        text description
+        bigint impressions
+        text item_name
+        text learning_display_status
+        text old_item_version_id
+        double_precision roas
+        double_precision spent
+        text thumbnail_url
+        text timezone
+        text url
+        double_precision vcpm
+        double_precision vctr
+        integer visible_impressions
+    }
+    publisher_bid_modifier {
+        integer index PK
+        bigint campaign_id PK
+        double_precision cpc_modification
+        text target
+    }
+    targeting_os {
+        integer index PK
+        bigint campaign_id PK
+        text os_family
+        text sub_categories
+        text type
+    }
+    targeting_contextual {
+        integer index PK
+        bigint campaign_id PK
+        text type
+        text value
+    }
+    campaign_item {
+        bigint id PK
+        bigint campaign_id FK
+        text approval_state
+        boolean is_active
+        text status
+        text thumbnail_url
+        text title
+        text type
+        text url
+    }
+    campaign_site_day_report {
+        text _fivetran_id PK
+        bigint campaign_id FK
+        text blocking_level
+        text campaign_name
+        integer clicks
+        double_precision conversions_value
+        double_precision cpa
+        integer cpa_actions_num
+        integer cpa_actions_num_from_clicks
+        integer cpa_actions_num_from_views
+        double_precision cpa_clicks
+        double_precision cpa_conversion_rate
+        double_precision cpa_conversion_rate_clicks
+        double_precision cpa_conversion_rate_views
+        double_precision cpa_views
+        double_precision cpc
+        double_precision cpm
+        double_precision ctr
+        text currency
+        timestamp date_time
+        bigint impressions
+        double_precision roas
+        text site
+        text site_name
+        double_precision spent
+        text timezone
+        double_precision vcpm
+        double_precision vctr
+        integer visible_impressions
+    }
+    country_report {
+        text _fivetran_id PK
+        bigint campaign_id FK
+        integer clicks
+        double_precision conversions_value
+        text country
+        text country_name
+        double_precision cpa
+        integer cpa_actions_num
+        integer cpa_actions_num_from_clicks
+        integer cpa_actions_num_from_views
+        double_precision cpa_clicks
+        double_precision cpa_conversion_rate
+        double_precision cpa_conversion_rate_clicks
+        double_precision cpa_conversion_rate_views
+        double_precision cpa_views
+        double_precision cpc
+        double_precision cpm
+        double_precision ctr
+        text currency
+        text date
+        bigint impressions
+        double_precision roas
+        double_precision spent
+        text timezone
+        double_precision vcpm
+        double_precision vctr
+        integer visible_impressions
+    }
+    campaign_type {
+        integer index PK
+        bigint account_id PK
+        text type
+    }
+    account {
+        bigint id PK
+        text account_id
+        text country
+        text currency
+        text default_platform
+        boolean is_active
+        text language
+        text name
+        text parent_network
+        text timezone
+        text type
+    }
+    comment {
+        bigint campaign_id PK
+        integer index PK
+        bigint account_id PK
+        text comment
+    }
+    targeting_postal_code {
+        integer index PK
+        bigint campaign_id PK
+        text type
+        text value
+    }
+    contained_account {
+        integer index PK
+        bigint account_id PK
+        text id
+    }
+    content_provider_country_report {
+        text _fivetran_id PK
+        bigint account_id FK
+        bigint content_provider_id FK
+        integer campaigns_num
+        integer clicks
+        text content_provider
+        text content_provider_name
+        double_precision conversions_value
+        text country_name
+        text country_value
+        double_precision cpa
+        integer cpa_actions_num
+        integer cpa_actions_num_from_clicks
+        integer cpa_actions_num_from_views
+        double_precision cpa_clicks
+        double_precision cpa_conversion_rate
+        double_precision cpa_conversion_rate_clicks
+        double_precision cpa_conversion_rate_views
+        double_precision cpa_views
+        double_precision cpc
+        double_precision cpm
+        double_precision ctr
+        text currency
+        text date
+        bigint impressions
+        double_precision roas
+        double_precision spent
+        text timezone
+        double_precision vcpm
+        double_precision vctr
+        integer visible_impressions
+    }
+    partner_type {
+        integer index PK
+        bigint account_id PK
+        text type
+    }
+    targeting_country {
+        integer index PK
+        bigint campaign_id PK
+        text type
+        text value
+    }
+    targeting_audience_segment {
+        integer index PK
+        bigint campaign_id PK
+        text state
+        text value
+    }
+    campaign }o--|| account : "fk"
+    content_provider_platform_report }o--|| account : "fk"
+    content_provider_platform_report }o--|| account : "fk"
+    targeting_sub_country }o--|| campaign : "fk"
+    group }o--|| account : "fk"
+    platform_report }o--|| campaign : "fk"
+    targeting_platform }o--|| campaign : "fk"
+    targeting_publisher }o--|| campaign : "fk"
+    top_campaign_content_report }o--|| campaign_item : "fk"
+    top_campaign_content_report }o--|| campaign : "fk"
+    publisher_bid_modifier }o--|| campaign : "fk"
+    targeting_os }o--|| campaign : "fk"
+    targeting_contextual }o--|| campaign : "fk"
+    campaign_item }o--|| campaign : "fk"
+    campaign_site_day_report }o--|| campaign : "fk"
+    country_report }o--|| campaign : "fk"
+    campaign_type }o--|| account : "fk"
+    comment }o--|| account : "fk"
+    targeting_postal_code }o--|| campaign : "fk"
+    contained_account }o--|| account : "fk"
+    content_provider_country_report }o--|| account : "fk"
+    content_provider_country_report }o--|| account : "fk"
+    partner_type }o--|| account : "fk"
+    targeting_country }o--|| campaign : "fk"
+    targeting_audience_segment }o--|| campaign : "fk"

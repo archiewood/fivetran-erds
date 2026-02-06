@@ -1,0 +1,262 @@
+erDiagram
+    logic_action_history {
+        text _fivetran_id PK
+        text form_id PK
+        text logic_fivetran_id PK
+        text action
+        text detail_target_type
+        text detail_target_value
+        text detail_to_type
+        text detail_to_value
+        text detail_value_type
+        text detail_value_value
+    }
+    form_logic_history {
+        text _fivetran_id PK
+        text field_ref PK
+        text form_id PK
+        text type
+    }
+    form_insight {
+        text platform PK
+        text form_id PK
+        bigint average_time
+        double_precision completion_rate
+        bigint responses_count
+        bigint total_visits
+        bigint unique_visits
+    }
+    response_answer {
+        text form_id PK
+        text field_id PK
+        text response_id PK
+        boolean boolean
+        text date
+        text email
+        text file_url
+        double_precision number
+        text payment_amount
+        text payment_last_4
+        text payment_name
+        text phone_number
+        text text
+        text type
+        text url
+    }
+    form_history {
+        text id PK
+        text theme_id FK
+        text workspace_id FK
+        text _language
+        text cui_setting_avatar
+        boolean cui_setting_is_typing_emulation_disabled
+        text cui_setting_typing_emulation_speed
+        timestamp last_updated_at
+        text title
+        text type
+        text variable_price
+        integer variable_score
+    }
+    form_custom_message {
+        text form_id PK
+        text block_dropdown_hint
+        text block_dropdown_placeholder
+        text block_dropdown_placeholder_touch
+        text block_file_upload_choose
+        text block_file_upload_drag
+        text block_file_upload_uploading_progress
+        text block_legal_accept
+        text block_legal_reject
+        text block_longtext_hint
+        text block_multiple_choice_hint
+        text block_multiple_choice_other
+        text block_short_text_placeholder
+        text label_action_share
+        text label_button_ok
+        text label_button_review
+        text label_button_submit
+        text label_error_email_address
+        text label_error_expiry_month_title
+        text label_error_expiry_year_title
+        text label_error_incomplete_form
+        text label_error_max_length
+        text label_error_max_value
+        text label_error_min_value
+        text label_error_must_accept
+        text label_error_must_enter
+        text label_error_must_select
+        text label_error_range
+        text label_error_required
+        text label_error_server
+        text label_error_size_limit
+        text label_error_url
+        text label_hint_key
+        text label_no_default
+        text label_no_shortcut
+        text label_preview
+        text label_progress_percent
+        text label_progress_proportion
+        text label_warning_fallback_alert
+        text label_warning_form_unavailable
+        text label_warning_success
+        text label_yes_default
+        text label_yes_shortcut
+    }
+    response {
+        text id PK
+        text form_id PK
+        text calculated_score
+        timestamp landed_at
+        text landing_id
+        text response_type
+        timestamp staged_at
+        timestamp submitted_at
+        text token
+    }
+    response_answer_choice {
+        text choice_id PK
+        text field_id PK
+        text response_id PK
+        text choice_text
+        bigint ranking
+    }
+    response_variable {
+        integer index PK
+        text response_id PK
+        text key
+        double_precision number
+        text text
+        text type
+    }
+    self_notification {
+        text recipient PK
+        text notification_fivetran_id PK
+    }
+    setting_notification {
+        text _fivetran_id PK
+        text form_id PK
+    }
+    form_field_history {
+        text id PK
+        text form_id PK
+        text form_parent_field_id FK
+        text layout_attachment_href
+        text layout_attachment_property_brightness
+        text layout_attachment_property_description
+        text layout_attachment_property_focal_point_x
+        text layout_attachment_property_focal_point_y
+        text layout_attachment_scale
+        text layout_attachment_type
+        text layout_placement
+        text layout_type
+        text ref
+        text title
+        text type
+    }
+    workspace_member {
+        text email PK
+        text workspace_id PK
+        text name
+        text role
+    }
+    form_hidden_field_history {
+        text field PK
+        text form_id PK
+    }
+    theme {
+        text id PK
+        text background_brightness
+        text background_href
+        text background_layout
+        text field_alignment
+        text field_font_size
+        text font
+        boolean has_transparent_button
+        text name
+        text screen_alignment
+        text screen_font_size
+        text visibility
+    }
+    form_field_choice_history {
+        text form_id PK
+        text id PK
+        text field_id PK
+        text attachment_href
+        text attachment_property_description
+        text attachment_type
+        text label
+        text ref
+    }
+    logic_action_condition_history {
+        text _fivetran_id PK
+        text form_id PK
+        text logic_action_fivetran_id PK
+        text op
+        text type
+        text value
+    }
+    response_tag {
+        text name PK
+        text response_id PK
+    }
+    form_setting {
+        text form_id PK
+        text _language
+        boolean are_uploads_public
+        text facebook_pixel
+        text google_analytics
+        text google_tag_manager
+        boolean hide_navigation
+        boolean is_public
+        boolean is_trial
+        text progress_bar
+        text redirect_after_submit_url
+        boolean show_progress_bar
+        boolean show_time_to_complete
+        boolean show_typeform_branding
+    }
+    form_field_insight {
+        text id PK
+        text form_id PK
+        bigint dropoffs
+        text label
+        text ref
+        text title
+        text type
+        bigint views
+    }
+    respondent_notification {
+        text reply_to PK
+        text notification_fivetran_id PK
+    }
+    workspace {
+        text id PK
+        text account_id
+        boolean default
+        text name
+        boolean shared
+    }
+    logic_action_history }o--|| form_logic_history : "fk"
+    form_logic_history }o--|| form_history : "fk"
+    form_logic_history }o--|| form_field_history : "fk"
+    form_insight }o--|| form_history : "fk"
+    response_answer }o--|| form_field_history : "fk"
+    response_answer }o--|| response : "fk"
+    form_history }o--|| theme : "fk"
+    form_history }o--|| workspace : "fk"
+    form_custom_message }o--|| form_history : "fk"
+    response }o--|| form_history : "fk"
+    response_answer_choice }o--|| response : "fk"
+    response_variable }o--|| response : "fk"
+    self_notification }o--|| setting_notification : "fk"
+    setting_notification }o--|| form_history : "fk"
+    form_field_history }o--|| form_history : "fk"
+    form_field_history }o--|| form_field_history : "fk"
+    workspace_member }o--|| workspace : "fk"
+    form_hidden_field_history }o--|| form_history : "fk"
+    form_field_choice_history }o--|| form_field_history : "fk"
+    logic_action_condition_history }o--|| logic_action_history : "fk"
+    response_tag }o--|| response : "fk"
+    form_setting }o--|| form_history : "fk"
+    form_field_insight }o--|| form_history : "fk"
+    respondent_notification }o--|| setting_notification : "fk"

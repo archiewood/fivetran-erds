@@ -1,0 +1,369 @@
+erDiagram
+    template_widget_2 {
+        text _fivetran_id PK
+        text template_widget_1_index FK
+        text widget_id FK
+        text path
+        text title
+        text type
+    }
+    template_widget_1 {
+        text index PK
+        text widget_id PK
+        text path
+        text title
+        text type
+    }
+    widget {
+        text id PK
+        text app_id
+        text context
+        timestamp created_datetime
+        text deactivated_datetime
+        text orders
+        text template_type
+        text type
+        text updated_datetime
+    }
+    custom_fields {
+        text id PK
+        text created_datetime
+        text deactivated_datetime
+        text definition_data_type
+        jsonb definition_input_settings
+        text description
+        text external_id
+        text label
+        text managed_type
+        text object_type
+        text priority
+        text required
+        text requirement_type
+        text updated_datetime
+    }
+    rules {
+        text id PK
+        text code
+        timestamp created_datetime
+        text deactivated_datetime
+        text description
+        text event_types
+        text name
+        text priority
+        jsonb settings
+        text type
+        text updated_datetime
+    }
+    satisfaction_survey {
+        text id PK
+        text customer_id FK
+        text ticket_id FK
+        text body_text
+        timestamp created_datetime
+        text score
+        text scored_datetime
+        text sent_datetime
+        text should_send_datetime
+    }
+    view_field {
+        text _fivetran_id PK
+        text view_id FK
+        text field
+    }
+    view_shared_with_team {
+        text id PK
+        text view_id FK
+        text decoration
+    }
+    view_shared_with_user {
+        text id PK
+        text view_id FK
+    }
+    view {
+        text id PK
+        text category
+        timestamp created_datetime
+        text deactivated_datetime
+        text decoration_emoji
+        text filters
+        text name
+        text order_by
+        text order_dir
+        text search
+        text section_id
+        text shared_with_teams
+        text shared_with_users
+        text slug
+        text type
+        text visibility
+    }
+    view_item_channel {
+        text id PK
+        text customer_id FK
+        text user_id FK
+        text view_item_id FK
+        text address
+        text created_datetime
+        text deleted_datetime
+        text preferred
+        text type
+        text updated_datetime
+    }
+    view_item {
+        text id PK
+        text assignee_team_id FK
+        text assignee_user_id FK
+        text customer_id FK
+        text view_id FK
+        jsonb integration
+        text languages
+        text meta
+        text subject
+    }
+    macro_action {
+        text _fivetran_id PK
+        text macro_id FK
+        text name
+        text title
+        text type
+    }
+    macro {
+        text id PK
+        text created_datetime
+        text external_id
+        text intent
+        text languages
+        text name
+        timestamp updated_datetime
+        text usage
+    }
+    ticket_custom_field {
+        text id PK
+        text ticket_id PK
+        text value
+    }
+    ticket_tag {
+        text id PK
+        text ticket_id PK
+    }
+    ticket {
+        text id PK
+        text assignee_user FK
+        text customer_id FK
+        text channel
+        text closed_datetime
+        text created_datetime
+        text customer_data_city
+        jsonb customer_integration
+        text customer_meta_postion
+        text excerpt
+        text external_id
+        text from_agent
+        text is_unread
+        text languages
+        text last_message_datetime
+        text last_received_message_datetime
+        text messages_count
+        text opened_datetime
+        text snooze_datetime
+        text spam
+        text status
+        text subject
+        text trashed_datetime
+        timestamp updated_datetime
+        text via
+    }
+    team_member {
+        text id PK
+        text team_id FK
+        text email
+        text meta
+        text name
+    }
+    team {
+        text id PK
+        timestamp created_datetime
+        text name
+    }
+    message_source_to {
+        text _fivetran_id PK
+        text message_id FK
+        text address
+        text msg_source_to_id
+        text name
+    }
+    message {
+        text id PK
+        text integration_id FK
+        text rule_id FK
+        text ticket_id FK
+        text actions
+        jsonb attachments
+        text body_html
+        text body_text
+        text channel
+        timestamp created_datetime
+        text deleted_datetime
+        text external_id
+        text failed_datetime
+        text from_agent
+        text headers_from
+        text headers_to
+        jsonb intents
+        text is_retriable
+        text last_sending_error
+        jsonb macros
+        text message_id
+        text meta
+        text opened_datetime
+        text public
+        text receiver_email
+        text receiver_firstname
+        text receiver_id
+        text receiver_lastname
+        text receiver_meta
+        text receiver_name
+        text sender_email
+        text sender_firstname
+        text sender_id
+        text sender_lastname
+        text sender_meta
+        text sender_name
+        text sent_datetime
+        text source_type
+        text stripped_html
+        text stripped_signature
+        text stripped_text
+        text subject
+        text uri
+        text via
+    }
+    users {
+        text id PK
+        text active
+        text bio
+        text country
+        timestamp created_datetime
+        text deactivated_datetime
+        text email
+        text first_name
+        text has_2_fa_enabled
+        text has_password
+        text languages
+        text last_name
+        text name
+        text role_name
+        text timezone
+        text updated_datetime
+    }
+    tags {
+        text id PK
+        timestamp created_datetime
+        text decoration_color
+        text deleted_datetime
+        text description
+        text name
+        text usage
+    }
+    integration {
+        text id PK
+        text ticket_id FK
+        text user_id FK
+        timestamp created_datetime
+        text deactivated_datetime
+        text decoration
+        text deleted_datetime
+        text description
+        text form_hello
+        text http_id
+        text http_method
+        text locked_datetime
+        text meta_address
+        text meta_email_forwarding_activated
+        text meta_preferred
+        text meta_provider
+        text meta_verified
+        text name
+        text outbound_verification_status_domain
+        text outbound_verification_status_single_sender
+        text triggers_ticket_created
+        text triggers_ticket_message_created
+        text triggers_ticket_updated
+        text type
+        text updated_datetime
+    }
+    job_ticket {
+        text job_id PK
+        text ticket_id PK
+    }
+    job {
+        text id PK
+        text user_id FK
+        text cancel_requested_datetime
+        text cancelled_datetime
+        timestamp created_datetime
+        text ended_datetime
+        text failed_datetime
+        text locked_datetime
+        text param_updates_status
+        text scheduled_datetime
+        text started_datetime
+        text status
+        text type
+    }
+    customer_custom_field {
+        text customer_id PK
+        text id PK
+        text value
+    }
+    customer {
+        text id PK
+        text active
+        text created_datetime
+        text data
+        text email
+        text external_id
+        text first_name
+        text languages
+        text last_name
+        text name
+        text note
+        text timezone
+        timestamp updated_datetime
+    }
+    template_widget_2 }o--|| template_widget_1 : "fk"
+    template_widget_2 }o--|| template_widget_1 : "fk"
+    template_widget_1 }o--|| widget : "fk"
+    satisfaction_survey }o--|| customer : "fk"
+    satisfaction_survey }o--|| ticket : "fk"
+    view_field }o--|| view : "fk"
+    view_shared_with_team }o--|| team : "fk"
+    view_shared_with_team }o--|| view : "fk"
+    view_shared_with_user }o--|| users : "fk"
+    view_shared_with_user }o--|| view : "fk"
+    view_item_channel }o--|| users : "fk"
+    view_item_channel }o--|| customer : "fk"
+    view_item_channel }o--|| view_item : "fk"
+    view_item }o--|| customer : "fk"
+    view_item }o--|| users : "fk"
+    view_item }o--|| team : "fk"
+    view_item }o--|| view : "fk"
+    macro_action }o--|| macro : "fk"
+    ticket_custom_field }o--|| custom_fields : "fk"
+    ticket_custom_field }o--|| ticket : "fk"
+    ticket_tag }o--|| tags : "fk"
+    ticket_tag }o--|| ticket : "fk"
+    ticket }o--|| users : "fk"
+    ticket }o--|| customer : "fk"
+    team_member }o--|| team : "fk"
+    message_source_to }o--|| message : "fk"
+    message }o--|| integration : "fk"
+    message }o--|| ticket : "fk"
+    message }o--|| rules : "fk"
+    integration }o--|| users : "fk"
+    integration }o--|| ticket : "fk"
+    job_ticket }o--|| ticket : "fk"
+    job_ticket }o--|| job : "fk"
+    job }o--|| users : "fk"
+    customer_custom_field }o--|| custom_fields : "fk"
+    customer_custom_field }o--|| customer : "fk"

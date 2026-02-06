@@ -1,0 +1,275 @@
+erDiagram
+    one_time_add_on {
+        text id PK
+        text subscription_id PK
+        text variant_id FK
+        text quantity
+    }
+    subscription_gift {
+        text id PK
+        text subscription_id PK
+        text created_at
+        text email
+        text gift_to
+        text is_opened
+        text is_prepaid
+        text message
+        text number_of_deliveries
+        text updated_at
+    }
+    subscription_recipient {
+        text id PK
+        text subscription_id PK
+    }
+    subscription_custom_attribute {
+        text key PK
+        text subscription_id PK
+        text value
+    }
+    subscription {
+        text id PK
+        text subscriber_id FK
+        text billing_address_1
+        text billing_address_2
+        text billing_cadence_count
+        text billing_cadence_unit
+        text billing_city
+        text billing_country
+        text billing_first_name
+        text billing_last_name
+        text billing_province
+        text billing_zip
+        text cancel_date
+        text cancel_reason
+        text created_at
+        text currency_code
+        text delivery_address_1
+        text delivery_address_2
+        text delivery_cadence_count
+        text delivery_cadence_unit
+        text delivery_city
+        text delivery_company
+        text delivery_country
+        text delivery_first_name
+        text delivery_last_name
+        text delivery_phone
+        text delivery_price
+        text delivery_province
+        text delivery_shipping_option
+        text delivery_zip
+        text external_id
+        text friendly_id
+        text is_prepaid
+        text next_billing_date
+        text next_delivery_date
+        text payment_method_brand
+        text payment_method_email
+        text payment_method_expiry_month
+        text payment_method_expiry_year
+        text payment_method_external_id
+        text payment_method_last_4_digit
+        text payment_method_name
+        text payment_method_type
+        text purchase_date
+        text status
+        text updated_at
+    }
+    billing_attempt {
+        text id PK
+        text order_id FK
+        text subscription_id FK
+        text created_at
+        text error_code
+        text error_msg
+        text external_id
+        text updated_at
+    }
+    subscription_discount_code {
+        text id PK
+        text subscription_id FK
+        text code
+        text created_at
+        text discount_code_external_id
+        text updated_at
+    }
+    subscription_line {
+        text id PK
+        text subscription_id FK
+        text subscription_offer_option_id FK
+        text variant_id FK
+        text created_at
+        text current_price
+        text custom_attribute
+        text external_id
+        text quantity
+        text selling_plan_id
+        text updated_at
+    }
+    base_order_line_item {
+        text id PK
+        text base_order_id FK
+        text variant_id FK
+        text created_at
+        text current_price
+        text is_add_on_one_time
+        text quantity
+        text updated_at
+    }
+    entry_point_visibility {
+        text index PK
+        text swap_and_add_on_option_id PK
+        text entry_point_visibility
+    }
+    variant_entry_point_visibility {
+        text variant_external_id PK
+        text swap_and_add_on_option_id PK
+        jsonb entry_point_visibility
+    }
+    swap_and_add_on_option {
+        text id PK
+        text product_id FK
+        text subscription_offer_id FK
+        text created_at
+        text one_time_add_on_discount
+        text one_time_add_on_discount_modifier_type
+        text updated_at
+    }
+    product_variant {
+        text id PK
+        text product_id FK
+        text current_price
+        text external_id
+        text sku
+        text variant_title
+    }
+    product_subscription_offer {
+        text id PK
+        text created_at
+        text description
+        text external_id
+        text name
+        text status
+        text type
+        text updated_at
+    }
+    product_subscription_offer_option {
+        text id PK
+        text product_subscription_offer_id PK
+        text archived
+        text billing_cadence_count
+        text billing_cadence_unit
+        text created_at
+        text delivery_cadence_count
+        text delivery_cadence_unit
+        text discount
+        text discount_modifier
+        text external_id
+        text name
+        text type
+        text updated_at
+    }
+    product {
+        text id PK
+        text subscription_offer_id FK
+        text created_at
+        text description
+        text external_id
+        text image_url
+        text product_title
+        text updated_at
+    }
+    orders {
+        text id PK
+        text base_order_id FK
+        text subscriber_id FK
+        text charged_amount
+        text created_at
+        text currency_code
+        text delivery_amount
+        text external_id
+        text is_skipped
+        text purchase_date
+        text scheduled_date
+        text status
+        text subscription_charged_amount
+        text tax
+        text type
+        text updated_at
+    }
+    order_line_item {
+        text id PK
+        text order_id FK
+        text subscription_id FK
+        text variant_id FK
+        text created_at
+        text discount_allocation_total_amount
+        text external_id
+        text price_total
+        text price_total_discounted
+        text price_total_tax_with_discounts
+        text product_title
+        text quantity
+        text updated_at
+    }
+    base_order {
+        text id PK
+        text subscription_contract_id FK
+        text created_at
+        text currency_code
+        text is_skipped
+        text scheduled_date
+        text sequence_number
+        text status
+        text type
+        text updated_at
+    }
+    subscriber {
+        text id PK
+        text created_at
+        text email
+        text external_id
+        text first_name
+        text last_name
+        text phone
+        text phone_country_code
+        text updated_at
+    }
+    subscription_activity {
+        text id PK
+        text subscription_id FK
+        text created_at
+        text description
+        text event_timestamp
+        text type
+        text updated_at
+        text users
+    }
+    one_time_add_on }o--|| product_variant : "fk"
+    one_time_add_on }o--|| subscription : "fk"
+    subscription_gift }o--|| subscription : "fk"
+    subscription_recipient }o--|| subscriber : "fk"
+    subscription_recipient }o--|| subscription : "fk"
+    subscription_custom_attribute }o--|| subscription : "fk"
+    subscription }o--|| subscriber : "fk"
+    billing_attempt }o--|| subscription : "fk"
+    billing_attempt }o--|| orders : "fk"
+    subscription_discount_code }o--|| subscription : "fk"
+    subscription_line }o--|| subscription : "fk"
+    subscription_line }o--|| product_subscription_offer_option : "fk"
+    subscription_line }o--|| product_variant : "fk"
+    base_order_line_item }o--|| base_order : "fk"
+    base_order_line_item }o--|| product_variant : "fk"
+    entry_point_visibility }o--|| swap_and_add_on_option : "fk"
+    variant_entry_point_visibility }o--|| swap_and_add_on_option : "fk"
+    swap_and_add_on_option }o--|| product_subscription_offer : "fk"
+    swap_and_add_on_option }o--|| product : "fk"
+    product_variant }o--|| product : "fk"
+    product_subscription_offer_option }o--|| product_subscription_offer : "fk"
+    product }o--|| product_subscription_offer : "fk"
+    orders }o--|| subscriber : "fk"
+    orders }o--|| base_order : "fk"
+    order_line_item }o--|| subscription : "fk"
+    order_line_item }o--|| product_variant : "fk"
+    order_line_item }o--|| orders : "fk"
+    base_order }o--|| subscription : "fk"
+    subscription_activity }o--|| subscription : "fk"

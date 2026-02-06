@@ -1,0 +1,236 @@
+erDiagram
+    partner_tag {
+        text id PK
+        text organization_uuid PK
+        text partner_id PK
+        text label
+    }
+    partner {
+        text id PK
+        text organization_uuid PK
+        text domain
+        text name
+    }
+    population {
+        text id PK
+        text organization_uuid PK
+        text description
+        text name
+        text population_type
+        text standard_type
+    }
+    partner_population {
+        text id PK
+        text organization_uuid PK
+        text description
+        text name
+        text population_type
+        text standard_type
+    }
+    report_population {
+        text organization_uuid PK
+        text population_id PK
+        text report_id PK
+    }
+    report_partner_population {
+        text organization_uuid PK
+        text partner_population_id PK
+        text report_id PK
+    }
+    report {
+        text id PK
+        text organization_uuid PK
+        text comparison_type
+        text folder_uuid
+        text name
+        text organization_id
+        jsonb partner_impact_scores
+        jsonb partner_standard_population
+        text report_type
+        text tag_id
+    }
+    account_record_population {
+        text account_record_id PK
+        text crossbeam_record_id PK
+        text id PK
+        text organization_uuid PK
+        text name
+    }
+    account_record {
+        text crossbeam_record_id PK
+        text organization_uuid PK
+        text record_id PK
+        text crossbeam_owner_id
+        text owner_email
+        text owner_name
+        text owner_phone
+        text record_name
+        text record_type
+        text record_website
+    }
+    overlap_lead_partner_source_data {
+        text index PK
+        text organization_uuid PK
+        text overlap_lead_crossbeam_record_id PK
+        text overlap_lead_partner_crossbeam_record_id PK
+        text field_name
+        text field_value
+    }
+    overlap_lead_partner_population {
+        text id PK
+        text organization_uuid PK
+        text overlap_lead_crossbeam_record_id PK
+        text overlap_lead_partner_crossbeam_record_id PK
+        text name
+    }
+    overlap_lead_population {
+        text id PK
+        text organization_uuid PK
+        text overlap_lead_crossbeam_record_id PK
+        text overlap_lead_partner_crossbeam_record_id PK
+        text name
+    }
+    overlap_lead {
+        text crossbeam_record_id PK
+        text organization_uuid PK
+        text partner_crossbeam_record_id PK
+        text partner_id FK
+        text is_deleted
+        text partner_crossbeam_owner_id
+        text partner_logo_url
+        text partner_name
+        text partner_owner_email
+        text partner_owner_name
+        text partner_owner_phone
+        text partner_record_email
+        text partner_record_type
+        text record_email
+        text record_id
+        text record_name
+        text record_website
+    }
+    user_organization {
+        text organization_uuid PK
+        text user_id PK
+        text domain
+        text label
+        text logo_url
+        text name
+        text role_description
+        text role_name
+        text role_uuid
+        text sales_edge_role
+    }
+    users {
+        text id PK
+        text organization_uuid PK
+        text active
+        text email
+        text first_name
+        text last_name
+        text picture_url
+    }
+    lead_record_population {
+        text crossbeam_record_id PK
+        text id PK
+        text lead_record_id PK
+        text organization_uuid PK
+        text name
+    }
+    lead_record {
+        text crossbeam_record_id PK
+        text organization_uuid PK
+        text record_id PK
+        text crossbeam_owner_id
+        text owner_email
+        text owner_name
+        text owner_phone
+        text record_name
+        text record_type
+        text record_website
+    }
+    overlap_account_partner_source_data {
+        text index PK
+        text organization_uuid PK
+        text overlap_account_crossbeam_record_id PK
+        text overlap_account_partner_crossbeam_record_id PK
+        text field_name
+        text field_value
+    }
+    overlap_account_partner_population {
+        text id PK
+        text organization_uuid PK
+        text overlap_account_crossbeam_record_id PK
+        text overlap_account_partner_crossbeam_record_id PK
+        text name
+    }
+    overlap_account_population {
+        text id PK
+        text organization_uuid PK
+        text overlap_account_crossbeam_record_id PK
+        text overlap_account_partner_crossbeam_record_id PK
+        text name
+    }
+    overlap_account {
+        text crossbeam_record_id PK
+        text organization_uuid PK
+        text partner_crossbeam_record_id PK
+        text partner_id FK
+        text is_deleted
+        text partner_crossbeam_owner_id
+        text partner_logo_url
+        text partner_name
+        text partner_owner_email
+        text partner_owner_name
+        text partner_owner_phone
+        text partner_record_id
+        text partner_record_name
+        text partner_record_type
+        text partner_record_website
+        text record_email
+        text record_id
+        text record_name
+        text record_type
+        text record_website
+    }
+    partner_tag }o--|| partner : "fk"
+    partner_tag }o--|| partner : "fk"
+    report_population }o--|| population : "fk"
+    report_population }o--|| report : "fk"
+    report_population }o--|| report : "fk"
+    report_partner_population }o--|| partner_population : "fk"
+    report_partner_population }o--|| report : "fk"
+    report_partner_population }o--|| report : "fk"
+    account_record_population }o--|| population : "fk"
+    account_record_population }o--|| account_record : "fk"
+    account_record_population }o--|| account_record : "fk"
+    account_record_population }o--|| account_record : "fk"
+    overlap_lead_partner_source_data }o--|| overlap_lead : "fk"
+    overlap_lead_partner_source_data }o--|| overlap_lead : "fk"
+    overlap_lead_partner_source_data }o--|| overlap_lead : "fk"
+    overlap_lead_partner_population }o--|| partner_population : "fk"
+    overlap_lead_partner_population }o--|| overlap_lead : "fk"
+    overlap_lead_partner_population }o--|| overlap_lead : "fk"
+    overlap_lead_partner_population }o--|| overlap_lead : "fk"
+    overlap_lead_population }o--|| population : "fk"
+    overlap_lead_population }o--|| overlap_lead : "fk"
+    overlap_lead_population }o--|| overlap_lead : "fk"
+    overlap_lead_population }o--|| overlap_lead : "fk"
+    overlap_lead }o--|| partner : "fk"
+    user_organization }o--|| users : "fk"
+    lead_record_population }o--|| population : "fk"
+    lead_record_population }o--|| lead_record : "fk"
+    lead_record_population }o--|| lead_record : "fk"
+    lead_record_population }o--|| lead_record : "fk"
+    overlap_account_partner_source_data }o--|| overlap_account : "fk"
+    overlap_account_partner_source_data }o--|| overlap_account : "fk"
+    overlap_account_partner_source_data }o--|| overlap_account : "fk"
+    overlap_account_partner_population }o--|| partner_population : "fk"
+    overlap_account_partner_population }o--|| overlap_account : "fk"
+    overlap_account_partner_population }o--|| overlap_account : "fk"
+    overlap_account_partner_population }o--|| overlap_account : "fk"
+    overlap_account_population }o--|| population : "fk"
+    overlap_account_population }o--|| overlap_account : "fk"
+    overlap_account_population }o--|| overlap_account : "fk"
+    overlap_account_population }o--|| overlap_account : "fk"
+    overlap_account }o--|| partner : "fk"

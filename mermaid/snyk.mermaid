@@ -1,0 +1,452 @@
+erDiagram
+    group_organization {
+        text group_id PK
+        text id PK
+        text created_at
+        text url
+    }
+    group_role {
+        text name PK
+        text organization_group_id PK
+        text created_at
+        text description
+        text markdown_parsed
+        text modified_at
+        text public_id
+    }
+    project_tag {
+        text index PK
+        text organization_id PK
+        text project_id PK
+        text tags
+    }
+    project_environment {
+        text index PK
+        text organization_id PK
+        text project_id PK
+        text environment
+    }
+    project_business_criticality {
+        text index PK
+        text organization_id PK
+        text project_id PK
+        text business_criticality
+    }
+    project_life_cycle {
+        text index PK
+        text organization_id PK
+        text project_id PK
+        text lifecycle
+    }
+    project_ignored_dependency {
+        text index PK
+        text organization_id PK
+        text project_id PK
+        text ignored_dependency
+    }
+    project_pull_request_assignee {
+        text index PK
+        text organization_id PK
+        text project_id PK
+        text pull_request_assignee
+    }
+    project {
+        text id PK
+        text organization_id PK
+        text target_id FK
+        text build_args_root_workspace
+        text cli_monitored_at
+        text created
+        text importer_id
+        text latest_dependency_total
+        text latest_dependency_total_updated_at
+        text meta_latest_issue_counts_critical
+        text meta_latest_issue_counts_high
+        text meta_latest_issue_counts_low
+        text meta_latest_issue_counts_medium
+        text meta_latest_issue_counts_updated_at
+        text name
+        text origin
+        text owner_id
+        text read_only
+        text setting_auto_dependency_upgrade_is_enabled
+        text setting_auto_dependency_upgrade_is_major_upgrade_enabled
+        text setting_auto_dependency_upgrade_limit
+        text setting_auto_dependency_upgrade_minimum_age
+        text setting_auto_remediation_pr_is_backlog_prs_enabled
+        text setting_auto_remediation_pr_is_fresh_prs_enabled
+        text setting_auto_remediation_pr_is_patch_remediation_enabled
+        text setting_manual_remediation_pr_is_patch_remediation_enabled
+        text setting_pull_request_assignment_is_enabled
+        text setting_pull_request_assignment_type
+        text setting_pull_request_fail_only_for_issues_with_fix
+        text setting_pull_request_policy
+        text setting_pull_request_severity_threshold
+        text setting_recurring_test_frequency
+        text status
+        text target_file
+        text target_reference
+        text target_runtime
+        text type
+    }
+    member {
+        text id PK
+        text organization_id PK
+        text email
+        text name
+        text role
+        text username
+    }
+    jira_issue {
+        text id PK
+        text organization_id PK
+        text project_id PK
+        text key
+    }
+    issue_class {
+        text id PK
+        text issue_id PK
+        text organization_id PK
+        text source
+        text type
+    }
+    issue_coordinate_remedy {
+        text index PK
+        text issue_coordinate_index PK
+        text issue_id PK
+        text organization_id PK
+        text correlation_id
+        text description
+        text schema_version
+        text type
+    }
+    issue_coordinate_representation {
+        text index PK
+        text issue_coordinate_index PK
+        text issue_id PK
+        text organization_id PK
+        text package_name
+        text package_version
+    }
+    issue_coordinate {
+        text index PK
+        text issue_id PK
+        text organization_id PK
+        text is_fixable_manually
+        text is_fixable_snyk
+        text is_fixable_upstream
+        text is_patchable
+        text is_pinnable
+        text is_upgradeable
+        text reachability
+    }
+    issue_problem {
+        text id PK
+        text issue_id PK
+        text organization_id PK
+        text source
+        text type
+        text updated_at
+    }
+    issue_risk_factor {
+        text index PK
+        text issue_id PK
+        text organization_id PK
+        text name
+        text updated_at
+        text value
+    }
+    issue_test_execution {
+        text id PK
+        text issue_id PK
+        text organization_id PK
+        text type
+    }
+    issue {
+        text id PK
+        text organization_id PK
+        text scan_item_id FK
+        text created_at
+        text description
+        text effective_severity_level
+        text ignore_id
+        text ignored
+        text key
+        text resolution_details
+        text resolution_resolved_at
+        text resolution_type
+        text risk_score_model
+        text risk_score_value
+        text status
+        text title
+        text tool
+        text type
+        text updated_at
+    }
+    dependency_license {
+        text id PK
+        text dependency_id PK
+        text organization_id PK
+        text license
+        text title
+    }
+    dependency_with_issue {
+        text index PK
+        text dependency_id PK
+        text organization_id PK
+        text dependencies_with_issue
+    }
+    dependency_project {
+        text id PK
+        text dependency_id PK
+        text organization_id PK
+        text name
+    }
+    dependency_copyright {
+        text index PK
+        text dependency_id PK
+        text organization_id PK
+        text copyright
+    }
+    dependency {
+        text id PK
+        text organization_id PK
+        jsonb deprecated_version
+        text first_published_date
+        text is_deprecated
+        text issues_critical
+        text issues_high
+        text issues_low
+        text issues_medium
+        text latest_version
+        text latest_version_published_date
+        text name
+        text type
+        text version
+    }
+    collection {
+        text id PK
+        text organization_id PK
+        text created_by_id FK
+        text is_generated
+        text issues_critical_count
+        text issues_high_count
+        text issues_low_count
+        text issues_medium_count
+        text name
+        text projects_count
+    }
+    aggregated_issue_severity {
+        text index PK
+        text aggregated_issue_id PK
+        text assigner
+        text base_score
+        text cvss_version
+        timestamp modification_time
+        text severity
+        text vector
+    }
+    aggregated_issue_exploit_detail_maturity_level {
+        text index PK
+        text aggregated_issue_exploit_detail_index PK
+        text aggregated_issue_id PK
+        text format
+        text level
+    }
+    aggregated_issue_exploit_detail {
+        text index PK
+        text aggregated_issue_id PK
+        jsonb sources
+    }
+    aggregated_issue_patch {
+        text id PK
+        text aggregated_issue_id PK
+        jsonb comments
+        timestamp modification_time
+        jsonb urls
+        text version
+    }
+    aggregated_issue_priority_factor {
+        text index PK
+        text aggregated_issue_id PK
+        text description
+        text name
+    }
+    aggregated_issue_introduced_through {
+        text index PK
+        text aggregated_issue_id PK
+        text data
+        text kind
+    }
+    aggregated_issue_ignore_reason {
+        text index PK
+        text aggregated_issue_id PK
+        text expires
+        text reason
+        text source
+    }
+    aggregated_issue_pkg_info {
+        text index PK
+        text aggregated_issue_id PK
+        text pkg_info FK
+    }
+    aggregated_issue {
+        text id PK
+        text organization_id PK
+        text project_id PK
+        jsonb credit
+        jsonb cve
+        text cvss_score
+        jsonb cwe
+        text disclosure_time
+        text exploit_maturity
+        jsonb fix_info_fixed_in
+        text fix_info_is_fixable
+        text fix_info_is_partially_fixable
+        text fix_info_is_patchable
+        text fix_info_is_pinnable
+        text fix_info_is_upgradable
+        jsonb ghsa
+        text is_ignored
+        text is_malicious_package
+        text is_patched
+        text issue_data_description
+        text issue_type
+        text languages
+        text links_path
+        text nearest_fixed_in_version
+        text original_severity
+        jsonb osvdb
+        text path
+        text pkg_name
+        jsonb pkg_versions
+        text priority_score
+        text publication_time
+        text semver_unaffected
+        jsonb semver_vulnerable
+        text severity
+        text title
+        text url
+        text violated_policy_public_id
+    }
+    target {
+        text id PK
+        text organization_id PK
+        text created_at
+        text display_name
+        text integration_id
+        text integration_type
+        text is_private
+        text url
+    }
+    license_dependency {
+        text id PK
+        text license_id PK
+        text organization_id PK
+        text package_manager
+    }
+    license_project {
+        text id PK
+        text license_id PK
+        text organization_id PK
+        text name
+    }
+    license {
+        text id PK
+        text organization_id PK
+        text instruction
+        text severity
+    }
+    organization {
+        text id PK
+        text access_requests_enabled
+        text created_at
+        text group_id
+        text is_personal
+        text member_role_id
+        text member_role_name
+        text member_role_type
+        text name
+        text slug
+        text updated_at
+    }
+    group_tag {
+        text key PK
+        text organization_group_id PK
+        text value PK
+    }
+    group_member {
+        text group_id PK
+        text id PK
+        text email
+        text group_role
+        text name
+        text username
+    }
+    group_organization }o--|| organization : "fk"
+    project_tag }o--|| project : "fk"
+    project_tag }o--|| project : "fk"
+    project_environment }o--|| project : "fk"
+    project_environment }o--|| project : "fk"
+    project_business_criticality }o--|| project : "fk"
+    project_business_criticality }o--|| project : "fk"
+    project_life_cycle }o--|| project : "fk"
+    project_life_cycle }o--|| project : "fk"
+    project_ignored_dependency }o--|| project : "fk"
+    project_ignored_dependency }o--|| project : "fk"
+    project_pull_request_assignee }o--|| project : "fk"
+    project_pull_request_assignee }o--|| project : "fk"
+    project }o--|| target : "fk"
+    project }o--|| organization : "fk"
+    member }o--|| organization : "fk"
+    jira_issue }o--|| project : "fk"
+    jira_issue }o--|| project : "fk"
+    issue_class }o--|| issue : "fk"
+    issue_class }o--|| issue : "fk"
+    issue_coordinate_remedy }o--|| issue_coordinate : "fk"
+    issue_coordinate_remedy }o--|| issue_coordinate : "fk"
+    issue_coordinate_remedy }o--|| issue_coordinate : "fk"
+    issue_coordinate_representation }o--|| issue_coordinate : "fk"
+    issue_coordinate_representation }o--|| issue_coordinate : "fk"
+    issue_coordinate_representation }o--|| issue_coordinate : "fk"
+    issue_coordinate }o--|| issue : "fk"
+    issue_coordinate }o--|| issue : "fk"
+    issue_problem }o--|| issue : "fk"
+    issue_problem }o--|| issue : "fk"
+    issue_risk_factor }o--|| issue : "fk"
+    issue_risk_factor }o--|| issue : "fk"
+    issue_test_execution }o--|| issue : "fk"
+    issue_test_execution }o--|| issue : "fk"
+    issue }o--|| project : "fk"
+    issue }o--|| organization : "fk"
+    dependency_license }o--|| dependency : "fk"
+    dependency_license }o--|| dependency : "fk"
+    dependency_with_issue }o--|| dependency : "fk"
+    dependency_with_issue }o--|| dependency : "fk"
+    dependency_project }o--|| dependency : "fk"
+    dependency_project }o--|| dependency : "fk"
+    dependency_copyright }o--|| dependency : "fk"
+    dependency_copyright }o--|| dependency : "fk"
+    dependency }o--|| organization : "fk"
+    collection }o--|| member : "fk"
+    collection }o--|| organization : "fk"
+    aggregated_issue_severity }o--|| aggregated_issue : "fk"
+    aggregated_issue_exploit_detail_maturity_level }o--|| aggregated_issue_exploit_detail : "fk"
+    aggregated_issue_exploit_detail_maturity_level }o--|| aggregated_issue : "fk"
+    aggregated_issue_exploit_detail }o--|| aggregated_issue : "fk"
+    aggregated_issue_patch }o--|| aggregated_issue : "fk"
+    aggregated_issue_priority_factor }o--|| aggregated_issue : "fk"
+    aggregated_issue_introduced_through }o--|| aggregated_issue : "fk"
+    aggregated_issue_ignore_reason }o--|| aggregated_issue : "fk"
+    aggregated_issue_pkg_info }o--|| dependency_with_issue : "fk"
+    aggregated_issue_pkg_info }o--|| aggregated_issue : "fk"
+    aggregated_issue }o--|| project : "fk"
+    aggregated_issue }o--|| project : "fk"
+    target }o--|| organization : "fk"
+    license_dependency }o--|| dependency : "fk"
+    license_dependency }o--|| license : "fk"
+    license_dependency }o--|| license : "fk"
+    license_project }o--|| license : "fk"
+    license_project }o--|| license : "fk"
+    license }o--|| organization : "fk"
+    group_member }o--|| member : "fk"

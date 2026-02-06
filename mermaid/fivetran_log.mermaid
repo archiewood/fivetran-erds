@@ -1,0 +1,328 @@
+erDiagram
+%% The following tables are only populated if RBAC is enabled:
+%%   - `role`
+%%   - `role_permission`
+%%   - `resource_membership`
+%%   - `team`
+%%   - `team_membership`
+    role_permission {
+        text permission PK
+        text role_id PK
+    }
+    destination {
+        text id PK
+        text account_id FK
+        timestamp created_at
+        text deployment_type
+        text destination_type
+        boolean is_active
+        text name
+        text region
+    }
+    destination_column_change_event {
+        text attribute_name PK
+        timestamp detected_at PK
+        bigint column_id PK
+        text connection_id FK
+        text destination_id FK
+        text change_type
+        text new_value
+    }
+    destination_table_change_event {
+        timestamp detected_at PK
+        bigint table_id PK
+        text connection_id FK
+        text destination_id FK
+        text change_type
+    }
+    source_column_change_event {
+        text attribute_name PK
+        timestamp detected_at PK
+        text entity_type PK
+        bigint column_id PK
+        text connection_id FK
+        text change_type
+        text new_value
+    }
+    resource_membership {
+        bigint id PK
+        text account_id FK
+        text connection_id FK
+        text destination_id FK
+        text role_id FK
+        text team_id FK
+        text user_id FK
+        timestamp created_at
+        text organization_id
+    }
+    table_lineage {
+        bigint destination_table_id PK
+        bigint source_table_id PK
+        timestamp created_at
+    }
+    source_schema_change_event {
+        timestamp detected_at PK
+        integer schema_id PK
+        text connection_id FK
+        text change_type
+    }
+    incremental_mar {
+        text free_type PK
+        text measured_date PK
+        text schema_name PK
+        text sync_type PK
+        text table_name PK
+        text connection_name PK
+        text destination_id PK
+        bigint incremental_rows
+        timestamp updated_at
+    }
+    connector_sdk_log {
+        timestamp event_time PK
+        text id PK
+        text connection_id FK
+        text level
+        text message
+        text message_origin
+        text sync_id
+    }
+    source_table {
+        bigint id PK
+        text connection_id FK
+        integer schema_id FK
+        timestamp created_at
+        text name
+    }
+    destination_schema_change_event {
+        timestamp detected_at PK
+        integer schema_id PK
+        text connection_id FK
+        text destination_id FK
+        text change_type
+    }
+    user {
+        text id PK
+        timestamp created_at
+        text email
+        boolean email_disabled
+        text family_name
+        text given_name
+        text phone
+        boolean verified
+    }
+    column_lineage {
+        bigint destination_column_id PK
+        bigint source_column_id PK
+        timestamp created_at
+    }
+    role_connector_type {
+        text connector_type PK
+        text role_id PK
+    }
+    usage_cost {
+        text measured_month PK
+        text destination_id PK
+        numeric amount
+    }
+    account {
+        text id PK
+        text country
+        timestamp created_at
+        text name
+        text status
+    }
+    team_membership {
+        text role_id PK
+        text team_id PK
+        text user_id PK
+        timestamp created_at
+    }
+    transformation_runs {
+        text free_type PK
+        text job_id PK
+        text measured_date PK
+        text project_type PK
+        text destination_id PK
+        text job_name
+        bigint model_runs
+        timestamp updated_at
+    }
+    source_column {
+        bigint id PK
+        text connection_id FK
+        bigint table_id FK
+        timestamp created_at
+        boolean is_primary_key
+        text name
+        text type
+        timestamp updated_at
+    }
+    team {
+        text id PK
+        text account_id FK
+        text description
+        text name
+        text parent_id
+    }
+    credits_used {
+        text measured_month PK
+        text destination_id PK
+        integer credits_consumed
+    }
+    destination_schema {
+        integer id PK
+        text destination_id FK
+        text connection_id
+        timestamp created_at
+        text name
+    }
+    connector_type {
+        text id PK
+        text availability
+        timestamp created_at
+        boolean deleted
+        text official_connector_name
+        timestamp public_beta_at
+        timestamp release_at
+        text type
+    }
+    audit_trail {
+        timestamp captured_at PK
+        text id PK
+        text user_id FK
+        text action
+        text interaction_method
+        text new_values
+        text old_values
+        text primary_resource_id
+        text primary_resource_type
+        text secondary_resource_id
+        text secondary_resource_type
+    }
+    source_table_change_event {
+        timestamp detected_at PK
+        bigint table_id PK
+        text connection_id FK
+        text change_type
+    }
+    %% - Log events are documented here.
+    log {
+        text id PK
+        timestamp time_stamp PK
+        text connection_id FK
+        text event
+        text message_data
+        text message_event
+        text sync_id
+    }
+    destination_table {
+        bigint id PK
+        text destination_id FK
+        integer schema_id FK
+        text connection_id
+        timestamp created_at
+        text name
+    }
+    source_foreign_key {
+        bigint column_id PK
+        timestamp created_at
+        text foreign_key_reference
+        integer ordinal
+        timestamp updated_at
+    }
+    connection {
+        text connection_id PK
+        text connecting_user_id FK
+        text connector_type_id FK
+        text destination_id FK
+        text connection_name
+        text deployment_type
+        boolean paused
+        timestamp signed_up
+        integer sync_frequency
+    }
+    source_schema {
+        integer id PK
+        text connection_id FK
+        timestamp created_at
+        text name
+    }
+    destination_column {
+        bigint id PK
+        text destination_id FK
+        bigint table_id FK
+        text connection_id
+        timestamp created_at
+        text name
+        text type
+        timestamp updated_at
+    }
+    role {
+        text id PK
+        text account_id FK
+        jsonb connector_types
+        text description
+        text name
+    }
+    schema_lineage {
+        integer destination_schema_id PK
+        integer source_schema_id PK
+        timestamp created_at
+    }
+    role_permission }o--|| role : "fk"
+    destination }o--|| account : "fk"
+    destination_column_change_event }o--|| destination : "fk"
+    destination_column_change_event }o--|| connection : "fk"
+    destination_column_change_event }o--|| destination_column : "fk"
+    destination_table_change_event }o--|| destination : "fk"
+    destination_table_change_event }o--|| connection : "fk"
+    destination_table_change_event }o--|| destination_table : "fk"
+    source_column_change_event }o--|| connection : "fk"
+    source_column_change_event }o--|| source_column : "fk"
+    resource_membership }o--|| role : "fk"
+    resource_membership }o--|| team : "fk"
+    resource_membership }o--|| user : "fk"
+    resource_membership }o--|| account : "fk"
+    resource_membership }o--|| destination : "fk"
+    resource_membership }o--|| connection : "fk"
+    table_lineage }o--|| source_table : "fk"
+    table_lineage }o--|| destination_table : "fk"
+    source_schema_change_event }o--|| connection : "fk"
+    source_schema_change_event }o--|| source_schema : "fk"
+    incremental_mar }o--|| destination : "fk"
+    incremental_mar }o--|| connection : "fk"
+    connector_sdk_log }o--|| connection : "fk"
+    source_table }o--|| connection : "fk"
+    source_table }o--|| source_schema : "fk"
+    destination_schema_change_event }o--|| destination : "fk"
+    destination_schema_change_event }o--|| connection : "fk"
+    destination_schema_change_event }o--|| destination_schema : "fk"
+    column_lineage }o--|| source_column : "fk"
+    column_lineage }o--|| destination_column : "fk"
+    role_connector_type }o--|| role : "fk"
+    usage_cost }o--|| destination : "fk"
+    team_membership }o--|| user : "fk"
+    team_membership }o--|| team : "fk"
+    team_membership }o--|| role : "fk"
+    transformation_runs }o--|| destination : "fk"
+    source_column }o--|| connection : "fk"
+    source_column }o--|| source_table : "fk"
+    team }o--|| account : "fk"
+    credits_used }o--|| destination : "fk"
+    destination_schema }o--|| destination : "fk"
+    audit_trail }o--|| user : "fk"
+    source_table_change_event }o--|| connection : "fk"
+    source_table_change_event }o--|| source_table : "fk"
+    log }o--|| connection : "fk"
+    destination_table }o--|| destination : "fk"
+    destination_table }o--|| destination_schema : "fk"
+    source_foreign_key }o--|| source_column : "fk"
+    connection }o--|| user : "fk"
+    connection }o--|| connector_type : "fk"
+    connection }o--|| destination : "fk"
+    source_schema }o--|| connection : "fk"
+    destination_column }o--|| destination : "fk"
+    destination_column }o--|| destination_table : "fk"
+    role }o--|| account : "fk"
+    schema_lineage }o--|| source_schema : "fk"
+    schema_lineage }o--|| destination_schema : "fk"

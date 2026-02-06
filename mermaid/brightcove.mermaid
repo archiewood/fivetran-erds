@@ -1,0 +1,244 @@
+erDiagram
+    live_analytics_time_series_video_impression_data_point {
+        text _fivetran_id PK
+        text dimensions_video FK
+        text _timestamp
+        text dimensions_account
+        text value
+    }
+    live_analytics_time_series_video_view_data_point {
+        text _fivetran_id PK
+        text dimensions_video FK
+        text _timestamp
+        text dimensions_account
+        text value
+    }
+    live_analytics_time_series_second_viewed_data_point {
+        text _fivetran_id PK
+        text dimensions_video FK
+        text _timestamp
+        text dimensions_account
+        text value
+    }
+    live_analytics_time_series_fingerprint_count_data_point {
+        text _fivetran_id PK
+        text dimensions_video FK
+        text _timestamp
+        text dimensions_account
+        text value
+    }
+    live_analytics_time_series_ccu_data_point {
+        text _fivetran_id PK
+        text dimensions_video FK
+        text _timestamp
+        text dimensions_account
+        text value
+    }
+    video_engagement_value {
+        text index PK
+        text video_engagement_type PK
+        text video_id PK
+        text value
+    }
+    video_engagement {
+        text type PK
+        text video_id PK
+        text video_duration
+    }
+    video_cue_point {
+        text index PK
+        text video_id PK
+        text force_stop
+        text metadata
+        text name
+        text time
+        text type
+    }
+    video_country {
+        text index PK
+        text video_id PK
+        text country
+    }
+    video_label {
+        text index PK
+        text video_id PK
+        text label
+    }
+    video_tag {
+        text index PK
+        text video_id PK
+        text tag_name
+    }
+    video_text_track {
+        text id PK
+        text video_id PK
+        text default_
+        text kind
+        text label
+        text mime_type
+        text src
+        text srclang
+        text status
+    }
+    video_transcript {
+        text id PK
+        text video_id PK
+        text account_id
+        text label
+        jsonb source
+        text src
+        text srclang
+        text status
+    }
+    video_variant {
+        text index PK
+        text video_id PK
+        text description
+        text language_
+        text long_description
+        text name
+    }
+    video {
+        text id PK
+        text ad_keys
+        text clip_source_video_id
+        text complete
+        text created_at
+        text created_by_email
+        text created_by_id
+        text created_by_type
+        text delivery_type
+        text description
+        text digital_master_id
+        text drm_disabled
+        text duration
+        text economics
+        text folder_id
+        text forensic_watermarking
+        text geo_exclude_countries
+        text geo_restricted
+        text has_digital_master
+        text image_portrait_src
+        text image_poster_src
+        text image_square_src
+        text image_thumbnail_src
+        text image_ultra_wide_src
+        text image_wide_src
+        text link_text
+        text link_url
+        text long_description
+        text name
+        text offline_enabled
+        text original_filename
+        text playback_rights_id
+        text projection
+        text published_at
+        text reference_id
+        text schedule_ends_at
+        text schedule_starts_at
+        text sharing_by_external_acct
+        text sharing_by_id
+        text sharing_by_reference
+        text sharing_source_id
+        text sharing_to_external_acct
+        text state
+        timestamp updated_at
+        text updated_by_email
+        text updated_by_id
+        text updated_by_type
+    }
+    video_image_source {
+        text index PK
+        text video_id PK
+        text height
+        text object_type
+        text src
+        text width
+    }
+    analytics_report {
+        text _fivetran_id PK
+        text video_id FK
+        text ad_mode_begin
+        text ad_mode_complete
+        text bytes_delivered
+        text date
+        text engagement_score
+        text play_rate
+        text play_request
+        text temp_summary_summary_account
+        text temp_summary_summary_ad_mode_begin
+        text temp_summary_summary_ad_mode_complete
+        text temp_summary_summary_bytes_delivered
+        text temp_summary_summary_engagement_score
+        text temp_summary_summary_play_rate
+        text temp_summary_summary_play_request
+        text temp_summary_summary_video_download_cancellation
+        text temp_summary_summary_video_download_complete
+        text temp_summary_summary_video_download_error
+        text temp_summary_summary_video_download_request
+        text temp_summary_summary_video_engagement_1
+        text temp_summary_summary_video_engagement_100
+        text temp_summary_summary_video_engagement_25
+        text temp_summary_summary_video_engagement_50
+        text temp_summary_summary_video_engagement_75
+        text temp_summary_summary_video_impression
+        text temp_summary_summary_video_percent_viewed
+        text temp_summary_summary_video_seconds_viewed
+        text temp_summary_summary_video_view
+        text video_complete
+        text video_created_at
+        text video_description
+        text video_download_cancellation
+        text video_download_complete
+        text video_download_error
+        text video_download_request
+        text video_duration
+        text video_economics
+        text video_engagement_1
+        text video_engagement_100
+        text video_engagement_25
+        text video_engagement_50
+        text video_engagement_75
+        text video_impression
+        text video_long_description
+        text video_name
+        text video_percent_viewed
+        text video_reference_id
+        text video_seconds_viewed
+        text video_state
+        jsonb video_tag
+        text video_updated_at
+        text video_view
+    }
+    live_analytics_event {
+        text _fivetran_id PK
+        text video_id FK
+        text dimensions_country
+        text totals_alive_ss_ad_start
+        text totals_live_unique_viewers
+        text totals_video_seconds_viewed
+    }
+    all_time_video_view {
+        text _fivetran_id PK
+        text video_id FK
+        text all_time_video_view
+    }
+    live_analytics_time_series_video_impression_data_point }o--|| video : "fk"
+    live_analytics_time_series_video_view_data_point }o--|| video : "fk"
+    live_analytics_time_series_second_viewed_data_point }o--|| video : "fk"
+    live_analytics_time_series_fingerprint_count_data_point }o--|| video : "fk"
+    live_analytics_time_series_ccu_data_point }o--|| video : "fk"
+    video_engagement_value }o--|| video_engagement : "fk"
+    video_engagement_value }o--|| video_engagement : "fk"
+    video_engagement }o--|| video : "fk"
+    video_cue_point }o--|| video : "fk"
+    video_country }o--|| video : "fk"
+    video_label }o--|| video : "fk"
+    video_tag }o--|| video : "fk"
+    video_text_track }o--|| video : "fk"
+    video_transcript }o--|| video : "fk"
+    video_variant }o--|| video : "fk"
+    video_image_source }o--|| video : "fk"
+    analytics_report }o--|| video : "fk"
+    live_analytics_event }o--|| video : "fk"
+    all_time_video_view }o--|| video : "fk"

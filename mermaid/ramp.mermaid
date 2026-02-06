@@ -1,0 +1,693 @@
+erDiagram
+    business_entity_account {
+        text index PK
+        text business_entity_id PK
+        text bank_account_id
+        text classification
+        text created_at
+        text external_id
+        text external_name
+        text internal_id
+        text usage_type
+    }
+    business_entity_location {
+        text business_entity_id PK
+        text location_id PK
+    }
+    business_entity {
+        text id PK
+        text connected_subsidiary_external_id
+        text connected_subsidiary_id
+        text connected_subsidiary_name
+        text currency
+        text is_primary
+        text name
+    }
+    balance {
+        text _fivetran_id PK
+        double_precision available_card_limit
+        double_precision available_flex_limit
+        double_precision balance_including_pending
+        double_precision card_balance_excluding_pending
+        double_precision card_balance_including_pending
+        double_precision card_limit
+        double_precision flex_balance
+        double_precision flex_limit
+        double_precision float_balance_excluding_pending
+        double_precision global_limit
+        double_precision max_balance
+        text next_billing_date
+        text prev_billing_date
+        double_precision statement_balance
+    }
+    spend_program_allowed_category {
+        text index PK
+        text spend_program_id PK
+        text allowed_category
+    }
+    spend_program_allowed_vendor {
+        text index PK
+        text spend_program_id PK
+        text allowed_vendor
+    }
+    spend_program_blocked_category {
+        text index PK
+        text spend_program_id PK
+        text blocked_category
+    }
+    spend_program_blocked_vendor {
+        text index PK
+        text spend_program_id PK
+        text blocked_vendor
+    }
+    spend_program {
+        text id PK
+        text description
+        text display_name
+        text icon
+        text is_shareable
+        text issue_physical_card_if_needed
+        text limit_amount
+        text limit_currency_code
+        text permitted_spend_type_primary_card_enabled
+        text permitted_spend_type_reimbursements_enabled
+        text restriction_auto_lock_date
+        text restriction_interval
+        text restriction_next_interval_reset
+        text restriction_start_of_interval
+        text temporary_limit_amount
+        text temporary_limit_currency_code
+        text transaction_amount_limit_amount
+        text transaction_amount_limit_currency_code
+    }
+    reimbursement_receipt {
+        text receipt_id PK
+        text reimbursement_id PK
+    }
+    reimbursement_accouting_field_selection {
+        text id PK
+        text reimbursement_id PK
+        text category_external_id
+        text category_id
+        text category_name
+        text category_type
+        text external_id
+        text name
+        text type
+    }
+    reimbursement_attendees {
+        text index PK
+        text reimbursement_id PK
+        text user_id FK
+        text name
+    }
+    reimbursement_line_item_accounting_field_selection {
+        text id PK
+        text reimbursement_id PK
+        text reimbursement_line_item_index PK
+        text category_external_id
+        text category_id
+        text category_name
+        text category_type
+        text external_id
+        text name
+        text type
+    }
+    reimbursement_line_item {
+        text index PK
+        text reimbursement_id PK
+        text amount_amount
+        text amount_currency_code
+    }
+    reimbursement {
+        text id PK
+        text merchant_id FK
+        text user_id FK
+        double_precision amount
+        text created_at
+        text currency
+        text direction
+        text distance
+        text entity_id
+        text memo
+        text merchant
+        text original_reimbursement_amount
+        text original_reimbursement_currency_code
+        text payee_amount
+        text payee_currency_code
+        text spend_limit_id
+        text state
+        text submitted_at
+        text synced_at
+        text transaction_date
+        text trip_id
+        text type
+        text updated_at
+    }
+    bill_accounting_field_selection {
+        text id PK
+        text bill_id PK
+        text category_info_external_id
+        text category_info_id
+        text category_info_name
+        text category_info_type
+        text external_code
+        text external_id
+        text name
+    }
+    bill_inventory_line_item_accounting_field_selection {
+        text id PK
+        text bill_id PK
+        text bill_inventory_line_item_index PK
+        text category_info_external_id
+        text category_info_id
+        text category_info_name
+        text category_info_type
+        text external_code
+        text external_id
+        text name
+    }
+    bill_inventory_line_item {
+        text index PK
+        text bill_id PK
+        text amount
+        text amount_currency_code
+        text memo
+        text unit_price_amount
+        text unit_price_currency_code
+        text unit_quantity
+    }
+    bill_invoice_url {
+        text index PK
+        text bill_id PK
+        text invoice_url
+    }
+    bill_line_item_accounting_field_selection {
+        text id PK
+        text bill_id PK
+        text bill_line_item_index PK
+        text category_info_external_id
+        text category_info_id
+        text category_info_name
+        text category_info_type
+        text external_code
+        text external_id
+        text name
+    }
+    bill_line_item {
+        text index PK
+        text bill_id PK
+        text amount
+        text amount_currency_code
+        text memo
+    }
+    bill {
+        text id PK
+        text entity_id FK
+        text vendor_contact_id FK
+        text vendor_id FK
+        text accounting_date
+        text accounting_sync_date
+        text amount
+        text amount_currency_code
+        text approval_status
+        text archived_at
+        text bill_owner_first_name
+        text bill_owner_id
+        text bill_owner_last_name
+        text created_at
+        text deep_link_url
+        text due_at
+        text fx_conversion_rate
+        text invoice_number
+        text issued_at
+        text memo
+        text paid_at
+        text payment_amount
+        text payment_amount_currency_code
+        text payment_date
+        text payment_details_spend_limit_id
+        jsonb payment_details_transaction_ids
+        text payment_effective_date
+        text payment_method
+        text payment_traceid
+        text payment_traceid_descriptor
+        text posting_date
+        text remote_id
+        text status
+        text sync_status
+        text vendor_memo
+        text vendor_remote_code
+        text vendor_remote_id
+        text vendor_remote_name
+    }
+    merchant {
+        text id PK
+        text is_auto_approved
+        text name
+        text sk_category_name
+    }
+    user_custom_field {
+        text index PK
+        text user_id PK
+        text name
+        text value
+    }
+    users {
+        text id PK
+        text business_id FK
+        text department_id FK
+        text location_id FK
+        text email
+        text employee_id
+        text first_name
+        boolean is_manager
+        text last_name
+        text manager_id
+        text phone
+        text role
+        text status
+    }
+    purchase_order_accounting_field_selection {
+        text id PK
+        text purchase_order_id PK
+        text category_info_external_id
+        text category_info_id
+        text category_info_name
+        text category_info_type
+        text external_code
+        text external_id
+        text name
+    }
+    purchase_order_transaction {
+        text index PK
+        text purchase_order_id PK
+        text transaction_id FK
+    }
+    purchase_order_bill {
+        text index PK
+        text purchase_order_id PK
+        text bill_id FK
+    }
+    purchase_order_line_item_accounting_field_selection {
+        text id PK
+        text purchase_order_id PK
+        text purchase_order_line_item_id PK
+        text category_info_external_id
+        text category_info_id
+        text category_info_name
+        text category_info_type
+        text external_code
+        text external_id
+        text name
+    }
+    purchase_order_line_item {
+        text id PK
+        text purchase_order_id PK
+        text amount
+        text amount_currency_code
+        text description
+        text remote_id
+        text unit_price_amount
+        text unit_price_currency_code
+        text unit_quantity
+    }
+    purchase_order {
+        text id PK
+        text entity_id FK
+        text user_id FK
+        text vendor_id FK
+        text amount
+        text amount_currency_code
+        text archived_at
+        text billing_status
+        text created_at
+        text creation_source
+        text memo
+        text name
+        text net_payment_terms
+        text owner_id
+        text promise_date
+        text purchase_order_number
+        text receipt_status
+        text spend_end_date
+        text spend_request_id
+        text spend_start_date
+        text spend_total_amount
+        text spend_total_currency_code
+        text three_way_match_enabled
+    }
+    receipt {
+        text id PK
+        text transaction_id FK
+        text user_id FK
+        text created_at
+        text receipt_url
+    }
+    card_spending_restriction_category {
+        text category_code PK
+        text card_id PK
+    }
+    card_spending_restriction_blocked_category {
+        text blocked_category_code PK
+        text card_id PK
+    }
+    card {
+        text id PK
+        text cardholder_id FK
+        text created_at
+        text display_name
+        text expiration
+        text fulfillment_fulfillment_status
+        timestamp fulfillment_shipping_date
+        timestamp fulfillment_shipping_eta
+        text fulfillment_shipping_recipient_address_address_1
+        text fulfillment_shipping_recipient_address_city
+        text fulfillment_shipping_recipient_address_country
+        text fulfillment_shipping_recipient_address_first_name
+        text fulfillment_shipping_recipient_address_last_name
+        text fulfillment_shipping_recipient_address_postal_code
+        text fulfillment_shipping_recipient_address_state
+        text fulfillment_shipping_tracking_url
+        boolean has_program_overidden
+        boolean is_physical
+        text last_four
+        double_precision spending_restrictions_amount
+        timestamp spending_restrictions_auto_lock_date
+        text spending_restrictions_interval
+        boolean spending_restrictions_suspended
+        double_precision spending_restrictions_transaction_amount_limit
+        text state
+    }
+    vendor_contact {
+        text contact_id PK
+        text vendor_id PK
+    }
+    vendor {
+        text id PK
+        text accounting_vendor_remote_id
+        text address_city
+        text address_country
+        text address_line_1
+        text address_line_2
+        text address_postal_code
+        text address_state
+        text billing_frequency
+        text country
+        text created_at
+        text description
+        text federal_tax_classification
+        text is_active
+        text is_deletable
+        text merchant_id
+        text name
+        text name_legal
+        text owner_id
+        text sk_category_id
+        text sk_category_name
+        text state
+        text tax_address_city
+        text tax_address_country
+        text tax_address_line_1
+        text tax_address_line_2
+        text tax_address_postal_code
+        text tax_address_state
+        text total_spend_all_time_amount
+        text total_spend_all_time_currency_code
+        text total_spend_all_time_minor_unit_conversion_rate
+        text total_spend_last_30_days_amount
+        text total_spend_last_30_days_currency_code
+        text total_spend_last_30_days_minor_unit_conversion_rate
+        text total_spend_last_365_days_amount
+        text total_spend_last_365_days_currency_code
+        text total_spend_last_365_days_minor_unit_conversion_rate
+        text total_spend_ytd_amount
+        text total_spend_ytd_currency_code
+        text total_spend_ytd_minor_unit_conversion_rate
+        text type
+    }
+    department {
+        text id PK
+        text name
+    }
+    limit_card {
+        text card_id PK
+        text limit_id PK
+        text is_ap_card
+        text via_new_product_or_service
+    }
+    limit_category_whitelist {
+        text index PK
+        text limit_id PK
+        text category_whitelist
+    }
+    limit_allowed_category {
+        text index PK
+        text limit_id PK
+        text allowed_category
+    }
+    limit_vendor_blacklist {
+        text index PK
+        text limit_id PK
+        text vendor_blacklist
+    }
+    limit_users {
+        text limit_id PK
+        text user_id PK
+    }
+    limits {
+        text id PK
+        text spend_program_id FK
+        text suspension_acting_user_id FK
+        text balance_cleared_amount
+        text balance_cleared_currency_code
+        text balance_pending_amount
+        text balance_pending_currency_code
+        text balance_total_amount
+        text balance_total_currency_code
+        text created_at
+        text display_name
+        text entity_id
+        text has_program_overridden
+        text is_shareable
+        text limit_amount
+        text limit_currency_code
+        text permitted_spend_type_primary_card_enabled
+        text permitted_spend_type_reimbursements_enabled
+        text restriction_auto_lock_date
+        text restriction_interval
+        text restriction_next_interval_reset
+        text restriction_start_of_interval_date
+        text state
+        text suspension_inserted_at
+        text suspension_suspended_by_ramp
+        text temporary_limit_amount
+        text temporary_limit_currency_code
+        text transaction_amount_limit_amount
+        text transaction_amount_limit_currency_code
+    }
+    business {
+        text id PK
+        boolean active
+        text billing_address_address_1
+        text billing_address_city
+        text billing_address_country
+        text billing_address_postal_code
+        text billing_address_state
+        text business_name_legal
+        text business_name_on_card
+        timestamp created_time
+        boolean enforce_sso
+        double_precision initial_approved_limit
+        boolean is_integrated_with_slack
+        boolean is_reimbursements_enabled
+        boolean limit_locked
+        text phone
+        text website
+    }
+    location {
+        text id PK
+        text entity_id
+        text name
+    }
+    transaction_accounting_category {
+        text index PK
+        text transaction_id PK
+        text category_id
+        text category_name
+        text tracking_category_remote_id
+        text tracking_category_remote_name
+        text tracking_category_remote_type
+    }
+    transaction_policy_violation {
+        text index PK
+        text transaction_id PK
+        timestamp created_at
+        text id
+        text memo
+        text type
+    }
+    transaction_accounting_field_selection {
+        text id PK
+        text transaction_id PK
+        text category_external_id
+        text category_id
+        text category_name
+        text category_type
+        text external_id
+        text name
+        text type
+    }
+    transaction_attendees {
+        text index PK
+        text transaction_id PK
+        text user_id FK
+        text name
+    }
+    transaction_line_item_accounting_field_selection {
+        text id PK
+        text transaction_line_item_index PK
+        text transaction_line_item_transaction_id PK
+        text category_external_id
+        text category_id
+        text category_name
+        text category_type
+        text external_id
+        text name
+        text type
+    }
+    transaction_line_item {
+        text index PK
+        text transaction_id PK
+        text amount_amount
+        text amount_currency_code
+        text converted_amount
+        text converted_currency_code
+    }
+    transaction_merchant_receipt {
+        text index PK
+        text transaction_id PK
+        text commodity_code
+        text description
+        text discount
+        text quantity
+        text tax
+        text total
+        text unit_cost
+    }
+    transaction_dispute {
+        text id PK
+        text transaction_id PK
+        timestamp created_at
+        text memo
+        text type
+    }
+    transaction {
+        text id PK
+        text card_holder_department_id FK
+        text card_holder_location_id FK
+        text card_holder_user_id FK
+        text card_id FK
+        text spend_program_id FK
+        double_precision amount
+        text currency_code
+        text entity_id
+        text memo
+        text merchant_category_code
+        text merchant_category_code_description
+        text merchant_data_auto_rental
+        text merchant_data_flight
+        text merchant_data_fuel
+        text merchant_data_lodging
+        text merchant_data_reference
+        text merchant_descriptor
+        text merchant_id
+        text merchant_location_city
+        text merchant_location_country
+        text merchant_location_postal_code
+        text merchant_location_state
+        text merchant_name
+        text original_transaction_amount_amount
+        text original_transaction_amount_currency_code
+        jsonb receipts
+        text settlement_date
+        text sk_category_id
+        text sk_category_name
+        text state
+        text synced_at
+        text trip_id
+        text trip_name
+        text user_transaction_time
+    }
+    business_entity_account }o--|| business_entity : "fk"
+    business_entity_location }o--|| location : "fk"
+    business_entity_location }o--|| business_entity : "fk"
+    spend_program_allowed_category }o--|| spend_program : "fk"
+    spend_program_allowed_vendor }o--|| spend_program : "fk"
+    spend_program_blocked_category }o--|| spend_program : "fk"
+    spend_program_blocked_vendor }o--|| spend_program : "fk"
+    reimbursement_receipt }o--|| reimbursement : "fk"
+    reimbursement_accouting_field_selection }o--|| reimbursement : "fk"
+    reimbursement_attendees }o--|| users : "fk"
+    reimbursement_attendees }o--|| reimbursement : "fk"
+    reimbursement_line_item_accounting_field_selection }o--|| reimbursement_line_item : "fk"
+    reimbursement_line_item_accounting_field_selection }o--|| reimbursement_line_item : "fk"
+    reimbursement_line_item }o--|| reimbursement : "fk"
+    reimbursement }o--|| users : "fk"
+    reimbursement }o--|| merchant : "fk"
+    bill_accounting_field_selection }o--|| bill : "fk"
+    bill_inventory_line_item_accounting_field_selection }o--|| bill_inventory_line_item : "fk"
+    bill_inventory_line_item_accounting_field_selection }o--|| bill_inventory_line_item : "fk"
+    bill_inventory_line_item }o--|| bill : "fk"
+    bill_invoice_url }o--|| bill : "fk"
+    bill_line_item_accounting_field_selection }o--|| bill_line_item : "fk"
+    bill_line_item_accounting_field_selection }o--|| bill_line_item : "fk"
+    bill_line_item }o--|| bill : "fk"
+    bill }o--|| business_entity : "fk"
+    bill }o--|| vendor_contact : "fk"
+    bill }o--|| vendor : "fk"
+    user_custom_field }o--|| users : "fk"
+    users }o--|| department : "fk"
+    users }o--|| location : "fk"
+    users }o--|| business : "fk"
+    purchase_order_accounting_field_selection }o--|| purchase_order : "fk"
+    purchase_order_transaction }o--|| transaction : "fk"
+    purchase_order_transaction }o--|| purchase_order : "fk"
+    purchase_order_bill }o--|| bill : "fk"
+    purchase_order_bill }o--|| purchase_order : "fk"
+    purchase_order_line_item_accounting_field_selection }o--|| purchase_order_line_item : "fk"
+    purchase_order_line_item_accounting_field_selection }o--|| purchase_order_line_item : "fk"
+    purchase_order_line_item }o--|| purchase_order : "fk"
+    purchase_order }o--|| users : "fk"
+    purchase_order }o--|| vendor : "fk"
+    purchase_order }o--|| business_entity : "fk"
+    receipt }o--|| transaction : "fk"
+    receipt }o--|| users : "fk"
+    card_spending_restriction_category }o--|| card : "fk"
+    card_spending_restriction_blocked_category }o--|| card : "fk"
+    card }o--|| users : "fk"
+    vendor_contact }o--|| vendor : "fk"
+    limit_card }o--|| card : "fk"
+    limit_card }o--|| limits : "fk"
+    limit_category_whitelist }o--|| limits : "fk"
+    limit_allowed_category }o--|| limits : "fk"
+    limit_vendor_blacklist }o--|| limits : "fk"
+    limit_users }o--|| users : "fk"
+    limit_users }o--|| limits : "fk"
+    limits }o--|| spend_program : "fk"
+    limits }o--|| users : "fk"
+    transaction_accounting_category }o--|| transaction : "fk"
+    transaction_policy_violation }o--|| transaction : "fk"
+    transaction_accounting_field_selection }o--|| transaction : "fk"
+    transaction_attendees }o--|| users : "fk"
+    transaction_attendees }o--|| transaction : "fk"
+    transaction_line_item_accounting_field_selection }o--|| transaction_line_item : "fk"
+    transaction_line_item_accounting_field_selection }o--|| transaction_line_item : "fk"
+    transaction_line_item }o--|| transaction : "fk"
+    transaction_merchant_receipt }o--|| transaction : "fk"
+    transaction_dispute }o--|| transaction : "fk"
+    transaction }o--|| card : "fk"
+    transaction }o--|| spend_program : "fk"
+    transaction }o--|| department : "fk"
+    transaction }o--|| location : "fk"
+    transaction }o--|| users : "fk"

@@ -1,0 +1,402 @@
+erDiagram
+    warehouse {
+        text id PK
+        text create_date
+        text ext_inventory_identity
+        text is_default
+        text origin_address_address_verified
+        text origin_address_city
+        text origin_address_company
+        text origin_address_country
+        text origin_address_name
+        text origin_address_phone
+        text origin_address_postal_code
+        text origin_address_residential
+        text origin_address_state
+        text origin_address_street_1
+        text origin_address_street_2
+        text origin_address_street_3
+        text register_fedex_meter
+        text return_address_address_verified
+        text return_address_city
+        text return_address_company
+        text return_address_country
+        text return_address_name
+        text return_address_phone
+        text return_address_postal_code
+        text return_address_residential
+        text return_address_state
+        text return_address_street_1
+        text return_address_street_2
+        text return_address_street_3
+        text seller_integration_id
+        text warehouse_name
+    }
+    shipment_item {
+        text order_item_id PK
+        text product_id FK
+        text shipment_id FK
+        text fulfillment_sku
+        text image_url
+        text line_item_key
+        text name
+        text options
+        text quantity
+        text sku
+        text unit_price
+        text warehouse_location
+        text weight
+    }
+    shipment {
+        text id PK
+        text order_id FK
+        text package_code FK
+        text service_code FK
+        text user_id FK
+        text warehouse_id FK
+        text advanced_options
+        text batch_number
+        text confirmation
+        text create_date
+        text dimensions
+        text form_data
+        text insurance_cost
+        text insurance_options_insure_shipment
+        text insurance_options_insured_value
+        text insurance_options_provider
+        text is_return_label
+        text label_data
+        text marketplace_notified
+        text notify_error_message
+        text order_key
+        text order_number
+        text ship_date
+        text ship_to_city
+        text ship_to_company
+        text ship_to_country
+        text ship_to_name
+        text ship_to_phone
+        text ship_to_postal_code
+        text ship_to_residential
+        text ship_to_state
+        text ship_to_street_1
+        text ship_to_street_2
+        text ship_to_street_3
+        text shipment_cost
+        text shipping_provider_code
+        text tracking_number
+        text void_date
+        text voided
+        text weight_units
+        text weight_value
+    }
+    fulfillment {
+        text id PK
+        text order_id FK
+        text user_id FK
+        text create_date
+        text customer_email
+        text delivery_date
+        text fulfillment_fee
+        text fulfillment_provider_code
+        text fulfillment_service_code
+        text marketplace_notified
+        text notify_error_message
+        text order_number
+        text seller_fill_provider_id
+        text seller_fill_provider_name
+        text ship_date
+        text ship_to_address_verified
+        text ship_to_city
+        text ship_to_company
+        text ship_to_country
+        text ship_to_name
+        text ship_to_phone
+        text ship_to_postal_code
+        text ship_to_residential
+        text ship_to_state
+        text ship_to_street_1
+        text ship_to_street_2
+        text ship_to_street_3
+        text shipping_provider_code
+        text tracking_number
+        text void_date
+        text void_requested
+        text voided
+    }
+    marketplace {
+        text id PK
+        text can_confirm_shipments
+        text can_refresh
+        text name
+        text supports_custom_mappings
+        text supports_custom_statuses
+    }
+    shipping_provider {
+        text id PK
+        text account_number
+        text balance
+        text code
+        text is_primary
+        text name
+        text nickname
+        text requires_funded_account
+    }
+    package {
+        text code PK
+        text shipping_provider_id FK
+        text carrier_code
+        text domestic
+        text international
+        text name
+    }
+    product {
+        text id PK
+        text default_intl_package_code FK
+        text default_intl_service_code FK
+        text default_package_code FK
+        text default_service_code FK
+        text active
+        text aliases
+        text create_date
+        text customs_country_code
+        text customs_description
+        text customs_tariff_number
+        text customs_value
+        text default_confirmation
+        text default_cost
+        text default_intl_confirmation
+        text fulfillment_sku
+        text height
+        text internal_note
+        text length
+        text modify_date
+        text name
+        text no_customs
+        text price
+        text product_category_category_id
+        text product_category_name
+        text product_type
+        text sku
+        text warehouse_location
+        text weight_oz
+        text width
+    }
+    order_item {
+        text id PK
+        text order_id FK
+        text product_id FK
+        text adjustment
+        text create_date
+        text fulfillment_sku
+        text image_url
+        text line_item_key
+        text modify_date
+        text name
+        jsonb options
+        text quantity
+        text shipping_amount
+        text sku
+        text tax_amount
+        text unit_price
+        text upc
+        text warehouse_location
+    }
+    order_tag {
+        text order_id PK
+        text tag_id PK
+    }
+    order_merged {
+        text merged_order_id PK
+        text order_id PK
+    }
+    orders {
+        text id PK
+        text advanced_options_store_id FK
+        text advanced_options_warehouse_id FK
+        text customer_id FK
+        text package_code FK
+        text service_code FK
+        text user_id FK
+        text advanced_options_bill_to_account
+        text advanced_options_bill_to_country_code
+        text advanced_options_bill_to_my_other_account
+        text advanced_options_bill_to_party
+        text advanced_options_bill_to_postal_code
+        text advanced_options_contains_alcohol
+        text advanced_options_custom_field_1
+        text advanced_options_custom_field_2
+        text advanced_options_custom_field_3
+        text advanced_options_merged_or_split
+        text advanced_options_non_machinable
+        text advanced_options_parent_id
+        text advanced_options_saturday_delivery
+        text advanced_options_source
+        text amount_paid
+        text bill_to_address_verified
+        text bill_to_city
+        text bill_to_company
+        text bill_to_country
+        text bill_to_name
+        text bill_to_phone
+        text bill_to_postal_code
+        text bill_to_residential
+        text bill_to_state
+        text bill_to_street_1
+        text bill_to_street_2
+        text bill_to_street_3
+        text confirmation
+        text create_date
+        text customer_email
+        text customer_notes
+        text customer_username
+        text dimensions_height
+        text dimensions_length
+        text dimensions_units
+        text dimensions_width
+        text externally_fulfilled
+        text externally_fulfilled_by
+        text externally_fulfilled_by_id
+        text externally_fulfilled_by_name
+        text gift
+        text gift_message
+        text hold_until_date
+        text insurance_options_insure_shipment
+        text insurance_options_insured_value
+        text insurance_options_provider
+        text internal_notes
+        text international_options_contents
+        text international_options_customs_items
+        text international_options_non_delivery
+        text label_messages
+        text modify_date
+        text order_date
+        text order_key
+        text order_number
+        text order_status
+        text order_total
+        text payment_date
+        text payment_method
+        text requested_shipping_service
+        text ship_by_date
+        text ship_date
+        text ship_to_address_verified
+        text ship_to_city
+        text ship_to_company
+        text ship_to_country
+        text ship_to_name
+        text ship_to_phone
+        text ship_to_postal_code
+        text ship_to_residential
+        text ship_to_state
+        text ship_to_street_1
+        text ship_to_street_2
+        text ship_to_street_3
+        text shipping_amount
+        text shipping_provider_code
+        text tax_amount
+        text weight_units_of_measurement
+        text weight_value
+        text weight_weight_units
+    }
+    store {
+        text id PK
+        text marketplace_id FK
+        text account_name
+        text active
+        text auto_refresh
+        text company_name
+        text create_date
+        text email
+        text integration_url
+        text last_refresh_attempt
+        text marketplace_name
+        text modify_date
+        text phone
+        text public_email
+        text refresh_date
+        text store_name
+        text website
+    }
+    customer_tag {
+        text _fivetran_id PK
+        text customer_id FK
+        text tag_id FK
+        text name
+    }
+    marketplace_username {
+        text customer_user_id PK
+        text customer_id FK
+        text marketplace_id FK
+        text create_date
+        text marketplace
+        text modify_date
+        text username
+    }
+    customer {
+        text id PK
+        text address_verified
+        text city
+        text company
+        text country_code
+        text create_date
+        text email
+        text modify_date
+        text name
+        text phone
+        text postal_code
+        text state
+        text street_1
+        text street_2
+    }
+    service {
+        text code PK
+        text shipping_provider_id FK
+        text carrier_code
+        text domestic
+        text international
+        text name
+    }
+    users {
+        text id PK
+        text name
+        text user_name
+    }
+    tags {
+        text id PK
+        text color
+        text name
+    }
+    shipment_item }o--|| product : "fk"
+    shipment_item }o--|| order_item : "fk"
+    shipment_item }o--|| shipment : "fk"
+    shipment }o--|| users : "fk"
+    shipment }o--|| warehouse : "fk"
+    shipment }o--|| service : "fk"
+    shipment }o--|| orders : "fk"
+    shipment }o--|| package : "fk"
+    fulfillment }o--|| users : "fk"
+    fulfillment }o--|| orders : "fk"
+    package }o--|| shipping_provider : "fk"
+    product }o--|| service : "fk"
+    product }o--|| service : "fk"
+    product }o--|| package : "fk"
+    product }o--|| package : "fk"
+    order_item }o--|| product : "fk"
+    order_item }o--|| orders : "fk"
+    order_tag }o--|| tags : "fk"
+    order_tag }o--|| orders : "fk"
+    order_merged }o--|| orders : "fk"
+    order_merged }o--|| orders : "fk"
+    orders }o--|| users : "fk"
+    orders }o--|| warehouse : "fk"
+    orders }o--|| service : "fk"
+    orders }o--|| package : "fk"
+    orders }o--|| customer : "fk"
+    orders }o--|| store : "fk"
+    store }o--|| marketplace : "fk"
+    customer_tag }o--|| tags : "fk"
+    customer_tag }o--|| customer : "fk"
+    marketplace_username }o--|| marketplace : "fk"
+    marketplace_username }o--|| customer : "fk"
+    service }o--|| shipping_provider : "fk"

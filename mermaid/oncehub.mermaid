@@ -1,0 +1,108 @@
+erDiagram
+    master_page {
+        text id PK
+        text active
+        text label
+        text name
+        text url
+    }
+    event_type {
+        text id PK
+        text description
+        text label
+        text name
+    }
+    users {
+        text id PK
+        text email
+        text first_name
+        text last_name
+        text role_name
+        text status
+    }
+    booking_page {
+        text id PK
+        text active
+        text label
+        text name
+        text timezone
+        text url
+    }
+    contact {
+        text id PK
+        text owner FK
+        text bot
+        text city
+        text company
+        text company_size
+        text country
+        text creation_time
+        text email
+        text employees
+        text first_name
+        text form
+        text has_consent
+        text job_title
+        text last_interacted_time
+        text last_name
+        text last_updated_time
+        text mobile_phone
+        text phone
+        text post_code
+        text salutation
+        text state
+        text street_address
+        text terms_of_service
+        text timezone
+    }
+    booking {
+        text id PK
+        text booking_page_id FK
+        text cancel_reschedule_user_id FK
+        text contact_id FK
+        text event_type_id FK
+        text master_page_id FK
+        text owner FK
+        text rescheduled_booking_id FK
+        text booking_calendar
+        text cancel_reschedule_actioned_by
+        text cancel_reschedule_reason
+        text cancel_url
+        text conversation
+        text creation_time
+        text customer_timezone
+        text duration_minutes
+        text external_calendar_event_id
+        text external_calendar_id
+        text external_calendar_name
+        text external_calendar_type
+        text form_submission_company
+        text form_submission_email
+        jsonb form_submission_guests
+        text form_submission_mobile_phone
+        text form_submission_name
+        text form_submission_note
+        text form_submission_phone
+        text in_trash
+        text last_updated_time
+        text location_description
+        text reschedule_url
+        text starting_time
+        text status
+        text subject
+        text tracking_id
+        text utm_params_campaign
+        text utm_params_content
+        text utm_params_medium
+        text utm_params_source
+        text utm_params_term
+        text virtual_conferencing_join_url
+    }
+    contact }o--|| users : "fk"
+    booking }o--|| users : "fk"
+    booking }o--|| booking_page : "fk"
+    booking }o--|| master_page : "fk"
+    booking }o--|| booking : "fk"
+    booking }o--|| event_type : "fk"
+    booking }o--|| contact : "fk"
+    booking }o--|| users : "fk"

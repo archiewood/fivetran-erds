@@ -1,0 +1,73 @@
+erDiagram
+    shipment_purchase_order_number {
+        text index PK
+        text shipment_id PK
+        text purchase_order_number
+    }
+    shipment_reference_number {
+        text index PK
+        text shipment_id PK
+        text reference_number
+    }
+    shipment_stop {
+        text id PK
+        text shipment_id PK
+        text arrival_time
+        text city
+        text country
+        text customer_id
+        text customer_name
+        text departure_time
+        text external_address_id
+        text latitude
+        text longitude
+        text schedule_appointment_time
+        text schedule_appointment_window_end
+        text schedule_appointment_window_start
+        text schedule_want_time
+        text sequence
+        text state
+        text status
+        text stop_name
+        text stop_type
+        text timezone
+    }
+    shipment {
+        text id PK
+        text four_kites_eta
+        text identifiers_consignment_number
+        text identifiers_consignment_sequence
+        text identifiers_pro_number
+        text latest_location_latitude
+        text latest_location_longitude
+        text latest_location_name
+        text latest_location_timezone
+        text latest_location_updated_time
+        text load_number
+        text number_of_delivery_stop
+        text remaining_distance_in_meter
+        text scac
+        text stakeholder_carrier
+        text stakeholder_shipper
+        text stakeholder_third_party_logistics
+        text status
+        text timezone
+        text total_distance_in_meter
+    }
+    shipment_e_url {
+        text _fivetran_id PK
+        text shipment_id PK
+        text data
+    }
+    shipment_stop_e_url {
+        text _fivetran_id PK
+        text shipment_id PK
+        text shipment_stop_id PK
+        text data
+    }
+    shipment_purchase_order_number }o--|| shipment : "fk"
+    shipment_reference_number }o--|| shipment : "fk"
+    shipment_stop }o--|| shipment : "fk"
+    shipment_e_url }o--|| shipment : "fk"
+    shipment_stop_e_url }o--|| shipment : "fk"
+    shipment_stop_e_url }o--|| shipment_stop : "fk"

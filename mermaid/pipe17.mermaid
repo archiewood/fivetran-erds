@@ -1,0 +1,993 @@
+erDiagram
+    purchase_cost {
+        text index PK
+        text purchase_id PK
+        double_precision cost
+        text name
+        bigint quantity
+    }
+    purchase_line_item {
+        text id PK
+        text purchase_id PK
+        text location_id FK
+        text sku FK
+        text name
+        double_precision price
+        bigint quantity
+        bigint received_quantity
+        boolean routed
+        bigint shipped_quantity
+        text upc
+    }
+    purchase {
+        text id PK
+        text billing_address_email FK
+        text external_order_id FK
+        text integration_id FK
+        text organization_key FK
+        text to_location_id FK
+        text vendor_address_email FK
+        timestamp actual_arrival_date
+        text billing_address_first_name
+        text billing_address_last_name
+        timestamp created_at
+        text currency
+        text employee_name
+        timestamp expected_arrival_date
+        text incoterms
+        text purchase_notes
+        timestamp purchase_order_date
+        double_precision purchase_tax
+        text reference_number
+        timestamp ship_by_date
+        text shipping_carrier
+        text shipping_notes
+        text shipping_service
+        text status
+        double_precision sub_total_price
+        timestamp time_stamp
+        text to_address_first_name
+        text to_address_last_name
+        double_precision total_price
+        timestamp updated_at
+        text vendor_address_first_name
+        text vendor_address_last_name
+    }
+    account_integration {
+        text account_user_id PK
+        text integration_id PK
+    }
+    account_role_id {
+        text role_id PK
+        text account_user_id PK
+        text id FK
+    }
+    account_payment_sale_discount_code {
+        text sales_discount_code PK
+        text account_user_id PK
+    }
+    account {
+        text user_id PK
+        text organization_key FK
+        text activation_key
+        double_precision billingamount
+        text billingbase_period
+        boolean billingcharge_enterprise_support
+        timestamp billingdeleted_at
+        text billingeffective_plan
+        text billingnote
+        double_precision billingoverage_amount
+        text billingoverage_period
+        timestamp billingpaused_at
+        text billingplan
+        double_precision billingquota
+        timestamp billingrenewal_date
+        text billingsource
+        timestamp billingstart_date
+        text billingstatus
+        text branding_copyright
+        text branding_logo_url
+        text branding_privacy_url
+        timestamp created_at
+        timestamp expiration_date
+        boolean is_multi_organization_allowed
+        boolean is_rebranding_allowed
+        timestamp payment_expiration_date
+        text pricing_id
+        bigint secondary_organization_limit
+        text status
+        timestamp updated_at
+    }
+    inventory {
+        text _fivetran_id PK
+        text integration_id FK
+        text location_id FK
+        text order_id FK
+        text organization_key FK
+        text sku FK
+        text user FK
+        bigint available
+        bigint available_to_promise
+        bigint commit_ship
+        bigint commit_transferred
+        bigint committed
+        bigint committed_future
+        timestamp created_at
+        text entity_id
+        text entity_type
+        text event
+        bigint future
+        text id
+        bigint incoming
+        bigint on_hand
+        text order_type
+        bigint quantity
+        text status
+        bigint unavailable
+        timestamp updated_at
+        text user_id
+    }
+    transfer_line_item {
+        text id PK
+        text transfer_id PK
+        text location_id FK
+        text name
+        bigint quantity
+        bigint received_quantity
+        boolean routed
+        bigint shipped_quantity
+        text sku
+        text upc
+    }
+    transfer {
+        text id PK
+        text from_location_id FK
+        text integration_id FK
+        text organization_key FK
+        text to_location_id FK
+        timestamp actual_arrival_date
+        timestamp created_at
+        text employee_name
+        timestamp expected_arrival_date
+        timestamp expected_ship_date
+        text external_order_id
+        text incoterms
+        text order_source_type
+        timestamp ship_by_date
+        text shipping_carrier
+        text shipping_notes
+        text shipping_service
+        text status
+        text time_stamp
+        text to_address_first_name
+        text to_address_last_name
+        text transfer_notes
+        timestamp transfer_order_date
+        timestamp updated_at
+    }
+    product_published {
+        text index PK
+        text product_id PK
+        text integration_id FK
+        bigint buffer_inventory
+        text external_product_id
+        boolean inventory_not_tracked
+        text name
+        text sku
+        text status
+        timestamp updated_at
+    }
+    product_bundle_item {
+        text sku PK
+        text product_id PK
+        bigint quantity
+    }
+    product_variant_option {
+        text index PK
+        text product_id PK
+        text name
+        text value
+    }
+    product_price {
+        text index PK
+        text product_id PK
+        text currency
+        text name
+        double_precision value
+    }
+    product_image_url {
+        text image_url PK
+        text product_id PK
+    }
+    product_tag {
+        text index PK
+        text product_id PK
+        text tags
+    }
+    product_type {
+        text type PK
+        text product_id PK
+    }
+    product {
+        text id PK
+        text integration_id FK
+        text mapped_product_integration_id FK
+        text organization_key FK
+        double_precision cost
+        text cost_currency
+        text country_of_origin
+        timestamp created_at
+        text description
+        text dimensions_unit
+        text external_product_api_id
+        timestamp external_product_created_at
+        text external_product_id
+        timestamp external_product_updated_at
+        text harmonized_code
+        double_precision height
+        boolean hide_in_store
+        boolean inventory_not_tracked
+        double_precision length
+        bigint mapped_product_buffer_inventory
+        text mapped_product_external_product_id
+        boolean mapped_product_inventory_not_tracked
+        text mapped_product_name
+        text mapped_product_sku
+        text mapped_product_status
+        timestamp mapped_product_updated_at
+        text name
+        text parent_external_product_id
+        text part_id
+        text sku
+        text status
+        boolean taxable
+        text upc
+        timestamp updated_at
+        text vendor
+        double_precision weight
+        text weight_unit
+        double_precision width
+    }
+    order_additional_charge {
+        text line_item_id PK
+        text orders_id PK
+        text label
+        text reference
+        text type
+        double_precision value
+    }
+    order_discount {
+        text index PK
+        text orders_id PK
+        text line_item_id FK
+        text label
+        text reference
+        text type
+        double_precision value
+    }
+    order_payment {
+        text index PK
+        text orders_id PK
+        double_precision amount
+        bigint conversion
+        text currency
+        text custom_method
+        text kind
+        text method
+        text reference
+        text status
+    }
+    order_line_item {
+        text id PK
+        text orders_id PK
+        text location_id FK
+        text sku FK
+        double_precision item_discount
+        double_precision item_price
+        double_precision item_tax
+        text name
+        bigint quantity
+        boolean requires_shipping
+        boolean routed
+        boolean taxable
+    }
+    order_tag {
+        text index PK
+        text orders_id PK
+        text tags
+    }
+    orders {
+        text id PK
+        text billing_address_email FK
+        text customer_id FK
+        text integration_id FK
+        text location_id FK
+        text organization_key FK
+        text shipping_address_email FK
+        text billing_address_first_name
+        text billing_address_last_name
+        timestamp created_at
+        text currency
+        timestamp expected_delivery_date
+        text external_order_api_id
+        timestamp external_order_created_at
+        text external_order_id
+        timestamp external_order_updated_at
+        text external_order_url
+        text fulfillment_status
+        text gift_note
+        text incoterms
+        double_precision order_discount
+        text order_note
+        text order_source
+        text order_source_type
+        double_precision order_tax
+        text payment_status
+        boolean require_shipping_labels
+        text routing_status
+        timestamp ship_after_date
+        timestamp ship_by_date
+        timestamp ship_cancel_by_date
+        text shipping_address_first_name
+        text shipping_address_last_name
+        text shipping_carrier
+        text shipping_class
+        text shipping_code
+        text shipping_note
+        double_precision shipping_price
+        text status
+        double_precision sub_total_price
+        timestamp time_stamp
+        double_precision total_price
+        timestamp updated_at
+    }
+    label {
+        text id PK
+        text organization_key FK
+        text tracking_number FK
+        text content_type
+        timestamp created_at
+        text file_name
+        text label_type
+        text shipping_method
+        text status
+        timestamp updated_at
+    }
+    customer {
+        text id PK
+        text billing_email FK
+        text organization_key FK
+        text shipping_email FK
+        text company
+        timestamp created_at
+        text display_name
+        text email
+        text external_customer_id
+        text first_name
+        text last_name
+        text phone
+        text status
+        timestamp updated_at
+    }
+    mapping_attribute {
+        text _fivetran_id PK
+        text mapping_id FK
+        jsonb defaults
+        boolean enabled
+        jsonb lookup
+        text missing
+        text name
+        text require
+        text source
+        text target
+        text type
+    }
+    mapping {
+        text id PK
+        text connector_id FK
+        text organization_key FK
+        timestamp created_at
+        text description
+        boolean is_public
+        text origin_id
+        timestamp updated_at
+        text uuid
+    }
+    user_role {
+        text role PK
+        text users_id PK
+    }
+    users {
+        text id PK
+        text email FK
+        text organization_key FK
+        timestamp created_at
+        text description
+        text last_ip_address
+        timestamp last_login
+        bigint logins_count
+        text name
+        text phone
+        text status
+        text time_zone
+        timestamp updated_at
+    }
+    connector_entity {
+        text index PK
+        text connector_id PK
+        text mapping_uuid FK
+        text routing_uuid FK
+        text direction
+        text name
+        jsonb path
+    }
+    connector_action_field {
+        text _fivetran_id PK
+        text connector_id FK
+        text groups
+        boolean options_common
+        text options_component
+        jsonb options_default_value
+        text options_end_adornment
+        jsonb options_extra
+        jsonb options_fields
+        text options_genkey
+        text options_group
+        text options_helper_text
+        boolean options_hidden
+        text options_label
+        text options_place_holder
+        text options_read_me
+        boolean options_read_only
+        text options_start_adornment
+        boolean options_wizard
+        text path
+        boolean secret
+        text type
+    }
+    connector_action {
+        text _fivetran_id PK
+        text connector_id FK
+        text action_name
+        text action_type
+        text description
+        text verb
+    }
+    connector {
+        text id PK
+        text organization_key FK
+        text availability_status
+        jsonb capability
+        text connection_type
+        text connection_url
+        text connector_name
+        text connector_type
+        timestamp created_at
+        text description
+        text display_name
+        text intent_name
+        bigint intent_rank
+        boolean intent_show
+        boolean is_public
+        text logo_url
+        boolean organization_unique
+        boolean organization_wide_access
+        text pricing_category
+        bigint rank
+        text read_me
+        text self_service_mode
+        text slug
+        text status
+        timestamp updated_at
+        text version
+        jsonb webhook_topics
+        text webhook_url
+    }
+    connector_field {
+        text _fivetran_id PK
+        text connector_id FK
+        text groups
+        jsonb options
+        boolean options_common
+        text options_component
+        jsonb options_default_value
+        text options_end_adornment
+        jsonb options_extra
+        jsonb options_fields
+        text options_genkey
+        text options_group
+        text options_helper_text
+        boolean options_hidden
+        text options_label
+        text options_place_holder
+        text options_read_me
+        boolean options_read_only
+        text options_start_adornment
+        boolean options_wizard
+        text path
+        boolean secret
+        text status
+        text type
+    }
+    location_external_system {
+        text index PK
+        text location_id PK
+        text integration_id FK
+        text location_value
+    }
+    location {
+        text id PK
+        text integration_id FK
+        text organization_key FK
+        text address_1
+        text address_2
+        text city
+        text company
+        text country
+        timestamp created_at
+        text email
+        boolean exclude_from_totals
+        text fulfillment_integration_id
+        boolean infinite
+        text inventory_integration_id
+        text merged_with_location_id
+        text name
+        text phone
+        boolean preserve_bundles
+        text state_or_province
+        text status
+        timestamp updated_at
+        text zip_code_or_postal_code
+    }
+    routing {
+        text id PK
+        text organization_key FK
+        timestamp created_at
+        text description
+        boolean enabled
+        text filter
+        boolean is_public
+        timestamp updated_at
+        text uuid
+    }
+    shipment_line_item {
+        text id PK
+        text shipment_id PK
+        text sku FK
+        bigint bundle_quantity
+        text bundle_sku
+        double_precision item_price
+        text name
+        bigint quantity
+        bigint shipped_quantity
+    }
+    shipment_shipping_label {
+        text shipping_label PK
+        text shipment_id PK
+    }
+    shipment_tag {
+        text index PK
+        text shipment_id PK
+        text tags
+    }
+    shipment {
+        text id PK
+        text integration_id FK
+        text location_id FK
+        text order_id FK
+        text order_type FK
+        text organization_key FK
+        timestamp created_at
+        timestamp expected_delivery_date
+        timestamp expected_ship_date
+        text external_order_id
+        text external_reference_id
+        text external_reference_url
+        text external_shipment_id
+        text fulfillment_integration_id
+        text gift_note
+        text incoterms
+        text order_create_time
+        timestamp sent_to_fulfillment_at
+        timestamp ship_after_date
+        timestamp ship_by_date
+        timestamp ship_cancel_by_date
+        text shipping_address_first_name
+        text shipping_address_last_name
+        text shipping_carrier
+        text shipping_class
+        text shipping_code
+        boolean shipping_method_mapping
+        text shipping_note
+        text status
+        timestamp updated_at
+        bigint version
+    }
+    fulfillment_line_item {
+        text fulfillment_id PK
+        text sku PK
+        text unique_id FK
+        bigint bundle_quantity
+        jsonb bundle_quantity_partial
+        text bundle_sku
+        bigint quantity
+    }
+    fulfillment_tracking_number {
+        text tracking_number PK
+        text fulfillment_id PK
+    }
+    fulfillment_tracking_url {
+        text tracking_url PK
+        text fulfillment_id PK
+    }
+    fulfillment {
+        text id PK
+        text integration_id FK
+        text location_id FK
+        text organization_key FK
+        text shipment_id FK
+        timestamp actual_ship_date
+        timestamp created_at
+        timestamp expected_arrival_date
+        text external_fulfillment_id
+        text external_order_id
+        text shipping_carrier
+        double_precision shipping_charge
+        text shipping_class
+        timestamp updated_at
+        double_precision weight
+        text weight_unit
+    }
+    supplier_contact {
+        text email PK
+        text supplier_id PK
+        text organization_key FK
+        text first_name
+        text last_name
+        text phone
+    }
+    supplier {
+        text id PK
+        text organization_key FK
+        text address_address_1
+        text address_address_2
+        text address_city
+        text address_country
+        text address_state_or_province
+        text address_zip_code_or_postal_code
+        timestamp created_at
+        text name
+        timestamp updated_at
+    }
+    organization_setting {
+        text index PK
+        text organization_key PK
+        text path
+        text type
+        jsonb value
+    }
+    organization {
+        text organization_key PK
+        text account_id FK
+        text email FK
+        text branding_copyright
+        text branding_logo_url
+        text branding_privacy_url
+        timestamp created_at
+        boolean is_holding_organization
+        text logo_url
+        text name
+        text organization_mode
+        text phone
+        text status
+        text tier
+        text time_zone
+        timestamp updated_at
+    }
+    role {
+        text id PK
+        text organization_key FK
+        timestamp created_at
+        text description
+        boolean is_public
+        text name
+        text status
+        timestamp updated_at
+    }
+    arrival_line_item {
+        text id PK
+        text arrival_id PK
+        text unique_id FK
+        text name
+        bigint quantity
+        bigint received_quantity
+        text sku
+        text upc
+    }
+    arrival {
+        text id PK
+        text from_location_id FK
+        text fulfillment_id FK
+        text integration_id FK
+        text organization_key FK
+        text purchase_id FK
+        text to_location_id FK
+        text transfer_id FK
+        timestamp created_at
+        timestamp expected_arrival_date
+        text external_arrival_id
+        text external_order_id
+        text incoterms
+        text sender_name
+        text shipping_carrier
+        text shipping_method
+        text shipping_note
+        text status
+        text total_weight
+        timestamp updated_at
+        text weight_unit
+    }
+    inventory_rule {
+        text id PK
+        text integration_id FK
+        text organization_key FK
+        timestamp created_at
+        text description
+        text event
+        text partner
+        text ptype
+        text rule
+        text status
+        timestamp updated_at
+    }
+    receipt_line_item {
+        text id PK
+        text receipt_id PK
+        bigint quantity
+        text sku
+    }
+    receipt {
+        text id PK
+        text arrival_id FK
+        text integration_id FK
+        text organization_key FK
+        timestamp created_at
+        text currency
+        text external_order_id
+        text external_receipt_id
+        text shipping_carrier
+        text shipping_class
+        timestamp updated_at
+    }
+    tracking {
+        text id PK
+        text fulfillment_id FK
+        text organization_key FK
+        timestamp actual_arrival_date
+        timestamp actual_ship_date
+        timestamp created_at
+        timestamp expected_arrival_date
+        text shipping_carrier
+        text status
+        text tracking_number
+        timestamp updated_at
+        text url
+    }
+    shipping_method_mapped_method {
+        text method_id PK
+        text shipping_method_id PK
+    }
+    shipping_method {
+        text id PK
+        text integration_id FK
+        text organization_key FK
+        timestamp created_at
+        text description
+        text external_method_id
+        boolean is_default
+        boolean is_passthrough
+        text name
+        text shipping_carrier
+        text shipping_code
+        text shipping_service
+        text source_integration_id
+        text source_type
+        text status
+        timestamp updated_at
+    }
+    integration_entity_restriction {
+        text _fivetran_id PK
+        text integration_id PK
+        text path
+        text type
+        jsonb value
+    }
+    integration_entity {
+        text _fivetran_id PK
+        text integration_id PK
+        text mapping_uuid FK
+        text routing_uuid FK
+        text direction
+        text name
+    }
+    integration_connection_field {
+        text index PK
+        text integration_id PK
+        text path
+        jsonb value
+    }
+    integration_setting_field {
+        text index PK
+        text integration_id PK
+        text path
+        jsonb value
+    }
+    integration {
+        text id PK
+        text connector_id FK
+        text organization_key FK
+        jsonb capability
+        text connector_name
+        timestamp created_at
+        text environment
+        text error_text
+        text integration_name
+        text status
+        timestamp updated_at
+        text variables_property_1_type
+        jsonb variables_property_1_value
+        text variables_property_2_type
+        jsonb variables_property_2_value
+        text version
+    }
+    action_param {
+        text index PK
+        text integration_action_id PK
+        text path
+        jsonb value
+    }
+    integration_action {
+        text id PK
+        text integration_id FK
+        text organization_key FK
+        text action_name
+        text action_type
+        timestamp created_at
+        bigint progress
+        text status
+        timestamp updated_at
+    }
+    purchase_cost }o--|| purchase : "fk"
+    purchase_line_item }o--|| product : "fk"
+    purchase_line_item }o--|| location : "fk"
+    purchase_line_item }o--|| purchase : "fk"
+    purchase }o--|| orders : "fk"
+    purchase }o--|| organization : "fk"
+    purchase }o--|| integration : "fk"
+    purchase }o--|| location : "fk"
+    purchase }o--|| location : "fk"
+    purchase }o--|| location : "fk"
+    account_integration }o--|| integration : "fk"
+    account_integration }o--|| account : "fk"
+    account_role_id }o--|| role : "fk"
+    account_role_id }o--|| account : "fk"
+    account_payment_sale_discount_code }o--|| account : "fk"
+    account }o--|| users : "fk"
+    account }o--|| organization : "fk"
+    inventory }o--|| product : "fk"
+    inventory }o--|| orders : "fk"
+    inventory }o--|| organization : "fk"
+    inventory }o--|| integration : "fk"
+    inventory }o--|| location : "fk"
+    inventory }o--|| users : "fk"
+    transfer_line_item }o--|| location : "fk"
+    transfer_line_item }o--|| transfer : "fk"
+    transfer }o--|| location : "fk"
+    transfer }o--|| organization : "fk"
+    transfer }o--|| integration : "fk"
+    transfer }o--|| location : "fk"
+    product_published }o--|| integration : "fk"
+    product_published }o--|| product : "fk"
+    product_bundle_item }o--|| product : "fk"
+    product_variant_option }o--|| product : "fk"
+    product_price }o--|| product : "fk"
+    product_image_url }o--|| product : "fk"
+    product_tag }o--|| product : "fk"
+    product_type }o--|| product : "fk"
+    product }o--|| organization : "fk"
+    product }o--|| integration : "fk"
+    product }o--|| integration : "fk"
+    order_additional_charge }o--|| order_line_item : "fk"
+    order_additional_charge }o--|| orders : "fk"
+    order_discount }o--|| order_line_item : "fk"
+    order_discount }o--|| orders : "fk"
+    order_payment }o--|| orders : "fk"
+    order_line_item }o--|| product : "fk"
+    order_line_item }o--|| location : "fk"
+    order_line_item }o--|| orders : "fk"
+    order_tag }o--|| orders : "fk"
+    orders }o--|| organization : "fk"
+    orders }o--|| integration : "fk"
+    orders }o--|| customer : "fk"
+    orders }o--|| location : "fk"
+    orders }o--|| location : "fk"
+    orders }o--|| location : "fk"
+    label }o--|| tracking : "fk"
+    label }o--|| organization : "fk"
+    customer }o--|| location : "fk"
+    customer }o--|| organization : "fk"
+    customer }o--|| location : "fk"
+    mapping_attribute }o--|| mapping : "fk"
+    mapping }o--|| connector : "fk"
+    mapping }o--|| organization : "fk"
+    user_role }o--|| users : "fk"
+    users }o--|| location : "fk"
+    users }o--|| organization : "fk"
+    connector_entity }o--|| mapping : "fk"
+    connector_entity }o--|| routing : "fk"
+    connector_entity }o--|| connector : "fk"
+    connector_action_field }o--|| connector_action : "fk"
+    connector_action }o--|| connector : "fk"
+    connector }o--|| organization : "fk"
+    connector_field }o--|| connector : "fk"
+    location_external_system }o--|| integration : "fk"
+    location_external_system }o--|| location : "fk"
+    location }o--|| organization : "fk"
+    location }o--|| integration : "fk"
+    routing }o--|| organization : "fk"
+    shipment_line_item }o--|| product : "fk"
+    shipment_line_item }o--|| shipment : "fk"
+    shipment_shipping_label }o--|| shipment : "fk"
+    shipment_tag }o--|| shipment : "fk"
+    shipment }o--|| inventory : "fk"
+    shipment }o--|| orders : "fk"
+    shipment }o--|| organization : "fk"
+    shipment }o--|| integration : "fk"
+    shipment }o--|| location : "fk"
+    fulfillment_line_item }o--|| product : "fk"
+    fulfillment_line_item }o--|| shipment_line_item : "fk"
+    fulfillment_line_item }o--|| fulfillment : "fk"
+    fulfillment_tracking_number }o--|| fulfillment : "fk"
+    fulfillment_tracking_url }o--|| fulfillment : "fk"
+    fulfillment }o--|| organization : "fk"
+    fulfillment }o--|| integration : "fk"
+    fulfillment }o--|| shipment : "fk"
+    fulfillment }o--|| location : "fk"
+    supplier_contact }o--|| supplier : "fk"
+    supplier_contact }o--|| organization : "fk"
+    supplier }o--|| organization : "fk"
+    organization_setting }o--|| organization : "fk"
+    organization }o--|| location : "fk"
+    organization }o--|| account : "fk"
+    role }o--|| organization : "fk"
+    arrival_line_item }o--|| receipt_line_item : "fk"
+    arrival_line_item }o--|| arrival : "fk"
+    arrival }o--|| location : "fk"
+    arrival }o--|| fulfillment : "fk"
+    arrival }o--|| organization : "fk"
+    arrival }o--|| integration : "fk"
+    arrival }o--|| transfer : "fk"
+    arrival }o--|| location : "fk"
+    arrival }o--|| purchase : "fk"
+    inventory_rule }o--|| organization : "fk"
+    inventory_rule }o--|| integration : "fk"
+    receipt_line_item }o--|| receipt : "fk"
+    receipt }o--|| arrival : "fk"
+    receipt }o--|| organization : "fk"
+    receipt }o--|| integration : "fk"
+    tracking }o--|| fulfillment : "fk"
+    tracking }o--|| organization : "fk"
+    shipping_method_mapped_method }o--|| shipping_method : "fk"
+    shipping_method }o--|| organization : "fk"
+    shipping_method }o--|| integration : "fk"
+    integration_entity_restriction }o--|| integration_entity : "fk"
+    integration_entity }o--|| mapping : "fk"
+    integration_entity }o--|| routing : "fk"
+    integration_entity }o--|| integration : "fk"
+    integration_connection_field }o--|| integration : "fk"
+    integration_setting_field }o--|| integration : "fk"
+    integration }o--|| connector : "fk"
+    integration }o--|| organization : "fk"
+    action_param }o--|| integration_action : "fk"
+    integration_action }o--|| organization : "fk"
+    integration_action }o--|| integration : "fk"

@@ -1,0 +1,663 @@
+erDiagram
+    trustcenter_access_request {
+        text request_id PK
+        text company
+        text created_at
+        text email
+        text expiration_date
+        text flow_type
+        text is_auto_approved
+        text lastname
+        text name
+        text reviewed_at
+        text status
+    }
+    workspace_framework {
+        text id PK
+        text workspace_id PK
+        text active_logo
+        text bg_color
+        text color
+        text controls_enabled
+        text created_at
+        text custom_framework_id
+        text description
+        text enabled_at
+        text framework_enabled
+        text has_level
+        text inactive_logo
+        text is_ready
+        text label
+        text level_label
+        text long_description
+        text name
+        text num_in_scope_requirement
+        text num_ready_in_scope_requirement
+        text privacy
+        text product_framework_enabled
+        text selected_level
+        text slug
+        text tags
+        text total_enabled_control
+        text total_in_scope_control
+        text type
+        text updated_at
+    }
+    workspace {
+        text id PK
+        text description
+        text how_it_works
+        text logo
+        text name
+        text primary_
+        text url
+    }
+    control_external_evidence {
+        text id PK
+        text control_id PK
+        text created_at
+        text description
+        text file
+        text is_expired
+        text name
+        text renewal_date
+        text renewal_schedule_type
+        text url
+    }
+    user_identities_infrastruture {
+        text id PK
+        text connection_id FK
+        text service_account_designator FK
+        text admin_access
+        timestamp connected_at
+        text created_at
+        text db_access
+        text disconnected_at
+        text email
+        text has_mfa
+        text identity_id
+        text last_checked_at
+        text service_account
+        text service_account_reason
+        text updated_at
+        text username
+    }
+    connection_provider_type {
+        text _fivetran_id PK
+        text connection_id FK
+        text is_enabled
+        text value
+    }
+    connection {
+        text id PK
+        text account_id
+        text alias_updated_at
+        text authorized
+        text client_alias
+        text client_id
+        text client_type
+        text code
+        text connected
+        timestamp connected_at
+        text deleted_at
+        text failed_at
+        text key
+        text manually_updated_at
+        text state
+        jsonb workspace
+        text write_access_enabled
+    }
+    user_role {
+        text index PK
+        text user_id PK
+        text role_name
+    }
+    user_background_check {
+        text id PK
+        text user_id PK
+        text case_id
+        text case_invitation_id
+        text created_at
+        text invitation_email
+        text linked_at
+        text manual_check_date
+        text manually_check_url
+        text out_of_scope_at
+        text out_of_scope_reason
+        text report_data
+        text source
+        text status
+        text types
+        text updated_at
+        text url
+        jsonb users
+    }
+    user_identity {
+        text id PK
+        text user_id PK
+        text connection_id FK
+        text connected_at
+        text disconnected_at
+        text first_name
+        text has_idp
+        text has_mfa
+        text identity_id
+        text is_contractor
+        text job_title
+        text last_name
+        text manager_id
+        text manager_name
+        text secondary_email
+        text separated_at
+        text started_at
+        text username
+        jsonb users
+    }
+    users {
+        text id PK
+        text avatar_url
+        text created_at
+        text drata_terms_agreed_at
+        text email
+        text entry_id
+        text first_name
+        text job_title
+        text last_name
+        text updated_at
+    }
+    trustcenter_monitor_control {
+        text _fivetran_id PK
+        text category
+        text control_code
+        text description
+        text is_enabled
+        text name
+        text status
+    }
+    control_owner {
+        text control_id PK
+        text id PK
+        text avatar_url
+        text created_at
+        text drata_terms_agreed_at
+        text email
+        text first_name
+        text job_title
+        text last_name
+        text updated_at
+    }
+    user_identities_version_control {
+        text id PK
+        text connection_id FK
+        text service_account_designator FK
+        timestamp connected_at
+        text created_at
+        text disconnected_at
+        text email
+        text has_mfa
+        text identity_id
+        text last_checked_at
+        text push_production_code_access
+        text service_account
+        text service_account_reason
+        text updated_at
+        text username
+        text write_access
+    }
+    device_compliance_check {
+        text id PK
+        text device_id PK
+        text check_frequency
+        text created_at
+        text expires_at
+        text last_checked_at
+        text status
+        text type
+        text updated_at
+    }
+    device_identifier {
+        text id PK
+        text device_id PK
+        text created_at
+        text identifier
+        text type
+        text updated_at
+    }
+    device_document {
+        text id PK
+        text device_id PK
+        text created_at
+        text file_url
+        text name
+        text type
+        text updated_at
+    }
+    device {
+        text id PK
+        text asset_id FK
+        text user_id FK
+        text antivirus_enabled
+        text antivirus_explanation
+        text apps_count
+        text auto_update_enabled
+        text auto_update_explanation
+        text created_at
+        text deleted_at
+        text encryption_enabled
+        text encryption_explanation
+        text external_id
+        text firewall_enabled
+        text firewall_explanation
+        text gate_keeper_enabled
+        text is_device_compliant
+        text last_checked_at
+        text mac_address
+        text model
+        text os_version
+        text password_manager_enabled
+        text password_manager_explanation
+        text personnel_id
+        text screen_lock_explanation
+        text screen_lock_time
+        text serial_number
+        text source_type
+        text updated_at
+    }
+    vendor_document {
+        text id PK
+        text vendor_id PK
+        text created_at
+        text file_url
+        text name
+        text updated_at
+    }
+    vendor_review_trust_service_category {
+        text id PK
+        text vendor_id PK
+        text vendor_review_id PK
+        text category
+    }
+    vendor_review_user_control {
+        text id PK
+        text vendor_id PK
+        text vendor_review_id PK
+        text in_place
+        text name
+    }
+    vendor_review_service {
+        text id PK
+        text vendor_id PK
+        text vendor_review_id PK
+        text name
+    }
+    vendor_review_location {
+        text id PK
+        text vendor_id PK
+        text vendor_review_id PK
+        text city
+        text state_country
+    }
+    vendor_review_finding {
+        text id PK
+        text vendor_id PK
+        text vendor_review_id PK
+        text description
+    }
+    vendor_review {
+        text id PK
+        text vendor_id PK
+        text cpa_firm
+        text cpa_procedure_performed
+        text encompass_business_need
+        text follow_up_activity
+        text has_material_impact
+        text report_issue_date
+        text report_opinion
+        text review_date
+        text reviewer
+        text soc_report
+        text soc_report_type_1
+        text soc_report_type_2
+        text soc_type_1_end_date
+        text soc_type_1_start_date
+        text soc_type_2_end_date
+        text soc_type_2_start_date
+        text subservice_organization
+        text subservice_organization_procedure_performed
+        text subservice_organization_using_inclusive_method
+        text updated_at
+    }
+    vendor {
+        text id PK
+        text user_id FK
+        text account_manager_email
+        text account_manager_name
+        text archived_at
+        text category
+        text confirmed_at
+        text created_at
+        text critical
+        text data_stored
+        text has_pii
+        text is_compliance_review_required
+        text is_sub_processor
+        text is_sub_processor_active
+        text last_questionnaire
+        text location
+        text logo_url
+        text name
+        text note
+        text password_mfa_enabled
+        text password_min_length
+        text password_policy
+        text password_requires_min_length
+        text password_requires_number
+        text password_requires_symbol
+        text privacy_url
+        text renewal_date
+        text renewal_date_status
+        text renewal_schedule_type
+        text risk
+        text services_provided
+        text terms_url
+        text updated_at
+        text url
+    }
+    control_mapped_requirement {
+        text id PK
+        text control_id PK
+        text additional_info
+        text additional_info_2
+        text additional_info_3
+        text archived_at
+        text description
+        text framework_name
+        text framework_pill
+        text framework_slug
+        text framework_tag
+        text long_description
+        text name
+        text rationale
+    }
+    trustcenter_private_access {
+        text _fivetran_id PK
+        text created_at
+        text deleted_at
+        text flow_type
+        text id
+        text name
+    }
+    venodr_questionnaire {
+        text id PK
+        text vendor_id PK
+        text completed_by FK
+        text date_sent
+        text is_completed
+        text is_manual_upload
+        text recipient_email
+        text response_id
+    }
+    control {
+        text id PK
+        text archived_at
+        text code
+        text description
+        jsonb framework_tag
+        text has_evidence
+        text has_owner
+        text has_ticket
+        text is_monitored
+        text is_ready
+        text name
+        text slug
+        jsonb topic
+    }
+    monitor_control {
+        text id PK
+        text monitor_id PK
+        text activity
+        text archived_at
+        text code
+        text description
+        text name
+        text question
+        text slug
+    }
+    monitor_instance_check_type {
+        text id PK
+        text monitor_id PK
+        text check_type
+        text created_at
+        text updated_at
+    }
+    monitor_instance_metadata_exclusion {
+        text _fivetran_id PK
+        text monitor_instance_exclusion_id PK
+        text monitor_id FK
+        text monitor_instance_id FK
+    }
+    monitor_instance_metadata {
+        text _fivetran_id PK
+        text monitor_id FK
+        text monitor_instance_id FK
+        text check_result_status
+        text client_alias
+        text client_id
+        text client_type
+        text connection_id
+        jsonb groups
+        text message
+        text policy_name
+        text policy_scope
+        text source
+        text type
+    }
+    monitor_instance {
+        text id PK
+        text monitor_id PK
+        text autopilot_task_type
+        text check_frequency
+        text check_result_status
+        text created_at
+        text enabled
+        text evidence_collection_description
+        text failed_test_description
+        text remedy_description
+        text updated_at
+        text url
+    }
+    monitor_instance_exclusion {
+        text id PK
+        text monitor_id PK
+        text connection_id FK
+        text exclusion_designator_id FK
+        text created_at
+        text exclusion_reason
+        text target_id
+        text target_name
+        text updated_at
+    }
+    monitor {
+        text id PK
+        text disabling_user_id FK
+        text auto_enabled_at
+        text check_result_status
+        text check_status
+        text created_at
+        text description
+        text disabled_message
+        text disabling_user
+        jsonb graph
+        text last_check
+        text name
+        text priority
+        text test_id
+        text updated_at
+    }
+    monitor_instance_metadata_pass_fail {
+        text index PK
+        text _fivetran_id PK
+        text monitor_id FK
+        text monitor_instance_id FK
+        text avatar_url
+        text display_name
+        text email
+        text id
+        text name
+        text type
+        text url
+    }
+    personnel_compliance_test {
+        text monitor_id PK
+        text personnel_id PK
+        text autopilot_task_type
+        text check_result_status
+        text check_status
+        text control_test_instance_id
+        text last_check
+        text name
+        text test_id
+    }
+    personnel_compliance_check {
+        text id PK
+        text personnel_id PK
+        text check_frequency
+        text compliant
+        text created_at
+        text expires_at
+        text last_checked_at
+        text types
+        text updated_at
+    }
+    personnel_device {
+        text id PK
+        text personnel_id PK
+    }
+    personnel {
+        text id PK
+        text reason_provider_id FK
+        text user_id FK
+        text agent_enabled
+        text apps_count
+        text apps_count_last_checked_at
+        text background_check_excluded
+        text background_check_excluded_reason
+        text created_at
+        text data_agent_version
+        text data_created_at
+        text data_graphics
+        text data_hdd_size
+        text data_lastchecked_at
+        text data_mac_address
+        text data_memory
+        text data_os_version
+        text data_processor
+        text data_screen_lock_time
+        text data_serial_number
+        text data_updated_at
+        text devices_count
+        text devices_failing_compliance_count
+        text employment_status
+        text manual_upload_enabled
+        text not_human_reason
+        text os_version
+        text separation_date
+        text serial_number
+        text start_date
+        text status_updated_at
+        text updated_at
+    }
+    trustcenter_private_document {
+        text id PK
+        text type PK
+        text created_at
+        text name
+    }
+    asset_class_type {
+        text id PK
+        text asset_id PK
+        text asset_class_type
+        text created_at
+        text updated_at
+    }
+    asset {
+        text id PK
+        text device_id FK
+        text owner_id FK
+        text approved_at
+        text asset_provider
+        text asset_reference_type
+        text asset_type
+        text company
+        timestamp created_at
+        text description
+        text employment_status
+        text external_id
+        text external_owner_id
+        text name
+        text note
+        text removed_at
+        text unique_id
+        timestamp updated_at
+    }
+    workspace_framework }o--|| workspace : "fk"
+    control_external_evidence }o--|| control : "fk"
+    user_identities_infrastruture }o--|| connection : "fk"
+    user_identities_infrastruture }o--|| users : "fk"
+    connection_provider_type }o--|| connection : "fk"
+    user_role }o--|| users : "fk"
+    user_background_check }o--|| users : "fk"
+    user_identity }o--|| connection : "fk"
+    user_identity }o--|| users : "fk"
+    control_owner }o--|| users : "fk"
+    control_owner }o--|| control : "fk"
+    user_identities_version_control }o--|| connection : "fk"
+    user_identities_version_control }o--|| users : "fk"
+    device_compliance_check }o--|| device : "fk"
+    device_identifier }o--|| device : "fk"
+    device_document }o--|| device : "fk"
+    device }o--|| users : "fk"
+    device }o--|| asset : "fk"
+    vendor_document }o--|| vendor : "fk"
+    vendor_review_trust_service_category }o--|| vendor_review : "fk"
+    vendor_review_trust_service_category }o--|| vendor_review : "fk"
+    vendor_review_user_control }o--|| vendor_review : "fk"
+    vendor_review_user_control }o--|| vendor_review : "fk"
+    vendor_review_service }o--|| vendor_review : "fk"
+    vendor_review_service }o--|| vendor_review : "fk"
+    vendor_review_location }o--|| vendor_review : "fk"
+    vendor_review_location }o--|| vendor_review : "fk"
+    vendor_review_finding }o--|| vendor_review : "fk"
+    vendor_review_finding }o--|| vendor_review : "fk"
+    vendor_review }o--|| vendor : "fk"
+    vendor }o--|| users : "fk"
+    control_mapped_requirement }o--|| control : "fk"
+    venodr_questionnaire }o--|| users : "fk"
+    venodr_questionnaire }o--|| vendor : "fk"
+    monitor_control }o--|| monitor : "fk"
+    monitor_instance_check_type }o--|| monitor_instance : "fk"
+    monitor_instance_check_type }o--|| monitor_instance : "fk"
+    monitor_instance_metadata_exclusion }o--|| monitor_instance_exclusion : "fk"
+    monitor_instance_metadata_exclusion }o--|| monitor_instance_metadata : "fk"
+    monitor_instance_metadata_exclusion }o--|| monitor_instance_metadata : "fk"
+    monitor_instance_metadata_exclusion }o--|| monitor_instance_metadata : "fk"
+    monitor_instance_metadata }o--|| monitor_instance : "fk"
+    monitor_instance_metadata }o--|| monitor_instance : "fk"
+    monitor_instance }o--|| monitor : "fk"
+    monitor_instance_exclusion }o--|| users : "fk"
+    monitor_instance_exclusion }o--|| connection : "fk"
+    monitor_instance_exclusion }o--|| monitor : "fk"
+    monitor }o--|| users : "fk"
+    monitor_instance_metadata_pass_fail }o--|| monitor_instance_metadata : "fk"
+    monitor_instance_metadata_pass_fail }o--|| monitor_instance_metadata : "fk"
+    monitor_instance_metadata_pass_fail }o--|| monitor_instance_metadata : "fk"
+    personnel_compliance_test }o--|| monitor : "fk"
+    personnel_compliance_test }o--|| personnel : "fk"
+    personnel_compliance_check }o--|| personnel : "fk"
+    personnel_device }o--|| device : "fk"
+    personnel_device }o--|| personnel : "fk"
+    personnel }o--|| users : "fk"
+    personnel }o--|| users : "fk"
+    asset_class_type }o--|| asset : "fk"
+    asset }o--|| device : "fk"
+    asset }o--|| users : "fk"

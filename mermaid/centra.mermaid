@@ -1,0 +1,845 @@
+erDiagram
+    country {
+        text id PK
+        text code
+        text continent
+        text is_eu
+        text name
+    }
+    pricelist_price {
+        text id PK
+        text pricelist_id PK
+        text product_id FK
+        text product_variant_id FK
+        text price_conversion_date
+        text price_conversion_rate
+        text price_formatted_value
+        text price_value
+        text price_value_in_cents
+        text recommended_retail_price_conversion_date
+        text recommended_retail_price_conversion_rate
+        text recommended_retail_price_formatted_value
+        text recommended_retail_price_value
+        text recommended_retail_price_value_in_cents
+    }
+    product_size_stock {
+        text _fivetran_id PK
+        text product_size_id FK
+        text warehouse_id FK
+        text allocated_quantity
+        text available_now_quantity
+        text available_quantity
+        text demand_quantity
+        text free_to_allocate_quantity
+        text incoming_quantity
+        text linked_incoming_quantity
+        text on_delivery_quantity
+        text physical_quantity
+        text unlinked_incoming_quantity
+        text unshipped_quantity
+    }
+    voucher {
+        text id PK
+        text store_id FK
+        text code
+        text combine_with_other_discount
+        text combine_with_other_voucher
+        text conversion_html
+        text created_at
+        text entry_point_strategy
+        text max_usages
+        text method
+        text name
+        text priority
+        text reuse
+        text start_at
+        text status
+        text stop_at
+        text successful_usages
+        text type
+        text updated_at
+        text url
+    }
+    lowest_price_market {
+        text lowest_price_fivetran_id PK
+        text market_id PK
+    }
+    lowest_price {
+        text _fivetran_id PK
+        text pricelist_id FK
+        text product_variant_id FK
+        text original_price_conversion_date
+        text original_price_conversion_rate
+        text original_price_formatted_value
+        text original_price_value
+        text original_price_value_in_cents
+        text price_conversion_date
+        text price_conversion_rate
+        text price_formatted_value
+        text price_value
+        text price_value_in_cents
+        text start_date
+    }
+    newsletter_subscription {
+        text id PK
+        text product_size_id FK
+        text product_variant_id FK
+        text store_id FK
+        text created_at
+        text email
+        text is_active
+    }
+    voucher_usage {
+        text _fivetran_id PK
+        text order_id FK
+        text voucher_id FK
+        text code
+        text date
+        text params_json
+        text url
+        text voucher_method
+        text voucher_name
+    }
+    brand {
+        text id PK
+        text external_id
+        text name
+        text uri
+    }
+    mapped_attribute {
+        text id PK
+        text description
+        text name
+        text object_type
+    }
+    invoice_payment {
+        text id PK
+        text invoice_id FK
+        text created_at
+        text payment_date
+        text type
+        text value_conversion_date
+        text value_conversion_rate
+        text value_formatted_value
+        text value_value
+        text value_value_in_cents
+    }
+    product_attribute_element {
+        text index PK
+        text product_attribute_index PK
+        text product_id PK
+        text description
+        text is_multi
+        text key
+        text kind
+        text selected_value
+        text selected_value_name
+        text value
+    }
+    product_attribute {
+        text index PK
+        text product_id PK
+        text description
+        text object_type
+    }
+    product {
+        text id PK
+        text brand_id FK
+        text created_at
+        text external_id
+        text harmonized_commodity_code
+        text harmonized_commodity_code_description
+        text internal_comment
+        text is_bundle
+        text is_serializable_product
+        text name
+        text number
+        text status
+        text updated_at
+        text weight
+        text weight_formatted_value
+        text weight_unit
+        text weight_value
+    }
+    product_variant_display {
+        text id PK
+        text product_variant_id PK
+        text comment
+        text description
+        text meta_description
+        text meta_keywords
+        text meta_title
+        text minimum_order_quantity
+        text name
+        text order_quantity_denominator
+        text short_description
+        text status
+        text store_item_id
+        jsonb tags
+        text updated_at
+        text uri
+    }
+    product_variant_media {
+        text id PK
+        text product_variant_id PK
+        jsonb metadata
+        text source_mime_type
+        text source_type
+        text source_url
+    }
+    product_variant {
+        text id PK
+        text product_id FK
+        text external_id
+        text internal_name
+        text name
+        text status
+        text stock_offset
+        text unit_cost_conversion_date
+        text unit_cost_conversion_rate
+        text unit_cost_formatted_value
+        text unit_cost_value
+        text unit_cost_value_in_cents
+        text updated_at
+        text variant_number
+    }
+    store_brand {
+        text brand_id PK
+        text store_id PK
+    }
+    product_size {
+        text id PK
+        text product_variant_id FK
+        text comment
+        text description
+        text ean
+        text is_active
+        text preorder
+        text quantity
+        text size_number
+        text sku
+        text upc
+        text updated_at
+    }
+    store {
+        text id PK
+        text allocation_rule_id
+        text allocation_rule_is_active
+        text allocation_rule_name
+        text allocation_rule_type
+        text name
+        text type
+    }
+    warehouse {
+        text id PK
+        text brick_and_mortar_id FK
+        text country_id FK
+        text state_id FK
+        text address
+        text address_2
+        text allocation_policy
+        text city
+        text external_id
+        text is_consignation
+        text is_hidden_from_stock_view
+        text name
+        text status
+        text stock_master
+        text stock_ownership
+        text threshold
+        text zip_code
+    }
+    market_campaign {
+        text campaign_id PK
+        text market_id PK
+    }
+    country_state {
+        text id PK
+        text country_id PK
+        text code
+        text name
+    }
+    market_assigned_to_country {
+        text country_id PK
+        text market_id PK
+    }
+    market {
+        text id PK
+        text store_id FK
+        text allocation_rule_id
+        text allocation_rule_is_active
+        text allocation_rule_name
+        text allocation_rule_type
+        text comment
+        text external_id
+        text name
+        text updated_at
+    }
+    pricelist {
+        text id PK
+        text comment
+        text is_default_for_currency
+        text name
+        text status
+        text updated_at
+    }
+    brick_and_mortar_store {
+        text brick_and_mortar_id PK
+        text store_id PK
+    }
+    customer_order {
+        text customer_id PK
+        text order_id PK
+    }
+    campaign_variant {
+        text id PK
+        text campaign_id PK
+        text created_at
+        text discount_percent
+        text show_news
+        text show_sale
+        text start_at
+        text status
+        text stop_at
+        text type
+    }
+    campaign {
+        text id PK
+        text created_at
+        text name
+        text status
+        text updated_at
+    }
+    order_line {
+        text id PK
+        text order_id PK
+        text line_campaign_id FK
+        text product_size_id FK
+        text cancelled_quantity
+        text comment
+        text discount_percent
+        text external_id
+        text folder_name
+        text frontend_item_id
+        text has_any_discount
+        text line_campaign_discount_conversion_date
+        text line_campaign_discount_conversion_rate
+        text line_campaign_discount_formatted_value
+        text line_campaign_discount_percent
+        text line_campaign_discount_value
+        text line_campaign_discount_value_in_cents
+        text line_campaign_fixed_price_conversion_date
+        text line_campaign_fixed_price_conversion_rate
+        text line_campaign_fixed_price_formatted_value
+        text line_campaign_fixed_price_value
+        text line_campaign_fixed_price_value_in_cents
+        text line_campaign_name
+        text line_campaign_original_discount_conversion_date
+        text line_campaign_original_discount_conversion_rate
+        text line_campaign_original_discount_formatted_value
+        text line_campaign_original_discount_value
+        text line_campaign_original_discount_value_in_cents
+        text line_campaign_show_news
+        text line_campaign_show_sale
+        text line_campaign_start_at
+        text line_campaign_stop_at
+        text line_campaign_type
+        text line_value_conversion_date
+        text line_value_conversion_rate
+        text line_value_formatted_value
+        text line_value_value
+        text line_value_value_in_cents
+        text product_brand
+        text product_external_url
+        text product_name
+        text product_number
+        text product_variant_name
+        text quantity
+        text returned_quantity
+        text size
+        text tax_percent
+        text unit_original_price_conversion_date
+        text unit_original_price_conversion_rate
+        text unit_original_price_formatted_value
+        text unit_original_price_value
+        text unit_original_price_value_in_cents
+        text unit_price_conversion_date
+        text unit_price_conversion_rate
+        text unit_price_formatted_value
+        text unit_price_value
+        text unit_price_value_in_cents
+    }
+    orders_attribute_element {
+        text index PK
+        text order_id PK
+        text orders_attribute_index PK
+        text description
+        text is_multi
+        text key
+        text kind
+        text selected_value
+        text selected_value_name
+        text value
+    }
+    orders_attribute {
+        text index PK
+        text order_id PK
+        text description
+        text object_type
+    }
+    orders {
+        text id PK
+        text billing_address_country_id FK
+        text billing_address_state_id FK
+        text shipping_address_country_id FK
+        text shipping_address_state_id FK
+        text store_id FK
+        text allocated_warehouse_count
+        text billing_address_address_1
+        text billing_address_address_2
+        text billing_address_attention
+        text billing_address_cell_phone_number
+        text billing_address_city
+        text billing_address_company_name
+        text billing_address_ec_vat_number
+        text billing_address_email
+        text billing_address_fax_number
+        text billing_address_firstname
+        text billing_address_lastname
+        text billing_address_phone_number
+        text billing_address_state_or_province
+        text billing_address_vat_number
+        text billing_address_zip_code
+        text created_at
+        text currency_base_rate
+        text external_id
+        text has_pending_allocation_requests
+        text internal_comment
+        text is_internal
+        text is_locked
+        text is_on_hold
+        text is_waiting_for_payment
+        text number
+        text order_date
+        text other_comment
+        text payment_method_external_id
+        text payment_method_id
+        text payment_method_name
+        text payment_method_plugin
+        text payment_method_status
+        text payment_method_type
+        text payment_method_uri
+        text shipping_address_address_1
+        text shipping_address_address_2
+        text shipping_address_attention
+        text shipping_address_cell_phone_number
+        text shipping_address_city
+        text shipping_address_company_name
+        text shipping_address_ec_vat_number
+        text shipping_address_email
+        text shipping_address_fax_number
+        text shipping_address_firstname
+        text shipping_address_lastname
+        text shipping_address_phone_number
+        text shipping_address_state_or_province
+        text shipping_address_vat_number
+        text shipping_address_zip_code
+        text status
+        text tax_breakdown_description
+        text tax_breakdown_tax_included
+        text tax_breakdown_tax_percent
+        text tax_conversion_date
+        text tax_conversion_rate
+        text tax_formatted_value
+        text tax_value
+        text tax_value_in_cents
+        text total_cancelled_quantity
+        text total_discount_conversion_date
+        text total_discount_conversion_rate
+        text total_discount_formatted_value
+        text total_discount_value
+        text total_discount_value_in_cents
+        text total_handling_conversion_date
+        text total_handling_conversion_rate
+        text total_handling_formatted_value
+        text total_handling_value
+        text total_handling_value_in_cents
+        text total_line_conversion_date
+        text total_line_conversion_rate
+        text total_line_formatted_value
+        text total_line_value
+        text total_line_value_in_cents
+        text total_original_quantity
+        text total_quantity
+        text total_shipping_conversion_date
+        text total_shipping_conversion_rate
+        text total_shipping_formatted_value
+        text total_shipping_value
+        text total_shipping_value_in_cents
+        text total_tax_added_conversion_date
+        text total_tax_added_conversion_rate
+        text total_tax_added_formatted_value
+        text total_tax_added_value
+        text total_tax_added_value_in_cents
+        text total_tax_deducted_conversion_date
+        text total_tax_deducted_conversion_rate
+        text total_tax_deducted_formatted_value
+        text total_tax_deducted_value
+        text total_tax_deducted_value_in_cents
+        text total_tax_included_conversion_date
+        text total_tax_included_conversion_rate
+        text total_tax_included_formatted_value
+        text total_tax_included_value
+        text total_tax_included_value_in_cents
+        text total_unexpedited_quantity
+        text updated_at
+        text user_ip
+    }
+    invoice_line {
+        text id PK
+        text invoice_id PK
+        text order_line_id FK
+        text brand_name
+        text discount_percent
+        text harmonized_commodity_code
+        text harmonized_commodity_description
+        text product_name
+        text product_number
+        text product_variant_name
+        text quantity
+        text size
+        text tax_percent
+    }
+    invoice {
+        text id PK
+        text account_id FK
+        text state_id FK
+        text additional_information
+        text billing_address_1
+        text billing_address_2
+        text billing_address_attention
+        text billing_address_cell_phone_number
+        text billing_address_city
+        text billing_address_company_name
+        text billing_address_ec_vat_number
+        text billing_address_email
+        text billing_address_fax_number
+        text billing_address_firstname
+        text billing_address_lastname
+        text billing_address_phone_number
+        text billing_address_state_or_province
+        text billing_address_vat_number
+        text billing_address_zip_code
+        text commissionconversion_date
+        text commissionconversion_rate
+        text commissionformatted_value
+        text commissionvalue
+        text commissionvalue_in_cents
+        text company_registration_number
+        text created_at
+        text currency_base_rate
+        text discount_conversion_date
+        text discount_conversion_rate
+        text discount_formatted_value
+        text discount_value
+        text discount_value_in_cents
+        text due_date
+        text external_id
+        text is_overdue
+        text line_values_conversion_date
+        text line_values_conversion_rate
+        text line_values_formatted_value
+        text line_values_value
+        text line_values_value_in_cents
+        text number
+        text order_date
+        text our_reference
+        text pdf_url
+        text pre_paid_conversion_date
+        text pre_paid_conversion_rate
+        text pre_paid_formatted_value
+        text pre_paid_value
+        text pre_paid_value_in_cents
+        text purchase_order_number
+        text shipping_address_1
+        text shipping_address_2
+        text shipping_address_attention
+        text shipping_address_cell_phone_number
+        text shipping_address_city
+        text shipping_address_company_name
+        text shipping_address_ec_vat_number
+        text shipping_address_email
+        text shipping_address_fax_number
+        text shipping_address_firstname
+        text shipping_address_lastname
+        text shipping_address_phone_number
+        text shipping_address_state_or_province
+        text shipping_address_vat_number
+        text shipping_address_zip_code
+        text shipping_conversion_date
+        text shipping_conversion_rate
+        text shipping_formatted_value
+        text shipping_value
+        text shipping_value_in_cents
+        text status
+        text tax_added_conversion_date
+        text tax_added_conversion_rate
+        text tax_added_formatted_value
+        text tax_added_value
+        text tax_added_value_in_cents
+        text type
+        text updated_at
+    }
+    brick_and_mortar {
+        text id PK
+        text state_id FK
+        text address
+        text display_name
+        text email
+        text latitude
+        text longitude
+        text name
+        text phone_number
+        text status
+        text type
+        text website
+    }
+    affiliate {
+        text id PK
+        text store_id FK
+        text html_snippet
+        text name
+        text status
+        text updated_at
+        text uri
+    }
+    category {
+        text id PK
+        text store_id FK
+        text display_sort_type
+        text is_top_category
+        text meta_description
+        text meta_keywords
+        text meta_title
+        text name
+        text status
+        text uri
+    }
+    return {
+        text id PK
+        text order_id FK
+        text store_id FK
+        text comment
+        text created_at
+        text created_from
+        text currency_base_rate
+        text external_id
+        text grand_total_formatted_value
+        text grand_total_value
+        text grand_total_value_in_cent
+        text return_status
+        text returned_to_stock
+        text total_quantity
+    }
+    account_attribute_element {
+        text index PK
+        text account_attribute_index PK
+        text account_id PK
+        text description
+        text is_multi
+        text key
+        text kind
+        text selected_value
+        text selected_value_name
+        text value
+    }
+    account_attribute {
+        text index PK
+        text account_id PK
+        text description
+        text object_type
+    }
+    account {
+        text id PK
+        text account_address_state_id FK
+        text billing_address_state_id FK
+        text account_address_1
+        text account_address_2
+        text account_address_attention
+        text account_address_cell_phone_number
+        text account_address_city
+        text account_address_company_name
+        text account_address_ec_vat_number
+        text account_address_email
+        text account_address_fax_number
+        text account_address_first_name
+        text account_address_last_name
+        text account_address_phone_number
+        text account_address_state_or_province
+        text account_address_vat_number
+        text account_address_zip_code
+        text account_email
+        text allow_consignation
+        text apply_credit_limit
+        text attribute_description
+        text attribute_object_type
+        text billing_address_1
+        text billing_address_2
+        text billing_address_attention
+        text billing_address_cell_phone_number
+        text billing_address_city
+        text billing_address_company_name
+        text billing_address_ec_vat_number
+        text billing_address_email
+        text billing_address_fax_number
+        text billing_address_firstname
+        text billing_address_lastname
+        text billing_address_phone_number
+        text billing_address_state_or_province
+        text billing_address_vat_number
+        text billing_address_zip_code
+        text billing_email
+        text block_if_unpaid_invoices
+        text carrier_information_account_identifier
+        text carrier_information_carrier_name
+        text carrier_information_service_name
+        text carrier_information_tax_id
+        text created_at
+        text discount_percent
+        text external_id
+        text has_brands_restriction
+        text internal_comment
+        text is_discount_visible
+        text is_internal
+        text name
+        text other_comment
+        text shipping_email
+        text status
+        text updated_at
+        text vat_number
+        text website_url
+    }
+    customer_attribute_element {
+        text index PK
+        text customer_attribute_index PK
+        text customer_id PK
+        text description
+        text is_multi
+        text key
+        text kind
+        text selected_value
+        text selected_value_name
+        text value
+    }
+    customer_attribute {
+        text index PK
+        text customer_id PK
+        text description
+        text object_type
+    }
+    customer {
+        text id PK
+        text billing_state_id FK
+        text store_id FK
+        text billing_address_1
+        text billing_address_2
+        text billing_address_attention
+        text billing_address_cell_phone_number
+        text billing_address_city
+        text billing_address_company_name
+        text billing_address_ec_vat_number
+        text billing_address_email
+        text billing_address_fax_number
+        text billing_address_firstname
+        text billing_address_lastname
+        text billing_address_phone_number
+        text billing_address_state_or_province
+        text billing_address_vat_number
+        text billing_address_zip_code
+        text birthdate
+        text created_at
+        text email
+        text external_id
+        text first_name
+        text gender
+        text internal_comment
+        text is_anonymized
+        text is_registered
+        text last_login_at
+        text last_name
+        text last_online_at
+        text status
+        text total_orders
+        text updated_at
+        text website_url
+    }
+    pricelist_price }o--|| product_variant : "fk"
+    pricelist_price }o--|| product : "fk"
+    pricelist_price }o--|| pricelist : "fk"
+    product_size_stock }o--|| warehouse : "fk"
+    product_size_stock }o--|| product_size : "fk"
+    voucher }o--|| store : "fk"
+    lowest_price_market }o--|| market : "fk"
+    lowest_price_market }o--|| lowest_price : "fk"
+    lowest_price }o--|| product_variant : "fk"
+    lowest_price }o--|| pricelist : "fk"
+    newsletter_subscription }o--|| store : "fk"
+    newsletter_subscription }o--|| product_variant : "fk"
+    newsletter_subscription }o--|| product_size : "fk"
+    voucher_usage }o--|| orders : "fk"
+    voucher_usage }o--|| voucher : "fk"
+    invoice_payment }o--|| invoice : "fk"
+    product_attribute_element }o--|| product_attribute : "fk"
+    product_attribute_element }o--|| product_attribute : "fk"
+    product_attribute }o--|| product : "fk"
+    product }o--|| brand : "fk"
+    product_variant_display }o--|| product_variant : "fk"
+    product_variant_media }o--|| product_variant : "fk"
+    product_variant }o--|| product : "fk"
+    store_brand }o--|| brand : "fk"
+    store_brand }o--|| store : "fk"
+    product_size }o--|| product_variant : "fk"
+    warehouse }o--|| brick_and_mortar : "fk"
+    warehouse }o--|| country_state : "fk"
+    warehouse }o--|| country : "fk"
+    market_campaign }o--|| campaign : "fk"
+    market_campaign }o--|| market : "fk"
+    country_state }o--|| country : "fk"
+    market_assigned_to_country }o--|| country : "fk"
+    market_assigned_to_country }o--|| market : "fk"
+    market }o--|| store : "fk"
+    brick_and_mortar_store }o--|| store : "fk"
+    brick_and_mortar_store }o--|| brick_and_mortar : "fk"
+    customer_order }o--|| orders : "fk"
+    customer_order }o--|| customer : "fk"
+    campaign_variant }o--|| campaign : "fk"
+    order_line }o--|| product_size : "fk"
+    order_line }o--|| campaign : "fk"
+    order_line }o--|| orders : "fk"
+    orders_attribute_element }o--|| orders_attribute : "fk"
+    orders_attribute_element }o--|| orders_attribute : "fk"
+    orders_attribute }o--|| orders : "fk"
+    orders }o--|| country : "fk"
+    orders }o--|| store : "fk"
+    orders }o--|| country : "fk"
+    orders }o--|| country_state : "fk"
+    orders }o--|| country_state : "fk"
+    invoice_line }o--|| order_line : "fk"
+    invoice_line }o--|| invoice : "fk"
+    invoice }o--|| account : "fk"
+    invoice }o--|| country_state : "fk"
+    brick_and_mortar }o--|| country_state : "fk"
+    affiliate }o--|| store : "fk"
+    category }o--|| store : "fk"
+    return }o--|| orders : "fk"
+    return }o--|| store : "fk"
+    account_attribute_element }o--|| account_attribute : "fk"
+    account_attribute_element }o--|| account_attribute : "fk"
+    account_attribute }o--|| account : "fk"
+    account }o--|| country_state : "fk"
+    account }o--|| country_state : "fk"
+    customer_attribute_element }o--|| customer_attribute : "fk"
+    customer_attribute_element }o--|| customer_attribute : "fk"
+    customer_attribute }o--|| customer : "fk"
+    customer }o--|| store : "fk"
+    customer }o--|| country_state : "fk"

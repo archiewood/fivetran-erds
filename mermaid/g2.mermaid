@@ -1,0 +1,264 @@
+erDiagram
+    track_prospect {
+        bigint id PK
+        text external_id
+        timestamp first_seen_occurred_at
+        text first_seen_path
+        text first_seen_scope
+        text industry
+        boolean isp
+        timestamp last_seen_occurred_at
+        text last_seen_path
+        text last_seen_scope
+        text organization
+        text saw_first
+        text visitor_id
+    }
+    answer {
+        bigint id PK
+        text product_id FK
+        text question_id FK
+        bigint survey_response_id FK
+        timestamp created_at
+        text input_type
+        text question_text
+        text question_type
+        timestamp updated_at
+        text value
+    }
+    resource_subscription {
+        bigint id PK
+        text product_uuid FK
+        text post_url
+        text product_id
+        text subscribed_resource
+        timestamp updated_at
+    }
+    vendor_product {
+        text product_id PK
+        text vendor_id PK
+    }
+    question {
+        bigint id PK
+        bigint survey_response_id FK
+        text description
+        text input_type
+        boolean is_required
+        text question_type
+        text text_template
+        text title
+    }
+    company {
+        bigint id PK
+        bigint event_stream_id FK
+        text external_id FK
+        bigint alexa_global_rank
+        bigint alexa_us_rank
+        text annual_revenue
+        text city
+        text company_type
+        text country
+        text country_code
+        text crunchbase
+        text description
+        text domain
+        jsonb domain_aliases
+        text email_provider
+        bigint employees
+        text employees_range
+        bigint founded_year
+        text latitude
+        text legal_name
+        text linkedin
+        text location
+        text longitude
+        text market_cap
+        text name
+        text postal_code
+        text raised
+        text site_author
+        text site_h_1
+        text site_meta
+        text site_title
+        text state
+        text state_code
+        text street_name
+        text street_number
+        text sub_premise
+        jsonb tags
+        jsonb tech
+        text time_zone
+        text twitter
+        text twitter_avatar
+        text twitter_bio
+        bigint twitter_followers
+        bigint twitter_following
+        text twitter_id
+        text twitter_location
+        text twitter_site
+        text url
+        bigint utc_offset
+    }
+    event_stream {
+        bigint id PK
+        text visitor_id FK
+        jsonb category_ids
+        text city
+        text country
+        text country_code
+        timestamp created_at
+        text organization
+        jsonb product_ids
+        text state
+        text state_code
+        text tags
+        timestamp time
+        text title
+        text url
+    }
+    product_rating {
+        text product_id PK
+        text main_category_id FK
+        double_precision category_average_ease_of_setup
+        double_precision category_average_ease_of_use
+        double_precision category_average_quality_of_support
+        text category_name
+        double_precision product_average_ease_of_setup
+        double_precision product_average_ease_of_use
+        double_precision product_average_quality_of_support
+    }
+    product_feature {
+        bigint product_feature_id PK
+        text product_id FK
+        bigint question_id FK
+        boolean available
+        text description
+        double_precision percentage
+        bigint review_count
+        text section_title
+        text text
+    }
+    product {
+        text id PK
+        double_precision avg_rating
+        timestamp created_at
+        text description
+        text detail_description
+        text domain
+        text image_url
+        text name
+        text product_type
+        text product_url
+        text public_detail_url
+        bigint review_count
+        text short_name
+        text slug
+        double_precision star_rating
+        timestamp updated_at
+    }
+    category {
+        text id PK
+        text description
+        text name
+        text slug
+        timestamp updated_at
+    }
+    product_category {
+        text category_id PK
+        text product_id PK
+    }
+    vendor {
+        text id PK
+        text company_website
+        text description
+        text name
+        bigint public_product_count
+        text slug
+        timestamp updated_at
+    }
+    product_competitor {
+        text competitor_id PK
+        text product_id FK
+    }
+    survey_response {
+        bigint id PK
+        text product_id FK
+        text country_name
+        double_precision default_sort
+        text ease_of_doing_business_with_text
+        double_precision ease_of_doing_business_with_value
+        text ease_of_setup_text
+        double_precision ease_of_setup_value
+        text hate_text
+        text hate_value
+        boolean is_business_partner
+        boolean is_public
+        text love_text
+        text love_value
+        text meet_requirement_text
+        double_precision meet_requirement_value
+        timestamp moderated_at
+        double_precision percent_complete
+        text product_name
+        text recommendation_text
+        text recommendation_value
+        text reference_user_consent
+        jsonb regions
+        text review_source
+        text slug
+        double_precision star_rating
+        text status
+        timestamp submitted_at
+        text title
+        timestamp updated_at
+        text user_id
+        text user_image_url
+        text user_name
+        boolean verified_current_user
+        bigint votes_down
+        bigint votes_total
+        bigint votes_up
+    }
+    history_compared_product {
+        bigint history_id PK
+        text product_id PK
+        text product_name
+    }
+    history {
+        bigint id PK
+        bigint category_pageview
+        text company_country
+        text company_domain
+        text company_name
+        text company_state
+        bigint comparison_pageview
+        bigint competitor_pageview
+        bigint direct_pageview
+        bigint intent_score
+        timestamp last_seen_at
+        bigint product_profile_pageview
+        bigint sponsored_content_pageview
+        bigint total_pageview
+        bigint visitor_count
+    }
+    answer }o--|| question : "fk"
+    answer }o--|| product : "fk"
+    answer }o--|| survey_response : "fk"
+    resource_subscription }o--|| product : "fk"
+    vendor_product }o--|| product : "fk"
+    vendor_product }o--|| vendor : "fk"
+    question }o--|| survey_response : "fk"
+    company }o--|| track_prospect : "fk"
+    company }o--|| event_stream : "fk"
+    event_stream }o--|| track_prospect : "fk"
+    product_rating }o--|| product : "fk"
+    product_rating }o--|| category : "fk"
+    product_feature }o--|| question : "fk"
+    product_feature }o--|| product : "fk"
+    product_category }o--|| product : "fk"
+    product_category }o--|| category : "fk"
+    product_competitor }o--|| product : "fk"
+    product_competitor }o--|| product : "fk"
+    survey_response }o--|| product : "fk"
+    history_compared_product }o--|| product : "fk"
+    history_compared_product }o--|| history : "fk"

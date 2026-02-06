@@ -1,0 +1,174 @@
+erDiagram
+    block_children_database {
+        text id PK
+        text block_database_id PK
+        text block_parent_database_id PK
+        boolean archived
+        text created_by
+        timestamp created_time
+        boolean has_children
+        text last_edited_by
+        timestamp last_edited_time
+        text parent_block_id
+        text parent_type
+    }
+    block_parent_database {
+        text id PK
+        text block_database_id PK
+        boolean archived
+        text created_by
+        timestamp created_time
+        boolean has_children
+        text last_edited_by
+        timestamp last_edited_time
+        text parent_block_id
+        text parent_type
+    }
+    page_comment {
+        text id PK
+        text block_page_id PK
+        text created_by FK
+        text page_id FK
+        timestamp created_time
+        text discussion_id
+        timestamp last_edited_time
+    }
+    page_property {
+        text id PK
+        text page_id PK
+        text type
+    }
+    page {
+        text id PK
+        text created_by FK
+        text database_id FK
+        text last_edited_by FK
+        text parent_page_id FK
+        boolean archived
+        text block_id
+        text cover
+        timestamp created_time
+        jsonb description
+        text icon
+        boolean is_inline
+        timestamp last_edited_time
+        text object
+        text url
+        text workspace
+    }
+    database_object_property {
+        text id PK
+        text database_object_id PK
+        text color
+        text name
+        text type
+    }
+    database_object {
+        text id PK
+        text created_by FK
+        text last_edited_by FK
+        text page_id FK
+        text parent_database_id FK
+        boolean archived
+        text block_id
+        text cover
+        timestamp created_time
+        jsonb description
+        text icon
+        boolean is_inline
+        timestamp last_edited_time
+        text object
+        text url
+        text workspace
+    }
+    block_comment {
+        text id PK
+        text block_database_id PK
+        text created_by FK
+        text page_id FK
+        timestamp created_time
+        text discussion_id
+        timestamp last_edited_time
+    }
+    block_parent_page {
+        text id PK
+        text block_page_id PK
+        boolean archived
+        text created_by
+        timestamp created_time
+        boolean has_children
+        text last_edited_by
+        timestamp last_edited_time
+        text parent_block_id
+        text parent_type
+    }
+    block_database {
+        text id PK
+        text parent_database_id FK
+        boolean archived
+        text created_by
+        timestamp created_time
+        boolean has_children
+        text last_edited_by
+        timestamp last_edited_time
+        text parent_type
+    }
+    block_children_page {
+        text id PK
+        text block_page_id PK
+        text block_parent_page_id PK
+        boolean archived
+        text created_by
+        timestamp created_time
+        boolean has_children
+        text last_edited_by
+        timestamp last_edited_time
+        text parent_block_id
+        text parent_type
+    }
+    block_page {
+        text id PK
+        text parent_page_id FK
+        boolean archived
+        text created_by
+        timestamp created_time
+        boolean has_children
+        text last_edited_by
+        timestamp last_edited_time
+        text parent_type
+    }
+    user_bot {
+        text _fivetran_id PK
+        text user_id FK
+        text workspace_name
+    }
+    users {
+        text id PK
+        text email
+        text name
+    }
+    block_children_database }o--|| block_parent_database : "fk"
+    block_children_database }o--|| block_parent_database : "fk"
+    block_parent_database }o--|| block_database : "fk"
+    page_comment }o--|| page : "fk"
+    page_comment }o--|| users : "fk"
+    page_comment }o--|| block_page : "fk"
+    page_property }o--|| page : "fk"
+    page }o--|| users : "fk"
+    page }o--|| users : "fk"
+    page }o--|| database_object : "fk"
+    page }o--|| page : "fk"
+    database_object_property }o--|| database_object : "fk"
+    database_object }o--|| page : "fk"
+    database_object }o--|| users : "fk"
+    database_object }o--|| database_object : "fk"
+    database_object }o--|| users : "fk"
+    block_comment }o--|| page : "fk"
+    block_comment }o--|| users : "fk"
+    block_comment }o--|| block_database : "fk"
+    block_parent_page }o--|| block_page : "fk"
+    block_database }o--|| database_object : "fk"
+    block_children_page }o--|| block_parent_page : "fk"
+    block_children_page }o--|| block_parent_page : "fk"
+    block_page }o--|| page : "fk"
+    user_bot }o--|| users : "fk"

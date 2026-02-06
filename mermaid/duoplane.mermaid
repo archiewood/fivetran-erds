@@ -1,0 +1,186 @@
+erDiagram
+    shipment_tracking_attribute {
+        text id PK
+        text tracking PK
+        text shipment_id FK
+        text tracking_url
+    }
+    shipment_item_serial_code {
+        text serial_code PK
+        text shipment_item_attribute_id PK
+        text shipment_item_attribute_order_item_id PK
+    }
+    shipment_item_attribute {
+        text id PK
+        text order_item_id PK
+        text shipment_id FK
+        double_precision cost
+        text order_item_name
+        integer quantity
+    }
+    shipment {
+        text id PK
+        timestamp created_at
+        text purchase_order_id
+        text purchase_order_public_reference
+        text shipper_id
+        text shipper_invoice_reference
+        text shipper_name
+        text shipper_scac_code
+        double_precision shipper_shipping_cost
+        timestamp updated_at
+        double_precision vendor_handling_cost
+        text vendor_invoice_reference
+        double_precision vendor_shipping_cost
+        double_precision vendor_tax_cost
+    }
+    purchase_order_item_note {
+        text _fivetran_id PK
+        text purchase_order_item_id FK
+        text body
+        text title
+    }
+    purchase_order_item_comment {
+        text id PK
+        text purchase_order_item_id FK
+        text body
+        text commentator_company_name
+        text recipient_company_name
+    }
+    purchase_order_item {
+        text id PK
+        text purchase_order_id FK
+        double_precision cost
+        text mpn
+        text name
+        double_precision net_price
+        text order_id
+        text other_barcode
+        double_precision price
+        text promise_date
+        integer quantity
+        integer quantity_open
+        text retailer_product_id
+        text retailer_sku
+        double_precision total_discount
+        text upc
+        text vendor_sku
+    }
+    purchase_order_note {
+        text _fivetran_id PK
+        text purchase_order_id FK
+        text body
+        text title
+    }
+    purchase_order {
+        text id PK
+        timestamp created_at
+        text customer_note
+        text order_id
+        text order_public_reference
+        timestamp ordered_at
+        text promise_date
+        text public_reference
+        text retailer_account
+        text retailer_id
+        text retailer_name
+        timestamp sent_at
+        text ship_method
+        text shipping_address_address_1
+        text shipping_address_address_2
+        text shipping_address_city
+        text shipping_address_company_name
+        text shipping_address_country
+        text shipping_address_email
+        text shipping_address_first_name
+        text shipping_address_last_name
+        text shipping_address_phone
+        text shipping_address_post_code
+        text shipping_address_province
+        text shipping_address_province_iso
+        text status
+        text store_name
+        double_precision total_shipping_revenue
+        double_precision total_tax
+        timestamp updated_at
+        text vendor
+        text vendor_account
+        text vendor_id
+        text vendor_reference
+    }
+    product_inventory {
+        text id PK
+        text product_id FK
+        integer actual_leadtime_days
+        text backordered_until
+        double_precision cost
+        text manage_inventory
+        text purchase_name
+        integer quantity_available
+        text vendor_id
+        text vendor_name
+        text vendor_sku
+    }
+    store_product {
+        text id PK
+        text product_id FK
+        text inventory_quantity_buffer
+        text store_id
+        text store_name
+        text store_product_type
+        text store_reference_unique
+        text vendor_store_reference
+    }
+    product {
+        text id PK
+        timestamp created_at
+        text deactivated_at
+        text mpn
+        text name
+        text other_barcode
+        text price
+        text price_map
+        text price_msrp
+        text product_type
+        text retailer_sku
+        text upc
+        timestamp updated_at
+    }
+    order_vendor_comment {
+        text id PK
+        text purchase_order_id FK
+        text body
+        text commentable_id
+        text commentable_type
+        text commenter_email
+        text commenter_full_name
+        timestamp created_at
+        text recipient_company_id
+        text recipient_company_name
+        timestamp updated_at
+    }
+    order_retailer_comment {
+        text id PK
+        text purchase_order_item_id FK
+        text body
+        text commentable_id
+        text commentable_type
+        text commenter_email
+        text commenter_full_name
+        timestamp created_at
+        text recipient_company_id
+        text recipient_company_name
+        timestamp updated_at
+    }
+    shipment_tracking_attribute }o--|| shipment : "fk"
+    shipment_item_serial_code }o--|| shipment_item_attribute : "fk"
+    shipment_item_serial_code }o--|| shipment_item_attribute : "fk"
+    shipment_item_attribute }o--|| shipment : "fk"
+    purchase_order_item_note }o--|| purchase_order_item : "fk"
+    purchase_order_item_comment }o--|| purchase_order_item : "fk"
+    purchase_order_item }o--|| purchase_order : "fk"
+    purchase_order_note }o--|| purchase_order : "fk"
+    product_inventory }o--|| product : "fk"
+    store_product }o--|| product : "fk"
+    order_vendor_comment }o--|| purchase_order : "fk"
+    order_retailer_comment }o--|| purchase_order_item : "fk"

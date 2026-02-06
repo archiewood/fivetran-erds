@@ -1,0 +1,258 @@
+erDiagram
+    annotation {
+        text id PK
+        text created_by_uuid FK
+        text project_id FK
+        text content
+        text created_at
+        text created_by_id
+        text creation_type
+        text dashboard_item
+        text date_marker
+        text deleted
+        text scope
+        text updated_at
+    }
+    session {
+        text id PK
+        text project_id FK
+        text is_numerical
+        text is_seen_on_filtered_events
+        text name
+        text property_type
+        jsonb tags
+    }
+    cohort {
+        text id PK
+        text created_by_uuid FK
+        text project_id FK
+        text count
+        text created_at
+        text created_by_id
+        text deleted
+        text description
+        text error_calculating
+        text filters_properties_type
+        jsonb filters_properties_value
+        jsonb groups
+        text is_calculating
+        text is_static
+        text last_calculation
+        text name
+    }
+    app_url {
+        text app_url PK
+        text project_id PK
+    }
+    test_account_filter {
+        text _fivetran_id PK
+        text project_id FK
+        text key
+        text operator
+        text type
+        jsonb value
+    }
+    path_cleaning_filter {
+        text _fivetran_id PK
+        text project_id FK
+        text key
+        text operator
+        text type
+        jsonb value
+    }
+    persons_display_name_property {
+        text person_display_name_property PK
+        text project_id PK
+    }
+    live_events_column {
+        text live_events_column PK
+        text project_id PK
+    }
+    project {
+        text id PK
+        text access_control
+        text anonymize_ips
+        text completed_snippet_onboarding
+        text created_at
+        jsonb data_attribute
+        text effective_membership_level
+        jsonb excluded_event_name
+        jsonb excluded_event_property_name
+        jsonb excluded_person_property_name
+        text has_group_types
+        text ingested_event
+        text is_demo
+        text name
+        text organization
+        text primary_dashboard
+        text session_recording_opt_in
+        text slack_incoming_webhook
+        text timezone
+        text updated_at
+        text uuid
+    }
+    users {
+        text uuid PK
+        text anonymize_data
+        text date_joined
+        text distinct_id
+        text email
+        text email_opt_in
+        text first_name
+        text has_password
+        text is_impersonated
+        text is_staff
+        text toolbar_mode
+    }
+    insight_tag {
+        text tags PK
+        text insight_id PK
+    }
+    insight {
+        text id PK
+        text created_by_uuid FK
+        text last_modified_by_uuid FK
+        text project_id FK
+        text created_at
+        text created_by_id
+        jsonb dashboards
+        text deleted
+        text derived_name
+        text description
+        text effective_privilege_level
+        text effective_restriction_level
+        text favorited
+        text filters_hash
+        text is_sample
+        text last_modified_at
+        text last_modified_by_id
+        text last_refresh
+        text name
+        text orders
+        text refreshing
+        jsonb result
+        text saved
+        text short_id
+        jsonb timezone
+        text updated_at
+    }
+    person_name {
+        text person_name PK
+        text person_id PK
+    }
+    person {
+        text id PK
+        text project_id FK
+        text created_at
+        text is_identified
+        text name
+        text type
+        text uuid
+    }
+    cohort_person {
+        text person_uuid PK
+        text cohort_id FK
+        text project_id FK
+        text created_at
+        text is_identified
+        jsonb matched_recordings
+        text name
+        text type
+        text value_at_data_point
+    }
+    session_recording {
+        text id PK
+        text person_uuid FK
+        text project_id FK
+        text active_seconds
+        text activity_score
+        text click_count
+        text console_error_count
+        text console_log_count
+        text console_warn_count
+        text distinct_id
+        text end_time
+        text inactive_seconds
+        text keypress_count
+        text mouse_activity_count
+        text ongoing
+        text person_id
+        text recording_duration
+        text snapshot_source
+        text start_time
+        text start_url
+        text storage
+        text viewed
+    }
+    filter_group_property {
+        text _fivetran_id PK
+        text feature_flag_filter_group_index FK
+        text feature_flag_id FK
+        text key
+        text operator
+        text type
+        jsonb value
+    }
+    feature_flag_filter_group {
+        text index PK
+        text feature_flag_id PK
+        text rollout_percentage
+    }
+    feature_flag {
+        text id PK
+        text created_by_uuid FK
+        text project_id FK
+        text active
+        text created_at
+        text created_by_id
+        text deleted
+        text ensure_experience_continuity
+        jsonb filters_multivariate
+        text is_simple_flag
+        text key
+        text name
+        text rollout_percentage
+    }
+    event {
+        text id PK
+        text distinct_id FK
+        text project_id FK
+        jsonb elements
+        text elements_chain
+        text event
+        text groups_customer
+        text groups_project
+        text groups_user
+        jsonb person_distinct_ids
+        text person_is_identified
+        jsonb person_properties
+        text time_stamp
+    }
+    annotation }o--|| users : "fk"
+    annotation }o--|| project : "fk"
+    session }o--|| project : "fk"
+    cohort }o--|| users : "fk"
+    cohort }o--|| project : "fk"
+    app_url }o--|| project : "fk"
+    test_account_filter }o--|| project : "fk"
+    path_cleaning_filter }o--|| project : "fk"
+    persons_display_name_property }o--|| project : "fk"
+    live_events_column }o--|| project : "fk"
+    insight_tag }o--|| insight : "fk"
+    insight }o--|| users : "fk"
+    insight }o--|| users : "fk"
+    insight }o--|| project : "fk"
+    person_name }o--|| person : "fk"
+    person }o--|| project : "fk"
+    cohort_person }o--|| person : "fk"
+    cohort_person }o--|| project : "fk"
+    cohort_person }o--|| cohort : "fk"
+    session_recording }o--|| person : "fk"
+    session_recording }o--|| project : "fk"
+    filter_group_property }o--|| feature_flag_filter_group : "fk"
+    filter_group_property }o--|| feature_flag_filter_group : "fk"
+    feature_flag_filter_group }o--|| feature_flag : "fk"
+    feature_flag }o--|| users : "fk"
+    feature_flag }o--|| project : "fk"
+    event }o--|| person_name : "fk"
+    event }o--|| project : "fk"

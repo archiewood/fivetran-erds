@@ -1,0 +1,241 @@
+erDiagram
+    locations {
+        text id PK
+        text company_id FK
+        text company_url FK
+        text labor_group_url FK
+        text city
+        text country
+        text name
+        text people_url
+        text phone
+        text state
+        text street_1
+        text street_2
+        text url
+        text zip
+    }
+    labor_group_data {
+        text index PK
+        text labor_group_id PK
+        text url FK
+        text is_primary
+    }
+    labor_group {
+        text id PK
+        text labor_group_type_id FK
+        text labor_group_type_url FK
+        text code
+        text name
+        text url
+    }
+    department {
+        text id PK
+        text company_id FK
+        text company_url FK
+        text labor_group_url
+        text name
+        text people_url
+        text url
+    }
+    custom_field {
+        text id PK
+        text company_url FK
+        text can_manager_view_field
+        text can_person_edit_field
+        text can_person_view_field
+        text company_during_hiring
+        text custom_field_type
+        text custom_field_values_url
+        text help_text
+        text help_url
+        text help_url_media
+        text is_field_completer_person
+        text is_field_required
+        text is_sensitive
+        text media_file_type
+        text name
+        text object
+        text person_during_onboarding
+        text url
+    }
+    time_duration {
+        text id PK
+        text approver_url FK
+        text person_url FK
+        text activity
+        text approved_date_time
+        text date
+        text end_date
+        text hours
+        text is_approved
+        text is_overnight
+        text labor_group_ids
+        text start_date
+        text state
+        text valid_status
+    }
+    labor_group_type {
+        text id PK
+        text company_url FK
+        text labor_groups_url
+        text name
+        text url
+    }
+    vacation_type {
+        text id PK
+        text company_url FK
+        text counts_as
+        text name
+        text status
+        text url
+        text vacation_requests_url
+    }
+    company {
+        text id PK
+        text company_banks_url
+        text departments_url
+        text ein
+        text legal_city
+        text legal_name
+        text legal_state
+        text legal_street_1
+        text legal_street_2
+        text legal_zips
+        text locations_url
+        text logo_url
+        text name
+        text object
+        text people_url
+        text url
+    }
+    company_bank_account {
+        text id PK
+        text company_id FK
+        text company_url FK
+        text account_number
+        text account_type
+        text bank_name
+        text routing_number
+    }
+    emp_bank_account {
+        text id PK
+        text people_id FK
+        text account_number
+        text account_type
+        text amount_per_paycheck
+        text bank_name
+        text is_primary_account
+        text is_salary_account
+        text percentage_per_paycheck
+        text priority
+        text routing_number
+    }
+    custom_field_value {
+        text id PK
+        text custom_field_url FK
+        text people_id FK
+        text person_url FK
+        text url
+        text value
+    }
+    people {
+        text id PK
+        text company_id FK
+        text company_url FK
+        text department_url FK
+        text location_url FK
+        text manager_url FK
+        text bank_url
+        text city
+        text country
+        text date_of_birth
+        text employee_number
+        text federal_filing_status
+        text first_name
+        text gender
+        text is_admin
+        text is_full_admin
+        text last_name
+        text middle_name
+        text personal_email
+        text personal_phone
+        text personal_pronoun
+        text photo_thumbnail_url
+        text photo_url
+        text postal_code
+        text preferred_name
+        text social_security_number
+        text state
+        text status
+        text street_1
+        text street_2
+        text subordinates_url
+        text title
+        text type
+        text url
+        text work_email
+        text work_phone
+    }
+    vacation_request {
+        text id PK
+        text creator_url FK
+        text person_url FK
+        text vacation_type_url FK
+        text approved_date
+        text created_date
+        text deny_reason
+        text end_date
+        text hours
+        text reason
+        text start_date
+        text status
+        text url
+    }
+    employment {
+        text id PK
+        text people_id FK
+        text person_url FK
+        text amount_type
+        text annual_salary
+        text comp_type
+        text employment_sub_type
+        text employment_type
+        text hire_date
+        text is_active
+        text is_flsa_exempt
+        text pay_rate
+        text termination_date
+        text termination_type
+        text working_hours_per_week
+    }
+    locations }o--|| company : "fk"
+    locations }o--|| labor_group : "fk"
+    locations }o--|| company : "fk"
+    labor_group_data }o--|| people : "fk"
+    labor_group_data }o--|| labor_group : "fk"
+    labor_group }o--|| labor_group_type : "fk"
+    labor_group }o--|| labor_group_type : "fk"
+    department }o--|| company : "fk"
+    department }o--|| company : "fk"
+    custom_field }o--|| company : "fk"
+    time_duration }o--|| people : "fk"
+    time_duration }o--|| people : "fk"
+    labor_group_type }o--|| company : "fk"
+    vacation_type }o--|| company : "fk"
+    company_bank_account }o--|| company : "fk"
+    company_bank_account }o--|| company : "fk"
+    emp_bank_account }o--|| people : "fk"
+    custom_field_value }o--|| people : "fk"
+    custom_field_value }o--|| custom_field : "fk"
+    custom_field_value }o--|| people : "fk"
+    people }o--|| locations : "fk"
+    people }o--|| company : "fk"
+    people }o--|| people : "fk"
+    people }o--|| department : "fk"
+    people }o--|| company : "fk"
+    vacation_request }o--|| vacation_type : "fk"
+    vacation_request }o--|| people : "fk"
+    vacation_request }o--|| people : "fk"
+    employment }o--|| people : "fk"
+    employment }o--|| people : "fk"

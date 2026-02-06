@@ -1,0 +1,1026 @@
+erDiagram
+    order_service_charge {
+        text uid PK
+        text order_id PK
+        text catalog_object_id FK
+        bigint amount_money_amount
+        text amount_money_currency
+        bigint applied_money_amount
+        text applied_money_currency
+        text calculation_money
+        text name
+        double_precision percentage
+        boolean taxable
+        bigint total_money_amount
+        text total_money_currency
+        bigint total_tax_money_amount
+        text total_tax_money_currency
+    }
+    loyalty_reward {
+        text id PK
+        text loyalty_account_id FK
+        text order_id FK
+        text reward_tier_id FK
+        timestamp created_at
+        integer points
+        timestamp redeemed_at
+        text status
+        timestamp updated_at
+    }
+    payment {
+        text id PK
+        text customer_id FK
+        text location_id FK
+        text order_id FK
+        bigint amount_money_amount
+        text amount_money_currency
+        bigint app_fee_money_amount
+        text app_fee_money_currency
+        text buyer_email_address
+        timestamp created_at
+        text delay_action
+        text delay_duration
+        text delayed_until
+        text employee_id
+        text note
+        text receipt_number
+        text receipt_url
+        text reference_id
+        bigint refunded_money_amount
+        text refunded_money_currency
+        text source_type
+        text status
+        bigint tip_money_amount
+        text tip_money_currency
+        bigint total_money_amount
+        text total_money_currency
+        timestamp updated_at
+    }
+    loyalty_account {
+        text id PK
+        text customer_id FK
+        text program_id FK
+        integer balance
+        timestamp created_at
+        timestamp enrolled_at
+        integer lifetime_points
+        timestamp updated_at
+    }
+    vendor {
+        text id PK
+        text account_number
+        timestamp created_at
+        text name
+        text note
+        text status
+        timestamp updated_at
+        integer version
+    }
+    catalog_item_tax {
+        text item_id PK
+        text tax_id PK
+    }
+    employee_wage {
+        text id PK
+        text employee_id FK
+        bigint hourly_rate_amount
+        text hourly_rate_currency
+        text title
+    }
+    catalog_modifier {
+        text id PK
+        text name
+        bigint price_money_amount
+        text price_money_currency
+    }
+    inventory_count_history {
+        text calculated_at PK
+        text catalog_object_id PK
+        text location_id PK
+        text catalog_object_type
+        text quantity
+        text state
+    }
+    order_line_item_modifier {
+        text uid PK
+        text order_id PK
+        text catalog_object_id FK
+        text order_line_item_id FK
+        bigint base_price_amount
+        text base_price_currency
+        text name
+        bigint total_price_amount
+        text total_price_currency
+    }
+    invoice_recipient {
+        text invoice_id PK
+        text customer_id FK
+        text tax_ids_eu_vat
+    }
+    catalog_item_modifier_list_info {
+        text item_id PK
+        text modifier_list_id PK
+        boolean enabled
+        integer max_selected_modifiers
+        integer min_selected_modifiers
+    }
+    order_fulfillment {
+        text _fivetran_id PK
+        text order_id PK
+        text state
+        text type
+    }
+    invoice {
+        text id PK
+        text location_id FK
+        text order_id FK
+        text subscription_id FK
+        timestamp created_at
+        text delivery_method
+        text description
+        text invoice_number
+        bigint next_payment_amount
+        text next_payment_currency
+        text payment_conditions
+        text public_url
+        text sale_or_service_date
+        timestamp scheduled_at
+        text status
+        boolean store_payment_method_enabled
+        text timezone
+        text title
+        timestamp updated_at
+        integer version
+    }
+    order_return_service_charge {
+        text uid PK
+        text catalog_object_id FK
+        text source_service_charge_uid FK
+        bigint amount_money_amount
+        text amount_money_currency
+        bigint applied_money_amount
+        text applied_money_currency
+        text calculation_phase
+        text name
+        double_precision percentage
+        boolean taxable
+        bigint total_money_amount
+        text total_money_currency
+        bigint total_tax_money_amount
+        text total_tax_money_currency
+    }
+    order_return_tax {
+        text uid PK
+        text catalog_object_id FK
+        text order_return_id FK
+        text source_tax_uid FK
+        bigint applied_money_amount
+        text applied_money_currency
+        text name
+        double_precision percentage
+        text scope
+        text type
+    }
+    subscription_event_phase {
+        text id PK
+        text subscription_event_id PK
+        text order_template_id
+        integer ordinal
+        text plan_phase_uid
+    }
+    catalog_discount {
+        text id PK
+        bigint amount_money_amount
+        text amount_money_currency
+        text discount_type
+        text label_color
+        text name
+        double_precision percentage
+        boolean pin_required
+    }
+    order_line_item_discount {
+        text uid PK
+        text order_id PK
+        text catalog_object_id FK
+        bigint amount_money_amount
+        text amount_money_currency
+        bigint applied_money_amount
+        text applied_money_currency
+        text name
+        double_precision percentage
+        text scope
+        text type
+    }
+    dispute_evidence {
+        text id PK
+        text dispute_id FK
+        text evidence_filename
+        text evidence_filetype
+        text evidence_type
+        timestamp uploaded_at
+    }
+    catalog_category {
+        text id PK
+        text name
+    }
+    catalog_modifier_in_catalog_modifier_list {
+        text modifier_id PK
+        text modifier_list_id PK
+    }
+    device_code {
+        text id PK
+        text location_id FK
+        text code
+        timestamp created_at
+        text device_id
+        text name
+        timestamp pair_by
+        timestamp paired_at
+        text product_type
+        text status
+        timestamp status_changed_at
+    }
+    subscription_phase {
+        text id PK
+        text subscription_id PK
+        text order_template_id
+        integer ordinal
+        text plan_phase_uid
+    }
+    vendor_contact {
+        text id PK
+        text vendor_id PK
+        text email_address
+        text name
+        integer ordinal
+        text phone_number
+        boolean removed
+    }
+    catalog_item_variation {
+        text id PK
+        text item_id FK
+        integer inventory_alert_threshold
+        text inventory_alert_type
+        text name
+        integer ordinal
+        bigint price_money_amount
+        text price_money_currency
+        text pricing_type
+        integer service_duration
+        text sku
+        boolean track_inventory
+        text upc
+        text user_data
+    }
+    shift {
+        text id PK
+        text employee_id FK
+        text location_id FK
+        timestamp created_at
+        timestamp end_at
+        timestamp start_at
+        text status
+        text team_member_id
+        text timezone
+        timestamp updated_at
+        integer version
+        bigint wage_hourly_rateamount
+        text wage_hourly_ratecurrency
+        text wage_title
+    }
+    location_capability {
+        text capability PK
+        text location_id PK
+    }
+    cash_drawer {
+        text id PK
+        text location_id FK
+        timestamp closed_at
+        bigint closed_cash_money_amount
+        text closed_cash_money_currency
+        text description
+        timestamp ended_at
+        bigint expected_cash_money_amount
+        text expected_cash_money_currency
+        timestamp opened_at
+        bigint opened_cash_money_amount
+        text opened_cash_money_currency
+        text state
+    }
+    custom_attribute_definition {
+        text key PK
+        timestamp created_at
+        text description
+        text name
+        jsonb schema
+        timestamp updated_at
+        integer version
+        text visibility
+    }
+    cash_drawer_event {
+        text id PK
+        text cash_drawer_id FK
+        timestamp created_at
+        text description
+        bigint event_money_amount
+        text event_money_currency
+        text event_type
+    }
+    catalog_item {
+        text id PK
+        text abbreviation
+        boolean available_electronically
+        boolean available_for_pickup
+        boolean available_online
+        text category_id
+        text description
+        text image_url
+        text label_color
+        text name
+        text product_type
+        boolean skip_modifier_screen
+    }
+    bank_account {
+        text id PK
+        text location_id FK
+        text account_number_suffix
+        text account_type
+        text bank_name
+        text country
+        boolean creditable
+        text currency
+        text debit_mandate_reference_id
+        boolean debitable
+        text fingerprint
+        text holder_name
+        text primary_bank_identification_number
+        text reference_id
+        text secondary_bank_identification_number
+        text status
+        integer version
+    }
+    payment_processing_fee {
+        bigint index PK
+        text payment_id PK
+        bigint amount
+        text currency
+        timestamp effective_at
+        text type
+    }
+    order_return {
+        text uid PK
+        text source_order_id PK
+    }
+    employee {
+        text id PK
+        timestamp created_at
+        text first_name
+        text last_name
+        text status
+        timestamp updated_at
+    }
+    item_variation_location_override {
+        text item_variation_id PK
+        text location_id PK
+        integer inventory_alert_threshold
+        text inventory_alert_type
+        bigint price_money_amount
+        text price_money_currency
+        text pricing_type
+        boolean track_inventory
+    }
+    subscription_action_phase {
+        text id PK
+        text subscription_action_id PK
+        text new_plan_variation_id
+        text order_template_id
+        integer ordinal
+        text plan_phase_uid
+    }
+    loyalty_program_accrual_rule {
+        integer id PK
+        text program_id PK
+        text accrual_type
+        text catalog_object_id
+        integer points
+        bigint spend_amount
+        text spend_currency
+        bigint visit_minimum_amount
+        text visit_minimum_currency
+    }
+    dispute {
+        text id PK
+        text disputed_payment_id FK
+        text location_id FK
+        bigint amount_money_amount
+        text amount_money_currency
+        text brand_dispute_id
+        text card_brand
+        timestamp created_at
+        text dispute_id
+        timestamp due_at
+        text reason
+        timestamp reported_date
+        text state
+        timestamp updated_at
+        integer version
+    }
+    refund {
+        text id PK
+        text location_id FK
+        text order_id FK
+        text payment_id FK
+        text tender_id FK
+        text transaction_id FK
+        bigint amount_amount
+        text amount_currency
+        timestamp created_at
+        bigint processing_fee_amount
+        text processing_fee_currency
+        text reason
+        text status
+    }
+    gift_card_activity {
+        text gift_card_id PK
+        text id PK
+        bigint adjust_decrement_activity_amount
+        text adjust_decrement_activity_currency
+        text adjust_decrement_activity_reason
+        bigint adjust_increment_activity_amount
+        text adjust_increment_activity_currency
+        text adjust_increment_activity_reason
+        text block_activity_reason
+        text clear_balance_activity_reason
+        timestamp created_at
+        text deactivate_activity_reason
+        bigint gift_card_balance_amount
+        text gift_card_balance_currency
+        text gift_card_gan
+        bigint import_activity_amount
+        text import_activity_currency
+        bigint import_reversal_activity_amount
+        text import_reversal_activity_currency
+        text location_id
+        bigint transfer_balance_from_activity_amount
+        text transfer_balance_from_activity_currency
+        text transfer_balance_from_activity_transfer_to_gift_card_id
+        bigint transfer_balance_to_activity_amount
+        text transfer_balance_to_activity_currency
+        text transfer_balance_to_activity_transfer_from_gift_card_id
+        text type
+        text unblock_activity_reason
+        bigint unlinked_activity_refund_activity_amount
+        text unlinked_activity_refund_activity_currency
+        text unlinked_activity_refund_activity_payment_id
+        text unlinked_activity_refund_activity_reference_id
+    }
+    additional_refund_recipient {
+        text location_id PK
+        text refund_id PK
+        bigint amount_amount
+        text amount_currency
+        text description
+        text receivable_id
+    }
+    loyalty_account_mapping {
+        text id PK
+        text account_id PK
+        timestamp created_at
+        text type
+        text value
+    }
+    catalog_tax {
+        text id PK
+        boolean applies_to_custom_amounts
+        text calculation_phase
+        boolean enabled
+        text inclusion_type
+        text name
+        double_precision percentage
+    }
+    subscription {
+        text id PK
+        text customer_id FK
+        text location_id FK
+        text canceled_date
+        text card_id
+        text charged_through_date
+        timestamp created_at
+        text plan_variation_id
+        bigint price_override_amount
+        text price_override_currency
+        text start_date
+        text status
+        text subscription_source_name
+        double_precision tax_percentage
+        text timezone
+        integer version
+    }
+    subscription_event {
+        text id PK
+        text subscription_id PK
+        text effective_date
+        text plan_variation_id
+        text subscription_event_info_code
+        text subscription_event_info_detail
+        text subscription_event_type
+    }
+    employee_location {
+        text employee_id PK
+        text location_id PK
+    }
+    order_return_line_item {
+        text uid PK
+        text catalog_object_id FK
+        text order_return_id FK
+        text source_line_item_uid FK
+        bigint base_price_money_amount
+        text base_price_money_currency
+        bigint gross_return_money_amount
+        text gross_return_money_currency
+        text name
+        text note
+        text quantity
+        text quantity_measurement_area_unit
+        text quantity_measurement_custom_unit_abbrevation
+        text quantity_measurement_custom_unit_name
+        text quantity_measurement_generic_unit
+        text quantity_measurement_length_unit
+        text quantity_measurement_volume_unit
+        text quantity_measurement_weight_unit
+        integer quantity_precision
+        bigint total_discount_money_amount
+        text total_discount_money_currency
+        bigint total_money_amount
+        text total_money_currency
+        bigint total_tax_money_amount
+        text total_tax_money_currency
+        text variation_name
+        bigint variation_total_price_money_amount
+        text variation_total_price_money_currency
+    }
+    transaction {
+        text id PK
+        text location_id FK
+        text order_id FK
+        text client_id
+        timestamp created_at
+        text product
+        text reference_id
+    }
+    order_line_item {
+        text uid PK
+        text order_id PK
+        text catalog_object_id FK
+        bigint base_price_amount
+        text base_price_currency
+        bigint gross_sales_amount
+        text gross_sales_currency
+        text name
+        text note
+        double_precision quantity
+        bigint total_amount
+        text total_currency
+        bigint total_discount_amount
+        text total_discount_currency
+        bigint total_tax_amount
+        text total_tax_currency
+        text variation_name
+    }
+    customer_group_info {
+        text id PK
+        text customer_id PK
+        text name
+    }
+    invoice_payment_request {
+        text uid PK
+        text invoice_id PK
+        text automatic_payment_source
+        text card_id
+        bigint computed_amount
+        text computed_currency
+        text due_date
+        bigint fixed_amount_requested_amount
+        text fixed_amount_requested_currency
+        text percentage_requested
+        text request_type
+        bigint rounding_adjustment_included_amount
+        text rounding_adjustment_included_currency
+        boolean tipping_enabled
+        bigint total_completed_amount
+        text total_completed_currency
+    }
+    gift_card_customer {
+        text customer_id PK
+        text gift_card_id PK
+    }
+    invoice_custom_field {
+        text label PK
+        text invoice_id PK
+        text placement
+        text value
+    }
+    catalog_v_1_id {
+        text catalog_v_1_id PK
+        text id PK
+        text location_id PK
+    }
+    loyalty_program_reward_tier {
+        text id PK
+        text program_id PK
+        timestamp created_at
+        text name
+        integer points
+        bigint pricing_rule_catalog_version
+        text pricing_rule_object_id
+    }
+    order_line_item_tax {
+        text uid PK
+        text order_id PK
+        text catalog_object_id FK
+        bigint applied_money_amount
+        text applied_money_currency
+        text name
+        double_precision percentage
+        text scope
+        text type
+    }
+    merchant {
+        text id PK
+        text main_location_id FK
+        text business_name
+        text country
+        timestamp created_at
+        text currency
+        text language_code
+        text status
+    }
+    order {
+        text id PK
+        text location_id FK
+        timestamp closed_at
+        timestamp created_at
+        text customer_id
+        text order_source_name
+        text reference_id
+        bigint rounding_adjustment_amount_money_amount
+        text rounding_adjustment_amount_money_currency
+        text rounding_adjustment_name
+        text rounding_adjustment_uid
+        text state
+        bigint total_discount_amount
+        text total_discount_currency
+        bigint total_money_amount
+        text total_money_currency
+        bigint total_service_charge_amount
+        text total_service_charge_currency
+        bigint total_tax_amount
+        text total_tax_currency
+        timestamp updated_at
+    }
+    workweek_history {
+        text id PK
+        timestamp updated_at PK
+        timestamp created_at
+        text start_of_day_local_time
+        text start_of_week
+        bigint version
+    }
+    customer {
+        text id PK
+        text birthday
+        text company_name
+        timestamp created_at
+        text creation_source
+        text email_address
+        text family_name
+        text given_name
+        text nickname
+        text note
+        text phone_number
+        boolean preferences_email_unsubscribed
+        text reference_id
+        timestamp updated_at
+    }
+    card_payment_details {
+        text payment_id PK
+        text card_id FK
+        text application_cryptogram
+        text application_identifier
+        text application_name
+        text auth_result_code
+        text avs_status
+        text cvv_status
+        text entry_method
+        boolean refund_requires_card_presence
+        text statement_description
+        text status
+        text tip_money_device_id
+        text tip_money_device_name
+        text verification_method
+        text verification_results
+    }
+    break_type {
+        text id PK
+        text location_id FK
+        text break_name
+        timestamp created_at
+        text expected_duration
+        boolean is_paid
+        timestamp updated_at
+        bigint version
+    }
+    gift_card {
+        text id PK
+        bigint balance_amount
+        text balance_currency
+        timestamp created_at
+        text gan
+        text gan_source
+        text state
+        text type
+    }
+    catalog_modifier_list {
+        text id PK
+        text name
+        text selection_type
+    }
+    catalog_modifier_override {
+        text item_id PK
+        text modifier_id PK
+        text modifier_list_id PK
+        boolean on_by_default
+    }
+    invoice_payment_reminder {
+        text uid PK
+        text payment_request_id PK
+        text message
+        integer relative_scheduled_days
+        timestamp sent_at
+        text status
+    }
+    card {
+        text id PK
+        text card_brand
+        text card_type
+        text cardholder_name
+        integer exp_month
+        integer exp_year
+        text fingerprint
+        text last_4
+        text prepaid_type
+    }
+    subscription_action {
+        text id PK
+        text subscription_id PK
+        text effective_date
+        text new_plan_variation_id
+        text type
+    }
+    location_custom_attribute {
+        text key PK
+        text location_id PK
+        timestamp created_at
+        timestamp updated_at
+        text value
+        integer version
+        text visibility
+    }
+    tender {
+        bigint index PK
+        text order_id PK
+        text location_id FK
+        text transaction_id FK
+        bigint amount_amount
+        text amount_currency
+        text card_details_card_brand
+        text card_details_entry_method
+        text card_details_fingerprint
+        text card_details_last_4
+        text card_details_status
+        bigint cash_details_buyer_tender_amount
+        text cash_details_buyer_tender_currency
+        bigint cash_details_change_back_amount
+        text cash_details_change_back_currency
+        timestamp created_at
+        text customer_id
+        text note
+        bigint processing_fee_amount
+        text processing_fee_currency
+        text tender_id
+        bigint tip_amount
+        text tip_currency
+        text type
+    }
+    catalog_object {
+        text id PK
+        jsonb absent_at_location_ids
+        boolean is_deleted
+        boolean present_at_all_locations
+        jsonb present_at_location_ids
+        text type
+        timestamp updated_at
+        bigint version
+    }
+    customer_card {
+        text card_id PK
+        text customer_id PK
+    }
+    order_return_discount {
+        text uid PK
+        text catalog_object_id FK
+        text order_return_id FK
+        text source_discount_uid FK
+        bigint amount_money_amount
+        text amount_money_currency
+        bigint applied_money_amount
+        text applied_money_currency
+        text name
+        double_precision percentage
+        text scope
+        text type
+    }
+    merchant_custom_attribute {
+        text key PK
+        text merchant_id PK
+        timestamp created_at
+        timestamp updated_at
+        text value
+        integer version
+        text visibility
+    }
+    location {
+        text id PK
+        text business_name
+        text country
+        timestamp created_at
+        text currency
+        text language_code
+        text merchant_id
+        text name
+        text phone_number
+        text status
+        text timezone
+        text type
+        text website_url
+    }
+    loyalty_program {
+        text id PK
+        timestamp created_at
+        text expiration_policy_expiration_duration
+        jsonb location_ids
+        text status
+        text terminology_one
+        text terminology_other
+        timestamp updated_at
+    }
+    order_return_line_item_modifier {
+        text uid PK
+        text catalog_object_id FK
+        text order_return_line_item_id FK
+        text source_modifier_uid FK
+        bigint base_price_amount
+        text base_price_currency
+        text name
+        bigint total_price_amount
+        text total_price_currency
+    }
+    shift_break {
+        text id PK
+        text shift_id FK
+        text break_type_id
+        timestamp end_at
+        text expected_duration
+        boolean is_paid
+        text name
+        timestamp start_at
+    }
+    additional_tender_recipient {
+        bigint index PK
+        text location_id PK
+        text tender_id PK
+        bigint amount_amount
+        text amount_currency
+        text description
+        text receivable_id
+    }
+    order_service_charge }o--|| order : "fk"
+    order_service_charge }o--|| catalog_object : "fk"
+    loyalty_reward }o--|| loyalty_account : "fk"
+    loyalty_reward }o--|| loyalty_program_reward_tier : "fk"
+    loyalty_reward }o--|| order : "fk"
+    payment }o--|| location : "fk"
+    payment }o--|| order : "fk"
+    payment }o--|| customer : "fk"
+    loyalty_account }o--|| loyalty_program : "fk"
+    loyalty_account }o--|| customer : "fk"
+    catalog_item_tax }o--|| catalog_item : "fk"
+    catalog_item_tax }o--|| catalog_tax : "fk"
+    employee_wage }o--|| employee : "fk"
+    catalog_modifier }o--|| catalog_object : "fk"
+    inventory_count_history }o--|| catalog_object : "fk"
+    inventory_count_history }o--|| location : "fk"
+    order_line_item_modifier }o--|| order : "fk"
+    order_line_item_modifier }o--|| order_line_item : "fk"
+    order_line_item_modifier }o--|| catalog_object : "fk"
+    invoice_recipient }o--|| invoice : "fk"
+    invoice_recipient }o--|| customer : "fk"
+    catalog_item_modifier_list_info }o--|| catalog_item : "fk"
+    catalog_item_modifier_list_info }o--|| catalog_modifier_list : "fk"
+    order_fulfillment }o--|| order : "fk"
+    invoice }o--|| location : "fk"
+    invoice }o--|| order : "fk"
+    invoice }o--|| subscription : "fk"
+    order_return_service_charge }o--|| order : "fk"
+    order_return_service_charge }o--|| catalog_object : "fk"
+    order_return_tax }o--|| order_line_item_tax : "fk"
+    order_return_tax }o--|| order_return : "fk"
+    order_return_tax }o--|| catalog_object : "fk"
+    subscription_event_phase }o--|| subscription_event : "fk"
+    catalog_discount }o--|| catalog_object : "fk"
+    order_line_item_discount }o--|| order : "fk"
+    order_line_item_discount }o--|| catalog_object : "fk"
+    dispute_evidence }o--|| dispute : "fk"
+    catalog_category }o--|| catalog_object : "fk"
+    catalog_modifier_in_catalog_modifier_list }o--|| catalog_modifier_list : "fk"
+    catalog_modifier_in_catalog_modifier_list }o--|| catalog_modifier : "fk"
+    device_code }o--|| location : "fk"
+    subscription_phase }o--|| subscription : "fk"
+    vendor_contact }o--|| vendor : "fk"
+    catalog_item_variation }o--|| catalog_object : "fk"
+    catalog_item_variation }o--|| catalog_item : "fk"
+    shift }o--|| employee : "fk"
+    shift }o--|| location : "fk"
+    location_capability }o--|| location : "fk"
+    cash_drawer }o--|| location : "fk"
+    cash_drawer_event }o--|| cash_drawer : "fk"
+    catalog_item }o--|| catalog_object : "fk"
+    bank_account }o--|| location : "fk"
+    payment_processing_fee }o--|| payment : "fk"
+    order_return }o--|| order : "fk"
+    item_variation_location_override }o--|| catalog_item_variation : "fk"
+    item_variation_location_override }o--|| location : "fk"
+    subscription_action_phase }o--|| subscription_action : "fk"
+    loyalty_program_accrual_rule }o--|| loyalty_program : "fk"
+    dispute }o--|| location : "fk"
+    dispute }o--|| payment : "fk"
+    refund }o--|| location : "fk"
+    refund }o--|| transaction : "fk"
+    refund }o--|| order : "fk"
+    refund }o--|| tender : "fk"
+    refund }o--|| payment : "fk"
+    additional_refund_recipient }o--|| refund : "fk"
+    additional_refund_recipient }o--|| location : "fk"
+    loyalty_account_mapping }o--|| loyalty_account : "fk"
+    catalog_tax }o--|| catalog_object : "fk"
+    subscription }o--|| location : "fk"
+    subscription }o--|| location : "fk"
+    subscription_event }o--|| subscription : "fk"
+    employee_location }o--|| employee : "fk"
+    employee_location }o--|| location : "fk"
+    order_return_line_item }o--|| order_line_item : "fk"
+    order_return_line_item }o--|| order_return : "fk"
+    order_return_line_item }o--|| catalog_object : "fk"
+    transaction }o--|| location : "fk"
+    transaction }o--|| order : "fk"
+    order_line_item }o--|| order : "fk"
+    order_line_item }o--|| catalog_item_variation : "fk"
+    customer_group_info }o--|| customer : "fk"
+    invoice_payment_request }o--|| invoice : "fk"
+    gift_card_customer }o--|| gift_card : "fk"
+    gift_card_customer }o--|| customer : "fk"
+    invoice_custom_field }o--|| invoice : "fk"
+    catalog_v_1_id }o--|| catalog_object : "fk"
+    catalog_v_1_id }o--|| location : "fk"
+    loyalty_program_reward_tier }o--|| loyalty_program : "fk"
+    order_line_item_tax }o--|| order : "fk"
+    order_line_item_tax }o--|| catalog_object : "fk"
+    merchant }o--|| location : "fk"
+    order }o--|| location : "fk"
+    card_payment_details }o--|| payment : "fk"
+    card_payment_details }o--|| card : "fk"
+    break_type }o--|| location : "fk"
+    catalog_modifier_list }o--|| catalog_object : "fk"
+    catalog_modifier_override }o--|| catalog_item : "fk"
+    catalog_modifier_override }o--|| catalog_item_modifier_list_info : "fk"
+    catalog_modifier_override }o--|| catalog_modifier : "fk"
+    invoice_payment_reminder }o--|| invoice_payment_request : "fk"
+    subscription_action }o--|| subscription : "fk"
+    location_custom_attribute }o--|| location : "fk"
+    location_custom_attribute }o--|| custom_attribute_definition : "fk"
+    tender }o--|| order : "fk"
+    tender }o--|| location : "fk"
+    tender }o--|| transaction : "fk"
+    customer_card }o--|| customer : "fk"
+    customer_card }o--|| card : "fk"
+    order_return_discount }o--|| order_line_item_discount : "fk"
+    order_return_discount }o--|| order_return : "fk"
+    order_return_discount }o--|| catalog_object : "fk"
+    merchant_custom_attribute }o--|| merchant : "fk"
+    merchant_custom_attribute }o--|| custom_attribute_definition : "fk"
+    order_return_line_item_modifier }o--|| order_line_item_modifier : "fk"
+    order_return_line_item_modifier }o--|| order_return_line_item : "fk"
+    order_return_line_item_modifier }o--|| catalog_object : "fk"
+    shift_break }o--|| shift : "fk"
+    additional_tender_recipient }o--|| tender : "fk"
+    additional_tender_recipient }o--|| location : "fk"

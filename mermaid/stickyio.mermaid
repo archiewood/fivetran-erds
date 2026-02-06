@@ -1,0 +1,674 @@
+erDiagram
+    inventory {
+        text id PK
+        text product_id FK
+        text warehouse_info_id FK
+        text allocated_quantity
+        text quantity
+        text sku
+        text variant_info_description
+        text variant_info_type
+    }
+    offer_product {
+        text offer_id PK
+        text product_id PK
+    }
+    offer_billing_model {
+        text billing_model_id PK
+        text offer_id PK
+    }
+    offer {
+        text id PK
+        text terminating_product_id FK
+        text created_at_date
+        text created_at_timezone
+        text created_at_timezone_type
+        text cycle_products
+        text cycle_type_id
+        text cycle_type_name
+        text expire_cycles
+        text is_archived
+        text is_available_on_syncable
+        text is_immutable
+        text is_prepaid
+        text is_seasonal
+        text is_series
+        text is_store
+        text is_trial
+        text name
+        text prepaid_profile
+        text seasonal_products
+        text terminating_cycle_type_description
+        text terminating_cycle_type_id
+        text terminating_cycle_type_name
+        jsonb trial
+        text trial_days
+        text trial_is_custom_duration
+        text trial_is_custom_price
+        text trial_is_delayed_billing
+        jsonb trial_workflows
+        text type_active
+        text type_id
+        text type_name
+        text type_smc_active
+        text updated_at_date
+        text updated_at_timezone
+        text updated_at_timezone_type
+    }
+    gateway_account {
+        text id PK
+        text name
+        text type
+    }
+    product_image {
+        text id PK
+        text product_id PK
+        text alias
+        text created_at
+        text is_default
+        text is_default_email
+        text path
+        text updated_at
+        text uuid
+    }
+    product {
+        text id PK
+        text category_description
+        text category_id
+        text category_name
+        text cost_of_goods
+        text created_at_date
+        text created_at_timezone
+        text created_at_timezone_type
+        jsonb custom_fields
+        text declared_value
+        text description
+        text is_bundle
+        text is_custom_bundle
+        text is_licensed
+        text is_shippable
+        text is_trial_product
+        text is_variant_enabled
+        text legacy_subscription_cycle
+        text legacy_subscription_next_product_id
+        text legacy_subscription_type
+        text max_items
+        text max_quantity
+        text name
+        text price
+        text restocking_fee
+        text sku
+        text taxable
+        text updated_at_date
+        text updated_at_timezone
+        text updated_at_timezone_type
+        text vertical_id
+        text vertical_name
+    }
+    coupon_promo_code {
+        text id PK
+        text coupon_id PK
+        text code
+        text created_at_date
+        text created_at_timezone
+        text created_at_timezone_type
+        text created_by
+        text is_active
+        text is_deleted
+        text use_count
+    }
+    coupon_product {
+        text index PK
+        text coupon_id PK
+        text product_id FK
+        text variant_id FK
+        text is_eligible
+    }
+    coupon {
+        text id PK
+        text creator_id FK
+        text updator_id FK
+        text created_at_date
+        text created_at_timezone
+        text created_at_timezone_type
+        text description
+        text discount_amount
+        text discount_amt
+        text discount_pct
+        text discount_percent
+        text expires_at
+        text is_active
+        text is_bogo
+        text is_buy_x_get_y
+        text is_free_shipping
+        text is_lifetime
+        text limits
+        text limits_per_code
+        text limits_per_code_per_customer
+        text limits_per_customer
+        text limits_total
+        text max_qty
+        text maximum_quantity
+        text min_qty
+        text minimum_purchase
+        text minimum_quantity
+        text name
+        text promo_code_count
+        text type_id
+        text updated_at_date
+        text updated_at_timezone
+        text updated_at_timezone_type
+        text use_count
+    }
+    billing_model {
+        text id PK
+        text creator_id FK
+        text updator_id FK
+        text created_at_date
+        text created_at_timezone
+        text created_at_timezone_type
+        text date
+        text dates
+        text day
+        text days
+        text description
+        text expire_cycles
+        text frequency
+        text frequency_type_id
+        text is_archived
+        text is_default
+        text is_preserve_quantity
+        text name
+        text type
+        text type_id
+        text type_name
+        text updated_at
+        text updated_at_date
+        text updated_at_timezone
+        text updated_at_timezone_type
+    }
+    product_variant_attribute {
+        text id PK
+        text product_id PK
+        text product_variant_id PK
+        text attribute_id
+        text attribute_name
+        text attribute_option_id
+        text attribute_option_name
+    }
+    product_variant {
+        text id PK
+        text product_id PK
+        text price
+        text quantity
+        text sku_num
+        text weight
+    }
+    warehouse {
+        text id PK
+        text created_by_id FK
+        text updated_by_id FK
+        text active
+        text address_1
+        text address_2
+        text city
+        text country_id
+        text description
+        text name
+        text state
+        text zip
+    }
+    users {
+        text id PK
+        text call_center_provider_id
+        text created_at
+        text department_id
+        text email
+        text is_active
+        text name
+        text timezone
+        text updated_at
+    }
+    gateway_profile {
+        text id PK
+        text gateway_account_id PK
+        text alias
+        text created_on
+        text currency_code
+        text currency_id
+        text currency_symbol_left
+        text currency_title
+        text current_monthly_amount
+        text processing_percent
+    }
+    campaign_country {
+        text id PK
+        text campaign_id PK
+        text calling_code
+        text iso_2
+        text iso_3
+        text iso_numeric
+        text name
+    }
+    campaign_offer {
+        text campaign_id PK
+        text offer_id PK
+    }
+    campaign_payment_method {
+        text index PK
+        text campaign_id PK
+        text label
+        text value
+    }
+    campaign_postback_profile_campaign {
+        text campaign_id PK
+        text campaign_postback_profile_id PK
+    }
+    campaign_postback_profile_header {
+        text id PK
+        text campaign_id PK
+        text campaign_postback_profile_id PK
+        text created_by_id FK
+        text updated_by_id FK
+        text created_at
+        text deleted_at
+        text key
+        text updated_at
+        text value
+    }
+    campaign_postback_profile {
+        text id PK
+        text campaign_id PK
+        text creator_id FK
+        text updator_id FK
+        text created_at
+        text http_method
+        text is_active
+        text is_global
+        text name
+        text trigger_type_id
+        jsonb triggers
+        text type
+        text type_id
+        text updated_at
+        text url
+    }
+    campaign_shipping_profile {
+        text id PK
+        text campaign_id PK
+        text amount_recurring
+        text amount_trial
+        text created_at_date
+        text created_at_timezone
+        text created_at_timezone_type
+        text description
+        text freight_code
+        text name
+        text threshold_amount
+        text threshold_charge_amount
+        text type_code
+        text type_created_at_date
+        text type_created_at_timezone
+        text type_created_at_timezone_type
+        text type_id
+        text type_name
+        text type_updated_at
+    }
+    campaign_product {
+        text campaign_id PK
+        text product_id PK
+        text is_trial_allowed
+    }
+    campaign_coupon_profile {
+        text campaign_id PK
+        text coupon_id PK
+    }
+    campaign_fraud_provider {
+        text fraud_providers_id PK
+        text campaign_id PK
+    }
+    campaign {
+        text id PK
+        text creator_id FK
+        text updator_id FK
+        jsonb alternative_payments
+        text archived_at_date
+        text archived_at_timezone
+        text archived_at_timezone_type
+        text call_confirm_provider_id
+        text channel_id
+        text channel_name
+        text chargeback_provider_id
+        text check_provider_id
+        text created_at_date
+        text created_at_timezone
+        text created_at_timezone_type
+        text data_verification_provider_id
+        text description
+        text email_provider_id
+        text fulfillment_id
+        text gateway_id
+        text is_active
+        text is_archived
+        text is_avs_enabled
+        text is_collections_enabled
+        text is_custom_price_allowed
+        text is_prepaid_blocked
+        text max_grace_period
+        text membership_provider_id
+        text name
+        text pre_auth_amount
+        text prospect_provider_id
+        jsonb return_profiles
+        text site_url
+        text tax_provider_id
+        text updated_at_date
+        text updated_at_timezone
+        text updated_at_timezone_type
+    }
+    orders_product {
+        text orders_id PK
+        text product_id PK
+        text billing_model_id FK
+        text offer_id FK
+        text billing_model_discount
+        text forecasted_revenue
+        text hold_date
+        text is_add_on
+        text is_full_refund
+        text is_in_trial
+        text is_recurring
+        text is_shippable
+        text is_terminal
+        text next_subscription_product
+        text next_subscription_product_id
+        text next_subscription_product_price
+        text next_subscription_qty
+        text on_hold
+        text recurring_date
+        text refund_amount
+        text step_number
+        text subscription_id
+    }
+    orders_system_note {
+        text index PK
+        text orders_id PK
+        text system_note
+    }
+    orders {
+        text id PK
+        text campaign_id FK
+        text contact_id FK
+        text coupon_id FK
+        text acquisition_date
+        text affid
+        text affiliate
+        text afid
+        text aid
+        text amount_refunded
+        text amount_refunded_to_date
+        text ancestor_id
+        text auth_id
+        text billing_city
+        text billing_company_name
+        text billing_country
+        text billing_cycle
+        text billing_first_name
+        text billing_last_name
+        text billing_postcode
+        text billing_state
+        text billing_state_id
+        text billing_street_address
+        text billing_street_address_2
+        text c_1
+        text c_2
+        text c_3
+        text cc_expires
+        text cc_first_6
+        text cc_last_4
+        text cc_number
+        text cc_orig_first_6
+        text cc_orig_last_4
+        text cc_type
+        text chargeback_date
+        text check_account_last_4
+        text check_routing_last_4
+        text check_ssn_last_4
+        text check_transitnum
+        text child_id
+        text click_id
+        text consent_received
+        text consent_required
+        text coupon_discount_amount
+        text created_by_employee_name
+        text created_by_user_name
+        text credit_applied
+        text credit_card_number
+        text current_rebill_discount_percent
+        text customer_id
+        text customers_telephone
+        text decline_reason
+        text decline_reason_details
+        text decline_salvage_discount_percent
+        text email_address
+        text first_name
+        text gateway_descriptor
+        text gateway_id
+        text hold_date
+        text ip_address
+        text ip_address_lookup
+        text is_3_d_protected
+        text is_any_product_recurring
+        text is_blacklisted
+        text is_cascaded
+        text is_chargeback
+        text is_fraud
+        text is_recurring
+        text is_refund
+        text is_rma
+        text is_test_cc
+        text is_void
+        text last_name
+        text main_product_id
+        text main_product_quantity
+        text next_subscription_product
+        text next_subscription_product_id
+        text on_hold
+        text on_hold_by
+        text opt
+        text order_confirmed
+        text order_confirmed_date
+        jsonb order_customer_types
+        text order_sales_tax
+        text order_sales_tax_amount
+        text order_status
+        text order_total
+        text parent_id
+        text prepaid_match
+        text preserve_gateway
+        text processor_id
+        text promo_code
+        text rebill_discount_percent
+        text recurring_date
+        text refund_amount
+        text refund_date
+        text refunded
+        text restocking_fee
+        text retry_attempt
+        text retry_date
+        text return_reason
+        text rma_number
+        text rma_reason
+        text shippable
+        text shipping
+        text shipping_amount
+        text shipping_city
+        text shipping_company_name
+        text shipping_country
+        text shipping_date
+        text shipping_first_name
+        text shipping_id
+        text shipping_last_name
+        text shipping_method_name
+        text shipping_postcode
+        text shipping_state
+        text shipping_state_id
+        text shipping_street_address
+        text shipping_street_address_2
+        text sid
+        text stop_after_next_rebill
+        text sub_affiliate
+        text subtotal
+        text tax
+        text tax_pct
+        text time_stamp
+        text total
+        text tracking_number
+        text transaction_id
+        text upsell_product_id
+        text upsell_product_quantity
+        text utm_info_campaign
+        text utm_info_content
+        text utm_info_device_category
+        text utm_info_medium
+        text utm_info_source
+        text utm_info_term
+        text vat_tax
+        text vat_tax_pct
+        text void_amount
+        text void_date
+        text volume_discount
+        text website_received
+        text website_sent
+    }
+    affiliate {
+        text id PK
+        text created_by_id FK
+        text updated_by_id FK
+        text created_at
+        text network
+        text type_active
+        text type_id
+        text type_name
+        text updated_at
+        text value
+    }
+    contact_address {
+        text id PK
+        text contact_id PK
+        text creator_id FK
+        text city
+        text country
+        text created_at
+        text deleted_at
+        text email
+        text first_name
+        text is_default
+        text last_name
+        text phone
+        text phone_key
+        text state
+        text street
+        text street_2
+        text updated_at
+        text uuid
+        text zip
+    }
+    contact_note {
+        text id PK
+        text contact_id PK
+        text creator_id FK
+        text created_at
+        text deleted_at
+        text updated_at
+        text updator
+        text value
+    }
+    contact_custom_field_option {
+        text id PK
+        text contact_custom_field_id PK
+        text contact_id PK
+        text value
+    }
+    contact_custom_field {
+        text id PK
+        text contact_id PK
+        text field_type_id
+        text is_multi
+        text name
+        text token_key
+        text type_id
+    }
+    contact {
+        text id PK
+        text created_at
+        text email
+        text first_name
+        text is_member
+        text is_sms_communication_enabled
+        text last_name
+        text opted_communications
+        text origin_id
+        text phone
+        text phone_key
+    }
+    inventory }o--|| product : "fk"
+    inventory }o--|| warehouse : "fk"
+    offer_product }o--|| product : "fk"
+    offer_product }o--|| offer : "fk"
+    offer_billing_model }o--|| billing_model : "fk"
+    offer_billing_model }o--|| offer : "fk"
+    offer }o--|| product : "fk"
+    product_image }o--|| product : "fk"
+    coupon_promo_code }o--|| coupon : "fk"
+    coupon_product }o--|| product : "fk"
+    coupon_product }o--|| product_variant : "fk"
+    coupon_product }o--|| coupon : "fk"
+    coupon }o--|| users : "fk"
+    coupon }o--|| users : "fk"
+    billing_model }o--|| users : "fk"
+    billing_model }o--|| users : "fk"
+    product_variant_attribute }o--|| product_variant : "fk"
+    product_variant_attribute }o--|| product_variant : "fk"
+    product_variant }o--|| product : "fk"
+    warehouse }o--|| users : "fk"
+    warehouse }o--|| users : "fk"
+    gateway_profile }o--|| gateway_account : "fk"
+    campaign_country }o--|| campaign : "fk"
+    campaign_offer }o--|| offer : "fk"
+    campaign_offer }o--|| campaign : "fk"
+    campaign_payment_method }o--|| campaign : "fk"
+    campaign_postback_profile_campaign }o--|| campaign : "fk"
+    campaign_postback_profile_campaign }o--|| campaign_postback_profile : "fk"
+    campaign_postback_profile_header }o--|| users : "fk"
+    campaign_postback_profile_header }o--|| users : "fk"
+    campaign_postback_profile_header }o--|| campaign_postback_profile : "fk"
+    campaign_postback_profile_header }o--|| campaign_postback_profile : "fk"
+    campaign_postback_profile }o--|| users : "fk"
+    campaign_postback_profile }o--|| users : "fk"
+    campaign_postback_profile }o--|| campaign : "fk"
+    campaign_shipping_profile }o--|| campaign : "fk"
+    campaign_product }o--|| product : "fk"
+    campaign_product }o--|| campaign : "fk"
+    campaign_coupon_profile }o--|| coupon : "fk"
+    campaign_coupon_profile }o--|| campaign : "fk"
+    campaign_fraud_provider }o--|| campaign : "fk"
+    campaign }o--|| users : "fk"
+    campaign }o--|| users : "fk"
+    orders_product }o--|| product : "fk"
+    orders_product }o--|| billing_model : "fk"
+    orders_product }o--|| offer : "fk"
+    orders_product }o--|| orders : "fk"
+    orders_system_note }o--|| orders : "fk"
+    orders }o--|| campaign : "fk"
+    orders }o--|| coupon : "fk"
+    orders }o--|| contact : "fk"
+    affiliate }o--|| users : "fk"
+    affiliate }o--|| users : "fk"
+    contact_address }o--|| users : "fk"
+    contact_address }o--|| contact : "fk"
+    contact_note }o--|| users : "fk"
+    contact_note }o--|| contact : "fk"
+    contact_custom_field_option }o--|| contact_custom_field : "fk"
+    contact_custom_field_option }o--|| contact_custom_field : "fk"
+    contact_custom_field }o--|| contact : "fk"

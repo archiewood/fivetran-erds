@@ -1,0 +1,346 @@
+erDiagram
+    location_collaborator {
+        text index PK
+        text account_id PK
+        text location_id PK
+        text email
+        text role_name
+    }
+    location {
+        text id PK
+        text account_id PK
+        text country
+        text formatted_address
+        text latitude
+        text locality
+        text longitude
+        text name
+        text number_of_shipments_using
+        text postal_code
+        text radius_value
+        text selected_radius_unit
+        text state
+        text street
+        text sublocality
+    }
+    shipment_device {
+        text device_id PK
+        text public_shipment_id PK
+        text shipment_id PK
+    }
+    shipment_leg {
+        text index PK
+        text public_shipment_id PK
+        text shipment_id PK
+        text carrier_id FK
+        text airway_bill
+        text container_id
+        text current_eta_utc
+        text distance_left_km
+        text eta_date
+        text from_country
+        text from_latitude
+        text from_locality
+        text from_longitude
+        text from_postalcode
+        text from_state
+        text from_street
+        text is_active_leg_of_shipment
+        text leg_label
+        text mode
+        text order_no
+        text ship_from_date
+        text start_date_time_utc
+        text to_country
+        text to_latitude
+        text to_locality
+        text to_longitude
+        text to_postalcode
+        text to_state
+        text to_street
+    }
+    shipment {
+        text id PK
+        text public_shipment_id PK
+        text account_id FK
+        text auto_complete
+        text auto_complete_minutes_delay
+        text eta_date
+        text is_completed
+        text is_departed
+        text is_shared
+        text is_started
+        text shared_url
+        text ship_from_date
+    }
+    device_alert_reason {
+        text index PK
+        text account_id PK
+        text alert_id PK
+        text device_alert_detail_index PK
+        text device_id PK
+        text reason
+    }
+    device_alert_detail {
+        text index PK
+        text account_id PK
+        text alert_id PK
+        text device_id PK
+        text country
+        text date_time
+        text formatted_address
+        text latitude
+        text locality
+        text location_method
+        text location_name
+        text longitude
+        text postalcode
+        text state
+        text street
+        text sublocality
+        text type
+    }
+    device_alert {
+        text alert_id PK
+        text account_id PK
+        text device_id PK
+        text alert_preset_id FK
+        text public_shipment_id FK
+        text shipment_id FK
+        text alert_on
+        text interval_delay
+        text interval_delay_unit
+        text is_active_at_destination
+        text is_active_at_origin
+        text is_active_in_transit
+        text is_closed
+        text is_enabled
+        text trigger_unit
+        text trigger_value
+        text type
+    }
+    carrier_contact {
+        text id PK
+        text account_id PK
+        text carrier_id PK
+        text email
+        text first_name
+        text languages
+        text last_name
+        text phone_number
+    }
+    carrier {
+        text id PK
+        text account_id PK
+        text mode
+        text name
+        text standardized_carrier_id
+        text standardized_carrier_name
+    }
+    account_user_id {
+        text user_id PK
+        text account_id PK
+    }
+    account {
+        text id PK
+        text account_name
+        text autocomplete_shipment_delay_minute
+        text disabled
+        jsonb webhook_id
+    }
+    device_alert_preset_id {
+        text account_id PK
+        text alert_preset_id PK
+        text device_id PK
+    }
+    device {
+        text id PK
+        text account_id PK
+        text battery_percent
+        text device_name
+        text device_owner
+        text estimated_battery_life_minutes
+        text gps_enabled
+        text measurement_interval
+        text power_button_enabled
+        text transmission_interval
+        text wifi_enabled
+    }
+    shipment_tracker_data {
+        text measurement_time PK
+        text device_id PK
+        text public_shipment_id PK
+        text shipment_id PK
+        text account_id FK
+        text acceleration_g
+        text acceleration_x
+        text acceleration_y
+        text acceleration_z
+        text battery
+        text coordinates_latitude
+        text coordinates_longitude
+        text humidity
+        text light
+        text location
+        text location_method
+        text motion
+        text pressure
+        text probe_temperature
+        text process_time
+        text temperature
+    }
+    shipment_status {
+        text public_shipment_id PK
+        text shipment_id PK
+        text account_id FK
+        text completed_at
+        text completed_by_user
+        text country
+        text current_humidity
+        text current_light
+        text current_locationformatted_address
+        text current_locationlocation_method
+        text current_locationname
+        text current_pressure
+        text current_probe_temperature
+        text current_temperature
+        text degree_minutes_temperature
+        text delivered_at
+        text departed_at
+        text distance_remaining
+        text distance_travelled
+        text last_updated_at
+        text latitude
+        text locality
+        text longitude
+        text mean_kinetic_temperature
+        text postal_code
+        text standard_deviation_temperature
+        text started_at
+        text started_by_user
+        text state
+        text street
+        text total_distance
+    }
+    shipment_alert_reason {
+        text index PK
+        text alert_id PK
+        text public_shipment_id PK
+        text shipment_alert_detail_index PK
+        text shipment_id PK
+        text reason
+    }
+    shipment_alert_detail {
+        text index PK
+        text alert_id PK
+        text public_shipment_id PK
+        text shipment_id PK
+        text celsius
+        text date_time
+        text fahrenheit
+        text location_coordinates_latitude
+        text location_coordinates_longitude
+        text location_formatted_address
+        text location_location_method
+        text type
+    }
+    shipment_alert {
+        text alert_id PK
+        text public_shipment_id PK
+        text shipment_id PK
+        text account_id FK
+        text alert_preset_id FK
+        text device_id FK
+        text alert_on
+        text interval_delay
+        text interval_delay_unit
+        text is_active_at_destination
+        text is_active_at_origin
+        text is_active_in_transit
+        text is_closed
+        text is_enabled
+        text trigger_unit
+        text trigger_value
+        text type
+    }
+    alert_preset_assignee {
+        text assignee PK
+        text account_id PK
+        text alert_preset_id PK
+    }
+    alert_preset {
+        text id PK
+        text account_id PK
+        text description
+        text name
+        text notify_all_collaborators
+        text notify_when_active
+    }
+    alert_preset_trigger {
+        text index PK
+        text trigger_type PK
+        text account_id PK
+        text alert_preset_id PK
+        text interval_delay
+        text interval_delay_unit
+        text is_active_at_destination
+        text is_active_at_origin
+        text is_active_in_transit
+        text trigger_unit
+        text trigger_value
+        text type
+    }
+    location_collaborator }o--|| location : "fk"
+    location_collaborator }o--|| location : "fk"
+    location }o--|| account : "fk"
+    shipment_device }o--|| device : "fk"
+    shipment_device }o--|| shipment : "fk"
+    shipment_device }o--|| shipment : "fk"
+    shipment_leg }o--|| carrier : "fk"
+    shipment_leg }o--|| shipment : "fk"
+    shipment_leg }o--|| shipment : "fk"
+    shipment }o--|| account : "fk"
+    device_alert_reason }o--|| device_alert_detail : "fk"
+    device_alert_reason }o--|| device_alert : "fk"
+    device_alert_reason }o--|| device_alert : "fk"
+    device_alert_reason }o--|| device_alert : "fk"
+    device_alert_detail }o--|| device_alert : "fk"
+    device_alert_detail }o--|| device_alert : "fk"
+    device_alert_detail }o--|| device_alert : "fk"
+    device_alert }o--|| device : "fk"
+    device_alert }o--|| account : "fk"
+    device_alert }o--|| shipment : "fk"
+    device_alert }o--|| shipment : "fk"
+    device_alert }o--|| alert_preset : "fk"
+    carrier_contact }o--|| carrier : "fk"
+    carrier_contact }o--|| carrier : "fk"
+    carrier }o--|| account : "fk"
+    account_user_id }o--|| account : "fk"
+    device_alert_preset_id }o--|| alert_preset : "fk"
+    device_alert_preset_id }o--|| device : "fk"
+    device_alert_preset_id }o--|| device : "fk"
+    device }o--|| account : "fk"
+    shipment_tracker_data }o--|| device : "fk"
+    shipment_tracker_data }o--|| account : "fk"
+    shipment_tracker_data }o--|| shipment : "fk"
+    shipment_tracker_data }o--|| shipment : "fk"
+    shipment_status }o--|| shipment : "fk"
+    shipment_status }o--|| shipment : "fk"
+    shipment_status }o--|| account : "fk"
+    shipment_alert_reason }o--|| shipment_alert_detail : "fk"
+    shipment_alert_reason }o--|| shipment_alert : "fk"
+    shipment_alert_reason }o--|| shipment_alert : "fk"
+    shipment_alert_reason }o--|| shipment_alert : "fk"
+    shipment_alert_detail }o--|| shipment_alert : "fk"
+    shipment_alert_detail }o--|| shipment_alert : "fk"
+    shipment_alert_detail }o--|| shipment_alert : "fk"
+    shipment_alert }o--|| shipment : "fk"
+    shipment_alert }o--|| shipment : "fk"
+    shipment_alert }o--|| account : "fk"
+    shipment_alert }o--|| device : "fk"
+    shipment_alert }o--|| alert_preset : "fk"
+    alert_preset_assignee }o--|| alert_preset : "fk"
+    alert_preset_assignee }o--|| alert_preset : "fk"
+    alert_preset }o--|| account : "fk"
+    alert_preset_trigger }o--|| alert_preset : "fk"
+    alert_preset_trigger }o--|| alert_preset : "fk"

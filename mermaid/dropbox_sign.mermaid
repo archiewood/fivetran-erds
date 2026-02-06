@@ -1,0 +1,169 @@
+erDiagram
+    template_document_field {
+        text id PK
+        text template_id PK
+        text template_document_id PK
+        bigint avg_text_length_num_chars_per_line
+        bigint avg_text_length_num_lines
+        text field_group
+        text field_kind
+        text font_family
+        bigint height
+        boolean is_multiline
+        text name
+        bigint original_font_size
+        boolean required
+        text signer
+        text type
+        text validation_type
+        bigint width
+        bigint x
+        bigint y
+    }
+    template_signer_role {
+        text id PK
+        text template_id PK
+        bigint signer_order
+    }
+    template_document {
+        text id PK
+        text template_id PK
+    }
+    template_document_field_group {
+        text id PK
+        text template_id PK
+        text template_document_id PK
+        text rule_group_label
+        text rule_requirement
+    }
+    template {
+        text id PK
+        text can_edit
+        text is_creator
+        text is_embedded
+        text is_locked
+        text message
+        text metadata
+        text title
+        text updated_at
+    }
+    template_account {
+        text account_id PK
+        text template_id PK
+    }
+    template_cc_role {
+        text id PK
+        text template_id PK
+    }
+    signature_request_template {
+        text template_id PK
+        text _fivetran_id PK
+    }
+    signature_request_custom_field {
+        text index PK
+        text _fivetran_id PK
+        text api_id
+        text editor
+        text name
+        boolean required
+        text type
+        text value
+    }
+    signature_request_attachment {
+        text id PK
+        text _fivetran_id PK
+        text instructions
+        text name
+        boolean required
+        text signer
+        timestamp uploaded_at
+    }
+    signature_request_cc_email {
+        text id PK
+        text _fivetran_id PK
+    }
+    signature {
+        text id PK
+        text _fivetran_id PK
+        text decline_reason
+        text error
+        text has_pin
+        boolean has_sms_auth
+        boolean has_sms_delivery
+        timestamp last_reminded_at
+        timestamp last_viewed_at
+        text reassigned_by
+        text reassigned_from
+        text reassignment_reason
+        timestamp signed_at
+        text signer_email_address
+        text signer_group_guid
+        text signer_name
+        bigint signer_order
+        text signer_role
+        text sms_phone_number
+        text status_code
+    }
+    signature_response {
+        text index PK
+        text _fivetran_id PK
+        text signature_id FK
+        text field_id
+        text name
+        boolean required
+        text type
+        text value
+    }
+    signature_request {
+        text _fivetran_id PK
+        text requester_email_address FK
+        timestamp created_at
+        text details_url
+        timestamp expires_at
+        text files_url
+        boolean has_error
+        text id
+        boolean is_complete
+        boolean is_declined
+        text message
+        jsonb metadata
+        text original_title
+        text signing_url
+        text subject
+        text title
+    }
+    team_account {
+        text id PK
+        text _fivetran_id PK
+        text email_address
+        text is_locked
+        text is_paid_hf
+        text is_paid_hs
+        text locale
+        text quotas_api_signature_requests_left
+        text quotas_documents_left
+        text quotas_sms_verifications_left
+        text quotas_templates_left
+        text role_code
+        text team_id
+    }
+    team {
+        text _fivetran_id PK
+        jsonb invited_account
+        text name
+    }
+    template_document_field }o--|| template_document : "fk"
+    template_signer_role }o--|| template : "fk"
+    template_document }o--|| template : "fk"
+    template_document_field_group }o--|| template_document : "fk"
+    template_account }o--|| template : "fk"
+    template_cc_role }o--|| template : "fk"
+    signature_request_template }o--|| signature_request : "fk"
+    signature_request_custom_field }o--|| signature_request : "fk"
+    signature_request_attachment }o--|| signature_request : "fk"
+    signature_request_cc_email }o--|| signature_request : "fk"
+    signature }o--|| signature_request : "fk"
+    signature_response }o--|| signature : "fk"
+    signature_response }o--|| signature_request : "fk"
+    signature_request }o--|| team_account : "fk"
+    team_account }o--|| team : "fk"

@@ -1,0 +1,58 @@
+erDiagram
+    active_campaign {
+        text id PK
+        text name
+    }
+    audience {
+        text id PK
+        text description
+        text member_count
+        text name
+    }
+    campaign_mailing {
+        text id PK
+        text campaign_id PK
+        text creative_id FK
+        text address_1
+        text address_2
+        text address_city
+        text address_company
+        text address_external_id
+        text address_name
+        text address_postal_code
+        text address_state_name
+        text back_url
+        text created_at
+        text front_url
+        jsonb merge_tags
+        text pdf_url
+        text send_at
+        text state
+        text total_cost
+    }
+    campaign_creative_rate {
+        text index PK
+        text campaign_id PK
+        text creative_id PK
+        text name
+        text offset_minimum
+        text price
+        text rate_type
+    }
+    campaign_creative {
+        text id PK
+        text campaign_id PK
+        text creative_type
+        text format
+        text image_format
+        text is_default
+        text mail_type
+        jsonb merge_tags
+        text name
+        text thumbnail_url
+    }
+    campaign_mailing }o--|| campaign_creative : "fk"
+    campaign_mailing }o--|| active_campaign : "fk"
+    campaign_creative_rate }o--|| campaign_creative : "fk"
+    campaign_creative_rate }o--|| campaign_creative : "fk"
+    campaign_creative }o--|| active_campaign : "fk"

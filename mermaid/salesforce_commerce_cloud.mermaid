@@ -1,0 +1,609 @@
+erDiagram
+%% Custom Fields
+%% Custom Fields are supported for tables in Salesforce Commerce and will be available as c_*  in the tables.
+    category {
+        text catalog_id PK
+        text id PK
+        text parent_category_id FK
+        timestamp creation_date
+        timestamp last_modified
+        boolean online
+        integer position
+    }
+    custom_object_attribute_definition {
+        text id PK
+        timestamp creation_date
+        jsonb description
+        jsonb display_name
+        text effective_id
+        boolean externally_defined
+        boolean externally_managed
+        integer field_height
+        integer field_length
+        boolean key
+        timestamp last_modified
+        text link
+        boolean localizable
+        boolean mandatory
+        double_precision max_value
+        integer min_length
+        double_precision min_value
+        boolean multi_value_type
+        text object_type
+        boolean order_required
+        boolean queryable
+        boolean read_only
+        text regular_expression
+        boolean requires_encoding
+        integer scale
+        boolean searchable
+        boolean set_value_type
+        boolean site_specific
+        boolean system
+        jsonb unit
+        text value_type
+        boolean visible
+    }
+    customer {
+        text id PK
+        text birthday
+        text company_name
+        timestamp creation_date
+        boolean credentials_enabled
+        boolean credentials_locked
+        text credentials_login
+        text credentials_password_question
+        text customer_no
+        text email
+        text fax
+        text first_name
+        integer gender
+        text job_title
+        timestamp last_login_time
+        timestamp last_modified
+        text last_name
+        timestamp last_visit_time
+        text phone_business
+        text phone_home
+        text phone_mobile
+        text preferred_locale
+        timestamp previous_login_time
+        timestamp previous_visit_time
+        text primary_address_address_1
+        text primary_address_address_2
+        text primary_address_city
+        text primary_address_company_name
+        text primary_address_country_code
+        timestamp primary_address_creation_date
+        text primary_address_etag
+        text primary_address_first_name
+        text primary_address_full_name
+        text primary_address_id
+        text primary_address_job_title
+        timestamp primary_address_last_modified
+        text primary_address_last_name
+        text primary_address_phone
+        text primary_address_post_box
+        text primary_address_postal_code
+        text primary_address_salutation
+        text primary_address_second_name
+        text primary_address_state_code
+        text primary_address_suffix
+        text primary_address_suite
+        text primary_address_title
+        text salutation
+        text second_name
+        text suffix
+        text title
+    }
+    order_payment_instrument {
+        text order_id PK
+        text payment_instrument_id PK
+        integer authorization_status
+        text authorization_status_code
+        text authorization_status_message
+        text masked_gift_certificate_code
+        double_precision payment_transaction_amount
+        text payment_transaction_id
+    }
+    order_billing_address {
+        text order_id PK
+        text address_1
+        text city
+        text country_code
+        text first_name
+        text full_name
+        text last_name
+        text phone
+        text postal_code
+        text state_code
+    }
+    promotion_ab_test {
+        text status PK
+        text ab_test_id PK
+        text promotion_id PK
+    }
+    order_shipment_address {
+        text order_id PK
+        text shipment_id PK
+        text address_1
+        text city
+        text country_code
+        text first_name
+        text full_name
+        text last_name
+        text phone
+        text postal_code
+        text state_code
+    }
+    custom_object_attribute_group {
+        text id PK
+        integer attribute_definitions_count
+        timestamp creation_date
+        jsonb description
+        jsonb display_name
+        boolean internal
+        timestamp last_modified
+        text link
+        text object_type
+        double_precision position
+    }
+    inventory_list {
+        text id PK
+        jsonb assigned_sites
+        timestamp creation_date
+        boolean default_in_stock
+        text description
+        timestamp last_modified
+        boolean on_order_inventory_enabled
+        boolean use_bundle_inventory_only
+    }
+    campaign_promotion {
+        text status PK
+        text campaign_id PK
+        text promotion_id PK
+    }
+    %% Product Table Additional Fields
+%% localized_tax_class_id_
+%% name_
+%% online_flag_
+%% page_description_
+%% page_keywords_
+%% page_title_
+%% searchable_
+%% valid_from_
+%% valid_to_*
+    product {
+        text id PK
+        text master_id FK
+        text owning_catalog_id FK
+        text primary_category_id FK
+        text brand
+        text classification_category_catalog_id
+        text classification_category_category_id
+        timestamp creation_date
+        text default_variant_id
+        text ean
+        timestamp last_modified
+        text long_description_default_markup
+        text long_description_default_source
+        text manufacturer_name
+        text manufacturer_sku
+        double_precision price
+        text price_currency
+        double_precision price_per_unit
+        text short_description_default_markup
+        text short_description_default_source
+        text tax_class_id
+        text unit
+        text unit_measure
+        double_precision unit_quantity
+        text upc
+    }
+    assigned_category {
+        text catalog_id PK
+        text category_id PK
+        text product_id PK
+    }
+    %% Item_Id
+%% The value of item_id will be either order->OrderNo, product_item->item_id, shipping_item->item_id depending on from which level the price Adjustment data is fetched.
+%% Price_Adjustment_Type
+%% The value of price_adjustment_type will be either ORDER,PRODUCT_ITEM or SHIPPING_ITEM depending on from which level the price Adjustment data is fetched.
+    price_adjustment {
+        text item_id PK
+        text price_adjustment_id PK
+        text campaign_id FK
+        text order_id FK
+        text promotion_id FK
+        text ab_test_segment_segment_id
+        text ab_test_segment_test_id
+        double_precision base_price
+        text coupon_code
+        text created_by
+        timestamp creation_date
+        boolean custom
+        double_precision gross_price
+        text item_text
+        timestamp last_modified
+        boolean manual
+        double_precision net_price
+        text price_adjustment_type
+        text reason_code
+        double_precision tax
+        double_precision tax_basis
+    }
+    gift_certificate {
+        text id PK
+        text order_id FK
+        text amount_currency_mnemonic
+        double_precision amount_value
+        text balance_currency_mnemonic
+        double_precision balance_value
+        timestamp creation_date
+        text description
+        boolean enabled
+        timestamp last_modified
+        text masked_gift_certificate_code
+        text message
+        text recipient_email
+        text recipient_name
+        text sender_name
+        text status
+    }
+    coupon_redemption {
+        text coupon_id PK
+        text order_id PK
+        text code
+        timestamp creation_date
+        text customer_email
+    }
+    product_variant {
+        text master_product_id PK
+        text product_id PK
+    }
+    order_product_item {
+        text item_id PK
+        text order_id PK
+        text product_id PK
+        text shipment_id FK
+        text shipping_item_id FK
+        double_precision adjusted_tax
+        double_precision base_price
+        boolean bonus_product_line_item
+        boolean gift
+        double_precision gross_price
+        text item_text
+        double_precision net_price
+        double_precision position
+        double_precision price_after_item_discount
+        double_precision price_after_order_discount
+        text product_name
+        double_precision quantity
+        double_precision tax
+        double_precision tax_basis
+        double_precision tax_rate
+    }
+    ab_test {
+        text id PK
+        text description
+        boolean enabled
+        timestamp schedule_end_date
+        timestamp schedule_start_date
+        text segment_description
+        text segment_id
+    }
+    promotion_tag {
+        text id PK
+        text promotion_id PK
+    }
+    inventory_list_record {
+        integer index PK
+        text inventory_list_id PK
+        text product_id FK
+        double_precision allocation_amount
+        timestamp allocation_reset_date
+        double_precision ats
+        timestamp creation_date
+        timestamp in_stock_date
+        double_precision inventory_turnover
+        timestamp last_modified
+        boolean perpetual_flag
+        double_precision pre_order_back_order_allocation
+        text pre_order_back_order_handling
+        text product_name
+        double_precision quantity_on_order
+        double_precision stock_level
+    }
+    campaign_coupon {
+        text campaign_id PK
+        text coupon_id PK
+    }
+    shared_product_option_value {
+        text id PK
+        text product_option_id PK
+        text link
+        jsonb option_prices
+        text sku_extension
+        jsonb value
+    }
+    order_shipment {
+        text shipment_id PK
+        text shipment_no PK
+        text order_id PK
+        double_precision adjusted_merchandize_total_tax
+        double_precision adjusted_shipping_total_tax
+        boolean gift
+        double_precision merchandize_total_tax
+        double_precision product_sub_total
+        double_precision product_total
+        double_precision shipment_total
+        text shipping_method_id
+        text shipping_status
+        double_precision shipping_total
+        double_precision shipping_total_tax
+        double_precision tax_total
+    }
+    shared_product_option {
+        text id PK
+        text catalog_id PK
+        jsonb custom_name
+        text default_product_option_value
+        jsonb description
+        text link
+        text name
+        text selected_option_value
+        boolean shared
+        text sorting_mode
+    }
+    customer_group {
+        text id PK
+        timestamp creation_date
+        text description
+        timestamp last_modified
+        text link
+        text rule_description
+        text type
+    }
+    orders_history {
+        text id PK
+        timestamp last_modified PK
+        text customer_id FK
+        double_precision adjusted_merchandize_total_tax
+        double_precision adjusted_shipping_total_tax
+        text cancel_code
+        text confirmation_status
+        text created_by
+        timestamp creation_date
+        text currency
+        boolean customer_is_guest
+        text export_status
+        text invoice_no
+        double_precision merchandize_total_tax
+        double_precision order_total
+        text payment_status
+        timestamp place_date
+        double_precision product_sub_total
+        double_precision product_total
+        text remote_host
+        text shipping_status
+        double_precision shipping_total
+        double_precision shipping_total_tax
+        text site_id
+        text status
+        double_precision tax_total
+        text taxation
+    }
+    campaign {
+        text id PK
+        jsonb coupons
+        timestamp creation_date
+        text description
+        boolean enabled
+        timestamp end_date
+        timestamp last_modified
+        text site_id
+        timestamp start_date
+    }
+    campaign_customer_group {
+        text campaign_id PK
+        text customer_group_id PK
+    }
+    assignment {
+        text campaign_id PK
+        text promotion_id PK
+        integer rank
+        timestamp schedule_end_date
+        timestamp schedule_start_date
+    }
+    customer_address {
+        bigint index PK
+        text customer_no PK
+        text address_1
+        text address_2
+        text city
+        text company_name
+        text country_code
+        timestamp creation_date
+        text etag
+        text first_name
+        text full_name
+        text id
+        text job_title
+        timestamp last_modified
+        text last_name
+        text phone
+        text post_box
+        text postal_code
+        text salutation
+        text second_name
+        text state_code
+        text suffix
+        text suite
+        text title
+    }
+    source_code_group {
+        text id PK
+        boolean active
+        text active_indirect_location_type
+        integer cookie_duration
+        timestamp creation_date
+        text description
+        boolean enabled
+        timestamp end_time
+        text inactive_redirect_location_type
+        timestamp last_modified
+        timestamp start_time
+    }
+    catalog {
+        text id PK
+        integer assigned_product_count
+        integer category_count
+        timestamp creation_date
+        timestamp last_modified
+        boolean online
+        integer owned_product_count
+        integer recommendation_count
+        text root_category
+    }
+    store {
+        text id PK
+        text address_1
+        text address_2
+        text city
+        text country_code
+        timestamp creation_date
+        text email
+        text fax
+        text inventory_id
+        timestamp last_modified
+        text latitude
+        text longitude
+        text name
+        text phone
+        boolean pos_enabled
+        text postal_code
+        text state_code
+        text store_locator_enabled
+    }
+    primary_category {
+        text catalog_id PK
+        text category_id PK
+        text product_id PK
+    }
+    promotion {
+        text id PK
+        boolean archived
+        timestamp creation_date
+        text currency_code
+        boolean disable_globally_excluded
+        boolean enabled
+        text exclusivity
+        timestamp last_modified
+        text promotion_class
+        text site_id
+    }
+    order_shipping_item {
+        text item_id PK
+        text shipment_id PK
+        double_precision adjusted_tax
+        double_precision base_price
+        double_precision gross_price
+        text item_text
+        double_precision net_price
+        text order_id
+        double_precision price_after_item_discount
+        double_precision tax
+        double_precision tax_basis
+        double_precision tax_rate
+        text type
+    }
+    campaign_source_code_group {
+        text campaign_id PK
+        text source_code_group_id PK
+    }
+    custom_object {
+        text key_property PK
+        text key_value PK
+        text object_type PK
+        timestamp creation_date
+        timestamp last_modified
+    }
+    payment_instrument {
+        text payment_instrument_id PK
+        text bank_routing_number
+        text payment_method
+    }
+    gift_certificate_transaction {
+        integer index PK
+        text gift_certificate_id PK
+        text order_id FK
+        text amount_currency_mnemonic
+        double_precision amount_value
+        timestamp timestamp
+        text type_code
+    }
+    coupon {
+        text id PK
+        timestamp creation_date
+        text description
+        boolean enabled
+        integer exported_code_count
+        timestamp last_modified
+        integer redemption_count
+        integer redemption_limits_per_code
+        integer redemption_limits_per_customer
+        text single_code
+        text system_codes_config_code_prefix
+        integer system_codes_config_number_of_codes
+        integer total_codes_count
+        text type
+    }
+    category }o--|| catalog : "fk"
+    category }o--|| category : "fk"
+    order_payment_instrument }o--|| orders_history : "fk"
+    order_payment_instrument }o--|| payment_instrument : "fk"
+    order_billing_address }o--|| orders_history : "fk"
+    promotion_ab_test }o--|| promotion : "fk"
+    promotion_ab_test }o--|| ab_test : "fk"
+    order_shipment_address }o--|| order_shipment : "fk"
+    order_shipment_address }o--|| orders_history : "fk"
+    campaign_promotion }o--|| campaign : "fk"
+    campaign_promotion }o--|| promotion : "fk"
+    product }o--|| catalog : "fk"
+    product }o--|| primary_category : "fk"
+    product }o--|| product : "fk"
+    assigned_category }o--|| product : "fk"
+    assigned_category }o--|| catalog : "fk"
+    assigned_category }o--|| category : "fk"
+    price_adjustment }o--|| orders_history : "fk"
+    price_adjustment }o--|| campaign : "fk"
+    price_adjustment }o--|| promotion : "fk"
+    gift_certificate }o--|| orders_history : "fk"
+    coupon_redemption }o--|| coupon : "fk"
+    coupon_redemption }o--|| orders_history : "fk"
+    order_product_item }o--|| orders_history : "fk"
+    order_product_item }o--|| product : "fk"
+    order_product_item }o--|| order_shipment : "fk"
+    order_product_item }o--|| order_shipping_item : "fk"
+    promotion_tag }o--|| promotion : "fk"
+    inventory_list_record }o--|| inventory_list : "fk"
+    inventory_list_record }o--|| product : "fk"
+    campaign_coupon }o--|| campaign : "fk"
+    campaign_coupon }o--|| coupon : "fk"
+    shared_product_option_value }o--|| shared_product_option : "fk"
+    order_shipment }o--|| orders_history : "fk"
+    shared_product_option }o--|| catalog : "fk"
+    orders_history }o--|| customer : "fk"
+    campaign_customer_group }o--|| campaign : "fk"
+    campaign_customer_group }o--|| customer_group : "fk"
+    assignment }o--|| campaign : "fk"
+    assignment }o--|| promotion : "fk"
+    customer_address }o--|| customer : "fk"
+    primary_category }o--|| product : "fk"
+    primary_category }o--|| catalog : "fk"
+    primary_category }o--|| category : "fk"
+    order_shipping_item }o--|| order_shipment : "fk"
+    campaign_source_code_group }o--|| campaign : "fk"
+    campaign_source_code_group }o--|| source_code_group : "fk"
+    gift_certificate_transaction }o--|| gift_certificate : "fk"
+    gift_certificate_transaction }o--|| orders_history : "fk"

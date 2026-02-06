@@ -1,0 +1,200 @@
+erDiagram
+    contact_info {
+        text _fivetran_id PK
+        text contact_id FK
+        text custom_label
+        text kind
+        text label
+        text value
+    }
+    contact_membership {
+        text contact_id PK
+        text id PK
+        text kind
+        text name
+        text title
+    }
+    contact {
+        text id PK
+        text contact_book_id FK
+        text deleted
+        text first_name
+        text last_name
+        text middle_name
+        text modified_at
+        text starred
+    }
+    shared_label {
+        text id PK
+        text organization_id FK
+        text color
+        text name
+        text name_with_parent_names
+        text parent
+        text share_with_organization
+        text share_with_team
+        text share_with_users
+        text visibility
+    }
+    conversation_message_in_reply_to {
+        text index PK
+        text conversation_message_id PK
+        text in_reply_to
+    }
+    conversation_message_reference {
+        text index PK
+        text conversation_message_id PK
+        text reference
+    }
+    conversation_message_to_field {
+        text _fivetran_id PK
+        text conversation_message_id FK
+        text address
+        text name
+    }
+    conversation_message_attachment {
+        text id PK
+        text conversation_message_id PK
+        text extension
+        text filename
+        text height
+        text media_type
+        text size
+        text sub_type
+        text url
+        text width
+    }
+    conversation_message {
+        text id PK
+        text author
+        jsonb bcc_field
+        jsonb cc_field
+        text created_at
+        text delivered_at
+        text email_message_id
+        text from_field_address
+        text from_field_name
+        text preview
+        jsonb reply_to_field
+        text subject
+        text type
+        text updated_at
+    }
+    contact_group_organization {
+        text id PK
+        text temp_contact_book_id PK
+        text kind
+        text name
+    }
+    contact_book {
+        text id PK
+        text organization_id FK
+        text share_with_team FK
+        text user_id FK
+        text description
+        text email_account_id
+        text exclude_from_search
+        text import_error_text
+        text import_processed_rows_count
+        text import_rows_count
+        text importing
+        text name
+        text share_with_organization
+        jsonb share_with_users
+    }
+    organization {
+        text id PK
+        text name
+    }
+    team {
+        text id PK
+        text organization_id FK
+        text name
+    }
+    users {
+        text id PK
+        text avatar_url
+        text email
+        text me
+        text name
+    }
+    conversation_author {
+        text _fivetran_id PK
+        text conversation_id FK
+        text address
+        text name
+    }
+    conversation_external_author {
+        text _fivetran_id PK
+        text conversation_id FK
+        text address
+        text name
+    }
+    conversation_user {
+        text id PK
+        text conversation_id PK
+        text archived
+        text assigned
+        text closed
+        text email
+        text flagged
+        text junked
+        text name
+        text snoozed
+        text trashed
+        text unassigned
+    }
+    conversation_assignee {
+        text id PK
+        text conversation_id PK
+        text archived
+        text assigned
+        text closed
+        text email
+        text flagged
+        text junked
+        text name
+        text snoozed
+        text trashed
+        text unassigned
+    }
+    conversation {
+        text id PK
+        text organization_id FK
+        text team_id FK
+        text app_url
+        text assignee_emails
+        text assignee_names
+        text attachments_count
+        text color
+        text completed_tasks_count
+        text drafts_count
+        text last_activity_at
+        text latest_message_subject
+        text messages_count
+        text send_later_messages_count
+        text shared_label_names
+        jsonb shared_labels
+        text subject
+        text tasks_count
+        text web_url
+    }
+    contact_info }o--|| contact : "fk"
+    contact_membership }o--|| contact_group_organization : "fk"
+    contact_membership }o--|| contact : "fk"
+    contact }o--|| contact_book : "fk"
+    shared_label }o--|| organization : "fk"
+    conversation_message_in_reply_to }o--|| conversation_message : "fk"
+    conversation_message_reference }o--|| conversation_message : "fk"
+    conversation_message_to_field }o--|| conversation_message : "fk"
+    conversation_message_attachment }o--|| conversation_message : "fk"
+    contact_book }o--|| users : "fk"
+    contact_book }o--|| team : "fk"
+    contact_book }o--|| organization : "fk"
+    team }o--|| organization : "fk"
+    conversation_author }o--|| conversation : "fk"
+    conversation_external_author }o--|| conversation : "fk"
+    conversation_user }o--|| conversation : "fk"
+    conversation_assignee }o--|| conversation : "fk"
+    conversation }o--|| organization : "fk"
+    conversation }o--|| team : "fk"

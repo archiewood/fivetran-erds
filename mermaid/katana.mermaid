@@ -1,0 +1,612 @@
+erDiagram
+    sales_order_address {
+        text id PK
+        text sales_order_id FK
+        text city
+        text company
+        text country
+        text created_at
+        text deleted_at
+        text entity_type
+        text first_name
+        text last_name
+        text line_1
+        text line_2
+        text phone
+        text state
+        text updated_at
+        text zip
+    }
+    variant_config_attribute {
+        text _fivetran_id PK
+        text variant_id FK
+        text config_name
+        text config_value
+    }
+    variant_supplier_item_code {
+        text supplier_item_code PK
+        text variant_id PK
+    }
+    variant {
+        text id PK
+        text material_id FK
+        text product_id FK
+        text created_at
+        text deleted_at
+        text internal_barcode
+        text purchase_price
+        text registered_barcode
+        text sales_price
+        text sku
+        text type
+        text updated_at
+    }
+    outsource_purchase_order_recipe {
+        text id PK
+        text ingredient_variant_id FK
+        text purchase_order_id FK
+        text purchase_order_row_id FK
+        text cost
+        text ingredient_availability
+        text ingredient_expected_date
+        text notes
+        text planned_quantity_per_unit
+    }
+    batch_transaction {
+        text batch_id PK
+        text parent_id FK
+        text quantity
+        text type
+    }
+    inventory {
+        text _fivetran_id PK
+        text location_id FK
+        text variant_id FK
+        text average_cost
+        text quantity_committed
+        text quantity_expected
+        text quantity_in_stock
+        text quantity_missing_or_excess
+        text reorder_point
+        text value_in_stock
+    }
+    sales_order_sales_order_row {
+        text id PK
+        text sales_order_id FK
+    }
+    sales_order {
+        text id PK
+        text billing_address_id FK
+        text customer_id FK
+        text location_id FK
+        text shipping_address_id FK
+        text additional_info
+        text conversion_date
+        text conversion_rate
+        text created_at
+        text currency
+        text deleted_at
+        text delivery_date
+        text ecommerce_order_id
+        text ecommerce_order_type
+        text ecommerce_store_name
+        text ingredient_availability
+        text ingredient_expected_date
+        text invoicing_status
+        text order_created_date
+        text order_no
+        text picked_date
+        text product_availability
+        text product_expected_date
+        text production_status
+        text source
+        text status
+        text total
+        text total_in_base_currency
+        text tracking_number
+        text tracking_number_url
+        text updated_at
+    }
+    manufacture_order_operation {
+        text id PK
+        text completed_at
+        text cost_per_hour
+        text created_at
+        text deleted_at
+        text manufacturing_order_id
+        text operation_id
+        text operation_name
+        text planned_cost_per_unit
+        text planned_time_per_unit
+        text rank
+        text resource_id
+        text resource_name
+        text status
+        text total_actual_cost
+        text total_actual_time
+        text total_consumed_time
+        text total_remaining_time
+        text updated_at
+    }
+    manufacturing_order_operator {
+        text operator_id PK
+        text manufacture_order_operation_id PK
+        text deleted_at
+        text name
+        text type
+    }
+    product_variant {
+        text id PK
+        text product_id FK
+    }
+    product {
+        text id PK
+        text default_supplier_id FK
+        text additional_info
+        text batch_tracked
+        text category_name
+        text created_at
+        text deleted_at
+        text is_producible
+        text is_purchasable
+        text name
+        text purchase_uom
+        text purchase_uom_conversion_rate
+        text serial_tracked
+        text type
+        text uom
+        text updated_at
+    }
+    config_type_value {
+        text value PK
+        text config_type_id PK
+        text type
+    }
+    config_type {
+        text id PK
+        text parent_id FK
+        text product_id FK
+        text name
+        text type
+    }
+    sales_order_fuiliment_row {
+        text sales_order_fulfillment_id PK
+        text sales_order_row_id PK
+        text quantity
+    }
+    sales_order_fulfillment {
+        text id PK
+        text sales_order_id FK
+        text conversion_date
+        text conversion_rate
+        text invoice_status
+        text picked_date
+        text status
+        text tracking_carrier
+        text tracking_method
+        text tracking_number
+        text tracking_url
+    }
+    customer {
+        text id PK
+        text default_billing_id FK
+        text default_shipping_id FK
+        text comment
+        text company
+        text created_at
+        text currency
+        text deleted_at
+        text email
+        text first_name
+        text last_name
+        text name
+        text phone
+        text updated_at
+    }
+    manufacturing_order_serial_number {
+        text id PK
+        text manufacturing_order_id FK
+        text resource_id
+        text resource_type
+        text serial_number
+        text transaction_date
+        text transaction_id
+    }
+    manufacturing_order {
+        text id PK
+        text location_id FK
+        text sales_order_id FK
+        text sales_order_row_id FK
+        text variant_id FK
+        text actual_quantity
+        text additional_info
+        text completed_quantity
+        text created_at
+        text deleted_at
+        text done_date
+        text includes_partial_completions
+        text ingredient_availability
+        text is_linked_to_sales_order
+        text material_cost
+        text operations_cost
+        text order_created_date
+        text order_no
+        text planned_quantity
+        text production_deadline_date
+        text remaining_quantity
+        text sales_order_delivery_deadline
+        text status
+        text subassemblies_cost
+        text total_actual_time
+        text total_cost
+        text total_planned_time
+        text updated_at
+    }
+    stock_adjusment_row {
+        text id PK
+        text stock_adjusment_id FK
+        text variant_id FK
+        text cost_per_unit
+        text created_at
+        text deleted_at
+        text quantity
+        text updated_at
+    }
+    stock_adjusment {
+        text id PK
+        text location_id FK
+        text additional_info
+        text created_at
+        text deleted_at
+        text reason
+        text stock_adjustment_date
+        text stock_adjustment_number
+        text updated_at
+    }
+    customer_addresses {
+        text id PK
+        text customer_id FK
+        text city
+        text company
+        text country
+        text created_at
+        text deleted_at
+        text entity_type
+        text first_name
+        text last_name
+        text line_1
+        text line_2
+        text phone
+        text state
+        text updated_at
+        text zip
+    }
+    manufacturing_ordering_recipe {
+        text id PK
+        text manufacturing_order_id FK
+        text variant_id FK
+        text cost
+        text created_at
+        text deleted_at
+        text ingredient_availability
+        text ingredient_expected_date
+        text notes
+        text planned_quantity_per_unit
+        text total_actual_quantity
+        text total_consumed_quantity
+        text total_remaining_quantity
+        text updated_at
+    }
+    purchase_order_purchase_order_row {
+        text id PK
+        text purchase_order_id FK
+    }
+    purchase_order {
+        text id PK
+        text location_id FK
+        text supplier_id FK
+        text tracking_location_id FK
+        text additional_info
+        text billing_status
+        text created_at
+        text currency
+        text deleted_at
+        text entity_type
+        text expected_arrival_date
+        text ingredient_availability
+        text ingredient_expected_date
+        text last_document_status
+        text order_created_date
+        text order_no
+        text status
+        text total
+        text total_in_base_currency
+        text updated_at
+    }
+    location {
+        text id PK
+        text address
+        text address_city
+        text address_country
+        text address_id
+        text address_line_1
+        text address_line_2
+        text address_state
+        text address_zip
+        text created_at
+        text deleted_at
+        text is_primary
+        text legal_name
+        text manufacturing_allowed
+        text name
+        text purchase_allowed
+        text sales_allowed
+        text updated_at
+    }
+    sales_order_accounting_metadata {
+        text id PK
+        text fulfillment_id FK
+        text sales_order_id FK
+        text created_at
+        text integration_type
+        text invoice_id
+    }
+    supplier_address {
+        text id PK
+        text supplier_id PK
+        text city
+        text country
+        text created_at
+        text line_1
+        text line_2
+        text state
+        text updated_at
+        text zip
+    }
+    supplier {
+        text id PK
+        text comment
+        text created_at
+        text currency
+        text default_address_id
+        text deleted_at
+        text email
+        text name
+        text updated_at
+    }
+    recipe {
+        text recipe_id PK
+        text ingredient_variant_id FK
+        text product_id FK
+        text product_variant_id FK
+        text created_at
+        text notes
+        text quantity
+        text recipe_row_id
+        text updated_at
+    }
+    batch {
+        text id PK
+        text location_id FK
+        text variant_id FK
+        text batch_barcode
+        text batch_created_date
+        text batch_number
+        text expiration_date
+        text quantity_in_stock
+    }
+    inventory_movement {
+        text id PK
+        text location_id FK
+        text variant_id FK
+        text average_cost_after
+        text balance_after
+        text caused_by_order_no
+        text caused_by_resource_id
+        text created_at
+        text movement_date
+        text quantity_change
+        text rank
+        text resource_id
+        text resource_type
+        text updated_at
+        text value_in_stock_after
+        text value_per_unit
+    }
+    factory {
+        text _fivetran_id PK
+        text default_manufacturing_location_id FK
+        text default_purchases_location_id FK
+        text default_sales_location_id FK
+        text base_currency_code
+        text default_po_lead_time
+        text default_so_delivery_time
+        text display_name
+        text inventory_closing_date
+        text legal_address_city
+        text legal_address_country
+        text legal_address_line_1
+        text legal_address_line_2
+        text legal_address_state
+        text legal_address_zip
+        text legal_name
+    }
+    material_variant {
+        text id PK
+        text material_id FK
+    }
+    material_supplier_item_code {
+        text _fivetran_id PK
+        text material_id FK
+        text code
+    }
+    material {
+        text id PK
+        text default_supplier_id FK
+        text additional_info
+        text batch_tracked
+        text category_name
+        text created_at
+        text deleted_at
+        text name
+        text purchase_uom
+        text purchase_uom_conversion_rate
+        text serial_tracked
+        text type
+        text uom
+        text updated_at
+    }
+    sales_order_row {
+        text id PK
+        text linked_manufacturing_order_id FK
+        text sales_order_id FK
+        text tax_rate_id FK
+        text variant_id FK
+        text conversion_date
+        text conversion_rate
+        text created_at
+        text deleted_at
+        text price_per_unit
+        text price_per_unit_in_base_currency
+        text quantity
+        jsonb serial_numbers
+        text total
+        text total_in_base_currency
+        text updated_at
+    }
+    stock_transfer_row {
+        text stock_transfer_row_temp_id PK
+        text stock_transfer_row_temp_cost_per_unit
+        text stock_transfer_row_temp_quantity
+        text stock_transfer_row_temp_variant_id
+    }
+    stock_transfer {
+        text id PK
+        text source_location_id FK
+        text target_location_id FK
+        text additional_info
+        text created_at
+        text deleted_at
+        text stock_transfer_number
+        text transfer_date
+        text updated_at
+    }
+    purchase_order_row {
+        text id PK
+        text purchase_order_id FK
+        text tax_rate_id FK
+        text variant_id FK
+        text conversion_date
+        text conversion_rate
+        text created_at
+        text currency
+        text deleted_at
+        text price_per_unit
+        text purchase_uom
+        text purchase_uom_conversion_rate
+        text quantity
+        text received_date
+        text total
+        text total_in_base_currency
+        text updated_at
+    }
+    tax_rate {
+        text id PK
+        text created_at
+        text display_name
+        text is_default_purchases
+        text is_default_sales
+        text name
+        text rate
+        text updated_at
+    }
+    production_operation {
+        text _fivetran_id PK
+        text operation_id FK
+        text product_id FK
+        text cost_per_hour
+        text created_at
+        text operation_name
+        text planned_cost_per_unit
+        text planned_time_per_unit
+        text product_operation_row_id
+        text product_variant_id
+        text rank
+        text resource_id
+        text resource_name
+        text updated_at
+    }
+    sales_order_address }o--|| sales_order : "fk"
+    variant_config_attribute }o--|| variant : "fk"
+    variant_supplier_item_code }o--|| variant : "fk"
+    variant }o--|| product : "fk"
+    variant }o--|| material : "fk"
+    outsource_purchase_order_recipe }o--|| purchase_order : "fk"
+    outsource_purchase_order_recipe }o--|| purchase_order_row : "fk"
+    outsource_purchase_order_recipe }o--|| variant : "fk"
+    batch_transaction }o--|| batch : "fk"
+    batch_transaction }o--|| stock_transfer_row : "fk"
+    inventory }o--|| variant : "fk"
+    inventory }o--|| location : "fk"
+    sales_order_sales_order_row }o--|| sales_order_row : "fk"
+    sales_order_sales_order_row }o--|| sales_order : "fk"
+    sales_order }o--|| sales_order_address : "fk"
+    sales_order }o--|| sales_order_address : "fk"
+    sales_order }o--|| customer : "fk"
+    sales_order }o--|| location : "fk"
+    manufacturing_order_operator }o--|| manufacture_order_operation : "fk"
+    product_variant }o--|| variant : "fk"
+    product_variant }o--|| product : "fk"
+    product }o--|| supplier : "fk"
+    config_type_value }o--|| config_type : "fk"
+    config_type }o--|| product : "fk"
+    config_type }o--|| product : "fk"
+    sales_order_fuiliment_row }o--|| sales_order_row : "fk"
+    sales_order_fuiliment_row }o--|| sales_order_fulfillment : "fk"
+    sales_order_fulfillment }o--|| sales_order : "fk"
+    customer }o--|| customer_addresses : "fk"
+    customer }o--|| customer_addresses : "fk"
+    manufacturing_order_serial_number }o--|| manufacturing_order : "fk"
+    manufacturing_order }o--|| sales_order : "fk"
+    manufacturing_order }o--|| variant : "fk"
+    manufacturing_order }o--|| sales_order_row : "fk"
+    manufacturing_order }o--|| location : "fk"
+    stock_adjusment_row }o--|| variant : "fk"
+    stock_adjusment_row }o--|| stock_adjusment : "fk"
+    stock_adjusment }o--|| location : "fk"
+    customer_addresses }o--|| customer : "fk"
+    manufacturing_ordering_recipe }o--|| manufacturing_order : "fk"
+    manufacturing_ordering_recipe }o--|| variant : "fk"
+    purchase_order_purchase_order_row }o--|| purchase_order_row : "fk"
+    purchase_order_purchase_order_row }o--|| purchase_order : "fk"
+    purchase_order }o--|| supplier : "fk"
+    purchase_order }o--|| location : "fk"
+    purchase_order }o--|| location : "fk"
+    sales_order_accounting_metadata }o--|| sales_order : "fk"
+    sales_order_accounting_metadata }o--|| sales_order_fulfillment : "fk"
+    supplier_address }o--|| supplier : "fk"
+    recipe }o--|| product : "fk"
+    recipe }o--|| product_variant : "fk"
+    recipe }o--|| variant : "fk"
+    batch }o--|| location : "fk"
+    batch }o--|| variant : "fk"
+    inventory_movement }o--|| variant : "fk"
+    inventory_movement }o--|| location : "fk"
+    factory }o--|| location : "fk"
+    factory }o--|| location : "fk"
+    factory }o--|| location : "fk"
+    material_variant }o--|| variant : "fk"
+    material_variant }o--|| material : "fk"
+    material_supplier_item_code }o--|| material : "fk"
+    material }o--|| supplier : "fk"
+    sales_order_row }o--|| tax_rate : "fk"
+    sales_order_row }o--|| manufacturing_order : "fk"
+    sales_order_row }o--|| sales_order : "fk"
+    sales_order_row }o--|| variant : "fk"
+    stock_transfer }o--|| location : "fk"
+    stock_transfer }o--|| location : "fk"
+    purchase_order_row }o--|| tax_rate : "fk"
+    purchase_order_row }o--|| purchase_order : "fk"
+    purchase_order_row }o--|| variant : "fk"
+    production_operation }o--|| product : "fk"
+    production_operation }o--|| manufacture_order_operation : "fk"

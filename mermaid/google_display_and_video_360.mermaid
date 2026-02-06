@@ -1,0 +1,458 @@
+erDiagram
+    zip_code {
+        integer index PK
+        integer contact_info_index PK
+        text first_party_and_partner_audience_id PK
+        text zip_code
+    }
+    contact_info {
+        integer index PK
+        text first_party_and_partner_audience_id PK
+        text country_code
+        text hashed_first_name
+        text hashed_last_name
+    }
+    advertiser {
+        text id PK
+        text partner_id FK
+        text ad_server_config_cm_hybrid_config_cm_account_id
+        text ad_server_config_cm_hybrid_config_cm_floodlight_config_id
+        boolean ad_server_config_cm_hybrid_config_cm_floodlight_linking_authorized
+        boolean ad_server_config_cm_hybrid_config_dv_360_to_cm_cost_reporting_enabled
+        boolean ad_server_config_cm_hybrid_config_dv_360_to_cm_data_sharing_enabled
+        boolean ad_server_config_third_party_only_config_pixel_order_id_reporting_enabled
+        text billing_profile_id
+        boolean creative_config_dynamic_creative_enabled
+        text creative_config_ias_client_id
+        boolean creative_config_oba_compliance_disabled
+        boolean creative_config_video_creative_data_sharing_authorized
+        boolean data_access_config_override_partner_sdf_config
+        text data_access_config_sdf_config_admin_email
+        text data_access_config_sdf_config_version
+        text display_name
+        text entity_status
+        text general_config_currency_code
+        text general_config_domain_url
+        text general_config_time_zone
+        text integration_details
+        text integration_details_code
+        text name
+        boolean prisma_enabled
+        boolean serving_config_exempt_tv_from_viewability_targeting
+        text update_time
+    }
+    hashed_email {
+        integer index PK
+        integer contact_info_index PK
+        text first_party_and_partner_audience_id PK
+        text hashed_email
+    }
+    campaign_budget {
+        text id PK
+        text campaign_id FK
+        text budget_amount_micros
+        text budget_unit
+        text date_range_end_date
+        text date_range_start_date
+        text display_name
+        text external_budget_id
+        text external_budget_source
+        text invoice_grouping_id
+        text prisma_config_prisma_cpe_code_prisma_client_code
+        text prisma_config_prisma_cpe_code_prisma_estimate_code
+        text prisma_config_prisma_cpe_code_prisma_product_code
+        text prisma_config_prisma_type
+        text prisma_config_supplier
+    }
+    ad_url {
+        text _fivetran_id PK
+        text ad_group_ad_id FK
+        text type
+        text url
+    }
+    assigned_first_party_and_partner_audience {
+        text recency PK
+        text ad_group_assigned_targeting_option_id PK
+        text ad_group_id PK
+        text first_party_and_partner_audience_id PK
+        boolean is_included
+    }
+    creative {
+        text id PK
+        text advertiser_id FK
+        text appended_tag
+        text cm_placement_id
+        text cm_tracking_ad_cm_ad_id
+        text cm_tracking_ad_cm_creative_id
+        text cm_tracking_ad_cm_placement_id
+        text create_time
+        text creative_type
+        integer dimensions_height_pixels
+        integer dimensions_width_pixels
+        text display_name
+        boolean dynamic
+        text entity_status
+        boolean expand_on_hover
+        text expanding_direction
+        text hosting_source
+        boolean html_5_video
+        boolean ias_campaign_monitoring
+        text integration_code
+        text js_tracker_url
+        text media_duration
+        boolean mp_3_audio
+        text name
+        text notes
+        text oba_icon_click_tracking_url
+        integer oba_icon_dimensions_height_pixels
+        integer oba_icon_dimensions_width_pixels
+        text oba_icon_landing_page_url
+        text oba_icon_position
+        text oba_icon_program
+        text oba_icon_resource_mime_type
+        text oba_icon_resource_url
+        text oba_icon_view_tracking_url
+        boolean ogg_audio
+        text progress_offset_percentage
+        text progress_offset_seconds
+        boolean require_html_5
+        boolean require_mraid
+        boolean require_ping_for_attribution
+        text review_status_approval_status
+        text review_status_content_and_policy_review_status
+        text review_status_creative_and_landing_page_review_status
+        text skip_offset_percentage
+        text skip_offset_seconds
+        boolean skippable
+        text third_party_tag
+        text universal_ad_id
+        text universal_ad_id_registry
+        text update_time
+        text vast_tag_url
+        boolean vpaid
+    }
+    ad_group {
+        text id PK
+        text advertiser_id FK
+        text ad_group_format
+        text bid_strategy_fixed_bid_bid_amount_micros
+        text bid_strategy_maximize_spend_auto_bid_custom_bidding_algorithm_id
+        text bid_strategy_maximize_spend_auto_bid_max_average_cpm_bid_amount_micros
+        text bid_strategy_maximize_spend_auto_bid_performance_goal_type
+        boolean bid_strategy_maximize_spend_auto_bid_raise_bid_for_deals
+        text bid_strategy_performance_goal_auto_bid_custom_bidding_algorithm_id
+        text bid_strategy_performance_goal_auto_bid_max_average_cpm_bid_amount_micros
+        text bid_strategy_performance_goal_auto_bid_performance_goal_amount_micros
+        text bid_strategy_performance_goal_auto_bid_performance_goal_type
+        text bid_strategy_youtube_and_partners_bid_ad_group_effective_target_cpa_source
+        text bid_strategy_youtube_and_partners_bid_ad_group_effective_target_cpa_value
+        text bid_strategy_youtube_and_partners_bid_type
+        text bid_strategy_youtube_and_partners_bid_value
+        text display_name
+        text entity_status
+        text line_item_id
+        text name
+        boolean product_feed_data_is_feed_disabled
+        text product_feed_data_product_match_type
+        text targeting_expansion_audience_expansion_level
+        boolean targeting_expansion_audience_expansion_seed_list_excluded
+        boolean targeting_expansion_enable_optimized_targeting
+    }
+    ad_group_ad {
+        text id PK
+        text ad_group_id FK
+        text advertiser_id FK
+        text display_video_source_ad_creative_id FK
+        text audio_ad_display_url
+        text audio_ad_final_url
+        text audio_ad_tracking_url
+        text audio_ad_video_id
+        text audio_ad_video_unavailable_reason
+        text bumper_ad_common_in_stream_attribute_action_button_label
+        text bumper_ad_common_in_stream_attribute_action_headline
+        text bumper_ad_common_in_stream_attribute_companion_banner_file_size
+        integer bumper_ad_common_in_stream_attribute_companion_banner_full_size_height_pixels
+        integer bumper_ad_common_in_stream_attribute_companion_banner_full_size_width_pixels
+        text bumper_ad_common_in_stream_attribute_companion_banner_mime_type
+        text bumper_ad_common_in_stream_attribute_display_url
+        text bumper_ad_common_in_stream_attribute_final_url
+        text bumper_ad_common_in_stream_attribute_tracking_url
+        text bumper_ad_common_in_stream_attribute_video_id
+        text bumper_ad_common_in_stream_attribute_video_unavailable_reason
+        text display_name
+        text entity_status
+        text in_stream_ad_common_in_stream_attribute_action_button_label
+        text in_stream_ad_common_in_stream_attribute_action_headline
+        text in_stream_ad_common_in_stream_attribute_companion_banner_file_size
+        integer in_stream_ad_common_in_stream_attribute_companion_banner_full_size_height_pixels
+        integer in_stream_ad_common_in_stream_attribute_companion_banner_full_size_width_pixels
+        text in_stream_ad_common_in_stream_attribute_companion_banner_mime_type
+        text in_stream_ad_common_in_stream_attribute_display_url
+        text in_stream_ad_common_in_stream_attribute_final_url
+        text in_stream_ad_common_in_stream_attribute_tracking_url
+        text in_stream_ad_common_in_stream_attribute_video_id
+        text in_stream_ad_common_in_stream_attribute_video_unavailable_reason
+        text masthead_ad_autoplay_video_duration
+        text masthead_ad_autoplay_video_start_millisecond
+        text masthead_ad_call_to_action_button_label
+        text masthead_ad_call_to_action_final_url
+        text masthead_ad_call_to_action_tracking_url
+        text masthead_ad_description
+        text masthead_ad_headline
+        boolean masthead_ad_show_channel_art
+        text masthead_ad_video_aspect_ratio
+        text masthead_ad_video_id
+        text masthead_ad_video_unavailable_reason
+        text name
+        text non_skippable_ad_common_in_stream_attribute_action_button_label
+        text non_skippable_ad_common_in_stream_attribute_action_headline
+        text non_skippable_ad_common_in_stream_attribute_companion_banner_file_size
+        integer non_skippable_ad_common_in_stream_attribute_companion_banner_full_size_height_pixels
+        integer non_skippable_ad_common_in_stream_attribute_companion_banner_full_size_width_pixels
+        text non_skippable_ad_common_in_stream_attribute_companion_banner_mime_type
+        text non_skippable_ad_common_in_stream_attribute_display_url
+        text non_skippable_ad_common_in_stream_attribute_final_url
+        text non_skippable_ad_common_in_stream_attribute_tracking_url
+        text non_skippable_ad_common_in_stream_attribute_video_id
+        text non_skippable_ad_common_in_stream_attribute_video_unavailable_reason
+        text video_discover_ad_description_1
+        text video_discover_ad_description_2
+        text video_discover_ad_headline
+        text video_discover_ad_thumbnail
+        text video_discover_ad_video_id
+        text video_discover_ad_video_unavailable_reason
+        text video_performance_ad_display_url_breadcrumb_1
+        text video_performance_ad_display_url_breadcrumb_2
+        text video_performance_ad_domain
+        text video_performance_ad_final_url
+        text video_performance_ad_tracking_url
+    }
+    partner {
+        text id PK
+        boolean ad_server_config_measurement_config_dv_360_to_cm_cost_reporting_enabled
+        boolean ad_server_config_measurement_config_dv_360_to_cm_data_sharing_enabled
+        text billing_profile_id
+        text data_access_config_sdf_config_admin_email
+        text data_access_config_sdf_config_version
+        text display_name
+        text entity_status
+        text general_config_currency_code
+        text general_config_time_zone
+        text name
+        text update_time
+    }
+    campaign {
+        text id PK
+        text advertiser_id FK
+        text campaign_flight_planned_dates_end_date
+        text campaign_flight_planned_dates_start_date
+        text campaign_flight_planned_spend_amount_micros
+        text campaign_goal_performance_goal_amount_micros
+        text campaign_goal_performance_goal_percentage_micros
+        text campaign_goal_performance_goal_string
+        text campaign_goal_performance_goal_type
+        text campaign_goal_type
+        text display_name
+        text entity_status
+        integer frequency_cap_max_impressions
+        integer frequency_cap_max_views
+        text frequency_cap_time_unit
+        integer frequency_cap_time_unit_count
+        boolean frequency_cap_unlimited
+        text name
+        text update_time
+    }
+    hashed_phone_number {
+        integer index PK
+        integer contact_info_index PK
+        text first_party_and_partner_audience_id PK
+        text hashed_phone_number
+    }
+    first_party_and_partner_audience {
+        text id PK
+        text active_display_audience_size
+        text app_id
+        text audience_source
+        text audience_type
+        text contact_info_list_consent_ad_personalization
+        text contact_info_list_consent_ad_user_data
+        text description
+        text display_audience_size
+        text display_desktop_audience_size
+        text display_mobile_app_audience_size
+        text display_mobile_web_audience_size
+        text display_name
+        text first_party_and_patner_audience_type
+        text gmail_audience_size
+        text membership_duration_days
+        text mobile_device_id_list_consent_ad_personalization
+        text mobile_device_id_list_consent_ad_user_data
+        text name
+        text youtube_audience_size
+    }
+    ad_group_assigned_targeting_option {
+        text id PK
+        text ad_group_id PK
+        text age_range_details_age_range
+        text app_category_details_display_name
+        boolean app_category_details_negative
+        text app_category_details_targeting_option_id
+        text app_details_app_id
+        text app_details_app_platform
+        text app_details_display_name
+        boolean app_details_negative
+        text assigned_targeting_option_id_alias
+        text audio_content_type_details_audio_content_type
+        text authorized_seller_status_details_authorized_seller_status
+        text authorized_seller_status_details_targeting_option_id
+        text browser_details_display_name
+        boolean browser_details_negative
+        text browser_details_targeting_option_id
+        text business_chain_details_display_name
+        double_precision business_chain_details_proximity_radius_amount
+        text business_chain_details_proximity_radius_unit
+        text business_chain_details_targeting_option_id
+        text carrier_and_isp_details_display_name
+        boolean carrier_and_isp_details_negative
+        text carrier_and_isp_details_targeting_option_id
+        text category_details_display_name
+        boolean category_details_negative
+        text category_details_targeting_option_id
+        text channel_details_channel_id
+        boolean channel_details_negative
+        text content_duration_details_content_duration
+        text content_duration_details_targeting_option_id
+        text content_genre_details_display_name
+        boolean content_genre_details_negative
+        text content_genre_details_targeting_option_id
+        text content_instream_position_details_ad_type
+        text content_instream_position_details_content_instream_position
+        text content_outstream_position_details_ad_type
+        text content_outstream_position_details_content_outstream_position
+        text content_stream_type_details_content_stream_type
+        text content_stream_type_details_targeting_option_id
+        text content_theme_exclusion_details_content_theme
+        text content_theme_exclusion_details_excluded_content_theme
+        text content_theme_exclusion_details_excluded_targeting_option_id
+        text day_and_time_details_day_of_week
+        integer day_and_time_details_end_hour
+        integer day_and_time_details_start_hour
+        text day_and_time_details_time_zone_resolution
+        text device_make_model_details_display_name
+        boolean device_make_model_details_negative
+        text device_make_model_details_targeting_option_id
+        text device_type_details_device_type
+        double_precision device_type_details_youtube_and_partners_bid_multiplier
+        text digital_content_label_exclusion_details_excluded_content_rating_tier
+        text environment_details_environment
+        text exchange_details_exchange
+        text gender_details_gender
+        text geo_region_details_display_name
+        text geo_region_details_geo_region_type
+        boolean geo_region_details_negative
+        text geo_region_details_targeting_option_id
+        text household_income_details_household_income
+        text inheritance
+        text inventory_source_details_inventory_source_id
+        text inventory_source_group_details_inventory_source_group_id
+        text keyword_details_keyword
+        boolean keyword_details_negative
+        text language_details_display_name
+        boolean language_details_negative
+        text language_details_targeting_option_id
+        text name
+        text native_content_position_details_content_position
+        text negative_keyword_list_details_negative_keyword_list_id
+        text omid_details_omid
+        text on_screen_position_details_ad_type
+        text on_screen_position_details_on_screen_position
+        text on_screen_position_details_targeting_option_id
+        text operating_system_details_display_name
+        boolean operating_system_details_negative
+        text operating_system_details_targeting_option_id
+        text parental_status_details_parental_status
+        text poi_details_display_name
+        double_precision poi_details_latitude
+        double_precision poi_details_longitude
+        double_precision poi_details_proximity_radius_amount
+        text poi_details_proximity_radius_unit
+        text poi_details_targeting_option_id
+        text proximity_location_list_details_proximity_location_list_id
+        double_precision proximity_location_list_details_proximity_radius
+        text proximity_location_list_details_proximity_radius_unit
+        boolean regional_location_list_details_negative
+        text regional_location_list_details_regional_location_list_id
+        text sensitive_category_exclusion_details_excluded_sensitive_category
+        text session_position_details_session_position
+        text sub_exchange_details_targeting_option_id
+        text targeting_type
+        text third_party_verifier_details_adloox_adult_explicit_sexual_content
+        text third_party_verifier_details_adloox_arms_ammunition_content
+        text third_party_verifier_details_adloox_crime_harmful_acts_individuals_society_human_rights_violations_content
+        text third_party_verifier_details_adloox_death_injury_military_conflict_content
+        text third_party_verifier_details_adloox_debated_sensitive_social_issue_content
+        text third_party_verifier_details_adloox_display_iab_viewability
+        text third_party_verifier_details_adloox_hate_speech_acts_aggression_content
+        text third_party_verifier_details_adloox_illegal_drugs_tobacco_ecigarettes_vaping_alcohol_content
+        text third_party_verifier_details_adloox_misinformation_content
+        text third_party_verifier_details_adloox_obscenity_profanity_content
+        text third_party_verifier_details_adloox_online_piracy_content
+        text third_party_verifier_details_adloox_spam_harmful_content
+        text third_party_verifier_details_adloox_terrorism_content
+        text third_party_verifier_details_adloox_video_iab_viewability
+        boolean third_party_verifier_details_double_verify_app_star_rating_avoid_insufficient_star_rating
+        text third_party_verifier_details_double_verify_app_star_rating_avoided_star_rating
+        boolean third_party_verifier_details_double_verify_brand_safety_categories_avoid_unknown_brand_safety_category
+        text third_party_verifier_details_double_verify_custom_segment_id
+        text third_party_verifier_details_double_verify_display_viewability_iab
+        text third_party_verifier_details_double_verify_display_viewability_viewable_during
+        boolean third_party_verifier_details_double_verify_fraud_invalid_traffic_avoid_insufficient_option
+        text third_party_verifier_details_double_verify_fraud_invalid_traffic_avoided_fraud_option
+        text third_party_verifier_details_double_verify_video_viewability_player_impression_rate
+        text third_party_verifier_details_double_verify_video_viewability_video_iab
+        text third_party_verifier_details_double_verify_video_viewability_video_viewable_rate
+        text third_party_verifier_details_integral_ad_science_display_viewability
+        boolean third_party_verifier_details_integral_ad_science_exclude_unrateable
+        text third_party_verifier_details_integral_ad_science_excluded_ad_fraud_risk
+        text third_party_verifier_details_integral_ad_science_excluded_adult_risk
+        text third_party_verifier_details_integral_ad_science_excluded_alcohol_risk
+        text third_party_verifier_details_integral_ad_science_excluded_drugs_risk
+        text third_party_verifier_details_integral_ad_science_excluded_gambling_risk
+        text third_party_verifier_details_integral_ad_science_excluded_hate_speech_risk
+        text third_party_verifier_details_integral_ad_science_excluded_illegal_downloads_risk
+        text third_party_verifier_details_integral_ad_science_excluded_offensive_language_risk
+        text third_party_verifier_details_integral_ad_science_excluded_violence_risk
+        text third_party_verifier_details_integral_ad_science_traq_score_option
+        text third_party_verifier_details_integral_ad_science_video_viewability
+        boolean url_details_negative
+        text url_details_url
+        text user_rewarded_content_details_targeting_option_id
+        text user_rewarded_content_details_user_rewarded_content
+        text video_player_size_details_video_player_size
+        text viewability_details_viewability
+        text youtube_channel_details_channel_id
+        boolean youtube_channel_details_negative
+        boolean youtube_video_details_negative
+        text youtube_video_details_video_id
+    }
+    zip_code }o--|| contact_info : "fk"
+    zip_code }o--|| contact_info : "fk"
+    contact_info }o--|| first_party_and_partner_audience : "fk"
+    advertiser }o--|| partner : "fk"
+    hashed_email }o--|| contact_info : "fk"
+    hashed_email }o--|| contact_info : "fk"
+    campaign_budget }o--|| campaign : "fk"
+    ad_url }o--|| ad_group_ad : "fk"
+    assigned_first_party_and_partner_audience }o--|| ad_group_assigned_targeting_option : "fk"
+    assigned_first_party_and_partner_audience }o--|| ad_group_assigned_targeting_option : "fk"
+    assigned_first_party_and_partner_audience }o--|| first_party_and_partner_audience : "fk"
+    creative }o--|| advertiser : "fk"
+    ad_group }o--|| advertiser : "fk"
+    ad_group_ad }o--|| advertiser : "fk"
+    ad_group_ad }o--|| ad_group : "fk"
+    ad_group_ad }o--|| creative : "fk"
+    campaign }o--|| advertiser : "fk"
+    hashed_phone_number }o--|| contact_info : "fk"
+    hashed_phone_number }o--|| contact_info : "fk"
+    first_party_and_partner_audience }o--|| first_party_and_partner_audience : "fk"
+    ad_group_assigned_targeting_option }o--|| ad_group : "fk"

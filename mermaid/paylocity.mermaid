@@ -1,0 +1,224 @@
+erDiagram
+    employee_deduction_cost_center {
+        text index PK
+        text employee_deduction_id PK
+        text employee_id PK
+        text additional_prop
+        text code
+        text level
+    }
+    employee_deduction {
+        text id PK
+        text employee_id PK
+        text agency_code
+        text arrear
+        text begin_check_date
+        text calculation_code
+        text code
+        text effective_date
+        text end_check_date
+        text frequency
+        text limits_annual_maximum
+        text limits_goal
+        text limits_paid_to_date
+        text limits_paid_year_to_date
+        text limits_pay_period_maximum
+        text limits_pay_period_minimum
+        text loan_additional_prop
+        text loan_first_payment_date
+        text loan_issue_date
+        text loan_number
+        text miscellaneous_info
+        text note
+        text priority
+        text rate
+        text record_type
+        text self_insured
+        text type
+    }
+    employee_future_pay_rate {
+        text index PK
+        text employee_id PK
+        jsonb additional_prop
+        text annual_salary
+        text begin_check_date
+        text change_reason
+        text effective_date
+        text is_auto_pay
+        text pay_frequency
+        text pay_rate_description
+        text pay_type
+        text salary
+    }
+    employee_position_family {
+        text index PK
+        text employee_id PK
+        jsonb additional_prop
+        text code
+        text description
+        text name
+    }
+    employee {
+        text id PK
+        text address_1
+        text address_2
+        text adjusted_seniority_date
+        text city
+        text clock_badge
+        text country
+        text county
+        text current_pay_rate_annual_salary
+        text current_pay_rate_base_rate
+        text current_pay_rate_begin_check_date
+        text current_pay_rate_default_hours
+        text current_pay_rate_effective_date
+        text current_pay_rate_frequency
+        text current_pay_rate_grade
+        text current_pay_rate_is_auto_pay
+        text current_pay_rate_per
+        text current_pay_rate_salary
+        text current_pay_rate_type
+        jsonb current_status_additional_prop
+        text current_status_change_reason
+        text current_status_change_reason_code
+        text current_status_effective_date
+        text date_of_birth
+        text display_name
+        text eeo_class
+        text eligible_for_rehire
+        text ethnicity_race
+        text first_name
+        text gender
+        text hire_date
+        text home_phone
+        jsonb info_additional_prop
+        jsonb info_address_additional_prop
+        text is_supervisor
+        text job_title
+        text last_name
+        text marital_status
+        text middle_name
+        text min_wage_exempt
+        text mobile_phone
+        text ot_exempt
+        text pay_group
+        text personal_email
+        jsonb position_additional_prop
+        text position_career_level_code
+        text position_career_level_description
+        text position_change_reason
+        text position_code
+        text position_cost_center_1
+        text position_cost_center_2
+        text position_cost_center_3
+        text position_description
+        text position_effective_date
+        text position_employee_type
+        text postal_code
+        text preferred_name
+        text relationship_id
+        text reviewer
+        text reviewer_co
+        text shift
+        text ssn
+        text state
+        text status
+        text status_type
+        text suffix
+        text supervisor
+        text supervisor_co
+        text tipped
+        text wcc
+        jsonb work_location_additional_prop
+        text work_location_address_1
+        text work_location_address_2
+        jsonb work_location_address_additional_prop
+        text work_location_city
+        text work_location_country
+        text work_location_county
+        text work_location_email
+        text work_location_mobile_phone
+        text work_location_phone
+        text work_location_phone_ext
+        text work_location_postal_code
+        text work_location_state
+    }
+    employee_punch_details_segments_costcenter {
+        text id PK
+        text employee_id PK
+        text punch_date PK
+        text punch_type PK
+        text code
+        text cost_center_id
+        text is_active
+        text level
+        text name
+    }
+    employee_punch_details_segment {
+        text date PK
+        text punch_type PK
+        text employee_id PK
+        text duration_seconds
+        text earnings
+        text origin
+        text punch_id
+        text relative_end
+        text relative_original_end
+        text relative_original_start
+        text relative_start
+    }
+    employee_punch_detail {
+        text employee_id PK
+        text badge_number
+        text relative_end
+        text relative_start
+    }
+    employee_earning_cost_center {
+        text index PK
+        text employee_earning_id PK
+        text employee_id PK
+        jsonb additional_prop
+        text code
+        text level
+    }
+    employee_earning {
+        text id PK
+        text employee_id PK
+        jsonb additional_prop
+        text agency
+        text amount
+        text begin_check_date
+        text calculation_code
+        text code
+        jsonb distribution_additional_prop
+        text distribution_job_code
+        text effective_date
+        text end_check_date
+        text frequency
+        jsonb limits_additional_prop
+        text limits_annual_maximum
+        text limits_goal
+        text limits_paid_to_date
+        text limits_paid_year_to_date
+        text limits_pay_period_maximum
+        text limits_pay_period_minimum
+        text miscellaneous_info
+        text rate
+        text rate_code
+        text record_type
+        text self_insured
+        text units
+    }
+    employee_deduction_cost_center }o--|| employee_deduction : "fk"
+    employee_deduction_cost_center }o--|| employee_deduction : "fk"
+    employee_deduction }o--|| employee : "fk"
+    employee_future_pay_rate }o--|| employee : "fk"
+    employee_position_family }o--|| employee : "fk"
+    employee_punch_details_segments_costcenter }o--|| employee_punch_details_segment : "fk"
+    employee_punch_details_segments_costcenter }o--|| employee_punch_details_segment : "fk"
+    employee_punch_details_segments_costcenter }o--|| employee_punch_details_segment : "fk"
+    employee_punch_details_segment }o--|| employee_punch_detail : "fk"
+    employee_punch_detail }o--|| employee : "fk"
+    employee_earning_cost_center }o--|| employee_earning : "fk"
+    employee_earning_cost_center }o--|| employee_earning : "fk"
+    employee_earning }o--|| employee : "fk"

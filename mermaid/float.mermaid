@@ -1,0 +1,291 @@
+erDiagram
+    task_people_id {
+        text people_id PK
+        text task_id PK
+    }
+    task {
+        text id PK
+        text created_by FK
+        text modified_by FK
+        text parent_task_id FK
+        text people_id FK
+        text phase_id FK
+        text project_id FK
+        text root_task_id FK
+        text billable
+        text created
+        text end_date
+        text hour
+        text modified
+        text name
+        text note
+        text repeat_end_date
+        text repeat_state
+        text start_date
+        text start_time
+        text status
+        text task_meta_id
+    }
+    project_tag {
+        text index PK
+        text project_id PK
+        text tags
+    }
+    project_team {
+        text people_id PK
+        text project_id PK
+        text hourly_rate
+    }
+    project {
+        text id PK
+        text client_id FK
+        text project_manager FK
+        text active
+        text all_pms_schedule
+        text budget_per_phase
+        text budget_total
+        text budget_type
+        text color
+        text created
+        text default_hourly_rate
+        text locked_task_list
+        text modified
+        text name
+        text non_billable
+        text note
+        text tentative
+    }
+    timeoff_type {
+        text id PK
+        text created_by FK
+        text active
+        text approval_required
+        text color
+        text timeoff_type_name
+    }
+    department {
+        text id PK
+        text parent_id FK
+        text name
+    }
+    milestone {
+        text id PK
+        text phase_id FK
+        text project_id FK
+        text created
+        text date
+        text end_date
+        text modified
+        text name
+    }
+    public_holiday {
+        text id PK
+        jsonb dates
+        text name
+        text region
+    }
+    client {
+        text client_id PK
+        text name
+    }
+    team_holiday {
+        text id PK
+        text date
+        text end_date
+        text name
+    }
+    phase_team {
+        text people_id PK
+        text phase_id PK
+        text hourly_rate
+    }
+    phase {
+        text id PK
+        text project_id FK
+        text active
+        text budget_total
+        text color
+        text created
+        text default_hourly_rate
+        text end_date
+        text modified
+        text name
+        text non_billable
+        text note
+        text start_date
+        text tentative
+    }
+    status {
+        text id PK
+        text created_by FK
+        text modified_by FK
+        text people_id FK
+        text created
+        text end_date
+        text modified
+        text repeat_end
+        text repeat_state
+        text start_date
+        text status_name
+        text status_type_id
+    }
+    account {
+        text id PK
+        text department_filter_id FK
+        text people_id FK
+        text access
+        text account_type
+        text active
+        text avatar
+        text budget_right
+        text created
+        jsonb department_filter
+        text edit_right
+        text email
+        text modified
+        text name
+        text timezone
+        text view_right
+    }
+    report_people {
+        text end_date PK
+        text start_date PK
+        text people_id PK
+        text billable
+        text capacity
+        text co_hour
+        text co_hours_history
+        text my_hour
+        text my_hours_history
+        text non_billable
+        text overtime
+        text scheduled
+        text timeoff
+        text unscheduled
+    }
+    report_project {
+        text end_date PK
+        text start_date PK
+        text project_id PK
+        text billable
+        text scheduled
+    }
+    timeoffs_people_id {
+        text people_id PK
+        text timeoff_id PK
+        text id FK
+    }
+    timeoff {
+        text id PK
+        text created_by FK
+        text modified_by FK
+        text status_creator_id FK
+        text timeoff_type_id FK
+        text created
+        text end_date
+        text full_day
+        text hour
+        text modified
+        text repeat_end
+        text repeat_state
+        text start_date
+        text start_time
+        text status
+        text status_note
+        text timeoff_note
+    }
+    people_tag {
+        text index PK
+        text name PK
+        text people_id PK
+        text type
+    }
+    people_work_day_hour {
+        text index PK
+        text people_id PK
+        text work_days_hour
+    }
+    people {
+        text id PK
+        text department_id FK
+        text active
+        text auto_email
+        text avatar_file
+        text contractor
+        text created
+        text default_hourly_rate
+        text email
+        text employee_type
+        text end_date
+        text job_title
+        text modified
+        text name
+        text non_work_day
+        text note
+        text people_type_id
+        text region_id
+        text role_id
+        text start_date
+        text work_days_hours_history
+    }
+    logged_time {
+        text id PK
+        text created_by FK
+        text modified_by FK
+        text people_id FK
+        text phase_id FK
+        text project_id FK
+        text task_id FK
+        text billable
+        text created
+        text date
+        text hour
+        text locked
+        text locked_date
+        text modified
+        text note
+        text task_meta_id
+    }
+    task_people_id }o--|| people : "fk"
+    task_people_id }o--|| task : "fk"
+    task }o--|| people : "fk"
+    task }o--|| phase : "fk"
+    task }o--|| account : "fk"
+    task }o--|| task : "fk"
+    task }o--|| project : "fk"
+    task }o--|| account : "fk"
+    task }o--|| task : "fk"
+    project_tag }o--|| project : "fk"
+    project_team }o--|| people : "fk"
+    project_team }o--|| project : "fk"
+    project }o--|| account : "fk"
+    project }o--|| client : "fk"
+    timeoff_type }o--|| account : "fk"
+    department }o--|| department : "fk"
+    milestone }o--|| project : "fk"
+    milestone }o--|| phase : "fk"
+    phase_team }o--|| people : "fk"
+    phase_team }o--|| phase : "fk"
+    phase }o--|| project : "fk"
+    status }o--|| people : "fk"
+    status }o--|| account : "fk"
+    status }o--|| account : "fk"
+    account }o--|| people : "fk"
+    account }o--|| department : "fk"
+    report_people }o--|| people : "fk"
+    report_project }o--|| project : "fk"
+    timeoffs_people_id }o--|| timeoff : "fk"
+    timeoffs_people_id }o--|| people : "fk"
+    timeoff }o--|| timeoff_type : "fk"
+    timeoff }o--|| account : "fk"
+    timeoff }o--|| account : "fk"
+    timeoff }o--|| account : "fk"
+    people_tag }o--|| people : "fk"
+    people_work_day_hour }o--|| people : "fk"
+    people }o--|| department : "fk"
+    logged_time }o--|| task : "fk"
+    logged_time }o--|| people : "fk"
+    logged_time }o--|| phase : "fk"
+    logged_time }o--|| account : "fk"
+    logged_time }o--|| project : "fk"
+    logged_time }o--|| account : "fk"

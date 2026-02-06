@@ -1,0 +1,469 @@
+erDiagram
+    quote_line_item {
+        text id PK
+        text quote_id PK
+        text inventory_id FK
+        text category_name
+        text cost
+        text count
+        text created_at
+        text name
+        text sku
+        text updated_at
+    }
+    quote {
+        text id PK
+        text customer_id FK
+        text created_at
+        text date
+        text delivery_method_id
+        text discount
+        text expiration_date
+        text instruction
+        text number
+        text payment_term_id
+        text salesperson_name
+        text shipping
+        text status
+        text subtotal
+        text tax
+        text total
+        text updated_at
+    }
+    shipment_address {
+        text id PK
+        text shipment_id PK
+        text city
+        text country
+        text country_subdivision_code
+        text created_at
+        text descriptive_name
+        text line_1
+        text line_2
+        text line_3
+        text line_4
+        text line_5
+        text postal_code
+        text updated_at
+    }
+    shipment_item_auto_ship {
+        text adjustment_id PK
+        text shipment_id PK
+        text shipment_item_id PK
+        text barcode
+        text change
+        text count
+        text lot_code
+        text reason
+        text stock_id
+    }
+    shipment_item {
+        text id PK
+        text shipment_id PK
+        text count
+        text inventory_name
+        text inventory_sku
+        text part_of_kit
+    }
+    shipment {
+        text id PK
+        text customer_id FK
+        text order_id FK
+        text created_at
+        text delivery_driver
+        text delivery_vehicle
+        text note
+        text number
+        text ship_date
+        text tracking_number
+        text updated_at
+        text user_name
+    }
+    purchase_line_item {
+        text id PK
+        text purchase_id PK
+        text inventory_id FK
+        text category_name
+        text cost
+        text count
+        text created_at
+        text name
+        text sku
+        text updated_at
+    }
+    purchase {
+        text id PK
+        text vendor_id FK
+        text created_at
+        text date
+        text deliver_by_date
+        text delivery_method_id
+        text delivery_method_instruction
+        text delivery_method_kind
+        text delivery_method_name
+        text discount
+        text instruction
+        text number
+        text shipping
+        text status
+        text subtotal
+        text tax
+        text total
+        text updated_at
+    }
+    inventory_conversion {
+        text _fivetran_id PK
+        text inventory_id FK
+        text catch_weight
+        text from_count
+        text maximum_weight
+        text minimum_weight
+        text to_count
+        text unit_of_measurement
+    }
+    inventory_custom_field_value {
+        text id PK
+        text inventory_id PK
+        text active_stock_id
+        text created_at
+        text updated_at
+        text value
+        text value_type
+    }
+    inventory {
+        text id PK
+        text category_name
+        text created_at
+        text height
+        text lead_time
+        text length
+        text name
+        text on_hand
+        text property
+        text pull_strategy
+        text purchase_conversion
+        text quantity_not_tracked
+        text reorder_point
+        text retired
+        text sku
+        text unit_of_dimension
+        text unit_of_invoice
+        text unit_of_order
+        text unit_of_pick_and_ship
+        text unit_of_purchase
+        text unit_of_use
+        text unit_of_weight
+        text updated_at
+        text waste_percentage
+        text weight
+        text width
+    }
+    order_line_item {
+        text id PK
+        text order_id PK
+        text inventory_id FK
+        text category_name
+        text cost
+        text count
+        text created_at
+        text name
+        text sku
+        text updated_at
+    }
+    order_billing_address {
+        text id PK
+        text orders_id PK
+        text city
+        text country
+        text country_subdivision_code
+        text created_at
+        text descriptive_name
+        text line_1
+        text line_2
+        text line_3
+        text line_4
+        text line_5
+        text postal_code
+        text updated_at
+    }
+    order_shipping_address {
+        text id PK
+        text orders_id PK
+        text city
+        text country
+        text country_subdivision_code
+        text created_at
+        text descriptive_name
+        text line_1
+        text line_2
+        text line_3
+        text line_4
+        text line_5
+        text postal_code
+        text updated_at
+    }
+    order_ship_from_address {
+        text id PK
+        text orders_id PK
+        text city
+        text country
+        text country_subdivision_code
+        text created_at
+        text descriptive_name
+        text line_1
+        text line_2
+        text line_3
+        text line_4
+        text line_5
+        text postal_code
+        text updated_at
+    }
+    orders {
+        text id PK
+        text customer_id FK
+        text created_at
+        text deliver_date
+        text delivery_method_id
+        text discount
+        text instruction
+        text invoiced
+        text invoiced_at
+        text order_date
+        text order_number
+        text payment_term_id
+        text po_number
+        text produce_date
+        text sales_channel_name
+        text sales_person_name
+        text ship_date
+        text shipping
+        text status
+        text subtotal
+        text tax
+        text total
+        text updated_at
+    }
+    customer_address {
+        text id PK
+        text customer_id PK
+        text city
+        text country
+        text country_subdivision_code
+        text created_at
+        text descriptive_name
+        text line_1
+        text line_2
+        text line_3
+        text line_4
+        text line_5
+        text postal_code
+        text updated_at
+    }
+    customer_billing_address {
+        text id PK
+        text customer_id PK
+        text city
+        text country
+        text country_subdivision_code
+        text created_at
+        text descriptive_name
+        text line_1
+        text line_2
+        text line_3
+        text line_4
+        text line_5
+        text postal_code
+        text updated_at
+    }
+    customer_shipping_address {
+        text id PK
+        text customer_id PK
+        text city
+        text country
+        text country_subdivision_code
+        text created_at
+        text descriptive_name
+        text line_1
+        text line_2
+        text line_3
+        text line_4
+        text line_5
+        text postal_code
+        text updated_at
+    }
+    customer {
+        text id PK
+        text business_license_number
+        text created_at
+        text default_special_instructions
+        text delivery_driver
+        text delivery_method
+        text delivery_method_id
+        text delivery_vehicle
+        text display_name
+        text email
+        text fax
+        text first_name
+        text kind
+        text last_name
+        text mobile
+        text note
+        text payment_terms
+        text phone
+        text sales_channel
+        text salesperson
+        text updated_at
+        text website
+    }
+    invoice_line_item {
+        text id PK
+        text invoice_id PK
+        text inventory_id FK
+        text category_name
+        text cost
+        text count
+        text created_at
+        text name
+        text sku
+        text updated_at
+    }
+    invoice_billing_address {
+        text id PK
+        text invoice_id PK
+        text city
+        text country
+        text country_subdivision_code
+        text created_at
+        text descriptive_name
+        text line_1
+        text line_2
+        text line_3
+        text line_4
+        text line_5
+        text postal_code
+        text updated_at
+    }
+    invoice_shipping_address {
+        text id PK
+        text invoice_id PK
+        text city
+        text country
+        text country_subdivision_code
+        text created_at
+        text descriptive_name
+        text line_1
+        text line_2
+        text line_3
+        text line_4
+        text line_5
+        text postal_code
+        text updated_at
+    }
+    invoice {
+        text id PK
+        text customer_id FK
+        text created_at
+        text date
+        text delivery_method_id
+        text discount
+        text instruction
+        text invoice_number
+        text payment_term_id
+        text sales_channel
+        text sales_person_id
+        text salesperson_name
+        text shipping
+        text status
+        text subtotal
+        text tax
+        text total
+        text updated_at
+    }
+    categories {
+        text id PK
+        text name
+    }
+    vendor_billing_address {
+        text id PK
+        text vendor_id PK
+        text city
+        text country
+        text country_subdivision_code
+        text created_at
+        text descriptive_name
+        text line_1
+        text line_2
+        text line_3
+        text line_4
+        text line_5
+        text postal_code
+        text updated_at
+    }
+    vendor_shipping_address {
+        text id PK
+        text vendor_id PK
+        text city
+        text country
+        text country_subdivision_code
+        text created_at
+        text descriptive_name
+        text line_1
+        text line_2
+        text line_3
+        text line_4
+        text line_5
+        text postal_code
+        text updated_at
+    }
+    vendor {
+        text id PK
+        text business_license_number
+        text created_at
+        text delivery_method_id
+        text delivery_method_kind
+        text delivery_method_name
+        text display_name
+        text email
+        text fax
+        text first_name
+        text kind
+        text last_name
+        text mobile
+        text note
+        text payment_term_id
+        text payment_term_name
+        text payment_term_net
+        text phone
+        text updated_at
+        text website
+    }
+    quote_line_item }o--|| inventory : "fk"
+    quote_line_item }o--|| quote : "fk"
+    quote }o--|| customer : "fk"
+    shipment_address }o--|| shipment : "fk"
+    shipment_item_auto_ship }o--|| shipment_item : "fk"
+    shipment_item_auto_ship }o--|| shipment_item : "fk"
+    shipment_item }o--|| shipment : "fk"
+    shipment }o--|| orders : "fk"
+    shipment }o--|| customer : "fk"
+    purchase_line_item }o--|| inventory : "fk"
+    purchase_line_item }o--|| purchase : "fk"
+    purchase }o--|| vendor : "fk"
+    inventory_conversion }o--|| inventory : "fk"
+    inventory_custom_field_value }o--|| inventory : "fk"
+    order_line_item }o--|| inventory : "fk"
+    order_line_item }o--|| orders : "fk"
+    order_billing_address }o--|| orders : "fk"
+    order_shipping_address }o--|| orders : "fk"
+    order_ship_from_address }o--|| orders : "fk"
+    orders }o--|| customer : "fk"
+    customer_address }o--|| customer : "fk"
+    customer_billing_address }o--|| customer : "fk"
+    customer_shipping_address }o--|| customer : "fk"
+    invoice_line_item }o--|| inventory : "fk"
+    invoice_line_item }o--|| invoice : "fk"
+    invoice_billing_address }o--|| invoice : "fk"
+    invoice_shipping_address }o--|| invoice : "fk"
+    invoice }o--|| customer : "fk"
+    vendor_billing_address }o--|| vendor : "fk"
+    vendor_shipping_address }o--|| vendor : "fk"

@@ -1,0 +1,1725 @@
+erDiagram
+    gift_timeline {
+        text index PK
+        text gift_id PK
+        text occurred_at
+        text status
+    }
+    gift {
+        text id PK
+        text gift_receiver_customer_id FK
+        text gift_receiver_subscription_id FK
+        text gifter_customer_id FK
+        text gifter_invoice_id FK
+        text auto_claim
+        text claim_expiry_date
+        text gift_receiver_email
+        text gift_receiver_first_name
+        text gift_receiver_last_name
+        text gift_timelines
+        text gifter_object
+        text gifter_signature
+        text no_expiry
+        text object
+        text resource_version
+        text scheduled_at
+        text status
+        text updated_at
+    }
+    credit_note_invoice_allocation {
+        text invoice_id PK
+        text credit_note_id FK
+        text allocated_amount
+        text allocated_at
+        text invoice_date
+        text invoice_status
+    }
+    credit_note_line_item {
+        text id PK
+        text credit_note_id PK
+        text customer_id FK
+        text reference_line_item_id FK
+        text subscription_id FK
+        text amount
+        text amount_in_decimal
+        text date_from
+        text date_to
+        text description
+        text discount_amount
+        text entity_description
+        text entity_id
+        text entity_type
+        text is_taxed
+        text item_level_discount_amount
+        text object
+        text pricing_model
+        text quantity
+        text quantity_in_decimal
+        text tax_amount
+        text tax_exempt_reason
+        text tax_rate
+        text unit_amount
+        text unit_amount_in_decimal
+    }
+    credit_note_line_item_tax {
+        text index PK
+        text credit_note_id PK
+        text line_item_id FK
+        text is_non_compliance_tax
+        text is_partial_tax_applied
+        text local_currency_code
+        text tax_amount
+        text tax_amount_in_local_currency
+        text tax_juris_code
+        text tax_juris_name
+        text tax_juris_type
+        text tax_name
+        text tax_rate
+        text taxable_amount
+    }
+    credit_note_line_item_discount {
+        text index PK
+        text credit_note_id PK
+        text coupon_id FK
+        text line_item_id FK
+        text discount_amount
+        text discount_type
+    }
+    credit_note_line_item_tier {
+        text index PK
+        text credit_note_id PK
+        text line_item_id FK
+        text ending_unit
+        text ending_unit_in_decimal
+        text quantity_used
+        text quantity_used_in_decimal
+        text starting_unit
+        text starting_unit_in_decimal
+        text unit_amount
+        text unit_amount_in_decimal
+    }
+    credit_note_discount {
+        text index PK
+        text credit_note_id PK
+        text line_item_id FK
+        text amount
+        text coupon_set_code
+        text description
+        text discount_percentage
+        text discount_type
+        text entity_id
+        text entity_type
+    }
+    credit_note_tax {
+        text index PK
+        text credit_note_id PK
+        text amount
+        text description
+        text name
+    }
+    credit_note_linked_refund {
+        text txn_id PK
+        text credit_note_id PK
+        text applied_amount
+        text applied_at
+        text refund_reason_code
+        text txn_amount
+        text txn_date
+        text txn_status
+    }
+    credit_note_linked_tax_withheld_refund {
+        text id PK
+        text credit_note_id FK
+        text amount
+        text date
+        text description
+        text reference_number
+    }
+    credit_note {
+        text id PK
+        text customer_id FK
+        text reference_invoice_id FK
+        text subscription_id FK
+        text amount_allocated
+        text amount_available
+        text amount_refunded
+        text base_currency_code
+        text business_entity_id
+        text channel
+        text create_reason_code
+        text credit_note_billing_address_city
+        text credit_note_billing_address_company
+        text credit_note_billing_address_country
+        text credit_note_billing_address_email
+        text credit_note_billing_address_first_name
+        text credit_note_billing_address_last_name
+        text credit_note_billing_address_line_1
+        text credit_note_billing_address_line_2
+        text credit_note_billing_address_line_3
+        text credit_note_billing_address_object
+        text credit_note_billing_address_phone
+        text credit_note_billing_address_state
+        text credit_note_billing_address_state_code
+        text credit_note_billing_address_validation_status
+        text credit_note_billing_address_zip
+        text credit_note_shipping_address_city
+        text credit_note_shipping_address_company
+        text credit_note_shipping_address_country
+        text credit_note_shipping_address_email
+        text credit_note_shipping_address_first_name
+        text credit_note_shipping_address_index
+        text credit_note_shipping_address_last_name
+        text credit_note_shipping_address_line_1
+        text credit_note_shipping_address_line_2
+        text credit_note_shipping_address_line_3
+        text credit_note_shipping_address_object
+        text credit_note_shipping_address_phone
+        text credit_note_shipping_address_state
+        text credit_note_shipping_address_state_code
+        text credit_note_shipping_address_validation_status
+        text credit_note_shipping_address_zip
+        text currency_code
+        text date
+        text deleted
+        text discounts
+        text e_invoice_id
+        text e_invoice_message
+        text e_invoice_status
+        text exchange_rate
+        text fractional_correction
+        text generated_at
+        text local_currency_code
+        text object
+        text price_type
+        text reason_code
+        text refunded_at
+        text resource_version
+        text round_off_amount
+        text status
+        text sub_total
+        text sub_total_in_local_currency
+        text taxes
+        text total
+        text total_in_local_currency
+        text type
+        text updated_at
+        text vat_number
+        text vat_number_prefix
+        text voided_at
+    }
+    coupon_set_metadata {
+        text name PK
+        text coupon_set_id PK
+        text value
+    }
+    coupon_set {
+        text id PK
+        text coupon_id FK
+        text archived_count
+        text name
+        text redeemed_count
+        text total_count
+    }
+    quote_line_item {
+        text id PK
+        text quote_id PK
+        text customer_id FK
+        text reference_line_item_id FK
+        text subscription_id FK
+        text amount
+        text amount_in_decimal
+        text date_from
+        text date_to
+        text description
+        text discount_amount
+        text entity_description
+        text entity_id
+        text entity_type
+        text is_taxed
+        text item_level_discount_amount
+        text object
+        text pricing_model
+        text quantity
+        text quantity_in_decimal
+        text tax_amount
+        text tax_exempt_reason
+        text tax_rate
+        text unit_amount
+        text unit_amount_in_decimal
+    }
+    quote_discount {
+        text index PK
+        text quote_id PK
+        text line_item_id FK
+        text amount
+        text coupon_set_code
+        text description
+        text entity_id
+        text entity_type
+    }
+    quote_line_item_tax {
+        text index PK
+        text quote_id PK
+        text line_item_id FK
+        text is_non_compliance_tax
+        text is_partial_tax_applied
+        text local_currency_code
+        text tax_amount
+        text tax_amount_in_local_currency
+        text tax_juris_code
+        text tax_juris_name
+        text tax_juris_type
+        text tax_name
+        text tax_rate
+        text taxable_amount
+    }
+    quote_line_item_discount {
+        text index PK
+        text quote_id PK
+        text coupon_id FK
+        text line_item_id FK
+        text discount_amount
+        text discount_type
+    }
+    quote_line_item_tier {
+        text index PK
+        text quote_id PK
+        text line_item_id FK
+        text ending_unit
+        text ending_unit_in_decimal
+        text quantity_used
+        text quantity_used_in_decimal
+        text starting_unit
+        text starting_unit_in_decimal
+        text unit_amount
+        text unit_amount_in_decimal
+    }
+    quote_tax {
+        text index PK
+        text quote_id PK
+        text amount
+        text description
+        text name
+    }
+    quote {
+        text id PK
+        text customer_id FK
+        text invoice_id FK
+        text subscription_id FK
+        text amount_due
+        text amount_paid
+        text billing_address_city
+        text billing_address_company
+        text billing_address_country
+        text billing_address_email
+        text billing_address_first_name
+        text billing_address_last_name
+        text billing_address_line_1
+        text billing_address_line_2
+        text billing_address_line_3
+        text billing_address_object
+        text billing_address_phone
+        text billing_address_state
+        text billing_address_state_code
+        text billing_address_validation_status
+        text billing_address_zip
+        text charge_on_acceptance
+        text contract_term_end
+        text contract_term_start
+        text contract_term_termination_fee
+        text credits_applied
+        text currency_code
+        text date
+        text deleted
+        text discounts
+        text name
+        text notes
+        text object
+        text operation_type
+        text po_number
+        text price_type
+        text resource_version
+        text shipping_address_city
+        text shipping_address_company
+        text shipping_address_country
+        text shipping_address_email
+        text shipping_address_first_name
+        text shipping_address_index
+        text shipping_address_last_name
+        text shipping_address_line_1
+        text shipping_address_line_2
+        text shipping_address_line_3
+        text shipping_address_phone
+        text shipping_address_state
+        text shipping_address_state_code
+        text shipping_address_validation_status
+        text shipping_address_zip
+        text status
+        text sub_total
+        text taxes
+        text total
+        text total_payable
+        text updated_at
+        text valid_till
+        text vat_number
+        text vat_number_prefix
+        text version
+    }
+    subscription_renewal_invoice_line_item {
+        text id PK
+        text customer_id FK
+        text subscription_estimate_id FK
+        text subscription_id FK
+        text amount
+        text date_from
+        text date_to
+        text description
+        text discount_amount
+        text entity_id
+        text entity_type
+        text is_taxed
+        text item_level_discount_amount
+        text object
+        text pricing_model
+        text quantity
+        text tax_amount
+        text unit_amount
+    }
+    subscription_estimate {
+        text id PK
+        text subscription_estimate_id PK
+    }
+    subscription_renewal_invoice_estimate {
+        text customer_id PK
+        text subscription_estimate_id FK
+    }
+    subscription_renewal_credit_note_estimate {
+        text customer_id PK
+        text subscription_estimate_id FK
+    }
+    subscription_renewal_unbilled_charge_estimate {
+        text customer_id PK
+        text subscription_estimate_id FK
+    }
+    subscription_renewal_estimate {
+        text subscription_estimate_id PK
+        text customer_id FK
+        text created_at
+        text invoice_estimate_amount_due
+        text invoice_estimate_amount_paid
+        text invoice_estimate_credits_applied
+        text invoice_estimate_currency_code
+        jsonb invoice_estimate_line_item_discounts
+        jsonb invoice_estimate_line_item_taxes
+        text invoice_estimate_object
+        text invoice_estimate_price_type
+        text invoice_estimate_recurring
+        text invoice_estimate_round_off_amount
+        text invoice_estimate_sub_total
+        jsonb invoice_estimate_taxes
+        text invoice_estimate_total
+        text object
+        text subscription_estimate_currency_code
+        text subscription_estimate_next_billing_at
+        text subscription_estimate_object
+        text subscription_estimate_pause_date
+        text subscription_estimate_resume_date
+        text subscription_estimate_status
+        text subscription_estimate_trial_end_action
+    }
+    payment_source_mandate {
+        text id PK
+        text payment_source_id FK
+        text subscription_id FK
+        text created_at
+    }
+    payment_source {
+        text id PK
+        text customer_id FK
+        text amazon_payment_agreement_id
+        text amazon_payment_email
+        text bank_account_bank_name
+        text bank_account_direct_debit_scheme
+        text bank_account_echeck_type
+        text bank_account_email
+        text bank_account_first_name
+        text bank_account_holder_type
+        text bank_account_last_4
+        text bank_account_last_name
+        text bank_account_mandate_id
+        text bank_account_name_on_account
+        text bank_account_type
+        text boleto_email
+        text boleto_first_name
+        text boleto_last_4
+        text boleto_last_name
+        text business_entity_id
+        text card_billing_addr_1
+        text card_billing_addr_2
+        text card_billing_city
+        text card_billing_country
+        text card_billing_state
+        text card_billing_state_code
+        text card_billing_zip
+        text card_brand
+        text card_expiry_month
+        text card_expiry_year
+        text card_first_name
+        text card_funding_type
+        text card_iin
+        text card_last_4
+        text card_last_name
+        text card_masked_number
+        text card_object
+        text created_at
+        text deleted
+        text gateway
+        text gateway_account_id
+        text ip_address
+        text issuing_country
+        text klarna_pay_now_email
+        text object
+        text paypal_agreement_id
+        text paypal_email
+        text reference_id
+        text resource_version
+        text status
+        text type
+        text updated_at
+        text upi_vpa
+        text venmo_user_name
+    }
+    plan_applicable_addon {
+        text addon_id PK
+        text plan_id PK
+    }
+    plan_event_based_addon {
+        text addon_id PK
+        text plan_id PK
+        text charge_once
+        text on_event
+        text quantity
+        text quantity_in_decimal
+    }
+    plan_attached_addon {
+        text addon_id PK
+        text plan_id PK
+        text billing_cycles
+        text quantity
+        text quantity_in_decimal
+        text type
+    }
+    plan_tax_provider_field {
+        text index PK
+        text plan_id PK
+        text field_id
+        text field_value
+        text provider_name
+    }
+    plan_tier {
+        text index PK
+        text plan_id PK
+        text ending_unit
+        text ending_unit_in_decimal
+        text price
+        text price_in_decimal
+        text starting_unit
+        text starting_unit_in_decimal
+    }
+    plan_metadata {
+        text name PK
+        text plan_id PK
+        text value
+    }
+    plan {
+        text id PK
+        text accounting_category_1
+        text accounting_category_2
+        text accounting_category_3
+        text accounting_category_4
+        text accounting_code
+        text addon_applicability
+        text archived_at
+        text avalara_sale_type
+        text avalara_service_type
+        text avalara_transaction_type
+        text billing_cycles
+        text channel
+        text charge_model
+        text claim_url
+        text currency_code
+        text description
+        text enabled_in_hosted_pages
+        text enabled_in_portal
+        text ending_unit
+        text free_quantity
+        text free_quantity_in_decimal
+        text giftable
+        text hsn_code
+        text invoice_name
+        text invoice_notes
+        text is_shippable
+        text name
+        text object
+        text period
+        text period_unit
+        text price
+        text price_in_decimal
+        text pricing_model
+        text quantity
+        text redirect_url
+        text resource_version
+        text setup_cost
+        text shipping_frequency_period
+        text shipping_frequency_period_unit
+        text show_description_in_invoices
+        text show_description_in_quotes
+        text sku
+        text starting_unit
+        text status
+        text tax_code
+        text tax_profile_id
+        text taxable
+        text taxjar_product_code
+        text trial_end_action
+        text trial_period
+        text trial_period_unit
+        text updated_at
+    }
+    site_migration_detail {
+        text entity_id PK
+        text entity_id_at_other_site
+        text entity_type
+        text migrated_at
+        text other_site_name
+        text status
+    }
+    resent_order {
+        text order_id PK
+        text resent_order_id PK
+        text amount
+        text reason
+    }
+    order_line_item {
+        text id PK
+        text order_id PK
+        text invoice_id FK
+        text invoice_line_item_id FK
+        text amount
+        text amount_adjusted
+        text amount_paid
+        text description
+        text discount_amount
+        text entity_id
+        text entity_type
+        text fulfillment_amount
+        text fulfillment_quantity
+        text is_shippable
+        text item_level_discount_amount
+        text refundable_credits
+        text refundable_credits_issued
+        text sku
+        text status
+        text tax_amount
+        text unit_price
+    }
+    order_line_item_tax {
+        text index PK
+        text credit_note_id PK
+        text line_item_id FK
+        text is_non_compliance_tax
+        text is_partial_tax_applied
+        text local_currency_code
+        text prorated_taxable_amount
+        text tax_amount
+        text tax_amount_in_local_currency
+        text tax_juris_code
+        text tax_juris_name
+        text tax_juris_type
+        text tax_name
+        text tax_rate
+        text taxable_amount
+    }
+    order_line_item_discount {
+        text index PK
+        text order_id PK
+        text line_item_id FK
+        text discount_amount
+        text discount_type
+    }
+    order_linked_credit_note {
+        text id PK
+        text order_id FK
+        text amount
+    }
+    orders {
+        text id PK
+        text customer_id FK
+        text gift_id FK
+        text invoice_id FK
+        text original_order_id FK
+        text subscription_id FK
+        text amount_adjusted
+        text amount_paid
+        text batch_id
+        text billing_address_city
+        text billing_address_company
+        text billing_address_country
+        text billing_address_email
+        text billing_address_first_name
+        text billing_address_last_name
+        text billing_address_line_1
+        text billing_address_line_2
+        text billing_address_line_3
+        text billing_address_phone
+        text billing_address_state
+        text billing_address_state_code
+        text billing_address_validation_status
+        text billing_address_zip
+        text cancellation_reason
+        text cancelled_at
+        text created_at
+        text created_by
+        text currency_code
+        text deleted
+        text delivered_at
+        text discount
+        text document_number
+        text fulfillment_status
+        text gift_note
+        text invoice_round_off_amount
+        text is_gifted
+        text is_resent
+        text note
+        text order_date
+        text order_type
+        text paid_on
+        text payment_status
+        text price_type
+        text reference_id
+        text refundable_credits
+        text refundable_credits_issued
+        text resend_reason
+        text resent_status
+        text resource_version
+        text rounding_adjustement
+        text shipment_carrier
+        text shipped_at
+        text shipping_address_city
+        text shipping_address_company
+        text shipping_address_country
+        text shipping_address_email
+        text shipping_address_first_name
+        text shipping_address_index
+        text shipping_address_last_name
+        text shipping_address_line_1
+        text shipping_address_line_2
+        text shipping_address_line_3
+        text shipping_address_phone
+        text shipping_address_state
+        text shipping_address_state_code
+        text shipping_address_validation_status
+        text shipping_address_zip
+        text shipping_cut_off_date
+        text shipping_date
+        text status
+        text status_update_at
+        text sub_total
+        text tax
+        text total
+        text tracking_id
+        text tracking_url
+        text updated_at
+    }
+    virtual_bank_account {
+        text id PK
+        text customer_id FK
+        text account_number
+        text bank_name
+        text created_at
+        text deleted
+        text email
+        text gateway
+        text gateway_account_id
+        text object
+        text reference_id
+        text resource_version
+        text routing_number
+        text scheme
+        text swift_code
+        text updated_at
+    }
+    addon_tier {
+        text index PK
+        text addon_id PK
+        text ending_unit
+        text ending_unit_in_decimal
+        text price
+        text price_in_decimal
+        text starting_unit
+        text starting_unit_in_decimal
+    }
+    addon_tax_provider_field {
+        text index PK
+        text addon_id PK
+        text field_id
+        text field_value
+        text provider_name
+    }
+    addon_metadata {
+        text name PK
+        text addon_id PK
+        text value
+    }
+    addon {
+        text id PK
+        text accounting_category_1
+        text accounting_category_2
+        text accounting_category_3
+        text accounting_category_4
+        text accounting_code
+        text archived_at
+        text avalara_sale_type
+        text avalara_service_type
+        text avalara_transaction_type
+        text channel
+        text charge_type
+        text currency_code
+        text description
+        text enabled_in_portal
+        text ending_unit
+        text hsn_code
+        text included_in_mrr
+        text invoice_name
+        text invoice_notes
+        text is_shippable
+        text name
+        text object
+        text period
+        text period_unit
+        text price
+        text price_in_decimal
+        text pricing_model
+        text proration_type
+        text resource_version
+        text shipping_frequency_period
+        text shipping_frequency_period_unit
+        text show_description_in_invoices
+        text show_description_in_quotes
+        text sku
+        text starting_unit
+        text status
+        text tax_code
+        text tax_profile_id
+        text taxable
+        text taxjar_product_code
+        text unit
+        text updated_at
+    }
+    subscription_addon {
+        text addon_id PK
+        text subscription_id PK
+        text amount
+        text amount_in_decimal
+        text quantity
+        text quantity_in_decimal
+        text remaining_billing_cycles
+        text trial_end
+        text unit_price
+        text unit_price_in_decimal
+    }
+    subscription_event_based_addon {
+        text addon_id PK
+        text subscription_id PK
+        text charge_once
+        text on_event
+        text quantity
+        text quantity_in_decimal
+        text unit_price
+        text unit_price_in_decimal
+    }
+    subscription_charged_event_based_addon {
+        text addon_id PK
+        text subscription_id PK
+        text last_charged_at
+    }
+    subscription_coupon {
+        text coupon_id PK
+        text subscription_id PK
+        text applied_count
+        text apply_till
+        text coupon_code
+    }
+    subscription_metadata {
+        text name PK
+        text subscription_id PK
+        text value
+    }
+    subscription {
+        text id PK
+        text customer_id FK
+        text gift_id FK
+        text payment_source_id FK
+        text plan_id FK
+        text activated_at
+        text affiliate_token
+        text auto_close_invoices
+        text auto_collection
+        text base_currency_code
+        text billing_period
+        text billing_period_unit
+        text business_entity_id
+        text cancel_reason
+        text cancel_reason_code
+        text cancel_schedule_created_at
+        text cancelled_at
+        text changes_scheduled_at
+        text channel
+        text contract_term_action_at_term_end
+        text contract_term_billing_cycle
+        text contract_term_billing_cycle_on_renewal
+        text contract_term_cancellation_cutoff_period
+        text contract_term_contract_end
+        text contract_term_contract_start
+        text contract_term_created_at
+        text contract_term_id
+        text contract_term_remaining_billing_cycles
+        text contract_term_status
+        text contract_term_total_contract_value
+        text contract_term_total_contract_value_before_tax
+        text create_pending_invoices
+        text created_at
+        text created_from_ip
+        text currency_code
+        text current_term_end
+        text current_term_start
+        text deleted
+        text due_invoices_count
+        text due_since
+        text exchange_rate
+        text free_period
+        text free_period_unit
+        text has_scheduled_advance_invoices
+        text has_scheduled_changes
+        text invoice_notes
+        text mrr
+        text next_billing_at
+        text offline_payment_method
+        text override_relationship
+        text pause_date
+        text plan_amount
+        text plan_amount_in_decimal
+        text plan_free_quantity
+        text plan_free_quantity_in_decimal
+        text plan_quantity
+        text plan_quantity_in_decimal
+        text plan_unit_price
+        text plan_unit_price_in_decimal
+        text po_number
+        text referral_info_account_id
+        text referral_info_campaign_id
+        text referral_info_coupon_code
+        text referral_info_destination_url
+        text referral_info_external_campaign_id
+        text referral_info_external_reference_id
+        text referral_info_friend_offer_type
+        text referral_info_notify_referral_system
+        text referral_info_post_purchase_widget_enabled
+        text referral_info_referral_code
+        text referral_info_referral_system
+        text referral_info_referrer_id
+        text referral_info_referrer_reward_type
+        text referral_info_reward_status
+        text remaining_billing_cycles
+        text resource_version
+        text resume_date
+        text setup_fee
+        text shipping_address_city
+        text shipping_address_company
+        text shipping_address_country
+        text shipping_address_email
+        text shipping_address_first_name
+        text shipping_address_last_name
+        text shipping_address_line_1
+        text shipping_address_line_2
+        text shipping_address_line_3
+        text shipping_address_phone
+        text shipping_address_state
+        text shipping_address_state_code
+        text shipping_address_validation_status
+        text shipping_address_zip
+        text start_date
+        text started_at
+        text status
+        text total_dues
+        text trial_end
+        text trial_end_action
+        text trial_start
+        text updated_at
+    }
+    promotional_credit {
+        text id PK
+        text customer_id FK
+        text amount
+        text amount_in_decimal
+        text closing_balance
+        text created_at
+        text credit_type
+        text currency_code
+        text description
+        text done_by
+        text object
+        text reference
+        text type
+    }
+    event_webhook {
+        text id PK
+        text event_id PK
+        text status
+    }
+    event_metadata {
+        text name PK
+        text event_id PK
+        text value
+    }
+    event {
+        text id PK
+        text api_version
+        text event_type
+        text occurred_at
+        text origin_user
+        text source
+        text users
+        text webhook_status
+    }
+    coupon_code {
+        text code PK
+        text coupon_id FK
+        text coupon_set_id FK
+        text coupon_set_name
+        text status
+    }
+    coupon_plan {
+        text coupon_id PK
+        text plan_id PK
+    }
+    coupon_addon {
+        text addon_id PK
+        text coupon_id PK
+    }
+    coupon_metadata {
+        text name PK
+        text coupon_id PK
+        text value
+    }
+    coupon {
+        text id PK
+        text addon_constraint
+        text apply_on
+        text archived_at
+        text created_at
+        text currency_code
+        text discount_amount
+        text discount_percentage
+        text discount_type
+        text duration_type
+        text included_in_mrr
+        text invoice_name
+        text invoice_notes
+        text max_redemptions
+        text name
+        text period
+        text period_unit
+        text plan_constraint
+        text redemptions
+        text resource_version
+        text status
+        text updated_at
+        text valid_till
+    }
+    hosted_page {
+        text id PK
+        text business_entity_id
+        text checkout_info
+        text content
+        text created_at
+        text embed
+        text expires_at
+        text object
+        text pass_thru_content
+        text resource_version
+        text state
+        text type
+        text updated_at
+        text url
+    }
+    unbilled_charge_tier {
+        text index PK
+        text unbilled_charge_id PK
+        text ending_unit
+        text ending_unit_in_decimal
+        text quantity_used
+        text quantity_used_in_decimal
+        text starting_unit
+        text starting_unit_in_decimal
+        text unit_amount
+        text unit_amount_in_decimal
+    }
+    unbilled_charge {
+        text id PK
+        text customer_id FK
+        text subscription_id FK
+        text amount
+        text amount_in_decimal
+        text currency_code
+        text date_from
+        text date_to
+        text deleted
+        text description
+        text discount_amount
+        text entity_id
+        text entity_type
+        text is_advance_charge
+        text is_voided
+        text object
+        text pricing_model
+        text quantity
+        text quantity_in_decimal
+        text unit_amount
+        text unit_amount_in_decimal
+        text updated_at
+        text voided_at
+    }
+    comment {
+        text id PK
+        text added_by
+        text created_at
+        text entity_id
+        text entity_type
+        text notes
+        text type
+    }
+    invoice_issued_credit_note {
+        text cn_id PK
+        text invoice_id FK
+    }
+    invoice_adjustment_credit_note {
+        text cn_id PK
+        text invoice_id FK
+    }
+    invoice_dunning_attempt {
+        text index PK
+        text invoice_id PK
+        text transaction_id FK
+        text attempt
+        text created_at
+        text dunning_type
+        text txn_amount
+        text txn_status
+    }
+    invoice_applied_credit {
+        text cn_id PK
+        text invoice_id FK
+        text applied_amount
+        text applied_at
+        text cn_create_reason_code
+        text cn_date
+        text cn_reason_code
+        text cn_status
+    }
+    invoice_line_item {
+        text id PK
+        text invoice_id PK
+        text customer_id FK
+        text subscription_id FK
+        text amount
+        text amount_in_decimal
+        text date_from
+        text date_to
+        text description
+        text discount_amount
+        text entity_description
+        text entity_id
+        text entity_type
+        text is_taxed
+        text item_level_discount_amount
+        text object
+        text pricing_model
+        text quantity
+        text quantity_in_decimal
+        text tax_amount
+        text tax_exempt_reason
+        text tax_rate
+        text unit_amount
+        text unit_amount_in_decimal
+    }
+    invoice_line_item_tax {
+        text index PK
+        text invoice_id PK
+        text line_item_id FK
+        text is_non_compliance_tax
+        text is_partial_tax_applied
+        text local_currency_code
+        text prorated_taxable_amount
+        text tax_amount
+        text tax_amount_in_local_currency
+        text tax_juris_code
+        text tax_juris_name
+        text tax_juris_type
+        text tax_name
+        text tax_rate
+        text taxable_amount
+    }
+    invoice_tax {
+        text index PK
+        text invoice_id PK
+        text amount
+        text description
+        text name
+    }
+    invoice_line_item_discount {
+        text index PK
+        text invoice_id PK
+        text coupon_id FK
+        text line_item_id FK
+        text discount_amount
+        text discount_type
+    }
+    invoice_line_item_tier {
+        text line_item_id PK
+        text invoice_id FK
+        text ending_unit
+        text ending_unit_in_decimal
+        text quantity_used
+        text quantity_used_in_decimal
+        text starting_unit
+        text starting_unit_in_decimal
+        text unit_amount
+        text unit_amount_in_decimal
+    }
+    invoice_discount {
+        text index PK
+        text invoice_id PK
+        text line_item_id FK
+        text amount
+        text coupon_set_code
+        text description
+        text entity_id
+        text entity_type
+    }
+    invoice_linked_payment {
+        text txn_id PK
+        text invoice_id FK
+        text applied_amount
+        text applied_at
+        text txn_amount
+        text txn_date
+        text txn_status
+    }
+    invoice_linked_order {
+        text id PK
+        text invoice_id FK
+        text batch_id
+        text created_at
+        text document_number
+        text fulfillment_status
+        text order_type
+        text reference_id
+        text status
+    }
+    invoice_note {
+        text index PK
+        text invoice_id PK
+        text entity_id
+        text entity_type
+        text note
+    }
+    invoice_linked_taxes_withheld {
+        text id PK
+        text invoice_id FK
+        text amount
+        text date
+        text description
+        text reference_number
+    }
+    invoice {
+        text id PK
+        text customer_id FK
+        text subscription_id FK
+        text amount_adjusted
+        text amount_due
+        text amount_paid
+        text amount_to_collect
+        text billing_address_city
+        text billing_address_company
+        text billing_address_country
+        text billing_address_email
+        text billing_address_first_name
+        text billing_address_last_name
+        text billing_address_line_1
+        text billing_address_line_2
+        text billing_address_line_3
+        text billing_address_object
+        text billing_address_phone
+        text billing_address_state
+        text billing_address_state_code
+        text billing_address_validation_status
+        text billing_address_zip
+        text channel
+        text credits_applied
+        text currency_code
+        text date
+        text deleted
+        text due_date
+        text dunning_status
+        text einvoice_id
+        text einvoice_message
+        text einvoice_reference_number
+        text einvoice_status
+        text exchange_rate
+        text expected_payment_date
+        text first_invoice
+        text generated_at
+        text has_advance_charges
+        text is_gifted
+        text is_written_off
+        text local_currency_code
+        text local_currency_exchange_rate
+        text net_term_days
+        text new_sales_amount
+        text next_retry_at
+        text notes
+        text paid_at
+        text payment_owner
+        text po_number
+        text price_type
+        text recurring
+        text resource_version
+        text round_off_amount
+        text shipping_address_city
+        text shipping_address_company
+        text shipping_address_country
+        text shipping_address_email
+        text shipping_address_first_name
+        text shipping_address_index
+        text shipping_address_last_name
+        text shipping_address_line_1
+        text shipping_address_line_2
+        text shipping_address_line_3
+        text shipping_address_object
+        text shipping_address_phone
+        text shipping_address_state
+        text shipping_address_state_code
+        text shipping_address_validation_status
+        text shipping_address_zip
+        text site_details_at_creation_organization_address_city
+        text site_details_at_creation_organization_address_country_code
+        text site_details_at_creation_organization_address_line_1
+        text site_details_at_creation_organization_address_state
+        text site_details_at_creation_organization_address_zip
+        text site_details_at_creation_organization_email
+        text site_details_at_creation_organization_name
+        text site_details_at_creation_organization_phone
+        text site_details_at_creation_organization_website
+        text site_details_at_creation_timezone
+        text statement_descriptor
+        text statement_descriptor_id
+        text status
+        text sub_total
+        text sub_total_in_local_currency
+        text tax
+        text tax_category
+        text tax_origin_country
+        text tax_origin_registration_number
+        text tax_override_reason
+        text term_finalized
+        text total
+        text total_in_local_currency
+        text updated_at
+        text use_for_proration
+        text vat_number
+        text vat_number_prefix
+        text void_reason_code
+        text voided_at
+        text write_off_amount
+        text write_off_date
+    }
+    transaction_refund {
+        text refund_transaction_id PK
+        text transaction_id PK
+    }
+    transaction_linked_payment {
+        text linked_payments_id PK
+        text transaction_id PK
+    }
+    transaction_invoice {
+        text invoice_id PK
+        text transaction_id PK
+        text applied_amount
+        text applied_at
+    }
+    transaction_linked_credit_note {
+        text cn_id PK
+        text transaction_id PK
+        text applied_amount
+        text applied_at
+        text cn_reason_code
+    }
+    transaction {
+        text id PK
+        text customer_id FK
+        text payment_source_id FK
+        text reference_authorization_id FK
+        text reference_transaction_id FK
+        text refunded_txn_id FK
+        text reversal_transaction_id FK
+        text subscription_id FK
+        text amount
+        text amount_capturable
+        text amount_unused
+        text authorization_reason
+        text currency_code
+        text custom_payment_method_id
+        text custom_payment_method_name
+        text date
+        text deleted
+        text error_cause_customer_message
+        text error_cause_id
+        text error_cause_merchant_message
+        text error_code
+        text error_detail_decline_code
+        text error_detail_decline_message
+        text error_detail_error_category
+        text error_detail_error_code
+        text error_detail_error_field
+        text error_detail_error_message
+        text error_detail_network_error_code
+        text error_detail_network_error_message
+        text error_detail_processor_error_code
+        text error_detail_processor_error_message
+        text error_detail_recommendation_code
+        text error_detail_recommendation_message
+        text error_detail_request_id
+        text error_text
+        text exchange_rate
+        text fraud_flag
+        text fraud_reason
+        text gateway
+        text gateway_account_id
+        text id_at_gateway
+        text iin
+        text initiator_type
+        text last_4
+        text masked_card_number
+        text merchant_reference_id
+        text payment_method
+        text payment_method_details
+        text reference_number
+        text resource_version
+        text settled_at
+        text status
+        text three_d_secure
+        text type
+        text updated_at
+        text voided_at
+    }
+    customer_referral_url {
+        text customer_id PK
+        text created_at
+        text referral_account_id
+        text referral_campaign_id
+        text referral_external_campaign_id
+        text referral_sharing_url
+        text referral_system
+        text updated_at
+    }
+    customer_contact {
+        text id PK
+        text customer_id PK
+        text email
+        text enabled
+        text first_name
+        text label
+        text last_name
+        text phone
+        text send_account_email
+        text send_billing_email
+    }
+    customer_balance {
+        text index PK
+        text customer_id PK
+        text currency_code
+        text excess_payments
+        text promotional_credits
+        text refundable_credits
+        text unbilled_charges
+    }
+    customer_tax_provider_field {
+        text index PK
+        text customer_id PK
+        text field_id
+        text field_value
+        text provider_name
+    }
+    customer_entity_identifier {
+        text id PK
+        text customer_id FK
+        text scheme
+        text standard
+        text value
+    }
+    customer_metadata {
+        text name PK
+        text customer_id PK
+        text value
+    }
+    customer {
+        text id PK
+        text backup_payment_source_id FK
+        text primary_payment_source_id FK
+        text allow_direct_debit
+        text auto_close_invoices
+        text auto_collection
+        text billing_address_city
+        text billing_address_company
+        text billing_address_country
+        text billing_address_email
+        text billing_address_first_name
+        text billing_address_last_name
+        text billing_address_line_1
+        text billing_address_line_2
+        text billing_address_line_3
+        text billing_address_object
+        text billing_address_phone
+        text billing_address_state
+        text billing_address_state_code
+        text billing_address_validation_status
+        text billing_address_zip
+        text billing_date
+        text billing_date_mode
+        text billing_day_of_week
+        text billing_day_of_week_mode
+        text billing_month
+        text business_customer_without_vat_number
+        text business_entity_id
+        text channel
+        text child_account_access_portal_download_invoices
+        text child_account_access_portal_edit_subscriptions
+        text child_account_access_send_invoice_emails
+        text child_account_access_send_payment_emails
+        text child_account_access_send_subscription_emails
+        text client_profile_id
+        text company
+        text consolidated_invoicing
+        text created_at
+        text created_from_ip
+        text customer_type
+        text deleted
+        text einvoicing_method
+        text email
+        text entity_code
+        text entity_identifier_scheme
+        text entity_identifier_standard
+        text excess_payments
+        text exempt_number
+        text exemption_details
+        text first_name
+        text fraud_flag
+        text invoice_notes
+        text is_einvoice_enabled
+        text is_location_valid
+        text last_name
+        text locale
+        text net_term_days
+        text offline_payment_method
+        text parent_account_access_portal_download_child_invoices
+        text parent_account_access_portal_edit_child_subscriptions
+        text parent_account_access_send_invoice_emails
+        text parent_account_access_send_payment_emails
+        text parent_account_access_send_subscription_emails
+        text phone
+        text pii_cleared
+        text preferred_currency_code
+        text promotional_credits
+        text refundable_credits
+        text registered_for_gst
+        text relationship_invoice_owner_id
+        text relationship_parent_id
+        text relationship_payment_owner_id
+        text resource_version
+        text taxability
+        text unbilled_charges
+        text updated_at
+        text use_default_hierarchy_settings
+        text vat_number
+        text vat_number_prefix
+        text vat_number_status
+        text vat_number_validated_time
+    }
+    gift_timeline }o--|| gift : "fk"
+    gift }o--|| customer : "fk"
+    gift }o--|| subscription : "fk"
+    gift }o--|| customer : "fk"
+    gift }o--|| invoice : "fk"
+    credit_note_invoice_allocation }o--|| invoice : "fk"
+    credit_note_invoice_allocation }o--|| credit_note : "fk"
+    credit_note_line_item }o--|| subscription : "fk"
+    credit_note_line_item }o--|| customer : "fk"
+    credit_note_line_item }o--|| credit_note_line_item : "fk"
+    credit_note_line_item }o--|| credit_note : "fk"
+    credit_note_line_item_tax }o--|| credit_note_line_item : "fk"
+    credit_note_line_item_tax }o--|| credit_note : "fk"
+    credit_note_line_item_discount }o--|| credit_note_line_item : "fk"
+    credit_note_line_item_discount }o--|| coupon : "fk"
+    credit_note_line_item_discount }o--|| credit_note : "fk"
+    credit_note_line_item_tier }o--|| credit_note_line_item : "fk"
+    credit_note_line_item_tier }o--|| credit_note : "fk"
+    credit_note_discount }o--|| credit_note_line_item : "fk"
+    credit_note_discount }o--|| credit_note : "fk"
+    credit_note_tax }o--|| credit_note : "fk"
+    credit_note_linked_refund }o--|| credit_note : "fk"
+    credit_note_linked_tax_withheld_refund }o--|| credit_note : "fk"
+    credit_note }o--|| invoice : "fk"
+    credit_note }o--|| subscription : "fk"
+    credit_note }o--|| customer : "fk"
+    coupon_set_metadata }o--|| coupon_set : "fk"
+    coupon_set }o--|| coupon : "fk"
+    quote_line_item }o--|| subscription : "fk"
+    quote_line_item }o--|| customer : "fk"
+    quote_line_item }o--|| quote_line_item : "fk"
+    quote_line_item }o--|| quote : "fk"
+    quote_discount }o--|| quote_line_item : "fk"
+    quote_discount }o--|| quote : "fk"
+    quote_line_item_tax }o--|| quote_line_item : "fk"
+    quote_line_item_tax }o--|| quote : "fk"
+    quote_line_item_discount }o--|| quote_line_item : "fk"
+    quote_line_item_discount }o--|| coupon : "fk"
+    quote_line_item_discount }o--|| quote : "fk"
+    quote_line_item_tier }o--|| quote_line_item : "fk"
+    quote_line_item_tier }o--|| quote : "fk"
+    quote_tax }o--|| quote : "fk"
+    quote }o--|| subscription : "fk"
+    quote }o--|| invoice : "fk"
+    quote }o--|| customer : "fk"
+    subscription_renewal_invoice_line_item }o--|| subscription : "fk"
+    subscription_renewal_invoice_line_item }o--|| customer : "fk"
+    subscription_renewal_invoice_line_item }o--|| subscription_renewal_estimate : "fk"
+    subscription_estimate }o--|| subscription : "fk"
+    subscription_estimate }o--|| subscription_renewal_estimate : "fk"
+    subscription_renewal_invoice_estimate }o--|| customer : "fk"
+    subscription_renewal_invoice_estimate }o--|| subscription_renewal_estimate : "fk"
+    subscription_renewal_credit_note_estimate }o--|| customer : "fk"
+    subscription_renewal_credit_note_estimate }o--|| subscription_renewal_estimate : "fk"
+    subscription_renewal_unbilled_charge_estimate }o--|| customer : "fk"
+    subscription_renewal_unbilled_charge_estimate }o--|| subscription_renewal_estimate : "fk"
+    subscription_renewal_estimate }o--|| subscription : "fk"
+    subscription_renewal_estimate }o--|| customer : "fk"
+    payment_source_mandate }o--|| subscription : "fk"
+    payment_source_mandate }o--|| payment_source : "fk"
+    payment_source }o--|| customer : "fk"
+    plan_applicable_addon }o--|| addon : "fk"
+    plan_applicable_addon }o--|| plan : "fk"
+    plan_event_based_addon }o--|| addon : "fk"
+    plan_event_based_addon }o--|| plan : "fk"
+    plan_attached_addon }o--|| addon : "fk"
+    plan_attached_addon }o--|| plan : "fk"
+    plan_tax_provider_field }o--|| plan : "fk"
+    plan_tier }o--|| plan : "fk"
+    plan_metadata }o--|| plan : "fk"
+    resent_order }o--|| orders : "fk"
+    resent_order }o--|| orders : "fk"
+    order_line_item }o--|| invoice_line_item : "fk"
+    order_line_item }o--|| invoice : "fk"
+    order_line_item }o--|| orders : "fk"
+    order_line_item_tax }o--|| order_line_item : "fk"
+    order_line_item_tax }o--|| credit_note : "fk"
+    order_line_item_discount }o--|| order_line_item : "fk"
+    order_line_item_discount }o--|| orders : "fk"
+    order_linked_credit_note }o--|| credit_note : "fk"
+    order_linked_credit_note }o--|| orders : "fk"
+    orders }o--|| gift : "fk"
+    orders }o--|| orders : "fk"
+    orders }o--|| subscription : "fk"
+    orders }o--|| invoice : "fk"
+    orders }o--|| customer : "fk"
+    virtual_bank_account }o--|| customer : "fk"
+    addon_tier }o--|| addon : "fk"
+    addon_tax_provider_field }o--|| addon : "fk"
+    addon_metadata }o--|| addon : "fk"
+    subscription_addon }o--|| addon : "fk"
+    subscription_addon }o--|| subscription : "fk"
+    subscription_event_based_addon }o--|| addon : "fk"
+    subscription_event_based_addon }o--|| subscription : "fk"
+    subscription_charged_event_based_addon }o--|| addon : "fk"
+    subscription_charged_event_based_addon }o--|| subscription : "fk"
+    subscription_coupon }o--|| coupon : "fk"
+    subscription_coupon }o--|| subscription : "fk"
+    subscription_metadata }o--|| subscription : "fk"
+    subscription }o--|| gift : "fk"
+    subscription }o--|| plan : "fk"
+    subscription }o--|| customer : "fk"
+    subscription }o--|| payment_source : "fk"
+    promotional_credit }o--|| customer : "fk"
+    event_webhook }o--|| event : "fk"
+    event_metadata }o--|| event : "fk"
+    coupon_code }o--|| coupon : "fk"
+    coupon_code }o--|| coupon_set : "fk"
+    coupon_plan }o--|| plan : "fk"
+    coupon_plan }o--|| coupon : "fk"
+    coupon_addon }o--|| addon : "fk"
+    coupon_addon }o--|| coupon : "fk"
+    coupon_metadata }o--|| coupon : "fk"
+    unbilled_charge_tier }o--|| unbilled_charge : "fk"
+    unbilled_charge }o--|| subscription : "fk"
+    unbilled_charge }o--|| customer : "fk"
+    invoice_issued_credit_note }o--|| credit_note : "fk"
+    invoice_issued_credit_note }o--|| invoice : "fk"
+    invoice_adjustment_credit_note }o--|| credit_note : "fk"
+    invoice_adjustment_credit_note }o--|| invoice : "fk"
+    invoice_dunning_attempt }o--|| transaction : "fk"
+    invoice_dunning_attempt }o--|| invoice : "fk"
+    invoice_applied_credit }o--|| credit_note : "fk"
+    invoice_applied_credit }o--|| invoice : "fk"
+    invoice_line_item }o--|| subscription : "fk"
+    invoice_line_item }o--|| customer : "fk"
+    invoice_line_item }o--|| invoice : "fk"
+    invoice_line_item_tax }o--|| invoice_line_item : "fk"
+    invoice_line_item_tax }o--|| invoice : "fk"
+    invoice_tax }o--|| invoice : "fk"
+    invoice_line_item_discount }o--|| invoice_line_item : "fk"
+    invoice_line_item_discount }o--|| coupon : "fk"
+    invoice_line_item_discount }o--|| invoice : "fk"
+    invoice_line_item_tier }o--|| invoice_line_item : "fk"
+    invoice_line_item_tier }o--|| invoice : "fk"
+    invoice_discount }o--|| invoice_line_item : "fk"
+    invoice_discount }o--|| invoice : "fk"
+    invoice_linked_payment }o--|| invoice : "fk"
+    invoice_linked_order }o--|| orders : "fk"
+    invoice_linked_order }o--|| invoice : "fk"
+    invoice_note }o--|| invoice : "fk"
+    invoice_linked_taxes_withheld }o--|| invoice : "fk"
+    invoice }o--|| subscription : "fk"
+    invoice }o--|| customer : "fk"
+    transaction_refund }o--|| transaction : "fk"
+    transaction_refund }o--|| transaction : "fk"
+    transaction_linked_payment }o--|| transaction : "fk"
+    transaction_linked_payment }o--|| transaction : "fk"
+    transaction_invoice }o--|| invoice : "fk"
+    transaction_invoice }o--|| transaction : "fk"
+    transaction_linked_credit_note }o--|| credit_note : "fk"
+    transaction_linked_credit_note }o--|| transaction : "fk"
+    transaction }o--|| transaction : "fk"
+    transaction }o--|| subscription : "fk"
+    transaction }o--|| transaction : "fk"
+    transaction }o--|| transaction : "fk"
+    transaction }o--|| transaction : "fk"
+    transaction }o--|| customer : "fk"
+    transaction }o--|| payment_source : "fk"
+    customer_referral_url }o--|| customer : "fk"
+    customer_contact }o--|| customer : "fk"
+    customer_balance }o--|| customer : "fk"
+    customer_tax_provider_field }o--|| customer : "fk"
+    customer_entity_identifier }o--|| customer : "fk"
+    customer_metadata }o--|| customer : "fk"
+    customer }o--|| payment_source : "fk"
+    customer }o--|| payment_source : "fk"

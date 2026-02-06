@@ -1,0 +1,385 @@
+erDiagram
+    reel_metrics_by_type {
+        timestamp date PK
+        text type PK
+        text reel_id PK
+        double_precision post_video_likes_by_reaction_type
+        double_precision post_video_social_actions
+    }
+    page_metrics_by_paid_non_paid {
+        timestamp date PK
+        text paid_non_paid PK
+        text page_id PK
+        double_precision page_fan_adds_by_paid_non_paid_unique
+        double_precision page_video_views_by_paid_non_paid
+    }
+    reel_history {
+        text id PK
+        timestamp updated_time PK
+        text page_id FK
+        jsonb ad_breaks
+        timestamp backdated_time
+        text backdated_time_granularity
+        text content_category
+        jsonb content_tags
+        timestamp created_time
+        jsonb custom_labels
+        text description
+        text embed_html
+        boolean embeddable
+        jsonb event
+        jsonb from_object
+        text icon
+        boolean is_crosspost_video
+        boolean is_episode
+        boolean is_instagram_eligible
+        text length
+        text live_status
+        text permalink_url
+        jsonb place
+        text premiere_living_room_status
+        boolean published
+        timestamp scheduled_publish_time
+        text source
+        integer status_processing_progress
+        text status_value
+        text title
+        text universal_video_id
+        bigint views
+    }
+    reel_metrics_total {
+        timestamp date PK
+        text reel_id PK
+        double_precision blue_reels_play_count
+        double_precision post_video_avg_time_watched
+        double_precision post_video_followers
+        double_precision post_video_view_time
+    }
+    post_metrics_by_video_interval {
+        timestamp date PK
+        integer video_interval PK
+        text post_id PK
+        double_precision post_video_retention_graph
+        double_precision post_video_retention_graph_autoplayed
+        double_precision post_video_retention_graph_clicked_to_play
+    }
+    page_metrics_by_country {
+        text country PK
+        timestamp date PK
+        text page_id PK
+        double_precision page_follows_country
+    }
+    post_video_property_history {
+        integer index PK
+        text post_id PK
+        timestamp updated_time PK
+        text href
+        text name
+        text text
+    }
+    post_history {
+        text id PK
+        timestamp updated_time PK
+        text page_id FK
+        bigint comment_count
+        timestamp created_time
+        text full_picture
+        boolean is_eligible_for_promotion
+        boolean is_expired
+        boolean is_hidden
+        boolean is_instagram_eligible
+        boolean is_published
+        text message
+        text parent_id
+        text promotable_id
+        bigint share_count
+        text status_type
+    }
+    post_tagged_profile_history {
+        integer index PK
+        text post_id PK
+        timestamp updated_time PK
+        text id
+        integer length
+        text name
+        integer offset
+        text type
+    }
+    page_metrics_by_crosspost_status {
+        text crosspost_status PK
+        timestamp date PK
+        text page_id PK
+        double_precision page_daily_video_ad_break_ad_impressions_by_crosspost_status
+        double_precision page_daily_video_ad_break_cpm_by_crosspost_status
+        double_precision page_daily_video_ad_break_earnings_by_crosspost_status
+    }
+    page_video_thumbnail {
+        text id PK
+        text video_id FK
+        bigint height
+        boolean is_preferred
+        text name
+        text scale
+        text uri
+        bigint width
+    }
+    post_metrics_by_type {
+        timestamp date PK
+        text type PK
+        text post_id PK
+        double_precision post_clicks_by_type
+        double_precision post_reactions_by_type_total
+    }
+    post_attachment_history {
+        integer index PK
+        text post_id PK
+        timestamp updated_time PK
+        integer media_image_height
+        text media_image_src
+        integer media_image_width
+        text media_source
+        text media_type
+        text target_id
+        text target_url
+        text type
+        text unshimmed_url
+        text url
+    }
+    post_metrics_by_action_type {
+        text action_type PK
+        timestamp date PK
+        text post_id PK
+        double_precision post_activity_by_action_type
+        double_precision post_activity_by_action_type_unique
+    }
+    page_metrics_by_city {
+        text city PK
+        timestamp date PK
+        text page_id PK
+        double_precision page_follows_city
+    }
+    page_metrics_total {
+        timestamp date PK
+        text page_id PK
+        double_precision page_actions_post_reactions_anger_total
+        double_precision page_actions_post_reactions_haha_total
+        double_precision page_actions_post_reactions_like_total
+        double_precision page_actions_post_reactions_love_total
+        double_precision page_actions_post_reactions_sorry_total
+        double_precision page_actions_post_reactions_wow_total
+        double_precision page_daily_follows
+        double_precision page_daily_follows_unique
+        double_precision page_daily_unfollows_unique
+        double_precision page_follows
+        double_precision page_media_view
+        double_precision page_post_engagements
+        double_precision page_total_actions
+        double_precision page_video_complete_views_30_s
+        double_precision page_video_complete_views_30_s_autoplayed
+        double_precision page_video_complete_views_30_s_click_to_play
+        double_precision page_video_complete_views_30_s_organic
+        double_precision page_video_complete_views_30_s_paid
+        double_precision page_video_complete_views_30_s_repeat_views
+        double_precision page_video_complete_views_30_s_unique
+        double_precision page_video_repeat_views
+        double_precision page_video_view_time
+        double_precision page_video_views
+        double_precision page_video_views_autoplayed
+        double_precision page_video_views_click_to_play
+        double_precision page_video_views_organic
+        double_precision page_video_views_paid
+        double_precision page_video_views_unique
+        double_precision page_views_total
+    }
+    post_metrics_by_locale {
+        timestamp date PK
+        text locale PK
+        text post_id PK
+        double_precision post_video_view_time_by_region_id
+    }
+    %% NOTE
+%% Fields listed below are not supported for the Pages that have been migrated to the New Pages Experience.
+%%   - affiliation 
+%%   - app_id
+%%   - artists_we_like 
+%%   - attire 
+%%   - awards 
+%%   - band_interests 
+%%   - band_members 
+%%   - bio 
+%%   - booking_agent 
+%%   - built 
+%%   - company_overview 
+%%   - culinary_team 
+%%   - current_location 
+%%   - directed_by
+    page {
+        text id PK
+        text app_id
+        text birthday
+        boolean can_checkin
+        boolean can_post
+        text category
+        jsonb category_list
+        bigint checkins
+        text description
+        text display_subtext
+        jsonb emails
+        bigint fan_count
+        bigint followers_count
+        text global_brand_page_name
+        boolean has_transitioned_to_new_page_experience
+        text hometown
+        boolean is_always_open
+        boolean is_community_page
+        boolean is_eligible_for_branded_content
+        boolean is_messenger_bot_get_started_enabled
+        boolean is_messenger_platform_bot
+        boolean is_owned
+        boolean is_permanently_closed
+        boolean is_published
+        boolean is_unclaimed
+        text name
+        text phone
+        text place_type
+        text price_range
+        boolean promotion_eligible
+        text promotion_ineligible_reason
+        text single_line_address
+        bigint talking_about_count
+        text username
+        text website
+        bigint were_here_count
+    }
+    page_video_history {
+        text id PK
+        timestamp updated_time PK
+        text page_id FK
+        jsonb ad_breaks
+        timestamp backdated_time
+        text backdated_time_granularity
+        text content_category
+        jsonb content_tags
+        timestamp created_time
+        jsonb custom_labels
+        text description
+        text embed_html
+        boolean embeddable
+        jsonb event
+        jsonb format
+        jsonb from_object
+        text icon
+        boolean is_crosspost_video
+        boolean is_crossposting_eligible
+        boolean is_episode
+        boolean is_instagram_eligible
+        text length
+        text live_status
+        text permalink_url
+        jsonb picture
+        jsonb place
+        bigint post_views
+        text premiere_living_room_status
+        jsonb privacy
+        boolean published
+        timestamp scheduled_publish_time
+        text source
+        text title
+        text universal_video_id
+        bigint views
+    }
+    post_metrics_total {
+        timestamp date PK
+        text post_id PK
+        double_precision post_clicks
+        double_precision post_media_view
+        double_precision post_reactions_anger_total
+        double_precision post_reactions_haha_total
+        double_precision post_reactions_like_total
+        double_precision post_reactions_love_total
+        double_precision post_reactions_sorry_total
+        double_precision post_reactions_wow_total
+        double_precision post_video_ad_break_ad_cpm
+        double_precision post_video_ad_break_ad_impressions
+        double_precision post_video_ad_break_earnings
+        double_precision post_video_avg_time_watched
+        double_precision post_video_complete_views_30_s_autoplayed
+        double_precision post_video_complete_views_30_s_clicked_to_play
+        double_precision post_video_complete_views_30_s_organic
+        double_precision post_video_complete_views_30_s_paid
+        double_precision post_video_complete_views_30_s_unique
+        double_precision post_video_complete_views_organic
+        double_precision post_video_complete_views_organic_unique
+        double_precision post_video_complete_views_paid
+        double_precision post_video_complete_views_paid_unique
+        double_precision post_video_length
+        double_precision post_video_view_time
+        double_precision post_video_view_time_organic
+        double_precision post_video_views
+        double_precision post_video_views_15_s
+        double_precision post_video_views_60_s_excludes_shorter
+        double_precision post_video_views_autoplayed
+        double_precision post_video_views_clicked_to_play
+        double_precision post_video_views_organic
+        double_precision post_video_views_organic_unique
+        double_precision post_video_views_paid
+        double_precision post_video_views_paid_unique
+        double_precision post_video_views_sound_on
+        double_precision post_video_views_unique
+    }
+    post_metrics_by_age_gender {
+        text age_gender PK
+        timestamp date PK
+        text post_id PK
+        double_precision post_video_view_time_by_age_bucket_and_gender
+    }
+    post_comment_history {
+        text _fivetran_id PK
+        text post_id FK
+        boolean can_comment
+        boolean can_hide
+        boolean can_like
+        boolean can_remove
+        boolean can_reply_privately
+        bigint comment_count
+        timestamp created_time
+        jsonb from_object
+        text id
+        bigint like_count
+        text message
+        jsonb message_tags
+        jsonb object
+        text parent_id
+        boolean user_likes
+    }
+    post_metrics_by_country {
+        text country PK
+        timestamp date PK
+        text post_id PK
+        double_precision post_video_view_time_by_country_id
+    }
+    reel_metrics_by_type }o--|| reel_history : "fk"
+    page_metrics_by_paid_non_paid }o--|| page : "fk"
+    reel_history }o--|| page : "fk"
+    reel_metrics_total }o--|| reel_history : "fk"
+    post_metrics_by_video_interval }o--|| post_history : "fk"
+    page_metrics_by_country }o--|| page : "fk"
+    post_video_property_history }o--|| post_history : "fk"
+    post_video_property_history }o--|| post_history : "fk"
+    post_history }o--|| page : "fk"
+    post_tagged_profile_history }o--|| post_history : "fk"
+    post_tagged_profile_history }o--|| post_history : "fk"
+    page_metrics_by_crosspost_status }o--|| page : "fk"
+    page_video_thumbnail }o--|| page_video_history : "fk"
+    post_metrics_by_type }o--|| post_history : "fk"
+    post_attachment_history }o--|| post_history : "fk"
+    post_attachment_history }o--|| post_history : "fk"
+    post_metrics_by_action_type }o--|| post_history : "fk"
+    page_metrics_by_city }o--|| page : "fk"
+    page_metrics_total }o--|| page : "fk"
+    post_metrics_by_locale }o--|| post_history : "fk"
+    page_video_history }o--|| page : "fk"
+    post_metrics_total }o--|| post_history : "fk"
+    post_metrics_by_age_gender }o--|| post_history : "fk"
+    post_comment_history }o--|| post_history : "fk"
+    post_metrics_by_country }o--|| post_history : "fk"

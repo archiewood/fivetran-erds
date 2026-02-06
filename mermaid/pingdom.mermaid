@@ -1,0 +1,224 @@
+erDiagram
+    maintenance_id {
+        bigint maintenance_id PK
+        bigint checks_id PK
+        text id FK
+    }
+    checks {
+        bigint id PK
+        timestamp created
+        text hostname
+        boolean ipv_6
+        timestamp last_down_end
+        timestamp last_down_start
+        timestamp last_error_time
+        bigint last_response_time
+        timestamp last_test_time
+        jsonb maintenance_ids
+        text name
+        bigint resolution
+        text status
+        text type
+        boolean verify_certificate
+    }
+    sms {
+        text index PK
+        bigint contact_id PK
+        text country_code
+        text number
+        text provider
+        text severity
+    }
+    email {
+        text index PK
+        bigint contact_id PK
+        text address
+        text severity
+    }
+    contact {
+        bigint id PK
+        text member_id FK
+        text name
+        boolean owner
+        boolean paused
+        text type
+    }
+    check_description {
+        bigint id PK
+        timestamp created
+        text custom_message
+        text hostname
+        jsonb integration_ids
+        boolean ipv_6
+        timestamp last_down_end
+        timestamp last_down_start
+        timestamp last_error_time
+        bigint last_response_time
+        timestamp last_test_time
+        text name
+        bigint notify_again_every
+        boolean notify_when_backup
+        jsonb probe_filters
+        bigint resolution
+        bigint responsetime_threshold
+        bigint send_notification_when_down
+        bigint ssl_down_days_before
+        text status
+        boolean type_http_encryption
+        text type_http_password
+        bigint type_http_port
+        text type_http_post_data
+        text type_http_should_contain
+        text type_http_should_not_contain
+        text type_http_url
+        text type_http_user_agent
+        text type_http_username
+        boolean type_http_verify_certificate
+        jsonb userids
+    }
+    analysis {
+        bigint id PK
+        bigint checks_id PK
+        timestamp time_confirm_test
+        timestamp time_first_test
+    }
+    maintenance_occurrence {
+        bigint id PK
+        bigint maintenance_id FK
+        bigint duration
+        text duration_unit
+        timestamp from_date
+        timestamp to_date
+    }
+    state {
+        text index PK
+        bigint transaction_status_check_id PK
+        bigint error_in_step
+        timestamp from_date
+        text message
+        text status
+        timestamp to_date
+    }
+    transaction_status {
+        bigint check_id PK
+        text name
+    }
+    probe {
+        bigint id PK
+        boolean active
+        text city
+        text country
+        text country_iso
+        text hostname
+        text ip
+        text ipv_6
+        text name
+        text region
+    }
+    uptime {
+        bigint uptime PK
+        bigint maintenance_id PK
+    }
+    tms {
+        bigint tms PK
+        bigint maintenance_id PK
+    }
+    maintenance {
+        bigint id PK
+        bigint day_of_week_in_month
+        text description
+        bigint duration
+        text duration_unit
+        timestamp effective_to
+        timestamp from_date
+        text recurrence_type
+        bigint repeat_every
+        timestamp to_date
+    }
+    region {
+        bigint id PK
+        bigint country_id FK
+        bigint date_time_format_id FK
+        bigint number_format_id FK
+        bigint timezone_id FK
+        text description
+    }
+    time_zone {
+        bigint id PK
+        text description
+        bigint offsets
+        text timezone
+    }
+    date_time_format {
+        bigint id PK
+        text dateformat
+        text description
+        text timeformat
+    }
+    number_format {
+        bigint id PK
+        text description
+    }
+    country {
+        bigint id PK
+        text iso
+        text name
+    }
+    phone_code {
+        text name PK
+        bigint country_id PK
+        text iso
+        text phone_code
+    }
+    action {
+        timestamp time PK
+        bigint user_id PK
+        bigint check_id PK
+        boolean charged
+        text message_full
+        text message_short
+        text sent_to
+        text status
+        text username
+        text via
+    }
+    member {
+        bigint id PK
+        bigint team_id PK
+        text name
+        text type
+    }
+    team {
+        bigint id PK
+        text name
+    }
+    result {
+        timestamp time PK
+        bigint checks_id PK
+        bigint probe_id PK
+        bigint response_time
+        text status
+        text status_desc
+        text status_desc_long
+    }
+    maintenance_id }o--|| checks : "fk"
+    maintenance_id }o--|| maintenance : "fk"
+    sms }o--|| contact : "fk"
+    email }o--|| contact : "fk"
+    contact }o--|| member : "fk"
+    check_description }o--|| checks : "fk"
+    analysis }o--|| checks : "fk"
+    maintenance_occurrence }o--|| maintenance : "fk"
+    state }o--|| transaction_status : "fk"
+    transaction_status }o--|| checks : "fk"
+    uptime }o--|| maintenance : "fk"
+    tms }o--|| maintenance : "fk"
+    region }o--|| country : "fk"
+    region }o--|| date_time_format : "fk"
+    region }o--|| number_format : "fk"
+    region }o--|| time_zone : "fk"
+    phone_code }o--|| country : "fk"
+    action }o--|| checks : "fk"
+    member }o--|| team : "fk"
+    result }o--|| probe : "fk"
+    result }o--|| checks : "fk"

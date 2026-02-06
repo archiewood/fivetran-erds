@@ -1,0 +1,223 @@
+erDiagram
+    credit {
+        text _fivetran_id PK
+        text estimate_credits_used_until_end_of_billing_period
+        text monthly_total
+        text next_billing_period
+        text remaining_credits_monthly
+        text remaining_credits_onetime
+        text used_credits_monthly
+        text used_credits_onetime
+    }
+    collector {
+        text id PK
+        text state
+    }
+    dashboard {
+        text id PK
+        text view_id FK
+        text last_update
+        text title
+    }
+    report {
+        text id PK
+        text view_id FK
+        text last_update
+        text title
+    }
+    view {
+        text project_id PK
+        text title
+    }
+    topic_node {
+        text id PK
+        text resource_topic_id PK
+        text resource_id FK
+        text description
+        text title
+    }
+    resource_topic {
+        text id PK
+        text resource_id PK
+        text description
+        text title
+    }
+    resource_event {
+        text id PK
+        text resource_id PK
+        text title
+    }
+    filter_node {
+        text id PK
+        text resource_filter_id PK
+        text resource_id FK
+        text description
+        text title
+    }
+    resource_filter {
+        text id PK
+        text resource_id PK
+        text description
+        text title
+    }
+    channel_node {
+        text id PK
+        text resource_channel_id PK
+        text resource_id PK
+        text title
+        text type
+    }
+    resource_channel {
+        text id PK
+        text resource_id PK
+        text title
+    }
+    resource {
+        text id PK
+        text project_id FK
+        text title
+    }
+    task_message {
+        text name PK
+        text task_id PK
+    }
+    task {
+        text id PK
+        text creation_date
+        text processed
+        text progress
+        text status
+        text target
+        text type
+    }
+    project_import_type {
+        text name PK
+        text project_id PK
+    }
+    project {
+        text id PK
+        text account_id
+        text account_name
+        text name
+    }
+    collector_data_source_type {
+        text index PK
+        text collector_id PK
+        text indexed PK
+        text search_indexed PK
+        text source_type
+    }
+    collector_data_collection {
+        text index PK
+        text collector_id PK
+        text indexed PK
+        text search_indexed PK
+        text collection_id
+    }
+    collector_data_token_content {
+        text index PK
+        text collector_id PK
+        text indexed PK
+        text search_indexed PK
+        text token_content
+    }
+    collector_data_token_title {
+        text index PK
+        text collector_id PK
+        text indexed PK
+        text search_indexed PK
+        text token_title
+    }
+    collector_data {
+        text indexed PK
+        text search_indexed PK
+        text collector_id PK
+        text article_extended_attribute_douyin_collect
+        text article_extended_attribute_douyin_share_num
+        text article_extended_attribute_douyin_video_likes
+        text article_extended_attribute_num_comments
+        text article_extended_attribute_url_views
+        text content
+        text domain_url
+        text extra_author_attribute_gender
+        text extra_author_attribute_id
+        text extra_author_attribute_name
+        text extra_source_attribute_id
+        text extra_source_attribute_name
+        text extra_source_attribute_world_data_city
+        text extra_source_attribute_world_data_continent
+        text extra_source_attribute_world_data_country
+        text extra_source_attribute_world_data_country_code
+        text extra_source_attribute_world_data_latitude
+        text extra_source_attribute_world_data_longitude
+        text extra_source_attribute_world_data_region
+        text extra_source_attribute_world_data_resolution
+        text fluency_level
+        text host_url
+        text lang
+        text matched_appearance
+        text parent_url
+        text porn_level
+        jsonb post_type
+        text published
+        text root_url
+        text sentiment
+        text source_extended_attribute_alexa_pageviews
+        text source_extended_attribute_alexa_unique_visitors
+        text source_extended_attribute_douyin_reach
+        text title
+        text url
+        text word_count
+    }
+    collector_highlighted_data_project_profile {
+        text id PK
+        text collector_highlighted_data_fivetran_id PK
+        text category
+        text title
+        text type
+    }
+    collector_highlighted_data {
+        text _fivetran_id PK
+        text collector_id FK
+        text matched_project_id FK
+        text content_snippet
+        text title_snippet
+    }
+    tags {
+        text id PK
+        text project_id PK
+        text label
+    }
+    dashboard }o--|| view : "fk"
+    report }o--|| view : "fk"
+    view }o--|| project : "fk"
+    topic_node }o--|| resource_topic : "fk"
+    topic_node }o--|| resource_topic : "fk"
+    resource_topic }o--|| resource : "fk"
+    resource_event }o--|| resource : "fk"
+    filter_node }o--|| resource_filter : "fk"
+    filter_node }o--|| resource_filter : "fk"
+    resource_filter }o--|| resource : "fk"
+    channel_node }o--|| resource_channel : "fk"
+    channel_node }o--|| resource_channel : "fk"
+    resource_channel }o--|| resource : "fk"
+    resource }o--|| project : "fk"
+    task_message }o--|| task : "fk"
+    project_import_type }o--|| project : "fk"
+    collector_data_source_type }o--|| collector_data : "fk"
+    collector_data_source_type }o--|| collector_data : "fk"
+    collector_data_source_type }o--|| collector_data : "fk"
+    collector_data_collection }o--|| collector_data : "fk"
+    collector_data_collection }o--|| collector_data : "fk"
+    collector_data_collection }o--|| collector_data : "fk"
+    collector_data_token_content }o--|| collector_data : "fk"
+    collector_data_token_content }o--|| collector_data : "fk"
+    collector_data_token_content }o--|| collector_data : "fk"
+    collector_data_token_title }o--|| collector_data : "fk"
+    collector_data_token_title }o--|| collector_data : "fk"
+    collector_data_token_title }o--|| collector_data : "fk"
+    collector_data }o--|| collector : "fk"
+    collector_highlighted_data_project_profile }o--|| collector_highlighted_data : "fk"
+    collector_highlighted_data }o--|| project : "fk"
+    collector_highlighted_data }o--|| collector : "fk"
+    tags }o--|| project : "fk"

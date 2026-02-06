@@ -1,0 +1,141 @@
+erDiagram
+    contact_tag {
+        text name PK
+        bigint contact_id PK
+        text color
+    }
+    contact {
+        bigint id PK
+        timestamp created_at
+        text email
+        jsonb events
+        text name
+        text phone
+        jsonb social_profiles
+    }
+    message_button {
+        text label PK
+        bigint conversation_id PK
+        bigint conversation_message_id PK
+        text reaction_message
+        text reaction_type
+        text style
+        text type
+        text value
+    }
+    conversation_message {
+        bigint id PK
+        bigint conversation_id PK
+        bigint author_id
+        text author_type
+        text body
+        text city
+        text country
+        text country_name
+        timestamp created_at
+        text developer_app_id
+        text href
+        text ip
+        boolean is_author_bot
+        double_precision latitude
+        text locale
+        double_precision longitude
+        bigint org_id
+        text postal_code
+        jsonb pre_messages
+        text referrer
+        text region
+        text timezone
+        text title
+        text type
+        text user_agent
+    }
+    playbook_clp {
+        bigint playbook_id PK
+        text landing_page_url
+        text playbook_name
+    }
+    account_custom_property {
+        text name PK
+        text account_id PK
+        text label
+        text type
+        jsonb value
+    }
+    account {
+        text id PK
+        bigint owner_id FK
+        timestamp create_date_time
+        boolean deleted
+        text domain
+        text name
+        boolean targeted
+        timestamp update_date_time
+    }
+    playbook_goal {
+        text id PK
+        bigint playbook_id PK
+        text message
+        text name
+    }
+    playbook {
+        bigint id PK
+        bigint created_author_id FK
+        bigint updated_author_id FK
+        timestamp created_at
+        bigint interaction_id
+        jsonb meta
+        text name
+        bigint org_id
+        text report_type
+        timestamp updated_at
+    }
+    users {
+        bigint id PK
+        text alias
+        text availability
+        text avatar_url
+        boolean bot
+        text created_at
+        text email
+        text locale
+        text name
+        bigint org_id
+        text phone
+        text role
+        text time_zone
+        text updated_at
+        boolean verified
+    }
+    conversation_participant {
+        bigint conversation_id PK
+        bigint user_id PK
+    }
+    conversation_tag {
+        text name PK
+        bigint conversation_id PK
+        text color
+    }
+    conversation {
+        bigint id PK
+        bigint contact_id FK
+        timestamp created_at
+        bigint inbox_id
+        bigint related_playbook_id
+        text status
+        timestamp updated_at
+    }
+    contact_tag }o--|| contact : "fk"
+    message_button }o--|| conversation_message : "fk"
+    message_button }o--|| conversation_message : "fk"
+    conversation_message }o--|| conversation : "fk"
+    playbook_clp }o--|| playbook : "fk"
+    account_custom_property }o--|| account : "fk"
+    account }o--|| users : "fk"
+    playbook_goal }o--|| playbook : "fk"
+    playbook }o--|| users : "fk"
+    playbook }o--|| users : "fk"
+    conversation_participant }o--|| users : "fk"
+    conversation_participant }o--|| conversation : "fk"
+    conversation_tag }o--|| conversation : "fk"
+    conversation }o--|| contact : "fk"

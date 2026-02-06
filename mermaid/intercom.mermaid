@@ -1,0 +1,644 @@
+erDiagram
+    news_item_reaction_history {
+        text value PK
+        text news_item_id PK
+    }
+    ticket_type_attribute_history {
+        text id PK
+        text ticket_type_id FK
+        boolean archived
+        timestamp created_at
+        text data_type
+        boolean default
+        text description
+        jsonb input_options
+        text name
+        bigint order
+        boolean required_to_create
+        boolean required_to_create_for_contacts
+        text type
+        timestamp updated_at
+        boolean visible_on_create
+        boolean visible_to_contacts
+        text workspace_id
+    }
+    %% sender_id  can point to either CONTACT.id
+%% or ADMIN.id
+    news_item_history {
+        text id PK
+        text body
+        text cover_image_url
+        timestamp created_at
+        boolean deliver_silently
+        text sender_id
+        text state
+        text title
+        text type
+        timestamp updated_at
+        text workspace_id
+    }
+    tag {
+        text id PK
+        text name
+    }
+    ticket_type_history {
+        text id PK
+        boolean archived
+        text category
+        timestamp created_at
+        text description
+        text icon
+        boolean is_internal
+        text name
+        text type
+        timestamp updated_at
+        text workspace_id
+    }
+    data_attribute {
+        text model PK
+        text name PK
+        text admin_id FK
+        boolean api_writable
+        boolean archived
+        timestamp created_at
+        boolean custom
+        text data_type
+        text description
+        text full_name
+        text id
+        text label
+        boolean messenger_writable
+        text type
+        boolean ui_writable
+        timestamp updated_at
+    }
+    conversation_ai_agent_content_source {
+        bigint index PK
+        text conversation_id PK
+        text content_type
+        text locale
+        text title
+        text url
+    }
+    contact_segment_history {
+        text contact_id PK
+        text segment_id PK
+        timestamp contact_updated_at FK
+    }
+    team_admin {
+        text admin_id PK
+        text team_id PK
+    }
+    ticket_history {
+        text id PK
+        text ticket_state_id FK
+        text ticket_type_id FK
+        text admin_assignee_id
+        text category
+        timestamp created_at
+        boolean is_shared
+        boolean linked_objects_has_more
+        bigint linked_objects_total_count
+        boolean open
+        timestamp snoozed_until
+        text team_assignee_id
+        text ticket_id
+        bigint ticket_parts_total_count
+        text ticket_state
+        text ticket_state_external_label
+        text ticket_state_internal_label
+        text type
+        timestamp updated_at
+    }
+    newsfeed_history {
+        text id PK
+        timestamp created_at
+        text name
+        text type
+        timestamp updated_at
+    }
+    contact_subscription_history {
+        text contact_id PK
+        text subscription_id PK
+        timestamp contact_updated_at FK
+        text consent_type
+    }
+    article_history {
+        text id PK
+        text collection_id FK
+        text author_id
+        text body
+        timestamp created_at
+        text default_locale
+        text description
+        text parent_type
+        text section_id
+        text state
+        text title
+        text type
+        timestamp updated_at
+        text url
+        text workspace_id
+    }
+    admin {
+        text id PK
+        boolean away_mode_enabled
+        boolean away_mode_reassigned
+        text email
+        boolean has_inbox_seat
+        text job_title
+        text name
+    }
+    conversation_tag_history {
+        text conversation_id PK
+        text tag_id PK
+        timestamp conversation_updated_at FK
+    }
+    ticket_state {
+        text id PK
+        boolean archived
+        text category
+        text external_label
+        text internal_label
+        text type
+    }
+    contact_tag_history {
+        text contact_id PK
+        text tag_id PK
+        timestamp contact_updated_at FK
+    }
+    email_address_header {
+        text _fivetran_id PK
+        text conversation_part_id PK
+        text email_address
+        text name
+        text type
+    }
+    segment {
+        text id PK
+        integer count
+        timestamp created_at
+        text name
+        text person_type
+        text type
+        timestamp updated_at
+    }
+    contact_history {
+        text id PK
+        bigint admin_id FK
+        text android_app_name
+        text android_app_version
+        text android_device
+        timestamp android_last_seen_at
+        text android_os_version
+        text android_sdk_version
+        text avatar
+        text browser
+        text browser_language
+        text browser_version
+        timestamp created_at
+        text email
+        boolean enabled_push_messaging
+        text external_id
+        text formatted_phone
+        boolean has_hard_bounced
+        text ios_app_name
+        text ios_app_version
+        text ios_device
+        timestamp ios_last_seen_at
+        text ios_os_version
+        text ios_sdk_version
+        text language_override
+        timestamp last_contacted_at
+        timestamp last_email_clicked_at
+        timestamp last_email_opened_at
+        timestamp last_replied_at
+        timestamp last_seen_at
+        text location_city
+        text location_country
+        text location_region
+        boolean marked_email_as_spam
+        text name
+        text os
+        text phone
+        text referrer
+        text role
+        timestamp signed_up_at
+        boolean unsubscribed_from_emails
+        timestamp updated_at
+        text utm_campaign
+        text utm_content
+        text utm_medium
+        text utm_source
+        text utm_term
+        text workspace_id
+    }
+    subscription_type_content_type {
+        text value PK
+        text subscription_type_id PK
+    }
+    company_segment_history {
+        text company_id PK
+        text segment_id PK
+        timestamp company_updated_at FK
+    }
+    conversation_part_attachment_history {
+        text url PK
+        text conversation_part_id PK
+        timestamp conversation_part_updated_at FK
+        text name
+    }
+    call_transcript {
+        text _fivetran_id PK
+        bigint call_id PK
+        text content
+        text end_time
+        text speaker
+        text speaker_label
+        text start_time
+    }
+    survey_question {
+        bigint question_id PK
+        bigint receipt_id PK
+        text question
+        text response_type
+    }
+    contact_data_event {
+        text id PK
+        text intercom_user_id FK
+        timestamp created_at
+        text email
+        text event_name
+        text type
+        text user_id
+    }
+    help_center_history {
+        text id PK
+        timestamp created_at
+        text display_name
+        text identifier
+        timestamp updated_at
+        boolean website_turned_on
+        text workspace_id
+    }
+    news_item_label_history {
+        text value PK
+        text news_item_id PK
+    }
+    ticket_link_history {
+        text id PK
+        text ticket_id PK
+        text category
+        text type
+    }
+    receipt_response {
+        bigint content_id PK
+        bigint receipt_id PK
+        bigint ruleset_id PK
+        text company_external_id
+        text company_id
+        text content_title
+        text content_type
+        bigint conversation_id
+        text created_via
+        text device
+        text email
+        timestamp first_answer
+        timestamp first_button_tap
+        timestamp first_checklist_step_click
+        timestamp first_checklist_step_completion
+        timestamp first_checklist_step_open
+        timestamp first_checklist_step_receipt
+        timestamp first_click
+        timestamp first_collected_email
+        timestamp first_completion
+        timestamp first_dismissal
+        timestamp first_fin_helpful_answer
+        timestamp first_fin_step_reached
+        timestamp first_goal_success
+        timestamp first_hard_bounce
+        timestamp first_keyword_reply
+        timestamp first_open
+        timestamp first_people_reached_receipt
+        timestamp first_permission_grant
+        timestamp first_push_failure
+        timestamp first_reaction
+        timestamp first_reply
+        timestamp first_screen_view
+        timestamp first_series_completion
+        timestamp first_series_disengagement
+        timestamp first_series_exit
+        timestamp first_sms_failure
+        timestamp first_soft_bounce
+        timestamp first_spam_complaint
+        timestamp first_tour_step_failure
+        timestamp first_tour_step_view
+        timestamp first_unsubscribe
+        timestamp first_webhook_failure
+        timestamp first_whatsapp_failure
+        text name
+        text node_id
+        timestamp received_at
+        bigint ruleset_version_id
+        bigint series_id
+        text series_title
+        text user_external_id
+        text user_id
+    }
+    ticket_contact_history {
+        text id PK
+        text ticket_id PK
+        text external_id
+        text type
+    }
+    %% author_id can point to either CONTACT.id
+%% or ADMIN.id
+    ticket_part_history {
+        text id PK
+        text ticket_id PK
+        text app_package_code
+        text assigned_to_id
+        text assigned_to_type
+        text body
+        timestamp created_at
+        text external_id
+        text part_type
+        text previous_ticket_state
+        boolean redacted
+        text ticket_state
+        text type
+        timestamp updated_at
+    }
+    call {
+        bigint id PK
+        text admin_id FK
+        text contact_id FK
+        text conversation_id FK
+        timestamp answered_at
+        text call_type
+        timestamp created_at
+        text direction
+        timestamp ended_at
+        text ended_reason
+        text fin_recording_url
+        text fin_transcription_url
+        timestamp initiated_at
+        text phone
+        text recording_url
+        text state
+        text transcript_status
+        text transcription_url
+        text type
+        timestamp updated_at
+    }
+    conversation_admin_history {
+        text admin_id PK
+        text conversation_id PK
+        timestamp conversation_updated_at FK
+    }
+    conversation_contact_history {
+        text contact_id PK
+        text conversation_id PK
+        timestamp conversation_updated_at FK
+    }
+    team {
+        text id PK
+        text name
+    }
+    newsfeed_assignment {
+        text news_item_id PK
+        text newsfeed_id PK
+        timestamp published_at
+    }
+    conversation_history {
+        text id PK
+        text conversation_rating_contact_id FK
+        text source_author_id FK
+        text assignee_id
+        timestamp created_at
+        timestamp first_contact_reply_created_at
+        text first_contact_reply_type
+        text first_contact_reply_url
+        boolean open
+        text priority
+        boolean read
+        text sla_name
+        text sla_status
+        timestamp snoozed_until
+        text state
+        text team_assignee_id
+        text title
+        timestamp updated_at
+        timestamp waiting_since
+    }
+    subscription_type_translation {
+        text name PK
+        text subscription_type_id PK
+        text description
+        text locale
+    }
+    conversation_topic_history {
+        text id PK
+        text conversation_id PK
+        timestamp conversation_updated_at FK
+        text name
+        text type
+    }
+    admin_activity_log {
+        text id PK
+        text performed_by_id FK
+        text activity_description
+        text activity_type
+        timestamp created_at
+        jsonb metadata
+        text performed_by_ip
+        text performed_by_type
+    }
+    %% author_id can point to either CONTACT.id
+%% or ADMIN.id
+%% assigned_to_id can point to either ADMIN.id or TEAM.id
+    conversation_part_history {
+        text id PK
+        text conversation_id FK
+        timestamp conversation_updated_at FK
+        text app_package_code
+        text assigned_to_id
+        text assigned_to_type
+        text author_id
+        text author_type
+        text body
+        timestamp created_at
+        text email_message_metadata_subject
+        timestamp notified_at
+        text part_type
+        text state
+        timestamp updated_at
+    }
+    company_history {
+        text id PK
+        text app_id
+        text company_id
+        timestamp created_at
+        text industry
+        timestamp last_request_at
+        integer monthly_spend
+        text name
+        text plan_id
+        text plan_name
+        timestamp remote_created_at
+        integer session_count
+        integer size
+        timestamp updated_at
+        integer user_count
+        text website
+    }
+    team_admin_priority_level {
+        text admin_id PK
+        text team_id PK
+        text priority
+    }
+    subscription_type {
+        text id PK
+        text consent_type
+        text default_translation_description
+        text default_translation_locale
+        text default_translation_name
+        text state
+        text type
+    }
+    collection_history {
+        text id PK
+        text help_center_id FK
+        timestamp created_at
+        text default_locale
+        text description
+        text icon
+        text name
+        integer order
+        text parent_id
+        text type
+        timestamp updated_at
+        text url
+        text workspace_id
+    }
+    contact_social_profile_history {
+        text name PK
+        text user_id PK
+        timestamp user_updated_at FK
+        text url
+    }
+    conversation_part_tag_history {
+        text conversation_part_id PK
+        text tag_id PK
+        timestamp conversation_part_updated_at FK
+    }
+    company_tag_history {
+        text company_id PK
+        text tag_id PK
+        timestamp company_updated_at FK
+    }
+    survey_answer {
+        bigint question_id PK
+        bigint receipt_id PK
+        timestamp answered_at
+        text response
+    }
+    contact_company_history {
+        text company_id PK
+        text contact_id PK
+        timestamp contact_updated_at FK
+    }
+    data_attribute_option {
+        text value PK
+        text data_attribute_model PK
+        text data_attribute_name PK
+    }
+    ticket_part_attachment_history {
+        integer index PK
+        text ticket_id PK
+        text ticket_part_id PK
+        text content_type
+        bigint filesize
+        integer height
+        text name
+        text type
+        text url
+        integer width
+    }
+    news_item_reaction_history }o--|| news_item_history : "fk"
+    ticket_type_attribute_history }o--|| ticket_type_history : "fk"
+    data_attribute }o--|| admin : "fk"
+    conversation_ai_agent_content_source }o--|| conversation_history : "fk"
+    contact_segment_history }o--|| segment : "fk"
+    contact_segment_history }o--|| contact_history : "fk"
+    contact_segment_history }o--|| contact_history : "fk"
+    team_admin }o--|| admin : "fk"
+    team_admin }o--|| team : "fk"
+    ticket_history }o--|| conversation_history : "fk"
+    ticket_history }o--|| ticket_type_history : "fk"
+    ticket_history }o--|| ticket_state : "fk"
+    contact_subscription_history }o--|| subscription_type : "fk"
+    contact_subscription_history }o--|| contact_history : "fk"
+    contact_subscription_history }o--|| contact_history : "fk"
+    article_history }o--|| collection_history : "fk"
+    conversation_tag_history }o--|| conversation_history : "fk"
+    conversation_tag_history }o--|| conversation_history : "fk"
+    conversation_tag_history }o--|| tag : "fk"
+    contact_tag_history }o--|| contact_history : "fk"
+    contact_tag_history }o--|| contact_history : "fk"
+    contact_tag_history }o--|| tag : "fk"
+    email_address_header }o--|| conversation_part_history : "fk"
+    contact_history }o--|| admin : "fk"
+    subscription_type_content_type }o--|| subscription_type : "fk"
+    company_segment_history }o--|| segment : "fk"
+    company_segment_history }o--|| company_history : "fk"
+    company_segment_history }o--|| company_history : "fk"
+    conversation_part_attachment_history }o--|| conversation_part_history : "fk"
+    conversation_part_attachment_history }o--|| conversation_part_history : "fk"
+    call_transcript }o--|| call : "fk"
+    survey_question }o--|| receipt_response : "fk"
+    contact_data_event }o--|| contact_history : "fk"
+    news_item_label_history }o--|| news_item_history : "fk"
+    ticket_link_history }o--|| ticket_history : "fk"
+    ticket_contact_history }o--|| contact_history : "fk"
+    ticket_contact_history }o--|| ticket_history : "fk"
+    ticket_part_history }o--|| ticket_history : "fk"
+    call }o--|| conversation_history : "fk"
+    call }o--|| admin : "fk"
+    call }o--|| contact_history : "fk"
+    conversation_admin_history }o--|| conversation_history : "fk"
+    conversation_admin_history }o--|| conversation_history : "fk"
+    conversation_admin_history }o--|| admin : "fk"
+    conversation_contact_history }o--|| conversation_history : "fk"
+    conversation_contact_history }o--|| conversation_history : "fk"
+    conversation_contact_history }o--|| contact_history : "fk"
+    newsfeed_assignment }o--|| newsfeed_history : "fk"
+    newsfeed_assignment }o--|| news_item_history : "fk"
+    conversation_history }o--|| contact_history : "fk"
+    conversation_history }o--|| contact_history : "fk"
+    subscription_type_translation }o--|| subscription_type : "fk"
+    conversation_topic_history }o--|| conversation_history : "fk"
+    conversation_topic_history }o--|| conversation_history : "fk"
+    admin_activity_log }o--|| admin : "fk"
+    conversation_part_history }o--|| conversation_history : "fk"
+    conversation_part_history }o--|| conversation_history : "fk"
+    team_admin_priority_level }o--|| admin : "fk"
+    team_admin_priority_level }o--|| team : "fk"
+    collection_history }o--|| help_center_history : "fk"
+    contact_social_profile_history }o--|| contact_history : "fk"
+    contact_social_profile_history }o--|| contact_history : "fk"
+    conversation_part_tag_history }o--|| conversation_part_history : "fk"
+    conversation_part_tag_history }o--|| conversation_part_history : "fk"
+    conversation_part_tag_history }o--|| tag : "fk"
+    company_tag_history }o--|| tag : "fk"
+    company_tag_history }o--|| company_history : "fk"
+    company_tag_history }o--|| company_history : "fk"
+    survey_answer }o--|| survey_question : "fk"
+    survey_answer }o--|| survey_question : "fk"
+    contact_company_history }o--|| company_history : "fk"
+    contact_company_history }o--|| contact_history : "fk"
+    contact_company_history }o--|| contact_history : "fk"
+    data_attribute_option }o--|| data_attribute : "fk"
+    data_attribute_option }o--|| data_attribute : "fk"
+    ticket_part_attachment_history }o--|| ticket_part_history : "fk"
+    ticket_part_attachment_history }o--|| ticket_history : "fk"

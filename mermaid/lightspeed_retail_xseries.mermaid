@@ -1,0 +1,558 @@
+erDiagram
+    inventory {
+        text id PK
+        text outlet_id FK
+        text product_id FK
+        text average_cost
+        text current_amount
+        timestamp deleted_at
+        text inventory_level
+        text reorder_amount
+        text reorder_point
+        text version
+    }
+    supplier {
+        text id PK
+        text contact_company_name
+        text contact_email
+        text contact_fax
+        text contact_first_name
+        text contact_last_name
+        text contact_mobile
+        text contact_phone
+        text contact_physical_address_1
+        text contact_physical_address_2
+        text contact_physical_city
+        text contact_physical_country_id
+        text contact_physical_postcode
+        text contact_physical_state
+        text contact_physical_suburb
+        text contact_postal_address_1
+        text contact_postal_address_2
+        text contact_postal_city
+        text contact_postal_country_id
+        text contact_postal_postcode
+        text contact_postal_state
+        text contact_postal_suburb
+        text contact_twitter
+        text contact_website
+        text default_markup
+        timestamp deleted_at
+        text description
+        text name
+        text source
+        text version
+    }
+    outlet {
+        text id PK
+        jsonb attributes
+        text currency
+        text currency_symbol
+        timestamp deleted_at
+        text display_price
+        text email
+        text latitude
+        text longitude
+        text name
+        text phone
+        text physical_address_1
+        text physical_address_2
+        text physical_city
+        text physical_country_id
+        text physical_postcode
+        text physical_state
+        text physical_suburb
+        text time_zone
+        text version
+    }
+    brand {
+        text id PK
+        timestamp deleted_at
+        text description
+        text name
+        text version
+    }
+    product_tag {
+        text id PK
+        text product_id PK
+    }
+    product_category_tag {
+        text id PK
+        text product_id PK
+        text deleted_at
+        text name
+        text version
+    }
+    product_variant_option {
+        text id PK
+        text product_id PK
+        text name
+        jsonb values
+    }
+    product_supplier {
+        text id PK
+        text product_id PK
+        text supplier_id FK
+        text code
+        text price
+    }
+    product_code {
+        text index PK
+        text product_id PK
+        text code
+        text id
+        text type
+    }
+    product {
+        text id PK
+        text brand_id FK
+        text product_category_id FK
+        text supplier_id FK
+        text account_code
+        text account_code_purchase
+        text active
+        jsonb attributes
+        text button_order
+        timestamp created_at
+        timestamp deleted_at
+        text description
+        text dimensions_unit
+        text ecwid_enabled_webstore
+        text family_id
+        text handle
+        text has_inventory
+        text height
+        text image_thumbnail_url
+        text image_url
+        jsonb images
+        text is_active
+        text is_composite
+        text is_variant
+        text length
+        text loyalty_amount
+        text name
+        jsonb packaging_breaks_into
+        jsonb packaging_made_from
+        text price_excluding_tax
+        text price_including_tax
+        text sku
+        jsonb sku_images
+        text source
+        text source_id
+        text source_variant_id
+        text supplier_code
+        text supply_price
+        text type_deleted_at
+        text type_version
+        timestamp updated_at
+        text variant_count
+        text variant_name
+        text variant_parent_id
+        text version
+        text weight
+        text weight_unit
+        text width
+    }
+    retailer {
+        text id PK
+        text discount_product_id FK
+        text account_status
+        text account_type
+        timestamp activated_at
+        text country
+        text create_customer_by_email_receipt
+        timestamp created_at
+        text culture
+        text currency_code
+        text currency_symbol
+        text default_dimensions_unit
+        text default_tax_id
+        text default_weight_unit
+        text disable_onboarding_tour
+        text domain_prefix
+        text ecwid_onboarding_survey_state
+        text embedded_barcode_option
+        jsonb enabled_integrations
+        jsonb enabled_platform_apps
+        text gift_cards_enabled
+        text gift_cards_never_enabled
+        text has_web_register
+        text label_printer_format
+        text lightspeed_unique_id
+        text loyalty_claim_url
+        text loyalty_enabled
+        text loyalty_offer_signup_bonus
+        text loyalty_ratio
+        text loyalty_send_welcome_email
+        text loyalty_signup_bonus
+        text name
+        text no_tax_group_id
+        text on_account_default_limit
+        text register_migration_date
+        text require_password_on_user_switch
+        text restriction_state
+        text restriction_state_reason
+        text sku_sequence_enabled
+        text sku_sequence_value
+        text sso_enabled
+        text store_credit
+        text store_url
+        text subscription_plan_version
+        text subscription_state
+        text subscription_trial_expires_at
+        text tax_exclusive
+        text terms_and_conditions_accepted
+        text terms_and_conditions_effective_date
+        text terms_and_conditions_terms_version
+        jsonb timezone
+        text version
+    }
+    cosignment {
+        text id PK
+        text outlet_id FK
+        text source_outlet_id FK
+        text supplier_id FK
+        timestamp consignment_date
+        timestamp created_at
+        timestamp deleted_at
+        timestamp due_at
+        text name
+        timestamp received_at
+        text reference
+        text status
+        text supplier_invoice
+        text total_cost_gain
+        text total_cost_loss
+        text total_count_gain
+        text total_count_loss
+        timestamp updated_at
+        text version
+    }
+    users_role {
+        text id PK
+        text users_id PK
+        text name
+        text system_role_id
+    }
+    users {
+        text id PK
+        text account_type
+        timestamp created_at
+        timestamp deleted_at
+        text display_name
+        text email
+        text email_verified_at
+        text enabled
+        text enabled_mfa
+        text image_original
+        text image_sl
+        text image_sm
+        text image_source
+        text image_ss
+        text image_st
+        text image_standard
+        text image_thumb
+        text is_primary_user
+        jsonb permission
+        text require_password_change
+        jsonb restricted_outlet_ids
+        jsonb rules
+        timestamp seen_at
+        text switch_id
+        text target_daily
+        text target_monthly
+        text target_weekly
+        text time_until_deletion
+        timestamp updated_at
+        text username
+        text version
+    }
+    tags {
+        text id PK
+        timestamp deleted_at
+        text name
+        text version
+    }
+    sale_line_item {
+        text id PK
+        text sale_id PK
+        text product_id FK
+        text cost
+        text discount
+        text discount_total
+        text gift_card_number
+        text is_return
+        text loyalty_value
+        text note
+        text price
+        text price_set
+        text price_total
+        jsonb promotions
+        text quantity
+        text return_reason
+        text sales_person_id
+        text sequence
+        text status
+        jsonb surcharges
+        text tax
+        jsonb tax_components
+        text tax_id
+        text unit_cost
+        text unit_discount
+        text unit_loyalty_value
+        text unit_price
+        text unit_tax
+    }
+    sale_payment {
+        text id PK
+        text sale_id PK
+        text outlet_id FK
+        text amount
+        timestamp deleted_at
+        jsonb external_applications
+        jsonb external_attributes
+        text name
+        timestamp payment_date
+        text register_id
+        text register_open_sequence_id
+        text retailer_payment_type_id
+        text source_id
+        jsonb surcharge
+    }
+    sale_adjustment {
+        text index PK
+        text sale_id PK
+        text adjustment_type
+        text name
+        jsonb tax_components
+        text value
+    }
+    sale_ecom_custom_charge {
+        text index PK
+        text sale_id PK
+        text name
+        text source_id
+        jsonb tax_components
+        text total
+        text total_incl
+        text total_tax
+    }
+    sale_tax {
+        text id PK
+        text sale_id PK
+        text amount
+        text name
+        text rate
+    }
+    sale {
+        text id PK
+        text customer_id FK
+        text outlet_id FK
+        text user_id FK
+        text accounts_transaction_id
+        jsonb attributes
+        text complete_open_sequence_id
+        timestamp created_at
+        timestamp deleted_at
+        text ecom_custom_charges_total
+        text ecom_custom_charges_total_incl
+        text ecom_custom_charges_total_tax
+        jsonb external_applications
+        text has_unsynced_on_account_payments
+        text invoice_number
+        text invoice_sequence
+        text note
+        text receipt_number
+        text register_id
+        text return_for
+        jsonb return_ids
+        timestamp sale_date
+        text short_code
+        text source
+        text source_id
+        text state
+        text status
+        text total_loyalty
+        text total_surcharge
+        timestamp updated_at
+        text version
+    }
+    customer_service_item {
+        text id PK
+        text customer_id PK
+        timestamp created_at
+        text created_by
+        text description
+        text initial_condition
+        text name
+        text serial_number
+        timestamp updated_at
+        text updated_by
+    }
+    service_line_item {
+        text id PK
+        text service_id PK
+        text product_id FK
+        text fulfillment_type
+        text gift_card
+        text is_picklist_pickable
+        text note
+        text price_set
+        jsonb promotions
+        text quantity
+        text register_id
+        text register_sequence_id
+        text sales_person_id
+        text sequence
+        text sku
+        text state
+        jsonb tax_components
+        text unit_discount
+        text unit_loyalty
+        text unit_price
+    }
+    service {
+        text id PK
+        text retailer_id FK
+        text sale_id FK
+        text agenda_date
+        text agenda_minutes_scheduled
+        text assigned_user_id
+        timestamp created_at
+        text is_sale_level_discount_percentage
+        jsonb notes
+        text sale_level_discount_value
+        timestamp service_item_created_at
+        text service_item_created_by
+        text service_item_detail_description
+        text service_item_detail_serial_number
+        text service_item_id
+        text service_item_initial_condition
+        text service_item_name
+        timestamp service_item_updated_at
+        text service_item_updated_by
+        text status
+        text sub_total
+        text total_amount
+        text total_promotion
+        text total_tax
+        timestamp updated_at
+        text updated_by
+    }
+    sales_fulfillment_line_item {
+        text id PK
+        text sale_id PK
+        text sales_fulfillment_id PK
+        text product_id FK
+        text quantity
+    }
+    sales_fulfillment {
+        text id PK
+        text sale_id PK
+        text outlet_id FK
+        text user_id FK
+        timestamp created_at
+        text status
+    }
+    product_category_path {
+        text id PK
+        text product_category_id PK
+        text name
+    }
+    product_category {
+        text id PK
+        text leaf_category
+        text name
+        text parent_category_id
+        text payload_id
+        text root_category_id
+    }
+    customer {
+        text id PK
+        text balance
+        text company_name
+        timestamp created_at
+        text custom_field_1
+        text custom_field_2
+        text custom_field_3
+        text custom_field_4
+        text customer_code
+        jsonb customer_group_ids
+        text date_of_birth
+        timestamp deleted_at
+        text do_not_email
+        text email
+        text enable_loyalty
+        text fax
+        text first_name
+        text gender
+        text last_name
+        text loyalty_balance
+        text loyalty_email_sent
+        text mobile
+        text note
+        text on_account_limit
+        text phone
+        text physical_address_1
+        text physical_address_2
+        text physical_city
+        text physical_country_id
+        text physical_postcode
+        text physical_state
+        text physical_suburb
+        text postal_address_1
+        text postal_address_2
+        text postal_city
+        text postal_country_id
+        text postal_postcode
+        text postal_state
+        text postal_suburb
+        text source_unique_id
+        text tax_id
+        text time_until_deletion
+        text twitter
+        timestamp updated_at
+        text version
+        text website
+        text year_to_date
+    }
+    inventory }o--|| product : "fk"
+    inventory }o--|| outlet : "fk"
+    product_tag }o--|| tags : "fk"
+    product_tag }o--|| product : "fk"
+    product_category_tag }o--|| tags : "fk"
+    product_category_tag }o--|| product : "fk"
+    product_variant_option }o--|| product : "fk"
+    product_supplier }o--|| supplier : "fk"
+    product_supplier }o--|| product : "fk"
+    product_code }o--|| product : "fk"
+    product }o--|| supplier : "fk"
+    product }o--|| brand : "fk"
+    product }o--|| product_category : "fk"
+    retailer }o--|| product : "fk"
+    cosignment }o--|| outlet : "fk"
+    cosignment }o--|| supplier : "fk"
+    cosignment }o--|| outlet : "fk"
+    users_role }o--|| users : "fk"
+    sale_line_item }o--|| product : "fk"
+    sale_line_item }o--|| sale : "fk"
+    sale_payment }o--|| outlet : "fk"
+    sale_payment }o--|| sale : "fk"
+    sale_adjustment }o--|| sale : "fk"
+    sale_ecom_custom_charge }o--|| sale : "fk"
+    sale_tax }o--|| sale : "fk"
+    sale }o--|| users : "fk"
+    sale }o--|| customer : "fk"
+    sale }o--|| outlet : "fk"
+    customer_service_item }o--|| customer : "fk"
+    service_line_item }o--|| product : "fk"
+    service_line_item }o--|| service : "fk"
+    service }o--|| retailer : "fk"
+    service }o--|| sale : "fk"
+    sales_fulfillment_line_item }o--|| product : "fk"
+    sales_fulfillment_line_item }o--|| sales_fulfillment : "fk"
+    sales_fulfillment_line_item }o--|| sales_fulfillment : "fk"
+    sales_fulfillment }o--|| outlet : "fk"
+    sales_fulfillment }o--|| users : "fk"
+    sales_fulfillment }o--|| sale : "fk"
+    product_category_path }o--|| product_category : "fk"

@@ -1,0 +1,256 @@
+erDiagram
+    coupon_form_discount {
+        text index PK
+        text coupon_form_id PK
+        text distribute
+        text per_ticket
+        text value
+        text value_type
+    }
+    coupon_form_code {
+        text index PK
+        text coupon_form_id PK
+        text code
+        text date_created
+        text redeemed
+    }
+    coupon_form {
+        text id PK
+        text form_id PK
+        text available
+        text currency
+        text date_created
+        text date_updated
+        text name
+        text product_id
+        text redeemed
+    }
+    form {
+        text id PK
+        text date_archived
+        text date_created
+        timestamp date_updated
+        text name
+        text product
+        text status
+    }
+    subscription {
+        text id PK
+        text customer_id FK
+        text form_id FK
+        text order_id FK
+        text adjustment
+        text amount
+        text category
+        text currency
+        text date_created
+        text date_last
+        text date_next
+        timestamp date_updated
+        text deductible
+        text display_id
+        text order_email
+        text payments_completed
+        text payments_remaining
+        text schedule
+        text status
+    }
+    transaction {
+        text id PK
+        text customer_id FK
+        text form_id FK
+        text order_id FK
+        text billing_email
+        text cc_expiration
+        text currency
+        text date_created
+        timestamp date_updated
+        text deductible
+        text display_id
+        text exp_month
+        text exp_year
+        text gateway_message
+        text gateway_reference
+        text metadata
+        text order_email
+        text payment_mask
+        text payment_method
+        text payment_type
+        text source_type
+        text status
+        text total
+        text transaction_type
+    }
+    form_inventory {
+        text _fivetran_id PK
+        text form_id PK
+        text date_created
+        text date_updated
+        text key
+        text name
+        text path
+        text quantity
+        text sold
+    }
+    registrant_field_data {
+        text index PK
+        text registrant_id PK
+        text amount
+        text label
+        text path
+        text value
+    }
+    registrant {
+        text id PK
+        text customer_id FK
+        text form_id FK
+        text order_id FK
+        text amount
+        text checked_in
+        text currency
+        text date_checked_in
+        text date_created
+        timestamp date_updated
+        text display_id
+        text form_acc_ref
+        text metadata
+        text outstanding_amount
+        text source_type
+        text status
+        text total
+    }
+    membership {
+        text id PK
+        text customer_id FK
+        text registrant_id FK
+        text auto_renew
+        text date_created
+        timestamp date_updated
+        text email
+        text expiration_date
+        text fee
+        text first_name
+        text imported_member_id
+        text last_name
+        text level_active
+        text level_allow_auto_renew
+        text level_expiration_schedule
+        text level_expiration_type
+        text level_fee
+        text level_hash
+        text level_id
+        text level_name
+        text level_next_renewal_date
+        text member_id
+        text payment_mask
+        text payment_method
+        text status
+    }
+    coupon_discount {
+        text index PK
+        text coupon_id PK
+        text value
+        text value_type
+    }
+    coupon_code {
+        text index PK
+        text coupon_id PK
+        text code
+        text date_created
+        text date_updated
+        text redeemed
+    }
+    coupon {
+        text id PK
+        text product_id FK
+        text available
+        text currency
+        text date_created
+        text date_updated
+        text name
+        text redeemed
+    }
+    orders {
+        text id PK
+        text customer_id FK
+        text form_id FK
+        text billing_address_city
+        text billing_address_country
+        text billing_address_postal_code
+        text billing_address_state
+        text billing_address_street_1
+        text billing_first_name
+        text billing_last_name
+        text billing_phone
+        text currency
+        text customer_email
+        text date_created
+        timestamp date_updated
+        text display_id
+        text form_acc_ref
+        text form_name
+        text metadata
+        text order_number
+        text status
+        text total
+    }
+    ticket_field_data {
+        text index PK
+        text ticket_id PK
+        text amount
+        text label
+        text path
+    }
+    ticket {
+        text id PK
+        text customer_id FK
+        text form_id FK
+        text order_id FK
+        text amount
+        text currency
+        text date_created
+        timestamp date_updated
+        text display_id
+        text event_date
+        text fee
+        text form_acc_ref
+        text level_key
+        text level_label
+        text order_customer_id
+        text order_email
+        text status
+        text total
+    }
+    customer {
+        text id PK
+        text amount
+        text date_created
+        timestamp date_updated
+        text display_id
+        text email
+    }
+    coupon_form_discount }o--|| coupon_form : "fk"
+    coupon_form_code }o--|| coupon_form : "fk"
+    coupon_form }o--|| form : "fk"
+    subscription }o--|| orders : "fk"
+    subscription }o--|| form : "fk"
+    subscription }o--|| customer : "fk"
+    transaction }o--|| orders : "fk"
+    transaction }o--|| form : "fk"
+    transaction }o--|| customer : "fk"
+    form_inventory }o--|| form : "fk"
+    registrant_field_data }o--|| registrant : "fk"
+    registrant }o--|| orders : "fk"
+    registrant }o--|| form : "fk"
+    registrant }o--|| customer : "fk"
+    membership }o--|| registrant : "fk"
+    membership }o--|| customer : "fk"
+    coupon_discount }o--|| coupon : "fk"
+    coupon_code }o--|| coupon : "fk"
+    coupon }o--|| coupon_form : "fk"
+    orders }o--|| form : "fk"
+    orders }o--|| customer : "fk"
+    ticket_field_data }o--|| ticket : "fk"
+    ticket }o--|| orders : "fk"
+    ticket }o--|| form : "fk"
+    ticket }o--|| customer : "fk"

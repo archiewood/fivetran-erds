@@ -1,0 +1,236 @@
+erDiagram
+    question_answer {
+        text id PK
+        text _fivetran_id PK
+        text merchant_group_id FK
+        text merchant_id FK
+        text question_id FK
+        text answer
+        text author_type
+        text client_publication_status
+        text created_date
+        text email
+        text helpful_votes
+        text is_expert
+        text is_verified_buyer
+        text locale
+        text location
+        text nickname
+        text not_helpful_votes
+        text originating_product_page_id
+        text product_page_id
+        text profile_id
+        text pwr_publication_status
+        text source
+        text type
+        text updated_date
+    }
+    question {
+        text _fivetran_id PK
+        text merchant_id FK
+        text product_page_id FK
+        text product_page_id_variant FK
+        text category
+        text client_publication_status
+        text created_date
+        text device_id
+        text email
+        text helpful_votes
+        text id
+        text locale
+        text location
+        text merchant_group_id
+        text nickname
+        text not_helpful_votes
+        text originating_product_page_id
+        text pwr_publication_status
+        text question
+        text question_type
+        text type
+        timestamp updated_date
+    }
+    specific_moderation_question_observation {
+        text observation_id PK
+        text id PK
+        text code
+        text created_date
+        text merchant_group_id
+        text merchant_id
+        text updated_date
+    }
+    specific_moderation_review_observation {
+        text observation_id PK
+        text id PK
+        text code
+        text created_date
+        text merchant_group_id
+        text merchant_id
+        text updated_date
+    }
+    product {
+        text id PK
+        text add_to_cart_url
+        text asin
+        text brand
+        text category
+        text created_date
+        text description
+        text image_url
+        text in_stock
+        text manufacturer_id
+        text merchant_id
+        text name
+        text price
+        text product_page_id
+        text product_page_id_variant
+        text product_url
+        text upc
+        timestamp updated_date
+    }
+    orders {
+        text id PK
+        text merchant_id FK
+        text product_page_id FK
+        text product_page_id_variant FK
+        text created_date
+        text email
+        text first_name
+        text last_name
+        text locale
+        text order_date
+        timestamp updated_date
+    }
+    review_badge {
+        text badge PK
+        text _fivetran_id PK
+    }
+    review_media {
+        text id PK
+        text _fivetran_id PK
+        text merchant_group_id FK
+        text merchant_id FK
+        text review_id FK
+        text bytes
+        text caption
+        text client_publication_status
+        text created_date
+        text featured
+        text height
+        text helpful_votes
+        text locale
+        text location
+        text nickname
+        text not_helpful_votes
+        text originating_product_page_id
+        text product_page_id
+        text pwr_publication_status
+        text thumbnail_uri
+        text type
+        text updated_date
+        text uri
+        text width
+    }
+    review_merchant_response {
+        text id PK
+        text _fivetran_id PK
+        text merchant_group_id FK
+        text merchant_id FK
+        text review_id FK
+        text client_publication_status
+        text created_date
+        text email
+        text helpful_votes
+        text locale
+        text location
+        text nickname
+        text not_helpful_votes
+        text originating_product_page_id
+        text product_page_id
+        text profile_id
+        text pwr_publication_status
+        text response
+        text type
+        text updated_date
+    }
+    review_custom_question_name {
+        text name PK
+        text _fivetran_id PK
+        text value
+    }
+    review {
+        text _fivetran_id PK
+        text order_id FK
+        text product_page_id FK
+        text bottom_line
+        text campaign_id
+        text client_publication_status
+        text comments
+        text created_date
+        text device_id
+        text disclosure_code
+        text email
+        text headline
+        text helpful_score
+        text helpful_votes
+        text id
+        text locale
+        text location
+        text merchant_group_id
+        text merchant_id
+        text nickname
+        text not_helpful_votes
+        text originating_product_page_id
+        text product_page_id_variant
+        text promo_code
+        text pwr_publication_status
+        text rating
+        text review_source
+        text service_comments
+        text sub_ratings
+        text submission_id
+        text syndicated
+        text syndicated_date
+        text syndicating_client
+        text syndicating_client_logo
+        text syndicating_client_url
+        jsonb tags_cons_choice
+        jsonb tags_cons_selected
+        jsonb tags_pros_choice
+        jsonb tags_pros_selected
+        text type
+        timestamp updated_date
+        text user_id
+    }
+    moderation_observation {
+        text _fivetran_id PK
+        text custom
+        text description
+        text merchant_group_id
+        text merchant_postable
+        text name
+        text observation
+    }
+    question_answer }o--|| question : "fk"
+    question_answer }o--|| question : "fk"
+    question_answer }o--|| question : "fk"
+    question_answer }o--|| question : "fk"
+    question }o--|| product : "fk"
+    question }o--|| product : "fk"
+    question }o--|| product : "fk"
+    specific_moderation_question_observation }o--|| question : "fk"
+    specific_moderation_review_observation }o--|| review : "fk"
+    orders }o--|| product : "fk"
+    orders }o--|| product : "fk"
+    orders }o--|| product : "fk"
+    review_badge }o--|| review : "fk"
+    review_media }o--|| review : "fk"
+    review_media }o--|| review : "fk"
+    review_media }o--|| review : "fk"
+    review_media }o--|| review : "fk"
+    review_merchant_response }o--|| review : "fk"
+    review_merchant_response }o--|| review : "fk"
+    review_merchant_response }o--|| review : "fk"
+    review_merchant_response }o--|| review : "fk"
+    review_custom_question_name }o--|| review : "fk"
+    review }o--|| orders : "fk"
+    review }o--|| product : "fk"

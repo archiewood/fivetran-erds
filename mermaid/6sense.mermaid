@@ -1,0 +1,58 @@
+erDiagram
+    company_segment_list {
+        text id PK
+        text company_domain PK
+        text name
+    }
+    company_score {
+        text _fivetran_id PK
+        text company_domain FK
+        text buying_stage
+        text intent_score
+        text is_6_qa
+        text product
+        text product_display_name
+        text profile_fit
+        text profile_score
+    }
+    company_sub_industry {
+        text _fivetran_id PK
+        text company_domain FK
+        text industry
+        text sub_industry
+    }
+    company {
+        text domain PK
+        text additional_comment
+        text address
+        text annual_revenue
+        text city
+        text confidence
+        text country
+        text country_iso_code
+        text employee_count
+        text employee_range
+        text geo_ip_city
+        text geo_ip_country
+        text geo_ip_state
+        text industry
+        text is_6_qa
+        text is_blacklisted
+        text match
+        text naics
+        text naics_description
+        text name
+        text phone
+        text region
+        text revenue_range
+        jsonb segment_id
+        jsonb segment_name
+        text sic
+        text sic_description
+        text state
+        text state_code
+        text zip
+    }
+    company_segment_list }o--|| company : "fk"
+    company_score }o--|| company : "fk"
+    company_sub_industry }o--|| company : "fk"

@@ -1,0 +1,97 @@
+erDiagram
+    account_information {
+        text email PK
+        text first_name
+        text last_name
+        integer page_credits
+    }
+    sitemap {
+        bigint id PK
+        text cron_day
+        integer cron_hour
+        integer cron_minute
+        text cron_month
+        text cron_timezone
+        text cron_weekday
+        text driver
+        text name
+        integer page_load_delay
+        integer proxy
+        integer request_interval
+        boolean scheduler_enabled
+    }
+    scraping_job {
+        bigint id PK
+        bigint sitemap_id FK
+        text custom_id
+        text driver
+        integer jobs_empty
+        integer jobs_executed
+        integer jobs_failed
+        integer jobs_scheduled
+        integer page_load_delay
+        integer request_interval
+        integer scheduled
+        integer scraping_duration
+        text status
+        integer stored_record_count
+        integer test_run
+        timestamp time_created
+    }
+    data_quality {
+        bigint id PK
+        integer max_empty_pages_percent_expected
+        integer max_empty_pages_percent_got
+        boolean max_empty_pages_percent_success
+        integer max_failed_pages_percent_expected
+        integer max_failed_pages_percent_got
+        boolean max_failed_pages_percent_success
+        integer min_column_records_category_link_expected
+        integer min_column_records_category_link_got
+        integer min_column_records_category_link_href_expected
+        integer min_column_records_category_link_href_got
+        boolean min_column_records_category_link_href_success
+        boolean min_column_records_category_link_success
+        integer min_column_records_description_expected
+        integer min_column_records_description_got
+        boolean min_column_records_description_success
+        integer min_column_records_name_expected
+        integer min_column_records_name_got
+        boolean min_column_records_name_success
+        integer min_column_records_pagination_expected
+        integer min_column_records_pagination_got
+        integer min_column_records_pagination_href_expected
+        integer min_column_records_pagination_href_got
+        boolean min_column_records_pagination_href_success
+        boolean min_column_records_pagination_success
+        integer min_column_records_price_expected
+        integer min_column_records_price_got
+        boolean min_column_records_price_success
+        integer min_column_records_product_link_expected
+        integer min_column_records_product_link_got
+        integer min_column_records_product_link_href_expected
+        integer min_column_records_product_link_href_got
+        boolean min_column_records_product_link_href_success
+        boolean min_column_records_product_link_success
+        integer min_column_records_reviews_expected
+        integer min_column_records_reviews_got
+        boolean min_column_records_reviews_success
+        integer min_column_records_subcategory_link_expected
+        integer min_column_records_subcategory_link_got
+        integer min_column_records_subcategory_link_href_expected
+        integer min_column_records_subcategory_link_href_got
+        boolean min_column_records_subcategory_link_href_success
+        boolean min_column_records_subcategory_link_success
+        integer min_record_count_expected
+        integer min_record_count_got
+        boolean min_record_count_success
+        boolean overall_data_quality_success
+    }
+    problematic_url {
+        text url PK
+        bigint scraping_job_id PK
+        text type
+    }
+    scraping_job }o--|| sitemap : "fk"
+    data_quality }o--|| scraping_job : "fk"
+    problematic_url }o--|| scraping_job : "fk"

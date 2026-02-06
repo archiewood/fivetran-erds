@@ -1,0 +1,389 @@
+erDiagram
+    sensor_stop_cause_meta {
+        text index PK
+        text device_id PK
+        text sensor_id PK
+        text sensor_stop_cause_id PK
+        text stop_cause_category_id PK
+        text description
+        text language_code
+        text name
+    }
+    sensor_stop_cause {
+        text id PK
+        text device_id PK
+        text sensor_id PK
+        text stop_cause_category_id PK
+        text deleted
+        text description
+        text enable_counter_measure
+        text legacy_stop_cause_id
+        text name
+        text orders
+        text require_comment
+        text require_initial
+        text stop_type
+    }
+    changeover_stop {
+        text id PK
+        text target_next_batch_batch_id FK
+        text target_previous_batch_batch_id FK
+        text target_shift_targetline_id FK
+        text comment
+        text counter_measur_initials
+        text counter_measure
+        text duration
+        text initials
+        text is_automatic_registration
+        text is_micro_stop
+        text ongoing
+        text registered_time
+        text standalone_exclude_production
+        text stop_cause_category_name
+        text stop_cause_deleted
+        text stop_cause_description
+        text stop_cause_enable_counter_measure
+        text stop_cause_id
+        text stop_cause_language_code
+        text stop_cause_legacy_stop_cause_id
+        text stop_cause_name
+        text stop_cause_order
+        text stop_cause_require_comment
+        text stop_cause_require_initials
+        text stop_cause_stop_type
+        text target
+        text target_next_batch_actual_start
+        text target_next_batch_actual_stop
+        text target_next_batch_batch_number
+        text target_next_batch_name
+        text target_next_batch_planned_start
+        text target_next_batch_product_id
+        text target_previous_batch_actual_start
+        text target_previous_batch_actual_stop
+        text target_previous_batch_batch_number
+        text target_previous_batch_name
+        text target_previous_batch_planned_start
+        text target_previous_batch_product_id
+        text target_shift_description
+        text target_shift_from_day
+        text target_shift_from_hour
+        text target_shift_from_minute
+        text target_shift_id
+        text target_shift_name
+        text target_shift_target_id
+        text target_shift_target_line_id
+        text target_shift_target_main_oee_type
+        text target_shift_target_number_of_batches
+        text target_shift_target_oee
+        text target_shift_target_oee_2
+        text target_shift_target_oee_3
+        text target_shift_target_produced
+        text target_shift_target_tcu
+        text target_shift_target_valid_from_week
+        text target_shift_target_valid_from_year
+        text target_shift_to_day
+        text target_shift_to_hour
+        text target_shift_to_minute
+        text time_range_from
+        text time_range_to
+    }
+    product {
+        text product_id PK
+        text attached_control_receipt_entry_field_sensor_id FK
+        text line_id FK
+        text attached_control_receipt_attached_product_id
+        text attached_control_receipt_control_receipt_id
+        text attached_control_receipt_deleted
+        text attached_control_receipt_description
+        text attached_control_receipt_entry_entry_id
+        text attached_control_receipt_entry_field_derivation_setting_fields
+        text attached_control_receipt_entry_field_derivation_setting_formula
+        text attached_control_receipt_entry_field_description
+        text attached_control_receipt_entry_field_field_id
+        text attached_control_receipt_entry_field_label
+        text attached_control_receipt_entry_field_lower_limit
+        text attached_control_receipt_entry_field_type
+        text attached_control_receipt_entry_field_upper_limit
+        text attached_control_receipt_entry_follow_up_delay_ms
+        text attached_control_receipt_entry_follow_up_enabled
+        text attached_control_receipt_entry_initial_setting
+        text attached_control_receipt_entry_title
+        text attached_control_receipt_entry_trigger_delay_when_stopped
+        text attached_control_receipt_entry_trigger_payload_millis
+        text attached_control_receipt_entry_trigger_type
+        text attached_control_receipt_name
+        text attached_control_receipt_user_pool_id
+        text comment
+        text data_multiplier
+        text expected_average_speed
+        text item_number
+        text name
+        text overwritten_by_batch
+        text packaging_comment
+        text packaging_line_id
+        text packaging_name
+        text packaging_packaging_id
+        text packaging_packaging_number
+        text packaging_unit
+        text parameters_alarm_id
+        text parameters_key
+        text parameters_setpoint_peripheral_id
+        text parameters_setpoint_value
+        text parameters_value
+        text validated_line_speed
+    }
+    batch_stop_cause_meta {
+        text index PK
+        text batch_id PK
+        text batch_stop_cause_index PK
+        text line_id PK
+        text description
+        text language_code
+        text name
+    }
+    batch_stop_cause {
+        text index PK
+        text batch_id PK
+        text line_id PK
+        text stop_id FK
+        text category_id
+        text category_name
+        text deleted
+        text description
+        text enable_counter_measure
+        text language_code
+        text legacy_stop_cause_id
+        text name
+        text orders
+        text require_comment
+        text require_initial
+        text stop_cause_id
+        text stop_type
+        text target_setup_constant_time
+    }
+    line {
+        text id PK
+        text company_id FK
+        text description
+        text language_code
+        text main_peripheral_id
+        text name
+        text owner
+        jsonb time
+        text time_zone
+    }
+    line_stop {
+        text id PK
+        text line_id PK
+        text comment
+        text counter_measure
+        text counter_measure_initial
+        text duration
+        jsonb initials
+        text is_automatic_registration
+        text is_micro_stop
+        text ongoing
+        text original_start
+        text registered_time
+        text time_range_from
+        text time_range_to
+    }
+    stop {
+        text id PK
+        text batch_id PK
+        text comment
+        text counter_measure
+        text counter_measure_initial
+        text duration
+        text initials
+        text is_automatic_registration
+        text is_micro_stop
+        text ongoing
+        text original_start
+        text registered_time
+        text standalone_exclude_production
+        text target
+        text target_current_shift
+        text target_next_batch
+        text target_previous_batch
+        text time_range_from
+        text time_range_to
+    }
+    stop_cause_stats {
+        text batch_id PK
+        text id PK
+        text acc_duration
+        text acc_target
+        text is_micro_stop
+        text number_of_stops
+        text stop_category_name
+        text stop_cause_description
+        text stop_cause_name
+        text type
+    }
+    batch {
+        text id PK
+        text line_id FK
+        text product_id FK
+        text actual_etc
+        text actual_start
+        text actual_stop
+        text amount
+        text batch_number
+        text comment
+        text last_stop_comment
+        text last_stop_counter_measure
+        text last_stop_counter_measure_initial
+        text last_stop_duration
+        text last_stop_id
+        text last_stop_initials
+        text last_stop_is_automatic_registration
+        text last_stop_is_micro_stop
+        text last_stop_ongoing
+        text last_stop_registered_time
+        text longest_non_stop
+        text manual_scrap
+        text planned_etc
+        text planned_start
+        text produced
+        text sorting
+        text state
+        jsonb tags
+    }
+    sensor_stop_cause_category {
+        text id PK
+        text sensor_device_id PK
+        text sensor_id PK
+        text deleted
+        text language_code
+        text legacy_category_id
+        text name
+        text orders
+        text owner_type
+    }
+    sensor_group_peripheral {
+        text peripheral_id PK
+        text sensor_group_device_id PK
+        text sensor_group_id PK
+        text sensor_id PK
+    }
+    sensor_group_line {
+        text line_id PK
+        text sensor_group_device_id PK
+        text sensor_group_id PK
+        text sensor_id PK
+    }
+    sensor_group {
+        text id PK
+        text sensor_device_id PK
+        text sensor_id PK
+        text default_group
+        text description
+        text name
+        text node_id
+    }
+    sensor {
+        text id PK
+        text device_id PK
+        text peripheral_line_id FK
+        jsonb alarms
+        jsonb camera
+        text config_analog_input_range
+        text config_analog_offset
+        text config_chart_time_scale
+        text config_data_multiplier
+        text config_energy_meter
+        text config_expected_speed
+        text config_extra_multiplier_for_frontend
+        text config_find_stops
+        text config_publish_rate
+        text config_sample_rate
+        text config_stop_register_threshold
+        text config_stop_threshold
+        text config_stop_value_threshold
+        text config_subtract_cycle_time
+        text config_trigger_index
+        text config_type
+        text config_validated_speed
+        jsonb custom_kpi
+        text description
+        text hardware_id
+        jsonb horizontal_annotation
+        text index
+        text name
+        text offline_status_expiration
+        text offline_status_last_received
+        text owner
+        text peripheral_type
+        jsonb scheduled_report
+        jsonb stop_cause_mapping
+    }
+    device {
+        text id PK
+        text hardware_id
+        text name
+        text num_input_port
+        text owner
+        text type
+        text uuid
+    }
+    oee {
+        text _fivetran_id PK
+        text line_id FK
+        text consolidated_time_from
+        text consolidated_time_to
+        text manned_time
+        text oee_1
+        text oee_2
+        text oee_3
+        text operating_time
+        text production_time
+        text scrap_loss
+        text speed_loss
+        text tcu
+        text total_equipment_time
+        text valued_operating_time
+    }
+    company {
+        text id PK
+        text name
+    }
+    sensor_stop_cause_meta }o--|| sensor_stop_cause : "fk"
+    sensor_stop_cause_meta }o--|| sensor_stop_cause : "fk"
+    sensor_stop_cause_meta }o--|| sensor_stop_cause : "fk"
+    sensor_stop_cause_meta }o--|| sensor_stop_cause : "fk"
+    sensor_stop_cause }o--|| sensor_stop_cause_category : "fk"
+    sensor_stop_cause }o--|| device : "fk"
+    sensor_stop_cause }o--|| sensor : "fk"
+    changeover_stop }o--|| batch : "fk"
+    changeover_stop }o--|| batch : "fk"
+    changeover_stop }o--|| line : "fk"
+    product }o--|| line : "fk"
+    product }o--|| sensor : "fk"
+    batch_stop_cause_meta }o--|| batch_stop_cause : "fk"
+    batch_stop_cause_meta }o--|| batch_stop_cause : "fk"
+    batch_stop_cause_meta }o--|| batch_stop_cause : "fk"
+    batch_stop_cause }o--|| stop : "fk"
+    batch_stop_cause }o--|| batch : "fk"
+    batch_stop_cause }o--|| line : "fk"
+    line }o--|| company : "fk"
+    line_stop }o--|| line : "fk"
+    stop }o--|| batch : "fk"
+    stop_cause_stats }o--|| sensor_stop_cause : "fk"
+    stop_cause_stats }o--|| batch : "fk"
+    batch }o--|| product : "fk"
+    batch }o--|| line : "fk"
+    sensor_stop_cause_category }o--|| sensor : "fk"
+    sensor_stop_cause_category }o--|| sensor : "fk"
+    sensor_group_peripheral }o--|| sensor_group : "fk"
+    sensor_group_peripheral }o--|| sensor_group : "fk"
+    sensor_group_peripheral }o--|| sensor_group : "fk"
+    sensor_group_line }o--|| line : "fk"
+    sensor_group_line }o--|| sensor_group : "fk"
+    sensor_group_line }o--|| sensor_group : "fk"
+    sensor_group_line }o--|| sensor_group : "fk"
+    sensor_group }o--|| sensor : "fk"
+    sensor_group }o--|| sensor : "fk"
+    sensor }o--|| line : "fk"
+    sensor }o--|| device : "fk"
+    oee }o--|| line : "fk"

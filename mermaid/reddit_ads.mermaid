@@ -1,0 +1,241 @@
+erDiagram
+%% REPORTING TABLES
+%% ----
+%% | TABLES | 
+%% |--------|
+%% | [ACCOUNT_[SEGMENTATION]](https://ads-api.reddit.com/docs/v3/operations/Get%20A%20Report) | 
+%% | [CAMPAIGN_[SEGMENTATION]](https://ads-api.reddit.com/docs/v3/operations/Get%20A%20Report) |
+%% | [AD_GROUP_[SEGMENTATION]](https://ads-api.reddit.com/docs/v3/operations/Get%20A%20Report) |
+%% |[AD_[SEGMENTATION]](https://ads-api.reddit.com/docs/v3/operations/Get%20A%20Report)|
+%% |[[SEGMENTATION]](https://ads-api.reddit.com/docs/v3/operations/Get%20A%20Report)|
+%% SEGMENTATION one of: 
+%%   - COMMUNITY
+%%   - INTEREST
+%%   - COUNTRY
+%%   - PLACEMENT
+%%   - METRO
+    third_party_tracker {
+        integer index PK
+        text ad_id PK
+        text value
+    }
+    business {
+        text id PK
+        boolean agency_affiliated
+        text country
+        timestamp created_at
+        text creator_id
+        text industry
+        timestamp modified_at
+        text name
+        text phone
+        text website_url
+    }
+    geolocation {
+        text id PK
+        text country
+        bigint dma
+        text name
+        text postal_code
+        text region
+    }
+    pixel_partner_reference {
+        integer index PK
+        text account_id PK
+        text value
+    }
+    click_tracker {
+        integer index PK
+        text ad_id PK
+        text value
+    }
+    targeting_keyword {
+        text keyword PK
+        text ad_group_id PK
+        boolean excluded
+    }
+    time_zone {
+        text id PK
+        text code
+        bigint dst_offset
+        boolean is_dst_active
+        text name
+        bigint offset
+    }
+    pixel_audience_targeting {
+        integer index PK
+        text custom_audience_id PK
+        text value
+    }
+    campaign {
+        text id PK
+        text account_id FK
+        text configured_status
+        text effective_status
+        text funding_instrument_id
+        boolean is_processing
+        text name
+        text objective
+    }
+    interest {
+        text id PK
+        text category
+        text name
+    }
+    targeting_community {
+        text ad_group_id PK
+        text community_id PK
+        boolean excluded
+    }
+    engagement_audience_campaign {
+        text campaign_id PK
+        text custom_audience_id PK
+    }
+    business_account {
+        text id PK
+        text business_id FK
+        text time_zone_id FK
+        text admin_approval
+        text attribution_type
+        text click_attribution_window
+        timestamp created_at
+        text currency
+        timestamp modified_at
+        text name
+        text suspension_reason
+        text type
+        text view_attribution_window
+    }
+    targeting_custom_audience {
+        text ad_group_id PK
+        text custom_audience_id PK
+        boolean excluded
+    }
+    schedule {
+        text _fivetran_id PK
+        text ad_group_id FK
+        bigint end_day
+        bigint end_hour
+        bigint start_day
+        bigint start_hour
+    }
+    engagement_audience_tracking_type {
+        integer index PK
+        text custom_audience_id PK
+        text value
+    }
+    pixel_audience_custom_targeting {
+        integer index PK
+        text custom_audience_id PK
+        text value
+    }
+    ad {
+        text id PK
+        text account_id FK
+        text ad_group_id FK
+        text campaign_id FK
+        text click_url
+        text configured_status
+        text effective_status
+        boolean is_processing
+        text name
+        text post_id
+        text post_url
+        text preview_expiry
+        text preview_url
+        text rejection_reason
+        text search_term
+    }
+    community {
+        text id PK
+        bigint daily_impressions
+        text description
+        text icon_url
+        text name
+        bigint subscriber_count
+    }
+    targeting_placement {
+        text location PK
+        text ad_group_id PK
+    }
+    ad_group {
+        text id PK
+        text account_id PK
+        text campaign_id FK
+        text bid_strategy
+        bigint bid_value
+        text configured_status
+        text effective_status
+        timestamp end_time
+        boolean expand_targeting
+        text goal_type
+        bigint goal_value
+        boolean is_processing
+        text name
+        text optimization_strategy_type
+        timestamp start_time
+    }
+    custom_audience_history {
+        text id PK
+        text account_id FK
+        timestamp created_at
+        text customer_list_config_external_id
+        text customer_list_config_origin
+        bigint engagement_audience_configlookback_window_days
+        text lookalike_configsource_audience_id
+        text name
+        text pixel_audience_configlookback_window_days
+        bigint size_range_lower
+        bigint size_range_upper
+        text status
+        text type
+        timestamp updated_at
+    }
+    targeting_device {
+        text _fivetran_id PK
+        text ad_group_id FK
+        jsonb label_map
+        text max_version
+        text min_version
+        text os
+        text type
+    }
+    targeting_interest {
+        text ad_group_id PK
+        text interest_id PK
+        boolean excluded
+    }
+    targeting_geolocation {
+        text ad_group_id PK
+        text geolocation_id PK
+        boolean excluded
+    }
+    third_party_tracker }o--|| ad : "fk"
+    pixel_partner_reference }o--|| business_account : "fk"
+    click_tracker }o--|| ad : "fk"
+    targeting_keyword }o--|| ad_group : "fk"
+    pixel_audience_targeting }o--|| custom_audience_history : "fk"
+    campaign }o--|| business_account : "fk"
+    targeting_community }o--|| ad_group : "fk"
+    targeting_community }o--|| community : "fk"
+    engagement_audience_campaign }o--|| custom_audience_history : "fk"
+    engagement_audience_campaign }o--|| campaign : "fk"
+    business_account }o--|| time_zone : "fk"
+    business_account }o--|| business : "fk"
+    targeting_custom_audience }o--|| ad_group : "fk"
+    targeting_custom_audience }o--|| custom_audience_history : "fk"
+    schedule }o--|| ad_group : "fk"
+    engagement_audience_tracking_type }o--|| custom_audience_history : "fk"
+    pixel_audience_custom_targeting }o--|| custom_audience_history : "fk"
+    ad }o--|| business_account : "fk"
+    ad }o--|| ad_group : "fk"
+    ad }o--|| campaign : "fk"
+    targeting_placement }o--|| ad_group : "fk"
+    ad_group }o--|| business_account : "fk"
+    ad_group }o--|| campaign : "fk"
+    custom_audience_history }o--|| business_account : "fk"
+    targeting_device }o--|| ad_group : "fk"
+    targeting_interest }o--|| ad_group : "fk"
+    targeting_interest }o--|| interest : "fk"
+    targeting_geolocation }o--|| ad_group : "fk"
+    targeting_geolocation }o--|| geolocation : "fk"

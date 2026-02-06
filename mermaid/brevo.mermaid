@@ -1,0 +1,234 @@
+erDiagram
+    contact_list {
+        bigint contact_id PK
+        text list_id PK
+    }
+    contact_attribute_object {
+        text name PK
+        bigint contact_id PK
+        text value
+    }
+    contact {
+        bigint id PK
+        text created_at
+        text email
+        boolean email_blacklisted
+        text list_unsubscribed
+        text modified_at
+        boolean sms_blacklisted
+    }
+    attribute_enumeration {
+        text index PK
+        text value PK
+        text attribute_name
+        text label
+    }
+    attribute {
+        text _fivetran_id PK
+        text calculated_value
+        text category
+        text name
+        text type
+    }
+    ips {
+        text _fivetran_id PK
+        text sender_id FK
+        text domain
+        text ip
+        text weight
+    }
+    sender {
+        text id PK
+        text active
+        text email
+        text name
+    }
+    email_template {
+        text id PK
+        text sender_id FK
+        text created_at
+        text doi_template
+        text html_content
+        text is_active
+        text modified_at
+        text name
+        text reply_to
+        text subject
+        text tag
+        text test_sent
+        text to_field
+    }
+    email_campaign_list {
+        text email_campaign_id PK
+        text list_id PK
+    }
+    email_campaign_exclusion_list {
+        text exclusion_list_id PK
+        text email_campaign_id PK
+        text list_id FK
+    }
+    email_campaign_stats {
+        text email_campaign_id PK
+        text email_statistics_index PK
+        text list_id PK
+        text clicker
+        text complaint
+        text deferred
+        text delivered
+        text hard_bounce
+        text sent
+        text soft_bounce
+        text trackable_view
+        text unique_click
+        text unique_view
+        text unsubscriptions
+        text viewed
+    }
+    email_statistics {
+        text index PK
+        text email_campaign_id PK
+        text global_stats_clicker
+        text global_stats_complaint
+        text global_stats_delivered
+        text global_stats_estimated_view
+        text global_stats_hard_bounce
+        text global_stats_sent
+        text global_stats_soft_bounce
+        text global_stats_trackable_views
+        text global_stats_trackable_views_rate
+        text global_stats_unique_click
+        text global_stats_unique_view
+        text global_stats_unsubscriptions
+        text global_stats_viewed
+        jsonb links_stats
+        text mirror_click
+        text remaining
+    }
+    email_campaign {
+        text id PK
+        text ab_testing
+        text created_at
+        text footer
+        text header
+        text html_content
+        text inline_image_activation
+        text mirror_active
+        text modified_at
+        text name
+        text recurring
+        text reply_to
+        text return_bounce
+        text scheduled_at
+        text send_at_best_time
+        text sender_id
+        text sent_date
+        text share_link
+        text split_rule
+        text status
+        text subject
+        text subject_a
+        text subject_b
+        text tag
+        text test_sent
+        text to_field
+        text type
+        text winner_criteria
+        text winner_delay
+    }
+    sms_campaign_list {
+        text list_id PK
+        text sms_campaign_id PK
+    }
+    sms_campaign_exclusion_list {
+        text exclusion_list_id PK
+        text sms_campaign_id PK
+        text list_id FK
+    }
+    sms_campaign {
+        text id PK
+        text content
+        text created_at
+        text modified_at
+        text name
+        text organisation_prefix
+        text scheduled_at
+        text sender
+        text status
+        text unsubscribe_instruction
+    }
+    product_category {
+        text category_id PK
+        text product_id PK
+    }
+    product {
+        text id PK
+        text parent_id FK
+        text created_at
+        text image_url
+        text modified_at
+        text name
+        text price
+        text s_3_original
+        text s_3_thumb_analytics
+        text s_3_thumb_editor
+        text sku
+        text url
+    }
+    category {
+        text id PK
+        text created_at
+        text modified_at
+        text name
+        text url
+    }
+    process {
+        text id PK
+        text export_url
+        text name
+        text status
+    }
+    list {
+        text id PK
+        text folder_id FK
+        text name
+        text total_blacklisted
+        text total_subscribers
+        text unique_subscribers
+    }
+    inbound_event {
+        text id PK
+        text email FK
+        text date
+        text recipient
+        text sender
+    }
+    folder {
+        text id PK
+        text name
+        text total_blacklisted
+        text total_subscriber
+        text unique_subscriber
+    }
+    contact_list }o--|| list : "fk"
+    contact_list }o--|| contact : "fk"
+    contact_attribute_object }o--|| contact : "fk"
+    ips }o--|| sender : "fk"
+    email_template }o--|| sender : "fk"
+    email_campaign_list }o--|| list : "fk"
+    email_campaign_list }o--|| email_campaign : "fk"
+    email_campaign_exclusion_list }o--|| email_campaign : "fk"
+    email_campaign_exclusion_list }o--|| list : "fk"
+    email_campaign_stats }o--|| list : "fk"
+    email_campaign_stats }o--|| email_statistics : "fk"
+    email_campaign_stats }o--|| email_statistics : "fk"
+    email_statistics }o--|| email_campaign : "fk"
+    email_campaign }o--|| sender : "fk"
+    sms_campaign_list }o--|| list : "fk"
+    sms_campaign_list }o--|| sms_campaign : "fk"
+    sms_campaign_exclusion_list }o--|| sms_campaign : "fk"
+    sms_campaign_exclusion_list }o--|| list : "fk"
+    product_category }o--|| category : "fk"
+    product_category }o--|| product : "fk"
+    product }o--|| product : "fk"
+    list }o--|| folder : "fk"
+    inbound_event }o--|| sender : "fk"

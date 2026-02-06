@@ -1,0 +1,464 @@
+erDiagram
+    satisfaction_rating_value {
+        bigint satisfaction_rating_id PK
+        text survey_question_id PK
+        text value
+    }
+    automation_event {
+        text fivetran_id PK
+        bigint automation_id PK
+        text field_name
+        text from
+        jsonb related_conditions
+        text to
+        jsonb to_nested_field
+        text value
+    }
+    source_lookup {
+        bigint id PK
+        text source
+    }
+    priority_lookup {
+        bigint id PK
+        text priority
+    }
+    sla_policy_escalation_reminder_next_response {
+        bigint agent_id PK
+        bigint sla_policy_id PK
+        bigint escalation_time
+    }
+    status_lookup {
+        bigint id PK
+        text label_for_agents
+        text label_for_customer
+    }
+    agent {
+        bigint id PK
+        boolean available
+        timestamp available_since
+        timestamp created_at
+        boolean deactivated
+        boolean focus_mode
+        boolean freshchat_agent
+        boolean occasional
+        text signature
+        bigint ticket_scope
+        text type
+        timestamp updated_at
+    }
+    product {
+        bigint id PK
+        timestamp created_at
+        text description
+        text name
+        timestamp updated_at
+    }
+    ticket_to_email {
+        text email PK
+        bigint ticket_id PK
+    }
+    sla_policy_escalation_reminder_response {
+        bigint agent_id PK
+        bigint sla_policy_id PK
+        bigint escalation_time
+    }
+    email_config {
+        bigint id PK
+        bigint group_id FK
+        bigint product_id FK
+        boolean active
+        timestamp created_at
+        text name
+        boolean primary_role
+        text reply_email
+        text to_email
+        timestamp updated_at
+    }
+    time_entries {
+        bigint id PK
+        bigint agent_id FK
+        bigint company_id FK
+        boolean billable
+        timestamp created_at
+        timestamp executed_at
+        text note
+        timestamp start_time
+        bigint ticket_id
+        text time_spent
+        boolean timer_running
+        timestamp updated_at
+    }
+    group {
+        bigint id PK
+        bigint business_hour_id FK
+        bigint escalate_to FK
+        bigint auto_ticket_assign
+        timestamp created_at
+        text description
+        text group_type
+        text name
+        text unassigned_for
+        timestamp updated_at
+    }
+    automation_action {
+        text fivetran_id PK
+        bigint automation_id PK
+        text anchor_type
+        jsonb auth_header
+        jsonb content
+        bigint content_layout
+        text content_type
+        text email_body
+        text email_subject
+        text email_to
+        text field_name
+        text field_type
+        text note_body
+        jsonb notify_agents
+        text request_type
+        boolean show_inherit_properties_toggle
+        text thread_body
+        text ticket_body
+        text ticket_subject
+        text url
+        jsonb value
+    }
+    conversation_cc_email {
+        text email PK
+        bigint conversation_id PK
+    }
+    discussion_topic {
+        bigint id PK
+        bigint discussion_forum_id FK
+        timestamp created_at
+        bigint hits
+        boolean locked
+        bigint merged_topic_id
+        bigint posts_count
+        boolean published
+        timestamp replied_at
+        bigint replied_by
+        bigint stamp_type
+        boolean sticky
+        text title
+        timestamp updated_at
+        bigint user_id
+        bigint user_votes
+    }
+    sla_policy_escalation_reminder_resolution {
+        bigint agent_id PK
+        bigint sla_policy_id PK
+        bigint escalation_time
+    }
+    conversation_to_email {
+        text email PK
+        bigint conversation_id PK
+    }
+    survey_question {
+        text id PK
+        text survey_id PK
+        jsonb accepted_ratings
+        text label
+    }
+    company {
+        bigint id PK
+        text account_tier
+        timestamp created_at
+        text description
+        text health_score
+        text industry
+        text name
+        text note
+        text org_company_id
+        timestamp renewal_date
+        timestamp updated_at
+    }
+    company_domain {
+        text domain PK
+        bigint company_id PK
+    }
+    ticket_fwd_email {
+        text email PK
+        bigint ticket_id PK
+    }
+    discussion_comment {
+        bigint id PK
+        bigint contact_id FK
+        bigint discussion_topic_id FK
+        boolean answer
+        text body
+        text body_text
+        timestamp created_at
+        boolean published
+        boolean spam
+        boolean trash
+        timestamp updated_at
+    }
+    automation_condition {
+        text fivetran_id PK
+        bigint automation_id PK
+        text match_type
+        text name
+    }
+    discussion_category {
+        bigint id PK
+        timestamp created_at
+        text description
+        text name
+        timestamp updated_at
+    }
+    satisfaction_rating {
+        bigint id PK
+        bigint agent_id FK
+        bigint contact_id FK
+        bigint group_id FK
+        text survey_id FK
+        timestamp created_at
+        text feedback
+        bigint ticket_id
+        timestamp updated_at
+    }
+    conversation_bcc_email {
+        text email PK
+        bigint conversation_id PK
+    }
+    sla_policy_escalation_resolution {
+        bigint resolution_level PK
+        bigint agent_id PK
+        bigint sla_policy_id PK
+        bigint escalation_time
+    }
+    automation {
+        bigint id PK
+        boolean active
+        bigint affected_tickets_count
+        text automation_type
+        timestamp created_at
+        bigint last_updated_by
+        text name
+        text operator
+        boolean outdated
+        bigint performer_type
+        bigint position
+        jsonb summary
+        timestamp updated_at
+    }
+    automation_performer_member {
+        bigint automation_id PK
+        bigint member_id PK
+    }
+    role {
+        bigint id PK
+        timestamp created_at
+        boolean default
+        text description
+        text name
+        timestamp updated_at
+    }
+    sla_policy_escalation_next_response {
+        bigint agent_id PK
+        bigint sla_policy_id PK
+        bigint escalation_time
+    }
+    ticket_history {
+        bigint id PK
+        bigint company_id FK
+        bigint email_config_id FK
+        bigint group_id FK
+        bigint priority FK
+        bigint product_id FK
+        bigint responder_id FK
+        bigint source FK
+        bigint status FK
+        integer association_type
+        timestamp created_at
+        boolean deleted
+        text description
+        text description_text
+        timestamp due_by
+        timestamp fr_due_by
+        boolean fr_escalated
+        boolean is_escalated
+        bigint requester_id
+        boolean spam
+        text subject
+        text type
+        timestamp updated_at
+    }
+    discussion_forum {
+        bigint id PK
+        bigint discussion_category_id FK
+        text description
+        bigint forum_type
+        bigint forum_visibility
+        text name
+        bigint position
+        bigint posts_count
+        bigint topics_count
+    }
+    ticket_tag {
+        bigint index PK
+        bigint ticket_id PK
+        text tag
+    }
+    conversation {
+        bigint id PK
+        bigint ticket_id PK
+        bigint contact_id FK
+        text body
+        text body_text
+        timestamp created_at
+        text from_email
+        boolean incoming
+        boolean private
+        bigint source
+        text support_email
+        timestamp updated_at
+    }
+    sla_policy_target {
+        bigint priority PK
+        bigint sla_policy_id PK
+        boolean business_hours
+        boolean escalation_enabled
+        bigint next_respond_within
+        bigint resolve_within
+        bigint respond_within
+    }
+    business_hour {
+        bigint id PK
+        timestamp created_at
+        text description
+        boolean is_default
+        text name
+        text time_zone
+        timestamp updated_at
+    }
+    sla_policy_escalation_response {
+        bigint agent_id PK
+        bigint sla_policy_id PK
+        bigint escalation_time
+    }
+    ticket_cc_email {
+        text email PK
+        bigint ticket_id PK
+    }
+    agent_role {
+        bigint agent_id PK
+        bigint role_id PK
+    }
+    contact {
+        bigint id PK
+        bigint company_id FK
+        boolean active
+        text address
+        boolean blocked
+        timestamp created_at
+        text csat_rating
+        text description
+        text email
+        text facebook_id
+        text job_title
+        text language
+        text mobile
+        text name
+        text phone
+        text preferred_source
+        text time_zone
+        text twitter_id
+        text unique_external_id
+        timestamp updated_at
+    }
+    sla_policy_applicable_to {
+        text applicable_to PK
+        text value PK
+        bigint sla_policy_id PK
+    }
+    conversation_attachment {
+        bigint id PK
+        bigint conversation_id PK
+        text attachment_url
+        text content_type
+        timestamp created_at
+        text name
+        bigint size
+        timestamp updated_at
+    }
+    sla_policy {
+        bigint id PK
+        boolean active
+        timestamp created_at
+        text description
+        boolean is_default
+        text name
+        bigint position
+        timestamp updated_at
+    }
+    survey {
+        bigint id PK
+        timestamp created_at
+        text title
+        timestamp updated_at
+    }
+    ticket_reply_cc_email {
+        text email PK
+        bigint ticket_id PK
+    }
+    agent_group {
+        bigint agent_id PK
+        bigint group_id PK
+    }
+    satisfaction_rating_value }o--|| survey_question : "fk"
+    satisfaction_rating_value }o--|| satisfaction_rating : "fk"
+    automation_event }o--|| automation : "fk"
+    sla_policy_escalation_reminder_next_response }o--|| agent : "fk"
+    sla_policy_escalation_reminder_next_response }o--|| sla_policy : "fk"
+    sla_policy_escalation_reminder_response }o--|| agent : "fk"
+    sla_policy_escalation_reminder_response }o--|| sla_policy : "fk"
+    email_config }o--|| product : "fk"
+    email_config }o--|| group : "fk"
+    time_entries }o--|| agent : "fk"
+    time_entries }o--|| company : "fk"
+    group }o--|| agent : "fk"
+    group }o--|| business_hour : "fk"
+    automation_action }o--|| automation : "fk"
+    conversation_cc_email }o--|| conversation : "fk"
+    discussion_topic }o--|| discussion_forum : "fk"
+    sla_policy_escalation_reminder_resolution }o--|| agent : "fk"
+    sla_policy_escalation_reminder_resolution }o--|| sla_policy : "fk"
+    conversation_to_email }o--|| conversation : "fk"
+    survey_question }o--|| survey : "fk"
+    company_domain }o--|| company : "fk"
+    discussion_comment }o--|| discussion_topic : "fk"
+    discussion_comment }o--|| contact : "fk"
+    automation_condition }o--|| automation : "fk"
+    satisfaction_rating }o--|| survey : "fk"
+    satisfaction_rating }o--|| agent : "fk"
+    satisfaction_rating }o--|| group : "fk"
+    satisfaction_rating }o--|| contact : "fk"
+    conversation_bcc_email }o--|| conversation : "fk"
+    sla_policy_escalation_resolution }o--|| agent : "fk"
+    sla_policy_escalation_resolution }o--|| sla_policy : "fk"
+    automation_performer_member }o--|| automation : "fk"
+    automation_performer_member }o--|| agent : "fk"
+    sla_policy_escalation_next_response }o--|| agent : "fk"
+    sla_policy_escalation_next_response }o--|| sla_policy : "fk"
+    ticket_history }o--|| email_config : "fk"
+    ticket_history }o--|| group : "fk"
+    ticket_history }o--|| agent : "fk"
+    ticket_history }o--|| product : "fk"
+    ticket_history }o--|| company : "fk"
+    ticket_history }o--|| priority_lookup : "fk"
+    ticket_history }o--|| source_lookup : "fk"
+    ticket_history }o--|| status_lookup : "fk"
+    discussion_forum }o--|| discussion_category : "fk"
+    conversation }o--|| contact : "fk"
+    sla_policy_target }o--|| sla_policy : "fk"
+    sla_policy_escalation_response }o--|| agent : "fk"
+    sla_policy_escalation_response }o--|| sla_policy : "fk"
+    agent_role }o--|| agent : "fk"
+    agent_role }o--|| role : "fk"
+    contact }o--|| company : "fk"
+    sla_policy_applicable_to }o--|| sla_policy : "fk"
+    conversation_attachment }o--|| conversation : "fk"
+    agent_group }o--|| agent : "fk"
+    agent_group }o--|| group : "fk"

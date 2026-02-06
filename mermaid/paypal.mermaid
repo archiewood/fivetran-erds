@@ -1,0 +1,611 @@
+erDiagram
+    transaction_item_checkout_option {
+        integer index PK
+        integer item_detail_index PK
+        text transaction_id PK
+        text name
+        text value
+    }
+    transaction_item_tax_amount {
+        integer index PK
+        integer item_detail_index PK
+        text transaction_id PK
+        text amount
+        text currency_code
+    }
+    transaction_item_detail {
+        integer index PK
+        text transaction_event_code PK
+        text transaction_id PK
+        text adjustment_amount
+        text adjustment_currency_code
+        text amount
+        text basic_shipping_amount
+        text basic_shipping_currency_code
+        text code
+        text currency_code
+        text description
+        text discount_amount
+        text discount_currency_code
+        text extra_shipping_amount
+        text extra_shipping_currency_code
+        text gift_wrap_amount
+        text gift_wrap_currency_code
+        text handling_amount
+        text handling_currency_code
+        text insurance_amount
+        text insurance_currency_code
+        text invoice_number
+        text name
+        text options
+        text quantity
+        text tax_percentage
+        text unit_price_amount
+        text unit_price_currency_code
+    }
+    incentive {
+        integer index PK
+        text transaction_event_code PK
+        text transaction_id PK
+        text amount
+        text code
+        text currency_code
+        text program_code
+        text type
+    }
+    transaction {
+        text event_code PK
+        text id PK
+        text amount
+        text annual_percentage_rate
+        text auction_buyer_id
+        timestamp auction_closing_date
+        text auction_item_site
+        text auction_site
+        text available_balance_currency_code
+        text available_balance_value
+        text bank_reference_id
+        text credit_promotional_fee_amount
+        text credit_promotional_fee_currency_code
+        text credit_term
+        text credit_transactional_fee_amount
+        text credit_transactional_fee_currency_code
+        text currency_code
+        text custom_field
+        text discount_amount
+        text discount_currency_code
+        text ending_balance_amount
+        text ending_balance_currency_code
+        text fee_amount
+        text fee_currency_code
+        timestamp initiation_date
+        text instrument_sub_type
+        text instrument_type
+        text insurance_amount
+        text insurance_currency_code
+        text invoice_id
+        text note
+        text other_amount
+        text other_currency_code
+        text payer_account_id
+        text payer_address_city
+        text payer_address_country_code
+        text payer_address_line_1
+        text payer_address_line_2
+        text payer_address_postal_code
+        text payer_address_state
+        text payer_country_code
+        text payer_email_address
+        text payer_full_name
+        text payer_given_name
+        text payer_middle_name
+        text payer_phone_country_code
+        text payer_phone_extension_number
+        text payer_phone_national_number
+        text payer_prefix
+        text payer_status
+        text payer_suffix
+        text payer_surname
+        text payment_method_type
+        text payment_tracking_id
+        text paypal_account_id
+        text paypal_invoice_id
+        text paypal_reference_id
+        text paypal_reference_id_type
+        text protection_eligibility
+        text sales_tax_amount
+        text sales_tax_currency_code
+        text shipping_amount
+        text shipping_currency_code
+        text shipping_discount_amount
+        text shipping_discount_currency_code
+        text shipping_info_address_city
+        text shipping_info_address_country_code
+        text shipping_info_address_line_1
+        text shipping_info_address_line_2
+        text shipping_info_address_postal_code
+        text shipping_info_method
+        text shipping_info_name
+        text shipping_info_secondary_address_city
+        text shipping_info_secondary_address_country_code
+        text shipping_info_secondary_address_line_1
+        text shipping_info_secondary_address_line_2
+        text shipping_info_secondary_address_postal_code
+        text shipping_info_secondary_address_state
+        text shipping_tax_amount
+        text shipping_tax_currency_code
+        text status
+        text store_info_id
+        text store_info_terminal_id
+        text subject
+        boolean tax_inclusive
+        text tip_amount
+        text tip_currency_code
+        timestamp updated_date
+    }
+    pricing_tier {
+        integer index PK
+        integer billing_cycle_index PK
+        text billing_plan_id PK
+        text amount
+        text currency_code
+        text ending_quantity
+        text starting_quantity
+    }
+    billing_cycle {
+        integer index PK
+        text billing_plan_id PK
+        integer frequency_interval_count
+        text frequency_interval_unit
+        timestamp pricing_scheme_create_time
+        text pricing_scheme_fixed_price_amount
+        text pricing_scheme_fixed_price_currency_code
+        text pricing_scheme_pricing_model
+        timestamp pricing_scheme_update_time
+        integer pricing_scheme_version
+        integer sequence
+        text tenure_type
+        integer total_cycles
+    }
+    billing_plan {
+        text id PK
+        timestamp create_time
+        text description
+        text name
+        boolean payment_preferences_auto_bill_outstanding
+        integer payment_preferences_payment_failure_threshold
+        text payment_preferences_setup_fee_amount
+        text payment_preferences_setup_fee_currency_code
+        text payment_preferences_setup_fee_failure_action
+        text product_id
+        boolean quantity_supported
+        text status
+        boolean taxes_inclusive
+        text taxes_percentage
+        timestamp updated_time
+    }
+    disputed_transaction_item_service_details_sub_reason {
+        integer index PK
+        text dispute_id PK
+        integer disputed_transaction_item_index PK
+        text name
+    }
+    disputed_transaction_item {
+        integer index PK
+        text dispute_id PK
+        integer disputed_transaction_index PK
+        boolean agreed_refund_details_merchant_agreed_refund
+        timestamp agreed_refund_details_merchant_agreed_refund_time
+        text cancellation_date
+        text cancellation_mode
+        text cancellation_number
+        boolean cancelled
+        text description
+        text dispute_amount
+        text dispute_currency_code
+        text id
+        text name
+        text notes
+        text partner_transaction_id
+        text quantity
+        text reason
+        text type
+    }
+    disputed_transaction {
+        integer index PK
+        text dispute_id PK
+        text buyer_name
+        text buyer_transaction_id
+        timestamp create_time
+        text custom
+        text gross_amount
+        text gross_currency_code
+        text gross_quantity
+        text gross_symbol
+        text invoice_number
+        text reference_id
+        text seller_email
+        text seller_merchant_id
+        text seller_name
+        text seller_transaction_id
+        text transaction_status
+    }
+    dispute_message {
+        integer index PK
+        text dispute_id PK
+        text content
+        text posted_by
+        timestamp time_posted
+    }
+    money_movement {
+        integer index PK
+        text dispute_id PK
+        text affected_party
+        text amount
+        text currency_code
+        timestamp initiated_time
+        text quantity
+        text reason
+        text symbol
+        text type
+    }
+    tracking_info {
+        integer index PK
+        text dispute_id PK
+        integer evidence_index PK
+        text carrier_name
+        text carrier_name_other
+        text tracking_number
+        text tracking_url
+    }
+    evidence_info_refund {
+        integer index PK
+        text dispute_id PK
+        integer evidence_index PK
+        text id
+    }
+    evidence {
+        integer index PK
+        text dispute_id PK
+        text action_info_action
+        boolean action_info_mandatory
+        text action_info_response_option
+        text date
+        text dispute_life_cycle_stage
+        text evidence_type
+        text item_id
+        text item_type
+        text notes
+        text source
+    }
+    offer_history {
+        integer index PK
+        text dispute_id PK
+        text actor
+        text amount
+        text currency_code
+        text dispute_life_cycle_stage
+        text event_type
+        text notes
+        timestamp time
+        text type
+    }
+    supporting_info {
+        integer index PK
+        text dispute_id PK
+        text dispute_life_cycle_stage
+        text notes
+        timestamp provided_time
+        text source
+    }
+    adjudication {
+        integer index PK
+        text dispute_id PK
+        timestamp adjudication_time
+        text dispute_life_cycle_stage
+        text reason
+        text type
+    }
+    dispute {
+        text id PK
+        text amount
+        text asset_quantity
+        text asset_symbol
+        text buyer_contacted_channel
+        timestamp buyer_contacted_time
+        timestamp buyer_response_due_date
+        text canceled_recurring_billing_cancellation_details_cancellation_date
+        text canceled_recurring_billing_cancellation_details_cancellation_mode
+        text canceled_recurring_billing_cancellation_details_cancellation_number
+        boolean canceled_recurring_billing_cancellation_details_cancelled
+        text canceled_recurring_billing_expected_refund_amount
+        text canceled_recurring_billing_expected_refund_currency_code
+        text cancellation_details_cancellation_date
+        text cancellation_details_cancellation_mode
+        text cancellation_details_cancellation_number
+        boolean cancellation_details_cancelled
+        text channel
+        timestamp create_time
+        boolean credit_not_processed_agreed_refund_details_merchant_agreed_refund
+        timestamp credit_not_processed_agreed_refund_details_merchant_agreed_refund_time
+        text credit_not_processed_amount
+        text credit_not_processed_cancellation_details_cancellation_date
+        text credit_not_processed_cancellation_details_cancellation_mode
+        text credit_not_processed_cancellation_details_cancellation_number
+        boolean credit_not_processed_cancellation_details_cancelled
+        text credit_not_processed_currency_code
+        text credit_not_processed_issue_type
+        text credit_not_processed_product_details_description
+        text credit_not_processed_product_details_expected_delivery_date
+        text credit_not_processed_product_details_product_received
+        text credit_not_processed_product_details_product_received_time
+        text credit_not_processed_product_details_purchase_url
+        text credit_not_processed_product_details_return_details_mode
+        boolean credit_not_processed_product_details_return_details_receipt
+        text credit_not_processed_product_details_return_details_return_confirmation_number
+        timestamp credit_not_processed_product_details_return_details_return_time
+        boolean credit_not_processed_product_details_returned
+        text currency_code
+        text duplicate_transaction_original_buyer_transaction_id
+        text duplicate_transaction_original_seller_transaction_id
+        boolean duplicate_transaction_received_duplicate
+        text email
+        text external_reason_code
+        text incorrect_transaction_amount_correct_transaction_amount
+        text incorrect_transaction_amount_correct_transaction_asset_quantity
+        text incorrect_transaction_amount_correct_transaction_asset_symbol
+        text incorrect_transaction_amount_correct_transaction_currency_code
+        timestamp incorrect_transaction_amount_correct_transaction_time
+        text issue_type
+        text life_cycle_stage
+        boolean merchant_contacted
+        text merchant_contacted_mode
+        text merchant_contacted_outcome
+        timestamp merchant_contacted_time
+        text note
+        text offer_buyer_requested_amount
+        text offer_buyer_requested_currency_code
+        text offer_seller_offered_amount
+        text offer_seller_offered_currency_code
+        text offer_type
+        text outcome_asset_refunded_quantity
+        text outcome_asset_refunded_symbol
+        text outcome_code
+        text outcome_refunded_amount
+        text outcome_refunded_currency_code
+        boolean payment_by_other_means_charge_different_from_original
+        text payment_by_other_means_payment_instrument_suffix
+        text payment_by_other_means_payment_method
+        boolean payment_by_other_means_received_duplicate
+        text product_details_description
+        text product_details_expected_delivery_date
+        text product_details_product_received
+        text product_details_product_received_time
+        text product_details_purchase_url
+        text product_details_return_details_mode
+        boolean product_details_return_details_receipt
+        text product_details_return_details_return_confirmation_number
+        timestamp product_details_return_details_return_time
+        boolean product_details_returned
+        text reason
+        text refund_details_allowed_refund_amount
+        text refund_details_allowed_refund_currency_code
+        text return_shipping_address_address_line_1
+        text return_shipping_address_address_line_2
+        text return_shipping_address_address_line_3
+        text return_shipping_address_admin_area_1
+        text return_shipping_address_admin_area_2
+        text return_shipping_address_admin_area_3
+        text return_shipping_address_admin_area_4
+        text return_shipping_address_country_code
+        text return_shipping_address_details_building_name
+        text return_shipping_address_details_delivery_service
+        text return_shipping_address_details_street_name
+        text return_shipping_address_details_street_number
+        text return_shipping_address_details_street_type
+        text return_shipping_address_details_sub_building
+        text return_shipping_address_postal_code
+        text seller_response_due_date
+        text service_details_description
+        text service_details_note
+        text service_details_purchase_url
+        text service_details_service_started
+        text status
+        timestamp time_posted
+        timestamp update_time
+    }
+    dispute_sub_reason {
+        integer index PK
+        text type PK
+        text dispute_id PK
+        text name
+    }
+    product {
+        text id PK
+        text category
+        timestamp create_time
+        text description
+        text name
+        text type
+        timestamp update_time
+    }
+    payment_detail {
+        integer index PK
+        text invoice_id PK
+        text amount
+        text currency_code
+        text date
+        text id
+        text method
+        text note
+        text shipping_info_address_city
+        text shipping_info_address_country_code
+        text shipping_info_address_line_1
+        text shipping_info_address_line_2
+        text shipping_info_address_postal_code
+        text shipping_info_address_state
+        text shipping_info_method
+        text shipping_info_name
+        text shipping_info_secondary_address_city
+        text shipping_info_secondary_address_country_code
+        text shipping_info_secondary_address_line_1
+        text shipping_info_secondary_address_line_2
+        text shipping_info_secondary_address_postal_code
+        text shipping_info_secondary_address_state
+        text type
+    }
+    invoice_item {
+        integer index PK
+        text invoice_id PK
+        timestamp date
+        text description
+        text discount_amount
+        text discount_currency_code
+        text discount_percent
+        text id
+        text name
+        text quantity
+        text tax_amount
+        text tax_currency_code
+        text tax_name
+        text tax_percent
+        text unit_amount
+        text unit_currency_code
+        text unit_of_measure
+    }
+    refund_detail {
+        integer index PK
+        text invoice_id PK
+        text amount
+        text currency_code
+        text date
+        text id
+        text method
+        text type
+    }
+    invoicer_info_phone {
+        integer index PK
+        text invoice_id PK
+        text country_code
+        text extension_number
+        text national_number
+    }
+    additional_recipient {
+        integer index PK
+        text invoice_id PK
+        text email_address
+    }
+    billing_info_phone {
+        integer index PK
+        text invoice_id PK
+        integer primary_recipient_index PK
+        text country_code
+        text extension_number
+        text national_number
+    }
+    primary_recipient {
+        integer index PK
+        text invoice_id PK
+        text billing_info_additional_info
+        text billing_info_email_address
+        text billing_info_language
+        text billing_info_name
+        text shipping_info_address_city
+        text shipping_info_address_country_code
+        text shipping_info_address_line_1
+        text shipping_info_address_line_2
+        text shipping_info_address_postal_code
+        text shipping_info_address_state
+        text shipping_info_method
+        text shipping_info_name
+        text shipping_info_secondary_address_city
+        text shipping_info_secondary_address_country_code
+        text shipping_info_secondary_address_line_1
+        text shipping_info_secondary_address_line_2
+        text shipping_info_secondary_address_postal_code
+        text shipping_info_secondary_address_state
+    }
+    invoice {
+        text id PK
+        boolean allow_tip
+        text amount
+        text currency_code
+        text date
+        text due_amount
+        text due_currency_code
+        text gratuity_amount
+        text gratuity_currency_code
+        text invoicer_info_additional_notes
+        text invoicer_info_email_address
+        text invoicer_info_logo_url
+        text invoicer_info_tax_id
+        text invoicer_info_website
+        text memo
+        text note
+        text number
+        text parent_id
+        boolean partial_payment_allow_partial_payment
+        text partial_payment_minimal_amount_due_amount
+        text partial_payment_minimal_amount_due_currency_code
+        text payment_term_due_date
+        text payment_term_type
+        text reference
+        text status
+        boolean tax_calculated_after_discount
+        boolean tax_inclusive
+        text template_id
+        text term
+        text terms_and_conditions
+    }
+    balance_detail {
+        integer index PK
+        text account_id PK
+        timestamp as_of_time PK
+        text available_balance_amount
+        text available_balance_currency_code
+        text currency
+        boolean is_primary
+        text withheld_balance_amount
+        text withheld_balance_currency_code
+    }
+    balance {
+        text account_id PK
+        timestamp as_of_time PK
+    }
+    transaction_item_checkout_option }o--|| transaction_item_detail : "fk"
+    transaction_item_checkout_option }o--|| transaction : "fk"
+    transaction_item_tax_amount }o--|| transaction_item_detail : "fk"
+    transaction_item_tax_amount }o--|| transaction : "fk"
+    transaction_item_detail }o--|| transaction : "fk"
+    transaction_item_detail }o--|| transaction : "fk"
+    incentive }o--|| transaction : "fk"
+    incentive }o--|| transaction : "fk"
+    pricing_tier }o--|| billing_plan : "fk"
+    pricing_tier }o--|| billing_cycle : "fk"
+    billing_cycle }o--|| billing_plan : "fk"
+    disputed_transaction_item_service_details_sub_reason }o--|| dispute : "fk"
+    disputed_transaction_item_service_details_sub_reason }o--|| disputed_transaction_item : "fk"
+    disputed_transaction_item }o--|| dispute : "fk"
+    disputed_transaction_item }o--|| disputed_transaction : "fk"
+    disputed_transaction }o--|| dispute : "fk"
+    dispute_message }o--|| dispute : "fk"
+    money_movement }o--|| dispute : "fk"
+    tracking_info }o--|| dispute : "fk"
+    tracking_info }o--|| evidence : "fk"
+    evidence_info_refund }o--|| dispute : "fk"
+    evidence_info_refund }o--|| evidence : "fk"
+    evidence }o--|| dispute : "fk"
+    offer_history }o--|| dispute : "fk"
+    supporting_info }o--|| dispute : "fk"
+    adjudication }o--|| dispute : "fk"
+    dispute_sub_reason }o--|| dispute : "fk"
+    payment_detail }o--|| invoice : "fk"
+    invoice_item }o--|| invoice : "fk"
+    refund_detail }o--|| invoice : "fk"
+    invoicer_info_phone }o--|| invoice : "fk"
+    additional_recipient }o--|| invoice : "fk"
+    billing_info_phone }o--|| invoice : "fk"
+    billing_info_phone }o--|| primary_recipient : "fk"
+    primary_recipient }o--|| invoice : "fk"
+    balance_detail }o--|| balance : "fk"
+    balance_detail }o--|| balance : "fk"

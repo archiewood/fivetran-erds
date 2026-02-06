@@ -1,0 +1,102 @@
+erDiagram
+    action {
+        text id PK
+        text account_id FK
+        text entity_id FK
+        text allow_attachment_on_open
+        text allow_attachment_on_return
+        text auto_return_linked_action
+        text blocked_by_reservation_action_id
+        text change_return_name
+        text created_at
+        text deactivate_depreciation
+        text feature_id
+        text fields_counter
+        text has_all_entities
+        text has_all_statuses
+        text icon
+        text is_active
+        text is_auto_returnable
+        text is_creating_entity_objects
+        text is_default
+        text is_returnable
+        text is_system
+        text key
+        text name
+        text on_mobile_perform_group_action_before_scan_record
+        text on_web_perform_group_action_before_scan_record
+        text ordering
+        text perform_on_not_returned
+        text return_name
+        text track_gps
+        text type
+        text updated_at
+    }
+    groups {
+        text id PK
+        text icon
+        text key
+        text name
+    }
+    %% The Asset Panda API refers to Assets as a Group Object
+    group_object {
+        text id PK
+        text group_id PK
+        jsonb action_objects
+        text created_at
+        text display_name
+        text display_with_secondary
+        text entity_id
+        text has_audit_history
+        text is_archived
+        text is_deletable
+        text is_editable
+        text is_locked
+        text object_appreciation
+        text object_depreciation
+        text object_version_ids
+        text secondary_name
+        text share_url
+        text updated_at
+    }
+    action_group {
+        text action_id PK
+        text id PK
+        text attachments_in_replication
+        text default_status_id
+        text filter_fields_by
+        text filter_fields_by_status
+        text require_comment_on_object_delete
+        text show_associated
+        text show_linked
+        text track_gps
+    }
+    users {
+        text id PK
+        text account_id
+        text email
+        text first_name
+        text integ_ad_sid
+        text is_active
+        text is_admin
+        text last_name
+        text template_rule_id
+    }
+    action_field {
+        text id PK
+        text action_id PK
+        text entity_id FK
+        text is_only_embedded
+        text is_open_field
+        text is_required
+        text key
+        text name
+        text type
+    }
+    action }o--|| groups : "fk"
+    action }o--|| users : "fk"
+    group_object }o--|| groups : "fk"
+    action_group }o--|| groups : "fk"
+    action_group }o--|| action : "fk"
+    action_field }o--|| groups : "fk"
+    action_field }o--|| action : "fk"

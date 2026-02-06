@@ -1,0 +1,290 @@
+erDiagram
+    creative_history {
+        text id PK
+        timestamp updated_at PK
+        text ad_account_id FK
+        text app_install_icon_media_id FK
+        text deep_link_icon_media_id FK
+        text longform_video_media_id FK
+        text top_snap_media_id FK
+        text ad_product
+        text app_install_android_app_url
+        text app_install_app_name
+        text app_install_ios_app_id
+        text attachment_type
+        text brand_name
+        text call_to_action
+        timestamp created_at
+        text deep_link_android_app_url
+        text deep_link_app_name
+        text deep_link_ios_app_id
+        text deep_link_uri
+        text headline
+        text name
+        text packaging_status
+        text playback_type
+        text preview_creative_id
+        text review_status
+        boolean shareable
+        text top_snap_crop_position
+        text type
+    }
+    funding_source_history {
+        text id PK
+        timestamp updated_at PK
+        text organization_id FK
+        bigint available_credit_micro
+        bigint budget_spent_micro
+        text card_type
+        timestamp created_at
+        text currency
+        text daily_spend_limit_currency
+        bigint daily_spend_limit_micro
+        text email
+        text end_date
+        text expiration_month
+        text expiration_year
+        text last_4_digits_of_card
+        text name
+        text start_date
+        text status
+        bigint total_budget_micro
+        text type
+        bigint value_micro
+    }
+    organization_history {
+        text id PK
+        timestamp updated_at PK
+        text address_line_1
+        text administrative_district_level_1
+        text country
+        timestamp created_at
+        text locality
+        text name
+        text postal_code
+        text type
+    }
+    targeting_geolocation_history {
+        text _fivetran_id PK
+        text ad_squad_id FK
+        timestamp ad_squad_updated_at FK
+        text country_code
+        text geo_type
+        text geo_value
+        text operation
+    }
+    ad_account_history {
+        text id PK
+        timestamp updated_at PK
+        text organization_id FK
+        text advertiser
+        timestamp created_at
+        text currency
+        bigint lifetime_spend_cap_micro
+        text name
+        text status
+        text timezone
+        text type
+    }
+    %% Campaign Reporting Tables
+%% Full documentation of reporting tables available in docs
+%% ----
+%% | Available Reporting Tables |
+%% |---------------------------|
+%% | CAMPAIGN_HOURLY_REPORT |
+%% | CAMPAIGN_DAILY_REPORT |
+%% | CAMPAIGN_UNIQUE_IMPRESSION_DAILY_REPORT |
+%% | CAMPAIGN_GEO_COUNTRY_DAILY_REPORT |
+%% | CAMPAIGN_GEO_REGION_DAILY_REPORT |
+%% | CAMPAIGN_GEO_DMA_DAILY_REPORT |
+%% | CAMPAIGN_INTEREST_DAILY_REPORT |
+%% | CAMPAIGN_DEVICE_OS_DAILY_REPORT |
+%% | CAMPAIGN_DEVICE_MAKE_DAILY_REPORT |
+%% | CAMPAIGN_DEMOGRAPHIC_DAILY_REPORT |
+    campaign_history {
+        text id PK
+        timestamp updated_at PK
+        text ad_account_id FK
+        timestamp created_at
+        bigint daily_budget_micro
+        timestamp end_time
+        bigint lifetime_spend_cap_micro
+        text name
+        text objective
+        timestamp start_time
+        text status
+    }
+    ad_account_funding_source {
+        text ad_account_id PK
+        text funding_source_id PK
+    }
+    creative_url_tag_history {
+        text key PK
+        text value PK
+        text creative_id PK
+        timestamp updated_at PK
+    }
+    audience_segment_history {
+        text id PK
+        timestamp updated_at PK
+        text ad_account_id FK
+        bigint approximate_number_users
+        timestamp created_at
+        text description
+        text name
+        integer retention_in_days
+        text source_type
+        text status
+        text targetable_status
+        text upload_status
+    }
+    ad_squad_segment_history {
+        text ad_squad_id PK
+        timestamp ad_squad_updated_at PK
+        text audience_segment_id PK
+        text operation
+    }
+    targeting_demographic_history {
+        bigint index PK
+        text ad_squad_id PK
+        timestamp ad_squad_updated_at PK
+        jsonb advanced_demographics
+        jsonb age_groups
+        text gender
+        jsonb languages
+        text min_age
+        text operation
+    }
+    snap_pixel_history {
+        text id PK
+        timestamp updated_at PK
+        text ad_account_id FK
+        timestamp created_at
+        text effective_status
+        text name
+        text pixel_javascript
+        text status
+    }
+    targeting_device_history {
+        bigint index PK
+        text ad_squad_id PK
+        timestamp ad_squad_updated_at PK
+        text os_type
+    }
+    %% AD REPORTING TABLES
+%% Full documentation of reporting tables available in docs
+%% ----
+%% | Reporting Tables |
+%% |---------------------|
+%% | AD_HOURLY_REPORT |
+%% | AD_DAILY_REPORT |
+%% | AD_UNIQUE_IMPRESSION_DAILY_REPORT |
+%% | AD_GEO_COUNTRY_DAILY_REPORT |
+%% | AD_GEO_REGION_DAILY_REPORT |
+%% | AD_GEO_DMA_DAILY_REPORT |
+%% | AD_INTEREST_DAILY_REPORT |
+%% | AD_DEVICE_OS_DAILY_REPORT |
+%% | AD_DEVICE_MAKE_DAILY_REPORT |
+%% | AD_DEMOGRAPHIC_DAILY_REPORT |
+    ad_history {
+        text id PK
+        timestamp updated_at PK
+        text ad_squad_id FK
+        text creative_id FK
+        timestamp created_at
+        boolean deleted
+        text name
+        text review_status
+        text review_status_reason
+        text status
+        text type
+    }
+    media_history {
+        text id PK
+        timestamp updated_at PK
+        text ad_account_id FK
+        timestamp created_at
+        text download_link
+        text file_name
+        text media_status
+        text name
+        text type
+    }
+    targeting_interest_history {
+        bigint index PK
+        text ad_squad_id PK
+        timestamp ad_squad_updated_at PK
+        jsonb category_id
+    }
+    %% AD SQUAD REPORTING TABLES
+%% Full documentation of reporting tables available in docs
+%% ----
+%% |Reporting Tables |
+%% |---------------------------|
+%% | AD_SQUAD_HOURLY_REPORT |
+%% | AD_SQUAD_DAILY_REPORT |
+%% | AD_SQUAD_UNIQUE_IMPRESSION_DAILY_REPORT |
+%% | AD_SQUAD_GEO_COUNTRY_DAILY_REPORT |
+%% | AD_SQUAD_GEO_REGION_DAILY_REPORT |
+%% | AD_SQUAD_GEO_DMA_DAILY_REPORT |
+%% | AD_SQUAD_INTEREST_DAILY_REPORT |
+%% | AD_SQUAD_DEVICE_OS_DAILY_REPORT |
+%% | AD_SQUAD_DEVICE_MAKE_DAILY_REPORT |
+%% | AD_SQUAD_DEMOGRAPHIC_DAILY_REPORT |
+    ad_squad_history {
+        text id PK
+        timestamp updated_at PK
+        text campaign_id FK
+        bigint audience_size_maximum
+        bigint audience_size_minimum
+        boolean auto_bid
+        bigint bid_estimate_maximum
+        bigint bid_estimate_minimum
+        bigint bid_micro
+        text bid_strategy
+        text billing_event
+        timestamp created_at
+        bigint daily_budget_micro
+        text delivery_constraint
+        timestamp end_time
+        bigint lifetime_budget_micro
+        bigint lifetime_spend_micro
+        text name
+        text optimization_goal
+        text pacing_type
+        text placement
+        timestamp start_time
+        text status
+        boolean target_bid
+        boolean targeting_regulated_content
+        text type
+    }
+    creative_history }o--|| ad_account_history : "fk"
+    creative_history }o--|| media_history : "fk"
+    creative_history }o--|| media_history : "fk"
+    creative_history }o--|| media_history : "fk"
+    creative_history }o--|| media_history : "fk"
+    funding_source_history }o--|| organization_history : "fk"
+    targeting_geolocation_history }o--|| ad_squad_history : "fk"
+    targeting_geolocation_history }o--|| ad_squad_history : "fk"
+    ad_account_history }o--|| organization_history : "fk"
+    campaign_history }o--|| ad_account_history : "fk"
+    ad_account_funding_source }o--|| ad_account_history : "fk"
+    ad_account_funding_source }o--|| funding_source_history : "fk"
+    creative_url_tag_history }o--|| creative_history : "fk"
+    creative_url_tag_history }o--|| creative_history : "fk"
+    audience_segment_history }o--|| ad_account_history : "fk"
+    ad_squad_segment_history }o--|| ad_squad_history : "fk"
+    ad_squad_segment_history }o--|| ad_squad_history : "fk"
+    ad_squad_segment_history }o--|| audience_segment_history : "fk"
+    targeting_demographic_history }o--|| ad_squad_history : "fk"
+    targeting_demographic_history }o--|| ad_squad_history : "fk"
+    snap_pixel_history }o--|| ad_account_history : "fk"
+    targeting_device_history }o--|| ad_squad_history : "fk"
+    targeting_device_history }o--|| ad_squad_history : "fk"
+    ad_history }o--|| ad_squad_history : "fk"
+    ad_history }o--|| creative_history : "fk"
+    media_history }o--|| ad_account_history : "fk"
+    targeting_interest_history }o--|| ad_squad_history : "fk"
+    targeting_interest_history }o--|| ad_squad_history : "fk"
+    ad_squad_history }o--|| campaign_history : "fk"

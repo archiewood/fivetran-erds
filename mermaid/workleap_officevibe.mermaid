@@ -1,0 +1,79 @@
+erDiagram
+    groups {
+        text id PK
+        text group_type
+        text name
+    }
+    group_user {
+        text email PK
+        text group_id PK
+    }
+    feedback_label {
+        text id PK
+        text color
+        text title
+    }
+    engagement_metric_value {
+        text id PK
+        text engagement_date PK
+        text display_name
+        text value
+    }
+    engagement {
+        text date PK
+        text group_name
+    }
+    user_managed_group {
+        text index PK
+        text user_email PK
+        text managed_group
+    }
+    user_member_group {
+        text index PK
+        text user_email PK
+        text member_group
+    }
+    users {
+        text email PK
+        text first_name
+        text fist_name
+        text is_admin
+        text is_company_manager
+        text is_group_manager
+        text job_title
+        text last_name
+        text user_name
+    }
+    feedback_tag {
+        text index PK
+        text feedback_id PK
+        text tags FK
+    }
+    feedback_reply {
+        text id PK
+        text feedback_id PK
+        text user_email FK
+        text creation_date
+        text message
+        text user_display_name
+    }
+    feedback {
+        text id PK
+        text user_email FK
+        text creation_date
+        text last_modification_date
+        text message
+        text network_id
+        text question_asked
+        text user_display_name
+    }
+    group_user }o--|| users : "fk"
+    group_user }o--|| groups : "fk"
+    engagement_metric_value }o--|| engagement : "fk"
+    user_managed_group }o--|| users : "fk"
+    user_member_group }o--|| users : "fk"
+    feedback_tag }o--|| feedback_label : "fk"
+    feedback_tag }o--|| feedback : "fk"
+    feedback_reply }o--|| users : "fk"
+    feedback_reply }o--|| feedback : "fk"
+    feedback }o--|| users : "fk"

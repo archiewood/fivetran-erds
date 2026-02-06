@@ -1,0 +1,290 @@
+erDiagram
+    usage_history_detail {
+        text index PK
+        text usage_history_asset_id PK
+        text date_on
+        text is_used
+    }
+    usage_history {
+        text asset_id PK
+        text last_updated_timestamp
+    }
+    location_label {
+        text index PK
+        text location_id PK
+        text label
+    }
+    location {
+        text id PK
+        text manager_id FK
+        text address_line_1
+        text address_line_2
+        text city
+        text cost_center
+        text country
+        text custom_location_id
+        text description
+        text external_id
+        text is_locker_enabled
+        text name
+        text phone_number
+        text phone_number_country_code
+        text postal_code
+        text scan_code
+        text state
+        text type
+    }
+    asset_history_service {
+        text id PK
+        text asset_id FK
+        text attachment_count
+        text completion_date
+        text cost
+        text cost_currency
+        text notes
+        text schedule_date
+        text service_name
+        text service_provider
+        text service_result
+        text service_state
+        text service_template_id
+    }
+    group_associated {
+        text index PK
+        text group_id PK
+        text group_associated
+    }
+    groups {
+        text id PK
+        text name
+        text parent_group_id
+    }
+    asset_service {
+        text id PK
+        text frequency
+        text is_associated
+        text service_description
+        text service_interval
+        text service_name
+        text service_period
+        text service_type
+    }
+    runtime_data {
+        text asset_id PK
+        text application_count
+        text last_seen_timestamp
+        text last_used_timestamp
+        text run_time_total
+    }
+    asset_attachment {
+        text id PK
+        text asset_id PK
+        text display_name
+        text file_name
+    }
+    asset_label {
+        text index PK
+        text asset_id PK
+        text label
+    }
+    asset {
+        text id PK
+        text current_location_id FK
+        text default_location_id FK
+        text default_parent_on_track_id FK
+        text default_worker_id FK
+        text group_id FK
+        text inventory_employee_id FK
+        text parent_on_track_id FK
+        text responsible_employee_id FK
+        text category_code
+        text child_asset_count
+        text child_quantity_item_count
+        text completed_services_count
+        text cost_code
+        text current_location_type
+        text default_location_type
+        text description
+        text external_id
+        text fleet_cost_center
+        text fleet_currency_code
+        text fleet_delivery_date
+        text fleet_exchange_or_warranty_date
+        text fleet_inventory_number
+        text fleet_is_loan_tool_claim
+        text fleet_is_theft_insurance
+        text fleet_monthly_rate
+        text fleet_organization_reference_number
+        text fleet_purchase_order_number
+        text image_id
+        text inventory_number
+        text is_hilti_tool
+        text manufacturer_id
+        text manufacturer_name
+        text model
+        text name
+        text next_service_date
+        text notes
+        text ownership_detail_purchase_currency_code
+        text ownership_detail_purchase_date
+        text ownership_detail_purchase_order_number
+        text ownership_detail_purchase_price
+        text ownership_detail_vendor
+        text ownership_detail_warranty_expiration_date
+        text ownership_type
+        text replacement_cost
+        text scan_code
+        text scan_code_type
+        text serial_number
+        text status_code
+        text storage_location
+        text sub_type_code
+        text type_code
+        text upcoming_services_count
+        text usage_condition_date
+        text usage_condition_state_code
+    }
+    asset_cost {
+        text asset_id PK
+        text source_type
+        text type
+        text value
+    }
+    worker_label {
+        text index PK
+        text worker_id PK
+        text label
+    }
+    worker {
+        text id PK
+        text address_city
+        text address_country_code
+        text address_line_1
+        text address_line_2
+        text address_postal_code
+        text address_state
+        text badge_id
+        text contract_type
+        text cost_center
+        text description
+        text designation
+        text external_id
+        text first_name
+        text is_locker_admin
+        text language_code
+        text last_name
+        text locker_rfid
+        text mobile_country_code
+        text mobile_phone_number
+        text notification_email
+        text office_country_code
+        text office_phone_number
+        text primary_emergency_country_code
+        text primary_emergency_phone_number
+        text private_home_country_code
+        text private_home_phone_number
+        text responsibility_type
+        text scan_code
+    }
+    asset_open_service {
+        text id PK
+        text asset_id FK
+        text service_description
+        text service_name
+        text service_schedule_date
+    }
+    quantity_item_label {
+        text index PK
+        text quantity_item_id PK
+        text label
+    }
+    quantity_item {
+        text id PK
+        text group_id FK
+        text can_consume
+        text description
+        text external_id
+        text inventory_number
+        text last_purchase_date
+        text last_purchase_price
+        text manufacturer_id
+        text manufacturer_name
+        text model
+        text name
+        text notes
+        text one_time_cost
+        text scan_code
+        text scan_code_type
+        text stock_unit_id
+    }
+    quantity_item_allocation {
+        text id PK
+        text quantity_item_id FK
+        text responsible_employee_id FK
+        text allocation_status
+        text allocation_type
+        text allocation_type_id
+        text main_allocation_flag
+        text stock_alert_enabled
+        text stock_max
+        text stock_min
+        text stock_quantity
+        text storage_location
+    }
+    transfer_asset_detail {
+        text id PK
+        text transfer_id PK
+        text from_location_id FK
+        text from_storage_asset_id FK
+        text from_worker_id FK
+        text quantity_item_id FK
+        text to_location_id FK
+        text to_storage_asset_id FK
+        text to_worker_id FK
+        text to_allocation_status
+        text transfer_asset_type
+        text transfer_quantity
+        text transfer_status
+    }
+    transfer {
+        text id PK
+        text creator_id FK
+        text notes
+        text origin
+        text submitted_timestamp
+        text task_code
+        text transfer_timestamp
+    }
+    usage_history_detail }o--|| usage_history : "fk"
+    usage_history }o--|| asset : "fk"
+    location_label }o--|| location : "fk"
+    location }o--|| worker : "fk"
+    asset_history_service }o--|| asset : "fk"
+    group_associated }o--|| groups : "fk"
+    runtime_data }o--|| asset : "fk"
+    asset_attachment }o--|| asset : "fk"
+    asset_label }o--|| asset : "fk"
+    asset }o--|| location : "fk"
+    asset }o--|| worker : "fk"
+    asset }o--|| asset : "fk"
+    asset }o--|| worker : "fk"
+    asset }o--|| groups : "fk"
+    asset }o--|| asset : "fk"
+    asset }o--|| location : "fk"
+    asset }o--|| worker : "fk"
+    asset_cost }o--|| asset : "fk"
+    worker_label }o--|| worker : "fk"
+    asset_open_service }o--|| asset : "fk"
+    quantity_item_label }o--|| quantity_item : "fk"
+    quantity_item }o--|| groups : "fk"
+    quantity_item_allocation }o--|| worker : "fk"
+    quantity_item_allocation }o--|| quantity_item : "fk"
+    transfer_asset_detail }o--|| worker : "fk"
+    transfer_asset_detail }o--|| location : "fk"
+    transfer_asset_detail }o--|| quantity_item : "fk"
+    transfer_asset_detail }o--|| worker : "fk"
+    transfer_asset_detail }o--|| asset : "fk"
+    transfer_asset_detail }o--|| asset : "fk"
+    transfer_asset_detail }o--|| location : "fk"
+    transfer_asset_detail }o--|| transfer : "fk"
+    transfer }o--|| worker : "fk"

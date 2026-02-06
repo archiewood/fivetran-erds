@@ -1,0 +1,401 @@
+erDiagram
+    audit_all_status {
+        text index PK
+        text audit_id PK
+        text all_status
+    }
+    audit_auditor {
+        text index PK
+        text audit_id PK
+        text auditor_id FK
+        text user_id FK
+    }
+    audit {
+        text id PK
+        text entity_id FK
+        text organisation_id FK
+        text questionnaire_id FK
+        text status_id FK
+        text account_id
+        jsonb asset_name
+        text can_be_copied
+        text can_be_deleted
+        text can_be_edited
+        text can_view_non_conformances
+        text can_view_reports
+        text can_view_summary
+        text close_date
+        text close_meeting
+        text comment
+        text enabled_external_link
+        text enabled_internal_link
+        text end_date
+        text entity_name
+        text has_secure_external_links
+        text has_secure_internal_links
+        text is_announced
+        text is_checklist_generated
+        text is_entity_confirmed
+        text is_linked_to_activity
+        text is_locked
+        text is_paid
+        text locked_by
+        text locked_by_user_id
+        text note
+        text open_meeting
+        text paid_by
+        text purchase_item_id
+        text purpose_id
+        text read_only
+        text repeated_by_audit_number
+        text repeating_audit_number
+        text result
+        text result_final
+        text review_date
+        text score
+        text score_details
+        text score_details_threshold
+        text show_application_menu
+        text show_only_organisations
+        text start_date
+        text total_answered
+        text total_attachments
+        text total_non_conformances
+        text total_outstanding_non_conformances
+        text total_questions
+    }
+    audit_checklist_response {
+        text id PK
+        text answer_id PK
+        text audit_id PK
+        text section_name PK
+        text auto_non_conformance_id
+        text auto_raise_non_conformance
+        text changes_made
+        text comment
+        text comment_id
+        text duplicate_section
+        text is_attachment_compulsory
+        text is_compulsory
+        text is_multi_required_select_any
+        text is_multiline
+        text is_not_applicable
+        text is_scored
+        text is_selected
+        text is_subj
+        text is_trigger
+        text object_type
+        text observation
+        text observation_id
+        text original_response_id
+        text question_item_id
+        text regex
+        text response_text
+        text score
+        text section_to_duplicate
+        text sequence
+        text sub_header_sequence
+    }
+    audit_checklist_question {
+        text answer_id PK
+        text audit_id PK
+        text section_name PK
+        text allow_data_copy
+        text attachment_count
+        text completed_percentage
+        text current_position
+        text is_answered
+        text is_attachment_compulsory
+        text is_compulsory
+        text is_critical
+        text is_first_question
+        text is_flagged
+        text is_last_question
+        text is_not_applicable
+        text non_scored_responses_selected
+        text original_section_name
+        text question_id
+        text question_number
+        text question_text
+        text response_count
+        text restrict_editing
+        text risk
+        text scored_response_count
+        text section_sequence
+        text theme_1
+        text threshold_score
+        text total_questions
+    }
+    audit_checklist {
+        text section_name PK
+        text audit_id PK
+        text completed_percentage
+        text has_flagged_questions
+        text is_duplicate
+        text non_conformance_count
+        text original_section_name
+        text section_sequence
+        text total_answered
+        text total_questions
+    }
+    checklist_theme_1_summary {
+        text section_name PK
+        text audit_id PK
+        text average_score
+        text completed_percentage
+        text has_flagged_questions
+        text is_duplicate
+        text non_conformance_count
+        text section_sequence
+        text total_answered
+        text total_na_questions
+        text total_questions
+        text total_score
+        text total_threshold_score
+    }
+    non_conformance {
+        text id PK
+        text answer_id FK
+        text audit_id FK
+        text audit_status_id FK
+        text closed_by_auditor_id FK
+        text entity_id FK
+        text originator_id FK
+        text agreed_date
+        text attachments_count
+        text can_delete
+        text can_edit
+        text closed_date
+        text description
+        text entity_name
+        text entity_time_zone_id
+        text is_closed
+        text is_sfi
+        text reference
+        text reported_date
+        text short_description
+        text status
+        text status_id
+        text type
+        text type_id
+    }
+    organisation {
+        text id PK
+        text address_1
+        text city
+        text code
+        text country
+        text email
+        text entity_user_group_id
+        text is_assigned
+        text is_audit_license
+        text is_audit_organisation
+        text is_entity_organisation
+        text manager_user_group_id
+        text name
+        text number_of_users
+        text other_user_group_id
+        text phone_number
+        text state
+    }
+    entity_category {
+        text index PK
+        text entity_id PK
+        text color
+        text id
+        text name
+        text parent_id
+    }
+    entity {
+        text id PK
+        text parent_id FK
+        text status_id FK
+        text address_line_1
+        text address_line_2
+        text assigned_audit_organization_id
+        text business_hours_close
+        text business_hours_open
+        text city
+        text country
+        text fax_number
+        text full_name
+        text fulltime_staff
+        text is_structure_only
+        text last_modified_date
+        text phone_number
+        text postcode
+        text reference
+        text region_id
+        text region_name
+        text risk_result_color
+        text risk_result_id
+        text risk_result_name
+        text short_name
+        text size
+        text size_name
+        text state
+        text trading_name
+        text travel_distance
+    }
+    audit_status {
+        text id PK
+        text color
+        text is_assigned
+        text name
+        text phase_id
+        text phase_name
+        text sequence
+        text update_audit_end_date
+    }
+    checklist_section_summary {
+        text section_name PK
+        text audit_id PK
+        text average_score
+        text completed_percentage
+        text has_flagged_questions
+        text is_duplicate
+        text non_conformance_count
+        text section_sequence
+        text total_answered
+        text total_na_questions
+        text total_questions
+        text total_score
+        text total_threshold_score
+    }
+    questionnaire_standard {
+        text id PK
+        text questionnaire_id PK
+        text name
+        text reference
+    }
+    questionnaire_category {
+        text id PK
+        text questionnaire_id PK
+        text is_assigned
+        text name
+    }
+    questionnaire_status {
+        text id PK
+        text questionnaire_id PK
+        text override_compulsory_question_validation
+        text show_submit_button
+    }
+    questionnaire {
+        text id PK
+        text assign_organisations_only
+        text auto_schedule
+        text base_questionnaire_id
+        text can_be_edited
+        text colour
+        text created_date
+        text creator_email
+        text creator_name
+        text enable_auto_numbering
+        text estimated_hours
+        text force_section_view
+        jsonb industries
+        text is_active
+        text is_assigned
+        text is_free
+        text is_public
+        text name
+        text purchase_id
+        text repeat_interval
+        text repeat_non_conformances_only
+        text repeat_number
+        text repeat_questionnaire_id
+        text result_id_on_critical_fail
+        text scope
+        text show_progress_indicators
+        text skip_sync_audit_date_to_car_date
+        text system_generated
+        text terms
+    }
+    user_group {
+        text id PK
+        text user_id PK
+        text is_assigned
+        text is_entity_group
+        text is_restricted_group
+        text is_system_group
+        text name
+        text template
+    }
+    users {
+        text id PK
+        text auditor_id FK
+        text organisation_id FK
+        text account_id
+        text can_be_edited
+        text contact_id
+        text email
+        text enable_multi_factor_auth
+        text first_name
+        text full_name
+        text is_account_administrator
+        text is_active
+        text is_deleted
+        text is_locked
+        text is_logged_in
+        text is_organisation_administrator
+        text is_restricted
+        text landing_page
+        text last_name
+        text multi_factor_auth_mobile_number
+        text multi_factor_auth_mobile_number_pending
+        text multi_factor_auth_use_email
+        text multi_factor_auth_use_mobile
+        text must_change_password
+        text password_never_expires
+        text restrict_edit_reason
+        text time_zone_id
+        text use_external_login
+        text user_name
+    }
+    auditor {
+        text id PK
+        text organisation_id FK
+        text user_id FK
+        text active
+        text assigned
+        text confirmed
+        text email
+        text full_name
+        text has_audit
+        text is_available
+        text role_id
+    }
+    audit_all_status }o--|| audit : "fk"
+    audit_auditor }o--|| auditor : "fk"
+    audit_auditor }o--|| users : "fk"
+    audit_auditor }o--|| audit : "fk"
+    audit }o--|| entity : "fk"
+    audit }o--|| organisation : "fk"
+    audit }o--|| audit_status : "fk"
+    audit }o--|| questionnaire : "fk"
+    audit_checklist_response }o--|| audit_checklist_question : "fk"
+    audit_checklist_response }o--|| audit_checklist_question : "fk"
+    audit_checklist_response }o--|| audit_checklist_question : "fk"
+    audit_checklist_question }o--|| audit_checklist : "fk"
+    audit_checklist_question }o--|| audit_checklist : "fk"
+    audit_checklist }o--|| audit : "fk"
+    checklist_theme_1_summary }o--|| audit : "fk"
+    non_conformance }o--|| entity : "fk"
+    non_conformance }o--|| audit_checklist_question : "fk"
+    non_conformance }o--|| audit_status : "fk"
+    non_conformance }o--|| audit : "fk"
+    non_conformance }o--|| auditor : "fk"
+    non_conformance }o--|| auditor : "fk"
+    entity_category }o--|| entity : "fk"
+    entity }o--|| audit_status : "fk"
+    entity }o--|| entity : "fk"
+    checklist_section_summary }o--|| audit : "fk"
+    questionnaire_standard }o--|| questionnaire : "fk"
+    questionnaire_category }o--|| questionnaire : "fk"
+    questionnaire_status }o--|| audit_status : "fk"
+    questionnaire_status }o--|| questionnaire : "fk"
+    user_group }o--|| users : "fk"
+    users }o--|| organisation : "fk"
+    users }o--|| auditor : "fk"
+    auditor }o--|| users : "fk"
+    auditor }o--|| organisation : "fk"

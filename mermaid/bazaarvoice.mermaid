@@ -1,0 +1,100 @@
+erDiagram
+    review_client_response {
+        text index PK
+        text review_id PK
+        text date
+        text department
+        text name
+        text response
+        text source
+        text source_client_name
+        text type
+    }
+    review {
+        text id PK
+        text product_id FK
+        jsonb additional_fields
+        jsonb additional_fields_order
+        text author_id
+        jsonb badges
+        jsonb badges_order
+        text campaign_id
+        text cid
+        jsonb comment_ids
+        text cons
+        text content_locale
+        jsonb context_data_values
+        jsonb context_data_values_order
+        text helpfulness
+        jsonb inappropriate_feedback_list
+        text is_featured
+        text is_ratings_only
+        text is_recommended
+        text is_syndicated
+        text last_moderated_time
+        timestamp last_modification_time
+        text moderation_status
+        text original_product_name
+        jsonb photos
+        text product_recommendation_ids
+        text pros
+        text rating
+        text rating_range
+        text review_text
+        jsonb secondary_ratings
+        jsonb secondary_ratings_order
+        text source_client
+        text submission_id
+        text submission_time
+        jsonb tag_dimensions
+        jsonb tag_dimensions_order
+        text title
+        text total_client_response_count
+        text total_comment_count
+        text total_feedback_count
+        text total_inappropriate_feedback_count
+        text total_negative_feedback_count
+        text total_positive_feedback_count
+        text user_location
+        text user_nickname
+        jsonb videos
+    }
+    product {
+        text id PK
+        text category_id FK
+        text active
+        jsonb attributes
+        jsonb attributes_order
+        jsonb brand
+        jsonb brand_external_id
+        text description
+        text disabled
+        jsonb eans
+        jsonb family_ids
+        text image_url
+        jsonb isbns
+        jsonb manufacturer_part_numbers
+        jsonb model_numbers
+        text name
+        jsonb product_page_url
+        jsonb question_ids
+        jsonb story_ids
+        jsonb upcs
+    }
+    product_category {
+        text id PK
+        text active
+        jsonb attributes
+        jsonb attributes_order
+        text category_page_url
+        text disabled
+        text image_url
+        text name
+        text parent_id
+        jsonb product_ids
+        jsonb question_ids
+        jsonb story_ids
+    }
+    review_client_response }o--|| review : "fk"
+    review }o--|| product : "fk"
+    product }o--|| product_category : "fk"

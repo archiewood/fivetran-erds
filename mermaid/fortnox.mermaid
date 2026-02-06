@@ -1,0 +1,280 @@
+erDiagram
+    invoice_payment {
+        text number PK
+        text amount
+        text booked
+        text currency
+        text currency_rate
+        text currency_unit
+        text invoice_number
+        text last_modified
+        text payment_date
+        text source
+        text url
+        text write_off_exist
+    }
+    voucher {
+        text number PK
+        text series PK
+        text year PK
+        text approval_state
+        text comment
+        text description
+        text reference_number
+        text reference_type
+        text transaction_date
+        text url
+    }
+    contract {
+        text document_number PK
+        text customer_number FK
+        text continuous
+        text contract_length
+        text currency
+        text invoice_interval
+        text invoice_remaining
+        text last_invoice_date
+        text period_end
+        text period_start
+        text status
+        text template_number
+        text total
+        text url
+    }
+    project {
+        text number PK
+        text description
+        text end_date
+        text project_leader
+        text start_date
+        text status
+        text url
+    }
+    tax_reduction {
+        text id PK
+        text approved_amount
+        text customer_name
+        text reference_document_type
+        text reference_number
+        text social_urity_number
+        text url
+    }
+    article {
+        text number PK
+        text description
+        text disposable_quantity
+        text ean
+        text housework
+        text last_modified
+        text purchase_price
+        text quantity_in_stock
+        text reserved_quantity
+        text sales_price
+        text stock_place
+        text stock_value
+        text unit
+        text url
+        text vat
+        text webshop_article
+    }
+    offer {
+        text document_number PK
+        text customer_number FK
+        text cancelled
+        text currency
+        text last_modified
+        text offer_date
+        text project
+        text sent
+        text total
+        text url
+    }
+    price_list {
+        text code PK
+        text comment
+        text description
+        text pre_selected
+        text url
+    }
+    absence_transaction {
+        text id PK
+        text cause_code
+        text cost_center
+        text date
+        text employee_id
+        text extent
+        text holiday_entitling
+        jsonb hours
+        text project
+        text url
+    }
+    voucher_connection_file {
+        text id PK
+        text voucher_number FK
+        text voucher_series FK
+        text description
+        text url
+    }
+    supplier {
+        text number PK
+        text active
+        text address_1
+        text address_2
+        text bank_account_number
+        text bg
+        text bic
+        text city
+        text cost_center
+        text country_code
+        text currency
+        text disable_payment_file
+        text email
+        text iban
+        text name
+        text organisation_number
+        text pg
+        text phone
+        text pre_defined_account
+        text project
+        text terms_of_payment
+        text url
+        text zip_code
+    }
+    orders {
+        text document_number PK
+        text customer_number FK
+        text cancelled
+        text currency
+        text delivery_date
+        text external_invoice_reference_1
+        text external_invoice_reference_2
+        text last_modified
+        text order_date
+        text order_type
+        text project
+        text sent
+        text total
+        text url
+    }
+    invoice {
+        text _fivetran_id PK
+        text customer_number FK
+        text voucher_number FK
+        text balance
+        text booked
+        text cancelled
+        text cost_center
+        text currency
+        text currency_rate
+        text currency_unit
+        text document_number
+        text due_date
+        text external_invoice_reference_1
+        text external_invoice_reference_2
+        text final_pay_date
+        text invoice_date
+        text invoice_type
+        text last_modified
+        text nox_finans
+        text ocr
+        text project
+        text sent
+        text terms_of_payment
+        text total
+        text url
+        text way_of_delivery
+    }
+    supplier_invoice_voucher {
+        text series PK
+        text year PK
+        text number PK
+        text supplier_number PK
+    }
+    supplier_invoice {
+        text number PK
+        text supplier_number PK
+        text authorizer_name
+        text balance
+        text booked
+        text cancel
+        text cost_center
+        text credit
+        text currency
+        text currency_rate
+        text currency_unit
+        text due_date
+        text external_invoice_number
+        text external_invoice_series
+        text final_pay_date
+        text invoice_date
+        text invoice_number
+        text project
+        text total
+        text url
+    }
+    asset {
+        text id PK
+        text acquisition_date
+        text acquisition_value
+        text depreciated_to
+        text depreciation_final
+        text description
+        text number
+        text status
+        text status_id
+        text type
+        text type_id
+        text url
+    }
+    account {
+        text number PK
+        text active
+        text balance_brought_forward
+        text cost_center
+        text cost_center_settings
+        text description
+        text last_modified
+        text project
+        text project_settings
+        text sru
+        text url
+        text vat_code
+        text year
+    }
+    supplier_invoice_payment {
+        text number PK
+        text amount
+        text booked
+        text currency
+        text currency_rate
+        text currency_unit
+        text invoice_number
+        text last_modified
+        text payment_date
+        text source
+        text url
+        text write_off_exist
+    }
+    customer {
+        text number PK
+        text address_1
+        text address_2
+        text city
+        text email
+        text last_modified
+        text name
+        text organisation_number
+        text phone
+        text url
+        text zip_code
+    }
+    contract }o--|| customer : "fk"
+    offer }o--|| customer : "fk"
+    voucher_connection_file }o--|| voucher : "fk"
+    voucher_connection_file }o--|| voucher : "fk"
+    orders }o--|| customer : "fk"
+    invoice }o--|| voucher : "fk"
+    invoice }o--|| customer : "fk"
+    supplier_invoice_voucher }o--|| voucher : "fk"
+    supplier_invoice_voucher }o--|| supplier_invoice : "fk"
+    supplier_invoice }o--|| supplier : "fk"

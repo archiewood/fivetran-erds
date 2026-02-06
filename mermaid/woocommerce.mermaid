@@ -1,0 +1,706 @@
+erDiagram
+    shipping_zone_location {
+        text code PK
+        text shipping_zone_id PK
+        text type
+    }
+    system_status_tool {
+        text id PK
+        text action
+        text confirm
+        text description
+        text message
+        text name
+        text success
+    }
+    product_review {
+        text id PK
+        text product_id FK
+        text date_created
+        text date_created_gmt
+        text rating
+        text review
+        text reviewer
+        text reviewer_avatar_urls_24
+        text reviewer_avatar_urls_48
+        text reviewer_avatar_urls_96
+        text reviewer_email
+        text status
+        text verified
+    }
+    attribute_term {
+        text id PK
+        text attribute_id FK
+        text count
+        text description
+        text menu_order
+        text name
+        text slug
+    }
+    tax_class {
+        text slug PK
+        text name
+    }
+    product_download {
+        text id PK
+        text product_id FK
+        text file
+        text name
+    }
+    product_attribute_option {
+        text option PK
+        text product_attribute_id PK
+        text product_attribute_index PK
+        text product_id PK
+    }
+    product_attribute {
+        text id PK
+        text index PK
+        text product_id PK
+        text name
+        text position
+        text variation
+        text visible
+    }
+    product_image {
+        text id PK
+        text product_id FK
+        text alt
+        text date_created
+        text date_created_gmt
+        text date_modified
+        text date_modified_gmt
+        text name
+        text src
+    }
+    product_category {
+        text category_id PK
+        text product_id PK
+    }
+    product_metadata {
+        text index PK
+        text product_id PK
+        text id
+        text key
+        jsonb value
+    }
+    product_related_product_id {
+        text related_product_id PK
+        text product_id PK
+    }
+    product_tag {
+        text product_id PK
+        text tag_id PK
+    }
+    product_default_attribute {
+        text id PK
+        text product_id FK
+        text name
+        text option
+    }
+    product {
+        text id PK
+        text shipping_class_id FK
+        text average_rating
+        text backordered
+        text backorders
+        text backorders_allowed
+        text button_text
+        text catalog_visibility
+        jsonb cross_sell_ids
+        text date_created
+        text date_created_gmt
+        text date_modified
+        text date_modified_gmt
+        text date_on_sale_from
+        text date_on_sale_from_gmt
+        text date_on_sale_to
+        text date_on_sale_to_gmt
+        text description
+        text dimensions_height
+        text dimensions_length
+        text dimensions_width
+        text download_expiry
+        text download_limit
+        text downloadable
+        text external_url
+        text featured
+        jsonb grouped_products
+        text manage_stock
+        text menu_order
+        text name
+        text on_sale
+        text parent_id
+        text permalink
+        text price
+        text price_html
+        text purchasable
+        text purchase_note
+        text rating_count
+        text regular_price
+        text reviews_allowed
+        text sale_price
+        text shipping_class
+        text shipping_required
+        text shipping_taxable
+        text short_description
+        text sku
+        text slug
+        text sold_individually
+        text status
+        text stock_quantity
+        text stock_status
+        text tax_class
+        text tax_status
+        text total_sales
+        text type
+        jsonb upsell_ids
+        jsonb variations
+        text virtual
+        text weight
+    }
+    order_metadata {
+        text index PK
+        text order_id PK
+        text id
+        text key
+        jsonb value
+    }
+    order_line_item_tax {
+        text id PK
+        text order_id PK
+        text order_line_item_id PK
+        text compound
+        text label
+        text rate_code
+        text rate_id
+        text shipping_tax_total
+        text subtotal
+        text tax_total
+        text total
+    }
+    order_line_item_metadata {
+        text index PK
+        text order_id PK
+        text order_line_item_id PK
+        text id
+        text key
+        jsonb value
+    }
+    order_line_item {
+        text id PK
+        text order_id PK
+        text product_id FK
+        text variation_id FK
+        text name
+        text price
+        text quantity
+        text sku
+        text subtotal
+        text subtotal_tax
+        text tax_class
+        text total
+        text total_tax
+    }
+    order_refund {
+        text order_id PK
+        text refund_id PK
+    }
+    order_tax_line {
+        text id PK
+        text order_id FK
+        text compound
+        text label
+        jsonb meta_data
+        text rate_code
+        text rate_id
+        text shipping_tax_total
+        text tax_total
+    }
+    order_shipping_line {
+        text id PK
+        text order_id FK
+        jsonb meta_data
+        text method_id
+        text method_title
+        jsonb taxes
+        text total
+        text total_tax
+    }
+    order_fee_line {
+        text id PK
+        text order_id FK
+        text name
+        text tax_class
+        text tax_status
+        jsonb taxes
+        text total
+        text total_tax
+    }
+    order_coupon_line {
+        text id PK
+        text order_id FK
+        text code
+        text discount
+        text discount_tax
+    }
+    orders {
+        text id PK
+        text customer_id FK
+        text billing_address_1
+        text billing_address_2
+        text billing_city
+        text billing_company
+        text billing_country
+        text billing_email
+        text billing_first_name
+        text billing_last_name
+        text billing_phone
+        text billing_postcode
+        text billing_state
+        text cart_hash
+        text cart_tax
+        text created_via
+        text currency
+        text customer_ip_address
+        text customer_note
+        text customer_user_agent
+        text date_completed
+        text date_completed_gmt
+        text date_created
+        text date_created_gmt
+        text date_modified
+        text date_modified_gmt
+        text date_paid
+        text date_paid_gmt
+        text discount_tax
+        text discount_total
+        text number
+        text order_key
+        text parent_id
+        text payment_method
+        text payment_method_title
+        text prices_include_tax
+        text shipping_address_1
+        text shipping_address_2
+        text shipping_city
+        text shipping_company
+        text shipping_country
+        text shipping_first_name
+        text shipping_last_name
+        text shipping_postcode
+        text shipping_state
+        text shipping_tax
+        text shipping_total
+        text status
+        text total
+        text total_tax
+        text transaction_id
+        text version
+    }
+    continent_country_state {
+        text code PK
+        text continent_country_code FK
+        text name
+    }
+    continent_country {
+        text code PK
+        text continent_code FK
+        text currency_code
+        text currency_pos
+        text decimal_sep
+        text dimension_unit
+        text name
+        text num_decimals
+        text thousand_sep
+        text weight_unit
+    }
+    continent {
+        text code PK
+        text name
+    }
+    customer_metadata {
+        text index PK
+        text customer_id PK
+        text id
+        text key
+        jsonb value
+    }
+    customer {
+        text id PK
+        text avatar_url
+        text billing_address_1
+        text billing_address_2
+        text billing_city
+        text billing_company
+        text billing_country
+        text billing_email
+        text billing_first_name
+        text billing_last_name
+        text billing_phone
+        text billing_postcode
+        text billing_state
+        text date_created
+        text date_created_gmt
+        text date_modified
+        text date_modified_gmt
+        text email
+        text first_name
+        text is_paying_customer
+        text last_name
+        text role
+        text shipping_address_1
+        text shipping_address_2
+        text shipping_city
+        text shipping_company
+        text shipping_country
+        text shipping_first_name
+        text shipping_last_name
+        text shipping_postcode
+        text shipping_state
+        text username
+    }
+    product_shipping_class {
+        text id PK
+        text count
+        text description
+        text name
+        text slug
+    }
+    payment_gateway_method_support {
+        text method_support PK
+        text payment_gateway_id PK
+    }
+    payment_gateway_setting {
+        text id PK
+        text payment_gateway_id PK
+        jsonb custom_option
+        text defaults
+        text description
+        text label
+        text placeholder
+        text tip
+        text type
+        text value
+    }
+    payment_gateway {
+        text id PK
+        text connection_url
+        text description
+        text enabled
+        text method_description
+        text method_title
+        text needs_setup
+        text orders
+        jsonb post_install_scripts
+        jsonb required_settings_keys
+        text settings_url
+        text setup_help_text
+        text title
+    }
+    refund_metadata {
+        text index PK
+        text refund_id PK
+        text id
+        text key
+        jsonb value
+    }
+    refund_line_item_tax {
+        text id PK
+        text refund_id PK
+        text refund_line_item_id PK
+        text refund_total
+        text subtotal
+        text total
+    }
+    refund_line_item {
+        text id PK
+        text refund_id PK
+        text product_id FK
+        text variation_id FK
+        text name
+        text price
+        text quantity
+        text sku
+        text subtotal
+        text subtotal_tax
+        text tax_class
+        text total
+        text total_tax
+    }
+    refund {
+        text id PK
+        text order_id FK
+        text amount
+        text api_refund
+        text date_created
+        text date_created_gmt
+        text reason
+        text refunded_by
+        text refunded_payment
+    }
+    attribute {
+        text id PK
+        text has_archives
+        text name
+        text order_by
+        text slug
+        text type
+    }
+    order_note {
+        text id PK
+        text order_id FK
+        text added_by_user
+        text author
+        text customer_note
+        text date_created
+        text date_created_gmt
+        text note
+    }
+    shipping_zone_method_setting {
+        text id PK
+        text instance_id PK
+        text defaults
+        text description
+        text label
+        text options
+        text placeholder
+        text tip
+        text type
+        text value
+    }
+    shipping_zone_method {
+        text instance_id PK
+        text method_id FK
+        text shipping_zone_id FK
+        text enabled
+        text method_description
+        text method_title
+        text orders
+        text title
+    }
+    tags {
+        text id PK
+        text count
+        text description
+        text name
+        text slug
+    }
+    category {
+        text id PK
+        text count
+        text description
+        text display
+        text image_alt
+        text image_date_created
+        text image_date_created_gmt
+        text image_date_modified
+        text image_date_modified_gmt
+        text image_id
+        text image_name
+        text image_src
+        text menu_order
+        text name
+        text parent
+        text slug
+    }
+    currency {
+        text code PK
+        text name
+        text symbol
+    }
+    report {
+        text slug PK
+        text description
+    }
+    product_variation_attribute {
+        text id PK
+        text product_variation_id FK
+        text name
+        text option
+    }
+    product_variation_metadata {
+        text index PK
+        text product_variation_id PK
+        text id
+        text key
+        jsonb value
+    }
+    product_variation_download {
+        text id PK
+        text product_variation_id FK
+        text file
+        text name
+    }
+    product_variation {
+        text id PK
+        text product_id FK
+        text shipping_class_id FK
+        text backordered
+        text backorders
+        text backorders_allowed
+        text date_created
+        text date_created_gmt
+        text date_modified
+        text date_modified_gmt
+        text date_on_sale_from
+        text date_on_sale_from_gmt
+        text date_on_sale_to
+        text date_on_sale_to_gmt
+        text description
+        text dimension_height
+        text dimension_length
+        text dimension_width
+        text download_expiry
+        text download_limit
+        text downloadable
+        text image_alt
+        text image_date_created
+        text image_date_created_gmt
+        text image_date_modified
+        text image_date_modified_gmt
+        text image_id
+        text image_name
+        text image_src
+        text manage_stock
+        text menu_order
+        text on_sale
+        text permalink
+        text price
+        text purchasable
+        text regular_price
+        text sale_price
+        text shipping_class
+        text sku
+        text status
+        text stock_quantity
+        text stock_status
+        text tax_class
+        text tax_status
+        text virtual
+        text weight
+    }
+    shipping_method {
+        text id PK
+        text description
+        text title
+    }
+    coupon_metadata {
+        text index PK
+        text coupon_id PK
+        text id
+        text key
+        jsonb value
+    }
+    coupon {
+        text id PK
+        text amount
+        text code
+        text date_created
+        text date_created_gmt
+        text date_expires
+        text date_expires_gmt
+        text date_modified
+        text date_modified_gmt
+        text description
+        text discount_type
+        jsonb email_restrictions
+        text exclude_sale_items
+        jsonb excluded_product_categories
+        jsonb excluded_product_ids
+        text free_shipping
+        text individual_use
+        text limit_usage_to_x_items
+        text maximum_amount
+        text minimum_amount
+        jsonb product_categories
+        jsonb product_ids
+        text usage_count
+        text usage_limit
+        text usage_limit_per_user
+        jsonb used_by
+    }
+    tax_rate_postcode {
+        text postcode PK
+        text tax_rate_id PK
+    }
+    tax_rate_city {
+        text city PK
+        text tax_rate_id PK
+    }
+    tax_rate {
+        text id PK
+        text class FK
+        text city
+        text compound
+        text country
+        text name
+        text orders
+        text postcode
+        text priority
+        text rate
+        text shipping
+        text state
+    }
+    shipping_zone {
+        text id PK
+        text name
+        text orders
+    }
+    shipping_zone_location }o--|| shipping_zone : "fk"
+    product_review }o--|| product : "fk"
+    attribute_term }o--|| attribute : "fk"
+    product_download }o--|| product : "fk"
+    product_attribute_option }o--|| product_attribute : "fk"
+    product_attribute_option }o--|| product_attribute : "fk"
+    product_attribute_option }o--|| product_attribute : "fk"
+    product_attribute }o--|| product : "fk"
+    product_image }o--|| product : "fk"
+    product_category }o--|| category : "fk"
+    product_category }o--|| product : "fk"
+    product_metadata }o--|| product : "fk"
+    product_related_product_id }o--|| product : "fk"
+    product_tag }o--|| tags : "fk"
+    product_tag }o--|| product : "fk"
+    product_default_attribute }o--|| product : "fk"
+    product }o--|| product_shipping_class : "fk"
+    order_metadata }o--|| orders : "fk"
+    order_line_item_tax }o--|| order_line_item : "fk"
+    order_line_item_tax }o--|| order_line_item : "fk"
+    order_line_item_metadata }o--|| order_line_item : "fk"
+    order_line_item_metadata }o--|| order_line_item : "fk"
+    order_line_item }o--|| product : "fk"
+    order_line_item }o--|| product_variation : "fk"
+    order_line_item }o--|| orders : "fk"
+    order_refund }o--|| refund : "fk"
+    order_refund }o--|| orders : "fk"
+    order_tax_line }o--|| orders : "fk"
+    order_shipping_line }o--|| orders : "fk"
+    order_fee_line }o--|| orders : "fk"
+    order_coupon_line }o--|| orders : "fk"
+    orders }o--|| customer : "fk"
+    continent_country_state }o--|| continent_country : "fk"
+    continent_country }o--|| continent : "fk"
+    customer_metadata }o--|| customer : "fk"
+    payment_gateway_method_support }o--|| payment_gateway : "fk"
+    payment_gateway_setting }o--|| payment_gateway : "fk"
+    refund_metadata }o--|| refund : "fk"
+    refund_line_item_tax }o--|| refund_line_item : "fk"
+    refund_line_item_tax }o--|| refund_line_item : "fk"
+    refund_line_item }o--|| product : "fk"
+    refund_line_item }o--|| product_variation : "fk"
+    refund_line_item }o--|| refund : "fk"
+    refund }o--|| orders : "fk"
+    order_note }o--|| orders : "fk"
+    shipping_zone_method_setting }o--|| shipping_zone_method : "fk"
+    shipping_zone_method }o--|| shipping_method : "fk"
+    shipping_zone_method }o--|| shipping_zone : "fk"
+    product_variation_attribute }o--|| product_variation : "fk"
+    product_variation_metadata }o--|| product_variation : "fk"
+    product_variation_download }o--|| product_variation : "fk"
+    product_variation }o--|| product_shipping_class : "fk"
+    product_variation }o--|| product : "fk"
+    coupon_metadata }o--|| coupon : "fk"
+    tax_rate_postcode }o--|| tax_rate : "fk"
+    tax_rate_city }o--|| tax_rate : "fk"
+    tax_rate }o--|| tax_class : "fk"

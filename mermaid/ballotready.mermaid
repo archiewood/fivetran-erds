@@ -1,0 +1,497 @@
+erDiagram
+    measure_endorsement {
+        text id PK
+        text measure_id PK
+        text organization_id FK
+        text created_at
+        text endorser
+        text recommendation
+        text updated_at
+    }
+    measure_argument {
+        text id PK
+        text measure_id PK
+        text pro_con
+        text source_url
+        text text
+    }
+    measure {
+        text id PK
+        text party_id PK
+        text election_id FK
+        text issue_id FK
+        text mtfcc FK
+        text con_snippet
+        text created_at
+        text has_unknown_boundaries
+        text name
+        text party_created_at
+        text party_name
+        text party_short_name
+        text party_updated_at
+        text pro_snippet
+        text state
+        text summary
+        text text
+        text title
+        timestamp updated_at
+    }
+    organization_url {
+        text url PK
+        text organization_id PK
+        text type
+    }
+    organization {
+        text id PK
+        text issue_id FK
+        text created_at
+        text description
+        text name
+        text state
+        text updated_at
+    }
+    position_election_frequency {
+        text id PK
+        text position_id FK
+        text frequency
+        text reference_year
+        text seats
+        text valid_from
+        text valid_to
+    }
+    position_issue {
+        text issue_id PK
+        text position_id PK
+    }
+    position {
+        text id PK
+        text issue_id FK
+        text mtfcc FK
+        text normalized_position_mtfcc FK
+        text appointed
+        text created_at
+        text description
+        text eligibility_requirements
+        text employment_type
+        text filing_address
+        text filing_phone
+        text filing_requirements
+        text has_primary
+        text has_ranked_choice_general
+        text has_ranked_choice_primary
+        text has_unknown_boundaries
+        text judicial
+        text level
+        text maximum_filing_fee
+        text minimum_age
+        text must_be_registered_voter
+        text must_be_resident
+        text must_have_professional_experience
+        text name
+        text normalized_position_id
+        text normalized_position_name
+        text paperwork_instructions
+        text partisan_type
+        text ranked_choice_max_votes_general
+        text ranked_choice_max_votes_primary
+        text retention
+        text row_order
+        text running_mate_style
+        text salary
+        text seats
+        text selections_allowed
+        text state
+        text sub_area_name
+        text sub_area_value
+        text tier
+        timestamp updated_at
+    }
+    issue {
+        text id PK
+        text name
+        text plugin_enabled
+        text response_type
+        text row_order
+    }
+    place_address {
+        text id PK
+        text place_id PK
+        text address_line_1
+        text address_line_2
+        text city
+        text country
+        text created_at
+        text state
+        text type
+        text updated_at
+        text zip
+    }
+    place_url {
+        text url PK
+        text place_id PK
+        text type
+    }
+    place_contact {
+        text index PK
+        text place_id PK
+        text email
+        text fax
+        text phone
+        text type
+    }
+    place_registration_option_document {
+        text document PK
+        text place_id PK
+        text place_registration_option_id PK
+    }
+    place_registration_option_eligibility {
+        text eligibility PK
+        text place_id PK
+        text place_registration_option_id PK
+    }
+    place_registration_option_feature {
+        text feature PK
+        text place_id PK
+        text place_registration_option_id PK
+    }
+    place_registration_option {
+        text id PK
+        text place_id PK
+        text available_if_date_of_birth_before_or_equals
+        text channel
+        text created_at
+        text documents
+        text eligibility
+        text features
+        text is_id_required
+        text is_preregistration
+        text safest_registration_dead_line_in_days
+        text updated_at
+    }
+    place_form_field {
+        text _fivetran_id PK
+        text place_form_id FK
+        text place_id FK
+        text is_required
+        text label
+        text name
+        text options
+        text type
+    }
+    place_form {
+        text id PK
+        text place_id PK
+        text locale
+        text type
+        text url
+    }
+    place {
+        text id PK
+        text mtfcc FK
+        text can_vote_in_primary_when_18_by_general
+        text created_at
+        text dissolved
+        text has_vote_by_mail
+        text is_printing_enabled
+        text is_receiver_of_vote_by_mail_requests
+        text name
+        text primary_type
+        text state
+        text timezone
+        text updated_at
+    }
+    office_holder_party {
+        text id PK
+        text office_holder_id PK
+        text created_at
+        text name
+        text short_name
+        text updated_at
+    }
+    office_holder_url {
+        text url PK
+        text office_holder_id PK
+        text type
+    }
+    office_holder_address {
+        text id PK
+        text office_holder_id PK
+        text address_line_1
+        text address_line_2
+        text city
+        text country
+        text created_at
+        text state
+        text type
+        text updated_at
+        text zip
+    }
+    office_holder_contact {
+        text index PK
+        text office_holder_id PK
+        text email
+        text fax
+        text phone
+        text type
+    }
+    office_holder {
+        text id PK
+        text people_id FK
+        text position_id FK
+        text central_phone
+        text end_at
+        text is_appointed
+        text is_current
+        text is_off_cycle
+        text is_vacant
+        text office_phone
+        text office_title
+        text other_phone
+        text primary_email
+        text specificity
+        text start_at
+        text total_years_in_office
+        timestamp updated_at
+    }
+    race_filing_period {
+        text id PK
+        text race_id PK
+        text end_on
+        text notes
+        text start_on
+        text type
+    }
+    race_candidacy_stance {
+        text id PK
+        text race_candidacy_id PK
+        text race_id PK
+        text issue_id FK
+        text locale
+        text reference_url
+        text statement
+    }
+    race_candidacy_party {
+        text id PK
+        text race_candidacy_id PK
+        text race_id PK
+        text created_at
+        text name
+        text short_name
+        text updated_at
+    }
+    race_candidacy_endorsement {
+        text id PK
+        text race_candidacy_id PK
+        text race_id PK
+        text organization_id FK
+        text created_at
+        text endorser
+        text recommendation
+        text updated_at
+    }
+    race_candidacy {
+        text id PK
+        text race_id PK
+        text candidate_id FK
+        text election_id FK
+        text position_id FK
+        text created_at
+        text is_certified
+        text is_hidden
+        text uncertified
+        text updated_at
+        text withdrawn
+    }
+    race {
+        text id PK
+        text election_id FK
+        text position_id FK
+        text created_at
+        text is_disabled
+        text is_partisan
+        text is_primary
+        text is_recall
+        text is_runoff
+        text is_unexpired
+        text seats
+        timestamp updated_at
+    }
+    vip_election_party {
+        text id PK
+        text election_id PK
+        text vip_election_id PK
+        text created_at
+        text name
+        text short_name
+        text updated_at
+    }
+    vip_election {
+        text id PK
+        text election_id PK
+    }
+    election {
+        text id PK
+        text created_at
+        text election_day
+        text name
+        text original_election_date
+        text state
+        text timezone
+        timestamp updated_at
+    }
+    people_url {
+        text url PK
+        text people_id PK
+        text type
+    }
+    people_image {
+        text url PK
+        text people_id PK
+        text type
+    }
+    people_experience {
+        text id PK
+        text people_id PK
+        text end_time
+        text organization
+        text start_time
+        text title
+        text type
+    }
+    people_degree {
+        text id PK
+        text people_id PK
+        text degree
+        text graduation_year
+        text major
+        text school
+    }
+    people_candidacy_stance {
+        text id PK
+        text people_candidacy_id PK
+        text people_id PK
+        text issue_id FK
+        text locale
+        text reference_url
+        text statement
+    }
+    people_candidacy_party {
+        text id PK
+        text people_candidacy_id PK
+        text people_id PK
+        text created_at
+        text name
+        text short_name
+        text updated_at
+    }
+    people_candidacy_endorsement {
+        text id PK
+        text people_candidacy_id PK
+        text people_id PK
+        text organization_id FK
+        text created_at
+        text endorser
+        text recommendation
+        text updated_at
+    }
+    people_candidacy {
+        text id PK
+        text people_id PK
+        text candidate_id FK
+        text election_id FK
+        text position_id FK
+        text created_at
+        text is_certified
+        text is_hidden
+        text uncertified
+        text updated_at
+        text withdrawn
+    }
+    people {
+        text id PK
+        text created_at
+        text first_name
+        text full_name
+        text headshot_default_url
+        text headshot_thumbnail_url
+        text last_name
+        text middle_name
+        text nick_name
+        text suffix
+        text updated_at
+    }
+    mtfcc {
+        text id PK
+        text created_at
+        text mtfcc
+        text name
+        text updated_at
+    }
+    measure_endorsement }o--|| organization : "fk"
+    measure_endorsement }o--|| measure : "fk"
+    measure_argument }o--|| measure : "fk"
+    measure }o--|| election : "fk"
+    measure }o--|| mtfcc : "fk"
+    measure }o--|| issue : "fk"
+    organization_url }o--|| organization : "fk"
+    organization }o--|| issue : "fk"
+    position_election_frequency }o--|| position : "fk"
+    position_issue }o--|| issue : "fk"
+    position_issue }o--|| position : "fk"
+    position }o--|| mtfcc : "fk"
+    position }o--|| mtfcc : "fk"
+    position }o--|| issue : "fk"
+    place_address }o--|| place : "fk"
+    place_url }o--|| place : "fk"
+    place_contact }o--|| place : "fk"
+    place_registration_option_document }o--|| place_registration_option : "fk"
+    place_registration_option_document }o--|| place_registration_option : "fk"
+    place_registration_option_eligibility }o--|| place_registration_option : "fk"
+    place_registration_option_eligibility }o--|| place_registration_option : "fk"
+    place_registration_option_feature }o--|| place_registration_option : "fk"
+    place_registration_option_feature }o--|| place_registration_option : "fk"
+    place_registration_option }o--|| place : "fk"
+    place_form_field }o--|| place_form : "fk"
+    place_form_field }o--|| place_form : "fk"
+    place_form }o--|| place : "fk"
+    place }o--|| mtfcc : "fk"
+    office_holder_party }o--|| office_holder : "fk"
+    office_holder_url }o--|| office_holder : "fk"
+    office_holder_address }o--|| office_holder : "fk"
+    office_holder_contact }o--|| office_holder : "fk"
+    office_holder }o--|| position : "fk"
+    office_holder }o--|| people : "fk"
+    race_filing_period }o--|| race : "fk"
+    race_candidacy_stance }o--|| issue : "fk"
+    race_candidacy_stance }o--|| race_candidacy : "fk"
+    race_candidacy_stance }o--|| race_candidacy : "fk"
+    race_candidacy_party }o--|| race_candidacy : "fk"
+    race_candidacy_party }o--|| race_candidacy : "fk"
+    race_candidacy_endorsement }o--|| organization : "fk"
+    race_candidacy_endorsement }o--|| race_candidacy : "fk"
+    race_candidacy_endorsement }o--|| race_candidacy : "fk"
+    race_candidacy }o--|| position : "fk"
+    race_candidacy }o--|| election : "fk"
+    race_candidacy }o--|| race_candidacy : "fk"
+    race_candidacy }o--|| race : "fk"
+    race }o--|| position : "fk"
+    race }o--|| election : "fk"
+    vip_election_party }o--|| vip_election : "fk"
+    vip_election_party }o--|| vip_election : "fk"
+    vip_election }o--|| election : "fk"
+    people_url }o--|| people : "fk"
+    people_image }o--|| people : "fk"
+    people_experience }o--|| people : "fk"
+    people_degree }o--|| people : "fk"
+    people_candidacy_stance }o--|| issue : "fk"
+    people_candidacy_stance }o--|| people_candidacy : "fk"
+    people_candidacy_stance }o--|| people_candidacy : "fk"
+    people_candidacy_party }o--|| people_candidacy : "fk"
+    people_candidacy_party }o--|| people_candidacy : "fk"
+    people_candidacy_endorsement }o--|| organization : "fk"
+    people_candidacy_endorsement }o--|| people_candidacy : "fk"
+    people_candidacy_endorsement }o--|| people_candidacy : "fk"
+    people_candidacy }o--|| position : "fk"
+    people_candidacy }o--|| election : "fk"
+    people_candidacy }o--|| people_candidacy : "fk"
+    people_candidacy }o--|| people : "fk"

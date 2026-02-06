@@ -1,0 +1,131 @@
+erDiagram
+    catalog_upload_error {
+        text index PK
+        text catalog_upload_upload_id PK
+        text error_message
+        text error_type
+        text line_num
+    }
+    catalog_upload {
+        text upload_id PK
+        text expires
+        text last_updated
+        text products_processed
+        text products_received
+        text status
+        text upload_url
+        text validate_only
+    }
+    sms_email_subscribed {
+        text subscriber_external_id PK
+        text subscription_type PK
+        text company_display_name
+        text company_id
+        text creative_name
+        text creative_subtype
+        text creative_type
+        text subscriber_email
+        text subscriber_phone
+        text timestamps
+        text type
+    }
+    sms_sent {
+        text message_id PK
+        text subscriber_external_id PK
+        text company_display_name
+        text company_id
+        text message_channel
+        text message_text
+        text message_type
+        text subscriber_email
+        text subscriber_phone
+        text timestamps
+        text type
+    }
+    email_opened {
+        text message_id PK
+        text subscriber_external_id PK
+        text company_id
+        text message_channel
+        text message_name
+        text message_type
+        text timestamps
+        text type
+    }
+    sms_email_unsubscribed {
+        text subscription_type PK
+        text subscriber_external_id PK
+        text company_display_name
+        text company_id
+        text subscriber_email
+        text subscriber_phone
+        text timestamps
+        text type
+    }
+    custom_attribute {
+        text _fivetran_id PK
+        text subscriber_external_id FK
+        text company_display_name
+        text company_id
+        text subscriber_email
+        text subscriber_phone
+        text timestamps
+        text type
+        text user_property_id
+        text user_property_name
+        text user_property_value
+    }
+    sms_inbound {
+        text _fivetran_id PK
+        text subscriber_external_id FK
+        text company_id
+        text message_text
+        text message_to_phone
+        text message_type
+        text timestamps
+        text type
+    }
+    email_sent {
+        text message_id PK
+        text subscriber_external_id PK
+        text company_display_name
+        text company_id
+        text message_channel
+        text message_from_email
+        text message_subject
+        text message_to_email
+        text subscriber_email
+        text subscriber_phone
+        text timestamps
+        text type
+    }
+    sms_message_link_click {
+        text message_link_click_link_id PK
+        text message_link_click_message_id PK
+        text subscriber_external_id PK
+        text company_id
+        text message_link_click_channel
+        text message_link_click_link_target
+        text message_link_click_message_type
+        text timestamps
+        text type
+    }
+    email_message_link_click {
+        text message_link_click_link_id PK
+        text message_link_click_message_id PK
+        text subscriber_external_id PK
+        text company_id
+        text message_link_click_channel
+        text message_link_click_link_target
+        text message_link_click_message_type
+        text timestamps
+        text type
+    }
+    catalog_upload_error }o--|| catalog_upload : "fk"
+    sms_sent }o--|| sms_email_subscribed : "fk"
+    email_opened }o--|| email_sent : "fk"
+    email_opened }o--|| email_sent : "fk"
+    sms_email_unsubscribed }o--|| sms_email_subscribed : "fk"
+    custom_attribute }o--|| sms_email_subscribed : "fk"
+    sms_inbound }o--|| sms_sent : "fk"
+    email_sent }o--|| sms_email_subscribed : "fk"

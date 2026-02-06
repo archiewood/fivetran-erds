@@ -1,0 +1,81 @@
+erDiagram
+    plant_parameter {
+        text _fivetran_id PK
+        text plant_id FK
+        text key
+        text value
+    }
+    plant {
+        text id PK
+        text alarm_color
+        text alert_icon
+        text name
+        text unique_id
+    }
+    element {
+        text id PK
+        text parent_id FK
+        text plant_id FK
+        text name
+        text type
+        text type_string
+        text unique_id
+    }
+    datalist_year {
+        text date PK
+        text data_source_id FK
+        text value
+    }
+    element_parameter {
+        text data_source_id PK
+        text element_id PK
+        text component_id
+        text fixed_type
+        text name
+        text portal_id
+        text sub_type
+    }
+    element_description {
+        text _fivetran_id PK
+        text element_id FK
+        text key
+        text value
+    }
+    datasource {
+        text id PK
+        text plant_id FK
+        text data_source_name
+        text element_id
+        text unit
+    }
+    datalist {
+        text date PK
+        text data_source_id FK
+        text value
+    }
+    kpi_value {
+        text id PK
+        text data_source_id FK
+        text plant_id FK
+        text fixed_type
+        text name
+        text value
+    }
+    datalist_month {
+        text date PK
+        text data_source_id FK
+        text value
+    }
+    plant_parameter }o--|| plant : "fk"
+    element }o--|| element : "fk"
+    element }o--|| plant : "fk"
+    datalist_year }o--|| datasource : "fk"
+    element_parameter }o--|| datasource : "fk"
+    element_parameter }o--|| element : "fk"
+    element_description }o--|| element : "fk"
+    datasource }o--|| element : "fk"
+    datasource }o--|| plant : "fk"
+    datalist }o--|| datasource : "fk"
+    kpi_value }o--|| datasource : "fk"
+    kpi_value }o--|| plant : "fk"
+    datalist_month }o--|| datasource : "fk"

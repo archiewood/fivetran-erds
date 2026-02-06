@@ -1,0 +1,198 @@
+erDiagram
+    contact_preference {
+        text index PK
+        text contact_id PK
+        text category
+        text last_modified
+        text name
+        text source
+        text value
+    }
+    contact {
+        text id PK
+        text anonymous
+        text created
+        jsonb custom_fields
+        text email
+        text external_id
+        text permission
+        jsonb standard_fields
+        text updated
+    }
+    target_group {
+        text id PK
+        text author
+        text contact_filter_id
+        text contact_filter_name
+        text count_active_contacts
+        text count_contacts
+        text created
+        text evaluated
+        text name
+        text state
+        text type
+        text updated
+    }
+    mailing_list {
+        text id PK
+        text name
+        text schedule_time
+        text state
+        text type
+    }
+    recipient {
+        text _fivetran_id PK
+        text contact_id FK
+        text mailing_id FK
+        text contact_permission_status
+        text contact_permission_type
+        text msg_id
+        text time_stamp
+    }
+    conversion {
+        text _fivetran_id PK
+        text contact_id FK
+        text mailing_id FK
+        text goal_id
+        text goal_name
+        text link_id
+        text link_url
+        text mailing_name
+        text mailing_sent_date
+        text mailing_sent_date_sql
+        text site_id
+        text site_name
+        text time_stamp
+        text timestamp_sql
+        text value
+    }
+    bounce {
+        text _fivetran_id PK
+        text contact_id FK
+        text mailing_id FK
+        text contact_permission_status
+        text contact_permission_type
+        text msg_id
+        text source
+        text status_code
+        text time_stamp
+        text type
+    }
+    unsubscription {
+        text _fivetran_id PK
+        text contact_id FK
+        text mailing_id FK
+        text msg_id
+        text source
+        text time_stamp
+    }
+    unique_opens {
+        text _fivetran_id PK
+        text contact_id FK
+        text mailing_id FK
+        text client_browser
+        text client_browser_group
+        text client_browser_type
+        text client_os_group
+        text client_os_name
+        text client_rendering_engine
+        text client_user_agent
+        text contact_anonymous
+        text contact_permission_status
+        text contact_permission_type
+        text device_type
+        text format
+        text msg_id
+        text time_stamp
+    }
+    opens {
+        text _fivetran_id PK
+        text contact_id FK
+        text mailing_id FK
+        text client_browser
+        text client_browser_group
+        text client_browser_type
+        text client_os_group
+        text client_os_name
+        text client_rendering_engine
+        text client_user_agent
+        text contact_permission_status
+        text contact_permission_type
+        text device_type
+        text format
+        text msg_id
+        text time_stamp
+    }
+    click {
+        text _fivetran_id PK
+        text contact_id FK
+        text mailing_id FK
+        text client_browser
+        text client_browser_group
+        text client_browser_type
+        text client_os_group
+        text client_os_name
+        text client_rendering_engine
+        text client_user_agent
+        text contact_permission_status
+        text contact_permission_type
+        text device_type
+        text format
+        text link_id
+        jsonb link_tag
+        text link_type
+        text link_url
+        text msg_id
+        text time_stamp
+    }
+    subscriber {
+        text _fivetran_id PK
+        text contact_id FK
+        text mailing_id FK
+        text contact_permission_status
+        text contact_permission_type
+        text ip
+        text msg_id
+        text time_stamp
+    }
+    unique_click {
+        text _fivetran_id PK
+        text contact_id FK
+        text mailing_id FK
+        text client_browser
+        text client_browser_group
+        text client_browser_type
+        text client_os_group
+        text client_os_name
+        text client_rendering_engine
+        text client_user_agent
+        text contact_permission_status
+        text contact_permission_type
+        text device_type
+        text format
+        text link_id
+        jsonb link_tag
+        text link_type
+        text link_url
+        text msg_id
+        text time_stamp
+    }
+    contact_preference }o--|| contact : "fk"
+    recipient }o--|| mailing_list : "fk"
+    recipient }o--|| contact : "fk"
+    conversion }o--|| contact : "fk"
+    conversion }o--|| mailing_list : "fk"
+    bounce }o--|| mailing_list : "fk"
+    bounce }o--|| contact : "fk"
+    unsubscription }o--|| mailing_list : "fk"
+    unsubscription }o--|| contact : "fk"
+    unique_opens }o--|| mailing_list : "fk"
+    unique_opens }o--|| contact : "fk"
+    opens }o--|| mailing_list : "fk"
+    opens }o--|| contact : "fk"
+    click }o--|| mailing_list : "fk"
+    click }o--|| contact : "fk"
+    subscriber }o--|| mailing_list : "fk"
+    subscriber }o--|| contact : "fk"
+    unique_click }o--|| mailing_list : "fk"
+    unique_click }o--|| contact : "fk"

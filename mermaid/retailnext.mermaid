@@ -1,0 +1,137 @@
+erDiagram
+    location_attribute {
+        text index PK
+        text location_id PK
+        text name
+        text value
+    }
+    location {
+        text id PK
+        text archive_date
+        text comp_start_date
+        text currency
+        text current_utc_offset
+        text name
+        text parent_id
+        text store_id
+        text street_address
+        text time_zone
+        text time_zone_abbrev
+        text type
+    }
+    network_interface {
+        text _fivetran_id PK
+        text camera_device_id FK
+        text gateway
+        text ip
+        text mac
+        text mode
+        text name
+        text subnet
+    }
+    video_channel {
+        text uuid PK
+        text camera_device_id PK
+    }
+    camera {
+        text device_id PK
+        text accessories
+        text analytics_direction_line_configured
+        text analytics_dwell_zone_count
+        text analytics_traffic_line_count
+        text appliance_id
+        jsonb configuration_summary
+        text date_added
+        text device_name
+        jsonb dns_servers
+        text firmware_version
+        text height
+        text last_heard
+        text model
+        text network_configuration_dns
+        text network_configuration_gateway
+        text network_configuration_ip
+        text network_configuration_mode
+        text network_configuration_ntp
+        text private_ip
+        text public_ip
+        text serial_number
+        text store_uuid
+        text type
+        text vendor
+        text video_channel_count
+    }
+    appliance {
+        text appliance_id PK
+        text store_uuid FK
+        text mac_address
+        text private_ip
+        text public_ip
+    }
+    datamine_metric_location {
+        text datamine_location_from_datetime PK
+        text datamine_location_name PK
+        text datamine_location_to_datetime PK
+        text group_from_gregorian PK
+        text location_id PK
+        text group_through_gregorian
+        text group_type
+        text index
+        text validity
+        text value
+    }
+    channel {
+        text channel_uuid PK
+        text device_id FK
+        text blur_video
+        text bytes_per_day
+        text camera_model
+        text first_recorded_time
+        text frame_rate
+        text max_resolution
+        text maximun_retention_days
+        text minimum_retention_days
+        text motion_per_day
+        text name
+        text record_on_motion
+        text recording_enabled
+        text resolution
+        text snapshot_enabled
+        text snapshot_interval_secs
+        text snapshot_resolution
+    }
+    user_profile {
+        text id PK
+        jsonb enterprise_groups
+        text idle_timeout
+        text name
+        text subscription_admin
+        text use_idle_timeout
+    }
+    users_location {
+        text index PK
+        text users_id PK
+        text id FK
+    }
+    users {
+        text id PK
+        text current_sign_in_at
+        text disabled
+        text email
+        text invitation_accepted
+        text invitation_locale
+        text last_sign_in_at
+        text location_profile_id
+        text name
+        text type
+        text user_profile_id
+    }
+    location_attribute }o--|| location : "fk"
+    network_interface }o--|| camera : "fk"
+    video_channel }o--|| camera : "fk"
+    appliance }o--|| camera : "fk"
+    appliance }o--|| camera : "fk"
+    datamine_metric_location }o--|| location : "fk"
+    channel }o--|| camera : "fk"
+    users_location }o--|| location : "fk"
+    users_location }o--|| users : "fk"

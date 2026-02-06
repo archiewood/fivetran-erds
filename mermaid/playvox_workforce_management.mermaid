@@ -1,0 +1,850 @@
+erDiagram
+    system_role_permission {
+        text index PK
+        text system_role_id PK
+        text permission
+    }
+    system_role {
+        text id PK
+        text category
+        text description
+        text name
+        text organisation_id
+        text type
+        text uid
+        text version
+    }
+    business_role {
+        text id PK
+        text created_at
+        text description
+        text name
+        text organisation_id
+        text uid
+        text updated_at
+        text version
+    }
+    roster_change_log {
+        text id PK
+        text roster_id PK
+        text changed_by_id FK
+        text changed_date
+        text changed_type
+        jsonb changes
+    }
+    roster_team {
+        text id PK
+        text roster_id PK
+    }
+    roster_shift {
+        text roster_id PK
+        text uid PK
+    }
+    roster {
+        text id PK
+        text user_id PK
+        text system_role_id FK
+        text team_id FK
+        text updated_by_id FK
+        text created
+        text deleted
+        text end_time
+        text generated_version
+        text is_published
+        text is_working_version
+        text modified
+        text name
+        text run_at
+        jsonb run_roster_configuration_business_role
+        text run_roster_configuration_id
+        text run_roster_configuration_name
+        text run_roster_configuration_timezone
+        text start_time
+        jsonb tags
+        text uid
+        text updated_at
+        text version
+    }
+    task_definition_business_role {
+        text index PK
+        text task_definition_id PK
+        text business_role FK
+    }
+    task_definition_workstream {
+        text id PK
+        text task_definition_id PK
+    }
+    task_definition {
+        text id PK
+        text additional_hours_override
+        jsonb adherence_equivalent_task
+        text category_id
+        text category_name
+        text colour
+        text default_duration
+        text deleted_at
+        text description
+        text disable_handle_timeclock
+        text hide_leave_in_agent_view
+        text identifier
+        text include_in_timeoff_limit
+        text information
+        text is_after_callwork
+        text is_available
+        text is_available_occupancy
+        text is_break
+        text is_default_workload_task
+        text is_identifier_reg_ex
+        text is_leave
+        text is_logout
+        text is_merge_allowed
+        text is_paid
+        text is_planned
+        text is_productive
+        text is_read_only
+        text is_shift_swap_allowed
+        text name
+        text notification_approve
+        text notification_auto_approve
+        text notification_cancel
+        text notification_edit
+        text notification_reject
+        text notification_submit
+        text workload_channel
+    }
+    team_agent_metrics {
+        text index PK
+        text team_id PK
+        text data_type
+        text field
+        text name
+        text post_fix
+        text target_comparator
+        text target_value
+    }
+    team_metrics {
+        text index PK
+        text team_id PK
+        text data_type
+        text field
+        text name
+        text post_fix
+        text target_comparator
+        text target_value
+    }
+    team_business_performance_metrics {
+        text index PK
+        text team_id PK
+        text field
+        text name
+        text post_fix
+        text target_comparator
+    }
+    team {
+        text id PK
+        text leader_id FK
+        text manager_id FK
+        jsonb agents
+        jsonb associated_workstream
+        text created
+        text deleted_at
+        text description
+        text feature_configure_agent_preference_enabled
+        text feature_configure_agent_preferred_working_day_off_enabled
+        text feature_configure_agent_preferred_working_time_enabled
+        text feature_configure_agent_preferred_workload_enabled
+        text feature_configure_allow_agents_to_view_peer_team
+        text feature_configure_leave_request_auto_approval
+        text feature_configure_leave_request_enabled
+        text feature_configure_leave_request_locked_days
+        text feature_configure_retrospective_summary_enabled
+        text feature_configure_retrospective_summary_frequency_unit
+        text feature_configure_retrospective_summary_frequency_value
+        text feature_configure_shift_swap_locked_days
+        text modified
+        text name
+        text organisation_id
+        text parent_group_name
+        text parent_id
+        text timezone
+        text type
+        text uid
+        text updated_at
+        text version
+    }
+    user_availability_week {
+        text index PK
+        text user_id PK
+        text contract_week_hours_value_max
+        text contract_week_hours_value_min
+        text friday_duration_in_mins
+        text friday_end_time
+        text friday_is_available
+        text friday_is_end_time_next_day
+        text friday_start_time
+        text monday_duration_in_mins
+        text monday_end_time
+        text monday_is_available
+        text monday_is_end_time_next_day
+        text monday_start_time
+        text saturday_duration_in_mins
+        text saturday_end_time
+        text saturday_is_available
+        text saturday_is_end_time_next_day
+        text saturday_start_time
+        text sunday_duration_in_mins
+        text sunday_end_time
+        text sunday_is_available
+        text sunday_is_end_time_next_day
+        text sunday_start_time
+        text thursday_duration_in_mins
+        text thursday_end_time
+        text thursday_is_available
+        text thursday_is_end_time_next_day
+        text thursday_start_time
+        text tuesday_duration_in_mins
+        text tuesday_end_time
+        text tuesday_is_available
+        text tuesday_is_end_time_next_day
+        text tuesday_start_time
+        text wednesday_duration_in_mins
+        text wednesday_end_time
+        text wednesday_is_available
+        text wednesday_is_end_time_next_day
+        text wednesday_start_time
+    }
+    user_integration {
+        text id PK
+        text user_id PK
+        text alias
+        text name
+        text uid
+    }
+    user_role {
+        text id PK
+        text user_id PK
+    }
+    user_leave_configuration_default_duration_week {
+        text index PK
+        text user_id PK
+        text friday_duration_in_mins
+        text friday_is_available
+        text friday_start_time
+        text monday_duration_in_mins
+        text monday_is_available
+        text monday_start_time
+        text saturday_duration_in_mins
+        text saturday_is_available
+        text saturday_start_time
+        text sunday_duration_in_mins
+        text sunday_is_available
+        text sunday_start_time
+        text thursday_duration_in_mins
+        text thursday_is_available
+        text thursday_start_time
+        text tuesday_duration_in_mins
+        text tuesday_is_available
+        text tuesday_start_time
+        text wednesday_duration_in_mins
+        text wednesday_is_available
+        text wednesday_start_time
+    }
+    user_tag {
+        text index PK
+        text user_id PK
+        text text
+    }
+    users {
+        text id PK
+        text system_role_id FK
+        text team_id FK
+        text availability_first_week_start_at
+        text availability_repeat_period_in_weeks
+        text contract_employment_category
+        text contract_max_consecutive_shifts
+        text contract_seniority
+        text contract_shift_gap_value
+        text contract_week_hours_type
+        text contract_week_hours_value_max
+        text contract_week_hours_value_min
+        text contract_week_shift_type
+        text contract_week_shifts_value_max
+        text contract_week_shifts_value_min
+        text created
+        text email
+        text employee_id
+        text end_at
+        text first_name
+        text is_active
+        text last_name
+        text leave_configuration_calendar_id
+        text leave_configuration_calendar_name
+        text leave_configuration_default_leave_duration_repeat_period_in_weeks
+        text leave_configuration_uid
+        text location_id
+        text location_name
+        text location_uid
+        text mobile
+        text modified
+        text organisation_id
+        jsonb pay_rates
+        jsonb permission
+        jsonb preferred_days_off
+        jsonb preferred_start_times
+        jsonb preferred_workloads
+        text start_at
+        text timezone
+        text uid
+        text updated_at
+        jsonb user_template
+        text version
+    }
+    contact {
+        text id PK
+        text agent_alias
+        text channel
+        text consultation_time_secs
+        text created_at
+        text end_time
+        text hold_time_secs
+        text organisation_id
+        text outcome
+        text start_time
+        text talk_time_secs
+        text type
+        text updated_at
+        text wait_time_secs
+        text work_effort_secs
+        text workstream_identifier
+        text wrap_time_secs
+    }
+    work_activity_task {
+        text id PK
+        text task_id FK
+        text team_id FK
+        text user_id FK
+        text created_at
+        text end_time
+        text integration_alias
+        text is_break
+        text is_leave
+        text is_paid
+        text is_productive
+        text shift_data_id
+        text shift_id
+        text start_time
+        text task_identifier
+        text updated_at
+    }
+    shift_task {
+        text uid PK
+        text shift_uid PK
+        text task_type_id FK
+        text created
+        text end_time
+        text leave_request_id
+        text modified
+        text opt_in_type
+        jsonb policy
+        text start_time
+        text task_template_id
+    }
+    shift {
+        text uid PK
+        text changed_by_user_id FK
+        text user_id FK
+        text workload_task_id FK
+        text base_shift_duration
+        text created_at
+        text end_time
+        text has_opt_in_task
+        text id
+        text is_published
+        text is_working_version
+        text leave_request_id
+        text location_color
+        text location_id
+        jsonb policy
+        text shift_duration
+        text shift_template_id
+        text shift_template_name
+        text start_time
+        jsonb tags
+        text updated_at
+        text version
+        text work_plan_id
+        text work_plan_name
+    }
+    workstream_agent_metrics_channel {
+        text index PK
+        text workstream_agent_metrics_date PK
+        text average_chat_handle_time
+        text average_first_solved_handle_time
+        text average_hold_time
+        text average_inbound_hold_time
+        text average_inbound_talk_time
+        text average_inbound_wait_time
+        text average_inbound_wrap_time
+        text average_outbound_handle_time
+        text average_outbound_hold_time
+        text average_outbound_talk_time
+        text average_outbound_wait_time
+        text average_outbound_wrap_time
+        text average_phone_handle_time
+        text average_quality_score
+        text average_talk_time
+        text average_total_handle_time
+        text average_total_handle_time_v_2
+        text average_total_inbound_handle_time
+        text average_total_outbound_handle_time
+        text average_touch_time
+        text average_touches
+        text average_wait_time
+        text average_wrap_time
+        text averge_handle_time
+        text channel
+        text declined_calls
+        text declined_calls_percentage
+        text first_interaction_resolution
+        text handled_calls
+        text handled_calls_percentage
+        text missed_calls
+        text missed_calls_percenatge
+        text missed_chats_percentage
+        text positive_csat_percentage
+        text reopen_rate
+        text skipped_tickets
+        text skipped_tickets_percentage
+        text total_accepted_chats
+        text total_assigned_chats
+        text total_chat_first_reply_completed
+        text total_chat_handle_time
+        text total_chat_interaction_handle_time
+        text total_chat_interactions
+        text total_csat_responses
+        text total_first_answer_handle_time_occupancy
+        text total_first_interaction
+        text total_first_reply_completed
+        text total_first_solved_completed
+        text total_first_solved_handle_time
+        text total_handle_time
+        text total_handle_time_v_2
+        text total_hold_time
+        text total_inbound_handle_time
+        text total_inbound_hold_time
+        text total_inbound_phone_first_reply_completed
+        text total_inbound_phone_interactions
+        text total_inbound_talk_time
+        text total_inbound_wait_time
+        text total_inbound_workstreams_handled
+        text total_inbound_wrap_time
+        text total_interactions
+        text total_missed_chats
+        text total_number_of_touches
+        text total_outbound_handle_time
+        text total_outbound_hold_time
+        text total_outbound_phone_first_reply_completed
+        text total_outbound_phone_interactions
+        text total_outbound_talk_time
+        text total_outbound_wait_time
+        text total_outbound_workstreams_handled
+        text total_outbound_wrap_time
+        text total_phone_first_reply_completed
+        text total_phone_handle_time
+        text total_positive_csat_responses
+        text total_private_comments
+        text total_public_comments
+        text total_quality_responses
+        text total_quality_scores
+        text total_reassigns
+        text total_reopens
+        text total_replies
+        text total_resolutions
+        text total_resolved
+        text total_self_assigned_chats
+        text total_talk_time
+        text total_touch_time
+        text total_touch_time_post_first_answer
+        text total_wait_time
+        text total_workstreams
+        text total_workstreams_handled
+        text total_wrap_time
+    }
+    workstream_agent_metrics {
+        text date PK
+        text average_chat_handle_time
+        text average_first_solved_handle_time
+        text average_hold_time
+        text average_inbound_hold_time
+        text average_inbound_talk_time
+        text average_inbound_wait_time
+        text average_inbound_wrap_time
+        text average_outbound_handle_time
+        text average_outbound_hold_time
+        text average_outbound_talk_time
+        text average_outbound_wait_time
+        text average_outbound_wrap_time
+        text average_phone_handle_time
+        text average_quality_score
+        text average_talk_time
+        text average_total_handle_time
+        text average_total_handle_time_v_2
+        text average_total_inbound_handle_time
+        text average_total_outbound_handle_time
+        text average_touch_time
+        text average_touches
+        text average_wait_time
+        text average_wrap_time
+        text averge_handle_time
+        text declined_calls
+        text declined_calls_percentage
+        text first_interaction_resolution
+        text handled_calls
+        text handled_calls_percentage
+        text missed_calls
+        text missed_calls_percenatge
+        text missed_chats_percentage
+        text positive_csat_percentage
+        text reopen_rate
+        text skipped_tickets
+        text skipped_tickets_percentage
+        text total_accepted_chats
+        text total_assigned_chats
+        text total_chat_first_reply_completed
+        text total_chat_handle_time
+        text total_chat_interaction_handle_time
+        text total_chat_interactions
+        text total_csat_responses
+        text total_first_answer_handle_time_occupancy
+        text total_first_interaction
+        text total_first_reply_completed
+        text total_first_solved_completed
+        text total_first_solved_handle_time
+        text total_handle_time
+        text total_handle_time_v_2
+        text total_hold_time
+        text total_inbound_handle_time
+        text total_inbound_hold_time
+        text total_inbound_phone_first_reply_completed
+        text total_inbound_phone_interactions
+        text total_inbound_talk_time
+        text total_inbound_wait_time
+        text total_inbound_workstreams_handled
+        text total_inbound_wrap_time
+        text total_interactions
+        text total_missed_chats
+        text total_number_of_touches
+        text total_outbound_handle_time
+        text total_outbound_hold_time
+        text total_outbound_phone_first_reply_completed
+        text total_outbound_phone_interactions
+        text total_outbound_talk_time
+        text total_outbound_wait_time
+        text total_outbound_workstreams_handled
+        text total_outbound_wrap_time
+        text total_phone_first_reply_completed
+        text total_phone_handle_time
+        text total_positive_csat_responses
+        text total_private_comments
+        text total_public_comments
+        text total_quality_responses
+        text total_quality_scores
+        text total_reassigns
+        text total_reopens
+        text total_replies
+        text total_resolutions
+        text total_resolved
+        text total_self_assigned_chats
+        text total_talk_time
+        text total_touch_time
+        text total_touch_time_post_first_answer
+        text total_wait_time
+        text total_workstreams
+        text total_workstreams_handled
+        text total_wrap_time
+    }
+    workstream {
+        text id PK
+        text agent_alias
+        text agent_name
+        text average_quality_score
+        text channel
+        text closed_time
+        text colour
+        text csat_score
+        text direction
+        text end_time
+        text external_interaction_identifier
+        text first_answered_team
+        text first_resolution_handle_time_secs
+        text first_resolution_time
+        text first_resolution_time_secs
+        text first_solved_team
+        text handle_time
+        text hold_time
+        text identifier
+        text interactions
+        text is_abandoned
+        text name
+        text private_comments
+        text public_comments
+        text reassigns
+        text reopens
+        text replies
+        text resolved_by_agent_alias
+        text source_type_identifier
+        text start_time
+        text talk_time
+        text total_handle_time
+        text total_quality_responses
+        text touch_time
+        text touches
+        text wait_time
+        text workstream_id
+        text wrap_time
+    }
+    schedule_metrics_channel {
+        text index PK
+        text schedule_metrics_date PK
+        text actual_additional_hours_shift_count
+        text actual_adherence_exception_duration
+        text actual_adherence_percentage
+        text actual_after_call_work_duration
+        text actual_available_duration
+        text actual_conformance_percentage
+        text actual_end_time_variance_duration
+        text actual_finish_early_impact_duration
+        text actual_finished_early_count
+        text actual_finished_early_or_late_count
+        text actual_finished_early_percentage
+        text actual_finished_late_count
+        text actual_finished_late_percentage
+        text actual_leave_duration
+        text actual_out_of_adherence_duration
+        text actual_paid_duration
+        text actual_paid_shrinkage_duration
+        text actual_planned_duration
+        text actual_productive_duration
+        text actual_punctuality_percentage
+        text actual_shift_count
+        text actual_shrinkage_duration
+        text actual_shrinkage_percentage
+        text actual_standard_hours_shift_count
+        text actual_start_early_percentage
+        text actual_start_late_impact_duration
+        text actual_start_late_percentage
+        text actual_start_time_variance_duration
+        text actual_started_early_count
+        text actual_started_late_count
+        text actual_total_duration
+        text actual_total_punctuality_variance_duration
+        text actual_unplanned_duration
+        text actual_utilisation_percentage
+        text channel
+        text rostered_available_duration
+        text rostered_available_duration_to_now
+        text rostered_leave_duration
+        text rostered_paid_duration
+        text rostered_paid_leave_duration
+        text rostered_paid_shrinkage_duration
+        text rostered_planned_duration
+        text rostered_planned_leave_duration
+        text rostered_planned_paid_leave_duration
+        text rostered_productive_duration
+        text rostered_shrinkage_duration
+        text rostered_total_duration
+        text rostered_total_overtime_premier
+        text rostered_total_task_duration_to_now
+        text rostered_unplanned_leave_duration
+        text rostered_unplanned_paid_leave_duration
+        text rostered_utilisation_percentage
+    }
+    schedule_metrics {
+        text date PK
+        text actual_additional_hours_shift_count
+        text actual_adherence_exception_duration
+        text actual_adherence_percentage
+        text actual_after_call_work_duration
+        text actual_available_duration
+        text actual_conformance_percentage
+        text actual_end_time
+        text actual_end_time_variance_duration
+        text actual_finish_early_impact_duration
+        text actual_finished_early_count
+        text actual_finished_early_or_late_count
+        text actual_finished_early_percentage
+        text actual_finished_late_count
+        text actual_finished_late_percentage
+        text actual_leave_duration
+        text actual_out_of_adherence_duration
+        text actual_paid_duration
+        text actual_paid_shrinkage_duration
+        text actual_planned_duration
+        text actual_productive_duration
+        text actual_punctuality_percentage
+        text actual_shift_count
+        text actual_shrinkage_duration
+        text actual_shrinkage_percentage
+        text actual_standard_hours_shift_count
+        text actual_start_early_percentage
+        text actual_start_late_impact_duration
+        text actual_start_late_percentage
+        text actual_start_time
+        text actual_start_time_variance_duration
+        text actual_started_early_count
+        text actual_started_late_count
+        text actual_total_duration
+        text actual_total_punctuality_variance_duration
+        text actual_unplanned_duration
+        text actual_utilisation_percentage
+        text end_time_variance
+        text rostered_available_duration
+        text rostered_available_duration_to_now
+        text rostered_end_time
+        text rostered_leave_duration
+        text rostered_paid_duration
+        text rostered_paid_leave_duration
+        text rostered_paid_shrinkage_duration
+        text rostered_planned_duration
+        text rostered_planned_leave_duration
+        text rostered_planned_paid_leave_duration
+        text rostered_productive_duration
+        text rostered_shrinkage_duration
+        text rostered_start_time
+        text rostered_total_duration
+        text rostered_total_overtime_premier
+        text rostered_total_task_duration_to_now
+        text rostered_unplanned_leave_duration
+        text rostered_unplanned_paid_leave_duration
+        text rostered_utilisation_percentage
+        text start_time_variance
+        text team_name
+    }
+    workstream_metrics {
+        text _fivetran_id PK
+        text abandoned_rate
+        text average_agent_first_reply_handle_time
+        text average_first_reply_handle_time
+        text average_first_resolution_handle_time
+        text average_first_resolution_time
+        text average_handle_time
+        text average_quality_score
+        text average_speed_to_answer
+        text average_wait_time
+        text csat_response_rate
+        text end_time
+        text first_interaction_resolution
+        text max_wait_time
+        text positive_csat_percentage
+        text reopen_rate
+        text service_level
+        text start_time
+        text total
+        text total_abandoned
+        text total_assignments
+        text total_average_interaction_duration
+        text total_average_interactions
+        text total_completed
+        text total_completed_wait_time
+        text total_csat_offered
+        text total_csat_responses
+        text total_csat_score
+        text total_first_answer_interactions
+        text total_first_interaction
+        text total_first_reply_handle_time
+        text total_first_resolution_handle_time
+        text total_first_resolution_time
+        text total_handle_time
+        text total_inbound
+        text total_inbound_completed
+        text total_interactions
+        text total_meeting_service_level
+        text total_outbound
+        text total_outbound_completed
+        text total_positive_csat_responses
+        text total_private_comments
+        text total_public_comments
+        text total_quality_responses
+        text total_quality_scores
+        text total_reassigns
+        text total_reopens
+        text total_replies
+        text total_resolved
+        text total_service_level_inbound
+        text total_short_abandoned
+        text total_touch_time
+        text total_touches
+        text total_wait_time
+    }
+    workstream_interaction {
+        text id PK
+        text user_id FK
+        text agent_alias
+        text completion_status
+        text conference_from
+        text conference_time_secs
+        text conference_to
+        text consultation_from
+        text consultation_time
+        text consultation_to
+        text contact_identifier
+        text description
+        text end_time
+        text hold_time_secs
+        text identifier
+        text is_private_comment
+        text is_public_comment
+        text is_reassign
+        text is_status_change
+        text is_transfer
+        text source_type_identifier
+        text start_time
+        text status_change_from
+        text status_change_to
+        text talk_time_secs
+        text type
+        text updated_at
+        text wait_time_secs
+        text work_effort_secs
+        text workstream_identifier
+        text wrap_time_secs
+    }
+    system_role_permission }o--|| system_role : "fk"
+    roster_change_log }o--|| users : "fk"
+    roster_change_log }o--|| roster : "fk"
+    roster_team }o--|| team : "fk"
+    roster_team }o--|| roster : "fk"
+    roster_shift }o--|| shift : "fk"
+    roster_shift }o--|| roster : "fk"
+    roster }o--|| users : "fk"
+    roster }o--|| users : "fk"
+    roster }o--|| system_role : "fk"
+    roster }o--|| team : "fk"
+    task_definition_business_role }o--|| business_role : "fk"
+    task_definition_business_role }o--|| task_definition : "fk"
+    task_definition_workstream }o--|| workstream : "fk"
+    task_definition_workstream }o--|| task_definition : "fk"
+    team_agent_metrics }o--|| team : "fk"
+    team_metrics }o--|| team : "fk"
+    team_business_performance_metrics }o--|| team : "fk"
+    team }o--|| users : "fk"
+    team }o--|| users : "fk"
+    user_availability_week }o--|| users : "fk"
+    user_integration }o--|| users : "fk"
+    user_role }o--|| business_role : "fk"
+    user_role }o--|| users : "fk"
+    user_leave_configuration_default_duration_week }o--|| users : "fk"
+    user_tag }o--|| users : "fk"
+    users }o--|| system_role : "fk"
+    users }o--|| team : "fk"
+    work_activity_task }o--|| users : "fk"
+    work_activity_task }o--|| task_definition : "fk"
+    work_activity_task }o--|| team : "fk"
+    shift_task }o--|| task_definition : "fk"
+    shift_task }o--|| shift : "fk"
+    shift }o--|| users : "fk"
+    shift }o--|| task_definition : "fk"
+    shift }o--|| users : "fk"
+    workstream_agent_metrics_channel }o--|| workstream_agent_metrics : "fk"
+    schedule_metrics_channel }o--|| schedule_metrics : "fk"
+    workstream_interaction }o--|| users : "fk"

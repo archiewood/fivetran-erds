@@ -1,0 +1,381 @@
+erDiagram
+    waitlist {
+        text id PK
+        text event_occurence_id FK
+        text event_series_id FK
+        timestamp created_at_date
+        text created_at_formatted
+        text created_at_iso
+        text created_at_time
+        text created_at_timezone
+        text created_at_unix
+        text email
+        text notified_date_date
+        text notified_date_formatted
+        text notified_date_iso
+        text notified_date_time
+        text notified_date_timezone
+        text notified_date_unix
+    }
+    checkin {
+        text id PK
+        text event_occurence_id FK
+        text event_series_id FK
+        text issued_ticket_id FK
+        text check_in_at
+        timestamp created_at
+        text quantity
+    }
+    voucher_code {
+        text id PK
+        text voucher_id FK
+        text code
+        text expiry_date
+        text expiry_formatted
+        text expiry_iso
+        text expiry_time
+        text expiry_timezone
+        text expiry_unix
+        text used_date
+        text used_formatted
+        text used_iso
+        text used_time
+        text used_timezone
+        text used_unix
+        text value
+    }
+    issued_ticket {
+        text id PK
+        text event_occurence_id FK
+        text event_series_id FK
+        text order_id FK
+        text ticket_type_id FK
+        text add_on_id
+        text barcode
+        text barcode_url
+        text checked_in
+        timestamp created_at
+        jsonb custom_question
+        text description
+        text email
+        text first_name
+        text full_name
+        text group_ticket_barcode
+        text last_name
+        text qr_code_url
+        text reference
+        text reservation
+        text source
+        text status
+        text updated_at
+        text voided_at
+    }
+    product_event_series_id {
+        text event_series_id PK
+        text product_id PK
+    }
+    product {
+        text id PK
+        text created_at_formatted
+        text created_at_iso
+        text created_at_time
+        text created_at_timezone
+        text created_at_unix
+        text currency
+        text description
+        text instruction
+        text issue_ticket_voucher
+        text linked_to_all_event_series
+        text name
+        text price
+        text quantity
+        text status
+        text updated_at_date
+        text updated_at_formatted
+        text updated_at_iso
+        text updated_at_time
+        text updated_at_timezone
+        text updated_at_unix
+    }
+    order_issued_ticket {
+        text issued_ticket_id PK
+        text order_id PK
+    }
+    order_line_item {
+        text id PK
+        text order_id PK
+        text booking_fee
+        text description
+        text quantity
+        text total
+        text type
+        text value
+    }
+    orders {
+        text id PK
+        text event_occurence_id FK
+        text event_series_id FK
+        text payment_method_id FK
+        jsonb buyer_detail_custom_questions
+        text buyer_detail_email
+        text buyer_detail_first_name
+        text buyer_detail_last_name
+        text buyer_detail_name
+        text buyer_detail_phone
+        text buyer_details_address_1
+        text buyer_details_address_2
+        text buyer_details_address_3
+        text buyer_details_postal_code
+        timestamp created_at
+        text currency_base_multiplier
+        text currency_code
+        text event_occurence_name
+        text event_summary_venue_name
+        text event_summary_venue_postal_code
+        text marketing_opt_in
+        jsonb meta_data
+        text referral_tag
+        text refund_amount
+        text refunded_voucher_id
+        text status
+        text status_message
+        text subtotal
+        text tax
+        text tax_treatment
+        text total
+        text total_paid
+        text txn_id
+    }
+    event_series_voucher_id {
+        text event_series_id PK
+        text voucher_id PK
+    }
+    event_series_payment_method {
+        text id PK
+        text event_series_id PK
+        text external_id
+        text instructions
+        text name
+        text type
+    }
+    event_series_bundle_ticket_type {
+        text id PK
+        text event_series_bundle_id PK
+        text event_series_id PK
+        text quantity
+    }
+    event_series_bundle {
+        text id PK
+        text event_series_id PK
+        text booking_fee
+        text description
+        text name
+        text price
+        jsonb product
+        text status
+    }
+    event_series_default_ticket_type {
+        text id PK
+        text event_series_id PK
+        text access_code
+        text booking_fee
+        text description
+        text group_id
+        text has_overrides
+        text max_per_order
+        text min_per_order
+        text name
+        text override_id
+        text price
+        text quantity
+        text quantity_held
+        text quantity_issued
+        text quantity_total
+        text sort_order
+        text status
+        text type
+    }
+    event_series_default_group_ticket {
+        text event_series_default_ticket_group_event_series_id PK
+        text event_series_default_ticket_group_id PK
+        text ticket_id PK
+    }
+    event_series_default_ticket_group {
+        text id PK
+        text event_series_id PK
+        text max_per_order
+        text name
+        text sort_order
+    }
+    event_series {
+        text id PK
+        text access_code
+        jsonb add_ons
+        text call_to_action
+        timestamp created_at
+        text currency
+        text default_max_tickets_sold_per_occurrence
+        text description
+        text image_header
+        text image_thumbnail
+        text name
+        text next_occurrence_date_date
+        text next_occurrence_date_formatted
+        text next_occurrence_date_iso
+        text next_occurrence_date_time
+        text next_occurrence_date_timezone
+        text next_occurrence_date_unix
+        text online_event
+        text private
+        text revenue
+        text status
+        text timezone
+        text total_issued_ticket
+        text total_occurrence
+        text upcoming_occurrence
+        text url
+        text venue_name
+        text venue_postal_code
+    }
+    hold_quantity {
+        text index PK
+        text hold_id PK
+        text quantity
+        text ticket_type_id
+    }
+    hold {
+        text id PK
+        text event_occurence_id FK
+        text created_at_date
+        text created_at_formatted
+        text created_at_iso
+        text created_at_time
+        text created_at_timezone
+        text created_at_unix
+        text note
+        text total_on_hold
+        text update_at_date
+        text update_at_formatted
+        text update_at_iso
+        text update_at_time
+        text update_at_timezone
+        text update_at_unix
+    }
+    event_override_line {
+        text index PK
+        text event_override_id PK
+        text price
+        text quantity
+        text reference_id
+        text reference_type
+        text status
+    }
+    event_override {
+        text id PK
+        text event_series_id FK
+        text created_at_date
+        text created_at_formatted
+        text created_at_iso
+        text created_at_time
+        text created_at_timezone
+        text created_at_unix
+        text max_sellable_ticket
+        text name
+    }
+    discount_product {
+        text discount_id PK
+        text product_id PK
+    }
+    discount_ticket_type {
+        text index PK
+        text discount_id PK
+        text ticket_type FK
+    }
+    discount {
+        text id PK
+        text booking_fee_amount
+        text booking_fee_percentage
+        text code
+        text expires
+        text face_value_amount
+        text face_value_percentage
+        text max_redemption
+        text name
+        text times_redeemed
+        text type
+    }
+    event_occurence {
+        text id PK
+        text event_series_id PK
+        text chk
+        text end_date
+        text end_formatted
+        text end_iso
+        text end_time
+        text end_timezone
+        text end_unix
+        text hidden
+        text override_id
+        text start_date
+        text start_formatted
+        text start_iso
+        text start_time
+        text start_timezone
+        text start_unix
+        text tickets_available
+        text unavailable
+        text unavailable_status
+    }
+    voucher {
+        text id PK
+        text available_codes
+        text expiry_date
+        text expiry_formatted
+        text expiry_iso
+        text expiry_time
+        text expiry_timezone
+        text expiry_unix
+        text name
+        text partial_redemption
+        text total_codes
+        text type
+        text value
+    }
+    waitlist }o--|| event_occurence : "fk"
+    waitlist }o--|| event_series : "fk"
+    checkin }o--|| event_occurence : "fk"
+    checkin }o--|| event_series : "fk"
+    checkin }o--|| issued_ticket : "fk"
+    voucher_code }o--|| voucher : "fk"
+    issued_ticket }o--|| event_occurence : "fk"
+    issued_ticket }o--|| event_series_default_ticket_type : "fk"
+    issued_ticket }o--|| event_series : "fk"
+    issued_ticket }o--|| orders : "fk"
+    product_event_series_id }o--|| event_series : "fk"
+    product_event_series_id }o--|| product : "fk"
+    order_issued_ticket }o--|| issued_ticket : "fk"
+    order_issued_ticket }o--|| orders : "fk"
+    order_line_item }o--|| orders : "fk"
+    orders }o--|| event_series_payment_method : "fk"
+    orders }o--|| event_occurence : "fk"
+    orders }o--|| event_series : "fk"
+    event_series_voucher_id }o--|| voucher : "fk"
+    event_series_voucher_id }o--|| event_series : "fk"
+    event_series_payment_method }o--|| event_series : "fk"
+    event_series_bundle_ticket_type }o--|| event_series_bundle : "fk"
+    event_series_bundle_ticket_type }o--|| event_series_bundle : "fk"
+    event_series_bundle }o--|| event_series : "fk"
+    event_series_default_ticket_type }o--|| event_series : "fk"
+    event_series_default_group_ticket }o--|| event_series_default_ticket_type : "fk"
+    event_series_default_group_ticket }o--|| event_series_default_ticket_group : "fk"
+    event_series_default_group_ticket }o--|| event_series_default_ticket_group : "fk"
+    event_series_default_ticket_group }o--|| event_series : "fk"
+    hold_quantity }o--|| hold : "fk"
+    hold }o--|| event_occurence : "fk"
+    event_override_line }o--|| event_override : "fk"
+    event_override }o--|| event_series : "fk"
+    discount_product }o--|| product : "fk"
+    discount_product }o--|| discount : "fk"
+    discount_ticket_type }o--|| event_series_default_ticket_type : "fk"
+    discount_ticket_type }o--|| discount : "fk"
+    event_occurence }o--|| event_series : "fk"

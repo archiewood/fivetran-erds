@@ -1,0 +1,190 @@
+erDiagram
+    device_activity {
+        text id PK
+        text blueprint_id FK
+        text device_id FK
+        text action_type
+        text blueprint_is_removed
+        text computer_is_removed
+        text created_at
+        text detail_attempt
+        text detail_command_type
+        text detail_date_completed
+        text detail_date_requested
+        jsonb detail_error_chain
+        text detail_is_silent
+        text detail_last_pushed
+        jsonb detail_metadata
+        text detail_priority
+        text detail_profile_name
+        text detail_profile_uuid
+        text detail_request_requires_network_tether
+        text detail_request_type
+        text detail_skip_retry
+        text detail_status
+        text detail_user
+        text detail_username
+        text detail_uuid
+        text external_token
+        text users
+    }
+    device_app {
+        text id PK
+        text device_id FK
+        text app_name
+        text app_store_vendable
+        text bundle_id
+        text bundle_size
+        text creation_date
+        text device_based_vpp
+        text modification_date
+        text path
+        text process
+        text signature
+        text source
+        text version
+    }
+    device_library_item {
+        text id PK
+        text blueprint_id FK
+        text device_id FK
+        text control_log
+        text control_reported_at
+        text item_id
+        text last_audit_log
+        text last_audit_run
+        text log
+        text name
+        text reported_at
+        text rules_present
+        text status
+        text type
+    }
+    device {
+        text id PK
+        text blueprint_id FK
+        text agent_installed
+        text agent_version
+        text asset_tag
+        text first_enrollment
+        text is_missing
+        text is_removed
+        text last_check_in
+        text last_enrollment
+        text lost_mode_status
+        text mdm_enabled
+        text model
+        text name
+        text os_version
+        text platform
+        text serial_number
+        text user_email
+        text user_id
+        text user_is_archived
+        text user_name
+    }
+    blueprint {
+        text id PK
+        text color
+        text computers_count
+        text description
+        text enrollment_code
+        text enrollment_is_active
+        text icon
+        bigint missing_computers_count
+        text name
+    }
+    mdm_device {
+        text id PK
+        text device_associated_token_id PK
+        text deferred_install
+        text enrolled_at
+        text enrollment_status
+        text is_missing
+        text is_removed
+        text name
+        text status
+    }
+    device_associated_token {
+        text id PK
+        text blueprint_id FK
+        text list_ade_id FK
+        text asset_tag
+        text assignment_status_received_at
+        text color
+        text dep_account_id
+        text dep_account_server_name
+        text description
+        text device_assigned_by
+        text device_assigned_date
+        text device_family
+        text failed_assignment_attempts
+        text last_assignment_status
+        text model
+        text os
+        text profile_assign_time
+        text profile_push_time
+        text profile_status
+        text serial_number
+        text users
+    }
+    device_parameter {
+        text id PK
+        text device_id FK
+        text category
+        text name
+        text status
+        text subcategory
+    }
+    list_ade {
+        text id PK
+        text access_token_expiry
+        text admin_id
+        text blueprint_id
+        text days_left
+        text default_email
+        text default_phone
+        bigint device_count_apple_tv
+        text device_count_ipad
+        text device_count_iphone
+        text device_count_mac
+        text device_count_total
+        text last_device_sync
+        text organization_address
+        text organization_email
+        text organization_name
+        text organization_phone
+        text organization_type
+        text server_name
+        text server_uuid
+        text status
+        text status_reason
+        text status_received_at
+        text stoken_file_name
+    }
+    blueprint_result_template {
+        text id PK
+        text blueprint_result_id PK
+        text category
+        text color
+        text description
+        text icon
+        text name
+        text rating
+    }
+    blueprint_result {
+        text id PK
+        text name
+        text weight
+    }
+    device_activity }o--|| blueprint : "fk"
+    device_activity }o--|| device : "fk"
+    device_app }o--|| device : "fk"
+    device_library_item }o--|| blueprint : "fk"
+    device_library_item }o--|| device : "fk"
+    device }o--|| blueprint : "fk"
+    mdm_device }o--|| device_associated_token : "fk"
+    device_associated_token }o--|| blueprint : "fk"
+    device_associated_token }o--|| list_ade : "fk"
+    device_parameter }o--|| device : "fk"
+    blueprint_result_template }o--|| blueprint_result : "fk"

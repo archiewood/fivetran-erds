@@ -1,0 +1,500 @@
+erDiagram
+    asset_object_schema {
+        integer id PK
+        text workspace_id PK
+        boolean can_manage
+        timestamp created
+        text description
+        text key
+        text name
+        text status
+        timestamp updated
+    }
+    security_level {
+        integer id PK
+        text description
+        text name
+    }
+    asset_object_type_attribute_object {
+        integer value_index PK
+        text workspace_id PK
+        integer object_id PK
+        integer object_type_attribute_id PK
+        text display_value
+        boolean referenced_type
+        text search_value
+        text value
+    }
+    asset_schema_status {
+        integer id PK
+        text workspace_id PK
+        integer schema_id FK
+        integer category
+        text description
+        text name
+    }
+    project {
+        integer id PK
+        text lead_id FK
+        integer permission_scheme_id FK
+        integer project_category_id FK
+        text description
+        text key
+        text name
+        text project_type_key
+        boolean simplified
+    }
+    epic {
+        integer id PK
+        boolean done
+        text key
+        text name
+        text summary
+    }
+    service {
+        text id PK
+        text name
+    }
+    issue_property {
+        text key PK
+        integer issue_id PK
+        text self
+        text value
+    }
+    request_comment {
+        integer id PK
+        integer request_id PK
+        text author_id FK
+        text body
+        timestamp created
+        boolean public
+    }
+    issue_watcher {
+        integer issue_id PK
+        text user_id PK
+    }
+    issue_field_history {
+        timestamp time PK
+        text field_id PK
+        integer issue_id PK
+        text author_id FK
+        boolean is_active
+        text value
+    }
+    team {
+        text id PK
+        boolean is_shared
+        boolean is_visible
+        text name
+        text title
+    }
+    asset_object_issue {
+        text workspace_id PK
+        integer issue_id PK
+        integer object_id PK
+    }
+    comment {
+        integer id PK
+        text author_id FK
+        integer issue_id FK
+        text update_author_id FK
+        text body
+        timestamp created
+        boolean is_public
+        timestamp updated
+        text visibility_identifier
+        text visibility_type
+        text visibility_value
+    }
+    organization {
+        integer id PK
+        text name
+    }
+    field_option {
+        integer id PK
+        integer parent_id FK
+        text name
+    }
+    issue_board {
+        integer board_id PK
+        integer issue_id PK
+    }
+    request {
+        integer issue_id PK
+        integer request_type_id FK
+        text link
+        integer service_desk_id
+    }
+    resolution {
+        integer id PK
+        text description
+        text name
+    }
+    sprint {
+        integer id PK
+        integer board_id FK
+        timestamp activated_date
+        timestamp complete_date
+        timestamp end_date
+        text goal
+        text name
+        timestamp start_date
+        text state
+    }
+    user {
+        text id PK
+        text email
+        boolean is_active
+        text locale
+        text name
+        text time_zone
+        text username
+    }
+    project_role_actor {
+        integer id PK
+        text group_name FK
+        integer project_id FK
+        integer project_role_id FK
+        text user_id FK
+    }
+    issue_form {
+        text id PK
+        integer issue_id PK
+        text form_template_id
+        boolean internal
+        boolean lock
+        text name
+        text state_answers
+        text state_status
+        text state_visibility
+        boolean submitted
+        timestamp updated
+    }
+    project_role {
+        integer id PK
+        text description
+        text name
+    }
+    sprint_board {
+        integer board_id PK
+        integer sprint_id PK
+    }
+    version {
+        integer id PK
+        integer project_id FK
+        boolean archived
+        text description
+        text driver
+        text name
+        boolean overdue
+        text release_date
+        boolean released
+        text start_date
+    }
+    status {
+        integer id PK
+        integer status_category_id FK
+        text description
+        text name
+    }
+    asset_object_type {
+        integer id PK
+        text workspace_id PK
+        integer schema_id FK
+        boolean abstract_object_type
+        timestamp created
+        text description
+        boolean inherited
+        text name
+        integer parent_id
+        boolean parent_object_type_inherited
+        integer position
+        integer type
+        timestamp updated
+    }
+    security_scheme {
+        integer id PK
+        integer default_level_id FK
+        text description
+        text name
+    }
+    permission_scheme {
+        integer id PK
+        text description
+        text name
+    }
+    board {
+        integer id PK
+        text name
+        text type
+    }
+    field {
+        text id PK
+        text description
+        text dimension_table
+        boolean is_array
+        boolean is_custom
+        text name
+    }
+    %% Cloud based only
+    worklog_property {
+        text key PK
+        integer worklog_id PK
+        text self
+        text value
+    }
+    user_group {
+        text group_name PK
+        text user_id PK
+    }
+    field_project {
+        text field_id PK
+        text project_id PK
+    }
+    request_type {
+        integer id PK
+        integer service_desk_id PK
+        integer issue_type_id FK
+        integer project_id FK
+        text description
+        text help_text
+        text name
+    }
+    project_board {
+        integer board_id PK
+        integer project_id PK
+    }
+    sla {
+        text _fivetran_id PK
+        bigint issue_id PK
+        bigint sla_id PK
+        boolean breached
+        bigint elapsed_time
+        bigint goal_duration
+        boolean is_ongoing_cycle
+        boolean paused
+        bigint remaining_time
+        timestamp start_time
+        timestamp stop_time
+        boolean within_calendar_hours
+    }
+    component {
+        integer id PK
+        integer project_id FK
+        text description
+        text name
+    }
+    issue_multiselect_history {
+        text _fivetran_id PK
+        timestamp time PK
+        text field_id PK
+        integer issue_id PK
+        text author_id FK
+        boolean is_active
+        text value
+    }
+    security_scheme_level {
+        integer level_id PK
+        integer scheme_id PK
+    }
+    priority {
+        integer id PK
+        text description
+        text name
+    }
+    permission {
+        text id PK
+        text description
+        text name
+        text type
+    }
+    issue_user_vote {
+        integer issue_id PK
+        text user_id PK
+    }
+    status_category {
+        integer id PK
+        text name
+    }
+    approval {
+        integer id PK
+        boolean can_answer_approval
+        timestamp completed_date
+        timestamp created_date
+        text final_decision
+        text name
+    }
+    %% issue.system_fields
+%% We sync all system field from API response as is without any prefix
+    issue {
+        integer id PK
+        integer parent_id FK
+        integer priority FK
+        integer resolution FK
+        integer security_level FK
+        integer status FK
+        integer key
+    }
+    asset_object_type_attribute {
+        integer id PK
+        text workspace_id PK
+        integer object_type_id FK
+        integer reference_object_type_id FK
+        text reference_type_id FK
+        text additional_value
+        integer default_type_id
+        text default_type_name
+        text description
+        boolean editable
+        boolean hidden
+        boolean include_child_object_types
+        boolean indexed
+        boolean is_system
+        boolean label
+        integer max_cardinality
+        integer min_cardinality
+        text name
+        boolean object_attribute_exists
+        text options
+        integer position
+        text ql_query
+        text regex_validation
+        boolean removable
+        boolean sortable
+        text suffix
+        boolean summable
+        integer type
+        text type_value
+        text type_value_multi
+        boolean unique_attribute
+    }
+    asset_reference_type {
+        text id PK
+        text workspace_id PK
+        integer schema_id FK
+        text color
+        text description
+        text name
+        boolean removable
+        text url_16
+    }
+    issue_type {
+        integer id PK
+        text description
+        integer hierarchy_level
+        text name
+        boolean subtask
+    }
+    approver {
+        bigint approval_id PK
+        text approver_id PK
+        text decision
+    }
+    issue_remote_link {
+        integer id PK
+        integer issue_id PK
+        text application_name
+        text application_type
+        text global_id
+        text relationship
+    }
+    project_category {
+        integer id PK
+        text description
+        text name
+    }
+    worklog {
+        integer id PK
+        integer issue_id PK
+        text author_id FK
+        text update_author_id FK
+        text comment
+        timestamp started
+        bigint time_spent_seconds
+        timestamp updated
+    }
+    asset_object {
+        integer id PK
+        text workspace_id PK
+        integer object_type_id FK
+        timestamp created
+        text key
+        text label
+        text link
+        text name
+        bigint timestamps
+        timestamp updated
+    }
+    issue_link {
+        text relationship PK
+        integer issue_id PK
+        integer related_issue_id PK
+    }
+    asset_object_type_attribute_object }o--|| asset_object : "fk"
+    asset_object_type_attribute_object }o--|| asset_object_type_attribute : "fk"
+    asset_schema_status }o--|| asset_object_schema : "fk"
+    project }o--|| project_category : "fk"
+    project }o--|| user : "fk"
+    project }o--|| permission_scheme : "fk"
+    issue_property }o--|| issue : "fk"
+    request_comment }o--|| request : "fk"
+    request_comment }o--|| user : "fk"
+    issue_watcher }o--|| issue : "fk"
+    issue_watcher }o--|| user : "fk"
+    issue_field_history }o--|| issue : "fk"
+    issue_field_history }o--|| field : "fk"
+    issue_field_history }o--|| user : "fk"
+    asset_object_issue }o--|| issue : "fk"
+    asset_object_issue }o--|| asset_object : "fk"
+    comment }o--|| issue : "fk"
+    comment }o--|| user : "fk"
+    comment }o--|| user : "fk"
+    field_option }o--|| field_option : "fk"
+    issue_board }o--|| issue : "fk"
+    issue_board }o--|| board : "fk"
+    request }o--|| issue : "fk"
+    request }o--|| request_type : "fk"
+    sprint }o--|| board : "fk"
+    project_role_actor }o--|| project : "fk"
+    project_role_actor }o--|| project_role : "fk"
+    project_role_actor }o--|| user : "fk"
+    project_role_actor }o--|| user_group : "fk"
+    issue_form }o--|| issue : "fk"
+    sprint_board }o--|| board : "fk"
+    sprint_board }o--|| sprint : "fk"
+    version }o--|| project : "fk"
+    status }o--|| status_category : "fk"
+    asset_object_type }o--|| asset_object_schema : "fk"
+    security_scheme }o--|| security_level : "fk"
+    worklog_property }o--|| worklog : "fk"
+    user_group }o--|| user : "fk"
+    field_project }o--|| field : "fk"
+    field_project }o--|| project : "fk"
+    request_type }o--|| issue_type : "fk"
+    request_type }o--|| project : "fk"
+    project_board }o--|| board : "fk"
+    project_board }o--|| project : "fk"
+    component }o--|| project : "fk"
+    issue_multiselect_history }o--|| issue : "fk"
+    issue_multiselect_history }o--|| field : "fk"
+    issue_multiselect_history }o--|| user : "fk"
+    security_scheme_level }o--|| security_scheme : "fk"
+    security_scheme_level }o--|| security_level : "fk"
+    issue_user_vote }o--|| issue : "fk"
+    issue_user_vote }o--|| user : "fk"
+    issue }o--|| issue : "fk"
+    issue }o--|| priority : "fk"
+    issue }o--|| resolution : "fk"
+    issue }o--|| security_level : "fk"
+    issue }o--|| status : "fk"
+    asset_object_type_attribute }o--|| asset_object_type : "fk"
+    asset_object_type_attribute }o--|| asset_object_type : "fk"
+    asset_object_type_attribute }o--|| asset_object_type : "fk"
+    asset_reference_type }o--|| asset_object_schema : "fk"
+    issue_remote_link }o--|| issue : "fk"
+    worklog }o--|| issue : "fk"
+    worklog }o--|| user : "fk"
+    worklog }o--|| user : "fk"
+    asset_object }o--|| asset_object_type : "fk"
+    issue_link }o--|| issue : "fk"
+    issue_link }o--|| issue : "fk"

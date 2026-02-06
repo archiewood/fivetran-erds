@@ -1,0 +1,404 @@
+erDiagram
+    user_project {
+        text project_id PK
+        text user_id PK
+    }
+    assignable {
+        text id PK
+        text owner_id FK
+        text parent_id FK
+        text project_state_id FK
+        text client
+        text created_at
+        timestamp deleted_at
+        text description
+        text ends_at
+        text guid
+        text name
+        text phase_name
+        text secure_url
+        text secure_url_expiration
+        text settings
+        text starts_at
+        text thumbnail
+        text time_entry_lockout
+        text type
+        timestamp updated_at
+    }
+    custom_field {
+        text id PK
+        text created_at
+        text data_type
+        text default_value
+        text description
+        text is_editable_only_by_admins
+        text is_visible_as_filter
+        text is_visible_on_info_page
+        text name
+        text namespace
+        text updated_at
+    }
+    custom_field_option {
+        text _fivetran_id PK
+        text custom_field_id FK
+        text option
+    }
+    approval {
+        text id PK
+        text approvable_id FK
+        text approvee_user_id FK
+        text approver_user_id FK
+        text approvable_type
+        text approved_at
+        text created_at
+        text status
+        text submitted_at
+        timestamp updated_at
+    }
+    role {
+        text id PK
+        text value
+    }
+    phase {
+        text id PK
+        text owner_id FK
+        text project_id FK
+        text archived
+        text archived_at
+        text client
+        text created_at
+        text deleted_at
+        text description
+        text ends_at
+        text guid
+        text has_pending_updates
+        text name
+        text phase_name
+        text secure_url
+        text secure_url_expiration
+        text settings
+        text starts_at
+        text thumbnail
+        text time_entry_lockout
+        text type
+        timestamp updated_at
+        text use_parent_bill_rates
+    }
+    status {
+        text id PK
+        text assignable_id FK
+        text user_id FK
+        text created_at
+        text current_task
+        text ends
+        text message
+        text start
+        text status
+        text updated_at
+    }
+    time_entry {
+        text id PK
+        text assignable_id FK
+        text bill_rate_id FK
+        text user_id FK
+        text created_at
+        text date
+        text hours
+        text is_suggestion
+        text note
+        text scheduled_hours
+        text task
+        timestamp updated_at
+    }
+    discipline {
+        text id PK
+        text value
+    }
+    status_option {
+        text id PK
+        text color
+        text created_at
+        timestamp deleted_at
+        text label
+        text orders
+        text stage
+        text updated_at
+    }
+    assignment {
+        text id PK
+        text assignable_id FK
+        text bill_rate_id FK
+        text status_option_id FK
+        text user_id FK
+        text all_day_assignment
+        text allocation_mode
+        text created_at
+        text description
+        text ends_at
+        text hours_per_day
+        text note
+        text repetition_id
+        text resource_request_id
+        text starts_at
+        text status
+        timestamp updated_at
+    }
+    bill_rate {
+        text id PK
+        text assignable_id FK
+        text discipline_id FK
+        text role_id FK
+        text user_id FK
+        text created_at
+        text ends_at
+        text rate
+        text starts_at
+        text updated_at
+    }
+    project_custom_field_value {
+        text id PK
+        text project_id PK
+        text custom_field_id FK
+        text created_at
+        text updated_at
+        jsonb value
+    }
+    project_budget_item {
+        text id PK
+        text project_id PK
+        text assignable_id FK
+        text assignable_parent_id FK
+        text amount
+        text category
+        text created_at
+        text per_item_amount
+        text per_item_label
+        text type
+        text updated_at
+    }
+    project_tag {
+        text id PK
+        text project_id PK
+        text value
+    }
+    project {
+        text id PK
+        text owner_id FK
+        text parent_id FK
+        text approved_dollars
+        text approved_hours
+        text archived
+        text archived_at
+        text bounding_end_date
+        text bounding_end_date_assignables
+        text bounding_end_date_assignments
+        text bounding_end_date_expense_items
+        text bounding_end_date_time_entries
+        text bounding_start_date
+        text bounding_start_date_assignables
+        text bounding_start_date_assignments
+        text bounding_start_date_expense_items
+        text bounding_start_date_time_entries
+        text client
+        text code
+        text confirmed_dollars
+        text confirmed_hours
+        text created_at
+        timestamp deleted_at
+        text description
+        text employee_number
+        text ends_at
+        text future_dollars
+        text future_hours
+        text guid
+        text has_pending_updates
+        text name
+        text scheduled_dollars
+        text scheduled_hours
+        text secure_url
+        text secure_url_expiration
+        text settings
+        text starts_at
+        text state
+        text state_id
+        text thumbnail
+        text time_entry_lockout
+        text type
+        text unconfirmed_dollars
+        text unconfirmed_hours
+        timestamp updated_at
+        text use_parent_bill_rates
+    }
+    project_expense_item {
+        text id PK
+        text project_id PK
+        text assignable_id FK
+        text amount
+        text category
+        text created_at
+        text date
+        text note
+        text updated_at
+    }
+    report {
+        text _fivetran_id PK
+        text project_id FK
+        text user_id FK
+        text date
+        text difference_from_past_scheduled_hours
+        text future_scheduled_hours
+        text incurred_hours
+        text leave_type
+        text scheduled_hours
+        text total_hours
+    }
+    placeholder_resource_assignment {
+        text assignment_id PK
+        text placeholder_resource_id PK
+    }
+    placeholder_resource_custom_field_value {
+        text id PK
+        text placeholder_resource_id PK
+        text custom_field_id FK
+        text created_at
+        text updated_at
+        text value
+    }
+    placeholder_resource {
+        text id PK
+        text user_type_id FK
+        text abbreviation
+        text bill_rate
+        text color
+        text created_at
+        text discipline
+        text display_name
+        text guid
+        text location
+        text role
+        text thumbnail
+        text title
+        text type
+        timestamp updated_at
+    }
+    user_expense_item {
+        text id PK
+        text user_id PK
+        text assignable_id FK
+        text amount
+        text category
+        text created_at
+        text date
+        text note
+        text updated_at
+    }
+    user_custom_field_value {
+        text id PK
+        text user_id PK
+        text custom_field_id FK
+        text created_at
+        text updated_at
+        text value
+    }
+    user_availability {
+        text id PK
+        text user_id PK
+        text created_at
+        text day_0
+        text day_1
+        text day_2
+        text day_3
+        text day_4
+        text day_5
+        text day_6
+        text ends_at
+        text starts_at
+        text updated_at
+    }
+    user_tag {
+        text id PK
+        text user_id PK
+        text value
+    }
+    users {
+        text id PK
+        text account_owner
+        text archived
+        text archived_at
+        text bill_rate
+        text billability_target
+        text billable
+        text created_at
+        text deleted
+        text deleted_at
+        text discipline
+        text display_name
+        text email
+        text first_name
+        text guid
+        text has_login
+        text hire_date
+        text invitation_pending
+        text last_login_time
+        text last_name
+        text license_type
+        text location
+        text location_id
+        text login_type
+        text mobile_phone
+        text office_phone
+        text role
+        text settings
+        text termination_date
+        text thumbnail
+        text type
+        text type_id
+        timestamp updated_at
+    }
+    user_project }o--|| project : "fk"
+    user_project }o--|| users : "fk"
+    assignable }o--|| project : "fk"
+    assignable }o--|| users : "fk"
+    assignable }o--|| assignable : "fk"
+    custom_field_option }o--|| custom_field : "fk"
+    approval }o--|| project_expense_item : "fk"
+    approval }o--|| users : "fk"
+    approval }o--|| users : "fk"
+    phase }o--|| users : "fk"
+    phase }o--|| project : "fk"
+    status }o--|| users : "fk"
+    status }o--|| assignable : "fk"
+    time_entry }o--|| users : "fk"
+    time_entry }o--|| assignable : "fk"
+    time_entry }o--|| bill_rate : "fk"
+    assignment }o--|| users : "fk"
+    assignment }o--|| status_option : "fk"
+    assignment }o--|| assignable : "fk"
+    assignment }o--|| bill_rate : "fk"
+    bill_rate }o--|| users : "fk"
+    bill_rate }o--|| discipline : "fk"
+    bill_rate }o--|| assignable : "fk"
+    bill_rate }o--|| role : "fk"
+    project_custom_field_value }o--|| custom_field : "fk"
+    project_custom_field_value }o--|| project : "fk"
+    project_budget_item }o--|| assignable : "fk"
+    project_budget_item }o--|| assignable : "fk"
+    project_budget_item }o--|| project : "fk"
+    project_tag }o--|| project : "fk"
+    project }o--|| users : "fk"
+    project }o--|| project : "fk"
+    project_expense_item }o--|| assignable : "fk"
+    project_expense_item }o--|| project : "fk"
+    report }o--|| users : "fk"
+    report }o--|| project : "fk"
+    placeholder_resource_assignment }o--|| assignment : "fk"
+    placeholder_resource_assignment }o--|| placeholder_resource : "fk"
+    placeholder_resource_custom_field_value }o--|| custom_field : "fk"
+    placeholder_resource_custom_field_value }o--|| placeholder_resource : "fk"
+    placeholder_resource }o--|| users : "fk"
+    user_expense_item }o--|| assignable : "fk"
+    user_expense_item }o--|| users : "fk"
+    user_custom_field_value }o--|| custom_field : "fk"
+    user_custom_field_value }o--|| users : "fk"
+    user_availability }o--|| users : "fk"
+    user_tag }o--|| users : "fk"

@@ -1,0 +1,514 @@
+erDiagram
+    project_value_option {
+        text value_option_id PK
+        text field_project_id PK
+        text project_field_index PK
+    }
+    project_field {
+        text index PK
+        text project_id PK
+        text id
+        text name
+        text value
+        text value_type
+    }
+    project {
+        text id PK
+        text user_id FK
+        text context
+        text created_at
+        text description
+        text is_archived
+        text name
+        text privacy_type
+    }
+    candidate_custom_value_option {
+        text candidate_custom_field_index PK
+        text custom_field_candidate_id PK
+        text custom_value_option_id PK
+    }
+    candidate_custom_field {
+        text index PK
+        text candidate_id PK
+        text id FK
+        text project_id FK
+    }
+    candidate_work_info {
+        text _fivetran_id PK
+        text candidate_id FK
+        text company
+        text is_current
+        text title
+        text work_end_date
+        text work_start_date
+    }
+    candidate_education_info {
+        text _fivetran_id PK
+        text candidate_id FK
+        text degree
+        text end_date
+        text field_of_study
+        text school
+        text start_date
+    }
+    candidate_profile {
+        text _fivetran_id PK
+        text candidate_id FK
+        text network
+        text url
+        text user_name
+    }
+    candidate_email {
+        text _fivetran_id PK
+        text candidate_id FK
+        text email_address
+        text is_primary
+    }
+    candidate_project {
+        text candidate_id PK
+        text project_id PK
+    }
+    candidate {
+        text id PK
+        text created_by FK
+        text user_id FK
+        text candidate_greenhouse_id
+        text company
+        text created_at
+        text due_date
+        text first_name
+        text last_name
+        text linked_in_handle
+        text location
+        text nickname
+        text note
+        text phone_number
+        text school
+        text sourced_from
+        text title
+        text weblink
+    }
+    ats_office {
+        text id PK
+        jsonb child_department_external_id
+        jsonb child_id
+        timestamp deleted_at
+        text location_name
+        text name
+        text parent_id
+        text parent_office_external_id
+    }
+    custom_field_option {
+        text id PK
+        text custom_field_id PK
+        text is_hidden
+        text value
+    }
+    custom_field {
+        text id PK
+        text project_id FK
+        text created_at
+        text is_hidden
+        text name
+        text scope
+        text value_type
+    }
+    users {
+        text id PK
+        text email
+        text name
+    }
+    sequence {
+        text id PK
+        text user_id FK
+        timestamp created_at
+        text name
+    }
+    candidate_note {
+        text id PK
+        text candidate_id FK
+        text user_id FK
+        text content
+        text is_private
+        text time_stamp
+    }
+    candidate_uploaded_resumes {
+        text id PK
+        text candidate_id FK
+        text user_id FK
+        text created_at
+        text download_url
+        text file_name
+    }
+    ats_scheduled_interviewer {
+        text id PK
+        text ats_scheduled_interview_id PK
+        text scorecard_id FK
+        text email
+        text employee_id
+        text name
+        text response_status
+    }
+    ats_scheduled_interview_question {
+        text id PK
+        text ats_scheduled_interview_id PK
+        text answer
+        jsonb option
+        text question
+        text type
+    }
+    ats_scheduled_interview {
+        text id PK
+        text ats_application_id FK
+        text ats_candidate_id FK
+        text organizer_id FK
+        timestamp created_at
+        timestamp end_date_time
+        text external_event_id
+        text interview_id
+        text interview_name
+        text job_stage_interview_item_id
+        text location
+        timestamp start_date_time
+        text status
+        timestamp updated_at
+        text video_conferencing_url
+    }
+    ats_application_job {
+        text id PK
+        text ats_application_id PK
+        text name
+    }
+    ats_application {
+        text id PK
+        text ats_candidate_id FK
+        text ats_job_post_id FK
+        timestamp applied_at
+        text coordinator_email
+        text coordinator_id
+        text credited_to
+        text current_stage_id
+        text current_stage_name
+        timestamp deleted_at
+        timestamp last_activity_at
+        text recruiter_email
+        text recruiter_id
+        timestamp rejected_at
+        text rejection_reason_id
+        text rejection_reason_name
+        jsonb rejection_reason_type
+        text source_public_name
+        text source_user_id
+        text sourcer_email
+        text sourcer_id
+        text status
+    }
+    ats_opening {
+        text id PK
+        text ats_application_id FK
+        timestamp closed_at
+        timestamp deleted_at
+        timestamp opened_at
+        text opening_id
+        text status
+        text target_hire_date
+        text target_start_date
+    }
+    ats_scorecard_question {
+        text id PK
+        text ats_scorecard_id PK
+        text answer
+        jsonb option
+        text question
+        text type
+    }
+    ats_scorecard {
+        text id PK
+        text ats_application_id FK
+        text ats_candidate_id FK
+        timestamp created_at
+        timestamp deleted_at
+        text interview
+        text interview_id
+        text interview_step_id
+        text interview_step_name
+        timestamp interviewed_at
+        text interviewer_employee_id
+        text interviewer_first_name
+        text interviewer_id
+        text interviewer_last_name
+        text interviewer_name
+        text overall_feedback
+        text overall_recommendation
+        timestamp submitted_at
+        text submitted_by_employee_id
+        text submitted_by_first_name
+        text submitted_by_id
+        text submitted_by_last_name
+        text submitted_by_name
+        timestamp updated_at
+    }
+    ats_candidate_attachment {
+        text index PK
+        text ats_candidate_id PK
+        timestamp created_at
+        text file_name
+        text type
+        text url
+    }
+    ats_candidate_education {
+        text id PK
+        text ats_candidate_id PK
+        text degree
+        text discipline
+        text end_date
+        text school_name
+        text start_date
+    }
+    ats_candidate_employment {
+        text id PK
+        text ats_candidate_id PK
+        text company_name
+        text end_date
+        text start_date
+        text title
+    }
+    ats_candidate {
+        text id PK
+        text company
+        timestamp created_at
+        timestamp deleted_at
+        jsonb email_address
+        text first_name
+        text is_private
+        timestamp last_activity
+        text last_name
+        jsonb linked_user_id
+        jsonb phone_number
+        jsonb social_media_address
+        jsonb tags
+        text title
+        timestamp updated_at
+    }
+    ats_user_office {
+        text ats_user_id PK
+        text id PK
+    }
+    ats_user_department {
+        text ats_user_id PK
+        text id PK
+    }
+    ats_user {
+        text id PK
+        timestamp created_at
+        timestamp deleted_at
+        text disabled
+        jsonb email
+        text employee_id
+        text first_name
+        text last_name
+        jsonb linked_ats_candidate_id
+        text name
+        text primary_email_address
+        text site_admin
+        timestamp updated_at
+    }
+    ats_job_post {
+        text id PK
+        text ats_job_id FK
+        text active
+        text content
+        timestamp created_at
+        timestamp deleted_at
+        text external
+        timestamp first_published_at
+        text internal
+        text internal_content
+        text listed
+        text live
+        text title
+        timestamp updated_at
+    }
+    ats_job_department {
+        text id PK
+        text ats_job_id PK
+        text parent_id FK
+        jsonb child_department_external_id
+        jsonb child_id
+        timestamp deleted_at
+        text name
+        text parent_department_external_id
+    }
+    ats_job_office {
+        text ats_job_id PK
+        text id PK
+    }
+    ats_job_hiring_team_manager {
+        text id PK
+        text ats_job_id PK
+        text employee_id
+        text first_name
+        text last_name
+        text name
+    }
+    ats_job_hiring_team_recruiter {
+        text id PK
+        text ats_job_id PK
+        text employee_id
+        text first_name
+        text last_name
+        text name
+    }
+    ats_job_hiring_team_coordinator {
+        text id PK
+        text ats_job_id PK
+        text employee_id
+        text first_name
+        text last_name
+        text name
+    }
+    ats_job_hiring_team_sourcer {
+        text id PK
+        text ats_job_id PK
+        text employee_id
+        text first_name
+        text last_name
+        text name
+    }
+    ats_job {
+        text id PK
+        timestamp closed_at
+        text confidential
+        timestamp created_at
+        timestamp deleted_at
+        text is_template
+        text name
+        timestamp opened_at
+        text requisition_id
+        text status
+        timestamp updated_at
+    }
+    ats_offer_compensation {
+        text index PK
+        text ats_offer_id PK
+        text currency_code
+        text interval
+        text type
+        text unit
+        text value
+        text value_type
+    }
+    ats_offer {
+        text id PK
+        text ats_application_id FK
+        text ats_candidate_id FK
+        text ats_job_id FK
+        text opening_id FK
+        timestamp created_at
+        timestamp deleted_at
+        text sent_at
+        text starts_at
+        text status
+        timestamp updated_at
+    }
+    ats_job_stage_interview_default_interviewer_user {
+        text id PK
+        text ats_job_stage_id PK
+        text ats_job_stage_interview_id PK
+        text employee_id
+        text first_name
+        text last_name
+        text name
+    }
+    ats_job_stage_interview_question {
+        text id PK
+        text ats_job_stage_id PK
+        text ats_job_stage_interview_id PK
+        text question
+    }
+    ats_job_stage_interview {
+        text id PK
+        text ats_job_stage_id PK
+        timestamp deleted_at
+        text estimated_minutes
+        text interview_kit_content
+        text interview_kit_id
+        text item_id
+        text name
+        text schedulable
+    }
+    ats_job_stage {
+        text id PK
+        text ats_job_id FK
+        text active
+        timestamp created_at
+        timestamp deleted_at
+        text name
+        text priority
+        timestamp updated_at
+    }
+    project_value_option }o--|| project_field : "fk"
+    project_value_option }o--|| project_field : "fk"
+    project_field }o--|| project : "fk"
+    project }o--|| users : "fk"
+    candidate_custom_value_option }o--|| custom_field_option : "fk"
+    candidate_custom_value_option }o--|| candidate_custom_field : "fk"
+    candidate_custom_value_option }o--|| candidate_custom_field : "fk"
+    candidate_custom_field }o--|| custom_field : "fk"
+    candidate_custom_field }o--|| project : "fk"
+    candidate_custom_field }o--|| candidate : "fk"
+    candidate_work_info }o--|| candidate : "fk"
+    candidate_education_info }o--|| candidate : "fk"
+    candidate_profile }o--|| candidate : "fk"
+    candidate_email }o--|| candidate : "fk"
+    candidate_project }o--|| project : "fk"
+    candidate_project }o--|| candidate : "fk"
+    candidate }o--|| users : "fk"
+    candidate }o--|| users : "fk"
+    custom_field_option }o--|| custom_field : "fk"
+    custom_field }o--|| project : "fk"
+    sequence }o--|| users : "fk"
+    candidate_note }o--|| candidate : "fk"
+    candidate_note }o--|| users : "fk"
+    candidate_uploaded_resumes }o--|| candidate : "fk"
+    candidate_uploaded_resumes }o--|| users : "fk"
+    ats_scheduled_interviewer }o--|| ats_scorecard : "fk"
+    ats_scheduled_interviewer }o--|| ats_scheduled_interview : "fk"
+    ats_scheduled_interview_question }o--|| ats_scheduled_interview : "fk"
+    ats_scheduled_interview }o--|| ats_application : "fk"
+    ats_scheduled_interview }o--|| ats_candidate : "fk"
+    ats_scheduled_interview }o--|| ats_user : "fk"
+    ats_application_job }o--|| ats_application : "fk"
+    ats_application }o--|| ats_candidate : "fk"
+    ats_application }o--|| ats_job_post : "fk"
+    ats_opening }o--|| ats_application : "fk"
+    ats_scorecard_question }o--|| ats_scorecard : "fk"
+    ats_scorecard }o--|| ats_application : "fk"
+    ats_scorecard }o--|| ats_candidate : "fk"
+    ats_candidate_attachment }o--|| ats_candidate : "fk"
+    ats_candidate_education }o--|| ats_candidate : "fk"
+    ats_candidate_employment }o--|| ats_candidate : "fk"
+    ats_user_office }o--|| ats_office : "fk"
+    ats_user_office }o--|| ats_user : "fk"
+    ats_user_department }o--|| ats_job_department : "fk"
+    ats_user_department }o--|| ats_user : "fk"
+    ats_job_post }o--|| ats_job : "fk"
+    ats_job_department }o--|| ats_job_department : "fk"
+    ats_job_department }o--|| ats_job : "fk"
+    ats_job_office }o--|| ats_office : "fk"
+    ats_job_office }o--|| ats_job : "fk"
+    ats_job_hiring_team_manager }o--|| ats_job : "fk"
+    ats_job_hiring_team_recruiter }o--|| ats_job : "fk"
+    ats_job_hiring_team_coordinator }o--|| ats_job : "fk"
+    ats_job_hiring_team_sourcer }o--|| ats_job : "fk"
+    ats_offer_compensation }o--|| ats_offer : "fk"
+    ats_offer }o--|| ats_application : "fk"
+    ats_offer }o--|| ats_opening : "fk"
+    ats_offer }o--|| ats_job : "fk"
+    ats_offer }o--|| ats_candidate : "fk"
+    ats_job_stage_interview_default_interviewer_user }o--|| ats_job_stage_interview : "fk"
+    ats_job_stage_interview_default_interviewer_user }o--|| ats_job_stage_interview : "fk"
+    ats_job_stage_interview_question }o--|| ats_job_stage_interview : "fk"
+    ats_job_stage_interview_question }o--|| ats_job_stage_interview : "fk"
+    ats_job_stage_interview }o--|| ats_job_stage : "fk"
+    ats_job_stage }o--|| ats_job : "fk"

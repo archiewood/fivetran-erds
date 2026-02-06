@@ -1,0 +1,311 @@
+erDiagram
+    workspace_owner_subscriber {
+        bigint user_id PK
+        bigint workspace_id PK
+    }
+    workspace_user_subscriber {
+        bigint user_id PK
+        bigint workspace_id PK
+    }
+    workspace_team_subscriber {
+        bigint team_id PK
+        bigint workspace_id PK
+    }
+    workspace {
+        bigint id PK
+        timestamp created_at
+        text description
+        text kind
+        text name
+        text state
+    }
+    asset {
+        text id PK
+        text updates_id PK
+        bigint uploaded_by_id FK
+        timestamp created_at
+        text file_extension
+        bigint file_size
+        text name
+        text public_url
+        text url
+        text url_thumbnail
+    }
+    reply {
+        text id PK
+        text update_id PK
+        text creator_id FK
+        text body
+        text created_at
+        text text_body
+        timestamp updated_at
+    }
+    updates {
+        text id PK
+        text creator_id FK
+        text item_id FK
+        text body
+        timestamp created_at
+        text text_body
+        timestamp updated_at
+    }
+    activity_log {
+        text id PK
+        text board_id PK
+        text user_id FK
+        text account_id
+        text created_at
+        text data
+        text entity
+        text event
+    }
+    column_value_tag {
+        text board_id PK
+        text column_value_id PK
+        text id PK
+        text item_id PK
+    }
+    column_value_item_id {
+        text board_id PK
+        text column_value_id PK
+        text id PK
+        text item_id PK
+    }
+    column_value_mirror_item {
+        text board_id PK
+        text column_value_id PK
+        text id PK
+        text item_id PK
+    }
+    time_tracking_history {
+        text id PK
+        text board_id PK
+        text column_value_id PK
+        text item_id PK
+        text ended_user_id FK
+        text started_user_id FK
+        text created_at
+        text ended_at
+        text manually_entered_end_date
+        text manually_entered_end_time
+        text manually_entered_start_date
+        text manually_entered_start_time
+        text started_at
+        text status
+        text updated_at
+    }
+    person_team {
+        text id PK
+        text board_id PK
+        text column_value_id PK
+        text item_id PK
+        text kind
+    }
+    column_value {
+        text id PK
+        text board_id PK
+        text item_id PK
+        text checked
+        text date
+        text direction
+        text display_value
+        text duration
+        text from_date
+        text hour
+        text icon
+        text index
+        text is_done
+        text label
+        text label_style_border
+        text label_style_color
+        text minute
+        text number
+        text rating
+        text running
+        text started_at
+        text symbol
+        text text
+        text time
+        text to_date
+        text update_id
+        text updated_at
+        text value
+        text visualization_type
+    }
+    item_subscriber {
+        text board_id PK
+        bigint id PK
+        text item_id PK
+    }
+    item {
+        text id PK
+        text board_id PK
+        text creator_id FK
+        text group_id FK
+        text parent_item_id FK
+        timestamp created_at
+        text email
+        text name
+        text state
+        timestamp updated_at
+    }
+    team_user {
+        bigint team_id PK
+        bigint user_id PK
+    }
+    team {
+        bigint id PK
+        text name
+        text picture_url
+    }
+    users {
+        bigint id PK
+        bigint account_id
+        text birthday
+        text country_code
+        timestamp created_at
+        text current_language
+        text email
+        boolean enabled
+        text encrypt_api_token
+        boolean is_admin
+        boolean is_guest
+        boolean is_pending
+        boolean is_verified
+        boolean is_view_only
+        text join_date
+        text location
+        text mobile_phone
+        text name
+        text phone
+        text photo_original
+        text photo_small
+        text photo_thumb
+        text photo_thumb_small
+        text photo_tiny
+        text time_zone_identifier
+        text title
+        text url
+        bigint utc_hours_diff
+    }
+    tags {
+        bigint id PK
+        text color
+        text name
+    }
+    board_view {
+        text id PK
+        text board_id FK
+        text name
+        text settings_str
+        text type
+    }
+    columns {
+        text board_id PK
+        text id PK
+        boolean archived
+        text description
+        text settings_str
+        text title
+        text type
+        bigint width
+    }
+    groups {
+        text id PK
+        text board_id PK
+        text archived
+        text color
+        boolean deleted
+        text position
+        text title
+    }
+    board_owner {
+        text board_id PK
+        bigint user_id PK
+    }
+    board_subscriber {
+        text board_id PK
+        bigint user_id PK
+    }
+    board_tag {
+        text board_id PK
+        bigint tag_id PK
+    }
+    board_update {
+        text board_id PK
+        text id PK
+    }
+    board {
+        text id PK
+        bigint owner_id FK
+        text top_group_id FK
+        bigint workspace_id FK
+        text board_folder_id
+        text board_kind
+        text description
+        text name
+        text permission
+        text state
+        text type
+        timestamp updated_at
+    }
+    workspace_owner_subscriber }o--|| users : "fk"
+    workspace_owner_subscriber }o--|| workspace : "fk"
+    workspace_user_subscriber }o--|| users : "fk"
+    workspace_user_subscriber }o--|| workspace : "fk"
+    workspace_team_subscriber }o--|| team : "fk"
+    workspace_team_subscriber }o--|| workspace : "fk"
+    asset }o--|| users : "fk"
+    asset }o--|| updates : "fk"
+    reply }o--|| users : "fk"
+    reply }o--|| updates : "fk"
+    updates }o--|| users : "fk"
+    updates }o--|| item : "fk"
+    activity_log }o--|| users : "fk"
+    activity_log }o--|| board : "fk"
+    column_value_tag }o--|| tags : "fk"
+    column_value_tag }o--|| column_value : "fk"
+    column_value_tag }o--|| column_value : "fk"
+    column_value_tag }o--|| column_value : "fk"
+    column_value_item_id }o--|| item : "fk"
+    column_value_item_id }o--|| column_value : "fk"
+    column_value_item_id }o--|| column_value : "fk"
+    column_value_item_id }o--|| column_value : "fk"
+    column_value_mirror_item }o--|| board : "fk"
+    column_value_mirror_item }o--|| column_value : "fk"
+    column_value_mirror_item }o--|| column_value : "fk"
+    column_value_mirror_item }o--|| column_value : "fk"
+    time_tracking_history }o--|| users : "fk"
+    time_tracking_history }o--|| users : "fk"
+    time_tracking_history }o--|| column_value : "fk"
+    time_tracking_history }o--|| column_value : "fk"
+    time_tracking_history }o--|| column_value : "fk"
+    person_team }o--|| column_value : "fk"
+    person_team }o--|| column_value : "fk"
+    person_team }o--|| column_value : "fk"
+    column_value }o--|| item : "fk"
+    column_value }o--|| item : "fk"
+    item_subscriber }o--|| users : "fk"
+    item_subscriber }o--|| item : "fk"
+    item_subscriber }o--|| item : "fk"
+    item }o--|| item : "fk"
+    item }o--|| groups : "fk"
+    item }o--|| users : "fk"
+    item }o--|| board : "fk"
+    team_user }o--|| users : "fk"
+    team_user }o--|| team : "fk"
+    board_view }o--|| board : "fk"
+    columns }o--|| column_value : "fk"
+    columns }o--|| board : "fk"
+    groups }o--|| board : "fk"
+    board_owner }o--|| users : "fk"
+    board_owner }o--|| board : "fk"
+    board_subscriber }o--|| users : "fk"
+    board_subscriber }o--|| board : "fk"
+    board_tag }o--|| tags : "fk"
+    board_tag }o--|| board : "fk"
+    board_update }o--|| updates : "fk"
+    board_update }o--|| board : "fk"
+    board }o--|| users : "fk"
+    board }o--|| workspace : "fk"
+    board }o--|| groups : "fk"

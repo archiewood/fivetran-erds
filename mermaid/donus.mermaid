@@ -1,0 +1,104 @@
+erDiagram
+    payment {
+        text id PK
+        text grantee_name FK
+        text member_id FK
+        text promise_id FK
+        text bank_account_code
+        text code
+        text deposit_date
+        text income_status
+        text name
+        text pay_date
+        text pay_method_code
+        text pay_method_type
+        text pay_price
+        text product_code
+        text purpose_code
+    }
+    member_group {
+        text index PK
+        text member_id PK
+        text group_id
+    }
+    grants_report {
+        text id PK
+        text grantee_name FK
+        text apply_price
+        text approve_date
+        text image_description
+        text image_url
+        text operating_cost
+        text performance_summary
+        text program_category_1
+        text program_category_2
+        text program_end_date
+        text program_name
+        text program_start_date
+        text program_unit_1
+        text program_unit_2
+        text program_unit_3
+        text program_unit_detail
+        text project_cost
+        text quantitative_performance_1
+        text quantitative_performance_2
+    }
+    grants {
+        text id PK
+        text apply_code
+        text apply_price
+        text bank_account
+        text bank_account_owner
+        text bank_code
+        text business_no
+        text business_type
+        text expense_status
+        text fund_account_count
+        text fund_account_first_donor
+        text grantee_code
+        text grantee_email
+        text grantee_id
+        text grantee_name
+        text grantee_type
+        text pay_date
+        text paymethod_type
+        text person_birthday
+        text president_name
+        text program_name
+        text staff_cellphone
+    }
+    promise {
+        text id PK
+        text product_code PK
+        text member_id FK
+        text code
+        text comment
+        text last_pay_date
+        text memo
+        text status
+        text total_pay_price
+    }
+    member {
+        text id PK
+        text active_date
+        text agree_email
+        text agree_post
+        text agree_tel
+        text agree_text
+        text cellphone
+        text code
+        text email
+        text lapse_date
+        text last_pay_date
+        text lifecycle
+        text name
+        text total_pay_count
+        text total_price
+    }
+    payment }o--|| member : "fk"
+    payment }o--|| promise : "fk"
+    payment }o--|| grants : "fk"
+    member_group }o--|| member : "fk"
+    grants_report }o--|| grants : "fk"
+    promise }o--|| member : "fk"
+    promise }o--|| payment : "fk"

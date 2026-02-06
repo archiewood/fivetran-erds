@@ -1,0 +1,60 @@
+erDiagram
+    campaign_report {
+        text _fivetran_id PK
+        text campaign_id FK
+        text creative_instance_id FK
+        text creative_set_id FK
+        text advertiser_name
+        text attribution_window_days
+        text campaign_name
+        text click_count
+        text click_through_conversion_count
+        text conversion_count
+        text country
+        text creative_body
+        text creative_set_name
+        text creative_title
+        text creative_url
+        text day_or_hour
+        text dismissed_count
+        text impression_count
+        text os
+        text segment
+        text site_visit_count
+        text spend
+        text view_through_conversion_count
+    }
+    advertiser_campaign_ad_set_ads {
+        text id PK
+        text ad_set_id FK
+        text advertiser_id FK
+        text campaign_id FK
+    }
+    advertiser_campaign_ad_set {
+        text id PK
+        text advertiser_id FK
+        text campaign_id FK
+        text name
+    }
+    advertiser_campaign {
+        text id PK
+        text advertiser_id FK
+        text end_at
+        text format
+        text name
+        text start_at
+    }
+    advertiser {
+        text id PK
+        text name
+        text state
+    }
+    campaign_report }o--|| advertiser_campaign : "fk"
+    campaign_report }o--|| advertiser_campaign_ad_set : "fk"
+    campaign_report }o--|| advertiser_campaign_ad_set_ads : "fk"
+    advertiser_campaign_ad_set_ads }o--|| advertiser_campaign_ad_set : "fk"
+    advertiser_campaign_ad_set_ads }o--|| advertiser_campaign_ad_set : "fk"
+    advertiser_campaign_ad_set_ads }o--|| advertiser_campaign_ad_set : "fk"
+    advertiser_campaign_ad_set }o--|| advertiser_campaign : "fk"
+    advertiser_campaign_ad_set }o--|| advertiser_campaign : "fk"
+    advertiser_campaign }o--|| advertiser : "fk"

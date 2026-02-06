@@ -1,0 +1,118 @@
+erDiagram
+    partial_submission_data {
+        text index PK
+        text partial_submission_id PK
+        text field FK
+        text value
+    }
+    partial_submission {
+        text id PK
+        text form_id FK
+        text date_timestamp
+        text latitude
+        text longitude
+        text remote_addr
+        text user_agent
+    }
+    form_field {
+        text id PK
+        text form_id PK
+        text default_value
+        text description
+        text hidden
+        text hide_label
+        text label
+        text name
+        jsonb options
+        text read_only
+        text required
+        text show_initial
+        text show_middle
+        text show_prefix
+        text show_suffix
+        text text_size
+        text type
+        text uniq
+    }
+    form {
+        text id PK
+        text folder_id FK
+        text last_submission_id FK
+        text can_access_1_q_feature
+        text can_edit
+        text created
+        text data_url
+        text db
+        text deleted
+        text edit_url
+        text encrypted
+        text has_approvers
+        text html
+        text inactive
+        text is_workflow_form
+        text is_workflow_published
+        text javascript
+        text language_code
+        text last_submission_time
+        text name
+        text num_columns
+        text permission
+        text progress_meter
+        text should_display_one_question_at_a_time
+        text submissions_today
+        text submissions_unread
+        text submit_button_title
+        text summary_url
+        text thumbnail_url
+        text timezone
+        text updated
+        text url
+        text v_4_html
+        text version
+        text view_key
+        text views
+    }
+    form_submission_data {
+        text field PK
+        text submission_id PK
+        text value
+    }
+    form_submission {
+        text id PK
+        text form_id FK
+        text approval_status
+        text date_timestamp
+        text latitude
+        text longitude
+        text payment_status
+        text portal_form_name
+        text portal_name
+        text portal_participant_email
+        text pretty_field_id
+        text read
+        text remote_addr
+        text user_agent
+    }
+    sub_folder {
+        text id PK
+        text parent_id FK
+        text name
+        text permission
+    }
+    folder {
+        text id PK
+        text parent_id FK
+        text name
+        text permission
+    }
+    partial_submission_data }o--|| form_field : "fk"
+    partial_submission_data }o--|| partial_submission : "fk"
+    partial_submission }o--|| form : "fk"
+    form_field }o--|| form : "fk"
+    form }o--|| folder : "fk"
+    form }o--|| form_submission : "fk"
+    form_submission_data }o--|| form_field : "fk"
+    form_submission_data }o--|| form_submission : "fk"
+    form_submission }o--|| form : "fk"
+    sub_folder }o--|| folder : "fk"
+    folder }o--|| folder : "fk"

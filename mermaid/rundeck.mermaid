@@ -1,0 +1,169 @@
+erDiagram
+    project {
+        text created PK
+        text name PK
+        text description
+        text label
+        text url
+    }
+    config_list {
+        text name PK
+        text category
+        text label
+        text level
+        text value
+    }
+    config_meta_list {
+        text key PK
+        text auth_required
+        text category
+        text datatype
+        text default_value
+        text description
+        text encrypted
+        text label
+        text link
+        text required
+        text restart
+        text strata
+        text visibility
+    }
+    plugin {
+        text name PK
+        text artifact_name
+        text author
+        text builtin
+        text description
+        text icon_url
+        text id
+        text plugin_version
+        text provider_metadata_faicon
+        text service
+        text title
+    }
+    execution_successful_node {
+        text index PK
+        text execution_id PK
+        text successfulnode
+    }
+    execution_failed_node {
+        text index PK
+        text execution_id PK
+        text failednode
+    }
+    execution {
+        text id PK
+        text job_id FK
+        text argstring
+        text custom_status
+        text date_ended_date
+        text date_ended_unixtime
+        text date_started_date
+        text date_started_unixtime
+        text job_average_duration
+        text project
+        text server_uuid
+        text status
+        text users
+    }
+    system_info {
+        text _fivetran_id PK
+        text rundeck_server_uuid FK
+        text cpu_load_average
+        text cpu_processor
+        text duration
+        text epoch
+        text executions_active
+        text executions_execution_mode
+        text extended_rundeck_pro_build_git
+        text extended_rundeck_pro_edition
+        text extended_rundeck_pro_version
+        text healthcheck_content_type
+        text healthcheck_href
+        text jvm_implementation_version
+        text jvm_name
+        text jvm_vendor
+        text jvm_version
+        text load_average_average
+        text load_average_unit
+        text metrics_content_type
+        text metrics_href
+        text os_arch
+        text os_name
+        text os_version
+        text ping_content_type
+        text ping_href
+        text processors
+        text rundeck_apiversion
+        text rundeck_base
+        text rundeck_build
+        text rundeck_build_git
+        text rundeck_node
+        text rundeck_version
+        text stats_cpu_load_average_average
+        text stats_cpu_load_average_unit
+        text stats_memory_free
+        text stats_memory_max
+        text stats_memory_total
+        text stats_memory_unit
+        text stats_scheduler_running
+        text stats_scheduler_thread_pool_size
+        text stats_threads_active
+        text stats_uptime_since_datetime
+        text stats_uptime_since_unit
+        text thread_dump_content_type
+        text thread_dump_href
+        text timestamp_datetime
+        text timestamp_epoch
+        text timestamp_unit
+        text unit
+    }
+    log_storage {
+        text plugin_name PK
+        text enabled
+        text failed_count
+        text incomplete_count
+        text missing_count
+        text queued_count
+        text queued_incomplete_count
+        text queued_request_count
+        text queued_retries_count
+        text retries_count
+        text succeeded_count
+        text total_count
+    }
+    user_class {
+        text _fivetran_id PK
+        text message
+        text state
+    }
+    user_profile {
+        text created PK
+        text login PK
+        text email
+        text first_name
+        text last_job
+        text last_name
+        text token
+        text updated
+    }
+    job {
+        text id PK
+        text project_name FK
+        text description
+        text enabled
+        text groups
+        text href
+        text name
+        text perma_link
+        text schedule_enabled
+        text scheduled
+        text server_node_uuid
+        text server_owner
+    }
+    execution_successful_node }o--|| execution : "fk"
+    execution_failed_node }o--|| execution : "fk"
+    execution }o--|| job : "fk"
+    system_info }o--|| job : "fk"
+    log_storage }o--|| plugin : "fk"
+    job }o--|| project : "fk"

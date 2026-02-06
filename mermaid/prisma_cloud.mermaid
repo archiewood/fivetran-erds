@@ -1,0 +1,1109 @@
+erDiagram
+    host_binary {
+        text index PK
+        text host_id PK
+        text cve_count
+        text file_mode
+        text md_5
+        text missing_pkg
+        text name
+        text path
+        text services
+        text version
+    }
+    host_startup_binary {
+        text index PK
+        text host_id PK
+        text altered
+        text cve_count
+        jsonb deps
+        text file_mode
+        text function_layer
+        text md_5
+        text missing_pkg
+        text name
+        text path
+        text pkg_root_dir
+        jsonb services
+        text version
+    }
+    host_package_pkgs {
+        text index PK
+        text host_package_host_id PK
+        text host_package_index PK
+        jsonb binary_idx
+        jsonb binary_pkgs
+        text cve_count
+        text layer_time
+        text license
+        text name
+        text origin_package_name
+        text purl
+        text version
+    }
+    host_package {
+        text index PK
+        text host_id PK
+        text pkgs_type
+    }
+    host_file {
+        text index PK
+        text host_id PK
+        text md_5
+        text path
+        text sha_1
+        text sha_256
+    }
+    host_application {
+        text index PK
+        text host_id PK
+        text installed_from_package
+        text known_vulnerabilities
+        text layer_time
+        text name
+        text origin_package_name
+        text path
+        text service
+        text version
+    }
+    host_found_secret {
+        text index PK
+        text host_id PK
+        text location_in_file
+        text modified_time
+        text path
+        text secret_id
+        text snippet
+        jsonb type
+    }
+    host_history_vulnerability_exploit {
+        text index PK
+        text host_history_index PK
+        text host_history_vulnerability_index PK
+        text host_id PK
+        jsonb kind
+        text link
+        jsonb source
+    }
+    host_history_vulnerability_tag_info {
+        text index PK
+        text host_history_index PK
+        text host_history_vulnerability_index PK
+        text host_id PK
+        text color
+        text comment
+        text name
+    }
+    host_history_vulnerability {
+        text index PK
+        text host_history_index PK
+        text host_id PK
+        text applicable_rule
+        jsonb binary_pkgs
+        text cause
+        text cri
+        text cve
+        text cvss
+        text description
+        text discovered
+        jsonb exploit
+        text fix_date
+        text function_layer
+        text layer_time
+        text link
+        text package_name
+        jsonb package_type
+        text package_version
+        text published
+        jsonb risk_factor
+        text secret_id
+        text secret_location_in_file
+        text secret_modified_time
+        text secret_path
+        text secret_snippet
+        jsonb secret_type
+        text severity
+        text status
+        jsonb templates
+        text text
+        text title
+        text twistlock
+        text type
+        text vec_str
+        text violation_id
+        text wildfire_malware_md_5
+        text wildfire_malware_path
+        text wildfire_malware_verdict
+    }
+    host_history {
+        text index PK
+        text host_id PK
+        text base_layer
+        text created
+        text empty_layer
+        text id
+        text instruction
+        text size_bytes
+        jsonb tags
+    }
+    host_compliance_issue_exploit {
+        text index PK
+        text host_compliance_issue_index PK
+        text host_id PK
+        jsonb kind
+        text link
+        jsonb source
+    }
+    host_compliance_issue_vulnerability_tag_info {
+        text index PK
+        text host_compliance_issue_index PK
+        text host_id PK
+        text color
+        text comment
+        text name
+    }
+    host_compliance_issue {
+        text index PK
+        text host_id PK
+        text cause
+        text cri
+        text cve
+        text cvss
+        text description
+        text discovered
+        jsonb exploit
+        text fix_date
+        text function_layer
+        text layer_time
+        text link
+        text package_name
+        jsonb package_type
+        text package_version
+        text published
+        jsonb risk_factor
+        text secret_id
+        text secret_location_in_file
+        text secret_modified_time
+        text secret_path
+        text secret_snippet
+        jsonb secret_type
+        text severity
+        text status
+        text templates
+        text text
+        text title
+        text twistlock
+        text type
+        text vec_str
+        text violation_id
+        text wildfire_malware_md_5
+        text wildfire_malware_path
+        text wildfire_malware_verdict
+    }
+    host_all_compliance_exploit {
+        text index PK
+        text host_all_compliance_index PK
+        text host_id PK
+        jsonb kind
+        text link
+        jsonb source
+    }
+    host_all_compliance_vulnerability_tag_info {
+        text index PK
+        text host_all_compliance_index PK
+        text host_id PK
+        text color
+        text comment
+        text name
+    }
+    host_all_compliance {
+        text index PK
+        text host_id PK
+        jsonb applicable_rules
+        jsonb binary_pkgs
+        text block
+        text cause
+        text cri
+        text custom
+        text cve
+        text cvss
+        text description
+        text discovered
+        jsonb exploit
+        text fix_date
+        text fix_link
+        text function_layer
+        text grace_period_days
+        text layer_time
+        text link
+        text package_name
+        jsonb package_type
+        text package_version
+        text published
+        jsonb risk_factors
+        text secret_id
+        text secret_location_in_file
+        text secret_modified_time
+        text secret_path
+        text secret_snippet
+        jsonb secret_type
+        text severity
+        text status
+        jsonb templates
+        text text
+        text title
+        text twistlock
+        jsonb type
+        text vec_str
+        text violation_id
+        text wildfire_malware_md_5
+        text wildfire_malware_path
+        text wildfire_malware_verdict
+    }
+    host_vulnerability_exploit {
+        text index PK
+        text host_id PK
+        text host_vulnerability_index PK
+        jsonb kind
+        text link
+        jsonb source
+    }
+    host_vulnerability_tag_info {
+        text index PK
+        text host_id PK
+        text host_vulnerability_index PK
+        text color
+        text comment
+        text name
+    }
+    host_vulnerability {
+        text index PK
+        text host_id PK
+        jsonb applicable_rule
+        jsonb binary_pkgs
+        text cause
+        text cri
+        text cve
+        text cvss
+        text description
+        text discovered
+        jsonb exploit
+        text fix_date
+        text function_layer
+        text layer_time
+        text link
+        text package_name
+        jsonb package_type
+        text package_version
+        text published
+        jsonb risk_factor
+        text secret_id
+        text secret_location_in_file
+        text secret_modified_time
+        text secret_path
+        text secret_snippet
+        jsonb secret_type
+        text severity
+        text status
+        jsonb templates
+        text text
+        text title
+        text twistlock
+        jsonb type
+        text vec_str
+        text violation_id
+        text wildfire_malware_md_5
+        text wildfire_malware_path
+        text wildfire_malware_verdict
+    }
+    host_tag {
+        text index PK
+        text host_id PK
+        text digest
+        text id
+        text registry
+        text repo
+        text tags
+    }
+    host_device {
+        text index PK
+        text host_id PK
+        text ip
+        text name
+    }
+    host_instance {
+        text index PK
+        text host_id PK
+        text host
+        text image
+        text modified
+        text registry
+        text repo
+        text tags
+    }
+    host {
+        text id PK
+        text agentless
+        text ais_uuid
+        text all_compliance_enabled
+        text app_embedded
+        text base_image
+        text cloud_metadata_account_id
+        text cloud_metadata_image
+        text cloud_metadata_name
+        jsonb cloud_metadata_provider
+        text cloud_metadata_region
+        text cloud_metadata_resource_id
+        text cluster_type
+        jsonb collections
+        text compliance_distribution_critical
+        text compliance_distribution_high
+        text compliance_distribution_low
+        text compliance_distribution_medium
+        text compliance_distribution_total
+        text compliance_issues_count
+        text compliance_risk_score
+        text compressed
+        text creation_time
+        text csa
+        text distro
+        text ecs_cluster_name
+        text err
+        text err_code
+        text firewall_protection_enabled
+        jsonb firewall_protection_out_of_band_mode
+        text firewall_protection_supported
+        text first_scan_time
+        text host_runtime_enabled
+        text hostname
+        jsonb hosts
+        text image_created
+        text installed_products_has_package_manager
+        text installed_products_os_distro
+        text is_arm_64
+        text k_8_s_cluster_addr
+        jsonb labels
+        text malware_analyzed_time
+        text missing_distro_vuln_coverage
+        text os_distro
+        text os_distro_release
+        text os_distro_version
+        text package_manager
+        text pull_duration
+        text push_time
+        text red_hat_non_rpm_image
+        text registry_namespace
+        text registry_type
+        text repo
+        text repo_digest
+        jsonb repo_digests
+        text repo_id
+        text repo_registry
+        text repo_tag
+        jsonb risk_factor
+        text scan_build_date
+        text scan_duration
+        text scan_id
+        timestamp scan_time
+        text scan_version
+        text secret_scan_metrics_failed_scans
+        text secret_scan_metrics_found_secrets
+        text secret_scan_metrics_scan_time
+        text secret_scan_metrics_scan_timeout
+        text secret_scan_metrics_scanned_file_size
+        text secret_scan_metrics_scanned_files
+        text secret_scan_metrics_total_bytes
+        text secret_scan_metrics_total_files
+        text secret_scan_metrics_total_time
+        jsonb secret_scan_metrics_types_count
+        jsonb secrets
+        text stopped
+        text top_layer
+        text trust_status
+        text twistlock_image
+        text type
+        text vulnerabilities_count
+        text vulnerability_distribution_critical
+        text vulnerability_distribution_high
+        text vulnerability_distribution_low
+        text vulnerability_distribution_medium
+        text vulnerability_distribution_total
+        text vulnerability_risk_score
+        text wild_fire_usage_bytes
+        text wild_fire_usage_queries
+        text wild_fire_usage_uploads
+    }
+    image_binary {
+        text index PK
+        text image_id PK
+        text cve_count
+        text file_mode
+        text md_5
+        text missing_pkg
+        text name
+        text path
+        text version
+    }
+    image_startup_binary {
+        text index PK
+        text image_id PK
+        text cve_count
+        text file_mode
+        text md_5
+        text name
+        text path
+    }
+    image_package_pkgs {
+        text index PK
+        text image_id PK
+        text image_package_index PK
+        jsonb binary_idx
+        jsonb binary_pkgs
+        text cve_count
+        text layer_time
+        text license
+        text name
+        text origin_package_name
+        text purl
+        text version
+    }
+    image_package {
+        text index PK
+        text image_id PK
+        text pkgs_type
+    }
+    image_file {
+        text index PK
+        text image_id PK
+        text md_5
+        text path
+        text sha_1
+        text sha_256
+    }
+    image_application {
+        text index PK
+        text image_id PK
+        text installed_from_package
+        text known_vulnerabilities
+        text layer_time
+        text name
+        text origin_package_name
+        text path
+        text version
+    }
+    image_found_secret {
+        text index PK
+        text image_id PK
+        text location_in_file
+        text modified_time
+        text path
+        text secret_id
+        text snippet
+        jsonb type
+    }
+    image_history_vulnerability_exploit {
+        text index PK
+        text image_history_index PK
+        text image_history_vulnerability_index PK
+        text image_id PK
+        jsonb kind
+        text link
+        jsonb source
+    }
+    image_history_vulnerability_tag_info {
+        text index PK
+        text image_history_index PK
+        text image_history_vulnerability_index PK
+        text image_id PK
+        text color
+        text comment
+        text name
+    }
+    image_history_vulnerability {
+        text index PK
+        text image_history_index PK
+        text image_id PK
+        text applicable_rule
+        jsonb binary_pkgs
+        text cause
+        text cri
+        text cve
+        text cvss
+        text description
+        text discovered
+        jsonb exploit
+        text fix_date
+        text function_layer
+        text layer_time
+        text link
+        text package_name
+        jsonb package_type
+        text package_version
+        text published
+        jsonb risk_factor
+        text secret_id
+        text secret_location_in_file
+        text secret_modified_time
+        text secret_path
+        text secret_snippet
+        jsonb secret_type
+        text severity
+        text status
+        jsonb templates
+        text text
+        text title
+        text twistlock
+        jsonb type
+        text vec_str
+        text violation_id
+        text wildfire_malware_md_5
+        text wildfire_malware_path
+        text wildfire_malware_verdict
+    }
+    image_history {
+        text index PK
+        text image_id PK
+        text created
+        text empty_layer
+        text id
+        text instruction
+    }
+    image_compliance_issue_exploit {
+        text index PK
+        text image_compliance_issue_index PK
+        text image_id PK
+        jsonb kind
+        text link
+        jsonb source
+    }
+    image_compliance_issue_vulnerability_tag_info {
+        text index PK
+        text image_compliance_issue_index PK
+        text image_id PK
+        text color
+        text comment
+        text name
+    }
+    image_compliance_issue {
+        text index PK
+        text image_id PK
+        text cause
+        text cri
+        text cve
+        text cvss
+        text description
+        text discovered
+        jsonb exploit
+        text fix_date
+        text function_layer
+        text layer_time
+        text link
+        text package_name
+        jsonb package_type
+        text package_version
+        text published
+        jsonb risk_factors
+        text secret_id
+        text secret_location_in_file
+        text secret_modified_time
+        text secret_path
+        text secret_snippet
+        jsonb secret_type
+        text severity
+        text status
+        jsonb templates
+        text text
+        text title
+        text twistlock
+        jsonb type
+        text vec_str
+        text violation_id
+        text wildfire_malware_md_5
+        text wildfire_malware_path
+        text wildfire_malware_verdict
+    }
+    image_all_compliance_exploit {
+        text index PK
+        text image_all_compliance_index PK
+        text image_id PK
+        jsonb kind
+        text link
+        jsonb source
+    }
+    image_all_compliance_vulnerability_tag_info {
+        text index PK
+        text image_all_compliance_index PK
+        text image_id PK
+        text color
+        text comment
+        text name
+    }
+    image_all_compliance {
+        text index PK
+        text image_id PK
+        jsonb applicable_rules
+        jsonb binary_pkgs
+        text block
+        text cause
+        text cri
+        text custom
+        text cve
+        text cvss
+        text description
+        text discovered
+        jsonb exploit
+        text fix_date
+        text fix_link
+        text function_layer
+        text grace_period_days
+        text layer_time
+        text link
+        text package_name
+        jsonb package_type
+        text package_version
+        text published
+        jsonb risk_factors
+        text secret_id
+        text secret_location_in_file
+        text secret_modified_time
+        text secret_path
+        text secret_snippet
+        jsonb secret_type
+        text severity
+        text status
+        jsonb templates
+        text text
+        text title
+        text twistlock
+        jsonb type
+        text vec_str
+        text violation_id
+        text wildfire_malware_md_5
+        text wildfire_malware_path
+        text wildfire_malware_verdict
+    }
+    image_vulnerability_exploit {
+        text index PK
+        text image_id PK
+        text image_vulnerability_index PK
+        jsonb kind
+        text link
+        jsonb source
+    }
+    image_vulnerability_tag_info {
+        text index PK
+        text image_id PK
+        text image_vulnerability_index PK
+        text color
+        text comment
+        text name
+    }
+    image_vulnerability {
+        text index PK
+        text image_id PK
+        text applicable_rule
+        jsonb binary_pkgs
+        text cause
+        text cri
+        text cve
+        text cvss
+        text description
+        text discovered
+        jsonb exploit
+        text fix_date
+        text function_layer
+        text layer_time
+        text link
+        text package_name
+        jsonb package_type
+        text package_version
+        text published
+        jsonb risk_factors
+        text secret_id
+        text secret_location_in_file
+        text secret_modified_time
+        text secret_path
+        text secret_snippet
+        jsonb secret_type
+        text severity
+        text status
+        jsonb templates
+        text text
+        text title
+        text twistlock
+        jsonb type
+        text vec_str
+        text violation_id
+        text wildfire_malware_md_5
+        text wildfire_malware_path
+        text wildfire_malware_verdict
+    }
+    image_tag {
+        text index PK
+        text image_id PK
+        text registry
+        text repo
+        text tags
+    }
+    image_instance {
+        text index PK
+        text image_id PK
+        text host
+        text image
+        text modified
+        text registry
+        text repo
+        text tags
+    }
+    image {
+        text id PK
+        text hostname FK
+        text agentless
+        text ais_uuid
+        text app_embedded
+        text base_image
+        text cloud_metadata_account_id
+        text cloud_metadata_image
+        text cloud_metadata_name
+        jsonb cloud_metadata_provider
+        text cloud_metadata_region
+        text cloud_metadata_resource_id
+        text cluster_type
+        jsonb clusters
+        jsonb collections
+        text compliance_distribution_critical
+        text compliance_distribution_high
+        text compliance_distribution_low
+        text compliance_distribution_medium
+        text compliance_distribution_total
+        text compliance_issues_count
+        text compliance_risk_score
+        text compressed
+        text creation_time
+        text csa
+        text distro
+        text ecs_cluster_name
+        text err
+        text err_code
+        text firewall_protection_enabled
+        jsonb firewall_protection_out_of_band_mode
+        text firewall_protection_supported
+        text first_scan_time
+        text host_runtime_enabled
+        jsonb hosts
+        text image_created
+        jsonb image_entry_point
+        text installed_products_crio
+        text installed_products_has_package_manager
+        text installed_products_os_distro
+        text is_arm_64
+        text k_8_s_cluster_addr
+        jsonb layers
+        text malware_analyzed_time
+        text missing_distro_vuln_coverage
+        jsonb namespaces
+        text os_distro
+        text os_distro_release
+        text os_distro_version
+        text package_manager
+        text pull_duration
+        text push_time
+        text red_hat_non_rpm_image
+        text registry_namespace
+        text registry_type
+        text repo
+        jsonb repo_digests
+        text repo_registry
+        text repo_tag
+        jsonb risk_factors
+        text scan_build_date
+        text scan_duration
+        text scan_id
+        timestamp scan_time
+        text scan_version
+        text secret_scan_metrics_failed_scans
+        text secret_scan_metrics_found_secrets
+        text secret_scan_metrics_scan_time
+        text secret_scan_metrics_scan_timeout
+        text secret_scan_metrics_scanned_file_size
+        text secret_scan_metrics_scanned_files
+        text secret_scan_metrics_total_bytes
+        text secret_scan_metrics_total_iles
+        text secret_scan_metrics_total_time
+        jsonb secret_scan_metrics_types_count
+        jsonb secrets
+        text stopped
+        text top_layer
+        text trust_status
+        text twistlock_image
+        text type
+        text vulnerabilities_count
+        text vulnerability_distribution_critical
+        text vulnerability_distribution_high
+        text vulnerability_distribution_low
+        text vulnerability_distribution_medium
+        text vulnerability_distribution_total
+        text vulnerability_risk_score
+        text wild_fire_usage_bytes
+        text wild_fire_usage_queries
+        text wild_fire_usage_uploads
+    }
+    container_all_compliance_exploit {
+        text index PK
+        text container_all_compliance_index PK
+        text container_id PK
+        jsonb kind
+        text link
+        jsonb source
+    }
+    container_all_compliance_vulnerability_tag_info {
+        text index PK
+        text container_all_compliance_index PK
+        text container_id PK
+        text color
+        text comment
+        text name
+    }
+    container_all_compliance {
+        text index PK
+        text container_id PK
+        jsonb applicable_rules
+        jsonb binary_pkgs
+        text block
+        text cause
+        text cri
+        text custom
+        text cve
+        text cvss
+        text description
+        text discovered
+        jsonb exploit
+        text fix_date
+        text fix_link
+        text function_layer
+        text grace_period_days
+        text layer_time
+        text link
+        text package_name
+        jsonb package_type
+        text package_version
+        text published
+        jsonb risk_factor
+        text secret_id
+        text secret_location_in_file
+        text secret_modified_time
+        text secret_path
+        text secret_snippet
+        jsonb secret_type
+        text severity
+        text status
+        jsonb templates
+        text text
+        text title
+        text twistlock
+        jsonb type
+        text vec_str
+        text violation_id
+        text wildfire_malware_md_5
+        text wildfire_malware_path
+        text wildfire_malware_verdict
+    }
+    container_info_compliance_issue {
+        text index PK
+        text container_id PK
+        text block
+        text cause
+        text cri
+        text custom
+        text cve
+        text cvss
+        text description
+        text discovered
+        text fix_date
+        text fix_link
+        text function_layer
+        text grace_period_days
+        text layer_time
+        text link
+        text package_name
+        text package_version
+        text published
+        jsonb risk_factors
+        text secret_id
+        text secret_location_in_file
+        text secret_modified_time
+        text secret_path
+        text secret_snippet
+        text severity
+        text status
+        jsonb templates
+        text text
+        text title
+        text twistlock
+        text vec_str
+        text violation_id
+        text wildfire_malware_md_5
+        text wildfire_malware_path
+        text wildfire_malware_verdict
+    }
+    container_info_network_port {
+        text index PK
+        text container_id PK
+        text container
+        text host
+        text host_ip
+        text listening
+        text nat
+    }
+    container_process {
+        text index PK
+        text container_id PK
+        text name
+    }
+    container {
+        text id PK
+        text hostname FK
+        text image_id FK
+        text agent_less
+        text agent_less_scan_id
+        text ais
+        text cloud_metadata_account_id
+        text cloud_metadata_image
+        text cloud_metadata_name
+        jsonb cloud_metadata_provider
+        text cloud_metadata_region
+        text cloud_metadata_resource_id
+        jsonb collections
+        text compliance_distribution_critical
+        text compliance_distribution_high
+        text compliance_distribution_low
+        text compliance_distribution_medium
+        text compliance_distribution_total
+        text csa
+        text firewall_protection_enabled
+        jsonb firewall_protection_out_of_band_mode
+        jsonb firewall_protection_ports
+        text firewall_protection_supported
+        jsonb firewall_protection_tls_ports
+        text info_all_compliance_enabled
+        text info_app
+        text info_cluster
+        text info_cluster_type
+        text info_compliance_issues_count
+        text info_compliance_risk_score
+        text info_image
+        text info_image_name
+        text info_infra
+        jsonb info_labels
+        text info_name
+        text info_namespace
+        text info_profile_id
+        text info_size_byte
+        text info_start_time
+        text installed_products_agentless
+        text installed_products_apache
+        text installed_products_aws_cloud
+        text installed_products_cluster_type
+        text installed_products_crio
+        text installed_products_docker
+        text installed_products_docker_enterprise
+        text installed_products_has_package_manager
+        text installed_products_k_8_s_api_server
+        text installed_products_k_8_s_controller_manager
+        text installed_products_k_8_s_etcd
+        text installed_products_k_8_s_federation_api_server
+        text installed_products_k_8_s_federation_controller_manager
+        text installed_products_k_8_s_kubelet
+        text installed_products_k_8_s_proxy
+        text installed_products_k_8_s_scheduler
+        text installed_products_kubernetes
+        text installed_products_managed_cluster_version
+        text installed_products_openshift
+        text installed_products_openshift_version
+        text installed_products_os_distro
+        text installed_products_serverless
+        text installed_products_swarm_manager
+        text installed_products_swarm_node
+        text runtime_enabled
+        timestamp scan_time
+    }
+    host_binary }o--|| host : "fk"
+    host_startup_binary }o--|| host : "fk"
+    host_package_pkgs }o--|| host_package : "fk"
+    host_package_pkgs }o--|| host_package : "fk"
+    host_package }o--|| host : "fk"
+    host_file }o--|| host : "fk"
+    host_application }o--|| host : "fk"
+    host_found_secret }o--|| host : "fk"
+    host_history_vulnerability_exploit }o--|| host_history_vulnerability : "fk"
+    host_history_vulnerability_exploit }o--|| host_history_vulnerability : "fk"
+    host_history_vulnerability_exploit }o--|| host_history_vulnerability : "fk"
+    host_history_vulnerability_tag_info }o--|| host_history_vulnerability : "fk"
+    host_history_vulnerability_tag_info }o--|| host_history_vulnerability : "fk"
+    host_history_vulnerability_tag_info }o--|| host_history_vulnerability : "fk"
+    host_history_vulnerability }o--|| host_history : "fk"
+    host_history_vulnerability }o--|| host_history : "fk"
+    host_history }o--|| host : "fk"
+    host_compliance_issue_exploit }o--|| host_compliance_issue : "fk"
+    host_compliance_issue_exploit }o--|| host_compliance_issue : "fk"
+    host_compliance_issue_vulnerability_tag_info }o--|| host_compliance_issue : "fk"
+    host_compliance_issue_vulnerability_tag_info }o--|| host_compliance_issue : "fk"
+    host_compliance_issue }o--|| host : "fk"
+    host_all_compliance_exploit }o--|| host_all_compliance : "fk"
+    host_all_compliance_exploit }o--|| host_all_compliance : "fk"
+    host_all_compliance_vulnerability_tag_info }o--|| host_all_compliance : "fk"
+    host_all_compliance_vulnerability_tag_info }o--|| host_all_compliance : "fk"
+    host_all_compliance }o--|| host : "fk"
+    host_vulnerability_exploit }o--|| host_vulnerability : "fk"
+    host_vulnerability_exploit }o--|| host_vulnerability : "fk"
+    host_vulnerability_tag_info }o--|| host_vulnerability : "fk"
+    host_vulnerability_tag_info }o--|| host_vulnerability : "fk"
+    host_vulnerability }o--|| host : "fk"
+    host_tag }o--|| host : "fk"
+    host_device }o--|| host : "fk"
+    host_instance }o--|| host : "fk"
+    image_binary }o--|| image : "fk"
+    image_startup_binary }o--|| image : "fk"
+    image_package_pkgs }o--|| image_package : "fk"
+    image_package_pkgs }o--|| image_package : "fk"
+    image_package }o--|| image : "fk"
+    image_file }o--|| image : "fk"
+    image_application }o--|| image : "fk"
+    image_found_secret }o--|| image : "fk"
+    image_history_vulnerability_exploit }o--|| image_history_vulnerability : "fk"
+    image_history_vulnerability_exploit }o--|| image_history_vulnerability : "fk"
+    image_history_vulnerability_exploit }o--|| image_history_vulnerability : "fk"
+    image_history_vulnerability_tag_info }o--|| image_history_vulnerability : "fk"
+    image_history_vulnerability_tag_info }o--|| image_history_vulnerability : "fk"
+    image_history_vulnerability_tag_info }o--|| image_history_vulnerability : "fk"
+    image_history_vulnerability }o--|| image_history : "fk"
+    image_history_vulnerability }o--|| image_history : "fk"
+    image_history }o--|| image : "fk"
+    image_compliance_issue_exploit }o--|| image_compliance_issue : "fk"
+    image_compliance_issue_exploit }o--|| image_compliance_issue : "fk"
+    image_compliance_issue_vulnerability_tag_info }o--|| image_compliance_issue : "fk"
+    image_compliance_issue_vulnerability_tag_info }o--|| image_compliance_issue : "fk"
+    image_compliance_issue }o--|| image : "fk"
+    image_all_compliance_exploit }o--|| image_all_compliance : "fk"
+    image_all_compliance_exploit }o--|| image_all_compliance : "fk"
+    image_all_compliance_vulnerability_tag_info }o--|| image_all_compliance : "fk"
+    image_all_compliance_vulnerability_tag_info }o--|| image_all_compliance : "fk"
+    image_all_compliance }o--|| image : "fk"
+    image_vulnerability_exploit }o--|| image_vulnerability : "fk"
+    image_vulnerability_exploit }o--|| image_vulnerability : "fk"
+    image_vulnerability_tag_info }o--|| image_vulnerability : "fk"
+    image_vulnerability_tag_info }o--|| image_vulnerability : "fk"
+    image_vulnerability }o--|| image : "fk"
+    image_tag }o--|| image : "fk"
+    image_instance }o--|| image : "fk"
+    image }o--|| host : "fk"
+    container_all_compliance_exploit }o--|| container_all_compliance : "fk"
+    container_all_compliance_exploit }o--|| container_all_compliance : "fk"
+    container_all_compliance_vulnerability_tag_info }o--|| container_all_compliance : "fk"
+    container_all_compliance_vulnerability_tag_info }o--|| container_all_compliance : "fk"
+    container_all_compliance }o--|| container : "fk"
+    container_info_compliance_issue }o--|| container : "fk"
+    container_info_network_port }o--|| container : "fk"
+    container_process }o--|| container : "fk"
+    container }o--|| host : "fk"
+    container }o--|| image : "fk"

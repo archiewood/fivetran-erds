@@ -1,0 +1,93 @@
+erDiagram
+    template_label {
+        text label PK
+        text template_id PK
+    }
+    template {
+        text id PK
+        text code
+        text created_at
+        text draft_updated_at
+        text from_email
+        text from_name
+        text name
+        text publish_code
+        text publish_from_email
+        text publish_from_name
+        text publish_name
+        text publish_subject
+        text publish_text
+        text published_at
+        text subject
+        text text
+        text updated_at
+    }
+    message_smtp_event {
+        integer index PK
+        text message_event_fivetran_id PK
+        text message_id PK
+        text destination_ip
+        text diag
+        bigint size
+        text source_ip
+        timestamp timestamps
+        text type
+    }
+    message_tag {
+        text tags PK
+        text message_event_fivetran_id PK
+        text message_id PK
+    }
+    message {
+        text id PK
+        text event_fivetran_id PK
+        text template_id FK
+        text bounce_description
+        text diag
+        text email
+        jsonb metadata
+        text sender
+        text state
+        text subaccount
+        text subject
+        timestamp timestamps
+    }
+    event {
+        text _fivetran_id PK
+        text message_id FK
+        text event
+        text ip
+        text location_city
+        text location_country_long
+        text location_country_short
+        text location_latitude
+        text location_longitude
+        text location_postal_code
+        text location_region
+        text location_timezone
+        timestamp timestamps
+        text url
+        text user_agent_company
+        text user_agent_company_url
+        text user_agent_family
+        text user_agent_icon
+        boolean user_agent_mobile
+        text user_agent_name
+        text user_agent_os_company
+        text user_agent_os_company_url
+        text user_agent_os_family
+        text user_agent_os_icon
+        text user_agent_os_name
+        text user_agent_os_url
+        text user_agent_type
+        text user_agent_url
+        text user_agent_version
+    }
+    template_label }o--|| template : "fk"
+    message_smtp_event }o--|| message : "fk"
+    message_smtp_event }o--|| message : "fk"
+    message_tag }o--|| message : "fk"
+    message_tag }o--|| message : "fk"
+    message }o--|| template : "fk"
+    message }o--|| event : "fk"
+    event }o--|| message : "fk"

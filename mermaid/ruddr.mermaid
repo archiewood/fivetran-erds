@@ -1,0 +1,287 @@
+erDiagram
+    location {
+        text id PK
+        text created_at
+        text is_active
+        text name
+    }
+    project_tag {
+        text id PK
+        text project_id PK
+        text name
+    }
+    project {
+        text id PK
+        text client_id FK
+        text practice_id FK
+        text billing_type_id
+        text budget_billable_expense
+        text budget_billable_hour
+        text budget_mode
+        text budget_non_billable_expense
+        text budget_non_billable_hour
+        text budget_other_revenue
+        text budget_revenue
+        text budget_services_revenue
+        text code
+        text created_at
+        text currency
+        text ends
+        text fixed_fee
+        text fixed_recurring_end
+        text fixed_recurring_fee
+        text fixed_recurring_start
+        text is_billable
+        text is_productive
+        text key
+        text monthly_budget_billable_expense
+        text monthly_budget_billable_hour
+        text monthly_budget_mode
+        text monthly_budget_non_billable_expense
+        text monthly_budget_non_billable_hour
+        text monthly_budget_other_revenue
+        text monthly_budget_revenue
+        text monthly_budget_services_revenue
+        text name
+        text notes
+        text po_number
+        text project_type_id
+        text project_type_name
+        text record_status_id
+        text requires_notes
+        text requires_tasks
+        text revenue_recognition_method
+        text start
+        text status_id
+        text use_budget
+        text use_monthly_budget
+        text use_roles
+    }
+    practice {
+        text id PK
+        text created_at
+        text is_active
+        text name
+    }
+    project_task_tag {
+        text id PK
+        text project_task_id PK
+        text name
+    }
+    project_task_role {
+        text id PK
+        text project_task_id PK
+        text hours
+        text name
+    }
+    project_task {
+        text id PK
+        text client_id FK
+        text member_id FK
+        text project_id FK
+        text budgeted_hours
+        text budgeted_services_revenue
+        text cap_assigned_hours
+        text cap_hours
+        text code
+        text created_at
+        text ends
+        text for_assigned_only
+        text is_billable
+        text lock_time
+        text name
+        text notes
+        text orders
+        text project_member_hour
+        text project_member_id
+        text require_notes
+        text start
+        text status_id
+    }
+    allocation {
+        text id PK
+        text client_id FK
+        text member_id FK
+        text project_id FK
+        text role_id FK
+        text allocate_on_time_off_days
+        text assignment_type_id
+        text created_at
+        text ends
+        text entity
+        text hours_per_allocation
+        text hours_per_day
+        text hours_per_month
+        text hours_per_week
+        text hours_ratio_of_capacity
+        text is_billable
+        text notes
+        text placeholder_id
+        text placeholder_name
+        text read_only
+        text resource_type_id
+        text role_name
+        text start
+        text task_id
+        text task_name
+        text time_off_type_id
+        text time_off_type_name
+        text total_hours
+        text unit
+    }
+    client_email {
+        text index PK
+        text client_id PK
+        text email
+    }
+    client_tag {
+        text id PK
+        text client_id PK
+        text name
+    }
+    client {
+        text id PK
+        text practice_id FK
+        text code
+        text created_at
+        text currency
+        text invoice_notes
+        text is_internal
+        text key
+        text name
+        text notes
+        text owner_id
+        text owner_name
+        text payment_terms_id
+        text record_status_id
+        text street_address
+        text use_workspace_invoice_details
+    }
+    member_tag {
+        text id PK
+        text member_id PK
+        text name
+    }
+    member_skill {
+        text id PK
+        text member_id PK
+        text name
+    }
+    member_availability_period_hour_per_day {
+        text index PK
+        text member_availability_period_id PK
+        text member_id PK
+        text hour_per_day
+    }
+    member_availability_period {
+        text id PK
+        text member_id PK
+        text ends
+        text start
+    }
+    member_cost_period {
+        text id PK
+        text member_id PK
+        text cost_per_hour
+        text currency
+        text ends
+        text overhead_cost_per_hour
+        text start
+        text total_cost_per_hour
+    }
+    member_utilization_target_period {
+        text id PK
+        text member_id PK
+        text currency
+        text ends
+        text start
+        text target_percentage
+    }
+    member {
+        text id PK
+        text location_id FK
+        text practice_id FK
+        text active_end_date
+        text active_start_date
+        text cost_method_id
+        text created_at
+        text default_rate
+        text default_rate_currency
+        text discipline_id
+        text discipline_name
+        text email
+        text employment_type_id
+        text forbid_timesheet_submission_when_below_capacity
+        text holiday_schedule_id
+        text holiday_schedule_name
+        text internal_id
+        text internal_notes
+        text invitation_status_id
+        text is_active
+        text is_billable
+        text job_title_id
+        text job_title_name
+        text login_enabled
+        text manager_id
+        text manager_name
+        text name
+        text receive_missing_time_reminders
+        text security_role_id
+        text security_role_name
+        text time_off_allowed
+        text time_off_approval_mode
+        text time_off_approver_id
+        text time_off_approver_name
+        text unsubmitted_timesheet_reminders
+    }
+    time_entry {
+        text id PK
+        text client_id FK
+        text member_id FK
+        text project_id FK
+        text role_id FK
+        text created_at
+        text date
+        text invoice_id
+        text invoice_number
+        text invoiced
+        text is_billable
+        text minutes
+        text notes
+        text role_name
+        text status_id
+        text task_id
+        text task_name
+        text time_off_type_id
+        text time_off_type_name
+        text timer_started_at
+        text type_id
+    }
+    project_tag }o--|| project : "fk"
+    project }o--|| practice : "fk"
+    project }o--|| client : "fk"
+    project_task_tag }o--|| project_task : "fk"
+    project_task_role }o--|| project_task : "fk"
+    project_task }o--|| member : "fk"
+    project_task }o--|| project : "fk"
+    project_task }o--|| client : "fk"
+    allocation }o--|| member : "fk"
+    allocation }o--|| project : "fk"
+    allocation }o--|| client : "fk"
+    allocation }o--|| project_task_role : "fk"
+    client_email }o--|| client : "fk"
+    client_tag }o--|| client : "fk"
+    client }o--|| practice : "fk"
+    member_tag }o--|| member : "fk"
+    member_skill }o--|| member : "fk"
+    member_availability_period_hour_per_day }o--|| member_availability_period : "fk"
+    member_availability_period_hour_per_day }o--|| member_availability_period : "fk"
+    member_availability_period }o--|| member : "fk"
+    member_cost_period }o--|| member : "fk"
+    member_utilization_target_period }o--|| member : "fk"
+    member }o--|| practice : "fk"
+    member }o--|| location : "fk"
+    time_entry }o--|| member : "fk"
+    time_entry }o--|| project : "fk"
+    time_entry }o--|| client : "fk"
+    time_entry }o--|| project_task_role : "fk"

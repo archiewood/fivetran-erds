@@ -1,0 +1,456 @@
+erDiagram
+    task {
+        text id PK
+        text assigned_to_id FK
+        text created_by_id FK
+        text associated_to_id
+        text associated_to_type
+        text completed
+        text completed_at
+        timestamp created_at
+        text ends_on
+        text starts_on
+        text title
+        text type
+        timestamp updated_at
+    }
+    competencie {
+        text id PK
+        timestamp created_at
+        text description
+        text name
+        text type
+        timestamp updated_at
+    }
+    employment_type {
+        text id PK
+        timestamp created_at
+        text name
+        timestamp updated_at
+    }
+    leave_policy {
+        text id PK
+        text leave_type_id FK
+        text activity_type
+        text counted_as
+        timestamp created_at
+        text name
+        text type
+        timestamp updated_at
+        text visibility
+    }
+    working_pattern {
+        text id PK
+        timestamp created_at
+        text friday_hours
+        text monday_hours
+        text name
+        text saturday_hours
+        text sunday_hours
+        text thursday_hours
+        text tuesday_hours
+        timestamp updated_at
+        text wednesday_hours
+    }
+    holiday {
+        text id PK
+        text compensated_on
+        text country_code
+        timestamp created_at
+        text ends_on
+        text holiday_policy_id
+        text name
+        text observed_on
+        text occurs_on
+        text starts_on
+        timestamp updated_at
+        text working
+    }
+    objective_key_result {
+        text id PK
+        text objective_id PK
+        text currency_code
+        text metric
+        text progress
+        text start
+        text status
+        text target
+        text title
+        text weight
+    }
+    objective {
+        text id PK
+        text owner_id FK
+        timestamp created_at
+        text ends_on
+        text parent_id
+        text progress
+        text starts_on
+        text status
+        text title
+        timestamp updated_at
+    }
+    division {
+        text id PK
+        timestamp created_at
+        text name
+        timestamp updated_at
+    }
+    job_level {
+        text id PK
+        timestamp created_at
+        text name
+        timestamp updated_at
+    }
+    department {
+        text id PK
+        text manager_id FK
+        timestamp created_at
+        text name
+        text parent_id
+        timestamp updated_at
+    }
+    vacancy_applicant_phone_number {
+        text index PK
+        text vacancy_application_id PK
+        text phone_numbers
+    }
+    vacancy_application {
+        text id PK
+        text vacancy_id PK
+        text applicant_email
+        text applicant_full_name
+        text applicant_id
+        text applicant_phone_numbers
+        timestamp created_at
+        text disqualified_at
+        text pipeline_state_id
+        text pipeline_state_name
+        timestamp updated_at
+    }
+    disqualify_reason {
+        text id PK
+        timestamp created_at
+        text name
+        timestamp updated_at
+    }
+    kpi {
+        text id PK
+        text department_id FK
+        text division_id FK
+        text location_id FK
+        text owner_id FK
+        timestamp created_at
+        text currency_code
+        text description
+        text kpi_type
+        text metric
+        text progress_percentage
+        text status
+        text title
+        timestamp updated_at
+        text weight
+    }
+    holiday_policy {
+        text id PK
+        text country_code
+        timestamp created_at
+        text name
+        timestamp updated_at
+    }
+    team_member {
+        text id PK
+        text team_id PK
+        text user_id FK
+    }
+    team {
+        text id PK
+        text team_lead_id FK
+        timestamp created_at
+        text description
+        text name
+        timestamp updated_at
+    }
+    leave_type {
+        text id PK
+        timestamp created_at
+        text fa_class
+        text hex_color
+        text name
+        text unit
+    }
+    location {
+        text id PK
+        text holiday_policy_id FK
+        text address
+        text country_code
+        timestamp created_at
+        text name
+        text time_zone
+        timestamp updated_at
+    }
+    position {
+        text id PK
+        timestamp created_at
+        text name
+        timestamp updated_at
+    }
+    vacancies_custom_fields {
+        text index PK
+        text vacancy_id PK
+        text internal_name
+        text name
+        text vacancy_field_id
+        text value
+    }
+    vacancies_collaborators {
+        text index PK
+        text vacancy_id PK
+        text email
+        text first_name
+        text id
+        text last_name
+    }
+    vacancies_recruitment_pipeline_stage {
+        text index PK
+        text vacancy_id PK
+        timestamp created_at
+        text id
+        text name
+        text position
+        timestamp updated_at
+    }
+    vacancy {
+        text id PK
+        text department_id FK
+        text employment_type_id FK
+        text hiring_lead_id FK
+        text job_level_id FK
+        text location_id FK
+        text applications_count
+        timestamp created_at
+        text currency_code
+        text description
+        text division
+        text ends_on
+        text maximum_salary
+        text minimum_salary
+        text opened_at
+        text position
+        text positions
+        text post_on_careers
+        text priority
+        timestamp recruitment_pipeline_created_at
+        text recruitment_pipeline_id
+        text recruitment_pipeline_name
+        text recruitment_pipeline_stages
+        timestamp recruitment_pipeline_updated_at
+        jsonb skills
+        text starts_on
+        text state
+        jsonb tags
+        text title
+        timestamp updated_at
+    }
+    employee {
+        text id PK
+        text department_id FK
+        text division_id FK
+        text employment_type_id FK
+        text job_level_id FK
+        text location_id FK
+        text position_id FK
+        text reporting_to_id FK
+        text access
+        text active
+        text avatar_url
+        timestamp created_at
+        text date_of_birth
+        text email
+        text facebook_url
+        text first_name
+        text full_name
+        text gender
+        text gender_id
+        text hired_on
+        text last_name
+        text legal_entity
+        text linkedin_url
+        text middle_name
+        text mobile_number
+        text personal_email
+        text probation_ends_on
+        text skype_username
+        text slack_username
+        text status
+        text termination_comment
+        text termination_effective_on
+        text termination_eligible_for_rehire
+        text termination_reason_id
+        text termination_reason_name
+        text termination_type_id
+        text termination_type_name
+        text twitter_username
+        timestamp updated_at
+        text work_phone_number
+    }
+    employee_anniversary {
+        text id PK
+    }
+    calendar {
+        text starts_on PK
+        text user_id PK
+        text leave_type_id FK
+        text ends_on
+        text title
+        text type
+    }
+    candidates_phone_number {
+        text index PK
+        text candidates_id PK
+        text phone_numbers
+    }
+    candidates_urls {
+        text index PK
+        text candidates_id PK
+        text urls
+    }
+    candidates_skills {
+        text index PK
+        text candidates_id PK
+        text skills
+    }
+    candidates_application {
+        text id PK
+        text candidates_id PK
+        text vacancy_id FK
+        timestamp created_at
+        text disqualified_at
+        text disqualify_reason
+        timestamp updated_at
+    }
+    candidates {
+        text id PK
+        text cover_letter
+        timestamp created_at
+        text created_by
+        text currency_code
+        text desired_salary
+        text email
+        text full_name
+        text gender
+        text last_contacted_at
+        text level
+        text location
+        text position
+        text resume
+        text source
+        jsonb tags
+        timestamp updated_at
+    }
+    leave_request_entries {
+        text index PK
+        text leave_request_id PK
+        text amount
+        text date
+        text ends_at
+        text starts_at
+    }
+    leave_request_approval {
+        text index PK
+        text leave_request_id PK
+        text assigned_to_id FK
+        text state
+    }
+    leave_request {
+        text id PK
+        text employee_id FK
+        text leave_type_id FK
+        text amount
+        text attachment_url
+        jsonb attachments
+        text comment
+        timestamp created_at
+        text ends_on
+        text hours
+        text leave_type_policy_activity_type
+        text leave_type_policy_name
+        text leave_type_policy_visibility
+        text on_demand
+        text starts_on
+        text state
+        text tracking_time_in
+        timestamp updated_at
+    }
+    salary {
+        text id PK
+        text employee_id PK
+        text amount
+        text comment
+        timestamp created_at
+        text currency_code
+        text effective_on
+        text overtime
+        text pay_schedule_id
+        text pay_schedule_name
+        text per
+        timestamp updated_at
+    }
+    leave_balance {
+        text id PK
+        text employee_id PK
+        text leave_policy_id FK
+        text leave_type_id FK
+        text balance
+        timestamp created_at
+        text effective_on
+        timestamp updated_at
+    }
+    task }o--|| employee : "fk"
+    task }o--|| employee : "fk"
+    leave_policy }o--|| leave_type : "fk"
+    objective_key_result }o--|| objective : "fk"
+    objective }o--|| employee : "fk"
+    department }o--|| employee : "fk"
+    vacancy_applicant_phone_number }o--|| vacancy_application : "fk"
+    vacancy_application }o--|| vacancy : "fk"
+    kpi }o--|| department : "fk"
+    kpi }o--|| employee : "fk"
+    kpi }o--|| division : "fk"
+    kpi }o--|| location : "fk"
+    team_member }o--|| employee : "fk"
+    team_member }o--|| team : "fk"
+    team }o--|| employee : "fk"
+    location }o--|| holiday_policy : "fk"
+    vacancies_custom_fields }o--|| vacancy : "fk"
+    vacancies_collaborators }o--|| vacancy : "fk"
+    vacancies_recruitment_pipeline_stage }o--|| vacancy : "fk"
+    vacancy }o--|| employment_type : "fk"
+    vacancy }o--|| department : "fk"
+    vacancy }o--|| job_level : "fk"
+    vacancy }o--|| employee : "fk"
+    vacancy }o--|| location : "fk"
+    employee }o--|| position : "fk"
+    employee }o--|| employment_type : "fk"
+    employee }o--|| employee : "fk"
+    employee }o--|| department : "fk"
+    employee }o--|| division : "fk"
+    employee }o--|| job_level : "fk"
+    employee }o--|| location : "fk"
+    employee_anniversary }o--|| employee : "fk"
+    calendar }o--|| employee : "fk"
+    calendar }o--|| leave_type : "fk"
+    candidates_phone_number }o--|| candidates : "fk"
+    candidates_urls }o--|| candidates : "fk"
+    candidates_skills }o--|| candidates : "fk"
+    candidates_application }o--|| vacancy : "fk"
+    candidates_application }o--|| candidates : "fk"
+    leave_request_entries }o--|| leave_request : "fk"
+    leave_request_approval }o--|| employee : "fk"
+    leave_request_approval }o--|| leave_request : "fk"
+    leave_request }o--|| leave_type : "fk"
+    leave_request }o--|| employee : "fk"
+    salary }o--|| employee : "fk"
+    leave_balance }o--|| leave_policy : "fk"
+    leave_balance }o--|| leave_type : "fk"
+    leave_balance }o--|| employee : "fk"

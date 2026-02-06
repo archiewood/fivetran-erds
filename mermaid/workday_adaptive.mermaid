@@ -1,0 +1,185 @@
+erDiagram
+    dimension_value_property {
+        bigint id PK
+        bigint dimension_id PK
+        bigint dimension_value_id PK
+        text name
+        double_precision value
+    }
+    dimension_value_attribute_mapping {
+        bigint attribute_id PK
+        bigint dimension_id PK
+        bigint dimension_value_id PK
+        bigint value_id PK
+    }
+    dimension_value {
+        bigint id PK
+        text code
+        text description
+        text display_name
+        text name
+        text short_name
+    }
+    account {
+        bigint id PK
+        bigint parent_id FK
+        text account_type_code
+        text actuals_by
+        text balance_type
+        text code
+        text data_entry_type
+        text data_privacy
+        integer decimal_precision
+        text description
+        text display_as
+        boolean enable_actuals
+        text exchange_rate_type
+        boolean has_formula
+        boolean has_salary_detail
+        boolean is_assumption
+        boolean is_breakback_eligible
+        boolean is_contra
+        boolean is_default_root
+        boolean is_group
+        boolean is_importable
+        boolean is_intercompany
+        boolean is_linked
+        boolean is_system
+        text level_dim_rollup
+        integer level_dim_weight_acct_id
+        text name
+        text owning_sheet_id
+        text plan_by
+        text rollup_text
+        text short_name
+        boolean start_expanded
+        text sub_type
+        boolean suppress_zeroes
+        text time_rollup
+        text time_stratum
+        integer time_weight_acct_id
+    }
+    dimension {
+        bigint id PK
+        boolean auto_create
+        text code
+        text description
+        text display_name_type
+        boolean keep_sorted
+        boolean list_dimension
+        text name
+        integer seq_no
+        text short_name
+        boolean use_on_levels
+    }
+    level {
+        bigint id PK
+        bigint parent_id FK
+        text available_start
+        text code
+        text currency
+        text description
+        text display_name
+        boolean has_children
+        boolean is_elimination
+        boolean is_importable
+        boolean is_linked
+        text name
+        text publish_currency
+        text short_name
+        text workflow_status
+    }
+    account_attribute_mapping {
+        bigint account_id PK
+        bigint attribute_id PK
+        bigint value_id PK
+    }
+    level_attribute_mapping {
+        bigint attribute_id PK
+        bigint level_id PK
+        bigint value_id PK
+    }
+    currency {
+        bigint id PK
+        text code
+        text description
+        boolean is_corporate_currency
+        boolean is_reporting_currency
+        integer precision
+        boolean user_defined
+    }
+    attribute {
+        bigint id PK
+        boolean auto_create
+        text code
+        bigint dimension_id
+        text display_name_type
+        boolean keep_sorted
+        text name
+        text seq_no
+        text type
+    }
+    attribute_value {
+        bigint id PK
+        bigint attribute_id FK
+        bigint parent_id FK
+        text code
+        text description
+        text display_name
+        text name
+    }
+    dimension_value_mapping {
+        bigint dimension_id PK
+        bigint dimension_value_id PK
+    }
+    custom_report {
+        text account_code PK
+        text account_name PK
+        text custom_dimensions_ PK
+        text level_name PK
+        text time PK
+        text version_name PK
+        double_precision value
+    }
+    version {
+        bigint id PK
+        bigint parent_id FK
+        text completed_values_thru
+        text description
+        boolean enabled_for_workflow
+        text end_plan
+        text end_ver
+        boolean has_audit_trail
+        boolean is_default_version
+        boolean is_importable
+        boolean is_locked
+        boolean is_predictive
+        boolean is_virtual
+        text left_scroll
+        text lock_leading
+        text name
+        text short_name
+        text start_plan
+        text start_scroll
+        text start_ver
+        text type
+    }
+    dimension_value_property }o--|| dimension_value : "fk"
+    dimension_value_property }o--|| dimension : "fk"
+    dimension_value_attribute_mapping }o--|| dimension_value : "fk"
+    dimension_value_attribute_mapping }o--|| dimension : "fk"
+    dimension_value_attribute_mapping }o--|| attribute_value : "fk"
+    dimension_value_attribute_mapping }o--|| attribute : "fk"
+    account }o--|| account : "fk"
+    level }o--|| level : "fk"
+    account_attribute_mapping }o--|| account : "fk"
+    account_attribute_mapping }o--|| attribute : "fk"
+    account_attribute_mapping }o--|| attribute_value : "fk"
+    level_attribute_mapping }o--|| level : "fk"
+    level_attribute_mapping }o--|| attribute : "fk"
+    level_attribute_mapping }o--|| attribute_value : "fk"
+    attribute_value }o--|| attribute : "fk"
+    attribute_value }o--|| attribute_value : "fk"
+    dimension_value_mapping }o--|| dimension_value : "fk"
+    dimension_value_mapping }o--|| dimension : "fk"
+    version }o--|| version : "fk"

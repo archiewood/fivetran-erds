@@ -1,0 +1,708 @@
+erDiagram
+    logins {
+        text id PK
+        text account_id FK
+        text user_id FK
+        text authentication_provider_id
+        text authentication_provider_type
+        text created_at
+        text declared_user_type
+        text integration_id
+        text sis_user_id
+        text unique_id
+        text workflow_state
+    }
+    groups {
+        text id PK
+        text account_id FK
+        text group_category_id FK
+        text avatar_url
+        text concluded
+        text context_type
+        text created_at
+        text description
+        text has_submission
+        text is_public
+        text join_level
+        text leader
+        text max_membership
+        text members_count
+        text name
+        text role
+        text sis_group_id
+        text sis_import_id
+        text storage_quota_mb
+    }
+    group_discussion_topic {
+        text discussion_topic_id PK
+        text group_id PK
+        text user_id PK
+    }
+    discussion_topic {
+        text id PK
+        text assignment_id FK
+        text course_id FK
+        text allow_rating
+        text anonymous_state
+        text attachments
+        text author_anonymous_id
+        text author_avatar_image_url
+        text author_display_name
+        text author_html_url
+        text author_id
+        text author_pronouns
+        text can_group
+        text can_lock
+        text can_unpublish
+        text comments_disabled
+        text created_at
+        text delayed_post_at
+        text discussion_subentry_count
+        text discussion_type
+        text group_category_id
+        text html_url
+        text is_announcement
+        text is_section_specific
+        text last_reply_at
+        text lock_at
+        text locked
+        text locked_for_user
+        text message
+        text only_graders_can_rate
+        text permissions_attach
+        text permissions_delete
+        text permissions_reply
+        text permissions_update
+        text pinned
+        text podcast_has_student_posts
+        text podcast_url
+        text position
+        text posted_at
+        text published
+        text read_state
+        text require_initial_post
+        text root_topic_id
+        text sort_by_rating
+        text subscribed
+        text title
+        text todo_date
+        text unread_count
+        text url
+        text user_can_see_posts
+        text user_name
+    }
+    course {
+        text id PK
+        text account_id FK
+        text apply_assignment_group_weight
+        text blueprint
+        text blueprint_restrictions_availability_dates
+        text blueprint_restrictions_content
+        text blueprint_restrictions_due_dates
+        text blueprint_restrictions_points
+        text calendar_ics
+        text course_code
+        text course_color
+        text course_format
+        text created_at
+        text default_view
+        text end_at
+        text enrollment_term_id
+        text friendly_name
+        text grade_passback_setting
+        text grading_standard_id
+        text hide_final_grade
+        text home_room_course
+        text integration_id
+        text is_public
+        text is_public_to_auth_user
+        text license
+        text name
+        text public_syllabus
+        text public_syllabus_to_auth
+        text restrict_enrollment_to_course_date
+        text sis_course_id
+        text sis_import_id
+        text start_at
+        text storage_quota_mb
+        text template
+        text time_zone
+        text uuid
+        text workflow_state
+    }
+    enrollment {
+        text id PK
+        text course_id FK
+        text course_section_id FK
+        text root_account_id FK
+        text user_id FK
+        text associated_user_id
+        text course_integration_id
+        text created_at
+        text current_grade
+        text current_score
+        text end_at
+        text enrollment_state
+        text final_grade
+        text final_score
+        text grade_html_url
+        text html_url
+        text last_activity_at
+        text last_attended_at
+        text limit_privilege_to_course_section
+        text role
+        text role_id
+        text section_integration_id
+        text sis_account_id
+        text sis_course_id
+        text sis_import_id
+        text sis_section_id
+        text sis_user_id
+        text start_at
+        text total_activity_time
+        text type
+        text unposted_current_grade
+        text unposted_current_score
+        text unposted_final_grade
+        text unposted_final_score
+        text updated_at
+    }
+    assignment_submission {
+        text assignment_course_id PK
+        text id PK
+        text assignment_id PK
+        text user_id FK
+        text anonymous_id
+        text assignment
+        text assignment_visible
+        text attempt
+        text body
+        text course
+        text excused
+        text extra_attempt
+        text grade
+        text grade_match_current_submission
+        text graded_at
+        text grader_id
+        text html_url
+        text late
+        text late_policy_status
+        text missing
+        text point_deducted
+        text posted_at
+        text preview_url
+        text read_status
+        text redo_request
+        text score
+        text second_late
+        text submission_comment
+        text submission_type
+        text submitted_at
+        text url
+        text users
+        text workflow_state
+    }
+    account {
+        text id PK
+        text course_template_id
+        text default_group_storage_quota_mb
+        text default_storage_quota_mb
+        text default_time_zone
+        text default_user_storage_quota_mb
+        text integration_id
+        text lti_guid
+        text name
+        text parent_account_id
+        text root_account_id
+        text sis_account_id
+        text sis_import_id
+        text uuid
+        text workflow_state
+    }
+    quiz_submission {
+        text id PK
+        text quiz_id FK
+        text user_id FK
+        text attempt
+        text end_at
+        text extra_attempt
+        text extra_time
+        text finished_at
+        text fudge_point
+        text has_seen_result
+        text kept_score
+        text manually_unlocked
+        text overdue_and_needs_submission
+        text score
+        text score_before_regrade
+        text started_at
+        text time_spent
+        text workflow_state
+    }
+    quiz_question_answer {
+        text id PK
+        text quiz_question_id PK
+        text migration_id
+        text text
+        text weight
+    }
+    quiz_question {
+        text id PK
+        text course_id FK
+        text quiz_id FK
+        text answer_tolerance
+        text assessment_question_id
+        text correct_comment
+        text correct_comment_html
+        text formula
+        text formula_decimal_place
+        text incorrect_comment
+        text incorrect_comment_html
+        text match
+        text matching_answer_incorrect_matches
+        text neutral_comment
+        text neutral_comment_html
+        text points_possible
+        text position
+        text question_name
+        text question_text
+        text question_type
+        text quiz_group_id
+        text variable
+    }
+    poll_session {
+        text id PK
+        text course_id FK
+        text course_section_id FK
+        text poll_id FK
+        text created_at
+        text has_public_results
+        text is_published
+        text poll_submissions
+        jsonb results
+    }
+    assignment {
+        text id PK
+        text assignment_group_id FK
+        text course_id FK
+        text group_category_id FK
+        text quiz_id FK
+        text allowed_attempt
+        text annotatable_attachment_id
+        text anonymize_student
+        text anonymous_grading
+        text anonymous_instructor_annotation
+        text anonymous_peer_review
+        text anonymous_submission
+        text automatic_peer_review
+        text can_duplicate
+        text created_at
+        text description
+        text due_at
+        text due_date_required
+        text final_grader_id
+        text grade_group_student_individually
+        text graded_submission_exist
+        text grader_anonymous_to_grader
+        text grader_comment_visible_to_grader
+        text grader_count
+        text grader_name_visible_to_final_grader
+        text grading_standard_id
+        text grading_type
+        text has_override
+        text has_submitted_submission
+        text hide_in_gradebook
+        text html_url
+        text important_date
+        text in_closed_grading_period
+        text integration_id
+        text intra_group_peer_review
+        text is_master_course_master_content
+        text is_quiz_assignment
+        text lock_at
+        text locked_for_user
+        text lti_context_id
+        text master_course_restrictions_availability_date
+        text master_course_restrictions_content
+        text master_course_restrictions_due_date
+        text master_course_restrictions_point
+        text max_name_length
+        text moderated_grading
+        text muted
+        text name
+        text need_grading_count
+        text omit_from_final_grade
+        text only_visible_to_override
+        text original_assignment_id
+        text original_assignment_name
+        text original_course_id
+        text original_lti_resource_link_id
+        text original_quiz_id
+        text peer_review
+        text point_possible
+        text position
+        text post_manually
+        text post_to_sis
+        text published
+        text require_lockdown_browser
+        text restrict_quantitative_data
+        text restricted_by_master_course
+        text secure_param
+        text sis_assignment_id
+        text submission_download_url
+        text unlock_at
+        text unpublishable
+        text updated_at
+        text workflow_state
+    }
+    poll {
+        text id PK
+        text user_id FK
+        text created_at
+        text description
+        text question
+        jsonb total_result
+    }
+    module_item {
+        text id PK
+        text module_id FK
+        text completion_requirement
+        text content_details
+        text content_id
+        text external_url
+        text html_url
+        text indent
+        text new_tab
+        text page_url
+        text position
+        text publish_at
+        text published
+        text quiz_lti
+        text title
+        text type
+        text url
+    }
+    enrollment_term {
+        text id PK
+        text account_id FK
+        text created_at
+        text end_at
+        text grading_period_group_id
+        text name
+        text sis_term_id
+        text start_at
+        text student_enrollment
+        text student_enrollment_end_at
+        text student_enrollment_start_at
+        text teacher_enrollment
+        text teacher_enrollment_end_at
+        text teacher_enrollment_start_at
+        text workflow_state
+    }
+    assignment_override {
+        text id PK
+        text assignment_id FK
+        text course_section_id FK
+        text quiz_id FK
+        text all_day
+        text all_day_date
+        text context_module_id
+        text due_at
+        text group_id
+        text lock_at
+        text title
+        text unlock_at
+    }
+    group_category {
+        text id PK
+        text account_id FK
+        text auto_leader
+        text context_type
+        text group_limit
+        text name
+        text progress
+        text role
+        text self_signup
+        text sis_group_category_id
+        text sis_import_id
+    }
+    communication_channel {
+        text id PK
+        text user_id FK
+        text address
+        text bounce_count
+        text last_bounce_at
+        text position
+        text type
+        text workflow_state
+    }
+    course_section {
+        text id PK
+        text course_id FK
+        text created_at
+        text end_at
+        text integration_id
+        text name
+        text nonxlist_course_id
+        text restrict_enrollment_to_section_date
+        text sis_course_id
+        text sis_import_id
+        text sis_section_id
+        text start_at
+    }
+    assignment_group {
+        text id PK
+        text course_id FK
+        text group_weight
+        text name
+        text position
+        text sis_source_id
+    }
+    quiz_question_group {
+        text id PK
+        text quiz_id FK
+        text assessment_question_bank_id
+        text name
+        text pick_count
+        text position
+        text question_point
+    }
+    group_membership {
+        text id PK
+        text group_id FK
+        text user_id FK
+        text just_created
+        text moderator
+        text sis_import_id
+        text workflow_state
+    }
+    module {
+        text id PK
+        text course_id FK
+        text completed_at
+        text items_count
+        text items_url
+        text name
+        text position
+        text pre_requisite_module_id
+        text publish_final_grade
+        text published
+        text require_sequential_progress
+        text state
+        text unlock_at
+        text workflow_state
+    }
+    quiz_all_date {
+        text index PK
+        text quiz_id PK
+        text base
+        text due_at
+        text lock_at
+        text unlock_at
+    }
+    quiz_question_type {
+        text index PK
+        text quiz_id PK
+        text question_type
+    }
+    quiz {
+        text id PK
+        text assignment_group_id FK
+        text assignment_id FK
+        text course_id FK
+        text access_code
+        text allowed_attempt
+        text can_unpublish
+        text can_update
+        text cant_go_back
+        text description
+        text due_at
+        text has_access_code
+        text hide_correct_answers_at
+        text hide_result
+        text html_url
+        text important_date
+        text in_paced_course
+        text ip_filter
+        text is_master_course_master_content
+        text lock_at
+        text lock_explanation
+        text lock_info_asset_string
+        text lock_info_missing_permission
+        text lockdown_browser_monitor_data
+        text locked_for_user
+        text master_course_restrictions_availability_date
+        text master_course_restrictions_content
+        text master_course_restrictions_due_date
+        text master_course_restrictions_point
+        text message_student_url
+        text migration_id
+        text mobile_url
+        text one_question_at_a_time
+        text one_time_result
+        text only_visible_to_override
+        text permissions_create
+        text permissions_delete
+        text permissions_grade
+        text permissions_manage
+        text permissions_preview
+        text permissions_read
+        text permissions_read_statistic
+        text permissions_review_grade
+        text permissions_submit
+        text permissions_update
+        text permissions_view_answer_audit
+        text point_possible
+        text post_to_sis
+        text published
+        text quiz_report_url
+        text quiz_statistic_url
+        text quiz_submission_versions_html_url
+        text quiz_type
+        text require_lockdown_browser
+        text require_lockdown_browser_for_result
+        text require_lockdown_browser_monitor
+        text restricted_by_master_course
+        text scoring_policy
+        text section_count
+        text show_correct_answer
+        text show_correct_answers_at
+        text show_correct_answers_last_attempt
+        text shuffle_answer
+        text speed_grader_url
+        text time_limit
+        text timer_autosubmit_disabled
+        text title
+        text unlock_at
+        text unpublishable
+    }
+    new_quiz {
+        text id PK
+        text assignment_group_id FK
+        text course_id FK
+        text quiz_id FK
+        text due_at
+        text grading_type
+        text instructions
+        text lock_at
+        text points_possible
+        text published
+        text quiz_settings
+        text title
+        text unlock_at
+    }
+    roles {
+        text id PK
+        text account_id FK
+        text base_role_type
+        text created_at
+        text is_account_role
+        text label
+        text last_updated_at
+        text role
+        text workflow_state
+    }
+    calender_event {
+        text id PK
+        text all_context_codes
+        text all_day
+        text all_day_date
+        text appointment_group_id
+        text appointment_group_url
+        text available_slots
+        text blackout_date
+        text child_event
+        text child_event_count
+        text context_code
+        text context_name
+        text created_at
+        text description
+        text effective_context_code
+        text end_at
+        text groups
+        text hidden
+        text html_url
+        text important_date
+        text location_address
+        text location_name
+        text own_reservation
+        text parent_event_id
+        text participant_per_appointment
+        text participant_type
+        text reserve_url
+        text reserved
+        text rrule
+        text series_head
+        text series_natural_language
+        text series_uuid
+        text start_at
+        text title
+        text updated_at
+        text url
+        text users
+        text workflow_state
+    }
+    users {
+        text id PK
+        text account_id FK
+        text created_at
+        text integration_id
+        text login_id
+        text name
+        text short_name
+        text sis_import_id
+        text sis_user_id
+        text sortable_name
+    }
+    logins }o--|| users : "fk"
+    logins }o--|| account : "fk"
+    groups }o--|| group_category : "fk"
+    groups }o--|| account : "fk"
+    group_discussion_topic }o--|| users : "fk"
+    group_discussion_topic }o--|| groups : "fk"
+    group_discussion_topic }o--|| discussion_topic : "fk"
+    discussion_topic }o--|| assignment : "fk"
+    discussion_topic }o--|| course : "fk"
+    course }o--|| account : "fk"
+    enrollment }o--|| users : "fk"
+    enrollment }o--|| account : "fk"
+    enrollment }o--|| course_section : "fk"
+    enrollment }o--|| course : "fk"
+    assignment_submission }o--|| users : "fk"
+    assignment_submission }o--|| assignment : "fk"
+    quiz_submission }o--|| users : "fk"
+    quiz_submission }o--|| quiz : "fk"
+    quiz_question_answer }o--|| quiz_question : "fk"
+    quiz_question }o--|| quiz : "fk"
+    quiz_question }o--|| quiz : "fk"
+    poll_session }o--|| poll : "fk"
+    poll_session }o--|| course_section : "fk"
+    poll_session }o--|| course : "fk"
+    assignment }o--|| assignment_group : "fk"
+    assignment }o--|| quiz : "fk"
+    assignment }o--|| group_category : "fk"
+    assignment }o--|| course : "fk"
+    poll }o--|| users : "fk"
+    module_item }o--|| module : "fk"
+    enrollment_term }o--|| account : "fk"
+    assignment_override }o--|| course_section : "fk"
+    assignment_override }o--|| assignment : "fk"
+    assignment_override }o--|| quiz : "fk"
+    group_category }o--|| account : "fk"
+    communication_channel }o--|| users : "fk"
+    course_section }o--|| course : "fk"
+    assignment_group }o--|| course : "fk"
+    quiz_question_group }o--|| quiz : "fk"
+    group_membership }o--|| groups : "fk"
+    group_membership }o--|| users : "fk"
+    module }o--|| course : "fk"
+    quiz_all_date }o--|| quiz : "fk"
+    quiz_question_type }o--|| quiz : "fk"
+    quiz }o--|| assignment_group : "fk"
+    quiz }o--|| assignment : "fk"
+    quiz }o--|| course : "fk"
+    new_quiz }o--|| assignment_group : "fk"
+    new_quiz }o--|| course : "fk"
+    new_quiz }o--|| quiz : "fk"
+    roles }o--|| account : "fk"
+    users }o--|| account : "fk"

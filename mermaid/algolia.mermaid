@@ -1,0 +1,177 @@
+erDiagram
+    country {
+        text country PK
+        text index_name PK
+        text start_date PK
+        text count
+        text end_date
+    }
+    settings {
+        text _fivetran_id PK
+        text index_name FK
+        text alternatives_as_exact
+        text attribute_for_distinct
+        text attributes_for_faceting
+        text attributes_to_highlight
+        text attributes_to_index
+        text attributes_to_retrieve
+        text attributes_to_snippet
+        text exact_on_single_word_query
+        text highlight_post_tag
+        text highlight_pre_tag
+        text hits_per_page
+        text max_values_per_facet
+        text min_word_size_for_1_typo
+        text min_word_size_for_2_typo
+        text numeric_attributes_to_index
+        text optional_words
+        text pagination_limited_to
+        text query_type
+        text ranking
+        text remove_words_if_no_results
+        text separators_to_index
+        text snippet_ellipsis_text
+        text unretrievable_attributes
+        text version
+    }
+    click_through_rate {
+        text date PK
+        text index_name PK
+        text click_count
+        text rate
+        text tracked_search_count
+    }
+    search_no_result_rate {
+        text date PK
+        text index_name PK
+        text count
+        text no_result_count
+        text rate
+    }
+    average_click_position {
+        text date PK
+        text index_name PK
+        text average
+        text click_count
+    }
+    click_position {
+        text _fivetran_id PK
+        text click_count
+        text end_date
+        text index_name
+        jsonb position
+        text start_date
+    }
+    index_detail {
+        text id PK
+        text index_name FK
+    }
+    rule_condition {
+        text index PK
+        text rule_id PK
+        text anchoring
+        text pattern
+    }
+    rule {
+        text id PK
+        text index_detail_id FK
+        text index_name FK
+    }
+    index_replica {
+        text index PK
+        text index_name PK
+        text replica
+    }
+    index {
+        text index_name PK
+        text primary_index FK
+        text created_at
+        text data_size
+        text entries
+        text file_size
+        text last_build_time_s
+        text number_of_pending_tasks
+        text pending_task
+        text updated_at
+        text virtual
+    }
+    search_no_click_rate {
+        text date PK
+        text index_name PK
+        text count
+        text no_click_count
+        text rate
+    }
+    search_count {
+        text _fivetran_id PK
+        text count
+        text date
+        text index_name
+    }
+    filter {
+        text attribute PK
+        text index_name PK
+        text start_date PK
+        text count
+        text end_date
+    }
+    hit {
+        text _fivetran_id PK
+        text click_count
+        text conversion_count
+        text count
+        text end_date
+        text hit
+        text index_name
+        text start_date
+        text tracked_hit_count
+    }
+    search {
+        text _fivetran_id PK
+        text click_count
+        text conversion_count
+        text count
+        text end_date
+        text index_name
+        text nb_hits
+        text search
+        text start_date
+        text tracked_search_count
+    }
+    user_count {
+        text date PK
+        text index_name PK
+        text count
+    }
+    search_no_click {
+        text _fivetran_id PK
+        text count
+        text end_date
+        text index_name
+        text nb_hits
+        text search
+        text start_date
+    }
+    search_no_result {
+        text _fivetran_id PK
+        text count
+        text end_date
+        text index_name
+        text search
+        text start_date
+        text with_filter_count
+    }
+    conversion_rate {
+        text date PK
+        text index_name PK
+        text conversion_count
+        text rate
+        text tracked_search_count
+    }
+    settings }o--|| index : "fk"
+    index_detail }o--|| index : "fk"
+    rule_condition }o--|| rule : "fk"
+    rule }o--|| index : "fk"
+    rule }o--|| index_detail : "fk"
+    index_replica }o--|| index : "fk"
+    index }o--|| index : "fk"

@@ -1,0 +1,303 @@
+erDiagram
+    location {
+        text id PK
+        text address
+        text city
+        text country
+        text email
+        text headquarter
+        text lat
+        text long
+        text name
+        text phone
+        text zip
+    }
+    job_application {
+        text id PK
+        text candidate_id FK
+        text job_id FK
+        text job_stage_id FK
+        text rejection_reason_id FK
+        text changed_stage_at
+        text cover_letter
+        text created_at
+        text referring_site
+        text referring_url
+        text rejected_at
+        text row_order
+        text sourced
+        text updated_at
+    }
+    referral {
+        text id PK
+        text candidate_id FK
+        text job_id FK
+        text user_id FK
+        text comment
+        text created_at
+        text email
+        text name
+        text phone
+    }
+    candidate_document_upload {
+        text candidate_id PK
+        text upload_id PK
+    }
+    candidate {
+        text id PK
+        text connected
+        text consent_future_jobs_at
+        text created_at
+        text email
+        text facebook_id
+        text facebook_profile
+        text first_name
+        text internal
+        text last_name
+        text linkedin_profile
+        text linkedin_uid
+        text linkedin_url
+        text original_resume
+        text phone
+        text picture
+        text pitch
+        text referred
+        text referring_site
+        text referring_url
+        text restricted_at
+        text resume
+        text sourced
+        jsonb tags
+        text unsubscribed
+        text updated_at
+    }
+    job_question_alternative {
+        text id PK
+        text question_id PK
+        text title
+    }
+    question {
+        text id PK
+        text description
+        text end_with
+        text multiple
+        text question_type
+        text single_line
+        text start_with
+        text title
+        text unit
+    }
+    role {
+        text id PK
+        text name
+    }
+    requisition {
+        text id PK
+        text archived_at
+        text country
+        text created_at
+        text currency
+        text hired_count
+        text job_description
+        text job_title
+        text max_salary
+        text min_salary
+        text number_of_opening
+        text salary_time_unit
+        text status
+    }
+    job_tag {
+        text index PK
+        text job_id PK
+        text tags
+    }
+    job_location {
+        text job_id PK
+        text location_id PK
+    }
+    job_question {
+        text job_id PK
+        text question_id PK
+    }
+    job_candidate {
+        text candidate_id PK
+        text job_id PK
+    }
+    job_picked_question {
+        text job_id PK
+        text question_id PK
+    }
+    job {
+        text id PK
+        text department_id FK
+        text requisition_id FK
+        text user_id FK
+        text apply_button_text
+        text cover_letter_requirement
+        text created_at
+        text currency
+        text employment_type
+        text end_date
+        text external_application_url
+        text human_status
+        text internal
+        text internal_name
+        text language_code
+        text mailbox
+        text name_requirement
+        text phone_requirement
+        text picture_original
+        text picture_standard
+        text picture_thumb
+        text pinned
+        text pitch
+        text recruiter_email
+        text remote_status
+        text resume_requirement
+        text sharing_image_layout
+        text start_date
+        text status
+        text title
+        text updated_at
+    }
+    rejection_reason {
+        text id PK
+        text reason
+        text rejected_by_company
+    }
+    answer {
+        text id PK
+        text candidate_id FK
+        text question_id FK
+        text answer
+        text boolean
+        jsonb choice
+        text created_at
+        text data
+        text date
+        text number
+        text question_type
+        text range
+        text text
+        text updated_at
+        text video_token
+    }
+    department_team {
+        text department_id PK
+        text team_id PK
+    }
+    department {
+        text id PK
+        text name
+    }
+    job_offer {
+        text id PK
+        text job_application_id FK
+        text user_id FK
+        text acceptance_message
+        text answered_at
+        text approval_status
+        text created_at
+        text job_type
+        text probation_period
+        text rejection_message
+        text reporting_manager_name_and_title
+        text response
+        text salary
+        text sent_at
+        text start_date
+        text status
+        text working_location
+    }
+    team_users {
+        text team_id PK
+        text user_id PK
+    }
+    application_stage {
+        text id PK
+        text active_job_applications_count
+        text created_at
+        text name
+        text rejected_job_applications_count
+        text row_order
+        text stage_type
+        text updated_at
+    }
+    team_role {
+        text role_id PK
+        text team_id PK
+    }
+    team {
+        text id PK
+        text emoji
+        text name
+        text no_department
+    }
+    users {
+        text id PK
+        text department_id FK
+        text location_id FK
+        text description
+        text email
+        text external_id
+        text facebook_profile
+        text hide_email
+        text hide_phone
+        text instagram_profile
+        text linkedin_profile
+        text locale
+        text login_email
+        text name
+        text other_profile
+        text phone
+        text picture_standard
+        text role
+        text role_add_on
+        text signature
+        text time_format
+        text time_zone
+        text title
+        text twitter_profile
+        text username
+        text visible
+    }
+    document_upload {
+        text id PK
+        text file_name
+        text internal
+        text url
+    }
+    job_application }o--|| job : "fk"
+    job_application }o--|| candidate : "fk"
+    job_application }o--|| application_stage : "fk"
+    job_application }o--|| rejection_reason : "fk"
+    referral }o--|| job : "fk"
+    referral }o--|| candidate : "fk"
+    referral }o--|| users : "fk"
+    candidate_document_upload }o--|| document_upload : "fk"
+    candidate_document_upload }o--|| candidate : "fk"
+    job_question_alternative }o--|| question : "fk"
+    job_tag }o--|| job : "fk"
+    job_location }o--|| location : "fk"
+    job_location }o--|| job : "fk"
+    job_question }o--|| question : "fk"
+    job_question }o--|| job : "fk"
+    job_candidate }o--|| candidate : "fk"
+    job_candidate }o--|| job : "fk"
+    job_picked_question }o--|| question : "fk"
+    job_picked_question }o--|| job : "fk"
+    job }o--|| department : "fk"
+    job }o--|| users : "fk"
+    job }o--|| requisition : "fk"
+    answer }o--|| candidate : "fk"
+    answer }o--|| question : "fk"
+    department_team }o--|| team : "fk"
+    department_team }o--|| department : "fk"
+    job_offer }o--|| users : "fk"
+    job_offer }o--|| job_application : "fk"
+    team_users }o--|| users : "fk"
+    team_users }o--|| team : "fk"
+    team_role }o--|| role : "fk"
+    team_role }o--|| team : "fk"
+    users }o--|| location : "fk"
+    users }o--|| department : "fk"

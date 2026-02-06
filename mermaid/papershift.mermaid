@@ -1,0 +1,191 @@
+erDiagram
+    location {
+        text id PK
+        text external_id
+        text name
+        text status
+        text updated_at
+    }
+    time_tracking_break {
+        text id PK
+        text time_tracking_id PK
+    }
+    time_tracking_filter {
+        text id PK
+        text time_tracking_id PK
+        text active
+        text external_id
+        text title
+    }
+    time_tracking {
+        text id PK
+        text location_id FK
+        text user_id FK
+        text working_area_id FK
+        text actual_ends_at
+        text actual_starts_at
+        text break_time
+        text confirmed
+        text created_at
+        text employee_id
+        text end_signature_id
+        text ends_at
+        text filters
+        text is_confirmed
+        text last_edit_by
+        text secure_id
+        text start_signature_id
+        text starts_at
+        timestamp updated_at
+    }
+    evaluation {
+        text id PK
+        text user_id FK
+        text actual
+        text charged
+        text compensation
+        text created_at
+        text day
+        text payout
+        text plan
+        text target
+        timestamp updated_at
+        text vacation
+        text vacation_source_id
+        text vacation_source_type
+    }
+    shifts_tags {
+        text shifts_id PK
+        text tag_id PK
+    }
+    shifts {
+        text id PK
+        text location_id FK
+        text working_area_id FK
+        text company_id
+        text created_at
+        text edited
+        text ends_at
+        text event_note_content
+        text exact_pause_duration
+        text import_id
+        text note
+        text number_of_employees
+        text outlook_id
+        text recurrence_id
+        text remove
+        text shift_id
+        text starts_at
+        text status
+        timestamp updated_at
+        text user_shift
+        text uuid
+        text visible
+    }
+    working_area {
+        text id PK
+        text location_id FK
+        jsonb custom_field_values
+        text external_id
+        text name
+        text status
+    }
+    absence {
+        text id PK
+        text user_id FK
+        text absence_type_external_id
+        text absence_type_id
+        text charge_days_job_status
+        text confirm_message
+        text confirmed
+        text confirmed_at
+        text confirmed_by
+        text created_at
+        text created_by
+        text ends_at
+        text external_id
+        text force_calc_custom_hours
+        text full_day
+        text import_id
+        text note
+        text outlook_id
+        text paid_hours
+        text secure_id
+        text starts_at
+        text status
+        text time_zone
+        text title
+        timestamp updated_at
+        text uuid
+        text vacation_days
+    }
+    user_working_area {
+        text user_id PK
+        text working_area_id PK
+    }
+    user_location {
+        text location_id PK
+        text user_id PK
+    }
+    user_tags {
+        text tag_id PK
+        text user_id PK
+    }
+    users {
+        text id PK
+        text abbrev
+        text birthday_level
+        text birthday_value
+        text cost_center_level
+        text cost_center_value
+        text cost_object_level
+        text cost_object_value
+        text descending_level
+        text descending_value
+        text email
+        text end_of_contract_level
+        text end_of_contract_value
+        text enterprise_id
+        text external_id
+        text home_office
+        text initial_time_account
+        text locale
+        text name
+        text phone_level
+        text phone_value
+        text salary
+        text staff_number
+        text start_of_work_level
+        text start_of_work_value
+        text status
+        text trial_period_level
+        text trial_period_value
+        text working_sessions_creator
+    }
+    tags {
+        text id PK
+        text location_id FK
+        text active
+        text color
+        text external_id
+        text title
+    }
+    time_tracking_break }o--|| time_tracking : "fk"
+    time_tracking_filter }o--|| time_tracking : "fk"
+    time_tracking }o--|| users : "fk"
+    time_tracking }o--|| location : "fk"
+    time_tracking }o--|| working_area : "fk"
+    evaluation }o--|| users : "fk"
+    shifts_tags }o--|| tags : "fk"
+    shifts_tags }o--|| shifts : "fk"
+    shifts }o--|| location : "fk"
+    shifts }o--|| working_area : "fk"
+    working_area }o--|| location : "fk"
+    absence }o--|| users : "fk"
+    user_working_area }o--|| working_area : "fk"
+    user_working_area }o--|| users : "fk"
+    user_location }o--|| location : "fk"
+    user_location }o--|| users : "fk"
+    user_tags }o--|| tags : "fk"
+    user_tags }o--|| users : "fk"
+    tags }o--|| location : "fk"

@@ -1,0 +1,389 @@
+erDiagram
+    lambda_vpc_security_group {
+        text security_group_id PK
+        text function_arn PK
+    }
+    account_password_policy {
+        text account_id PK
+        boolean allow_users_to_change_password
+        boolean expire_passwords
+        boolean hard_expiry
+        integer max_password_age
+        integer minimum_password_length
+        integer password_reuse_prevention
+        boolean require_lowercase_characters
+        boolean require_numbers
+        boolean require_symbols
+        boolean require_uppercase_characters
+    }
+    vpc {
+        text id PK
+        text cidr_block
+        jsonb cidr_block_association_set
+        text dhcp_options_id
+        text instance_tenancy
+        jsonb ipv_6_cidr_block_association_set
+        boolean is_default
+        text state
+        jsonb tags
+    }
+    account_virtual_mfa_device {
+        text serial_number PK
+        jsonb base_32_string_seed
+        text enable_date
+        jsonb q_rcode_png
+        jsonb user
+    }
+    iam_user {
+        text id PK
+        text arn
+        timestamp create_date
+        text path
+        text user_name
+    }
+    iam_inline_user_policy {
+        text policy_name PK
+        text user_id PK
+    }
+    route_53_hosted_zone {
+        text id PK
+        text name
+    }
+    config_event {
+        text _file PK
+        bigint _line PK
+        timestamp _modified PK
+        bigint index PK
+        text arn
+        text availability_zone
+        text aws_account_id
+        text aws_region
+        jsonb configuration
+        timestamp configuration_item_capture_time
+        text configuration_item_status
+        text configuration_item_version
+        bigint configuration_state_id
+        text configuration_state_md_5_hash
+        bigint hash_raw
+        jsonb raw
+        jsonb related_events
+        jsonb relationships
+        timestamp resource_creation_time
+        text resource_id
+        text resource_name
+        text resource_type
+        jsonb supplementary_configuration
+        jsonb tags
+    }
+    lambda_function {
+        text arn PK
+        text vpc_config_id FK
+        text code_sha_256
+        bigint code_size
+        text dead_letter_config_target_arn
+        text description
+        text destination_config_on_failure_destination
+        text destination_config_on_success_destination
+        integer event_invoke_config_max_event_age_in_seconds
+        integer event_invoke_config_max_retry_attempt
+        text function_name
+        text handler
+        text kms_key_arn
+        text last_modified
+        text last_update_status
+        text last_update_status_reason
+        text last_update_status_reason_code
+        text master_arn
+        integer memory_size
+        text package_type
+        text policy
+        text policy_revision_id
+        text revision_id
+        text role
+        text runtime
+        text signing_job_arn
+        text signing_profile_version_arn
+        text state
+        text state_reason
+        text state_reason_code
+        integer timeout
+        text tracing_config_response_mode
+        text version
+    }
+    lambda_vpc_subnet {
+        text subnet_id PK
+        text function_arn PK
+    }
+    account_summary {
+        text account_id PK
+    }
+    iam_policy_role {
+        text role_id PK
+        text policy_arn PK
+        text role_name
+    }
+    iam_policy_version {
+        text version_id PK
+        text policy_arn PK
+        timestamp create_date
+        text document
+        boolean is_default_version
+    }
+    cloud_trail {
+        text name PK
+        text kms_key_id FK
+        text s_3_bucket_name FK
+        text cloud_watch_logs_log_group_arn
+        text cloud_watch_logs_role_arn
+        boolean has_custom_event_selectors
+        boolean has_insight_selectors
+        text home_region
+        boolean include_global_service_events
+        boolean is_multi_region_trail
+        boolean is_organization_trail
+        boolean log_file_validation_enabled
+        text s_3_key_prefix
+        text sns_topic_arn
+        text trail_arn
+    }
+    iam_user_access_key {
+        text access_key_id PK
+        text user_id PK
+        timestamp create_date
+        text status
+    }
+    load_balancer_security_group {
+        text load_balancer_arn PK
+        text security_group_id PK
+    }
+    load_balancer {
+        text arn PK
+        text vpc_id FK
+        text canonical_hosted_zone_id
+        timestamp created_time
+        text d_nsname
+        text ip_address_type
+        text load_balancer_name
+        text schema
+        text state_code
+        text state_reason
+        text type
+    }
+    lambda_layer {
+        text arn PK
+        text function_arn PK
+        bigint code_size
+        text signing_job_arn
+        text signing_profile_version_arn
+    }
+    kms_key {
+        text key_id PK
+        text key_arn
+        boolean key_rotation_enabled
+    }
+    s_3_bucket_acl {
+        text grantee PK
+        text bucket_name PK
+        text permission
+    }
+    config_recorder {
+        text name PK
+        jsonb recording_group
+        text role_arn
+    }
+    iam_managed_user_policy {
+        text policy_name PK
+        text user_id PK
+        text policy_arn
+    }
+    security_group_tag {
+        text key PK
+        text group_id PK
+        text value
+    }
+    cloud_trail_status {
+        text trail_name PK
+        boolean is_logging
+        text latest_cloud_watch_logs_delivery_error
+        timestamp latest_cloud_watch_logs_delivery_time
+        text latest_delivery_attempt_succeeded
+        timestamp latest_delivery_attempt_time
+        text latest_delivery_error
+        timestamp latest_delivery_time
+        text latest_digest_delivery_error
+        timestamp latest_digest_delivery_time
+        text latest_notification_attempt_succeeded
+        timestamp latest_notification_attempt_time
+        text latest_notification_error
+        timestamp latest_notification_time
+        timestamp start_logging_time
+        timestamp stop_logging_time
+        text time_logging_started
+        text time_logging_stopped
+    }
+    security_group {
+        text id PK
+        text vpc_id FK
+        text description
+        text group_name
+        jsonb ip_permissions
+        jsonb ip_permissions_egress
+        text owner_id
+    }
+    iam_policy {
+        text policy_id PK
+        text arn
+        integer attachment_count
+        timestamp create_date
+        text default_version_id
+        text description
+        boolean is_attachable
+        text path
+        integer permissions_boundary_usage_count
+        text policy_name
+        timestamp update_date
+    }
+    instance {
+        text id PK
+        text iam_instance_profile_id FK
+        text image_id FK
+        text vpc_id FK
+        text ami_launch_index
+        text architecture
+        text client_token
+        integer cpu_option_core_count
+        integer cpu_option_threads_per_core
+        boolean ebs_optimized
+        boolean ena_support
+        text hypervisor
+        text iam_instance_profile_arn
+        text instance_lifecycle
+        text instance_type
+        text kernel_id
+        text key_name
+        text launch_time
+        text monitoring_state
+        text platform
+        text private_dns_name
+        text private_ip_address
+        text public_dns_name
+        text public_ip_address
+        text ramdisk_id
+        text root_device_name
+        text root_device_type
+        boolean source_dest_check
+        text spot_instance_request_id
+        text sriov_net_support
+        integer state_code
+        text state_name
+        text state_reason_code
+        text state_reason_message
+        text state_transition_reason
+        text subnet_id
+        text virtualization_type
+    }
+    account_credential_report {
+        text account_id PK
+        text description
+        text state
+    }
+    image {
+        text id PK
+        text architecture
+        text description
+        text hypervisor
+        text image_location
+        text image_owner_alias
+        text image_owner_id
+        text image_state
+        text image_type
+        boolean is_public
+        text kernel_id
+        text name
+        text root_device_name
+        text root_device_type
+        text virtualization_type
+    }
+    iam_user_mfa_device {
+        text serial_number PK
+        text user_id PK
+        timestamp enable_date
+    }
+    s_3_bucket {
+        text name PK
+        text owner_id FK
+        timestamp creation_date
+        text log_file_prefix
+        text logging_destination_bucket_name
+        text owner_display_name
+        text policy_text
+    }
+    iam_policy_group {
+        text group_id PK
+        text policy_arn PK
+        text group_name
+    }
+    cloud_trail_event_selector {
+        integer index PK
+        text trail_name PK
+        jsonb data_resources
+        jsonb exclude_management_event_sources
+        boolean include_management_events
+        text read_write_type
+    }
+    route_53_resource_record_set {
+        text name PK
+        text type PK
+        text hosted_zone_id PK
+    }
+    iam_user_group {
+        text group_id PK
+        text user_id PK
+        text arn
+        timestamp create_date
+        text group_name
+        text path
+    }
+    account_alias {
+        text alias_name PK
+        text account_id PK
+    }
+    iam_user_login_profile {
+        text user_id PK
+        timestamp create_date
+        boolean password_reset_required
+    }
+    lambda_vpc_security_group }o--|| lambda_function : "fk"
+    account_password_policy }o--|| account_summary : "fk"
+    iam_inline_user_policy }o--|| iam_user : "fk"
+    iam_inline_user_policy }o--|| iam_policy : "fk"
+    lambda_function }o--|| vpc : "fk"
+    lambda_vpc_subnet }o--|| lambda_function : "fk"
+    iam_policy_role }o--|| iam_policy : "fk"
+    iam_policy_version }o--|| iam_policy : "fk"
+    cloud_trail }o--|| kms_key : "fk"
+    cloud_trail }o--|| s_3_bucket : "fk"
+    iam_user_access_key }o--|| iam_user : "fk"
+    load_balancer_security_group }o--|| load_balancer : "fk"
+    load_balancer_security_group }o--|| security_group : "fk"
+    load_balancer }o--|| vpc : "fk"
+    lambda_layer }o--|| lambda_function : "fk"
+    s_3_bucket_acl }o--|| s_3_bucket : "fk"
+    iam_managed_user_policy }o--|| iam_user : "fk"
+    iam_managed_user_policy }o--|| iam_policy : "fk"
+    security_group_tag }o--|| security_group : "fk"
+    cloud_trail_status }o--|| cloud_trail : "fk"
+    security_group }o--|| vpc : "fk"
+    instance }o--|| image : "fk"
+    instance }o--|| vpc : "fk"
+    instance }o--|| iam_user : "fk"
+    account_credential_report }o--|| account_summary : "fk"
+    iam_user_mfa_device }o--|| iam_user : "fk"
+    iam_user_mfa_device }o--|| account_virtual_mfa_device : "fk"
+    s_3_bucket }o--|| iam_user : "fk"
+    iam_policy_group }o--|| iam_policy : "fk"
+    cloud_trail_event_selector }o--|| cloud_trail : "fk"
+    route_53_resource_record_set }o--|| route_53_hosted_zone : "fk"
+    iam_user_group }o--|| iam_user : "fk"
+    account_alias }o--|| account_summary : "fk"
+    iam_user_login_profile }o--|| iam_user : "fk"

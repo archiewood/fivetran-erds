@@ -1,0 +1,569 @@
+erDiagram
+    event_media {
+        text event_id PK
+        text index PK
+        jsonb audio
+        jsonb poll
+        jsonb slide
+        jsonb urls
+        jsonb video
+        jsonb video_clip
+    }
+    presenter {
+        text id PK
+        text event_id FK
+        text access_mode
+        text client_id
+        text end_time
+        text is_practice_session
+        text session_id
+        text start_time
+    }
+    attendee_question {
+        text question_id PK
+        text attendee_id PK
+        text presenter_id FK
+        text answer_content
+        text answer_create_timestamp
+        text content
+        text create_timestamp
+        text privacy
+    }
+    attendee_poll_answer {
+        text index PK
+        text attendee_id PK
+        text poll_id PK
+        text answer
+        text answer_code
+    }
+    attendee_poll {
+        text attendee_id PK
+        text poll_id PK
+        text question
+        text question_id
+        text submitted_timestamp
+    }
+    attendee_resource {
+        text attendee_id PK
+        text resource_id PK
+        text viewed
+        text viewed_timestamp
+    }
+    attendee_survey_answer {
+        text index PK
+        text attendee_id PK
+        text question_id PK
+        text survey_id PK
+        text answer
+        text answer_code
+    }
+    attendee_survey {
+        text question_id PK
+        text attendee_id PK
+        text survey_id PK
+        text question
+        text question_code
+        text submitted_timestamp
+    }
+    attendee_twitter_widget {
+        text index PK
+        text attendee_id PK
+        text date
+        text tweet_description
+    }
+    attendee_call_to_action {
+        text attendee_id PK
+        text cta_id PK
+        text action
+        text clicks
+        text cta_name
+        text date
+    }
+    attendee_test_widget {
+        text index PK
+        text attendee_id PK
+        text correct_answers_needed
+        text correct_answers_provided
+        text retries
+        text test_widget_result
+    }
+    attendee_certification {
+        text id PK
+        text attendee_id PK
+        text certification_timestamp
+        text credit
+        text name
+        text result
+        text url
+    }
+    attendee_conversion {
+        text id PK
+        text attendee_id PK
+        text action
+        text name
+        text submitted_timestamp
+        text type
+    }
+    attendee_location_visit {
+        text id PK
+        text attendee_id PK
+        text code
+        text cumulative_visit_duration
+        text name
+        text sponsor_id
+        text visit
+        text visit_duration
+    }
+    attendee_breakout {
+        text id PK
+        text attendee_id PK
+        text cumulative_live_minute
+        text name
+        text role
+    }
+    attendee {
+        text id PK
+        text event_id FK
+        text answered_poll
+        text answered_survey
+        text answered_survey_question
+        text archive_minute
+        text archive_viewed
+        text asked_question
+        text attendance_partner_ref
+        text campaign_code
+        text certification_credit
+        text certification_timestamp
+        text certification_widget_result
+        text client_id
+        text cumulative_archive_minute
+        text cumulative_live_minute
+        text email
+        text engagement_score
+        text ext_event_user_cd
+        text first_archive_activity
+        text first_live_activity
+        text is_blocked
+        text last_archive_activity
+        text last_live_activity
+        text launch_mode
+        text live_minute
+        text live_viewed
+        text partner_ref
+        text resource_downloaded
+        text source_campaign_code
+        text source_event_id
+        text test_widget_result
+        text user_profile_url
+        text user_status
+    }
+    registrant {
+        text id PK
+        text event_id FK
+        text address_street_1
+        text address_street_2
+        text attendee_type
+        text browser
+        text campaign_code
+        text city
+        text client_id
+        text company
+        text company_industry
+        text company_size
+        text country
+        text create_timestamp
+        text email
+        text email_format
+        text engagement_prediction
+        text event_email
+        text ext_event_user_cd
+        text fax
+        text first_name
+        text home_phone
+        text ip_address
+        text job_function
+        text job_title
+        text last_activity
+        text last_name
+        text marketing_email
+        text notes
+        text os
+        text other
+        text partner_ref
+        text source_campaign_code
+        text source_event_id
+        text state
+        text user_profile_url
+        text user_status
+        text username
+        text utm_campaign
+        text utm_content
+        text utm_medium
+        text utm_source
+        text utm_term
+        text work_phone
+        text zip
+    }
+    lead_business_interest {
+        text index PK
+        text lead_email PK
+        text business
+    }
+    lead_segment {
+        text index PK
+        text lead_email PK
+        text segment
+    }
+    lead {
+        text email PK
+        text engagement_level
+        text user_profile_url
+    }
+    call_to_action {
+        text id PK
+        text event_id FK
+        text action
+        text action_type
+        text name
+        text total_click
+        text unique_click
+    }
+    event_analytics {
+        text index PK
+        text event_id PK
+        text attendee_who_downloaded_resource
+        text average_archive_minute
+        text average_cumulative_archive_minute
+        text average_cumulative_live_minute
+        text average_live_minute
+        text event_engagement_score
+        text live_attendee
+        text noshow_count
+        text number_of_cta_click
+        text number_of_demo_conversion
+        text number_of_drift
+        text number_of_freetrial_request
+        text number_of_groupchat_message_submitted
+        text number_of_meeting_conversion
+        text number_of_poll_pushed
+        text number_of_poll_response
+        text number_of_question_answered
+        text number_of_question_asked
+        text number_of_resource_available
+        text number_of_survey_presented
+        text number_of_survey_response
+        text number_of_test_passed
+        text number_of_test_submitted
+        text ondemand_attendee
+        text registration_page_hit
+        text share_this_widget_total_view
+        text share_this_widget_unique_view
+        text total_attendee
+        text total_registrant
+        text twitter_widget_total_view
+        text twitter_widget_unique_view
+        text unique_attendee_resource_download
+    }
+    event_partner_refstat {
+        text index PK
+        text event_id PK
+        text code
+        text count
+    }
+    event_tag {
+        text index PK
+        text event_id PK
+        text tags
+    }
+    event_funnel_stage {
+        text index PK
+        text event_id PK
+        text stage
+    }
+    event_speaker {
+        text index PK
+        text event_id PK
+        text company
+        text description
+        text name
+        text title
+    }
+    event_encoder {
+        text index PK
+        text event_id PK
+        text encoder
+        text stream_id
+        text url
+    }
+    event_survey_url {
+        text index PK
+        text event_id PK
+        text urls
+    }
+    event_category {
+        text index PK
+        text event_id PK
+        text category
+    }
+    event_track {
+        text index PK
+        text event_id PK
+        text track
+    }
+    event_liveday {
+        text index PK
+        text event_id PK
+        text id
+        text live_end_time
+        text live_start_time
+        text title
+    }
+    event_content {
+        text index PK
+        text event_id PK
+        text status
+        text title
+        text type
+        text url
+    }
+    event_sponsor_staff {
+        text index PK
+        text event_id PK
+        text event_sponsor_id PK
+        text company
+        text email
+        text first_name
+        text last_name
+        text role
+        text title
+    }
+    event_sponsor {
+        text id PK
+        text event_id PK
+        text name
+    }
+    event_account_tag {
+        text index PK
+        text event_id PK
+        text group_id
+        text group_name
+        text tag_id
+        text tag_name
+    }
+    event {
+        text id PK
+        text application
+        text archive_end
+        text archive_start
+        text audience_key
+        text audience_url
+        text category
+        text client_id
+        text content_type
+        text create_timestamp
+        text description
+        text display_timezone_cd
+        text event_duration
+        text event_location
+        text event_profile
+        text event_type
+        text ext_audience_url
+        text good_after
+        text good_till
+        text industry
+        text is_active
+        text is_elite_expired
+        text is_hybrid_event
+        text keyword
+        text last_modified
+        text last_updated
+        text live_end
+        text live_start
+        text locale_country_cd
+        text locale_language_cd
+        text name
+        text pm_url
+        text presenter_media_audio_file
+        text presenter_media_video_file
+        text preview_url
+        text promotional_summary
+        text qanda_email
+        text reg_notification_required
+        text reg_required
+        text report_url
+        text scheduled_event_duration
+        text service_type
+        text single_file_archive
+        text sponsor
+        text stream_type
+        text upload_url
+    }
+    attendee_session {
+        text id PK
+        text event_id PK
+        text browser
+        text duration
+        text email
+        text end_time
+        text ext_event_user_cd
+        text first_name
+        text ip_address
+        text last_name
+        text launch_mode
+        text media_stream
+        text os
+        text start_time
+        text stream_source
+        text usage
+    }
+    poll_summary {
+        text index PK
+        text poll_id PK
+        text answer
+        text answer_code
+        text percentage
+    }
+    poll {
+        text id PK
+        text event_id FK
+        text question
+        text question_id
+        text total_vote
+        text type
+    }
+    survey_answer {
+        text index PK
+        text question_id PK
+        text survey_id PK
+        text answer
+        text answer_code
+        text percentage
+    }
+    survey_question {
+        text question_id PK
+        text survey_id PK
+        text question
+        text question_type
+        text response
+    }
+    survey {
+        text id PK
+        text event_id FK
+        text code
+    }
+    group_chat_message {
+        text index PK
+        text group_chat_id PK
+        text event_user_id FK
+        text chat_message
+        text create_timestamp
+    }
+    group_chat {
+        text id PK
+        text event_id FK
+        text name
+        text total_view
+        text unique_viewer
+    }
+    content_activity {
+        text client_id PK
+        text event_id PK
+        text average_viewing_duration
+        text comment
+        text content_type
+        text description
+        text dislike
+        text download
+        text likes
+        text share
+        text total_view
+        text total_viewing_duration
+        text unique_viewer
+    }
+    resource {
+        text event_id PK
+        text resource_id PK
+        text resource_name
+        text total_download
+        text type
+        text unique_download
+    }
+    email_notification {
+        text id PK
+        text event_id PK
+        text activated
+        text body
+        text email_from
+        text from_label
+        text good_after
+        text reply_to
+        text subject
+        text type
+        text when_to_send
+    }
+    presenter_chat {
+        text presenter_id PK
+        text access_mode
+        text chat_id
+        text content
+        text create_timestamp
+        text email
+        text first_name
+        text last_name
+    }
+    presenter }o--|| event : "fk"
+    attendee_question }o--|| presenter : "fk"
+    attendee_question }o--|| attendee : "fk"
+    attendee_poll_answer }o--|| attendee_poll : "fk"
+    attendee_poll_answer }o--|| attendee_poll : "fk"
+    attendee_poll }o--|| poll : "fk"
+    attendee_poll }o--|| attendee : "fk"
+    attendee_resource }o--|| resource : "fk"
+    attendee_resource }o--|| attendee : "fk"
+    attendee_survey_answer }o--|| attendee_survey : "fk"
+    attendee_survey_answer }o--|| attendee_survey : "fk"
+    attendee_survey_answer }o--|| attendee_survey : "fk"
+    attendee_survey }o--|| survey : "fk"
+    attendee_survey }o--|| attendee : "fk"
+    attendee_twitter_widget }o--|| attendee : "fk"
+    attendee_call_to_action }o--|| call_to_action : "fk"
+    attendee_call_to_action }o--|| attendee : "fk"
+    attendee_test_widget }o--|| attendee : "fk"
+    attendee_certification }o--|| attendee : "fk"
+    attendee_conversion }o--|| attendee : "fk"
+    attendee_location_visit }o--|| attendee : "fk"
+    attendee_breakout }o--|| attendee : "fk"
+    attendee }o--|| event : "fk"
+    registrant }o--|| event : "fk"
+    lead_business_interest }o--|| lead : "fk"
+    lead_segment }o--|| lead : "fk"
+    lead }o--|| attendee : "fk"
+    call_to_action }o--|| event : "fk"
+    event_analytics }o--|| event : "fk"
+    event_partner_refstat }o--|| event : "fk"
+    event_tag }o--|| event : "fk"
+    event_funnel_stage }o--|| event : "fk"
+    event_speaker }o--|| event : "fk"
+    event_encoder }o--|| event : "fk"
+    event_survey_url }o--|| event : "fk"
+    event_category }o--|| event : "fk"
+    event_track }o--|| event : "fk"
+    event_liveday }o--|| event : "fk"
+    event_content }o--|| event : "fk"
+    event_sponsor_staff }o--|| event_sponsor : "fk"
+    event_sponsor_staff }o--|| event_sponsor : "fk"
+    event_sponsor }o--|| event : "fk"
+    event_account_tag }o--|| event : "fk"
+    attendee_session }o--|| event : "fk"
+    poll_summary }o--|| poll : "fk"
+    poll }o--|| event : "fk"
+    survey_answer }o--|| survey_question : "fk"
+    survey_answer }o--|| survey_question : "fk"
+    survey_question }o--|| survey : "fk"
+    survey }o--|| event : "fk"
+    group_chat_message }o--|| attendee : "fk"
+    group_chat_message }o--|| group_chat : "fk"
+    group_chat }o--|| event : "fk"
+    content_activity }o--|| event : "fk"
+    email_notification }o--|| event : "fk"
+    presenter_chat }o--|| presenter : "fk"

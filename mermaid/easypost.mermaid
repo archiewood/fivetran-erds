@@ -1,0 +1,379 @@
+erDiagram
+    shipment_rate {
+        text id PK
+        text shipment_id FK
+        text billing_type
+        text carrier
+        text carrier_account_id
+        text created_at
+        text currency
+        text delivery_date
+        text delivery_date_guaranteed
+        text delivery_days
+        text est_delivery_days
+        text list_currency
+        text list_rate
+        text mode
+        text object
+        text rate
+        text retail_currency
+        text retail_rate
+        text service
+        text updated_at
+    }
+    shipment_fee {
+        text _fivetran_id PK
+        text shipment_id FK
+        text amount
+        text charged
+        text object
+        text refunded
+        text type
+    }
+    shipment_message {
+        text _fivetran_id PK
+        text shipment_id FK
+        text carrier
+        text carrier_account_id
+        text message
+        text type
+    }
+    shipment_parcel {
+        text id PK
+        text shipment_id FK
+        text created_at
+        text height
+        text length
+        text mode
+        text object
+        text predefined_package
+        text updated_at
+        text weight
+        text width
+    }
+    shipment_custom_item {
+        text id PK
+        text shipment_custom_info_id FK
+        text code
+        text created_at
+        text currency
+        text description
+        text eccn
+        text hs_tariff_number
+        text manufacturer
+        text mode
+        text object
+        text origin_country
+        text printed_commodity_identifier
+        text quantity
+        text updated_at
+        text value
+        text weight
+    }
+    shipment_custom_info {
+        text id PK
+        text shipment_id FK
+        text contents_explanation
+        text contents_type
+        text created_at
+        text customs_certify
+        text customs_signer
+        text declaration
+        text eel_pfc
+        text mode
+        text non_delivery_option
+        text object
+        text restriction_comments
+        text restriction_type
+        text updated_at
+    }
+    shipment {
+        text id PK
+        text batch_id FK
+        text buyer_address_id FK
+        text from_address_id FK
+        text return_address_id FK
+        text scan_form_id FK
+        text selected_rate_id FK
+        text to_address_id FK
+        text tracker_id FK
+        text created_at
+        jsonb forms
+        text insurance
+        text is_return
+        text mode
+        text object
+        text postage_abel_date
+        text postage_created_at
+        text postage_date_advance
+        text postage_id
+        text postage_integrated_form
+        text postage_label_epl_2_url
+        text postage_label_file
+        text postage_label_file_type
+        text postage_label_pdf_url
+        text postage_label_resolution
+        text postage_label_size
+        text postage_label_type
+        text postage_label_url
+        text postage_label_zpl_url
+        text postage_object
+        text postage_updated_at
+        text refund_status
+        text status
+        text updated_at
+        text usps_zone
+    }
+    insurance {
+        text id PK
+        text from_address_id FK
+        text shipment_id FK
+        text to_address_id FK
+        text tracking_code FK
+        text amount
+        text created_at
+        text fee_amount
+        text fee_charged
+        text fee_object
+        text fee_refunded
+        text fee_type
+        jsonb messages
+        text mode
+        text provider
+        text reference
+        text status
+        text tracker
+        text updated_at
+    }
+    scan_form_tracking_code {
+        text tracking_code PK
+        text scan_form_id PK
+    }
+    scan_form {
+        text id PK
+        text address_id FK
+        text batch_id FK
+        text confirmation
+        text created_at
+        text form_file_type
+        text message
+        text status
+        text updated_at
+    }
+    end_shipper {
+        text id PK
+        text city
+        text company
+        text country
+        text created_at
+        text email
+        text mode
+        text name
+        text phone
+        text state
+        text street_1
+        text street_2
+        text updated_at
+        text zip
+    }
+    tracker_detail {
+        text _fivetran_id PK
+        text tracker_id FK
+        text carrier_code
+        text datetime
+        text description
+        text message
+        text source
+        text status
+        text status_detail
+    }
+    tracker {
+        text id PK
+        text shipment_id FK
+        text carrier
+        text carrier_alternate_identifier
+        text carrier_container_type
+        text carrier_destination_location
+        text carrier_destination_tracking_location
+        text carrier_est_delivery_date_local
+        text carrier_est_delivery_time_local
+        text carrier_guaranteed_delivery_date
+        text carrier_initial_delivery_attempt
+        text carrier_object
+        text carrier_origin_location
+        text carrier_origin_tracking_city
+        text carrier_origin_tracking_country
+        text carrier_origin_tracking_object
+        text carrier_origin_tracking_state
+        text carrier_origin_tracking_zip
+        text carrier_service
+        text created_at
+        text est_delivery_date
+        jsonb fees
+        text mode
+        text public_url
+        text signed_by
+        text status
+        text status_detail
+        text tracking_code
+        text updated_at
+        text weight
+    }
+    address {
+        text id PK
+        text carrier_facility
+        text city
+        text company
+        text country
+        text created_at
+        text email
+        text federal_tax_id
+        text mode
+        text name
+        text phone
+        text residential
+        text state
+        text state_tax_id
+        text street_1
+        text street_2
+        text updated_at
+        text verification_zip_4_details
+        boolean verification_zip_4_success
+        text verifications_delivery_latitude
+        text verifications_delivery_longitude
+        text verifications_delivery_success
+        text verifications_delivery_time_zone
+        text zip
+    }
+    address_error {
+        text _fivetran_id PK
+        text address_id FK
+        text code
+        text field
+        text message
+        text suggestion
+        text type
+    }
+    batch_shipment {
+        text id PK
+        text batch_id FK
+        text batch_message
+        text batch_status
+        text reference
+        text tracking_code
+    }
+    batch {
+        text id PK
+        text scan_form_id FK
+        text created_at
+        text mode
+        text pickup
+        text reference
+        text state
+        text status_created
+        text status_creation_failed
+        text status_postage_purchase_failed
+        text status_postage_purchased
+        text status_queued_for_purchase
+        text updated_at
+    }
+    cash_flow_report {
+        text _fivetran_id PK
+        text bank_account_refund
+        text bank_debits
+        text carbon_offset_fees
+        text credit_card_debits
+        text credit_card_fees
+        text credit_card_refund
+        text date
+        text dispute_reinstatements
+        text dispute_withdrawals
+        text end_balance
+        text insurance_fees
+        text invoice_adjustment_fees
+        text label_fees
+        text manual_credits
+        text manual_debits
+        text payment_failure_deduction
+        text postage_fees
+        text refunds
+        text start_balance
+        text total_fees
+        text tracker_fees
+        text user_id
+        text utc_offset
+        text wire_transfer_debits
+    }
+    shipment_invoice_report {
+        text shipment_report_id PK
+        text adjustment_amount
+        text adjustment_reason
+        text captured_currency
+        text captured_height
+        text captured_length
+        text captured_package
+        text captured_service
+        text captured_weight
+        text captured_width
+        text carrier
+        text carrier_account_id
+        text carrier_invoice_id
+        text claimed_height
+        text claimed_length
+        text claimed_package
+        text claimed_service
+        text claimed_weight
+        text claimed_width
+        text clawback_payment_log
+        text final_invoice_amount
+        text initially_paid_amount
+        text initially_paid_payment_log
+        text invoice_date
+        text invoice_payment_log
+        text label_date
+        text package_dispute_id
+        text quoted_amount
+        text quoted_currency
+        text refund_payment_log
+        text status
+        text tracking_code
+        text user_id
+        text user_parent_id
+    }
+    payment_log_report {
+        text id PK
+        text amount
+        text balance
+        text charge_type
+        text created_at
+        text description
+        text source_type
+        text status
+        text target_type
+    }
+    shipment_rate }o--|| shipment : "fk"
+    shipment_fee }o--|| shipment : "fk"
+    shipment_message }o--|| shipment : "fk"
+    shipment_parcel }o--|| shipment : "fk"
+    shipment_custom_item }o--|| shipment_custom_info : "fk"
+    shipment_custom_info }o--|| shipment : "fk"
+    shipment }o--|| address : "fk"
+    shipment }o--|| shipment_rate : "fk"
+    shipment }o--|| address : "fk"
+    shipment }o--|| scan_form : "fk"
+    shipment }o--|| address : "fk"
+    shipment }o--|| address : "fk"
+    shipment }o--|| batch : "fk"
+    shipment }o--|| tracker : "fk"
+    insurance }o--|| address : "fk"
+    insurance }o--|| address : "fk"
+    insurance }o--|| shipment : "fk"
+    insurance }o--|| tracker : "fk"
+    scan_form_tracking_code }o--|| scan_form : "fk"
+    scan_form }o--|| address : "fk"
+    scan_form }o--|| batch : "fk"
+    tracker_detail }o--|| tracker : "fk"
+    tracker }o--|| shipment : "fk"
+    address_error }o--|| address : "fk"
+    batch_shipment }o--|| batch : "fk"
+    batch }o--|| scan_form : "fk"

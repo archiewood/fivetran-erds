@@ -1,0 +1,350 @@
+erDiagram
+    contact_custom {
+        text name PK
+        text contact_id PK
+        text value
+    }
+    contact {
+        text id PK
+        text account_id FK
+        text crm_id
+        text email
+        text external_id
+        text first_name
+        text full_name
+        text last_name
+        text marketing_email_unsubscribed
+        text name
+        text object_created_date
+        text object_last_modified_date
+        jsonb tags
+    }
+    journey_progress {
+        text id PK
+        text account_id FK
+        text journey_id FK
+        text journey_instance_id FK
+        text begin_date
+        text days_in
+        text days_left
+        text days_over
+        text end_date
+        text evaluation_day
+        text failure_comment
+        text failure_reason
+        text is_completed
+        text is_failed
+        text object_created_date
+        text object_last_modified_date
+        text status
+    }
+    task_status {
+        text id PK
+        text is_closed
+        text is_default
+        text name
+    }
+    event_type {
+        text id PK
+        text name
+    }
+    task_priority {
+        text id PK
+        text is_default
+        text is_high_priority
+        text name
+    }
+    event {
+        text id PK
+        text account_id FK
+        text contact_id FK
+        text type_id FK
+        text date
+        text description
+        text quantity
+    }
+    journey {
+        text id PK
+        text description
+        text expected_duration
+        text is_active
+        text is_shared_externally
+        text name
+        text object_created_date
+        text object_last_modified_date
+        text progress_bottom
+        text progress_top
+        text status
+    }
+    churn_score_factor_calculation {
+        text id PK
+        text account_id FK
+        text churn_score_factor_id FK
+        text churn_score_id FK
+        text day
+        text score
+    }
+    account_custom {
+        text name PK
+        text account_id PK
+        text value
+    }
+    account {
+        text id PK
+        text parent_account_id FK
+        text primary_churn_score_id FK
+        text user_account_id FK
+        text billing_address_city
+        text billing_address_country
+        text billing_address_line_1
+        text billing_address_line_2
+        text billing_address_state
+        text billing_address_zip
+        text contacts_count
+        text crm_id
+        text end_date
+        text external_id
+        text is_active
+        text license_count
+        text name
+        text next_renewal_date
+        text object_created_date
+        text object_last_modified_date
+        text parent_next_renewal_date
+        text parent_total_contract_amount
+        text primary_churn_score_value
+        text start_date
+        jsonb tags
+        text tenure_in_days
+        text total_contract_amount
+        text usage_frequency
+    }
+    journey_milestone_progress {
+        text id PK
+        text account_id FK
+        text journey_id FK
+        text journey_instance_id FK
+        text journey_milestone_id FK
+        text begin_date
+        text days_in
+        text days_left
+        text days_over
+        text end_date
+        text evaluation_day
+        text is_completed
+        text is_failed
+        text object_created_date
+        text object_last_modified_date
+        text status
+    }
+    journey_milestone_task {
+        text id PK
+        text journey_milestone_id FK
+        text is_conditional
+        text is_externally_visible
+        text is_optional
+        text object_created_date
+        text object_last_modified_date
+        text subject
+    }
+    journey_milestone_step_progress {
+        text id PK
+        text account_id FK
+        text journey_id FK
+        text journey_instance_id FK
+        text journey_milestone_achievement_id FK
+        text journey_milestone_id FK
+        text journey_milestone_task_id FK
+        text task_id FK
+        text task_status_id FK
+        text is_completed
+        text object_created_date
+        text object_last_modified_date
+    }
+    survey_response {
+        text id PK
+        text account_id FK
+        text contact_id FK
+        text survey_id FK
+        text comment
+        text date
+        text follow_up_answer_type
+        text follow_up_question
+        text follow_up_response
+        text next_reminder_date
+        text score
+        text source
+    }
+    journey_milestone {
+        text id PK
+        text journey_id FK
+        text description
+        text expected_duration
+        text name
+        text object_created_date
+        text object_last_modified_date
+        text progress_bottom
+        text progress_top
+    }
+    user_account {
+        text id PK
+        text avatar_url
+        text can_log_in
+        text crm_id
+        text email
+        text first_name
+        text has_account
+        text is_active
+        text last_name
+        text mobile_phone
+        text name
+        text object_created_date
+        text object_last_modified_date
+        text office_phone
+        text title
+        text user_name
+    }
+    churn_score_factor {
+        text id PK
+        text churn_score_id FK
+        text name
+        text type
+    }
+    task {
+        text id PK
+        text account_id FK
+        text contact_id FK
+        text priority_id FK
+        text status_id FK
+        text user_account_id FK
+        text close_date
+        text comment
+        text crm_id
+        text due_date
+        text is_closed
+        text is_high_priority
+        text object_created_date
+        text object_last_modified_date
+        text subject
+        text type
+    }
+    segment {
+        text id PK
+        text user_account_id FK
+        text entity
+        text is_global
+        text name
+        text object_created_date
+        text object_last_modified_date
+    }
+    journey_milestone_achievement {
+        text id PK
+        text journey_milestone_id FK
+        text is_conditional
+        text is_externally_visible
+        text is_optional
+        text name
+        text object_created_date
+        text object_last_modified_date
+    }
+    segment_column_set {
+        text id PK
+        text user_account_id FK
+        text entity
+        text name
+        text object_created_date
+        text object_last_modified_date
+        text share_type
+    }
+    survey_segment {
+        text id PK
+        text survey_id PK
+    }
+    survey_follow_up {
+        text index PK
+        text survey_id PK
+        text answer_type
+        text question
+    }
+    survey {
+        text id PK
+        text campaign_status
+        text campaign_type
+        text drip_over_month
+        text is_active
+        text name
+        text question
+        text recurring_every_month
+        text settings_answer_type
+        text settings_choice_count
+        text type
+    }
+    churn_score {
+        text id PK
+        text grading_bottom
+        text grading_top
+        text name
+    }
+    churn_score_calculation {
+        text id PK
+        text account_id FK
+        text churn_score_id FK
+        text day
+        text is_active
+        text is_primary
+        text score
+    }
+    journey_instance {
+        text id PK
+        text account_id FK
+        text journey_id FK
+        text start_date
+    }
+    contact_custom }o--|| contact : "fk"
+    contact }o--|| account : "fk"
+    journey_progress }o--|| journey_instance : "fk"
+    journey_progress }o--|| journey : "fk"
+    journey_progress }o--|| account : "fk"
+    event }o--|| account : "fk"
+    event }o--|| contact : "fk"
+    event }o--|| event_type : "fk"
+    churn_score_factor_calculation }o--|| account : "fk"
+    churn_score_factor_calculation }o--|| churn_score_factor : "fk"
+    churn_score_factor_calculation }o--|| churn_score : "fk"
+    account_custom }o--|| account : "fk"
+    account }o--|| churn_score : "fk"
+    account }o--|| user_account : "fk"
+    account }o--|| account : "fk"
+    journey_milestone_progress }o--|| journey_instance : "fk"
+    journey_milestone_progress }o--|| journey_milestone : "fk"
+    journey_milestone_progress }o--|| journey : "fk"
+    journey_milestone_progress }o--|| account : "fk"
+    journey_milestone_task }o--|| journey_milestone : "fk"
+    journey_milestone_step_progress }o--|| task : "fk"
+    journey_milestone_step_progress }o--|| journey_instance : "fk"
+    journey_milestone_step_progress }o--|| journey_milestone_achievement : "fk"
+    journey_milestone_step_progress }o--|| task_status : "fk"
+    journey_milestone_step_progress }o--|| journey_milestone : "fk"
+    journey_milestone_step_progress }o--|| journey_milestone_task : "fk"
+    journey_milestone_step_progress }o--|| journey : "fk"
+    journey_milestone_step_progress }o--|| account : "fk"
+    survey_response }o--|| account : "fk"
+    survey_response }o--|| survey : "fk"
+    survey_response }o--|| contact : "fk"
+    journey_milestone }o--|| journey : "fk"
+    churn_score_factor }o--|| churn_score : "fk"
+    task }o--|| task_status : "fk"
+    task }o--|| user_account : "fk"
+    task }o--|| account : "fk"
+    task }o--|| contact : "fk"
+    task }o--|| task_priority : "fk"
+    segment }o--|| user_account : "fk"
+    journey_milestone_achievement }o--|| journey_milestone : "fk"
+    segment_column_set }o--|| user_account : "fk"
+    survey_segment }o--|| segment : "fk"
+    survey_segment }o--|| survey : "fk"
+    survey_follow_up }o--|| survey : "fk"
+    churn_score_calculation }o--|| account : "fk"
+    churn_score_calculation }o--|| churn_score : "fk"
+    journey_instance }o--|| account : "fk"
+    journey_instance }o--|| journey : "fk"

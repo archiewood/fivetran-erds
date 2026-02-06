@@ -1,0 +1,243 @@
+erDiagram
+    agent_group {
+        text group_id PK
+        text agent_id PK
+        text id FK
+    }
+    agent_social_profile {
+        text _fivetran_id PK
+        text agent_id FK
+        text id
+        text type
+    }
+    agent {
+        text id PK
+        text role_id FK
+        text agent_capacity
+        text agent_status_name
+        text availability_status
+        jsonb avatar
+        text biography
+        text created_time
+        text email
+        text first_name
+        boolean is_deactivated
+        boolean is_deleted
+        text last_name
+        text locale
+        boolean login_status
+        text routing_type
+        text skill_id
+        text timezone
+        text title
+    }
+    role {
+        text id PK
+        text description
+        boolean is_custom_role
+        text name
+    }
+    csat_metrics {
+        text _fivetran_id PK
+        text end_date
+        text key
+        text start_date
+        text value
+    }
+    channel_tag {
+        text tags PK
+        text channel_id PK
+    }
+    channel_welcome_message {
+        text index PK
+        text channel_id PK
+        text content
+    }
+    channel {
+        text id PK
+        boolean bots_private_note
+        boolean enabled
+        text locale
+        text message_type
+        text name
+        boolean public
+        boolean restrict_response
+        text updated_time
+    }
+    conversation_message_part {
+        text _fivetran_id PK
+        text conversation_message_id FK
+        text content
+        text content_type
+        text file_extension
+        text file_hash
+        text file_name
+        text file_size_in_bytes
+        text file_source
+        text url_button_lable
+        text url_button_target
+    }
+    conversation_message {
+        text id PK
+        text channel_id FK
+        text conversation_id FK
+        text user_id FK
+        text actor_id
+        text actor_type
+        text app_id
+        boolean bots_private_note
+        text created_time
+        text interaction_id
+        text message_type
+        jsonb reply_parts
+        boolean restrict_response
+    }
+    conversation_property_choice {
+        text id PK
+        text conversation_property_id PK
+        text value
+    }
+    conversation_property {
+        text id PK
+        text column_name
+        text custom
+        text default_value
+        text editable
+        text label
+        text name
+        text position
+        text required
+        text type
+    }
+    team_performance_first_response_time {
+        text agent_id PK
+        text group_id PK
+        text end_time
+        text first_response_time
+        text start_time
+    }
+    conversation_metrics {
+        text _fivetran_id PK
+        text end_date
+        text key
+        text start_date
+        text value
+    }
+    team_performance_resolution_time {
+        text agent_id PK
+        text group_id PK
+        text end_time
+        text resolution_time
+        text start_time
+    }
+    conversation {
+        text id PK
+        text assigned_agent_id FK
+        text assigned_group_id FK
+        text assigned_org_agent_id FK
+        text channel_id FK
+        text user_id FK
+        text app_id
+        text created_time
+        text org_contact_id
+        text skill_id
+        text status
+        text updated_time
+        text url
+    }
+    groups {
+        text id PK
+        text description
+        text name
+        text routing_logic
+        text routing_type
+    }
+    users {
+        text id PK
+        jsonb avatar
+        text created_time
+        text email
+        text first_name
+        text last_name
+        text phone
+        text reference_id
+        text restore_id
+        text updated_time
+    }
+    team_performance_response_time {
+        text agent_id PK
+        text group_id PK
+        text end_time
+        text response_time
+        text start_time
+    }
+    csat_report {
+        text csat_submitter_user_id PK
+        text interaction_id PK
+        text agent_id FK
+        text channel_id FK
+        text conversation_id FK
+        text group_id FK
+        text actor_belongs_to_group
+        text actor_id
+        text actor_name
+        text created_at
+        text csat_id
+        text csat_reopen
+        text csat_response
+        text csat_submitter_user_name
+        text has_response
+        text interaction_raw_id
+        text issue_resolved
+        text reopened
+        text value
+    }
+    conversation_report {
+        text interaction_id PK
+        text label_category_id PK
+        text label_sub_category_id PK
+        text agent_id FK
+        text channel_id FK
+        text conversation_id FK
+        text group_id FK
+        text actor_belongs_to_group
+        text actor_id
+        text actor_name
+        text actor_type
+        text created_at
+        text interaction_raw_id
+        text label_category_name
+        text labelled_by_type
+        text reopened
+        text user_name
+    }
+    agent_group }o--|| groups : "fk"
+    agent_group }o--|| agent : "fk"
+    agent_social_profile }o--|| agent : "fk"
+    agent }o--|| role : "fk"
+    channel_tag }o--|| channel : "fk"
+    channel_welcome_message }o--|| channel : "fk"
+    conversation_message_part }o--|| conversation_message : "fk"
+    conversation_message }o--|| users : "fk"
+    conversation_message }o--|| channel : "fk"
+    conversation_message }o--|| conversation : "fk"
+    conversation_property_choice }o--|| conversation_property : "fk"
+    team_performance_first_response_time }o--|| agent : "fk"
+    team_performance_first_response_time }o--|| groups : "fk"
+    team_performance_resolution_time }o--|| agent : "fk"
+    team_performance_resolution_time }o--|| groups : "fk"
+    conversation }o--|| users : "fk"
+    conversation }o--|| groups : "fk"
+    conversation }o--|| channel : "fk"
+    conversation }o--|| agent : "fk"
+    conversation }o--|| agent : "fk"
+    team_performance_response_time }o--|| agent : "fk"
+    team_performance_response_time }o--|| groups : "fk"
+    csat_report }o--|| channel : "fk"
+    csat_report }o--|| groups : "fk"
+    csat_report }o--|| agent : "fk"
+    csat_report }o--|| conversation : "fk"
+    conversation_report }o--|| channel : "fk"
+    conversation_report }o--|| groups : "fk"
+    conversation_report }o--|| agent : "fk"
+    conversation_report }o--|| conversation : "fk"

@@ -1,0 +1,365 @@
+erDiagram
+    contact_email {
+        text _fivetran_id PK
+        text contact_id FK
+        text email
+        text type
+    }
+    contact_group {
+        text id PK
+        text account_id FK
+        text contact_id FK
+        text name
+        text object
+        text path
+    }
+    contact_im_address {
+        text _fivetran_id PK
+        text contact_id FK
+        text im_address
+        text type
+    }
+    contact_phone_number {
+        text _fivetran_id PK
+        text contact_id FK
+        text number
+        text type
+    }
+    contact_physical_address {
+        text _fivetran_id PK
+        text contact_id FK
+        text city
+        text country
+        text format
+        text postal_code
+        text state
+        text street_address
+        text type
+    }
+    contact_web_page {
+        text _fivetran_id PK
+        text contact_id FK
+        text type
+        text url
+    }
+    contact {
+        text id PK
+        text account_id FK
+        text birthday
+        text company_name
+        text given_name
+        text job_title
+        text manager_name
+        text middle_name
+        text nickname
+        text notes
+        text object
+        text office_location
+        text picture_url
+        text source
+        text suffix
+        text surname
+    }
+    participant {
+        text _fivetran_id PK
+        text event_id FK
+        text comment
+        text email
+        text name
+        text phone_number
+        text status
+    }
+    phone {
+        text phone PK
+        text event_id PK
+    }
+    event_metadata {
+        text name PK
+        text event_id PK
+        text value
+    }
+    event {
+        text id PK
+        text account_id FK
+        text calendar_id FK
+        text message_id FK
+        text busy
+        text conferencing_details_meeting_code
+        text conferencing_provider
+        text customer_event_id
+        text description
+        text hide_participants
+        text ical_uid
+        text location
+        text object
+        text organizer_email
+        text organizer_name
+        text original_start_time
+        text owner
+        text read_only
+        text recurrence_rrule
+        text recurrence_timezone
+        text reminders_reminder_method
+        text reminders_reminder_minutes
+        text status
+        text title
+        timestamp updated_at
+        text visibility
+        text when_date_date
+        text when_date_object
+        text when_datespan_end_time
+        text when_datespan_object
+        text when_datespan_start_time
+        text when_time_object
+        text when_time_time
+        text when_time_timezone
+        text when_timespan_end_time
+        text when_timespan_end_timezone
+        text when_timespan_object
+        text when_timespan_start_time
+        text when_timespan_start_timezone
+    }
+    account {
+        text id PK
+        text account_id
+        text email_address
+        text linked_at
+        text name
+        text object
+        text organization_unit
+        text provider
+        text sync_state
+    }
+    label {
+        text id PK
+        text account_id FK
+        text display_name
+        text name
+        text object
+        text provider_id
+    }
+    folder {
+        text id PK
+        text account_id FK
+        text display_name
+        text name
+    }
+    calendar {
+        text id PK
+        text account_id FK
+        text description
+        text is_primary
+        text location
+        text name
+        text object
+        text read_only
+        text timezone
+    }
+    message_event {
+        text event_id PK
+        text message_id PK
+        text id FK
+    }
+    message_file {
+        text file_id PK
+        text message_id PK
+        text id FK
+    }
+    message_label {
+        text label_id PK
+        text message_id PK
+        text id FK
+    }
+    cid {
+        text content_id PK
+        text message_id PK
+    }
+    message {
+        text id PK
+        text account_id FK
+        text folder_id FK
+        text thread_id FK
+        text body
+        text date
+        text object
+        text reply_to_message_id
+        text snippet
+        text starred
+        text subject
+        text unread
+    }
+    message_sender {
+        text email PK
+        text object_type PK
+        text message_id PK
+        text name
+    }
+    message_recipient {
+        text email PK
+        text object_type PK
+        text message_id PK
+        text name
+    }
+    file {
+        text id PK
+        text account_id FK
+        text content_disposition
+        text content_type
+        text filename
+        text object
+        text size
+    }
+    job_status {
+        text id PK
+        text account_id FK
+        text action
+        text created_at
+        text object
+        text status
+        text status_id
+    }
+    draft_event {
+        text event_id PK
+        text draft_id PK
+        text id FK
+    }
+    draft_file {
+        text file_id PK
+        text draft_id PK
+        text id FK
+    }
+    draft_folder {
+        text folder_id PK
+        text draft_id PK
+        text id FK
+    }
+    draft_label {
+        text label_id PK
+        text draft_id PK
+        text id FK
+    }
+    draft_metadata {
+        text name PK
+        text draft_id PK
+        text value
+    }
+    draft {
+        text id PK
+        text account_id FK
+        text job_status_id FK
+        text reply_to_message_id FK
+        text thread_id FK
+        text body
+        text content_id
+        text date
+        text object
+    }
+    draft_sender {
+        text email PK
+        text object_type PK
+        text draft_id PK
+        text name
+    }
+    draft_recipient {
+        text email PK
+        text object_type PK
+        text draft_id PK
+        text name
+    }
+    thread_participant {
+        text _fivetran_id PK
+        text thread_id FK
+        text email
+        text name
+    }
+    thread_draft {
+        text draft_id PK
+        text thread_id PK
+        text id FK
+    }
+    thread_label {
+        text label_id PK
+        text thread_id PK
+        text id FK
+    }
+    thread_folder {
+        text folder_id PK
+        text thread_id PK
+        text id FK
+    }
+    thread_message {
+        text message_id PK
+        text thread_id PK
+        text id FK
+    }
+    thread {
+        text id PK
+        text account_id FK
+        text first_message_timestamp
+        text has_attachments
+        text last_message_received_timestamp
+        text last_message_sent_timestamp
+        timestamp last_updated_timestamp
+        text object
+        text snippet
+        text starred
+        text subject
+        text unread
+        text version
+    }
+    contact_email }o--|| contact : "fk"
+    contact_group }o--|| account : "fk"
+    contact_group }o--|| contact : "fk"
+    contact_im_address }o--|| contact : "fk"
+    contact_phone_number }o--|| contact : "fk"
+    contact_physical_address }o--|| contact : "fk"
+    contact_web_page }o--|| contact : "fk"
+    contact }o--|| account : "fk"
+    participant }o--|| event : "fk"
+    phone }o--|| event : "fk"
+    event_metadata }o--|| event : "fk"
+    event }o--|| calendar : "fk"
+    event }o--|| account : "fk"
+    event }o--|| message : "fk"
+    label }o--|| account : "fk"
+    folder }o--|| account : "fk"
+    calendar }o--|| account : "fk"
+    message_event }o--|| message : "fk"
+    message_event }o--|| event : "fk"
+    message_file }o--|| file : "fk"
+    message_file }o--|| message : "fk"
+    message_label }o--|| label : "fk"
+    message_label }o--|| message : "fk"
+    cid }o--|| message : "fk"
+    message }o--|| folder : "fk"
+    message }o--|| thread : "fk"
+    message }o--|| account : "fk"
+    message_sender }o--|| message : "fk"
+    message_recipient }o--|| message : "fk"
+    file }o--|| account : "fk"
+    job_status }o--|| account : "fk"
+    draft_event }o--|| draft : "fk"
+    draft_event }o--|| event : "fk"
+    draft_file }o--|| draft : "fk"
+    draft_file }o--|| file : "fk"
+    draft_folder }o--|| draft : "fk"
+    draft_folder }o--|| folder : "fk"
+    draft_label }o--|| draft : "fk"
+    draft_label }o--|| label : "fk"
+    draft_metadata }o--|| draft : "fk"
+    draft }o--|| message : "fk"
+    draft }o--|| thread : "fk"
+    draft }o--|| job_status : "fk"
+    draft }o--|| account : "fk"
+    draft_sender }o--|| draft : "fk"
+    draft_recipient }o--|| draft : "fk"
+    thread_participant }o--|| thread : "fk"
+    thread_draft }o--|| thread : "fk"
+    thread_draft }o--|| draft : "fk"
+    thread_label }o--|| thread : "fk"
+    thread_label }o--|| label : "fk"
+    thread_folder }o--|| thread : "fk"
+    thread_folder }o--|| folder : "fk"
+    thread_message }o--|| thread : "fk"
+    thread_message }o--|| message : "fk"
+    thread }o--|| account : "fk"

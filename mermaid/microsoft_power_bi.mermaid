@@ -1,0 +1,220 @@
+erDiagram
+    capacity_admin {
+        text index PK
+        text capacity_id PK
+        text admin
+    }
+    capacity {
+        text id PK
+        text access_right
+        text display_name
+        text region
+        text sku
+        text state
+        text tenant_key_created_at
+        text tenant_key_id
+        text tenant_key_is_default
+        text tenant_key_name
+        text tenant_key_updated_at
+        text tenant_key_vault_identifier
+    }
+    app {
+        text id PK
+        text workspace_id FK
+        text description
+        text last_update
+        text name
+        text published_by
+    }
+    gateway {
+        text id PK
+        text annotation
+        text name
+        text public_key_exponent
+        text public_key_modulus
+        text status
+        text type
+    }
+    group_user {
+        text index PK
+        text workspace_id PK
+        text display_name
+        text email_address
+        text graph_id
+        text group_user_access_right
+        text identifier
+        text principal_type
+        text profile
+        text user_type
+    }
+    group_workbook {
+        text index PK
+        text workspace_id PK
+        text dataset_id FK
+        text name
+    }
+    groups {
+        text workspace_id PK
+        text capacity_id FK
+        text pipeline_id FK
+        text capacity_migration_status
+        text dataflow_storage_id
+        text default_dataset_storage_format
+        text description
+        text has_workspace_level_settings
+        text is_on_dedicated_capacity
+        text is_read_only
+        text log_analytics_workspace
+        text name
+        text state
+        text type
+    }
+    dataflow {
+        text id PK
+        text workspace_id FK
+        text configured_by
+        text description
+        text generation
+        text model_url
+        text modified_by
+        text modified_date_time
+        text name
+    }
+    dataset_upstream {
+        text dataset_id PK
+        text workspace_id PK
+        text dataflow_id FK
+    }
+    dataset {
+        text id PK
+        text workspace_id FK
+        text add_rows_api_enabled
+        text configured_by
+        text content_provider_type
+        text create_report_embed_url
+        timestamp created_date
+        text description
+        text is_effective_identity_required
+        text is_effective_identity_roles_required
+        text is_in_place_sharing_enabled
+        text is_on_prem_gateway_required
+        text is_refreshable
+        text name
+        text qna_embed_url
+        text query_scale_out_setting_auto_sync_read_only_replicas
+        text query_scale_out_setting_max_read_only_replicas
+        text target_storage_mode
+        text web_url
+    }
+    dashboard_tile {
+        text id PK
+        text dashboard_id PK
+        text dataset_id FK
+        text report_id FK
+        text col_span
+        text embed_data
+        text embed_url
+        text row_span
+        text title
+    }
+    dashboard {
+        text id PK
+        text app_id FK
+        text workspace_id FK
+        text display_name
+        text embed_url
+        text is_read_only
+        text web_url
+    }
+    pipeline_stage {
+        text index PK
+        text pipeline_id PK
+        text workspace_id FK
+        text orders
+    }
+    pipeline_user {
+        text index PK
+        text pipeline_id PK
+        text access_right
+        text identifier
+        text principal_type
+    }
+    pipeline {
+        text id PK
+        text description
+        text display_name
+    }
+    refreshable_configured_by {
+        text index PK
+        text refreshable_id PK
+        text configured_by
+    }
+    refreshable {
+        text id PK
+        text average_duration
+        text count
+        text end_time
+        text failures
+        text groups
+        text kind
+        text last_refresh_attempts
+        text last_refresh_end_time
+        text last_refresh_extended_status
+        text last_refresh_id
+        text last_refresh_request_id
+        text last_refresh_service_exception_json
+        text last_refresh_start_time
+        text last_refresh_status
+        text last_refresh_type
+        text median_duration
+        text name
+        text per_day
+        jsonb refresh_schedule_days
+        text refresh_schedule_enabled
+        text refresh_schedule_local_time_zone_id
+        text refresh_schedule_notify_option
+        jsonb refresh_schedule_times
+        text schedule
+        timestamp start_time
+    }
+    report {
+        text id PK
+        text app_id FK
+        text dataset_id FK
+        text workspace_id FK
+        text created_by
+        text created_date_time
+        text description
+        text embed_url
+        text is_ownedby_me
+        text modified_by
+        timestamp modified_date_time
+        text name
+        text original_report_id
+        text type
+        text web_url
+    }
+    capacity_admin }o--|| capacity : "fk"
+    app }o--|| groups : "fk"
+    group_user }o--|| groups : "fk"
+    group_workbook }o--|| dataset : "fk"
+    group_workbook }o--|| groups : "fk"
+    groups }o--|| capacity : "fk"
+    groups }o--|| pipeline : "fk"
+    dataflow }o--|| groups : "fk"
+    dataset_upstream }o--|| groups : "fk"
+    dataset_upstream }o--|| dataflow : "fk"
+    dataset_upstream }o--|| dataset : "fk"
+    dataset }o--|| groups : "fk"
+    dashboard_tile }o--|| report : "fk"
+    dashboard_tile }o--|| dataset : "fk"
+    dashboard_tile }o--|| dashboard : "fk"
+    dashboard }o--|| app : "fk"
+    dashboard }o--|| groups : "fk"
+    pipeline_stage }o--|| groups : "fk"
+    pipeline_stage }o--|| pipeline : "fk"
+    pipeline_user }o--|| pipeline : "fk"
+    refreshable_configured_by }o--|| refreshable : "fk"
+    report }o--|| groups : "fk"
+    report }o--|| dataset : "fk"
+    report }o--|| app : "fk"

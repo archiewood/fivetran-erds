@@ -1,0 +1,841 @@
+erDiagram
+    associated_asset {
+        bigint asset_display_id PK
+        bigint parent_entity_id PK
+        text parent_entity_type PK
+    }
+    service_item {
+        bigint id PK
+        bigint category_id FK
+        bigint ci_type_id FK
+        bigint product_id FK
+        boolean allow_attachments
+        boolean allow_quantity
+        boolean botified
+        jsonb configs
+        boolean cost_visibility
+        boolean create_child
+        timestamp created_at
+        integer delivery_time
+        boolean delivery_time_visibility
+        bigint display_id
+        integer group_visibility
+        text icon_name
+        boolean is_bundle
+        integer item_type
+        text name
+        integer quantity
+        timestamp updated_at
+        integer visibility
+    }
+    user_group {
+        text type PK
+        bigint group_id PK
+        bigint user_id PK
+    }
+    solution_folder_relation_id {
+        bigint entity_id PK
+        text relation_type PK
+        bigint folder_id PK
+    }
+    solution_folder_approval {
+        integer approval_type PK
+        bigint approver_id PK
+        bigint folder_id PK
+    }
+    announcement_email {
+        text email PK
+        bigint announcement_id PK
+    }
+    ticket_email {
+        text email PK
+        text type PK
+        bigint ticket_id PK
+    }
+    department {
+        bigint id PK
+        bigint head_user_id FK
+        bigint prime_user_id FK
+        timestamp created_at
+        text description
+        text name
+        text note
+        timestamp updated_at
+    }
+    ticket {
+        bigint id PK
+        bigint department_id FK
+        bigint group_id FK
+        bigint requested_for_id FK
+        bigint requester_id FK
+        bigint responder_id FK
+        integer approval_status
+        text approval_status_name
+        integer association_type
+        text category
+        timestamp created_at
+        text description
+        text description_text
+        timestamp due_by
+        timestamp fr_due_by
+        boolean is_escalated
+        text item_category
+        text priority
+        text source
+        boolean spam
+        timestamp stats_closed_at
+        timestamp stats_first_responded_at
+        timestamp stats_resolved_at
+        text status
+        text sub_category
+        text subject
+        text type
+        timestamp updated_at
+        integer workspace_id
+    }
+    software_user {
+        bigint id PK
+        bigint license_id FK
+        bigint software_id FK
+        bigint user_id FK
+        timestamp allocated_date
+        timestamp created_at
+        timestamp first_used
+        timestamp last_used
+        timestamp updated_at
+    }
+    purchase_order {
+        bigint id PK
+        bigint created_by FK
+        bigint department_id FK
+        bigint vendor_id FK
+        text billing_address
+        boolean billing_same_as_shipping
+        timestamp created_at
+        bigint discount_percentage
+        timestamp expected_delivery_date
+        text name
+        text po_number
+        text shipping_address
+        bigint shipping_cost
+        bigint status
+        bigint tax_percentage
+        timestamp updated_at
+        text vendor_details
+    }
+    task {
+        bigint id PK
+        bigint agent_id FK
+        bigint group_id FK
+        timestamp closed_at
+        timestamp created_at
+        text description
+        timestamp due_date
+        bigint parent_object_id
+        text parent_object_type
+        integer status
+        text title
+        timestamp updated_at
+    }
+    solution_article_feature {
+        text type PK
+        text value PK
+        bigint article_id PK
+    }
+    service_group {
+        bigint id PK
+        bigint business_hour_id FK
+        bigint escalate_to FK
+        boolean approval_required
+        boolean auto_ticket_assign
+        timestamp created_at
+        text description
+        boolean is_requester_group
+        text name
+        text type
+        text unassigned_for
+        timestamp updated_at
+    }
+    project_task {
+        bigint id PK
+        bigint assignee_id FK
+        bigint parent_id FK
+        bigint priority_id FK
+        bigint project_id FK
+        bigint reporter_id FK
+        bigint sprint_id FK
+        bigint status_id FK
+        bigint type_id FK
+        bigint version_id FK
+        timestamp created_at
+        text display_key
+        timestamp end_date
+        text planned_duration
+        text planned_effort
+        timestamp planned_end_date
+        timestamp planned_start_date
+        timestamp start_date
+        bigint story_points
+        text title
+        timestamp updated_at
+    }
+    vendor {
+        bigint id PK
+        bigint primary_contact_id FK
+        text contact_name
+        timestamp created_at
+        text description
+        text email
+        text mobile
+        text name
+        text phone
+        timestamp updated_at
+    }
+    associated_change {
+        bigint change_id PK
+        bigint release_id PK
+    }
+    ticket_attachment {
+        bigint id PK
+        bigint ticket_id PK
+        text attachment_url
+        text content_type
+        timestamp created_at
+        text name
+        bigint size
+        timestamp updated_at
+    }
+    change {
+        bigint id PK
+        bigint agent_id FK
+        bigint department_id FK
+        bigint group_id FK
+        bigint requester_id FK
+        integer approval_status
+        text category
+        integer change_type
+        timestamp created_at
+        text description
+        text description_text
+        timestamp due_by
+        integer impact
+        text item_category
+        boolean known_error
+        timestamp planned_end_date
+        timestamp planned_start_date
+        integer priority
+        integer risk
+        integer status
+        text sub_category
+        text subject
+        timestamp updated_at
+    }
+    time_entry {
+        bigint id PK
+        bigint agent_id FK
+        bigint task_id FK
+        boolean billable
+        timestamp created_at
+        timestamp executed_at
+        text note
+        bigint parent_entity_id
+        text parent_entity_type
+        timestamp start_time
+        text time_spent
+        boolean timer_running
+        timestamp updated_at
+    }
+    project_membership {
+        bigint id PK
+        bigint project_id PK
+        bigint user_id FK
+        bigint access_type
+        timestamp created_at
+        boolean manage_settings
+        boolean project_manager
+        timestamp updated_at
+    }
+    department_domain {
+        text domain PK
+        bigint department_id PK
+    }
+    asset_component {
+        bigint id PK
+        bigint asset_id PK
+        jsonb component_data
+        text component_type
+        timestamp created_at
+        timestamp updated_at
+    }
+    project_task_priority {
+        bigint id PK
+        bigint project_id PK
+        timestamp created_at
+        text description
+        text name
+        timestamp updated_at
+    }
+    contract {
+        bigint id PK
+        bigint approver_id FK
+        bigint contract_type_id FK
+        bigint delegatee_id FK
+        bigint future_contract_id FK
+        bigint requester_id FK
+        bigint software_id FK
+        bigint vendor_id FK
+        bigint visible_to_id FK
+        boolean auto_renew
+        text billing_cycle
+        text contract_number
+        text cost
+        timestamp created_at
+        text description
+        timestamp end_date
+        boolean expiry_notified
+        boolean has_associated_assets
+        boolean has_attachments
+        text license_key
+        text license_type
+        text name
+        integer notify_before
+        boolean notify_expiry
+        timestamp start_date
+        text status
+        timestamp updated_at
+    }
+    location {
+        bigint id PK
+        bigint parent_location_id FK
+        bigint primary_contact_id FK
+        timestamp created_at
+        text email
+        text name
+        text phone
+        timestamp updated_at
+    }
+    announcement_relation {
+        bigint entity_id PK
+        text relation_type PK
+        bigint announcement_id PK
+    }
+    release {
+        bigint id PK
+        bigint agent_id FK
+        bigint department_id FK
+        bigint group_id FK
+        bigint requester_id FK
+        integer approval_status
+        text category
+        timestamp created_at
+        text description
+        text description_text
+        timestamp due_by
+        integer impact
+        text item_category
+        boolean known_error
+        timestamp planned_end_date
+        timestamp planned_start_date
+        integer priority
+        integer release_type
+        integer risk
+        integer status
+        text sub_category
+        text subject
+        timestamp updated_at
+        timestamp work_end_date
+        timestamp work_start_date
+    }
+    project_task_type_field {
+        bigint type_id PK
+        bigint project_id PK
+        jsonb choices
+        timestamp created_at
+        boolean default
+        text label
+        boolean mandatory
+        text name
+        text type
+        timestamp updated_at
+    }
+    project {
+        bigint id PK
+        bigint group_id FK
+        bigint manager_id FK
+        boolean archived
+        timestamp closed_at
+        timestamp created_at
+        text description
+        text end_date
+        text key
+        text name
+        bigint priority_code
+        text project_type
+        bigint sprint_duration
+        text start_date
+        bigint status_code
+        timestamp updated_at
+        bigint visibility
+    }
+    agent_department {
+        bigint agent_id PK
+        bigint department_id PK
+    }
+    project_sprint {
+        bigint id PK
+        bigint project_id PK
+        timestamp created_at
+        text goal
+        timestamp planned_end_date
+        timestamp planned_start_date
+        bigint state
+        text title
+        timestamp updated_at
+    }
+    contract_type {
+        bigint id PK
+        timestamp created_at
+        text description
+        boolean is_default
+        text name
+        boolean needs_approval
+        timestamp updated_at
+    }
+    problem {
+        bigint id PK
+        bigint agent_id FK
+        bigint department_id FK
+        bigint group_id FK
+        bigint requester_id FK
+        text category
+        timestamp created_at
+        text description
+        text description_text
+        timestamp due_by
+        integer impact
+        text item_category
+        boolean known_error
+        integer priority
+        integer status
+        text sub_category
+        timestamp updated_at
+    }
+    project_task_type {
+        bigint id PK
+        bigint project_id PK
+        timestamp created_at
+        text description
+        text name
+        timestamp updated_at
+    }
+    purchase_order_item {
+        bigint id PK
+        bigint order_id PK
+        bigint item_id FK
+        text cost
+        timestamp created_at
+        text description
+        text item_name
+        integer item_type
+        bigint quantity
+        bigint received
+        text tax_percentage
+        text total_cost
+        timestamp updated_at
+    }
+    notify_email {
+        text email PK
+        bigint parent_entity_id PK
+        text parent_entity_type PK
+    }
+    project_version {
+        bigint id PK
+        bigint project_id PK
+        bigint owner_id FK
+        timestamp created_at
+        text description
+        timestamp due_date
+        text name
+        timestamp start_date
+        bigint status_code
+        timestamp updated_at
+    }
+    software_relationship {
+        bigint id PK
+        timestamp created_at
+        bigint primary_id
+        text primary_type
+        bigint relationship_type_id
+        bigint secondary_id
+        text secondary_type
+        timestamp updated_at
+    }
+    product {
+        bigint id PK
+        bigint asset_type_id FK
+        timestamp created_at
+        bigint depreciation_type_id
+        text description
+        text description_text
+        text manufacturer
+        text mode_of_procurement
+        text name
+        text status
+        timestamp updated_at
+    }
+    service_category {
+        bigint id PK
+        timestamp created_at
+        text description
+        text name
+        integer position
+        timestamp updated_at
+    }
+    ticket_tag {
+        text tag_name PK
+        bigint ticket_id PK
+    }
+    announcement {
+        bigint id PK
+        bigint created_by FK
+        text body
+        text body_html
+        timestamp created_at
+        boolean is_read
+        boolean send_email
+        text state
+        text title
+        timestamp updated_at
+        text visibility
+        timestamp visible_from
+        timestamp visible_till
+    }
+    associated_attachment {
+        bigint id PK
+        bigint parent_entity_id PK
+        text parent_entity_type PK
+        text attachment_url
+        text canonical_url
+        text content_type
+        timestamp created_at
+        text name
+        bigint size
+        timestamp updated_at
+    }
+    project_task_status {
+        bigint id PK
+        bigint project_id PK
+        bigint category_code
+        timestamp created_at
+        text description
+        text name
+        timestamp updated_at
+    }
+    role {
+        bigint id PK
+        timestamp created_at
+        boolean default
+        text description
+        text name
+        timestamp updated_at
+    }
+    ticket_item {
+        bigint id PK
+        bigint ticket_id FK
+        double_precision cost_per_request
+        timestamp created_at
+        integer delivery_time
+        boolean is_parent
+        boolean loaned
+        integer quantity
+        text remarks
+        bigint service_item_id
+        integer stage
+        timestamp updated_at
+    }
+    contract_item_detail {
+        bigint id PK
+        bigint contract_id PK
+        text comments
+        text cost
+        text count
+        timestamp created_at
+        text item_name
+        text pricing_model
+        timestamp updated_at
+    }
+    software_installation {
+        bigint id PK
+        bigint department_id FK
+        bigint installation_machine_id FK
+        bigint software_id FK
+        bigint user_id FK
+        timestamp created_at
+        timestamp installation_date
+        text installation_path
+        timestamp updated_at
+        text version
+    }
+    asset {
+        bigint id PK
+        bigint agent_id FK
+        bigint asset_type_id FK
+        bigint department_id FK
+        bigint group_id FK
+        bigint location_id FK
+        bigint user_id FK
+        text asset_tag
+        timestamp assigned_on
+        text author_type
+        timestamp created_at
+        text description
+        bigint display_id
+        text impact
+        text name
+        timestamp updated_at
+        text usage_type
+    }
+    service_user {
+        bigint id PK
+        bigint location_id FK
+        bigint reporting_manager_id FK
+        boolean active
+        text address
+        boolean blocked
+        timestamp created_at
+        text first_name
+        boolean is_agent
+        text job_title
+        text language
+        timestamp last_active_at
+        timestamp last_login_at
+        text last_name
+        text mobile_phone_number
+        boolean occasional
+        text primary_email
+        text signature
+        text time_zone
+        timestamp updated_at
+        boolean vip_user
+        text work_phone_number
+    }
+    software {
+        bigint id PK
+        bigint managed_by_id FK
+        bigint publisher_id FK
+        text application_type
+        text category
+        timestamp created_at
+        text description
+        bigint installation_count
+        text name
+        text notes
+        text status
+        timestamp updated_at
+        bigint user_count
+    }
+    note {
+        bigint id PK
+        bigint parent_entity_id PK
+        text parent_entity_type PK
+        bigint user_id FK
+        text body
+        text body_text
+        text from_email
+    }
+    business_hour {
+        bigint id PK
+        timestamp created_at
+        text description
+        text name
+        timestamp updated_at
+    }
+    agent_role {
+        bigint agent_id PK
+        bigint role_id PK
+    }
+    solution_article {
+        bigint id PK
+        bigint category_id FK
+        bigint folder_id FK
+        bigint modified_by FK
+        bigint user_id FK
+        bigint approval_status
+        integer article_type
+        timestamp created_at
+        text description
+        text description_text
+        integer inserted_into_tickets
+        timestamp modified_at
+        integer position
+        timestamp review_date
+        integer status
+        integer thumbs_down
+        integer thumbs_up
+        text title
+        timestamp updated_at
+        text url
+        integer views
+    }
+    conversation {
+        bigint id PK
+        bigint ticket_id PK
+        bigint user_id FK
+        text body
+        text body_text
+        timestamp created_at
+        text from_email
+        boolean incoming
+        boolean private
+        bigint source
+        text support_email
+        timestamp updated_at
+    }
+    software_license {
+        bigint id PK
+        bigint software_id FK
+        text contract_id
+        timestamp created_time
+        timestamp updated_time
+    }
+    asset_type {
+        bigint id PK
+        bigint parent_asset_type_id FK
+        timestamp created_at
+        text description
+        text name
+        timestamp updated_at
+        boolean visible
+    }
+    solution_category {
+        bigint id PK
+        timestamp created_at
+        boolean default_category
+        text description
+        text name
+        integer position
+        timestamp updated_at
+    }
+    solution_folder {
+        bigint id PK
+        bigint category_id FK
+        timestamp created_at
+        boolean default_folder
+        text description
+        text name
+        integer position
+        timestamp updated_at
+        integer visibility
+    }
+    service_item }o--|| service_category : "fk"
+    service_item }o--|| product : "fk"
+    service_item }o--|| asset_type : "fk"
+    user_group }o--|| service_user : "fk"
+    user_group }o--|| service_group : "fk"
+    solution_folder_relation_id }o--|| solution_folder : "fk"
+    solution_folder_approval }o--|| solution_folder : "fk"
+    solution_folder_approval }o--|| service_user : "fk"
+    announcement_email }o--|| announcement : "fk"
+    ticket_email }o--|| ticket : "fk"
+    department }o--|| service_user : "fk"
+    department }o--|| service_user : "fk"
+    ticket }o--|| service_user : "fk"
+    ticket }o--|| service_user : "fk"
+    ticket }o--|| department : "fk"
+    ticket }o--|| service_group : "fk"
+    ticket }o--|| service_user : "fk"
+    software_user }o--|| software : "fk"
+    software_user }o--|| service_user : "fk"
+    software_user }o--|| contract : "fk"
+    purchase_order }o--|| department : "fk"
+    purchase_order }o--|| vendor : "fk"
+    purchase_order }o--|| service_user : "fk"
+    task }o--|| service_group : "fk"
+    task }o--|| service_user : "fk"
+    solution_article_feature }o--|| solution_article : "fk"
+    service_group }o--|| service_user : "fk"
+    service_group }o--|| business_hour : "fk"
+    project_task }o--|| project : "fk"
+    project_task }o--|| project_task_status : "fk"
+    project_task }o--|| project_task_type : "fk"
+    project_task }o--|| service_user : "fk"
+    project_task }o--|| project_task_priority : "fk"
+    project_task }o--|| service_user : "fk"
+    project_task }o--|| project_sprint : "fk"
+    project_task }o--|| project_version : "fk"
+    project_task }o--|| project_task : "fk"
+    vendor }o--|| service_user : "fk"
+    ticket_attachment }o--|| ticket : "fk"
+    change }o--|| service_user : "fk"
+    change }o--|| service_user : "fk"
+    change }o--|| department : "fk"
+    change }o--|| service_group : "fk"
+    time_entry }o--|| service_user : "fk"
+    time_entry }o--|| task : "fk"
+    project_membership }o--|| project : "fk"
+    project_membership }o--|| service_user : "fk"
+    department_domain }o--|| department : "fk"
+    asset_component }o--|| asset : "fk"
+    project_task_priority }o--|| project : "fk"
+    contract }o--|| vendor : "fk"
+    contract }o--|| service_user : "fk"
+    contract }o--|| service_user : "fk"
+    contract }o--|| service_user : "fk"
+    contract }o--|| contract : "fk"
+    contract }o--|| service_group : "fk"
+    contract }o--|| contract_type : "fk"
+    contract }o--|| software : "fk"
+    location }o--|| location : "fk"
+    location }o--|| service_user : "fk"
+    announcement_relation }o--|| announcement : "fk"
+    release }o--|| service_user : "fk"
+    release }o--|| service_user : "fk"
+    release }o--|| department : "fk"
+    release }o--|| service_group : "fk"
+    project_task_type_field }o--|| project : "fk"
+    project }o--|| service_group : "fk"
+    project }o--|| service_user : "fk"
+    agent_department }o--|| service_user : "fk"
+    agent_department }o--|| department : "fk"
+    project_sprint }o--|| project : "fk"
+    problem }o--|| service_user : "fk"
+    problem }o--|| service_user : "fk"
+    problem }o--|| department : "fk"
+    problem }o--|| service_group : "fk"
+    project_task_type }o--|| project : "fk"
+    purchase_order_item }o--|| purchase_order : "fk"
+    purchase_order_item }o--|| product : "fk"
+    project_version }o--|| project : "fk"
+    project_version }o--|| service_user : "fk"
+    product }o--|| asset_type : "fk"
+    ticket_tag }o--|| ticket : "fk"
+    announcement }o--|| service_user : "fk"
+    project_task_status }o--|| project : "fk"
+    ticket_item }o--|| ticket : "fk"
+    contract_item_detail }o--|| contract : "fk"
+    software_installation }o--|| software : "fk"
+    software_installation }o--|| service_user : "fk"
+    software_installation }o--|| department : "fk"
+    software_installation }o--|| asset : "fk"
+    asset }o--|| service_user : "fk"
+    asset }o--|| department : "fk"
+    asset }o--|| service_user : "fk"
+    asset }o--|| service_group : "fk"
+    asset }o--|| asset_type : "fk"
+    asset }o--|| location : "fk"
+    service_user }o--|| service_user : "fk"
+    service_user }o--|| location : "fk"
+    software }o--|| vendor : "fk"
+    software }o--|| service_user : "fk"
+    note }o--|| service_user : "fk"
+    agent_role }o--|| service_user : "fk"
+    agent_role }o--|| role : "fk"
+    solution_article }o--|| solution_folder : "fk"
+    solution_article }o--|| solution_category : "fk"
+    solution_article }o--|| service_user : "fk"
+    solution_article }o--|| service_user : "fk"
+    conversation }o--|| ticket : "fk"
+    conversation }o--|| service_user : "fk"
+    software_license }o--|| software : "fk"
+    asset_type }o--|| asset_type : "fk"
+    solution_folder }o--|| solution_category : "fk"

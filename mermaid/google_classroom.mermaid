@@ -1,0 +1,226 @@
+erDiagram
+    student_submission_history {
+        text index PK
+        text course_id PK
+        text course_work_id PK
+        text student_submission_id PK
+        text grade_change_type
+        text grade_history_actor_user_id
+        text grade_max_points
+        text grade_timestamp
+        text points_earned
+        text state
+        text state_history_actor_user_id
+        text state_timestamp
+    }
+    student_submission_attachment {
+        text index PK
+        text course_id PK
+        text course_work_id PK
+        text student_submission_id PK
+        text drive_file_alternate_link
+        text drive_file_id
+        text drive_file_thumbnail_url
+        text drive_file_title
+        text form_response_url
+        text form_thumbnail_url
+        text form_title
+        text form_url
+        text link_thumbnail_url
+        text link_title
+        text link_url
+        text youtube_video_alternate_link
+        text youtube_video_id
+        text youtube_video_thumbnail_url
+        text youtube_video_title
+    }
+    student_submission {
+        text id PK
+        text course_id PK
+        text course_work_id PK
+        text user_id FK
+        text alternate_link
+        text assigned_grade
+        text associated_with_developer
+        text course_work_type
+        text creation_time
+        text draft_grade
+        text late
+        text multiple_choice_submission_answer
+        text preview_version
+        text short_answer_submission_answer
+        text state
+        text update_time
+    }
+    course_material_set {
+        text index PK
+        text course_id PK
+        text drive_file_alternate_link
+        text drive_file_id
+        text drive_file_thumbnail_url
+        text drive_file_title
+        text form_response_url
+        text form_thumbnail_url
+        text form_title
+        text form_url
+        text link_thumbnai_lurl
+        text link_title
+        text link_url
+        text title
+        text youtube_video_alternate_link
+        text youtube_video_id
+        text youtube_video_thumbnail_url
+        text youtube_video_title
+    }
+    course_grade_category {
+        text id PK
+        text course_id PK
+        text default_grade_denominator
+        text name
+        text weight
+    }
+    course {
+        text id PK
+        text alternate_link
+        text calendar_id
+        text course_group_email
+        text course_state
+        text creation_time
+        text description_heading
+        text enrollment_code
+        text gradebook_setting_calculation_type
+        text gradebook_setting_display_setting
+        text guardians_enabled
+        text name
+        text owner_id
+        text section
+        text teacher_folder_alternate_link
+        text teacher_folder_id
+        text teacher_folder_title
+        text teacher_group_email
+        text update_time
+    }
+    student_permission {
+        text index PK
+        text student_course_id PK
+        text student_id PK
+        text permission
+    }
+    student {
+        text id PK
+        text course_id PK
+        text profile_email_address
+        text profile_family_name
+        text profile_full_name
+        text profile_given_name
+        text profile_photo_url
+        text profile_verified_teacher
+        text student_work_folder_alternate_link
+        text student_work_folder_id
+        text student_work_folder_title
+    }
+    course_work_material {
+        text index PK
+        text course_id PK
+        text course_work_id PK
+        text drive_file_alternate_link
+        text drive_file_id
+        text drive_file_thumbnail_url
+        text drive_file_title
+        text form_response_url
+        text form_thumbnail_url
+        text form_title
+        text form_url
+        text link_thumbnai_lurl
+        text link_title
+        text link_url
+        text share_mode
+        text youtube_video_alternate_link
+        text youtube_video_id
+        text youtube_video_thumbnail_url
+        text youtube_video_title
+    }
+    course_work_multiple_choice_question {
+        text index PK
+        text course_id PK
+        text course_work_id PK
+        text choice
+    }
+    course_work_student {
+        text course_id PK
+        text course_work_id PK
+        text student_id PK
+    }
+    course_work {
+        text id PK
+        text course_id PK
+        text alternate_link
+        text assignee_mode
+        text associated_with_developer
+        text creation_time
+        text creator_user_id
+        text description
+        text due_date_day
+        text due_date_month
+        text due_date_year
+        text due_time_hours
+        text due_time_minutes
+        text grade_category_default_grade_denominator
+        text grade_category_id
+        text grade_category_name
+        text grade_category_weight
+        text grading_period_id
+        text max_points
+        text preview_version
+        text scheduled_time
+        text state
+        text student_work_folder_alternate_link
+        text student_work_folder_id
+        text student_work_folder_title
+        text submission_modification_mode
+        text title
+        text topic_id
+        timestamp update_time
+        text work_type
+    }
+    teacher_permission {
+        text index PK
+        text teacher_course_id PK
+        text teacher_id PK
+        text permission
+    }
+    teacher {
+        text id PK
+        text course_id PK
+        text profile_email_address
+        text profile_family_name
+        text profile_full_name
+        text profile_given_name
+        text profile_photo_url
+        text profile_verified_teacher
+    }
+    student_submission_history }o--|| student_submission : "fk"
+    student_submission_history }o--|| student_submission : "fk"
+    student_submission_history }o--|| student_submission : "fk"
+    student_submission_attachment }o--|| student_submission : "fk"
+    student_submission_attachment }o--|| student_submission : "fk"
+    student_submission_attachment }o--|| student_submission : "fk"
+    student_submission }o--|| student : "fk"
+    student_submission }o--|| course_work : "fk"
+    student_submission }o--|| course_work : "fk"
+    course_material_set }o--|| course : "fk"
+    course_grade_category }o--|| course : "fk"
+    student_permission }o--|| student : "fk"
+    student_permission }o--|| student : "fk"
+    student }o--|| course : "fk"
+    course_work_material }o--|| course_work : "fk"
+    course_work_material }o--|| course_work : "fk"
+    course_work_multiple_choice_question }o--|| course_work : "fk"
+    course_work_multiple_choice_question }o--|| course_work : "fk"
+    course_work_student }o--|| student : "fk"
+    course_work_student }o--|| course_work : "fk"
+    course_work_student }o--|| course_work : "fk"
+    course_work }o--|| course : "fk"
+    teacher_permission }o--|| teacher : "fk"
+    teacher_permission }o--|| teacher : "fk"
+    teacher }o--|| course : "fk"

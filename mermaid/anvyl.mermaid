@@ -1,0 +1,622 @@
+erDiagram
+    route {
+        text id PK
+        text shipment_id PK
+        text team_id PK
+        text actual_arrival_time
+        text actual_departure_time
+        text carrier_name
+        text destination_address_line_1
+        text destination_address_line_2
+        text destination_city
+        text destination_country
+        text destination_country_code
+        text destination_iata_code
+        text destination_id
+        text destination_lat
+        text destination_lon
+        text destination_name
+        text destination_port_name
+        text destination_port_type
+        text destination_postal_code
+        text destination_state
+        text estimated_arrival_time
+        text estimated_departure_time
+        text origin_address_line_1
+        text origin_address_line_2
+        text origin_city
+        text origin_country
+        text origin_country_code
+        text origin_iata_code
+        text origin_id
+        text origin_lat
+        text origin_lon
+        text origin_name
+        text origin_port_name
+        text origin_port_type
+        text origin_postal_code
+        text origin_state
+        text priority
+        text tracking_number
+        text transportation_mode
+        text vehicle_model
+    }
+    contact {
+        text id PK
+        text supplier_id PK
+        text team_id PK
+        text address_line_1
+        text address_line_2
+        text city
+        text country
+        text created_at
+        text email
+        text name
+        text phone
+        text postal_code
+        text state
+        text updated_at
+    }
+    custom_field {
+        text id PK
+        text team_id PK
+        text created_at
+        text default_value
+        text description
+        text name
+        text option_currency
+        text option_field_type
+        text option_show_on_pdf
+        text option_unit_of_measure
+        text resource_type
+        text updated_at
+    }
+    shipment_consolidation_order {
+        text shipment_consolidation_id PK
+        text track_shipment_requests_order_id PK
+        text shipment_consolidation_track_shipment_requests_id
+    }
+    shipment_consolidation {
+        text id PK
+        text team_id PK
+        text ship_to_location_id FK
+        text shipment_consolidation_order_id FK
+        text shipment_consolidation_order_item_id FK
+        text shipment_id FK
+        text actual_delivery_date
+        text actual_freight_cost
+        text actual_ship_date
+        text cargo_pickup_date
+        text container_load_time
+        text created_at
+        text estimated_delivery_date
+        text estimated_ship_date
+        text last_date_to_cancel
+        text logistics_trackings_carrier
+        text logistics_trackings_created_at
+        text logistics_trackings_id
+        text logistics_trackings_tracking_number
+        text logistics_trackings_tracking_type
+        text logistics_trackings_updated_at
+        text name
+        text notes
+        text original_freight_quote
+        text port_of_departure
+        text shipment_consolidation_files_count
+        text shipment_consolidation_order_items_count
+        text shipment_consolidation_orders_count
+        text shipment_consolidation_select_all
+        text shipment_cost
+        text shipment_number
+        text status
+        text track_shipment_requests_carrier
+        text track_shipment_requests_created_at
+        text track_shipment_requests_id
+        text track_shipment_requests_order_ids
+        text track_shipment_requests_status
+        text track_shipment_requests_tracking_reference
+        text track_shipment_requests_type
+        text track_shipment_requests_updated_at
+        text updated_at
+        text vessel_number
+    }
+    purchase_order_source {
+        text id PK
+        text purchase_order_id PK
+        text team_id PK
+        text created_at
+        text source_id
+        text source_ref
+        text updated_at
+        text vendor_id
+        text vendor_name
+    }
+    part_source {
+        text id PK
+        text part_id PK
+        text team_id PK
+        text created_at
+        text source_id
+        text source_ref
+        text updated_at
+        text vendor_id
+        text vendor_name
+    }
+    tracked_shipment_order {
+        text order_id PK
+        text tracked_shipment_id PK
+    }
+    tracked_shipment {
+        text id PK
+        text team_id PK
+        text created_at
+        text status
+        text tracking_carrier
+        text tracking_reference
+        text tracking_type
+        text updated_at
+    }
+    task {
+        text id PK
+        text team_id PK
+        text assignee_id
+        text assignee_type
+        text created_at
+        text creator_id
+        text description
+        text due_date
+        text required
+        text status
+        text taskable_id
+        text taskable_type
+        text title
+        text updated_at
+    }
+    order_part {
+        text id PK
+        text purchase_order_id PK
+        text team_id PK
+    }
+    order_collection {
+        text id PK
+        text purchase_order_id PK
+        text team_id PK
+        text name
+        text type
+    }
+    invoice_item {
+        text id PK
+        text invoice_id PK
+        text part_id FK
+        text created_at
+        text name
+        text quantity
+        text unit_price_micros
+        text updated_at
+    }
+    invoice {
+        text id PK
+        text team_id PK
+        text order_id FK
+        text created_at
+        text due_date
+        text number
+        text submitted_at
+        text total_micros
+        text updated_at
+    }
+    collaborator {
+        text id PK
+        text team_id PK
+        text user_id FK
+        text category
+        text created_at
+        text email
+        text invite_message
+        text name
+        text restrict_files_access
+        text restrict_financial
+        text updated_at
+    }
+    purchase_order_custom {
+        text index PK
+        text purchase_order_id PK
+        text field_id
+        text field_name
+        text field_options_currency
+        text field_options_unit_of_measure
+        text value
+    }
+    purchase_order_tag {
+        text index PK
+        text purchase_order_id PK
+        text tags
+    }
+    purchase_order_invoice {
+        text invoice_id PK
+        text purchase_order_id PK
+    }
+    purchase_order_shipment {
+        text purchase_order_id PK
+        text shipment_id PK
+    }
+    purchase_order_item_custom {
+        text index PK
+        text purchase_order_item_id PK
+        text purchase_order_item_purchase_order_id PK
+        text field_id
+        text field_name
+        text field_options_currency
+        text field_options_unit_of_measure
+        text value
+    }
+    purchase_order_item {
+        text id PK
+        text purchase_order_id PK
+        text part_id FK
+        text name
+        text quantity
+        text unit_of_measure
+        text unit_price_micros
+    }
+    purchase_order_task {
+        text purchase_order_id PK
+        text task_id PK
+    }
+    purchase_order {
+        text id PK
+        text team_id PK
+        text creator_id FK
+        text current_milestone_id FK
+        text supplier_id FK
+        text workflow_id FK
+        text created_at
+        text creator_email
+        text currency
+        text current_milestone_status
+        text delivered_on
+        text incoterms
+        text is_delivered
+        text is_shipped
+        text issued_at
+        text last_issued_at
+        text name
+        text note
+        text order_number
+        text payment_terms
+        text seller_address_line_1
+        text seller_address_line_2
+        text seller_city
+        text seller_company_line_1
+        text seller_company_line_2
+        text seller_country
+        text seller_postal_code
+        text seller_state
+        text shipping_method
+        text ships_on
+        text ships_to_address_line_1
+        text ships_to_address_line_2
+        text ships_to_city
+        text ships_to_company_line_1
+        text ships_to_company_line_2
+        text ships_to_country
+        text ships_to_email
+        text ships_to_phone
+        text ships_to_postal_code
+        text ships_to_state
+        text status
+        text submitter_email
+        text submitter_id
+        text updated_at
+    }
+    users {
+        text id PK
+        text team_id PK
+        text created_at
+        text email
+        text name
+        text updated_at
+    }
+    logistics_tracking {
+        text id PK
+        text purchase_order_id PK
+        text team_id PK
+        text carrier
+        text created_at
+        text number
+        text type
+        text updated_at
+    }
+    order_schedule {
+        text _fivetran_id PK
+        text purchase_order_id FK
+        text team_id FK
+        text actual_delivery_date
+        text actual_ship_date
+        text delivered_on
+        text expected_ship_date
+        text mass_production_starts_on
+        text original_ships_on
+        text ship_date
+    }
+    location {
+        text id PK
+        text team_id PK
+        text address_line_1
+        text address_line_2
+        text city
+        text company_line_1
+        text company_line_2
+        text country
+        text email
+        text name
+        text phone
+        text postal_code
+        text state
+    }
+    shipment {
+        text id PK
+        text team_id PK
+        text purchase_order_id FK
+        text actual_arrival_time
+        text actual_delivered_time
+        text actual_departure_time
+        text cargo_ready_date
+        text created_at
+        text estimated_arrival_time
+        text estimated_delivery_time
+        text estimated_departure_time
+        text estimated_pickup_time
+        text external_id
+        text metadata
+        text name
+        text pickup_time
+        text status
+        text updated_at
+        text vendor_name
+    }
+    supplier_part_quantity {
+        text id PK
+        text supplier_part_part_id PK
+        text supplier_part_supplier_id PK
+        text currency
+        text lead_time_days
+        text min_order_qty
+        text unit_of_measure
+        text unit_price_micros
+    }
+    supplier_identifier {
+        text index PK
+        text supplier_part_part_id PK
+        text supplier_part_supplier_id PK
+        text label
+        text value
+    }
+    supplier_part_custom {
+        text index PK
+        text supplier_part_part_id PK
+        text supplier_part_supplier_id PK
+        text field_id
+        text field_name
+        text field_options_currency
+        text field_options_unit_of_measure
+        text value
+    }
+    supplier_part {
+        text part_id PK
+        text supplier_id PK
+        text master_cases_per_pallet
+        text notes
+        text supplier_part_number
+        text units_per_master_case
+    }
+    supplier {
+        text id PK
+        text team_id PK
+        text address_line_1
+        text address_line_2
+        text city
+        text country
+        text created_at
+        text default_custom_payment_term_id
+        text default_incoterms
+        text default_payment_term
+        text name
+        text notes
+        text phone
+        text postal_code
+        text state
+        text updated_at
+    }
+    part_identifier {
+        text index PK
+        text part_id PK
+        text label
+        text value
+    }
+    part_children {
+        text id PK
+        text part_id PK
+    }
+    part_parent {
+        text id PK
+        text part_id PK
+    }
+    part_tag {
+        text index PK
+        text part_id PK
+        text tags
+    }
+    part {
+        text id PK
+        text team_id PK
+        text asin
+        text created_at
+        text description
+        text hts_code
+        text is_archived
+        text isbn
+        text name
+        text sku
+        text upc
+        text updated_at
+    }
+    rule {
+        text id PK
+        text team_id PK
+        text action_id
+        text action_name
+        text created_at
+        text name
+        text status
+        text trigger_event_type
+        text trigger_id
+        text trigger_status
+        text updated_at
+    }
+    factory_capability {
+        text index PK
+        text factory_id PK
+        text capability
+    }
+    factory {
+        text id PK
+        text supplier_id PK
+        text team_id PK
+        text address_line_1
+        text address_line_2
+        text city
+        text country
+        text created_at
+        text name
+        text phone
+        text postal_code
+        text state
+        text updated_at
+    }
+    payment_term {
+        text id PK
+        text team_id PK
+        text created_at
+        text name
+        text updated_at
+    }
+    order_milestone {
+        text id PK
+        text purchase_order_id PK
+        text team_id PK
+        text created_at
+        text key_date
+        text sequential_id
+        text status
+        text type
+        text updated_at
+    }
+    team {
+        text id PK
+        text address_line_1
+        text address_line_2
+        text city
+        text country
+        text created_at
+        text description
+        text name
+        text postal_code
+        text state
+        text updated_at
+    }
+    workflow_milestone {
+        text id PK
+        text workflow_id PK
+        text custom_field_id
+        text name
+        text type
+    }
+    workflow {
+        text id PK
+        text team_id PK
+        text created_at
+        text description
+        text is_enabled
+        text name
+        text updated_at
+    }
+    route }o--|| shipment : "fk"
+    route }o--|| team : "fk"
+    contact }o--|| supplier : "fk"
+    contact }o--|| team : "fk"
+    custom_field }o--|| team : "fk"
+    shipment_consolidation_order }o--|| purchase_order : "fk"
+    shipment_consolidation_order }o--|| shipment_consolidation : "fk"
+    shipment_consolidation }o--|| location : "fk"
+    shipment_consolidation }o--|| shipment : "fk"
+    shipment_consolidation }o--|| purchase_order : "fk"
+    shipment_consolidation }o--|| purchase_order_item : "fk"
+    shipment_consolidation }o--|| team : "fk"
+    purchase_order_source }o--|| purchase_order : "fk"
+    purchase_order_source }o--|| team : "fk"
+    part_source }o--|| part : "fk"
+    part_source }o--|| team : "fk"
+    tracked_shipment_order }o--|| purchase_order : "fk"
+    tracked_shipment_order }o--|| tracked_shipment : "fk"
+    tracked_shipment }o--|| team : "fk"
+    task }o--|| team : "fk"
+    order_part }o--|| part : "fk"
+    order_part }o--|| team : "fk"
+    order_part }o--|| purchase_order : "fk"
+    order_collection }o--|| purchase_order : "fk"
+    order_collection }o--|| team : "fk"
+    invoice_item }o--|| part : "fk"
+    invoice_item }o--|| invoice : "fk"
+    invoice }o--|| purchase_order : "fk"
+    invoice }o--|| team : "fk"
+    collaborator }o--|| users : "fk"
+    collaborator }o--|| team : "fk"
+    purchase_order_custom }o--|| purchase_order : "fk"
+    purchase_order_tag }o--|| purchase_order : "fk"
+    purchase_order_invoice }o--|| invoice : "fk"
+    purchase_order_invoice }o--|| purchase_order : "fk"
+    purchase_order_shipment }o--|| shipment : "fk"
+    purchase_order_shipment }o--|| purchase_order : "fk"
+    purchase_order_item_custom }o--|| purchase_order_item : "fk"
+    purchase_order_item_custom }o--|| purchase_order_item : "fk"
+    purchase_order_item }o--|| part : "fk"
+    purchase_order_item }o--|| purchase_order : "fk"
+    purchase_order_task }o--|| task : "fk"
+    purchase_order_task }o--|| purchase_order : "fk"
+    purchase_order }o--|| team : "fk"
+    purchase_order }o--|| order_milestone : "fk"
+    purchase_order }o--|| supplier : "fk"
+    purchase_order }o--|| workflow : "fk"
+    purchase_order }o--|| users : "fk"
+    users }o--|| team : "fk"
+    logistics_tracking }o--|| purchase_order : "fk"
+    logistics_tracking }o--|| team : "fk"
+    order_schedule }o--|| purchase_order : "fk"
+    order_schedule }o--|| team : "fk"
+    location }o--|| team : "fk"
+    shipment }o--|| purchase_order : "fk"
+    shipment }o--|| team : "fk"
+    supplier_part_quantity }o--|| supplier_part : "fk"
+    supplier_part_quantity }o--|| supplier_part : "fk"
+    supplier_identifier }o--|| supplier_part : "fk"
+    supplier_identifier }o--|| supplier_part : "fk"
+    supplier_part_custom }o--|| supplier_part : "fk"
+    supplier_part_custom }o--|| supplier_part : "fk"
+    supplier_part }o--|| part : "fk"
+    supplier_part }o--|| supplier : "fk"
+    supplier }o--|| team : "fk"
+    part_identifier }o--|| part : "fk"
+    part_children }o--|| part : "fk"
+    part_parent }o--|| part : "fk"
+    part_tag }o--|| part : "fk"
+    part }o--|| team : "fk"
+    rule }o--|| team : "fk"
+    factory_capability }o--|| factory : "fk"
+    factory }o--|| supplier : "fk"
+    factory }o--|| team : "fk"
+    payment_term }o--|| team : "fk"
+    order_milestone }o--|| purchase_order : "fk"
+    order_milestone }o--|| team : "fk"
+    workflow_milestone }o--|| workflow : "fk"
+    workflow }o--|| team : "fk"

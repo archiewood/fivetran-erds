@@ -1,0 +1,125 @@
+erDiagram
+%% Note
+%% field_option table consists of options for ENUM type fields.
+    survey_program {
+        text id PK
+        timestamp activation_date
+        text modified_by
+        timestamp modified_on
+        text name
+    }
+    unit {
+        bigint id PK
+        text identifier PK
+        text city
+        text name
+        text postal_code
+        text street_address
+        text timezone
+    }
+    group {
+        text id PK
+        text name
+    }
+    unit_group {
+        text group_id PK
+        bigint unit_id PK
+    }
+    feedback_topic {
+        text _fivetran_id PK
+        bigint feedback_id FK
+        text question_id FK
+        text comment
+        bigint topic_id
+        text topic_name
+    }
+    feedback_theme {
+        text _fivetran_id PK
+        bigint feedback_id FK
+        text question_id FK
+        text comment
+        bigint theme_id
+        text theme_name
+    }
+    feedback_answer {
+        bigint feedback_id PK
+        text question_id PK
+        text value PK
+        integer rank
+    }
+    feedback_theme_region {
+        integer end_index PK
+        integer start_index PK
+        text feedback_theme_id PK
+        text value
+    }
+    feedback_history {
+        bigint id PK
+        text a_unit_identifier FK
+        timestamp e_accepteddate
+        timestamp e_creationdate
+        timestamp e_expirationdate
+        timestamp e_lastupdated
+        timestamp e_responsedate
+        text e_status
+        text e_survey_method
+        text e_survey_source
+    }
+    feedback_topic_region {
+        integer end_index PK
+        integer start_index PK
+        text feedback_topic_id PK
+        text value
+    }
+    feedback_sentiment_region {
+        integer end_index PK
+        integer start_index PK
+        text feedback_sentiment_id PK
+        text value
+    }
+    field_option {
+        text id PK
+        text field_id PK
+        text name
+        integer numeric_value
+    }
+    feedback_sentiment {
+        text _fivetran_id PK
+        bigint feedback_id FK
+        text question_id FK
+        text comment
+        text sentiment
+    }
+    field_meta_data {
+        text id PK
+        text data_type
+        boolean filterable
+        boolean multivalued
+        text name
+    }
+    survey_question {
+        text program_id PK
+        text question_id PK
+        text text
+    }
+    customer_profile {
+        bigint id PK
+    }
+    unit_group }o--|| unit : "fk"
+    unit_group }o--|| group : "fk"
+    feedback_topic }o--|| survey_question : "fk"
+    feedback_topic }o--|| feedback_history : "fk"
+    feedback_theme }o--|| survey_question : "fk"
+    feedback_theme }o--|| feedback_history : "fk"
+    feedback_answer }o--|| feedback_history : "fk"
+    feedback_answer }o--|| survey_question : "fk"
+    feedback_answer }o--|| field_option : "fk"
+    feedback_theme_region }o--|| feedback_theme : "fk"
+    feedback_history }o--|| unit : "fk"
+    feedback_topic_region }o--|| feedback_topic : "fk"
+    feedback_sentiment_region }o--|| feedback_sentiment : "fk"
+    field_option }o--|| field_meta_data : "fk"
+    feedback_sentiment }o--|| survey_question : "fk"
+    feedback_sentiment }o--|| feedback_history : "fk"
+    survey_question }o--|| field_meta_data : "fk"
+    survey_question }o--|| survey_program : "fk"

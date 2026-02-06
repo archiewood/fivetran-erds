@@ -1,0 +1,517 @@
+erDiagram
+    leave_account_legal_entity {
+        text id PK
+        text leave_account_id PK
+        text name
+        text url
+    }
+    leave_account_authorized_operation_scopes {
+        text id PK
+        text leave_account_authorized_operation_id FK
+        text leave_account_id FK
+        text code
+        text description
+        text name
+        text value
+    }
+    leave_account_authorized_operation {
+        text id PK
+        text leave_account_id PK
+        text description
+        text is_admin
+        text is_business_item_specific
+        text is_scope_specific
+        text label
+        text name
+    }
+    leave_account {
+        text id PK
+        text created_by_id FK
+        text deleted_by_id FK
+        text modified_by_id FK
+        text allow_before_consumption
+        text allow_input
+        text allow_outer_consumption
+        text allow_select
+        text allow_simulation
+        text atp
+        jsonb authorized_actions
+        text auto_credit
+        text color
+        text complete_consumption
+        text consumption_end_date
+        text consumption_start_date
+        text created_at
+        text credit_account
+        text custom_color
+        text debit_account
+        text debit_allowed_rounding_limits
+        text debit_authorization
+        text deleted_at
+        text duration_hour
+        text entitlement_end_date
+        text entitlement_start_date
+        text extend_to_following_non_working_days
+        text french_sick_leave_nature
+        text half_day_authorization
+        text has_entitlement_period
+        jsonb i_1_8_n_labels
+        text is_absenteeism
+        text is_active
+        text is_actual_work
+        text is_full_entitlement
+        text is_leave
+        text is_movement_account
+        text is_orphan
+        text is_pristine
+        text is_public
+        text is_recurring
+        text is_remote_work
+        text leave_account_category_id
+        text leave_account_category_name
+        text leave_account_category_url
+        text leave_account_type
+        jsonb leave_profile_entitlements
+        text modified_at
+        text name
+        text nbj
+        text need_approval
+        text need_cancellation_approval
+        text need_supporting_documentation
+        text position
+        text requested_permission
+        text selected_date
+        text selected_user
+        text step_hour
+        text type
+        text unit
+        text url
+        text warning
+    }
+    leave_authorized_operation_scope {
+        text id PK
+        text leave_authorized_operation_id PK
+        text leave_authorized_operation_leave_id PK
+        text code
+        text description
+        text name
+        text value
+    }
+    leave_authorized_operation {
+        text id PK
+        text leave_id PK
+        text description
+        text is_admin
+        text is_business_item_specific
+        text is_scope_specific
+        text label
+        text name
+    }
+    leave {
+        text id PK
+        text cancellation_user_id FK
+        text leave_account_id FK
+        text leave_period_id FK
+        text authorized_actions_details
+        text calendar
+        text cancellation_date
+        text cancellation_user
+        text code
+        text color
+        text comment
+        text creation_date
+        text date
+        text days_off_check_id
+        text duration
+        text ends_at
+        text granularity
+        text is_a_m
+        text is_active
+        text is_actual_work
+        text is_being_imported
+        text is_cancellable
+        text is_public
+        text is_real_leave
+        text is_remote_work
+        text key_item_1
+        text key_item_2
+        text key_item_3
+        text leave_account_duration
+        text name
+        text nature
+        text nature_of_half_day
+        text owner_id
+        text scope
+        text start_date_time
+        text starts_at
+        text status
+        text time_line
+        text type
+        text unit
+        text url
+        text value
+        text working_time_type
+    }
+    leave_request_log {
+        text id PK
+        text leave_request_id PK
+        text comment
+        text date
+        text name
+        text status
+    }
+    leave_request_approval {
+        text id PK
+        text leave_request_id PK
+        text approved
+        text approver_id
+        text comment
+        text date
+        text name
+        text substituted_approver_id
+    }
+    leave_request_cancellation {
+        text id PK
+        text leave_request_id PK
+        text approved
+        text author_id
+        text comment
+        text creation_date
+        text is_active
+        text name
+        text next_approver_id
+        text rank
+    }
+    leave_request_authorized_operation_scope {
+        text _fivetran_id PK
+        text leave_request_authorized_operation_id FK
+        text leave_request_id FK
+        text code
+        text description
+        text id
+        text name
+        text value
+    }
+    leave_request_authorized_operation {
+        text id PK
+        text leave_request_id PK
+        text description
+        text is_admin
+        text is_business_item_specific
+        text is_scope_specific
+        text label
+        text name
+    }
+    leave_request {
+        text id PK
+        text cancellation_user_id FK
+        text leave_period_id FK
+        text next_approver_id FK
+        text owner_id FK
+        text author_id
+        text author_name
+        text author_url
+        jsonb authorized_actions
+        text cancellation_date
+        jsonb cancellation_request_pending
+        text creation_date
+        text days_off_check_id
+        text is_active
+        text name
+        text owner_comment
+        text source
+        text status
+        text url
+        jsonb warnings
+    }
+    department_user {
+        text department_id PK
+        text user_id PK
+    }
+    department_current_user {
+        text current_users PK
+        text department_id PK
+    }
+    department_authorized_operation_scope {
+        text id PK
+        text department_authorized_operation_id PK
+        text department_id PK
+        text code
+        text description
+        text name
+        text value
+    }
+    department_authorized_operation {
+        text id PK
+        text department_id PK
+        text description
+        text is_admin
+        text is_business_item_specific
+        text is_scope_specific
+        text label
+        text name
+    }
+    department {
+        text id PK
+        text head_id FK
+        text parent_id FK
+        jsonb authorized_actions
+        text code
+        text description
+        text hierarchy
+        text is_active
+        text level
+        text name
+        text position
+        text sort_order
+        text url
+    }
+    period_leaves {
+        text id PK
+        text leave_period_id PK
+        text name
+        text url
+    }
+    leave_period_log {
+        text id PK
+        text leave_period_id PK
+        text name
+        text url
+    }
+    leave_period_account {
+        text id PK
+        text leave_period_id PK
+        text name
+        text url
+    }
+    leave_period_authorized_operation_scopes {
+        text id PK
+        text leave_period_authorized_operation_id FK
+        text leave_period_id FK
+        text code
+        text description
+        text name
+        text value
+    }
+    leave_period_authorized_operation {
+        text id PK
+        text leave_period_id PK
+        text description
+        text is_admin
+        text is_business_item_specific
+        text is_scope_specific
+        text label
+        text name
+    }
+    leave_period {
+        text id PK
+        text owner_id FK
+        jsonb attachment
+        text attachment_id
+        text attachment_name
+        jsonb attachment_preview
+        jsonb authorized_actions
+        text confirmation_date
+        text duration
+        text duration_unit
+        text ends_am
+        text ends_on
+        text is_confirmed
+        text is_half_day
+        text migration_transation_id
+        text name
+        text relate_to_one_day
+        text starts_am
+        text starts_on
+        text supporting_documentation_controls
+        text time_zone_id
+        text url
+        jsonb warnings
+    }
+    leave_request_approval_detail {
+        text leave_request_id PK
+        text id PK
+        text approver_id FK
+        text substituted_approver_id FK
+        text approved
+        text comment
+        text date
+        text name
+    }
+    cancelation_request_detail {
+        text id PK
+        text leave_request_id PK
+        text author_id
+        text comment
+        text creation_date
+        text is_active
+        text name
+        text next_approver_id
+        text rank
+    }
+    user_habilited_role {
+        text id PK
+        text users_id PK
+        text name
+        text url
+    }
+    user_work_cycle {
+        text id PK
+        text users_id PK
+        text name
+        text url
+    }
+    user_authorized_operation_scope {
+        text id PK
+        text user_authorized_operation_id PK
+        text user_id PK
+        text code
+        text description
+        text name
+        text value
+    }
+    user_authorized_operation {
+        text id PK
+        text user_id PK
+        text description
+        text is_admin
+        text is_business_item_specific
+        text is_scope_specific
+        text label
+        text name
+    }
+    users {
+        text id PK
+        text address
+        jsonb application_data_manager_2
+        jsonb application_data_manager_2_id
+        jsonb attributes
+        text bank_name
+        text bic
+        text birth_date
+        text calendar_id
+        text calendar_name
+        text calendar_url
+        text civil_title
+        text corporate_card
+        text created_at
+        text created_on
+        text csp_id
+        text csp_name
+        text csp_url
+        text culture_code
+        text culture_id
+        text culture_name
+        jsonb current_delegatee
+        text current_delegatee_id
+        text department_id
+        text direct_line
+        text display_name
+        text dt_contract_end
+        text dt_contract_start
+        text employee_number
+        text external_id
+        text first_name
+        text french_car_tax_horse_power
+        text french_motocycles_tax_horse_power
+        text gender
+        text iban
+        text insurance_number
+        jsonb job_qualification
+        text job_qualification_id
+        text job_title
+        text last_annual_review_date_link
+        jsonb last_annual_review_date_value
+        text last_fixed_working_days_review_date_link
+        jsonb last_fixed_working_days_review_date_value
+        text last_name
+        text last_professional_review_date_link
+        jsonb last_professional_review_date_value
+        text legal_entity_id
+        text legal_entity_name
+        text legal_entity_url
+        text login
+        text mail
+        text manager_id
+        text modified_at
+        text modified_on
+        text name
+        text nationality_currency_id
+        text nationality_id
+        text nationality_name
+        text personal_account
+        text personal_card
+        text personal_email
+        text personal_mobile
+        text picture_extension
+        text picture_href
+        text picture_id
+        text picture_mime_type
+        text picture_name
+        text picture_url
+        text professional_mobile
+        text profile_figgo_id
+        text profile_figgo_name
+        text profile_figgo_url
+        text profile_utime_id
+        text profile_utime_name
+        text profile_utime_url
+        text quote
+        text rib
+        text role_principal_id
+        text role_principal_name
+        text role_principal_url
+        text seniority_date
+        jsonb site
+        text site_id
+        text unit_sell_price
+        text url
+    }
+    leave_account_legal_entity }o--|| leave_account : "fk"
+    leave_account_authorized_operation_scopes }o--|| leave_account_authorized_operation : "fk"
+    leave_account_authorized_operation_scopes }o--|| leave_account_authorized_operation : "fk"
+    leave_account_authorized_operation }o--|| leave_account : "fk"
+    leave_account }o--|| users : "fk"
+    leave_account }o--|| users : "fk"
+    leave_account }o--|| users : "fk"
+    leave_authorized_operation_scope }o--|| leave_authorized_operation : "fk"
+    leave_authorized_operation_scope }o--|| leave_authorized_operation : "fk"
+    leave_authorized_operation }o--|| leave : "fk"
+    leave }o--|| leave_period : "fk"
+    leave }o--|| users : "fk"
+    leave }o--|| leave_account : "fk"
+    leave_request_log }o--|| leave_request : "fk"
+    leave_request_approval }o--|| leave_request : "fk"
+    leave_request_cancellation }o--|| leave_request : "fk"
+    leave_request_authorized_operation_scope }o--|| leave_request_authorized_operation : "fk"
+    leave_request_authorized_operation_scope }o--|| leave_request_authorized_operation : "fk"
+    leave_request_authorized_operation }o--|| leave_request : "fk"
+    leave_request }o--|| leave_period : "fk"
+    leave_request }o--|| users : "fk"
+    leave_request }o--|| users : "fk"
+    leave_request }o--|| users : "fk"
+    department_user }o--|| users : "fk"
+    department_user }o--|| department : "fk"
+    department_current_user }o--|| users : "fk"
+    department_current_user }o--|| department : "fk"
+    department_authorized_operation_scope }o--|| department_authorized_operation : "fk"
+    department_authorized_operation_scope }o--|| department_authorized_operation : "fk"
+    department_authorized_operation }o--|| department : "fk"
+    department }o--|| users : "fk"
+    department }o--|| department : "fk"
+    period_leaves }o--|| leave_period : "fk"
+    leave_period_log }o--|| leave_period : "fk"
+    leave_period_account }o--|| leave_period : "fk"
+    leave_period_authorized_operation_scopes }o--|| leave_period_authorized_operation : "fk"
+    leave_period_authorized_operation_scopes }o--|| leave_period_authorized_operation : "fk"
+    leave_period_authorized_operation }o--|| leave_period : "fk"
+    leave_period }o--|| users : "fk"
+    leave_request_approval_detail }o--|| leave_request_approval : "fk"
+    leave_request_approval_detail }o--|| users : "fk"
+    leave_request_approval_detail }o--|| users : "fk"
+    cancelation_request_detail }o--|| leave_request_cancellation : "fk"
+    user_habilited_role }o--|| users : "fk"
+    user_work_cycle }o--|| users : "fk"
+    user_authorized_operation_scope }o--|| user_authorized_operation : "fk"
+    user_authorized_operation_scope }o--|| user_authorized_operation : "fk"
+    user_authorized_operation }o--|| users : "fk"

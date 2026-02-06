@@ -1,0 +1,93 @@
+erDiagram
+    android_device {
+        text device_id PK
+        text distinct_id FK
+    }
+    collections {
+        integer index PK
+        text distinct_id PK
+        bigint value
+    }
+    responses {
+        integer index PK
+        text distinct_id PK
+        bigint value
+    }
+    ios_device {
+        text ios_device PK
+        text distinct_id FK
+    }
+    survey_collections {
+        integer index PK
+        text distinct_id PK
+        bigint value
+    }
+    transaction {
+        timestamp time PK
+        text distinct_id PK
+        double_precision amount
+        text payment_service
+        text payment_type
+        text promo_code
+        timestamp purchase_date
+        text subscription_type
+    }
+    answer {
+        bigint question_id PK
+        text distinct_id FK
+        boolean answer
+        bigint collection_id
+        text question_type
+        bigint survey_id
+        timestamp time
+        text value
+    }
+    surveys {
+        integer index PK
+        text distinct_id PK
+        bigint value
+    }
+    people {
+        text distinct_id PK
+        timestamp time
+    }
+    event {
+        text _fivetran_id PK
+        text distinct_id FK
+        text name
+        jsonb properties
+        text time
+    }
+    android_invalid_push_tokens {
+        integer index PK
+        text distinct_id PK
+        bigint value
+    }
+    deliveries {
+        integer index PK
+        text distinct_id PK
+        bigint value
+    }
+    journeys {
+        integer index PK
+        text distinct_id PK
+        bigint value
+    }
+    survey_responses {
+        integer index PK
+        text distinct_id PK
+        bigint value
+    }
+    android_device }o--|| people : "fk"
+    collections }o--|| people : "fk"
+    responses }o--|| people : "fk"
+    ios_device }o--|| people : "fk"
+    survey_collections }o--|| people : "fk"
+    transaction }o--|| people : "fk"
+    answer }o--|| people : "fk"
+    surveys }o--|| people : "fk"
+    event }o--|| people : "fk"
+    android_invalid_push_tokens }o--|| people : "fk"
+    deliveries }o--|| people : "fk"
+    journeys }o--|| people : "fk"
+    survey_responses }o--|| people : "fk"

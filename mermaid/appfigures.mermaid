@@ -1,0 +1,400 @@
+erDiagram
+    payment {
+        text date PK
+        text storefront PK
+        text iso PK
+        text product_id PK
+        text converted_revenue
+        text estimated_revenue
+        text financial_revenue
+        text revenue
+        text type
+    }
+    country {
+        text iso PK
+        text apple_store_no
+        text name
+    }
+    installed_sdk {
+        text id PK
+        text product_id FK
+        boolean active
+        text found_on
+        text last_updated
+    }
+    event_product {
+        text event_id PK
+        text product_id PK
+    }
+    event {
+        text id PK
+        text caption
+        text date
+        text details
+        text origin
+    }
+    archive {
+        text id PK
+        text external_account_id FK
+        text import_method
+        text import_timestamp
+        text region
+        text report_timestamp
+        text type
+    }
+    product {
+        text id PK
+        text currency FK
+        text parent_id FK
+        text source_external_account_id FK
+        text store_id FK
+        jsonb accessible_features
+        text added_date
+        jsonb children
+        text developer
+        jsonb devices
+        jsonb features
+        text icon
+        text name
+        text price
+        text ref_no
+        text release_date
+        text sku
+        boolean source_active
+        text source_added_timestamp
+        boolean source_hidden
+        text source_type
+        text type
+        text updated_date
+        text vendor_identifier
+        text version
+    }
+    external_account {
+        text id PK
+        text account_id PK
+        text store_id FK
+        boolean auto_import
+        text nickname
+        text username
+        text vendor_id
+    }
+    sub_category {
+        text sub_category PK
+        text category_id PK
+    }
+    category {
+        text id PK
+        text parent_id FK
+        text store_id FK
+        boolean active
+        text device
+        boolean hidden
+        text name
+        text store_front
+    }
+    sdk_external_link {
+        text _fivetran_id PK
+        text sdk_id FK
+        text type
+        text value
+    }
+    sdk_tag {
+        text tags PK
+        text sdk_id PK
+    }
+    sdk_platform {
+        text platform PK
+        text sdk_id PK
+    }
+    sdk_tracked_platform {
+        text tracked_platform PK
+        text sdk_id PK
+    }
+    sdk {
+        text id PK
+        boolean active
+        text code
+        text description
+        jsonb developer_links
+        text developer_name
+        text name
+        text notes
+        text release_date
+        text started_tracking
+    }
+    currency {
+        text currency PK
+        text symbol
+    }
+    sale {
+        text date PK
+        text device PK
+        text storefront PK
+        text iso PK
+        text product_id PK
+        text app_downloads
+        text app_returns
+        text app_returns_amount
+        text app_revenue
+        text business_downloads
+        text business_revenue
+        text downloads
+        text edu_downloads
+        text edu_revenue
+        text gift_redemptions
+        text gifts
+        text gross_app_returns_amount
+        text gross_app_revenue
+        text gross_business_revenue
+        text gross_edu_revenue
+        text gross_iap_returns_amount
+        text gross_iap_revenue
+        text gross_returns_amount
+        text gross_revenue
+        text gross_standard_revenue
+        text gross_subscription_returns_amount
+        text gross_subscription_revenue
+        text iap_amount
+        text iap_returns
+        text iap_returns_amount
+        text iap_revenue
+        text net_downloads
+        text promos
+        text re_downloads
+        text returns
+        text returns_amount
+        text revenue
+        text standard_downloads
+        text standard_revenue
+        text store
+        text subscription_purchases
+        text subscription_returns
+        text subscription_returns_amount
+        text subscription_revenue
+        text uninstalls
+        text updates
+    }
+    revenue {
+        text date PK
+        text iso PK
+        text storefront PK
+        text product_id PK
+        text ads
+        text business
+        text edu
+        text gross_business
+        text gross_edu
+        text gross_iap
+        text gross_returns
+        text gross_sales
+        text gross_subscriptions
+        text gross_total
+        text iap
+        text returns
+        text sales
+        text store
+        text subscriptions
+        text total
+    }
+    subscription {
+        text date PK
+        text iso PK
+        text storefront PK
+        text product_id PK
+        text activations
+        text active_discounted_subscriptions
+        text active_free_trials
+        text active_grace
+        text active_subscriptions
+        text active_trials
+        text actual_revenue
+        text all_active_subscriptions
+        text all_subscribers
+        text cancellations
+        text cancelled_subscriptions
+        text churn
+        text first_year_subscribers
+        text grace_drop_off
+        text grace_recovery
+        text gross_monthly_recurring_revenu
+        text gross_revenue
+        text monthly_recurring_revenu
+        text new_grace
+        text new_subscriptions
+        text new_trial_grace
+        text new_trials
+        text non_first_year_subscribers
+        text paying_subscriptions
+        text reactivations
+        text renewals
+        text transitions_in
+        text transitions_out
+        text trial_cancellations
+        text trial_conversion_rate
+        text trial_conversions
+        text trial_grace_drop_off
+        text trial_grace_recovery
+    }
+    advertisement_spend {
+        text _fivetran_id PK
+        text iso FK
+        text product_id FK
+        text clicks
+        text cost
+        text cpa
+        text cpc
+        text ctr
+        text date
+        text impressions
+        text installs
+        text network
+        text storefront
+    }
+    languages {
+        text code PK
+        text iso FK
+        text name
+    }
+    ad_report {
+        text _fivetran_id PK
+        text iso FK
+        text product_id FK
+        text clicks
+        text ctr
+        text date
+        text ecpm
+        text fillrate
+        text impressions
+        text network
+        text requests
+        text requests_filled
+        text revenue
+        text storefront
+    }
+    store_supported_feature {
+        text supported_feature PK
+        text store_id PK
+    }
+    store_front {
+        text id PK
+        text store_id PK
+        text name
+        text short_name
+        text type
+    }
+    store_category {
+        integer category_id PK
+        text store_id PK
+    }
+    store_country {
+        text iso PK
+        text store_id PK
+    }
+    store {
+        text id PK
+        text code
+        text name
+        text short_name
+        text type
+    }
+    review {
+        text _fivetran_id PK
+        text iso FK
+        text product_id FK
+        text author
+        text date
+        boolean has_response
+        text id
+        text original_review
+        text original_title
+        jsonb predicted_langs
+        text review
+        text stars
+        text title
+        text version
+        text weight
+    }
+    user_entitlement {
+        text entitlement PK
+        text account_id PK
+        text users_id PK
+    }
+    user_product {
+        text account_id PK
+        text product_id PK
+        text users_id PK
+    }
+    users {
+        text account_id PK
+        text id PK
+        boolean account_auto_import
+        text account_company
+        boolean account_is_premium
+        text account_last_import
+        text account_name
+        text account_plan
+        text account_plan_id
+        boolean active
+        text avatar_url
+        text currency
+        text date_format
+        text email
+        boolean is_owner
+        text last_login
+        text name
+        text region
+        text role
+        text share_of_profit
+        text timezone
+    }
+    estimate {
+        text date PK
+        text storefront PK
+        text iso PK
+        text product_id PK
+        text download
+        text revenue
+    }
+    payment }o--|| country : "fk"
+    payment }o--|| product : "fk"
+    installed_sdk }o--|| product : "fk"
+    event_product }o--|| product : "fk"
+    event_product }o--|| event : "fk"
+    archive }o--|| external_account : "fk"
+    product }o--|| currency : "fk"
+    product }o--|| store : "fk"
+    product }o--|| product : "fk"
+    product }o--|| external_account : "fk"
+    external_account }o--|| users : "fk"
+    external_account }o--|| store : "fk"
+    sub_category }o--|| category : "fk"
+    category }o--|| store : "fk"
+    category }o--|| category : "fk"
+    sdk_external_link }o--|| sdk : "fk"
+    sdk_tag }o--|| sdk : "fk"
+    sdk_platform }o--|| sdk : "fk"
+    sdk_tracked_platform }o--|| sdk : "fk"
+    sale }o--|| country : "fk"
+    sale }o--|| product : "fk"
+    revenue }o--|| product : "fk"
+    subscription }o--|| product : "fk"
+    advertisement_spend }o--|| country : "fk"
+    advertisement_spend }o--|| product : "fk"
+    languages }o--|| country : "fk"
+    ad_report }o--|| country : "fk"
+    ad_report }o--|| product : "fk"
+    store_supported_feature }o--|| store : "fk"
+    store_front }o--|| store : "fk"
+    store_category }o--|| category : "fk"
+    store_category }o--|| store : "fk"
+    store_country }o--|| country : "fk"
+    store_country }o--|| store : "fk"
+    review }o--|| country : "fk"
+    review }o--|| product : "fk"
+    user_entitlement }o--|| users : "fk"
+    user_entitlement }o--|| users : "fk"
+    user_product }o--|| product : "fk"
+    user_product }o--|| users : "fk"
+    user_product }o--|| users : "fk"
+    estimate }o--|| product : "fk"
+    estimate }o--|| country : "fk"

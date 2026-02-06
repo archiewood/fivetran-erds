@@ -1,0 +1,242 @@
+erDiagram
+    location {
+        text id PK
+        text address
+        text external_id
+        text is_active
+        jsonb labels
+        text name
+    }
+    contact_survey {
+        text contact_id PK
+        text id PK
+    }
+    contact {
+        text id PK
+        text created_by FK
+        text last_survey_viewed_id FK
+        text modified_by FK
+        text android_session_counts
+        jsonb attributes
+        text average_nps
+        text bounced
+        text company_id
+        text contact_source
+        text created_date
+        text email_address
+        text external_id
+        text first_page
+        text first_referring_site
+        text first_seen
+        text first_seen_on_android
+        text first_seen_on_ios
+        text first_seen_on_web
+        text has_note
+        text history_imported_from_anonymous
+        text ios_session_counts
+        text last_email_survey_sent_datetime
+        text last_nps
+        text last_page
+        text last_referring_site
+        text last_response_date_time
+        text last_seen
+        text last_seen_on_android
+        text last_seen_on_ios
+        text last_seen_on_web
+        text last_session_active_at
+        text last_sms_survey_sent_datetime
+        text last_survey_viewed_date
+        text last_web_widget_shown
+        jsonb lists
+        jsonb locations
+        text mau_next_count_after_date
+        text mobile
+        text modified_date
+        text name
+        text num_notes
+        text num_pending_tasks
+        text num_tasks
+        text pages_viewed_count
+        text pre_mongified_id
+        text session_counts
+        text source
+        jsonb surveys_visits
+        text thirdparty_created_date
+        text thirdparty_singup_date
+        text thirdparty_updated_date
+        text total_responses
+        text unique_id
+        text unsubscribe_email
+        text unsubscribe_sms
+        text utm_campaign
+        text utm_content
+        text utm_medium
+        text utm_source
+        text utm_term
+        text web_session_counts
+    }
+    task_assigned {
+        text assigned_to PK
+        text task_id PK
+    }
+    task {
+        text id PK
+        text contact_id FK
+        text response_id FK
+        text description
+        text due_date_time
+        text is_completed
+        text name
+        text reminder_setting
+        text type_id
+        text type_name
+    }
+    device_label {
+        text index PK
+        text device_id PK
+        text label
+    }
+    device {
+        text id PK
+        text location_id FK
+        text app_status
+        text app_version
+        text charging
+        text description
+        text device_battery_level
+        text device_brand
+        text device_category
+        text device_imei
+        text device_model
+        text device_os
+        text device_os_version
+        text device_resolution
+        text device_serial_number
+        text device_time_zone
+        text friendly_name
+        text ip_address
+        text is_active
+        text is_preview_mode
+        text last_communication
+        text last_logged_user_name
+        text last_login_time
+        text name
+        text unique_id
+    }
+    survey {
+        text id PK
+        text modified_by FK
+        text workspace_id FK
+        text description
+        text is_active
+        jsonb location_id
+        text modified_date
+        text name
+        text web_survey_title
+        jsonb web_survey_url
+    }
+    workspace {
+        text id PK
+        text modified_by FK
+        text modified_date
+        text workspace_name
+    }
+    user_location {
+        text id PK
+        text user_id PK
+    }
+    users {
+        text id PK
+        text designation
+        text email
+        text external_id
+        text is_active
+        text is_owner
+        jsonb labels
+        text last_login
+        text mobile
+        text name
+        text role
+    }
+    response_attribute {
+        text value PK
+        text response_id PK
+        text variable_id
+    }
+    response_survey {
+        text question_id PK
+        text response_id PK
+        text answer
+        text question_label
+        text variable_id
+    }
+    response_tags {
+        text index PK
+        text response_id PK
+        text tags
+    }
+    response {
+        text id PK
+        text location_id FK
+        text rated_user_id FK
+        text respondent_id FK
+        text survey_id FK
+        text taken_by_user_id FK
+        text browser
+        text ces
+        text channel
+        text channel_email_opened
+        text channel_sent
+        text channel_survey_opened
+        text channel_survey_submitted
+        text channel_user_agent
+        jsonb contact_attributes
+        text csat
+        text duration
+        text geo_location
+        text has_comments
+        text has_notes
+        text has_task
+        text integration_ticket_id
+        text integration_type
+        text is_important
+        text is_starred
+        text nps
+        text os
+        text rated_user_name
+        text received_date
+        text received_date_local
+        text respondent_email_address
+        text respondent_external_id
+        text respondent_mobile
+        text respondent_name
+        text response_url
+        text survey_language
+        text task_id
+        text time_zone
+        text web_device
+    }
+    contact_survey }o--|| survey : "fk"
+    contact_survey }o--|| contact : "fk"
+    contact }o--|| users : "fk"
+    contact }o--|| survey : "fk"
+    contact }o--|| users : "fk"
+    task_assigned }o--|| users : "fk"
+    task_assigned }o--|| task : "fk"
+    task }o--|| response : "fk"
+    task }o--|| contact : "fk"
+    device_label }o--|| device : "fk"
+    device }o--|| location : "fk"
+    survey }o--|| workspace : "fk"
+    survey }o--|| users : "fk"
+    workspace }o--|| users : "fk"
+    user_location }o--|| location : "fk"
+    user_location }o--|| users : "fk"
+    response_attribute }o--|| response : "fk"
+    response_survey }o--|| response : "fk"
+    response_tags }o--|| response : "fk"
+    response }o--|| users : "fk"
+    response }o--|| users : "fk"
+    response }o--|| users : "fk"
+    response }o--|| location : "fk"
+    response }o--|| survey : "fk"

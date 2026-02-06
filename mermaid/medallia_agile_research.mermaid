@@ -1,0 +1,364 @@
+erDiagram
+    lookup_survey_language {
+        text id PK
+        text name
+    }
+    lookup_distribution {
+        text id PK
+        text name
+    }
+    survey_responserate {
+        text panelist_status_id PK
+        text survey_id PK
+        text groups
+        text panelist_count
+    }
+    lookup_state {
+        text id PK
+        text name
+    }
+    survey_respondent_response_tag {
+        text index PK
+        text survey_id PK
+        text survey_respondent_id PK
+        text survey_respondent_response_index PK
+        text salience_score
+        text sentiment_score
+        text tag_id
+        text tagged_by_text_mining
+    }
+    survey_respondent_response {
+        text index PK
+        text survey_id PK
+        text survey_respondent_id PK
+        text question_id FK
+        text response_id FK
+        text data_label
+        text response_caption
+        text scale_value
+        text score
+        text value
+    }
+    survey_respondent {
+        text id PK
+        text survey_id PK
+        text browser_id FK
+        text contact_id FK
+        text contact_status_id FK
+        text distribution_method_id FK
+        text location_country_id FK
+        text os_id FK
+        text respondent_status_id FK
+        text completion_time
+        timestamp date_responded
+        text edit_url
+        text ip_address
+        text is_mobile
+        text language_code
+        text location_city
+        text location_latitude
+        text location_longitude
+        text report_url
+        text respondent_hash
+        text respondent_report_url
+        text response_date
+        text score
+    }
+    contact_group {
+        text id PK
+        text contact_id PK
+        text name
+    }
+    contact {
+        text id PK
+        text country_id FK
+        text state FK
+        text city
+        text date_of_birth
+        text email
+        text first_name
+        text gender
+        text house_number
+        text is_bounced
+        text is_opted_out
+        text lang_code
+        text last_name
+        text phone
+        text postal_code
+        text province
+        text street
+        text suite
+    }
+    lookup_data_type {
+        text id PK
+        text name
+    }
+    survey_contact {
+        text contact_id PK
+        text survey_id PK
+        text contact_status_id FK
+        text optout_source_id FK
+        text panelist_status_id FK
+        text date_added
+        text date_clicked_through
+        text date_invited
+        timestamp date_last_modified
+        text date_reminded
+        text date_reminded_partial
+        text date_responded
+        text date_saw_mail
+        text date_second_reminder
+        text date_sent_thank_you_mail
+        text date_to_be_invited
+        text date_to_expire
+        text live_url
+        text mail_preview_url
+        text password
+        text preview_url
+        text report_url
+    }
+    lookup_os {
+        text id PK
+        text name
+    }
+    lookup_question_type {
+        text id PK
+        text name
+    }
+    lookup_scale_type {
+        text id PK
+        text name
+    }
+    lookup_contact_status {
+        text id PK
+        text name
+    }
+    contact_optout {
+        text _fivetran_id PK
+        text contact_id FK
+        text country_id FK
+        text optout_source_id FK
+        timestamp date_opt_out
+        text survey_participation
+    }
+    import_config_column_mapping {
+        text _fivetran_id PK
+        text import_config_id FK
+        text source_column_number
+        text target_column_name
+    }
+    import_config {
+        text id PK
+        text contact_group_id FK
+        text contact_id FK
+        text survey_id FK
+        text update_type_id FK
+        text back_office_user_id
+        text date_format
+        text default_language_code
+        text email_is_required
+        text email_must_be_unique_within_account
+        text email_must_be_unique_within_file
+        text email_must_be_unique_within_group
+        text field_delimiter
+        text first_row
+        text is_custom
+        text is_reusable
+        text name
+        text row_delimiter
+        text send_answer_notification
+        text send_notification_mail
+        text survey_setting_account_cooldown_after_invitation
+        text survey_setting_account_cooldown_after_response
+        text survey_setting_consider_cooldown_period
+        text survey_setting_expiration_after_days
+        text survey_setting_expiration_time
+        text survey_setting_invitation_delay_in_days
+        text survey_setting_invitation_time
+        text survey_setting_survey_cooldown_after_invitation
+        text survey_setting_survey_cooldown_after_response
+        text user_id
+    }
+    lookup_import_config_update_type {
+        text id PK
+        text name
+    }
+    survey_question_sub_question_response {
+        text id PK
+        text survey_id PK
+        text survey_question_id PK
+        text survey_question_sub_question_id PK
+        text caption
+        text hidden
+        text not_applicable
+        text orders
+        text other
+        text scale_value
+        text value
+    }
+    survey_question_sub_question {
+        text id PK
+        text survey_id PK
+        text survey_question_id PK
+        text data_type_id FK
+        text parent_question_id FK
+        text question_type_id FK
+        text scale_type_id FK
+        text caption
+        text data_label
+        text hidden
+        text languages
+        text max_value
+        text min_value
+        text order_number
+        text page_number
+        text question_number
+        text required
+        text use_sentiment_score
+    }
+    survey_question_response {
+        text id PK
+        text survey_id PK
+        text survey_question_id PK
+        text caption
+        text hidden
+        text not_applicable
+        text orders
+        text other
+        text scale_value
+        text value
+    }
+    survey_question {
+        text id PK
+        text survey_id PK
+        text data_type_id FK
+        text parent_question_id FK
+        text question_type_id FK
+        text scale_type_id FK
+        text caption
+        text data_label
+        text hidden
+        text languages
+        text max_value
+        text min_value
+        text order_number
+        text page_number
+        text question_number
+        text required
+        text use_sentiment_score
+    }
+    lookup_browser {
+        text id PK
+        text name
+    }
+    lookup_respondent_status {
+        text id PK
+        text name
+    }
+    lookup_optout_source {
+        text id PK
+        text name
+    }
+    lookup_country {
+        text id PK
+        text name
+    }
+    survey_language {
+        text languages PK
+        text survey_id PK
+    }
+    survey_respondent_visibility {
+        text _fivetran_id PK
+        text survey_id FK
+        text show_contact_id
+        text show_email
+        text show_firstname
+        text show_lastname
+        text show_panelist_status
+    }
+    survey {
+        text id PK
+        text survey_status_id FK
+        text allow_editing_responses
+        text allow_multiple_submissions
+        text anonymous_panel
+        text client_ref
+        text cooldown_in_days_after_invitation
+        text cooldown_in_days_after_response
+        text create_date
+        text created_by
+        text default_lang
+        text end_date
+        text is_trial
+        timestamp last_modify_date
+        text maximum_completes
+        text maximum_respondents
+        text score_max
+        text show_question_numbering
+        text start_date
+        text survey_folder_id
+        text title
+        text via_email_is_active
+        text via_kiosk_is_active
+        text via_panel_provider_is_active
+        text via_paper_is_active
+        text via_sms_is_active
+        text via_telephone_is_active
+        text via_web_is_active
+    }
+    lookup_survey_status {
+        text id PK
+        text name
+    }
+    survey_responserate }o--|| survey : "fk"
+    survey_respondent_response_tag }o--|| survey_respondent_response : "fk"
+    survey_respondent_response_tag }o--|| survey_respondent_response : "fk"
+    survey_respondent_response_tag }o--|| survey_respondent_response : "fk"
+    survey_respondent_response }o--|| survey_question : "fk"
+    survey_respondent_response }o--|| survey_question_response : "fk"
+    survey_respondent_response }o--|| survey_respondent : "fk"
+    survey_respondent_response }o--|| survey_respondent : "fk"
+    survey_respondent }o--|| lookup_browser : "fk"
+    survey_respondent }o--|| lookup_country : "fk"
+    survey_respondent }o--|| lookup_contact_status : "fk"
+    survey_respondent }o--|| lookup_respondent_status : "fk"
+    survey_respondent }o--|| contact : "fk"
+    survey_respondent }o--|| lookup_os : "fk"
+    survey_respondent }o--|| lookup_distribution : "fk"
+    survey_respondent }o--|| survey : "fk"
+    contact_group }o--|| contact : "fk"
+    contact }o--|| lookup_state : "fk"
+    contact }o--|| lookup_country : "fk"
+    survey_contact }o--|| survey_responserate : "fk"
+    survey_contact }o--|| lookup_optout_source : "fk"
+    survey_contact }o--|| lookup_contact_status : "fk"
+    survey_contact }o--|| contact : "fk"
+    survey_contact }o--|| survey : "fk"
+    contact_optout }o--|| contact : "fk"
+    contact_optout }o--|| lookup_optout_source : "fk"
+    contact_optout }o--|| lookup_country : "fk"
+    import_config_column_mapping }o--|| import_config : "fk"
+    import_config }o--|| contact_group : "fk"
+    import_config }o--|| lookup_import_config_update_type : "fk"
+    import_config }o--|| survey : "fk"
+    import_config }o--|| contact : "fk"
+    survey_question_sub_question_response }o--|| survey_question_sub_question : "fk"
+    survey_question_sub_question_response }o--|| survey_question_sub_question : "fk"
+    survey_question_sub_question_response }o--|| survey_question_sub_question : "fk"
+    survey_question_sub_question }o--|| lookup_data_type : "fk"
+    survey_question_sub_question }o--|| survey_question : "fk"
+    survey_question_sub_question }o--|| lookup_question_type : "fk"
+    survey_question_sub_question }o--|| lookup_scale_type : "fk"
+    survey_question_sub_question }o--|| survey_question : "fk"
+    survey_question_sub_question }o--|| survey_question : "fk"
+    survey_question_response }o--|| survey_question : "fk"
+    survey_question_response }o--|| survey_question : "fk"
+    survey_question }o--|| lookup_data_type : "fk"
+    survey_question }o--|| survey_question : "fk"
+    survey_question }o--|| lookup_question_type : "fk"
+    survey_question }o--|| lookup_scale_type : "fk"
+    survey_question }o--|| survey : "fk"
+    survey_language }o--|| lookup_survey_language : "fk"
+    survey_language }o--|| survey : "fk"
+    survey_respondent_visibility }o--|| survey : "fk"
+    survey }o--|| lookup_survey_status : "fk"

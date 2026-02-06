@@ -1,0 +1,1046 @@
+erDiagram
+    customer_shared_phone {
+        integer index PK
+        text customer_id PK
+        text phone
+        text type
+        boolean verified
+    }
+    business_schedule {
+        text id PK
+        text created_by FK
+        text modified_by FK
+        timestamp created_at
+        boolean default
+        timestamp modified_at
+        text name
+        text org_id
+        text timezone
+        timestamp updated_at
+    }
+    message_created_by_team {
+        text message_id PK
+        text team_id PK
+    }
+    work_session {
+        text id PK
+        text created_by FK
+        text modified_by FK
+        text queue_id FK
+        text team_id FK
+        text user_id FK
+        bigint capacity_remaining
+        text capacity_status
+        boolean changed_team
+        timestamp created_at
+        bigint handled_conversation_count
+        bigint handled_item_count
+        boolean has_pending_item
+        boolean has_skills
+        timestamp idle_since
+        timestamp last_assigned_item_at
+        timestamp modified_at
+        text org_id
+        bigint paused_work_item_count
+        integer rev
+        boolean routable
+        timestamp signed_in_at
+        timestamp signed_out_at
+        text status_type
+        text subsystem
+        bigint total_available_at_capacity_business_time
+        timestamp total_available_at_capacity_status_at
+        bigint total_available_at_capacity_time
+        bigint total_available_business_time
+        timestamp total_available_status_at
+        bigint total_available_time
+        bigint total_capacity
+        bigint total_unavailable_at_capacity_business_time
+        timestamp total_unavailable_at_capacity_status_at
+        bigint total_unavailable_at_capacity_time
+        bigint total_unavailable_business_time
+        bigint total_unavailable_idle_capacity_business_time
+        timestamp total_unavailable_idle_capacity_status_at
+        bigint total_unavailable_idle_capacity_time
+        timestamp total_unavailable_status_at
+        bigint total_unavailable_time
+        timestamp updated_at
+        text user_name_keyword
+        bigint work_item_count
+    }
+    customer_watcher {
+        text customer_id PK
+        text user_id PK
+    }
+    team_queue {
+        text queue_id PK
+        text team_id PK
+    }
+    company_email {
+        integer index PK
+        text company_id PK
+        text email
+        text type
+        boolean verified
+    }
+    company_location {
+        integer index PK
+        text company_id PK
+        text address
+        text address_2
+        text address_3
+        text area_code
+        text city_name
+        text country_code
+        text country_name
+        double_precision latitude
+        double_precision longitude
+        text name
+        text region_code
+        text region_name
+        text type
+        text zip_code
+    }
+    custom_attribute_metadata {
+        text id PK
+        text resource PK
+    }
+    conversation_history {
+        text id PK
+        text assistant_id FK
+        text brand_id FK
+        text created_by FK
+        text customer_id FK
+        text deleted_by FK
+        text ended_by FK
+        text first_company_id FK
+        text first_message_in_id FK
+        text last_message_in_message_id FK
+        text last_message_out_message_id FK
+        text modified_by FK
+        text queue_id FK
+        text sla_id FK
+        boolean assistant_emulation
+        text assistant_status
+        timestamp assistant_transferred_at
+        text assistant_type
+        timestamp created_at
+        text default_lang
+        boolean deleted
+        timestamp deleted_at
+        text direction
+        boolean ended
+        text ended_at
+        text ended_reason
+        text external_id
+        text first_company_name
+        jsonb first_done
+        text first_message_in_channel
+        timestamp first_message_in_created_at
+        text first_message_in_meta_recipient_email
+        text first_message_in_meta_recipient_mailbox_hash
+        text first_message_in_meta_to
+        timestamp first_message_in_sent_at
+        timestamp first_response_created_at
+        text first_response_created_by
+        text first_response_id
+        bigint first_response_response_time
+        timestamp first_response_sent_at
+        bigint first_response_time
+        timestamp last_activity_at
+        jsonb last_done
+        timestamp last_message_at
+        text last_message_direction
+        timestamp last_message_in_created_at
+        timestamp last_message_in_sent_at
+        timestamp last_message_out_created_at
+        timestamp last_message_out_sent_at
+        integer message_count
+        timestamp modified_at
+        text name
+        integer note_count
+        timestamp open_status_at
+        text org_id
+        integer outbound_message_count
+        integer priority
+        integer reopen_count
+        integer satisfaction
+        text satisfaction_level_channel
+        timestamp satisfaction_level_created_at
+        text satisfaction_level_first_answer
+        text satisfaction_level_form
+        text satisfaction_level_form_response
+        integer satisfaction_level_rating
+        timestamp satisfaction_level_scheduled_for
+        integer satisfaction_level_score
+        timestamp satisfaction_level_sent_at
+        text satisfaction_level_sent_by
+        jsonb satisfaction_level_sent_by_teams
+        text satisfaction_level_status
+        timestamp satisfaction_level_updated_at
+        double_precision sentiment_confidence
+        double_precision sentiment_polarity
+        timestamp sla_breach_at
+        text sla_breach_metric
+        boolean sla_breached
+        timestamp sla_matched_at
+        timestamp sla_metrics_first_response_breach_at
+        timestamp sla_metrics_longest_unresponded_message_breach_at
+        timestamp sla_metrics_total_conversation_open_time_breach_at
+        timestamp sla_metrics_total_customer_wait_time_breach_at
+        text sla_name
+        text sla_status
+        timestamp sla_summary_first_breach_at
+        integer sla_version
+        text sla_version_id
+        integer snooze_count
+        text snooze_status
+        timestamp snooze_status_at
+        timestamp snooze_time
+        boolean spam
+        text status
+        timestamp updated_at
+    }
+    queue {
+        text id PK
+        text created_by FK
+        text modified_by FK
+        timestamp created_at
+        text description
+        text display_name
+        integer item_size
+        text name
+        text org_id
+        integer priority
+        boolean restrict_transfers_by_users
+        boolean system
+        timestamp updated_at
+    }
+    customer_email {
+        integer index PK
+        text customer_id PK
+        text email
+        text type
+        boolean verified
+    }
+    notification {
+        text id PK
+        text user_id FK
+        timestamp created_at
+        text name
+        text org_id
+        text status
+        timestamp updated_at
+    }
+    sla_criteria {
+        text _fivetran_id PK
+        text sla_id FK
+        text sla_version_id FK
+        text field
+        text field_type
+        text match_type
+        text operator
+        text value
+    }
+    conversation_assigned_team_history {
+        text conversation_id PK
+        text team_id PK
+    }
+    conversation_time_channel {
+        text channel PK
+        text conversation_id PK
+        text conversation_time_id PK
+    }
+    conversation_assigned_team {
+        text conversation_id PK
+        text team_id PK
+    }
+    brand {
+        text id PK
+        text created_by FK
+        text modified_by FK
+        timestamp created_at
+        timestamp modified_at
+        text name
+        text org_id
+        timestamp updated_at
+    }
+    shortcut_assigned_team {
+        text shortcut_id PK
+        text team_id PK
+    }
+    customer_url {
+        integer index PK
+        text customer_id PK
+        text type
+        text url
+    }
+    customer_location {
+        integer index PK
+        text customer_id PK
+        text address
+        text address_2
+        text address_3
+        text area_code
+        text city_name
+        text country_code
+        text country_name
+        double_precision latitude
+        double_precision longitude
+        text name
+        text region_code
+        text region_name
+        text type
+        text zip_code
+    }
+    business_holiday {
+        text id PK
+        text business_schedule_id PK
+        text created_by FK
+        text modified_by FK
+        timestamp created_at
+        text description
+        boolean enabled
+        timestamp end_date
+        timestamp modified_at
+        text name
+        text org_id
+        timestamp start_date
+        timestamp updated_at
+    }
+    message_assigned_team {
+        text message_id PK
+        text team_id PK
+    }
+    company_tag {
+        text company_id PK
+        text tag_id PK
+    }
+    sla_version {
+        text id PK
+        text sla_id PK
+        text created_by FK
+        timestamp created_at
+        text description
+        text hours
+        text name
+        text org_id
+        integer version
+    }
+    sla {
+        text id PK
+        text created_by FK
+        timestamp created_at
+        integer current_version
+        text org_id
+    }
+    conversation_assigned_user {
+        text conversation_id PK
+        text user_id PK
+    }
+    conversation_time_created_by_team {
+        text conversation_id PK
+        text conversation_time_id PK
+        text team_id PK
+    }
+    user_role {
+        integer index PK
+        text user_id PK
+        text name
+    }
+    business_schedule_hour {
+        text day PK
+        integer index PK
+        text business_schedule_id PK
+        integer end_time
+        integer start_time
+    }
+    company {
+        text id PK
+        text created_by FK
+        text modified_by FK
+        timestamp created_at
+        text external_id
+        timestamp modified_at
+        text name
+        text org_id
+        timestamp updated_at
+    }
+    snooze {
+        text id PK
+        text created_by FK
+        text modified_by FK
+        timestamp created_at
+        boolean enabled
+        text name
+        text org_id
+        text time_day_type
+        text time_day_value
+        integer time_relative
+        text time_value
+        timestamp updated_at
+    }
+    message_assigned_user {
+        text message_id PK
+        text user_id PK
+    }
+    team {
+        text id PK
+        text created_by FK
+        text deleted_by FK
+        text modified_by FK
+        timestamp created_at
+        boolean deleted
+        timestamp deleted_at
+        text display_name
+        timestamp modified_at
+        text name
+        text org_id
+        timestamp updated_at
+    }
+    tag {
+        text id PK
+        text created_by FK
+        text deleted_by FK
+        text modified_by FK
+        text color
+        timestamp created_at
+        boolean deleted
+        timestamp deleted_at
+        timestamp modified_at
+        text name
+        text org_id
+        timestamp updated_at
+    }
+    assistant {
+        text id PK
+        text created_by FK
+        text modified_by FK
+        text avatar_url
+        text channel
+        timestamp created_at
+        text description
+        timestamp modified_at
+        text name
+        text org_id
+        text public_id
+        text public_name
+        text start
+        text status
+        text template
+        text type
+        timestamp updated_at
+        bigint version
+    }
+    customer_social {
+        integer index PK
+        text customer_id PK
+        text type
+        text url
+        text userid
+        text username
+        boolean verified
+    }
+    customer_shared_whatsapp {
+        integer index PK
+        text customer_id PK
+        text phone
+        text type
+        boolean verified
+    }
+    conversation_suggested_tag {
+        text conversation_id PK
+        text tag_id PK
+    }
+    message_shortcut {
+        text message_id PK
+        text shortcut_id PK
+    }
+    user {
+        text id PK
+        text created_by FK
+        text modified_by FK
+        timestamp created_at
+        boolean deleted
+        timestamp deleted_at
+        text display_name
+        text email
+        text email_signature
+        text mobile
+        timestamp modified_at
+        text name
+        text org_id
+        timestamp updated_at
+        text user_type
+    }
+    card_context {
+        integer index PK
+        text card_id PK
+        text name
+    }
+    work_session_channel {
+        text _fivetran_id PK
+        text work_session_id PK
+        bigint capacity_max
+        bigint capacity_remaining
+        text name
+    }
+    customer_phone {
+        integer index PK
+        text customer_id PK
+        text phone
+        text type
+        boolean verified
+    }
+    conversation_time {
+        text id PK
+        text conversation_id PK
+        text created_by FK
+        text customer_id FK
+        timestamp created_at
+        text handle_at
+        text handle_pause_at
+        text handle_pause_by
+        text handle_time
+        text message_at
+        text message_time
+        text note_at
+        text note_time
+        text org_id
+    }
+    customer_shared_external_link {
+        integer index PK
+        text customer_id PK
+        text external_id
+        boolean verified
+    }
+    customer_tag {
+        text customer_id PK
+        text tag_id PK
+    }
+    customer_shared_email {
+        integer index PK
+        text customer_id PK
+        text email
+        text type
+        boolean verified
+    }
+    conversation_tag {
+        text conversation_id PK
+        text tag_id PK
+    }
+    customer_external_link {
+        integer index PK
+        text customer_id PK
+        text external_id
+        boolean verified
+    }
+    note_user_mention {
+        text note_id PK
+        text user_id PK
+    }
+    message {
+        text id PK
+        text conversation_id FK
+        text created_by FK
+        text customer_id FK
+        text first_company_id FK
+        text modified_by FK
+        text redacted_by FK
+        text app
+        boolean auto
+        text channel
+        timestamp created_at
+        text direction
+        text direction_type
+        text external_id
+        text first_company_name
+        text first_delivered_client_type
+        text first_delivered_timestamp
+        timestamp modified_at
+        text org_id
+        text preview
+        boolean redacted
+        timestamp redacted_at
+        timestamp sent_at
+        integer size
+        text source
+        text status
+        text subject
+        timestamp updated_at
+    }
+    kobject {
+        text id PK
+        text customer_id FK
+        timestamp created_at
+        text external_id
+        text name
+        text org_id
+        text title
+        timestamp updated_at
+    }
+    assistant_dialog_node {
+        text id PK
+        text assistant_dialog_id PK
+        text assistant_id PK
+        text type
+    }
+    conversation_channel {
+        integer index PK
+        text conversation_id PK
+        text name
+    }
+    customer_shared_social {
+        integer index PK
+        text customer_id PK
+        text type
+        text url
+        text userid
+        text username
+        boolean verified
+    }
+    shortcut_assigned_user {
+        text shortcut_id PK
+        text user_id PK
+    }
+    conversation_suggested_tag_history {
+        text conversation_id PK
+        text tag_id PK
+    }
+    shortcut {
+        text id PK
+        text created_by FK
+        text deleted_by FK
+        text modified_by FK
+        text conversation_name
+        text conversation_snooze_id
+        text conversation_status
+        timestamp created_at
+        boolean deleted
+        timestamp deleted_at
+        boolean is_private
+        timestamp modified_at
+        text name
+        text org_id
+        timestamp updated_at
+    }
+    conversation_tag_history {
+        text conversation_id PK
+        text tag_id PK
+    }
+    conversation {
+        text id PK
+        text assistant_id FK
+        text brand_id FK
+        text created_by FK
+        text customer_id FK
+        text deleted_by FK
+        text ended_by FK
+        text first_company_id FK
+        text first_message_in_id FK
+        text last_message_in_message_id FK
+        text last_message_out_message_id FK
+        text modified_by FK
+        text queue_id FK
+        text sla_id FK
+        boolean assistant_emulation
+        text assistant_status
+        timestamp assistant_transferred_at
+        text assistant_type
+        timestamp created_at
+        text default_lang
+        boolean deleted
+        timestamp deleted_at
+        text direction
+        boolean ended
+        text ended_at
+        text ended_reason
+        text external_id
+        text first_company_name
+        jsonb first_done
+        text first_message_in_channel
+        timestamp first_message_in_created_at
+        text first_message_in_meta_recipient_email
+        text first_message_in_meta_recipient_mailbox_hash
+        text first_message_in_meta_to
+        timestamp first_message_in_sent_at
+        timestamp first_response_created_at
+        text first_response_created_by
+        text first_response_id
+        bigint first_response_response_time
+        timestamp first_response_sent_at
+        bigint first_response_time
+        timestamp last_activity_at
+        jsonb last_done
+        timestamp last_message_at
+        text last_message_direction
+        timestamp last_message_in_created_at
+        timestamp last_message_in_sent_at
+        timestamp last_message_out_created_at
+        timestamp last_message_out_sent_at
+        integer message_count
+        timestamp modified_at
+        text name
+        integer note_count
+        timestamp open_status_at
+        text org_id
+        integer outbound_message_count
+        integer priority
+        integer reopen_count
+        integer satisfaction
+        text satisfaction_level_channel
+        timestamp satisfaction_level_created_at
+        text satisfaction_level_first_answer
+        text satisfaction_level_form
+        text satisfaction_level_form_response
+        integer satisfaction_level_rating
+        timestamp satisfaction_level_scheduled_for
+        integer satisfaction_level_score
+        timestamp satisfaction_level_sent_at
+        text satisfaction_level_sent_by
+        jsonb satisfaction_level_sent_by_teams
+        text satisfaction_level_status
+        timestamp satisfaction_level_updated_at
+        double_precision sentiment_confidence
+        double_precision sentiment_polarity
+        timestamp sla_breach_at
+        text sla_breach_metric
+        boolean sla_breached
+        timestamp sla_matched_at
+        timestamp sla_metrics_first_response_breach_at
+        timestamp sla_metrics_longest_unresponded_message_breach_at
+        timestamp sla_metrics_total_conversation_open_time_breach_at
+        timestamp sla_metrics_total_customer_wait_time_breach_at
+        text sla_name
+        text sla_status
+        timestamp sla_summary_first_breach_at
+        integer sla_version
+        text sla_version_id
+        integer snooze_count
+        text snooze_status
+        timestamp snooze_status_at
+        timestamp snooze_time
+        boolean spam
+        text status
+        timestamp updated_at
+    }
+    customer {
+        text id PK
+        text company_id FK
+        text created_by FK
+        text deleted_by FK
+        text last_conversation_id FK
+        text modified_by FK
+        integer conversation_counts_all
+        integer conversation_counts_done
+        integer conversation_counts_open
+        integer conversation_counts_snoozed
+        timestamp created_at
+        text default_lang
+        boolean deleted
+        timestamp deleted_at
+        text display_name
+        text external_id
+        text first_name
+        timestamp last_activity_at
+        timestamp last_message_at
+        timestamp last_message_out_sent_at
+        text last_name
+        timestamp modified_at
+        text name
+        text org_id
+        text progressive_status
+        double_precision sentiment_confidence
+        double_precision sentiment_polarity
+        timestamp updated_at
+        boolean verified
+    }
+    note_team_mention {
+        text note_id PK
+        text team_id PK
+    }
+    customer_last_conversation_tag {
+        text customer_id PK
+        text tag_id PK
+    }
+    sla_metric {
+        text _fivetran_id PK
+        text sla_id FK
+        text sla_version_id FK
+        bigint commitment
+        boolean enabled
+        text name
+        integer priority
+    }
+    company_social {
+        integer index PK
+        text company_id PK
+        text type
+        text url
+        text userid
+        text username
+        boolean verified
+    }
+    conversation_assigned_user_history {
+        text conversation_id PK
+        text user_id PK
+    }
+    team_member {
+        text team_id PK
+        text user_id PK
+    }
+    company_phone {
+        integer index PK
+        text company_id PK
+        text phone
+        text type
+        boolean verified
+    }
+    conversation_channel_history {
+        text name PK
+        text conversation_id PK
+    }
+    note {
+        text id PK
+        text conversation_id FK
+        text created_by FK
+        text customer_id FK
+        text deleted_by FK
+        text modified_by FK
+        text body
+        timestamp created_at
+        boolean deleted
+        timestamp deleted_at
+        text external_id
+        timestamp modified_at
+        text org_id
+        timestamp updated_at
+    }
+    customer_active_user {
+        text customer_id PK
+        text user_id PK
+    }
+    customer_whatsapp {
+        integer index PK
+        text customer_id PK
+        text phone
+        text type
+        boolean verified
+    }
+    shortcut_tag {
+        text shortcut_id PK
+        text tag_id PK
+    }
+    kobject_tag {
+        text kobject_id PK
+        text tag_id PK
+    }
+    card {
+        text id PK
+        text app_id
+        timestamp created_at
+        text description
+        timestamp modified_at
+        text name
+        text org_id
+        timestamp updated_at
+        text url
+    }
+    work_session_capacity {
+        text _fivetran_id PK
+        text work_session_id PK
+        bigint capacity_limit
+        bigint priority
+        bigint remaining
+    }
+    assistant_dialog {
+        text id PK
+        text assistant_id PK
+        text name
+    }
+    message_attachment {
+        text id PK
+        text message_id FK
+        integer content_length
+        text content_type
+        text name
+        text org_id
+        boolean redacted
+        text related
+        text self
+    }
+    company_url {
+        integer index PK
+        text company_id PK
+        text type
+        text url
+    }
+    customer_shared_phone }o--|| customer : "fk"
+    business_schedule }o--|| user : "fk"
+    business_schedule }o--|| user : "fk"
+    message_created_by_team }o--|| message : "fk"
+    message_created_by_team }o--|| team : "fk"
+    work_session }o--|| user : "fk"
+    work_session }o--|| user : "fk"
+    work_session }o--|| user : "fk"
+    work_session }o--|| queue : "fk"
+    work_session }o--|| team : "fk"
+    customer_watcher }o--|| customer : "fk"
+    customer_watcher }o--|| user : "fk"
+    team_queue }o--|| team : "fk"
+    team_queue }o--|| queue : "fk"
+    company_email }o--|| company : "fk"
+    company_location }o--|| company : "fk"
+    conversation_history }o--|| message : "fk"
+    conversation_history }o--|| message : "fk"
+    conversation_history }o--|| message : "fk"
+    conversation_history }o--|| company : "fk"
+    conversation_history }o--|| assistant : "fk"
+    conversation_history }o--|| user : "fk"
+    conversation_history }o--|| user : "fk"
+    conversation_history }o--|| customer : "fk"
+    conversation_history }o--|| user : "fk"
+    conversation_history }o--|| user : "fk"
+    conversation_history }o--|| queue : "fk"
+    conversation_history }o--|| sla : "fk"
+    conversation_history }o--|| brand : "fk"
+    queue }o--|| user : "fk"
+    queue }o--|| user : "fk"
+    customer_email }o--|| customer : "fk"
+    notification }o--|| user : "fk"
+    sla_criteria }o--|| sla : "fk"
+    sla_criteria }o--|| sla_version : "fk"
+    conversation_assigned_team_history }o--|| conversation : "fk"
+    conversation_assigned_team_history }o--|| team : "fk"
+    conversation_time_channel }o--|| conversation : "fk"
+    conversation_time_channel }o--|| conversation_time : "fk"
+    conversation_time_channel }o--|| conversation_channel_history : "fk"
+    conversation_assigned_team }o--|| conversation : "fk"
+    conversation_assigned_team }o--|| team : "fk"
+    brand }o--|| user : "fk"
+    brand }o--|| user : "fk"
+    shortcut_assigned_team }o--|| shortcut : "fk"
+    shortcut_assigned_team }o--|| team : "fk"
+    customer_url }o--|| customer : "fk"
+    customer_location }o--|| customer : "fk"
+    business_holiday }o--|| user : "fk"
+    business_holiday }o--|| user : "fk"
+    business_holiday }o--|| business_schedule : "fk"
+    message_assigned_team }o--|| message : "fk"
+    message_assigned_team }o--|| team : "fk"
+    company_tag }o--|| company : "fk"
+    company_tag }o--|| tag : "fk"
+    sla_version }o--|| sla : "fk"
+    sla_version }o--|| user : "fk"
+    sla }o--|| user : "fk"
+    conversation_assigned_user }o--|| conversation : "fk"
+    conversation_assigned_user }o--|| user : "fk"
+    conversation_time_created_by_team }o--|| conversation : "fk"
+    conversation_time_created_by_team }o--|| conversation_time : "fk"
+    conversation_time_created_by_team }o--|| team : "fk"
+    user_role }o--|| user : "fk"
+    business_schedule_hour }o--|| business_schedule : "fk"
+    company }o--|| user : "fk"
+    company }o--|| user : "fk"
+    snooze }o--|| user : "fk"
+    snooze }o--|| user : "fk"
+    message_assigned_user }o--|| message : "fk"
+    message_assigned_user }o--|| user : "fk"
+    team }o--|| user : "fk"
+    team }o--|| user : "fk"
+    team }o--|| user : "fk"
+    tag }o--|| user : "fk"
+    tag }o--|| user : "fk"
+    tag }o--|| user : "fk"
+    assistant }o--|| user : "fk"
+    assistant }o--|| user : "fk"
+    customer_social }o--|| customer : "fk"
+    customer_shared_whatsapp }o--|| customer : "fk"
+    conversation_suggested_tag }o--|| conversation : "fk"
+    conversation_suggested_tag }o--|| tag : "fk"
+    message_shortcut }o--|| message : "fk"
+    message_shortcut }o--|| shortcut : "fk"
+    user }o--|| user : "fk"
+    user }o--|| user : "fk"
+    card_context }o--|| card : "fk"
+    work_session_channel }o--|| work_session : "fk"
+    customer_phone }o--|| customer : "fk"
+    conversation_time }o--|| conversation : "fk"
+    conversation_time }o--|| user : "fk"
+    conversation_time }o--|| customer : "fk"
+    customer_shared_external_link }o--|| customer : "fk"
+    customer_tag }o--|| customer : "fk"
+    customer_tag }o--|| tag : "fk"
+    customer_shared_email }o--|| customer : "fk"
+    conversation_tag }o--|| conversation : "fk"
+    conversation_tag }o--|| tag : "fk"
+    customer_external_link }o--|| customer : "fk"
+    note_user_mention }o--|| note : "fk"
+    note_user_mention }o--|| user : "fk"
+    message }o--|| company : "fk"
+    message }o--|| user : "fk"
+    message }o--|| user : "fk"
+    message }o--|| customer : "fk"
+    message }o--|| user : "fk"
+    message }o--|| conversation : "fk"
+    kobject }o--|| customer : "fk"
+    assistant_dialog_node }o--|| assistant : "fk"
+    assistant_dialog_node }o--|| assistant_dialog : "fk"
+    conversation_channel }o--|| conversation : "fk"
+    customer_shared_social }o--|| customer : "fk"
+    shortcut_assigned_user }o--|| shortcut : "fk"
+    shortcut_assigned_user }o--|| user : "fk"
+    conversation_suggested_tag_history }o--|| conversation : "fk"
+    conversation_suggested_tag_history }o--|| tag : "fk"
+    shortcut }o--|| user : "fk"
+    shortcut }o--|| user : "fk"
+    shortcut }o--|| user : "fk"
+    conversation_tag_history }o--|| conversation : "fk"
+    conversation_tag_history }o--|| tag : "fk"
+    conversation }o--|| message : "fk"
+    conversation }o--|| message : "fk"
+    conversation }o--|| message : "fk"
+    conversation }o--|| company : "fk"
+    conversation }o--|| assistant : "fk"
+    conversation }o--|| user : "fk"
+    conversation }o--|| user : "fk"
+    conversation }o--|| customer : "fk"
+    conversation }o--|| user : "fk"
+    conversation }o--|| user : "fk"
+    conversation }o--|| queue : "fk"
+    conversation }o--|| sla : "fk"
+    conversation }o--|| brand : "fk"
+    customer }o--|| conversation : "fk"
+    customer }o--|| user : "fk"
+    customer }o--|| user : "fk"
+    customer }o--|| company : "fk"
+    customer }o--|| user : "fk"
+    note_team_mention }o--|| note : "fk"
+    note_team_mention }o--|| team : "fk"
+    customer_last_conversation_tag }o--|| customer : "fk"
+    customer_last_conversation_tag }o--|| tag : "fk"
+    sla_metric }o--|| sla : "fk"
+    sla_metric }o--|| sla_version : "fk"
+    company_social }o--|| company : "fk"
+    conversation_assigned_user_history }o--|| conversation : "fk"
+    conversation_assigned_user_history }o--|| user : "fk"
+    team_member }o--|| team : "fk"
+    team_member }o--|| user : "fk"
+    company_phone }o--|| company : "fk"
+    conversation_channel_history }o--|| conversation : "fk"
+    note }o--|| user : "fk"
+    note }o--|| user : "fk"
+    note }o--|| customer : "fk"
+    note }o--|| user : "fk"
+    note }o--|| conversation : "fk"
+    customer_active_user }o--|| customer : "fk"
+    customer_active_user }o--|| user : "fk"
+    customer_whatsapp }o--|| customer : "fk"
+    shortcut_tag }o--|| shortcut : "fk"
+    shortcut_tag }o--|| tag : "fk"
+    kobject_tag }o--|| kobject : "fk"
+    kobject_tag }o--|| tag : "fk"
+    work_session_capacity }o--|| work_session : "fk"
+    assistant_dialog }o--|| assistant : "fk"
+    message_attachment }o--|| message : "fk"
+    company_url }o--|| company : "fk"

@@ -1,0 +1,210 @@
+erDiagram
+%% CUSTOM REPORTING TABLES
+%% Reporting tables list available in The Trade Desk UI.
+    bid_list_dimension {
+        integer index PK
+        text bid_list_id PK
+        text dimension
+    }
+    campaign_conversion_reporting_column {
+        bigint reporting_column_id PK
+        text tracking_tag_id PK
+        text campaign_id PK
+        text cross_device_attribution_model_id
+        boolean include_in_custom_cpa
+        text tracking_tag_name
+        double_precision weight
+    }
+    campaign_associated_bid_list {
+        text bid_list_id PK
+        text campaign_id PK
+        boolean is_default_for_dimension
+        boolean is_enabled
+    }
+    campaign_default_bid_list {
+        text bid_list_id PK
+        text campaign_id PK
+    }
+    campaign_flight {
+        text id PK
+        text campaign_id FK
+        double_precision budget_in_advertiser_currency
+        bigint budget_in_impressions
+        double_precision daily_target_in_advertiser_currency
+        bigint daily_target_in_impressions
+        text end_date_exclusive_utc
+        text start_date_inclusive_utc
+    }
+    advertiser {
+        text id PK
+        bigint category_id FK
+        text partner_id FK
+        text advertiser_name
+        bigint attribution_click_lookback_window_in_seconds
+        bigint attribution_impression_lookback_window_in_seconds
+        text availability
+        bigint click_dedup_window_in_seconds
+        bigint conversion_dedup_window_in_seconds
+        text currency_code
+        bigint default_right_media_offer_type_id
+        text description
+        text domain_address
+        boolean ignore_referral_url_in_conversion
+        bigint industry_category_id
+        boolean is_ballot_measure
+        boolean is_candidate_election
+        text logo_url
+        text vetting_status
+    }
+    %% Report Metadata
+    report_execution {
+        bigint report_execution_id PK
+        bigint report_schedule_id FK
+        text disabled_reason
+        text last_state_change_utc
+        text report_end_date_exclusive
+        text report_execution_state
+        text report_schedule_name
+        text report_start_date_inclusive
+        text timezone
+    }
+    campaign {
+        text id PK
+        text advertiser_id FK
+        boolean auto_allocator_enabled
+        boolean auto_prioritization_enabled
+        text availability
+        bigint budget_in_impressions
+        text campaign_name
+        text campaign_type
+        text created_at_utc
+        double_precision custom_cpaclick_weight
+        text custom_cpatype
+        double_precision custom_cpaviewthrough_weight
+        bigint daily_budget_in_impressions
+        boolean deprecate_household_targeting_and_attribution
+        text description
+        text end_date
+        boolean include_defaults_from_advertiser
+        boolean is_ballot_measure
+        double_precision minimum_ad_group_spend_in_advertiser_currency
+        text objective
+        text pacing_mode
+        text primary_channel
+        text start_date
+        text timezone
+    }
+    advertiser_associated_bid_list {
+        text advertiser_id PK
+        text bid_list_id PK
+        boolean is_default_for_dimension
+        boolean is_enabled
+    }
+    partner {
+        text id PK
+        text partner_name
+    }
+    %% Report Metadata
+    report_schedule {
+        bigint report_schedule_id PK
+        jsonb ad_group_filters
+        jsonb advertiser_filters
+        jsonb campaign_filters
+        text creation_date_utc
+        boolean include_headers
+        boolean is_completed
+        bigint lookback_days
+        jsonb partner_filters
+        text report_date_format
+        text report_date_range
+        text report_end_date_exclusive
+        text report_file_format
+        text report_frequency
+        text report_numeric_format
+        text report_schedule_name
+        text report_schedule_status
+        text report_start_date_inclusive
+        bigint report_template_id
+        text requested_by_user_name
+        text schedule_start_date
+        text timezone
+    }
+    %% Report Metadata
+    report_template_header {
+        text report_template_id PK
+        text created_by_user_name
+        text format
+        text name
+        text type
+    }
+    category_mapping {
+        integer index PK
+        bigint category_id PK
+        text external_id
+        text taxonomy_id
+    }
+    advertiser_candidate_profile {
+        text political_data_id PK
+        text advertiser_id FK
+        text audience_description
+        text candidate_name
+        text disclaimer_notice
+        text election_state
+        text federal_verification_id
+        text file_location_in_s_3
+        text geo_description
+        text paying_entity_address
+        text paying_entity_email_address
+        text paying_entity_executive_name
+        text paying_entity_executive_title
+        text paying_entity_name
+        text state_verification_id
+    }
+    advertiser_default_bid_list {
+        text advertiser_id PK
+        text bid_list_id PK
+    }
+    partner_associated_bid_list {
+        text bid_list_id PK
+        text partner_id PK
+        boolean is_default_for_dimension
+        boolean is_enabled
+    }
+    advertiser_category {
+        bigint id PK
+        text name
+        text taxonomy_id
+        text taxonomy_name
+        text taxonomy_version
+    }
+    bid_list {
+        text id PK
+        text adjustment_type
+        text bid_list_type
+        boolean is_available_for_library_use
+        boolean is_global
+        text name
+        text owner
+        text owner_id
+        text resolution_type
+        text source
+    }
+    bid_list_dimension }o--|| bid_list : "fk"
+    campaign_conversion_reporting_column }o--|| campaign : "fk"
+    campaign_associated_bid_list }o--|| bid_list : "fk"
+    campaign_associated_bid_list }o--|| campaign : "fk"
+    campaign_default_bid_list }o--|| bid_list : "fk"
+    campaign_default_bid_list }o--|| campaign : "fk"
+    campaign_flight }o--|| campaign : "fk"
+    advertiser }o--|| partner : "fk"
+    advertiser }o--|| advertiser_category : "fk"
+    report_execution }o--|| report_schedule : "fk"
+    campaign }o--|| advertiser : "fk"
+    advertiser_associated_bid_list }o--|| bid_list : "fk"
+    advertiser_associated_bid_list }o--|| advertiser : "fk"
+    category_mapping }o--|| advertiser_category : "fk"
+    advertiser_candidate_profile }o--|| advertiser : "fk"
+    advertiser_default_bid_list }o--|| bid_list : "fk"
+    advertiser_default_bid_list }o--|| advertiser : "fk"
+    partner_associated_bid_list }o--|| bid_list : "fk"
+    partner_associated_bid_list }o--|| partner : "fk"

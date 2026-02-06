@@ -1,0 +1,431 @@
+erDiagram
+    inline_comment_version {
+        text id PK
+        text comment_id PK
+        jsonb comment_body
+        timestamp created_at
+    }
+    custom_content_property {
+        text id PK
+        text custom_content_id PK
+        text key
+        text value
+        text version_created_at
+        text version_message
+        text version_minor_edit
+        text version_number
+    }
+    blog_post_version {
+        text id PK
+        text blog_post_id PK
+        jsonb blog_post_body
+        timestamp created_at
+        jsonb page_body
+    }
+    footer_comment_version {
+        text id PK
+        text comment_id PK
+        jsonb comment_body
+        timestamp created_at
+    }
+    footer_comment {
+        text id PK
+        text attachment_id FK
+        text blog_post_id FK
+        text page_id FK
+        text parent_comment_id FK
+        text status
+        text title
+        timestamp version_created_at
+        text version_number
+    }
+    page_version_detail {
+        text number PK
+        text page_id PK
+        jsonb collaborator
+        text content_type_modifier
+        text created_at
+        text message
+        text minor_edit
+        text next_version
+        text previous_version
+    }
+    space_label {
+        text id PK
+        text space_id PK
+        text name
+        text prefix
+    }
+    space {
+        text id PK
+        text created_at
+        jsonb description_plan
+        jsonb description_view
+        text homepage_id
+        text icon_path
+        text key
+        text name
+        text status
+        text type
+    }
+    space_property {
+        text id PK
+        text space_id PK
+        text created_at
+        text created_by
+        text key
+        text version_created_at
+        text version_created_by
+        text version_message
+        text version_number
+    }
+    child_page {
+        text id PK
+        text page_id PK
+        text space_id FK
+        text position
+        text status
+        text title
+    }
+    attachment_version {
+        text id PK
+        text attachment_id PK
+        jsonb attachment_body
+        timestamp created_at
+    }
+    attachment {
+        text id PK
+        text blog_post_id FK
+        text custom_content_id FK
+        text page_id FK
+        text comment
+        text created_at
+        text file_id
+        text file_size
+        text media_type
+        text media_type_description
+        text status
+        text title
+        timestamp version_created_at
+        text version_number
+        text webui_link
+    }
+    permitted_footer_comment_operation {
+        text _fivetran_id PK
+        text footer_comment_id FK
+        text operation
+        text target_type
+    }
+    page_version {
+        text id PK
+        text page_id PK
+        timestamp created_at
+        jsonb page_body
+    }
+    permitted_blog_post_operation {
+        text _fivetran_id PK
+        text blog_post_id FK
+        text operation
+        text target_type
+    }
+    custom_content_version {
+        text id PK
+        text custom_id PK
+        timestamp created_at
+        jsonb custom_body
+    }
+    permitted_space_operation {
+        text _fivetran_id PK
+        text space_id FK
+        text operation
+        text target_type
+    }
+    blog_post_content_property {
+        text id PK
+        text blog_post_id PK
+        text key
+        text value
+        text version_created_at
+        text version_message
+        text version_minor_edit
+        text version_number
+    }
+    permitted_inline_comment_operation {
+        text _fivetran_id PK
+        text inline_comment_id FK
+        text operation
+        text target_type
+    }
+    custom_content_label {
+        text id PK
+        text custom_content_id PK
+        text name
+        text prefix
+    }
+    attachment_label {
+        text id PK
+        text attachment_id PK
+        text name
+        text prefix
+    }
+    blog_post_version_detail {
+        text blog_post_id PK
+        text number PK
+        jsonb collaborator
+        text content_type_modifier
+        text created_at
+        text message
+        text minor_edit
+        text next_version
+        text previous_version
+    }
+    attachment_version_detail {
+        text attachment_id PK
+        text number PK
+        jsonb collaborator
+        text content_type_modifier
+        text created_at
+        text message
+        text minor_edit
+        text next_version
+        text previous_version
+    }
+    permitted_attachment_operation {
+        text _fivetran_id PK
+        text attachment_id FK
+        text operation
+        text target_type
+    }
+    page_content_property {
+        text id PK
+        text page_id PK
+        text key
+        text version_created_at
+        text version_message
+        text version_minor_edit
+        text version_number
+    }
+    footer_comment_version_detail {
+        text comment_id PK
+        text number PK
+        jsonb collaborator
+        text content_type_modifier
+        text created_at
+        text message
+        text minor_edit
+        text next_version
+        text previous_version
+    }
+    child_custom_content {
+        text custom_content_id PK
+        text id PK
+        text space_id FK
+        text status
+        text title
+        text type
+    }
+    blog_post_label {
+        text id PK
+        text blog_post_id PK
+        text name
+        text prefix
+    }
+    blog_post {
+        text id PK
+        text space_id FK
+        timestamp created_at
+        text status
+        text title
+        timestamp version_created_at
+        text version_number
+    }
+    label {
+        text id PK
+        text name
+        text prefix
+    }
+    folder {
+        text id PK
+        text space_id PK
+        text parent_id FK
+        text author_id
+        text created_at
+        text owner_id
+        text position
+        text status
+        text title
+        text version_created_at
+        text version_message
+        text version_minor_edit
+        text version_number
+    }
+    task {
+        text id PK
+        text blog_post_id FK
+        text page_id FK
+        text space_id FK
+        text assigned_to
+        jsonb atlas_doc_format
+        text completed_at
+        text completed_by
+        text created_at
+        text created_by
+        text due_at
+        text local_id
+        text status
+        text updated_at
+    }
+    custom_content_version_detail {
+        text custom_id PK
+        text number PK
+        jsonb collaborator
+        text content_type_modifier
+        text created_at
+        text message
+        text minor_edit
+        text next_version
+        text previous_version
+    }
+    inline_comment_version_detail {
+        text comment_id PK
+        text number PK
+        jsonb collaborator
+        text content_type_modifier
+        text created_at
+        text message
+        text minor_edit
+        text next_version
+        text previous_version
+    }
+    permitted_custom_content_operation {
+        text _fivetran_id PK
+        text custom_content_id FK
+        text operation
+        text target_type
+    }
+    permitted_page_operation {
+        text _fivetran_id PK
+        text page_id FK
+        text operation
+        text target_type
+    }
+    attachment_content_property {
+        text id PK
+        text attachment_id PK
+        text key
+        text version_created_at
+        text version_message
+        text version_minor_edit
+        text version_number
+    }
+    page {
+        text id PK
+        text parent_id FK
+        text space_id FK
+        timestamp created_at
+        text parent_type
+        text position
+        text status
+        text title
+        timestamp version_created_at
+        text version_number
+    }
+    custom_content {
+        text id PK
+        text blog_post_id FK
+        text page_id FK
+        text space_id FK
+        timestamp created_at
+        text status
+        text title
+        text type
+        timestamp version_created_at
+        text version_number
+    }
+    space_permission {
+        text id PK
+        text space_id PK
+        text operation_key
+        text operation_target_type
+        text principal_id
+        text principal_type
+    }
+    page_label {
+        text id PK
+        text page_id PK
+    }
+    inline_comment {
+        text id PK
+        text blog_post_id FK
+        text page_id FK
+        text parent_comment_id FK
+        text resolution_last_modified_at
+        text resolution_last_modifier_id
+        text resolution_status
+        text status
+        text title
+        timestamp version_created_at
+        text version_number
+    }
+    inline_comment_version }o--|| inline_comment : "fk"
+    custom_content_property }o--|| custom_content : "fk"
+    blog_post_version }o--|| blog_post : "fk"
+    footer_comment_version }o--|| footer_comment : "fk"
+    footer_comment }o--|| page : "fk"
+    footer_comment }o--|| blog_post : "fk"
+    footer_comment }o--|| attachment : "fk"
+    footer_comment }o--|| footer_comment : "fk"
+    page_version_detail }o--|| page_version : "fk"
+    page_version_detail }o--|| page_version : "fk"
+    space_label }o--|| space : "fk"
+    space_property }o--|| space : "fk"
+    child_page }o--|| space : "fk"
+    child_page }o--|| page : "fk"
+    attachment_version }o--|| attachment : "fk"
+    attachment }o--|| page : "fk"
+    attachment }o--|| blog_post : "fk"
+    attachment }o--|| custom_content : "fk"
+    permitted_footer_comment_operation }o--|| footer_comment : "fk"
+    page_version }o--|| page : "fk"
+    permitted_blog_post_operation }o--|| blog_post : "fk"
+    custom_content_version }o--|| custom_content : "fk"
+    permitted_space_operation }o--|| space : "fk"
+    blog_post_content_property }o--|| blog_post : "fk"
+    permitted_inline_comment_operation }o--|| inline_comment : "fk"
+    custom_content_label }o--|| custom_content : "fk"
+    attachment_label }o--|| attachment : "fk"
+    blog_post_version_detail }o--|| blog_post_version : "fk"
+    blog_post_version_detail }o--|| blog_post_version : "fk"
+    attachment_version_detail }o--|| attachment_version : "fk"
+    attachment_version_detail }o--|| attachment_version : "fk"
+    permitted_attachment_operation }o--|| attachment : "fk"
+    page_content_property }o--|| page : "fk"
+    footer_comment_version_detail }o--|| footer_comment_version : "fk"
+    footer_comment_version_detail }o--|| footer_comment_version : "fk"
+    child_custom_content }o--|| custom_content : "fk"
+    child_custom_content }o--|| space : "fk"
+    child_custom_content }o--|| custom_content : "fk"
+    blog_post_label }o--|| blog_post : "fk"
+    blog_post }o--|| space : "fk"
+    folder }o--|| page : "fk"
+    folder }o--|| space : "fk"
+    task }o--|| page : "fk"
+    task }o--|| space : "fk"
+    task }o--|| blog_post : "fk"
+    custom_content_version_detail }o--|| custom_content_version : "fk"
+    custom_content_version_detail }o--|| custom_content_version : "fk"
+    inline_comment_version_detail }o--|| inline_comment_version : "fk"
+    inline_comment_version_detail }o--|| inline_comment_version : "fk"
+    permitted_custom_content_operation }o--|| custom_content : "fk"
+    permitted_page_operation }o--|| page : "fk"
+    attachment_content_property }o--|| attachment : "fk"
+    page }o--|| space : "fk"
+    page }o--|| page : "fk"
+    custom_content }o--|| page : "fk"
+    custom_content }o--|| space : "fk"
+    custom_content }o--|| blog_post : "fk"
+    space_permission }o--|| space : "fk"
+    page_label }o--|| page : "fk"
+    inline_comment }o--|| page : "fk"
+    inline_comment }o--|| blog_post : "fk"
+    inline_comment }o--|| inline_comment : "fk"

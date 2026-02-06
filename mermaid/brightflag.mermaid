@@ -1,0 +1,172 @@
+erDiagram
+    matter_custom_attribute {
+        text index PK
+        text matter_id PK
+        text name
+        text value
+    }
+    matter_internal_user {
+        text index PK
+        text matter_id PK
+        text internal_matter_user
+    }
+    matter {
+        text id PK
+        text budget
+        text category
+        text change_timestamp
+        text closed_date
+        text country
+        text country_name
+        text currency
+        text department
+        text description
+        text entity
+        text internal_matter_lead_user
+        text is_open
+        text iso_code
+        text lead_outside_counsel_username
+        text open_date
+        text ref
+        text region_name
+        text remove_excluded_internal_matter_participants
+        text remove_excluded_vendors
+    }
+    paysite {
+        text id PK
+        text vendor_ref FK
+        text active
+        text billing_legal_entity
+        text billing_legal_entity_code
+        text code
+        text currency
+        text vendor_office_ref
+    }
+    invoice_summary {
+        text id PK
+        text vendor_ref FK
+        text adjustments
+        text approved_gross_total
+        text blended_tax_rate
+        text currency_details_customer_default_currency_fx_rate
+        text currency_details_customer_default_currency_iso_code
+        text currency_details_matter_currency_fx_rate
+        text currency_details_matter_currency_iso_code
+        text currency_iso_code
+        text date
+        text discount
+        text expenses
+        text exposure_percentage
+        text fees_total
+        text group_id
+        text matter_ref
+        text number
+        text original_gross_total
+        text po_number
+        text status
+        text status_change_timestamp
+        text tax_total
+    }
+    allocation {
+        text _fivetran_id PK
+        text active
+        text name
+        text order_number
+    }
+    tax_rate {
+        text _fivetran_id PK
+        text code
+        text jurisdiction_iso_code
+        text percentage
+        text type_name
+    }
+    trading_entity {
+        text id PK
+        text city
+        text code
+        text country
+        text enabled
+        text name
+        text state
+        text street
+        text tax_id
+        text zip
+    }
+    vendor {
+        text id PK
+        text ref PK
+        text contact_email
+        text firm_name
+        text name
+        text payment_method
+        text preferred_flag
+    }
+    account_payable_batch {
+        text id PK
+        text created
+        text creator_email
+        text creator_id
+        text customer_batch_id
+        text customer_id
+        text recipient_email
+        text recipient_id
+        text text
+    }
+    vendor_office {
+        text id PK
+        text vendor_ref FK
+        text address_city
+        text address_postal_code
+        text address_state
+        text address_street_and_building
+        text admin_user_email
+        text admin_user_forename
+        text admin_user_surname
+        text bank_account_name
+        text bank_account_no
+        text bank_address
+        text bank_iban
+        text bank_name
+        text bank_sort_code
+        text bank_swift_or_bic
+        text country
+        text country_iso_code
+        text name
+        text office_vendor_id
+        text payment_method
+        text ref
+        text tax_id
+    }
+    user_role {
+        text index PK
+        text user_id PK
+        text role
+    }
+    users {
+        text id PK
+        text active
+        text department
+        text email
+        text employee_level
+        text employee_number
+        text first_name
+        text full_name
+        text last_name
+        text manager
+        jsonb schema
+        text username
+    }
+    resource {
+        text _fivetran_id PK
+        jsonb attributes
+        text endpoint
+        text id
+        text name
+        text schema
+    }
+    matter_custom_attribute }o--|| matter : "fk"
+    matter_internal_user }o--|| matter : "fk"
+    paysite }o--|| vendor : "fk"
+    invoice_summary }o--|| vendor : "fk"
+    vendor_office }o--|| vendor : "fk"
+    user_role }o--|| users : "fk"

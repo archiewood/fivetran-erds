@@ -1,0 +1,299 @@
+erDiagram
+    invoice {
+        text id PK
+        text account_id PK
+        text plan_id FK
+        text amount_due
+        text amount_paid
+        text amount_remaining
+        text amount_total
+        text application_fee_amount
+        boolean auto_advance
+        text billed_period
+        text billed_usage_filename
+        boolean charge_automatically
+        text contract_id
+        text contract_url
+        text currency
+        integer days_until_due
+        text detailed_usage_url
+        text end_date
+        text event_logs_url
+        timestamp invoice_due_date
+        integer invoice_due_date_timestamp
+        text invoice_number
+        timestamp invoice_paid_date
+        integer invoice_paid_date_timestamp
+        text invoice_pdf_url
+        timestamp invoice_sent_date
+        integer invoice_sent_date_timestamp
+        boolean paid_out_of_band
+        text payment_term
+        text plan_type
+        text provider
+        text provider_id
+        text recognition_amount
+        text recognition_end_date
+        text recognition_start_date
+        text start_date
+        text status
+        text uri
+    }
+    plan_tag {
+        text id PK
+        text plan_id PK
+        timestamp date_created
+        timestamp date_updated
+        text description
+        text icon
+        text name
+        text organization_id
+        text status
+        text type
+    }
+    term {
+        text internal_id PK
+        text plan_id PK
+        text id FK
+        text creator_id
+        text crm_object
+        text crm_object_field
+        timestamp date_created
+        timestamp date_updated
+        text default_value
+        text description
+        boolean hide_label
+        text icon
+        boolean internal
+        boolean is_required
+        boolean is_standard
+        text label
+        text label_content
+        text name
+        text options_text
+        text options_value
+        integer orders
+        text organization_id
+        text placeholder
+        text renewal_behavior
+        boolean show_in_proposal_body
+        boolean show_in_proposal_header
+        text term_category
+        text type
+        text value
+    }
+    rate_metric {
+        text id PK
+        text rate_id PK
+        double_precision divisor
+        integer end_date_offset
+        text end_date_offset_period
+        text friendly_name
+        text metric_name
+        text operator
+        text organization_id
+        text product
+        text rounding_behavior
+        text usage_period
+    }
+    rate_rate_table {
+        text id PK
+        text rate_id FK
+        text amount
+        text monthly_rate
+        double_precision percentage
+        text quantity
+        text quantity_max
+        text quantity_min
+        text rate
+    }
+    rate {
+        text id PK
+        text sku_id PK
+        integer end_date_offset
+        text end_date_offset_period
+        boolean is_default
+        text name
+        text usage_period
+    }
+    custom_property {
+        text id PK
+        text sku_id PK
+        boolean enabled
+        text friendly_name
+        text mode
+        text value
+    }
+    sku {
+        text id PK
+        text plan_id PK
+        text adjusted_annual_price
+        text adjusted_monthly_price
+        text adjusted_net_price
+        text adjusted_price
+        text annual_price
+        text billing_end_date
+        text billing_provider_month_plan_id
+        text billing_provider_plan_id
+        text billing_provider_product_id
+        text billing_provider_year_plan_id
+        text billing_start_date
+        text color
+        integer contract_length
+        text creator_id
+        text crm_id
+        text crm_pricebook_2_id
+        text crm_product_2_id
+        text currency
+        integer default_quantity
+        integer fraction_digits
+        text icon
+        boolean is_discount
+        text ledger_code
+        text line_item_description
+        text line_item_title
+        text list_price
+        text monthly_price
+        text name
+        text net_price
+        integer orders
+        text organization_id
+        text product_code
+        integer quantity
+        boolean show_public_discount
+        text sku_group
+        text status
+        text tax
+        text tiering_model
+        text tiering_model_type
+        text tiering_type
+        text type
+        text unit_name
+        text unit_pricing_schedule
+        text updated_line_item_description
+    }
+    plan_group {
+        text id PK
+        timestamp date_created
+        timestamp date_updated
+        text description
+        text icon
+        text name
+        text organization_id
+        text status
+        text type
+    }
+    plan {
+        text id PK
+        text plan_group_id FK
+        text billing_provider_subscription_id
+        boolean cpq
+        timestamp date_created
+        timestamp date_updated
+        text friendly_name
+        text interval
+        integer interval_count
+        boolean is_default
+        text public
+        text status
+        text uri
+    }
+    account {
+        text id PK
+        text parent_account_id FK
+        text plan_id FK
+        text account_id
+        text auto_billing
+        text base_contract_id
+        text billing_contact_address
+        text billing_contact_address_2
+        text billing_contact_bank_account_holder_name
+        text billing_contact_bank_account_holder_type
+        text billing_contact_bank_account_number
+        text billing_contact_bank_country
+        text billing_contact_bank_name
+        text billing_contact_bank_routing_number
+        text billing_contact_city
+        text billing_contact_country
+        text billing_contact_email
+        text billing_contact_first_name
+        text billing_contact_hubspot_contact_id
+        text billing_contact_id
+        text billing_contact_last_name
+        text billing_contact_middle_name
+        text billing_contact_payment_method
+        text billing_contact_phone
+        text billing_contact_postal_code
+        text billing_contact_province
+        text billing_contact_salesforce_contact_id
+        text billing_contact_state
+        text billing_contact_stripe_customer_id
+        text billing_contact_title
+        boolean blocked
+        timestamp date_created
+        timestamp date_updated
+        text email
+        boolean in_contract
+        text name
+        boolean payable
+        text primary_instrument_id
+        text status
+        text stripe_customer_id
+        text uri
+        boolean verified
+    }
+    cost_rate_table {
+        text id PK
+        text cost_invoice_id FK
+        text amount
+        text monthly_rate
+        double_precision percentage
+        text quantity
+        text quantity_max
+        text quantity_min
+        text rate
+    }
+    usage_object {
+        text _fivetran_id PK
+        text cost_invoice_id FK
+        text amount
+        text cumulative_sum
+        text quantity
+        text resource
+        text time_stamp
+        text unit_rate
+    }
+    cost {
+        text account_id PK
+        text invoice_id PK
+        text aggregate_amount
+        text aggregate_quantity
+        text currency
+        timestamp date_created
+        timestamp date_updated
+        text description
+        timestamp end_date
+        boolean is_lifetime
+        text pricing_schedule
+        text provider_id
+        text sku_type
+        timestamp start_date
+        text status
+    }
+    invoice }o--|| plan : "fk"
+    invoice }o--|| account : "fk"
+    plan_tag }o--|| plan : "fk"
+    term }o--|| sku : "fk"
+    term }o--|| plan : "fk"
+    rate_metric }o--|| rate : "fk"
+    rate_rate_table }o--|| rate : "fk"
+    rate }o--|| sku : "fk"
+    custom_property }o--|| sku : "fk"
+    sku }o--|| plan : "fk"
+    plan }o--|| plan_group : "fk"
+    account }o--|| plan : "fk"
+    account }o--|| account : "fk"
+    cost_rate_table }o--|| cost : "fk"
+    usage_object }o--|| cost : "fk"
+    cost }o--|| invoice : "fk"
+    cost }o--|| account : "fk"

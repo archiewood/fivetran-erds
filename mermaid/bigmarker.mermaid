@@ -1,0 +1,243 @@
+erDiagram
+    conference_on_demand {
+        text conference_attedence_id PK
+        text conference_id PK
+    }
+    conference_attedence {
+        text id PK
+        text conference_id PK
+        text active_consent
+        text attended
+        text bmid
+        text browser
+        text chats
+        text comment
+        text country
+        text downloaded
+        text duration
+        text email
+        text engaged
+        text enter_time
+        text exit_time
+        text first_name
+        jsonb handout_name
+        text last_name
+        text live_duration
+        jsonb offers_info
+        text on_demand_duration
+        text os
+        text polls
+        jsonb polls_info
+        text qa
+        text rating
+        text recording_duration
+        text referral_domain
+        text registration_date
+        text time_zone
+        text tracking_code
+        text traffic_source
+        text view_start_time
+        text watched
+    }
+    conference_registrant_with_custom_field {
+        text id PK
+        text conference_id PK
+        text bmid
+        text country
+        text coupon_used
+        jsonb custom_fields
+        text custom_user_id
+        text earned_certificate
+        text email
+        text enter_url
+        text first_name
+        text last_name
+        text qualified_for_certificate
+        text referral_domain
+        text registered_at
+        text source
+        text start_time
+        text time_zone
+        text tracking_code
+    }
+    conference_registration {
+        text id PK
+        text conference_id PK
+        text active_consent
+        text attended
+        text banned
+        text bmid
+        text browser
+        text chats
+        text comment
+        text country
+        text coupon
+        text downloaded
+        text email
+        text engaged
+        text enter_time
+        text exit_time
+        text first_name
+        jsonb handout_name
+        text last_name
+        text live_duration
+        text os
+        text polls
+        jsonb polls_info
+        text qa
+        text rating
+        text recording_duration
+        text referral_domain
+        text registration_date
+        text time_zone
+        text tracking_code
+        text traffic_source
+        text view_start_time
+        text watched
+        text watched_on_demand
+    }
+    subchannel {
+        text id PK
+        text channel_id PK
+        text channel_url
+        text name
+        text overview
+    }
+    conference_no_show {
+        text conference_id PK
+        text conference_registration_id PK
+    }
+    channel_host {
+        text index PK
+        text channel_id PK
+        text host
+    }
+    channel {
+        text id PK
+        text custom_billing_tier
+        text description
+        text name
+        text overview
+        text url
+    }
+    conference_agenda_topic {
+        text index PK
+        text conference_id PK
+        text topic
+    }
+    conference_presenter {
+        text id PK
+        text conference_id PK
+        text bio
+        text can_manage
+        text display_name
+        text display_on_landing_page
+        text email
+        text facebook
+        text first_name
+        text is_moderator
+        text last_name
+        text linkedin
+        text member_id
+        text presenter_dial_in_id
+        text presenter_dial_in_number
+        text presenter_dial_in_passcode
+        text presenter_url
+        text title
+        text twitter
+        text website
+    }
+    conference {
+        text id PK
+        text channel_id FK
+        jsonb associated_series
+        text audience_open_time
+        text auto_invite_all_channel_members
+        text auto_publish_time
+        text auto_unpublish_time
+        text background_image_url
+        text banner_filter_percentage
+        text can_view_poll_results
+        text conference_address
+        text copy_webinar_id
+        text custom_event_id
+        text dial_in_information_id
+        text dial_in_information_number
+        text dial_in_information_passcode
+        text dial_in_information_presenter_id
+        text dial_in_information_presenter_number
+        text dial_in_information_presenter_passcode
+        text disclaimer
+        text duration
+        text enable_ie_safari
+        text enable_knock_to_enter
+        text enable_registration_email
+        text enable_review_emails
+        text enable_twitter
+        text end_time
+        text event_type
+        text exit_url
+        text fb_open_graph_image_url
+        text first_admin_enter_time
+        text is_recording_published
+        text languages
+        text last_publish_time
+        text last_unpublish_time
+        text manual_end_time
+        text master_webinar_id
+        text max_attendance
+        text meeting_mode
+        text moderator_open_time
+        jsonb polls
+        jsonb preload_files
+        text presenter_exit_url
+        text privacy
+        text purpose
+        text recorded
+        text recording_iframe
+        text recording_url
+        text registration_required_to_view_recording
+        text send_cancellation_email
+        text send_reminder_emails_to_presenters
+        text show_handout_on_page
+        text show_reviews
+        text start_time
+        jsonb tags
+        text time_zone
+        text title
+        text type
+        text webcast_mode
+        text webhook_url
+        text webinar_stats_invited
+        text webinar_stats_page_views
+        text webinar_stats_registrants
+        text webinar_stats_revenue
+        text webinar_stats_total_attendees
+        text who_can_watch_recording
+    }
+    event_summary {
+        text _fivetran_id PK
+        text conference_id FK
+        text total_live_minutes_watched
+    }
+    subscriber {
+        text id PK
+        text channel_id PK
+        text email
+        text first_name
+        text last_name
+    }
+    conference_on_demand }o--|| conference_attedence : "fk"
+    conference_on_demand }o--|| conference : "fk"
+    conference_attedence }o--|| conference : "fk"
+    conference_registrant_with_custom_field }o--|| conference : "fk"
+    conference_registration }o--|| conference : "fk"
+    subchannel }o--|| channel : "fk"
+    conference_no_show }o--|| conference_registration : "fk"
+    conference_no_show }o--|| conference : "fk"
+    channel_host }o--|| channel : "fk"
+    conference_agenda_topic }o--|| conference : "fk"
+    conference_presenter }o--|| conference : "fk"
+    conference }o--|| channel : "fk"
+    event_summary }o--|| conference : "fk"
+    subscriber }o--|| channel : "fk"

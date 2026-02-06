@@ -1,0 +1,119 @@
+erDiagram
+    opportunity_field {
+        text id PK
+        text opportunity_id PK
+        text alias
+        text image_url
+        text trend
+    }
+    opportunity_trend_history {
+        text index PK
+        text opportunity_id PK
+        text date
+        text new_value
+        text old_value
+    }
+    opportunity {
+        text id PK
+        text crm_score
+        text crm_score_message
+    }
+    administrative {
+        text _fivetran_id PK
+        text available_concurrent_limit
+        text available_monthly_quota
+        text concurrent_limit
+        text monthly_quota
+        jsonb running_job_ids
+        jsonb submitted_job_ids
+    }
+    item {
+        text _fivetran_id PK
+        text actor_id
+        text actor_type
+        text correlation_id
+        text event
+        text event_parameters
+        text event_timestamp_epoch_second
+        text event_timestamp_nano
+        text impersonating_actor_id
+        text ip_address
+        text session_id
+        text session_type
+    }
+    actor {
+        text actor_id PK
+        text actor_type
+        text email
+        text name
+    }
+    export {
+        text job_id PK
+        text cells_truncated
+        text currency
+        text downloads
+        text end_time
+        text expired_time
+        text file_name
+        text file_type
+        text module
+        text organisation_id
+        text rows_truncated
+        text start_time
+        text status
+        text title
+        text user_id
+        text version
+        text viewed
+    }
+    activity_account {
+        text id PK
+        text activity_id PK
+        text name
+        text owner_id
+    }
+    activity_opportunity {
+        text id PK
+        text activity_id PK
+        text name
+        text owner_id
+    }
+    activity_participant {
+        text index PK
+        text activity_id PK
+        text email
+        text is_internal
+        text name
+        text sfdc_user_id
+    }
+    activity {
+        text id PK
+        text date
+        text organiser_id
+        text owner_id
+        text subject
+        text type
+    }
+    forecast_data {
+        text _fivetran_id PK
+        text crm_user_id
+        text data_type
+        text data_value
+        text email
+        text end_day
+        text field
+        text forecast_id
+        text parent_role
+        text role
+        text start_day
+        text timeframe
+        text user_name
+        text week
+    }
+    opportunity_field }o--|| opportunity : "fk"
+    opportunity_trend_history }o--|| opportunity : "fk"
+    opportunity }o--|| activity_opportunity : "fk"
+    actor }o--|| item : "fk"
+    activity_account }o--|| activity : "fk"
+    activity_opportunity }o--|| activity : "fk"
+    activity_participant }o--|| activity : "fk"

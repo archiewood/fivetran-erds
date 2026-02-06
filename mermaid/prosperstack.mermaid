@@ -1,0 +1,143 @@
+erDiagram
+    property {
+        text id PK
+        text entity
+        text format
+        text key
+        text name
+        text type
+    }
+    offer {
+        text id PK
+        text amount_off
+        text apply_to
+        text coupon_type
+        text created_at
+        text days
+        text duration
+        text interval
+        text interval_count
+        jsonb metadata
+        text mode
+        text months
+        text name
+        text pause_at
+        jsonb pause_subscription_metadata
+        text payment_provider_coupon_id
+        text platform_coupon_id
+        text platform_plan_id
+        text prorate
+        text type
+        text updated_at
+    }
+    subscription_property {
+        text id PK
+        text subscription_id PK
+        text formatted_value
+        text value
+    }
+    subscription {
+        text id PK
+        text subscriber_id FK
+        text created_at
+        text mrr
+        text payment_provider_id
+        text platform_id
+        text status
+        text updated_at
+    }
+    flow_session_offer_presented {
+        text flow_session_id PK
+        text id PK
+    }
+    flow_session_answer {
+        text index PK
+        text flow_session_id PK
+        text question_id
+        text question_primary
+        text question_text
+        text question_type
+        text sentiment
+        jsonb value
+    }
+    flow_session_step {
+        text id PK
+        text flow_session_id PK
+        text completed_at
+        text started_at
+        text title
+        text type
+    }
+    flow_session_deflected_by_deflection_action {
+        text id PK
+        text flow_session_id PK
+        text code
+        text detail_url
+        text type
+    }
+    flow_session {
+        text id PK
+        text flow_id FK
+        text offer_accepted_id FK
+        text subscriber_id FK
+        text subscription_id FK
+        text cancel_reason_code
+        text cancel_reason_text
+        text client_url
+        text client_user_agent
+        text completed_at
+        text created_at
+        text deflected_by_action_code
+        text deflected_by_action_detail_url
+        text deflected_by_action_id
+        text deflected_by_action_type
+        text deflected_by_type
+        jsonb offer_groups_presented
+        text rerouted_from_flow_session_id
+        text started_at
+        text status
+        text updated_at
+    }
+    event {
+        text id PK
+        text data_id FK
+        text created_at
+        text event
+    }
+    flow {
+        text id PK
+        text created_at
+        text name
+        text updated_at
+    }
+    subscriber_property {
+        text id PK
+        text subscriber_id PK
+        text formatted_value
+        text value
+    }
+    subscriber {
+        text id PK
+        text created_at
+        text email
+        text name
+        text payment_provider_id
+        text platform_id
+        text status
+        text updated_at
+    }
+    subscription_property }o--|| property : "fk"
+    subscription_property }o--|| subscription : "fk"
+    subscription }o--|| subscriber : "fk"
+    flow_session_offer_presented }o--|| offer : "fk"
+    flow_session_offer_presented }o--|| flow_session : "fk"
+    flow_session_answer }o--|| flow_session : "fk"
+    flow_session_step }o--|| flow_session : "fk"
+    flow_session_deflected_by_deflection_action }o--|| flow_session : "fk"
+    flow_session }o--|| subscription : "fk"
+    flow_session }o--|| offer : "fk"
+    flow_session }o--|| subscriber : "fk"
+    flow_session }o--|| flow : "fk"
+    event }o--|| flow_session : "fk"
+    subscriber_property }o--|| property : "fk"
+    subscriber_property }o--|| subscriber : "fk"

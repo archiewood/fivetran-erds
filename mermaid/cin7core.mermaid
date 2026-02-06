@@ -1,0 +1,1492 @@
+erDiagram
+    new_stock_line {
+        text product_id PK
+        text stock_adjustment_id PK
+        text stock_take_number PK
+        text batch_sn
+        text comment
+        text expiry_date
+        text location_id
+        text product_custom_field_1
+        text product_custom_field_10
+        text product_custom_field_2
+        text product_custom_field_3
+        text product_custom_field_4
+        text product_custom_field_5
+        text product_custom_field_6
+        text product_custom_field_7
+        text product_custom_field_8
+        text product_custom_field_9
+        text received_date
+        text unit_cost
+    }
+    stock_adjustment_transaction {
+        text stock_adjustment_id PK
+        text stock_take_number PK
+        text transaction_id PK
+    }
+    stock_adjustment {
+        text id PK
+        text stock_take_number PK
+        text account
+        text effective_date
+        jsonb existing_stock_line
+        text reference
+        text status
+    }
+    chart_of_account {
+        text code PK
+        text bank_account_number
+        text class
+        text description
+        text display_name
+        text for_payments
+        text name
+        text old_code
+        text status
+        text system_account
+        text system_account_code
+        text type
+    }
+    supplier_contacts {
+        text id PK
+        text supplier_id PK
+        text comment
+        text defaults
+        text email
+        text fax
+        text include_in_email
+        text mobile_phone
+        text name
+        text phone
+        text website
+    }
+    supplier_address {
+        text id PK
+        text supplier_id PK
+        text city
+        text country
+        text default_for_type
+        text line_1
+        text line_2
+        text postcode
+        text state
+        text type
+    }
+    supplier {
+        text id PK
+        text account_payable
+        text additional_attribute_1
+        text additional_attribute_10
+        text additional_attribute_2
+        text additional_attribute_3
+        text additional_attribute_4
+        text additional_attribute_5
+        text additional_attribute_6
+        text additional_attribute_7
+        text additional_attribute_8
+        text additional_attribute_9
+        text attribute_set
+        text comments
+        text currency
+        text discount
+        text last_modified_on
+        text name
+        text payment_term
+        text status
+        text tax_number
+        text tax_rule
+    }
+    stock_transfer_line {
+        text product_id PK
+        text stock_transfer_number PK
+        text stock_transfer_task_id PK
+        text batch_sn
+        text comment
+        text expiry_date
+        text location_id
+        text product_custom_field_1
+        text product_custom_field_10
+        text product_custom_field_2
+        text product_custom_field_3
+        text product_custom_field_4
+        text product_custom_field_5
+        text product_custom_field_6
+        text product_custom_field_7
+        text product_custom_field_8
+        text product_custom_field_9
+        text quantity_available
+        text quantity_on_hand
+        text transfer_quantity
+    }
+    stock_transfer_order_line {
+        text product_id PK
+        text stock_transfer_number PK
+        text stock_transfer_task_id PK
+        text batch_sn
+        text comment
+        text expiry_date
+        text location_id
+        text product_custom_field_1
+        text product_custom_field_10
+        text product_custom_field_2
+        text product_custom_field_3
+        text product_custom_field_4
+        text product_custom_field_5
+        text product_custom_field_6
+        text product_custom_field_7
+        text product_custom_field_8
+        text product_custom_field_9
+        text quantity_available
+        text quantity_on_hand
+        text transfer_quantity
+    }
+    stock_transfer {
+        text number PK
+        text task_id PK
+        text completion_date
+        text cost_distribution_type
+        text departure_date
+        text destination
+        text from_location
+        text in_transit_account
+        jsonb manual_journal
+        text reference
+        text required_by_date
+        text skip_order
+        text source
+        text status
+        text to_location
+    }
+    non_zero_stock_on_hand_product {
+        text product_id PK
+        text stock_take_number PK
+        text stock_take_task_id PK
+        text adjustment
+        text available
+        text batch_sn
+        text comment
+        text expiry_date
+        text image_content_type
+        text image_download_url
+        text image_file_name
+        text image_id
+        text location_id
+        text product_custom_field_1
+        text product_custom_field_10
+        text product_custom_field_2
+        text product_custom_field_3
+        text product_custom_field_4
+        text product_custom_field_5
+        text product_custom_field_6
+        text product_custom_field_7
+        text product_custom_field_8
+        text product_custom_field_9
+        text quantity_on_hand
+        text unit
+    }
+    zero_stock_on_hand_product {
+        text product_id PK
+        text stock_take_number PK
+        text stock_take_task_id PK
+        text adjustment
+        text available
+        text batch_sn
+        text comment
+        text expiry_date
+        text image_content_type
+        text image_download_url
+        text image_file_name
+        text image_id
+        text location_id
+        text product_custom_field_1
+        text product_custom_field_10
+        text product_custom_field_2
+        text product_custom_field_3
+        text product_custom_field_4
+        text product_custom_field_5
+        text product_custom_field_6
+        text product_custom_field_7
+        text product_custom_field_8
+        text product_custom_field_9
+        text quantity_on_hand
+        text unit
+    }
+    stock_take_transaction {
+        text stock_take_number PK
+        text stock_take_task_id PK
+        text transaction_id PK
+    }
+    stock_take {
+        text stock_take_number PK
+        text task_id PK
+        text account
+        jsonb bin
+        jsonb brands
+        text effective_date
+        jsonb pick_zone
+        text reference
+        text status
+        jsonb stock_locators
+    }
+    opportunity_line {
+        text id PK
+        text opportunity_id PK
+        text product_id FK
+        text comment
+        text discount
+        text price
+        text quantity
+        text tax
+        text tax_percent
+        text tax_rule
+        text total
+    }
+    opportunity_additional_charge {
+        text id PK
+        text opportunity_id PK
+        text amount
+        text comment
+        text description
+        text discount
+        text quantity
+        text tax
+        text tax_percent
+        text tax_rule
+        text total
+    }
+    opportunity {
+        text id PK
+        text customer_id FK
+        text lead_id FK
+        text billing_address_line_1
+        text billing_address_line_2
+        text contact
+        text currency
+        text currency_conversion_rate
+        text custom_field_1
+        text custom_field_10
+        text custom_field_2
+        text custom_field_3
+        text custom_field_4
+        text custom_field_5
+        text custom_field_6
+        text custom_field_7
+        text custom_field_8
+        text custom_field_9
+        text customer_currency
+        text customer_name
+        text customer_reference
+        text default_account
+        text opportunity_comment
+        text opportunity_date
+        text opportunity_location
+        text opportunity_memo
+        text opportunity_number
+        text phone
+        text price_tier
+        text sales_representative
+        text ship_to_address_1
+        text ship_to_address_2
+        text ship_to_city
+        text ship_to_company
+        text ship_to_contact
+        text ship_to_country
+        text ship_to_other
+        text ship_to_post_code
+        text ship_to_state
+        text shipping_address_line_1
+        text shipping_address_line_2
+        text tax_inclusive
+        text tax_percent
+        text tax_rule
+        text tax_total
+        text term
+        text term_day
+        text term_due_next_month
+        text term_method
+        text total
+    }
+    task {
+        text id PK
+        text assigned_by
+        text assigned_to
+        text category
+        text completed_date
+        text description
+        text end_date
+        text entity_id
+        text entity_type
+        text is_all_day
+        text is_important
+        text name
+        text start_date
+        text task_status
+        text void_date
+        text workflow_name
+    }
+    journal_attachment {
+        text id PK
+        text journal_number PK
+        text purchase_id PK
+        text content_type
+        text download_url
+        text file_name
+    }
+    journal_line {
+        text _fivetran_id PK
+        text journal_number FK
+        text purchase_id FK
+        text amount
+        text base_amount
+        text credit
+        text debit
+        text reference
+    }
+    journal {
+        text journal_number PK
+        text purchase_id PK
+        text currency
+        text currency_conversion_rate
+        text effective_date
+        text narration
+        text notes
+        text status
+        text task_id
+    }
+    product_availability {
+        text product_id PK
+        text allocated
+        text available
+        text batch
+        text bin
+        text expiry_date
+        text in_transit
+        text location
+        text next_delivery_date
+        text on_hand
+        text on_order
+        text stock_on_hand
+    }
+    product_family_attachment {
+        text id PK
+        text object_id PK
+        text content_type
+        text file_name
+        text is_default
+        text type
+    }
+    family_product {
+        text product_family_id PK
+        text product_id PK
+    }
+    product_family {
+        text id PK
+        text cogs_account FK
+        text revenue_account FK
+        text attribute_set
+        text brand
+        text category
+        text costing_method
+        text default_location
+        text description
+        text discount_rule
+        text drop_ship_mode
+        text inventory_account
+        text last_modified_on
+        text minimum_before_reorder
+        text name
+        text option_1_name
+        text option_1_values
+        text option_2_name
+        text option_2_values
+        text option_3_name
+        text option_3_values
+        text price_tier_1
+        text price_tier_10
+        text price_tier_2
+        text price_tier_3
+        text price_tier_4
+        text price_tier_5
+        text price_tier_6
+        text price_tier_7
+        text price_tier_8
+        text price_tier_9
+        text purchase_tax_rule
+        text reorder_quantity
+        text sale_tax_rule
+        text sku
+        text tags
+        text uom
+        text warranty_name
+    }
+    product_reorder_level {
+        text location_id PK
+        text product_id PK
+        text minimum_before_reorder
+        text pick_zones
+        text reorder_quantity
+        text stock_locator
+    }
+    bill_of_material_product {
+        text component_product_id PK
+        text product_id PK
+        text cost_percentage
+        text name
+        text product_code
+        text quantity
+        text wastage_quantity
+    }
+    bill_of_material_service {
+        text component_product_id PK
+        text product_id PK
+        text expense_account FK
+        text name
+        text price_tier
+        text quantity
+    }
+    product_movement {
+        text index PK
+        text product_id PK
+        text amount
+        text batch_sn
+        text date
+        text expiry_date
+        text from_to
+        text location
+        text number
+        text quantity
+        text task_id
+        text type
+    }
+    product_attachment {
+        text id PK
+        text product_id PK
+        text content_type
+        text file_name
+    }
+    product_custom_price {
+        text _fivetran_id PK
+        text customer_id FK
+        text product_id FK
+        text price
+    }
+    product {
+        text id PK
+        text category_id FK
+        text cogs_account FK
+        text default_location FK
+        text expense_account FK
+        text revenue_account FK
+        text additional_attribute_1
+        text additional_attribute_10
+        text additional_attribute_2
+        text additional_attribute_3
+        text additional_attribute_4
+        text additional_attribute_5
+        text additional_attribute_6
+        text additional_attribute_7
+        text additional_attribute_8
+        text additional_attribute_9
+        text assembly_cost_estimation_method
+        text attribute_set
+        text auto_assembly
+        text auto_disassembly
+        text average_cost
+        text barcode
+        text bill_of_material
+        text bom_type
+        text brand
+        text carton_height
+        text carton_inner_quantity
+        text carton_length
+        text carton_quantity
+        text carton_width
+        text costing_method
+        text description
+        text dimension_units
+        text discount_rule
+        text drop_ship_mode
+        text height
+        text internal_note
+        text inventory_account
+        text last_modified_on
+        text length
+        text minimum_before_reorder
+        text name
+        text pick_zones
+        text price_tier_1
+        text price_tier_10
+        text price_tier_2
+        text price_tier_3
+        text price_tier_4
+        text price_tier_5
+        text price_tier_6
+        text price_tier_7
+        text price_tier_8
+        text price_tier_9
+        text price_tiers_tier_1
+        text price_tiers_tier_10
+        text price_tiers_tier_2
+        text price_tiers_tier_3
+        text price_tiers_tier_4
+        text price_tiers_tier_5
+        text price_tiers_tier_6
+        text price_tiers_tier_7
+        text price_tiers_tier_8
+        text price_tiers_tier_9
+        text purchase_tax_rule
+        text quantity_to_produce
+        text reorder_quantity
+        text sale_tax_rule
+        text sellable
+        text short_description
+        text sku
+        text status
+        text stock_locator
+        jsonb suppliers
+        text tags
+        text type
+        text uom
+        text warranty_name
+        text weight
+        text weight_units
+        text width
+    }
+    product_markup_price {
+        text tier_number PK
+        text product_id FK
+        text markup_type
+        text markup_value
+        text use_price_type
+    }
+    purchase_inventory_movement {
+        text product_id PK
+        text purchase_id PK
+        text cogs
+        text date
+        text product_custom_field_1
+        text product_custom_field_10
+        text product_custom_field_2
+        text product_custom_field_3
+        text product_custom_field_4
+        text product_custom_field_5
+        text product_custom_field_6
+        text product_custom_field_7
+        text product_custom_field_8
+        text product_custom_field_9
+        text task_id
+    }
+    purchase_credit_note_line {
+        text index PK
+        text purchase_credit_not_task_id PK
+        text purchase_id PK
+        text product_id FK
+        text account
+        text comment
+        text discount
+        text price
+        text product_custom_field_1
+        text product_custom_field_10
+        text product_custom_field_2
+        text product_custom_field_3
+        text product_custom_field_4
+        text product_custom_field_5
+        text product_custom_field_6
+        text product_custom_field_7
+        text product_custom_field_8
+        text product_custom_field_9
+        text quantity
+        text tax
+        text tax_rule
+        text total
+    }
+    purchase_credit_note_refund {
+        text id PK
+        text purchase_credit_not_task_id PK
+        text purchase_id PK
+        text account
+        text amount
+        text currency_rate
+        text date_created
+        text date_paid
+        text reference
+    }
+    purchase_credit_note_unstock {
+        text card_id PK
+        text product_id PK
+        text purchase_credit_not_task_id PK
+        text purchase_id PK
+        text batch_sn
+        text date
+        text expiry_date
+        text location
+        text product_custom_field_1
+        text product_custom_field_10
+        text product_custom_field_2
+        text product_custom_field_3
+        text product_custom_field_4
+        text product_custom_field_5
+        text product_custom_field_6
+        text product_custom_field_7
+        text product_custom_field_8
+        text product_custom_field_9
+        text quantity
+    }
+    purchase_credit_note {
+        text task_id PK
+        text purchase_id PK
+        jsonb additional_charges
+        text credit_note_date
+        text credit_note_invoice_number
+        text credit_note_number
+        text currency_rate
+        text status
+        text tax
+    }
+    purchase_invoice_line {
+        text index PK
+        text purchase_id PK
+        text purchase_invoice_task_id PK
+        text product_id FK
+        text account
+        text comment
+        text discount
+        text non_inventory
+        text price
+        text product_custom_field_1
+        text product_custom_field_10
+        text product_custom_field_2
+        text product_custom_field_3
+        text product_custom_field_4
+        text product_custom_field_5
+        text product_custom_field_6
+        text product_custom_field_7
+        text product_custom_field_8
+        text product_custom_field_9
+        text quantity
+        text tax
+        text tax_rule
+        text total
+    }
+    purchase_invoice_payment {
+        text id PK
+        text purchase_id PK
+        text purchase_invoice_task_id PK
+        text account
+        text amount
+        text currency_rate
+        text date_created
+        text date_paid
+        text reference
+    }
+    purchase_invoice_additional_charge {
+        text _fivetran_id PK
+        text purchase_id FK
+        text purchase_invoice_task_id FK
+        text account
+        text description
+        text discount
+        text price
+        text quantity
+        text reference
+        text tax
+        text tax_rule
+        text total
+    }
+    purchase_invoice {
+        text task_id PK
+        text purchase_id PK
+        text currency_rate
+        text invoice_date
+        text invoice_due_date
+        text invoice_number
+        text invoicing_and_receiving_number
+        text paid
+        text status
+    }
+    put_away_line {
+        text index PK
+        text object_task_id PK
+        text purchase_id PK
+        text product_id FK
+        text batch_sn
+        text card_id
+        text date
+        text expiry_date
+        text location
+        text location_id
+        text product_custom_field_1
+        text product_custom_field_10
+        text product_custom_field_2
+        text product_custom_field_3
+        text product_custom_field_4
+        text product_custom_field_5
+        text product_custom_field_6
+        text product_custom_field_7
+        text product_custom_field_8
+        text product_custom_field_9
+        text quantity
+        text received
+        text supplier_sku
+        text type
+    }
+    put_away {
+        text task_id PK
+        text purchase_id PK
+        text invoicing_and_receiving_number
+        text status
+        text type
+    }
+    stock_received_line {
+        text index PK
+        text object_task_id PK
+        text purchase_id PK
+        text product_id FK
+        text batch_sn
+        text card_id
+        text date
+        text expiry_date
+        text location_id
+        text product_custom_field_1
+        text product_custom_field_10
+        text product_custom_field_2
+        text product_custom_field_3
+        text product_custom_field_4
+        text product_custom_field_5
+        text product_custom_field_6
+        text product_custom_field_7
+        text product_custom_field_8
+        text product_custom_field_9
+        text quantity
+        text received
+        text supplier_sku
+        text type
+    }
+    stock_received {
+        text task_id PK
+        text purchase_id PK
+        text invoicing_and_receiving_number
+        text status
+        text type
+    }
+    purchase_order_line {
+        text product_id PK
+        text purchase_id PK
+        text comment
+        text dimensions_unit
+        text discount
+        text price
+        text product_custom_field_1
+        text product_custom_field_10
+        text product_custom_field_2
+        text product_custom_field_3
+        text product_custom_field_4
+        text product_custom_field_5
+        text product_custom_field_6
+        text product_custom_field_7
+        text product_custom_field_8
+        text product_custom_field_9
+        text quantity
+        text supplier_sku
+        text tax_rule
+    }
+    purchase {
+        text id PK
+        text related_drop_ship_sale_task FK
+        text supplier_id FK
+        text approach
+        jsonb attachments
+        text billing_address_city
+        text billing_address_country
+        text billing_address_display_address_line_1
+        text billing_address_display_address_line_2
+        text billing_address_line_1
+        text billing_address_line_2
+        text billing_address_postcode
+        text billing_address_state
+        text blind_receipt
+        text combined_invoice_status
+        text combined_payment_status
+        text combined_receiving_status
+        text contact
+        text currency_rate
+        text inventory_account
+        text is_service_only
+        text last_updated_date
+        text location
+        text note
+        jsonb order_additional_charges
+        text order_date
+        text order_memo
+        text order_number
+        jsonb order_prepayments
+        text order_status
+        text order_tax
+        text order_total_before_tax
+        text phone
+        text required_by
+        text shipping_address_city
+        text shipping_address_company
+        text shipping_address_country
+        text shipping_address_display_address_line_1
+        text shipping_address_display_address_line_2
+        text shipping_address_line_1
+        text shipping_address_line_2
+        text shipping_address_postcode
+        text shipping_address_ship_to_other
+        text shipping_address_state
+        text status
+        text tax_calculation
+        text tax_rule
+        text terms
+        text type
+    }
+    lead_contact {
+        text id PK
+        text lead_id PK
+        text comment
+        text defaults
+        text email
+        text fax
+        text include_in_email
+        text job_title
+        text mobile_phone
+        text name
+        text phone
+        text website
+    }
+    lead_address {
+        text id PK
+        text lead_id PK
+        text city
+        text country
+        text default_for_type
+        text line_1
+        text line_2
+        text postcode
+        text state
+        text type
+    }
+    lead {
+        text id PK
+        text amount
+        text close_chance
+        text close_date
+        text comment
+        text currency
+        text lead_status
+        text name
+        text payment_term
+        text price_tier
+        text sales_representative
+        text tax_rule
+    }
+    sale_quote_line {
+        text index PK
+        text sale_id PK
+        text product_id FK
+        text account
+        text comment
+        text dimensions_units
+        text discount
+        text name
+        text price
+        text product_custom_field_1
+        text product_custom_field_10
+        text product_custom_field_2
+        text product_custom_field_3
+        text product_custom_field_4
+        text product_custom_field_5
+        text product_custom_field_6
+        text product_custom_field_7
+        text product_custom_field_8
+        text product_custom_field_9
+        text quantity
+        text sku
+        text tax
+        text tax_rule
+        text weight_units
+    }
+    sale_quote_additional_charge {
+        text _fivetran_id PK
+        text sale_id FK
+        text comment
+        text description
+        text discount
+        text price
+        text quantity
+        text tax
+        text tax_rule
+        text total
+    }
+    sale_order_line {
+        text index PK
+        text sale_id PK
+        text product_id FK
+        text average_cost
+        text backorder
+        text backorder_quantity
+        text comment
+        text discount
+        text dropship
+        text price
+        text product_custom_field_1
+        text product_custom_field_10
+        text product_custom_field_2
+        text product_custom_field_3
+        text product_custom_field_4
+        text product_custom_field_5
+        text product_custom_field_6
+        text product_custom_field_7
+        text product_custom_field_8
+        text product_custom_field_9
+        text quantity
+        text tax
+        text tax_rule
+        text total
+    }
+    sale_order_additional_charge {
+        text _fivetran_id PK
+        text sale_id FK
+        text comment
+        text description
+        text discount
+        text price
+        text quantity
+        text tax
+        text tax_rule
+        text total
+    }
+    sale_invoice_line {
+        text index PK
+        text sale_id PK
+        text sale_invoice_task_id PK
+        text product_id FK
+        text account
+        text average_cost
+        text comment
+        text discount
+        text price
+        text product_custom_field_1
+        text product_custom_field_10
+        text product_custom_field_2
+        text product_custom_field_3
+        text product_custom_field_4
+        text product_custom_field_5
+        text product_custom_field_6
+        text product_custom_field_7
+        text product_custom_field_8
+        text product_custom_field_9
+        text quantity
+        text tax
+        text tax_rule
+        text total
+    }
+    sale_invoice_additional_charge {
+        text _fivetran_id PK
+        text sale_id FK
+        text sale_invoice_task_id FK
+        text account
+        text description
+        text discount
+        text price
+        text quantity
+        text tax
+        text tax_rule
+        text total
+    }
+    sale_invoice {
+        text task_id PK
+        text sale_id PK
+        text billing_address_line_1
+        text billing_address_line_2
+        text currency_conversion_rate
+        text invoice_date
+        text invoice_due_date
+        text invoice_number
+        text linked_fulfillment_number
+        text memo
+        text paid
+        jsonb payment
+        text status
+        text tax
+        text total
+        text total_before_tax
+    }
+    sale_credit_note_line {
+        text index PK
+        text sale_credit_note_task_id PK
+        text sale_id PK
+        text product_id FK
+        text account
+        text comment
+        text discount
+        text price
+        text product_custom_field_1
+        text product_custom_field_10
+        text product_custom_field_2
+        text product_custom_field_3
+        text product_custom_field_4
+        text product_custom_field_5
+        text product_custom_field_6
+        text product_custom_field_7
+        text product_custom_field_8
+        text product_custom_field_9
+        text quantity
+        text tax
+        text tax_rule
+        text total
+    }
+    sale_credit_note_refund {
+        text id PK
+        text sale_credit_note_task_id PK
+        text sale_id PK
+        text account
+        text amount
+        text currency_rate
+        text date_created
+        text date_paid
+        text reference
+    }
+    sale_credit_note_restock {
+        text index PK
+        text sale_credit_note_task_id PK
+        text sale_id PK
+        text product_id FK
+        text batch_sn
+        text expiry_date
+        text location
+        text name
+        text quantity
+        text sku
+    }
+    sale_credit_note_additional_charge {
+        text _fivetran_id PK
+        text sale_credit_note_task_id FK
+        text sale_id FK
+        text account
+        text comment
+        text description
+        text discount
+        text price
+        text quantity
+        text tax
+        text tax_rule
+        text total
+    }
+    sale_credit_note {
+        text task_id PK
+        text sale_id PK
+        text credit_note_conversion_rate
+        text credit_note_date
+        text credit_note_invoice_number
+        text credit_note_number
+        text memo
+        text status
+        text tax
+        text total
+        text total_before_tax
+    }
+    sale_attachment {
+        text id PK
+        text sale_id PK
+        text content_type
+        text download_url
+        text file_name
+    }
+    sale_fullfillment_pick_line {
+        text index PK
+        text fulfillment_number PK
+        text sale_id PK
+        text product_id FK
+        text batch_sn
+        text expiry_date
+        text product_custom_field_1
+        text product_custom_field_10
+        text product_custom_field_2
+        text product_custom_field_3
+        text product_custom_field_4
+        text product_custom_field_5
+        text product_custom_field_6
+        text product_custom_field_7
+        text product_custom_field_8
+        text product_custom_field_9
+        text quantity
+    }
+    sale_fullfillment_pack_line {
+        text index PK
+        text fulfillment_number PK
+        text sale_id PK
+        text product_id FK
+        text batch_sn
+        text box
+        text expiry_date
+        text location
+        text location_id
+        text product_custom_field_1
+        text product_custom_field_10
+        text product_custom_field_2
+        text product_custom_field_3
+        text product_custom_field_4
+        text product_custom_field_5
+        text product_custom_field_6
+        text product_custom_field_7
+        text product_custom_field_8
+        text product_custom_field_9
+        text quantity
+    }
+    sale_fullfillment_ship_line {
+        text id PK
+        text fulfillment_number PK
+        text sale_id PK
+        text boxes
+        text carrier
+        text is_shipped
+        text shipment_date
+        text tracking_number
+        text tracking_url
+    }
+    sale_fullfillment {
+        text fulfillment_number PK
+        text task_id PK
+        text sale_id PK
+        text fulfilment_status
+        text linked_invoice_number
+        text pack_status
+        text pick_status
+        text ship_required_by
+        text ship_shipping_address_city
+        text ship_shipping_address_company
+        text ship_shipping_address_contact
+        text ship_shipping_address_country
+        text ship_shipping_address_display_address_line_1
+        text ship_shipping_address_display_address_line_2
+        text ship_shipping_address_line_1
+        text ship_shipping_address_line_2
+        text ship_shipping_address_postcode
+        text ship_shipping_address_ship_to_other
+        text ship_shipping_address_state
+        text ship_shipping_note
+        text ship_status
+    }
+    sale_inventory_movement {
+        text index PK
+        text sale_id PK
+        text product_id FK
+        text cogs
+        text date
+        text product_custom_field_1
+        text product_custom_field_10
+        text product_custom_field_2
+        text product_custom_field_3
+        text product_custom_field_4
+        text product_custom_field_5
+        text product_custom_field_6
+        text product_custom_field_7
+        text product_custom_field_8
+        text product_custom_field_9
+        text task_id
+    }
+    sale_transaction {
+        text sale_id PK
+        text transaction_id PK
+        text task_id
+    }
+    sale {
+        text id PK
+        text customer_id FK
+        text additional_attribute_1
+        text additional_attribute_10
+        text additional_attribute_2
+        text additional_attribute_3
+        text additional_attribute_4
+        text additional_attribute_5
+        text additional_attribute_6
+        text additional_attribute_7
+        text additional_attribute_8
+        text additional_attribute_9
+        text base_currency
+        text carrier
+        text cogs_amount
+        text combined_invoice_status
+        text combined_packing_status
+        text combined_payment_status
+        text combined_picking_status
+        text combined_shipping_status
+        text combined_tracking_numbers
+        text customer_reference
+        text default_account
+        text external_id
+        text fulfilment_status
+        text last_modified_on
+        text location
+        jsonb manual_journal_line
+        text manual_journal_status
+        text note
+        text order_date
+        text order_memo
+        text order_number
+        text order_status
+        text order_tax
+        text order_total
+        text order_total_before_tax
+        text price_tier
+        text quote_memo
+        jsonb quote_prepayment
+        text quote_status
+        text quote_tax
+        text quote_total
+        text quote_total_before_tax
+        text sales_representative
+        text service_only
+        text ship_by
+        text shipping_note
+        text skip_quote
+        text source_channel
+        text status
+        text tax_calculation
+        text tax_rule
+        text term
+        text type
+    }
+    location_bin {
+        text id PK
+        text location_id PK
+        text is_deprecated
+        text is_staging
+        text name
+    }
+    location {
+        text id PK
+        text address_city_suburb
+        text address_country
+        text address_line_1
+        text address_line_2
+        text address_state_province
+        text address_zip_postcode
+        text fixed_assets_location
+        text is_co_man
+        text is_default
+        text is_deprecated
+        text is_shop_floor
+        text is_staging
+        text name
+        text parent_id
+        text parent_name
+        text pick_zone
+        text reference_count
+    }
+    transaction {
+        text id PK
+        text task_id FK
+        text amount
+        text credit_account_code
+        text currency_rate
+        text debit_account_code
+        text effective_date
+        text original_amount
+        text reference
+        text transaction
+        text type
+    }
+    product_category {
+        text id PK
+        text name
+    }
+    customer_product_price {
+        text customer_id PK
+        text product_id PK
+        text price
+    }
+    customer_contacts {
+        text id PK
+        text customer_id PK
+        text comment
+        text defaults
+        text email
+        text fax
+        text include_in_email
+        text job_title
+        text mobile_phone
+        text name
+        text phone
+        text website
+    }
+    customer_address {
+        text id PK
+        text customer_id PK
+        text city
+        text country
+        text default_for_type
+        text line_1
+        text line_2
+        text post_code
+        text state
+        text type
+    }
+    customer {
+        text id PK
+        text revenue_account FK
+        text account_receivable
+        text additional_attribute_1
+        text additional_attribute_10
+        text additional_attribute_2
+        text additional_attribute_3
+        text additional_attribute_4
+        text additional_attribute_5
+        text additional_attribute_6
+        text additional_attribute_7
+        text additional_attribute_8
+        text additional_attribute_9
+        text attribute_set
+        text carrier
+        text comments
+        text credit_limit
+        text currency
+        text discount
+        text is_on_credit_hold
+        text last_modified_on
+        text location
+        text name
+        text payment_term
+        text price_tier
+        text sales_representative
+        text status
+        text tags
+        text tax_number
+        text tax_rule
+    }
+    new_stock_line }o--|| product : "fk"
+    new_stock_line }o--|| stock_adjustment : "fk"
+    new_stock_line }o--|| stock_adjustment : "fk"
+    stock_adjustment_transaction }o--|| transaction : "fk"
+    stock_adjustment_transaction }o--|| stock_adjustment : "fk"
+    stock_adjustment_transaction }o--|| stock_adjustment : "fk"
+    stock_adjustment }o--|| stock_take : "fk"
+    supplier_contacts }o--|| supplier : "fk"
+    supplier_address }o--|| supplier : "fk"
+    stock_transfer_line }o--|| product : "fk"
+    stock_transfer_line }o--|| stock_transfer : "fk"
+    stock_transfer_line }o--|| stock_transfer : "fk"
+    stock_transfer_order_line }o--|| product : "fk"
+    stock_transfer_order_line }o--|| stock_transfer : "fk"
+    stock_transfer_order_line }o--|| stock_transfer : "fk"
+    non_zero_stock_on_hand_product }o--|| product : "fk"
+    non_zero_stock_on_hand_product }o--|| stock_take : "fk"
+    non_zero_stock_on_hand_product }o--|| stock_take : "fk"
+    zero_stock_on_hand_product }o--|| product : "fk"
+    zero_stock_on_hand_product }o--|| stock_take : "fk"
+    zero_stock_on_hand_product }o--|| stock_take : "fk"
+    stock_take_transaction }o--|| transaction : "fk"
+    stock_take_transaction }o--|| stock_take : "fk"
+    stock_take_transaction }o--|| stock_take : "fk"
+    opportunity_line }o--|| product : "fk"
+    opportunity_line }o--|| opportunity : "fk"
+    opportunity_additional_charge }o--|| opportunity : "fk"
+    opportunity }o--|| lead : "fk"
+    opportunity }o--|| customer : "fk"
+    journal_attachment }o--|| journal : "fk"
+    journal_attachment }o--|| journal : "fk"
+    journal_line }o--|| journal : "fk"
+    journal_line }o--|| journal : "fk"
+    product_availability }o--|| product : "fk"
+    product_family_attachment }o--|| product_family : "fk"
+    family_product }o--|| product : "fk"
+    family_product }o--|| product_family : "fk"
+    product_family }o--|| chart_of_account : "fk"
+    product_family }o--|| chart_of_account : "fk"
+    product_reorder_level }o--|| product : "fk"
+    bill_of_material_product }o--|| product : "fk"
+    bill_of_material_product }o--|| product : "fk"
+    bill_of_material_service }o--|| product : "fk"
+    bill_of_material_service }o--|| chart_of_account : "fk"
+    bill_of_material_service }o--|| product : "fk"
+    product_movement }o--|| product : "fk"
+    product_attachment }o--|| product : "fk"
+    product_custom_price }o--|| product : "fk"
+    product_custom_price }o--|| customer : "fk"
+    product }o--|| product_category : "fk"
+    product }o--|| chart_of_account : "fk"
+    product }o--|| chart_of_account : "fk"
+    product }o--|| chart_of_account : "fk"
+    product }o--|| location : "fk"
+    product_markup_price }o--|| product : "fk"
+    purchase_inventory_movement }o--|| product : "fk"
+    purchase_inventory_movement }o--|| purchase : "fk"
+    purchase_credit_note_line }o--|| product : "fk"
+    purchase_credit_note_line }o--|| purchase_credit_note : "fk"
+    purchase_credit_note_line }o--|| purchase_credit_note : "fk"
+    purchase_credit_note_refund }o--|| purchase_credit_note : "fk"
+    purchase_credit_note_refund }o--|| purchase_credit_note : "fk"
+    purchase_credit_note_unstock }o--|| product : "fk"
+    purchase_credit_note_unstock }o--|| purchase_credit_note : "fk"
+    purchase_credit_note_unstock }o--|| purchase_credit_note : "fk"
+    purchase_credit_note }o--|| purchase : "fk"
+    purchase_invoice_line }o--|| product : "fk"
+    purchase_invoice_line }o--|| purchase_invoice : "fk"
+    purchase_invoice_line }o--|| purchase_invoice : "fk"
+    purchase_invoice_payment }o--|| purchase_invoice : "fk"
+    purchase_invoice_payment }o--|| purchase_invoice : "fk"
+    purchase_invoice_additional_charge }o--|| purchase_invoice : "fk"
+    purchase_invoice_additional_charge }o--|| purchase_invoice : "fk"
+    purchase_invoice }o--|| purchase : "fk"
+    put_away_line }o--|| product : "fk"
+    put_away_line }o--|| put_away : "fk"
+    put_away_line }o--|| put_away : "fk"
+    put_away }o--|| purchase : "fk"
+    stock_received_line }o--|| product : "fk"
+    stock_received_line }o--|| stock_received : "fk"
+    stock_received_line }o--|| stock_received : "fk"
+    stock_received }o--|| purchase : "fk"
+    purchase_order_line }o--|| product : "fk"
+    purchase_order_line }o--|| purchase : "fk"
+    purchase }o--|| supplier : "fk"
+    purchase }o--|| task : "fk"
+    lead_contact }o--|| lead : "fk"
+    lead_address }o--|| lead : "fk"
+    sale_quote_line }o--|| product : "fk"
+    sale_quote_line }o--|| sale : "fk"
+    sale_quote_additional_charge }o--|| sale : "fk"
+    sale_order_line }o--|| product : "fk"
+    sale_order_line }o--|| sale : "fk"
+    sale_order_additional_charge }o--|| sale : "fk"
+    sale_invoice_line }o--|| product : "fk"
+    sale_invoice_line }o--|| sale_invoice : "fk"
+    sale_invoice_line }o--|| sale_invoice : "fk"
+    sale_invoice_additional_charge }o--|| sale_invoice : "fk"
+    sale_invoice_additional_charge }o--|| sale_invoice : "fk"
+    sale_invoice }o--|| sale : "fk"
+    sale_credit_note_line }o--|| product : "fk"
+    sale_credit_note_line }o--|| sale_credit_note : "fk"
+    sale_credit_note_line }o--|| sale_credit_note : "fk"
+    sale_credit_note_refund }o--|| sale_credit_note : "fk"
+    sale_credit_note_refund }o--|| sale_credit_note : "fk"
+    sale_credit_note_restock }o--|| product : "fk"
+    sale_credit_note_restock }o--|| sale_credit_note : "fk"
+    sale_credit_note_restock }o--|| sale_credit_note : "fk"
+    sale_credit_note_additional_charge }o--|| sale_credit_note : "fk"
+    sale_credit_note_additional_charge }o--|| sale_credit_note : "fk"
+    sale_credit_note }o--|| sale : "fk"
+    sale_attachment }o--|| sale : "fk"
+    sale_fullfillment_pick_line }o--|| product : "fk"
+    sale_fullfillment_pick_line }o--|| sale_fullfillment : "fk"
+    sale_fullfillment_pick_line }o--|| sale_fullfillment : "fk"
+    sale_fullfillment_pack_line }o--|| product : "fk"
+    sale_fullfillment_pack_line }o--|| sale_fullfillment : "fk"
+    sale_fullfillment_pack_line }o--|| sale_fullfillment : "fk"
+    sale_fullfillment_ship_line }o--|| sale_fullfillment : "fk"
+    sale_fullfillment_ship_line }o--|| sale_fullfillment : "fk"
+    sale_fullfillment }o--|| sale : "fk"
+    sale_inventory_movement }o--|| product : "fk"
+    sale_inventory_movement }o--|| sale : "fk"
+    sale_transaction }o--|| transaction : "fk"
+    sale_transaction }o--|| sale : "fk"
+    sale }o--|| customer : "fk"
+    location_bin }o--|| location : "fk"
+    transaction }o--|| task : "fk"
+    customer_product_price }o--|| product : "fk"
+    customer_product_price }o--|| customer : "fk"
+    customer_contacts }o--|| customer : "fk"
+    customer_address }o--|| customer : "fk"
+    customer }o--|| chart_of_account : "fk"

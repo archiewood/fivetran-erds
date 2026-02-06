@@ -1,0 +1,460 @@
+erDiagram
+    inflow_receipt_item {
+        text id PK
+        text grn_code PK
+        text item_sku FK
+        text purchase_order_item_id FK
+        text additional_cost
+        text batch_code
+        text batch_dto
+        text detailed_quantity
+        text determine_expiry_from
+        text discount
+        text discount_percentage
+        text expirable
+        text expiry
+        text grn_expiry_tolerance
+        text item_type_image_url
+        text item_type_name
+        text item_type_page_url
+        text items_labelled
+        text manufacturing_date
+        text max_retail_price
+        text pending_quantity
+        text quantity
+        text rejected_quantity
+        text rejection_comment
+        text scan_identifier
+        text shelf_life
+        text status
+        text unit_price
+        text vendor_sku_code
+    }
+    grn_custom_field_value {
+        text index PK
+        text grn_code PK
+        text display_name
+        text field_name
+        jsonb field_value
+        jsonb possible_value
+        text required
+        text value_type
+    }
+    grn {
+        text code PK
+        text purchase_order_code FK
+        text asn_code
+        text created
+        text created_by
+        text facility
+        text purchase_order_approved
+        text purchase_order_vendor_code
+        text status_code
+        text total_quantity
+        text total_received_amount
+        text total_rejected_amount
+        text total_rejected_quantity
+        text vendor_invoice_date
+        text vendor_invoice_number
+    }
+    sale_order_custom_field_value {
+        text index PK
+        text sale_order_code PK
+        text display_name
+        text field_name
+        text field_value
+        text possible_value
+        text required
+        text value_type
+    }
+    sale_order_return {
+        text code PK
+        text sale_order_code PK
+        text action_code
+        text putaway_code
+        text return_invoice_code
+        text return_invoice_display_code
+        text shipping_provider
+        text status_code
+        text tracking_number
+        text type
+    }
+    sale_order_item {
+        text id PK
+        text sale_order_code PK
+        text reverse_pickup_code FK
+        text shipping_address_id FK
+        text shipping_package_code FK
+        text alternate_facility_code
+        text batch_dto
+        text brand
+        text bundle_sku_code
+        text cancellable
+        text cancellation_reason
+        text cancelled_by_seller
+        text cash_on_delivery_charge
+        text central_gst_percentage
+        text channel_expiry_date
+        text channel_mfd
+        text channel_mrp
+        text channel_sale_order_item_code
+        text channel_vendor_batch_number
+        text code
+        text color
+        text combination_description
+        text combination_identifier
+        text country_of_origin
+        text created
+        text custom_field_value
+        text discount
+        text edit_address
+        text effective_tolerance
+        text expected_delivery_date
+        text facility_code
+        text facility_name
+        text gift_message
+        text gift_wrap
+        text gift_wrap_charge
+        text hsn_code
+        text image_url
+        text integrated_gst_percentage
+        text item
+        text item_detail_field
+        text item_detail_field_dto_list
+        text item_name
+        text item_sku
+        text max_retail_price
+        text on_hold
+        text packet_configurable
+        text packet_number
+        text page_url
+        text prepaid_amount
+        text replacement_sale_order_code
+        text reverse_pickable
+        text sale_order_item_alternate_id
+        text selling_price
+        text selling_price_without_taxes_and_discount
+        text shelf_code
+        text shipping_charge
+        text shipping_charge_tax_percentage
+        text shipping_method_charge
+        text shipping_method_code
+        text shipping_package_status
+        text size
+        text state_gst_percentage
+        text status_code
+        text store_credit
+        text tax_percentage
+        text tcs
+        text total_central_gst
+        text total_integrated_gst
+        text total_price
+        text total_state_gst
+        text total_union_territory_gst
+        text type
+        text uc_batch_code
+        text union_territory_gst_percentage
+        text updated
+        text voucher_code
+        text voucher_value
+    }
+    shipping_package_item {
+        text item_sku PK
+        text sale_order_shipping_package_code PK
+        text item_name
+        text quantity
+    }
+    sale_order_shipping_package {
+        text code PK
+        text sale_order_code FK
+        text actual_weight
+        text channel
+        text channel_shipment_code
+        text city
+        text collectable_amount
+        text collected_amount
+        text courier_status
+        text created
+        text custom_field_value
+        text customer
+        text delivered
+        text dispatched
+        text estimated_weight
+        text invoice
+        text invoice_code
+        text invoice_date
+        text invoice_display_code
+        text irn
+        text no_of_item
+        text payment_reconciled
+        text pod_code
+        text shipping_courier
+        text shipping_label_link
+        text shipping_manifest_code
+        text shipping_method
+        text shipping_package_type
+        text shipping_provider
+        text status
+        text tracking_number
+        text tracking_status
+        text updated
+    }
+    sale_order_address {
+        text id PK
+        text sale_order_code PK
+        text address_line_1
+        text address_line_2
+        text city
+        text country
+        text district
+        text email
+        text name
+        text phone
+        text pincode
+        text state
+        text type
+    }
+    sale_order {
+        text code PK
+        text additional_info
+        text amount_paid
+        text billing_address_city
+        text billing_address_country
+        text billing_address_district
+        text billing_address_email
+        text billing_address_id
+        text billing_address_line_1
+        text billing_address_line_2
+        text billing_address_name
+        text billing_address_phone
+        text billing_address_pincode
+        text billing_address_state
+        text billing_address_type
+        text c_form_provided
+        text cancellable
+        text channel
+        text channel_processing_time
+        text cod
+        text created
+        text currency_code
+        text customer_code
+        text customer_gstin
+        text display_order_code
+        text display_order_date_time
+        text fulfillment_tat
+        text notification_email
+        text notification_mobile
+        text packet_configurable
+        text payment_detail
+        text payment_instrument
+        text payment_mode
+        text priority
+        text reverse_pickable
+        jsonb sale_order_metadata
+        text source
+        text status
+        text third_party_shipping
+        text total_discount
+        text total_shipping_charge
+        text transaction_id
+        text updated
+    }
+    gate_pass_item_dto {
+        text item_type_sku PK
+        text gate_pass_code PK
+        text inflow_receipt_code FK
+        text batch_dto
+        text central_gst_percentage
+        text compensation_cess_percentage
+        text gate_pass_item_id
+        text gate_pass_item_status
+        text hsn_code
+        text integrated_gst_percentage
+        text inventory_type
+        text item_code
+        text item_condition
+        text item_status
+        text item_type_image_url
+        text item_type_name
+        text item_type_page_url
+        text pending_quantity
+        text quantity
+        text reason
+        text received_quantity
+        text shelf_code
+        text state_gst_percentage
+        text tax_percentage
+        text total
+        text union_territory_gst_percentage
+        text unit_price
+    }
+    gate_pass {
+        text code PK
+        text created
+        jsonb custom_field_value
+        text gate_pass_order_code
+        text id
+        text invoice_code
+        text invoice_display_code
+        text purpose
+        text reference
+        text return_invoice_code
+        text return_invoice_display_code
+        text status_code
+        text to_party_name
+        text type
+        text updated
+        text username
+    }
+    inventory_snapshot {
+        text item_type_sku PK
+        text inventory
+        text inventory_blocked
+        text open_purchase
+        text open_sale
+        text pending_inventory_assessment
+        text pending_stock_transfer
+        text putaway_pending
+        text vendor_inventory
+        text virtual_inventory
+    }
+    rto_sale_order_item {
+        text sku_code PK
+        text shipment_code PK
+        text sale_order_code FK
+        text channel_product_id
+        text courier_status
+        text inventory_type
+        text item_name
+        text marketplace_return_reason
+        text putaway_qc_comment
+        text sale_order_item_code
+        text tracking_status
+    }
+    purchase_order_custom_field_value {
+        text index PK
+        text purchase_order_id PK
+        text display_name
+        text field_name
+        jsonb field_value
+        jsonb possible_value
+        text required
+        text value_type
+    }
+    purchase_order_item {
+        text id PK
+        text purchase_order_id PK
+        text item_sku FK
+        text asn_pending_quantity
+        text batch_group_code
+        text central_gst_percentage
+        jsonb custom_field_value
+        text determine_expiry_from
+        text discount
+        text discount_percentage
+        text expirable
+        text grn_expiry_tolerance
+        text integrated_gst_percentage
+        jsonb item_type_custom_field
+        text item_type_id
+        text logistic_charge
+        text max_retail_price
+        text pending_quantity
+        text quantity
+        text rejected_quantity
+        text shelf_life
+        text state_gst_percentage
+        text sub_total
+        text tax
+        text tax_percentage
+        text tax_type
+        text total
+        text total_central_gst
+        text total_integrated_gst
+        text total_state_gst
+        text total_union_territory_gst
+        text union_territory_gst_percentage
+        text unit_price
+    }
+    purchase_order {
+        text id PK
+        text amended_purchase_order_code
+        text amendment_purchase_order_code
+        text code
+        text created
+        text created_by
+        text delivery_date
+        text expiry_date
+        text from_party
+        text inflow_receipts_count
+        text logistic_charge
+        text logistic_charges_division_method
+        text name
+        text party_address_dto_address_line_1
+        text party_address_dto_address_line_2
+        text party_address_dto_address_type
+        text party_address_dto_address_type_name
+        text party_address_dto_city
+        text party_address_dto_country_code
+        text party_address_dto_email
+        text party_address_dto_enabled
+        text party_address_dto_phone
+        text party_address_dto_pincode
+        text party_address_dto_state_code
+        text party_address_dto_state_name
+        text price_summary_currency_code
+        text price_summary_discount
+        text price_summary_logistic_charge
+        text price_summary_sub_total_before_taxes_and_discount
+        text price_summary_tax_on_sale
+        text price_summary_tcs_amount
+        text price_summary_total_amount
+        text price_summary_total_item
+        text rejection_reason
+        text status_code
+        text tcs_addition_enabled
+        text tcs_amount
+        text type
+        text vendor_agreement_name
+        text vendor_code
+        text vendor_id
+        text vendor_name
+    }
+    cir_sale_order_item {
+        text sku_code PK
+        text reverse_pickup_code PK
+        text sale_order_code FK
+        text shipment_code FK
+        text channel_product_id
+        text courier_status
+        text inventory_type
+        text item_name
+        text marketplace_return_reason
+        text putaway_qc_comment
+        text sale_order_item_code
+        text tracking_status
+    }
+    inflow_receipt_item }o--|| gate_pass_item_dto : "fk"
+    inflow_receipt_item }o--|| purchase_order_item : "fk"
+    inflow_receipt_item }o--|| grn : "fk"
+    grn_custom_field_value }o--|| grn : "fk"
+    grn }o--|| purchase_order : "fk"
+    sale_order_custom_field_value }o--|| sale_order : "fk"
+    sale_order_return }o--|| sale_order : "fk"
+    sale_order_item }o--|| sale_order_address : "fk"
+    sale_order_item }o--|| sale_order_shipping_package : "fk"
+    sale_order_item }o--|| sale_order_return : "fk"
+    sale_order_item }o--|| sale_order : "fk"
+    shipping_package_item }o--|| sale_order_shipping_package : "fk"
+    sale_order_shipping_package }o--|| sale_order : "fk"
+    sale_order_address }o--|| sale_order : "fk"
+    gate_pass_item_dto }o--|| grn : "fk"
+    gate_pass_item_dto }o--|| gate_pass : "fk"
+    rto_sale_order_item }o--|| sale_order_return : "fk"
+    rto_sale_order_item }o--|| sale_order : "fk"
+    purchase_order_custom_field_value }o--|| purchase_order : "fk"
+    purchase_order_item }o--|| inventory_snapshot : "fk"
+    purchase_order_item }o--|| purchase_order : "fk"
+    cir_sale_order_item }o--|| sale_order_shipping_package : "fk"
+    cir_sale_order_item }o--|| sale_order_return : "fk"
+    cir_sale_order_item }o--|| sale_order : "fk"

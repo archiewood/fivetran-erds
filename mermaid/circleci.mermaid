@@ -1,0 +1,226 @@
+erDiagram
+    project {
+        text id PK
+        text user_slug FK
+        text name
+        text organization_id
+        text organization_name
+        text organization_slug
+        text slug
+        text vcs_info_default_branch
+        text vcs_info_provider
+        text vcs_info_vcs_url
+    }
+    project_branch {
+        text branch_name PK
+        text project_id PK
+    }
+    workflow_recent_run {
+        text id PK
+        text project_id FK
+        text workflow_id FK
+        text branch
+        timestamp created_at
+        double_precision credits_used
+        double_precision duration
+        text status
+        timestamp stopped_at
+    }
+    user_collaboration {
+        text slug PK
+        text avatar_url
+        text id
+        text name
+        text vcs_type
+    }
+    workflow_job_dependency {
+        text dependency PK
+        text job_id PK
+    }
+    workflow_job {
+        text id PK
+        text project_id FK
+        text workflow_id FK
+        text approval_request_id
+        text approved_by
+        text canceled_by
+        text job_number
+        text name
+        text project_slug
+        timestamp started_at
+        text status
+        timestamp stopped_at
+        text type
+    }
+    context {
+        text id PK
+        text user_slug FK
+        timestamp created_at
+        text name
+    }
+    flaky_test {
+        text _fivetran_id PK
+        text project_id FK
+        text workflow_id FK
+        text classname
+        text file
+        text job_name
+        double_precision job_number
+        double_precision pipeline_number
+        text source
+        text test_name
+        integer time_wasted
+        integer times_flaked
+        timestamp workflow_created_at
+        text workflow_name
+    }
+    pipeline_error {
+        text _fivetran_id PK
+        text pipeline_id FK
+        text message
+        text type
+    }
+    pipeline {
+        text id PK
+        text project_id FK
+        timestamp created_at
+        double_precision number
+        text project_slug
+        text state
+        text trigger_actor_avatar_url
+        text trigger_actor_login
+        timestamp trigger_received_at
+        text trigger_type
+        timestamp updated_at
+        text vcs_branch
+        text vcs_commit_body
+        text vcs_commit_subject
+        text vcs_origin_repository_url
+        text vcs_provider_name
+        text vcs_review_id
+        text vcs_review_url
+        text vcs_revision
+        text vcs_tags
+        text vcs_target_repository_url
+    }
+    schedule_day_of_month {
+        integer date PK
+        text schedule_id PK
+    }
+    schedule_month {
+        text month PK
+        text schedule_id PK
+    }
+    schedule_hour_of_day {
+        integer hour PK
+        text schedule_id PK
+    }
+    schedule_day_of_week {
+        text day PK
+        text schedule_id PK
+    }
+    schedule {
+        text id PK
+        text project_id FK
+        text actor_id
+        text actor_login
+        text actor_name
+        timestamp created_at
+        text description
+        text name
+        text parameters_branch
+        boolean parameters_deploy_prod
+        text project_slug
+        integer timetable_per_hour
+        timestamp updated_at
+    }
+    job_parallel_run {
+        text _fivetran_id PK
+        text job_number FK
+        text project_id FK
+        double_precision index
+        text status
+    }
+    job_message {
+        text _fivetran_id PK
+        text job_number FK
+        text project_id FK
+        text message
+        text reason
+        text type
+    }
+    job_context {
+        text name PK
+        text job_number FK
+        text project_id FK
+    }
+    job {
+        text number PK
+        text project_id PK
+        text latest_workflow_name FK
+        text pipeline_id FK
+        timestamp created_at
+        double_precision duration
+        text executor_resource_class
+        text executor_type
+        text name
+        text organization_name
+        text parallelism
+        timestamp queued_at
+        timestamp started_at
+        text status
+        timestamp stopped_at
+        text web_url
+    }
+    job_artifact {
+        text _fivetran_id PK
+        text job_number FK
+        text project_id FK
+        double_precision node_index
+        text path
+        text url
+    }
+    workflow {
+        text id PK
+        text pipeline_id FK
+        text project_id FK
+        text canceled_by
+        timestamp created_at
+        text errored_by
+        text name
+        text project_slug
+        text started_by
+        text status
+        timestamp stopped_at
+        text tags
+    }
+    project }o--|| user_collaboration : "fk"
+    project_branch }o--|| project : "fk"
+    workflow_recent_run }o--|| project : "fk"
+    workflow_recent_run }o--|| workflow : "fk"
+    workflow_job_dependency }o--|| workflow_job : "fk"
+    workflow_job }o--|| workflow : "fk"
+    workflow_job }o--|| project : "fk"
+    context }o--|| user_collaboration : "fk"
+    flaky_test }o--|| project : "fk"
+    flaky_test }o--|| workflow : "fk"
+    pipeline_error }o--|| pipeline : "fk"
+    pipeline }o--|| project : "fk"
+    schedule_day_of_month }o--|| schedule : "fk"
+    schedule_month }o--|| schedule : "fk"
+    schedule_hour_of_day }o--|| schedule : "fk"
+    schedule_day_of_week }o--|| schedule : "fk"
+    schedule }o--|| project : "fk"
+    job_parallel_run }o--|| job : "fk"
+    job_parallel_run }o--|| project : "fk"
+    job_message }o--|| job : "fk"
+    job_message }o--|| project : "fk"
+    job_context }o--|| job : "fk"
+    job_context }o--|| project : "fk"
+    job }o--|| pipeline : "fk"
+    job }o--|| workflow : "fk"
+    job }o--|| project : "fk"
+    job_artifact }o--|| job : "fk"
+    job_artifact }o--|| project : "fk"
+    workflow }o--|| pipeline : "fk"
+    workflow }o--|| project : "fk"

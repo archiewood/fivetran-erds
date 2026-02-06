@@ -1,0 +1,636 @@
+erDiagram
+%% Note
+%% All tables with prefix ds_ will only be synced when data sync is enabled on the pendo setup form.
+    guide_step_history {
+        text guide_id PK
+        timestamp guide_last_updated_at PK
+        text step_id PK
+    }
+    track_type_rule_history {
+        text rule PK
+        text track_id PK
+        timestamp track_last_updated_at PK
+    }
+    page_event {
+        text _fivetran_id PK
+        text remote_ip PK
+        text server_name PK
+        timestamp timestamp PK
+        text user_agent PK
+        text account_id PK
+        text page_id PK
+        text visitor_id PK
+        text app_id FK
+        integer num_events
+        integer num_minutes
+    }
+    ds_feature_history {
+        text feature_id PK
+        bigint last_updated_at PK
+        text page_id FK
+        bigint created_at
+        boolean is_core_event
+        text kind
+        text name
+    }
+    ds_track_type_history {
+        bigint last_updated_at PK
+        text track_type_id PK
+        bigint created_at
+        boolean is_core_event
+        text kind
+        text name
+    }
+    poll {
+        text id PK
+        text question
+        timestamp reset_at
+    }
+    guide_event {
+        text _fivetran_id PK
+        text remote_ip PK
+        text server_name PK
+        timestamp timestamp PK
+        text user_agent PK
+        text account_id PK
+        text guide_id PK
+        text visitor_id PK
+        text app_id FK
+        text country
+        text element_path
+        text event_id
+        text guide_step_id
+        double_precision latitude
+        integer load_time
+        double_precision longitude
+        text region
+        text type
+        text ui_element_actions
+        text ui_element_id
+        text ui_element_text
+        text ui_element_type
+        text url
+    }
+    ds_feature_event {
+        text event_id PK
+        text period_id PK
+        text feature_id PK
+        text guide_id FK
+        text guide_step_id FK
+        text account_id
+        timestamp browser_timestamp
+        text country
+        text destination_step_id
+        text element_path
+        text event_class
+        text event_source
+        text event_type
+        text guide_seen_reason
+        bigint guide_seen_timeout_ms
+        text guide_session_id
+        bigint guide_snooze_duration_ms
+        text language
+        double_precision latitude
+        bigint load_duration_ms
+        double_precision longitude
+        text old_visitor_id
+        text poll_id
+        text poll_response
+        text poll_type
+        text region
+        text remote_ip
+        text server
+        text ui_element_actions
+        text ui_element_id
+        text ui_element_text
+        text ui_element_type
+        text url
+        text user_agent
+        text visitor_id
+    }
+    ds_track_type_event_property_history {
+        text event_property_name PK
+        bigint last_updated_at PK
+        text track_type_id PK
+    }
+    poll_event {
+        text _fivetran_id PK
+        text remote_ip PK
+        text server_name PK
+        timestamp timestamp PK
+        text user_agent PK
+        text account_id PK
+        text guide_id PK
+        text poll_id PK
+        text visitor_id PK
+        text app_id FK
+        text country
+        text element_path
+        text event_id
+        text guide_step_id
+        double_precision latitude
+        integer load_time
+        double_precision longitude
+        text poll_response
+        text region
+        text type
+        text url
+    }
+    step_thumbnail_url_history {
+        text url PK
+        text step_id PK
+        timestamp step_last_updated_at PK
+    }
+    track_type_history {
+        text id PK
+        timestamp last_updated_at PK
+        text app_id FK
+        text created_by_user_id FK
+        text group_id FK
+        text last_updated_by_user_id FK
+        text color
+        timestamp created_at
+        text description
+        boolean dirty
+        text name
+        text root_version_id
+        text stable_version_id
+        text track_type_name
+        timestamp valid_through
+    }
+    step_poll_history {
+        text poll_id PK
+        text step_id PK
+        timestamp step_last_updated_at PK
+    }
+    visitor_account_history {
+        text account_id PK
+        text visitor_id PK
+        timestamp visitor_last_updated_at PK
+    }
+    group {
+        text id PK
+        text app_id FK
+        text created_by_user_id FK
+        text last_updated_by_user_id FK
+        text color
+        timestamp created_at
+        text description
+        timestamp last_updated_at
+        integer length
+        text name
+    }
+    feature_event {
+        text _fivetran_id PK
+        text remote_ip PK
+        text server_name PK
+        timestamp timestamp PK
+        text user_agent PK
+        text account_id PK
+        text feature_id PK
+        text visitor_id PK
+        text app_id FK
+        integer num_events
+        integer num_minutes
+    }
+    guide_history {
+        text id PK
+        timestamp last_updated_at PK
+        text app_id FK
+        text created_by_user_id FK
+        text last_updated_by_user_id FK
+        jsonb audience
+        jsonb audience_ui_hint
+        text authored_language
+        timestamp created_at
+        timestamp current_first_eligible_to_be_seen_at
+        text description
+        text editor_type
+        text email_state
+        boolean is_module
+        boolean is_multi_step
+        boolean is_top_level
+        boolean is_training
+        text kind
+        text launch_method
+        text name
+        timestamp published_at
+        boolean published_ever
+        bigint recurrence
+        bigint recurrence_eligibility_window
+        timestamp reset_at
+        text root_version_id
+        text stable_version_id
+        text state
+    }
+    feature_element_path_rule_history {
+        text rule PK
+        text feature_id PK
+        timestamp feature_last_updated_at PK
+    }
+    picklist_poll_response {
+        text response_id PK
+        text poll_id PK
+        text response_text
+    }
+    account_history {
+        text id PK
+        timestamp last_updated_at PK
+        timestamp first_visit
+        bigint id_hash
+        timestamp last_visit
+    }
+    feature_history {
+        text id PK
+        timestamp last_updated_at PK
+        text app_id FK
+        text created_by_user_id FK
+        text group_id FK
+        text last_updated_by_user_id FK
+        text page_id FK
+        text color
+        timestamp created_at
+        text description
+        boolean dirty
+        boolean is_core_event
+        text name
+        text root_version_id
+        text stable_version_id
+        timestamp valid_through
+    }
+    ds_page_history {
+        bigint last_updated_at PK
+        text page_id PK
+        bigint created_at
+        boolean is_core_event
+        text kind
+        text name
+        text rules_json
+    }
+    track_type_event {
+        text _fivetran_id PK
+        text remote_ip PK
+        text server_name PK
+        timestamp time_stamp PK
+        text user_agent PK
+        text account_id PK
+        text track_type_id PK
+        text visitor_id PK
+        text app_id FK
+        integer num_events
+        integer num_minutes
+    }
+    ds_guide_history {
+        text guide_id PK
+        bigint last_updated_at PK
+        text audience_ui_hint
+        bigint created_at
+        text email_state
+        boolean is_multi_step
+        boolean is_training
+        text kind
+        text launch_method
+        text name
+        bigint published_at
+        bigint recurrence
+        bigint recurrence_eligibility_window
+        bigint reset_at
+        text state
+    }
+    account_application_history {
+        text account_id PK
+        timestamp account_last_updated_at PK
+        text app_id PK
+        timestamp first_visit
+        bigint id_hash
+        timestamp last_updated
+        timestamp last_visit
+    }
+    page_history {
+        text id PK
+        timestamp last_updated_at PK
+        text app_id FK
+        text created_by_user_id FK
+        text group_id FK
+        text last_updated_by_user_id FK
+        text color
+        timestamp created_at
+        text description
+        boolean dirty
+        boolean is_core_event
+        boolean is_suggested
+        text kind
+        text name
+        text root_version_id
+        text stable_version_id
+        timestamp valid_through
+    }
+    event {
+        text _fivetran_id PK
+        text account_id FK
+        text app_id FK
+        text visitor_id FK
+        integer num_events
+        integer num_minutes
+        text page_id
+        text remote_ip
+        text server_name
+        timestamp timestamp
+        text user_agent
+    }
+    step_history {
+        text id PK
+        timestamp last_updated_at PK
+        text page_id FK
+        text advance_method
+        text building_blocks_url
+        text content_type
+        text content_url
+        text content_url_css
+        text content_url_js
+        text dom_jsonp_url
+        text dom_url
+        text element_path_rule
+        bigint rank
+        text regex_url_rule
+        timestamp reset_at
+        text template_id
+        text type
+    }
+    user {
+        text id PK
+        timestamp deleted_at
+        text first_name
+        text last_name
+        integer role
+        text user_type
+        text username
+    }
+    visitor_application_history {
+        text app_id PK
+        text visitor_id PK
+        timestamp visitor_last_updated_at PK
+        timestamp first_visit
+        bigint id_hash
+        text last_browser_name
+        text last_browser_version
+        text last_operating_system
+        text last_server_name
+        timestamp last_updated
+        text last_user_agent
+        timestamp last_visit
+        bigint n_id
+    }
+    ds_guide_step_history {
+        text guide_step_id PK
+        text guide_id PK
+        bigint last_updated_at PK
+        text app_relay_url
+        text name
+        text page_id
+    }
+    ds_event {
+        text event_id PK
+        text guide_id FK
+        text guide_step_id FK
+        text account_id
+        timestamp browser_timestamp
+        text country
+        text destination_step_id
+        text element_path
+        text event_class
+        text event_source
+        text event_type
+        text guide_seen_reason
+        bigint guide_seen_timeout_ms
+        text guide_session_id
+        bigint guide_snooze_duration_ms
+        text language
+        double_precision latitude
+        bigint load_duration_ms
+        double_precision longitude
+        text old_visitor_id
+        text period_id
+        text poll_id
+        text poll_response
+        text poll_type
+        text region
+        text remote_ip
+        text server
+        text ui_element_actions
+        text ui_element_id
+        text ui_element_text
+        text ui_element_type
+        text url
+        text user_agent
+        text visitor_id
+    }
+    application_history {
+        text id PK
+        timestamp last_updated_at PK
+        text agent_policy_prod
+        text agent_policy_staging
+        text agent_version_prod
+        text agent_version_staging
+        timestamp created_at
+        text created_by_user_id
+        text description
+        timestamp disabled_at
+        text display_name
+        bigint event_count
+        integer event_rate
+        timestamp first_event_time
+        text guide_css_url
+        text icon_url
+        boolean integrated
+        boolean is_deleted
+        text last_updated_by_user_id
+        timestamp marked_for_deletion_at
+        text name
+        text platform
+        text push_application_id
+        timestamp record_until
+        timestamp sampling_rate
+        timestamp starting_event_time
+        text store_url
+        text subscription_id
+    }
+    ds_track_type_event {
+        text event_id PK
+        text period_id PK
+        text track_type_id PK
+        text guide_id FK
+        text guide_step_id FK
+        text account_id
+        timestamp browser_timestamp
+        text country
+        text destination_step_id
+        text element_path
+        text event_class
+        text event_source
+        text event_type
+        text guide_seen_reason
+        bigint guide_seen_timeout_ms
+        text guide_session_id
+        bigint guide_snooze_duration_ms
+        text language
+        double_precision latitude
+        bigint load_duration_ms
+        double_precision longitude
+        text old_visitor_id
+        text poll_id
+        text poll_response
+        text poll_type
+        text region
+        text remote_ip
+        text server
+        text ui_element_actions
+        text ui_element_id
+        text ui_element_text
+        text ui_element_type
+        text url
+        text user_agent
+        text visitor_id
+    }
+    page_rule_history {
+        text rule PK
+        text page_id PK
+        timestamp page_last_updated_at PK
+        text designer_hint
+        text parsed_rule
+    }
+    ds_page_event {
+        text event_id PK
+        text period_id PK
+        text page_id PK
+        text guide_id FK
+        text guide_step_id FK
+        text account_id
+        timestamp browser_timestamp
+        text country
+        text destination_step_id
+        text element_path
+        text event_class
+        text event_source
+        text event_type
+        text guide_seen_reason
+        bigint guide_seen_timeout_ms
+        text guide_session_id
+        bigint guide_snooze_duration_ms
+        text language
+        double_precision latitude
+        bigint load_duration_ms
+        double_precision longitude
+        text old_visitor_id
+        text poll_id
+        text poll_response
+        text poll_type
+        text region
+        text remote_ip
+        text server
+        text ui_element_actions
+        text ui_element_id
+        text ui_element_text
+        text ui_element_type
+        text url
+        text user_agent
+        text visitor_id
+    }
+    visitor_history {
+        text id PK
+        timestamp last_updated_at PK
+        text account_id
+        timestamp first_visit
+        bigint id_hash
+        text last_browser_name
+        text last_browser_version
+        text last_operating_system
+        text last_server_name
+        text last_user_agent
+        timestamp last_visit
+        text n_id
+    }
+    guide_step_history }o--|| guide_history : "fk"
+    guide_step_history }o--|| guide_history : "fk"
+    guide_step_history }o--|| step_history : "fk"
+    track_type_rule_history }o--|| track_type_history : "fk"
+    track_type_rule_history }o--|| track_type_history : "fk"
+    page_event }o--|| account_history : "fk"
+    page_event }o--|| visitor_history : "fk"
+    page_event }o--|| page_history : "fk"
+    page_event }o--|| application_history : "fk"
+    ds_feature_history }o--|| ds_page_history : "fk"
+    guide_event }o--|| visitor_history : "fk"
+    guide_event }o--|| account_history : "fk"
+    guide_event }o--|| guide_history : "fk"
+    guide_event }o--|| application_history : "fk"
+    ds_feature_event }o--|| ds_guide_history : "fk"
+    ds_feature_event }o--|| ds_guide_step_history : "fk"
+    ds_feature_event }o--|| ds_feature_history : "fk"
+    ds_track_type_event_property_history }o--|| ds_track_type_history : "fk"
+    ds_track_type_event_property_history }o--|| ds_track_type_history : "fk"
+    poll_event }o--|| visitor_history : "fk"
+    poll_event }o--|| account_history : "fk"
+    poll_event }o--|| guide_history : "fk"
+    poll_event }o--|| poll : "fk"
+    poll_event }o--|| application_history : "fk"
+    step_thumbnail_url_history }o--|| step_history : "fk"
+    step_thumbnail_url_history }o--|| step_history : "fk"
+    track_type_history }o--|| group : "fk"
+    track_type_history }o--|| user : "fk"
+    track_type_history }o--|| user : "fk"
+    track_type_history }o--|| application_history : "fk"
+    step_poll_history }o--|| step_history : "fk"
+    step_poll_history }o--|| step_history : "fk"
+    step_poll_history }o--|| poll : "fk"
+    visitor_account_history }o--|| visitor_history : "fk"
+    visitor_account_history }o--|| visitor_history : "fk"
+    visitor_account_history }o--|| account_history : "fk"
+    group }o--|| user : "fk"
+    group }o--|| user : "fk"
+    group }o--|| application_history : "fk"
+    feature_event }o--|| account_history : "fk"
+    feature_event }o--|| visitor_history : "fk"
+    feature_event }o--|| feature_history : "fk"
+    feature_event }o--|| application_history : "fk"
+    guide_history }o--|| user : "fk"
+    guide_history }o--|| user : "fk"
+    guide_history }o--|| application_history : "fk"
+    feature_element_path_rule_history }o--|| feature_history : "fk"
+    feature_element_path_rule_history }o--|| feature_history : "fk"
+    picklist_poll_response }o--|| poll : "fk"
+    feature_history }o--|| group : "fk"
+    feature_history }o--|| user : "fk"
+    feature_history }o--|| user : "fk"
+    feature_history }o--|| page_history : "fk"
+    feature_history }o--|| application_history : "fk"
+    track_type_event }o--|| account_history : "fk"
+    track_type_event }o--|| visitor_history : "fk"
+    track_type_event }o--|| track_type_history : "fk"
+    track_type_event }o--|| application_history : "fk"
+    account_application_history }o--|| account_history : "fk"
+    account_application_history }o--|| account_history : "fk"
+    account_application_history }o--|| application_history : "fk"
+    page_history }o--|| group : "fk"
+    page_history }o--|| user : "fk"
+    page_history }o--|| user : "fk"
+    page_history }o--|| application_history : "fk"
+    event }o--|| account_history : "fk"
+    event }o--|| visitor_history : "fk"
+    event }o--|| application_history : "fk"
+    step_history }o--|| page_history : "fk"
+    visitor_application_history }o--|| visitor_history : "fk"
+    visitor_application_history }o--|| visitor_history : "fk"
+    visitor_application_history }o--|| application_history : "fk"
+    ds_guide_step_history }o--|| ds_guide_history : "fk"
+    ds_guide_step_history }o--|| ds_guide_history : "fk"
+    ds_event }o--|| ds_guide_history : "fk"
+    ds_event }o--|| ds_guide_step_history : "fk"
+    ds_track_type_event }o--|| ds_guide_history : "fk"
+    ds_track_type_event }o--|| ds_guide_step_history : "fk"
+    ds_track_type_event }o--|| ds_track_type_history : "fk"
+    page_rule_history }o--|| page_history : "fk"
+    page_rule_history }o--|| page_history : "fk"
+    ds_page_event }o--|| ds_guide_history : "fk"
+    ds_page_event }o--|| ds_guide_step_history : "fk"
+    ds_page_event }o--|| ds_page_history : "fk"

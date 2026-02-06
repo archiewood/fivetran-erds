@@ -1,0 +1,725 @@
+erDiagram
+    defect {
+        text id PK
+        text resolved_by_id FK
+        text trailer_id FK
+        text vehicle_id FK
+        text comment
+        text created_at_time
+        text defect_type
+        boolean is_resolved
+        text mechanic_notes
+        text mechanic_notes_updated_at_time
+        text resolved_at_time
+        text resolved_by_name
+        text resolved_by_type
+    }
+    dvir_trailer_defect {
+        text dvir_id PK
+        text trailer_defect_id PK
+    }
+    dvir_vehicle_defect {
+        text dvir_id PK
+        text vechile_defect_id PK
+    }
+    dvir {
+        text id PK
+        text author_signature_signatory_user_id FK
+        text second_signature_signatory_user_id FK
+        text third_signature_signatory_user_id FK
+        text trailer_id FK
+        text vehicle_id FK
+        text author_signature_signatory_user_name
+        text author_signature_signed_at_time
+        text author_signature_type
+        text end_time
+        text location
+        text mechanic_notes
+        bigint odometer_meters
+        text safety_status
+        text second_signature_signatory_user_name
+        text second_signature_signed_at_time
+        text second_signature_type
+        text start_time
+        text third_signature_signatory_user_name
+        text third_signature_signed_at_time
+        text third_signature_type
+        text type
+    }
+    safety_behavior {
+        text label PK
+        text safety_event_id PK
+        text name
+        text source
+    }
+    safety_event {
+        text id PK
+        text driver_id FK
+        text vehicle_id FK
+        text coaching_state
+        double_precision location_latitude
+        double_precision location_longitude
+        double_precision max_acceleration_gforce
+        text time
+    }
+    hos_log_codriver {
+        text codriver_id PK
+        text hos_log_log_end_time PK
+        text hos_log_log_start_time PK
+        text hos_log_vehicle_id PK
+    }
+    hos_log {
+        text log_end_time PK
+        text log_start_time PK
+        text vehicle_id PK
+        text driver_id FK
+        text hos_status_type
+        double_precision log_recorded_location_latitude
+        double_precision log_recorded_location_longitude
+        text remark
+    }
+    tag_equipment {
+        text index PK
+        text equipment_id PK
+        text tag_id FK
+    }
+    equipment {
+        text id PK
+        text gateway_serial FK
+        text equipment_serial_number
+        text name
+        text notes
+    }
+    user_role {
+        text index PK
+        text users_id PK
+        text tag_id FK
+    }
+    users {
+        text id PK
+        text auth_type
+        text email
+        text name
+    }
+    tags {
+        text id PK
+        text parent_tag_id FK
+        jsonb external_id
+        text name
+    }
+    hos_daily_log {
+        text end_time PK
+        text start_time PK
+        text driver_id PK
+        text active_duration_ms
+        text adverse_driving_claimed
+        text big_day_claimed
+        text carrier_formatted_address
+        text carrier_name
+        text carrier_us_dot_number
+        text certified_at_time
+        text drive_distance_meters
+        text drive_duration_ms
+        text home_terminal_formatted_address
+        text home_terminal_name
+        text is_certified
+        text is_us_short_haul_active
+        text off_duty_duration_ms
+        text on_duty_duration_ms
+        text pending_active_duration_ms
+        text pending_drive_duration_ms
+        text pending_off_duty_duration_ms
+        text pending_on_duty_duration_ms
+        text pending_personal_conveyance_duration_ms
+        text pending_sleeper_berth_duration_ms
+        text pending_waiting_time_duration_ms
+        text pending_yard_move_duration_ms
+        text personal_conveyance_distance_meters
+        text personal_conveyance_duration_ms
+        text shipping_docs
+        text sleeper_berth_duration_ms
+        text waiting_time_duration_ms
+        text yard_move_distance_meters
+        text yard_move_duration_ms
+    }
+    route_stop {
+        text id PK
+        text address_id FK
+        text route_id FK
+        text actual_arrival_time
+        text actual_departure_time
+        text en_route_time
+        text eta
+        jsonb external_id
+        text live_sharing_url
+        text name
+        text notes
+        text scheduled_arrival_time
+        text scheduled_departure_time
+        text single_use_location_address
+        double_precision single_use_location_latitude
+        double_precision single_use_location_longitude
+        text skipped_time
+        text state
+    }
+    route {
+        text id PK
+        text driver_id FK
+        text vehicle_id FK
+        text actual_route_end_time
+        text actual_route_start_time
+        text completion_condition
+        jsonb external_id
+        text name
+        text notes
+        text scheduled_route_end_time
+        text scheduled_route_start_time
+        text starting_condition
+    }
+    tag_driver {
+        text index PK
+        text driver_id PK
+        text tag_id FK
+    }
+    driver {
+        text id PK
+        text peer_group_tag_id FK
+        text carrier_settings_carrier_name
+        bigint carrier_settings_dot_number
+        text carrier_settings_home_terminal_address
+        text carrier_settings_home_terminal_name
+        text carrier_settings_main_office_address
+        text created_at_time
+        text current_id_card_code
+        boolean eld_adverse_weather_exemption_enabled
+        boolean eld_big_day_exemption_enabled
+        bigint eld_day_start_hour
+        boolean eld_exempt
+        text eld_exempt_reason
+        boolean eld_pc_enabled
+        boolean eld_ym_enabled
+        jsonb external_id
+        text license_number
+        text license_state
+        text locale
+        text name
+        text notes
+        text tachograph_card_number
+        text timezone
+        text updated_at_time
+        text us_driver_ruleset_override_break
+        text us_driver_ruleset_override_cycle
+        text us_driver_ruleset_override_restart
+        text us_driver_ruleset_override_us_state_to_override
+        text username
+    }
+    vehicle_idling_report {
+        text _fivetran_id PK
+        text vehicle_id FK
+        text address_formatted
+        text address_latitude
+        text address_longitude
+        text duration_ms
+        text end_time
+        text fuel_consumption_ml
+        text is_pto_active
+        text start_time
+    }
+    j_1939_diagnostic_trouble_code {
+        text _fivetran_id PK
+        text fault_code_time FK
+        text fault_code_vehicle_id FK
+        text fmi_description
+        bigint fmi_id
+        bigint mil_status
+        bigint occurrence_count
+        text source_address_name
+        text spn_description
+        bigint spn_id
+        bigint tx_id
+        text vendor_specific_fields_dtc_description
+        text vendor_specific_fields_repair_instructions_url
+    }
+    obdii_diagnostic_trouble_code {
+        bigint tx_id PK
+        text fault_code_time FK
+        text fault_code_vehicle_id FK
+        text ignition_type
+        boolean mil_status
+        text monitor_status_catalyst
+        text monitor_status_comprehensive
+        text monitor_status_egr
+        text monitor_status_evap_system
+        text monitor_status_fuel
+        text monitor_status_heated_catalyst
+        text monitor_status_heated_o_2_sensor
+        text monitor_status_iso_sae_reserved
+        text monitor_status_misfire
+        bigint monitor_status_not_ready_count
+        text monitor_status_o_2_sensor
+        text monitor_status_secondary_air
+    }
+    oem_diagnostic_trouble_code {
+        text _fivetran_id PK
+        text fault_code_time FK
+        text fault_code_vehicle_id FK
+        text code_description
+        text code_identifier
+        text code_severity
+        text code_source
+    }
+    fault_code {
+        text time PK
+        text vehicle_id PK
+        text can_bus_type
+        boolean j_1939_check_engine_lights_emissions_is_on
+        boolean j_1939_check_engine_lights_protect_is_on
+        boolean j_1939_check_engine_lights_stop_is_on
+        boolean j_1939_check_engine_lights_warning_is_on
+        boolean obdii_check_engine_light_is_on
+    }
+    fuel_percent {
+        text time PK
+        text vehicle_id PK
+        bigint value
+    }
+    battery_milli_volt {
+        text time PK
+        text vehicle_id PK
+        bigint value
+    }
+    dtc {
+        text _fivetran_id PK
+        bigint tx_id FK
+        text dtc_description
+        bigint dtc_id
+        text dtc_short_code
+        text dtc_type
+    }
+    obd_engine_second {
+        text time PK
+        text vehicle_id PK
+        bigint value
+    }
+    synthetic_engine_second {
+        text time PK
+        text vehicle_id PK
+        bigint value
+    }
+    engine_state {
+        text time PK
+        text vehicle_id PK
+        text value
+    }
+    aux_input {
+        text time PK
+        text vehicle_id PK
+        text name
+        text type
+        boolean value
+    }
+    conditional_field_section {
+        text _fivetran_id PK
+        text document_id FK
+        bigint conditional_field_first_index
+        bigint conditional_field_last_index
+        bigint triggering_field_index
+        text triggering_field_value
+    }
+    document_field {
+        text label PK
+        text document_id PK
+        text type
+    }
+    document {
+        text id PK
+        text driver_id FK
+        text route_id FK
+        text route_stop_id FK
+        text vehicle_id FK
+        text created_at_time
+        text document_type_id
+        text document_type_name
+        text name
+        text notes
+        text state
+        text updated_at_time
+    }
+    gps {
+        text time PK
+        text vehicle_id PK
+        text address_id FK
+        double_precision heading_degrees
+        boolean is_ecu_speed
+        double_precision latitude
+        double_precision longitude
+        text reverse_geo_formatted_location
+        double_precision speed_miles_per_hour
+    }
+    alert_incident_conditions {
+        text index PK
+        text configuration_id PK
+        text updated_at_time PK
+        text description
+        jsonb details
+        text trigger_id
+    }
+    alert_incident {
+        text configuration_id PK
+        text updated_at_time PK
+        text happened_at_time
+        text incident_url
+        text is_resolved
+        text resolved_at_time
+    }
+    tag_vehicle {
+        text index PK
+        text vehicle_id PK
+        text tag_id FK
+    }
+    vehicle {
+        text id PK
+        text gateway_serial FK
+        text aux_input_1
+        text aux_input_10
+        text aux_input_11
+        text aux_input_12
+        text aux_input_13
+        text aux_input_2
+        text aux_input_3
+        text aux_input_4
+        text aux_input_5
+        text aux_input_6
+        text aux_input_7
+        text aux_input_8
+        text aux_input_9
+        text created_at_time
+        text engine_serial_number
+        jsonb external_id
+        text harsh_acceleration_setting
+        text license_plate
+        text make
+        text model
+        text name
+        text notes
+        text updated_at_time
+        text vehicle_regulation_mode
+        text vin
+        text year
+    }
+    tag_trailer {
+        text index PK
+        text trailer_id PK
+        text tag_id FK
+    }
+    trailer {
+        text id PK
+        text gateway_serial FK
+        boolean enabled_for_mobile
+        jsonb external_id
+        text license_plate
+        text name
+        text notes
+        text trailer_serial_number
+    }
+    driver_hos_violation {
+        text day_start_time PK
+        text type PK
+        text driver_id PK
+        text day_end_time
+        text description
+        text duration_ms
+        text violation_start_time
+    }
+    vehicle_trip_asset {
+        bigint trailer_id PK
+        text vehicle_trip_end_ms FK
+        text vehicle_trip_start_ms FK
+        text vehicle_trip_vehicle_id FK
+    }
+    vehicle_trip_codriver {
+        bigint codriver_id PK
+        text vehicle_trip_end_ms FK
+        text vehicle_trip_start_ms FK
+        text vehicle_trip_vehicle_id FK
+    }
+    vehicle_trip {
+        text end_ms PK
+        text start_ms PK
+        text vehicle_id PK
+        bigint driver_id FK
+        text end_address_id FK
+        bigint start_address_id FK
+        bigint distance_meters
+        double_precision end_coordinates_latitude
+        double_precision end_coordinates_longitude
+        text end_location
+        bigint end_odometer
+        bigint fuel_consumed_ml
+        double_precision start_coordinates_latitude
+        double_precision start_coordinates_longitude
+        text start_location
+        bigint start_odometer
+        bigint toll_meters
+    }
+    stream_dvir_defect {
+        text index PK
+        text stream_dvir_id PK
+        text defect_id FK
+    }
+    stream_dvir {
+        text id PK
+        text author_signature_signatory_user_id FK
+        text second_signature_signatory_user_id FK
+        text third_signature_signatory_user_id FK
+        text trailer_id FK
+        text vehicle_id FK
+        text author_signature_signed_at_time
+        text author_signature_type
+        text dvir_submission_begin_time
+        text dvir_submission_time
+        text formatted_address
+        text mechanic_notes
+        text odometer_meters
+        text safety_status
+        text second_signature_signed_at_time
+        text second_signature_type
+        text third_signature_signed_at_time
+        text third_signature_type
+        text type
+        text updated_at_time
+    }
+    tag_address {
+        text index PK
+        text address_id PK
+        text tag_id FK
+    }
+    address {
+        text id PK
+        text created_at_time
+        jsonb external_id
+        text formatted_address
+        double_precision latitude
+        double_precision longitude
+        text name
+        text notes
+        boolean settings_show_address
+        jsonb type
+    }
+    driver_vehicle_assignment {
+        text _fivetran_id PK
+        text driver_id FK
+        text vehicle_id FK
+        text assigned_at_time
+        text assignment_type
+        text end_time
+        boolean is_passenger
+        text metadata_source_name
+        text start_time
+    }
+    equipment_stats {
+        text id PK
+        text gateway_engine_seconds_time
+        text gateway_engine_seconds_value
+        text gps_odometer_meters_time
+        text gps_odometer_meters_value
+        text obd_engine_seconds_time
+        text obd_engine_seconds_value
+    }
+    gps_distance_meter {
+        text time PK
+        text vehicle_id PK
+        double_precision value
+    }
+    gps_odometer {
+        text time PK
+        text vehicle_id PK
+        bigint value
+    }
+    obd_odometer {
+        text time PK
+        text vehicle_id PK
+        bigint value
+    }
+    accessory_device {
+        text serial PK
+        text gateway_id FK
+        text model
+    }
+    gateway {
+        text id PK
+        text connection_status_health_status
+        text connection_status_last_connected
+        text model
+        text serial
+        bigint thirty_day_data_usage_bytes
+        bigint thirty_day_hotspot_usage_bytes
+    }
+    engine_rpm {
+        text time PK
+        text vehicle_id PK
+        text value
+    }
+    ambient_air_temperature_milli_c {
+        text time PK
+        text vehicle_id PK
+        text value
+    }
+    barometric_pressure_pa {
+        text time PK
+        text vehicle_id PK
+        text value
+    }
+    fuel_energy_by_vehicle_report {
+        text id PK
+        text distance_traveled_meters
+        text efficiency_mpge
+        text energy_type
+        text energy_used_kwh
+        text engine_idle_time_duration_milli_seconds
+        text engine_runtime_duration_milli_seconds
+        text est_carbon_emission_kg
+        text est_fuel_energy_cost_amount
+        text est_fuel_energy_cost_currency_code
+        text fuel_consumed_ml
+    }
+    fuel_energy_by_driver_report {
+        text id PK
+        text distance_traveled_meters
+        text efficiency_mpge
+        text energy_used_kwh
+        text engine_idle_time_duration_milli_seconds
+        text engine_runtime_duration_milli_seconds
+        text est_carbon_emission_kg
+        text est_fuel_energy_cost_amount
+        text est_fuel_energy_cost_currency_code
+        text fuel_consumed_ml
+    }
+    def_level_milli_percent {
+        text time PK
+        text vehicle_id PK
+        text value
+    }
+    ecu_speed_mph {
+        text time PK
+        text vehicle_id PK
+        text value
+    }
+    engine_coolant_temperature_milli_c {
+        text time PK
+        text vehicle_id PK
+        text value
+    }
+    engine_load_percent {
+        text time PK
+        text vehicle_id PK
+        text value
+    }
+    intake_manifold_temperature_milli_c {
+        text time PK
+        text vehicle_id PK
+        text value
+    }
+    defect }o--|| users : "fk"
+    defect }o--|| trailer : "fk"
+    defect }o--|| vehicle : "fk"
+    dvir_trailer_defect }o--|| defect : "fk"
+    dvir_trailer_defect }o--|| dvir : "fk"
+    dvir_vehicle_defect }o--|| defect : "fk"
+    dvir_vehicle_defect }o--|| dvir : "fk"
+    dvir }o--|| users : "fk"
+    dvir }o--|| users : "fk"
+    dvir }o--|| users : "fk"
+    dvir }o--|| trailer : "fk"
+    dvir }o--|| vehicle : "fk"
+    safety_behavior }o--|| safety_event : "fk"
+    safety_event }o--|| driver : "fk"
+    safety_event }o--|| vehicle : "fk"
+    hos_log_codriver }o--|| driver : "fk"
+    hos_log_codriver }o--|| hos_log : "fk"
+    hos_log_codriver }o--|| hos_log : "fk"
+    hos_log_codriver }o--|| hos_log : "fk"
+    hos_log }o--|| vehicle : "fk"
+    hos_log }o--|| driver : "fk"
+    tag_equipment }o--|| tags : "fk"
+    tag_equipment }o--|| equipment : "fk"
+    equipment }o--|| gateway : "fk"
+    user_role }o--|| tags : "fk"
+    user_role }o--|| users : "fk"
+    tags }o--|| tags : "fk"
+    hos_daily_log }o--|| driver : "fk"
+    route_stop }o--|| address : "fk"
+    route_stop }o--|| route : "fk"
+    route }o--|| driver : "fk"
+    route }o--|| vehicle : "fk"
+    tag_driver }o--|| tags : "fk"
+    tag_driver }o--|| driver : "fk"
+    driver }o--|| tags : "fk"
+    vehicle_idling_report }o--|| vehicle : "fk"
+    j_1939_diagnostic_trouble_code }o--|| fault_code : "fk"
+    j_1939_diagnostic_trouble_code }o--|| fault_code : "fk"
+    obdii_diagnostic_trouble_code }o--|| fault_code : "fk"
+    obdii_diagnostic_trouble_code }o--|| fault_code : "fk"
+    oem_diagnostic_trouble_code }o--|| fault_code : "fk"
+    oem_diagnostic_trouble_code }o--|| fault_code : "fk"
+    fault_code }o--|| vehicle : "fk"
+    fuel_percent }o--|| vehicle : "fk"
+    battery_milli_volt }o--|| vehicle : "fk"
+    dtc }o--|| obdii_diagnostic_trouble_code : "fk"
+    obd_engine_second }o--|| vehicle : "fk"
+    synthetic_engine_second }o--|| vehicle : "fk"
+    engine_state }o--|| vehicle : "fk"
+    conditional_field_section }o--|| document : "fk"
+    document_field }o--|| document : "fk"
+    document }o--|| route : "fk"
+    document }o--|| driver : "fk"
+    document }o--|| route_stop : "fk"
+    document }o--|| vehicle : "fk"
+    gps }o--|| address : "fk"
+    gps }o--|| vehicle : "fk"
+    alert_incident_conditions }o--|| alert_incident : "fk"
+    alert_incident_conditions }o--|| alert_incident : "fk"
+    tag_vehicle }o--|| tags : "fk"
+    tag_vehicle }o--|| vehicle : "fk"
+    vehicle }o--|| gateway : "fk"
+    tag_trailer }o--|| tags : "fk"
+    tag_trailer }o--|| trailer : "fk"
+    trailer }o--|| gateway : "fk"
+    driver_hos_violation }o--|| driver : "fk"
+    vehicle_trip_asset }o--|| vehicle_trip : "fk"
+    vehicle_trip_asset }o--|| vehicle_trip : "fk"
+    vehicle_trip_asset }o--|| vehicle_trip : "fk"
+    vehicle_trip_codriver }o--|| driver : "fk"
+    vehicle_trip_codriver }o--|| vehicle_trip : "fk"
+    vehicle_trip_codriver }o--|| vehicle_trip : "fk"
+    vehicle_trip_codriver }o--|| vehicle_trip : "fk"
+    vehicle_trip }o--|| address : "fk"
+    vehicle_trip }o--|| address : "fk"
+    vehicle_trip }o--|| driver : "fk"
+    vehicle_trip }o--|| vehicle : "fk"
+    stream_dvir_defect }o--|| defect : "fk"
+    stream_dvir_defect }o--|| stream_dvir : "fk"
+    stream_dvir }o--|| users : "fk"
+    stream_dvir }o--|| users : "fk"
+    stream_dvir }o--|| users : "fk"
+    stream_dvir }o--|| trailer : "fk"
+    stream_dvir }o--|| vehicle : "fk"
+    tag_address }o--|| tags : "fk"
+    tag_address }o--|| address : "fk"
+    driver_vehicle_assignment }o--|| driver : "fk"
+    driver_vehicle_assignment }o--|| vehicle : "fk"
+    equipment_stats }o--|| equipment : "fk"
+    gps_distance_meter }o--|| vehicle : "fk"
+    gps_odometer }o--|| vehicle : "fk"
+    obd_odometer }o--|| vehicle : "fk"
+    accessory_device }o--|| gateway : "fk"
+    engine_rpm }o--|| vehicle : "fk"
+    ambient_air_temperature_milli_c }o--|| vehicle : "fk"
+    barometric_pressure_pa }o--|| vehicle : "fk"
+    fuel_energy_by_vehicle_report }o--|| vehicle : "fk"
+    fuel_energy_by_driver_report }o--|| driver : "fk"
+    def_level_milli_percent }o--|| vehicle : "fk"
+    ecu_speed_mph }o--|| vehicle : "fk"
+    engine_coolant_temperature_milli_c }o--|| vehicle : "fk"
+    engine_load_percent }o--|| vehicle : "fk"
+    intake_manifold_temperature_milli_c }o--|| vehicle : "fk"

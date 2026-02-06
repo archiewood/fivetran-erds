@@ -1,0 +1,249 @@
+erDiagram
+    custom_field {
+        text id PK
+        text portfolio_id FK
+        text project_id FK
+        text workspace_id FK
+        text description
+        text name
+        text type
+    }
+    task {
+        text id PK
+        text assignee_id FK
+        text completed_by_id FK
+        text created_by_id FK
+        text parent_id FK
+        text workspace_id FK
+        integer actual_time_minutes
+        boolean completed
+        timestamp completed_at
+        timestamp created_at
+        timestamp due_at
+        timestamp due_on
+        boolean liked
+        timestamp modified_at
+        text name
+        text notes
+        integer num_likes
+        text resource_subtype
+        timestamp start_on
+    }
+    project {
+        text id PK
+        text owner_id FK
+        text team_id FK
+        text workspace_id FK
+        boolean archived
+        text color
+        timestamp created_at
+        text current_status
+        text current_status_color
+        timestamp due_date
+        timestamp modified_at
+        text name
+        text notes
+        boolean public
+        timestamp start_on
+    }
+    user {
+        text id PK
+        text email
+        text name
+    }
+    attachment {
+        text id PK
+        text parent_id FK
+        timestamp created_at
+        text download_url
+        text host
+        text name
+        text view_url
+    }
+    tag {
+        text id PK
+        text workspace_id FK
+        text color
+        timestamp created_at
+        text message
+        text name
+        text notes
+    }
+    portfolio_member {
+        text portfolio_id PK
+        text user_id PK
+    }
+    goal_follower {
+        text goal_id PK
+        text user_id PK
+    }
+    story {
+        text id PK
+        text created_by_id FK
+        text target_id FK
+        timestamp created_at
+        boolean hearted
+        integer num_hearts
+        text source
+        text text
+        text type
+    }
+    section {
+        text id PK
+        text project_id FK
+        timestamp created_at
+        text name
+    }
+    task_follower {
+        text task_id PK
+        text user_id PK
+    }
+    team {
+        text id PK
+        text organization_id FK
+        text name
+    }
+    time_tracking {
+        text id PK
+        text task_id PK
+        text created_by_id FK
+        timestamp created_at
+        double_precision duration_minutes
+        timestamp entered_on
+    }
+    goal_status {
+        text id PK
+        text created_by_id FK
+        text goal_id FK
+        timestamp created_at
+        timestamp modified_at
+        text status_type
+        text text
+        text title
+    }
+    project_task {
+        text project_id PK
+        text task_id PK
+    }
+    task_tag {
+        text tag_id PK
+        text task_id PK
+    }
+    story_heart {
+        text story_id PK
+        text user_id PK
+    }
+    tag_follower {
+        text tag_id PK
+        text user_id PK
+    }
+    project_status {
+        text id PK
+        text author_id FK
+        text created_by_id FK
+        text project_id FK
+        text color
+        timestamp created_at
+        timestamp modified_at
+        text text
+        text title
+    }
+    goal_relationship {
+        text id PK
+        text goal_id PK
+        double_precision contribution_weight
+        text resource_subtype
+        text supporting_resource_gid
+        text supporting_resource_name
+        text supporting_resource_resource_type
+    }
+    portfolio_item {
+        text id PK
+        text portfolio_id PK
+        text resource_type
+    }
+    goal {
+        text id PK
+        text owner_id FK
+        text team_id FK
+        text workspace_id FK
+        timestamp due_on
+        boolean liked
+        text name
+        text notes
+        integer num_likes
+        timestamp start_on
+        text status
+    }
+    workspace {
+        text id PK
+        boolean is_organization
+        text name
+    }
+    organization {
+        text id PK
+        text name
+    }
+    task_section {
+        text section_id PK
+        text task_id PK
+    }
+    portfolio {
+        text id PK
+        text created_by_id FK
+        text owner_id FK
+        text workspace_id FK
+        text color
+        timestamp created_at
+        timestamp due_on
+        text name
+        timestamp start_on
+    }
+    custom_field }o--|| project : "fk"
+    custom_field }o--|| workspace : "fk"
+    custom_field }o--|| portfolio : "fk"
+    task }o--|| user : "fk"
+    task }o--|| user : "fk"
+    task }o--|| user : "fk"
+    task }o--|| task : "fk"
+    task }o--|| workspace : "fk"
+    project }o--|| user : "fk"
+    project }o--|| team : "fk"
+    project }o--|| workspace : "fk"
+    attachment }o--|| task : "fk"
+    tag }o--|| workspace : "fk"
+    portfolio_member }o--|| portfolio : "fk"
+    portfolio_member }o--|| user : "fk"
+    goal_follower }o--|| goal : "fk"
+    goal_follower }o--|| user : "fk"
+    story }o--|| user : "fk"
+    story }o--|| task : "fk"
+    section }o--|| project : "fk"
+    task_follower }o--|| task : "fk"
+    task_follower }o--|| user : "fk"
+    team }o--|| organization : "fk"
+    time_tracking }o--|| user : "fk"
+    time_tracking }o--|| task : "fk"
+    goal_status }o--|| goal : "fk"
+    goal_status }o--|| user : "fk"
+    project_task }o--|| task : "fk"
+    project_task }o--|| project : "fk"
+    task_tag }o--|| task : "fk"
+    task_tag }o--|| tag : "fk"
+    story_heart }o--|| story : "fk"
+    story_heart }o--|| user : "fk"
+    tag_follower }o--|| tag : "fk"
+    tag_follower }o--|| user : "fk"
+    project_status }o--|| project : "fk"
+    project_status }o--|| user : "fk"
+    project_status }o--|| user : "fk"
+    goal_relationship }o--|| goal : "fk"
+    portfolio_item }o--|| portfolio : "fk"
+    goal }o--|| user : "fk"
+    goal }o--|| team : "fk"
+    goal }o--|| workspace : "fk"
+    task_section }o--|| task : "fk"
+    task_section }o--|| section : "fk"
+    portfolio }o--|| user : "fk"
+    portfolio }o--|| user : "fk"
+    portfolio }o--|| workspace : "fk"

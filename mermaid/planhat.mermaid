@@ -1,0 +1,696 @@
+erDiagram
+    end_user_tag {
+        text index PK
+        text end_user_id PK
+        text tags
+    }
+    end_user {
+        text id PK
+        text company_id FK
+        text beat_trend
+        text beats
+        text beats_total
+        text company_external_id
+        text convs_14
+        text convs_total
+        text create_date
+        text created_at
+        text description
+        text email
+        text email_md_5
+        text experience
+        text external_id
+        text featured
+        text first_name
+        text last_active
+        text last_name
+        text last_touch
+        text last_touch_by_type_design_call
+        text last_touch_by_type_email
+        text last_touch_by_type_kick_off
+        text last_touch_by_type_note
+        text last_touch_by_type_technical_call
+        text last_touch_by_type_technical_life_lesson
+        text last_touch_type
+        text last_updated
+        text name
+        text nps_sent
+        text nps_unsubscribed
+        jsonb other_emails
+        text phone
+        text position
+        jsonb related_end_users
+        text relevance
+        text relevance_rate
+        jsonb shared_notifications_prefs_disabled
+        jsonb shared_notifications_prefs_disabled_event
+        jsonb shared_notifications_prefs_enabled
+        text source_id
+        timestamp updated_at
+    }
+    nps {
+        text id PK
+        text campaign_id FK
+        text company_id FK
+        text comment
+        timestamp date
+        text date_answered
+        text date_reminder_sent
+        text date_sent
+        text email
+        text nps
+        text nps_id
+        text score
+        text score_type
+        text sent
+        text source
+        text source_id
+    }
+    issue_company {
+        text company_id PK
+        text issue_id PK
+    }
+    issue_end_user {
+        text end_user_id PK
+        text issue_id PK
+    }
+    issue_conversation {
+        text conversation_id PK
+        text issue_id PK
+    }
+    issue {
+        text id PK
+        text archived
+        text arr_combined
+        jsonb company_matching_value
+        text created_at
+        text description
+        text mrr_combined
+        text source_id
+        text status
+        text title
+        timestamp updated_at
+    }
+    objective {
+        text id PK
+        text company_id PK
+        text external_id
+        text health
+        text name
+        text source_id
+        jsonb usage
+    }
+    workspace {
+        text id PK
+        text company_id FK
+        text owner_id FK
+        text external_id
+        text name
+        text source_id
+        jsonb usage
+    }
+    license {
+        text id PK
+        text company_id FK
+        text arr
+        text auto_renew
+        text auto_renewed
+        text created_at
+        text currency
+        text external_id
+        text fc_new_arr
+        text fc_new_arr_optimistic
+        text fc_new_arr_pessimistic
+        text fc_new_mrr
+        text fc_new_mrr_pessimistic
+        text fixed_period
+        text from_date
+        text invoice_cycle
+        text invoice_cycle_interval
+        text invoice_muted
+        text is_overdue
+        text issue
+        text length
+        text mrr
+        text notice_period
+        text notice_unit
+        text parent
+        text product
+        text renewal_arr
+        text renewal_date
+        text renewal_days_from_now
+        text renewal_mrr
+        text renewal_period
+        text renewal_status
+        text renewal_unit
+        text source_id
+        text status
+        text to_date
+        text to_date_included
+        timestamp updated_at
+        text value
+    }
+    campaign {
+        text id PK
+        text company_id FK
+        text external_id
+        text name
+        text purpose
+        text source_id
+    }
+    churn_reason {
+        text index PK
+        text churn_id PK
+        text reason
+    }
+    churn_product {
+        text index PK
+        text churn_id PK
+        text product
+    }
+    churn {
+        text id PK
+        text company_id FK
+        text license_id FK
+        text arr
+        timestamp churn_date
+        text comment
+        text currency
+        text last_updated
+        text replacement
+        text snoozed
+        text source_id
+        text value
+    }
+    sale {
+        text id PK
+        text company_id FK
+        text currency
+        text external_id
+        text product
+        text sales_date
+        text source_id
+        text value
+    }
+    task_end_user {
+        text end_user_id PK
+        text task_id PK
+    }
+    task_user {
+        text task_id PK
+        text user_id PK
+    }
+    task_activity_tag {
+        text index PK
+        text task_id PK
+        text activity_tag
+    }
+    task {
+        text id PK
+        text company_id FK
+        text owner_id FK
+        text action
+        jsonb checklist
+        text created_at
+        text date_done
+        text description
+        text done_by
+        text end_time
+        jsonb followers
+        text i_cal_u_id
+        text is_archived
+        text location
+        text main_type
+        text no_specific_time
+        text over_due_notified
+        text repeat
+        text repeat_day
+        text shared
+        text snippet
+        text source
+        text source_id
+        text source_parent_id
+        text source_url
+        text start_time
+        text status
+        timestamp updated_at
+    }
+    project {
+        text id PK
+        text company_id FK
+        text arr
+        text currency
+        text end_date
+        text external_id
+        text mrr
+        text name
+        text nrr
+        text source_id
+        text start_date
+    }
+    asset {
+        text id PK
+        text company_id FK
+        text external_id
+        text name
+        text source_id
+    }
+    invoice_line_item {
+        text id PK
+        text invoice_id PK
+        text license_id FK
+        text amount
+        text date_from
+        text date_to
+        text product
+    }
+    invoice {
+        text id PK
+        text company_id FK
+        text address_country
+        text amount_due
+        text amount_paid
+        text amount_total
+        text currency
+        text cycle
+        timestamp date
+        text due_date
+        jsonb emails
+        text ext_id
+        text last_updated
+        text number
+        text paid_date
+        text product
+        text source_id
+        text status
+    }
+    company_csm_score_log {
+        text index PK
+        text company_id PK
+        text date
+        text score
+    }
+    company_domain {
+        text index PK
+        text company_id PK
+        text domain
+    }
+    company_tag {
+        text index PK
+        text company_id PK
+        text tags
+    }
+    company {
+        text id PK
+        text co_owner FK
+        text owner FK
+        text address
+        jsonb alerts
+        text arr
+        text arr_total
+        text auto_renew
+        text city
+        jsonb collaborators
+        text country
+        text create_date
+        text created_at
+        text csm_score
+        text customer_from
+        text customer_to
+        text days_in_phase
+        text description
+        jsonb documents
+        text external_id
+        jsonb features
+        jsonb followers
+        text h
+        text h_diff
+        text h_diff_date
+        text h_profile
+        text head_id
+        jsonb last_performed_triggers
+        text last_renewal
+        text last_touch
+        text last_touch_by_type_catch_up
+        text last_touch_by_type_delivery_review
+        text last_touch_by_type_email
+        text last_touch_by_type_sales_handover
+        text last_touch_by_type_training
+        text last_touch_type
+        text last_updated
+        jsonb licenses
+        jsonb links
+        text mr
+        text mr_total
+        text mrr
+        text mrr_total
+        text name
+        text next_touch
+        text nrr_30
+        text nrr_total
+        text org_arr
+        text org_arr_total
+        text org_health_total
+        text org_level
+        text org_mrr
+        text org_mrr_total
+        text org_path
+        text org_root_id
+        text org_unit
+        text phase
+        text phase_since
+        text phone_primary
+        jsonb products
+        text renewal_arr
+        text renewal_date
+        text renewal_days_from_now
+        text renewal_mrr
+        jsonb sales
+        text shareable_enabled
+        jsonb shareable_eu_ids
+        text shareable_sunits
+        jsonb shareable_teams_fields
+        text slug
+        text source_id
+        text status
+        jsonb sunits
+        timestamp updated_at
+        jsonb usage
+        text web
+        text zip
+    }
+    ticket_history {
+        text index PK
+        text ticket_id PK
+        text status
+        text time
+    }
+    ticket_time_bucket {
+        text index PK
+        text ticket_id PK
+        text time_bucket
+    }
+    ticket_end_user {
+        text end_user_id PK
+        text ticket_id PK
+    }
+    ticket {
+        text id PK
+        text company_id FK
+        jsonb activity_tags
+        text archived
+        text company_external_id
+        text create_date
+        text date
+        text days
+        text description
+        jsonb domains
+        text email
+        jsonb email_template_ids
+        text external_id
+        text in_date
+        text is_open
+        text pinned
+        text product
+        jsonb sender
+        text severity
+        text snippet
+        text source
+        text source_id
+        text starred
+        text status
+        text sub_type
+        text subject
+        jsonb tags
+        text time_spent
+        text title
+        text type
+        timestamp update_date
+        text url
+        jsonb users
+        text waits_to_be_filtered
+    }
+    users_role {
+        text id PK
+        text user_id PK
+        text description
+        text name
+    }
+    users_poc {
+        text index PK
+        text user_id PK
+        text poc
+    }
+    users_team {
+        text team_id PK
+        text user_id PK
+    }
+    users_google_api_synced_label {
+        text index PK
+        text user_id PK
+        text synced_label
+    }
+    users_google_calendar_api_synced_calendar {
+        text index PK
+        text user_id PK
+        text synced_calendar
+    }
+    users {
+        text id PK
+        text account_access
+        text apply_permission
+        text arr
+        text arr_avg
+        text calendar_date_scope
+        text comments_sort
+        text compressed_view
+        text create_date
+        text created_at
+        text daily_digest
+        text default_meeting_length
+        text email
+        text email_signature_content
+        text email_signature_enabled
+        text first_name
+        text follower_update
+        jsonb followers
+        text google_api_access_enabled
+        text google_api_sync_enabled
+        text google_api_sync_initial
+        text google_api_user_id
+        text google_calendar_api_access_enabled
+        jsonb google_calendar_api_calendar_to_save
+        text google_calendar_api_sync_enabled
+        text google_calendar_api_sync_initial
+        text google_calendar_api_user_id
+        text health_avg
+        text health_avg_round
+        text health_count
+        text image_path
+        text image_spaces_key
+        text in_app_notification
+        text inactive
+        text intercom_admin_id
+        text invoices_sort
+        text is_exposed_as_sender_option
+        text is_hidden
+        jsonb labels
+        text last_active_30
+        text last_active_7
+        text last_active_90
+        text last_daily_digest
+        text last_name
+        text last_touch_30
+        text last_touch_7
+        text last_touch_90
+        jsonb last_visited_views
+        jsonb last_visited_workspaces
+        jsonb managers
+        text mrr
+        text mrr_avg
+        text ms_api_access_enabled
+        text ms_api_sync_enabled
+        text ms_api_sync_initial
+        jsonb ms_api_synced_labels
+        text ms_calendar_api_access_enabled
+        jsonb ms_calendar_api_calendar_to_save
+        text ms_calendar_api_sync_enabled
+        text ms_calendar_api_sync_initial
+        jsonb ms_calendar_api_synced_calendars
+        text nick_name
+        text notifications_enabled
+        text nps_avg
+        text nps_count
+        text nr_open_task
+        text nr_overdue_task
+        text nr_tasks_due_14_day
+        text nr_tasks_due_30_day
+        text nr_tasks_due_7_day
+        text nr_tasks_due_90_day
+        text paying_customer_count
+        jsonb permission
+        text play_log_disabled
+        text playlist_section
+        text preview_modal_width
+        text radar_one_line
+        text recent_open_shared_view
+        text removed
+        text rev_report_period_type
+        text revenue_share
+        text slack_id
+        text split_layout_disabled
+        text task_actions_pref_view_mode
+        text task_filter
+        jsonb top_bar_pins
+        text two_factor_auth_enabled
+        text type
+        text tz_offset
+        text undefined
+        timestamp updated_at
+        text usage_metrics_from_b_q
+        jsonb work_spaces_prefs
+        jsonb ws_saved_pages
+    }
+    opportunity_stage_history {
+        text index PK
+        text opportunity_id PK
+        text stage
+        text tos
+    }
+    opportunity {
+        text id PK
+        text company_id FK
+        text owner_id FK
+        text arr
+        text close_date
+        text contract_length
+        text created_at
+        text currency
+        text deal_date
+        text external_id
+        jsonb followers
+        text landing_date
+        text last_comment
+        text mrr
+        text nrr
+        text probability
+        text sales_stage
+        text source_id
+        text status
+        text title
+        timestamp updated_at
+    }
+    conversation_user {
+        text index PK
+        text conversation_id PK
+        text user_id FK
+        text is_owner
+    }
+    conversation_end_user {
+        text index PK
+        text conversation_id PK
+        text end_user_id FK
+    }
+    conversation_time_bucket {
+        text index PK
+        text conversation_id PK
+        text time_bucket
+    }
+    conversation_document {
+        text index PK
+        text conversation_id PK
+        text document
+    }
+    conversation {
+        text id PK
+        text company_id FK
+        text task_id FK
+        jsonb activity_tags
+        text archived
+        text assignee_name
+        jsonb auto_tags
+        text create_date
+        text created_at
+        text date
+        text day
+        text description
+        jsonb email_template_ids
+        jsonb followers
+        text has_attachment
+        text has_more
+        text history
+        text is_custom_type
+        text is_open
+        text is_seen
+        text number_of_part
+        text number_of_relevant_part
+        text out_date
+        text pinned
+        text sender
+        text snippet
+        text source
+        text starred
+        text subject
+        jsonb tags
+        text type
+        timestamp updated_at
+        text waits_to_be_filtered
+    }
+    end_user_tag }o--|| end_user : "fk"
+    end_user }o--|| company : "fk"
+    nps }o--|| campaign : "fk"
+    nps }o--|| company : "fk"
+    issue_company }o--|| company : "fk"
+    issue_company }o--|| issue : "fk"
+    issue_end_user }o--|| end_user : "fk"
+    issue_end_user }o--|| issue : "fk"
+    issue_conversation }o--|| conversation : "fk"
+    issue_conversation }o--|| issue : "fk"
+    objective }o--|| company : "fk"
+    workspace }o--|| users : "fk"
+    workspace }o--|| company : "fk"
+    license }o--|| company : "fk"
+    campaign }o--|| company : "fk"
+    churn_reason }o--|| churn : "fk"
+    churn_product }o--|| churn : "fk"
+    churn }o--|| license : "fk"
+    churn }o--|| company : "fk"
+    sale }o--|| company : "fk"
+    task_end_user }o--|| end_user : "fk"
+    task_end_user }o--|| task : "fk"
+    task_user }o--|| users : "fk"
+    task_user }o--|| task : "fk"
+    task_activity_tag }o--|| task : "fk"
+    task }o--|| users : "fk"
+    task }o--|| company : "fk"
+    project }o--|| company : "fk"
+    asset }o--|| company : "fk"
+    invoice_line_item }o--|| license : "fk"
+    invoice_line_item }o--|| invoice : "fk"
+    invoice }o--|| company : "fk"
+    company_csm_score_log }o--|| company : "fk"
+    company_domain }o--|| company : "fk"
+    company_tag }o--|| company : "fk"
+    company }o--|| users : "fk"
+    company }o--|| users : "fk"
+    ticket_history }o--|| ticket : "fk"
+    ticket_time_bucket }o--|| ticket : "fk"
+    ticket_end_user }o--|| end_user : "fk"
+    ticket_end_user }o--|| ticket : "fk"
+    ticket }o--|| company : "fk"
+    users_role }o--|| users : "fk"
+    users_poc }o--|| users : "fk"
+    users_team }o--|| users : "fk"
+    users_google_api_synced_label }o--|| users : "fk"
+    users_google_calendar_api_synced_calendar }o--|| users : "fk"
+    opportunity_stage_history }o--|| opportunity : "fk"
+    opportunity }o--|| users : "fk"
+    opportunity }o--|| company : "fk"
+    conversation_user }o--|| users : "fk"
+    conversation_user }o--|| conversation : "fk"
+    conversation_end_user }o--|| end_user : "fk"
+    conversation_end_user }o--|| conversation : "fk"
+    conversation_time_bucket }o--|| conversation : "fk"
+    conversation_document }o--|| conversation : "fk"
+    conversation }o--|| task : "fk"
+    conversation }o--|| company : "fk"

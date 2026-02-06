@@ -1,0 +1,530 @@
+erDiagram
+    route {
+        text activity_id PK
+        text resource_id FK
+        text appt_number
+        text city
+        text resource_internal_id
+    }
+    resource_descendant_work_schedule {
+        text resource_descendant_resource_id PK
+        text schedule_item_id PK
+        text recur_every
+        text recurrence_type
+    }
+    resource_descendant_work_skill {
+        text resource_descendant_resource_id PK
+        text work_skill PK
+    }
+    resource_descendant_work_zone {
+        text resource_descendant_resource_id PK
+        text work_zone_item_id PK
+    }
+    resource_descendant_inventory {
+        text inventory_id PK
+        text resource_descendant_resource_id PK
+    }
+    resource_descendant {
+        text resource_id PK
+        text date_format
+        text duration_statistics_initial_period
+        text duration_statistics_initial_ratio
+        text email
+        text language_iso
+        text languages
+        text name
+        text organization_label
+        text parent_resource_id
+        text parent_resource_internal_id
+        text phone
+        text resource_internal_id
+        text resource_type
+        jsonb status
+        text time_format
+        text time_zone
+        text time_zone_diff
+        text time_zone_i_a_n_a
+        text xa_tech_alias
+        text xp_bulked
+        text xp_notification
+        text xp_truck_nmbr
+    }
+    group_work_skill_data {
+        text index PK
+        text _fivetran_id PK
+        text label FK
+        text ratio
+    }
+    work_skill_group_translation {
+        text index PK
+        text _fivetran_id PK
+        text language_iso
+        text languages
+        text name
+    }
+    work_skill_group {
+        text _fivetran_id PK
+        text active
+        text add_to_capacity_category
+        text assign_to_resource
+        text label
+        text name
+    }
+    capacity_category_work_skill {
+        text index PK
+        text _fivetran_id PK
+        text label FK
+        text end_date
+        text ratio
+        text start_date
+    }
+    capacity_category_work_skill_group {
+        text index PK
+        text _fivetran_id PK
+        text label FK
+        text start_date
+    }
+    capacity_category_translation {
+        text index PK
+        text _fivetran_id PK
+        text language_iso
+        text languages
+        text name
+    }
+    capacity_category_time_slot {
+        text index PK
+        text _fivetran_id PK
+        text label
+    }
+    capacity_category {
+        text _fivetran_id PK
+        text active
+        text label
+        text name
+    }
+    inventory_type_translation {
+        text index PK
+        text _fivetran_id PK
+        text language_iso
+        text languages
+        text name
+        text unit_of_measurement
+    }
+    inventory_type {
+        text _fivetran_id PK
+        text active
+        text label
+        text model_property
+        text name
+        text non_serialized
+        text unit_of_measurement
+    }
+    capacity_area {
+        text _fivetran_id PK
+        text parent_label FK
+        text label
+        text name
+        text parent_name
+        text status
+        text type
+    }
+    inventory {
+        text inventory_id PK
+        text from_activity_id FK
+        text resource_id FK
+        text to_activity_id FK
+        text inventory_type
+        text quantity
+        text serial_number
+        text status
+    }
+    work_schedule {
+        text schedule_item_id PK
+        text end_date
+        text is_working
+        text record_type
+        text recur_every
+        text recurrence_type
+        text shift_type
+        text start_date
+        text work_time_end
+        text work_time_start
+    }
+    enumeration_list_translation {
+        text index PK
+        text enumeration_list_id PK
+        text enumeration_list_property_label_id PK
+        text language_iso
+        text languages
+        text name
+    }
+    enumeration_list {
+        text id PK
+        text property_label_id PK
+        text active
+    }
+    activity_group_type {
+        text id PK
+        text _fivetran_id PK
+        text label FK
+    }
+    activity_type_group_translation {
+        text index PK
+        text _fivetran_id PK
+        text language_iso
+        text languages
+        text name
+    }
+    activity_type_group {
+        text _fivetran_id PK
+        text label
+        text name
+    }
+    property_translation {
+        text index PK
+        text property_id PK
+        text hint
+        text language_iso
+        text languages
+        text name
+    }
+    property {
+        text id PK
+        text entity
+        text gui
+        text hint
+        text name
+        text type
+    }
+    resource_type_translation {
+        text index PK
+        text resource_type_id PK
+        text language_iso
+        text languages
+        text name
+    }
+    resource_type {
+        text id PK
+        text active
+        text name
+        text role
+    }
+    time_slot {
+        text id PK
+        text active
+        text is_all_day
+        text name
+        text time_end
+        text time_start
+    }
+    location {
+        text location_id PK
+        text address
+        text city
+        text country
+        text label
+        text latitude
+        text longitude
+        text postal_code
+        text state
+    }
+    key_work_zone {
+        text key_id PK
+        text _fivetran_id PK
+    }
+    work_zone_shape {
+        text shape_id PK
+        text _fivetran_id PK
+    }
+    work_zone {
+        text _fivetran_id PK
+        text status
+        text travel_area
+        text work_zone_label
+        text work_zone_name
+    }
+    organization_translation {
+        text index PK
+        text _fivetran_id PK
+        text language_iso
+        text languages
+        text name
+    }
+    organization {
+        text _fivetran_id PK
+        text label
+        text name
+        text type
+    }
+    activity_type_translation {
+        text index PK
+        text activity_type_id PK
+        text language_iso
+        text languages
+        text name
+    }
+    activity_type_time_slot {
+        text index PK
+        text activity_type_id PK
+        text label
+    }
+    activity_type {
+        text id PK
+        text active
+        text color_cancelled
+        text color_completed
+        text color_enroute
+        text color_not_done
+        text color_not_ordered
+        text color_pending
+        text color_started
+        text color_suspended
+        text color_warning
+        text default_duration
+        text features_allow_creation_in_bucket
+        text features_allow_mass_activity
+        text features_allow_move_between_resource
+        text features_allow_non_scheduled
+        text features_allow_repeating_activity
+        text features_allow_reschedule
+        text features_allow_to_create_from_incoming_interface
+        text features_allow_to_search
+        text features_calculate_activity_duration_using_statistics
+        text features_calculate_delivery_window
+        text features_calculate_travel
+        text features_disable_location_tracking
+        text features_enable_day_before_trigger
+        text features_enable_not_started_trigger
+        text features_enable_reminder_and_change_trigger
+        text features_enable_sw_warning_trigger
+        text features_is_segmenting_enabled
+        text features_is_team_work_available
+        text features_sla_and_service_window_use_customer_timezone
+        text features_support_of_inventory
+        text features_support_of_link
+        text features_support_of_not_ordered_activity
+        text features_support_of_preferred_resource
+        text features_support_of_required_inventory
+        text features_support_of_timeslot
+        text features_support_of_work_skill
+        text features_support_of_work_zone
+        text group_label
+        text name
+    }
+    work_zone_key {
+        text _fivetran_id PK
+        text api_parameter_name
+        text function
+        text label
+        text length
+        text orders
+    }
+    capacity {
+        text _fivetran_id PK
+        jsonb calendar
+        jsonb categories
+        text date
+        text label
+    }
+    required_inventory {
+        text _fivetran_id PK
+        text inventory_type
+        text model
+        text quantity
+    }
+    quota {
+        text _fivetran_id PK
+        text booked_activity
+        text date
+        text label
+        text max_available
+        text min_quota
+        text name
+        text other_activity
+        text quota
+        text quota_is_auto_closed
+        text quota_is_closed
+        text quota_percent
+        text used
+        text used_quota_percent
+    }
+    form_translation {
+        text index PK
+        text _fivetran_id PK
+        text language_iso
+        text languages
+        text name
+    }
+    forms {
+        text _fivetran_id PK
+        text label
+        text name
+    }
+    routing_profile {
+        text _fivetran_id PK
+        text profile_label
+    }
+    work_skill_translation {
+        text index PK
+        text _fivetran_id PK
+        text language_iso
+        text languages
+        text name
+    }
+    work_skill {
+        text _fivetran_id PK
+        text active
+        text label
+        text name
+        text sharing
+    }
+    resource_preference {
+        text resource_id PK
+        jsonb preference_type
+    }
+    non_working_reason_translation {
+        text index PK
+        text non_working_reason_id PK
+        text language_iso
+        text languages
+        text name
+    }
+    non_working_reason {
+        text id PK
+        text active
+        text name
+    }
+    resource_work_skill {
+        text _fivetran_id PK
+        text end_date
+        text ratio
+        text start_date
+        text work_skill
+    }
+    resource_work_zone {
+        text work_zone_item_id PK
+        text ratio
+        text recur_every
+        text recurrence
+        text start_date
+        text type
+        text work_zone
+        text work_zone_status
+    }
+    activity {
+        text activity_id PK
+        text activity_type_label FK
+        text resource_id FK
+        text team_resource_id FK
+        text access_schedule
+        text activity_flow
+        text appt_number
+        text auto_routed_to_date
+        text auto_routed_to_resource
+        text city
+        text coordinate_accuracy
+        text country_code
+        text customer_cell
+        text customer_email
+        text customer_name
+        text customer_number
+        text customer_phone
+        text date
+        text delivery_window_end
+        text delivery_window_start
+        text duration
+        text end_time
+        text first_manual_operation
+        text first_manual_operation_user
+        text ib_asset_id
+        text language_iso
+        text languages
+        text latitude
+        text longitude
+        text master_activity_id
+        text pjf_project_element_id
+        text pjf_project_id
+        text point
+        text position_in_route
+        text postal_code
+        jsonb record_type
+        text reminder_time
+        text resource_time_zone
+        text resource_time_zone_diff
+        text resource_time_zone_iana
+        text service_window_end
+        text service_window_start
+        text sla_window_end
+        text sla_window_start
+        text start_time
+        text state_province
+        jsonb status
+        text street_address
+        text svc_work_order_id
+        text time_delivered_end
+        text time_delivered_start
+        text time_of_assignment
+        text time_of_booking
+        text time_slot
+        text time_zone
+        text time_zone_iana
+        text travel_estimation_method
+        text travel_time
+        text wie_work_order_id
+        text wie_work_order_operation_id
+        text work_zone
+    }
+    linked_activity {
+        text _fivetran_id PK
+        text from_activity_id FK
+        text to_activity_id FK
+        text alert
+        text link_type
+        text max_interval_value
+    }
+    route }o--|| activity : "fk"
+    route }o--|| resource_descendant : "fk"
+    resource_descendant_work_schedule }o--|| work_schedule : "fk"
+    resource_descendant_work_schedule }o--|| resource_descendant : "fk"
+    resource_descendant_work_skill }o--|| resource_work_skill : "fk"
+    resource_descendant_work_skill }o--|| resource_descendant : "fk"
+    resource_descendant_work_zone }o--|| resource_work_zone : "fk"
+    resource_descendant_work_zone }o--|| resource_descendant : "fk"
+    resource_descendant_inventory }o--|| inventory : "fk"
+    resource_descendant_inventory }o--|| resource_descendant : "fk"
+    group_work_skill_data }o--|| work_skill : "fk"
+    group_work_skill_data }o--|| work_skill_group : "fk"
+    work_skill_group_translation }o--|| work_skill_group : "fk"
+    capacity_category_work_skill }o--|| work_skill : "fk"
+    capacity_category_work_skill }o--|| capacity_category : "fk"
+    capacity_category_work_skill_group }o--|| work_skill_group : "fk"
+    capacity_category_work_skill_group }o--|| capacity_category : "fk"
+    capacity_category_translation }o--|| capacity_category : "fk"
+    capacity_category_time_slot }o--|| capacity_category : "fk"
+    inventory_type_translation }o--|| inventory_type : "fk"
+    capacity_area }o--|| capacity_area : "fk"
+    inventory }o--|| resource_descendant : "fk"
+    inventory }o--|| activity : "fk"
+    inventory }o--|| activity : "fk"
+    enumeration_list_translation }o--|| enumeration_list : "fk"
+    enumeration_list_translation }o--|| enumeration_list : "fk"
+    enumeration_list }o--|| property : "fk"
+    activity_group_type }o--|| activity_type_group : "fk"
+    activity_group_type }o--|| activity_type : "fk"
+    activity_type_group_translation }o--|| activity_type_group : "fk"
+    property_translation }o--|| property : "fk"
+    resource_type_translation }o--|| resource_type : "fk"
+    key_work_zone }o--|| work_zone : "fk"
+    work_zone_shape }o--|| work_zone : "fk"
+    organization_translation }o--|| organization : "fk"
+    activity_type_translation }o--|| activity_type : "fk"
+    activity_type_time_slot }o--|| activity_type : "fk"
+    form_translation }o--|| forms : "fk"
+    work_skill_translation }o--|| work_skill : "fk"
+    resource_preference }o--|| resource_descendant : "fk"
+    non_working_reason_translation }o--|| non_working_reason : "fk"
+    activity }o--|| resource_descendant : "fk"
+    activity }o--|| activity_type : "fk"
+    activity }o--|| resource_descendant : "fk"
+    linked_activity }o--|| activity : "fk"
+    linked_activity }o--|| activity : "fk"

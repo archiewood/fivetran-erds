@@ -1,0 +1,452 @@
+erDiagram
+    checks {
+        text id PK
+        text customer_id FK
+        text user_id FK
+        text broker
+        text closed_date
+        text discount
+        text discount_id
+        text discount_note
+        text discount_user_id
+        text fee
+        text gratuity
+        text invoice_date
+        text is_tax_exempt
+        text name
+        text notes
+        text opened_date
+        text status
+        text total
+        text type
+    }
+    payment {
+        text id PK
+        text check_id FK
+        text customer_id FK
+        text user_id FK
+        text card_type
+        text ext_card_type
+        text external_account_name
+        text history_id
+        text invoice_paid_history_id
+        text pay_amount
+        text pay_date
+        text pay_status
+        text pay_tax
+        text pay_terminal
+        text pay_type
+        text tender
+        text transaction
+        text troutd
+        text void_date
+        text void_note
+        text void_terminal
+        text void_user
+        text voucher_id
+        text voucher_note
+    }
+    check_detail {
+        text id PK
+        text check_id PK
+        text p_customer_id FK
+        text product_id FK
+        text bonus_value
+        text c_id
+        text cadet_qty
+        text calculate_type
+        text com_value
+        text created_date
+        text discount_applied
+        text discount_desc
+        text g_cust_id
+        text gst
+        text m_cust_id
+        text m_days
+        text m_days_added
+        text m_new_membershiptype_id
+        text m_old_membershiptype_id
+        text m_point
+        text m_primary_membership
+        text p_point
+        text p_point_type_id
+        text paid_value
+        text product_name
+        text qty
+        text s_cust_id
+        text s_no_of_laps_or_second
+        text s_sale_by
+        text s_vol
+        text status
+        text tax_id
+        text tax_percent
+        text unit_price
+        text unit_price_2
+        text v_id
+        text void_note
+    }
+    event_heat_detail {
+        text customer_id PK
+        text event_id PK
+        text added
+        text proskill
+        text round_lose_num
+        text total_races
+    }
+    gift_card_history {
+        text id PK
+        text check_detail_id FK
+        text check_id FK
+        text customer_id FK
+        text user_id FK
+        text ip_address
+        text note
+        text points
+        text transaction_date
+        text type
+    }
+    event_heat_type {
+        text id PK
+        text event_type_id FK
+        text heat_type_id FK
+        text cadets_per_heat
+        text description
+        text grid_id
+        text heats_per_racer
+        text is_inverted
+        text is_semi
+        text line_up_type
+        text proceed_method
+        text proceed_value
+        text racers_per_heat
+        text round_number
+        text round_win_by
+        text score_system_id
+        text team_grouping_type
+    }
+    reservation {
+        text id PK
+        text check_id FK
+        text customers_id FK
+        text created_at
+        text expires_at
+        text online_booking_reservation_status_id
+        text online_bookings_id
+        text quantity
+        text session_id
+    }
+    event_type {
+        text id PK
+        text description
+        text display_at_registration
+        text enabled
+        text is_deleted
+        text member_only
+        text name
+        text online_product_id
+        text pts_per_reservation
+        text theme
+        text track_id
+    }
+    event_round {
+        text id PK
+        text event_id FK
+        text heat_type_id FK
+        text cadets_per_heat
+        text grid_id
+        text heat_description
+        text heats_per_racer
+        text is_inverted
+        text is_semi
+        text line_up_type
+        text number
+        text proceed_method
+        text proceed_value
+        text racers_per_heat
+        text score_system_id
+        text win_by
+    }
+    event_task_type {
+        text id PK
+        text description
+        text is_deleted
+        text name
+        text seq
+    }
+    heat_detail {
+        text customer_id PK
+        text heat_id PK
+        text user_id FK
+        text assigned_to_entitle_heat
+        text auto_no
+        text finish_position
+        text first_time
+        text group_finish_position
+        text group_id
+        text history_auto_no
+        text line_up_position
+        text point_history_id
+        text position_edited_date
+        text pro_skill
+        text proskill_diff
+        text score
+        text time_added
+    }
+    event {
+        text id PK
+        text check_id FK
+        text event_reservation_id FK
+        text event_type_id FK
+        text created_heat_spot
+        text created_heat_time
+        text description
+        text display_at_registration
+        text duration
+        text is_event_closure
+        text member_only
+        text note
+        text online_code
+        text round_num
+        text scheduled_time
+        text theme
+        text total_cadet_racer
+        text total_racer
+        text track_no
+        text type_name
+    }
+    heat {
+        text id PK
+        text heat_type_id FK
+        text beginning
+        text cadet_per_heat
+        text event_round
+        text finish
+        text heat_color
+        text laps_or_minutes
+        text member_only
+        text note
+        text number_of_cadet_reservation
+        text number_of_reservation
+        text points_needed
+        text race_by
+        text racers_per_heat
+        text schedule_duration
+        text scheduled_time
+        text score_id
+        text speed_level
+        text status
+        text track
+        text win_by
+    }
+    membership {
+        text customer_id PK
+        text membership_type_id PK
+        text user_id FK
+        text changed
+        text expiration
+        text note
+    }
+    event_task {
+        text id PK
+        text event_reservation_id PK
+        text event_task_type_id PK
+        text completed_at
+        text completed_by
+    }
+    membership_type {
+        text id PK
+        text description
+        text enabled
+        text expiration_type
+        text expires
+        text price_level
+        text sequence
+    }
+    event_reservation {
+        text id PK
+        text customer_id FK
+        text event_reservation_type_id FK
+        text event_status_id FK
+        text event_type_id FK
+        text user_id FK
+        text allow_online_reservation
+        text check_id
+        text description
+        text end_time
+        text external_system_id
+        text is_deleted
+        text is_event_closure
+        text is_mixed
+        text main_id
+        text min_no_of_adults_per_booking
+        text min_no_of_cadets_per_booking
+        text no_of_cadet_racer
+        text no_of_racer
+        text no_of_total_racer
+        text notes
+        text pts_per_reservation
+        text rep_id
+        text start_time
+        text subject
+    }
+    event_reservation_type {
+        text id PK
+        text description
+    }
+    product {
+        text id PK
+        text membership_type_id FK
+        text class_id
+        text description
+        text enabled
+        text g_point
+        text is_deleted
+        text m_point
+        text p_point
+        text price_1
+        text price_2
+        text price_cadet
+        text r_point
+        text tax_id
+        text type
+    }
+    heat_type {
+        text id PK
+        text cadets_per_heat
+        text cannot_below
+        text cannot_exceed
+        text cost
+        text enabled
+        text entitle_heat
+        text is_deleted
+        text is_event_heat_only
+        text is_practice_heat
+        text laps_or_minutes
+        text member_only
+        text name
+        text on_heat_finish_assign_loop
+        text on_heat_start
+        text on_heat_stop
+        text print_result
+        text race_by
+        text racers_per_heat
+        text schedule_duration
+        text speed_level
+        text track_id
+        text web
+        text win_by
+    }
+    event_status {
+        text id PK
+        text color_id
+        text seq
+        text status
+    }
+    customer {
+        text id PK
+        text account_created
+        text address
+        text address_2
+        text award_1
+        text award_2
+        text birth_date
+        text card_id
+        text city
+        text company
+        text country
+        text credit_limit
+        text credit_on_hold
+        text do_not_email
+        text email
+        text fax
+        text first_name
+        text gender
+        text general_note
+        text hotel
+        text how_did_you_hear_about_us
+        text ignore_dob
+        text industry_id
+        text is_deleted
+        text is_employee
+        text is_gift_card
+        text issued_by
+        text last_name
+        text last_visited
+        text membership_status
+        text membership_text
+        text membership_text_long
+        text mobile_phone
+        text original_id
+        text phone_number
+        text price_level
+        text privacy_1
+        text privacy_2
+        text privacy_3
+        text privacy_4
+        text promotion_code
+        text proskill
+        text racer_name
+        text ref_id
+        text state
+        text status_1
+        text status_2
+        text status_3
+        text status_4
+        text total_race
+        text total_visit
+        text waiver
+        text waiver_2
+        text web_user_name
+        text zip
+    }
+    users {
+        text id PK
+        text card_id
+        text email
+        text employment_start_date
+        text enabled
+        text first_name
+        text is_deleted
+        text is_system_user
+        text last_name
+        text name
+        text phone
+    }
+    checks }o--|| users : "fk"
+    checks }o--|| customer : "fk"
+    payment }o--|| users : "fk"
+    payment }o--|| checks : "fk"
+    payment }o--|| customer : "fk"
+    check_detail }o--|| product : "fk"
+    check_detail }o--|| customer : "fk"
+    check_detail }o--|| checks : "fk"
+    event_heat_detail }o--|| event : "fk"
+    event_heat_detail }o--|| customer : "fk"
+    gift_card_history }o--|| users : "fk"
+    gift_card_history }o--|| checks : "fk"
+    gift_card_history }o--|| customer : "fk"
+    gift_card_history }o--|| check_detail : "fk"
+    event_heat_type }o--|| heat_type : "fk"
+    event_heat_type }o--|| event_type : "fk"
+    reservation }o--|| checks : "fk"
+    reservation }o--|| customer : "fk"
+    event_round }o--|| event : "fk"
+    event_round }o--|| heat_type : "fk"
+    heat_detail }o--|| users : "fk"
+    heat_detail }o--|| heat : "fk"
+    heat_detail }o--|| customer : "fk"
+    event }o--|| event_reservation : "fk"
+    event }o--|| checks : "fk"
+    event }o--|| event_type : "fk"
+    heat }o--|| heat_type : "fk"
+    membership }o--|| customer : "fk"
+    membership }o--|| membership_type : "fk"
+    membership }o--|| users : "fk"
+    event_task }o--|| event_reservation : "fk"
+    event_task }o--|| event_task_type : "fk"
+    event_reservation }o--|| users : "fk"
+    event_reservation }o--|| event_reservation_type : "fk"
+    event_reservation }o--|| event_status : "fk"
+    event_reservation }o--|| customer : "fk"
+    event_reservation }o--|| event_type : "fk"
+    product }o--|| membership_type : "fk"

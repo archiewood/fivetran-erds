@@ -1,0 +1,203 @@
+erDiagram
+    path_tag {
+        bigint id PK
+        bigint path_id PK
+        text name
+        text resource_type
+    }
+    content_in_path_content {
+        bigint id PK
+        bigint path_content_id PK
+        bigint path_id PK
+        text amount
+        text archived_at
+        text archived_by_user_id
+        text condition
+        text description
+        text effect
+        text resource_type
+        text title
+        text unit
+    }
+    path_content {
+        bigint id PK
+        bigint path_id PK
+        text amount
+        text archived_at
+        text archived_by_user_id
+        text condition
+        text description
+        text effect
+        text resource_type
+        text title
+        text unit
+    }
+    path {
+        bigint id PK
+        text archived_at
+        text archived_by_user_id
+        timestamp created_at
+        boolean is_certification
+        timestamp last_updated_at
+        text links_overview
+        text links_shareable
+        boolean public
+        timestamp published_at
+        bigint publisher_id
+        text resource_type
+        text title
+    }
+    group_member {
+        bigint group_id PK
+        bigint id PK
+        boolean should_receive_email
+    }
+    group_manager {
+        bigint group_id PK
+        bigint id PK
+    }
+    group_detail {
+        bigint group_id PK
+        text resource_type
+        text type
+    }
+    groups {
+        bigint id PK
+        text archived_at
+        text archived_by_user_id
+        text name
+    }
+    group_assignment {
+        bigint group_id PK
+        bigint id PK
+        bigint assignable_id
+        text assignable_type
+    }
+    path_assignment {
+        bigint id PK
+        bigint path_id FK
+    }
+    user_learning_library {
+        text _fivetran_id PK
+        bigint users_id FK
+        bigint total_completed
+        bigint total_views
+        bigint unique_learning_content_views
+    }
+    user_assignment {
+        text id PK
+        bigint users_id FK
+    }
+    assignment_content {
+        bigint id PK
+        bigint assignment_id PK
+        timestamp completed_at
+        text resource_type
+        bigint score
+        timestamp started_at
+        text status
+    }
+    assignment {
+        bigint id PK
+        bigint assignee_id FK
+        bigint assignable_id
+        text assignable_type
+        timestamp assigned_at
+        timestamp completed_at
+        timestamp due_by
+        text ext_uid
+        boolean is_certification
+        timestamp reassigned_at
+        text resource_type
+        bigint score
+        timestamp started_at
+        text status
+        timestamp updated_at
+    }
+    lesson_assignment {
+        bigint id PK
+        bigint lesson_id FK
+    }
+    lesson_tag {
+        bigint id PK
+        bigint lesson_id PK
+    }
+    lesson {
+        bigint id PK
+        text archived_at
+        text archived_by_user_id
+        timestamp created_at
+        timestamp last_updated_at
+        text links_overview
+        text links_shareable
+        boolean public
+        text resource_type
+        bigint retake_score
+        text title
+    }
+    lesson_completion_breakdown {
+        text _fivetran_id PK
+        bigint lesson_id FK
+        bigint total
+        text type
+        bigint via_assignment
+        bigint via_other
+    }
+    custom_user_field_data {
+        text index PK
+        bigint user_id PK
+        bigint custom_user_field_id
+        bigint id
+        text name
+        text value
+    }
+    users {
+        bigint id PK
+        text archived_at
+        text archived_by_user_id
+        text business_unit
+        text department
+        text email
+        text ext_uid
+        text hire_date
+        text job_title
+        text locale
+        text location
+        text manager_name
+        text mobile_phone_number
+        text name
+        text resource_type
+        text role
+        bigint role_id
+    }
+    tags {
+        bigint id PK
+        text name
+        text resource_type
+    }
+    path_tag }o--|| tags : "fk"
+    path_tag }o--|| path : "fk"
+    content_in_path_content }o--|| path : "fk"
+    content_in_path_content }o--|| path_content : "fk"
+    path_content }o--|| lesson : "fk"
+    path_content }o--|| path : "fk"
+    group_member }o--|| users : "fk"
+    group_member }o--|| group_detail : "fk"
+    group_manager }o--|| users : "fk"
+    group_manager }o--|| group_detail : "fk"
+    group_detail }o--|| groups : "fk"
+    group_assignment }o--|| assignment : "fk"
+    group_assignment }o--|| groups : "fk"
+    path_assignment }o--|| assignment : "fk"
+    path_assignment }o--|| path : "fk"
+    user_learning_library }o--|| users : "fk"
+    user_assignment }o--|| assignment : "fk"
+    user_assignment }o--|| users : "fk"
+    assignment_content }o--|| assignment : "fk"
+    assignment }o--|| users : "fk"
+    lesson_assignment }o--|| assignment : "fk"
+    lesson_assignment }o--|| lesson : "fk"
+    lesson_tag }o--|| tags : "fk"
+    lesson_tag }o--|| lesson : "fk"
+    lesson_completion_breakdown }o--|| lesson : "fk"
+    custom_user_field_data }o--|| users : "fk"

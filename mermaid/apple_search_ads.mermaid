@@ -1,0 +1,344 @@
+erDiagram
+    search_term_report {
+        text _fivetran_id PK
+        text date PK
+        bigint ad_group_id PK
+        bigint campaign_id PK
+        bigint keyword_id FK
+        boolean ad_group_deleted
+        text ad_group_name
+        numeric avg_cpm_amount
+        text avg_cpm_currency
+        numeric avg_cpt_amount
+        text avg_cpt_currency
+        numeric bid_amount_amount
+        text bid_amount_currency
+        boolean deleted
+        integer impressions
+        text keyword
+        text keyword_display_status
+        numeric local_spend_amount
+        text local_spend_currency
+        text match_type
+        text search_term_source
+        text search_term_text
+        numeric tap_install_cpi_amount
+        text tap_install_cpi_currency
+        numeric tap_install_rate
+        bigint tap_installs
+        bigint tap_new_downloads
+        bigint tap_redownloads
+        text tap_through_rate
+        integer taps
+        numeric total_avg_cpi_amount
+        text total_avg_cpi_currency
+        numeric total_install_rate
+        bigint total_installs
+        bigint total_new_downloads
+        bigint total_redownloads
+        bigint view_installs
+        bigint view_new_downloads
+        bigint view_redownloads
+    }
+    ad_history {
+        bigint id PK
+        timestamp modification_time PK
+        bigint ad_group_id FK
+        bigint campaign_id FK
+        bigint creative_id FK
+        bigint org_id FK
+        timestamp creation_time
+        text creative_type
+        boolean deleted
+        text name
+        text serving_status
+        text status
+    }
+    locale_device {
+        text language_code PK
+        text name PK
+        text product_page_id PK
+    }
+    campaign_history {
+        bigint id PK
+        timestamp modification_time PK
+        bigint organization_id FK
+        text ad_channel_type
+        bigint adam_id
+        text billing_event
+        numeric budget_amount
+        text budget_currency
+        jsonb budget_orders
+        timestamp creation_time
+        numeric daily_budget_amount
+        text daily_budget_currency
+        boolean deleted
+        text display_status
+        timestamp end_time
+        text name
+        text payment_model
+        jsonb serving_state_reasons
+        text serving_status
+        timestamp start_time
+        text status
+        jsonb supply_sources
+    }
+    targeting_dimensions_history {
+        text type PK
+        bigint ad_group_id PK
+        timestamp ad_group_modification_time PK
+        jsonb value
+    }
+    keyword_history {
+        bigint id PK
+        timestamp modification_time PK
+        bigint ad_group_id FK
+        bigint campaign_id FK
+        numeric bid_amount
+        text bid_currency
+        timestamp creation_time
+        boolean deleted
+        text match_type
+        text status
+        text text
+    }
+    ad_level_report {
+        text date PK
+        bigint ad_group_id PK
+        bigint ad_id PK
+        bigint campaign_id PK
+        bigint creative_id PK
+        numeric avg_cpm_amount
+        text avg_cpm_currency
+        numeric avg_cpt_amount
+        text avg_cpt_currency
+        text display_status
+        integer impressions
+        text language
+        numeric local_spend_amount
+        text local_spend_currency
+        numeric tap_install_cpi_amount
+        text tap_install_cpi_currency
+        numeric tap_install_rate
+        bigint tap_installs
+        bigint tap_new_downloads
+        bigint tap_redownloads
+        text tap_through_rate
+        integer taps
+        numeric total_avg_cpi_amount
+        text total_avg_cpi_currency
+        numeric total_install_rate
+        bigint total_installs
+        bigint total_new_downloads
+        bigint total_redownloads
+        bigint view_installs
+        bigint view_new_downloads
+        bigint view_redownloads
+    }
+    ad_group_history {
+        bigint id PK
+        timestamp modification_time PK
+        bigint campaign_id FK
+        bigint organization_id FK
+        boolean automated_keywords_opt_in
+        numeric cpa_goal_amount
+        text cpa_goal_currency
+        numeric default_bid_amount
+        text default_bid_currency
+        numeric default_cpc_bid_amount
+        text default_cpc_bid_currency
+        boolean deleted
+        text display_status
+        timestamp end_time
+        text name
+        text payment_model
+        text pricing_model
+        jsonb serving_state_reasons
+        text serving_status
+        timestamp start_time
+        text status
+        jsonb storefronts
+    }
+    country_or_region_history {
+        bigint index PK
+        bigint campaign_id PK
+        timestamp campaign_modification_time PK
+        text country_or_region
+    }
+    creative_history {
+        bigint id PK
+        timestamp modification_time PK
+        bigint org_id FK
+        text product_page_id FK
+        bigint adam_id
+        timestamp creation_time
+        text language_code
+        text name
+        text state
+        text type
+    }
+    negative_keyword_history {
+        bigint id PK
+        timestamp modification_time PK
+        bigint ad_group_id FK
+        bigint campaign_id FK
+        boolean deleted
+        text match_type
+        text status
+        text text
+    }
+    organization {
+        bigint id PK
+        text currency
+        text name
+        text payment_model
+        jsonb role_names
+        text time_zone
+    }
+    creative_state_reason_history {
+        timestamp modification_time PK
+        text reason PK
+        bigint creative_id PK
+    }
+    product_page_history {
+        text id PK
+        timestamp modification_time PK
+        bigint adam_id
+        timestamp creation_time
+        text deep_link
+        text name
+        text state
+    }
+    ad_group_report {
+        text date PK
+        bigint ad_group_id PK
+        numeric avg_cpm_amount
+        text avg_cpm_currency
+        numeric avg_cpt_amount
+        text avg_cpt_currency
+        text device_class
+        integer impressions
+        numeric local_spend_amount
+        text local_spend_currency
+        numeric tap_install_cpi_amount
+        text tap_install_cpi_currency
+        numeric tap_install_rate
+        bigint tap_installs
+        bigint tap_new_downloads
+        bigint tap_redownloads
+        text tap_through_rate
+        integer taps
+        numeric total_avg_cpi_amount
+        text total_avg_cpi_currency
+        numeric total_install_rate
+        bigint total_installs
+        bigint total_new_downloads
+        bigint total_redownloads
+        bigint view_installs
+        bigint view_new_downloads
+        bigint view_redownloads
+    }
+    keyword_report {
+        text date PK
+        bigint id PK
+        numeric avg_cpm_amount
+        text avg_cpm_currency
+        numeric avg_cpt_amount
+        text avg_cpt_currency
+        integer impressions
+        numeric local_spend_amount
+        text local_spend_currency
+        numeric tap_install_cpi_amount
+        text tap_install_cpi_currency
+        numeric tap_install_rate
+        bigint tap_installs
+        bigint tap_new_downloads
+        bigint tap_redownloads
+        text tap_through_rate
+        integer taps
+        numeric total_avg_cpi_amount
+        text total_avg_cpi_currency
+        numeric total_install_rate
+        bigint total_installs
+        bigint total_new_downloads
+        bigint total_redownloads
+        bigint view_installs
+        bigint view_new_downloads
+        bigint view_redownloads
+    }
+    product_page_locale {
+        text language_code PK
+        text product_page_id PK
+        bigint adam_id
+        text app_name
+        text language
+        text promotional_text
+        text short_description
+        text sub_title
+    }
+    campaign_report {
+        text date PK
+        bigint id PK
+        text ad_channel_type
+        numeric avg_cpm_amount
+        text avg_cpm_currency
+        numeric avg_cpt_amount
+        text avg_cpt_currency
+        text device_class
+        integer impressions
+        numeric local_spend_amount
+        text local_spend_currency
+        numeric tap_install_cpi_amount
+        text tap_install_cpi_currency
+        numeric tap_install_rate
+        bigint tap_installs
+        bigint tap_new_downloads
+        bigint tap_redownloads
+        text tap_through_rate
+        integer taps
+        numeric total_avg_cpi_amount
+        text total_avg_cpi_currency
+        numeric total_install_rate
+        bigint total_installs
+        bigint total_new_downloads
+        bigint total_redownloads
+        bigint view_installs
+        bigint view_new_downloads
+        bigint view_redownloads
+    }
+    ad_serving_state_reason_history {
+        timestamp modification_time PK
+        text reason PK
+        bigint ad_id PK
+    }
+    search_term_report }o--|| campaign_history : "fk"
+    search_term_report }o--|| ad_group_history : "fk"
+    search_term_report }o--|| keyword_history : "fk"
+    ad_history }o--|| organization : "fk"
+    ad_history }o--|| campaign_history : "fk"
+    ad_history }o--|| ad_group_history : "fk"
+    ad_history }o--|| creative_history : "fk"
+    locale_device }o--|| product_page_history : "fk"
+    campaign_history }o--|| organization : "fk"
+    targeting_dimensions_history }o--|| ad_group_history : "fk"
+    targeting_dimensions_history }o--|| ad_group_history : "fk"
+    keyword_history }o--|| ad_group_history : "fk"
+    keyword_history }o--|| campaign_history : "fk"
+    ad_level_report }o--|| ad_history : "fk"
+    ad_level_report }o--|| campaign_history : "fk"
+    ad_level_report }o--|| ad_group_history : "fk"
+    ad_level_report }o--|| creative_history : "fk"
+    ad_group_history }o--|| campaign_history : "fk"
+    ad_group_history }o--|| organization : "fk"
+    country_or_region_history }o--|| campaign_history : "fk"
+    country_or_region_history }o--|| campaign_history : "fk"
+    creative_history }o--|| organization : "fk"
+    creative_history }o--|| product_page_history : "fk"
+    negative_keyword_history }o--|| campaign_history : "fk"
+    negative_keyword_history }o--|| ad_group_history : "fk"
+    creative_state_reason_history }o--|| creative_history : "fk"
+    ad_group_report }o--|| ad_group_history : "fk"
+    keyword_report }o--|| keyword_history : "fk"
+    product_page_locale }o--|| product_page_history : "fk"
+    campaign_report }o--|| campaign_history : "fk"
+    ad_serving_state_reason_history }o--|| ad_history : "fk"

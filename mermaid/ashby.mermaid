@@ -1,0 +1,514 @@
+erDiagram
+    source {
+        text id PK
+        text is_archived
+        text source_type_id
+        text source_type_is_archived
+        text source_type_title
+        text title
+    }
+    offer_custom_field {
+        text id PK
+        text offer_id PK
+        text value
+    }
+    offer_file_handle {
+        text id PK
+        text offer_id PK
+        text handle
+        text name
+    }
+    offer_version_custom_field {
+        text id PK
+        text offer_id PK
+        text offer_version_id PK
+        text value
+    }
+    offer_version_file_handle {
+        text id PK
+        text offer_id PK
+        text offer_version_id PK
+        text handle
+        text name
+    }
+    offer_version {
+        text id PK
+        text offer_id PK
+        text author_id FK
+        text created_at
+        text salary_currency_code
+        text salary_value
+        text start_date
+    }
+    offer {
+        text id PK
+        text application_id FK
+        text author_id FK
+        text acceptance_status
+        text decided_at
+        text latest_version_created_at
+        text latest_version_id
+        text latest_version_salary_currency_code
+        text latest_version_salary_value
+        text latest_version_start_date
+        text status
+    }
+    application_feedback_form_definition_section_field_value {
+        text index PK
+        text application_feedback_id PK
+        text section_field_index PK
+        text section_field_value_index PK
+        text label
+        text value
+    }
+    application_feedback_form_definition_section_field {
+        text index PK
+        text section_field_index PK
+        text application_feedback_id PK
+        text description_html
+        text description_plain
+        text field_human_readable_path
+        text field_id
+        text field_is_nullable
+        text field_path
+        text field_title
+        text field_type
+        text is_required
+        text section_description_html
+        text section_description_plain
+        text title
+    }
+    application_feedback_submitted_value {
+        text name PK
+        text application_feedback_id PK
+        text value
+    }
+    application_feedback {
+        text id PK
+        text application_history_id FK
+        text application_id FK
+        text interview_id FK
+        text submitted_by_user_id FK
+        text feedback_form_definition_id
+        text submitted_at
+    }
+    source_tracking_link {
+        text id PK
+        text source_id FK
+        text code
+        text enabled
+        text link
+    }
+    application_history_allowed_action {
+        text index PK
+        text application_history_id PK
+        text application_id PK
+        text action
+    }
+    application_history {
+        text id PK
+        text application_id PK
+        text actor_id FK
+        text entered_stage_at
+        text left_stage_at
+        text stage_id
+        text stage_number
+        text title
+    }
+    users {
+        text id PK
+        text email
+        text first_name
+        text global_role
+        text is_enabled
+        text last_name
+        text updated_at
+    }
+    job_board {
+        text id PK
+        text is_internal
+        text title
+    }
+    interview_schedule_event_user_id {
+        text interview_schedule_event_id PK
+        text interview_schedule_id PK
+        text user_id PK
+    }
+    interview_schedule_event {
+        text id PK
+        text interview_schedule_id PK
+        text interview_id FK
+        text created_at
+        text end_time
+        text feedback_link
+        text has_submitted_feedback
+        text location
+        text meeting_link
+        text start_time
+        text updated_at
+    }
+    interview_schedule {
+        text id PK
+        text application_id FK
+        text interview_stage_id
+    }
+    job_posting_location {
+        text index PK
+        text job_posting_id PK
+        text location_id FK
+    }
+    job_posting {
+        text id PK
+        text job_id FK
+        text primary_location_id FK
+        text application_deadline
+        text apply_link
+        text compensation_tier_summary
+        text department_name
+        text employment_type
+        text external_link
+        text is_listed
+        text location_name
+        text published_date
+        text should_display_compensation_on_job_board
+        text team_name
+        text title
+        text updated_at
+    }
+    job_opening {
+        text id PK
+        text job_id PK
+    }
+    job_interview_plan_id {
+        text id PK
+        text job_id PK
+    }
+    job_posting_id {
+        text id PK
+        text job_id PK
+    }
+    job_custom_field {
+        text id PK
+        text job_id PK
+        text value
+    }
+    job_hiring_team {
+        text job_id PK
+        text user_id PK
+        text role
+    }
+    job {
+        text id PK
+        text author_id FK
+        text department_id FK
+        text location_id FK
+        text brand_id
+        text closed_at
+        text confidential
+        text created_at
+        text custom_requisition_id
+        text default_interview_plan_id
+        text employment_type
+        text opened_at
+        text status
+        text title
+        text updated_at
+    }
+    application_hiring_team_role {
+        text id PK
+    }
+    candidate_email_address {
+        text index PK
+        text candidate_id PK
+        text is_primary
+        text type
+        text value
+    }
+    candidate_phone_number {
+        text index PK
+        text candidate_id PK
+        text is_primary
+        text type
+        text value
+    }
+    candidate_social_link {
+        text index PK
+        text candidate_id PK
+        text type
+        text url
+    }
+    candidate_application_id {
+        text candidate_id PK
+        text id PK
+    }
+    candidate_tag {
+        text id PK
+        text candidate_id PK
+        text is_archived
+        text title
+    }
+    candidate_file_hadle {
+        text id PK
+        text candidate_id PK
+        text handle
+        text name
+    }
+    candidate_custom_field {
+        text candidate_id PK
+        text id PK
+        text value
+    }
+    candidate {
+        text id PK
+        text credited_to_user_id FK
+        text primary_location_id FK
+        text source_id FK
+        text company
+        text created_at
+        text name
+        text position
+        text primary_location_summary
+        text profile_url
+        text resume_file_handle_handle
+        text resume_file_handle_id
+        text resume_file_handle_name
+        text school
+        text timezone
+        text updated_at
+    }
+    department {
+        text id PK
+        text parent_id FK
+        text is_archived
+        text name
+    }
+    custom_field_value {
+        text index PK
+        text custom_field_id PK
+        text is_archived
+        text label
+        text value
+    }
+    custom_field {
+        text id PK
+        text field_type
+        text is_archived
+        text is_private
+        text object_type
+        text title
+    }
+    hiring_team_role {
+        text id PK
+        text title
+    }
+    opening_job_id {
+        text index PK
+        text opening_id PK
+        text job_id FK
+    }
+    opening_location_id {
+        text index PK
+        text opening_id PK
+        text location_id FK
+    }
+    opening_hiring_team {
+        text opening_id PK
+        text user_id PK
+        text role
+    }
+    opening_custom_field {
+        text id PK
+        text opening_id PK
+        text value
+    }
+    opening {
+        text id PK
+        text archived_at
+        text closed_at
+        text is_archived
+        text latest_version_author_id
+        text latest_version_created_at
+        text latest_version_description
+        text latest_version_employment_type
+        text latest_version_id
+        text latest_version_identifier
+        text latest_version_is_backfill
+        text latest_version_target_hire_date
+        text latest_version_target_start_date
+        text latest_version_team_id
+        text opened_at
+        text opening_state
+    }
+    candidate_note {
+        text id PK
+        text candidate_id PK
+        text author_id FK
+        text content
+        text created_at
+    }
+    application_custom_field {
+        text application_id PK
+        text id PK
+        text value
+    }
+    application_hiring_team {
+        text application_id PK
+        text user_id PK
+        text role
+    }
+    application_opening {
+        text application_id PK
+        text id PK
+    }
+    application {
+        text id PK
+        text candidate_id FK
+        text credit_to_user_id FK
+        text job_id FK
+        text source_id FK
+        text applied_via_job_posting_id
+        text archive_reason_id
+        text archive_reason_is_archived
+        text archive_reason_text
+        text archive_reason_type
+        text archived_at
+        text created_at
+        text current_interview_stage_group_id
+        text current_interview_stage_id
+        text current_interview_stage_order_in_interview_plan
+        text current_interview_stage_plan_id
+        text current_interview_stage_title
+        text current_interview_stage_type
+        text status
+        text updated_at
+    }
+    interview_pool_training_stage_approval {
+        text id PK
+        text interview_pool_id PK
+        text interview_pool_training_stage_id PK
+    }
+    interview_pool_training_stage {
+        text id PK
+        text interview_pool_id PK
+        text approval_required
+        text interviewer_required
+        text interviewer_role
+    }
+    interview_pool {
+        text id PK
+        text is_archived
+        text title
+        text training_path_enabled
+        text training_path_id
+    }
+    location {
+        text id PK
+        text parent_location_id FK
+        text is_archived
+        text is_remote
+        text name
+        text postal_address_country
+        text postal_address_locality
+        text postal_address_region
+        text title
+        text type
+    }
+    interview {
+        text id PK
+        text job_id FK
+        text feedback_form_definition_id
+        text instruction_html
+        text instruction_plain
+        text is_archived
+        text is_debrief
+        text title
+    }
+    offer_custom_field }o--|| custom_field : "fk"
+    offer_custom_field }o--|| offer : "fk"
+    offer_file_handle }o--|| offer : "fk"
+    offer_version_custom_field }o--|| custom_field : "fk"
+    offer_version_custom_field }o--|| offer_version : "fk"
+    offer_version_custom_field }o--|| offer_version : "fk"
+    offer_version_file_handle }o--|| offer_version : "fk"
+    offer_version_file_handle }o--|| offer_version : "fk"
+    offer_version }o--|| users : "fk"
+    offer_version }o--|| offer : "fk"
+    offer }o--|| application : "fk"
+    offer }o--|| users : "fk"
+    application_feedback_form_definition_section_field_value }o--|| application_feedback_form_definition_section_field : "fk"
+    application_feedback_form_definition_section_field_value }o--|| application_feedback_form_definition_section_field : "fk"
+    application_feedback_form_definition_section_field_value }o--|| application_feedback_form_definition_section_field : "fk"
+    application_feedback_form_definition_section_field }o--|| application_feedback : "fk"
+    application_feedback_submitted_value }o--|| application_feedback : "fk"
+    application_feedback }o--|| application : "fk"
+    application_feedback }o--|| application_history : "fk"
+    application_feedback }o--|| interview : "fk"
+    application_feedback }o--|| users : "fk"
+    source_tracking_link }o--|| source : "fk"
+    application_history_allowed_action }o--|| application_history : "fk"
+    application_history_allowed_action }o--|| application_history : "fk"
+    application_history }o--|| users : "fk"
+    application_history }o--|| application : "fk"
+    interview_schedule_event_user_id }o--|| users : "fk"
+    interview_schedule_event_user_id }o--|| interview_schedule_event : "fk"
+    interview_schedule_event_user_id }o--|| interview_schedule_event : "fk"
+    interview_schedule_event }o--|| interview : "fk"
+    interview_schedule_event }o--|| interview_schedule : "fk"
+    interview_schedule }o--|| application : "fk"
+    job_posting_location }o--|| location : "fk"
+    job_posting_location }o--|| job_posting : "fk"
+    job_posting }o--|| job : "fk"
+    job_posting }o--|| location : "fk"
+    job_opening }o--|| opening : "fk"
+    job_opening }o--|| job : "fk"
+    job_interview_plan_id }o--|| job : "fk"
+    job_posting_id }o--|| job_posting : "fk"
+    job_posting_id }o--|| job : "fk"
+    job_custom_field }o--|| custom_field : "fk"
+    job_custom_field }o--|| job : "fk"
+    job_hiring_team }o--|| users : "fk"
+    job_hiring_team }o--|| job : "fk"
+    job }o--|| department : "fk"
+    job }o--|| users : "fk"
+    job }o--|| location : "fk"
+    application_hiring_team_role }o--|| hiring_team_role : "fk"
+    candidate_email_address }o--|| candidate : "fk"
+    candidate_phone_number }o--|| candidate : "fk"
+    candidate_social_link }o--|| candidate : "fk"
+    candidate_application_id }o--|| application : "fk"
+    candidate_application_id }o--|| candidate : "fk"
+    candidate_tag }o--|| candidate : "fk"
+    candidate_file_hadle }o--|| candidate : "fk"
+    candidate_custom_field }o--|| custom_field : "fk"
+    candidate_custom_field }o--|| candidate : "fk"
+    candidate }o--|| location : "fk"
+    candidate }o--|| source : "fk"
+    candidate }o--|| users : "fk"
+    department }o--|| department : "fk"
+    custom_field_value }o--|| custom_field : "fk"
+    opening_job_id }o--|| job : "fk"
+    opening_job_id }o--|| opening : "fk"
+    opening_location_id }o--|| location : "fk"
+    opening_location_id }o--|| opening : "fk"
+    opening_hiring_team }o--|| users : "fk"
+    opening_hiring_team }o--|| opening : "fk"
+    opening_custom_field }o--|| custom_field : "fk"
+    opening_custom_field }o--|| opening : "fk"
+    candidate_note }o--|| users : "fk"
+    candidate_note }o--|| candidate : "fk"
+    application_custom_field }o--|| custom_field : "fk"
+    application_custom_field }o--|| application : "fk"
+    application_hiring_team }o--|| users : "fk"
+    application_hiring_team }o--|| application : "fk"
+    application_opening }o--|| opening : "fk"
+    application_opening }o--|| application : "fk"
+    application }o--|| users : "fk"
+    application }o--|| job : "fk"
+    application }o--|| candidate : "fk"
+    application }o--|| source : "fk"
+    interview_pool_training_stage_approval }o--|| users : "fk"
+    interview_pool_training_stage_approval }o--|| interview_pool_training_stage : "fk"
+    interview_pool_training_stage_approval }o--|| interview_pool_training_stage : "fk"
+    interview_pool_training_stage }o--|| interview_pool : "fk"
+    location }o--|| location : "fk"
+    interview }o--|| job : "fk"

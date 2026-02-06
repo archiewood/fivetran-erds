@@ -1,0 +1,559 @@
+erDiagram
+    contact {
+        text id PK
+        text city
+        text company
+        text country
+        text email
+        text first_name
+        text job_title
+        text last_name
+        text phone
+        text postal_code
+        text state
+        text street_address
+    }
+    document_field {
+        text id PK
+        text document_id PK
+        text assigned_to FK
+        text field_id
+        text merge_field
+        text name
+        text placeholder
+        text title
+        text type
+        text value
+    }
+    document_tag {
+        text name PK
+        text document_id PK
+    }
+    document_token {
+        text name PK
+        text document_id PK
+        text value
+    }
+    document_recipient_role {
+        text id PK
+        text document_id PK
+        text document_recipient_id PK
+    }
+    document_recipient {
+        text id PK
+        text document_id PK
+        text contact_id FK
+        boolean has_completed
+        text passcode
+        text phone_verification
+        text redirect_is_enabled
+        text redirect_url
+        text shared_link
+        text signature_date
+        bigint signing_order
+        text type
+        text verification_place
+    }
+    document_pricing_table_item {
+        text index PK
+        text document_id PK
+        text document_pricing_table_id PK
+        double_precision cost
+        text description
+        text discount
+        text id
+        text name
+        double_precision price
+        double_precision qty
+        double_precision sale_price
+        text sku
+        text subtotal
+        text tax_first
+        text tax_second
+    }
+    document_pricing_table_column {
+        bigint index PK
+        text document_id PK
+        text document_pricing_table_id PK
+        text header
+        boolean hidden
+        text merge_name
+        text name
+    }
+    document_pricing_table {
+        text id PK
+        text document_id PK
+        text currency
+        text is_included_in_total
+        text name
+        text summary_discount
+        text summary_subtotal
+        text summary_tax
+        text summary_total
+        text total
+    }
+    document_pricing_quote_recurring_subtotal {
+        text index PK
+        text document_id PK
+        text document_pricing_quote_id PK
+        text billing_cycle
+        text value
+    }
+    document_pricing_quote_section_recurring_subtotal {
+        text index PK
+        text document_id PK
+        text document_pricing_quote_id PK
+        text document_pricing_quote_section_id PK
+        text billing_cycle
+        text value
+    }
+    document_pricing_quote_section_column {
+        bigint index PK
+        text name PK
+        text document_id PK
+        text document_pricing_quote_id PK
+        text document_pricing_quote_section_id PK
+        text header
+        boolean hidden
+        text merge_name
+    }
+    document_pricing_quote_section_item {
+        text index PK
+        text document_id PK
+        text document_pricing_quote_id PK
+        text document_pricing_quote_section_id PK
+        text billing_frequency
+        text contract_term
+        double_precision cost
+        text discounts_property_1_type
+        text discounts_property_1_value
+        text discounts_property_2_type
+        text discounts_property_2_value
+        text fees_property_1_type
+        text fees_property_1_value
+        text fees_property_2_type
+        text fees_property_2_value
+        text id
+        text name
+        double_precision price
+        text pricing_method
+        text property_1
+        text property_2
+        double_precision qty
+        text qty_editable
+        text reference_type
+        text selected
+        text sku
+        text tax_property_1_type
+        text tax_property_1_value
+        text tax_property_2_type
+        text tax_property_2_value
+        text type
+    }
+    document_pricing_quote_section {
+        text id PK
+        text document_id PK
+        text document_pricing_quote_id PK
+        text name
+        jsonb summary_discounts
+        jsonb summary_fees
+        text summary_one_time_subtotal
+        text summary_subtotal
+        jsonb summary_taxes
+        text summary_total
+        text summary_total_qty
+        text summary_total_section_value
+    }
+    document_pricing_quote_merge_rule_condition_comparison {
+        text index PK
+        text document_id PK
+        text document_pricing_quote_id PK
+        text document_pricing_quote_merge_rule_id PK
+        text type
+        text value
+    }
+    document_pricing_quote_merge_rule {
+        text id PK
+        text document_id PK
+        text document_pricing_quote_id PK
+        text action_section_id
+        text action_type
+        text condition_field_name
+        text condition_type
+        text enabled
+    }
+    document_pricing_quote {
+        text id PK
+        text document_id PK
+        text currency
+        text discounts_property_1_type
+        text discounts_property_1_value
+        text discounts_property_2_type
+        text discounts_property_2_value
+        text settings_selection_type
+        jsonb summary_fees
+        text summary_one_time_subtotal
+        text summary_subtotal
+        jsonb summary_taxes
+        text summary_total
+        text summary_total_contract_value
+        text summary_total_discount
+        text summary_total_fee
+        text summary_total_qty
+        text summary_total_savings
+        text summary_total_tax
+        text total
+    }
+    document_linked_object {
+        text id PK
+        text document_id PK
+        text entity_id
+        text entity_type
+        text provider
+    }
+    document {
+        text id PK
+        text created_by FK
+        text sent_by FK
+        text template_id FK
+        text approval_execution
+        text autonumbering_sequence_name_prefix
+        text content_date_modified
+        timestamp date_completed
+        timestamp date_created
+        timestamp date_modified
+        text date_sent
+        timestamp expiration_date
+        double_precision grand_total_amount
+        text grand_total_currency
+        text name
+        text ref_number
+        text status
+        text version
+    }
+    template_token {
+        text name PK
+        text template_id PK
+        text value
+    }
+    template_tag {
+        text name PK
+        text template_id PK
+    }
+    template_role {
+        text id PK
+        text template_id PK
+        text name
+        text preassigned_person
+        bigint signing_order
+    }
+    template_field {
+        text id PK
+        text template_id PK
+        text assigned_to FK
+        text field_identifier
+        text name
+        text placeholder
+        text title
+        text type
+        text value
+    }
+    template_pricing_table_item {
+        text index PK
+        text template_id PK
+        text template_pricing_table_id PK
+        double_precision cost
+        text description
+        text discount
+        text id
+        text name
+        double_precision price
+        double_precision qty
+        double_precision sale_price
+        text sku
+        text subtotal
+        text tax_first
+        text tax_second
+    }
+    template_pricing_table_column {
+        bigint index PK
+        text template_id PK
+        text template_pricing_table_id PK
+        text header
+        boolean hidden
+        text merge_name
+        text name
+    }
+    template_pricing_table {
+        text id PK
+        text template_id PK
+        text currency
+        text is_included_in_total
+        text name
+        text total
+    }
+    template_pricing_quote_recurring_subtotal {
+        text index PK
+        text template_id PK
+        text template_pricing_quote_id PK
+        text billing_cycle
+        text value
+    }
+    template_pricing_quote_section_recurring_subtotal {
+        text index PK
+        text template_id PK
+        text template_pricing_quote_id PK
+        text template_pricing_quote_section_id PK
+        text billing_cycle
+        text value
+    }
+    template_pricing_quote_section {
+        text id PK
+        text template_id PK
+        text template_pricing_quote_id PK
+        text name
+        jsonb summary_discounts
+        jsonb summary_fees
+        text summary_one_time_subtotal
+        text summary_subtotal
+        jsonb summary_taxes
+        text summary_total
+        text summary_total_qty
+        text summary_total_section_value
+        text total
+    }
+    template_pricing_quote_merge_rule_condition_comparison {
+        text index PK
+        text template_id PK
+        text template_pricing_quote_id PK
+        text template_pricing_quote_merge_rule_id PK
+        text type
+        text value
+    }
+    template_pricing_quote_merge_rule {
+        text id PK
+        text template_id PK
+        text template_pricing_quote_id PK
+        text action_section_id
+        text action_type
+        text condition_field_name
+        text condition_type
+        text enabled
+    }
+    template_pricing_quote {
+        text id PK
+        text template_id PK
+        text currency
+        text settings_selection_type
+        jsonb summary_fees
+        text summary_one_time_subtotal
+        text summary_subtotal
+        jsonb summary_taxes
+        text summary_total
+        text summary_total_contract_value
+        text summary_total_discount
+        text summary_total_fee
+        text summary_total_qty
+        text summary_total_savings
+        text summary_total_tax
+        text total
+    }
+    template_image_url {
+        text url PK
+        text template_id PK
+        text template_image_block_uuid PK
+    }
+    template_image {
+        text block_uuid PK
+        text template_id PK
+        text name
+    }
+    template_content_placeholder {
+        text uuid PK
+        text template_id PK
+        text block_id
+        text description
+    }
+    template {
+        text id PK
+        text created_by FK
+        text content_date_modified
+        timestamp date_created
+        timestamp date_modified
+        text name
+        text version
+    }
+    member {
+        text id PK
+        timestamp date_created
+        timestamp date_modified
+        text email
+        boolean email_verified
+        text first_name
+        boolean is_active
+        text last_name
+        text membership_id
+        text role
+        text user_license
+        text workspace
+        text workspace_name
+    }
+    form {
+        text id PK
+        timestamp date_created
+        timestamp date_modified
+        text name
+        text status
+    }
+    content_library_item_token {
+        text name PK
+        text content_library_item_id PK
+        text value
+    }
+    content_library_item_tag {
+        text name PK
+        text content_library_item_id PK
+    }
+    content_library_item_role {
+        text id PK
+        text content_library_item_id PK
+        text name
+        text preassigned_person
+        bigint signing_order
+    }
+    content_library_item_field {
+        text id PK
+        text content_library_item_id PK
+        text assigned_to
+        text field_identifier
+        text name
+        text placeholder
+        text title
+        text type
+        text value
+    }
+    content_library_item_pricing_table_item {
+        text index PK
+        text content_library_item_id PK
+        text content_library_item_pricing_table_id PK
+        double_precision cost
+        text description
+        text discount
+        text id
+        text name
+        double_precision price
+        double_precision qty
+        double_precision sale_price
+        text sku
+        text subtotal
+        text tax_first
+        text tax_second
+    }
+    content_library_item_pricing_table {
+        text id PK
+        text content_library_item_id PK
+        text currency
+        text is_included_in_total
+        text name
+        text total
+    }
+    content_library_item_image_url {
+        text url PK
+        text content_library_item_id PK
+        text content_library_item_image_block_uuid PK
+    }
+    content_library_item_image {
+        text block_uuid PK
+        text content_library_item_id PK
+        text name
+    }
+    content_library_item_content_placeholder {
+        text uuid PK
+        text content_library_item_id PK
+        text block_id
+        text description
+    }
+    content_library_item {
+        text id PK
+        text created_by FK
+        timestamp date_created
+        timestamp date_modified
+        text name
+        text version
+    }
+    document_field }o--|| document_recipient : "fk"
+    document_field }o--|| document : "fk"
+    document_tag }o--|| document : "fk"
+    document_token }o--|| document : "fk"
+    document_recipient_role }o--|| document_recipient : "fk"
+    document_recipient_role }o--|| document_recipient : "fk"
+    document_recipient }o--|| contact : "fk"
+    document_recipient }o--|| document : "fk"
+    document_pricing_table_item }o--|| document_pricing_table : "fk"
+    document_pricing_table_item }o--|| document_pricing_table : "fk"
+    document_pricing_table_column }o--|| document_pricing_table : "fk"
+    document_pricing_table_column }o--|| document_pricing_table : "fk"
+    document_pricing_table }o--|| document : "fk"
+    document_pricing_quote_recurring_subtotal }o--|| document_pricing_quote : "fk"
+    document_pricing_quote_recurring_subtotal }o--|| document_pricing_quote : "fk"
+    document_pricing_quote_section_recurring_subtotal }o--|| document_pricing_quote_section : "fk"
+    document_pricing_quote_section_recurring_subtotal }o--|| document_pricing_quote_section : "fk"
+    document_pricing_quote_section_recurring_subtotal }o--|| document_pricing_quote_section : "fk"
+    document_pricing_quote_section_column }o--|| document_pricing_quote_section : "fk"
+    document_pricing_quote_section_column }o--|| document_pricing_quote_section : "fk"
+    document_pricing_quote_section_column }o--|| document_pricing_quote_section : "fk"
+    document_pricing_quote_section_item }o--|| document_pricing_quote_section : "fk"
+    document_pricing_quote_section_item }o--|| document_pricing_quote_section : "fk"
+    document_pricing_quote_section_item }o--|| document_pricing_quote_section : "fk"
+    document_pricing_quote_section }o--|| document_pricing_quote : "fk"
+    document_pricing_quote_section }o--|| document_pricing_quote : "fk"
+    document_pricing_quote_merge_rule_condition_comparison }o--|| document_pricing_quote_merge_rule : "fk"
+    document_pricing_quote_merge_rule_condition_comparison }o--|| document_pricing_quote_merge_rule : "fk"
+    document_pricing_quote_merge_rule_condition_comparison }o--|| document_pricing_quote : "fk"
+    document_pricing_quote_merge_rule }o--|| document_pricing_quote : "fk"
+    document_pricing_quote_merge_rule }o--|| document_pricing_quote : "fk"
+    document_pricing_quote }o--|| document : "fk"
+    document_linked_object }o--|| document : "fk"
+    document }o--|| template : "fk"
+    document }o--|| member : "fk"
+    document }o--|| member : "fk"
+    template_token }o--|| template : "fk"
+    template_tag }o--|| template : "fk"
+    template_role }o--|| template : "fk"
+    template_field }o--|| template_role : "fk"
+    template_field }o--|| template : "fk"
+    template_pricing_table_item }o--|| template_pricing_table : "fk"
+    template_pricing_table_item }o--|| template_pricing_table : "fk"
+    template_pricing_table_column }o--|| template_pricing_table : "fk"
+    template_pricing_table_column }o--|| template_pricing_table : "fk"
+    template_pricing_table }o--|| template : "fk"
+    template_pricing_quote_recurring_subtotal }o--|| template_pricing_quote : "fk"
+    template_pricing_quote_recurring_subtotal }o--|| template_pricing_quote : "fk"
+    template_pricing_quote_section_recurring_subtotal }o--|| template_pricing_quote_section : "fk"
+    template_pricing_quote_section_recurring_subtotal }o--|| template_pricing_quote_section : "fk"
+    template_pricing_quote_section_recurring_subtotal }o--|| template_pricing_quote_section : "fk"
+    template_pricing_quote_section }o--|| template_pricing_quote : "fk"
+    template_pricing_quote_section }o--|| template_pricing_quote : "fk"
+    template_pricing_quote_merge_rule_condition_comparison }o--|| template_pricing_quote_merge_rule : "fk"
+    template_pricing_quote_merge_rule_condition_comparison }o--|| template_pricing_quote_merge_rule : "fk"
+    template_pricing_quote_merge_rule_condition_comparison }o--|| template_pricing_quote_merge_rule : "fk"
+    template_pricing_quote_merge_rule }o--|| template_pricing_quote : "fk"
+    template_pricing_quote_merge_rule }o--|| template_pricing_quote : "fk"
+    template_pricing_quote }o--|| template : "fk"
+    template_image_url }o--|| template_image : "fk"
+    template_image_url }o--|| template_image : "fk"
+    template_image }o--|| template : "fk"
+    template_content_placeholder }o--|| template : "fk"
+    template }o--|| member : "fk"
+    content_library_item_token }o--|| content_library_item : "fk"
+    content_library_item_tag }o--|| content_library_item : "fk"
+    content_library_item_role }o--|| content_library_item : "fk"
+    content_library_item_field }o--|| content_library_item : "fk"
+    content_library_item_pricing_table_item }o--|| content_library_item_pricing_table : "fk"
+    content_library_item_pricing_table_item }o--|| content_library_item_pricing_table : "fk"
+    content_library_item_pricing_table }o--|| content_library_item : "fk"
+    content_library_item_image_url }o--|| content_library_item_image : "fk"
+    content_library_item_image_url }o--|| content_library_item_image : "fk"
+    content_library_item_image }o--|| content_library_item : "fk"
+    content_library_item_content_placeholder }o--|| content_library_item : "fk"
+    content_library_item }o--|| member : "fk"

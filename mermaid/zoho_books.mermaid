@@ -1,0 +1,906 @@
+erDiagram
+    project {
+        text id PK
+        text customer_id FK
+        text billable_hour
+        text billing_type
+        text created_time
+        text customer_name
+        text description
+        text has_attachment
+        text project_name
+        text rate
+        text status
+        text total_hour
+    }
+    chart_of_account_document {
+        text document PK
+        text chart_of_account_id PK
+    }
+    chart_of_account {
+        text id PK
+        text parent_account_id FK
+        text account_code
+        text account_name
+        text account_type
+        text can_show_in_ze
+        text child_count
+        text created_time
+        text current_balance
+        text depth
+        text has_attachment
+        text is_active
+        text is_child_present
+        text is_involved_in_transaction
+        text is_standalone_account
+        text is_system_account
+        text is_user_created
+        text last_modified_time
+        text parent_account_name
+    }
+    credit_note_line_item_tax {
+        text credit_note_id PK
+        text credit_note_line_item_id PK
+        text tax_id PK
+        text tax_amount
+    }
+    credit_note_line_item {
+        text id PK
+        text credit_note_id PK
+        text account_id FK
+        text invoice_id FK
+        text project_id FK
+        text tax_id FK
+        text account_name
+        text bcy_rate
+        text code
+        text description
+        text discount
+        text discount_amount
+        text image_document_id
+        text invoice_item_id
+        text item_id
+        text item_order
+        text item_total
+        text item_type
+        text name
+        text pricebook_id
+        text product_type
+        text project_name
+        text quantity
+        text rate
+        text serial_number
+        text sku
+        jsonb tags
+        text tax_name
+        text tax_percentage
+        text tax_treatment_code
+        text tax_type
+        text type
+        text unit
+        text warehouse_id
+        text warehouse_name
+    }
+    credit_note_invoice {
+        text credit_note_invoice_id PK
+        text credit_note_id PK
+        text invoice_id PK
+        text credit_note_invoice_credited_amount
+        text credit_note_invoice_date
+    }
+    credit_note {
+        text id PK
+        text currency_id FK
+        text customer_id FK
+        text invoice_id FK
+        text adjustment
+        text adjustment_description
+        text approver_id
+        jsonb approvers_list
+        text balance
+        text bcy_shipping_charge_tax
+        text branch_id
+        text branch_name
+        text cfdi_reference_type
+        text cfdi_usage
+        text client_viewed_time
+        text color_code
+        text created_by_id
+        text created_time
+        text credit_note_number
+        text current_sub_status
+        text current_sub_status_id
+        text date
+        text discount
+        text discount_applied_on_amount
+        text discount_type
+        jsonb document
+        text email
+        text exchange_rate
+        text gst_no
+        text gst_treatment
+        text is_child_present
+        text is_discount_before_tax
+        text is_emailed
+        text is_inclusive_tax
+        text is_pre_gst
+        text is_viewed_by_client
+        text last_modified_by_id
+        text last_modified_time
+        jsonb lock_detail
+        text note
+        text orientation
+        text page_height
+        text page_width
+        text place_of_supply
+        text price_precision
+        text reference_number
+        text roundoff_value
+        text salesperson_id
+        text salesperson_name
+        text shipping_charge
+        text shipping_charge_exclusive_of_tax
+        text shipping_charge_exclusive_of_tax_formatted
+        text shipping_charge_inclusive_of_tax
+        text shipping_charge_inclusive_of_tax_formatted
+        text shipping_charge_tax
+        text shipping_charge_tax_formatted
+        text shipping_charge_tax_id
+        text shipping_charge_tax_name
+        text shipping_charge_tax_percentage
+        text shipping_charge_tax_type
+        text status
+        text sub_status
+        text sub_total
+        text sub_total_inclusive_of_tax
+        text subject_content
+        text submitted_by
+        text submitted_by_email
+        text submitted_by_name
+        text submitted_by_photo_url
+        text submitted_date
+        text submitter_id
+        text tax_override_preference
+        text tax_rounding
+        text tax_total
+        text tax_treatment
+        text template_id
+        text template_name
+        text template_type
+        text term
+        text total
+        text total_credits_used
+        text total_refunded_amount
+        text transaction_rounding_type
+        text updated_time
+        text vat_reg_no
+        text vat_treatment
+    }
+    credit_note_address {
+        text _fivetran_id PK
+        text credit_note_id FK
+        text address
+        text address_type
+        text attention
+        text city
+        text country
+        text fax
+        text state
+        text street_2
+        text zip
+    }
+    customer_payment_invoice {
+        text customer_payment_id PK
+        text invoice_number PK
+    }
+    customer_payment {
+        text id PK
+        text account_id FK
+        text customer_id FK
+        text account_name
+        text amount
+        jsonb applied_invoices
+        text bcy_amount
+        text bcy_refunded_amount
+        text bcy_unused_amount
+        text branch_id
+        text branch_name
+        text created_time
+        text custom_fields_list
+        text customer_name
+        text date
+        text description
+        text documents
+        text gateway_transaction_id
+        text has_attachment
+        text last_four_digits
+        timestamp last_modified_time
+        text payment_gateway
+        text payment_mode
+        text payment_mode_formatted
+        text payment_number
+        text payment_type
+        text reference_number
+        text settlement_status
+        text tax_account_id
+        text tax_account_name
+        text tax_amount_withheld
+        text unused_amount
+    }
+    contact_person {
+        text id PK
+        text contact_id PK
+        text department
+        text designation
+        text email
+        text enable_portal
+        text first_name
+        text is_primary_contact
+        text last_name
+        text mobile
+        text phone
+        text salutation
+        text skype
+    }
+    default_template {
+        text _fivetran_id PK
+        text contact_id FK
+        text bill_template_id
+        text bill_template_name
+        text creditnote_email_template_id
+        text creditnote_email_template_name
+        text creditnote_template_id
+        text creditnote_template_name
+        text estimate_email_template_id
+        text estimate_email_template_name
+        text estimate_template_id
+        text estimate_template_name
+        text invoice_email_template_id
+        text invoice_email_template_name
+        text invoice_template_id
+        text invoice_template_name
+        text payment_remittance_email_template_id
+        text payment_remittance_email_template_name
+        text paymentthankyou_email_template_id
+        text paymentthankyou_email_template_name
+        text paymentthankyou_template_id
+        text paymentthankyou_template_name
+        text purchaseorder_email_template_id
+        text purchaseorder_template_id
+        text retainer_invoice_email_template_id
+        text retainer_invoice_paymentthankyou_email_template_id
+        text retainer_invoice_paymentthankyou_template_id
+        text retainer_invoice_template_id
+        text salesorder_email_template_id
+        text salesorder_template_id
+    }
+    contact {
+        text id PK
+        text currency_id FK
+        text tax_id FK
+        text ach_supported
+        jsonb address
+        text allow_parent_for_payment_and_view
+        text associated_with_square
+        jsonb bank_account
+        text branch_id
+        text branch_name
+        text can_show_customer_ob
+        text can_show_vendor_ob
+        jsonb card
+        jsonb checks
+        text company_name
+        text consent_date
+        text contact_category
+        text contact_name
+        text contact_salutation
+        text contact_type
+        text contact_type_formatted
+        text created_by_name
+        text created_date
+        text created_time
+        text created_time_formatted
+        text credit_limit
+        text credit_limit_exceeded_amount
+        text crm_owner_id
+        text currency_code
+        text currency_symbol
+        text customer_sub_type
+        text department
+        text designation
+        jsonb document
+        text email
+        text entity_address_id
+        text exchange_rate
+        text facebook
+        text first_name
+        text gst_no
+        text gst_treatment
+        text has_attachment
+        text has_transaction
+        text is_bcy_only_contact
+        text is_client_review_asked
+        text is_client_review_settings_enabled
+        text is_consent_agreed
+        text is_credit_limit_migration_completed
+        text is_crm_customer
+        text is_linked_with_zohocrm
+        text is_sms_enabled
+        text is_taxable
+        text is_tds_registered
+        text is_whatsapp_enabled
+        text language_code
+        text language_code_formatted
+        text last_modified_time
+        text last_modified_time_formatted
+        text last_name
+        text mobile
+        text notes
+        jsonb opening_balance
+        text opening_balance_amount
+        text opening_balance_amount_bcy
+        text outstanding_ob_payable_amount
+        text outstanding_ob_receivable_amount
+        text outstanding_payable_amount
+        text outstanding_payable_amount_bcy
+        text outstanding_receivable_amount
+        text outstanding_receivable_amount_bcy
+        text owner_id
+        text owner_name
+        text payment_reminder_enabled
+        text payment_terms
+        text payment_terms_label
+        text phone
+        text place_of_contact
+        text portal_receipt_count
+        text portal_status
+        text price_precision
+        text pricebook_id
+        text pricebook_name
+        text primary_contact_id
+        text sales_channel
+        text source
+        text status
+        jsonb tags
+        text tax_authority_id
+        text tax_authority_name
+        text tax_exemption_code
+        text tax_exemption_id
+        text tax_name
+        text tax_percentage
+        text tax_regime
+        text tax_treatment
+        text twitter
+        text unused_credits_payable_amount
+        text unused_credits_payable_amount_bcy
+        text unused_credits_receivable_amount
+        text unused_credits_receivable_amount_bcy
+        text unused_retainer_payments
+        text vat_treatment
+        text vendor_name
+        jsonb vpa_list
+        text website
+        text zcrm_account_id
+        text zohopeople_client_id
+    }
+    contact_address {
+        text id PK
+        text contact_id FK
+        text address
+        text address_type
+        text attention
+        text city
+        text country
+        text country_code
+        text fax
+        text phone
+        text state
+        text state_code
+        text street_2
+        text zip
+    }
+    estimate {
+        text id PK
+        text currency_id FK
+        text customer_id FK
+        text accepted_date
+        text client_viewed_time
+        text created_time
+        text currency_code
+        text customer_name
+        text date
+        text declined_date
+        text estimate_number
+        text expiry_date
+        text has_attachment
+        text is_viewed_by_client
+        text last_modified_time
+        text reference_number
+        text status
+        text total
+    }
+    currency {
+        text id PK
+        text code
+        text effective_date
+        text exchange_rate
+        text format
+        text is_base_currency
+        text name
+        text name_formatted
+        text price_precision
+        text symbol
+    }
+    credit_note_refund {
+        text id PK
+        text credit_note_id FK
+        text amount_bcy
+        text amount_fcy
+        text creditnote_number
+        text customer_name
+        text date
+        text description
+        text reference_number
+        text refund_mode
+    }
+    journal_list {
+        text id PK
+        text currency_id FK
+        text bcy_total
+        text custom_field
+        text entity_type
+        text entry_number
+        text journal_date
+        text journal_type
+        text notes
+        text reference_number
+        text total
+    }
+    item {
+        text id PK
+        text tax_id FK
+        text description
+        text name
+        text product_type
+        text purchase_tax_rule_id
+        text rate
+        text sales_tax_rule_id
+        text sat_item_key_code
+        text sku
+        text status
+        text unit
+        text unitkey_code
+    }
+    bill {
+        text id PK
+        text currency_id FK
+        text attachment_name
+        text balance
+        text bill_number
+        text created_time
+        text currency_code
+        text date
+        text due_date
+        text due_day
+        text exchange_rate
+        text has_attachment
+        text is_abn_quoted
+        text is_tds_applied
+        text last_modified_time
+        text price_precision
+        text reference_number
+        text status
+        text total
+        text vendor_id
+        text vendor_name
+    }
+    tax {
+        text id PK
+        text account_id
+        text authority_id
+        text authority_name
+        text factor
+        text is_default_tax
+        text is_editable
+        text is_inactive
+        text is_value_added
+        text last_modified_time
+        text name
+        text output_tax_account_name
+        text percentage
+        text purchase_tax_account_id
+        text purchase_tax_account_name
+        text specific_type
+        text type
+    }
+    expense {
+        text id PK
+        text currency_id FK
+        text customer_id FK
+        text account_name
+        text bcy_total
+        text bcy_total_without_tax
+        text created_time
+        text currency_code
+        text customer_name
+        text date
+        text description
+        text end_reading
+        text expense_receipt_name
+        text expense_type
+        text is_billable
+        text last_modified_time
+        text mileage_rate
+        text mileage_unit
+        text reference_number
+        text start_reading
+        text status
+        text total
+        text total_without_tax
+    }
+    time_entry {
+        text id PK
+        text customer_id FK
+        text invoice_id FK
+        text project_id FK
+        text user_id FK
+        text begin_time
+        text billed_status
+        text cost_amount
+        text cost_rate
+        text created_time
+        text customer_name
+        text end_time
+        text is_billable
+        text is_current_user
+        text log_date
+        text log_time
+        text notes
+        text project_name
+        text task_id
+        text task_name
+        text timer_duration_in_minutes
+        text timer_started_at
+        text user_name
+    }
+    users {
+        text id PK
+        text email
+        text is_current_user
+        text is_customer_segmented
+        text is_vendor_segmented
+        text name
+        text photo_url
+        text role_id
+        text status
+        text user_role
+        text user_type
+    }
+    purchase_order {
+        text id PK
+        text currency_id FK
+        text created_time
+        text currency_code
+        text date
+        text delivery_date
+        text has_attachment
+        text last_modified_time
+        text price_precision
+        text purchaseorder_number
+        text reference_number
+        text status
+        text total
+        text vendor_id
+        text vendor_name
+    }
+    invoice_contact_person {
+        text contact_person_id PK
+        text invoice_id PK
+    }
+    invoice_line_item_tax {
+        text invoice_id PK
+        text invoice_line_item_id PK
+        text tax_id PK
+        text tax_amount
+    }
+    invoice_line_item_warehouse {
+        text id PK
+        text invoice_id PK
+        text invoice_line_item_id PK
+        text warehouse_name
+        text warehouse_stock_on_hand
+    }
+    invoice_line_item_tag {
+        text id PK
+        text invoice_id PK
+        text invoice_line_item_id PK
+        text is_tag_mandatory
+        text tag_name
+        text tag_option_id
+        text tag_option_name
+    }
+    invoice_line_item {
+        text id PK
+        text invoice_id PK
+        text account_id FK
+        text project_id FK
+        text tax_id FK
+        text account_name
+        text bcy_rate
+        text bill_id
+        text bill_item_id
+        text cost_amount
+        text description
+        text discount
+        text discount_amount
+        jsonb documents
+        text expense_id
+        text expense_receipt_name
+        text header_id
+        text header_name
+        text image_document_id
+        jsonb item_custom_field
+        text item_id
+        text item_order
+        text item_total
+        text item_type
+        text name
+        text pricebook_id
+        text product_type
+        text project_name
+        text purchase_rate
+        text quantity
+        text rate
+        text salesorder_item_id
+        text sku
+        text tax_treatment_code
+        jsonb time_entry_id
+        jsonb time_entry_ids
+        text unit
+    }
+    invoice_payment_gateway {
+        text _fivetran_id PK
+        text invoice_id FK
+        text additional_field_1
+        text configured
+        text gateway_name
+    }
+    invoice {
+        text id PK
+        text currency_id FK
+        text customer_id FK
+        text estimate_id FK
+        text sales_order_id FK
+        text ach_payment_initiated
+        text ach_supported
+        text adjustment
+        text adjustment_description
+        text allow_partial_payments
+        text approver_id
+        jsonb approvers_list
+        text attachment_name
+        text balance
+        text bcy_adjustment
+        text bcy_discount_total
+        text bcy_shipping_charge
+        text bcy_shipping_charge_tax
+        text bcy_sub_total
+        text bcy_tax_total
+        text bcy_total
+        text branch_id
+        text branch_name
+        text can_send_in_mail
+        text can_send_invoice_sms
+        text can_send_invoice_whatsapp_notification
+        text cfdi_usage
+        text client_viewed_time
+        text color_code
+        text computation_type
+        text created_by_id
+        text created_date
+        text created_time
+        text credits_applied
+        text current_sub_status
+        text current_sub_status_id
+        text customer_name
+        text date
+        jsonb deliverychallan
+        text discount
+        text discount_applied_on_amount
+        text discount_percent
+        text discount_total
+        text discount_type
+        jsonb document
+        text due_date
+        text due_day
+        text ecomm_operator_id
+        text ecomm_operator_name
+        text email
+        text exchange_rate
+        text gst_no
+        text gst_treatment
+        text has_attachment
+        text includes_package_tracking_info
+        text inprocess_transaction_present
+        text invoice_number
+        text invoice_source
+        text invoice_url
+        text is_autobill_enabled
+        text is_backorder
+        text is_client_review_settings_enabled
+        text is_discount_before_tax
+        text is_emailed
+        text is_inclusive_tax
+        text is_pre_gst
+        text is_viewed_by_client
+        text last_modified_by_id
+        text last_modified_time
+        text last_payment_date
+        text last_reminder_sent_date
+        jsonb lock_detail
+        text merchant_id
+        text merchant_name
+        text next_reminder_date_formatted
+        text no_of_copies
+        text notes
+        text offline_created_date_with_time
+        text orientation
+        text page_height
+        text page_width
+        text payment_discount
+        text payment_expected_date
+        text payment_made
+        text payment_reminder_enabled
+        text payment_terms
+        text payment_terms_label
+        text place_of_supply
+        text price_precision
+        text reader_offline_payment_initiated
+        text recurring_invoice_id
+        text reference_number
+        text reminders_sent
+        text roundoff_value
+        text sales_channel
+        jsonb salesorder
+        text salesperson_id
+        text salesperson_name
+        text schedule_time
+        text shipping_bills
+        text shipping_charge
+        text shipping_charge_exclusive_of_tax
+        text shipping_charge_exclusive_of_tax_formatted
+        text shipping_charge_inclusive_of_tax
+        text shipping_charge_inclusive_of_tax_formatted
+        text shipping_charge_tax
+        text shipping_charge_tax_formatted
+        text shipping_charge_tax_id
+        text shipping_charge_tax_name
+        text shipping_charge_tax_percentage
+        text shipping_charge_tax_type
+        text show_no_of_copies
+        text status
+        text stop_reminder_until_payment_expected_date
+        jsonb sub_statuse
+        text sub_total
+        text sub_total_inclusive_of_tax
+        text subject_content
+        text submitted_by
+        text submitted_by_email
+        text submitted_by_name
+        text submitted_by_photo_url
+        text submitted_date
+        text submitter_id
+        text tax_amount_withheld
+        text tax_override_preference
+        text tax_rounding
+        text tax_total
+        text tax_treatment
+        text template_id
+        text template_name
+        text template_type
+        text terms
+        text total
+        text transaction_rounding_type
+        jsonb unused_retainer_payment
+        text vat_reg_no
+        text vat_treatment
+        text write_off_amount
+        text zcrm_potential_id
+        text zcrm_potential_name
+    }
+    invoice_address {
+        text _fivetran_id PK
+        text invoice_id FK
+        text address
+        text address_type
+        text attention
+        text city
+        text country
+        text fax
+        text phone
+        text state
+        text street
+        text street_2
+        text zip
+    }
+    sales_order {
+        text id PK
+        text currency_id FK
+        text customer_id FK
+        text bcy_total
+        text created_time
+        text currency_code
+        text customer_name
+        text date
+        text has_attachment
+        text is_emailed
+        text last_modified_time
+        text reference_number
+        text salesorder_number
+        text shipment_date
+        text shipment_day
+        text status
+        text sub_total
+        text total
+        text zcrm_potential_id
+        text zcrm_potential_name
+    }
+    project }o--|| contact : "fk"
+    chart_of_account_document }o--|| chart_of_account : "fk"
+    chart_of_account }o--|| chart_of_account : "fk"
+    credit_note_line_item_tax }o--|| tax : "fk"
+    credit_note_line_item_tax }o--|| credit_note_line_item : "fk"
+    credit_note_line_item_tax }o--|| credit_note : "fk"
+    credit_note_line_item }o--|| tax : "fk"
+    credit_note_line_item }o--|| invoice : "fk"
+    credit_note_line_item }o--|| project : "fk"
+    credit_note_line_item }o--|| chart_of_account : "fk"
+    credit_note_line_item }o--|| credit_note : "fk"
+    credit_note_invoice }o--|| invoice : "fk"
+    credit_note_invoice }o--|| credit_note : "fk"
+    credit_note }o--|| currency : "fk"
+    credit_note }o--|| invoice : "fk"
+    credit_note }o--|| contact : "fk"
+    credit_note_address }o--|| credit_note : "fk"
+    customer_payment_invoice }o--|| invoice : "fk"
+    customer_payment_invoice }o--|| customer_payment : "fk"
+    customer_payment }o--|| contact : "fk"
+    customer_payment }o--|| chart_of_account : "fk"
+    contact_person }o--|| contact : "fk"
+    default_template }o--|| contact : "fk"
+    contact }o--|| currency : "fk"
+    contact }o--|| tax : "fk"
+    contact_address }o--|| contact : "fk"
+    estimate }o--|| currency : "fk"
+    estimate }o--|| contact : "fk"
+    credit_note_refund }o--|| credit_note : "fk"
+    journal_list }o--|| currency : "fk"
+    item }o--|| tax : "fk"
+    bill }o--|| currency : "fk"
+    expense }o--|| currency : "fk"
+    expense }o--|| contact : "fk"
+    time_entry }o--|| users : "fk"
+    time_entry }o--|| invoice : "fk"
+    time_entry }o--|| contact : "fk"
+    time_entry }o--|| project : "fk"
+    purchase_order }o--|| currency : "fk"
+    invoice_contact_person }o--|| invoice : "fk"
+    invoice_line_item_tax }o--|| tax : "fk"
+    invoice_line_item_tax }o--|| invoice_line_item : "fk"
+    invoice_line_item_tax }o--|| invoice_line_item : "fk"
+    invoice_line_item_warehouse }o--|| invoice_line_item : "fk"
+    invoice_line_item_warehouse }o--|| invoice_line_item : "fk"
+    invoice_line_item_tag }o--|| invoice_line_item : "fk"
+    invoice_line_item_tag }o--|| invoice_line_item : "fk"
+    invoice_line_item }o--|| tax : "fk"
+    invoice_line_item }o--|| project : "fk"
+    invoice_line_item }o--|| chart_of_account : "fk"
+    invoice_line_item }o--|| invoice : "fk"
+    invoice_payment_gateway }o--|| invoice : "fk"
+    invoice }o--|| currency : "fk"
+    invoice }o--|| sales_order : "fk"
+    invoice }o--|| contact : "fk"
+    invoice }o--|| estimate : "fk"
+    invoice_address }o--|| invoice : "fk"
+    sales_order }o--|| currency : "fk"
+    sales_order }o--|| contact : "fk"

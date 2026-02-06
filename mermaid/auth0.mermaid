@@ -1,0 +1,402 @@
+erDiagram
+    role {
+        text id PK
+        text description
+        text name
+    }
+    resource_server_scopes {
+        text _fivetran_id PK
+        text resource_server_id FK
+        text description
+        text value
+    }
+    resource_server {
+        text id PK
+        text allow_offline_access
+        jsonb client
+        text enforce_policies
+        text identifier
+        text is_system
+        text name
+        text signing_alg
+        text signing_secret
+        text skip_consent_for_verifiable_first_party_clients
+        text token_dialect
+        text token_lifetime
+        text token_lifetime_for_web
+    }
+    stats_daily {
+        text date PK
+        text created_at
+        text leaked_passwords
+        text leaked_passwords_reset
+        text leaked_passwords_signup
+        text logins
+        text signups
+        text updated_at
+    }
+    action_trigger_runtime {
+        text runtime PK
+        text action_trigger_id PK
+        text action_trigger_version PK
+    }
+    action_trigger_compatible {
+        text index PK
+        text action_trigger_id PK
+        text action_trigger_version PK
+        text id
+        text version
+    }
+    action_trigger {
+        text id PK
+        text version PK
+        text default_runtime
+        text status
+    }
+    action_supported_trigger {
+        text action_id PK
+        text id PK
+        text version PK
+    }
+    action_secret {
+        text _fivetran_id PK
+        text action_id FK
+        text name
+        text updated_at
+    }
+    action_dependency {
+        text _fivetran_id PK
+        text action_id FK
+        text name
+        text registry_url
+        text version
+    }
+    action_integration {
+        text id PK
+        text action_id PK
+        text catalog_id
+        text created_at
+        text description
+        text feature_type
+        text logo
+        text name
+        text partner_id
+        text privacy_policy_url
+        text public_support_link
+        text secrets
+        text short_description
+        text terms_of_use_url
+        text updated_at
+        text url_slug
+    }
+    action {
+        text id PK
+        text all_changes_deployed
+        text built_at
+        text code
+        text created_at
+        text current_version_build_time
+        text current_version_code
+        text current_version_created_at
+        text current_version_id
+        text current_version_number
+        text current_version_runtime
+        text current_version_status
+        text current_version_updated_at
+        text deployed_version_built_at
+        text deployed_version_code
+        text deployed_version_created_at
+        text deployed_version_deployed
+        text deployed_version_id
+        text deployed_version_number
+        text deployed_version_runtime
+        text deployed_version_secrets
+        text deployed_version_status
+        text deployed_version_supported_triggers
+        text deployed_version_updated_at
+        text installed_integration_id
+        text name
+        text runtime
+        text status
+        text updated_at
+    }
+    client_grant_type {
+        text index PK
+        text client_id PK
+        text grant_type
+    }
+    client_callback {
+        text _fivetran_id PK
+        text client_id FK
+        text callback
+    }
+    client_metadata {
+        text name PK
+        text client_id PK
+        text value
+    }
+    client {
+        text id PK
+        text allowed_origins
+        text backchannel_logout_urls
+        text callback_url_template
+        text cross_origin_auth
+        text cross_origin_authentication
+        text cross_origin_loc
+        text custom_login_page_on
+        text encryption_key_cert
+        text encryption_key_pub
+        text encryption_key_subject
+        text global
+        text is_first_party
+        text is_token_endpoint_ip_header_trusted
+        text jwt_configuration_alg
+        text jwt_configuration_lifetime_in_seconds
+        text jwt_configuration_secret_encoded
+        text name
+        text oidc_conformant
+        text refresh_token_expiration_type
+        text refresh_token_idle_token_lifetime
+        text refresh_token_infinite_idle_token_lifetime
+        text refresh_token_infinite_token_lifetime
+        text refresh_token_leeway
+        text refresh_token_rotation_type
+        text refresh_token_token_lifetime
+        text sso
+        text sso_disabled
+        text tenant
+    }
+    connection_realm {
+        text index PK
+        text connection_id PK
+        text realms
+    }
+    connection_enabled_client {
+        text client_id PK
+        text connection_id PK
+    }
+    connection_metadata {
+        text name PK
+        text connection_id PK
+        text value
+    }
+    connection {
+        text id PK
+        text is_domain_connection
+        text name
+        text strategy
+    }
+    log_detail_accessed_secret {
+        text index PK
+        text log_id PK
+        text accessedsecret
+    }
+    logs {
+        text log_id PK
+        text client_id FK
+        text connection_id FK
+        text user_id FK
+        text audience
+        text city_name
+        text client_name
+        text continent_code
+        text country_code
+        text country_code_3
+        text country_name
+        timestamp date
+        text description
+        text hostname
+        text ip
+        text is_mobile
+        text latitude
+        text longitude
+        text page
+        jsonb request_auth_credential
+        text request_auth_strategy
+        jsonb request_auth_user
+        text request_channel
+        text request_ip
+        text request_method
+        text request_path
+        text request_user_agent
+        text response_client_id
+        text response_status_code
+        text scope
+        text strategy
+        text strategy_type
+        text time_zone
+        text type
+        text user_agent
+    }
+    log_stream_sink {
+        text name PK
+        text log_stream_id PK
+        text value
+    }
+    log_stream {
+        text id PK
+        text name
+        text status
+        text type
+    }
+    grant_scope {
+        text index PK
+        text grant_id PK
+        text scope
+    }
+    grants {
+        text id PK
+        text client_id FK
+        text user_id FK
+        text audience
+    }
+    organization_member_role {
+        text id PK
+        text member_id PK
+        text organization_id PK
+    }
+    event_stream {
+        text id PK
+        text created_at
+        jsonb destination_configuration
+        text destination_type
+        text name
+        text status
+        jsonb subscription
+        text updated_at
+    }
+    organization_member {
+        text id PK
+        text organization_id PK
+    }
+    client_grant_scope {
+        text index PK
+        text client_grant_id PK
+        text client_id PK
+        text scope
+    }
+    client_grant {
+        text id PK
+        text client_id PK
+        text audience
+    }
+    organization_metadata {
+        text name PK
+        text organization_id PK
+        text value
+    }
+    organization {
+        text id PK
+        text branding_colors_page_background
+        text branding_colors_primary
+        text branding_logo_url
+        text display_name
+        text name
+    }
+    role_permission {
+        text _fivetran_id PK
+        text role_id FK
+        text description
+        text permission_name
+        text resource_server_identifier
+        text resource_server_name
+    }
+    user_profile_data {
+        text name PK
+        text user_identities_index PK
+        text users_id PK
+        text value
+    }
+    user_identities {
+        text index PK
+        text users_id PK
+        text access_token
+        text connection
+        text expires_in
+        text is_social
+        text provider
+        text user_identity_id
+    }
+    user_app_metadata {
+        text name PK
+        text users_id PK
+        text value
+    }
+    user_metadata {
+        text name PK
+        text users_id PK
+        text value
+    }
+    users {
+        text id PK
+        text blocked
+        text created_at
+        text deleted
+        text deleted_at
+        text email
+        text email_verified
+        text family_name
+        text first_name
+        text given_name
+        text identity_api
+        text idp_tenant_domain
+        text is_private_email
+        text last_ip
+        text last_login
+        text last_name
+        text last_password_reset
+        text logins_count
+        text name
+        text nickname
+        text nonce_supported
+        text o_id
+        text phone_number
+        text phone_verified
+        text picture
+        text principal_name
+        text real_user_status
+        text tenant_id
+        text updated_at
+        text username
+    }
+    resource_server_scopes }o--|| resource_server : "fk"
+    action_trigger_runtime }o--|| action_trigger : "fk"
+    action_trigger_runtime }o--|| action_trigger : "fk"
+    action_trigger_compatible }o--|| action_trigger : "fk"
+    action_trigger_compatible }o--|| action_trigger : "fk"
+    action_supported_trigger }o--|| action_trigger : "fk"
+    action_supported_trigger }o--|| action_trigger : "fk"
+    action_supported_trigger }o--|| action : "fk"
+    action_secret }o--|| action : "fk"
+    action_dependency }o--|| action : "fk"
+    action_integration }o--|| action : "fk"
+    client_grant_type }o--|| client : "fk"
+    client_callback }o--|| client : "fk"
+    client_metadata }o--|| client : "fk"
+    connection_realm }o--|| connection : "fk"
+    connection_enabled_client }o--|| client : "fk"
+    connection_enabled_client }o--|| connection : "fk"
+    connection_metadata }o--|| connection : "fk"
+    log_detail_accessed_secret }o--|| logs : "fk"
+    logs }o--|| users : "fk"
+    logs }o--|| connection : "fk"
+    logs }o--|| client : "fk"
+    log_stream_sink }o--|| log_stream : "fk"
+    grant_scope }o--|| grants : "fk"
+    grants }o--|| users : "fk"
+    grants }o--|| client : "fk"
+    organization_member_role }o--|| role : "fk"
+    organization_member_role }o--|| organization_member : "fk"
+    organization_member_role }o--|| organization_member : "fk"
+    organization_member }o--|| users : "fk"
+    organization_member }o--|| organization : "fk"
+    client_grant_scope }o--|| client_grant : "fk"
+    client_grant_scope }o--|| client_grant : "fk"
+    client_grant }o--|| client : "fk"
+    organization_metadata }o--|| organization : "fk"
+    role_permission }o--|| role : "fk"
+    user_profile_data }o--|| user_identities : "fk"
+    user_profile_data }o--|| user_identities : "fk"
+    user_identities }o--|| users : "fk"
+    user_app_metadata }o--|| users : "fk"
+    user_metadata }o--|| users : "fk"

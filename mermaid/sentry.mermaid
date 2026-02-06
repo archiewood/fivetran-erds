@@ -1,0 +1,743 @@
+erDiagram
+    project_error_event_tag {
+        text key PK
+        text project_error_event_id PK
+        text query
+        text value
+    }
+    project_error_event {
+        text id PK
+        text project_id FK
+        text crash_file
+        text culprit
+        timestamp date_created
+        text event_type
+        text group_id
+        text ip_address
+        text location
+        text message
+        text name
+        text platform
+        text title
+        jsonb user_data
+        text user_email
+        text user_id
+        text username
+    }
+    organization_repository {
+        text id PK
+        text organization_id PK
+        timestamp date_created
+        text external_id
+        text external_slug
+        text integration_id
+        text name
+        text provider_id
+        text provider_name
+        text status
+        text url
+    }
+    project_feature {
+        text feature PK
+        text project_id PK
+    }
+    project_access {
+        text access PK
+        text project_id PK
+    }
+    project_team {
+        text project_id PK
+        text team_id PK
+    }
+    project_allowed_domain {
+        text allowed_domain PK
+        text project_id PK
+    }
+    project_built_in_symbol_source {
+        text source PK
+        text project_id PK
+    }
+    project_dynamic_sampling_bias {
+        text id PK
+        text project_id PK
+        text active
+    }
+    project_platform {
+        text platform PK
+        text project_id PK
+    }
+    project_plugin_feature {
+        text feature PK
+        text project_id PK
+        text project_plugin_id PK
+    }
+    project_plugin_feature_description {
+        text index PK
+        text project_id PK
+        text project_plugin_id PK
+        text description
+        text feature_gate
+    }
+    project_plugin_resource_link {
+        text index PK
+        text project_id PK
+        text project_plugin_id PK
+        text title
+        text url
+    }
+    project_plugin {
+        text id PK
+        text project_id PK
+        text alt_is_sentry_app
+        jsonb assets
+        text author_name
+        text author_url
+        text can_disable
+        jsonb contexts
+        text default_environment
+        text deprecation_date
+        text description
+        text doc
+        text enabled
+        text fingerprinting_rule
+        text first_party_alternative
+        text grouping_auto_update
+        text has_configuration
+        text is_deprecated
+        text is_hidden
+        text is_testable
+        text name
+        text processing_issue
+        text short_name
+        text slug
+        text status
+        text type
+        text version
+    }
+    project {
+        text id PK
+        text organization_id FK
+        text avatar_type
+        text avatar_uuid
+        text color
+        text data_scrubber
+        text data_scrubber_default
+        timestamp date_created
+        text default_environment
+        text digests_max_delay
+        text digests_min_delay
+        text fingerprinting_rule
+        text first_event
+        text first_transaction_event
+        text grouping_auto_update
+        text grouping_config
+        text grouping_enhancement_base
+        text has_access
+        text has_custom_metric
+        text has_feedback
+        text has_minified_stack_trace
+        text has_monitor
+        text has_new_feedback
+        text has_profile
+        text has_replay
+        text has_session
+        text is_bookmarked
+        text is_internal
+        text is_member
+        text is_public
+        text latest_release
+        text latest_release_version
+        text name
+        text organization_slug
+        text platform
+        text processing_issue
+        text recap_server_url
+        text relay_custom_metric_cardinality_limit
+        text relay_pii_config
+        text resolve_age
+        jsonb safe_field
+        text scrape_javascript
+        text scrub_ip_address
+        text secondary_grouping_config
+        text secondary_grouping_expiry
+        text security_token
+        text security_token_header
+        jsonb sensitive_field
+        text slug
+        text status
+        text store_crash_report
+        text subject_prefix
+        text subject_template
+        jsonb symbol_sources
+        text symbolication_degraded
+        text verify_ssl
+    }
+    project_service_hook_event {
+        text index PK
+        text organization_id PK
+        text project_id PK
+        text project_service_hook_id PK
+        text event
+    }
+    project_service_hook {
+        text id PK
+        text organization_id PK
+        text project_id PK
+        timestamp date_created
+        text secret
+        text status
+        text url
+    }
+    project_issue_tag {
+        text key PK
+        text project_issue_id PK
+        text name
+        text organization_slug
+        text total_value
+    }
+    project_issue_seen_by_email {
+        text id PK
+        text project_issue_id PK
+        text project_issue_seen_by_id PK
+        text email
+        text is_verified
+    }
+    project_issue_seen_by {
+        text id PK
+        text project_issue_id PK
+        text author_avatar_type
+        text author_avatar_uuid
+        text avatar_url
+        text date_joined
+        text email
+        jsonb experiments
+        text has_2_factor_authentication
+        text has_password_auth
+        text is_active
+        text is_managed
+        text is_staff
+        text is_superuser
+        text last_active
+        text last_login
+        text last_seen
+        text name
+        text username
+    }
+    project_issue_activity_email {
+        text id PK
+        text project_issue_activity_id PK
+        text project_issue_id PK
+        text email
+        text is_verified
+    }
+    project_issue_activity {
+        text id PK
+        text project_issue_id PK
+        jsonb data
+        text date_created
+        text type
+        text user_author_avatar_type
+        text user_author_avatar_uuid
+        text user_avatar_url
+        text user_date_joined
+        text user_email
+        jsonb user_experiments
+        text user_has_2_factor_authentication
+        text user_has_password_auth
+        text user_is_active
+        text user_is_managed
+        text user_is_staff
+        text user_is_superuser
+        text user_last_active
+        text user_last_login
+        text user_name
+        text user_username
+    }
+    project_issue_stat_daily {
+        text index PK
+        text project_issue_id PK
+        text twenty_four_hour
+    }
+    project_issue_stat_monthly {
+        text index PK
+        text project_issue_id PK
+        text thirty_day
+    }
+    project_issue {
+        text id PK
+        text first_release_id FK
+        text last_release_id FK
+        text project_id FK
+        jsonb annotations
+        text assigned_to
+        text count
+        text culprit
+        text first_seen
+        text has_seen
+        text is_bookmarked
+        text is_public
+        text is_subscribed
+        text is_unhandled
+        text issue_category
+        text issue_type
+        text last_seen
+        text level
+        text logger
+        text num_comment
+        text organization_slug
+        jsonb participants
+        text permalink
+        text platform
+        text plugin_action
+        jsonb plugin_context
+        text plugin_issue
+        text priority
+        text priority_locked_at
+        text share_id
+        text short_id
+        text status
+        jsonb status_details
+        text subscription_detail
+        text substatus
+        text title
+        text type
+        text user_count
+        text user_report_count
+    }
+    project_user {
+        text _fivetran_id PK
+        text organization_id FK
+        text project_id FK
+        text avatar_url
+        text date_created
+        text email
+        text hash
+        text id
+        text identifier
+        text ip_address
+        text name
+        text tag_value
+        text username
+    }
+    project_user_feedback {
+        text id PK
+        text project_id PK
+        text comment
+        text date_created
+        text email
+        text event_id
+        jsonb issue
+        text name
+        jsonb users
+    }
+    organization_release_commit {
+        text id PK
+        text organization_release_version PK
+        text organization_id PK
+        text pull_request_repository_id FK
+        text repository_id FK
+        text author_email
+        text author_name
+        timestamp date_created
+        text message
+        text pull_request_date_created
+        text pull_request_external_url
+        text pull_request_id
+        text pull_request_message
+        text pull_request_title
+        text suspect_commit_type
+    }
+    project_release_file {
+        text id PK
+        text latest_release_version PK
+        text organization_slug PK
+        text project_slug PK
+        timestamp date_created
+        text dist
+        text name
+        text sha_1
+        text size
+    }
+    repository_commit_author_email {
+        text id PK
+        text organization_id PK
+        text repository_commit_id PK
+        text email
+        text is_verified
+    }
+    repository_commit_release {
+        text version PK
+        text organization_id PK
+        text repository_commit_id PK
+        text date_created
+        text date_released
+        text ref
+        text short_version
+        text url
+    }
+    repository_commit {
+        text id PK
+        text organization_id PK
+        text repository_id PK
+        text author_avatar_type
+        text author_avatar_url
+        text author_avatar_uuid
+        text author_date_joined
+        text author_email
+        jsonb author_experiments
+        text author_has_2_factor_authentication
+        text author_has_password_auth
+        text author_id
+        text author_is_active
+        text author_is_managed
+        text author_is_staff
+        text author_is_superuser
+        text author_last_active
+        text author_last_login
+        text author_name
+        text author_username
+        timestamp date_created
+        text message
+        text pull_request
+        text suspect_commit_type
+    }
+    organization_team_access {
+        text access PK
+        text organization_team_id PK
+    }
+    organization_team_project {
+        text organization_team_id PK
+        text project_id PK
+    }
+    organization_team {
+        text id PK
+        text organization_id PK
+        text avatar_type
+        text avatar_uuid
+        timestamp date_created
+        jsonb external_teams
+        text flag_idp_provisioned
+        text has_access
+        text is_member
+        text is_pending
+        text member_count
+        text organization_role
+        text team_role
+    }
+    organization_feature {
+        text feature PK
+        text organization_id PK
+    }
+    organization_available_role {
+        text id PK
+        text organization_id PK
+        text name
+    }
+    organization_role_list_scope {
+        text scope PK
+        text organization_id PK
+        text organization_role_list_id PK
+    }
+    organization_role_list {
+        text id PK
+        text organization_id PK
+        text allowed
+        text descending
+        text is_allowed
+        text is_global
+        text is_retired
+        text minimum_team_role
+        text name
+    }
+    organization_team_role_list_scope {
+        text scope PK
+        text organization_id PK
+        text organization_team_role_list_id PK
+    }
+    organization_team_role_list {
+        text id PK
+        text organization_id PK
+        text descending
+        text is_allowed
+        text is_global
+        text is_minimum_role_for
+        text is_retired
+        text name
+    }
+    organization_access {
+        text access PK
+        text organization_id PK
+    }
+    organization_onboarding_task_user_email {
+        text id PK
+        text organization_id PK
+        text organization_onboarding_task_index PK
+        text email
+        text is_verified
+    }
+    organization_onboarding_task {
+        text index PK
+        text organization_id PK
+        text completion_seen
+        text date_completed
+        text status
+        text task
+        text user_avatar_type
+        text user_avatar_url
+        text user_avatar_uuid
+        text user_date_joined
+        text user_email
+        jsonb user_experiments
+        text user_has_2_factor_authentication
+        text user_has_password_auth
+        text user_id
+        text user_is_active
+        text user_is_managed
+        text user_is_staff
+        text user_is_superuser
+        text user_last_active
+        text user_last_login
+        text user_name
+        text user_username
+    }
+    organization {
+        text id PK
+        text aggregated_data_consent
+        text ai_suggested_solution
+        text alert_member_write
+        text allow_join_request
+        text allow_shared_issue
+        text attachment_role
+        text avatar_type
+        text avatar_url
+        text avatar_uuid
+        text codecov_access
+        text data_scrubber
+        text data_scrubber_default
+        text date_created
+        text debug_file_role
+        text default_role
+        text desired_sample_rate
+        text enhanced_privacy
+        text event_member_admin
+        text gen_ai_consent
+        text github_nudge_invite
+        text github_pr_bot
+        text has_auth_provider
+        text is_default
+        text is_dynamically_sampled
+        text is_early_adopter
+        text links_organization_url
+        text links_region_url
+        text name
+        text open_membership
+        text org_role
+        text pending_access_request
+        text plan_sample_rate
+        text quota_account_limit
+        text quota_max_rate
+        text quota_max_rate_interval
+        text quota_project_limit
+        text relay_pii_config
+        text require_2_f_a
+        text require_email_verification
+        text role
+        jsonb safe_fields
+        text scrape_java_script
+        text scrub_ip_address
+        jsonb sensitive_fields
+        text slug
+        text status_id
+        text status_name
+        text store_crash_report
+        jsonb trusted_relay
+    }
+    organization_release_author {
+        text index PK
+        text organization_id PK
+        text organization_release_id PK
+        text email
+        text name
+    }
+    organization_release_last_deploy {
+        text id PK
+        text organization_id PK
+        text organization_release_id PK
+        text date_finished
+        text date_started
+        text environment
+        text name
+        text url
+    }
+    organization_release_project_platform {
+        text index PK
+        text organization_id PK
+        text organization_release_id PK
+        text project_id PK
+        text platform
+    }
+    organization_release_project {
+        text organization_id PK
+        text organization_release_id PK
+        text project_id PK
+    }
+    organization_release {
+        text id PK
+        text organization_id PK
+        text last_commit_id FK
+        text commit_count
+        jsonb current_project_meta
+        jsonb data
+        timestamp date_created
+        text date_released
+        text deploy_count
+        text first_event
+        text last_event
+        text new_groups
+        text owner
+        text reference
+        text short_version
+        text status
+        text url
+        text user_agent
+        text version
+        text version_info_build_hash
+        text version_info_description
+        text version_info_package
+        text version_info_raw
+    }
+    issue_event_tag {
+        text key PK
+        text issue_event_id PK
+        text query
+        text value
+    }
+    issue_event {
+        text id PK
+        text group_id FK
+        text project_id FK
+        text crash_file
+        text culprit
+        text date_created
+        text event_type
+        text ip_address
+        text location
+        text message
+        text name
+        text platform
+        text title
+        jsonb user_data
+        text user_email
+        text user_id
+        text username
+    }
+    tag_detail_top_value {
+        text index PK
+        text project_issue_id PK
+        text tag_detail_key PK
+        text key FK
+        text count
+        text first_seen
+        text last_seen
+        text name
+        text value
+    }
+    tag_detail {
+        text key PK
+        text project_issue_id PK
+        text name
+        text total_values
+    }
+    integration_platform_install {
+        text id PK
+        text organization_id PK
+        text app_slug
+        text app_uuid
+        text organization_slug
+        text status
+    }
+    project_error_event_tag }o--|| project_error_event : "fk"
+    project_error_event }o--|| project : "fk"
+    organization_repository }o--|| organization : "fk"
+    project_feature }o--|| project : "fk"
+    project_access }o--|| project : "fk"
+    project_team }o--|| organization_team : "fk"
+    project_team }o--|| project : "fk"
+    project_allowed_domain }o--|| project : "fk"
+    project_built_in_symbol_source }o--|| project : "fk"
+    project_dynamic_sampling_bias }o--|| project : "fk"
+    project_platform }o--|| project : "fk"
+    project_plugin_feature }o--|| project_plugin : "fk"
+    project_plugin_feature }o--|| project_plugin : "fk"
+    project_plugin_feature_description }o--|| project_plugin : "fk"
+    project_plugin_feature_description }o--|| project_plugin : "fk"
+    project_plugin_resource_link }o--|| project_plugin : "fk"
+    project_plugin_resource_link }o--|| project_plugin : "fk"
+    project_plugin }o--|| project : "fk"
+    project }o--|| organization : "fk"
+    project_service_hook_event }o--|| project_service_hook : "fk"
+    project_service_hook_event }o--|| project_service_hook : "fk"
+    project_service_hook_event }o--|| project_service_hook : "fk"
+    project_service_hook }o--|| project : "fk"
+    project_service_hook }o--|| organization : "fk"
+    project_issue_tag }o--|| tag_detail : "fk"
+    project_issue_tag }o--|| project_issue : "fk"
+    project_issue_seen_by_email }o--|| project_issue_seen_by : "fk"
+    project_issue_seen_by_email }o--|| project_issue_seen_by : "fk"
+    project_issue_seen_by }o--|| project_issue : "fk"
+    project_issue_activity_email }o--|| project_issue_activity : "fk"
+    project_issue_activity_email }o--|| project_issue_activity : "fk"
+    project_issue_activity }o--|| project_issue : "fk"
+    project_issue_stat_daily }o--|| project_issue : "fk"
+    project_issue_stat_monthly }o--|| project_issue : "fk"
+    project_issue }o--|| organization_release : "fk"
+    project_issue }o--|| organization_release : "fk"
+    project_issue }o--|| project : "fk"
+    project_user }o--|| organization : "fk"
+    project_user }o--|| project : "fk"
+    project_user_feedback }o--|| project : "fk"
+    organization_release_commit }o--|| organization_repository : "fk"
+    organization_release_commit }o--|| organization_repository : "fk"
+    organization_release_commit }o--|| organization_release : "fk"
+    repository_commit_author_email }o--|| repository_commit : "fk"
+    repository_commit_author_email }o--|| repository_commit : "fk"
+    repository_commit_release }o--|| repository_commit : "fk"
+    repository_commit_release }o--|| repository_commit : "fk"
+    repository_commit }o--|| organization_repository : "fk"
+    repository_commit }o--|| organization_repository : "fk"
+    organization_team_access }o--|| organization_team : "fk"
+    organization_team_project }o--|| project : "fk"
+    organization_team_project }o--|| organization_team : "fk"
+    organization_team }o--|| organization : "fk"
+    organization_feature }o--|| organization : "fk"
+    organization_available_role }o--|| organization : "fk"
+    organization_role_list_scope }o--|| organization_role_list : "fk"
+    organization_role_list_scope }o--|| organization_role_list : "fk"
+    organization_role_list }o--|| organization : "fk"
+    organization_team_role_list_scope }o--|| organization_team_role_list : "fk"
+    organization_team_role_list_scope }o--|| organization_team_role_list : "fk"
+    organization_team_role_list }o--|| organization : "fk"
+    organization_access }o--|| organization : "fk"
+    organization_onboarding_task_user_email }o--|| organization_onboarding_task : "fk"
+    organization_onboarding_task_user_email }o--|| organization_onboarding_task : "fk"
+    organization_onboarding_task }o--|| organization : "fk"
+    organization_release_author }o--|| organization_release : "fk"
+    organization_release_author }o--|| organization_release : "fk"
+    organization_release_last_deploy }o--|| organization_release : "fk"
+    organization_release_last_deploy }o--|| organization_release : "fk"
+    organization_release_project_platform }o--|| organization_release_project : "fk"
+    organization_release_project_platform }o--|| organization_release_project : "fk"
+    organization_release_project_platform }o--|| organization_release_project : "fk"
+    organization_release_project }o--|| project : "fk"
+    organization_release_project }o--|| organization_release : "fk"
+    organization_release_project }o--|| organization_release : "fk"
+    organization_release }o--|| organization : "fk"
+    organization_release }o--|| organization_release_commit : "fk"
+    issue_event_tag }o--|| issue_event : "fk"
+    issue_event }o--|| project_issue : "fk"
+    issue_event }o--|| project : "fk"
+    tag_detail_top_value }o--|| tag_detail : "fk"
+    tag_detail_top_value }o--|| tag_detail : "fk"
+    tag_detail_top_value }o--|| tag_detail : "fk"
+    tag_detail }o--|| project_issue_tag : "fk"
+    integration_platform_install }o--|| organization : "fk"

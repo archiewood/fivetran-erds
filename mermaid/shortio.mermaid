@@ -1,0 +1,226 @@
+erDiagram
+    domain {
+        text id PK
+        boolean case_sensitive
+        text client_storage
+        boolean cloaking
+        timestamp created_at
+        boolean export_enabled
+        boolean hide_referer
+        boolean hide_visitor_ip
+        text hostname
+        text https_level
+        boolean https_links
+        text increment_counter
+        text integration_adroll
+        text integration_fb
+        text integration_ga
+        text integration_gtm
+        boolean is_favorite
+        timestamp last_purge_date
+        text link_type
+        text provider
+        boolean purge_expired_links
+        text redirect_404
+        text robots
+        text segment_key
+        text setup_type
+        text state
+        boolean support_deprecated_link_id
+        text team_id
+        text title
+        text unicode_hostname
+        timestamp updated_at
+        text webhook_url
+    }
+    domain_statistics_os {
+        text os PK
+        text domain_id PK
+        timestamp domain_statistics_interval_start_date PK
+        integer score
+    }
+    domain_statistics_city {
+        text city PK
+        text domain_id PK
+        timestamp domain_statistics_interval_start_date PK
+        text name
+        integer score
+    }
+    domain_statistics_country {
+        text country PK
+        text domain_id PK
+        timestamp domain_statistics_interval_start_date PK
+        text country_name
+        integer score
+    }
+    domain_statistics_browser {
+        text browser PK
+        text domain_id PK
+        timestamp domain_statistics_interval_start_date PK
+        integer score
+    }
+    domain_statistics_social {
+        text social PK
+        text domain_id PK
+        timestamp domain_statistics_interval_start_date PK
+        integer score
+    }
+    domain_statistics_referer {
+        text referer PK
+        text domain_id PK
+        timestamp domain_statistics_interval_start_date PK
+        integer score
+    }
+    domain_statistics {
+        timestamp interval_start_date PK
+        text domain_id PK
+        jsonb click_statistics
+        text clicks
+        text clicks_per_link
+        text clicks_per_link_change
+        text human_clicks
+        text human_clicks_change
+        boolean human_clicks_change_positive
+        text human_clicks_per_link
+        timestamp interval_end_date
+        timestamp interval_prev_end_date
+        timestamp interval_prev_start_date
+        text links
+        text links_change
+        boolean links_change_positive
+        text prev_clicks_change
+    }
+    link_statistics_os {
+        text os PK
+        integer domain_id PK
+        text link_id PK
+        timestamp link_statistics_interval_start_date PK
+        integer score
+    }
+    link_statistics_city {
+        text city PK
+        integer domain_id PK
+        text link_id PK
+        timestamp link_statistics_interval_start_date PK
+        text name
+        integer score
+    }
+    link_statistics_country {
+        text country PK
+        integer domain_id PK
+        text link_id PK
+        timestamp link_statistics_interval_start_date PK
+        text country_name
+        integer score
+    }
+    link_statistics_browser {
+        text browser PK
+        integer domain_id PK
+        text link_id PK
+        timestamp link_statistics_interval_start_date PK
+        integer score
+    }
+    link_statistics_social {
+        text social PK
+        integer domain_id PK
+        text link_id PK
+        timestamp link_statistics_interval_start_date PK
+        integer score
+    }
+    link_statistics_referer {
+        text referer PK
+        integer domain_id PK
+        text link_id PK
+        timestamp link_statistics_interval_start_date PK
+        integer score
+    }
+    link_statistics {
+        timestamp interval_start_date PK
+        integer domain_id PK
+        text link_id PK
+        jsonb click_statistics
+        integer human_clicks
+        text human_clicks_change
+        timestamp interval_end_date
+        timestamp interval_prev_end_date
+        timestamp interval_prev_start_date
+        integer total_clicks
+        text total_clicks_change
+    }
+    link_tag {
+        text tag_name PK
+        integer domain_id PK
+        text link_id PK
+    }
+    link {
+        integer domain_id PK
+        text id PK
+        text android_url
+        boolean archived
+        text clicks_limit
+        text cloaking
+        timestamp created_at
+        text expired_url
+        text expires_at
+        boolean has_password
+        text icon
+        text integration_adroll
+        text integration_fb
+        text integration_ga
+        text integration_gtm
+        text iphone_url
+        text original_url
+        text owner_email
+        text owner_id
+        text owner_name
+        text owner_photo_url
+        text password_contact
+        text path
+        text redirect_type
+        text secure_short_url
+        text short_url
+        text source
+        text split_percent
+        text split_url
+        text title
+        text user_email
+        text user_id
+        text user_name
+        text user_photo_url
+    }
+    domain_statistics_os }o--|| domain_statistics : "fk"
+    domain_statistics_os }o--|| domain_statistics : "fk"
+    domain_statistics_city }o--|| domain_statistics : "fk"
+    domain_statistics_city }o--|| domain_statistics : "fk"
+    domain_statistics_country }o--|| domain_statistics : "fk"
+    domain_statistics_country }o--|| domain_statistics : "fk"
+    domain_statistics_browser }o--|| domain_statistics : "fk"
+    domain_statistics_browser }o--|| domain_statistics : "fk"
+    domain_statistics_social }o--|| domain_statistics : "fk"
+    domain_statistics_social }o--|| domain_statistics : "fk"
+    domain_statistics_referer }o--|| domain_statistics : "fk"
+    domain_statistics_referer }o--|| domain_statistics : "fk"
+    domain_statistics }o--|| domain : "fk"
+    link_statistics_os }o--|| link_statistics : "fk"
+    link_statistics_os }o--|| link_statistics : "fk"
+    link_statistics_os }o--|| link_statistics : "fk"
+    link_statistics_city }o--|| link_statistics : "fk"
+    link_statistics_city }o--|| link_statistics : "fk"
+    link_statistics_city }o--|| link_statistics : "fk"
+    link_statistics_country }o--|| link_statistics : "fk"
+    link_statistics_country }o--|| link_statistics : "fk"
+    link_statistics_country }o--|| link_statistics : "fk"
+    link_statistics_browser }o--|| link_statistics : "fk"
+    link_statistics_browser }o--|| link_statistics : "fk"
+    link_statistics_browser }o--|| link_statistics : "fk"
+    link_statistics_social }o--|| link_statistics : "fk"
+    link_statistics_social }o--|| link_statistics : "fk"
+    link_statistics_social }o--|| link_statistics : "fk"
+    link_statistics_referer }o--|| link_statistics : "fk"
+    link_statistics_referer }o--|| link_statistics : "fk"
+    link_statistics_referer }o--|| link_statistics : "fk"
+    link_statistics }o--|| link : "fk"
+    link_statistics }o--|| link : "fk"
+    link_tag }o--|| link : "fk"
+    link_tag }o--|| link : "fk"
+    link }o--|| domain : "fk"

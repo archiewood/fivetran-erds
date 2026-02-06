@@ -1,0 +1,786 @@
+erDiagram
+    contract_product_tag {
+        text id PK
+        text contract_product_id PK
+        text parent FK
+        timestamp created_at
+        text customer
+        timestamp deleted_at
+        text group_name
+        text groups
+        text is_deleted
+        timestamp last_modified_at
+        text name
+        text parent_name
+    }
+    contract_product {
+        text id PK
+        text department FK
+        text revenue_account FK
+        text anrok_item_id
+        text apply_dept_tag_to_invoice_journals
+        text ar_account
+        text ar_account_name
+        text avalara_item_data
+        text avalara_item_id
+        text avalara_tax_code
+        text cost
+        timestamp created_at
+        text currency
+        text customer
+        timestamp deleted_at
+        text exclude_from_mrr
+        text invoice_account
+        text invoice_account_name
+        text invoice_unbilled_account
+        text invoice_unbilled_account_name
+        text is_deleted
+        text is_taxable
+        timestamp last_modified_at
+        text price
+        text product_description
+        text product_id
+        text product_name
+        text revenue_account_name
+        text stripe_product_id
+        text tax_account_name
+    }
+    vendor_contact {
+        text id PK
+        timestamp created_at
+        timestamp deleted_at
+        text email
+        text first_name
+        text is_deleted
+        timestamp last_modified_at
+        text last_name
+        text mobile_number
+        text name
+        text phone_number
+    }
+    balance_sheet {
+        text account_id PK
+        text parent FK
+        text end_date
+        text has_children_balances
+        jsonb hierarchy
+        text start_date
+    }
+    revenue_transaction_tag {
+        text id PK
+        text revenue_transaction_id PK
+        text customer FK
+        timestamp created_at
+        timestamp deleted_at
+        text group_name
+        text groups
+        text is_deleted
+        timestamp last_modified_at
+        text name
+    }
+    revenue_transaction {
+        text id PK
+        text client FK
+        text contract FK
+        text contract_subscription FK
+        text department FK
+        text journal_entry FK
+        text product FK
+        text accounting_period
+        text amount
+        text anrok_item_id
+        text balance_adjustment
+        text contract_bundle
+        text contract_external_id
+        text contract_milestone
+        text contract_subscription_external_id
+        text contract_usage
+        timestamp created_at
+        text currency
+        timestamp deleted_at
+        text description
+        text discount
+        text entity
+        text entity_currency
+        text exchange_rate
+        text exchange_rate_book
+        text external_id
+        text gross_amount
+        text invoice
+        text invoice_date
+        text invoice_number
+        text is_deleted
+        timestamp last_modified_at
+        text mrr
+        text non_contract_subscription
+        text non_contract_usage
+        text platform_fees
+        text processing_fees
+        text product_external_id
+        text quantity
+        text rate
+        text recognized
+        text refunds
+        text renewall
+        text revenue_type
+        text source
+        text tax
+        text transaction_date
+        text transaction_end_date
+        text transfers
+        text usage_tier
+        text usage_tier_name
+    }
+    journal_entry_transaction {
+        text id PK
+        text journal_entry_id PK
+        text account FK
+        text department FK
+        text parent_department FK
+        text transaction_id FK
+        text vendor FK
+        text amount
+        text balance_after_transaction
+        text balance_before_transaction
+        text credit_amount
+        text date_month
+        text date_year
+        text debit_amount
+        text entity
+        text entity_currency
+        text entity_name
+        text journal_memo
+        text journal_order
+        text journal_type
+    }
+    journal_entry_attachment {
+        text id PK
+        text journal_entry_id PK
+        text app
+        timestamp created_at
+        text created_by
+        text created_by_email
+        text created_by_name
+        text customer
+        timestamp deleted_at
+        text is_deleted
+        timestamp last_modified_at
+        text model
+        text name
+        text object_id
+        text s_3_content_length
+        text s_3_content_type
+        text s_3_path
+        text url
+    }
+    journal_entry {
+        text id PK
+        timestamp created_at
+        text created_automatically
+        text currency
+        text date
+        timestamp deleted_at
+        text entity
+        text intercompany_journal
+        text invoice
+        text is_deleted
+        text journal_id
+        timestamp last_modified_at
+        text memo
+        text order_id
+        text ref_number
+        text reversal_of
+        text source
+        text type
+    }
+    cost_allocation_line_tag {
+        text id PK
+        text cost_allocation_line_id PK
+        text parent FK
+        timestamp created_at
+        timestamp deleted_at
+        text group_name
+        text groups
+        text is_deleted
+        timestamp last_modified_at
+        text name
+    }
+    cost_allocation_line {
+        text id PK
+        text cost_allocation_id PK
+        text account FK
+        text department FK
+        timestamp created_at
+        text customer
+        timestamp deleted_at
+        text is_deleted
+        timestamp last_modified_at
+        text percentage
+    }
+    cost_allocation {
+        text id PK
+        text account FK
+        timestamp created_at
+        text customer
+        timestamp deleted_at
+        text is_deleted
+        timestamp last_modified_at
+    }
+    chart_account {
+        text id PK
+        text parent FK
+        text account_cashflow_classification
+        text account_id
+        text account_subtype
+        text account_type
+        text balance_ytd
+        timestamp created_at
+        text currency
+        text customer
+        timestamp deleted_at
+        text description
+        text include_in_eliminations
+        text include_in_revaluations
+        text is_deleted
+        timestamp last_modified_at
+        timestamp last_recompute_balance_at
+        jsonb lineage
+        text lock_recompute_balance_key
+        text name
+        text name_and_number
+        text nickname
+        text number
+        text parent_bank_account
+        text protected
+        text reconciliation_ending_balance
+        text reconciliation_ending_date
+        text skip_subledger_validation
+        text sort_key
+        text status
+    }
+    vendor_associated_contact {
+        text id PK
+        text vendor_id PK
+    }
+    vendor {
+        text id PK
+        text parent FK
+        text abbreviation
+        text address_street_1
+        text address_street_2
+        text anrok_customer_id
+        text bill_vendor_id
+        text billing_address_street_1
+        text billing_address_street_2
+        text billing_addressee
+        text billing_city
+        text billing_country
+        text billing_state
+        text billing_zip_code
+        text business_id_ssn
+        text city
+        text company_name
+        text country
+        timestamp created_at
+        text custom_field_1
+        text custom_field_1_name
+        text custom_field_account_manager
+        text customer
+        text dba
+        text default_expense_category
+        timestamp deleted_at
+        text email
+        text external_id
+        text first_name
+        text invoice_message
+        text is_1099
+        text is_deleted
+        timestamp last_modified_at
+        text last_name
+        jsonb lineage_array
+        text mobile_number
+        text name
+        text notes
+        text payment_term
+        text payment_term_name_display
+        text phone_number
+        text search_text
+        text search_vector
+        text shipping_addressee
+        text source
+        text state
+        text status
+        text stripe_connection
+        text stripe_connection_entity
+        text stripe_connection_name
+        text stripe_connection_portal_enabled
+        text stripe_connection_portal_url
+        text stripe_customer_id
+        text terms
+        text type
+        text use_stripe_auto_bill
+        text vat_number
+        text website
+        text zip_code
+    }
+    department_tag {
+        text id PK
+        text department_id PK
+        text parent FK
+        timestamp created_at
+        text customer
+        timestamp deleted_at
+        text group_name
+        text groups
+        text is_deleted
+        timestamp last_modified_at
+        text name
+    }
+    department {
+        text id PK
+        text parent FK
+        text active
+        text code
+        timestamp created_at
+        text customer
+        timestamp deleted_at
+        text is_deleted
+        timestamp last_modified_at
+        text name
+    }
+    income_statement {
+        text account_id PK
+        text parent FK
+        text amount
+        text end_date
+        text has_children_balances
+        jsonb hierarchy
+        text start_date
+    }
+    trial_balance {
+        text id PK
+        text parent FK
+        text credit
+        text debit
+        jsonb department
+        text end_date
+        jsonb entities
+        text start_date
+    }
+    custom_field {
+        text id PK
+        text app
+        timestamp created_at
+        timestamp deleted_at
+        text display_order
+        text is_active
+        text is_deleted
+        text is_required
+        text label
+        timestamp last_modified_at
+        text model
+        text name
+        jsonb options
+        text type
+        timestamp updated_at
+    }
+    cash_flow {
+        text account_id PK
+        text parent FK
+        text end_date
+        jsonb hierarchy
+        text start_date
+        text starting_balance
+    }
+    contract_journal_entry {
+        text index PK
+        text contract_id PK
+        text journal_entry FK
+    }
+    contract_attachment {
+        text id PK
+        text contract_id PK
+        text customer FK
+        text app
+        timestamp created_at
+        text created_by
+        text created_by_email
+        text created_by_name
+        timestamp deleted_at
+        text is_deleted
+        timestamp last_modified_at
+        text model
+        text name
+        text object_id
+        text s_3_content_length
+        text s_3_content_type
+        text s_3_path
+        text url
+    }
+    contract_tag {
+        text id PK
+        text contract_id PK
+        text customer FK
+        text parent FK
+        timestamp created_at
+        timestamp deleted_at
+        text group_name
+        text groups
+        text is_deleted
+        timestamp last_modified_at
+        text name
+        text parent_name
+    }
+    contract {
+        text id PK
+        text customer FK
+        text department FK
+        text parent_department FK
+        text auto_renew
+        text auto_renew_duration
+        text auto_renew_invoice
+        text billing_frequency
+        text client
+        text client_name
+        text client_terms
+        text closed_date
+        text consultant
+        text contract_end_date
+        text contract_link
+        text contract_start_date
+        timestamp created_at
+        text crm_link
+        text currency
+        text deal_id
+        text deal_name
+        timestamp deleted_at
+        text entity
+        text entity_name
+        text exchange_rate
+        text exchange_rate_book
+        text is_deleted
+        timestamp last_modified_at
+        text search_text
+        text search_vector
+        text source
+        text status
+        text total_billed
+        text total_contract_value
+        text total_deferred_revenue
+        text total_outstanding
+        text total_paid
+        text total_unbilled
+        text usage_tiers
+    }
+    intercompany_journal_reversal {
+        text id PK
+        text intercompany_journal_id PK
+    }
+    intercompany_journal_transaction_tag {
+        text id PK
+        text intercompany_journal_transaction_id PK
+        text parent FK
+        timestamp created_at
+        text customer
+        timestamp deleted_at
+        text group_name
+        text groups
+        text is_deleted
+        timestamp last_modified_at
+        text name
+    }
+    intercompany_journal_transaction {
+        text id PK
+        text intercompany_journal_id PK
+        text account FK
+        text department FK
+        text parent_department FK
+        text transaction_id FK
+        text vendor FK
+        text amount
+        text balance_after_transaction
+        text balance_before_transaction
+        text bank_account
+        text bank_description
+        timestamp created_at
+        text credit_amount
+        text date_month
+        text date_year
+        text debit_amount
+        timestamp deleted_at
+        text entity
+        text intercompany_journal
+        text is_deleted
+        text journal
+        text journal_memo
+        text journal_order
+        text journal_type
+        timestamp last_modified_at
+        timestamp posted_at
+    }
+    intercompany_journal {
+        text id PK
+        timestamp created_at
+        text created_automatically
+        text currency
+        text customer
+        text date
+        timestamp deleted_at
+        text entity_currency
+        text entity_name
+        text is_deleted
+        text journal_id
+        timestamp last_modified_at
+        text memo
+        text order_id
+        text ref_number
+        text reversal_of
+        text reversal_of_order
+        text type
+    }
+    contract_customer_contact {
+        text id PK
+        text contract_customer_id PK
+        timestamp deleted_at
+        text is_deleted
+        timestamp last_modified_at
+    }
+    contract_customer {
+        text id PK
+        text customer FK
+        text parent FK
+        text abbreviation
+        text address_street_1
+        text address_street_2
+        text anrok_customer_id
+        text bill_vendor_id
+        text billing_address_street_1
+        text billing_address_street_2
+        text billing_city
+        text billing_country
+        text billing_state
+        text billing_zip_code
+        text business_id_ssn
+        text city
+        text company_name
+        text country
+        timestamp created_at
+        text default_expense_category
+        timestamp deleted_at
+        text email
+        text external_id
+        text first_name
+        text invoice_message
+        text is_1099
+        text is_deleted
+        timestamp last_modified_at
+        text last_name
+        jsonb lineage_array
+        text mobile_number
+        text name
+        text notes
+        text payment_term
+        text payment_term_name_display
+        text phone_number
+        text source
+        text state
+        text status
+        text stripe_connection
+        text stripe_connection_entity
+        text stripe_connection_name
+        text stripe_connection_portal_enabled
+        text stripe_connection_portal_url
+        text stripe_customer_id
+        text terms
+        text use_stripe_auto_bill
+        text vat_number
+        text vendor_custom_field
+        text vendor_custom_field_name
+        text vendor_type
+        text website
+        text zip_code
+    }
+    contract_subscription_contract_product_bundle_line {
+        text id PK
+        text contract_subscription_id PK
+        text amount
+        text original_percentage
+        text percentage
+        text product
+        text product_name
+    }
+    contract_subscription {
+        text id PK
+        text contract FK
+        text customer FK
+        text product FK
+        text catchup_date
+        timestamp created_at
+        timestamp deleted_at
+        text end_date
+        text is_contract_amendment
+        text is_deleted
+        timestamp last_modified_at
+        text lines
+        text modified_subscription
+        text mrr
+        text notes
+        text product_bundle
+        text product_bundle_currency
+        text product_bundle_id
+        text product_bundle_name
+        text product_bundle_source_bundle
+        text product_bundle_source_bundle_name
+        text quantity
+        text rate
+        text start_date
+        text total_value
+        text use_catchup
+        text use_daily_accounting
+    }
+    chart_transaction_tag {
+        text id PK
+        text chart_transaction_id PK
+        text parent FK
+        timestamp created_at
+        text customer
+        timestamp deleted_at
+        text group_name
+        text groups
+        text is_deleted
+        timestamp last_modified_at
+        text name
+    }
+    chart_transaction_journal_attachment {
+        text id PK
+        text chart_transaction_id PK
+        text app
+        timestamp created_at
+        text created_by
+        text created_by_email
+        text created_by_name
+        text customer
+        timestamp deleted_at
+        text is_deleted
+        timestamp last_modified_at
+        text model
+        text name
+        text object_id
+        text s_3_content_length
+        text s_3_content_type
+        text s_3_path
+        text url
+    }
+    chart_transaction_amortization_schedule {
+        text id PK
+        text chart_transaction_id PK
+        text amortization
+        text amount
+        text bill_line
+        text customer
+        text date
+        text journal_entry
+        text journal_entry_order
+        text posted
+        text transaction
+    }
+    chart_transaction {
+        text id PK
+        text account FK
+        text department FK
+        text parent_department FK
+        text vendor FK
+        text amount
+        text balance_after_transaction
+        text balance_before_transaction
+        text bank_account
+        text bill
+        timestamp created_at
+        text credit_amount
+        text date_month
+        text date_year
+        text debit_amount
+        text entity_currency
+        text entity_name
+        text invoice
+        text journal
+        text journal_memo
+        text journal_order
+        text journal_type
+        timestamp last_modified_at
+        text transaction_id
+    }
+    contract_product_tag }o--|| contract_product_tag : "fk"
+    contract_product_tag }o--|| contract_product : "fk"
+    contract_product }o--|| department : "fk"
+    contract_product }o--|| chart_account : "fk"
+    balance_sheet }o--|| chart_account : "fk"
+    balance_sheet }o--|| balance_sheet : "fk"
+    revenue_transaction_tag }o--|| contract_customer : "fk"
+    revenue_transaction_tag }o--|| revenue_transaction : "fk"
+    revenue_transaction }o--|| department : "fk"
+    revenue_transaction }o--|| contract_product : "fk"
+    revenue_transaction }o--|| contract_subscription : "fk"
+    revenue_transaction }o--|| contract : "fk"
+    revenue_transaction }o--|| journal_entry : "fk"
+    revenue_transaction }o--|| vendor : "fk"
+    journal_entry_transaction }o--|| department : "fk"
+    journal_entry_transaction }o--|| vendor : "fk"
+    journal_entry_transaction }o--|| chart_account : "fk"
+    journal_entry_transaction }o--|| department : "fk"
+    journal_entry_transaction }o--|| revenue_transaction : "fk"
+    journal_entry_transaction }o--|| journal_entry : "fk"
+    journal_entry_attachment }o--|| journal_entry : "fk"
+    cost_allocation_line_tag }o--|| cost_allocation_line_tag : "fk"
+    cost_allocation_line_tag }o--|| cost_allocation_line : "fk"
+    cost_allocation_line }o--|| department : "fk"
+    cost_allocation_line }o--|| chart_account : "fk"
+    cost_allocation_line }o--|| cost_allocation : "fk"
+    cost_allocation }o--|| chart_account : "fk"
+    chart_account }o--|| chart_account : "fk"
+    vendor_associated_contact }o--|| vendor_contact : "fk"
+    vendor_associated_contact }o--|| vendor : "fk"
+    vendor }o--|| vendor : "fk"
+    department_tag }o--|| department_tag : "fk"
+    department_tag }o--|| department : "fk"
+    department }o--|| department : "fk"
+    income_statement }o--|| chart_account : "fk"
+    income_statement }o--|| income_statement : "fk"
+    trial_balance }o--|| chart_account : "fk"
+    trial_balance }o--|| trial_balance : "fk"
+    cash_flow }o--|| chart_account : "fk"
+    cash_flow }o--|| cash_flow : "fk"
+    contract_journal_entry }o--|| journal_entry : "fk"
+    contract_journal_entry }o--|| contract : "fk"
+    contract_attachment }o--|| contract_customer : "fk"
+    contract_attachment }o--|| contract : "fk"
+    contract_tag }o--|| contract_tag : "fk"
+    contract_tag }o--|| contract_customer : "fk"
+    contract_tag }o--|| contract : "fk"
+    contract }o--|| department : "fk"
+    contract }o--|| department : "fk"
+    contract }o--|| contract_customer : "fk"
+    intercompany_journal_reversal }o--|| intercompany_journal : "fk"
+    intercompany_journal_transaction_tag }o--|| intercompany_journal_transaction_tag : "fk"
+    intercompany_journal_transaction_tag }o--|| intercompany_journal_transaction : "fk"
+    intercompany_journal_transaction }o--|| department : "fk"
+    intercompany_journal_transaction }o--|| chart_account : "fk"
+    intercompany_journal_transaction }o--|| department : "fk"
+    intercompany_journal_transaction }o--|| revenue_transaction : "fk"
+    intercompany_journal_transaction }o--|| intercompany_journal : "fk"
+    intercompany_journal_transaction }o--|| vendor : "fk"
+    contract_customer_contact }o--|| contract_customer : "fk"
+    contract_customer }o--|| contract_customer : "fk"
+    contract_customer }o--|| contract_customer : "fk"
+    contract_subscription_contract_product_bundle_line }o--|| contract_subscription : "fk"
+    contract_subscription }o--|| contract_product : "fk"
+    contract_subscription }o--|| contract : "fk"
+    contract_subscription }o--|| contract_customer : "fk"
+    chart_transaction_tag }o--|| chart_transaction_tag : "fk"
+    chart_transaction_tag }o--|| chart_transaction : "fk"
+    chart_transaction_journal_attachment }o--|| chart_transaction : "fk"
+    chart_transaction_amortization_schedule }o--|| chart_transaction : "fk"
+    chart_transaction }o--|| department : "fk"
+    chart_transaction }o--|| vendor : "fk"
+    chart_transaction }o--|| chart_account : "fk"
+    chart_transaction }o--|| department : "fk"

@@ -1,0 +1,85 @@
+erDiagram
+    project_report {
+        text id PK
+        text project_id FK
+        text name
+        text service_id
+        text type
+    }
+    project {
+        text id PK
+        text created
+        text description
+        text name
+        text status
+    }
+    dataset_column {
+        text name PK
+        text dataset_project_report_history_id PK
+        text dataset_project_report_id PK
+    }
+    dataset {
+        text project_report_history_id PK
+        text project_report_id PK
+        text name
+        jsonb rows
+    }
+    report_stat_column {
+        text name PK
+        text report_stat_id PK
+    }
+    report_stat {
+        text id PK
+        text project_report_history_id FK
+        text project_report_id FK
+        text name
+        text report_name
+    }
+    schedule_parameter {
+        text _fivetran_id PK
+        text schedule_id FK
+        text name
+        text value
+    }
+    schedule {
+        text id PK
+        text project_report_id FK
+        text end_date
+        text next_update
+        text start_date
+    }
+    project_report_history {
+        text id PK
+        text project_id FK
+        text project_report_id FK
+        text bandwidth_download
+        text bandwidth_upload
+        text created
+        text csv_file
+        text item_count
+        text modified
+        text request_count
+        text run_ended
+        text run_started
+        text status
+    }
+    report_parameter {
+        text service_id PK
+        text project_report_id FK
+        text description
+        text label
+        text name
+    }
+    project_report }o--|| project : "fk"
+    dataset_column }o--|| dataset : "fk"
+    dataset_column }o--|| dataset : "fk"
+    dataset }o--|| project_report : "fk"
+    dataset }o--|| project_report_history : "fk"
+    report_stat_column }o--|| report_stat : "fk"
+    report_stat }o--|| project_report : "fk"
+    report_stat }o--|| project_report_history : "fk"
+    schedule_parameter }o--|| schedule : "fk"
+    schedule }o--|| project_report : "fk"
+    project_report_history }o--|| project : "fk"
+    project_report_history }o--|| project_report : "fk"
+    report_parameter }o--|| project_report : "fk"

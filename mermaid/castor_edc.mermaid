@@ -1,0 +1,531 @@
+erDiagram
+    participant {
+        text id PK
+        text study_id PK
+        text created_by FK
+        text site_id FK
+        text updated_by FK
+        text archived
+        text archived_reason
+        text ccr_patient_id
+        text created_on_date
+        text created_on_timezone
+        text created_on_timezone_type
+        text deleted
+        text last_opened_step
+        text locked
+        text participant_status_id
+        text participant_status_name
+        text progress
+        text randomization_group
+        text randomization_group_name
+        text randomized_id
+        text randomized_on_date
+        text randomized_on_timezone
+        text randomized_on_timezone_type
+        text status
+        text updated_on_date
+        text updated_on_timezone
+        text updated_on_timezone_type
+    }
+    repeating_data_instance_data_point {
+        text field_id PK
+        text participant_id PK
+        text repeating_data_instance_id PK
+        text study_id PK
+        text field_value
+        text repeating_data_instance_name
+        text updated_on
+    }
+    institute_permission {
+        text institute_id PK
+        text study_user_id PK
+        text add
+        text decrypt
+        text delete
+        text edit
+        text email_addresses
+        text encrypts
+        text export
+        text lock
+        text query
+        text randomization_read
+        text randomization_write
+        text role
+        text sdv
+        text sign
+        text survey_send
+        text survey_view
+        text televisit
+        text view
+    }
+    study_user {
+        text id PK
+        text study_id PK
+        text department
+        text email_address
+        text full_name
+        text institute
+        text last_login
+        text manage_permissions_manage_encryption
+        text manage_permissions_manage_form
+        text manage_permissions_manage_records
+        text manage_permissions_manage_settings
+        text manage_permissions_manage_users
+        text name_first
+        text name_last
+        text name_middle
+    }
+    study {
+        text id PK
+        text created_by FK
+        text main_contact FK
+        text created_on
+        text domain
+        text duration
+        text expected_centers
+        text expected_records
+        text gcp_enabled
+        text live
+        text name
+        text premium_support_enabled
+        text randomization_enabled
+        text slug
+        text surveys_enabled
+        text trial_registry_id
+        text version
+    }
+    role {
+        text name PK
+        text study_id PK
+        text description
+    }
+    country {
+        text id PK
+        text country_cca_2
+        text country_cca_3
+        text country_name
+        text country_tld
+    }
+    field_dependency {
+        text id PK
+        text study_id PK
+        text parent_id FK
+        text child_id
+        text description
+        text field_dependency_type
+        text operator
+        text value
+    }
+    repeating_data {
+        text id PK
+        text study_id PK
+        text description
+        text name
+        text type
+    }
+    study_statistics_institute {
+        text institute_id PK
+        text study_statistics_study_id PK
+        text institute_name
+        text record_count
+    }
+    study_statistics {
+        text study_id PK
+        text records_total_count
+    }
+    field_option {
+        text id PK
+        text field_option_group_id PK
+        text group_order
+        text name
+        text value
+    }
+    field_option_group {
+        text id PK
+        text study_id PK
+        text description
+        text layout
+        text name
+    }
+    participant_progress_form {
+        text form_id PK
+        text participant_progress_participant_id PK
+        text participant_progress_study_id PK
+        text complete
+        text locked
+        text progress
+        text sdv
+        text signed
+    }
+    repeating_data_form {
+        text id PK
+        text study_id PK
+        text repeating_data_id FK
+        text repeating_data_form_description
+        text repeating_data_form_name
+        text repeating_data_form_number
+    }
+    site {
+        text id PK
+        text study_id PK
+        text country_id FK
+        text abbreviation
+        text code
+        text date_format
+        text deleted
+        text name
+        text orders
+    }
+    survey_instance {
+        text id PK
+        text study_id PK
+        text field_id
+        text field_value
+        text participant_id
+        text survey_name
+        text updated_on
+    }
+    form {
+        text id PK
+        text study_id PK
+        text visit_id FK
+        text form_description
+        text form_name
+        text form_order
+    }
+    survey_package_instance_survey_instance {
+        text id PK
+        text survey_package_instance_id PK
+        text survey_id FK
+        text progress
+        text progress_total_fields
+        text progress_total_fields_not_empty
+    }
+    survey_package_instance {
+        text id PK
+        text study_id PK
+        text parent_id FK
+        text participant_id FK
+        text site_id FK
+        text survey_package_id FK
+        text all_fields_filled_on_date
+        text all_fields_filled_on_timezone
+        text all_fields_filled_on_timezone_type
+        text archived
+        text auto_lock_on_finish
+        text auto_send
+        text available_from_date
+        text available_from_timezone
+        text available_from_timezone_type
+        text created_by
+        text created_on_date
+        text created_on_timezone
+        text created_on_timezone_type
+        text expire_on_date
+        text expire_on_timezone
+        text expire_on_timezone_type
+        text finished_on_date
+        text finished_on_timezone
+        text finished_on_timezone_type
+        text first_opened_on_date
+        text first_opened_on_timezone
+        text first_opened_on_timezone_type
+        text invitation_content
+        text invitation_subject
+        text locked
+        text parent_type
+        text progress
+        text received_on_date
+        text received_on_timezone
+        text received_on_timezone_type
+        text sent_on_date
+        text sent_on_timezone
+        text sent_on_timezone_type
+        text site_name
+        text started_on_date
+        text started_on_timezone
+        text started_on_timezone_type
+        text survey_package_instance_id
+        text survey_package_name
+        text survey_reminders_send_ondate
+        text survey_reminders_send_ontimezone
+        text survey_reminders_send_ontimezone_type
+        text survey_remindersid
+        text survey_remindersmessage
+        text survey_reminderssubject
+        text survey_url_string
+    }
+    meta_data {
+        text id PK
+        text field_id PK
+        text parent_id FK
+        text _embedded_metadata_type_description
+        text _embedded_metadata_type_id
+        text _embedded_metadata_type_name
+        text description
+        text value
+    }
+    field_field_option_group {
+        text field_id PK
+        text id PK
+    }
+    field_field_validation {
+        text field_id PK
+        text id PK
+    }
+    field {
+        text id PK
+        text study_id PK
+        text parent_id FK
+        text additional_config
+        jsonb dependency_children
+        jsonb dependency_parents
+        text exclude_on_data_export
+        text field_enforce_decimals
+        text field_hidden
+        text field_image
+        text field_info
+        text field_label
+        text field_length
+        text field_max
+        text field_max_label
+        text field_min
+        text field_min_label
+        text field_number
+        text field_required
+        text field_slider_step
+        text field_slider_step_value
+        text field_summary_template
+        text field_type
+        text field_units
+        text field_variable_name
+        text randomize_option_order
+        text report_id
+    }
+    survey_form {
+        text id PK
+        text study_id PK
+        text survey_id FK
+        text field_alignment
+        text form_numbering
+        text label_bold_if_required
+        text survey_form_description
+        text survey_form_name
+        text survey_form_number
+    }
+    survey_survey_form {
+        text id PK
+        text survey_id PK
+    }
+    survey {
+        text id PK
+        text study_id PK
+        text description
+        text intro_text
+        text name
+        text outro_text
+    }
+    repeating_data_instance {
+        text id PK
+        text study_id PK
+        text created_by FK
+        text parent_id FK
+        text participant_id FK
+        text repeating_data_id FK
+        text archived
+        text created_on
+        text name
+        text parent_type
+        text repeating_data_name
+        text status
+    }
+    study_data_entry {
+        text field_id PK
+        text participant_id PK
+        text study_id PK
+        text field_variable_name
+        text updated_on
+        text value
+    }
+    randomization {
+        text randomized_id PK
+        text participant_id PK
+        text study_id PK
+        text randomization_group
+        text randomization_group_name
+        text randomized_on_date
+        text randomized_on_timezone
+        text randomized_on_timezone_type
+    }
+    visit {
+        text id PK
+        text study_id PK
+        text visit_description
+        text visit_duration
+        text visit_name
+        text visit_order
+    }
+    query_remark {
+        text id PK
+        text query_id PK
+        text created_by FK
+        text created_on_date
+        text created_on_timezone
+        text created_on_timezone_type
+        text description
+        text title
+    }
+    query {
+        text id PK
+        text study_id PK
+        text created_by FK
+        text participant_id FK
+        text updated_by FK
+        text created_on_date
+        text created_on_timezone
+        text created_on_timezone_type
+        text field_id
+        text first_query_remark
+        text record_id
+        text status
+        text updated_on_date
+        text updated_on_timezone
+        text updated_on_timezone_type
+    }
+    survey_package_survey {
+        text id PK
+        text survey_package_id PK
+    }
+    survey_package {
+        text id PK
+        text study_id PK
+        text allow_open_survey_link
+        text allow_step_navigation
+        text as_needed
+        text auto_lock_on_finish
+        text auto_send
+        text default_invitation
+        text default_invitation_subject
+        text description
+        text expire_after_hours
+        text field_pagination
+        text finish_url
+        text intro_text
+        text is_mobile
+        text is_repeatable
+        text is_resumable
+        text is_training
+        text name
+        text outro_text
+        text sender_email
+        text sender_name
+        text show_step_navigator
+        text survey_package_id
+    }
+    field_validation {
+        text id PK
+        text study_id PK
+        text field_id FK
+        text operator
+        text text
+        text type
+        text value
+    }
+    verification {
+        text id PK
+        text study_id PK
+        text parent_id FK
+        text changed_field
+        text dropped_by
+        text dropped_on_date
+        text dropped_on_timezone
+        text dropped_on_timezone_type
+        text entity_id
+        text entity_type
+        text record_id
+        text status
+        text verification_type_id
+        text verification_type_is_sdv
+        text verification_type_name
+        text verified_by
+        text verified_on_date
+        text verified_on_timezone
+        text verified_on_timezone_type
+    }
+    participant }o--|| study_user : "fk"
+    participant }o--|| study_user : "fk"
+    participant }o--|| site : "fk"
+    participant }o--|| study : "fk"
+    repeating_data_instance_data_point }o--|| repeating_data_instance : "fk"
+    repeating_data_instance_data_point }o--|| participant : "fk"
+    repeating_data_instance_data_point }o--|| field : "fk"
+    repeating_data_instance_data_point }o--|| study : "fk"
+    institute_permission }o--|| study_statistics_institute : "fk"
+    institute_permission }o--|| study_user : "fk"
+    study_user }o--|| study : "fk"
+    study }o--|| study_user : "fk"
+    study }o--|| study_user : "fk"
+    role }o--|| study : "fk"
+    field_dependency }o--|| field_dependency : "fk"
+    field_dependency }o--|| study : "fk"
+    repeating_data }o--|| study : "fk"
+    study_statistics_institute }o--|| study_statistics : "fk"
+    study_statistics }o--|| study : "fk"
+    field_option }o--|| field_option_group : "fk"
+    field_option_group }o--|| study : "fk"
+    participant_progress_form }o--|| form : "fk"
+    participant_progress_form }o--|| participant : "fk"
+    participant_progress_form }o--|| study : "fk"
+    repeating_data_form }o--|| repeating_data : "fk"
+    repeating_data_form }o--|| study : "fk"
+    site }o--|| country : "fk"
+    site }o--|| study : "fk"
+    survey_instance }o--|| participant : "fk"
+    survey_instance }o--|| study : "fk"
+    form }o--|| visit : "fk"
+    form }o--|| study : "fk"
+    survey_package_instance_survey_instance }o--|| survey : "fk"
+    survey_package_instance_survey_instance }o--|| survey_package_instance : "fk"
+    survey_package_instance }o--|| participant : "fk"
+    survey_package_instance }o--|| survey_package_instance : "fk"
+    survey_package_instance }o--|| survey_package : "fk"
+    survey_package_instance }o--|| site : "fk"
+    survey_package_instance }o--|| study : "fk"
+    meta_data }o--|| meta_data : "fk"
+    meta_data }o--|| field : "fk"
+    field_field_option_group }o--|| field_option_group : "fk"
+    field_field_option_group }o--|| field : "fk"
+    field_field_validation }o--|| field_validation : "fk"
+    field_field_validation }o--|| field : "fk"
+    field }o--|| field : "fk"
+    field }o--|| study : "fk"
+    survey_form }o--|| survey : "fk"
+    survey_form }o--|| study : "fk"
+    survey_survey_form }o--|| survey_form : "fk"
+    survey_survey_form }o--|| survey : "fk"
+    survey }o--|| study : "fk"
+    repeating_data_instance }o--|| study_user : "fk"
+    repeating_data_instance }o--|| participant : "fk"
+    repeating_data_instance }o--|| repeating_data_instance : "fk"
+    repeating_data_instance }o--|| repeating_data : "fk"
+    repeating_data_instance }o--|| study : "fk"
+    study_data_entry }o--|| participant : "fk"
+    study_data_entry }o--|| field : "fk"
+    study_data_entry }o--|| study : "fk"
+    randomization }o--|| study : "fk"
+    randomization }o--|| participant : "fk"
+    visit }o--|| study : "fk"
+    query_remark }o--|| study_user : "fk"
+    query_remark }o--|| query : "fk"
+    query }o--|| participant : "fk"
+    query }o--|| study_user : "fk"
+    query }o--|| study_user : "fk"
+    query }o--|| study : "fk"
+    survey_package_survey }o--|| survey : "fk"
+    survey_package_survey }o--|| survey_package : "fk"
+    survey_package }o--|| study : "fk"
+    field_validation }o--|| field : "fk"
+    field_validation }o--|| study : "fk"
+    verification }o--|| verification : "fk"
+    verification }o--|| study : "fk"

@@ -1,0 +1,523 @@
+erDiagram
+    kcbot_environment {
+        text index PK
+        text kcbot_id PK
+        text environment
+    }
+    kcbot_language {
+        text index PK
+        text kcbot_id PK
+        text language_code
+        text translated
+    }
+    kcbot {
+        text id PK
+        text created_by_id
+        text created_by_name
+        text created_date
+        text default_language
+        text description
+        jsonb languages
+        text modified_by_id
+        text modified_by_name
+        text modified_date
+        text name
+        text priority
+        text product_id
+        text product_name
+        text status
+    }
+    account_property_key {
+        text index PK
+        text account_id PK
+        text key
+    }
+    account {
+        text id PK
+        text create_date
+        text duns_number
+        text industry
+        timestamp last_modified_date
+        text last_seen_date
+        text location_city
+        text location_continent
+        text location_coordinate_latitude
+        text location_coordinate_longitude
+        text location_country_code
+        text location_country_name
+        text location_postal_code
+        text location_region_name
+        text location_state_code
+        text location_state_name
+        text location_street
+        text location_time_zone
+        text naics_code
+        text name
+        text number_of_employees
+        text number_of_user
+        text parent_group_id
+        text plan
+        text sfdc_id
+        text sic_code
+        text tracked_subscription_id
+        text website
+    }
+    engagement_property_key {
+        text index PK
+        text engagement_id PK
+        text key
+        text type
+    }
+    engagement_envs {
+        text index PK
+        text engagement_id PK
+        text envs
+    }
+    engagement {
+        text id PK
+        text default_language
+        text description
+        text name
+        text state
+        text translation_state
+        text type
+    }
+    segment {
+        text id PK
+        text name
+    }
+    subscription_product_key {
+        text key PK
+        text subscription_id PK
+        text subscription_product_name PK
+        text channel
+        text url
+    }
+    subscription_product {
+        text name PK
+        text subscription_id PK
+        text description
+    }
+    subscription {
+        text id PK
+        text description
+        text icon_url
+        text name
+        text timezone
+        text website
+    }
+    article_kcbot {
+        text article_id PK
+        text kcbot_id PK
+    }
+    article_language {
+        text index PK
+        text article_id PK
+        text code
+        text translated
+    }
+    article {
+        text id PK
+        text author
+        text created_date
+        text default_language
+        text modified_by_id
+        text modified_by_name
+        text modified_date
+        text name
+        text product_id
+        text product_name
+        text release_date
+        text translation_state
+        text view_type
+    }
+    integration {
+        text _fivetran_id PK
+        text current_status
+        text last_error
+        text last_successful_date
+        text number_of_records_processed
+        text sync_name
+    }
+    engagement_error_detail {
+        text engagement_id PK
+        text browser
+        text error_count
+        text error_type
+        text step_name
+        text step_number
+        text value
+    }
+    feature_label {
+        text id PK
+        text feature_id PK
+        text color
+        text name
+    }
+    feature {
+        text id PK
+        text name
+        text parent_id
+        text property_key
+        text status
+        text type
+    }
+    pageview_event {
+        text id PK
+        text account_id FK
+        text identify_id FK
+        text session_id FK
+        text date
+        text event_type
+        jsonb global_context
+        text hash
+        text host
+        jsonb languages
+        text page_title
+        text path
+        text property_key
+        text query_params
+        text query_string
+        text referrer
+        text remote_host
+        text scheme
+        text screen_height
+        text screen_width
+        text user_type
+    }
+    email_event {
+        text id PK
+        text account_id FK
+        text identify_id FK
+        text attempt
+        text bounce_type
+        text date
+        text email
+        text engagement_id
+        text event_type
+        jsonb global_context
+        text link_index
+        text link_type
+        text link_url
+        text location_city
+        text location_continent
+        text location_coordinates_latitude
+        text location_coordinates_longitude
+        text location_country_code
+        text location_country_name
+        text location_postal_code
+        text location_region_name
+        text location_state_code
+        text location_state_name
+        text location_street
+        text location_time_zone
+        text mta_response
+        text property_key
+        text reason
+        text status
+        text track_type
+        text user_type
+    }
+    custom_event {
+        text id PK
+        text account_id FK
+        text identify_id FK
+        text session_id FK
+        text date
+        jsonb global_context
+        text name
+        text property_key
+        text referrer
+        text remote_host
+        text type
+        text url
+        text user_type
+    }
+    feature_match_event {
+        text id PK
+        text feature_id PK
+        text account_id FK
+        text identify_id FK
+        text session_id FK
+        text date
+        text event_type
+        jsonb global_context
+        text property_key
+        text user_type
+    }
+    survey_response_selection_info {
+        text index PK
+        text survey_response_event_id PK
+        text selection_id
+    }
+    survey_response {
+        text event_id PK
+        text account_id FK
+        text engagement_id FK
+        text identify_id FK
+        text session_id FK
+        text view_event_id FK
+        text carousel_state
+        text comment
+        text contact_me_allowed
+        text content_id
+        text content_type
+        text date
+        text engagement_track_type
+        text event_type
+        text execution_date
+        text execution_id
+        jsonb global_context
+        text guide_state
+        text link_url
+        text path
+        text property_key
+        text question_type
+        text score
+        text sequence_number
+        text slide_id
+        text step_id
+        text survey_state
+        text user_type
+    }
+    form_submit_event {
+        text id PK
+        text account_id FK
+        text identify_id FK
+        text session_id FK
+        text date
+        text event_type
+        text form_data
+        jsonb global_context
+        text hash
+        text host
+        jsonb languages
+        text page_title
+        text path
+        text property_key
+        jsonb query_params
+        text query_string
+        text referrer
+        text remote_host
+        text scheme
+        text screen_height
+        text screen_width
+        text user_type
+    }
+    segment_match_event {
+        text id PK
+        text segment_id PK
+        text account_id FK
+        text identify_id FK
+        text session_id FK
+        text date
+        text event_type
+        jsonb global_context
+        text property_key
+        text user_type
+    }
+    event_identification {
+        text event_id PK
+        text identify_id PK
+        text account_id FK
+        text email FK
+        text session_id FK
+        text date
+        text event_type
+        text property_key
+        text user_type
+    }
+    engagement_view_event {
+        text id PK
+        text engagement_id PK
+        text account_id FK
+        text identify_id FK
+        text session_id FK
+        text carousel_state
+        text comment
+        text contact_me_allowed
+        text content_id
+        text content_type
+        text date
+        text engagement_track_type
+        text event_type
+        text execution_date
+        text execution_id
+        jsonb global_context
+        text guide_state
+        text link_url
+        text path
+        text property_key
+        text question_type
+        text score
+        jsonb selection_ids
+        text sequence_number
+        text slide_id
+        text step_id
+        text survey_state
+        text user_type
+        text view_event_id
+    }
+    lead_event {
+        text id PK
+        text account_id FK
+        text identify_id FK
+        text session_id FK
+        text date
+        text email
+        text event_type
+        jsonb global_context
+        text property_key
+        text user_type
+    }
+    session_event {
+        text id PK
+        text session_id PK
+        text account_id FK
+        text identify_id FK
+        text coordinate_latitude
+        text coordinate_longitude
+        text date
+        text event_type
+        jsonb global_context
+        text inferred_location_city
+        text inferred_location_continent
+        text inferred_location_country_code
+        text inferred_location_country_name
+        text inferred_location_postal_code
+        text inferred_location_region_name
+        text inferred_location_state_code
+        text inferred_location_state_name
+        text inferred_location_street
+        text inferred_location_time_zone
+        text property_key
+        text remote_host
+        text user_type
+    }
+    user_property_key {
+        text index PK
+        text users_aptrinsic_id PK
+        text key
+    }
+    last_visited_user_agent_data {
+        text index PK
+        text users_aptrinsic_id PK
+        text property_key
+        text useragent_browsertype
+        text useragent_browserversion
+        text useragent_device
+        text useragent_platformtype
+        text useragent_platformversion
+        text useragent_rawuseragent
+    }
+    users {
+        text aptrinsic_id PK
+        text account_id FK
+        text identify_id FK
+        text create_date
+        text email
+        text first_name
+        text first_visit_date
+        text gender
+        text global_unsubscribe
+        text id
+        text inferred_location_coordinate_latitude
+        text inferred_location_coordinate_longitude
+        text last_inferred_location_city
+        text last_inferred_location_continent
+        text last_inferred_location_country_code
+        text last_inferred_location_country_name
+        text last_inferred_location_postal_code
+        text last_inferred_location_region_name
+        text last_inferred_location_state_code
+        text last_inferred_location_state_name
+        text last_inferred_location_street
+        text last_inferred_location_time_zone
+        timestamp last_modified_date
+        text last_name
+        text last_seen_date
+        text location_city
+        text location_continent
+        text location_coordinate_latitude
+        text location_coordinate_longitude
+        text location_country_code
+        text location_country_name
+        text location_postal_code
+        text location_region_name
+        text location_state_code
+        text location_state_name
+        text location_street
+        text location_time_zone
+        text number_of_visit
+        text phone
+        text role
+        text score_bigger
+        text sfdc_contact_id
+        text sign_up_date
+        text subscription_id
+        text title
+        text type
+    }
+    user_preference {
+        text _fivetran_id PK
+        text guided_tour
+        text onboarding_bot
+        text product_update
+        text survey
+        text track_usage
+        text users_id
+    }
+    kcbot_environment }o--|| kcbot : "fk"
+    kcbot_language }o--|| kcbot : "fk"
+    account_property_key }o--|| account : "fk"
+    engagement_property_key }o--|| engagement : "fk"
+    engagement_envs }o--|| engagement : "fk"
+    subscription_product_key }o--|| subscription_product : "fk"
+    subscription_product_key }o--|| subscription_product : "fk"
+    subscription_product }o--|| subscription : "fk"
+    article_kcbot }o--|| kcbot : "fk"
+    article_kcbot }o--|| article : "fk"
+    article_language }o--|| article : "fk"
+    engagement_error_detail }o--|| engagement : "fk"
+    feature_label }o--|| feature : "fk"
+    pageview_event }o--|| event_identification : "fk"
+    pageview_event }o--|| session_event : "fk"
+    pageview_event }o--|| account : "fk"
+    email_event }o--|| event_identification : "fk"
+    email_event }o--|| account : "fk"
+    custom_event }o--|| event_identification : "fk"
+    custom_event }o--|| session_event : "fk"
+    custom_event }o--|| account : "fk"
+    feature_match_event }o--|| event_identification : "fk"
+    feature_match_event }o--|| feature : "fk"
+    feature_match_event }o--|| session_event : "fk"
+    feature_match_event }o--|| account : "fk"
+    survey_response_selection_info }o--|| survey_response : "fk"
+    survey_response }o--|| event_identification : "fk"
+    survey_response }o--|| engagement_view_event : "fk"
+    survey_response }o--|| engagement : "fk"
+    survey_response }o--|| session_event : "fk"
+    survey_response }o--|| account : "fk"
+    form_submit_event }o--|| event_identification : "fk"
+    form_submit_event }o--|| session_event : "fk"
+    form_submit_event }o--|| account : "fk"
+    segment_match_event }o--|| segment : "fk"
+    segment_match_event }o--|| event_identification : "fk"
+    segment_match_event }o--|| session_event : "fk"
+    segment_match_event }o--|| account : "fk"
+    event_identification }o--|| users : "fk"
+    event_identification }o--|| session_event : "fk"
+    event_identification }o--|| account : "fk"
+    engagement_view_event }o--|| event_identification : "fk"
+    engagement_view_event }o--|| engagement : "fk"
+    engagement_view_event }o--|| session_event : "fk"
+    engagement_view_event }o--|| account : "fk"
+    lead_event }o--|| event_identification : "fk"
+    lead_event }o--|| session_event : "fk"
+    lead_event }o--|| account : "fk"
+    session_event }o--|| event_identification : "fk"
+    session_event }o--|| account : "fk"
+    user_property_key }o--|| users : "fk"
+    last_visited_user_agent_data }o--|| users : "fk"
+    users }o--|| event_identification : "fk"
+    users }o--|| account : "fk"

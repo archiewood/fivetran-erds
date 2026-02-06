@@ -1,0 +1,142 @@
+erDiagram
+%% *zendesk_ticket_id refers to the  Zendesk Ticket which you can sync through our Zendesk connector, it's available under Tickets table. Visit Zendesk Documentation to learn more about it.
+    agent_status_history {
+        bigint agent_id PK
+        bigint account_id
+        text event_id
+        text value
+    }
+    agent_engagement_history {
+        bigint agent_id PK
+        bigint account_id
+        text event_id
+        text value
+    }
+    engagement {
+        text id PK
+        bigint agent_id FK
+        text chat_id FK
+        bigint department_id FK
+        text accepted
+        text assigned
+        text comment
+        bigint duration
+        text rating
+        text started_by
+        timestamp timestamps
+    }
+    visitor {
+        text id PK
+        text email
+        text name
+        text notes
+        text phone
+    }
+    chat_history {
+        bigint index PK
+        timestamp timestamps PK
+        text chat_id PK
+        bigint agent_id FK
+        bigint department_id FK
+        bigint prev_department_id FK
+        text channel
+        text msg
+        text msg_id
+        text name
+        text sender_type
+        text type
+    }
+    chat_agent {
+        bigint agent_id PK
+        text chat_id PK
+    }
+    chat_tag {
+        text tags PK
+        text chat_id PK
+    }
+    chat {
+        text id PK
+        text visitor_id FK
+        text comment
+        bigint count_agent
+        bigint count_total
+        bigint count_visitor
+        boolean dropped
+        bigint duration
+        boolean missed
+        text preview
+        text rating
+        bigint response_time_avg
+        bigint response_time_first
+        bigint response_time_max
+        text session_browser
+        text session_city
+        text session_country_code
+        text session_country_name
+        timestamp session_end_date
+        text session_id
+        text session_ip
+        text session_platform
+        text session_region
+        timestamp session_start_date
+        text session_user_agent
+        text started_by
+        timestamp timestamps
+        boolean triggered
+        boolean triggered_response
+        text type
+        boolean unread
+        bigint zendesk_ticket_id
+    }
+    department_member {
+        bigint agent_id PK
+        bigint department_id PK
+    }
+    department {
+        bigint id PK
+        text description
+        boolean enabled
+        text name
+    }
+    ban_visitor {
+        bigint id PK
+        text visitor_id FK
+        text reason
+    }
+    ban_ip {
+        bigint id PK
+        text ip_address
+        text reason
+    }
+    agent_role {
+        bigint agent_id PK
+        text role PK
+    }
+    agent {
+        bigint id PK
+        timestamp create_date
+        text display_name
+        text email
+        boolean enabled
+        text first_name
+        text im_server_id
+        timestamp last_login
+        text last_name
+        bigint login_count
+    }
+    agent_status_history }o--|| agent : "fk"
+    agent_engagement_history }o--|| agent : "fk"
+    engagement }o--|| department : "fk"
+    engagement }o--|| chat : "fk"
+    engagement }o--|| agent : "fk"
+    chat_history }o--|| department : "fk"
+    chat_history }o--|| department : "fk"
+    chat_history }o--|| agent : "fk"
+    chat_history }o--|| chat : "fk"
+    chat_agent }o--|| agent : "fk"
+    chat_agent }o--|| chat : "fk"
+    chat_tag }o--|| chat : "fk"
+    chat }o--|| visitor : "fk"
+    department_member }o--|| agent : "fk"
+    department_member }o--|| department : "fk"
+    ban_visitor }o--|| visitor : "fk"

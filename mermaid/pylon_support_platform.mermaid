@@ -1,0 +1,149 @@
+erDiagram
+    issue_tag {
+        text tags PK
+        text issue_id PK
+    }
+    issue_csat_response {
+        text index PK
+        text issue_id PK
+        text comment
+        text score
+    }
+    issue_external_issue {
+        text index PK
+        text issue_id PK
+        text external_id
+        text link
+        text source
+    }
+    issue {
+        text id PK
+        jsonb account_id FK
+        jsonb assignee_id FK
+        text slack_channel_id FK
+        text business_hours_first_response_seconds
+        text business_hours_resolution_seconds
+        text created_at
+        text customer_portal_visible
+        text first_response_time
+        text latest_message_time
+        text number
+        jsonb requester_id
+        text resolution_time
+        text slack_message_ts
+        text source
+        text state
+        text title
+        text type
+    }
+    issue_follower {
+        text id PK
+        text issue_id PK
+        text type
+    }
+    team_user {
+        text index PK
+        text team_id PK
+        text user_ids FK
+    }
+    team {
+        text id PK
+        text name
+    }
+    message {
+        text id PK
+        text issue_id PK
+        text author_contact_id FK
+        text author_user_id FK
+        text author_name
+        text is_private
+        text message_html
+        text source
+        text thread_id
+        text timestamps
+    }
+    users {
+        text id PK
+        jsonb emails
+        text name
+        text role_id
+        text status
+    }
+    tags {
+        text id PK
+        text object_type
+        text value
+    }
+    ticket_form_field {
+        text index PK
+        text ticket_form_id PK
+        text description_html
+        text name
+        text type
+    }
+    ticket_form {
+        text id PK
+        text description_html
+        text is_public
+        text name
+    }
+    user_role {
+        text id PK
+        text name
+    }
+    contact {
+        text id PK
+        jsonb account_id FK
+        text avatar_url
+        text email
+        jsonb emails
+        text name
+        text portal_role
+    }
+    knowledge_base_supported_language {
+        text index PK
+        text knowledge_base_id PK
+        text supported_language
+    }
+    knowledge_base {
+        text id PK
+        text default_language
+        text title
+    }
+    account_channel {
+        text id PK
+        text account_id PK
+        text source
+    }
+    account_tag {
+        text tags PK
+        text account_id PK
+    }
+    account {
+        text id PK
+        text created_at
+        jsonb domains
+        text latest_customer_activity_time
+        text name
+        jsonb owner
+        text primary_domain
+        text type
+    }
+    issue_tag }o--|| issue : "fk"
+    issue_csat_response }o--|| issue : "fk"
+    issue_external_issue }o--|| issue : "fk"
+    issue }o--|| users : "fk"
+    issue }o--|| account : "fk"
+    issue }o--|| account_channel : "fk"
+    issue_follower }o--|| issue : "fk"
+    team_user }o--|| users : "fk"
+    team_user }o--|| team : "fk"
+    message }o--|| contact : "fk"
+    message }o--|| users : "fk"
+    message }o--|| issue : "fk"
+    ticket_form_field }o--|| ticket_form : "fk"
+    user_role }o--|| users : "fk"
+    contact }o--|| account : "fk"
+    knowledge_base_supported_language }o--|| knowledge_base : "fk"
+    account_channel }o--|| account : "fk"
+    account_tag }o--|| account : "fk"

@@ -1,0 +1,66 @@
+erDiagram
+    visit_by_trend {
+        text date PK
+        text api_id PK
+        text panel_visit
+        text visit
+        text visit_duration_segmentation
+    }
+    entity {
+        text api_id PK
+        text address_city
+        text address_country_code
+        text address_formatted_address
+        text address_short_formatted_address
+        text address_state
+        text address_street_name
+        text address_zip_code
+        text category_infocategory
+        text category_infogroup
+        text category_infosub_category
+        text is_flagged
+        text is_permitted
+        text name
+        text parent_chain_api_id
+        text parent_chain_name
+        text parent_tag_api_id
+        text parent_tag_name
+        text placer_url
+        text region_cbsa_code
+        text region_cbsa_name
+        text region_code
+        text region_dma_code
+        text region_dma_name
+        text region_state_code
+        text region_state_name
+        text region_type
+    }
+    sub_entity {
+        text sub_entity_api_id PK
+        text entity_api_id PK
+        text flagged
+        text name
+        text region_code
+        text region_type
+        text store_id
+    }
+    visit_by_hour {
+        text bins PK
+        text end_date PK
+        text start_date PK
+        text api_id PK
+        text estimated_foot_traffic
+        text near_by_radius
+        text visit_duration_segmentation
+    }
+    visit_by_opening_hour {
+        text index PK
+        text api_id PK
+        text day
+        text from_hour
+        text to_hour
+    }
+    visit_by_trend }o--|| entity : "fk"
+    sub_entity }o--|| entity : "fk"
+    visit_by_hour }o--|| entity : "fk"
+    visit_by_opening_hour }o--|| entity : "fk"

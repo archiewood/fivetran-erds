@@ -1,0 +1,215 @@
+erDiagram
+    board {
+        text id PK
+        text created
+        text is_private
+        text name
+        text post_count
+        text private_comments
+        text token
+        text url
+    }
+    vote_zendesk_ticket {
+        text id PK
+        text vote_id PK
+        text created
+        text description
+        text subject
+        text url
+    }
+    vote {
+        text id PK
+        text board_id FK
+        text by_user_id FK
+        text voter_user_id FK
+        text created
+        text post_id
+    }
+    entry_label {
+        text id PK
+        text entry_id PK
+        text created
+        text entry_count
+        text name
+        text url
+    }
+    entry_type {
+        text name PK
+        text entry_id PK
+    }
+    entry_post {
+        text entry_id PK
+        text id PK
+    }
+    entry {
+        text id PK
+        text created
+        text last_saved
+        text likes
+        text markdown_details
+        text plaintext_details
+        text published_at
+        text scheduled_for
+        text status
+        text title
+        text url
+    }
+    post_tag {
+        text id PK
+        text post_id PK
+    }
+    post_linked_task {
+        text id PK
+        text post_id PK
+        text link_id
+        text name
+        text status
+        text url
+    }
+    post_linked_issue {
+        text id PK
+        text post_id FK
+        text key
+        text url
+    }
+    post_merge_history {
+        text post_id PK
+        text created
+    }
+    post {
+        text id PK
+        text author_user_id FK
+        text board_id FK
+        text by_user_id FK
+        text category_id FK
+        text owner_id FK
+        text comment_count
+        text created
+        jsonb custom_fields
+        text details
+        text eta
+        jsonb image_urls
+        text score
+        text status
+        text status_changed_at
+        text title
+        text total_mrr
+        text url
+    }
+    comment_mention {
+        text comment_id PK
+        text id PK
+    }
+    comment {
+        text id PK
+        text author_id FK
+        text board_id FK
+        text post_id FK
+        text created
+        jsonb image_urls
+        text internal
+        text like_count
+        text likes
+        text parent_id
+        text private
+        text status
+        text value
+    }
+    company_attribute {
+        text name PK
+        text company_id PK
+        text value
+    }
+    company {
+        text id PK
+        text created
+        text domain
+        text member_count
+        text monthly_spend
+        text name
+    }
+    category {
+        text id PK
+        text board_id FK
+        text created
+        text name
+        text parent_id
+        text post_count
+        text url
+    }
+    status_change {
+        text id PK
+        text changer_user_id FK
+        text post_id FK
+        text created
+        jsonb image_urls
+        text status
+        text value
+    }
+    user_attribute {
+        text name PK
+        text users_id PK
+        text value
+    }
+    users {
+        text id PK
+        text avatar_url
+        text created
+        text email
+        text is_admin
+        text last_activity
+        text name
+        text url
+        text user_id
+    }
+    opporunity_post {
+        text id PK
+        text opportunity_id PK
+    }
+    opportunity {
+        text id PK
+        text closed
+        text name
+        text salesforce_opportunity_id
+        text value
+        text won
+    }
+    tags {
+        text id PK
+        text board_id FK
+        text created
+        text name
+        text post_count
+        text url
+    }
+    vote_zendesk_ticket }o--|| vote : "fk"
+    vote }o--|| post : "fk"
+    vote }o--|| users : "fk"
+    vote }o--|| users : "fk"
+    entry_label }o--|| entry : "fk"
+    entry_type }o--|| entry : "fk"
+    entry_post }o--|| post : "fk"
+    entry_post }o--|| entry : "fk"
+    post_tag }o--|| tags : "fk"
+    post_tag }o--|| post : "fk"
+    post_linked_task }o--|| post : "fk"
+    post_linked_issue }o--|| post : "fk"
+    post_merge_history }o--|| post : "fk"
+    post }o--|| users : "fk"
+    post }o--|| board : "fk"
+    post }o--|| category : "fk"
+    post }o--|| users : "fk"
+    post }o--|| users : "fk"
+    comment_mention }o--|| users : "fk"
+    comment_mention }o--|| comment : "fk"
+    comment }o--|| board : "fk"
+    comment }o--|| users : "fk"
+    comment }o--|| post : "fk"
+    company_attribute }o--|| company : "fk"
+    category }o--|| board : "fk"
+    status_change }o--|| post : "fk"
+    status_change }o--|| users : "fk"
+    user_attribute }o--|| users : "fk"
+    opporunity_post }o--|| post : "fk"
+    opporunity_post }o--|| opportunity : "fk"
+    tags }o--|| board : "fk"

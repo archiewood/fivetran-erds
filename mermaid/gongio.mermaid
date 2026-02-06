@@ -1,0 +1,476 @@
+erDiagram
+    scorecard_question {
+        text question_id PK
+        text scorecard_id FK
+        text updater_user_id FK
+        text created
+        boolean is_overall
+        text question_revision_id
+        text question_text
+        text updated
+    }
+    scorecard {
+        text id PK
+        text updater_user_id FK
+        text workspace_id FK
+        timestamp created
+        boolean enabled
+        text name
+        timestamp updated
+    }
+    contact_entity_schema {
+        text name PK
+        text integration_id PK
+        boolean is_deleted
+        text label
+        timestamp last_modified
+        text reference_to
+        text type
+    }
+    entity_value {
+        text entity PK
+        text name PK
+        text integration_id PK
+        text value
+    }
+    call_in_folder {
+        text call_id PK
+        text library_folder_id PK
+        text added_by FK
+        timestamp created
+        text note
+        integer snippet_from_second
+        integer snippet_to_second
+    }
+    permission_call_access {
+        text permission_profile_id PK
+        text user_id PK
+    }
+    permission_library_folder_access {
+        text permission_profile_id PK
+        text user_id PK
+    }
+    permission_deal_access {
+        text permission_profile_id PK
+        text user_id PK
+    }
+    permission_forecast_access {
+        text permission_profile_id PK
+        text user_id PK
+    }
+    permission_forecast_edit_submission_access {
+        text permission_profile_id PK
+        text user_id PK
+    }
+    permission_forecast_edit_target_access {
+        text permission_profile_id PK
+        text user_id PK
+    }
+    permission_coaching_access {
+        text permission_profile_id PK
+        text user_id PK
+    }
+    permission_insight_access {
+        text permission_profile_id PK
+        text user_id PK
+    }
+    permission_email_access {
+        text permission_profile_id PK
+        text user_id PK
+    }
+    permission_profile {
+        text id PK
+        text workspace_id FK
+        boolean account
+        boolean activity
+        text calls_access_permission_level
+        boolean calls_and_search
+        boolean coaching
+        boolean create_edit_and_delete_deals_boards
+        boolean crm_data_import
+        boolean crm_data_inline_editing
+        text deal_access_permission_level
+        boolean deals
+        boolean deals_inline_editing
+        boolean delete_calls
+        boolean delete_emails
+        text description
+        boolean download_call_media
+        text emails_access_permission_level
+        boolean engage_manage_company_sequences
+        boolean engage_manage_company_templates
+        boolean export_calls_and_coaching_data_to_csv
+        boolean forecast
+        text forecast_access_permission_level
+        text forecast_edit_submissions_access_permission_level
+        text forecast_edit_targets_access_permission_level
+        boolean forecast_manage
+        boolean initiatives
+        text insights_access_permission_level
+        boolean library
+        text library_folder_access_permission_level
+        boolean manage_general_business_settings
+        boolean manage_scorecards
+        boolean manually_schedule_and_upload_calls
+        boolean market
+        text name
+        boolean private_calls
+        boolean score_calls
+        boolean share_calls_with_customers
+        boolean team_stats
+        boolean trim_calls
+    }
+    lead_entity_schema {
+        text name PK
+        text integration_id PK
+        boolean is_deleted
+        text label
+        timestamp last_modified
+        text reference_to
+        text type
+    }
+    language_keywords {
+        text keyword PK
+        text tracker_language PK
+    }
+    tracker_language {
+        text tracker_language PK
+        text tracker_id PK
+        text include_related_forms
+    }
+    tracker_said_in_topic {
+        text keyword PK
+        text tracker_id PK
+    }
+    tracker_said_in_call_parts {
+        text keyword PK
+        text tracker_id PK
+    }
+    tracker {
+        text tracker_id PK
+        text creator_user_id FK
+        text updater_user_id FK
+        text workspace_id FK
+        text affiliation
+        timestamp created
+        text filter_query
+        text part_of_question
+        text said_at
+        bigint said_at_interval
+        text tracker_name
+        timestamp updated
+    }
+    manual_call_integration {
+        text _fivetran_id PK
+        text account_crm_id FK
+        text deal_crm_id FK
+        text manual_call_id FK
+        text manual_user_id FK
+    }
+    manual_call {
+        text id PK
+        text user_id PK
+        text created
+    }
+    user_email_alias {
+        text email PK
+        text user_id PK
+    }
+    user_meeting_url {
+        text url PK
+        text user_id PK
+    }
+    user_spoken_language {
+        text languages PK
+        text user_id PK
+        text is_primary
+    }
+    users {
+        text id PK
+        text manager_id FK
+        boolean active
+        text created
+        text email_address
+        boolean emails_imported
+        text extension
+        text first_name
+        boolean gong_connect_enabled
+        text last_name
+        text meeting_consent_page_url
+        boolean non_recorded_meetings_imported
+        text phone_number
+        boolean prevent_email_import
+        boolean prevent_web_conference_recording
+        boolean telephony_calls_imported
+        text title
+        boolean web_conferences_recorded
+    }
+    crm {
+        text integration_id PK
+        text owner_email FK
+        text name
+    }
+    call_public_comment {
+        text id PK
+        text call_id PK
+        text commenter_user_id FK
+        text in_reply_to FK
+        text audio_end_time
+        text audio_start_time
+        text comment
+        text during_call
+        text posted
+    }
+    call_content_action_item {
+        text _fivetran_id PK
+        text call_id FK
+        text snippet
+        text snippet_end_time
+        text snippet_start_time
+        text speaker_id
+    }
+    call_structure {
+        text _fivetran_id PK
+        text call_id FK
+        text duration
+        text name
+    }
+    call_topic {
+        text _fivetran_id PK
+        text call_id FK
+        text duration
+        text name
+    }
+    call_context_integration {
+        text name PK
+        text object_id PK
+        text call_id PK
+        text object_type
+        text systems
+        text timing
+        jsonb value
+    }
+    call_interaction {
+        text name PK
+        text call_id PK
+        text value
+    }
+    call_participant_integration {
+        text name PK
+        text object_id PK
+        text call_id PK
+        text call_participant_id FK
+        text object_type
+        text systems
+        text timing
+        text value
+    }
+    call_participant {
+        text id PK
+        text call_id PK
+        text user_id FK
+        text affiliation
+        text email_address
+        jsonb methods
+        text name
+        text phone_number
+        text speaker_id
+        text title
+    }
+    call_speaker {
+        text id PK
+        text call_id PK
+        text user_id FK
+        text talk_time
+    }
+    call_video {
+        text _fivetran_id PK
+        text call_id FK
+        text duration
+        text name
+    }
+    call {
+        text id PK
+        text workspace_id PK
+        text primary_user_id FK
+        text calendar_event_id
+        text client_unique_id
+        text company_question_count
+        text custom_data
+        text direction
+        integer duration
+        boolean is_private
+        text languages
+        text media
+        text media_audio_url
+        text media_video_url
+        text meeting_url
+        text non_company_question_count
+        text purpose
+        text scheduled
+        text scope
+        text sdr_disposition
+        text started
+        text systems
+        text title
+        text url
+    }
+    call_tracker {
+        text _fivetran_id PK
+        text call_id
+        text id
+        text name
+        text phrase
+        text speaker_id
+        text start_time
+        text type
+    }
+    user_setting_history {
+        text setting PK
+        text time PK
+        text user_id PK
+        boolean value
+    }
+    account_entity_schema {
+        text name PK
+        text integration_id PK
+        boolean is_deleted
+        text label
+        timestamp last_modified
+        text reference_to
+        text type
+    }
+    transcript {
+        text call_id PK
+        text index PK
+        text workspace_id PK
+        jsonb sentence
+        text speaker_id
+        text topic
+    }
+    workspace {
+        text id PK
+        text description
+        text name
+    }
+    engage_flow {
+        text id PK
+        text user_email_address PK
+        text folder_id FK
+        timestamp creation_date
+        text name
+        text visibility
+    }
+    answered_scorecard_answer {
+        text answered_scorecard_id PK
+        text question_id PK
+        text answer_text
+        boolean is_overall
+        text not_applicable
+        text question_revision_id
+        text score
+    }
+    answered_scorecard {
+        text id PK
+        text call_id PK
+        text scorecard_id PK
+        text reviewed_user_id FK
+        text reviewer_user_id FK
+        text call_start_time
+        text review_time
+        text visibility_type
+    }
+    library_folder {
+        text id PK
+        text created_by FK
+        text parent_folder_id FK
+        text workspace_id FK
+        text name
+        text updated
+    }
+    deal_entity_schema {
+        text name PK
+        text integration_id PK
+        boolean is_deleted
+        text label
+        timestamp last_modified
+        text reference_to
+        text type
+    }
+    scorecard_question }o--|| users : "fk"
+    scorecard_question }o--|| scorecard : "fk"
+    scorecard }o--|| users : "fk"
+    scorecard }o--|| workspace : "fk"
+    contact_entity_schema }o--|| crm : "fk"
+    entity_value }o--|| crm : "fk"
+    call_in_folder }o--|| call : "fk"
+    call_in_folder }o--|| users : "fk"
+    call_in_folder }o--|| library_folder : "fk"
+    permission_call_access }o--|| users : "fk"
+    permission_call_access }o--|| permission_profile : "fk"
+    permission_library_folder_access }o--|| users : "fk"
+    permission_library_folder_access }o--|| permission_profile : "fk"
+    permission_deal_access }o--|| users : "fk"
+    permission_deal_access }o--|| permission_profile : "fk"
+    permission_forecast_access }o--|| users : "fk"
+    permission_forecast_access }o--|| permission_profile : "fk"
+    permission_forecast_edit_submission_access }o--|| users : "fk"
+    permission_forecast_edit_submission_access }o--|| permission_profile : "fk"
+    permission_forecast_edit_target_access }o--|| users : "fk"
+    permission_forecast_edit_target_access }o--|| permission_profile : "fk"
+    permission_coaching_access }o--|| users : "fk"
+    permission_coaching_access }o--|| permission_profile : "fk"
+    permission_insight_access }o--|| users : "fk"
+    permission_insight_access }o--|| permission_profile : "fk"
+    permission_email_access }o--|| users : "fk"
+    permission_email_access }o--|| permission_profile : "fk"
+    permission_profile }o--|| workspace : "fk"
+    lead_entity_schema }o--|| crm : "fk"
+    language_keywords }o--|| tracker_language : "fk"
+    tracker_language }o--|| tracker : "fk"
+    tracker_said_in_topic }o--|| tracker : "fk"
+    tracker_said_in_call_parts }o--|| tracker : "fk"
+    tracker }o--|| workspace : "fk"
+    tracker }o--|| users : "fk"
+    tracker }o--|| users : "fk"
+    manual_call_integration }o--|| call_context_integration : "fk"
+    manual_call_integration }o--|| call_context_integration : "fk"
+    manual_call_integration }o--|| manual_call : "fk"
+    manual_call_integration }o--|| manual_call : "fk"
+    manual_call }o--|| call : "fk"
+    manual_call }o--|| users : "fk"
+    user_email_alias }o--|| users : "fk"
+    user_meeting_url }o--|| users : "fk"
+    user_spoken_language }o--|| users : "fk"
+    users }o--|| users : "fk"
+    crm }o--|| users : "fk"
+    call_public_comment }o--|| users : "fk"
+    call_public_comment }o--|| call_public_comment : "fk"
+    call_public_comment }o--|| call : "fk"
+    call_content_action_item }o--|| call : "fk"
+    call_structure }o--|| call : "fk"
+    call_topic }o--|| call : "fk"
+    call_context_integration }o--|| call : "fk"
+    call_interaction }o--|| call : "fk"
+    call_participant_integration }o--|| call_participant : "fk"
+    call_participant_integration }o--|| call : "fk"
+    call_participant }o--|| users : "fk"
+    call_participant }o--|| call : "fk"
+    call_speaker }o--|| users : "fk"
+    call_speaker }o--|| call : "fk"
+    call_video }o--|| call : "fk"
+    call }o--|| workspace : "fk"
+    call }o--|| users : "fk"
+    user_setting_history }o--|| users : "fk"
+    account_entity_schema }o--|| crm : "fk"
+    engage_flow }o--|| library_folder : "fk"
+    answered_scorecard_answer }o--|| scorecard_question : "fk"
+    answered_scorecard_answer }o--|| answered_scorecard : "fk"
+    answered_scorecard }o--|| scorecard : "fk"
+    answered_scorecard }o--|| call : "fk"
+    answered_scorecard }o--|| users : "fk"
+    answered_scorecard }o--|| users : "fk"
+    library_folder }o--|| users : "fk"
+    library_folder }o--|| library_folder : "fk"
+    library_folder }o--|| workspace : "fk"
+    deal_entity_schema }o--|| crm : "fk"

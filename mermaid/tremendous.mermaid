@@ -1,0 +1,193 @@
+erDiagram
+    reward_custom_field {
+        text id PK
+        text reward_id PK
+        text label
+        text value
+    }
+    reward {
+        text id PK
+        text order_id FK
+        timestamp created_at
+        text deliver_at
+        text delivery_method
+        text delivery_status
+        text recipient_email
+        text recipient_name
+        text recipient_phone
+        text value_currency_code
+        text value_denomination
+    }
+    balance_transaction {
+        text _fivetran_id PK
+        text action
+        text amount
+        text balance
+        text created_at
+        text description
+    }
+    product_currency_code {
+        text index PK
+        text product_id PK
+        text currency_code
+    }
+    product_sku {
+        text index PK
+        text product_id PK
+        text max
+        text min
+    }
+    product_country {
+        text index PK
+        text product_id PK
+        text abbr
+    }
+    product_image {
+        text index PK
+        text product_id PK
+        text src
+        text type
+    }
+    product {
+        text id PK
+        text category
+        text description
+        text disclosure
+        text name
+    }
+    role {
+        text id PK
+        text description
+        text title
+    }
+    funding_source {
+        text id PK
+        text account_number_mask
+        text account_routing_mask
+        text account_type
+        text accountholder_name
+        text available_cents
+        text bank_name
+        text expired
+        text last_4
+        text last_payment_failed_at
+        text method
+        text network
+        text pending_cents
+        text refundable
+        text type
+    }
+    organization {
+        text id PK
+        text created_at
+        text name
+        text status
+        text website
+    }
+    member {
+        text id PK
+        text role_id FK
+        text active
+        text created_at
+        text email
+        text last_login_at
+        text name
+        text status
+    }
+    campaign_product {
+        text index PK
+        text campaign_id PK
+        text product FK
+    }
+    campaign {
+        text id PK
+        text description
+        text email_button_color
+        text email_logo_background_color
+        text email_logo_image_height_px
+        text email_logo_image_url
+        text email_sender_name
+        text email_subject_line
+        text name
+        text webpage_background_color
+        text webpage_headline
+        text webpage_logo_background_color
+        text webpage_logo_image_height_px
+        text webpage_logo_image_url
+        text webpage_message
+    }
+    orders {
+        text id PK
+        text campaign_id FK
+        text invoice_id FK
+        text channel
+        text created_at
+        text external_id
+        text payment_channel
+        text payment_fees
+        text payment_refund_total
+        text payment_subtotal
+        text payment_total
+        text status
+    }
+    invoice_order {
+        text index PK
+        text invoice_id PK
+        text order_id FK
+    }
+    invoice_reward {
+        text index PK
+        text invoice_id PK
+        text reward_id FK
+    }
+    invoice {
+        text id PK
+        text amount
+        timestamp created_at
+        text paid_at
+        text po_number
+        text status
+    }
+    fraud_review_custom_field {
+        text id PK
+        text fraud_review_reward_id PK
+        text label
+        text value
+    }
+    fraud_review_reason {
+        text reason PK
+        text fraud_review_reward_id PK
+    }
+    fraud_review {
+        text reward_id PK
+        text order_id FK
+        timestamp created_at
+        text currency_code
+        text deliver_at
+        text delivery_method
+        text delivery_status
+        text denomination
+        text recipient_email
+        text recipient_name
+        text recipient_phone
+        text status
+    }
+    reward_custom_field }o--|| reward : "fk"
+    reward }o--|| orders : "fk"
+    product_currency_code }o--|| product : "fk"
+    product_sku }o--|| product : "fk"
+    product_country }o--|| product : "fk"
+    product_image }o--|| product : "fk"
+    member }o--|| role : "fk"
+    campaign_product }o--|| product : "fk"
+    campaign_product }o--|| campaign : "fk"
+    orders }o--|| campaign : "fk"
+    orders }o--|| invoice : "fk"
+    invoice_order }o--|| orders : "fk"
+    invoice_order }o--|| invoice : "fk"
+    invoice_reward }o--|| reward : "fk"
+    invoice_reward }o--|| invoice : "fk"
+    fraud_review_custom_field }o--|| fraud_review : "fk"
+    fraud_review_reason }o--|| fraud_review : "fk"
+    fraud_review }o--|| reward : "fk"
+    fraud_review }o--|| orders : "fk"

@@ -1,0 +1,598 @@
+erDiagram
+    repos {
+        text uuid PK
+        text clone_url
+        text context
+        text default_branch
+        text features_create_branch
+        text features_merge_branch
+        text features_pull_request
+        text features_remove_branch
+        text id
+        text name
+        text open_issues
+        text org
+        text owner_avatar_url
+        text owner_login
+        text permissions_admin
+        text private
+        text provider
+        text pushed_at
+        text ssh_url
+    }
+    trigger {
+        text pipeline PK
+        text event FK
+        text filter_tag
+    }
+    build_system_event {
+        text id PK
+        text build_id PK
+        text kind
+        text message
+        text retriable
+        text step
+    }
+    build_annotation_env {
+        text enviroment_type PK
+        text build_annotation_id PK
+        text build_id PK
+    }
+    build_annotation_user {
+        text user_name PK
+        text build_annotation_id PK
+        text build_id PK
+    }
+    build_annotation {
+        text id PK
+        text build_id PK
+        text display
+        text key
+        text type
+        text updated_at
+        text value
+    }
+    build_step {
+        text steps PK
+        text build_id PK
+    }
+    build_parent_info_scm_metadata {
+        text name PK
+        text build_id PK
+        text value
+    }
+    build {
+        text id PK
+        text project_id FK
+        text triggered_by FK
+        text account
+        text auto_generated_yaml
+        text branch_name
+        text branch_url
+        text build_strategy
+        text commit_message
+        text commit_url
+        text committer
+        text committer_avatar
+        text created
+        text cron_event_description
+        text cron_event_message
+        text delayed
+        text event
+        text event_label
+        text event_name
+        text exposed_variables_pipeline_trigger_shared
+        text final_workflow_yaml
+        text finished
+        text has_extended_yaml
+        text has_implicit_git_clone_step
+        text initiator
+        text initiator_avatar
+        text keep_p_v_cs_for_pending_approval
+        text pack_id
+        text parent_workflow_info_buil_durl
+        text parent_workflow_info_pipeline_name
+        text parent_workflow_info_trigger_type
+        text parent_workflow_info_workflow_id
+        text pending_approval_concurrency_applied
+        text pending_license
+        text permit_restart_from_failed_step
+        text pipeline_name
+        text pipeline_trigger_id
+        text pipeline_trigger_name
+        text progress
+        text project
+        text provider
+        text repo_name
+        text repo_owner
+        text repo_url
+        text request
+        text revision
+        text runtime_scheduler_config_type
+        text service_id
+        text service_name
+        text started
+        text status
+        jsonb termination_request
+        text trigger
+        text trigger_type
+        text triggers_count
+        text use_debugger
+        text user_yaml_descriptor
+        text webhook_triggered
+    }
+    build_exposed_variable_ops {
+        text _fivetran_id PK
+        text build_id FK
+        text key
+        text type
+        text value
+    }
+    view_type_field {
+        text name PK
+        text view_type_name PK
+        text description
+    }
+    view_type {
+        text name PK
+    }
+    view_filter_value {
+        text value PK
+        text view_filter_id PK
+        text view_id PK
+    }
+    view_filter {
+        text id PK
+        text view_id PK
+        text find_type
+        text selected_value
+    }
+    view {
+        text id PK
+        text account
+        text last_updated
+        text name
+        jsonb tags
+        text time_frame_start
+        text type
+    }
+    context {
+        text _fivetran_id PK
+        text api_version
+        text kind
+        text metadata_default
+        text metadata_name
+        text metadata_system
+        text owner
+        text spec_sharing_policy
+        text spec_type
+    }
+    execution_context_assignment {
+        text execution_context_id PK
+        text pipeline_id PK
+        text id FK
+        text account
+    }
+    summary {
+        text _fivetran_id PK
+        text environment_id FK
+        text deployments_fail
+        text deployments_pending
+        text deployments_ready
+        text pods_fail
+        text pods_pending
+        text pods_ready
+        text services_fail
+        text services_pending
+        text services_ready
+    }
+    all_existing_trigger_type_config {
+        text index PK
+        text all_existing_trigger_type_kind PK
+        text all_existing_trigger_type_type PK
+        text help
+        text image
+        text name
+        text name_label
+        text options_push
+        text required
+        text type
+        text validator
+    }
+    all_existing_trigger_type_filter {
+        text index PK
+        text all_existing_trigger_type_kind PK
+        text all_existing_trigger_type_type PK
+        text help
+        text name
+        text type
+        text validator
+    }
+    all_existing_trigger_type {
+        text kind PK
+        text type PK
+        text help_url
+        text service_url
+        text uri_regex
+        text uri_template
+    }
+    cluster {
+        text id PK
+        text account_id
+        text behind_firewall
+        text cluster_config
+        text helm_3
+        jsonb namespaces
+        text provider
+        text provider_agent
+        text selector
+    }
+    project_tag {
+        text tags PK
+        text project_id PK
+    }
+    project_variable {
+        text _fivetran_id PK
+        text project_id FK
+        text encrypted
+        text key
+        text value
+    }
+    project_metadata {
+        text name PK
+        text project_id PK
+        text value
+    }
+    project {
+        text id PK
+        text account_id
+        text favorite
+        text image
+        text pipeline_number
+        text project_name
+        text updated_at
+    }
+    runtime_environment_extend {
+        text index PK
+        text runtime_environment_name PK
+        text extends
+    }
+    runtime_environment {
+        text name PK
+        text description
+        text docker_daemon_scheduler_default_dind_resources_limits_cpu
+        text docker_daemon_scheduler_default_dind_resources_limits_dind_storage
+        text docker_daemon_scheduler_default_dind_resources_limits_memory
+        text status_healthy
+        text status_last_report_id
+        text status_manual_resolving
+        text status_valid_until
+        text version
+    }
+    registry {
+        text id PK
+        text behind_firewall
+        text defaults
+        text deny_composite_domain
+        text domain
+        text fallback_registry
+        text internal
+        text is_primary
+        text kind
+        text name
+        text provider
+        text username
+    }
+    incorrectly_configured_trigger_of_pipeline {
+        text id PK
+        text context
+        text name
+        text pipeline_name
+        text provider
+        text repo
+    }
+    environment_spec_filter {
+        text _fivetran_id PK
+        text environment_id FK
+        text cluster
+        text namespace
+    }
+    environment_spec_endpoint {
+        text _fivetran_id PK
+        text environment_id FK
+        text name
+        text url
+    }
+    environment {
+        text id PK
+        text account_id
+        text created_at
+        text kind
+        text name
+        jsonb spec_activities
+        text spec_type
+        text updated_at
+        text version
+    }
+    agent_runtime {
+        text index PK
+        text agent_id PK
+        text agent_runtime
+    }
+    agent {
+        text id PK
+        text account
+        text name
+        text status_health_status
+        text status_reported_at
+        text token_name
+    }
+    composition {
+        text id PK
+        text created_by FK
+        text updated_by FK
+        text account
+        text created
+        text entry_point
+        text is_advanced
+        text name
+        text updated
+        text v
+        jsonb vars
+        text yaml_json
+    }
+    rule_attribute {
+        text attributes PK
+        text rule_id PK
+    }
+    rule {
+        text id PK
+        text action
+        text resource
+        text role
+    }
+    pipeline_spec_stage {
+        text stage PK
+        text pipeline_id PK
+    }
+    pipeline_spec_variable {
+        text _fivetran_id PK
+        text pipeline_id FK
+        text encrypted
+        text key
+        text value
+    }
+    pipeline_spec_trigger_event {
+        text event PK
+        text pipeline_id PK
+        text pipeline_spec_trigger_id PK
+    }
+    pipeline_spec_trigger {
+        text id PK
+        text pipeline_id PK
+        text branch_regex
+        text branch_regex_input
+        text comment_regex
+        text context
+        jsonb contexts
+        text disabled
+        text gerrit_ci_status_labels
+        text last_execution_date
+        text name
+        text provider
+        text pull_request_allow_fork_events
+        text pull_request_target_branch_regex
+        text repo
+        text status
+        text type
+        text variables
+        text verified
+    }
+    pipeline_spec_step_init_command {
+        text command PK
+        text pipeline_id PK
+    }
+    pipeline_spec_step_update_ltaf_service_command {
+        text command PK
+        text pipeline_id PK
+    }
+    pipeline {
+        text id PK
+        text project_id FK
+        text account_id
+        text created_at
+        jsonb deprecate
+        text kind
+        jsonb label_tag
+        text last_executed
+        text name
+        text original_yaml_string
+        text revision
+        text short_name
+        text spec_cluster_info_inject_all
+        jsonb spec_context
+        jsonb spec_external_resources
+        text spec_permit_restart_from_failed_steps
+        text spec_runtime_environment_cpu
+        text spec_runtime_environment_dind_storage
+        text spec_runtime_environment_memory
+        text spec_runtime_environment_name
+        text spec_step_init_image
+        text spec_step_init_stage
+        text spec_step_init_title
+        text spec_steps
+        text spec_steps_clone_helm_3_platform_git
+        text spec_steps_clone_helm_3_platform_repo
+        text spec_steps_clone_helm_3_platform_revision
+        text spec_steps_clone_helm_3_platform_stage
+        text spec_steps_clone_helm_3_platform_title
+        text spec_steps_clone_helm_3_platform_type
+        text spec_steps_freestyle_argument_image
+        text spec_steps_freestyle_title
+        text spec_steps_freestyle_type
+        text spec_steps_freestyle_working_directory
+        text spec_steps_update_ltaf_service_image
+        text spec_steps_update_ltaf_service_stage
+        text spec_steps_update_ltaf_service_title
+        text spec_steps_update_ltaf_service_working_directory
+        jsonb spec_termination_policy
+        text updated_at
+        text version
+    }
+    trigger_event {
+        text _fivetran_id PK
+        text account
+        text description
+        text endpoint
+        text help
+        text kind
+        text secret
+        text status
+        text type
+        text uri
+    }
+    trigger_of_pipeline {
+        text id PK
+        text context FK
+        text name
+        text pipeline_name
+        text provider
+        text repo
+    }
+    team_user_role {
+        text user_role PK
+        text team_id PK
+        text team_user_id PK
+    }
+    team_user_account {
+        text account PK
+        text team_id PK
+        text team_user_id PK
+    }
+    team_user_email {
+        text user_email PK
+        text team_id PK
+        text team_user_id PK
+    }
+    team_user_notification {
+        text index PK
+        text team_id PK
+        text team_user_id PK
+        text event
+        text type
+    }
+    team_user_login {
+        text index PK
+        text team_id PK
+        text team_user_id PK
+        text idp_id
+        jsonb permission
+        text personal_git
+        text sso
+        text user_id
+        text user_name
+    }
+    team_user {
+        text id PK
+        text team_id PK
+        text default_account
+        jsonb git_ops_setting
+        text has_password
+        text invited_account
+        text last_login_date
+        text notification_email
+        text register_date
+        text setting_allow_admin_to_login
+        text setting_date_format
+        text setting_display_welcome_screen
+        text setting_filter_inaccessible_kubernetes
+        text setting_notify_my_changes
+        text setting_send_weekly_report
+        text setting_theme
+        text setting_time_format
+        text short_profile_username
+        text show_sso_invite_screen
+        text status
+        text user_data_email
+        text user_data_image
+        text user_data_name
+        text user_name
+    }
+    team {
+        text id PK
+        text account
+        text created_at
+        text name
+        jsonb tags
+        text type
+        text updated_at
+        text v
+    }
+    execution_context_tag {
+        text tags PK
+        text execution_context_id PK
+    }
+    execution_context {
+        text id PK
+        text account
+        text account_default
+        text created_at
+        text description
+        text name
+        text updated_at
+    }
+    trigger }o--|| pipeline : "fk"
+    trigger }o--|| trigger_event : "fk"
+    build_system_event }o--|| build : "fk"
+    build_annotation_env }o--|| build_annotation : "fk"
+    build_annotation_env }o--|| build_annotation : "fk"
+    build_annotation_user }o--|| build_annotation : "fk"
+    build_annotation_user }o--|| build_annotation : "fk"
+    build_annotation }o--|| build : "fk"
+    build_step }o--|| build : "fk"
+    build_parent_info_scm_metadata }o--|| build : "fk"
+    build }o--|| project : "fk"
+    build }o--|| team_user : "fk"
+    build_exposed_variable_ops }o--|| build : "fk"
+    view_type_field }o--|| view_type : "fk"
+    view_filter_value }o--|| view_filter : "fk"
+    view_filter_value }o--|| view_filter : "fk"
+    view_filter }o--|| view : "fk"
+    execution_context_assignment }o--|| execution_context : "fk"
+    summary }o--|| environment : "fk"
+    all_existing_trigger_type_config }o--|| all_existing_trigger_type : "fk"
+    all_existing_trigger_type_config }o--|| all_existing_trigger_type : "fk"
+    all_existing_trigger_type_filter }o--|| all_existing_trigger_type : "fk"
+    all_existing_trigger_type_filter }o--|| all_existing_trigger_type : "fk"
+    project_tag }o--|| project : "fk"
+    project_variable }o--|| project : "fk"
+    project_metadata }o--|| project : "fk"
+    runtime_environment_extend }o--|| runtime_environment : "fk"
+    environment_spec_filter }o--|| environment : "fk"
+    environment_spec_endpoint }o--|| environment : "fk"
+    agent_runtime }o--|| agent : "fk"
+    composition }o--|| team_user : "fk"
+    composition }o--|| team_user : "fk"
+    rule_attribute }o--|| rule : "fk"
+    pipeline_spec_stage }o--|| pipeline : "fk"
+    pipeline_spec_variable }o--|| pipeline : "fk"
+    pipeline_spec_trigger_event }o--|| pipeline_spec_trigger : "fk"
+    pipeline_spec_trigger_event }o--|| pipeline_spec_trigger : "fk"
+    pipeline_spec_trigger }o--|| pipeline : "fk"
+    pipeline_spec_step_init_command }o--|| pipeline : "fk"
+    pipeline_spec_step_update_ltaf_service_command }o--|| pipeline : "fk"
+    pipeline }o--|| project : "fk"
+    trigger_of_pipeline }o--|| build : "fk"
+    trigger_of_pipeline }o--|| pipeline_spec_trigger : "fk"
+    team_user_role }o--|| team_user : "fk"
+    team_user_role }o--|| team_user : "fk"
+    team_user_account }o--|| team_user : "fk"
+    team_user_account }o--|| team_user : "fk"
+    team_user_email }o--|| team_user : "fk"
+    team_user_email }o--|| team_user : "fk"
+    team_user_notification }o--|| team_user : "fk"
+    team_user_notification }o--|| team_user : "fk"
+    team_user_login }o--|| team_user : "fk"
+    team_user_login }o--|| team_user : "fk"
+    team_user }o--|| team : "fk"
+    execution_context_tag }o--|| execution_context : "fk"

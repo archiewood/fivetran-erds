@@ -1,0 +1,73 @@
+erDiagram
+    account_phone_number {
+        text index PK
+        text account_id PK
+        text phone_number
+    }
+    account {
+        text id PK
+        text brand_status
+        text children_count
+        text contacts_enabled
+        text family_count
+        text has_cumulative_plan
+        text logo
+        text messaging_restricted
+        text multi_user
+        text name
+        jsonb office_hour
+        text shortened_link_domain
+        jsonb tcr_campaign
+        text type
+    }
+    user_by_organization {
+        text _fivetran_id PK
+        text account_id FK
+        text account_created
+        text account_name
+        text end_date
+        text organization_name
+        text parent_account_name
+        text start_date
+        text user_created
+        text user_name
+        text user_role
+    }
+    message_deliverability {
+        text _fivetran_id PK
+        text account_id FK
+        text account_name
+        text active_user
+        text delivered_messages
+        text delivered_rate
+        text end_date
+        text failed_messages
+        text failed_rate
+        text organization_name
+        text parent_account_name
+        text received_messages
+        text sent_and_received_ratio
+        text sent_messages
+        text start_date
+        text user_name
+    }
+    user_engagement {
+        text _fivetran_id PK
+        text account_id FK
+        text account_name
+        text active_conversations
+        text active_conversations_response_rate
+        text active_conversations_with_responses
+        text customer_initiated_conversations
+        text end_date
+        text messages_per_conversation
+        text organization_name
+        text parent_account_name
+        text start_date
+        text total_response_rate
+        text user_name
+    }
+    account_phone_number }o--|| account : "fk"
+    user_by_organization }o--|| account : "fk"
+    message_deliverability }o--|| account : "fk"
+    user_engagement }o--|| account : "fk"

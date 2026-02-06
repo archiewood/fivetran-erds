@@ -1,0 +1,91 @@
+erDiagram
+    answer {
+        text id PK
+        text question_id FK
+        text response_id FK
+        text survey_id FK
+        text choice
+        text choice_label
+        jsonb choices
+        text comment
+        text created
+        text follow_up_answer
+        text follow_up_answer_choice
+        jsonb follow_up_answer_choices
+        text modified
+        text published_as_testimonial
+        text sentiment
+    }
+    response_team_member {
+        text id PK
+        text response_id PK
+        text created
+        jsonb custom_attributes
+        text email
+        text external_id
+        text modified
+        text name
+    }
+    response_answer {
+        text answer_id PK
+        text response_id PK
+    }
+    response_tag {
+        text name PK
+        text response_id PK
+    }
+    response {
+        text id PK
+        text survey_id FK
+        text created
+        text customer_company
+        text customer_custom_attributes
+        text customer_email
+        text customer_external_id
+        text customer_id
+        text customer_name
+        text customer_tags
+        text ip_address
+        text modified
+        text source
+        text team_member_id
+        jsonb ticket_custom_attributes
+        text ticket_external_id
+        text ticket_id
+        text ticket_subject
+    }
+    survey {
+        text id PK
+        text brand_name
+        text metric
+        text name
+        text survey_token
+        text survey_type
+    }
+    question_rule {
+        text index PK
+        text question_id PK
+        text action
+        jsonb conditions
+        jsonb question
+    }
+    question {
+        text id PK
+        text survey_id FK
+        jsonb choices
+        text metric
+        text orders
+        text rating_scale
+        text required
+        text text
+    }
+    answer }o--|| question : "fk"
+    answer }o--|| response : "fk"
+    answer }o--|| survey : "fk"
+    response_team_member }o--|| response : "fk"
+    response_answer }o--|| answer : "fk"
+    response_answer }o--|| response : "fk"
+    response_tag }o--|| response : "fk"
+    response }o--|| survey : "fk"
+    question_rule }o--|| question : "fk"
+    question }o--|| survey : "fk"

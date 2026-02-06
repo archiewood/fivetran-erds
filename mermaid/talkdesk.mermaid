@@ -1,0 +1,625 @@
+erDiagram
+    guardian_user_role_change {
+        text role PK
+        text guardian_user_id PK
+        timestamp assigned_at
+        text assigned_by
+    }
+    guardian_user_ring_group {
+        text guardian_user_id PK
+        text name PK
+    }
+    guardian_user {
+        text id PK
+        text call_quality_avg_affected_calls
+        text call_quality_mos_avg
+        timestamp creation_time
+        text email
+        text name
+        text presence
+        text presence_type
+        text risk
+        text role
+        text status
+    }
+    user_attribute {
+        text attribute_id PK
+        text id PK
+        text team
+    }
+    outbound_dialer_calls {
+        text interaction_id PK
+        text campaign_agent_id FK
+        text campaign_id FK
+        text campaign_transferred_agent_id FK
+        text record_id FK
+        text attempt_number
+        text call_finished_time
+        text call_started_time
+        text callback_mode
+        text create_calls_analysis_in_queue
+        text create_calls_analysis_outbound_dialer_record_extra_data
+        text create_calls_analysis_proactive_outbound_phone_type
+        text create_calls_analysis_ringing_at_agent
+        text create_calls_analysis_ringing_at_customer
+        text customer_phone_number
+        text description
+        text disposition
+        text outbound_dialer_system_disposition
+        text sip_hangup_code
+        text talkdesk_phone_number
+        text team_name
+        text total_duration
+    }
+    campaign_user {
+        text campaign_id PK
+        text id PK
+    }
+    ring_group {
+        text name PK
+        text short_abandoned_threshold
+        text wait_time_threshold
+    }
+    record_phone_number {
+        text type PK
+        text record_id PK
+        text number
+    }
+    record {
+        text id PK
+        text record_list_id PK
+        timestamp created_at
+        text external_id
+        text external_provider
+        text external_url
+        text first_name
+        text last_name
+        text phone_number
+        text priority
+        text sync_external_id
+        text timezone
+        timestamp updated_at
+    }
+    contact_phone {
+        text label PK
+        text contact_id PK
+        text number
+    }
+    contact {
+        text id PK
+        text company
+        text name
+    }
+    csat_score {
+        text sent_at PK
+        text agent_id PK
+        text ring_groups_name
+        text score
+        text team_id
+    }
+    talk_time_data {
+        text started_at PK
+        text agent_id PK
+        text ring_groups_name
+        text talk_time_seconds_total
+        text team_id
+    }
+    attribute_category {
+        text id PK
+        text name
+    }
+    acw_time_data {
+        text started_at PK
+        text agent_id PK
+        text acw_time_seconds_total
+        text ring_groups_name
+        text team_id
+    }
+    studio_flow_execution {
+        text flow_id PK
+        text step_name PK
+        text interaction_id PK
+        text call_sid
+        text component_title
+        text destination_number
+        text execution_finished_time
+        text exit
+        text flow_name
+        text flow_timestamp
+        text origin_number
+        text step_execution_order
+        text time_in_step
+    }
+    wallets {
+        text name PK
+        text account_id FK
+        text balance
+        timestamp created_at
+        timestamp updated_at
+    }
+    guardian_case {
+        text id PK
+        text user_id FK
+        text baseline
+        text event_id
+        text guardian_case
+        text hits_number
+        timestamp ingest_timestamp
+        text pop_conf
+        text pop_prob
+        text source
+        text specification
+        text user_conf
+        text user_prob
+    }
+    user_ring_group {
+        text ring_group_name PK
+        text user_id PK
+    }
+    users {
+        text id PK
+        text active
+        timestamp created_at
+        text email
+        text extension
+        text external_phone_number
+        text gender
+        text name
+    }
+    qm_evaluation_score_ring_group {
+        text agent_id PK
+        text qm_evaluation_score_evaluation_time PK
+        text ring_group_name PK
+    }
+    qm_evaluation_score {
+        text evaluation_time PK
+        text agent_id PK
+        text evaluation_max_score
+        text evaluation_obtained_score
+        text team_id
+    }
+    campaign_phone_number {
+        text id PK
+        text campaign_id PK
+        text phone_number
+    }
+    messaging_contact_queue {
+        text messaging_contact_id PK
+        text ring_group_name PK
+    }
+    messaging_contact_handling_queue {
+        text messaging_contact_id PK
+        text ring_group_name PK
+    }
+    messaging_contact {
+        text contact_id PK
+        text interaction_id FK
+        text user_id FK
+        text virtual_agent_id FK
+        text channel_type
+        text contact_assigned_at
+        text contact_duration
+        text contact_finished_at
+        text contact_finished_reason
+        text contact_person_channel_identifier
+        text contact_person_id
+        text contact_person_name
+        text contact_started_at
+        text conversation
+        text direct_assignment_user_id
+        text direction
+        text disposition_name
+        text interaction_duration
+        text interaction_finished_at
+        text interaction_started_at
+        text interaction_status
+        text is_virtual_agent
+        text notes
+        text touchpoint_identifier
+        text touchpoint_name
+        text transfer_out
+        text wrap_up_duration
+    }
+    campaign_record_chain {
+        text type PK
+        text campaign_id PK
+        text max_attempts
+        text retry_period
+        text retry_period_time_unit
+    }
+    campaign_calling_hour {
+        text id PK
+        text campaign_id PK
+        text end_time
+        text start_time
+        text week_days
+    }
+    campaign {
+        text id PK
+        text action_required
+        text dialing_mode
+        text dialing_mode_configuration_abandonment_timeout
+        text dialing_mode_configuration_amd_metadata
+        text dialing_mode_configuration_answering_machine_detection
+        text dialing_mode_configuration_max_abandonment_rate
+        text dialing_mode_configuration_max_dialing_ratio
+        text dialing_mode_configuration_max_ring_time_in_secs
+        text dialing_strategy_ivr_enabled
+        text dialing_strategy_lists_sorting_criteria
+        text dialing_strategy_max_attempts
+        text dialing_strategy_max_skip_attempts
+        text dialing_strategy_preview_timeout
+        text dialing_strategy_retry_period
+        text dialing_strategy_retry_time_unit
+        text dialing_strategy_strategy_type
+        text name
+        text priority
+        text run_once
+        text status
+    }
+    contact_call_handling_ring_group {
+        text contact_call_id PK
+        text ring_group_name PK
+    }
+    contact_call_ring_group {
+        text contact_call_id PK
+        text ring_group_name PK
+    }
+    contact_call {
+        text contact_id PK
+        text interaction_id FK
+        text user_id FK
+        text abandon_time
+        text after_call_work_time
+        text answered_at
+        text callback
+        text company_number
+        text connect_time
+        text connected_at
+        text contact_person_number
+        text contact_type
+        text data_status
+        text direct_assignment_id
+        text direction
+        text disconnected_by_agent
+        text duration
+        text external_phone_number
+        text finished_at
+        text handle_time
+        text hard_hold_time
+        text hold_time
+        text inside_business_hours
+        text inside_service_level
+        text last_contact
+        text phone_display_name
+        text ring_time
+        text short_abandon_time
+        text soft_hold_time
+        text started_at
+        text talk_time
+        text team_id
+        text team_name
+        text time_to_missed
+        text time_to_voicemail
+        text transfer_in
+        text transfer_in_type
+        text transfer_out
+        text transfer_out_type
+        text wait_time
+        text within_service_level_threshold
+    }
+    messaging_traffic {
+        text message_id PK
+        text contact_id FK
+        text interaction_id FK
+        text user_id FK
+        text channel_type
+        text contact_person_id
+        text contact_person_name
+        text message_created_at
+        text message_direction
+    }
+    hold_time_data {
+        text started_at PK
+        text agent_id PK
+        text hold_time_seconds_total
+        text ring_groups_name
+        text team_id
+    }
+    do_not_call_number {
+        text id PK
+        text do_not_call_list_id PK
+        timestamp created_at
+        text expiration_date
+        text phone_number
+        text reason
+    }
+    campaign_do_not_call_list {
+        text campaign_id PK
+        text id PK
+    }
+    record_list {
+        text id PK
+        text account_id FK
+        timestamp created_at
+        text name
+        text records_count
+        text status
+        timestamp updated_at
+    }
+    guardian_session {
+        text id PK
+        text user_id FK
+        text browser_full
+        text country
+        text impersonate
+        text ip_address
+        text latitude
+        timestamp login_timestamp
+        timestamp logout_timestamp
+        text longitude
+        text os_full
+        text sso
+        text support_access
+    }
+    campaign_record_list {
+        text campaign_id PK
+        text id PK
+    }
+    guardian_call_quality {
+        text call_id PK
+        text interaction_id FK
+        text user_id FK
+        text affected_call
+        timestamp call_timestamp
+        text jitter_avg
+        text jitter_max
+        text mos_avg
+        text mos_max
+        text mos_min
+        text packets_loss_percentage
+        text rtt_avg
+        text rtt_max
+        text rtt_min
+    }
+    attribute {
+        text id PK
+        text category_id FK
+        text active
+        text default_proficiency
+        text flows_count
+        text name
+        text proficiency
+        text users_count
+    }
+    user_status_ring_group {
+        text ring_group_name PK
+        text user_id PK
+        text user_status_start_at PK
+    }
+    user_status {
+        text status_start_at PK
+        text user_id PK
+        text is_user_active
+        text status_end_at
+        text status_label
+        text status_time
+        text team_id
+    }
+    feedback_flow {
+        text _fivetran_id PK
+        text interaction_id FK
+        text agent_name
+        text component_id
+        text component_name
+        text component_text
+        text component_type
+        text date_time
+        text flow_name
+        text interaction_direction
+        text is_kpi
+        text pertains_to_agent
+        text recording_url
+        text respondent_phone_number
+        text response
+        text response_state
+        text ring_group
+        text sms_error
+        text survey_channel
+        text talkdesk_phone_number
+        text team_name
+        text touch_point_id
+        text touch_point_name
+        text touch_point_value
+    }
+    inbound_contact_volume {
+        text started_at PK
+        text agent_id PK
+        text in_contact_volume
+        text ring_groups_name
+        text team_id
+    }
+    ring_attempt_queue {
+        text ring_attempt_id PK
+        text ring_group_name PK
+    }
+    ring_attempt {
+        text ring_attempt_id PK
+        text contact_id FK
+        text interaction_id FK
+        text user_email FK
+        text attempt_type
+        text batch_ring_id
+        text ring_attempt_duration
+        text ring_finished_at_time
+        text ring_started_at_time
+        text team_name
+    }
+    call_tag {
+        text interaction_id PK
+        text ring_group_name PK
+    }
+    call {
+        text id PK
+        text agent_disconnected
+        text agent_name
+        text agent_speed_to_answer
+        text call_type
+        text callback_from_queue
+        text calls_historical_base_data_status
+        text csat_score
+        text csat_survey_time
+        text customer_phone_number
+        text description
+        text disposition_code
+        text end_time
+        text handling_agent
+        text hangup
+        text holding_time
+        text in_business_hours
+        text ivr_options
+        text mood
+        text mood_prompted
+        text phone_display_name
+        text rating
+        text rating_reason
+        text record
+        text start_time
+        text talk_time
+        text talkdesk_phone_number
+        text team
+        text transfer
+        text user_email
+        text waiting_time
+    }
+    qm_evaluation_analysis_ring_group {
+        text evaluation_id PK
+        text ring_group_name PK
+    }
+    qm_evaluation_analysis {
+        text evaluation_id PK
+        text question_id PK
+        text agent_id FK
+        text evaluator_id FK
+        text interaction_id FK
+        text branch_to
+        text evaluation_max_score
+        text evaluation_obtained_score
+        text evaluation_time
+        text evaluation_version
+        text first_evaluated_on
+        text form_element_mandatory
+        text form_id
+        text form_name
+        text header_id
+        text header_text
+        text interaction_channel
+        text interaction_date
+        text interaction_direction
+        text interaction_reference
+        text interaction_source
+        text interaction_type
+        text question_answer
+        text question_max_score
+        text question_obtained_score
+        text question_text
+        text question_type
+        text section_id
+        text section_max_score
+        text section_name
+        text section_obtained_score
+        text team_name
+    }
+    do_not_call_list {
+        text id PK
+        text account_id FK
+        timestamp created_at
+        text entries_count
+        text name
+        text status
+        timestamp updated_at
+    }
+    account {
+        text id PK
+        text company_name
+        timestamp created_at
+        text name
+        text timezone
+    }
+    guardian_user_role_change }o--|| guardian_user : "fk"
+    guardian_user_ring_group }o--|| ring_group : "fk"
+    guardian_user_ring_group }o--|| guardian_user : "fk"
+    user_attribute }o--|| users : "fk"
+    user_attribute }o--|| attribute : "fk"
+    outbound_dialer_calls }o--|| campaign : "fk"
+    outbound_dialer_calls }o--|| users : "fk"
+    outbound_dialer_calls }o--|| record : "fk"
+    outbound_dialer_calls }o--|| users : "fk"
+    outbound_dialer_calls }o--|| call : "fk"
+    campaign_user }o--|| users : "fk"
+    campaign_user }o--|| campaign : "fk"
+    record_phone_number }o--|| record : "fk"
+    record }o--|| record_list : "fk"
+    contact_phone }o--|| contact : "fk"
+    csat_score }o--|| users : "fk"
+    talk_time_data }o--|| users : "fk"
+    acw_time_data }o--|| users : "fk"
+    studio_flow_execution }o--|| call : "fk"
+    wallets }o--|| account : "fk"
+    guardian_case }o--|| guardian_user : "fk"
+    user_ring_group }o--|| ring_group : "fk"
+    user_ring_group }o--|| users : "fk"
+    qm_evaluation_score_ring_group }o--|| ring_group : "fk"
+    qm_evaluation_score_ring_group }o--|| qm_evaluation_score : "fk"
+    qm_evaluation_score_ring_group }o--|| qm_evaluation_score : "fk"
+    qm_evaluation_score }o--|| users : "fk"
+    campaign_phone_number }o--|| campaign : "fk"
+    messaging_contact_queue }o--|| ring_group : "fk"
+    messaging_contact_queue }o--|| messaging_contact : "fk"
+    messaging_contact_handling_queue }o--|| ring_group : "fk"
+    messaging_contact_handling_queue }o--|| messaging_contact : "fk"
+    messaging_contact }o--|| users : "fk"
+    messaging_contact }o--|| users : "fk"
+    messaging_contact }o--|| call : "fk"
+    messaging_contact }o--|| contact : "fk"
+    campaign_record_chain }o--|| campaign : "fk"
+    campaign_calling_hour }o--|| campaign : "fk"
+    contact_call_handling_ring_group }o--|| ring_group : "fk"
+    contact_call_handling_ring_group }o--|| contact_call : "fk"
+    contact_call_ring_group }o--|| ring_group : "fk"
+    contact_call_ring_group }o--|| contact_call : "fk"
+    contact_call }o--|| users : "fk"
+    contact_call }o--|| call : "fk"
+    messaging_traffic }o--|| users : "fk"
+    messaging_traffic }o--|| call : "fk"
+    messaging_traffic }o--|| contact : "fk"
+    hold_time_data }o--|| users : "fk"
+    do_not_call_number }o--|| do_not_call_list : "fk"
+    campaign_do_not_call_list }o--|| do_not_call_list : "fk"
+    campaign_do_not_call_list }o--|| campaign : "fk"
+    record_list }o--|| account : "fk"
+    guardian_session }o--|| guardian_user : "fk"
+    campaign_record_list }o--|| record_list : "fk"
+    campaign_record_list }o--|| campaign : "fk"
+    guardian_call_quality }o--|| call : "fk"
+    guardian_call_quality }o--|| guardian_user : "fk"
+    attribute }o--|| attribute_category : "fk"
+    user_status_ring_group }o--|| ring_group : "fk"
+    user_status_ring_group }o--|| user_status : "fk"
+    user_status_ring_group }o--|| user_status : "fk"
+    user_status }o--|| users : "fk"
+    feedback_flow }o--|| call : "fk"
+    inbound_contact_volume }o--|| users : "fk"
+    ring_attempt_queue }o--|| ring_group : "fk"
+    ring_attempt_queue }o--|| ring_attempt : "fk"
+    ring_attempt }o--|| users : "fk"
+    ring_attempt }o--|| call : "fk"
+    ring_attempt }o--|| contact : "fk"
+    call_tag }o--|| ring_group : "fk"
+    call_tag }o--|| call : "fk"
+    qm_evaluation_analysis_ring_group }o--|| ring_group : "fk"
+    qm_evaluation_analysis_ring_group }o--|| qm_evaluation_analysis : "fk"
+    qm_evaluation_analysis }o--|| users : "fk"
+    qm_evaluation_analysis }o--|| users : "fk"
+    qm_evaluation_analysis }o--|| call : "fk"
+    do_not_call_list }o--|| account : "fk"

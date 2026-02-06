@@ -1,0 +1,60 @@
+erDiagram
+    device {
+        text id PK
+        text description
+        text groups
+        text identifier
+        text organization_id
+        text owner
+        text pending_approval
+    }
+    form {
+        text id PK
+        text description
+        text groups
+        text name
+        text namespace
+        text organization_id
+        text version
+    }
+    device_magic_database {
+        text submission_id PK
+        text form_id PK
+        text author_identifier
+        text device_identifier
+        text device_submission_identifier
+        text received_at
+        jsonb submission
+        text submission_counter
+        text submitted_at
+        text user_id
+        text username
+    }
+    form_definition {
+        text identifier PK
+        text form_id PK
+        text auto_identifier
+        text calculate_expr
+        jsonb children
+        text hidden
+        text hint
+        text initial_answer
+        text max_occurrence
+        text min_occurrence
+        jsonb options
+        text options_identifier_column
+        text options_resource
+        text options_table
+        text options_text_column
+        text readonly_rule
+        text required_rule
+        text title
+        text type
+        text type_derived
+        text validate_expr
+        text validate_msg
+        text visible_expr
+        text visible_rule
+    }
+    device_magic_database }o--|| form : "fk"
+    form_definition }o--|| form : "fk"

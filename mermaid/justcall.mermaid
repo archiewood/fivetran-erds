@@ -1,0 +1,435 @@
+erDiagram
+    call_ai_data_sales_dialer_moment {
+        text index PK
+        text call_ai_data_id PK
+        text call_moment
+    }
+    call_ai_data_sales_dialer_transcription {
+        text index PK
+        text call_ai_data_id PK
+        text end_time
+        text sentence
+        text speaker_id
+        text speaker_name
+        text start_time
+    }
+    call_ai_data_sales_dialer_tags {
+        text index PK
+        text call_ai_data_id PK
+        text tags
+    }
+    call_ai_data_sales_dialer_smart_chapter {
+        text index PK
+        text call_ai_data_id PK
+        jsonb overview
+        text section
+    }
+    call_ai_data_sales_dialer {
+        text id PK
+        text action_items
+        text call_score
+        text call_score_parameters_call_etiquette
+        text call_score_parameters_customer_sentiment_score
+        text call_score_parameters_de_escalation
+        text call_score_parameters_dead_air_time
+        text call_score_parameters_empathy
+        text call_score_parameters_filler_word
+        text call_score_parameters_greetings
+        text call_score_parameters_monologue_duration
+        text call_score_parameters_talk_listen_ratio
+        text call_score_parameters_words_per_minute
+        text call_summary
+        text customer_sentiment
+        text interaction_stats_agent_speak_time
+        text interaction_stats_customer_speak_time
+        text interaction_stats_customer_story_duration
+        text interaction_stats_dead_air_time
+        text interaction_stats_interactivity_count
+        text interaction_stats_monologue_duration
+        text manual_call_score
+        text platform
+    }
+    sale_dialer_campaign {
+        text id PK
+        text default_number
+        text name
+        text type
+    }
+    sales_dialer_analytics {
+        text agent_id PK
+        text abandoned_calls
+        text agent_email
+        text agent_name
+        text agent_success_rate
+        text answered_calls
+        text available_time_in_campaign
+        text average_call_duration
+        text campaigns_run
+        text connection_rate
+        text dialed_calls
+        text max_call_duration
+        text pause_time
+        text total_after_call_work
+        text total_call_duration
+        text total_cost_incurred
+        text total_unanswered_calls
+        text total_voicemails_drops
+    }
+    analytics_daily {
+        text _fivetran_id PK
+        text analytics_agent_id FK
+        text day
+        text greaterthan_6_0
+        text inbound
+        text inbound_minutes
+        text missed
+        text outbound
+        text outbound_minutes
+        text uniqueinbound
+        text uniqueoutbound
+    }
+    analytics {
+        text agent_id PK
+        text name
+        text summary_inbound_minutes
+        text summary_outbound_minutes
+        text summary_total_inbound
+        text summary_total_outbound
+    }
+    contact_custom_field {
+        text index PK
+        text contact_id PK
+        text key
+        text label
+        text type
+        text value
+    }
+    contact {
+        text id PK
+        text address
+        text birthday
+        timestamp created_at
+        text email
+        text name
+        text occupation
+        text phone_number
+        text status
+        text status_updated_at
+    }
+    text_mms {
+        text _fivetran_id PK
+        text text_id FK
+        text content_type
+        text media_url
+    }
+    text {
+        text id PK
+        text agent_id FK
+        text justcall_number FK
+        text client_number
+        text contact_email
+        text contact_name
+        text contact_number
+        text cost_incurred
+        text datetime
+        text delivery_status
+        text direction
+        text is_deleted
+        text justcall_line_name
+        text medium
+        text sms_date
+        text sms_info_body
+        text sms_info_is_mms
+        text sms_time
+        text sms_user_date
+        text sms_user_time
+    }
+    sales_dialer_call_ai_moment {
+        text index PK
+        text sales_dialer_call_id PK
+        text sales_dialer_call_sid PK
+        text call_moment
+    }
+    sales_dialer_call_ai_tag {
+        text index PK
+        text sales_dialer_call_id PK
+        text sales_dialer_call_sid PK
+        text tags
+    }
+    sales_dialer_call {
+        text call_id PK
+        text call_sid PK
+        text agent_id FK
+        text campaign_id FK
+        text contact_id FK
+        text call_date
+        text call_info_call_answered_by
+        text call_info_cost_incurred
+        text call_info_direction
+        text call_info_disposition
+        text call_info_duration
+        text call_info_friendly_duration
+        text call_info_notes
+        text call_info_rating
+        text call_info_reattempt_number
+        text call_info_recording
+        text call_info_type
+        text call_time
+        text call_user_date
+        text call_user_time
+        text justcall_ai_call_score
+        text justcall_ai_call_score_parameters_call_etiquette
+        text justcall_ai_call_score_parameters_customer_sentiment_score
+        text justcall_ai_call_score_parameters_de_escalation
+        text justcall_ai_call_score_parameters_dead_air_time
+        text justcall_ai_call_score_parameters_empathy
+        text justcall_ai_call_score_parameters_filler_word
+        text justcall_ai_call_score_parameters_greeting
+        text justcall_ai_call_score_parameters_monologue_duration
+        text justcall_ai_call_score_parameters_talk_listen_ratio
+        text justcall_ai_call_score_parameters_words_per_minute
+        text justcall_ai_call_summary
+        text justcall_ai_customer_sentiment
+        text justcall_ai_manual_call_score
+        text sales_dialer_number
+    }
+    groups {
+        text id PK
+        text extension
+        text name
+        text total_members
+        text updated_on
+    }
+    user_group {
+        text group_id PK
+        text user_id PK
+    }
+    user_owned_number {
+        text index PK
+        text user_id PK
+        text owned_number
+    }
+    user_shared_number {
+        text index PK
+        text user_id PK
+        text shared_number
+    }
+    users {
+        text id PK
+        text available
+        text created_at
+        text email
+        text extention
+        text last_login_timestamp
+        text name
+        text on_call
+        text role
+        text timezone
+        text unavailability_reason
+        text working_hours_type
+    }
+    call_info_trait {
+        text index PK
+        text call_id PK
+        text call_trait
+    }
+    call {
+        text id PK
+        text agent_id FK
+        text justcall_number FK
+        text agent_active
+        text call_date
+        text call_duration_conversation_time
+        text call_duration_friendly_duration
+        text call_duration_handle_time
+        text call_duration_hold_time
+        text call_duration_queue_wait_time
+        text call_duration_ring_time
+        text call_duration_total_duration
+        text call_duration_wrap_up_time
+        text call_info_direction
+        text call_info_disposition
+        text call_info_missed_call_reason
+        text call_info_notes
+        text call_info_rating
+        text call_info_recording
+        text call_info_recording_child
+        text call_info_status
+        text call_info_type
+        text call_info_voicemail_transcription
+        text call_sid
+        text call_time
+        text call_user_date
+        text call_user_time
+        text contact_email
+        text contact_name
+        text contact_number
+        text cost_incurred
+        text forward_info_datetime
+        text forward_info_from_number
+        text forward_info_to_number
+        text ivr_info_content
+        text ivr_info_digit_pressed
+        text justcall_line_name
+        text queue_callback_attempted
+        text queue_callback_attempted_time
+        text queue_callback_reached
+        text queue_callback_reached_duration
+        text queue_callback_reached_time
+        text queue_callback_requested
+        text queue_callback_requested_time
+        text queue_callback_status
+        text queue_callback_wait_duration
+        text queue_entered_at_position
+        text queue_exit_reason
+    }
+    thread_tag {
+        text id PK
+        text thread_id PK
+        text thread_phone_id PK
+        text colour
+        text name
+    }
+    recent_message_mms {
+        text index PK
+        text thread_id PK
+        text thread_phone_id PK
+        text content_type
+        text media_url
+    }
+    thread {
+        text id PK
+        text phone_id PK
+        text contact_id FK
+        text recent_message_body
+        text recent_message_datetime
+        text recent_message_direction
+        text recent_message_id
+        text recent_message_is_mms
+        text recent_message_readstatus
+    }
+    call_ai_data_justcall_moment {
+        text index PK
+        text call_ai_data_id PK
+        text call_moment
+    }
+    call_ai_data_justcall_transcription {
+        text index PK
+        text call_ai_data_id PK
+        text end_time
+        text sentence
+        text speaker_id
+        text speaker_name
+        text start_time
+    }
+    call_ai_data_justcall_tags {
+        text index PK
+        text call_ai_data_id PK
+        text tags
+    }
+    call_ai_data_justcall_smart_chapter {
+        text index PK
+        text call_ai_data_id PK
+        jsonb overview
+        text section
+    }
+    call_ai_data_justcall {
+        text id PK
+        text action_items
+        text call_score
+        text call_score_parameters_call_etiquette
+        text call_score_parameters_customer_sentiment_score
+        text call_score_parameters_de_escalation
+        text call_score_parameters_dead_air_time
+        text call_score_parameters_empathy
+        text call_score_parameters_filler_word
+        text call_score_parameters_greetings
+        text call_score_parameters_monologue_duration
+        text call_score_parameters_talk_listen_ratio
+        text call_score_parameters_words_per_minute
+        text call_summary
+        text customer_sentiment
+        text interaction_stats_agent_speak_time
+        text interaction_stats_customer_speak_time
+        text interaction_stats_customer_story_duration
+        text interaction_stats_dead_air_time
+        text interaction_stats_interactivity_count
+        text interaction_stats_monologue_duration
+        text manual_call_score
+        text platform
+    }
+    text_tag {
+        text id PK
+        text created_by_agent_id FK
+        text color_code
+        text created_at
+        text name
+    }
+    phone_number_user_group {
+        text index PK
+        text phone_number_id PK
+        text group_id FK
+    }
+    phone_number_team_member {
+        text index PK
+        text phone_number_id PK
+        text email
+        text id
+        text name
+    }
+    phone_number {
+        text id PK
+        text number_owner_id FK
+        text availability_setting
+        text business_registration
+        text capabilities_call
+        text capabilities_mms
+        text capabilities_sms
+        text current_status
+        text friendly_number
+        text justcall_line_name
+        text justcall_number
+        text number_type
+        text sms_compliance
+    }
+    call_ai_data_sales_dialer_moment }o--|| call_ai_data_sales_dialer : "fk"
+    call_ai_data_sales_dialer_transcription }o--|| call_ai_data_sales_dialer : "fk"
+    call_ai_data_sales_dialer_tags }o--|| call_ai_data_sales_dialer : "fk"
+    call_ai_data_sales_dialer_smart_chapter }o--|| call_ai_data_sales_dialer : "fk"
+    call_ai_data_sales_dialer }o--|| call : "fk"
+    sales_dialer_analytics }o--|| users : "fk"
+    analytics_daily }o--|| users : "fk"
+    analytics }o--|| users : "fk"
+    contact_custom_field }o--|| contact : "fk"
+    text_mms }o--|| text : "fk"
+    text }o--|| phone_number : "fk"
+    text }o--|| users : "fk"
+    sales_dialer_call_ai_moment }o--|| sales_dialer_call : "fk"
+    sales_dialer_call_ai_moment }o--|| sales_dialer_call : "fk"
+    sales_dialer_call_ai_tag }o--|| sales_dialer_call : "fk"
+    sales_dialer_call_ai_tag }o--|| sales_dialer_call : "fk"
+    sales_dialer_call }o--|| sale_dialer_campaign : "fk"
+    sales_dialer_call }o--|| users : "fk"
+    sales_dialer_call }o--|| contact : "fk"
+    user_group }o--|| groups : "fk"
+    user_group }o--|| users : "fk"
+    user_owned_number }o--|| users : "fk"
+    user_shared_number }o--|| users : "fk"
+    call_info_trait }o--|| call : "fk"
+    call }o--|| phone_number : "fk"
+    call }o--|| users : "fk"
+    thread_tag }o--|| thread : "fk"
+    thread_tag }o--|| thread : "fk"
+    recent_message_mms }o--|| thread : "fk"
+    recent_message_mms }o--|| thread : "fk"
+    thread }o--|| contact : "fk"
+    call_ai_data_justcall_moment }o--|| call_ai_data_justcall : "fk"
+    call_ai_data_justcall_transcription }o--|| call_ai_data_justcall : "fk"
+    call_ai_data_justcall_tags }o--|| call_ai_data_justcall : "fk"
+    call_ai_data_justcall_smart_chapter }o--|| call_ai_data_justcall : "fk"
+    call_ai_data_justcall }o--|| call : "fk"
+    text_tag }o--|| users : "fk"
+    phone_number_user_group }o--|| groups : "fk"
+    phone_number_user_group }o--|| phone_number : "fk"
+    phone_number_team_member }o--|| phone_number : "fk"
+    phone_number }o--|| users : "fk"

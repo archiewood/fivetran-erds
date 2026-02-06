@@ -1,0 +1,457 @@
+erDiagram
+%% NOTE:
+%% _fivetran_id in USER_ tables is computed by taking hash of user_id and/or email fields depending on the project type.
+%% _fivetran_id in EVENT_ tables is computed by taking hash of campaign_id, created_at and event_name fields
+    user_unsubscribed_channel_history {
+        bigint channel_id PK
+        text email PK
+        timestamp updated_at PK
+    }
+    push_template_history {
+        timestamp updated_at PK
+        bigint id PK
+        bigint campaign_id FK
+        text badge
+        jsonb buttons
+        boolean cache_data_feed
+        jsonb data_feed_ids
+        text deeplink_android
+        text deeplink_ios
+        text interruption_level
+        boolean is_default_locale
+        boolean is_silent_push
+        text locale
+        boolean merge_data_feed_context
+        text message
+        jsonb payload
+        double_precision relevance_score
+        text rich_media_android
+        text rich_media_ios
+        text sound
+        text title
+        boolean wake
+    }
+    event {
+        text _fivetran_id PK
+        text _fivetran_user_id PK
+        bigint campaign_id FK
+        jsonb additional_properties
+        bigint content_id
+        timestamp created_at
+        text event_name
+        text ip
+        boolean is_custom_event
+        text message_bus_id
+        text message_id
+        bigint message_type_id
+        text recipient_state
+        text status
+        jsonb transactional_data
+        text unsub_source
+        text user_agent
+        text user_agent_device
+    }
+    bcc_email_history {
+        text email PK
+        bigint template_id PK
+        timestamp updated_at PK
+    }
+    experiment_metrics {
+        bigint campaign_id PK
+        text date PK
+        bigint experiment_id PK
+        bigint template_id PK
+        double_precision average_order_value
+        text confidence
+        text created_by
+        timestamp creation_date
+        text improvement
+        double_precision in_app_click_rate
+        timestamp last_modified
+        text name
+        double_precision revenue
+        text subject
+        double_precision total_in_app_clicks
+        double_precision total_in_app_closes
+        double_precision total_in_app_deletes
+        double_precision total_in_app_holdout
+        double_precision total_in_app_opens
+        double_precision total_in_app_send_skips
+        double_precision total_in_app_sent
+        double_precision total_in_apps_delivered
+        double_precision total_inbox_impressions
+        double_precision total_purchases
+        double_precision total_unsubscribes
+        text type
+        double_precision unique_in_app_clicks
+        double_precision unique_in_app_opens
+        double_precision unique_in_app_sends
+        double_precision unique_in_apps_delivered
+        double_precision unique_purchases
+        double_precision unique_unsubscribes
+    }
+    message_type {
+        bigint id PK
+        bigint channel_id FK
+        timestamp created_at
+        jsonb frequency_cap
+        text name
+        bigint rate_limit_per_minute
+        text subscription_policy
+        timestamp updated_at
+    }
+    campaign_history {
+        bigint id PK
+        timestamp updated_at PK
+        bigint recurring_campaign_id FK
+        bigint template_id FK
+        text campaign_state
+        timestamp created_at
+        text created_by_user_id
+        timestamp ended_at
+        text message_medium
+        text name
+        bigint send_size
+        timestamp start_at
+        text type
+        text updated_by_user_id
+        bigint workflow_id
+    }
+    campaign_label_history {
+        text label PK
+        bigint campaign_id PK
+        timestamp updated_at PK
+    }
+    channel {
+        bigint id PK
+        text channel_type
+        text message_medium
+        text name
+    }
+    sms_template_history {
+        timestamp updated_at PK
+        bigint id PK
+        bigint campaign_id FK
+        text google_analytics_campaign_name
+        text image_url
+        boolean is_default_locale
+        text locale
+        text message
+        text tracking_domain
+    }
+    user_history {
+        text _fivetran_id PK
+        timestamp updated_at PK
+        text email
+        jsonb email_list_ids
+        text first_name
+        text iterable_user_id
+        text last_name
+        text phone_number
+        text phone_number_carrier
+        text phone_number_country_code_iso
+        text phone_number_details
+        text phone_number_line_type
+        text phone_number_updated_at
+        timestamp signup_date
+        text signup_source
+        text user_id
+    }
+    template_history {
+        bigint id PK
+        timestamp updated_at PK
+        bigint message_type_id FK
+        text client_template_id
+        timestamp created_at
+        text creator_user_id
+        text name
+        text template_type
+    }
+    bcc_email {
+        text email PK
+        bigint template_id PK
+    }
+    cc_email {
+        text email PK
+        bigint template_id PK
+    }
+    user_unsubscribed_message_type_history {
+        text email PK
+        bigint message_type_id PK
+        timestamp updated_at PK
+    }
+    user_device {
+        bigint index PK
+        text _fivetran_id PK
+        text application_name
+        boolean endpoint_enabled
+        text identifier_for_vendor
+        text localized_model
+        text model
+        text platform
+        text platform_endpoint
+        text system_name
+        text system_version
+        text token
+        text user_interface_idiom
+    }
+    email_template_history {
+        timestamp updated_at PK
+        bigint id PK
+        bigint campaign_id FK
+        boolean cache_data_feed
+        bigint data_feed_id
+        jsonb data_feed_ids
+        text from_email
+        text from_name
+        text google_analytics_campaign_name
+        text html
+        boolean is_default_locale
+        text locale
+        boolean merge_data_feed_context
+        text plain_text
+        text preheader_text
+        text reply_to_email
+        text subject
+    }
+    in_app_template_history {
+        bigint id PK
+        timestamp updated_at PK
+        text campaign_id FK
+        timestamp expiration_date_time
+        text expiration_duration
+        text html
+        jsonb in_app_display_settings
+        jsonb inbox_metadata
+        boolean is_default_locale
+        text locale
+        jsonb payload
+        jsonb web_in_app_display_settings
+    }
+    campaign_list_history {
+        bigint campaign_id PK
+        bigint list_id PK
+        timestamp updated_at PK
+    }
+    email_link_param_history {
+        text key PK
+        text value PK
+        bigint template_id PK
+        timestamp updated_at PK
+    }
+    campaign_metrics {
+        text date PK
+        bigint id PK
+        double_precision average_order_value
+        double_precision purchases
+        double_precision revenue
+        double_precision revenue_m
+        double_precision total_app_uninstalls
+        double_precision total_complaints
+        double_precision total_email_bounced
+        double_precision total_email_clicked
+        double_precision total_email_delivered
+        double_precision total_email_opens
+        double_precision total_email_sends
+        double_precision total_hosted_unsubscribe_clicks
+        double_precision total_purchases
+        double_precision total_pushes_bounced
+        double_precision total_pushes_delivered
+        double_precision total_pushes_opened
+        double_precision total_pushes_sent
+        double_precision total_unsubscribes
+        double_precision unique_email_bounced
+        double_precision unique_email_clicks
+        double_precision unique_email_opens_or_clicks
+        double_precision unique_hosted_unsubscribe_clicks
+        double_precision unique_purchases
+        double_precision unique_pushes_bounced
+        double_precision unique_pushes_opened
+        double_precision unique_pushes_sent
+        double_precision unique_unsubscribes
+    }
+    cc_email_history {
+        text email PK
+        bigint template_id PK
+        timestamp updated_at PK
+    }
+    list_user_history {
+        text _fivetran_id PK
+        bigint list_id PK
+        timestamp updated_at PK
+    }
+    campaign_suppression_list_history {
+        bigint campaign_id PK
+        bigint suppressed_list_id PK
+        timestamp updated_at PK
+    }
+    event_extension {
+        text _fivetran_id PK
+        text _fivetran_user_id PK
+        boolean app_already_running
+        text badge
+        text browser_token
+        text canonical_url_id
+        bigint catalog_collection_count
+        bigint catalog_lookup_count
+        text city
+        text clicked_url
+        boolean content_available
+        bigint content_id
+        text country
+        text deeplink_android
+        text deeplink_ios
+        text device
+        text email_id
+        text email_subject
+        text error_code
+        text experiment_id
+        timestamp expires_at
+        text from_phone_number
+        bigint from_phone_number_id
+        bigint from_smssender_id
+        text image_url
+        text in_app_body
+        boolean is_ghost_push
+        boolean is_sms_estimation
+        jsonb labels
+        text link_id
+        text link_url
+        text locale
+        jsonb message_context
+        text message_status
+        bigint mms_send_count
+        jsonb payload
+        text platform_endpoint
+        bigint product_recommendation_count
+        text proxy_source
+        text push_message
+        text reason
+        text region
+        text sms_message
+        bigint sms_send_count
+        text sound
+        text to_phone_number
+        text url
+        text web_push_body
+        text web_push_click_action
+        text web_push_icon
+        text web_push_message
+        text workflow_id
+        text workflow_name
+    }
+    user_unsubscribed_channel {
+        text _fivetran_id PK
+        bigint channel_id PK
+    }
+    list_user {
+        bigint index PK
+        text _fivetran_id PK
+        bigint list_id FK
+    }
+    journey {
+        bigint id PK
+        timestamp created_at
+        text creator_user_id
+        text description
+        boolean enabled
+        boolean is_archived
+        text journey_type
+        bigint lifetime_limit
+        text name
+        bigint simultaneous_limit
+        bigint start_tile_id
+        jsonb trigger_event_names
+        timestamp updated_at
+    }
+    user_unsubscribed_message_type {
+        text _fivetran_id PK
+        bigint message_type_id PK
+    }
+    list {
+        bigint id PK
+        timestamp created_at
+        text description
+        text list_type
+        text name
+    }
+    user_device_history {
+        bigint index PK
+        text email PK
+        timestamp updated_at PK
+        text application_name
+        boolean endpoint_enabled
+        text identifier_for_vendor
+        text localized_model
+        text model
+        text platform
+        text platform_endpoint
+        text system_name
+        text system_version
+        text token
+        text user_interface_idiom
+    }
+    sms_link_param_history {
+        text key PK
+        text value PK
+        bigint template_id PK
+        timestamp updated_at PK
+    }
+    user_unsubscribed_channel_history }o--|| user_history : "fk"
+    user_unsubscribed_channel_history }o--|| channel : "fk"
+    user_unsubscribed_channel_history }o--|| user_history : "fk"
+    push_template_history }o--|| campaign_history : "fk"
+    push_template_history }o--|| template_history : "fk"
+    event }o--|| campaign_history : "fk"
+    event }o--|| user_history : "fk"
+    bcc_email_history }o--|| user_history : "fk"
+    bcc_email_history }o--|| email_template_history : "fk"
+    bcc_email_history }o--|| email_template_history : "fk"
+    message_type }o--|| channel : "fk"
+    campaign_history }o--|| template_history : "fk"
+    campaign_history }o--|| campaign_history : "fk"
+    campaign_label_history }o--|| campaign_history : "fk"
+    campaign_label_history }o--|| campaign_history : "fk"
+    sms_template_history }o--|| campaign_history : "fk"
+    sms_template_history }o--|| template_history : "fk"
+    template_history }o--|| message_type : "fk"
+    bcc_email }o--|| user_history : "fk"
+    bcc_email }o--|| email_template_history : "fk"
+    cc_email }o--|| user_history : "fk"
+    cc_email }o--|| email_template_history : "fk"
+    user_unsubscribed_message_type_history }o--|| user_history : "fk"
+    user_unsubscribed_message_type_history }o--|| message_type : "fk"
+    user_unsubscribed_message_type_history }o--|| user_history : "fk"
+    user_device }o--|| user_history : "fk"
+    email_template_history }o--|| campaign_history : "fk"
+    email_template_history }o--|| template_history : "fk"
+    in_app_template_history }o--|| template_history : "fk"
+    in_app_template_history }o--|| campaign_history : "fk"
+    in_app_template_history }o--|| template_history : "fk"
+    campaign_list_history }o--|| list : "fk"
+    campaign_list_history }o--|| campaign_history : "fk"
+    campaign_list_history }o--|| campaign_history : "fk"
+    email_link_param_history }o--|| email_template_history : "fk"
+    email_link_param_history }o--|| email_template_history : "fk"
+    campaign_metrics }o--|| campaign_history : "fk"
+    cc_email_history }o--|| user_history : "fk"
+    cc_email_history }o--|| email_template_history : "fk"
+    cc_email_history }o--|| email_template_history : "fk"
+    list_user_history }o--|| list : "fk"
+    list_user_history }o--|| user_history : "fk"
+    list_user_history }o--|| user_history : "fk"
+    campaign_suppression_list_history }o--|| list : "fk"
+    campaign_suppression_list_history }o--|| campaign_history : "fk"
+    campaign_suppression_list_history }o--|| campaign_history : "fk"
+    event_extension }o--|| event : "fk"
+    event_extension }o--|| user_history : "fk"
+    user_unsubscribed_channel }o--|| user_history : "fk"
+    user_unsubscribed_channel }o--|| channel : "fk"
+    list_user }o--|| user_history : "fk"
+    list_user }o--|| list : "fk"
+    user_unsubscribed_message_type }o--|| user_history : "fk"
+    user_unsubscribed_message_type }o--|| message_type : "fk"
+    user_device_history }o--|| user_history : "fk"
+    user_device_history }o--|| user_history : "fk"
+    sms_link_param_history }o--|| sms_template_history : "fk"
+    sms_link_param_history }o--|| sms_template_history : "fk"

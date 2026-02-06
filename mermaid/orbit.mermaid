@@ -1,0 +1,279 @@
+erDiagram
+    member_activity_in_an_organization_tag {
+        text tags PK
+        text member_activity_id PK
+    }
+    member_activity_organization_property {
+        text name PK
+        text member_activity_in_an_organization_id PK
+        text value
+    }
+    member_activity_in_an_organization {
+        text id PK
+        text member_id FK
+        text organization_id FK
+        text workspace_activity_type_id FK
+        text workspace_id FK
+        text action
+        text activity_link
+        text activity_type_id
+        text attribute_type
+        timestamp created_at
+        text key
+        timestamp occurred_at
+        text orbit_url
+        text type
+        timestamp updated_at
+        text weight
+    }
+    member_activity_tag {
+        text tags PK
+        text member_activity_id PK
+    }
+    member_activity_property {
+        text name PK
+        text member_activity_id PK
+        text value
+    }
+    member_activity {
+        text id PK
+        text member_id FK
+        text workspace_activity_type_id FK
+        text workspace_id FK
+        text action
+        text activity_type_id
+        text attribute_type
+        timestamp created_at
+        text key
+        timestamp occurred_at
+        text orbit_url
+        text type
+        timestamp updated_at
+        text weight
+    }
+    workspace_activity_tag {
+        text tags PK
+        text activity_id PK
+    }
+    workspace_activity_property {
+        text name PK
+        text workspace_activity_id PK
+        text value
+    }
+    workspace_activity {
+        text id PK
+        text member_id FK
+        text workspace_activity_type_id FK
+        text workspace_id FK
+        text action
+        text activity_link
+        text activity_type_id
+        text attribute_type
+        timestamp created_at
+        timestamp g_created_at
+        text g_html_url
+        boolean g_merged
+        timestamp g_merged_at
+        text g_merged_by
+        text g_number
+        text g_title
+        boolean is_pull_request
+        text key
+        timestamp occurred_at
+        text orbit_url
+        text repository_id
+        text repository_type
+        text type
+        text weight
+    }
+    report {
+        text timeframe_end_date PK
+        text timeframe_start_date PK
+        text workspace_id PK
+        text id FK
+        text activity_foo_activity_active_count
+        text activity_foo_activity_active_delta
+        text activity_foo_activity_count
+        text activity_foo_activity_delta
+        text activity_foo_activity_new_count
+        text activity_foo_activity_new_delta
+        text activity_foo_activity_returning_count
+        text activity_foo_activity_returning_delta
+        text activity_foo_activity_source
+        text activity_spec_activity_active_count
+        text activity_spec_activity_active_delta
+        text activity_spec_activity_count
+        text activity_spec_activity_delta
+        text activity_spec_activity_new_count
+        text activity_spec_activity_new_delta
+        text activity_spec_activity_returning_count
+        text activity_spec_activity_returning_delta
+        text activity_spec_activity_source
+        text activity_total_count
+        text activity_total_delta
+        text member_active_count
+        text member_active_delta
+        text member_new_count
+        text member_new_delta
+        text member_returning_count
+        text member_returning_delta
+        text overview_members_on_orbit_level_1_count
+        text overview_members_on_orbit_level_2_count
+        text overview_members_on_orbit_level_3_count
+        text overview_members_on_orbit_level_4_count
+        text overview_members_on_orbit_level_none_count
+        text overview_total_members_count
+        text timeframe_end_date_last
+        text timeframe_start_date_last
+    }
+    member_in_an_organisation {
+        text member_id PK
+        text organization_id PK
+        text workspace_id FK
+    }
+    member_in_workspace_identity {
+        text id PK
+        text workspace_id FK
+        text email
+        text name
+        text source
+        text source_host
+        text type
+        text uid
+        text username
+    }
+    organization {
+        text id PK
+        text workspace_id FK
+        text active_since
+        timestamp created_at
+        text crunchbase
+        text email_addresses
+        text employees_count
+        text estimated_annual_revenue
+        text facebook
+        text facebook_followers
+        text founded_in
+        text industry
+        text last_active
+        text linkedin
+        text location
+        text members_count
+        text name
+        text organization_type
+        timestamp updated_at
+        text website
+    }
+    note {
+        text id PK
+        text member_id FK
+        text workspace_id FK
+        text body
+        timestamp created_at
+        timestamp updated_at
+        text user_id
+    }
+    member_in_workspace_tag {
+        text tags PK
+        text member_id PK
+    }
+    member_identity {
+        text identity_id PK
+        text member_id PK
+    }
+    member_in_workspace_tag_list {
+        text tag_list PK
+        text member_id PK
+    }
+    member_in_workspace {
+        text id PK
+        text workspace_id FK
+        text activities_count
+        text activities_score
+        text avatar_url
+        text bio
+        text birthday
+        text company
+        boolean created
+        timestamp created_at
+        timestamp deleted_at
+        text devto
+        text discord
+        text discourse
+        text email
+        timestamp first_activity_occurred_at
+        text github
+        text github_followers
+        text languages
+        timestamp last_activity_occurred_at
+        text linkedin
+        text location
+        double_precision love
+        timestamp merged_at
+        text name
+        text orbit_level
+        text orbit_url
+        text pronouns
+        text reach
+        text shipping_address
+        text slug
+        text source
+        boolean teammate
+        text title
+        text topics
+        text tshirt
+        timestamp updated_at
+        text url
+    }
+    workspace {
+        text id PK
+        text member_id FK
+        text workspace_activity_id FK
+        timestamp created_at
+        text name
+        jsonb repository_data
+        text slug
+        timestamp updated_at
+    }
+    workspace_activity_type {
+        text id PK
+        text workspace_id FK
+        text channel
+        text key
+        text name
+        text short_name
+        text source
+        text weight
+    }
+    member_activity_in_an_organization_tag }o--|| member_activity_in_an_organization : "fk"
+    member_activity_organization_property }o--|| member_activity_in_an_organization : "fk"
+    member_activity_in_an_organization }o--|| member_in_workspace : "fk"
+    member_activity_in_an_organization }o--|| workspace : "fk"
+    member_activity_in_an_organization }o--|| organization : "fk"
+    member_activity_in_an_organization }o--|| workspace_activity_type : "fk"
+    member_activity_tag }o--|| member_activity : "fk"
+    member_activity_property }o--|| member_activity : "fk"
+    member_activity }o--|| member_in_workspace : "fk"
+    member_activity }o--|| workspace : "fk"
+    member_activity }o--|| workspace_activity_type : "fk"
+    workspace_activity_tag }o--|| workspace_activity : "fk"
+    workspace_activity_property }o--|| workspace_activity : "fk"
+    workspace_activity }o--|| member_in_workspace : "fk"
+    workspace_activity }o--|| workspace : "fk"
+    workspace_activity }o--|| workspace_activity_type : "fk"
+    report }o--|| workspace : "fk"
+    member_in_an_organisation }o--|| member_in_workspace : "fk"
+    member_in_an_organisation }o--|| workspace : "fk"
+    member_in_an_organisation }o--|| organization : "fk"
+    member_in_workspace_identity }o--|| workspace : "fk"
+    organization }o--|| workspace : "fk"
+    note }o--|| member_in_workspace : "fk"
+    note }o--|| workspace : "fk"
+    member_in_workspace_tag }o--|| member_in_workspace : "fk"
+    member_identity }o--|| member_in_workspace_identity : "fk"
+    member_identity }o--|| member_in_workspace : "fk"
+    member_in_workspace_tag_list }o--|| member_in_workspace : "fk"
+    member_in_workspace }o--|| workspace : "fk"
+    workspace }o--|| member_in_workspace : "fk"
+    workspace }o--|| workspace_activity : "fk"
+    workspace_activity_type }o--|| workspace : "fk"

@@ -1,0 +1,95 @@
+erDiagram
+    post {
+        text id PK
+        text owner_id FK
+        text archived_at
+        text banner_original
+        text banner_preset
+        text banner_thumb
+        text banner_url
+        jsonb content
+        jsonb html
+        text inserted_at
+        text link_access
+        jsonb markdown
+        text published_at
+        jsonb published_version
+        text state
+        text title
+        text updated_at
+        text version
+    }
+    topic_ancestor {
+        text ancestor_id PK
+        text topic_id PK
+    }
+    topic_children {
+        text children_id PK
+        text topic_id PK
+    }
+    topic_hierarchy {
+        text hierarchy PK
+        text topic_id PK
+    }
+    topic_owner {
+        text owner_id PK
+        text topic_id PK
+    }
+    topic_member {
+        text member_id PK
+        text topic_id PK
+    }
+    topic {
+        text id PK
+        text organization_id FK
+        text parent_id FK
+        text banner_original
+        text banner_thumb
+        text description
+        text inherit_parent
+        text inserted_at
+        text member_editable
+        text name
+        text privacy
+        text updated_at
+    }
+    post_topic {
+        text post_id PK
+        text topic_id PK
+    }
+    organization {
+        text id PK
+        text host
+        text inserted_at
+        text name
+        text updated_at
+    }
+    users {
+        text id PK
+        text organization_id FK
+        text avatar_original
+        text avatar_thumb
+        text deactivated_at
+        text description
+        text email
+        text inserted_at
+        text name
+        text title
+        text type
+        text updated_at
+    }
+    post }o--|| users : "fk"
+    topic_ancestor }o--|| topic : "fk"
+    topic_ancestor }o--|| topic : "fk"
+    topic_children }o--|| topic : "fk"
+    topic_children }o--|| topic : "fk"
+    topic_hierarchy }o--|| topic : "fk"
+    topic_owner }o--|| users : "fk"
+    topic_owner }o--|| topic : "fk"
+    topic_member }o--|| users : "fk"
+    topic_member }o--|| topic : "fk"
+    topic }o--|| topic : "fk"
+    topic }o--|| organization : "fk"
+    post_topic }o--|| topic : "fk"
+    post_topic }o--|| post : "fk"
+    users }o--|| organization : "fk"

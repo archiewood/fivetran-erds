@@ -1,0 +1,773 @@
+erDiagram
+    team {
+        bigint id PK
+        boolean allow_automated_email_steps
+        boolean call_recording_disabled
+        boolean click_tracking_default
+        timestamp created_at
+        text custom_tracking_domain
+        boolean deactivated
+        boolean dispositions_required
+        bigint email_daily_limit
+        text group_privacy_setting
+        text license_limit
+        boolean local_dial_enabled
+        text name
+        text plan
+        boolean record_by_default
+        boolean sentiments_required
+        text team_visibility_default
+        timestamp updated_at
+    }
+    team_tag {
+        bigint id PK
+        text name
+    }
+    %% action_details_id  is a foreign key reference to EMAIL_DETAIL, CALL_INSTRUCTION, INTEGRATION_DETAIL or OTHER_DETAIL based on value of column `type`
+    action {
+        bigint id PK
+        bigint cadence_id FK
+        bigint person_id FK
+        bigint step_id FK
+        bigint task_id FK
+        bigint user_id FK
+        bigint action_details_id
+        timestamp created_at
+        boolean due
+        timestamp due_on
+        bigint multitouch_group_id
+        text status
+        text type
+        timestamp updated_at
+    }
+    phone_number_assignment {
+        bigint id PK
+        bigint user_id FK
+        text number
+    }
+    call_sentiment {
+        bigint id PK
+        timestamp created_at
+        text name
+        timestamp updated_at
+    }
+    cadence {
+        bigint id PK
+        bigint added_stage_id FK
+        bigint bounced_stage_id FK
+        bigint cadence_priority_id FK
+        bigint creator_id FK
+        bigint finished_stage_id FK
+        bigint owner_id FK
+        bigint replied_stage_id FK
+        timestamp archived_at
+        bigint cadence_framework_id
+        text cadence_function
+        timestamp created_at
+        boolean draft
+        text name
+        boolean opt_out_link_included
+        boolean remove_bounces_enabled
+        boolean remove_replies_enabled
+        boolean shared
+        boolean team_cadence
+        timestamp updated_at
+    }
+    call {
+        bigint id PK
+        bigint action_id FK
+        bigint cadence_id FK
+        bigint called_person_id FK
+        bigint crm_activity_id FK
+        bigint note_id FK
+        bigint step_id FK
+        bigint task_id FK
+        bigint user_id FK
+        text call_to
+        timestamp created_at
+        text disposition
+        double_precision duration
+        text sentiment
+        timestamp updated_at
+    }
+    people_tag {
+        integer index PK
+        bigint people_id PK
+        text tag_name
+    }
+    email_template_tag {
+        integer index PK
+        bigint email_template_id PK
+        text tag_name
+    }
+    call_instruction {
+        bigint id PK
+        timestamp created_at
+        text instructions
+        timestamp updated_at
+    }
+    step {
+        bigint id PK
+        bigint cadence_id FK
+        timestamp created_at
+        integer day
+        bigint detail_id
+        boolean disabled
+        text display_name
+        text name
+        text step_number
+        text type
+        timestamp updated_at
+    }
+    users {
+        bigint id PK
+        bigint group_id FK
+        bigint phone_number_assignment_id FK
+        bigint team_id FK
+        boolean active
+        text bcc_email_address
+        boolean click_to_call_enabled
+        timestamp created_at
+        boolean crm_connected
+        text email
+        boolean email_client_configured
+        text email_client_email_address
+        text email_signature
+        boolean email_signature_click_tracking_disabled
+        text email_signature_type
+        text first_name
+        text from_address
+        text full_email_address
+        text guid
+        text job_role
+        text last_name
+        boolean local_dial_enabled
+        text name
+        text sending_email_address
+        text slack_username
+        boolean team_admin
+        text time_zone
+        text twitter_handle
+        timestamp updated_at
+    }
+    call_recording {
+        integer index PK
+        bigint call_id PK
+    }
+    meeting_attendee {
+        integer index PK
+        bigint meeting_id PK
+        timestamp deleted_at
+        text email
+        text name
+        boolean organizer
+        text status
+        boolean status_changed
+    }
+    account_stage {
+        bigint id PK
+        integer account_stage_order
+        timestamp created_at
+        text name
+        timestamp updated_at
+    }
+    email_detail {
+        bigint id PK
+        bigint email_template_id FK
+        timestamp created_at
+        timestamp updated_at
+    }
+    email_template {
+        bigint id PK
+        text email_template_attachment_id FK
+        bigint group_id FK
+        text team_template_id FK
+        bigint template_owner_id FK
+        timestamp archived_at
+        text body
+        text body_preview
+        boolean cadence_template
+        boolean click_tracking_enabled
+        timestamp created_at
+        timestamp last_used_at
+        boolean open_tracking_enabled
+        boolean shared
+        text subject
+        text title
+        timestamp updated_at
+    }
+    crm_activity_field {
+        bigint id PK
+        timestamp created_at
+        text crm_object_type
+        text field
+        text field_type
+        text salesforce_object_type
+        text source
+        text title
+        timestamp updated_at
+        text value
+    }
+    team_template_attachment {
+        bigint id PK
+        text team_template_id FK
+        double_precision attachment_file_size
+        bigint attachment_id
+        text download_url
+        text name
+    }
+    crm_user {
+        bigint id PK
+        bigint user_id FK
+        timestamp created_at
+        text crm_id
+        timestamp updated_at
+    }
+    people_contact_restriction {
+        integer index PK
+        bigint people_id PK
+        text contact_restriction
+    }
+    cadence_membership {
+        bigint id PK
+        bigint cadence_id FK
+        bigint latest_action_id FK
+        bigint person_id FK
+        bigint user_id FK
+        timestamp added_at
+        timestamp created_at
+        text current_state
+        boolean currently_on_cadence
+        boolean person_deleted
+        timestamp updated_at
+    }
+    account {
+        bigint id PK
+        bigint account_tier_id FK
+        bigint company_stage_id FK
+        bigint creator_id FK
+        bigint last_contacted_person_id FK
+        bigint last_created_by_id FK
+        bigint owner_id FK
+        timestamp archieved_at
+        text city
+        text company_type
+        text conversational_name
+        text country
+        timestamp created_at
+        text crm_id
+        text crm_object_type
+        text crm_url
+        text description
+        boolean do_not_contact
+        text domain
+        text founded_date
+        text industry
+        timestamp last_contacted_at
+        text last_contacted_type
+        text linkedin_url
+        text locale
+        text name
+        text owner_crm_id
+        text people_count
+        text phone
+        text postal_code
+        text revenue_range
+        text size
+        text state
+        text street
+        text twitter_handle
+        timestamp updated_at
+        text website
+    }
+    account_tier {
+        bigint id PK
+        integer account_tier_order
+        timestamp created_at
+        text name
+        timestamp updated_at
+    }
+    people {
+        bigint id PK
+        bigint account_id FK
+        bigint import_id FK
+        bigint last_completed_step_cadence_id FK
+        bigint last_completed_step_id FK
+        bigint last_contacted_by_id FK
+        bigint most_recent_cadence_id FK
+        bigint owner_id FK
+        bigint person_stage_id FK
+        boolean bouncing
+        text city
+        text country
+        timestamp created_at
+        text crm_id
+        text crm_object_type
+        text crm_url
+        text display_name
+        boolean do_not_contact
+        text email_address
+        boolean eu_resident
+        text first_name
+        text full_email_address
+        text home_phone
+        text job_seniority
+        timestamp last_contacted_at
+        text last_contacted_type
+        text last_name
+        timestamp last_replied_at
+        text linkedin_url
+        text locale
+        text mobile_phone
+        text owner_crm_id
+        text person_company_industry
+        text person_company_name
+        text person_company_website
+        text personal_email_address
+        text personal_website
+        text phone
+        text phone_extension
+        text secondary_email_address
+        text state
+        text title
+        text twitter_handle
+        timestamp updated_at
+        text work_city
+        text work_country
+        text work_state
+    }
+    opportunity {
+        bigint id PK
+        bigint account_id FK
+        bigint creator_id FK
+        bigint most_recent_cadence_id FK
+        bigint most_recent_step_account_id FK
+        bigint most_recent_step_id FK
+        bigint owner_id FK
+        text account_crm_id
+        text account_name
+        text amount
+        text close_date
+        timestamp created_at
+        text created_by_crm_id
+        timestamp created_date
+        text crm_id
+        timestamp crm_last_updated_date
+        text crm_type
+        text crm_url
+        text currency_iso_code
+        boolean is_closed
+        boolean is_won
+        integer most_recent_step_number
+        text name
+        text opportunity_type
+        bigint opportunity_window_person_id
+        timestamp opportunity_window_started_at
+        text owner_crm_id
+        text owner_crm_name
+        text probability
+        text stage_name
+        timestamp updated_at
+    }
+    call_data_record {
+        bigint id PK
+        bigint call_id FK
+        bigint called_person_id FK
+        bigint user_id FK
+        text call_from
+        text call_to
+        text call_type
+        text call_uuid
+        timestamp created_at
+        text direction
+        double_precision duration
+        text status
+        timestamp updated_at
+    }
+    person_stage {
+        bigint id PK
+        timestamp created_at
+        text name
+        integer person_stage_order
+        timestamp updated_at
+    }
+    cadence_priority {
+        bigint id PK
+        timestamp created_at
+        text name
+        integer priority
+        timestamp updated_at
+    }
+    email_template_attachment {
+        bigint id PK
+        bigint email_template_id FK
+        double_precision attachment_file_size
+        text attachment_id
+        timestamp created_at
+        text download_url
+        text name
+        timestamp updated_at
+    }
+    import {
+        bigint id PK
+        timestamp created_at
+        bigint current_people_count
+        bigint imported_people_count
+        text name
+        timestamp updated_at
+    }
+    integration_detail {
+        bigint id PK
+        timestamp created_at
+        text instructions
+        bigint integration_id
+        text integration_name
+        text integration_step_type_guid
+        text integration_step_type_icon
+        text integration_step_type_label
+        timestamp updated_at
+    }
+    team_template_tag {
+        integer index PK
+        text team_template_id PK
+        text tag_name
+    }
+    task {
+        bigint id PK
+        bigint created_by_user_id FK
+        bigint person_id FK
+        bigint user_id FK
+        timestamp created_at
+        text current_state
+        text description
+        timestamp due_at
+        text due_date
+        text subject
+        timestamp updated_at
+    }
+    team_template {
+        text id PK
+        text attachment_id FK
+        bigint last_modified_user_id FK
+        timestamp archived_at
+        text body
+        text body_preview
+        boolean click_tracking_enabled
+        timestamp created_at
+        timestamp last_modified_at
+        timestamp last_used_at
+        boolean open_tracking_enabled
+        text subject
+        text title
+        timestamp updated_at
+    }
+    calendar_event {
+        text id PK
+        text all_day
+        text body_html
+        boolean busy
+        text calendar_id
+        timestamp canceled_at
+        timestamp created_at
+        text creator
+        text description
+        timestamp end_time
+        text html_link
+        text i_cal_uid
+        text location
+        text organizer
+        text provider
+        text recurring
+        timestamp start_time
+        text status
+        bigint tenant_id
+        text title
+        timestamp updated_at
+        text user_guid
+    }
+    calendar_event_attendee {
+        integer index PK
+        text calendar_event_id PK
+    }
+    other_detail {
+        bigint id PK
+        timestamp created_at
+        text instructions
+        timestamp updated_at
+    }
+    call_disposition {
+        bigint id PK
+        timestamp created_at
+        text name
+        timestamp updated_at
+    }
+    meeting {
+        bigint id PK
+        bigint cadence_id FK
+        bigint person_id FK
+        bigint step_id FK
+        text account_id
+        boolean all_day
+        text booked_by_meetings_settings_email_address
+        text booked_by_user_guid
+        text calendar_id
+        text calendar_type
+        timestamp canceled_at
+        timestamp created_at
+        text crm_reference_what_crm_id
+        text crm_reference_what_crm_object_label
+        text crm_reference_what_crm_object_type
+        text crm_reference_what_crm_url
+        text crm_reference_what_description_1
+        text crm_reference_what_description_2
+        text crm_reference_what_description_3
+        text crm_reference_who_crm_id
+        text crm_reference_who_crm_object_label
+        text crm_reference_who_crm_object_type
+        text crm_reference_who_crm_url
+        text crm_reference_who_description_1
+        text crm_reference_who_description_2
+        text crm_reference_who_description_3
+        text description
+        timestamp end_time
+        text event_id
+        text event_source
+        text i_cal_uid
+        text location
+        text meeting_type
+        boolean no_show
+        text owned_by_meetings_settings_email_address
+        text recipient_email
+        text recipient_name
+        timestamp start_time
+        text status
+        boolean strict_attribution
+        text task_id
+        text title
+        timestamp updated_at
+    }
+    cadence_tag {
+        integer index PK
+        bigint cadence_id PK
+        text tag_name
+    }
+    %% associated_with_id is a foreign key reference to PERSON or ACCOUNT depending on value of column `type`
+    note {
+        bigint id PK
+        bigint call_id FK
+        bigint user_id FK
+        text associated_type
+        bigint associated_with_id
+        text content
+        timestamp created_at
+        timestamp updated_at
+    }
+    meeting_setting_times_available {
+        text day PK
+        bigint meeting_setting_id PK
+        boolean enabled
+        text end_time
+        boolean is_valid
+        text start_time
+    }
+    opportunity_tag {
+        integer index PK
+        bigint opportunity_id PK
+        text tag_name
+    }
+    meeting_setting {
+        bigint id PK
+        timestamp active_meeting_created_at
+        timestamp active_meeting_updated_at
+        text active_meeting_url
+        boolean allow_booking_on_behalf
+        boolean allow_booking_overtime
+        boolean allow_event_overlap
+        bigint availability_limit
+        boolean availability_limit_enabled
+        bigint buffer_time_duration
+        text calendar_type
+        timestamp created_at
+        bigint default_meeting_length
+        text description
+        text email_address
+        boolean enable_calendar_sync
+        boolean enable_dynamic_location
+        text location
+        boolean primary_calendar_connection_failed
+        text primary_calendar_id
+        text primary_calendar_name
+        boolean schedule_buffer_enabled
+        bigint schedule_delay
+        boolean share_event_detail
+        text time_zone
+        text title
+        timestamp updated_at
+        text user_guid
+        text user_slug
+    }
+    crm_activity {
+        bigint id PK
+        bigint person_id FK
+        bigint user_id FK
+        text activity_type
+        timestamp created_at
+        text crm_id
+        text description
+        text error
+        text subject
+        timestamp updated_at
+    }
+    meeting_guest {
+        integer index PK
+        bigint meeting_id PK
+        text guest
+    }
+    success {
+        bigint id PK
+        bigint latest_action_id FK
+        bigint latest_cadence_id FK
+        bigint latest_call_id FK
+        bigint latest_email_id FK
+        bigint latest_step_id FK
+        bigint person_id FK
+        bigint user_id FK
+        timestamp created_at
+        timestamp succeeded_at
+        timestamp success_window_started_at
+        timestamp updated_at
+    }
+    groups {
+        bigint id PK
+        bigint parent_id FK
+        text name
+    }
+    account_tag {
+        integer index PK
+        bigint account_id PK
+        text tag_name
+    }
+    email {
+        bigint id PK
+        bigint action_id FK
+        bigint cadence_id FK
+        bigint crm_activity_id FK
+        bigint email_template_id FK
+        bigint recipient_id FK
+        bigint step_id FK
+        bigint task_id FK
+        bigint user_id FK
+        boolean bounced
+        boolean click_tracking
+        timestamp created_at
+        text error_message
+        bigint mailing_id
+        text personalization
+        text recipient_email_address
+        timestamp send_after
+        timestamp sent_at
+        text status
+        text subject
+        timestamp updated_at
+        boolean view_tracking
+    }
+    action }o--|| cadence : "fk"
+    action }o--|| people : "fk"
+    action }o--|| step : "fk"
+    action }o--|| task : "fk"
+    action }o--|| users : "fk"
+    phone_number_assignment }o--|| users : "fk"
+    cadence }o--|| person_stage : "fk"
+    cadence }o--|| person_stage : "fk"
+    cadence }o--|| cadence_priority : "fk"
+    cadence }o--|| users : "fk"
+    cadence }o--|| person_stage : "fk"
+    cadence }o--|| users : "fk"
+    cadence }o--|| person_stage : "fk"
+    call }o--|| cadence : "fk"
+    call }o--|| people : "fk"
+    call }o--|| crm_activity : "fk"
+    call }o--|| note : "fk"
+    call }o--|| step : "fk"
+    call }o--|| task : "fk"
+    call }o--|| users : "fk"
+    call }o--|| action : "fk"
+    people_tag }o--|| people : "fk"
+    email_template_tag }o--|| email_template : "fk"
+    step }o--|| cadence : "fk"
+    users }o--|| phone_number_assignment : "fk"
+    users }o--|| groups : "fk"
+    users }o--|| team : "fk"
+    call_recording }o--|| call : "fk"
+    meeting_attendee }o--|| meeting : "fk"
+    email_detail }o--|| email_template : "fk"
+    email_template }o--|| email_template_attachment : "fk"
+    email_template }o--|| groups : "fk"
+    email_template }o--|| users : "fk"
+    email_template }o--|| team_template : "fk"
+    team_template_attachment }o--|| team_template : "fk"
+    crm_user }o--|| users : "fk"
+    people_contact_restriction }o--|| people : "fk"
+    cadence_membership }o--|| cadence : "fk"
+    cadence_membership }o--|| people : "fk"
+    cadence_membership }o--|| users : "fk"
+    cadence_membership }o--|| action : "fk"
+    account }o--|| account_tier : "fk"
+    account }o--|| account_stage : "fk"
+    account }o--|| people : "fk"
+    account }o--|| users : "fk"
+    account }o--|| users : "fk"
+    account }o--|| users : "fk"
+    people }o--|| account : "fk"
+    people }o--|| users : "fk"
+    people }o--|| users : "fk"
+    people }o--|| import : "fk"
+    people }o--|| person_stage : "fk"
+    people }o--|| cadence : "fk"
+    people }o--|| cadence : "fk"
+    people }o--|| step : "fk"
+    opportunity }o--|| account : "fk"
+    opportunity }o--|| users : "fk"
+    opportunity }o--|| users : "fk"
+    opportunity }o--|| cadence : "fk"
+    opportunity }o--|| step : "fk"
+    opportunity }o--|| users : "fk"
+    call_data_record }o--|| call : "fk"
+    call_data_record }o--|| people : "fk"
+    call_data_record }o--|| users : "fk"
+    email_template_attachment }o--|| email_template : "fk"
+    team_template_tag }o--|| team_template : "fk"
+    task }o--|| people : "fk"
+    task }o--|| users : "fk"
+    task }o--|| users : "fk"
+    team_template }o--|| team_template_attachment : "fk"
+    team_template }o--|| users : "fk"
+    calendar_event_attendee }o--|| calendar_event : "fk"
+    meeting }o--|| people : "fk"
+    meeting }o--|| cadence : "fk"
+    meeting }o--|| step : "fk"
+    cadence_tag }o--|| cadence : "fk"
+    note }o--|| users : "fk"
+    note }o--|| call : "fk"
+    meeting_setting_times_available }o--|| meeting_setting : "fk"
+    opportunity_tag }o--|| opportunity : "fk"
+    crm_activity }o--|| people : "fk"
+    crm_activity }o--|| users : "fk"
+    meeting_guest }o--|| meeting : "fk"
+    success }o--|| users : "fk"
+    success }o--|| people : "fk"
+    success }o--|| email : "fk"
+    success }o--|| call : "fk"
+    success }o--|| action : "fk"
+    success }o--|| cadence : "fk"
+    success }o--|| step : "fk"
+    groups }o--|| groups : "fk"
+    account_tag }o--|| account : "fk"
+    email }o--|| cadence : "fk"
+    email }o--|| crm_activity : "fk"
+    email }o--|| email_template : "fk"
+    email }o--|| people : "fk"
+    email }o--|| step : "fk"
+    email }o--|| task : "fk"
+    email }o--|| users : "fk"
+    email }o--|| action : "fk"

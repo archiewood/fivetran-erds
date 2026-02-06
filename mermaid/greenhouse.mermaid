@@ -1,0 +1,586 @@
+erDiagram
+    office {
+        bigint id PK
+        bigint parent_id FK
+        bigint primary_contact_user_id FK
+        text external_id
+        text location_name
+        text name
+    }
+    discipline {
+        bigint id PK
+        text name
+        integer priority
+    }
+    source {
+        bigint id PK
+        text name
+        bigint source_type_id
+        text source_type_name
+    }
+    hiring_team_status {
+        bigint user_id PK
+        bigint job_id FK
+        boolean active
+    }
+    demographic_question_set {
+        bigint id PK
+        boolean active
+        text description
+        text title
+    }
+    offer {
+        bigint id PK
+        bigint application_id FK
+        bigint opening_id FK
+        timestamp created_at
+        timestamp resolved_at
+        text sent_at
+        text starts_at
+        text status
+        timestamp updated_at
+        bigint version
+    }
+    demographic_answer_option {
+        bigint id PK
+        bigint demographic_question_id FK
+        boolean active
+        boolean free_from
+        text name
+    }
+    school {
+        bigint id PK
+        text name
+        integer priority
+    }
+    rejection_reason {
+        bigint id PK
+        text reason
+        bigint rejection_reason_type_id
+        text rejection_reason_type_name
+    }
+    job_history {
+        timestamp updated_at PK
+        bigint job_id PK
+        timestamp closed_at
+        boolean confidential
+        text name
+        text notes
+        text requisition_id
+        text status
+    }
+    application_history {
+        timestamp updated_at PK
+        bigint application_id PK
+        bigint new_stage_id FK
+        text new_status
+    }
+    degree {
+        bigint id PK
+        text name
+        integer priority
+    }
+    prospect_stage {
+        bigint id PK
+        bigint prospect_pool_id PK
+        text name
+    }
+    prospect_pool {
+        bigint id PK
+        boolean active
+        text name
+    }
+    user_email {
+        text email PK
+        bigint user_id PK
+        boolean is_primary
+    }
+    user_linked_candidate {
+        bigint candidate_id PK
+        bigint user_id PK
+    }
+    users {
+        bigint id PK
+        timestamp created_at
+        boolean disabled
+        text employee_id
+        text first_name
+        text last_name
+        text primary_email_address
+        boolean site_admin
+        timestamp updated_at
+    }
+    tags {
+        bigint id PK
+        text name
+    }
+    close_reason {
+        bigint id PK
+        text name
+    }
+    candidate_tag {
+        bigint candidate_id PK
+        bigint tag_id PK
+    }
+    job_department {
+        bigint department_id PK
+        bigint job_id PK
+    }
+    job_office {
+        bigint job_id PK
+        bigint office_id PK
+    }
+    hiring_team {
+        text role PK
+        bigint job_id PK
+        bigint user_id PK
+        boolean responsible
+    }
+    job {
+        bigint id PK
+        timestamp closed_at
+        boolean confidential
+        timestamp created_at
+        boolean is_template
+        text name
+        text notes
+        timestamp opened_at
+        text requisition_id
+        text status
+        timestamp updated_at
+    }
+    email_template_cc {
+        text email_id PK
+        bigint email_template_id PK
+    }
+    email_template {
+        bigint id PK
+        bigint user_id FK
+        text body
+        timestamp created_at
+        text description
+        text from_email
+        text html_body
+        boolean is_default
+        text name
+        text type
+        timestamp updated_at
+    }
+    interview_question {
+        bigint id PK
+        bigint interview_id PK
+        text question
+    }
+    interview {
+        bigint id PK
+        bigint job_stage_id PK
+        text interview_kit_content
+        text name
+    }
+    job_stage {
+        bigint id PK
+        bigint job_id FK
+        boolean active
+        timestamp created_at
+        text name
+        integer priority
+        timestamp updated_at
+    }
+    offer_history {
+        timestamp updated_at PK
+        bigint offer_id PK
+        bigint application_id FK
+        timestamp resolved_at
+        text sent_at
+        text starts_at
+        text status
+        bigint version
+    }
+    scorecard_attribute {
+        integer index PK
+        bigint scorecard_id PK
+        text name
+        text note
+        text rating
+        text type
+    }
+    scorecard_qna {
+        integer index PK
+        bigint scorecard_id PK
+        text answer
+        bigint id
+        text question
+    }
+    scorecard {
+        bigint id PK
+        bigint application_id FK
+        bigint candidate_id FK
+        timestamp created_at
+        text interview
+        timestamp interviewed_at
+        text overall_recommendation
+        timestamp submitted_at
+        bigint submitted_by_user_id
+        timestamp updated_at
+    }
+    user_role {
+        bigint id PK
+        text name
+        text type
+    }
+    address {
+        integer index PK
+        bigint candidate_id PK
+        text type
+        text value
+    }
+    website_address {
+        integer index PK
+        bigint candidate_id PK
+        text type
+        text value
+    }
+    email_address {
+        integer index PK
+        bigint candidate_id PK
+        text type
+        text value
+    }
+    social_media_address {
+        integer index PK
+        bigint candidate_id PK
+        text value
+    }
+    phone_number {
+        integer index PK
+        bigint candidate_id PK
+        text type
+        text value
+    }
+    attachment {
+        integer index PK
+        bigint candidate_id PK
+        text filename
+        text type
+        text url
+    }
+    employment {
+        text index PK
+        bigint candidate_id PK
+        text company_name
+        text date_end
+        text date_start
+        bigint id
+        text title
+    }
+    education {
+        text index PK
+        bigint candidate_id PK
+        text degree FK
+        text discipline FK
+        text school_name FK
+        text end_date
+        bigint id
+        text start_date
+    }
+    candidate {
+        bigint id PK
+        bigint coordinator_id FK
+        bigint new_candidate_id FK
+        bigint recruiter_id FK
+        boolean can_email
+        text company
+        timestamp created_at
+        text first_name
+        boolean is_private
+        timestamp last_activity
+        text last_name
+        text photo_url
+        text title
+        timestamp updated_at
+    }
+    job_opening {
+        bigint id PK
+        bigint job_id PK
+        bigint application_id FK
+        bigint close_reason_id FK
+        timestamp closed_at
+        timestamp opened_at
+        text opening_id
+        text status
+    }
+    job_post_question {
+        integer index PK
+        bigint job_post_id PK
+        text description
+        text label
+        text name
+        boolean private
+        boolean required
+        text type
+        jsonb values
+    }
+    job_post {
+        bigint id PK
+        bigint job_id FK
+        boolean active
+        text content
+        timestamp created_at
+        bigint demographic_question_set_id
+        boolean external
+        timestamp first_published_at
+        boolean internal
+        text internal_content
+        bigint job_post_custom_location_id
+        bigint job_post_location_type_id
+        text job_post_location_type_name
+        boolean live
+        text location_name
+        text location_office_id
+        text title
+        timestamp updated_at
+    }
+    eeoc {
+        bigint application_id PK
+        text disability_status_description
+        bigint disability_status_id
+        text gender_description
+        bigint gender_id
+        text race_description
+        bigint race_id
+        timestamp submitted_at
+        text veteran_status_description
+        bigint veteran_status_id
+    }
+    department {
+        bigint id PK
+        bigint parent_id FK
+        text external_id
+        text name
+    }
+    demographic_questions {
+        bigint id PK
+        bigint demographic_question_set_id FK
+        boolean active
+        text name
+    }
+    approver {
+        bigint id PK
+        bigint approval_id PK
+        bigint approver_group_id PK
+        jsonb email_addresses
+        text employee_id
+        text name
+    }
+    approver_group {
+        bigint id PK
+        bigint approval_id PK
+        integer approvals_required
+        timestamp created_at
+        bigint job_id
+        text offer_id
+        integer priority
+        timestamp resolved_at
+    }
+    approval {
+        bigint id PK
+        bigint job_id FK
+        bigint offer_id
+        bigint requested_by_user_id
+        boolean sequential
+        text status
+        text type
+        integer version
+    }
+    scheduled_interviewer {
+        bigint interviewer_id PK
+        bigint scheduled_interview_id PK
+        bigint scorecard_id FK
+        text response_status
+    }
+    scheduled_interview {
+        bigint id PK
+        bigint application_id FK
+        timestamp created_at
+        timestamp ends
+        bigint interview_id
+        text location
+        bigint organizer_id
+        timestamp start
+        text status
+        timestamp updated_at
+    }
+    demographic_answer {
+        bigint id PK
+        bigint application_id FK
+        bigint demographic_answer_option_id FK
+        bigint demographic_question_id FK
+        timestamp created_at
+        text free_form_text
+        timestamp updated_at
+    }
+    job_application {
+        bigint application_id PK
+        bigint job_id PK
+    }
+    application_qna {
+        integer index PK
+        bigint application_id PK
+        text answer
+        text question
+    }
+    application_attachment {
+        integer index PK
+        bigint application_id PK
+        timestamp created_at
+        text filename
+        text type
+        text url
+    }
+    application {
+        bigint id PK
+        bigint candidate_id FK
+        bigint coordinator_id FK
+        bigint credited_to_user_id FK
+        bigint job_post_id FK
+        bigint recruiter_id FK
+        bigint rejection_reason_id FK
+        bigint source_id FK
+        timestamp applied_at
+        bigint current_stage_id
+        text current_stage_name
+        timestamp last_activity_at
+        text location_address
+        boolean prospect
+        bigint prospect_owner_id
+        bigint prospect_pool_id
+        bigint prospect_stage_id
+        text prospective_department
+        text prospective_office
+        timestamp rejected_at
+        text status
+    }
+    user_permission {
+        bigint id PK
+        bigint user_id PK
+        bigint job_id FK
+        bigint user_role_id FK
+    }
+    note {
+        bigint id PK
+        bigint candidate_id PK
+        bigint user_id FK
+        text body
+        timestamp created_at
+        boolean private
+        text visibility
+    }
+    activity {
+        bigint id PK
+        bigint candidate_id PK
+        bigint user_id FK
+        text body
+        timestamp created_at
+        text subject
+    }
+    email_cc {
+        text cc_email PK
+        bigint email_id PK
+    }
+    email {
+        bigint id PK
+        bigint candidate_id PK
+        bigint user_id FK
+        text body
+        timestamp created_at
+        text from_email
+        text subject
+        text to_email
+    }
+    office }o--|| office : "fk"
+    office }o--|| users : "fk"
+    hiring_team_status }o--|| hiring_team : "fk"
+    hiring_team_status }o--|| job : "fk"
+    offer }o--|| application : "fk"
+    offer }o--|| job_opening : "fk"
+    demographic_answer_option }o--|| demographic_questions : "fk"
+    job_history }o--|| job : "fk"
+    application_history }o--|| application : "fk"
+    application_history }o--|| job_stage : "fk"
+    prospect_stage }o--|| prospect_pool : "fk"
+    user_email }o--|| users : "fk"
+    user_linked_candidate }o--|| candidate : "fk"
+    user_linked_candidate }o--|| users : "fk"
+    candidate_tag }o--|| tags : "fk"
+    candidate_tag }o--|| candidate : "fk"
+    job_department }o--|| department : "fk"
+    job_department }o--|| job : "fk"
+    job_office }o--|| office : "fk"
+    job_office }o--|| job : "fk"
+    hiring_team }o--|| users : "fk"
+    hiring_team }o--|| job : "fk"
+    email_template_cc }o--|| email_template : "fk"
+    email_template }o--|| users : "fk"
+    interview_question }o--|| interview : "fk"
+    interview }o--|| job_stage : "fk"
+    job_stage }o--|| job : "fk"
+    offer_history }o--|| offer : "fk"
+    offer_history }o--|| application : "fk"
+    scorecard_attribute }o--|| scorecard : "fk"
+    scorecard_qna }o--|| scorecard : "fk"
+    scorecard }o--|| application : "fk"
+    scorecard }o--|| candidate : "fk"
+    address }o--|| candidate : "fk"
+    website_address }o--|| candidate : "fk"
+    email_address }o--|| candidate : "fk"
+    social_media_address }o--|| candidate : "fk"
+    phone_number }o--|| candidate : "fk"
+    attachment }o--|| candidate : "fk"
+    employment }o--|| candidate : "fk"
+    education }o--|| degree : "fk"
+    education }o--|| discipline : "fk"
+    education }o--|| school : "fk"
+    education }o--|| candidate : "fk"
+    candidate }o--|| users : "fk"
+    candidate }o--|| candidate : "fk"
+    candidate }o--|| users : "fk"
+    job_opening }o--|| application : "fk"
+    job_opening }o--|| close_reason : "fk"
+    job_opening }o--|| job : "fk"
+    job_post_question }o--|| job_post : "fk"
+    job_post }o--|| job : "fk"
+    eeoc }o--|| application : "fk"
+    department }o--|| department : "fk"
+    demographic_questions }o--|| demographic_question_set : "fk"
+    approver }o--|| approver_group : "fk"
+    approver }o--|| approver_group : "fk"
+    approver_group }o--|| approval : "fk"
+    approval }o--|| job : "fk"
+    scheduled_interviewer }o--|| users : "fk"
+    scheduled_interviewer }o--|| scorecard : "fk"
+    scheduled_interviewer }o--|| scheduled_interview : "fk"
+    scheduled_interview }o--|| application : "fk"
+    demographic_answer }o--|| application : "fk"
+    demographic_answer }o--|| demographic_answer_option : "fk"
+    demographic_answer }o--|| demographic_questions : "fk"
+    job_application }o--|| job : "fk"
+    job_application }o--|| application : "fk"
+    application_qna }o--|| application : "fk"
+    application_attachment }o--|| application : "fk"
+    application }o--|| rejection_reason : "fk"
+    application }o--|| job_post : "fk"
+    application }o--|| users : "fk"
+    application }o--|| candidate : "fk"
+    application }o--|| source : "fk"
+    application }o--|| users : "fk"
+    application }o--|| users : "fk"
+    user_permission }o--|| job : "fk"
+    user_permission }o--|| user_role : "fk"
+    user_permission }o--|| users : "fk"
+    note }o--|| users : "fk"
+    note }o--|| candidate : "fk"
+    activity }o--|| users : "fk"
+    activity }o--|| candidate : "fk"
+    email_cc }o--|| email : "fk"
+    email }o--|| users : "fk"
+    email }o--|| candidate : "fk"

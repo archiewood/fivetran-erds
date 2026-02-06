@@ -1,0 +1,84 @@
+erDiagram
+    performance_cycle {
+        text id PK
+        text created_at
+        text name
+        text processed_at
+        text state
+        timestamp updated_at
+    }
+    manager_review_multiple_choice_option {
+        text index PK
+        text manager_review_id PK
+        text multiple_choice_index PK
+        text option
+    }
+    manager_review_multiple_choice {
+        text index PK
+        text manager_review_id PK
+        text answer
+        text text
+    }
+    manager_review_open_text_question {
+        text index PK
+        text manager_review_id PK
+        text answer
+        text text
+    }
+    manager_review_performance_rating_bucket {
+        text index PK
+        text manager_review_id PK
+        text created_at
+        text description
+        text id
+        text title
+        text updated_at
+        text value
+    }
+    manager_review_performance_rating_question {
+        text index PK
+        text manager_review_id PK
+        text description
+        text title
+    }
+    manager_review_performance_rating {
+        text id PK
+        text manager_review_id PK
+        text created_at
+        text description
+        text title
+        text updated_at
+        text value
+    }
+    manager_review {
+        text id PK
+        text employee_id FK
+        text manager_id FK
+        text performance_cycle_id FK
+        text completed_at
+        text created_at
+        text processed_at
+        text review_acknowledged
+        text status
+        timestamp updated_at
+    }
+    employee {
+        text id PK
+        text birth_date
+        text email
+        text end_date
+        text identifier
+        text name
+        text processed_at
+        text start_date
+    }
+    manager_review_multiple_choice_option }o--|| manager_review_multiple_choice : "fk"
+    manager_review_multiple_choice_option }o--|| manager_review_multiple_choice : "fk"
+    manager_review_multiple_choice }o--|| manager_review : "fk"
+    manager_review_open_text_question }o--|| manager_review : "fk"
+    manager_review_performance_rating_bucket }o--|| manager_review : "fk"
+    manager_review_performance_rating_question }o--|| manager_review : "fk"
+    manager_review_performance_rating }o--|| manager_review : "fk"
+    manager_review }o--|| performance_cycle : "fk"
+    manager_review }o--|| employee : "fk"
+    manager_review }o--|| employee : "fk"

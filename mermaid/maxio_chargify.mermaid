@@ -1,0 +1,1274 @@
+erDiagram
+    component_price_point_price {
+        text id PK
+        text component_id FK
+        text price_point_id FK
+        text ending_quantity
+        text formatted_unit_price
+        text segment_id
+        text starting_quantity
+        text unit_price
+    }
+    component_price_point {
+        text id PK
+        text component_id FK
+        text archived_at
+        text created_at
+        text defaults
+        text handle
+        text name
+        text pricing_scheme
+        text tax_included
+        text type
+        timestamp updated_at
+    }
+    customer {
+        text id PK
+        text default_subscription_group_uid FK
+        text parent_id FK
+        text address
+        text address_2
+        text cc_emails
+        text city
+        text country
+        text country_name
+        text created_at
+        text email
+        text first_name
+        text last_name
+        text locale
+        text organization
+        text phone
+        text portal_customer_created_at
+        text portal_invite_last_accepted_at
+        text portal_invite_last_sent_at
+        text reference
+        text state
+        text state_name
+        text tax_exempt
+        timestamp updated_at
+        text vat_number
+        text verified
+        text zip
+    }
+    insight_site_stat {
+        text site_id PK
+        text seller_name
+        text site_currency
+        text site_name
+        text stats_revenue_this_month
+        text stats_revenue_this_year
+        text stats_revenue_today
+        text stats_subscriptions_today
+        text stats_total_revenue
+        text stats_total_subscriptions
+    }
+    group_subscription_id {
+        text group_subscription_id PK
+        text subscription_group_id PK
+    }
+    subscription_group {
+        text uid PK
+        text customer_id FK
+        text primary_subscription_id FK
+        text cancel_at_end_of_period
+        text next_assessment_at
+        text payment_profile_id
+        text pending_discounts_balance_in_cents
+        text prepayments_balance_in_cents
+        text scheme
+        text service_credits_balance_in_cents
+        text state
+    }
+    coupon_usage {
+        text id PK
+        text coupon_id FK
+        text product_family_id FK
+        text name
+        text revenue
+        text revenue_in_cents
+        text savings
+        text savings_in_cents
+        text signups
+    }
+    subscription_proforma_invoice_line_item {
+        text uid PK
+        text subscription_proforma_invoice_uid PK
+        text component_id FK
+        text price_point_id FK
+        text product_id FK
+        text product_price_point_id FK
+        text description
+        text discount_amount
+        text period_range_end
+        text period_range_start
+        text product_version
+        text quantity
+        text subtotal_amount
+        text tax_amount
+        text tiered_unit_price
+        text title
+        text total_amount
+        text unit_price
+    }
+    subscription_proforma_invoice {
+        text uid PK
+        text customer_id FK
+        text site_id FK
+        text subscription_id FK
+        text billing_address_city
+        text billing_address_country
+        text billing_address_line_2
+        text billing_address_state
+        text billing_address_street
+        text billing_address_zip
+        text collection_method
+        text consolidation_level
+        text created_at
+        text credit_amount
+        jsonb credits
+        text currency
+        jsonb custom_fields
+        text delivery_date
+        text discount_amount
+        text discounts
+        text due_amount
+        text number
+        text paid_amount
+        text payment_instructions
+        jsonb payments
+        text product_family_name
+        text product_name
+        text refund_amount
+        text role
+        text seller_address_city
+        text seller_address_country
+        text seller_address_line_2
+        text seller_address_state
+        text seller_address_street
+        text seller_address_zip
+        text seller_name
+        text seller_phone
+        text sequence_number
+        text shipping_address_city
+        text shipping_address_country
+        text shipping_address_line_2
+        text shipping_address_state
+        text shipping_address_street
+        text shipping_address_zip
+        text status
+        text subtotal_amount
+        text tax_amount
+        jsonb taxes
+        text total_amount
+    }
+    invoice_event_data_payment {
+        text transaction_id PK
+        text invoice_event_id PK
+        text applied_amount
+        text memo
+        text original_amount
+        text payment_method_card_brand
+        text payment_method_card_expiration
+        text payment_method_last_four
+        text payment_method_masked_card_number
+        text payment_method_type
+        text prepayment
+        text transaction_time
+    }
+    invoice_event_data_taxes_line_item {
+        text uid PK
+        text invoice_event_data_taxes_uid PK
+        text tax_amount
+        text tax_exempt_amount
+        text taxable_amount
+    }
+    invoice_event_data_taxes {
+        text uid PK
+        text invoice_event_id PK
+        text description
+        text eu_vat
+        text percentage
+        text source_id
+        text source_type
+        text tax_amount
+        text tax_component_breakouts
+        text tax_exempt_amount
+        text taxable_amount
+        text title
+        text transaction_id
+    }
+    invoice_event_data_line_item {
+        text uid PK
+        text invoice_event_id PK
+        text component_id FK
+        text price_point_id FK
+        text product_id FK
+        text product_price_point_id FK
+        text component_cost_data
+        text description
+        text discount_amount
+        text hide
+        text period_range_end
+        text period_range_start
+        text product_version
+        text quantity
+        text subtotal_amount
+        text tax_amount
+        text tax_code
+        text tax_exempt_amount
+        text tax_included
+        text tiered_unit_price
+        text title
+        text total_amount
+        text transaction_id
+        text unit_price
+    }
+    invoice_event {
+        text id PK
+        text customer_id FK
+        text invoice_uid FK
+        text parent_invoice_id FK
+        text payer_chargify_id FK
+        text site_id FK
+        text event_data_backported_at
+        text event_data_billing_address_city
+        text event_data_billing_address_country
+        text event_data_billing_address_line_2
+        text event_data_billing_address_state
+        text event_data_billing_address_street
+        text event_data_billing_address_zip
+        text event_data_collection_method
+        text event_data_consolidation_level
+        text event_data_created_at
+        text event_data_credit_amount
+        text event_data_credits
+        text event_data_currency
+        text event_data_custom_fields
+        text event_data_customer_id
+        text event_data_discount_amount
+        text event_data_discounts
+        text event_data_display_settings_display_eu_vat_breakdown
+        text event_data_display_settings_display_introductory_offer
+        text event_data_display_settings_eu_vat_breakdown_exchange_rate
+        text event_data_display_settings_eu_vat_breakdown_exchange_rate_cached_at
+        text event_data_display_settings_eu_vat_breakdown_message_template
+        text event_data_display_settings_eu_vat_breakdown_total_in_eur
+        text event_data_display_settings_eu_vat_breakdown_vat_in_eur
+        text event_data_display_settings_hide_zero_subtotal_lines
+        text event_data_display_settings_include_discounts_on_lines
+        text event_data_display_settings_introductory_offer
+        text event_data_due_amount
+        text event_data_due_date
+        text event_data_id
+        text event_data_issue_date
+        text event_data_legacy_invoice_number
+        text event_data_memo
+        text event_data_net_terms
+        text event_data_number
+        text event_data_paid_amount
+        text event_data_paid_date
+        text event_data_parent_invoice_id
+        text event_data_parent_invoice_number
+        text event_data_payment_instructions
+        text event_data_prepaid_usage_details
+        text event_data_product_family_name
+        text event_data_product_name
+        text event_data_recipient_emails
+        text event_data_refund_amount
+        text event_data_refunds
+        text event_data_role
+        text event_data_seller_address_city
+        text event_data_seller_address_country
+        text event_data_seller_address_line_2
+        text event_data_seller_address_state
+        text event_data_seller_address_street
+        text event_data_seller_address_zip
+        text event_data_seller_logo_url
+        text event_data_seller_name
+        text event_data_seller_phone
+        text event_data_sequence_number
+        text event_data_shipping_address_city
+        text event_data_shipping_address_country
+        text event_data_shipping_address_line_2
+        text event_data_shipping_address_state
+        text event_data_shipping_address_street
+        text event_data_shipping_address_zip
+        text event_data_site_id
+        text event_data_statement_id
+        text event_data_status
+        text event_data_status_changed_at
+        text event_data_subscription_group_id
+        text event_data_subscription_id
+        text event_data_subtotal_amount
+        text event_data_tax_amount
+        text event_data_tax_exempt_amount
+        text event_data_total_amount
+        text event_data_transaction_time
+        text event_data_uid
+        text event_data_updated_at
+        text event_type
+        text invoice_id
+        timestamp timestamps
+    }
+    offer_signup_pages {
+        text id PK
+        text offer_id PK
+        text enabled
+        text nickname
+        text return_params
+        text return_url
+    }
+    offer_discounts {
+        text coupon_id PK
+        text offer_id PK
+        text coupon_code
+        text coupon_name
+    }
+    offer_items {
+        text component_id PK
+        text offer_id PK
+        text price_point_id FK
+        text component_name
+        text component_unit_price
+        text currency_prices
+        text editable
+        text price_point_name
+        text starting_quantity
+    }
+    offer {
+        text id PK
+        text product_family_id FK
+        text product_id FK
+        text product_price_point_id FK
+        text site_id FK
+        text archived_at
+        text created_at
+        text description
+        text handle
+        text name
+        text product_family_name
+        text product_name
+        text product_price_in_cents
+        text product_price_point_name
+        text product_revisable_number
+        text updated_at
+    }
+    site {
+        text id PK
+        text currency
+        text customer_hierarchy_enabled
+        text default_payment_collection_method
+        text name
+        text net_terms_automatic_net_terms
+        text net_terms_custom_net_terms_enabled
+        text net_terms_default_net_terms
+        text net_terms_net_terms_on_remittance_signups_enabled
+        text net_terms_remittance_net_terms
+        jsonb non_primary_currencies
+        text organization_address_city
+        text organization_address_country
+        text organization_address_line_2
+        text organization_address_name
+        text organization_address_phone
+        text organization_address_state
+        text organization_address_street
+        text organization_address_zip
+        text relationship_invoicing_enabled
+        text seller_id
+        text subdomain
+        text tax_configuration_destination_address
+        text tax_configuration_fully_configured
+        text tax_configuration_kind
+        text test
+        text whopays_default_payer
+        text whopays_enabled
+    }
+    reason_code {
+        text id PK
+        text site_id FK
+        text code
+        text created_at
+        text description
+        text position
+        text updated_at
+    }
+    payment_profile {
+        text id PK
+        text customer_id FK
+        text bank_account_holder_type
+        text bank_account_type
+        text bank_name
+        text billing_address
+        text billing_address_2
+        text billing_city
+        text billing_country
+        text billing_state
+        text billing_zip
+        text current_vault
+        text customer_vault_token
+        text first_name
+        text gateway_handle
+        text last_name
+        text masked_bank_account_number
+        text masked_bank_routing_number
+        text payment_type
+        text site_gateway_setting_id
+        text vault_token
+        text verified
+    }
+    coupon_restrictions {
+        text id PK
+        text coupon_id PK
+        text handle
+        text item_id
+        text item_type
+        text name
+    }
+    coupon {
+        text id PK
+        text product_family_id FK
+        text allow_negative_balance
+        text amount
+        text amount_in_cents
+        text apply_on_cancel_at_end_of_period
+        text archived_at
+        text code
+        text compounding_strategy
+        text conversion_limit
+        text created_at
+        text description
+        text discount_type
+        text duration_interval
+        text duration_interval_span
+        text duration_interval_unit
+        text duration_period_count
+        text end_date
+        text exclude_mid_period_allocations
+        text name
+        text percentage
+        text product_family_name
+        text recurring
+        text recurring_scheme
+        text stackable
+        text start_date
+        timestamp updated_at
+        text use_site_exchange_rate
+    }
+    product_family {
+        text id PK
+        text accounting_code
+        text created_at
+        text description
+        text handle
+        text name
+        timestamp updated_at
+    }
+    credit_note_refund {
+        text uid PK
+        text credit_note_uid PK
+        text applied_amount
+        text gateway_handle
+        text gateway_transaction_id
+        text gateway_used
+        text memo
+        text original_amount
+        text payment_id
+        text transaction_id
+        text transaction_time
+    }
+    credit_note_application {
+        text uid PK
+        text credit_note_uid PK
+        text invoice_uid FK
+        text applied_amount
+        text memo
+        text transaction_time
+    }
+    credit_note_taxes_line_item {
+        text uid PK
+        text credit_note_taxes_uid PK
+        text tax_amount
+        text taxable_amount
+    }
+    credit_note_taxes {
+        text uid PK
+        text credit_note_uid PK
+        text percentage
+        text source_id
+        text source_type
+        text tax_amount
+        text taxable_amount
+        text title
+    }
+    credit_note_discount_line_item {
+        text uid PK
+        text credit_note_discount_uid PK
+        text discount_amount
+        text eligible_amount
+    }
+    credit_note_discount {
+        text uid PK
+        text credit_note_uid PK
+        text code
+        text discount_amount
+        text discount_type
+        text eligible_amount
+        text percentage
+        text source_id
+        text source_type
+        text title
+    }
+    credit_note_line_item {
+        text uid PK
+        text credit_note_uid PK
+        text component_id FK
+        text price_point_id FK
+        text product_id FK
+        text description
+        text discount_amount
+        text period_range_end
+        text period_range_start
+        text product_version
+        text quantity
+        text subtotal_amount
+        text tax_amount
+        text tiered_unit_price
+        text title
+        text total_amount
+        text unit_price
+    }
+    credit_note {
+        text uid PK
+        text customer_id FK
+        text site_id FK
+        text subscription_id FK
+        text applied_amount
+        text applied_date
+        text billing_address_city
+        text billing_address_country
+        text billing_address_line_2
+        text billing_address_state
+        text billing_address_street
+        text billing_address_zip
+        text currency
+        text customer_chargify_id
+        text customer_email
+        text customer_first_name
+        text customer_last_name
+        text customer_organization
+        text customer_reference
+        text discount_amount
+        text issue_date
+        text memo
+        text number
+        text remaining_amount
+        text seller_address_city
+        text seller_address_country
+        text seller_address_line_2
+        text seller_address_state
+        text seller_address_street
+        text seller_address_zip
+        text seller_name
+        text seller_phone
+        text sequence_number
+        text shipping_address_city
+        text shipping_address_country
+        text shipping_address_line_2
+        text shipping_address_state
+        text shipping_address_street
+        text shipping_address_zip
+        text status
+        text subtotal_amount
+        text tax_amount
+        text total_amount
+    }
+    component_price {
+        text id PK
+        text component_id PK
+        text price_point_id FK
+        text ending_quantity
+        text formatted_unit_price
+        text segment_id
+        text starting_quantity
+        text unit_price
+    }
+    component {
+        text id PK
+        text default_price_point_id FK
+        text product_family_id FK
+        text accounting_code
+        text allow_fractional_quantities
+        text archived
+        text archived_at
+        text created_at
+        text description
+        text downgrade_credit
+        text handle
+        text hide_date_range_on_invoice
+        text item_category
+        text kind
+        text name
+        text price_per_unit_in_cents
+        text price_points_url
+        text pricing_scheme
+        text recurring
+        text tax_code
+        text taxable
+        text unit_name
+        text unit_price
+        timestamp updated_at
+        text upgrade_charge
+        text use_site_exchange_rate
+    }
+    products_price_point {
+        text id PK
+        text product_id FK
+        text subscription_id FK
+        text archived_at
+        text created_at
+        text expiration_interval
+        text expiration_interval_unit
+        text handle
+        text initial_charge_after_trial
+        text initial_charge_in_cents
+        text interval
+        text interval_unit
+        text introductory_offer
+        text name
+        text price_in_cents
+        text tax_included
+        text trial_interval
+        text trial_interval_unit
+        text trial_price_in_cents
+        text trial_type
+        text type
+        timestamp updated_at
+    }
+    event {
+        text id PK
+        text customer_id FK
+        text event_specific_data_component_id FK
+        text subscription_id FK
+        timestamp created_at
+        text event_specific_data_event_type
+        text event_specific_data_memo
+        text event_specific_data_metafield_id
+        text event_specific_data_metafield_name
+        text event_specific_data_new_subscription_state
+        text event_specific_data_new_unit_balance
+        text event_specific_data_new_value
+        text event_specific_data_old_value
+        text event_specific_data_previous_subscription_state
+        text event_specific_data_previous_unit_balance
+        text event_specific_data_resource_id
+        text event_specific_data_resource_type
+        text event_specific_data_usage_quantity
+        text key
+        text message
+    }
+    product_public_signup_page {
+        text id PK
+        text product_id PK
+        text currency
+        text enabled
+        text nickname
+        text return_params
+        text return_url
+        text url
+    }
+    product {
+        text id PK
+        text default_product_price_point_id FK
+        text product_family_id FK
+        text product_price_point_id FK
+        text accounting_code
+        text archived_at
+        text created_at
+        text description
+        text expiration_interval
+        text expiration_interval_unit
+        text handle
+        text initial_charge_after_trial
+        text initial_charge_in_cents
+        text interval
+        text interval_unit
+        text item_category
+        text name
+        text price_in_cents
+        text request_billing_address
+        text request_credit_card
+        text require_billing_address
+        text require_credit_card
+        text require_shipping_address
+        text return_params
+        text tax_code
+        text taxable
+        text trial_interval
+        text trial_interval_unit
+        text trial_price_in_cents
+        text update_return_params
+        text update_return_url
+        timestamp updated_at
+        text use_site_exchange_rate
+        text version_number
+    }
+    invoice_payment {
+        text transaction_id PK
+        text invoice_uid PK
+        text applied_amount
+        text gateway_transaction_id
+        text memo
+        text original_amount
+        text payment_method_card_brand
+        text payment_method_card_expiration
+        text payment_method_details
+        text payment_method_kind
+        text payment_method_last_four
+        text payment_method_masked_card_number
+        text payment_method_memo
+        text payment_method_type
+        text prepayment
+        text transaction_time
+    }
+    invoice_line_item {
+        text uid PK
+        text invoice_uid PK
+        text component_id FK
+        text price_point_id FK
+        text product_id FK
+        jsonb component_cost_data
+        text description
+        text discount_amount
+        text period_range_end
+        text period_range_start
+        text product_version
+        text quantity
+        text subtotal_amount
+        text tax_amount
+        text tiered_unit_price
+        text title
+        text total_amount
+        text unit_price
+    }
+    invoice_discount_line_item {
+        text uid PK
+        text invoice_discount_uid PK
+        text discount_amount
+        text eligible_amount
+    }
+    invoice_discount {
+        text uid PK
+        text invoice_uid PK
+        text code FK
+        text discount_amount
+        text discount_type
+        text eligible_amount
+        text integer
+        text percentage
+        text source_id
+        text source_type
+        text title
+    }
+    invoice_taxes_line_item {
+        text uid PK
+        text invoice_taxes_uid PK
+        text tax_amount
+        text taxable_amount
+    }
+    invoice_taxes {
+        text uid PK
+        text invoice_uid PK
+        text code
+        text percentage
+        text source_id
+        text source_type
+        text tax_amount
+        text taxable_amount
+        text title
+    }
+    invoice_credit {
+        text uid PK
+        text invoice_uid PK
+        text credit_note_uid FK
+        text applied_amount
+        text credit_note_number
+        text memo
+        text original_amount
+        text transaction_time
+    }
+    invoice_refund {
+        text transaction_id PK
+        text invoice_uid PK
+        text applied_amount
+        text gateway_transaction_id
+        text memo
+        text original_amount
+        text payment_id
+    }
+    invoice_custom_field {
+        text owner_id PK
+        text invoice_uid PK
+        text name
+        text owner_type
+        text value
+    }
+    previous_balance_data_invoice {
+        text previous_balance_data_invoice_uid PK
+        text invoice_uid PK
+        text number
+        text outstanding_amount
+    }
+    invoice {
+        text uid PK
+        text customer_id FK
+        text group_primary_subscription_id FK
+        text parent_invoice_uid FK
+        text site_id FK
+        text subscription_id FK
+        text billing_address_city
+        text billing_address_country
+        text billing_address_line_2
+        text billing_address_state
+        text billing_address_street
+        text billing_address_zip
+        text collection_method
+        text consolidation_level
+        text created_at
+        text credit_amount
+        text currency
+        text discount_amount
+        text due_amount
+        text due_date
+        text issue_date
+        text memo
+        text number
+        text paid_amount
+        text paid_date
+        text parent_invoice_number
+        text payment_instructions
+        text previous_balance_data_capture_date
+        text product_family_name
+        text product_name
+        text public_url
+        text refund_amount
+        text seller_address_city
+        text seller_address_country
+        text seller_address_line_2
+        text seller_address_state
+        text seller_address_street
+        text seller_address_zip
+        text seller_name
+        text seller_phone
+        text sequence_number
+        text shipping_address_city
+        text shipping_address_country
+        text shipping_address_line_2
+        text shipping_address_state
+        text shipping_address_street
+        text shipping_address_zip
+        text status
+        text subtotal_amount
+        text tax_amount
+        text total_amount
+        timestamp updated_at
+    }
+    subscription_component {
+        text id PK
+        text component_id FK
+        text price_point_id FK
+        text product_family_id FK
+        text subscription_id FK
+        text currency
+        text display_on_hosted_page
+        text unit_balance
+        timestamp updated_at
+    }
+    subscription_coupon {
+        text _fivetran_id PK
+        text code FK
+        text subscription_id FK
+        text amount_in_cents
+        text expires_at
+        text percentage
+        text recurring
+        text use_count
+        text uses_allowed
+    }
+    subscription {
+        text id PK
+        text bank_account_customer_id FK
+        text credit_card_customer_id FK
+        text customer_id FK
+        text next_product_id FK
+        text next_product_price_point_id FK
+        text offer_id FK
+        text payer_id FK
+        text product_id FK
+        text product_price_point_id FK
+        text reason_code FK
+        text activated_at
+        text automatically_resume_at
+        text balance_in_cents
+        text bank_account_bank_name
+        text bank_account_billing_address
+        text bank_account_billing_address_2
+        text bank_account_billing_city
+        text bank_account_billing_country
+        text bank_account_billing_state
+        text bank_account_billing_zip
+        text bank_account_chargify_token
+        text bank_account_current_vault
+        text bank_account_customer_vault_token
+        text bank_account_first_name
+        text bank_account_gateway_handle
+        text bank_account_holder_type
+        text bank_account_id
+        text bank_account_last_name
+        text bank_account_masked_bank_account_number
+        text bank_account_masked_bank_routing_number
+        text bank_account_site_gateway_setting_id
+        text bank_account_type
+        text bank_account_vault_token
+        text cancel_at_end_of_period
+        text canceled_at
+        text cancellation_message
+        text cancellation_method
+        text created_at
+        text credit_card_billing_address
+        text credit_card_billing_address_2
+        text credit_card_billing_city
+        text credit_card_billing_country
+        text credit_card_billing_state
+        text credit_card_billing_zip
+        text credit_card_card_type
+        text credit_card_current_vault
+        text credit_card_customer_vault_token
+        text credit_card_expiration_month
+        text credit_card_expiration_year
+        text credit_card_first_name
+        text credit_card_gateway_handle
+        text credit_card_id
+        text credit_card_last_name
+        text credit_card_masked_card_number
+        text credit_card_payment_type
+        text credit_card_site_gateway_setting_id
+        text credit_card_vault_token
+        text current_billing_amount_in_cents
+        text current_period_ends_at
+        text current_period_started_at
+        text delayed_cancel_at
+        text dunning_communication_delay_enabled
+        text dunning_communication_delay_time_zone
+        text expires_at
+        text group_primarys
+        text group_uid
+        text net_terms
+        text next_assessment_at
+        text on_hold_at
+        text payment_collection_method
+        text payment_type
+        text prepaid_dunning
+        text previous_state
+        text reference
+        text referral_code
+        text signup_payment_id
+        text signup_revenue
+        text snap_day
+        text state
+        text stored_credential_transaction_id
+        text total_revenue_in_cents
+        text trial_ended_at
+        text trial_started_at
+        timestamp updated_at
+    }
+    allocation {
+        text _fivetran_id PK
+        text id FK
+        text component_id
+        text memo
+        text previous_quantity
+        text proration_downgrade_scheme
+        text proration_upgrade_scheme
+        text quantity
+        text subscription_id
+        text timestamps
+    }
+    usage {
+        text id PK
+        text component_id FK
+        text price_point_id FK
+        text subscription_id FK
+        timestamp created_at
+        text memo
+        text quantity
+    }
+    subscription_note {
+        text id PK
+        text subscription_id FK
+        text body
+        text created_at
+        text sticky
+        text updated_at
+    }
+    prepayment {
+        text id PK
+        text subscription_id FK
+        text amount_in_cents
+        timestamp created_at
+        text details
+        text external
+        text memo
+        text payment_type
+        text remaining_amount_in_cents
+    }
+    preview_custom_field {
+        text owner_id PK
+        text preview_performa_invoice_uid PK
+        text metadatum_id
+        text name
+        text owner_type
+        text value
+    }
+    preview_payment {
+        text _fivetran_id PK
+        text preview_performa_invoice_uid FK
+        text applied_amount
+        text memo
+        text original_amount
+        text prepayment
+    }
+    preview_credit {
+        text uid PK
+        text preview_performa_invoice_uid PK
+        text applied_amount
+        text memo
+        text original_amount
+    }
+    preview_taxes_line_item {
+        text _fivetran_id PK
+        text preview_taxes_uid FK
+        text tax_amount
+        text taxable_amount
+    }
+    preview_taxes {
+        text uid PK
+        text preview_performa_invoice_uid PK
+        text percentage
+        text source_type
+        text tax_amount
+        text taxable_amount
+        text title
+    }
+    preview_discount_line_item {
+        text _fivetran_id PK
+        text preview_discount_index FK
+        text discount_amount
+        text eligible_amount
+    }
+    preview_discount {
+        text index PK
+        text preview_performa_invoice_uid PK
+        text discount_amount
+        text discount_type
+        text eligible_amount
+        text source_type
+        text title
+    }
+    preview_line_item {
+        text uid PK
+        text preview_performa_invoice_uid PK
+        text component_id FK
+        text price_point_id FK
+        text product_id FK
+        text product_price_point_id FK
+        text description
+        text discount_amount
+        text period_range_end
+        text period_range_start
+        text quantity
+        text subtotal_amount
+        text tax_amount
+        text tiered_unit_price
+        text title
+        text total_amount
+        text unit_price
+    }
+    preview_performa_invoice {
+        text uid PK
+        text customer_chargify_id FK
+        text customer_id FK
+        text site_id FK
+        text subscription_id FK
+        text billing_address_city
+        text billing_address_country
+        text billing_address_line_2
+        text billing_address_state
+        text billing_address_street
+        text billing_address_zip
+        text collection_method
+        text consolidation_level
+        text created_at
+        text credit_amount
+        text currency
+        text delivery_date
+        text discount_amount
+        text due_amount
+        text memo
+        text number
+        text paid_amount
+        text payment_instructions
+        text product_family_name
+        text refund_amount
+        text role
+        text seller_address_city
+        text seller_address_country
+        text seller_address_line_2
+        text seller_address_state
+        text seller_address_street
+        text seller_address_zip
+        text seller_name
+        text seller_phone
+        text sequence_number
+        text shipping_address_city
+        text shipping_address_country
+        text shipping_address_line_2
+        text shipping_address_state
+        text shipping_address_street
+        text shipping_address_zip
+        text status
+        text subtotal_amount
+        text tax_amount
+        text total_amount
+    }
+    component_price_point_price }o--|| component_price_point : "fk"
+    component_price_point_price }o--|| component : "fk"
+    component_price_point }o--|| component : "fk"
+    customer }o--|| subscription_group : "fk"
+    customer }o--|| customer : "fk"
+    insight_site_stat }o--|| site : "fk"
+    group_subscription_id }o--|| subscription : "fk"
+    group_subscription_id }o--|| subscription_group : "fk"
+    subscription_group }o--|| subscription : "fk"
+    subscription_group }o--|| customer : "fk"
+    coupon_usage }o--|| product_family : "fk"
+    coupon_usage }o--|| coupon : "fk"
+    subscription_proforma_invoice_line_item }o--|| product : "fk"
+    subscription_proforma_invoice_line_item }o--|| products_price_point : "fk"
+    subscription_proforma_invoice_line_item }o--|| component : "fk"
+    subscription_proforma_invoice_line_item }o--|| component_price_point : "fk"
+    subscription_proforma_invoice_line_item }o--|| subscription_proforma_invoice : "fk"
+    subscription_proforma_invoice }o--|| subscription : "fk"
+    subscription_proforma_invoice }o--|| customer : "fk"
+    subscription_proforma_invoice }o--|| site : "fk"
+    invoice_event_data_payment }o--|| invoice_event : "fk"
+    invoice_event_data_taxes_line_item }o--|| invoice_event_data_taxes : "fk"
+    invoice_event_data_taxes }o--|| invoice_event : "fk"
+    invoice_event_data_line_item }o--|| product : "fk"
+    invoice_event_data_line_item }o--|| products_price_point : "fk"
+    invoice_event_data_line_item }o--|| component : "fk"
+    invoice_event_data_line_item }o--|| component_price_point : "fk"
+    invoice_event_data_line_item }o--|| invoice_event : "fk"
+    invoice_event }o--|| invoice : "fk"
+    invoice_event }o--|| customer : "fk"
+    invoice_event }o--|| subscription : "fk"
+    invoice_event }o--|| customer : "fk"
+    invoice_event }o--|| site : "fk"
+    offer_signup_pages }o--|| offer : "fk"
+    offer_discounts }o--|| offer : "fk"
+    offer_items }o--|| component : "fk"
+    offer_items }o--|| component_price_point : "fk"
+    offer_items }o--|| offer : "fk"
+    offer }o--|| product : "fk"
+    offer }o--|| products_price_point : "fk"
+    offer }o--|| product_family : "fk"
+    offer }o--|| site : "fk"
+    reason_code }o--|| site : "fk"
+    payment_profile }o--|| customer : "fk"
+    coupon_restrictions }o--|| coupon : "fk"
+    coupon }o--|| product_family : "fk"
+    credit_note_refund }o--|| credit_note : "fk"
+    credit_note_application }o--|| invoice : "fk"
+    credit_note_application }o--|| credit_note : "fk"
+    credit_note_taxes_line_item }o--|| credit_note_taxes : "fk"
+    credit_note_taxes }o--|| credit_note : "fk"
+    credit_note_discount_line_item }o--|| credit_note_discount : "fk"
+    credit_note_discount }o--|| credit_note : "fk"
+    credit_note_line_item }o--|| product : "fk"
+    credit_note_line_item }o--|| component : "fk"
+    credit_note_line_item }o--|| component_price_point : "fk"
+    credit_note_line_item }o--|| credit_note : "fk"
+    credit_note }o--|| subscription : "fk"
+    credit_note }o--|| customer : "fk"
+    credit_note }o--|| site : "fk"
+    component_price }o--|| component_price_point : "fk"
+    component_price }o--|| component : "fk"
+    component }o--|| product_family : "fk"
+    component }o--|| component_price_point : "fk"
+    products_price_point }o--|| product : "fk"
+    products_price_point }o--|| subscription : "fk"
+    event }o--|| subscription : "fk"
+    event }o--|| customer : "fk"
+    event }o--|| component : "fk"
+    product_public_signup_page }o--|| product : "fk"
+    product }o--|| products_price_point : "fk"
+    product }o--|| product_family : "fk"
+    product }o--|| products_price_point : "fk"
+    invoice_payment }o--|| invoice : "fk"
+    invoice_line_item }o--|| product : "fk"
+    invoice_line_item }o--|| component : "fk"
+    invoice_line_item }o--|| component_price_point : "fk"
+    invoice_line_item }o--|| invoice : "fk"
+    invoice_discount_line_item }o--|| invoice_discount : "fk"
+    invoice_discount }o--|| coupon : "fk"
+    invoice_discount }o--|| invoice : "fk"
+    invoice_taxes_line_item }o--|| invoice_taxes : "fk"
+    invoice_taxes }o--|| invoice : "fk"
+    invoice_credit }o--|| credit_note : "fk"
+    invoice_credit }o--|| invoice : "fk"
+    invoice_refund }o--|| invoice : "fk"
+    invoice_custom_field }o--|| invoice : "fk"
+    previous_balance_data_invoice }o--|| invoice : "fk"
+    invoice }o--|| subscription : "fk"
+    invoice }o--|| invoice : "fk"
+    invoice }o--|| customer : "fk"
+    invoice }o--|| subscription : "fk"
+    invoice }o--|| site : "fk"
+    subscription_component }o--|| subscription : "fk"
+    subscription_component }o--|| component : "fk"
+    subscription_component }o--|| product_family : "fk"
+    subscription_component }o--|| component_price_point : "fk"
+    subscription_coupon }o--|| coupon : "fk"
+    subscription_coupon }o--|| subscription : "fk"
+    subscription }o--|| product : "fk"
+    subscription }o--|| customer : "fk"
+    subscription }o--|| products_price_point : "fk"
+    subscription }o--|| products_price_point : "fk"
+    subscription }o--|| customer : "fk"
+    subscription }o--|| reason_code : "fk"
+    subscription }o--|| offer : "fk"
+    subscription }o--|| product : "fk"
+    subscription }o--|| customer : "fk"
+    subscription }o--|| customer : "fk"
+    allocation }o--|| subscription : "fk"
+    usage }o--|| component : "fk"
+    usage }o--|| component_price_point : "fk"
+    usage }o--|| subscription : "fk"
+    subscription_note }o--|| subscription : "fk"
+    prepayment }o--|| subscription : "fk"
+    preview_custom_field }o--|| preview_performa_invoice : "fk"
+    preview_payment }o--|| preview_performa_invoice : "fk"
+    preview_credit }o--|| preview_performa_invoice : "fk"
+    preview_taxes_line_item }o--|| preview_taxes : "fk"
+    preview_taxes }o--|| preview_performa_invoice : "fk"
+    preview_discount_line_item }o--|| preview_discount : "fk"
+    preview_discount }o--|| preview_performa_invoice : "fk"
+    preview_line_item }o--|| product : "fk"
+    preview_line_item }o--|| products_price_point : "fk"
+    preview_line_item }o--|| component : "fk"
+    preview_line_item }o--|| component_price_point : "fk"
+    preview_line_item }o--|| preview_performa_invoice : "fk"
+    preview_performa_invoice }o--|| subscription : "fk"
+    preview_performa_invoice }o--|| customer : "fk"
+    preview_performa_invoice }o--|| customer : "fk"
+    preview_performa_invoice }o--|| site : "fk"

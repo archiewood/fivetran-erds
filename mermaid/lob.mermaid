@@ -1,0 +1,618 @@
+erDiagram
+    template_metadata {
+        text name PK
+        text template_id PK
+        text value
+    }
+    template {
+        text id PK
+        text published_version_id FK
+        timestamp date_created
+        timestamp date_modified
+        text description
+        text html
+    }
+    template_version_merge_variable {
+        text name PK
+        text template_version_id PK
+        text value
+    }
+    template_version {
+        text id PK
+        text template_id FK
+        timestamp date_created
+        timestamp date_modified
+        boolean deleted
+        text description
+        text engine
+        text html
+        boolean suggest_json_editor
+    }
+    billing_group {
+        text id PK
+        text date_created
+        text date_modified
+        text description
+        jsonb metadata
+        text name
+    }
+    postcard_thumbnail {
+        text _fivetran_id PK
+        text postcard_id PK
+        text large
+        text medium
+        text small
+    }
+    postcard_tracking_event {
+        text id PK
+        text postcard_id PK
+        timestamp date_created
+        timestamp date_modified
+        boolean deleted
+        boolean details_action_required
+        text details_description
+        text details_event
+        text details_notes
+        text location
+        text name
+        timestamp time
+        text type
+    }
+    postcard_to_address {
+        text address_id PK
+        text postcard_id PK
+        text address_city
+        text address_country
+        text address_line_1
+        text address_line_2
+        text address_state
+        text address_zip
+        text company
+        timestamp date_created
+        timestamp date_modified
+        boolean deleted
+        text description
+        text email
+        jsonb meta_data
+        text name
+        text object
+        text phone
+        boolean recipient_moved
+    }
+    postcard_from_address {
+        text address_id PK
+        text postcard_id PK
+        text address_city
+        text address_country
+        text address_line_1
+        text address_line_2
+        text address_state
+        text address_zip
+        text company
+        timestamp date_created
+        timestamp date_modified
+        boolean deleted
+        text description
+        text email
+        jsonb meta_data
+        text name
+        text object
+        text phone
+        boolean recipient_moved
+    }
+    postcard_failure_reason_error {
+        text index PK
+        text postcard_id PK
+        text error_type
+        text host
+        text path
+        text protocol
+        text remediation
+        text status_code
+        text url
+    }
+    postcard_metadata {
+        text name PK
+        text postcard_id PK
+        text value
+    }
+    postcard_merge_variable {
+        text name PK
+        text postcard_id PK
+        text value
+    }
+    postcard {
+        text id PK
+        text back_template_id FK
+        text back_template_version_id FK
+        text campaign_id FK
+        text front_template_id FK
+        text front_template_version_id FK
+        text carrier
+        text completed_at
+        timestamp date_created
+        timestamp date_modified
+        boolean deleted
+        text description
+        text expected_delivery_date
+        text failure_reason
+        text failure_reason_remediation
+        text fsc
+        text is_creative_proof
+        text is_dashboard
+        text lob_credits_funding_status
+        text mail_type
+        text raw_url
+        timestamp send_date
+        text size
+        text status
+        text to_be_expunged_date
+        text url
+        text use_type
+        text usps_campaign_id
+    }
+    qr_code_scan {
+        text index PK
+        text qr_code_id PK
+        text ip_location
+        text scan_date
+    }
+    qr_code {
+        text id PK
+        text date_created
+    }
+    bank_account_metadata {
+        text name PK
+        text bank_account_id PK
+        text value
+    }
+    bank_account {
+        text id PK
+        bigint account_number
+        text account_type
+        text bank_name
+        timestamp date_created
+        timestamp date_modified
+        boolean deleted
+        text description
+        bigint routing_number
+        text signatory
+        text signature_url
+        boolean verified
+    }
+    address_metadata {
+        text name PK
+        text address_id PK
+        text value
+    }
+    address {
+        text id PK
+        text address_city
+        text address_country
+        text address_line_1
+        text address_line_2
+        text address_state
+        text address_zip
+        text company
+        timestamp date_created
+        timestamp date_modified
+        boolean deleted
+        text description
+        text name
+        text phone
+        boolean recipient_moved
+    }
+    self_mailer_thumbnail {
+        text _fivetran_id PK
+        text self_mailer_id PK
+        text large
+        text medium
+        text small
+    }
+    self_mailer_tracking_event {
+        text id PK
+        text self_mailer_id PK
+        text date_created
+        text date_modified
+        boolean deleted
+        text details_action_required
+        text details_description
+        text details_event
+        text details_notes
+        text location
+        text name
+        text time
+        text type
+    }
+    self_mailer_to_address {
+        text address_id PK
+        text self_mailer_id PK
+        text address_city
+        text address_country
+        text address_line_1
+        text address_line_2
+        text address_state
+        text address_zip
+        text company
+        timestamp date_created
+        timestamp date_modified
+        boolean deleted
+        text description
+        text name
+        text phone
+        boolean recipient_moved
+    }
+    self_mailer_from_address {
+        text address_id PK
+        text self_mailer_id PK
+        text address_city
+        text address_country
+        text address_line_1
+        text address_line_2
+        text address_state
+        text address_zip
+        text company
+        timestamp date_created
+        timestamp date_modified
+        boolean deleted
+        text description
+        text name
+        text phone
+        boolean recipient_moved
+    }
+    self_mailer_metadata {
+        text name PK
+        text self_mailer_id PK
+        text value
+    }
+    self_mailer_merge_variable {
+        text name PK
+        text self_mailer_id PK
+        text value
+    }
+    self_mailer {
+        text id PK
+        text inside_template_id FK
+        text inside_template_version_id FK
+        text outside_template_id FK
+        text outside_template_version_id FK
+        text carrier
+        timestamp date_created
+        text date_modified
+        boolean deleted
+        text description
+        text expected_delivery_date
+        text mail_type
+        text send_date
+        text size
+    }
+    check_thumbnail {
+        text _fivetran_id PK
+        text checks_id PK
+        text large
+        text medium
+        text small
+    }
+    check_tracking_event {
+        text id PK
+        text checks_id PK
+        timestamp date_created
+        timestamp date_modified
+        boolean deleted
+        boolean details_action_required
+        text details_description
+        text details_event
+        text details_notes
+        text location
+        text name
+        timestamp time
+        text type
+    }
+    check_to_address {
+        text address_id PK
+        text checks_id PK
+        text address_city
+        text address_country
+        text address_line_1
+        text address_line_2
+        text address_state
+        text address_zip
+        text company
+        timestamp date_created
+        timestamp date_modified
+        boolean deleted
+        text description
+        text name
+        text phone
+        boolean recipient_moved
+    }
+    check_from_address {
+        text address_id PK
+        text checks_id PK
+        text address_city
+        text address_country
+        text address_line_1
+        text address_line_2
+        text address_state
+        text address_zip
+        text company
+        timestamp date_created
+        timestamp date_modified
+        boolean deleted
+        text description
+        text name
+        text phone
+        boolean recipient_moved
+    }
+    check_metadata {
+        text name PK
+        text checks_id PK
+        text value
+    }
+    check_merge_variable {
+        text name PK
+        text checks_id PK
+        text value
+    }
+    checks {
+        text id PK
+        text attachment_template_id FK
+        text attachment_template_version_id FK
+        text bank_account_id FK
+        text check_bottom_template_id FK
+        text check_bottom_template_version_id FK
+        double_precision amount
+        text carrier
+        integer check_number
+        timestamp date_created
+        timestamp date_modified
+        boolean deleted
+        text description
+        text expected_delivery_date
+        text mail_type
+        text memo
+        text message
+        text send_date
+    }
+    letter_thumbnail {
+        text _fivetran_id PK
+        text letter_id PK
+        text large
+        text medium
+        text small
+    }
+    letter_tracking_event {
+        text id PK
+        text letter_id PK
+        timestamp date_created
+        timestamp date_modified
+        boolean deleted
+        boolean details_action_required
+        text details_description
+        text details_event
+        text details_notes
+        text location
+        text name
+        timestamp time
+        text type
+    }
+    letter_to_address {
+        text address_id PK
+        text letter_id PK
+        text address_city
+        text address_country
+        text address_line_1
+        text address_line_2
+        text address_state
+        text address_zip
+        text company
+        timestamp date_created
+        timestamp date_modified
+        boolean deleted
+        text description
+        text name
+        text phone
+        boolean recipient_moved
+    }
+    letter_from_address {
+        text address_id PK
+        text letter_id PK
+        text address_city
+        text address_country
+        text address_line_1
+        text address_line_2
+        text address_state
+        text address_zip
+        text company
+        timestamp date_created
+        timestamp date_modified
+        boolean deleted
+        text description
+        text name
+        text phone
+        boolean recipient_moved
+    }
+    letter_metadata {
+        text name PK
+        text letter_id PK
+        text value
+    }
+    letter_merge_variable {
+        text name PK
+        text letter_id PK
+        text value
+    }
+    letter {
+        text id PK
+        text template_id FK
+        text template_version_id FK
+        text address_placement
+        text carrier
+        text color
+        text custom_envelope_id
+        timestamp date_created
+        timestamp date_modified
+        boolean deleted
+        text description
+        boolean double_sided
+        text expected_delivery_date
+        text extra_service
+        text mail_type
+        integer perforated_page
+        text return_envelope
+        timestamp send_date
+        text tracking_number
+        text use_type
+    }
+    campaign_creative_template_preview {
+        text id PK
+        text campaign_creative_campaign_id PK
+        text campaign_creative_id PK
+        text template_id FK
+    }
+    campaign_creative {
+        text id PK
+        text campaign_id PK
+        text from_address FK
+        text date_created
+        text date_modified
+        text deleted
+        text description
+        text details_back_original_url
+        text details_back_template_id
+        text details_front_original_url
+        text details_front_template_id
+        text details_fsc
+        text details_mail_type
+        text details_setting
+        text details_size
+        jsonb metadata
+        text resource_type
+        text template_preview_url_back
+        text template_preview_url_front
+        text use_personalized_return_address
+    }
+    campaign_upload {
+        text id PK
+        text campaign_id PK
+        text account_id
+        text api_version
+        text date_created
+        text date_modified
+        text deleted
+        text failed_mail_piece
+        text failures_url
+        text merge_variable_column_mapping
+        jsonb metadata
+        text mode
+        text optinal_address_country
+        text optinal_address_line_2
+        text optinal_company
+        text original_file_name
+        text required_address_city
+        text required_address_line_1
+        text required_address_state
+        text required_address_zip
+        text required_name
+        text return_address_city
+        text return_address_company
+        text return_address_country
+        text return_address_line_1
+        text return_address_line_2
+        text return_address_name
+        text return_address_state
+        text return_address_zip
+        text state
+        text total_mail_piece
+        text validated_mail_piece
+    }
+    campaign {
+        text id PK
+        text billing_group_id FK
+        jsonb audience
+        text auto_cancel_if_ncoa
+        text cancel_window_campaign_minute
+        text date_created
+        text date_modified
+        text date_ordered
+        text deleted
+        text description
+        text is_active
+        text is_draft
+        text mail_destination
+        text merge_variable_strictness
+        jsonb metadata
+        text name
+        text print_speed
+        text rules
+        text schedule_type
+        text send_date
+        text send_type
+        text service_request_number
+        text status
+        text target_delivery_date
+        text use_type
+    }
+    template_metadata }o--|| template : "fk"
+    template }o--|| template_version : "fk"
+    template_version_merge_variable }o--|| template_version : "fk"
+    template_version }o--|| template : "fk"
+    postcard_thumbnail }o--|| postcard : "fk"
+    postcard_tracking_event }o--|| postcard : "fk"
+    postcard_to_address }o--|| address : "fk"
+    postcard_to_address }o--|| postcard : "fk"
+    postcard_from_address }o--|| address : "fk"
+    postcard_from_address }o--|| postcard : "fk"
+    postcard_failure_reason_error }o--|| postcard : "fk"
+    postcard_metadata }o--|| postcard : "fk"
+    postcard_merge_variable }o--|| postcard : "fk"
+    postcard }o--|| template : "fk"
+    postcard }o--|| campaign : "fk"
+    postcard }o--|| template_version : "fk"
+    postcard }o--|| template : "fk"
+    postcard }o--|| template_version : "fk"
+    qr_code_scan }o--|| qr_code : "fk"
+    bank_account_metadata }o--|| bank_account : "fk"
+    address_metadata }o--|| address : "fk"
+    self_mailer_thumbnail }o--|| self_mailer : "fk"
+    self_mailer_tracking_event }o--|| self_mailer : "fk"
+    self_mailer_to_address }o--|| address : "fk"
+    self_mailer_to_address }o--|| self_mailer : "fk"
+    self_mailer_from_address }o--|| address : "fk"
+    self_mailer_from_address }o--|| self_mailer : "fk"
+    self_mailer_metadata }o--|| self_mailer : "fk"
+    self_mailer_merge_variable }o--|| self_mailer : "fk"
+    self_mailer }o--|| template_version : "fk"
+    self_mailer }o--|| template_version : "fk"
+    self_mailer }o--|| template : "fk"
+    self_mailer }o--|| template : "fk"
+    check_thumbnail }o--|| checks : "fk"
+    check_tracking_event }o--|| checks : "fk"
+    check_to_address }o--|| address : "fk"
+    check_to_address }o--|| checks : "fk"
+    check_from_address }o--|| address : "fk"
+    check_from_address }o--|| checks : "fk"
+    check_metadata }o--|| checks : "fk"
+    check_merge_variable }o--|| checks : "fk"
+    checks }o--|| template : "fk"
+    checks }o--|| template : "fk"
+    checks }o--|| template_version : "fk"
+    checks }o--|| template_version : "fk"
+    checks }o--|| bank_account : "fk"
+    letter_thumbnail }o--|| letter : "fk"
+    letter_tracking_event }o--|| letter : "fk"
+    letter_to_address }o--|| address : "fk"
+    letter_to_address }o--|| letter : "fk"
+    letter_from_address }o--|| address : "fk"
+    letter_from_address }o--|| letter : "fk"
+    letter_metadata }o--|| letter : "fk"
+    letter_merge_variable }o--|| letter : "fk"
+    letter }o--|| template_version : "fk"
+    letter }o--|| template : "fk"
+    campaign_creative_template_preview }o--|| template : "fk"
+    campaign_creative_template_preview }o--|| campaign_creative : "fk"
+    campaign_creative_template_preview }o--|| campaign_creative : "fk"
+    campaign_creative }o--|| address : "fk"
+    campaign_creative }o--|| campaign : "fk"
+    campaign_upload }o--|| campaign : "fk"
+    campaign }o--|| billing_group : "fk"

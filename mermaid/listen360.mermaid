@@ -1,0 +1,200 @@
+erDiagram
+    organization {
+        text id PK
+        text average_job_value
+        text city
+        text country
+        text created_at
+        text custom_choice_10_label
+        text custom_choice_1_label
+        text custom_choice_2_label
+        text custom_choice_3_label
+        text custom_choice_4_label
+        text custom_choice_5_label
+        text custom_choice_6_label
+        text custom_choice_7_label
+        text custom_choice_8_label
+        text custom_choice_9_label
+        text customer_lifetime
+        text customer_lifetime_interval
+        text email
+        text external_name
+        text franchise_royalty_percentage
+        text jobs_performed_per_interval
+        text latitude
+        text locale
+        text longitude
+        text marketing_radius_miles
+        text name
+        text net_promoter_score
+        text one_to_five_rating
+        text operating_radius_miles
+        text parent_id
+        text phone_number
+        text postal_code
+        text recurring_jobs_interval
+        text reference
+        text region
+        text root_id
+        text status
+        text street_address
+        text time_zone
+        text type
+        text updated_at
+        text website
+        text zero_to_ten_rating
+    }
+    membership {
+        text id PK
+        text organization_id PK
+        text accepted_at
+        text country
+        text created_at
+        text email
+        text first_name
+        text invited_by_id
+        text last_name
+        text mobile_phone_number
+        text revoked_at
+        text role
+        text status
+        text user_id
+    }
+    custom_attribute {
+        text _fivetran_id PK
+        text organization_id FK
+        text attach_to
+        text created_at
+        text mandatory
+        text name
+        text ordinal
+        text restrict_to_predefined_choices
+        text updated_at
+    }
+    review_note {
+        text index PK
+        text organization_id PK
+        text review_id PK
+        text author_name
+        text body
+        text created_at
+    }
+    review {
+        text id PK
+        text organization_id PK
+        text censored
+        text comments
+        text completed_at
+        text customer_full_name
+        text customer_reference
+        text customer_work_city
+        text customer_work_email
+        text customer_work_region
+        text flagged_for_follow_up
+        text has_notes
+        text initial
+        text invited_at
+        text job_reference
+        text net_promoter_label
+        text organization_reference
+        text public_display_comments
+        text public_display_customer_location
+        text public_response
+        text public_reviewer_name
+        text recommendation_likelihood
+        text updated_at
+    }
+    customer {
+        text id PK
+        text organization_id PK
+        text company_name
+        text created_at
+        text custom_choice_10_label
+        text custom_choice_1_label
+        text custom_choice_2_label
+        text custom_choice_3_label
+        text custom_choice_4_label
+        text custom_choice_5_label
+        text custom_choice_6_label
+        text custom_choice_7_label
+        text custom_choice_8_label
+        text custom_choice_9_label
+        text first_name
+        text full_name
+        text last_name
+        text last_survey_bounced
+        text mobile_phone_number
+        text name
+        text net_promoter_label
+        text permits_contact
+        text permits_email_contact
+        text permits_sms_contact
+        text reference
+        text status
+        text title
+        text updated_at
+        text work_city
+        text work_country
+        text work_email
+        text work_phone_number
+        text work_postal_code
+        text work_region
+        text work_street
+    }
+    job_performer {
+        text id PK
+        text job_id PK
+        text organization_id PK
+        text country
+        text created_at
+        text email
+        text mobile_phone_number
+        text name
+        text reference
+        text status
+    }
+    job {
+        text id PK
+        text organization_id PK
+        text customer_id FK
+        text commenced_at
+        text completed_at
+        text created_at
+        text currency
+        text custom_choice_10_label
+        text custom_choice_1_label
+        text custom_choice_2_label
+        text custom_choice_3_label
+        text custom_choice_4_label
+        text custom_choice_5_label
+        text custom_choice_6_label
+        text custom_choice_7_label
+        text custom_choice_8_label
+        text custom_choice_9_label
+        text reference
+        text status
+        text updated_at
+        text value
+    }
+    technician {
+        text id PK
+        text organization_id PK
+        text country
+        text created_at
+        text email
+        text mobile_phone_number
+        text name
+        text reference
+        text status
+    }
+    membership }o--|| organization : "fk"
+    custom_attribute }o--|| organization : "fk"
+    review_note }o--|| review : "fk"
+    review_note }o--|| review : "fk"
+    review }o--|| organization : "fk"
+    customer }o--|| organization : "fk"
+    job_performer }o--|| job : "fk"
+    job_performer }o--|| job : "fk"
+    job }o--|| customer : "fk"
+    job }o--|| organization : "fk"
+    technician }o--|| organization : "fk"

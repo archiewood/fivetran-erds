@@ -1,0 +1,438 @@
+erDiagram
+    path_tag {
+        text tags PK
+        text path_id PK
+    }
+    path {
+        text id PK
+        text card_banner
+        text created_at
+        text description
+        text name
+        text num_challenge
+        text num_guide
+        text num_resource
+        text passing_score_requiredfor_unlock
+        text sequential_unlock
+        text time_estimate_seconds
+        text updated_at
+    }
+    groups {
+        text id PK
+        text created_at
+        text description
+        text enterprise_id
+        text from_sso
+        text has_manager
+        text name
+        text original_name
+        text user_updated_at
+    }
+    academy_registration {
+        text id PK
+        text content_id FK
+        text user_id FK
+        text academy_overview_description
+        text card_banner
+        text completed_at
+        text completion_percentage
+        text content_type
+        text created_at
+        text description
+        text due_at
+        text due_date
+        text is_completed
+        text pass_status
+        text score
+        text title
+    }
+    certification {
+        text id PK
+        text created_at
+        text is_deleted
+        text title
+        text updated_at
+    }
+    scorm {
+        text id PK
+        text created_at
+        text time_estimate
+        text title
+    }
+    guide_tag {
+        text tags PK
+        text guide_id PK
+    }
+    guide {
+        text id PK
+        text created_at
+        text num_total_task
+        text num_total_test_question
+        text title
+        text updated_at
+    }
+    scim_group_member {
+        text value PK
+        text scim_group_id PK
+        text display
+        text link
+    }
+    scim_group {
+        text id PK
+        text display_name
+    }
+    event_session_learner {
+        text event_id PK
+        text event_session_id PK
+        text user_id PK
+        text email
+        jsonb groups
+        text name
+        text registration_date
+        text registration_status
+    }
+    event {
+        text id PK
+        text name
+    }
+    academy_training {
+        text id PK
+        text created_at
+        text name
+        text type
+    }
+    academy_awarded_certification {
+        text id PK
+        text user_id PK
+        text academy_id
+        text awarded_at
+        text description
+        text name
+        text user_email
+        text user_name
+    }
+    event_session_training_class_instructor {
+        text id PK
+        text event_id PK
+        text session_id PK
+        text user_id FK
+    }
+    event_session {
+        text id PK
+        text event_id PK
+        text ends
+        text start
+        text title
+        text training_class_id
+        text zoom_meeting_id
+        text zoom_meeting_join_url
+        text zoom_meeting_start_url
+    }
+    guide_assignment_path {
+        text id PK
+        text guide_assignment_id PK
+        text name
+    }
+    guide_assignment {
+        text id PK
+        text guide_id PK
+        text assigner_id FK
+        text course_id FK
+        text user_id FK
+        text completed_at
+        text completion_percentage
+        text created_at
+        text due_date
+        text is_archived
+        text is_completed
+        text num_completed_task
+        text num_completed_test_question
+        text num_correct_test_question
+        text num_graded_test_question
+        text num_viewed_task
+        text score
+        jsonb tags
+        text title
+        text training_series_user_assignment_id
+        text updated_at
+    }
+    academy_certification {
+        text id PK
+        text academy_id
+        text awarded_by_name
+        text awarded_by_title
+        text created_at
+        text description
+        text name
+    }
+    unique_guide_assignment_change {
+        text id PK
+        text guide_id FK
+        text user_id FK
+        text guide_name
+        text occurred_at
+        text status
+        text training_series_id
+        text user_email
+    }
+    academy_user_segment {
+        text _fivetran_id PK
+        text academy_user_id FK
+        text name
+    }
+    academy_user_custom_registration {
+        text _fivetran_id PK
+        text academy_user_id FK
+        text academy_registration_id
+        text name
+        text value
+    }
+    academy_user {
+        text id PK
+        text academy_id
+        text created_at
+        text display_name
+        text email
+        text first_name
+        text last_name
+        text status
+    }
+    course_assignment_tag {
+        text tags PK
+        text course_assignment_id PK
+    }
+    course_assignment {
+        text id PK
+        text assigner_id FK
+        text training_series_id FK
+        text user_id FK
+        text completed_at
+        text completion_percentage
+        text course_id
+        text created_at
+        text due_date
+        text is_archived
+        text is_completed
+        text num_completed_tasks
+        text num_completed_test_questions
+        text num_correct_test_questions
+        text num_graded_test_questions
+        text num_viewed_tasks
+        text score
+        text title
+        text updated_at
+    }
+    training_series_assignment_tag {
+        text tags PK
+        text training_series_assignment_id PK
+    }
+    training_series_assignment {
+        text id PK
+        text assigner_id FK
+        text training_series_id FK
+        text user_id FK
+        text completed_at
+        text completion_percentage
+        text created_at
+        text created_through
+        text due_date
+        text is_completed
+        text modules_completed
+        text num_modules
+        text overall_grade
+        text time_spent
+        text title
+        text updated_at
+    }
+    challenge_assignment {
+        text id PK
+        text training_series_id FK
+        text user_id FK
+        text calculated_grade
+        text challenge_id
+        text completed_at
+        text completion_percentage
+        text created_at
+        text due_date
+        text is_fully_graded
+        text is_partially_graded
+        text is_submitted
+        text passed
+        text reviewer_due_date
+        jsonb tags
+        text title
+        text updated_at
+    }
+    user_custom_attribute {
+        text id PK
+        text user_id PK
+        text api_name
+        text value
+    }
+    path_assignment_tag {
+        text tags PK
+        text path_assignment_id PK
+        text path_id PK
+    }
+    path_assignment {
+        text id PK
+        text path_id PK
+        text assigner_id FK
+        text user_id FK
+        text completed_at
+        text completion_percentage
+        text created_at
+        text created_through
+        text due_date
+        text is_completed
+        text modules_completed
+        text num_modules
+        text overall_grade
+        text time_spent
+        text title
+        text training_series_id
+        text updated_at
+    }
+    scorm_assignment {
+        text _fivetran_id PK
+        text assigner FK
+        text scorm_id FK
+        text completed_at
+        text completion_percentage
+        text date_assigned
+        text due_date
+        text time_spent_in_minutes
+        text user_email
+        text user_name
+    }
+    challenge_user_assignment {
+        text _fivetran_id PK
+        text challenge_id FK
+        text user_email FK
+        text completion_date
+        text grade_earned_points
+        text grade_incomplete
+        text grade_total_points
+        text is_fully_graded
+        text passed
+        text time_spent
+    }
+    challenge {
+        text id PK
+        text name
+    }
+    certification_award {
+        text id PK
+        text certification_id PK
+        text user_id FK
+        text course_user_assignment_id
+        text created_at
+        text file_url
+        text updated_at
+    }
+    group_user {
+        text group_id PK
+        text user_id PK
+    }
+    academy_path_user_custom_registration {
+        text _fivetran_id PK
+        text academy_path_user_id FK
+        text name
+        text value
+    }
+    academy_path_user {
+        text id PK
+        text path_id FK
+        text user_id FK
+        text academy_id
+        text completed_at
+        text path_description
+        text path_name
+        jsonb segments
+        text user_email
+        text user_name
+    }
+    scim_user {
+        text id PK
+        text active
+        text external_id
+        text family_name
+        text formatted
+        text given_name
+        text location
+        text resource_type
+        text user_name
+    }
+    users_direct_report {
+        text user_direct_report_id PK
+        text user_id PK
+    }
+    users_certification {
+        text id PK
+        text user_id PK
+        text title
+    }
+    users {
+        text id PK
+        text created_at
+        text email
+        text is_admin
+        text is_deleted
+        text is_permanently_deleted
+        text name
+        text updated_at
+    }
+    path_tag }o--|| path : "fk"
+    academy_registration }o--|| academy_user : "fk"
+    academy_registration }o--|| academy_training : "fk"
+    guide_tag }o--|| guide : "fk"
+    scim_group_member }o--|| scim_group : "fk"
+    event_session_learner }o--|| users : "fk"
+    event_session_learner }o--|| event_session : "fk"
+    event_session_learner }o--|| event_session : "fk"
+    academy_awarded_certification }o--|| academy_user : "fk"
+    event_session_training_class_instructor }o--|| event_session : "fk"
+    event_session_training_class_instructor }o--|| users : "fk"
+    event_session_training_class_instructor }o--|| event_session : "fk"
+    event_session }o--|| event : "fk"
+    guide_assignment_path }o--|| guide_assignment : "fk"
+    guide_assignment }o--|| users : "fk"
+    guide_assignment }o--|| users : "fk"
+    guide_assignment }o--|| course_assignment : "fk"
+    guide_assignment }o--|| guide : "fk"
+    unique_guide_assignment_change }o--|| guide : "fk"
+    unique_guide_assignment_change }o--|| users : "fk"
+    academy_user_segment }o--|| academy_user : "fk"
+    academy_user_custom_registration }o--|| academy_user : "fk"
+    course_assignment_tag }o--|| course_assignment : "fk"
+    course_assignment }o--|| users : "fk"
+    course_assignment }o--|| users : "fk"
+    course_assignment }o--|| training_series_assignment : "fk"
+    training_series_assignment_tag }o--|| training_series_assignment : "fk"
+    training_series_assignment }o--|| users : "fk"
+    training_series_assignment }o--|| users : "fk"
+    training_series_assignment }o--|| path : "fk"
+    challenge_assignment }o--|| users : "fk"
+    challenge_assignment }o--|| training_series_assignment : "fk"
+    user_custom_attribute }o--|| users : "fk"
+    path_assignment_tag }o--|| path_assignment : "fk"
+    path_assignment_tag }o--|| path_assignment : "fk"
+    path_assignment }o--|| users : "fk"
+    path_assignment }o--|| users : "fk"
+    path_assignment }o--|| path : "fk"
+    scorm_assignment }o--|| users : "fk"
+    scorm_assignment }o--|| scorm : "fk"
+    challenge_user_assignment }o--|| users : "fk"
+    challenge_user_assignment }o--|| challenge : "fk"
+    challenge }o--|| challenge_assignment : "fk"
+    certification_award }o--|| certification : "fk"
+    certification_award }o--|| users : "fk"
+    group_user }o--|| users : "fk"
+    group_user }o--|| groups : "fk"
+    academy_path_user_custom_registration }o--|| academy_path_user : "fk"
+    academy_path_user }o--|| academy_user : "fk"
+    academy_path_user }o--|| path : "fk"
+    scim_user }o--|| users : "fk"
+    users_direct_report }o--|| users : "fk"
+    users_direct_report }o--|| users : "fk"
+    users_certification }o--|| users : "fk"

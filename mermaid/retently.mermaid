@@ -1,0 +1,233 @@
+erDiagram
+    latest_score {
+        text _fivetran_id PK
+        text detractors
+        text detractors_count
+        text metrics_type
+        text passives
+        text passives_count
+        text promoters
+        text promoters_count
+        text score
+        text score_sum
+        text total_responses
+    }
+    customer_tag {
+        text tag_name PK
+        text customer_id PK
+    }
+    customer_property {
+        text index PK
+        text customer_id PK
+        text label
+        text name
+        text type
+        text value
+    }
+    customer {
+        text id PK
+        text company_id FK
+        text created_date
+        text email
+        text first_name
+        text last_name
+    }
+    template {
+        text id PK
+        text channel
+        text metric
+        text name
+    }
+    campaign {
+        text id PK
+        text template_id FK
+        text channel
+        text is_active
+        text metric
+        text name
+        text type
+    }
+    outbox_additional_recipient {
+        text index PK
+        text customer_id PK
+        text mandrill_message_id FK
+        text email
+        text type
+    }
+    outbox_customer_tag {
+        text tag_name PK
+        text outbox_customer_id PK
+    }
+    outbox {
+        text customer_id PK
+        text campaign_id FK
+        text company_id FK
+        text survey_template_id FK
+        text channel
+        text detailed_status_has_feedback
+        text detailed_status_is_bounced
+        text detailed_status_is_opened
+        text detailed_status_is_opted_out
+        text detailed_status_is_responded
+        text detailed_status_opened_date
+        text detailed_status_responded_date
+        text email
+        text first_name
+        text last_name
+        text mandrill_message_id
+        jsonb person_tags
+        text sent_by
+        text sent_date
+        text status
+        text subject
+        text template_id
+    }
+    report_question_stats {
+        text uuid PK
+        text report_campaign_id PK
+        text is_on_main
+        text is_starred
+        text metrics_type
+        text position
+        text stats_first_day
+        text stats_first_detractors
+        text stats_first_opened
+        text stats_first_passives
+        text stats_first_promoters
+        text stats_first_responded
+        text stats_first_score
+        text stats_first_score_sum
+        text stats_first_skipped
+        text stats_first_total
+        text stats_last_day
+        text stats_last_detractors
+        text stats_last_opened
+        text stats_last_passives
+        text stats_last_promoters
+        text stats_last_responded
+        text stats_last_score
+        text stats_last_score_sum
+        text stats_last_skipped
+        text stats_last_total
+        text title
+    }
+    report_trend {
+        text index PK
+        text report_campaign_id PK
+        text day
+        text detractor
+        text passive
+        text promoter
+        text score
+        text total
+    }
+    report {
+        text campaign_id PK
+        text delivery_stats_id
+        text delivery_stats_is_bounced
+        text delivery_stats_opened
+        text delivery_stats_opted_out
+        text delivery_stats_responded
+        text delivery_stats_total_count
+        text detractor
+        text passive
+        text promoter
+        text score
+        text total
+    }
+    company_tag {
+        text tag_name PK
+        text company_id PK
+    }
+    company {
+        text id PK
+        text contacts_count
+        text created_date
+        text cx_metrics_ces
+        text cx_metrics_csat
+        text cx_metrics_nps
+        text cx_metrics_star
+        text cx_metrics_xsa
+        text domain
+        text industry_name
+        text name
+    }
+    feedback_note {
+        text index PK
+        text feedback_id PK
+        text author
+        text content
+        text date
+        text metrics_type
+    }
+    feedback_additional_question {
+        text index PK
+        text feedback_id PK
+        text answer
+        text consent
+        text metrics_type
+        text question_text
+        text title
+        text type
+    }
+    feedback_tag {
+        text tag_name PK
+        text feedback_id PK
+    }
+    feedback_topic {
+        text index PK
+        text feedback_id PK
+        text name
+        text sentiment
+    }
+    feedback_response_tag {
+        text tag_name PK
+        text feedback_id PK
+    }
+    feedback {
+        text id PK
+        text campaign_id FK
+        text company_id FK
+        text customer_id FK
+        text assigned
+        text channel
+        text checkbox
+        text city
+        text comment
+        text country
+        text created_date
+        text email
+        text first_name
+        text is_bogus
+        text job_title
+        text last_name
+        text metrics_type
+        text rating_category
+        text resolved
+        text score
+        text state
+        text status
+    }
+    customer_tag }o--|| customer : "fk"
+    customer_property }o--|| customer : "fk"
+    customer }o--|| company : "fk"
+    campaign }o--|| template : "fk"
+    outbox_additional_recipient }o--|| outbox : "fk"
+    outbox_additional_recipient }o--|| outbox : "fk"
+    outbox_customer_tag }o--|| outbox : "fk"
+    outbox }o--|| campaign : "fk"
+    outbox }o--|| customer : "fk"
+    outbox }o--|| company : "fk"
+    outbox }o--|| template : "fk"
+    report_question_stats }o--|| report : "fk"
+    report_trend }o--|| report : "fk"
+    report }o--|| campaign : "fk"
+    company_tag }o--|| company : "fk"
+    feedback_note }o--|| feedback : "fk"
+    feedback_additional_question }o--|| feedback : "fk"
+    feedback_tag }o--|| feedback : "fk"
+    feedback_topic }o--|| feedback : "fk"
+    feedback_response_tag }o--|| feedback : "fk"
+    feedback }o--|| campaign : "fk"
+    feedback }o--|| customer : "fk"
+    feedback }o--|| company : "fk"

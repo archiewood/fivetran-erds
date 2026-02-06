@@ -1,0 +1,514 @@
+erDiagram
+    purchase_vendor {
+        text id PK
+        text active
+        text address_id
+        text contact_id
+        text created_at
+        text import_set_id
+        text name
+        text public_id
+        text sort_key
+        timestamp updated_at
+        text uuid
+        text vendor_import_batch_id
+    }
+    location {
+        text id PK
+        text created_by_user_id FK
+        text updated_by_user_id FK
+        text active
+        text address_id
+        text address_revision_id
+        text cash_discount_item_conditions
+        text cash_discount_rate
+        text created_at
+        text credit_cards_configured
+        text internal
+        jsonb metadata
+        text metadata_private
+        text name
+        text price_list_id
+        text public_id
+        jsonb settings
+        text timezone_identifier_id
+        timestamp updated_at
+        text uuid
+    }
+    purchase_order_line {
+        text id PK
+        text purchase_order_id PK
+        text item_id FK
+        jsonb allocation
+        text created_at
+        text extended_cost
+        text item_vendor_detail_custom
+        text line_display_id
+        text name
+        text open_cost
+        text original_cost
+        text po_line_import_batch_id
+        text qty
+        text qty_expected
+        text qty_received
+        text received_cost
+        text sort_key
+        text status
+        text unit_cost
+        timestamp updated_at
+        text vendor_item_public_id
+    }
+    grid_controlled_item_field {
+        text index PK
+        text item_grid_id PK
+        text grid_controlled_item_field
+    }
+    item_grid_image {
+        text id PK
+        text item_grid_dimension_value_id FK
+        text item_grid_id FK
+        text created_at
+        text is_primary
+        text kind
+        text metadata_private
+        text new_thumbnail_url
+        text new_url
+        text old_thumbnail_url
+        text old_url
+        text url
+        text variant_thumbnail_url
+    }
+    item_grid_image_dimension_filter_value {
+        text id PK
+        text item_grid_id PK
+        text dimension_id
+        text primary_image_id
+        text value
+    }
+    item_grid {
+        text id PK
+        text created_by_user_id FK
+        text updated_by_user_id FK
+        text active
+        text created_at
+        text default_lookup_id
+        text default_price_list_id
+        text description
+        text has_empty_cells
+        text has_images
+        text image_dimension_custom_field_id
+        text image_dimension_id
+        text image_dimension_name
+        text import_set_id
+        text item_available_online
+        text long_description
+        text metadata
+        text metadata_private
+        text primary_image_id
+        text public_id
+        text sort_key
+        timestamp updated_at
+        text updating
+        text uuid
+    }
+    inventory_value_search {
+        text item_id PK
+        text location_id PK
+        text qty
+        text qty_available
+        text qty_committed
+        text qty_contributed_to_unit_cost
+        text qty_in_transit
+        text qty_on_hand
+        text qty_on_po
+        text qty_with_customer
+        text unit_cost
+    }
+    purchase_receipt_line {
+        text id PK
+        text purchase_receipt_id PK
+        text item_id FK
+        text created_at
+        text extended_cost
+        text order_line_id
+        text qty
+        text qty_expected
+        text qty_unauthorized
+        text unit_cost
+        timestamp updated_at
+        text vendor_item_public_id
+    }
+    item {
+        text id PK
+        text created_by_user_id FK
+        text grid_id FK
+        text updated_by_user_id FK
+        text active
+        text add_on_for_items_matching_filter
+        text add_on_item_filter
+        text allow_fractional_qty
+        text available_online
+        text cost
+        text created_at
+        text default_lookup_id
+        text default_price_list_id
+        text depth
+        text depth_unit
+        text description
+        text dynamic_margin
+        text financial_class_id
+        text has_images
+        text height
+        text height_unit
+        text import_batch_id
+        text import_set_id
+        text long_description
+        jsonb metadata
+        text metadata_private
+        text original_price
+        text price
+        text primary_barcode
+        text primary_image_id
+        text primary_vendor_id
+        text product_type
+        text prompt_for_description
+        text prompt_for_price
+        text public_id
+        text sort_key
+        text track_inventory
+        text type
+        timestamp updated_at
+        text use_dynamic_margin
+        text uuid
+        text weight
+        text weight_unit
+        text width
+        text width_unit
+    }
+    purchase_order {
+        text id PK
+        text created_by_user_id FK
+        text first_emailed_by_user_id FK
+        text last_emailed_by_user_id FK
+        text purchase_vendor_id FK
+        text receive_at_location_id FK
+        text allocated
+        jsonb allocated_location_ids
+        text created_at
+        text description
+        text end_shipment_at
+        text export_email
+        text first_emailed_at
+        text freight_cost
+        text import_set_id
+        text initial_margin_ratio
+        text last_emailed_at
+        jsonb location_ids
+        text nuorder_id
+        text overdue
+        text po_import_batch_id
+        text public_id
+        text sort_key
+        text start_shipment_at
+        text status
+        text total_cost
+        text total_open_cost
+        text total_open_price
+        text total_open_qty
+        text total_price
+        text total_qty
+        text total_received_cost
+        text total_received_price
+        text total_received_qty
+        text total_unauthorized_cost
+        text total_unauthorized_qty
+        timestamp updated_at
+    }
+    purchase_receipt {
+        text id PK
+        text purchase_order_id FK
+        text receive_at_location_id FK
+        text completed_at
+        text created_at
+        text freight_cost
+        text items_cost
+        text local_completed_at
+        text local_created_at
+        text local_updated_at
+        text public_id
+        text require_unauthorized_quantities_acknowledgement
+        text status
+        text total_cost
+        text total_cost_unauthorized
+        text total_qty
+        text total_qty_expected
+        text total_qty_unauthorized
+        timestamp updated_at
+    }
+    purchase_return_line {
+        text id PK
+        text purchase_return_id PK
+        text item_id FK
+        text created_at
+        text extended_cost
+        text qty
+        text unit_cost
+        timestamp updated_at
+        text vendor_item_public_id
+    }
+    sale_ticket_line {
+        text id PK
+        text created_by_user_id FK
+        text customer_id FK
+        text item_id FK
+        text sales_transaction_id FK
+        text updated_by_user_id FK
+        text action_id
+        jsonb add_on_item_lines
+        text address_id
+        text address_revision_id
+        text adjusted_unit_price
+        jsonb allowable_custom_field_keys
+        text bundle_id
+        text bundle_item_id
+        text cash_discounted_value
+        text created_at
+        text current_unit_price
+        text deleted
+        jsonb deleted_add_on_item_lines
+        text deposit_item_tracking_number_id
+        text description
+        text discount_value
+        text final_unit_price
+        text gift_card_balance_loaded
+        text gift_card_id
+        text image_thumbnail_url
+        text image_url
+        text item_line_id
+        text item_metadata_private
+        text item_public_id
+        text lookup_id
+        text loyalty_point
+        text manually_added
+        text metadata_private
+        text order_discount_id
+        text order_line_id
+        text original_unit_price
+        text original_value
+        text permanent
+        jsonb possible_add_ons
+        jsonb price_adjustments
+        text price_list_id
+        jsonb prompt_for_missing_fields
+        jsonb prompt_for_missing_reason_codes
+        text public_id
+        text qty
+        jsonb reason_codes
+        text removal_reason
+        text sales_rep
+        jsonb sales_rep_ids
+        text sales_transaction_line_id
+        text shipping_line_id
+        text shipping_method_id
+        text source_id
+        text source_type
+        text tax_rule_id
+        text ticket_level_discount
+        text ticket_level_discounted_value
+        text type
+        text unit_cost
+        text unit_price
+        timestamp updated_at
+        text value
+    }
+    customer {
+        text id PK
+        text active
+        text address_city
+        text address_country
+        text address_current_revision_hash
+        text address_current_revision_id
+        text address_full_address
+        text address_id
+        text address_line_1
+        text address_line_2
+        jsonb address_metadata
+        text address_metadata_private
+        text address_phone
+        text address_postal_code
+        text address_revision_hash
+        text address_square_feet
+        text address_state
+        text address_street_address
+        text address_type
+        text address_uuid
+        text billing_address_id
+        text created_at
+        text customer_import_batch_id
+        text default_lookup_id
+        text deleted_at
+        text email
+        text first_name
+        text import_set_id
+        text last_name
+        text loyalty_points_balance
+        text loyalty_points_total
+        jsonb metadata
+        text metadata_private
+        text name
+        text phone_number
+        text promotional_email
+        text promotional_message
+        text public_id
+        text shipping_address_id
+        text sort_key
+        text type
+        timestamp updated_at
+        text uuid
+    }
+    purchase_return {
+        text id PK
+        text created_by_user_id FK
+        text purchase_vendor_id FK
+        text return_from_location_id FK
+        text updated_by_user_id FK
+        text completed_at
+        text created_at
+        text local_completed_at
+        text local_created_at
+        text local_updated_at
+        text public_id
+        text status
+        text total_cost
+        text total_qty
+        timestamp updated_at
+    }
+    users {
+        text id PK
+        text active
+        text all_location
+        text created_at
+        text email
+        text email_verification_sent_at
+        text email_verified_at
+        text eula_accepted
+        text eula_last_reviewed_at
+        text external
+        text failed_auth_attempt
+        text failed_pin_attempt
+        text first_name
+        text has_pincode
+        text internal
+        text is_account_admin
+        text is_account_owner
+        text is_admin
+        text last_name
+        text locked_at
+        text login
+        text mfa_liability_accepted
+        text mfa_liability_accepted_at
+        text mfa_required
+        text name
+        text phone
+        text public_id
+        jsonb roles_name
+        text sales_rep
+        text sso_id
+        timestamp updated_at
+        text uuid
+    }
+    sale_ticket_rep {
+        text sales_rep_id PK
+        text sale_ticket_id PK
+    }
+    sale_ticket {
+        text id PK
+        text created_by_user_id FK
+        text customer_id FK
+        text order_id FK
+        text source_location_id FK
+        text updated_by_user_id FK
+        text balance
+        text billing_address_id
+        text cash_balance
+        text cash_discount_rate
+        jsonb cash_discount_tax_lines
+        text cash_round
+        text cash_total
+        text change
+        text completed
+        text completed_at
+        text coupon_id
+        text created_at
+        text local_completed_at
+        text local_created_at
+        text local_updated_at
+        jsonb metadata
+        text metadata_private
+        text minimum_deposit_value
+        text original_subtotal
+        text parent_transaction_id
+        text payment_exception
+        text penny_rounded_balance
+        text penny_rounded_cash_balance
+        text penny_rounded_cash_total
+        text penny_rounded_change
+        jsonb promotion_state_coupon_id
+        text public_id
+        text read_only
+        text recalculate
+        text sales_rep
+        text search_vector
+        text signatures_required
+        text station_id
+        text status
+        text total
+        text total_discount
+        text total_item_qty
+        text total_paid
+        text type
+        timestamp updated_at
+        text value_of_all_added_item_discount_lines
+        text voided
+    }
+    location }o--|| users : "fk"
+    location }o--|| users : "fk"
+    purchase_order_line }o--|| item : "fk"
+    purchase_order_line }o--|| purchase_order : "fk"
+    grid_controlled_item_field }o--|| item_grid : "fk"
+    item_grid_image }o--|| item_grid : "fk"
+    item_grid_image }o--|| item_grid_image_dimension_filter_value : "fk"
+    item_grid_image_dimension_filter_value }o--|| item_grid : "fk"
+    item_grid }o--|| users : "fk"
+    item_grid }o--|| users : "fk"
+    inventory_value_search }o--|| item : "fk"
+    inventory_value_search }o--|| location : "fk"
+    purchase_receipt_line }o--|| item : "fk"
+    purchase_receipt_line }o--|| purchase_receipt : "fk"
+    item }o--|| users : "fk"
+    item }o--|| users : "fk"
+    item }o--|| item_grid : "fk"
+    purchase_order }o--|| users : "fk"
+    purchase_order }o--|| location : "fk"
+    purchase_order }o--|| purchase_vendor : "fk"
+    purchase_order }o--|| users : "fk"
+    purchase_order }o--|| users : "fk"
+    purchase_receipt }o--|| purchase_order : "fk"
+    purchase_receipt }o--|| location : "fk"
+    purchase_return_line }o--|| item : "fk"
+    purchase_return_line }o--|| purchase_return : "fk"
+    sale_ticket_line }o--|| sale_ticket : "fk"
+    sale_ticket_line }o--|| item : "fk"
+    sale_ticket_line }o--|| customer : "fk"
+    sale_ticket_line }o--|| users : "fk"
+    sale_ticket_line }o--|| users : "fk"
+    purchase_return }o--|| users : "fk"
+    purchase_return }o--|| users : "fk"
+    purchase_return }o--|| purchase_vendor : "fk"
+    purchase_return }o--|| location : "fk"
+    sale_ticket_rep }o--|| sale_ticket : "fk"
+    sale_ticket }o--|| users : "fk"
+    sale_ticket }o--|| users : "fk"
+    sale_ticket }o--|| purchase_order : "fk"
+    sale_ticket }o--|| location : "fk"
+    sale_ticket }o--|| customer : "fk"

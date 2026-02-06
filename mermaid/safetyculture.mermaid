@@ -1,0 +1,505 @@
+erDiagram
+    course_progress {
+        text course_id PK
+        text user_id PK
+        text completed_at
+        text completed_lessons
+        text completion_expiry_date
+        text due_at
+        text opened_at
+        text progress_percent
+        text score
+        text total_lessons
+        text user_external_id
+    }
+    incident_category_item {
+        text id PK
+        text incident_category_id PK
+        text question_id FK
+        text is_disabled
+        text is_mandatory
+        text name
+        text type
+    }
+    incident_category {
+        text id PK
+        text description
+        text display_order
+        text is_visible
+        text key
+        text label
+        text use_category_access_whitelist
+    }
+    response {
+        text id PK
+        text response_set_id PK
+        text label
+        text short_label
+    }
+    response_set {
+        text id PK
+        text created_at
+        text modified_at
+        text name
+    }
+    users {
+        text id PK
+        text active
+        text created_at
+        text email
+        text first_name
+        text last_name
+        text last_seen_at
+        text organisation_id
+        text seat_type
+    }
+    folder_ancestor {
+        text folder_id PK
+        text id PK
+    }
+    folder {
+        text id PK
+        text created_at
+        text creator_id
+        text deleted
+        text folder_members_count
+        text has_children
+        text members_count
+        text meta_label
+        timestamp modified_at
+        text name
+        text org_id
+    }
+    template_item_children {
+        text id PK
+        text template_id PK
+        text template_item_id PK
+        jsonb children
+        text label
+    }
+    template_item {
+        text id PK
+        text template_id PK
+        text label
+        jsonb section
+    }
+    template_response {
+        text response_id PK
+        text color
+        text is_grs
+        text label
+        text response_set_id
+        text score
+        text score_enabled
+        text template_id
+    }
+    template_title_rule {
+        text index PK
+        text template_id PK
+        text rule
+    }
+    template_media {
+        text id PK
+        text template_id PK
+        text filename
+        text media_type
+        text token
+    }
+    template {
+        text id PK
+        text access_level
+        text added_at
+        text archived
+        text author_id
+        text created_at
+        text date_draft_modified
+        text description
+        text draft_author_name
+        jsonb global_response_set
+        text is_locked_from_shared_library
+        text last_used
+        text mandatory_mark_as_complete
+        text metadata_image_filename
+        text metadata_image_id
+        text metadata_image_media_type
+        text metadata_image_token
+        text modified_at
+        text name
+        text origin_information
+        text owner_id
+        text revision_id
+        text revision_key
+        text support_site_as_question_type
+        text translation_id
+    }
+    template_permission {
+        text id PK
+        text template_id PK
+        text permission
+        text type
+    }
+    schedule_item_reminder {
+        text index PK
+        text schedule_item_id PK
+        text duration
+        text event
+    }
+    schedule_item_assignee {
+        text id PK
+        text schedule_item_id PK
+        text name
+        text type
+    }
+    schedule_item {
+        text id PK
+        text asset_id FK
+        text creator_id FK
+        text can_late_submit
+        text created_at
+        text description
+        text document_id
+        text document_name
+        text document_type
+        text duration
+        text from_date
+        text location_id
+        text modified_at
+        text must_complete
+        text next_occurrence_due
+        text next_occurrence_start
+        text recurrence
+        text site_based_assignment_enabled
+        text start_time_hour
+        text start_time_minute
+        text status
+        text timezone
+        text to_date
+    }
+    incident_question_choice {
+        text id PK
+        text incident_id PK
+        text question_id PK
+        text text
+    }
+    incident_question_answer {
+        text answer_id PK
+        text incident_id PK
+        text question_id PK
+        text choice_id FK
+        text answered_at
+        text text
+    }
+    incident_question {
+        text question_id PK
+        text incident_id PK
+        text is_answered
+        text is_mandatory
+        text text
+        text type
+    }
+    inspection_answer {
+        text inspection_id PK
+        text question_id PK
+        text address_answer
+        text asset_answer
+        jsonb calculation_answer
+        text checkbox_answer
+        text datetime_answer
+        jsonb drawing_answer
+        jsonb dynamicfield_answer
+        jsonb list_answer
+        jsonb location
+        jsonb media_answer
+        text modified_at
+        jsonb question_answer
+        jsonb signature_answer
+        jsonb site_answer
+        jsonb slider_answer
+        text switch_answer
+        jsonb temperature_answer
+        text text_answer
+    }
+    course {
+        text id PK
+        text branding_image_url
+        text created_datetime
+        text description
+        text due_by
+        text duration
+        text external_id
+        text is_mandatory
+        text is_published
+        text lesson_count
+        text locale
+        text logo_url
+        text modified_datetime
+        text status
+        text thumbnail_url
+        text title
+        text translation_original_course_external_id
+        text translation_original_course_id
+    }
+    group_member {
+        text groups_id PK
+        text user_id PK
+    }
+    groups {
+        text id PK
+        text description
+        text name
+        text type
+    }
+    site {
+        text id PK
+        text creator_id FK
+        text deleted
+        text meta_label
+        text name
+        text organisation_id
+        text parent_id
+        text site_uuid
+    }
+    asset_media {
+        text id PK
+        text asset_id PK
+        text filename
+        text media_type
+        text token
+    }
+    asset_field {
+        text field_id PK
+        text asset_id PK
+        text currency_code
+        text currency_nanos
+        text currency_unit
+        text custom_id
+        text field_type
+        text id
+        text name
+        text string_value
+        text timestamp_value
+        text value_type
+        text visible
+    }
+    asset {
+        text id PK
+        text code
+        text created_at
+        text custom_id
+        text inspected_at
+        timestamp modified_at
+        text name
+        text profile_image_filename
+        text profile_image_id
+        text profile_image_media_type
+        text profile_image_token
+        text site_id
+        text site_name
+        text sourced_from_external_system
+        text state
+        text type
+        text type_id
+    }
+    incident_collaborator {
+        text id PK
+        text incident_id PK
+        text contributor_id FK
+        text user_id FK
+        text assigned_role
+        text external_user_email
+        text external_user_id
+        text group_id
+        text type
+    }
+    incident_reference {
+        text id PK
+        text incident_id PK
+        text type
+    }
+    incident_label {
+        text label_id PK
+        text incident_id PK
+    }
+    incident_media {
+        text id PK
+        text incident_id PK
+        text filename
+        text media_type
+        text token
+    }
+    incident {
+        text id PK
+        text asset_id FK
+        text category_id FK
+        text creator_id FK
+        text inspection_id FK
+        text template_id FK
+        text administrative_area
+        text completed_at
+        text country
+        text created_at
+        text description
+        text due_at
+        text iso_country_code
+        text locality
+        timestamp modified_at
+        text name
+        text occurred_at
+        text postal_code
+        text priority_id
+        text site_area
+        text site_id
+        text site_name
+        text site_region
+        text status_display_order
+        text status_id
+        text status_key
+        text status_label
+        text sub_administrative_area
+        text sub_locality
+        text sub_thoroughfare
+        text thoroughfare
+        text title
+        text type
+        text unique_id
+    }
+    schedule_occurrence {
+        text id PK
+        text audit_id FK
+        text template_id FK
+        text assignee_status
+        timestamp completed_at
+        timestamp due_time
+        timestamp miss_time
+        text note
+        text occurrence_id
+        text occurrence_status
+        text organisation_id
+        text schedule_id
+        timestamp start_time
+        text user_id
+    }
+    action {
+        text id PK
+        text assignee_id FK
+        text action_id
+        text modified_at
+        text name
+        text organisation_id
+        text type
+    }
+    inspection {
+        text id PK
+        text asset_id FK
+        text template_id FK
+        text archived
+        text author_id
+        text author_name
+        text client_site
+        text conducted_on
+        text created_at
+        text date_completed
+        text date_modified
+        text date_started
+        text document_no
+        text duration
+        text latitude
+        text location
+        text longitude
+        text max_score
+        text modified_at
+        text name
+        text organisation_id
+        text owner_id
+        text owner_name
+        text personnel
+        text prepared_by
+        text score
+        text score_percentage
+        text site_id
+        text template_author
+        text template_name
+        text web_report_link
+    }
+    inspection_items {
+        text id PK
+        text audit_id FK
+        text template_id FK
+        text category
+        text category_id
+        text combined_max_score
+        text combined_score
+        text combined_score_percentage
+        text comment
+        timestamp created_at
+        text inactive
+        text is_failed_response
+        text item_id
+        text item_index
+        text label
+        text location_latitude
+        text location_longitude
+        text mandatory
+        text max_score
+        text media_files
+        text media_hypertext_reference
+        text media_ids
+        timestamp modified_at
+        text organisation_id
+        text parent_id
+        text primeelement_id
+        text primeelement_index
+        text response
+        text response_id
+        text response_set_id
+        text score
+        text score_percentage
+        text type
+    }
+    course_progress }o--|| users : "fk"
+    course_progress }o--|| course : "fk"
+    incident_category_item }o--|| incident_question : "fk"
+    incident_category_item }o--|| incident_category : "fk"
+    response }o--|| response_set : "fk"
+    folder_ancestor }o--|| folder : "fk"
+    folder_ancestor }o--|| folder : "fk"
+    template_item_children }o--|| template_item : "fk"
+    template_item_children }o--|| template_item : "fk"
+    template_item }o--|| template : "fk"
+    template_title_rule }o--|| template : "fk"
+    template_media }o--|| template : "fk"
+    template_permission }o--|| template : "fk"
+    schedule_item_reminder }o--|| schedule_item : "fk"
+    schedule_item_assignee }o--|| users : "fk"
+    schedule_item_assignee }o--|| schedule_item : "fk"
+    schedule_item }o--|| asset : "fk"
+    schedule_item }o--|| users : "fk"
+    incident_question_choice }o--|| incident_question : "fk"
+    incident_question_choice }o--|| incident_question : "fk"
+    incident_question_answer }o--|| incident_question_choice : "fk"
+    incident_question_answer }o--|| incident_question : "fk"
+    incident_question_answer }o--|| incident_question : "fk"
+    incident_question }o--|| incident : "fk"
+    group_member }o--|| users : "fk"
+    group_member }o--|| groups : "fk"
+    site }o--|| users : "fk"
+    asset_media }o--|| asset : "fk"
+    asset_field }o--|| asset : "fk"
+    incident_collaborator }o--|| users : "fk"
+    incident_collaborator }o--|| users : "fk"
+    incident_collaborator }o--|| incident : "fk"
+    incident_reference }o--|| incident : "fk"
+    incident_label }o--|| incident : "fk"
+    incident_media }o--|| incident : "fk"
+    incident }o--|| template : "fk"
+    incident }o--|| asset : "fk"
+    incident }o--|| users : "fk"
+    incident }o--|| inspection : "fk"
+    incident }o--|| incident_category : "fk"
+    schedule_occurrence }o--|| template : "fk"
+    schedule_occurrence }o--|| inspection : "fk"
+    action }o--|| users : "fk"
+    inspection }o--|| template : "fk"
+    inspection }o--|| asset : "fk"
+    inspection_items }o--|| template : "fk"
+    inspection_items }o--|| inspection : "fk"

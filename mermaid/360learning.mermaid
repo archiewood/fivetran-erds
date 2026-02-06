@@ -1,0 +1,310 @@
+erDiagram
+    custom_link {
+        text id PK
+        text user_id PK
+        text custom_link_id
+        text url
+    }
+    user_certificate {
+        text id PK
+        text user_id PK
+        text path_id FK
+        text path_session_id FK
+        text certificate_outline_id
+        text delivery_date
+        text expiration_date
+        text title
+        text type
+        text validity_period
+    }
+    user_custom_field {
+        text id PK
+        text user_id PK
+        text type
+        text value
+    }
+    path_step {
+        text id PK
+        text path_id PK
+        text attempts_limit
+        text auto_registration
+        text availability_mode
+        text availability_relative_unit
+        text availability_relative_value
+        text is_examination
+        text min_score
+        text optional
+        text recipient_type
+        text relative_date_unit
+        text relative_date_value
+        text scheduling_condition
+        text scheduling_relative_to
+        text scheduling_relativity
+        text show_correction
+        text show_forum
+        text subtype
+        text time_limit_mode
+        text time_limit_value
+        text type
+    }
+    path_translator {
+        text translator_id PK
+        text path_id PK
+        text path_translation_index PK
+    }
+    path_translation {
+        text index PK
+        text path_id PK
+        text lang
+        text published
+        text translated_description
+        text translated_name
+    }
+    path {
+        text id PK
+        text author_id FK
+        text group_id FK
+        text additional_information
+        text automated_reminders
+        text certificate_id
+        text created_at
+        text default_lang
+        text description
+        text display_classroom_messages
+        text display_forum
+        text estimated_commitment_max
+        text estimated_commitment_min
+        text estimated_duration_unit
+        text estimated_duration_value
+        text linear_progression
+        text mandatory_replay
+        text modified_at
+        text name
+        text notification_on_step_create
+        text source_lang
+        text status
+    }
+    custom_field {
+        text id PK
+        text name
+        text target_type
+        text type
+    }
+    path_session_stat {
+        text _fivetran_id PK
+        text path_session_id FK
+        text awaiting_correction
+        text certificate
+        text late
+        text not_yet_started
+        text on_time
+        text session_not_opened
+        text successful
+        text to_retake
+        text unsuccessful
+    }
+    path_session_instructor {
+        text instructor_id PK
+        text path_session_id PK
+    }
+    path_session_translator {
+        text translator_id PK
+        text path_session_id PK
+        text path_session_translation_index PK
+    }
+    path_session_translation {
+        text index PK
+        text path_session_id PK
+        text lang
+        text published
+        text translated_name
+    }
+    path_session {
+        text id PK
+        text group_id FK
+        text path_id FK
+        text additional_information
+        text auto_reenroll_delay_days
+        text auto_reenroll_type
+        text created_at
+        text end_date
+        text ip_filtering_active
+        text ip_filtering_authorized_addr
+        text is_audience_builder
+        text main_instructor_id
+        text modified_at
+        text name
+        text registration_request_validation
+        text root_session_id
+        text start_date
+        text user_limit
+    }
+    groups {
+        text id PK
+        text parent_group_id FK
+        text background_image_id
+        text banner_image_id
+        text custom
+        text favicon_image_id
+        text logo_image_id
+        text moderation_charter_explicit_consent
+        text moderation_charter_url
+        text name
+        text privacy_policy_explicit_consent
+        text privacy_policy_url
+        text public
+        text subdomain
+        text terms_of_use_explicit_consent
+        text terms_of_use_url
+        text url
+    }
+    classroom_media {
+        text media_id PK
+        text classroom_id PK
+    }
+    classroom {
+        text id PK
+        text group_id FK
+        text created_at
+        text message
+        text modified_at
+        text name
+        text training_objective
+    }
+    user_reactivated_at {
+        text reactivated_at PK
+        text user_id PK
+    }
+    user_deleted_at {
+        text deleted_at PK
+        text user_id PK
+    }
+    users {
+        text id PK
+        text custom
+        text first_name
+        text job
+        text lang
+        text last_login_date
+        text last_name
+        text mail
+        text organization
+        text phone
+        text status
+        timestamp to_be_deactivated_at
+        text username
+    }
+    group_user {
+        text group_id PK
+        text user_id PK
+        text role
+    }
+    skill_parent {
+        text id PK
+        text skill_id PK
+        text external_id
+    }
+    skill_translation {
+        text index PK
+        text skill_id PK
+        text lang
+        text translated_description
+        text translated_name
+    }
+    skill {
+        text id PK
+        text creation_date
+        text description
+        text external_id
+        text library_id
+        text modification_date
+        text name
+        text status
+    }
+    course_co_author {
+        text co_author_id PK
+        text course_id PK
+    }
+    course_translator {
+        text translator_id PK
+        text course_id PK
+        text course_translation_index PK
+    }
+    course_translation {
+        text index PK
+        text course_id PK
+        text description
+        text lang
+        text name
+        text published
+    }
+    course {
+        text id PK
+        text author_id FK
+        text group_id FK
+        text creation_date
+        text current_version_number
+        text default_lang
+        text description
+        text duration
+        text external_platform
+        text modification_date
+        text name
+        text source_lang
+        text status
+        text type
+    }
+    course_stat {
+        text id PK
+        text course_id FK
+        text path_id FK
+        text path_session_id FK
+        text user_id FK
+        text completed_at
+        text first_activity_at
+        text lang
+        text last_activity_at
+        text progress
+        text score
+        text time_spent
+        text version_number
+    }
+    custom_link }o--|| users : "fk"
+    user_certificate }o--|| path_session : "fk"
+    user_certificate }o--|| path : "fk"
+    user_certificate }o--|| users : "fk"
+    user_custom_field }o--|| users : "fk"
+    path_step }o--|| path : "fk"
+    path_translator }o--|| path_translation : "fk"
+    path_translator }o--|| path_translation : "fk"
+    path_translation }o--|| path : "fk"
+    path }o--|| users : "fk"
+    path }o--|| groups : "fk"
+    path_session_stat }o--|| path_session : "fk"
+    path_session_instructor }o--|| path_session : "fk"
+    path_session_translator }o--|| path_session_translation : "fk"
+    path_session_translator }o--|| path_session_translation : "fk"
+    path_session_translation }o--|| path_session : "fk"
+    path_session }o--|| groups : "fk"
+    path_session }o--|| path : "fk"
+    groups }o--|| groups : "fk"
+    classroom_media }o--|| classroom : "fk"
+    classroom }o--|| groups : "fk"
+    user_reactivated_at }o--|| users : "fk"
+    user_deleted_at }o--|| users : "fk"
+    group_user }o--|| users : "fk"
+    group_user }o--|| groups : "fk"
+    skill_parent }o--|| skill : "fk"
+    skill_parent }o--|| skill : "fk"
+    skill_translation }o--|| skill : "fk"
+    course_co_author }o--|| users : "fk"
+    course_co_author }o--|| course : "fk"
+    course_translator }o--|| course_translation : "fk"
+    course_translator }o--|| course_translation : "fk"
+    course_translation }o--|| course : "fk"
+    course }o--|| users : "fk"
+    course }o--|| groups : "fk"
+    course_stat }o--|| users : "fk"
+    course_stat }o--|| path_session : "fk"
+    course_stat }o--|| path : "fk"
+    course_stat }o--|| course : "fk"

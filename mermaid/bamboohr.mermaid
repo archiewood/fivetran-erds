@@ -1,0 +1,130 @@
+erDiagram
+    employee_goal {
+        integer employee_id PK
+        integer goal_id PK
+    }
+    goal {
+        integer id PK
+        timestamp completed_at
+        text description
+        text due_date
+        integer percent_complete
+        text status
+        text title
+    }
+    time_off_policy {
+        integer id PK
+        integer type_id FK
+        text effective_date
+        text name
+        text type
+    }
+    training_category {
+        integer id PK
+        text name
+    }
+    employee_time_off_policy {
+        integer employee_id PK
+        integer policy_id PK
+        text accrual_start_date
+    }
+    account_user {
+        integer id PK
+        integer employee_id FK
+        text email
+        text first_name
+        timestamp last_login
+        text last_name
+        text status
+    }
+    time_off_request {
+        integer id PK
+        integer employee_id FK
+        text amount
+        text created_at
+        text end_date
+        text name
+        text notes_employee
+        text notes_manager
+        text start_date
+        text status
+        text status_changed_at
+        integer status_changed_by
+        integer type_id
+        text unit
+    }
+    time_off_type {
+        integer id PK
+        text name
+        text units
+    }
+    employee_dependent {
+        integer id PK
+        integer employee_id FK
+        text address_line_1
+        text address_line_2
+        text city
+        text country
+        text date_of_birth
+        text first_name
+        text gender
+        text is_student
+        text is_us_citizen
+        text last_name
+        text masked_sin
+        text masked_ssn
+        text middle_name
+        text relationship
+        text state
+        text zip_code
+    }
+    employee {
+        integer id PK
+        timestamp last_changed
+    }
+    milestone {
+        integer id PK
+        integer goal_id PK
+        timestamp completed_at
+        integer current_value
+        integer end_value
+        integer start_value
+        text title
+        timestamp updated_at
+        integer updated_by
+    }
+    training {
+        integer id PK
+        integer employee_id FK
+        integer type_id FK
+        text completed_at
+        text cost
+        text credits
+        text hours
+        text instructor
+        text notes
+    }
+    training_type {
+        integer id PK
+        integer category_id FK
+        text description
+        text due_from_hire_date_amount
+        text due_from_hire_date_unit
+        integer frequency
+        text link_url
+        text name
+        boolean renewable
+        boolean required
+    }
+    employee_goal }o--|| employee : "fk"
+    employee_goal }o--|| goal : "fk"
+    time_off_policy }o--|| time_off_type : "fk"
+    employee_time_off_policy }o--|| employee : "fk"
+    employee_time_off_policy }o--|| time_off_policy : "fk"
+    account_user }o--|| employee : "fk"
+    time_off_request }o--|| employee : "fk"
+    employee_dependent }o--|| employee : "fk"
+    milestone }o--|| goal : "fk"
+    training }o--|| employee : "fk"
+    training }o--|| training_type : "fk"
+    training_type }o--|| training_category : "fk"

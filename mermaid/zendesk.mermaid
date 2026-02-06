@@ -1,0 +1,1369 @@
+erDiagram
+%% Notes
+%%   - Zendesk__ticket_metrics and other models must be created through Transformations.
+%%   - Tags provide additional context about tickets, organizations and users and are used in automations.
+    %% SLA Policies are a Zendesk Professional or Enterprise feature
+    group_sla_policy_history {
+        text id PK
+        timestamp created_at
+        text description
+        bigint position
+        text title
+        timestamp updated_at
+    }
+    agent_condition_required_status {
+        text _fivetran_id PK
+        text agent_condition_id FK
+        text status
+    }
+    alert_recipient {
+        bigint ticket_alert_id PK
+        bigint user_id PK
+    }
+    macro_action {
+        text field PK
+        bigint macro_id PK
+        jsonb value
+    }
+    call_leg {
+        bigint id PK
+        bigint agent_id FK
+        bigint call_id FK
+        bigint user_id FK
+        text available_via
+        text call_charge
+        text completion_status
+        bigint conference_from
+        bigint conference_time
+        bigint conference_to
+        bigint consultation_from
+        bigint consultation_time
+        bigint consultation_to
+        timestamp created_at
+        bigint duration
+        text forwarded_to
+        bigint hold_time
+        bigint minutes_billed
+        bigint talk_time
+        bigint transferred_from
+        bigint transferred_to
+        text type
+        timestamp updated_at
+        bigint wrap_up_time
+    }
+    satisfaction_rating {
+        bigint id PK
+        bigint assignee_id FK
+        bigint group_id FK
+        bigint requester_id FK
+        bigint ticket_id FK
+        text comment
+        timestamp created_at
+        text reason
+        text score
+        timestamp updated_at
+        text url
+    }
+    ticket_email_cc {
+        bigint ticket_id PK
+        bigint user_id PK
+    }
+    csat_survey_closed_ended_option {
+        text option_id PK
+        text question_id PK
+        text survey_id PK
+        bigint survey_version PK
+        text label_key
+        text label_type
+        text label_value
+    }
+    badge {
+        text id PK
+        text badge_category_id FK
+        timestamp created_at
+        text description
+        text icon_url
+        text name
+        timestamp updated_at
+    }
+    %% content_id refers to the ID of an Article, Post, Topic, or Section
+%% content_type is either Article, Post, Topic, or Section
+    content_subscription {
+        bigint id PK
+        bigint user_id FK
+        bigint content_id
+        text content_type
+        timestamp created_at
+        boolean include_comments
+        text locale
+        text source_locale
+        timestamp updated_at
+        text url
+    }
+    line {
+        bigint id PK
+        bigint brand_id FK
+        bigint ivr_id FK
+        bigint schedule_id FK
+        text call_recording_consent
+        text country_code
+        timestamp created_at
+        bigint default_group_id
+        text display_number
+        boolean external
+        text failover_number
+        text line_type
+        text location
+        text name
+        text nickname
+        text number
+        boolean outbound_enabled
+        text outbound_number
+        bigint priority
+        boolean recorded
+        boolean sms_enabled
+        bigint sms_group_id
+        text token
+        boolean toll_free
+        boolean transcription
+        boolean voice_enabled
+    }
+    ticket_alert {
+        bigint id PK
+        bigint ticket_id FK
+        bigint user_id FK
+        text body
+        timestamp created
+        text resource
+        text subject
+        text type
+        text via_channel
+        text via_source_from_address
+        bigint via_source_from_id
+        text via_source_from_title
+        text via_source_rel
+        text via_source_to_address
+        text via_source_to_name
+    }
+    ticket_chat_event {
+        timestamp created_at PK
+        text chat_id PK
+        text actor_id FK
+        bigint chat_index
+        text external_message_id
+        text filename
+        boolean is_history_context
+        text message
+        text message_id
+        text message_source
+        text mime_type
+        jsonb original_message
+        text original_message_type
+        text parent_message_id
+        text reason
+        bigint size
+        text status
+        timestamp status_updated_at
+        text type
+        text url
+    }
+    custom_role {
+        bigint id PK
+        timestamp created_at
+        text description
+        text name
+        bigint role_type
+        timestamp updated_at
+    }
+    ticket_side_conversation_event {
+        text id PK
+        text side_conversation_id PK
+        text actor_support_agent_id FK
+        text actor_support_group_id FK
+        bigint actor_user_id FK
+        text message_from_support_agent_id FK
+        text message_from_support_group_id FK
+        bigint message_from_user_id FK
+        text actor_email
+        text actor_msteams_channel_id
+        text actor_name
+        text actor_slack_channel_id
+        text actor_slack_workspace_id
+        timestamp created_at
+        text type
+        text updated_state
+        text updated_subject
+        text via
+    }
+    time_zone {
+        text time_zone PK
+        text standard_offset
+    }
+    ticket_macro_reference {
+        bigint id PK
+        bigint ticket_id FK
+        bigint user_id FK
+        timestamp created
+        boolean macro_deleted
+        text macro_id
+        text macro_title
+        text via_channel
+        text via_source_from_address
+        bigint via_source_from_id
+        text via_source_from_title
+        text via_source_rel
+        text via_source_to_address
+        text via_source_to_name
+    }
+    ticket_attribute {
+        text attribute_name PK
+        text value PK
+        bigint ticket_id PK
+    }
+    user_segment_organization {
+        bigint organization_id PK
+        bigint user_segment_id PK
+    }
+    user_segment_tag {
+        boolean is_or_tag PK
+        text tag PK
+        bigint user_segment_id PK
+    }
+    ticket_chat {
+        text chat_id PK
+        bigint ticket_id FK
+        bigint user_id FK
+        boolean authenticated
+        text backend
+        text channel
+        text conversation_id
+        text initiator
+        text integration_id
+        jsonb tags
+        text visitor_id
+        jsonb webpath
+    }
+    ticket_tag {
+        text tag PK
+        bigint ticket_id PK
+    }
+    article {
+        bigint id PK
+        bigint author_id FK
+        bigint permission_group_id FK
+        text body
+        boolean comments_disabled
+        timestamp created_at
+        boolean draft
+        timestamp edited_at
+        text html_url
+        text locale
+        text name
+        boolean outdated
+        integer position
+        boolean promoted
+        text section_id
+        text source_locale
+        text title
+        timestamp updated_at
+        text url
+        bigint user_segment_id
+        integer vote_count
+        integer vote_sum
+    }
+    article_outdated_locale {
+        text outdated_locale PK
+        bigint article_id PK
+    }
+    ivr_menu_route {
+        bigint id PK
+        bigint ivr_menu_id FK
+        text action
+        text greeting
+        text keypress
+        text option_text
+    }
+    csat_survey_answer {
+        text question_id PK
+        text survey_response_id PK
+        bigint rating FK
+        text selections_option_id FK
+        timestamp created_at
+        text rating_category
+        text selections_type
+        text type
+        timestamp updated_at
+        text value
+    }
+    agent_status_type_group {
+        bigint agent_status_type_id PK
+        text group_id PK
+    }
+    user_identity {
+        bigint id PK
+        bigint user_id FK
+        timestamp created_at
+        text deliverable_state
+        boolean is_primary
+        text type
+        bigint undeliverable_count
+        timestamp updated_at
+        text url
+        text value
+        text verification_method
+        boolean verified
+        timestamp verified_at
+    }
+    greeting_ivr {
+        bigint id PK
+        text greeting_id PK
+    }
+    automation_condition {
+        text _fivetran_id PK
+        bigint automation_id PK
+        text condition_type
+        text field
+        text operator
+        jsonb value
+    }
+    organization {
+        bigint id PK
+        bigint group_id FK
+        timestamp created_at
+        text details
+        text external_id
+        text name
+        text notes
+        boolean shared_comments
+        boolean shared_tickets
+        timestamp updated_at
+        text url
+    }
+    article_label_name {
+        text label_name PK
+        bigint article_id PK
+    }
+    content_tag {
+        text id PK
+        timestamp created_at
+        text name
+        timestamp updated_at
+    }
+    ticket_group_sla_policy {
+        text group_sla_policy_id PK
+        bigint ticket_id PK
+        timestamp group_policy_applied_at
+    }
+    domain_name {
+        integer index PK
+        bigint organization_id PK
+        text domain_name
+    }
+    section {
+        bigint id PK
+        bigint category_id FK
+        timestamp created_at
+        text description
+        text html_url
+        text locale
+        text name
+        boolean outdated
+        bigint parent_section_id
+        bigint position
+        text sorting
+        text source_locale
+        text theme_template
+        timestamp updated_at
+        text url
+    }
+    locale {
+        bigint id PK
+        timestamp updated_at PK
+        timestamp created_at
+        boolean default
+        text locale
+        text name
+        text native_name
+        text presentation_name
+        boolean rtl
+        text url
+    }
+    call_metric {
+        bigint id PK
+        bigint agent_id FK
+        bigint call_group_id FK
+        bigint phone_number_id FK
+        bigint ticket_id FK
+        text call_charge
+        text call_recording_consent
+        text call_recording_consent_action
+        text call_recording_consent_keypress
+        boolean callback
+        text callback_source
+        text completion_status
+        bigint consultation_time
+        timestamp created_at
+        boolean customer_requested_voicemail
+        boolean default_group
+        text direction
+        bigint duration
+        boolean exceeded_queue_wait_time
+        bigint hold_time
+        text ivr_action
+        text ivr_destination_group_name
+        bigint ivr_hops
+        text ivr_routed_to
+        bigint ivr_time_spent
+        bigint minutes_billed
+        bigint not_recording_time
+        boolean outside_business_hours
+        boolean overflowed
+        text overflowed_to
+        text phone_number
+        jsonb quality_issues
+        integer recording_control_interactions
+        bigint recording_time
+        bigint talk_time
+        bigint time_to_answer
+        timestamp updated_at
+        boolean voicemail
+        bigint wait_time
+        bigint wrap_up_time
+    }
+    ticket_field_history {
+        timestamp updated PK
+        text field_name PK
+        bigint ticket_id PK
+        bigint user_id FK
+        text value
+        text via_channel
+        text via_source_from_address
+        bigint via_source_from_id
+        text via_source_from_title
+        text via_source_rel
+        text via_source_to_address
+        text via_source_to_name
+    }
+    ticket_collaborator {
+        bigint ticket_id PK
+        bigint user_id PK
+    }
+    agent_condition {
+        text _fivetran_id PK
+        bigint child_field_id FK
+        bigint parent_field_id FK
+        bigint ticket_form_id FK
+        boolean is_required
+        text parent_field_type
+        text required_on_statuses_type
+        text value
+    }
+    user_subscription {
+        bigint id PK
+        bigint followed_id FK
+        bigint follower_id FK
+    }
+    tweet_recipient {
+        bigint ticket_comment_id PK
+        bigint user_id PK
+    }
+    badge_category {
+        text id PK
+        text brand_id
+        timestamp created_at
+        text name
+        text slug
+        timestamp updated_at
+    }
+    user_segment_group {
+        bigint group_id PK
+        bigint user_segment_id PK
+    }
+    user_segment_added_user {
+        bigint user_id PK
+        bigint user_segment_id PK
+    }
+    suspended_ticket_attachment {
+        bigint id PK
+        bigint suspended_ticket_id FK
+        text content_type
+        text content_url
+        boolean deleted
+        text file_name
+        bigint height
+        boolean inline
+        boolean malware_access_override
+        text malware_scan_result
+        text mapped_content_url
+        bigint size
+        bigint width
+    }
+    schedule_holiday {
+        bigint id PK
+        bigint schedule_id PK
+        text end_date
+        text name
+        text start_date
+    }
+    ticket_form_restricted_brand {
+        bigint brand_id PK
+        bigint ticket_form_id PK
+    }
+    ticket_custom_field {
+        bigint id PK
+        boolean active
+        text agent_description
+        boolean collapsed_for_agents
+        timestamp created_at
+        text description
+        boolean editable_in_portal
+        text key
+        integer position
+        text raw_description
+        text raw_title
+        text raw_title_in_portal
+        text regexp_for_validation
+        text relationship_target_type
+        boolean removable
+        boolean required
+        boolean required_in_portal
+        integer sub_type_id
+        boolean system
+        text tag
+        text title
+        text title_in_portal
+        text type
+        timestamp updated_at
+        text url
+        boolean visible_in_portal
+    }
+    ivr_menu_route_option {
+        bigint group_id PK
+        bigint ivr_menu_route_id PK
+    }
+    sla_policy_metric_history {
+        integer index PK
+        bigint sla_policy_id PK
+        timestamp sla_policy_updated_at PK
+        boolean business_hours
+        text metric
+        text priority
+        bigint target
+    }
+    skip_ticket_history {
+        bigint id PK
+        timestamp updated_at PK
+        bigint ticket_id FK
+        bigint user_id FK
+        timestamp created_at
+        text reason
+    }
+    automation_action {
+        text field PK
+        bigint automation_id PK
+        jsonb value
+    }
+    brand {
+        bigint id PK
+        boolean active
+        text brand_url
+        boolean default
+        boolean has_help_center
+        text help_center_state
+        text name
+        text subdomain
+        text url
+    }
+    daylight_time {
+        text time_zone PK
+        integer year PK
+        text daylight_end_utc
+        integer daylight_offset
+        text daylight_start_utc
+    }
+    ivr {
+        bigint id PK
+        text name
+    }
+    trigger {
+        bigint id PK
+        boolean active
+        jsonb app_installation
+        text category_id
+        timestamp created_at
+        boolean default
+        text description
+        jsonb permissions
+        text position
+        text raw_title
+        text title
+        timestamp updated_at
+        text url
+    }
+    %% SLA Policies are a Zendesk Professional or Enterprise feature
+    group_sla_policy_metric_history {
+        text metric PK
+        text priority PK
+        text group_sla_policy_id PK
+        boolean business_hours
+        bigint target
+    }
+    user_vote {
+        bigint id PK
+        bigint user_id FK
+        timestamp created_at
+        bigint item_id
+        text item_type
+        timestamp updated_at
+        bigint value
+    }
+    ticket_field_option {
+        text value PK
+        bigint ticket_custom_field_id FK
+        boolean default
+        bigint id
+        text name
+    }
+    ticket_custom_status {
+        bigint id PK
+        bigint ticket_custom_field_id FK
+        boolean active
+        text agent_label
+        text created_at
+        boolean default
+        text description
+        text end_user_description
+        text end_user_label
+        text status_category
+        text updated_at
+    }
+    agent_status_type {
+        bigint id PK
+        text channels_messaging
+        text channels_support
+        text channels_talk
+        text description
+        text name
+        timestamp updated_at
+    }
+    post {
+        bigint id PK
+        timestamp updated_at PK
+        bigint author_id FK
+        bigint topic_id FK
+        boolean closed
+        integer comment_count
+        timestamp created_at
+        text details
+        boolean featured
+        integer follower_count
+        text html_url
+        boolean pinned
+        text status
+        text title
+        text url
+        integer vote_count
+        integer vote_sum
+    }
+    forum_topic {
+        bigint id PK
+        bigint community_id
+        timestamp created_at
+        text description
+        bigint follower_count
+        text html_url
+        text manageable_by
+        text name
+        bigint position
+        timestamp updated_at
+        text url
+        bigint user_segment_id
+    }
+    agent_channel_history {
+        text channel PK
+        bigint agent_id PK
+        timestamp updated_at
+    }
+    ticket_form_history {
+        bigint id PK
+        timestamp updated_at PK
+        boolean active
+        timestamp created_at
+        boolean default
+        text display_name
+        boolean end_user_visible
+        boolean in_all_brands
+        text name
+        bigint position
+        text raw_display_name
+        text raw_name
+        text url
+    }
+    macro {
+        bigint id PK
+        boolean active
+        jsonb app_installation
+        timestamp created_at
+        boolean default
+        text description
+        jsonb permissions
+        text position
+        jsonb restriction
+        text title
+        timestamp updated_at
+        text url
+    }
+    audit_log {
+        bigint id PK
+        bigint actor_id FK
+        text action
+        text change_description
+        timestamp created_at
+        bigint source_id
+        text source_label
+        text source_type
+    }
+    user_segment {
+        bigint id PK
+        boolean built_in
+        timestamp created_at
+        text name
+        timestamp updated_at
+        text user_type
+    }
+    agent_status_history {
+        text channel PK
+        bigint agent_id PK
+        text new_state
+        text previous_state
+        timestamp updated_at
+    }
+    ticket_comment {
+        bigint id PK
+        bigint ticket_id FK
+        bigint user_id FK
+        text body
+        timestamp created
+        boolean facebook_comment
+        text html_body
+        text metadata
+        text plain_body
+        boolean tweet
+        text via_channel
+        text via_source_from_address
+        bigint via_source_from_id
+        text via_source_from_title
+        text via_source_rel
+        text via_source_to_address
+        text via_source_to_name
+        boolean voice_comment
+    }
+    agent_max_capacity_history {
+        text channel PK
+        bigint agent_id PK
+        bigint current
+        bigint previous
+        timestamp updated_at
+    }
+    ticket {
+        bigint id PK
+        bigint assignee_id FK
+        bigint brand_id FK
+        bigint custom_status_id FK
+        bigint forum_topic_id FK
+        bigint group_id FK
+        bigint organization_id FK
+        bigint requester_id FK
+        bigint submitter_id FK
+        boolean allow_attachments
+        boolean allow_channelback
+        timestamp created_at
+        text description
+        timestamp due_at
+        text external_id
+        jsonb followup_ids
+        boolean from_messaging_channel
+        boolean has_incidents
+        boolean is_public
+        jsonb merged_ticket_ids
+        text priority
+        bigint problem_id
+        text raw_subject
+        text recipient
+        text status
+        text subject
+        bigint ticket_form_id
+        text type
+        timestamp updated_at
+        text url
+        text via_channel
+        bigint via_followup_source_id
+        text via_source_from_address
+        bigint via_source_from_id
+        text via_source_from_title
+        text via_source_rel
+        text via_source_to_address
+        text via_source_to_name
+    }
+    %% SLA Policies are a Zendesk Professional or Enterprise feature
+    sla_policy_history {
+        bigint id PK
+        timestamp updated_at PK
+        timestamp created_at
+        text description
+        bigint position
+        text title
+    }
+    article_comment {
+        bigint id PK
+        bigint author_id FK
+        bigint non_author_editor_id FK
+        bigint source_id FK
+        text body
+        timestamp created_at
+        text html_url
+        text locale
+        timestamp non_author_updated_at
+        boolean official
+        text source_type
+        timestamp updated_at
+        text url
+        bigint vote_count
+        bigint vote_sum
+    }
+    ticket_comment_attachment {
+        bigint id PK
+        bigint ticket_comment_id FK
+        text content_type
+        text content_url
+        boolean deleted
+        text file_name
+        bigint height
+        boolean inline
+        boolean malware_access_override
+        text malware_scan_result
+        text mapped_content_url
+        bigint size
+        bigint width
+    }
+    organization_member {
+        bigint id PK
+        bigint organization_id FK
+        bigint user_id FK
+    }
+    organization_tag {
+        text tag PK
+        bigint organization_id PK
+    }
+    automation {
+        bigint id PK
+        boolean active
+        jsonb app_installation
+        timestamp created_at
+        boolean default
+        jsonb permissions
+        text position
+        text raw_title
+        text title
+        timestamp updated_at
+    }
+    user {
+        bigint id PK
+        bigint custom_role_id FK
+        bigint default_group_id FK
+        bigint organization_id FK
+        boolean active
+        text alias
+        text authenticity_token
+        boolean chat_only
+        timestamp created_at
+        text details
+        text email
+        text external_id
+        text iana_time_zone
+        timestamp last_login_at
+        text locale
+        bigint locale_id
+        boolean moderator
+        text name
+        text notes
+        boolean only_private_comments
+        text phone
+        text remote_photo_url
+        boolean report_csv
+        boolean restricted_agent
+        text role
+        integer role_type
+        boolean shared
+        boolean shared_agent
+        text shared_phone_number
+        text signature
+        boolean suspended
+        text ticket_restriction
+        text time_zone
+        boolean two_factor_auth_enabled
+        timestamp updated_at
+        text url
+        boolean verified
+    }
+    ivr_menu {
+        bigint id PK
+        bigint ivr_id PK
+        bigint greeting_id FK
+        text name
+        boolean system_default
+    }
+    group {
+        bigint id PK
+        timestamp created_at
+        boolean default
+        text description
+        boolean is_public
+        text name
+        timestamp updated_at
+        text url
+    }
+    agent_attribute {
+        text attribute_name PK
+        text value PK
+        bigint agent_id PK
+    }
+    post_comment {
+        bigint id PK
+        timestamp updated_at PK
+        bigint author_id FK
+        bigint post_id FK
+        text body
+        timestamp created_at
+        text html_url
+        boolean official
+        text url
+        integer vote_count
+        integer vote_sum
+    }
+    call_leg_quality_issue {
+        text issue PK
+        bigint call_leg_id PK
+    }
+    address {
+        bigint id PK
+        text city
+        text country_code
+        text name
+        text provider_reference
+        text province
+        text state
+        text street
+        text zip
+    }
+    category {
+        bigint id PK
+        timestamp created_at
+        text description
+        text html_url
+        text locale
+        text name
+        boolean outdated
+        bigint position
+        text source_locale
+        timestamp updated_at
+        text url
+    }
+    ticket_link {
+        bigint id PK
+        bigint ticket_id FK
+        timestamp created_at
+        text issue_id
+        text issue_key
+        timestamp updated_at
+    }
+    ticket_form_field {
+        bigint ticket_field_id PK
+        bigint ticket_form_id PK
+    }
+    greeting {
+        text id PK
+        bigint category_id FK
+        boolean active
+        text audio_name
+        text audio_url
+        boolean default_lang
+        boolean has_sub_settings
+        text name
+        boolean pending
+        boolean system_default
+        bigint upload_id
+    }
+    line_categorised_greeting {
+        text category_id PK
+        text greeting_id PK
+        bigint line_id PK
+    }
+    ticket_follower {
+        bigint ticket_id PK
+        bigint user_id PK
+    }
+    ticket_sla_policy {
+        timestamp policy_applied_at PK
+        bigint sla_policy_id PK
+        bigint ticket_id PK
+    }
+    suspended_ticket {
+        bigint id PK
+        bigint author_id FK
+        bigint brand_id FK
+        bigint ticket_id FK
+        text author_email
+        text author_name
+        text cause
+        bigint cause_id
+        text content
+        timestamp created_at
+        text message_id
+        text recipient
+        text subject
+        timestamp updated_at
+        text url
+        text via_channel
+        text via_source_from_address
+        bigint via_source_from_id
+        text via_source_from_title
+        text via_source_rel
+        text via_source_to_address
+        text via_source_to_name
+    }
+    csat_survey_question {
+        text question_id PK
+        text survey_id PK
+        bigint survey_version PK
+        text alias
+        text headline_key
+        text headline_type
+        text headline_value
+        text sub_type
+        text type
+    }
+    agent_unified_status_history {
+        bigint agent_id PK
+        bigint new_id FK
+        bigint previous_id FK
+        text new_reason
+        text previous_reason
+        timestamp updated_at
+    }
+    ticket_csat_survey {
+        text survey_response_id PK
+        bigint ticket_id PK
+        text survey_id FK
+        bigint survey_version FK
+        timestamp expires_at
+        text responder_id
+        jsonb subject_zrns
+        jsonb subjects
+        text survey_state
+    }
+    ticket_side_conversation {
+        text id PK
+        bigint ticket_id FK
+        timestamp created_at
+        text state
+        timestamp state_updated_at
+        text subject
+    }
+    badge_assignment {
+        text id PK
+        text badge_id FK
+        text user_id FK
+        timestamp created_at
+    }
+    %% Information about working hours.
+    schedule {
+        integer end_time PK
+        bigint id PK
+        integer start_time PK
+        timestamp created_at
+        text name
+        text time_zone
+    }
+    line_greeting {
+        text greeting_id PK
+        bigint line_id PK
+        boolean is_default
+    }
+    ticket_tag_history {
+        text tag PK
+        timestamp updated PK
+        bigint ticket_id PK
+        bigint user_id FK
+        boolean tagged
+        text via_channel
+        text via_source_from_address
+        bigint via_source_from_id
+        text via_source_from_title
+        text via_source_rel
+        text via_source_to_address
+        text via_source_to_name
+    }
+    greeting_category {
+        bigint id PK
+        text name
+    }
+    article_content_tag {
+        bigint article_id PK
+        text content_tag_id PK
+    }
+    csat_survey_rating_option {
+        bigint rating PK
+        text question_id PK
+        text survey_id PK
+        bigint survey_version PK
+        text emoji_type
+        text emoji_value
+        text label_key
+        text label_type
+        text label_value
+    }
+    trigger_condition {
+        text _fivetran_id PK
+        bigint trigger_id PK
+        text condition_type
+        text field
+        text operator
+        jsonb value
+    }
+    ticket_side_conversation_recipient {
+        text _fivetran_id PK
+        text support_agent_id FK
+        text support_group_id FK
+        text ticket_side_conversation_event_id FK
+        bigint user_id FK
+        text email
+        text msteams_channel_id
+        text name
+        text slack_channel_id
+        text slack_workspace_id
+    }
+    %% Translation will only be synced if any one of the entity Article, Section or Categories is selected.
+%% If you stop syncing translation data and start re-syncing it later, the connection will not backfill missing translation records for already synced articles, sections, and categories.
+    translation {
+        bigint id PK
+        text body
+        timestamp created_at
+        bigint created_by_id
+        boolean draft
+        text html_url
+        text locale
+        boolean outdated
+        bigint source_id
+        text source_type
+        text title
+        timestamp updated_at
+        bigint updated_by_id
+        text url
+    }
+    end_user_condition {
+        text _fivetran_id PK
+        bigint child_field_id FK
+        bigint parent_field_id FK
+        bigint ticket_form_id FK
+        boolean is_required
+        text parent_field_type
+        text value
+    }
+    group_member {
+        bigint id PK
+        bigint group_id FK
+        bigint user_id FK
+        timestamp created_at
+        timestamp updated_at
+    }
+    user_tag {
+        text tag PK
+        bigint user_id PK
+    }
+    %% Schedule assignment for tickets is a Zendesk Enterprise feature.  For all other accounts the default schedule applies to all tickets.
+    ticket_schedule {
+        timestamp created_at PK
+        bigint ticket_id PK
+        bigint schedule_id FK
+    }
+    trigger_action {
+        text field PK
+        bigint trigger_id PK
+        jsonb value
+    }
+    line_group {
+        text group_id PK
+        bigint line_id PK
+    }
+    agent_condition_required_status }o--|| agent_condition : "fk"
+    alert_recipient }o--|| user : "fk"
+    alert_recipient }o--|| ticket_alert : "fk"
+    macro_action }o--|| macro : "fk"
+    call_leg }o--|| user : "fk"
+    call_leg }o--|| call_metric : "fk"
+    call_leg }o--|| user : "fk"
+    satisfaction_rating }o--|| user : "fk"
+    satisfaction_rating }o--|| group : "fk"
+    satisfaction_rating }o--|| user : "fk"
+    satisfaction_rating }o--|| ticket : "fk"
+    ticket_email_cc }o--|| ticket : "fk"
+    ticket_email_cc }o--|| user : "fk"
+    badge }o--|| badge_category : "fk"
+    content_subscription }o--|| user : "fk"
+    line }o--|| brand : "fk"
+    line }o--|| ivr : "fk"
+    line }o--|| schedule : "fk"
+    ticket_alert }o--|| ticket : "fk"
+    ticket_alert }o--|| user : "fk"
+    ticket_chat_event }o--|| ticket_chat : "fk"
+    ticket_chat_event }o--|| user : "fk"
+    ticket_side_conversation_event }o--|| user : "fk"
+    ticket_side_conversation_event }o--|| group : "fk"
+    ticket_side_conversation_event }o--|| user : "fk"
+    ticket_side_conversation_event }o--|| user : "fk"
+    ticket_side_conversation_event }o--|| group : "fk"
+    ticket_side_conversation_event }o--|| user : "fk"
+    ticket_macro_reference }o--|| ticket : "fk"
+    ticket_macro_reference }o--|| user : "fk"
+    ticket_attribute }o--|| ticket : "fk"
+    user_segment_organization }o--|| user_segment : "fk"
+    user_segment_organization }o--|| organization : "fk"
+    user_segment_tag }o--|| user_segment : "fk"
+    ticket_chat }o--|| ticket : "fk"
+    ticket_chat }o--|| user : "fk"
+    ticket_tag }o--|| ticket : "fk"
+    article }o--|| user : "fk"
+    article }o--|| group : "fk"
+    article_outdated_locale }o--|| article : "fk"
+    ivr_menu_route }o--|| ivr_menu : "fk"
+    csat_survey_answer }o--|| csat_survey_question : "fk"
+    csat_survey_answer }o--|| ticket_csat_survey : "fk"
+    csat_survey_answer }o--|| csat_survey_closed_ended_option : "fk"
+    csat_survey_answer }o--|| csat_survey_rating_option : "fk"
+    agent_status_type_group }o--|| agent_status_type : "fk"
+    agent_status_type_group }o--|| group : "fk"
+    user_identity }o--|| user : "fk"
+    greeting_ivr }o--|| greeting : "fk"
+    automation_condition }o--|| automation : "fk"
+    organization }o--|| group : "fk"
+    article_label_name }o--|| article : "fk"
+    ticket_group_sla_policy }o--|| ticket : "fk"
+    ticket_group_sla_policy }o--|| group_sla_policy_history : "fk"
+    domain_name }o--|| organization : "fk"
+    section }o--|| category : "fk"
+    call_metric }o--|| ticket : "fk"
+    call_metric }o--|| user : "fk"
+    call_metric }o--|| group : "fk"
+    call_metric }o--|| line : "fk"
+    ticket_field_history }o--|| ticket : "fk"
+    ticket_field_history }o--|| ticket_custom_field : "fk"
+    ticket_field_history }o--|| user : "fk"
+    ticket_collaborator }o--|| ticket : "fk"
+    ticket_collaborator }o--|| user : "fk"
+    agent_condition }o--|| ticket_custom_field : "fk"
+    agent_condition }o--|| ticket_form_history : "fk"
+    agent_condition }o--|| ticket_custom_field : "fk"
+    user_subscription }o--|| user : "fk"
+    user_subscription }o--|| user : "fk"
+    tweet_recipient }o--|| ticket_comment : "fk"
+    tweet_recipient }o--|| user : "fk"
+    user_segment_group }o--|| user_segment : "fk"
+    user_segment_group }o--|| group : "fk"
+    user_segment_added_user }o--|| user_segment : "fk"
+    user_segment_added_user }o--|| user : "fk"
+    suspended_ticket_attachment }o--|| suspended_ticket : "fk"
+    schedule_holiday }o--|| schedule : "fk"
+    ticket_form_restricted_brand }o--|| ticket_form_history : "fk"
+    ticket_form_restricted_brand }o--|| brand : "fk"
+    ivr_menu_route_option }o--|| ivr_menu_route : "fk"
+    ivr_menu_route_option }o--|| group : "fk"
+    sla_policy_metric_history }o--|| sla_policy_history : "fk"
+    sla_policy_metric_history }o--|| sla_policy_history : "fk"
+    skip_ticket_history }o--|| ticket : "fk"
+    skip_ticket_history }o--|| user : "fk"
+    automation_action }o--|| automation : "fk"
+    group_sla_policy_metric_history }o--|| group_sla_policy_history : "fk"
+    user_vote }o--|| user : "fk"
+    ticket_field_option }o--|| ticket_custom_field : "fk"
+    ticket_custom_status }o--|| ticket_custom_field : "fk"
+    post }o--|| forum_topic : "fk"
+    post }o--|| user : "fk"
+    agent_channel_history }o--|| user : "fk"
+    audit_log }o--|| user : "fk"
+    agent_status_history }o--|| user : "fk"
+    ticket_comment }o--|| ticket : "fk"
+    ticket_comment }o--|| user : "fk"
+    agent_max_capacity_history }o--|| user : "fk"
+    ticket }o--|| user : "fk"
+    ticket }o--|| brand : "fk"
+    ticket }o--|| forum_topic : "fk"
+    ticket }o--|| organization : "fk"
+    ticket }o--|| user : "fk"
+    ticket }o--|| user : "fk"
+    ticket }o--|| group : "fk"
+    ticket }o--|| ticket_custom_status : "fk"
+    article_comment }o--|| user : "fk"
+    article_comment }o--|| article : "fk"
+    article_comment }o--|| user : "fk"
+    ticket_comment_attachment }o--|| ticket_comment : "fk"
+    organization_member }o--|| user : "fk"
+    organization_member }o--|| organization : "fk"
+    organization_tag }o--|| organization : "fk"
+    user }o--|| custom_role : "fk"
+    user }o--|| group : "fk"
+    user }o--|| organization : "fk"
+    ivr_menu }o--|| ivr : "fk"
+    ivr_menu }o--|| greeting : "fk"
+    agent_attribute }o--|| user : "fk"
+    post_comment }o--|| post : "fk"
+    post_comment }o--|| user : "fk"
+    call_leg_quality_issue }o--|| call_leg : "fk"
+    ticket_link }o--|| ticket : "fk"
+    ticket_form_field }o--|| ticket_form_history : "fk"
+    ticket_form_field }o--|| ticket_custom_field : "fk"
+    greeting }o--|| greeting_category : "fk"
+    line_categorised_greeting }o--|| greeting_category : "fk"
+    line_categorised_greeting }o--|| line : "fk"
+    line_categorised_greeting }o--|| greeting : "fk"
+    ticket_follower }o--|| ticket : "fk"
+    ticket_follower }o--|| user : "fk"
+    ticket_sla_policy }o--|| ticket : "fk"
+    ticket_sla_policy }o--|| sla_policy_history : "fk"
+    suspended_ticket }o--|| brand : "fk"
+    suspended_ticket }o--|| ticket : "fk"
+    suspended_ticket }o--|| user : "fk"
+    agent_unified_status_history }o--|| user : "fk"
+    agent_unified_status_history }o--|| agent_status_type : "fk"
+    agent_unified_status_history }o--|| agent_status_type : "fk"
+    ticket_csat_survey }o--|| ticket : "fk"
+    ticket_csat_survey }o--|| csat_survey_question : "fk"
+    ticket_csat_survey }o--|| csat_survey_question : "fk"
+    ticket_side_conversation }o--|| ticket : "fk"
+    badge_assignment }o--|| badge : "fk"
+    badge_assignment }o--|| user : "fk"
+    line_greeting }o--|| greeting : "fk"
+    line_greeting }o--|| line : "fk"
+    ticket_tag_history }o--|| ticket : "fk"
+    ticket_tag_history }o--|| user : "fk"
+    article_content_tag }o--|| article : "fk"
+    article_content_tag }o--|| content_tag : "fk"
+    csat_survey_rating_option }o--|| csat_survey_question : "fk"
+    csat_survey_rating_option }o--|| csat_survey_question : "fk"
+    csat_survey_rating_option }o--|| csat_survey_question : "fk"
+    trigger_condition }o--|| trigger : "fk"
+    ticket_side_conversation_recipient }o--|| user : "fk"
+    ticket_side_conversation_recipient }o--|| group : "fk"
+    ticket_side_conversation_recipient }o--|| user : "fk"
+    ticket_side_conversation_recipient }o--|| ticket_side_conversation_event : "fk"
+    end_user_condition }o--|| ticket_custom_field : "fk"
+    end_user_condition }o--|| ticket_form_history : "fk"
+    end_user_condition }o--|| ticket_custom_field : "fk"
+    group_member }o--|| user : "fk"
+    group_member }o--|| group : "fk"
+    user_tag }o--|| user : "fk"
+    ticket_schedule }o--|| ticket : "fk"
+    ticket_schedule }o--|| schedule : "fk"
+    trigger_action }o--|| trigger : "fk"
+    line_group }o--|| group : "fk"
+    line_group }o--|| line : "fk"

@@ -1,0 +1,83 @@
+erDiagram
+    project_category {
+        text index PK
+        text project_id PK
+        text description
+        text name
+    }
+    project_schedule {
+        text index PK
+        text project_id PK
+        text cadence
+        text custom_cron
+        text custom_timezone
+        text daily_hour
+        text daily_minute
+        text daily_timezone
+        text enabled
+        text hourly_minute
+        text hourly_timezone
+        text monthly_day
+        text monthly_hour
+        text monthly_minute
+        text monthly_timezone
+        text weekly_day_of_week
+        text weekly_hour
+        text weekly_minute
+        text weekly_timezone
+    }
+    project {
+        text id PK
+        text analytics_app_views_all_time
+        text analytics_app_views_last_fourteen_days
+        text analytics_app_views_last_seven_days
+        text analytics_app_views_last_thirty_days
+        text analytics_last_viewed_at
+        text analytics_published_result_updated_at
+        text archived_at
+        text created_at
+        text creator_email
+        text description
+        timestamp last_edited_at
+        text last_published_at
+        text owner_email
+        text review_required
+        jsonb sharing_collections
+        jsonb sharing_groups
+        text sharing_public_web_access
+        text sharing_support_access
+        jsonb sharing_users
+        text sharing_workspace_access
+        text status
+        text title
+        text trashed_at
+        text type
+    }
+    project_run_notification {
+        text index PK
+        text project_id PK
+        text run_id PK
+        text include_success_screenshot
+        text recipient_id
+        text recipient_is_private
+        text recipient_name
+        text recipient_type
+        jsonb screenshot_format
+        text type
+    }
+    project_run {
+        text run_id PK
+        text project_id PK
+        text elapsed_time
+        text end_time
+        text project_version
+        text run_url
+        text start_time
+        text status
+        text trace_id
+    }
+    project_category }o--|| project : "fk"
+    project_schedule }o--|| project : "fk"
+    project_run_notification }o--|| project_run : "fk"
+    project_run_notification }o--|| project_run : "fk"
+    project_run }o--|| project : "fk"

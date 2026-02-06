@@ -1,0 +1,140 @@
+erDiagram
+    mediation_group_country {
+        text index PK
+        text application_id PK
+        text mediation_group_id PK
+        text country
+    }
+    mediation_group_instance {
+        text id PK
+        text application_id PK
+        text mediation_group_id PK
+        jsonb countries_rate
+        text group_rate
+        text is_bidder
+        text name
+        text network_name
+    }
+    mediation_group {
+        text id PK
+        text application_id PK
+        text ab_test
+        text ad_format
+        text floor_price
+        text group_name
+        text mediation_ad_unit_name
+        text mediation_unit_id
+        text position
+        jsonb segments
+    }
+    application {
+        text id PK
+        text app_name
+        text app_status
+        text bundle_id
+        text bundle_ref_id
+        text ccpa
+        text coppa
+        text creation_date
+        text icon
+        text network_reporting_api_iron_source
+        text platform
+        text taxonomy
+    }
+    application_advertising_unit {
+        text _fivetran_id PK
+        text application_id FK
+        text active_network_name
+        text type
+    }
+    creative_asset {
+        text creative_id PK
+        text id PK
+        text title_id FK
+        text usage_type
+    }
+    creative {
+        text id PK
+        text title_id FK
+        text languages
+        text name
+        text orientation
+        text type
+    }
+    audience {
+        text id PK
+        text bundle_id
+        text description
+        text has_active_campaigns
+        text last_modified
+        text name
+        text platform
+        text type
+    }
+    asset {
+        text id PK
+        text title_id FK
+        text duration
+        text name
+        text orientation
+        text source
+        text type
+        text value
+    }
+    bidding {
+        text _fivetran_id PK
+        text campaign_report_fivetran_id PK
+        text application_id
+        text bid
+        text country
+    }
+    campaign_report {
+        text _fivetran_id PK
+        text ad_unit_name
+        text application_name
+        text campaign_name
+        text clicks
+        text completions
+        text country
+        text creative_name
+        text date
+        text device_type
+        text id
+        text impressions
+        text os
+        text spend
+        text title_name
+    }
+    placement {
+        text id PK
+        text application_id PK
+        text ab_version
+        text ad_delivery
+        text ad_unit
+        text capping_enabled
+        text capping_interval
+        text capping_limit
+        text name
+        text pacing_enabled
+        text pacing_minutes
+    }
+    title {
+        text id PK
+        text advertiser_id
+        text bundle_id
+        text name
+        text operating_system
+    }
+    mediation_group_country }o--|| mediation_group : "fk"
+    mediation_group_country }o--|| mediation_group : "fk"
+    mediation_group_instance }o--|| mediation_group : "fk"
+    mediation_group_instance }o--|| mediation_group : "fk"
+    mediation_group }o--|| application : "fk"
+    application_advertising_unit }o--|| application : "fk"
+    creative_asset }o--|| asset : "fk"
+    creative_asset }o--|| title : "fk"
+    creative_asset }o--|| creative : "fk"
+    creative }o--|| title : "fk"
+    asset }o--|| title : "fk"
+    bidding }o--|| campaign_report : "fk"
+    placement }o--|| application : "fk"

@@ -1,0 +1,255 @@
+erDiagram
+    emergency_contact {
+        text id PK
+        text employee_id FK
+        text organisation_id FK
+        text after_hours_no
+        text after_mobile_no
+        text contact_name
+        text contact_type
+        text daytime_contact_number
+        text relationship
+    }
+    pay_detail {
+        text id PK
+        text employee_id FK
+        text organisation_id FK
+        text anniversary_date
+        text change_reason
+        text classification
+        text comment
+        text effective_from
+        text industrial_instrument
+        text leave_allowance_template
+        text pay_category
+        text pay_rate_template
+        text pay_unit
+        text salary
+        text salary_type
+    }
+    payslip {
+        text id PK
+        text employee_id FK
+        text organisation_id FK
+        text address_line_1
+        text address_line_2
+        text address_state
+        text base_rate
+        text base_rate_unit
+        text business_abn
+        text business_address
+        text business_name
+        text employment_type
+        text hourly_rate
+        text name
+        text net_pay
+        text note
+        text pay_period_ending
+        text pay_period_starting
+        text payment_date
+        text payroll_type
+        text post_tax_deduction
+        text postcode
+        text pre_tax_deduction
+        text reimbursements
+        text suburb
+        text super
+        text tax
+        text total_deduction
+        text wages
+    }
+    employee {
+        text id PK
+        text organisation_id FK
+        text primary_cost_centre_id FK
+        text primary_manager_id FK
+        text secondary_manager_id FK
+        text account_email
+        text address
+        text avatar_url
+        text code
+        text company_email
+        text company_landline
+        text company_mobile
+        text country
+        text date_of_birth
+        text employing_entity
+        text external_id
+        text first_name
+        text gender
+        text home_phone
+        text job_title
+        text known_as
+        text last_name
+        text location
+        text marital_status
+        text middle_name
+        text nationality
+        text personal_email
+        text personal_mobile_number
+        text role
+        jsonb secondary_cost_centres
+        text start_date
+        text termination_date
+        text title
+    }
+    team_employee {
+        text employee_id PK
+        text organisation_id PK
+        text team_id PK
+    }
+    leave_request {
+        text id PK
+        text employee_id FK
+        text organisation_id FK
+        text comment
+        text end_date
+        text leave_balance_amount
+        text leave_category_name
+        text reason
+        text start_date
+        text status
+        text total_hours
+    }
+    superannuation_detail {
+        text employee_id PK
+        text organisation_id FK
+        text electronic_service_address
+        text employer_nominated_fund
+        text fund_abn
+        text fund_email
+        text fund_name
+        text member_number
+        text product_code
+    }
+    certification {
+        text id PK
+        text organisation_id FK
+        text name
+        text type
+    }
+    payroll_admin_email {
+        text payroll_admin_email PK
+        text organisation_id PK
+    }
+    organisation {
+        text id PK
+        text active_employees_count
+        text business_account_id
+        text country
+        text created_at
+        text employees_count
+        text end_of_week
+        text logo_url
+        text name
+        text pending_employees_count
+        text phone
+        text primary_address
+        text subscription_plan
+        text superfund_name
+        text time_zone
+        text typical_work_day
+    }
+    policy {
+        text id PK
+        text organisation_id FK
+        text created_at
+        text induction
+        text name
+    }
+    employee_history {
+        text id PK
+        text employee_id FK
+        text organisation_id FK
+        text employment_type
+        text end_date
+        text start_date
+        text title
+    }
+    bank_account {
+        text id PK
+        text employee_id FK
+        text organisation_id FK
+        text account_name
+        text account_number
+        text amount
+        text bsb
+        text external_id
+        text primary_account
+    }
+    employee_certification {
+        text id PK
+        text certification_id FK
+        text employee_id FK
+        text organisation_id FK
+        text completion_date
+        text driver_details
+        text driver_problem
+        text expiry_date
+        text name
+        text reason
+        text status
+        text type
+    }
+    timesheet_entry {
+        text id PK
+        text employee_id FK
+        text organisation_id FK
+        text comment
+        text date
+        text end_time
+        text reason
+        text start_time
+        text status
+        text time
+        text units
+    }
+    tax_declaration {
+        text employee_id PK
+        text organisation_id PK
+        text tax_au_resident
+        text tax_file_number
+        text tax_financial_supplement_debt
+        text tax_foreign_resident
+        text tax_free
+        text tax_help_debt
+        text working_holiday_maker
+    }
+    team {
+        text id PK
+        text organisation_id FK
+        text name
+        text status
+    }
+    emergency_contact }o--|| organisation : "fk"
+    emergency_contact }o--|| employee : "fk"
+    pay_detail }o--|| organisation : "fk"
+    pay_detail }o--|| employee : "fk"
+    payslip }o--|| organisation : "fk"
+    payslip }o--|| employee : "fk"
+    employee }o--|| employee : "fk"
+    employee }o--|| employee : "fk"
+    employee }o--|| employee : "fk"
+    employee }o--|| organisation : "fk"
+    team_employee }o--|| employee : "fk"
+    team_employee }o--|| organisation : "fk"
+    team_employee }o--|| team : "fk"
+    leave_request }o--|| employee : "fk"
+    leave_request }o--|| organisation : "fk"
+    superannuation_detail }o--|| organisation : "fk"
+    superannuation_detail }o--|| employee : "fk"
+    certification }o--|| organisation : "fk"
+    payroll_admin_email }o--|| organisation : "fk"
+    policy }o--|| organisation : "fk"
+    employee_history }o--|| organisation : "fk"
+    employee_history }o--|| employee : "fk"
+    bank_account }o--|| organisation : "fk"
+    bank_account }o--|| superannuation_detail : "fk"
+    employee_certification }o--|| certification : "fk"
+    employee_certification }o--|| organisation : "fk"
+    employee_certification }o--|| employee : "fk"
+    timesheet_entry }o--|| employee : "fk"
+    timesheet_entry }o--|| organisation : "fk"
+    tax_declaration }o--|| organisation : "fk"
+    tax_declaration }o--|| employee : "fk"
+    team }o--|| organisation : "fk"

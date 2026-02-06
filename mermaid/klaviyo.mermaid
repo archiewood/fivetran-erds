@@ -1,0 +1,301 @@
+erDiagram
+    email_template {
+        text id PK
+        timestamp created
+        text editor_type
+        text html
+        text name
+        text text
+        timestamp updated
+    }
+    coupon_code {
+        text id PK
+        text coupon_id FK
+        text person_id FK
+        timestamp expires_at
+        text status
+        text unique_code
+    }
+    flow {
+        text id PK
+        boolean archived
+        timestamp created
+        text name
+        text status
+        text trigger_type
+        timestamp updated
+    }
+    segment_person {
+        text person_id PK
+        text segment_id PK
+    }
+    campaign_list {
+        text campaign_id PK
+        text list_id PK
+        text list_included_or_excluded
+    }
+    campaign_tracking_utm_param {
+        text name PK
+        text campaign_id PK
+        text type
+        text value
+    }
+    list {
+        text id PK
+        timestamp created
+        text list_name
+        timestamp updated
+    }
+    list_exclusion {
+        text id PK
+        text list_id PK
+        timestamp created
+        text reason
+    }
+    segment_tag {
+        text segment_id PK
+        text tag_id PK
+    }
+    metric {
+        text id PK
+        timestamp created
+        text integration_category
+        text integration_id
+        text integration_name
+        text integration_object
+        text name
+        timestamp updated
+    }
+    segment {
+        text id PK
+        timestamp created
+        jsonb definition
+        text name
+        timestamp updated
+    }
+    flow_action {
+        text id PK
+        text flow_id FK
+        text action_type
+        timestamp created
+        boolean render_options_add_info_link
+        boolean render_options_add_opt_out_language
+        boolean render_options_add_org_prefix
+        boolean render_options_include_contact_card
+        boolean render_options_shorten_links
+        boolean send_options_is_transactional
+        boolean send_options_use_smart_sending
+        text status
+        boolean tracking_options_add_utm
+        boolean tracking_options_is_tracking_clicks
+        boolean tracking_options_is_tracking_opens
+        timestamp updated
+    }
+    coupon {
+        text id PK
+        text description
+        text external_id
+    }
+    campaign_message_send_time {
+        timestamp datetime PK
+        text campaign_message_id PK
+        boolean is_local
+    }
+    list_person {
+        text list_id PK
+        text person_id PK
+        timestamp joined_group_at
+    }
+    tag_group {
+        text id PK
+        boolean default
+        boolean exclusive
+        text name
+    }
+    flow_action_tracking_utm_param {
+        text name PK
+        text flow_action_id PK
+        text value
+    }
+    campaign_tag {
+        text campaign_id PK
+        text tag_id PK
+    }
+    %% Custom fields are added separately with the prefix property_ if the packing mode is UNPACKED. All custom fields are combined in custom_property_fields if packing mode is PACKED. For more information, please see here.
+    event {
+        text id PK
+        text campaign_id FK
+        text flow_id FK
+        text flow_message_id FK
+        text metric_id FK
+        text person_id FK
+        text _variation
+        timestamp datetime
+        timestamp timestamp
+        text type
+        text uuid
+    }
+    tags {
+        text id PK
+        text tag_group_id FK
+        text name
+    }
+    flow_tag {
+        text flow_id PK
+        text tag_id PK
+    }
+    list_tag {
+        text list_id PK
+        text tag_id PK
+    }
+    global_exclusion {
+        text person_id PK
+        text reason
+        timestamp timestamp
+    }
+    campaign_message {
+        text id PK
+        text campaign_id FK
+        text template_id FK
+        text channel
+        text content_bcc_email
+        text content_body
+        text content_cc_email
+        text content_from_email
+        text content_from_label
+        text content_media_url
+        text content_preview_text
+        text content_reply_to_email
+        text content_subject
+        timestamp created
+        text label
+        boolean render_options_add_info_link
+        boolean render_options_add_opt_out_language
+        boolean render_options_add_org_prefix
+        boolean render_options_include_contact_card
+        boolean render_options_shorten_links
+        timestamp updated
+    }
+    %% Custom fields are added separately with the prefix custom_ if the packing mode is UNPACKED. All custom fields are combined in custom_fields if packing mode is PACKED. For more information, please see here.
+    person {
+        text id PK
+        text address_1
+        text address_2
+        text city
+        text country
+        timestamp created
+        text email
+        text external_id
+        text first_name
+        text image
+        text ip
+        timestamp last_event_date
+        text last_name
+        text latitude
+        text longitude
+        text organization
+        text phone_number
+        double_precision predictive_analytics_average_days_between_orders
+        double_precision predictive_analytics_average_order_value
+        double_precision predictive_analytics_churn_probability
+        timestamp predictive_analytics_expected_date_of_next_order
+        double_precision predictive_analytics_historic_clv
+        double_precision predictive_analytics_historic_number_of_orders
+        double_precision predictive_analytics_predicted_clv
+        double_precision predictive_analytics_predicted_number_of_orders
+        double_precision predictive_analytics_total_clv
+        text region
+        boolean subscriptions_email_marketing_can_receive_email_marketing
+        text subscriptions_email_marketing_consent
+        text subscriptions_email_marketing_custom_method_detail
+        text subscriptions_email_marketing_double_optin
+        timestamp subscriptions_email_marketing_last_updated
+        text subscriptions_email_marketing_method
+        text subscriptions_email_marketing_method_detail
+        timestamp subscriptions_email_marketing_timestamp
+        boolean subscriptions_sms_marketing_can_receive_sms_marketing
+        text subscriptions_sms_marketing_consent
+        timestamp subscriptions_sms_marketing_last_updated
+        text subscriptions_sms_marketing_method
+        text subscriptions_sms_marketing_method_detail
+        timestamp subscriptions_sms_marketing_timestamp
+        text timezone
+        text title
+        timestamp updated
+        text zip
+    }
+    flow_message {
+        text id PK
+        text flow_action_id FK
+        text template_id FK
+        text channel
+        text content_bcc_email
+        text content_cc_email
+        text content_from_email
+        text content_from_label
+        text content_preview_text
+        text content_reply_to_email
+        text content_subject
+        timestamp created
+        text name
+        timestamp updated
+    }
+    campaign {
+        text id PK
+        boolean archived
+        timestamp created
+        text name
+        timestamp scheduled
+        boolean send_option_ignore_unsubscribes
+        boolean send_option_use_smart_sending
+        timestamp send_strategy_datetime
+        text send_strategy_method
+        boolean send_strategy_options_is_local
+        boolean send_strategy_options_send_past_recipients_immediately
+        timestamp send_strategy_options_static_datetime
+        boolean send_strategy_options_static_is_local
+        boolean send_strategy_options_static_send_past_recipients_immediately
+        text send_strategy_options_sto_date
+        timestamp send_strategy_options_throttled_datetime
+        double_precision send_strategy_options_throttled_throttle_percentage
+        timestamp send_time
+        text status
+        boolean tracking_options_add_tracking_params
+        boolean tracking_options_is_add_utm
+        boolean tracking_options_is_tracking_clicks
+        boolean tracking_options_is_tracking_opens
+        timestamp updated
+    }
+    coupon_code }o--|| coupon : "fk"
+    coupon_code }o--|| person : "fk"
+    segment_person }o--|| person : "fk"
+    segment_person }o--|| segment : "fk"
+    campaign_list }o--|| campaign : "fk"
+    campaign_list }o--|| list : "fk"
+    campaign_tracking_utm_param }o--|| campaign : "fk"
+    list_exclusion }o--|| list : "fk"
+    list_exclusion }o--|| person : "fk"
+    segment_tag }o--|| tags : "fk"
+    segment_tag }o--|| segment : "fk"
+    flow_action }o--|| flow : "fk"
+    campaign_message_send_time }o--|| campaign_message : "fk"
+    list_person }o--|| person : "fk"
+    list_person }o--|| list : "fk"
+    flow_action_tracking_utm_param }o--|| flow_action : "fk"
+    campaign_tag }o--|| tags : "fk"
+    campaign_tag }o--|| campaign : "fk"
+    event }o--|| metric : "fk"
+    event }o--|| campaign : "fk"
+    event }o--|| flow : "fk"
+    event }o--|| flow_message : "fk"
+    event }o--|| person : "fk"
+    tags }o--|| tag_group : "fk"
+    flow_tag }o--|| tags : "fk"
+    flow_tag }o--|| flow : "fk"
+    list_tag }o--|| tags : "fk"
+    list_tag }o--|| list : "fk"
+    global_exclusion }o--|| person : "fk"
+    campaign_message }o--|| campaign : "fk"
+    campaign_message }o--|| email_template : "fk"
+    flow_message }o--|| flow_action : "fk"
+    flow_message }o--|| email_template : "fk"

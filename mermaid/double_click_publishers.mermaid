@@ -1,0 +1,573 @@
+erDiagram
+    order_applied_label {
+        bigint label_id PK
+        bigint order_id PK
+        boolean is_negated
+    }
+    creative_tracking_url {
+        integer index PK
+        text key PK
+        bigint creative_id PK
+        text value
+    }
+    company {
+        bigint id PK
+        text address
+        jsonb applied_team_ids
+        text comment
+        text credit_status
+        text email
+        text external_id
+        text fax_phone
+        timestamp last_modified_date_time
+        text name
+        bigint primary_contact_id
+        text primary_phone
+        integer third_party_company_id
+        text type
+    }
+    line_item_frequency_cap {
+        integer index PK
+        bigint line_item_id PK
+        integer max_impressions
+        integer num_time_units
+        text time_unit
+    }
+    order_applied_team {
+        bigint team_id PK
+        bigint order_id PK
+    }
+    creative_applied_label {
+        bigint label_id PK
+        bigint creative_id PK
+        boolean is_negated
+    }
+    creative_third_party_company {
+        bigint third_party_company_id PK
+        bigint creative_id PK
+    }
+    orders {
+        bigint id PK
+        bigint advertiser_id FK
+        bigint agency_id FK
+        bigint creator_id FK
+        bigint salesperson_id FK
+        bigint trafficker_id FK
+        text currency_code
+        timestamp end_date_time
+        integer external_order_id
+        boolean is_archived
+        boolean is_programmatic
+        text last_modified_by_app
+        timestamp last_modified_date_time
+        text name
+        text notes
+        text po_number
+        timestamp start_date_time
+        text status
+        text total_budget_currency_code
+        bigint total_budget_micro_amount
+        bigint total_clicks_delivered
+        bigint total_impressions_delivered
+        bigint total_viewable_impressions_delivered
+        boolean unlimited_end_date_time
+    }
+    targeting_preset_geo_excluded_location {
+        bigint id PK
+        bigint targeting_preset_id PK
+        integer canonical_parent_id
+        text display_name
+        text type
+    }
+    order_secondary_trafficker {
+        bigint order_id PK
+        bigint user_id PK
+    }
+    order_custom_field_value {
+        bigint custom_field_id PK
+        bigint order_id PK
+    }
+    line_item_applied_label {
+        bigint label_id PK
+        bigint line_item_id PK
+        boolean is_negated
+    }
+    ad_unit_size {
+        text environment_type PK
+        integer index PK
+        text ad_unit_id PK
+        text full_display_string
+        boolean is_audio
+        integer size_height
+        boolean size_is_aspect_ratio
+        integer size_width
+    }
+    line_item_secondary_goal {
+        integer index PK
+        bigint line_item_id PK
+        text goal_type
+        text unit_type
+        bigint units
+    }
+    line_item_creative_association_size {
+        integer index PK
+        bigint creative_id PK
+        bigint line_item_id PK
+        integer height
+        boolean is_aspect_ratio
+        integer width
+    }
+    order_agency_contact {
+        bigint agency_contact_id PK
+        bigint order_id PK
+    }
+    line_item_custom_field_value {
+        bigint custom_field_id PK
+        bigint line_item_id PK
+        bigint custom_field_option_id
+        text type
+        text value
+        text value_type
+    }
+    ad_unit_effective_team {
+        bigint team_id PK
+        text ad_unit_id PK
+    }
+    ad_unit_applied_team {
+        bigint team_id PK
+        text ad_unit_id PK
+    }
+    placement_targeted_ad_unit {
+        text ad_unit_id PK
+        bigint placement_id PK
+    }
+    creative_audio_asset {
+        integer index PK
+        bigint creative_id PK
+        text redirect_url
+    }
+    creative_video_asset {
+        integer index PK
+        bigint creative_id PK
+        text redirect_url
+    }
+    line_item {
+        bigint id PK
+        boolean allow_overbook
+        text allowed_formats
+        integer auto_extension_days
+        text budget_currency_code
+        bigint budget_micro_amount
+        text child_content_eligibility
+        text companion_delivery_option
+        text competitive_constraint_scope
+        bigint contracted_units_bought
+        text cost_per_unit_currency_code
+        bigint cost_per_unit_micro_amount
+        text cost_type
+        timestamp creation_date_time
+        text creative_rotation_type
+        text custom_pacing_curve_custom_pacing_goal_unit
+        text custom_vast_extension
+        bigint deal_info_external_deal_id
+        text delivery_forecast_source
+        double_precision delivery_indicator_actual_delivery_percentage
+        double_precision delivery_indicator_expected_delivery_percentage
+        text delivery_rate_type
+        boolean disable_same_advertiser_competitive_exclusion
+        double_precision discount
+        text discount_type
+        timestamp end_date_time
+        text environment_type
+        text external_id
+        boolean is_archived
+        boolean is_missing_creatives
+        text last_modified_by_app
+        timestamp last_modified_date_time
+        text line_item_type
+        text name
+        text notes
+        bigint order_id
+        text order_name
+        text primary_goal_goal_type
+        text primary_goal_unit_type
+        bigint primary_goal_units
+        integer priority
+        text programmatic_creative_source
+        boolean repeated_creative_serving_enabled
+        text reservation_status
+        boolean reserve_at_creation
+        text roadblocking_type
+        boolean skip_cross_selling_rule_warning_checks
+        boolean skip_inventory_check
+        text skippable_ad_type
+        timestamp start_date_time
+        text start_date_time_type
+        text status
+        boolean unlimited_end_date_time
+        text value_cost_per_unit_currency_code
+        bigint value_cost_per_unit_micro_amount
+        bigint video_max_duration
+        text web_property_code
+        boolean youtube_kids_restricted
+    }
+    targeting_preset_geo_targeted_location {
+        bigint id PK
+        bigint targeting_preset_id PK
+        integer canonical_parent_id
+        text display_name
+        text type
+    }
+    order_advertiser_contact {
+        bigint advertiser_contact_id PK
+        bigint order_id PK
+    }
+    line_item_effective_applied_label {
+        bigint label_id PK
+        bigint line_item_id PK
+        boolean is_negated
+    }
+    ad_unit {
+        text id PK
+        text parent_id FK
+        text ad_unit_code
+        bigint application_id
+        text description
+        boolean explicitly_targeted
+        text external_set_top_box_channel_id
+        boolean has_children
+        boolean is_fluid
+        boolean is_interstitial
+        boolean is_native
+        boolean is_set_top_box_enabled
+        timestamp last_modified_date_time
+        text name
+        integer refresh_rate
+        text smart_size_mode
+        text status
+        text target_window
+    }
+    ad_unit_applied_label {
+        bigint label_id PK
+        text ad_unit_id PK
+        boolean is_negated
+    }
+    ad_unit_effective_applied_label {
+        bigint label_id PK
+        text ad_unit_id PK
+        boolean is_negated
+    }
+    targeting_preset_inventory_targeted_ad_unit {
+        text ad_unit_id PK
+        bigint targeting_preset_id PK
+        boolean include_descendants
+    }
+    ad_unit_parent_path {
+        text parent_ad_unit_id PK
+        text ad_unit_id PK
+        text parent_ad_unit_code
+        text parent_ad_unit_name
+    }
+    users {
+        bigint id PK
+        text external_id
+        boolean is_active
+        boolean is_service_account
+        text name
+        text orders_ui_local_time_zone_id
+        bigint role_id
+        text role_name
+    }
+    targeting_preset_inventory_excluded_ad_unit {
+        text ad_unit_id PK
+        bigint targeting_preset_id PK
+        boolean include_descendants
+    }
+    targeting_preset_inventory_targeted_placement_id {
+        bigint placement_id PK
+        bigint targeting_preset_id PK
+    }
+    targeting_preset {
+        bigint id PK
+        text name
+    }
+    creative_third_party_impression_tracking_url {
+        integer index PK
+        bigint creative_id PK
+        text value
+    }
+    line_item_creative_association {
+        bigint creative_id PK
+        bigint line_item_id PK
+        bigint creative_set_id
+        text destination_url
+        timestamp end_date_time
+        timestamp last_modified_date_time
+        double_precision manual_creative_rotation_weight
+        integer sequential_creative_rotation_index
+        timestamp start_date_time
+        text start_date_time_type
+        bigint stats_stats_clicks_delivered
+        bigint stats_stats_impressions_delivered
+        bigint stats_stats_video_completions_delivered
+        bigint stats_stats_video_starts_delivered
+        bigint stats_stats_viewable_impressions_delivered
+        text status
+        text targeting_name
+    }
+    creative_asset_property {
+        integer index PK
+        bigint creative_id PK
+        integer height
+        text name
+        bigint total_file_size
+        text type
+        text url
+        integer width
+    }
+    order_effective_applied_label {
+        bigint label_id PK
+        bigint order_id PK
+        boolean is_negated
+    }
+    creative_ad_tag_key {
+        integer index PK
+        bigint creative_id PK
+        text value
+    }
+    placement {
+        bigint id PK
+        text description
+        timestamp last_modified_date_time
+        text name
+        text placement_code
+        text status
+    }
+    creative {
+        bigint id PK
+        bigint advertiser_id FK
+        boolean ad_badging_enabled
+        text ad_id
+        text ad_id_type
+        text all_impressions_url
+        boolean allow_duration_override
+        text alt_text
+        text amp_redirect_url
+        text artwork_type
+        integer asset_size_height
+        boolean asset_size_is_aspect_ratio
+        integer asset_size_width
+        text audio_source_url
+        text backup_image_impressions_url
+        text billing_attribute
+        text click_tracking_url
+        text code_snippet
+        text creative_format
+        bigint creative_template_id
+        text custom_parameters
+        text destination_url
+        text destination_url_type
+        integer duration
+        text expanded_snippet
+        text external_asset_id
+        text html_snippet
+        text image_url
+        text internal_redirect_url
+        boolean is_allows_all_requested_sizes
+        boolean is_audio
+        boolean is_interstitial
+        boolean is_native_eligible
+        boolean is_safe_frame_compatible
+        timestamp last_modified_date_time
+        timestamp license_window_end_date_time
+        timestamp license_window_start_date_time
+        text locked_orientation
+        integer mezzanine_file_metadata_bit_rate
+        text mezzanine_file_metadata_delivery_type
+        integer mezzanine_file_metadata_duration
+        integer mezzanine_file_metadata_maximum_bit_rate
+        text mezzanine_file_metadata_mime_type
+        integer mezzanine_file_metadata_minimum_bit_rate
+        text mezzanine_file_metadata_scalable_type
+        integer mezzanine_file_metadata_size_height
+        boolean mezzanine_file_metadata_size_is_aspect_ratio
+        integer mezzanine_file_metadata_size_width
+        text mezzanine_file_redirect_url
+        text name
+        text override_css
+        boolean override_size
+        text preview_url
+        text provider_id
+        text required_flash_plugin_version
+        text rich_media_impressions_url
+        text scan_result
+        integer size_height
+        boolean size_is_aspect_ratio
+        integer size_width
+        text skippable_ad_type
+        text snippet
+        text ssl_manual_override
+        bigint studio_creative_id
+        text survey_url
+        text third_party_click_tracking_url
+        bigint total_file_size
+        text type
+        text unsupported_creative_type
+        text vast_preview_url
+        text vast_redirect_type
+        text vast_xml_url
+        text video_source_url
+    }
+    line_item_delivery_data_unit {
+        integer index PK
+        bigint line_item_id PK
+        bigint units
+    }
+    line_item_creative_targeting {
+        integer index PK
+        bigint line_item_id PK
+        text name
+    }
+    order_secondary_salesperson {
+        bigint order_id PK
+        bigint user_id PK
+    }
+    creative_asset {
+        integer index PK
+        bigint creative_id PK
+        text asset_byte_array
+        text asset_url
+        text file_name
+        bigint file_size
+        bigint id
+        text image_density
+        integer size_height
+        boolean size_is_aspect_ratio
+        integer size_width
+    }
+    creative_policy_label {
+        text label PK
+        bigint creative_id PK
+    }
+    creative_companion {
+        bigint companion_creative_id PK
+        bigint creative_id PK
+    }
+    line_item_activity_association {
+        integer activity_id PK
+        bigint line_item_id PK
+        numeric click_through_conversion_cost
+        numeric view_through_conversion_cost
+    }
+    creative_custom_field_value {
+        bigint custom_field_id PK
+        bigint creative_id PK
+        bigint custom_field_option_id
+        text type
+        text value
+        text value_type
+    }
+    ad_unit_applied_label_frequency_cap {
+        bigint label_id PK
+        text ad_unit_id PK
+        integer max_impressions
+        integer num_time_units
+        text time_unit
+    }
+    line_item_viewability_provider_company {
+        bigint company_id PK
+        bigint line_item_id PK
+    }
+    creative_custom_key_value {
+        integer index PK
+        bigint creative_id PK
+        text value
+    }
+    creative_placeholder {
+        integer index PK
+        bigint line_item_id PK
+        text creative_size_type
+        bigint creative_template_id
+        integer expected_creative_count
+        boolean is_amp_only
+        integer size_height
+        boolean size_is_aspect_ratio
+        integer size_width
+        text targeting_name
+    }
+    line_item_custom_pacing_goal {
+        integer index PK
+        bigint line_item_id PK
+        bigint amount
+        timestamp start_date_time
+        boolean use_line_item_start_date_time
+    }
+    ad_unit_effective_label_frequency_cap {
+        bigint label_id PK
+        text ad_unit_id PK
+        integer max_impressions
+        integer num_time_units
+        text time_unit
+    }
+    order_applied_label }o--|| orders : "fk"
+    creative_tracking_url }o--|| creative : "fk"
+    line_item_frequency_cap }o--|| line_item : "fk"
+    order_applied_team }o--|| orders : "fk"
+    creative_applied_label }o--|| creative : "fk"
+    creative_third_party_company }o--|| creative : "fk"
+    orders }o--|| company : "fk"
+    orders }o--|| company : "fk"
+    orders }o--|| users : "fk"
+    orders }o--|| users : "fk"
+    orders }o--|| users : "fk"
+    targeting_preset_geo_excluded_location }o--|| targeting_preset : "fk"
+    order_secondary_trafficker }o--|| orders : "fk"
+    order_secondary_trafficker }o--|| users : "fk"
+    order_custom_field_value }o--|| orders : "fk"
+    line_item_applied_label }o--|| line_item : "fk"
+    ad_unit_size }o--|| ad_unit : "fk"
+    line_item_secondary_goal }o--|| line_item : "fk"
+    line_item_creative_association_size }o--|| line_item_creative_association : "fk"
+    line_item_creative_association_size }o--|| line_item_creative_association : "fk"
+    order_agency_contact }o--|| orders : "fk"
+    line_item_custom_field_value }o--|| line_item : "fk"
+    ad_unit_effective_team }o--|| ad_unit : "fk"
+    ad_unit_applied_team }o--|| ad_unit : "fk"
+    placement_targeted_ad_unit }o--|| placement : "fk"
+    placement_targeted_ad_unit }o--|| ad_unit : "fk"
+    creative_audio_asset }o--|| creative : "fk"
+    creative_video_asset }o--|| creative : "fk"
+    targeting_preset_geo_targeted_location }o--|| targeting_preset : "fk"
+    order_advertiser_contact }o--|| orders : "fk"
+    line_item_effective_applied_label }o--|| line_item : "fk"
+    ad_unit }o--|| ad_unit : "fk"
+    ad_unit_applied_label }o--|| ad_unit : "fk"
+    ad_unit_effective_applied_label }o--|| ad_unit : "fk"
+    targeting_preset_inventory_targeted_ad_unit }o--|| targeting_preset : "fk"
+    ad_unit_parent_path }o--|| ad_unit : "fk"
+    targeting_preset_inventory_excluded_ad_unit }o--|| targeting_preset : "fk"
+    targeting_preset_inventory_targeted_placement_id }o--|| targeting_preset : "fk"
+    targeting_preset_inventory_targeted_placement_id }o--|| placement : "fk"
+    creative_third_party_impression_tracking_url }o--|| creative : "fk"
+    line_item_creative_association }o--|| line_item : "fk"
+    line_item_creative_association }o--|| creative : "fk"
+    creative_asset_property }o--|| creative : "fk"
+    order_effective_applied_label }o--|| orders : "fk"
+    creative_ad_tag_key }o--|| creative : "fk"
+    creative }o--|| company : "fk"
+    line_item_delivery_data_unit }o--|| line_item : "fk"
+    line_item_creative_targeting }o--|| line_item : "fk"
+    order_secondary_salesperson }o--|| orders : "fk"
+    order_secondary_salesperson }o--|| users : "fk"
+    creative_asset }o--|| creative : "fk"
+    creative_policy_label }o--|| creative : "fk"
+    creative_companion }o--|| creative : "fk"
+    line_item_activity_association }o--|| line_item : "fk"
+    creative_custom_field_value }o--|| creative : "fk"
+    ad_unit_applied_label_frequency_cap }o--|| ad_unit : "fk"
+    line_item_viewability_provider_company }o--|| line_item : "fk"
+    line_item_viewability_provider_company }o--|| company : "fk"
+    creative_custom_key_value }o--|| creative : "fk"
+    creative_placeholder }o--|| line_item : "fk"
+    line_item_custom_pacing_goal }o--|| line_item : "fk"
+    ad_unit_effective_label_frequency_cap }o--|| ad_unit : "fk"

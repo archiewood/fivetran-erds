@@ -1,0 +1,419 @@
+erDiagram
+    estimate_item_category {
+        text id PK
+        text updated_at PK
+        text created_at
+        text name
+    }
+    contact {
+        text id PK
+        text updated_at PK
+        text client_id FK
+        text created_at
+        text email
+        text fax
+        text first_name
+        text last_name
+        text phone_mobile
+        text phone_office
+        text title
+    }
+    project_user_assignment {
+        text id PK
+        text updated_at PK
+        text project_id FK
+        text user_id FK
+        text budget
+        text created_at
+        text hourly_rate
+        text is_active
+        text is_project_manager
+        text use_default_rates
+    }
+    role_user {
+        text role_user_id PK
+        text role_id PK
+    }
+    role {
+        text id PK
+        text updated_at PK
+        text created_at
+        text name
+    }
+    time_entry {
+        text id PK
+        text updated_at PK
+        text client_id FK
+        text invoice_id FK
+        text project_id FK
+        text task_assignment_id FK
+        text task_id FK
+        text user_assignment_id FK
+        text user_id FK
+        text billable
+        text billable_rate
+        text budgeted
+        text cost_rate
+        text created_at
+        text ended_time
+        text external_reference
+        text hours
+        text hours_without_timer
+        text is_billed
+        text is_closed
+        text is_locked
+        text is_running
+        text locked_reason
+        text notes
+        text rounded_hours
+        text spent_date
+        text started_time
+        text timer_started_at
+    }
+    project_task_assignment {
+        text id PK
+        text updated_at PK
+        text project_id FK
+        text task_id FK
+        text billable
+        text budget
+        text created_at
+        text hourly_rate
+        text is_active
+    }
+    invoice_item_category {
+        text id PK
+        text updated_at PK
+        text created_at
+        text name
+        text use_as_expense
+        text use_as_service
+    }
+    invoice_message_recipient {
+        text email PK
+        text invoice_message_id PK
+        text name
+    }
+    invoice_message {
+        text id PK
+        text updated_at PK
+        text invoice_id FK
+        text attach_pdf
+        text body
+        text created_at
+        text event_type
+        text include_link_to_client_invoice
+        text reminder
+        text send_me_a_copy
+        text send_reminder_on
+        text sent_by
+        text sent_by_email
+        text sent_from
+        text sent_from_email
+        text subject
+        text thank_you
+    }
+    user_cost_rate {
+        text id PK
+        text updated_at PK
+        text users_id FK
+        text amount
+        text created_at
+        text end_date
+        text start_date
+    }
+    expense_category {
+        text id PK
+        text updated_at PK
+        text created_at
+        text is_active
+        text name
+        text unit_name
+        text unit_price
+    }
+    user_project_assignment_task_assignment {
+        text id PK
+        text updated_at PK
+        text task_id FK
+        text users_id FK
+        text billable
+        text budget
+        text created_at
+        text hourly_rate
+        text is_active
+    }
+    user_project_assignment {
+        text id PK
+        text updated_at PK
+        text client_id FK
+        text project_id FK
+        text users_id FK
+        text budget
+        text created_at
+        text hourly_rate
+        text is_active
+        text is_project_manager
+        text use_default_rates
+    }
+    task {
+        text id PK
+        text updated_at PK
+        text billable_by_default
+        text created_at
+        text default_hourly_rate
+        text is_active
+        text is_default
+        text name
+    }
+    project {
+        text id PK
+        text updated_at PK
+        text client_id FK
+        text bill_by
+        text budget
+        text budget_by
+        text budget_is_monthly
+        text code
+        text cost_budget
+        text cost_budget_include_expenses
+        text created_at
+        text ends_on
+        text fee
+        text hourly_rate
+        text is_active
+        text is_billable
+        text is_fixed_fee
+        text name
+        text notes
+        text notify_when_over_budget
+        text over_budget_notification_date
+        text over_budget_notification_percentage
+        text show_budget_to_all
+        text starts_on
+    }
+    invoice_payment {
+        text id PK
+        text updated_at PK
+        text invoice_id FK
+        text amount
+        text created_at
+        text notes
+        text paid_at
+        text paid_date
+        text payment_gateway_id
+        text payment_gateway_name
+        text recorded_by
+        text recorded_by_email
+        text transaction_id
+    }
+    invoice_line_item {
+        text id PK
+        text invoice_id FK
+        text project_id FK
+        text amount
+        text description
+        text kind
+        text quantity
+        text taxed
+        text taxed_2
+        text unit_price
+    }
+    invoice {
+        text id PK
+        text updated_at PK
+        text client_id FK
+        text creator_id FK
+        text amount
+        text client_key
+        text closed_at
+        text created_at
+        text currency
+        text discount
+        text discount_amount
+        text due_amount
+        text due_date
+        text issue_date
+        text notes
+        text number
+        text paid_at
+        text paid_date
+        text payment_term
+        text period_end
+        text period_start
+        text purchase_order
+        text recurring_invoice_id
+        text sent_at
+        text state
+        text subject
+        text tax
+        text tax_2
+        text tax_2_amount
+        text tax_amount
+    }
+    client {
+        text id PK
+        text updated_at PK
+        text address
+        text created_at
+        text currency
+        text is_active
+        text name
+        text statement_key
+    }
+    expense {
+        text id PK
+        text updated_at PK
+        text client_id FK
+        text expense_category_id FK
+        text invoice_id FK
+        text project_id FK
+        text user_assignment_id FK
+        text user_id FK
+        text billable
+        text created_at
+        text is_billed
+        text is_closed
+        text is_locked
+        text locked_reason
+        text notes
+        text receipt_content_type
+        text receipt_file_name
+        text receipt_file_size
+        text receipt_url
+        text spent_date
+        text total_cost
+        text units
+    }
+    user_billable_rate {
+        text id PK
+        text updated_at PK
+        text users_id FK
+        text amount
+        text created_at
+        text end_date
+        text start_date
+    }
+    estimate_message_recipient {
+        text email PK
+        text estimate_message_id PK
+        text name
+    }
+    estimate_message {
+        text id PK
+        text updated_at PK
+        text estimate_id FK
+        text body
+        text created_at
+        text event_type
+        text send_me_a_copy
+        text sent_by
+        text sent_by_email
+        text sent_from
+        text sent_from_email
+        text subject
+    }
+    users_permission_claim {
+        text permission_claim_name PK
+        text users_id PK
+    }
+    users {
+        text id PK
+        text updated_at PK
+        text avatar_url
+        text calendar_integration_enabled
+        text calendar_integration_source
+        text can_close_account
+        text can_create_invoices
+        text can_create_projects
+        text can_see_rates
+        text cost_rate
+        text created_at
+        text default_hourly_rate
+        text email
+        text first_name
+        text has_access_to_all_future_projects
+        text is_active
+        text is_admin
+        text is_contractor
+        text is_project_manager
+        text last_name
+        text telephone
+        text timezone
+        text weekly_capacity
+    }
+    estimate_line_item {
+        text id PK
+        text estimate_id FK
+        text amount
+        text description
+        text kind
+        text quantity
+        text taxed
+        text taxed_2
+        text unit_price
+    }
+    estimate {
+        text id PK
+        text updated_at PK
+        text client_id FK
+        text creator_id FK
+        text accepted_at
+        text amount
+        text client_key
+        text created_at
+        text currency
+        text declined_at
+        text discount
+        text discount_amount
+        text issue_date
+        text notes
+        text number
+        text purchase_order
+        text sent_at
+        text state
+        text subject
+        text tax
+        text tax_2
+        text tax_2_amount
+        text tax_amount
+    }
+    contact }o--|| client : "fk"
+    project_user_assignment }o--|| users : "fk"
+    project_user_assignment }o--|| project : "fk"
+    role_user }o--|| role : "fk"
+    time_entry }o--|| users : "fk"
+    time_entry }o--|| task : "fk"
+    time_entry }o--|| project_task_assignment : "fk"
+    time_entry }o--|| project_user_assignment : "fk"
+    time_entry }o--|| invoice : "fk"
+    time_entry }o--|| project : "fk"
+    time_entry }o--|| client : "fk"
+    project_task_assignment }o--|| task : "fk"
+    project_task_assignment }o--|| project : "fk"
+    invoice_message_recipient }o--|| invoice_message : "fk"
+    invoice_message }o--|| invoice : "fk"
+    user_cost_rate }o--|| users : "fk"
+    user_project_assignment_task_assignment }o--|| task : "fk"
+    user_project_assignment_task_assignment }o--|| users : "fk"
+    user_project_assignment }o--|| project : "fk"
+    user_project_assignment }o--|| client : "fk"
+    user_project_assignment }o--|| users : "fk"
+    project }o--|| client : "fk"
+    invoice_payment }o--|| invoice : "fk"
+    invoice_line_item }o--|| project : "fk"
+    invoice_line_item }o--|| invoice : "fk"
+    invoice }o--|| users : "fk"
+    invoice }o--|| client : "fk"
+    expense }o--|| users : "fk"
+    expense }o--|| project_user_assignment : "fk"
+    expense }o--|| invoice : "fk"
+    expense }o--|| project : "fk"
+    expense }o--|| expense_category : "fk"
+    expense }o--|| client : "fk"
+    user_billable_rate }o--|| users : "fk"
+    estimate_message_recipient }o--|| estimate_message : "fk"
+    estimate_message }o--|| estimate : "fk"
+    users_permission_claim }o--|| users : "fk"
+    estimate_line_item }o--|| estimate : "fk"
+    estimate }o--|| users : "fk"
+    estimate }o--|| client : "fk"

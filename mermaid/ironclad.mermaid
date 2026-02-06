@@ -1,0 +1,224 @@
+erDiagram
+    schema_attribute {
+        text name PK
+        text schema_id PK
+        text description
+        boolean multi_valued
+        text mutability
+        boolean required
+        text returned
+        jsonb sub_attributes
+        text type
+    }
+    schema {
+        text id PK
+        text description
+        text meta_location
+        text meta_resource_type
+        text name
+    }
+    workflow_reviewer {
+        text display_name PK
+        text role PK
+        text workflow_id PK
+        text reviewer_type
+        text status
+    }
+    workflow_participant {
+        text user_id PK
+        text workflow_id PK
+    }
+    record_link {
+        text link_record_id PK
+        text record_id PK
+    }
+    record_property {
+        text name PK
+        text record_id PK
+        text value
+    }
+    record {
+        text id PK
+        text source_workflow_id FK
+        text ironclad_id
+        timestamp last_updated
+        text name
+        text signed_copy_content_type
+        text signed_copy_filename
+        text signed_copy_href
+        text source_type
+        text type
+    }
+    turn_history {
+        text turn_number PK
+        text turn_start_time PK
+        text workflow_id PK
+        text turn_end_time
+        text turn_location
+        text turn_party
+        text turn_user_email
+        text turn_user_id
+    }
+    workflow_schema_property {
+        text name PK
+        text workflow_schema_id PK
+        text value
+    }
+    workflow_schema {
+        text id PK
+        text name
+    }
+    workflow_record {
+        text record_id PK
+        text workflow_id PK
+    }
+    workflow_role_assignee {
+        text user_id PK
+        text workflow_role_id PK
+        text workflow_role_workflow_id PK
+    }
+    workflow_role {
+        text id PK
+        text workflow_id PK
+        text display_name
+    }
+    workflow_attribute {
+        text name PK
+        text workflow_id PK
+        text value
+    }
+    workflow {
+        text id PK
+        text creator_id FK
+        text template FK
+        text approvals_state
+        text approvals_url
+        timestamp contract_approval_timestamp
+        timestamp contract_execution_date
+        timestamp created
+        text ironclad_id
+        boolean is_cancelled
+        boolean is_complete
+        boolean is_revertible_to_review
+        timestamp last_updated
+        text signatures_state
+        text signatures_url
+        text status
+        text step
+        text title
+    }
+    group_schema {
+        text groups_id PK
+        text schema_id PK
+    }
+    group_member {
+        text groups_id PK
+        text user_id PK
+        text ref
+        text type
+    }
+    groups {
+        text id PK
+        text display_name
+        text external_id
+    }
+    user_schema {
+        text schema_id PK
+        text users_id PK
+    }
+    user_email {
+        text value PK
+        text users_id PK
+        boolean is_primary
+        text type
+    }
+    users {
+        text id PK
+        boolean active
+        text family_name
+        text given_name
+        text user_name
+    }
+    workflow_signer_delegate {
+        text delegate_email PK
+        text workflow_signer_email PK
+        text workflow_signer_workflow_id PK
+        text delegate_name
+    }
+    workflow_signer {
+        text email PK
+        text workflow_id PK
+        text role_name
+        text signature_status
+    }
+    approval_request {
+        text _fivetran_id PK
+        text workflow_id PK
+        text actor_id
+        text actor_type
+        text aggregate_duration
+        text approval_type
+        text duration
+        text end_time
+        text role
+        text role_name
+        text start_time
+        text status
+    }
+    type_hash_data {
+        text index PK
+        text entity_relationship_type_id PK
+        text data
+    }
+    entity_relationship_type {
+        text id PK
+        text company_id
+        text description
+        text display_name
+        text kind
+        text name
+        text type_hash_type
+    }
+    entity_named_type_id {
+        text named_type_id PK
+        text entity_id PK
+    }
+    entity {
+        text id PK
+        text ironclad_id
+        text last_updated
+        text name
+        text status
+    }
+    schema_attribute }o--|| schema : "fk"
+    workflow_reviewer }o--|| workflow : "fk"
+    workflow_participant }o--|| users : "fk"
+    workflow_participant }o--|| workflow : "fk"
+    record_link }o--|| record : "fk"
+    record_link }o--|| record : "fk"
+    record_property }o--|| record : "fk"
+    record }o--|| workflow : "fk"
+    turn_history }o--|| workflow : "fk"
+    workflow_schema_property }o--|| workflow_schema : "fk"
+    workflow_record }o--|| record : "fk"
+    workflow_record }o--|| workflow : "fk"
+    workflow_role_assignee }o--|| users : "fk"
+    workflow_role_assignee }o--|| workflow_role : "fk"
+    workflow_role_assignee }o--|| workflow_role : "fk"
+    workflow_role }o--|| workflow : "fk"
+    workflow_attribute }o--|| workflow : "fk"
+    workflow }o--|| workflow_schema : "fk"
+    workflow }o--|| users : "fk"
+    group_schema }o--|| schema : "fk"
+    group_schema }o--|| groups : "fk"
+    group_member }o--|| users : "fk"
+    group_member }o--|| groups : "fk"
+    user_schema }o--|| schema : "fk"
+    user_schema }o--|| users : "fk"
+    user_email }o--|| users : "fk"
+    workflow_signer_delegate }o--|| workflow_signer : "fk"
+    workflow_signer_delegate }o--|| workflow_signer : "fk"
+    workflow_signer }o--|| workflow : "fk"
+    approval_request }o--|| workflow : "fk"
+    type_hash_data }o--|| entity_relationship_type : "fk"
+    entity_named_type_id }o--|| entity : "fk"

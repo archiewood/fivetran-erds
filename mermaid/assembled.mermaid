@@ -1,0 +1,353 @@
+erDiagram
+    forecast_vs_actual {
+        text _fivetran_id PK
+        text queue FK
+        text cases_answered_actual
+        text cases_answered_forecasted
+        text cases_opened_actual
+        text cases_opened_forecasted
+        text cases_reopened_actual
+        text cases_reopened_forecasted
+        text cases_solved_actual
+        text cases_solved_forecasted
+        text channel
+        text contacts_abandoned_actual
+        text contacts_abandoned_forecasted
+        text contacts_received_actual
+        text contacts_received_forecasted
+        timestamp end_time
+        text first_response_time_actual
+        text first_response_time_forecasted
+        text handle_time_actual
+        text handle_time_forecasted
+        text messages_received_actual
+        text messages_received_forecasted
+        text occupancy_actual
+        text occupancy_forecasted
+        text productivity_actual
+        text productivity_forecasted
+        text reassigned_away_actual
+        text reassigned_away_forecasted
+        text service_level_actual
+        text service_level_forecasted
+        text service_level_met_actual
+        text service_level_met_forecasted
+        text service_level_missed_actual
+        text service_level_missed_forecasted
+        text staffing_net
+        text staffing_required_actual
+        text staffing_required_forecasted
+        text staffing_scheduled
+        timestamp start_time
+        text transferred_away_actual
+        text transferred_away_forecasted
+    }
+    activity {
+        text id PK
+        text activity_type_id FK
+        text agent_id FK
+        text event_id FK
+        text created_at
+        text description
+        text end_time
+        text start_time
+        text updated_at
+    }
+    activity_type {
+        text id PK
+        text background_color
+        jsonb channels
+        text font_color
+        text import_id
+        text name
+        text productive
+        text short_name
+        text timeoff
+        text value
+    }
+    team {
+        text id PK
+        text parent_id FK
+        text created_at
+        text name
+        text updated_at
+    }
+    people_team {
+        text people_id PK
+        text team_id PK
+    }
+    people_queue {
+        text people_id PK
+        text queue_id PK
+    }
+    people_skill {
+        text people_id PK
+        text skill_id PK
+    }
+    people {
+        text id PK
+        text agent_id FK
+        text site FK
+        text agent_role
+        jsonb channels
+        text created_at
+        text deleted
+        text email
+        text end_date
+        text first_name
+        text imported_id
+        text last_name
+        jsonb platforms
+        text productivity
+        text role
+        boolean staffable
+        text start_date
+        text timezone
+    }
+    site {
+        text id PK
+        text parent_id FK
+        text created_at
+        text name
+        text updated_at
+    }
+    queue {
+        text id PK
+        text parent_id FK
+        text created_at
+        text name
+        text updated_at
+    }
+    time_off_update {
+        text id PK
+        text time_off_request_id FK
+        text comment
+        timestamp created_at
+        text type
+    }
+    time_off_request {
+        text id PK
+        text activity_type_id FK
+        text agent_id FK
+        timestamp created_at
+        text description
+        timestamp end_time
+        timestamp start_time
+        text status
+    }
+    sources_used {
+        text index PK
+        text assist_conversation_id PK
+        text message_id PK
+        text platform
+        text title
+        text url
+    }
+    message {
+        text id PK
+        text assist_conversation_id PK
+        text content_text
+        text content_type
+        text content_url
+        text created_at
+        text platform_id
+        text role
+        text user_platform_id
+    }
+    assist_conversation {
+        text id PK
+        text user_id FK
+        text agent_content
+        text agent_platform
+        text agent_platform_id
+        text conversation_type
+        text copilot_action_type
+        timestamp created_at
+        text customer_tier
+        jsonb evaluation_custom_feedback
+        text issue_complexity
+        text platform
+        text platform_id
+        boolean requires_escalation
+        text routing_destination_id
+        text routing_destination_name
+        text semantic_similarity
+        text status
+        text transferred_case_id
+        text transferred_case_platform
+        text trigram_similarity
+        timestamp updated_at
+    }
+    skill {
+        text id PK
+        text parent_id FK
+        text created_at
+        text name
+        text updated_at
+    }
+    requirement_type_activity_type {
+        text activity_type_id PK
+        text requirement_type_id PK
+    }
+    requirement_type {
+        text id PK
+        text queue FK
+        text channel
+        text name
+    }
+    agent_state {
+        text _fivetran_id PK
+        text agent_id FK
+        text agent_platform_id
+        text end_time
+        text modified_at
+        text platform
+        text start_time
+        text state
+        text ticket_id
+        text ticket_status
+    }
+    forecast {
+        text _fivetran_id PK
+        text queue_id FK
+        text channel
+        timestamp end_time
+        timestamp start_time
+        text value
+    }
+    forecast_total {
+        text id PK
+        text queue_id FK
+        text channel
+        text end_time
+        text start_time
+        text value
+        text value_type
+    }
+    event_change {
+        text id PK
+        text event_agent_id FK
+        text modified_by_agent_id FK
+        text description
+        text event_change_type
+        text event_id
+        timestamp modified_at
+        timestamp new_end_time
+        text new_event_channel
+        text new_event_type
+        text new_google_calendar_event_id
+        timestamp new_start_time
+        text new_template_id
+        timestamp old_end_time
+        text old_event_channel
+        text old_event_type
+        text old_google_calendar_event_id
+        timestamp old_start_time
+        text old_template_id
+    }
+    requirement {
+        text _fivetran_id PK
+        text requirement_type_id FK
+        text end_time
+        text required
+        text scheduled
+        text start_time
+    }
+    agent_ticket_stats_hourly_report {
+        text _fivetran_id PK
+        text agent_id
+        text channel
+        text end_time
+        text name
+        text report_type
+        text start_time
+        text type
+        text value
+    }
+    agent_ticket_stats_daily_report {
+        text _fivetran_id PK
+        text agent_id
+        text channel
+        text end_time
+        text name
+        text report_type
+        text start_time
+        text type
+        text value
+    }
+    hourly_report_metric {
+        text _fivetran_id PK
+        text agent_id
+        text channel
+        text end_time
+        text name
+        text report_type
+        text start_time
+        text type
+        text value
+    }
+    agent_state_handle_times_daily_report {
+        text _fivetran_id PK
+        text agent_id
+        text channel
+        text end_time
+        text name
+        text report_type
+        text start_time
+        text type
+        text value
+    }
+    daily_report_metric {
+        text _fivetran_id PK
+        text agent_id
+        text channel
+        text end_time
+        text name
+        text report_type
+        text start_time
+        text type
+        text value
+    }
+    agent_state_handle_times_hourly_report {
+        text _fivetran_id PK
+        text agent_id
+        text channel
+        text end_time
+        text name
+        text report_type
+        text start_time
+        text type
+        text value
+    }
+    forecast_vs_actual }o--|| queue : "fk"
+    activity }o--|| event_change : "fk"
+    activity }o--|| people : "fk"
+    activity }o--|| activity_type : "fk"
+    team }o--|| team : "fk"
+    people_team }o--|| team : "fk"
+    people_team }o--|| people : "fk"
+    people_queue }o--|| queue : "fk"
+    people_queue }o--|| people : "fk"
+    people_skill }o--|| skill : "fk"
+    people_skill }o--|| people : "fk"
+    people }o--|| people : "fk"
+    people }o--|| site : "fk"
+    site }o--|| site : "fk"
+    queue }o--|| queue : "fk"
+    time_off_update }o--|| time_off_request : "fk"
+    time_off_request }o--|| people : "fk"
+    time_off_request }o--|| activity_type : "fk"
+    sources_used }o--|| message : "fk"
+    sources_used }o--|| message : "fk"
+    message }o--|| assist_conversation : "fk"
+    assist_conversation }o--|| people : "fk"
+    skill }o--|| skill : "fk"
+    requirement_type_activity_type }o--|| activity_type : "fk"
+    requirement_type_activity_type }o--|| requirement_type : "fk"
+    requirement_type }o--|| queue : "fk"
+    agent_state }o--|| people : "fk"
+    forecast }o--|| queue : "fk"
+    forecast_total }o--|| queue : "fk"
+    event_change }o--|| people : "fk"
+    event_change }o--|| people : "fk"
+    requirement }o--|| requirement_type : "fk"

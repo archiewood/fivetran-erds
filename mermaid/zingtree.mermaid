@@ -1,0 +1,124 @@
+erDiagram
+    session_data_path {
+        text _fivetran_id PK
+        text tree_id FK
+        text button_text
+        text from_node_id
+        text page_title
+        text question
+        bigint seconds
+        integer seq
+        text source
+        text subtree
+        text time
+        text to_node_id
+    }
+    session_data {
+        text session_id PK
+        text tree_id PK
+        text browser
+        bigint duration_seconds
+        text ip
+        timestamp last_click_time_pst
+        timestamp last_click_time_utc
+        text notes
+        text os
+        text result
+        text source
+        timestamp start_time_pst
+        timestamp start_time_utc
+        text time_spent
+        text total_score
+        text tree_name
+    }
+    tree_session {
+        text session_id PK
+        text tree_id PK
+        text agent
+        text duration
+        timestamp last_click_time
+        text resolution_state
+        timestamp start_time
+        text total_score
+    }
+    tree_structure_node_button {
+        text _fivetran_id PK
+        text tree_structure_node_node_id FK
+        text button_link
+        text button_text
+    }
+    tree_structure_node {
+        text node_id PK
+        text tree_id PK
+        text root_node_id FK
+        text content
+        text keyword
+        text open_tree_id
+        text page_title
+        text question
+        text success
+        text tags
+        text type
+    }
+    tree_structure {
+        text root_node_id PK
+        text tree_id PK
+        text description
+        text tree_name
+    }
+    session_note {
+        text note PK
+        text session_id PK
+    }
+    agent_session {
+        text id PK
+        text tree_id FK
+        text agent
+        text resolution_state
+        timestamp start_time
+        text total_score
+    }
+    form_data {
+        text session_id PK
+        text agent
+        text agent_first_name
+        text agent_name
+        text comment
+        text organization
+    }
+    event_log {
+        text session_id PK
+        timestamp timestamp PK
+        text id FK
+        text tree_id FK
+        text data
+        text details
+        text ip
+        text severity
+        text type
+        text user_name
+    }
+    tree_variable_var {
+        text tree_id PK
+        text variable_name PK
+    }
+    tree {
+        text tree_id PK
+        text description
+        text name
+        text tags
+    }
+    session_data_path }o--|| session_data : "fk"
+    session_data }o--|| tree : "fk"
+    session_data }o--|| agent_session : "fk"
+    tree_session }o--|| agent_session : "fk"
+    tree_session }o--|| tree : "fk"
+    tree_structure_node_button }o--|| tree_structure_node : "fk"
+    tree_structure_node }o--|| tree_structure : "fk"
+    tree_structure_node }o--|| tree_structure : "fk"
+    tree_structure }o--|| tree : "fk"
+    session_note }o--|| agent_session : "fk"
+    agent_session }o--|| tree : "fk"
+    form_data }o--|| agent_session : "fk"
+    event_log }o--|| tree : "fk"
+    event_log }o--|| agent_session : "fk"

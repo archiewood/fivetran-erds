@@ -1,0 +1,219 @@
+erDiagram
+    schedule_item_speaker {
+        text _fivetran_id PK
+        text schedule_item_id FK
+        text name
+    }
+    schedule_item {
+        text id PK
+        text event_id PK
+        text area
+        text area_id
+        text area_name
+        text created_at
+        text description
+        text name
+        text time_end
+        text time_start
+        text updated_at
+    }
+    report_type {
+        text id PK
+        text event_id PK
+        text status
+        text title
+        text type
+    }
+    event {
+        text id PK
+        text organization_id PK
+        text created_at
+        text description
+        jsonb metadata
+        text name
+        text published
+        text slug
+        text status
+        text time_end
+        text time_start
+        text timezone
+        text type
+    }
+    organization {
+        text id PK
+        text created_at
+        text email
+        text facebook
+        text name
+        text twitter
+        text website
+    }
+    booth {
+        text id PK
+        text event_id PK
+        text about
+        text booth_size
+        text created_at
+        text email
+        text facebook
+        text headline
+        text instagram
+        text linkedin
+        text name
+        text priority
+        text twitter
+        text updated_at
+        text website
+    }
+    template {
+        text id PK
+        text organization_id PK
+        text name
+    }
+    custom_registration_child_question {
+        text id PK
+        text custom_registration_id PK
+        text event_id PK
+        text registration_id PK
+        text external_id
+        text name
+        text type
+        text value
+    }
+    custom_registration {
+        text id PK
+        text event_id PK
+        text registration_id PK
+        text external_id
+        text name
+        text type
+        text value
+    }
+    registration {
+        text id PK
+        text event_id PK
+        text magic_link_id FK
+        text ticket_id FK
+        text attended
+        text bio
+        text created_at
+        text email
+        text first_check_in
+        text first_name
+        text headline
+        text last_name
+        text linkedin
+        jsonb metadata
+        text phone_number
+        text qr_code_data
+        text qr_code_image_url
+        text question_bank_enabled
+        text refunded
+        text registered_through
+        text timezone
+        text twitter
+        text updated_at
+        text user_id
+        text utm_campaign
+        text utm_content
+        text utm_medium
+        text utm_source
+        text utm_term
+        text website
+    }
+    download_report {
+        text _fivetran_id PK
+        text report_type_id FK
+        text country
+        text email
+        text first_name
+        text headline
+        text last_name
+        text report_type_title
+        text ticket_type
+    }
+    stage {
+        text id PK
+        text event_id PK
+        text created_at
+        text name
+        text updated_at
+    }
+    magic_link {
+        text id PK
+        text ticket_id PK
+        text registration_id FK
+        text created_at
+        text email
+        jsonb extra_fields
+        text first_name
+        text headline
+        text last_name
+        text magic_link
+        jsonb metadata
+        text status
+        text updated_at
+    }
+    report_list {
+        text id PK
+        text event_id PK
+        text status
+        text title
+        text url
+    }
+    session {
+        text id PK
+        text event_id PK
+        text created_at
+        text name
+        text updated_at
+    }
+    schedule_item_tag {
+        text _fivetran_id PK
+        text schedule_item_id FK
+        text id
+        text name
+    }
+    booth_tag {
+        text _fivetran_id PK
+        text booth_id FK
+        text id
+        text name
+    }
+    ticket {
+        text id PK
+        text event_id PK
+        text claimed
+        text count
+        text created_at
+        text description
+        text discount
+        text name
+        text price
+        text private
+        text remaining
+        text slug
+    }
+    schedule_item_speaker }o--|| schedule_item : "fk"
+    schedule_item }o--|| event : "fk"
+    report_type }o--|| event : "fk"
+    event }o--|| organization : "fk"
+    booth }o--|| event : "fk"
+    template }o--|| organization : "fk"
+    custom_registration_child_question }o--|| event : "fk"
+    custom_registration_child_question }o--|| registration : "fk"
+    custom_registration_child_question }o--|| custom_registration : "fk"
+    custom_registration }o--|| event : "fk"
+    custom_registration }o--|| registration : "fk"
+    registration }o--|| magic_link : "fk"
+    registration }o--|| ticket : "fk"
+    registration }o--|| event : "fk"
+    download_report }o--|| report_type : "fk"
+    stage }o--|| event : "fk"
+    magic_link }o--|| registration : "fk"
+    magic_link }o--|| ticket : "fk"
+    report_list }o--|| event : "fk"
+    session }o--|| event : "fk"
+    schedule_item_tag }o--|| schedule_item : "fk"
+    booth_tag }o--|| booth : "fk"
+    ticket }o--|| event : "fk"

@@ -1,0 +1,244 @@
+erDiagram
+    product {
+        text id PK
+        text canceled
+        text code
+        text created_at
+        text created_by_first_name
+        text created_by_id
+        text created_by_last_name
+        text default_image_caption
+        text default_image_front_page
+        text default_image_id
+        text default_image_is_archived
+        text default_image_name
+        text default_image_url
+        text default_image_url_hi
+        text default_image_url_lo
+        text default_image_url_med
+        text description
+        text name
+        text season_id
+        text season_name
+        text updated_at
+        text year_id
+        text year_name
+    }
+    product_variant {
+        text id PK
+        text product_id PK
+        text color_code
+        text color_company
+        text color_created_at
+        jsonb color_created_by_hidden_pom_fields
+        jsonb color_created_by_hidden_sample_fields
+        text color_external_code
+        text color_id
+        jsonb color_image_comment_markers
+        jsonb color_image_component_markers
+        jsonb color_image_construction_detail_markers
+        jsonb color_image_point_of_measure_markers
+        jsonb color_image_sections
+        text color_internal_code
+        text color_name
+        jsonb color_palettes
+        text color_updated_at
+        jsonb color_updated_by_hidden_pom_fields
+        jsonb color_updated_by_hidden_sample_fields
+        text color_v
+        text created_at
+        text created_bom_template_sort_pref
+        text created_by
+        text created_color_book_library_sort_pref
+        text created_company
+        text created_component_master_sort_pref
+        text created_components_sort_pref
+        text created_created_at
+        text created_created_by
+        text created_details_sort_pref
+        text created_email
+        jsonb created_feature_tutorials
+        text created_file_sort_pref
+        text created_first_name
+        text created_homepage
+        text created_id
+        text created_item_master_sort_pref
+        text created_last_active
+        text created_last_name
+        text created_locale
+        text created_objects_sort_pref
+        text created_palette_library_sort_pref
+        text created_phone_verified
+        text created_pom_sort_pref
+        text created_preset_sort_pref
+        text created_role
+        text created_size_spec_uom_pref
+        text created_size_spec_view
+        text created_status
+        text created_title
+        text created_updated_at
+        text created_utilization_report_library_sort_pref
+        text created_v
+        text image_caption
+        text image_company
+        text image_created_at
+        text image_front_page
+        text image_id
+        text image_is_archived
+        text image_position
+        text image_sort
+        text image_thumbnailing_failed
+        text image_updated_at
+        text image_url
+        text image_url_hi
+        text image_url_lo
+        text image_url_med
+        text image_v
+        jsonb images
+        text updated_at
+        text updated_bom_template_sort_pref
+        text updated_by
+        text updated_color_book_library_sort_pref
+        text updated_company
+        text updated_component_master_sort_pref
+        text updated_components_sort_pref
+        text updated_created_at
+        text updated_created_by
+        text updated_details_sort_pref
+        text updated_email
+        jsonb updated_feature_tutorials
+        text updated_file_sort_pref
+        text updated_first_name
+        text updated_homepage
+        text updated_id
+        text updated_item_master_sort_pref
+        text updated_last_active
+        text updated_last_name
+        text updated_locale
+        text updated_objects_sort_pref
+        text updated_palette_library_sort_pref
+        text updated_phone_verified
+        text updated_pom_sort_pref
+        text updated_preset_sort_pref
+        text updated_role
+        text updated_size_spec_uom_pref
+        text updated_size_spec_view
+        text updated_status
+        text updated_title
+        text updated_updated_at
+        text updated_utilization_report_library_sort_pref
+        text updated_v
+        text view_preference_bill_of_materials
+        text view_preference_blocks
+        text view_preference_components
+        text view_preference_point_of_measure
+        text view_preference_products
+    }
+    component {
+        text id PK
+        text code
+        text name
+        text price_number_decimal
+        text updated_at
+    }
+    bom_divider {
+        text index PK
+        text product_id PK
+        text description
+        text id
+        text identifier
+        text position
+    }
+    bom_item_techpack_image {
+        text index PK
+        text product_id PK
+        text image
+        jsonb sections
+    }
+    bom_item_component_variant {
+        text bom_item_index PK
+        text id PK
+        text product_id PK
+        text component_custom_color
+        text data_code
+        jsonb data_field
+        jsonb data_image
+        text inherit_component_price
+        text price_numberdecimal
+    }
+    bom_item_colorway {
+        text index PK
+        text bom_item_index PK
+        text product_id PK
+        text custom_color
+    }
+    bom_item_component_techpack_image {
+        text index PK
+        text bom_item_index PK
+        text product_id PK
+        text image
+        jsonb sections
+    }
+    bom_item_detail {
+        text index PK
+        text product_id PK
+        text component_id FK
+        text component_canceled
+        text component_company
+        text component_created_at
+        text component_created_by
+        text component_type
+        text component_v
+        jsonb component_variant_types
+        text created_at
+        text hidden
+        text id
+        text is_factory
+        text note
+        text placement
+        text price_numberdecimal
+        text quantity
+        text updated_at
+    }
+    bom_item_description {
+        text product_id PK
+        text brand
+        text canceled
+        text category
+        text code
+        text company
+        text created_at
+        text created_by
+        text description
+        text division
+        jsonb files
+        text hide_bom_component_variant_1
+        text hide_bom_component_variant_2
+        text hide_bom_note
+        text hide_bom_placement
+        text hide_bom_pricing
+        text hide_bom_quantity
+        text name
+        jsonb ordered_bom_item
+        text price
+        text price_unit
+        jsonb sample_data
+        text sampling
+        text season
+        text size_spec
+        text updated_at
+        text year
+    }
+    product_variant }o--|| product : "fk"
+    bom_divider }o--|| bom_item_description : "fk"
+    bom_item_techpack_image }o--|| bom_item_description : "fk"
+    bom_item_component_variant }o--|| product_variant : "fk"
+    bom_item_component_variant }o--|| bom_item_detail : "fk"
+    bom_item_component_variant }o--|| bom_item_detail : "fk"
+    bom_item_colorway }o--|| bom_item_detail : "fk"
+    bom_item_colorway }o--|| bom_item_detail : "fk"
+    bom_item_component_techpack_image }o--|| bom_item_detail : "fk"
+    bom_item_component_techpack_image }o--|| bom_item_detail : "fk"
+    bom_item_detail }o--|| component : "fk"
+    bom_item_detail }o--|| product : "fk"
+    bom_item_description }o--|| product : "fk"

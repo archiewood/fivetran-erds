@@ -1,0 +1,135 @@
+erDiagram
+    person_team {
+        text id PK
+        text person_id PK
+        text name
+        text type
+    }
+    person_location {
+        text id PK
+        text person_id PK
+        text name
+        text type
+    }
+    person {
+        text id PK
+        text organization_id PK
+        text department_id
+        text department_name
+        text department_type
+        text first_name
+        text job_id
+        text last_name
+        text manager_id
+    }
+    organization_onboard_step {
+        text index PK
+        text organization_id PK
+        text name
+        text status
+    }
+    organization {
+        text id PK
+        text active_at
+        text active_user_count
+        text adp_organization_o_i_d
+        text app_time
+        jsonb approx_geo_coordinates
+        text approx_geo_type
+        text assessment_count
+        text city
+        jsonb cordinate
+        text country
+        text create_at
+        text create_id
+        text customer_id
+        text dashboard_getting_started_hidden
+        text dashboard_need_help_hidden
+        text destroy_at
+        text destroy_id
+        text destroyed_at
+        text disable_import_events
+        jsonb domain
+        text email
+        text enable_universal_sso
+        text est_employees
+        text est_revenue
+        jsonb extra_fields
+        text file_upload_limit
+        text fiscal_start
+        text founded_year
+        jsonb geo_coordinates
+        text geo_type
+        text head_count
+        text head_job_id
+        text image_path
+        text industry
+        text is_initial_data_synced
+        text low_priority_reports
+        text max_file_upload_size
+        text name
+        text onboarding
+        text phone
+        text postal
+        text self_serve_importing
+        text sequoia_org_id
+        text slug
+        text start_date
+        text state
+        text stock
+        text street_1
+        text street_2
+        text street_3
+        text time_zone
+        text tos_agreement
+        text type
+        text update_at
+        text update_id
+        text url
+        text user_count
+        text zone
+    }
+    job_location {
+        text id PK
+        text job_id PK
+    }
+    job {
+        text id PK
+        text organization_id PK
+        text person_id FK
+        text department_id
+        text title
+    }
+    export_roster {
+        text _fivetran_id PK
+        text organization_id PK
+        text comp_base
+        text comp_currency
+        text comp_equity
+        text comp_variable
+        text employment_status
+        text first_name
+        text group_band
+        text group_department
+        text group_location
+        text group_team
+        text indirect_manager
+        text last_name
+        text manager
+        text middle_name
+        text person_birth_date
+        text person_ethnicity
+        text person_gender
+        text preferred_first_name
+        text start_date
+        text title
+    }
+    person_team }o--|| person : "fk"
+    person_location }o--|| person : "fk"
+    person }o--|| organization : "fk"
+    organization_onboard_step }o--|| organization : "fk"
+    job_location }o--|| person_location : "fk"
+    job_location }o--|| job : "fk"
+    job }o--|| person : "fk"
+    job }o--|| organization : "fk"
+    export_roster }o--|| organization : "fk"

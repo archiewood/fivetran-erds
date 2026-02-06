@@ -1,0 +1,61 @@
+erDiagram
+%% Note: 
+%% Tag in the RESPONSE_TAG Table will be renamed to tags for the new connectors.
+    unsubscribed_people {
+        text person_id PK
+        text unsubscribed_at
+    }
+    person {
+        text id PK
+        timestamp created_at
+        text email
+        text name
+    }
+    response_tag {
+        text tags PK
+        text response_id PK
+    }
+    response_note {
+        text id PK
+        text response_id FK
+        timestamp created_at
+        text text
+        text user_email
+    }
+    question {
+        text id PK
+        text text
+        text type
+    }
+    response_answer {
+        text id PK
+        text question_id FK
+        text response_id FK
+        text email
+        text free_response
+        text name
+        integer scale
+    }
+    response {
+        text id PK
+        text person_id FK
+        text comment
+        timestamp created_at
+        text permalink
+        integer score
+        text survey_type
+        timestamp updated_at
+    }
+    response_answer_selection {
+        text id PK
+        text response_answer_id PK
+        text extra_text
+        text text
+    }
+    unsubscribed_people }o--|| person : "fk"
+    response_tag }o--|| response : "fk"
+    response_note }o--|| response : "fk"
+    response_answer }o--|| question : "fk"
+    response_answer }o--|| response : "fk"
+    response }o--|| person : "fk"
+    response_answer_selection }o--|| response_answer : "fk"

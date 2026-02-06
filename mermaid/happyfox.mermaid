@@ -1,0 +1,322 @@
+erDiagram
+    sla {
+        text _fivetran_id PK
+        text report_id FK
+        text achieved
+        text name
+        text target
+        text tickets_breached
+        text tickets_checked
+    }
+    custom_user_choice {
+        text index PK
+        text user_custom_id PK
+        jsonb dependant_field
+        text id
+        text text
+    }
+    user_custom {
+        text id PK
+        text depends_on_choice
+        text name
+        text orders
+        text required
+        text type
+        text visible_to_staff_only
+    }
+    custom_ticket_choice {
+        text id PK
+        text custom_ticket_id FK
+        text value_id FK
+        jsonb dependant_field
+    }
+    custom_ticket_category {
+        text index PK
+        text custom_ticket_id PK
+        text category
+        text orders
+    }
+    custom_ticket {
+        text id PK
+        text compulsory_on_move
+        text depends_on_choice
+        text required
+    }
+    staff_activity {
+        text report_id PK
+        text staff_id PK
+        text assigned
+        text completed
+        text name
+        text no_of_reply
+        text participated
+        text pending
+        text private_notes
+        text time_spent
+    }
+    report {
+        text id PK
+        text description
+        text name
+    }
+    staff_performance {
+        text report_id PK
+        text staff_id PK
+        text average_first_response_time
+        text average_no_of_responses
+        text average_no_of_responses_for_completion
+        text average_response_time
+        text average_time_spent
+        text average_time_to_ticket_complete
+        text name
+    }
+    articles_tags {
+        text tags PK
+        text article_id PK
+    }
+    article {
+        text id PK
+        jsonb attachments
+        text content
+        text contents
+        text full_url
+        text language_enabled
+        text language_id
+        text language_name
+        text language_visible
+        text last_updated_at
+        jsonb related_articles
+        text section_id
+        text section_name
+        text slug
+        text title
+        text view
+    }
+    tabular_data {
+        text id PK
+        text display_id FK
+        text report_id FK
+        text assignee
+        text due_date
+        text status_id
+        text status_name
+        text subject
+    }
+    ticket_custom_field {
+        text id PK
+        text ticket_id FK
+        text compulsory_on_complete
+        text name
+        text type
+        text value
+        text value_id
+        text visible_to_staff_only
+    }
+    ticket_subscriber {
+        text id PK
+        text ticket_id PK
+        text email
+        text first_name
+        text last_name
+    }
+    ticket_permission {
+        text permission PK
+        text ticket_id PK
+    }
+    ticket_update {
+        text update_id PK
+        text ticket_id PK
+        text assignee_change
+        text category_change
+        text custom_field_change
+        text due_date_change
+        text priority_change_new
+        text priority_change_new_name
+        text priority_change_old
+        text priority_change_old_name
+        text satisfaction_survey
+        text status_change_new
+        text status_change_new_name
+        text status_change_old
+        text status_change_old_name
+        text time_spent
+        text time_stamp
+        text to_id
+        text to_type
+    }
+    ticket_category {
+        text category PK
+        text index PK
+        text ticket_id FK
+    }
+    ticket_status {
+        text id PK
+        text ticket_id PK
+        text behavior
+        text color
+        text defaults
+        text name
+        text orders
+    }
+    ticket_priority {
+        text id PK
+        text ticket_id PK
+        text defaults
+        text name
+        text orders
+    }
+    ticket {
+        text id PK
+        text user_id FK
+        text assigned_to
+        jsonb attachment
+        text attachments_count
+        text category_description
+        text category_id
+        text category_name
+        text category_prepopulate_cc
+        text category_public
+        text category_time_spent_mandatory
+        text created_at
+        text display_id
+        text due_date
+        text first_message
+        text jira_issue_id
+        text last_modified
+        text last_staff_reply_at
+        text last_updated_at
+        text last_user_reply_at
+        jsonb merged_tickets
+        text merged_to
+        text messages_count
+        text sla_breaches
+        text source
+        text subject
+        jsonb subscribers
+        text tags
+        text time_spent
+        text unresponded
+        jsonb user_contact_groups
+        text user_created_at
+        text user_email
+        text user_name
+        text user_pending_tickets_count
+        text user_primary_phoneid
+        text user_primary_phonenumber
+        text user_primary_phonetype
+        text user_tickets_count
+        text user_updated_at
+        text visible_only_staff
+    }
+    staff_catagory {
+        text category PK
+        text staff_id PK
+    }
+    staff_permission {
+        text permission PK
+        text staff_id PK
+    }
+    staff {
+        text id PK
+        text active
+        text email
+        text is_account_admin
+        text name
+        text role_id
+        text role_name
+    }
+    customer_activity {
+        text contact_id PK
+        text report_id PK
+        text completed_ticket
+        text email
+        text name
+        text no_of_reply
+        text no_of_ticket
+        text pending_ticket
+        text time_spent
+    }
+    user_custom_field {
+        text id PK
+        text users_id PK
+    }
+    users {
+        text id PK
+        text contact_groups
+        text created_at
+        text email
+        text name
+        text pending_tickets_count
+        text primary_phone_id
+        text primary_phone_number
+        text primary_phone_type
+        text tickets_count
+        text updated_at
+    }
+    sections_article_tags {
+        text index PK
+        text section_id PK
+        text tags
+    }
+    section_article {
+        text id PK
+        text section_id PK
+        jsonb attachments
+        text contents
+        text full_url
+        text language_enabled
+        text language_id
+        text language_name
+        text language_visible
+        text last_updated_at
+        jsonb related_articles
+        text section_name
+        text slug
+        text title
+        text views
+    }
+    section_categories {
+        text id PK
+        text section_id PK
+        text description
+        text name
+        text prepopulate_cc
+        text public
+        text time_spent_mandatory
+    }
+    section {
+        text id PK
+        text description
+        text name
+        text parent_section_id
+        text parent_section_name
+    }
+    sla }o--|| report : "fk"
+    custom_user_choice }o--|| user_custom : "fk"
+    custom_ticket_choice }o--|| ticket_custom_field : "fk"
+    custom_ticket_choice }o--|| custom_ticket : "fk"
+    custom_ticket_category }o--|| custom_ticket : "fk"
+    custom_ticket }o--|| ticket_custom_field : "fk"
+    staff_activity }o--|| staff : "fk"
+    staff_activity }o--|| report : "fk"
+    staff_performance }o--|| staff : "fk"
+    staff_performance }o--|| report : "fk"
+    articles_tags }o--|| article : "fk"
+    tabular_data }o--|| ticket : "fk"
+    tabular_data }o--|| report : "fk"
+    ticket_custom_field }o--|| ticket : "fk"
+    ticket_subscriber }o--|| ticket : "fk"
+    ticket_permission }o--|| ticket : "fk"
+    ticket_update }o--|| ticket : "fk"
+    ticket_category }o--|| ticket : "fk"
+    ticket_status }o--|| ticket : "fk"
+    ticket_priority }o--|| ticket : "fk"
+    ticket }o--|| users : "fk"
+    staff_catagory }o--|| staff : "fk"
+    staff_permission }o--|| staff : "fk"
+    customer_activity }o--|| report : "fk"
+    user_custom_field }o--|| user_custom : "fk"
+    user_custom_field }o--|| users : "fk"
+    sections_article_tags }o--|| section : "fk"
+    section_article }o--|| section : "fk"
+    section_categories }o--|| section : "fk"

@@ -1,0 +1,516 @@
+erDiagram
+%% recipient_mailing_list_id can point to either
+%% CORE_MAILING_LIST.id
+%% or DIRECTORY_MAILING_LIST.id
+%% recipient_contact_id can point to either
+%% CORE_CONTACT.id
+%% or DIRECTORY_CONTACT.id
+%% recipient_sample_list_id can point to either
+%% CORE_SAMPLE.id
+%% or DIRECTORY_SAMPLE.id
+%% QUICK START DATA MODELS
+%% | Table | Description |
+%% |--------|--------------|
+%% | qualtrics__contact | Detailed view of all contacts (from both the XM Directory and Research Core contact endpoints), enhanced with response and mailing list metrics. |
+%% | qualtrics__daily_breakdown | Daily breakdown of activities related to surveys and distribution in your Qualtrics instance. |
+%% | qualtrics__directory | A directory is an address book for the entire brand and contains all of the contacts that have been added by your users. This model provides a detailed view of each directory, enhanced with metrics regarding contacts, survey distribution, and engagement. |
+%% | qualtrics__distribution | Table of each survey's distribution (method of reaching out to XM directory contacts) enhanced with survey response and status metrics. |
+%% | qualtrics__response | Breakdown of responses to individual questions (and their sub-questions). Enhanced with information regarding the survey-level response and the survey. |
+%% | qualtrics__survey | Detailed view of all surveys created, enhanced with distribution and response metrics. |
+    %% XM Directory Lite and Standard Users
+    distribution_contact {
+        text contact_id PK
+        text contact_lookup_id PK
+        text distribution_id PK
+        text response_id FK
+        text contact_frequency_rule_id
+        timestamp opened_at
+        timestamp response_completed_at
+        timestamp response_started_at
+        timestamp sent_at
+        text status
+        text survey_link
+        text survey_session_id
+    }
+    sms_distribution {
+        text id PK
+        text message_library_id FK
+        text message_message_id FK
+        text owner_id FK
+        text recipient_library_id FK
+        text recipient_transaction_batch_id FK
+        text recipient_transaction_id FK
+        text survey_id FK
+        text message_message_type
+        text name
+        text organization_id
+        text recipient_contact_id
+        text recipient_mailing_list_id
+        text recipient_sample_id
+        text request_status
+        text request_type
+        timestamp send_date
+        timestamp survey_link_expiration_date
+    }
+    %% XM Directory Users
+    frequency_rule {
+        text id PK
+        text directory_id PK
+        boolean always_send
+        integer days_between
+        text email_type
+        integer num_messages
+        text period
+        text target_type
+    }
+    %% XM Directory Lite Users
+    question {
+        text id PK
+        text survey_id PK
+        text data_export_tag
+        boolean data_visibility_hidden
+        boolean data_visibility_private
+        integer next_answer_id
+        integer next_choice_id
+        text question_description
+        text question_description_option
+        text question_text
+        text question_text_unsafe
+        text question_type
+        text selector
+        text sub_selector
+        text validation_setting_force_response
+        text validation_setting_force_response_type
+        text validation_setting_type
+    }
+    %% XM Directory Users
+    directory_contact {
+        text id PK
+        text directory_id PK
+        timestamp creation_date
+        timestamp directory_unsubscribe_date
+        boolean directory_unsubscribed
+        text email
+        text email_domain
+        text ext_ref
+        text first_name
+        text language
+        timestamp last_modified
+        text last_name
+        text phone
+        boolean write_blanks
+    }
+    %% XM Directory Lite Users
+    quota_group {
+        text id PK
+        text survey_id PK
+        text multi_match
+        text name
+        boolean public
+        boolean selected
+    }
+    %% XM Directory Users
+    contact_transaction {
+        text id PK
+        text directory_id PK
+        text contact_id FK
+        text mailing_list_id FK
+        timestamp transaction_date
+    }
+    %% XM Directory Users
+    contact_mailing_list_membership {
+        text contact_lookup_id PK
+        text contact_id FK
+        text directory_id FK
+        text mailing_list_id FK
+        text owner_id FK
+        text name
+        timestamp unsubscribe_date
+        boolean unsubscribed
+    }
+    %% XM Directory Lite and Standard Users
+    directory_sample {
+        text id PK
+        text directory_id PK
+        text creator_id FK
+        text owner_id FK
+        text category
+        jsonb creation_logic
+        text description
+        boolean frozen
+        boolean hidden
+        text name
+        text parent_group_id
+    }
+    library_survey {
+        text folder_name PK
+        text library_survey_id PK
+        text library_id PK
+        text survey_name
+    }
+    %% XM Directory Lite and Standard Users
+    sms_distribution_contact {
+        text contact_id PK
+        text contact_lookup_id PK
+        text distribution_id PK
+        text response_id FK
+        text contact_frequency_rule_id
+        timestamp opened_at
+        timestamp response_completed_at
+        timestamp response_started_at
+        timestamp sent_at
+        text status
+        text survey_link
+        text survey_session_id
+    }
+    %% XM Directory Users
+    batch_transaction_membership {
+        text batch_id PK
+        text directory_id PK
+        text transaction_id PK
+        timestamp date_added_to_batch
+    }
+    distribution {
+        text id PK
+        text message_library_id FK
+        text message_message_id FK
+        text owner_id FK
+        text recipient_library_id FK
+        text survey_link_survey_id FK
+        timestamp created_date
+        text message_message_text
+        timestamp modified_date
+        text organization_id
+        text parent_distribution_id
+        text recipient_contact_id
+        text recipient_mailing_list_id
+        text recipient_sample_id
+        text request_status
+        text request_type
+        timestamp send_date
+        timestamp survey_link_expiration_date
+        text survey_link_link_type
+    }
+    %% XM Directory Lite and Standard Users
+    directory_mailing_list {
+        text id PK
+        text directory_id PK
+        text owner_id FK
+        timestamp creation_date
+        timestamp last_modified_date
+        text name
+    }
+    user {
+        text id PK
+        timestamp account_creation_date
+        timestamp account_expiration_date
+        text account_status
+        text division_id
+        text email
+        text first_name
+        text language
+        timestamp last_login_date
+        text last_name
+        text organization_id
+        timestamp password_expiration_date
+        timestamp password_last_changed_date
+        integer response_count_auditable
+        integer response_count_deleted
+        integer response_count_generated
+        text time_zone
+        boolean unsubscribed
+        text user_type
+        text username
+    }
+    %% XM Directory Users
+    transaction_batch {
+        text id PK
+        text directory_id PK
+        timestamp creation_date
+    }
+    library_message {
+        text id PK
+        text library_id PK
+        text category
+        text description
+    }
+    %% XM Directory Lite Users
+    block_question {
+        text block_id PK
+        text question_id PK
+        text survey_id PK
+    }
+    %% Non-XM Directory Users
+    core_sample {
+        text id PK
+        text mailing_list_id PK
+        text name
+    }
+    %% Non-XM Directory Users
+    core_mailing_list {
+        text id PK
+        text library_id FK
+        text category
+        text folder
+        text name
+    }
+    %% XM Directory Lite Users
+    question_option {
+        text key PK
+        text question_id PK
+        text survey_id PK
+        text recode_value
+        text text
+    }
+    %% XM Directory Lite Users
+    question_response {
+        text _fivetran_id PK
+        text question_id FK
+        text question_option_key FK
+        text response_id FK
+        text sub_question_key FK
+        text label
+        text loop_id
+        text question
+        text sub_question_text
+        text text
+        text value
+    }
+    %% XM Directory Lite Users
+    survey {
+        text id PK
+        text owner_id FK
+        text auto_scoring_category
+        text brand_base_url
+        text brand_id
+        text bundle_short_name
+        text composition_type
+        text creator_id
+        text default_scoring_category
+        text division_id
+        boolean is_active
+        timestamp last_accessed
+        timestamp last_activated
+        timestamp last_modified
+        text project_category
+        text project_type
+        text registry_sha
+        text registry_version
+        text schema_version
+        boolean scoring_summary_after_questions
+        boolean scoring_summary_after_survey
+        text scoring_summary_category
+        text survey_name
+        text survey_status
+    }
+    ticket {
+        text id PK
+        text source_id FK
+        text survey_response_id FK
+        timestamp closed_at
+        timestamp created_at
+        jsonb data
+        jsonb first_time_entered
+        jsonb first_time_left
+        jsonb follow_up_details
+        jsonb most_recent_time_entered
+        jsonb most_recent_time_left
+        text name
+        text owner_name
+        text priority
+        text root_cause
+        text source_type
+        text status
+        text team_name
+        timestamp updated_at
+    }
+    %% XM Directory Lite Users
+    survey_response {
+        text id PK
+        text survey_id FK
+        text distribution_channel
+        text duration_in_seconds
+        timestamp end_date
+        text external_reference
+        text finished
+        text ip_address
+        text location_latitude
+        text location_longitude
+        text participant_email
+        text participant_name
+        text progress
+        text recipient_email
+        text recipient_first_name
+        text recipient_last_name
+        timestamp recorded_date
+        timestamp start_date
+        text status
+        text user_language
+    }
+    %% XM Directory Lite Users
+    sub_question {
+        text key PK
+        text question_id PK
+        text survey_id PK
+        text choice_data_export_tag
+        text text
+    }
+    %% XM Directory Users
+    frequency_rule_target {
+        text target_id PK
+        text directory_id PK
+        text rule_id PK
+    }
+    library {
+        text id PK
+        text name
+    }
+    %% XM Directory Lite Users
+    group_quota_membership {
+        text quota_group_id PK
+        text quota_id PK
+    }
+    %% XM Directory Lite Users
+    survey_version {
+        text id PK
+        text survey_id PK
+        text user_id FK
+        timestamp creation_date
+        text description
+        boolean published
+        integer version_number
+        boolean was_published
+    }
+    survey_version_publish_event {
+        timestamp date PK
+        text survey_id PK
+        text user_id PK
+        text version_id PK
+    }
+    %% XM Directory Lite Users
+    quota {
+        text id PK
+        text survey_id PK
+        integer count
+        integer count_for_undo
+        text logic_type
+        text name
+        bigint occurrences
+        boolean perform_action_on_user
+        text quota_action
+        text quota_realm
+    }
+    library_question {
+        text folder_name PK
+        text library_question_id PK
+        text library_id PK
+        text question_name
+    }
+    %% XM Directory Lite Users
+    block {
+        text id PK
+        text survey_id PK
+        text block_locking
+        text block_visibility
+        text description
+        text randomize_questions
+        text type
+    }
+    %% Non-XM Directory Users
+    core_contact {
+        text id PK
+        text mailing_list_id PK
+        text email
+        text external_data_reference
+        text first_name
+        text language
+        text last_name
+        boolean unsubscribed
+    }
+    %% XM Directory Users
+    directory {
+        text id PK
+        boolean is_default
+        text name
+    }
+    %% XM Directory Lite Users
+    survey_embedded_data {
+        text import_id PK
+        text key PK
+        text response_id PK
+        text value
+    }
+    library_block {
+        text folder_name PK
+        text library_block_id PK
+        text library_id PK
+        text block_name
+    }
+    distribution_contact }o--|| survey_response : "fk"
+    sms_distribution }o--|| user : "fk"
+    sms_distribution }o--|| survey : "fk"
+    sms_distribution }o--|| library : "fk"
+    sms_distribution }o--|| transaction_batch : "fk"
+    sms_distribution }o--|| contact_transaction : "fk"
+    sms_distribution }o--|| library_message : "fk"
+    sms_distribution }o--|| library : "fk"
+    frequency_rule }o--|| directory : "fk"
+    question }o--|| survey : "fk"
+    directory_contact }o--|| directory : "fk"
+    quota_group }o--|| survey : "fk"
+    contact_transaction }o--|| directory : "fk"
+    contact_transaction }o--|| directory_contact : "fk"
+    contact_transaction }o--|| directory_mailing_list : "fk"
+    contact_mailing_list_membership }o--|| directory_mailing_list : "fk"
+    contact_mailing_list_membership }o--|| directory_contact : "fk"
+    contact_mailing_list_membership }o--|| directory : "fk"
+    contact_mailing_list_membership }o--|| user : "fk"
+    directory_sample }o--|| directory : "fk"
+    directory_sample }o--|| user : "fk"
+    directory_sample }o--|| user : "fk"
+    library_survey }o--|| library : "fk"
+    sms_distribution_contact }o--|| survey_response : "fk"
+    batch_transaction_membership }o--|| transaction_batch : "fk"
+    batch_transaction_membership }o--|| contact_transaction : "fk"
+    batch_transaction_membership }o--|| directory : "fk"
+    distribution }o--|| user : "fk"
+    distribution }o--|| library : "fk"
+    distribution }o--|| library_message : "fk"
+    distribution }o--|| library : "fk"
+    distribution }o--|| survey : "fk"
+    directory_mailing_list }o--|| directory : "fk"
+    directory_mailing_list }o--|| user : "fk"
+    transaction_batch }o--|| directory : "fk"
+    library_message }o--|| library : "fk"
+    block_question }o--|| block : "fk"
+    block_question }o--|| survey : "fk"
+    block_question }o--|| question : "fk"
+    core_sample }o--|| core_mailing_list : "fk"
+    core_mailing_list }o--|| library : "fk"
+    question_option }o--|| survey : "fk"
+    question_option }o--|| question : "fk"
+    question_response }o--|| survey_response : "fk"
+    question_response }o--|| question : "fk"
+    question_response }o--|| sub_question : "fk"
+    question_response }o--|| question_option : "fk"
+    survey }o--|| user : "fk"
+    ticket }o--|| survey_response : "fk"
+    ticket }o--|| survey : "fk"
+    survey_response }o--|| survey : "fk"
+    sub_question }o--|| survey : "fk"
+    sub_question }o--|| question : "fk"
+    frequency_rule_target }o--|| directory : "fk"
+    frequency_rule_target }o--|| frequency_rule : "fk"
+    group_quota_membership }o--|| quota_group : "fk"
+    group_quota_membership }o--|| quota : "fk"
+    survey_version }o--|| survey : "fk"
+    survey_version }o--|| user : "fk"
+    survey_version_publish_event }o--|| survey_version : "fk"
+    survey_version_publish_event }o--|| survey : "fk"
+    survey_version_publish_event }o--|| user : "fk"
+    quota }o--|| survey : "fk"
+    library_question }o--|| library : "fk"
+    block }o--|| survey : "fk"
+    core_contact }o--|| core_mailing_list : "fk"
+    survey_embedded_data }o--|| survey_response : "fk"
+    library_block }o--|| library : "fk"

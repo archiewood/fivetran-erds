@@ -1,0 +1,130 @@
+erDiagram
+    performance_report_by_campaign {
+        text _fivetran_id PK
+        text advertiser_id FK
+        text advertiser_name
+        text attributed_add_to_cart_clicks_14_d
+        text attributed_detail_page_views_clicks_14_d
+        text attributed_purchases_14_d
+        text attributed_sales_14_d
+        text attributed_total_add_to_cart_clicks_14_d
+        text attributed_total_detail_page_views_clicks_14_d
+        text attributed_total_purchases_14_d
+        text brb_bonus_amount
+        text campaign_id
+        text click_throughs
+        text date
+        text kindle_edition_normalized_pages_read_14_d
+        text kindle_edition_normalized_pages_royalties_14_d
+        text total_attributed_sales_14_d
+        text total_units_sold_14_d
+        text units_sold_14_d
+    }
+    performance_report_by_adgroup {
+        text _fivetran_id PK
+        text ad_group_id FK
+        text advertiser_id FK
+        text campaign_id FK
+        text advertiser_name
+        text attributed_add_to_cart_clicks_14_d
+        text attributed_detail_page_views_clicks_14_d
+        text attributed_purchases_14_d
+        text attributed_sales_14_d
+        text attributed_total_add_to_cart_clicks_14_d
+        text attributed_total_detail_page_views_clicks_14_d
+        text attributed_total_purchases_14_d
+        text brb_bonus_amount
+        text click_throughs
+        text date
+        text kindle_edition_normalized_pages_read_14_d
+        text kindle_edition_normalized_pages_royalties_14_d
+        text publisher
+        text total_attributed_sales_14_d
+        text total_units_sold_14_d
+        text units_sold_14_d
+    }
+    product_report {
+        text _fivetran_id PK
+        text ad_group_id FK
+        text advertiser_id FK
+        text campaign_id FK
+        text advertiser_name
+        text attributed_add_to_cart_clicks_14_d
+        text attributed_detail_page_views_clicks_14_d
+        text attributed_new_to_brand_purchases_14_d
+        text attributed_new_to_brand_sales_14_d
+        text attributed_new_to_brand_units_sold_14_d
+        text attributed_purchases_14_d
+        text attributed_sales_14_d
+        text brand_halo_attributed_add_to_cart_clicks_14_d
+        text brand_halo_attributed_purchases_14_d
+        text brand_halo_attributed_sales_14_d
+        text brand_halo_detail_page_views_clicks_14_d
+        text brand_halo_new_to_brand_purchases_14_d
+        text brand_halo_new_to_brand_sales_14_d
+        text brand_halo_new_to_brand_units_sold_14_d
+        text brand_halo_units_sold_14_d
+        text brand_name
+        text date
+        text kindle_edition_normalized_pages_read_14_d
+        text kindle_edition_normalized_pages_royalties_14_d
+        text marketplace
+        text product_asin
+        text product_category
+        text product_conversion_type
+        text product_group
+        text product_name
+        text product_subcategory
+        text publisher
+        text units_sold_14_d
+    }
+    profile {
+        text id PK
+        text account_id
+        text account_marketplace_string_id
+        text account_name
+        text account_type
+        text account_valid_payment_method
+        text country_code
+        text currency_code
+        text daily_budget
+        text timezone
+    }
+    advertiser {
+        text id PK
+        text profile_id FK
+        text advertiser_name
+    }
+    performance_report_by_creative {
+        text _fivetran_id PK
+        text advertiser_id FK
+        text campaign_id FK
+        text ad_group_id
+        text advertiser_name
+        text attributed_add_to_cart_clicks_14_d
+        text attributed_detail_page_views_clicks_14_d
+        text attributed_purchases_14_d
+        text attributed_sales_14_d
+        text attributed_total_add_to_cart_clicks_14_d
+        text attributed_total_detail_page_views_clicks_14_d
+        text attributed_total_purchases_14_d
+        text click_throughs
+        text creative_id
+        text date
+        text kindle_edition_normalized_pages_read_14_d
+        text kindle_edition_normalized_pages_royalties_14_d
+        text publisher
+        text total_attributed_sales_14_d
+        text total_units_sold_14_d
+        text units_sold_14_d
+    }
+    performance_report_by_campaign }o--|| advertiser : "fk"
+    performance_report_by_adgroup }o--|| performance_report_by_campaign : "fk"
+    performance_report_by_adgroup }o--|| performance_report_by_creative : "fk"
+    performance_report_by_adgroup }o--|| advertiser : "fk"
+    product_report }o--|| performance_report_by_campaign : "fk"
+    product_report }o--|| performance_report_by_adgroup : "fk"
+    product_report }o--|| advertiser : "fk"
+    advertiser }o--|| profile : "fk"
+    performance_report_by_creative }o--|| performance_report_by_campaign : "fk"
+    performance_report_by_creative }o--|| advertiser : "fk"

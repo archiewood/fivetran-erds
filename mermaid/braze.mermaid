@@ -1,0 +1,913 @@
+erDiagram
+    location_event {
+        text id PK
+        text device_id FK
+        text user_id FK
+        text alt_accuracy
+        text altitude
+        text app_id
+        text event_type
+        text external_user_id
+        text latitude
+        text ll_accuracy
+        text longitude
+        timestamp time
+    }
+    session_event {
+        text id PK
+        text device_id FK
+        text user_id FK
+        text app_id
+        text duration
+        text event_type
+        text external_user_id
+        text session_id
+        text time
+        text timezone
+    }
+    push_notification_event {
+        text id PK
+        text campaign_id FK
+        timestamp campaign_updated_at FK
+        text canvas_id FK
+        text canvas_step_id FK
+        text canvas_step_message_variation_id FK
+        timestamp canvas_step_message_variation_updated_at FK
+        timestamp canvas_step_updated_at FK
+        timestamp canvas_updated_at FK
+        text canvas_variation_id FK
+        text device_id FK
+        text message_variation_id FK
+        timestamp message_variation_updated_at FK
+        text user_id FK
+        text abort_log
+        text abort_type
+        text app_group_id
+        text app_id
+        text dispatch_id
+        text event_type
+        text external_user_id
+        jsonb message_extras
+        text send_id
+        timestamp time
+        text timezone
+    }
+    segment_tag {
+        text tag PK
+        text segment_id PK
+    }
+    canvas_exit_event {
+        text id PK
+        text canvas_id FK
+        text canvas_step_id FK
+        timestamp canvas_step_updated_at FK
+        timestamp canvas_updated_at FK
+        text canvas_variation_id FK
+        text user_id FK
+        text app_group_id
+        text event_type
+        text external_user_id
+        timestamp time
+    }
+    subscription_event {
+        text id PK
+        text campaign_id FK
+        timestamp campaign_updated_at FK
+        text canvas_id FK
+        text canvas_step_id FK
+        timestamp canvas_step_updated_at FK
+        timestamp canvas_updated_at FK
+        text canvas_variation_id FK
+        text message_variation_id FK
+        timestamp message_variation_updated_at FK
+        text user_id FK
+        text app_group_id
+        text app_id
+        text channel
+        text email_address
+        text event_type
+        text external_user_id
+        text phone_number
+        text send_id
+        text state_change_source
+        text subscription_group_id
+        text subscription_status
+        timestamp time
+        text timezone
+    }
+    uninstall_event {
+        text id PK
+        text user_id FK
+        text app_id
+        text event_type
+        text external_user_id
+        timestamp time
+    }
+    campaign_conversion_event {
+        text id PK
+        text campaign_conversion_behavior_id FK
+        text campaign_id FK
+        timestamp campaign_updated_at FK
+        text user_id FK
+        text app_id
+        text conversion_behavior_index
+        text event_type
+        text external_user_id
+        text message_variation_id
+        timestamp message_variation_updated_at
+        text send_id
+        timestamp time
+        text timezone
+    }
+    campaign_enrollment_event {
+        text id PK
+        text campaign_id FK
+        timestamp campaign_updated_at FK
+        text user_id FK
+        text event_type
+        text external_user_id
+        text message_variation_id
+        timestamp message_variation_updated_at
+        text send_id
+        timestamp time
+        text timezone
+    }
+    campaign_tag {
+        text tag PK
+        text campaign_id PK
+        timestamp campaign_updated_at FK
+    }
+    canvas_experiment_step_conversion_event {
+        text id PK
+        text canvas_conversion_behavior_id FK
+        text canvas_id FK
+        text canvas_step_id FK
+        timestamp canvas_step_updated_at FK
+        timestamp canvas_updated_at FK
+        text canvas_variation_id FK
+        text user_id FK
+        text app_id
+        text event_type
+        text experiment_split_id
+        text experiment_split_name
+        text experiment_step_id
+        text external_user_id
+        timestamp time
+    }
+    user {
+        text id PK
+        text attributed_ad
+        text attributed_adgroup
+        text attributed_campaign
+        text attributed_source
+        text country
+        timestamp created_at
+        timestamp dob
+        text email
+        text email_subscribe
+        text external_id
+        text first_name
+        text gender
+        text home_city
+        text language
+        text last_name
+        text phone
+        text push_subscribe
+        text time_zone
+        text total_revenue
+    }
+    canvas_variation {
+        text canvas_id PK
+        text id PK
+        text name PK
+        timestamp canvas_updated_at FK
+    }
+    random_bucket_number_event {
+        text id PK
+        text user_id FK
+        text app_group_id
+        text event_type
+        text external_user_id
+        integer prev_random_bucket_number
+        integer random_bucket_number
+        timestamp time
+    }
+    newsfeed_impression_event {
+        text id PK
+        text device_id FK
+        text user_id FK
+        text app_id
+        text event_type
+        text external_user_id
+        timestamp time
+    }
+    attribution_event {
+        text id PK
+        text user_id FK
+        text event_type
+        text external_user_id
+        text source
+        timestamp time
+    }
+    canvas_step_seq {
+        text canvas_step_seq PK
+        text canvas_id PK
+        timestamp canvas_updated_at FK
+    }
+    banner_event {
+        text id PK
+        text campaign_id FK
+        timestamp campaign_updated_at FK
+        text canvas_id FK
+        text canvas_step_id FK
+        timestamp canvas_step_updated_at FK
+        timestamp canvas_updated_at FK
+        text canvas_variation_id FK
+        text device_id FK
+        text message_variation_id FK
+        timestamp message_variation_updated_at FK
+        text user_id FK
+        text abort_log
+        text abort_type
+        text ad_id
+        text ad_id_type
+        boolean ad_tracking_enabled
+        text app_group_id
+        text app_id
+        text banner_placement_id
+        text browser
+        text button_id
+        text carrier
+        text country
+        text device_model
+        text event_type
+        text external_user_id
+        text gender
+        text language
+        text os_version
+        text platform
+        text resolution
+        text sdk_version
+        timestamp time
+        text timezone
+    }
+    content_card_event {
+        text id PK
+        text campaign_id FK
+        timestamp campaign_updated_at FK
+        text canvas_id FK
+        text canvas_step_id FK
+        text canvas_step_message_variation_id FK
+        timestamp canvas_step_message_variation_updated_at FK
+        timestamp canvas_step_updated_at FK
+        timestamp canvas_updated_at FK
+        text canvas_variation_id FK
+        text device_id FK
+        text message_variation_id FK
+        timestamp message_variation_updated_at FK
+        text user_id FK
+        text abort_log
+        text abort_type
+        text app_group_id
+        text app_id
+        text content_card_id
+        text dispatch_id
+        text event_type
+        text external_user_id
+        jsonb message_extras
+        text send_id
+        timestamp time
+        text timezone
+    }
+    purchase_event {
+        text id PK
+        text device_id FK
+        text user_id FK
+        text app_id
+        text currency
+        text event_type
+        text external_user_id
+        text price
+        text product_id
+        text properties
+        timestamp time
+    }
+    webhook_event {
+        text id PK
+        text campaign_id FK
+        timestamp campaign_updated_at FK
+        text canvas_id FK
+        text canvas_step_id FK
+        text canvas_step_message_variation_id FK
+        timestamp canvas_step_message_variation_updated_at FK
+        timestamp canvas_step_updated_at FK
+        timestamp canvas_updated_at FK
+        text canvas_variation_id FK
+        text device_id FK
+        text message_variation_id FK
+        timestamp message_variation_updated_at FK
+        text user_id FK
+        text abort_log
+        text abort_type
+        text app_group_id
+        integer content_length
+        text dispatch_id
+        text endpoint_url
+        text event_type
+        text external_user_id
+        text host
+        integer http_status_code
+        boolean is_terminal
+        jsonb message_extras
+        text raw_response
+        integer retry_count
+        text send_id
+        timestamp time
+        text timezone
+        text url_path
+        integer webhook_duration
+        text webhook_failure_source
+    }
+    canvas_conversion_behavior {
+        text id PK
+        text canvas_id PK
+        timestamp canvas_updated_at FK
+        text conversion_behavior
+        integer conversion_behavior_index
+    }
+    segment {
+        text id PK
+        timestamp updated_at PK
+        boolean analytics_tracking_enabled
+        timestamp created_at
+        text description
+        boolean error
+        text message
+        text name
+        text text_description
+    }
+    card_tag {
+        text card_id PK
+        text tag PK
+        timestamp card_updated_at FK
+    }
+    canvas_conversion_event {
+        text id PK
+        text canvas_conversion_behavior_id FK
+        text canvas_id FK
+        timestamp canvas_updated_at FK
+        text canvas_variation_id FK
+        text user_id FK
+        text app_id
+        text canvas_step_id
+        timestamp canvas_step_updated_at
+        text event_type
+        text external_user_id
+        timestamp time
+        text timezone
+    }
+    canvas_entry_event {
+        text id PK
+        text canvas_id FK
+        text canvas_step_id FK
+        text canvas_step_updated_at FK
+        timestamp canvas_updated_at FK
+        text canvas_variation_id FK
+        text user_id FK
+        text event_type
+        text external_user_id
+        text in_control_group
+        timestamp time
+        text timezone
+    }
+    whatsapp_event {
+        text id PK
+        text campaign_id FK
+        timestamp campaign_updated_at FK
+        text canvas_id FK
+        text canvas_step_id FK
+        text canvas_step_message_variation_id FK
+        timestamp canvas_step_message_variation_updated_at FK
+        timestamp canvas_step_updated_at FK
+        timestamp canvas_updated_at FK
+        text canvas_variation_id FK
+        text device_id FK
+        text message_variation_id FK
+        timestamp message_variation_updated_at FK
+        text user_id FK
+        text abort_log
+        text abort_type
+        text action
+        text app_group_id
+        text dispatch_id
+        text event_type
+        text external_user_id
+        text from_phone_number
+        text inbound_phone_number
+        jsonb media_urls
+        text message_body
+        text message_extras
+        text provider_error_code
+        text provider_error_title
+        text quick_reply_text
+        text send_id
+        text short_url
+        text subscription_group_id
+        timestamp time
+        text timezone
+        text to_phone_number
+        text url
+        text user_agent
+        text user_phone_number
+    }
+    message_variation {
+        text id PK
+        timestamp updated_at PK
+        text campaign_id FK
+        timestamp campaign_updated_at FK
+        text canvas_step_id FK
+        timestamp canvas_step_updated_at FK
+        text alert
+        text body
+        text channel
+        jsonb extras
+        text from
+        text headers
+        text method
+        text name
+        text preheader
+        text reply_to
+        text subject
+        text title
+        text type
+        text url
+    }
+    canvas_tag {
+        text canvas_id PK
+        text tag PK
+        timestamp canvas_updated_at FK
+    }
+    card {
+        text id PK
+        timestamp updated_at PK
+        boolean archived
+        timestamp created_at
+        text description
+        boolean draft
+        timestamp end_at
+        boolean error
+        text image_url
+        text message
+        text name
+        text publish_at
+        text title
+    }
+    campaign_conversion_behavior {
+        text id PK
+        text campaign_id PK
+        timestamp campaign_updated_at FK
+        text conversion_behavior
+        text conversion_behavior_index
+        timestamp updated_at
+    }
+    canvas {
+        text id PK
+        timestamp updated_at PK
+        boolean archived
+        boolean channel_android_push
+        boolean channel_content_cards
+        boolean channel_email
+        boolean channel_in_app_message
+        boolean channel_ios_push
+        boolean channel_sms
+        boolean channel_web_push
+        boolean channel_webhook
+        timestamp created_at
+        boolean draft
+        boolean enabled
+        boolean error
+        timestamp first_entry
+        timestamp last_entry
+        text message
+        text name
+        text schedule_type
+    }
+    canvas_step {
+        text id PK
+        text canvas_id FK
+        timestamp canvas_updated_at FK
+        boolean channel_android_push
+        boolean channel_content_cards
+        boolean channel_email
+        boolean channel_in_app_message
+        boolean channel_ios_push
+        boolean channel_sms
+        boolean channel_web_push
+        boolean channel_webhook
+        text name
+    }
+    canvas_experiment_step_entry_event {
+        text id PK
+        text canvas_id FK
+        text canvas_step_id FK
+        timestamp canvas_step_updated_at FK
+        timestamp canvas_updated_at FK
+        text canvas_variation_id FK
+        text user_id FK
+        text event_type
+        text experiment_split_id
+        text experiment_split_name
+        text experiment_step_id
+        text external_user_id
+        boolean in_control_group
+        timestamp time
+    }
+    newsfeed_card_event {
+        text id PK
+        text card_id FK
+        timestamp card_updated_at FK
+        text device_id FK
+        text user_id FK
+        text abort_log
+        text abort_type
+        text app_group_id
+        text app_id
+        text browser
+        text carrier
+        text event_type
+        text external_user_id
+        text resolution
+        timestamp time
+        text timezone
+    }
+    custom_event {
+        text id PK
+        text device_id FK
+        text user_id FK
+        text app_id
+        text event_type
+        text external_user_id
+        text name
+        text properties
+        timestamp time
+        text timezone
+    }
+    segment_member {
+        text segment_id PK
+        text user_id PK
+    }
+    sms_event {
+        text id PK
+        text campaign_id FK
+        timestamp campaign_updated_at FK
+        text canvas_id FK
+        text canvas_step_id FK
+        text canvas_step_message_variation_id FK
+        timestamp canvas_step_message_variation_updated_at FK
+        timestamp canvas_step_updated_at FK
+        timestamp canvas_updated_at FK
+        text canvas_variation_id FK
+        text message_variation_id FK
+        timestamp message_variation_updated_at FK
+        text user_id FK
+        text abort_log
+        text abort_type
+        text action
+        text app_group_id
+        text dispatch_id
+        text error
+        text event_type
+        text external_user_id
+        text from_phone_number
+        text inbound_phone_number
+        boolean is_suspected_bot_click
+        text message_body
+        jsonb message_extras
+        text provider_error_code
+        text short_url
+        text subscription_group_api_id
+        text subscription_group_id
+        jsonb suspected_bot_click_reason
+        timestamp time
+        text timezone
+        text to_phone_number
+        text url
+        text user_agent
+        text user_phone_number
+    }
+    device {
+        text id PK
+        text device_model
+        text os_version
+        text platform
+    }
+    in_app_message_event {
+        text id PK
+        text campaign_id FK
+        timestamp campaign_updated_at FK
+        text canvas_id FK
+        text canvas_step_id FK
+        text canvas_step_message_variation_id FK
+        timestamp canvas_step_message_variation_updated_at FK
+        timestamp canvas_step_updated_at FK
+        timestamp canvas_updated_at FK
+        text canvas_variation_id FK
+        text device_id FK
+        text message_variation_id FK
+        timestamp message_variation_updated_at FK
+        text user_id FK
+        text abort_log
+        text abort_type
+        text ad_id
+        text ad_id_type
+        boolean ad_tracking_enabled
+        text app_group_id
+        text app_id
+        text browser
+        text button_id
+        text card_id
+        timestamp card_updated_at
+        text carrier
+        text dispatch_id
+        text event_type
+        text external_user_id
+        text resolution
+        text send_id
+        timestamp time
+        text timezone
+        text version
+    }
+    user_push_token {
+        integer index PK
+        text user_id PK
+        text app
+        text device_id
+        boolean notifications_enabled
+        text platform
+        text token
+    }
+    campaign {
+        text id PK
+        timestamp updated_at PK
+        boolean archived
+        boolean channel_android_push
+        boolean channel_content_cards
+        boolean channel_email
+        boolean channel_in_app_message
+        boolean channel_ios_push
+        boolean channel_sms
+        boolean channel_web_push
+        boolean channel_webhook
+        timestamp created_at
+        boolean draft
+        boolean enabled
+        boolean error
+        text first_sent
+        boolean is_api_campaign
+        text last_sent
+        text message
+        text name
+        text schedule_type
+    }
+    card_extra {
+        text card_id PK
+        text key PK
+        timestamp card_updated_at FK
+        boolean error
+        text message
+        text value
+    }
+    user_alias {
+        text label PK
+        text name PK
+        text user_id FK
+    }
+    email_event {
+        text id PK
+        text campaign_id FK
+        timestamp campaign_updated_at FK
+        text canvas_id FK
+        text canvas_step_id FK
+        text canvas_step_message_variation_id FK
+        timestamp canvas_step_message_variation_updated_at FK
+        timestamp canvas_step_updated_at FK
+        timestamp canvas_updated_at FK
+        text canvas_variation_id FK
+        text device_id FK
+        text message_variation_id FK
+        timestamp message_variation_updated_at FK
+        text user_id FK
+        text abort_log
+        text abort_type
+        text app_group_id
+        text bounce_reason
+        text dispatch_id
+        text email_address
+        text esp
+        text event_type
+        text external_user_id
+        text from_domain
+        text ip_pool
+        boolean is_amp
+        boolean is_drop
+        boolean is_suspected_bot_click
+        text link_alias
+        text link_id
+        text machine_open
+        jsonb message_extras
+        text send_id
+        text sending_ip
+        jsonb suspected_bot_click_reason
+        timestamp time
+        text timezone
+        text url
+        text user_agent
+    }
+    location_event }o--|| device : "fk"
+    location_event }o--|| user : "fk"
+    session_event }o--|| device : "fk"
+    session_event }o--|| user : "fk"
+    push_notification_event }o--|| campaign : "fk"
+    push_notification_event }o--|| campaign : "fk"
+    push_notification_event }o--|| canvas : "fk"
+    push_notification_event }o--|| canvas : "fk"
+    push_notification_event }o--|| canvas_step : "fk"
+    push_notification_event }o--|| canvas_step : "fk"
+    push_notification_event }o--|| canvas_variation : "fk"
+    push_notification_event }o--|| message_variation : "fk"
+    push_notification_event }o--|| message_variation : "fk"
+    push_notification_event }o--|| user : "fk"
+    push_notification_event }o--|| device : "fk"
+    push_notification_event }o--|| message_variation : "fk"
+    push_notification_event }o--|| message_variation : "fk"
+    segment_tag }o--|| segment : "fk"
+    canvas_exit_event }o--|| canvas : "fk"
+    canvas_exit_event }o--|| canvas : "fk"
+    canvas_exit_event }o--|| canvas_variation : "fk"
+    canvas_exit_event }o--|| user : "fk"
+    canvas_exit_event }o--|| canvas_step : "fk"
+    canvas_exit_event }o--|| canvas_step : "fk"
+    subscription_event }o--|| campaign : "fk"
+    subscription_event }o--|| campaign : "fk"
+    subscription_event }o--|| canvas : "fk"
+    subscription_event }o--|| canvas : "fk"
+    subscription_event }o--|| canvas_step : "fk"
+    subscription_event }o--|| canvas_step : "fk"
+    subscription_event }o--|| canvas_variation : "fk"
+    subscription_event }o--|| message_variation : "fk"
+    subscription_event }o--|| message_variation : "fk"
+    subscription_event }o--|| user : "fk"
+    uninstall_event }o--|| user : "fk"
+    campaign_conversion_event }o--|| campaign : "fk"
+    campaign_conversion_event }o--|| campaign : "fk"
+    campaign_conversion_event }o--|| user : "fk"
+    campaign_conversion_event }o--|| campaign_conversion_behavior : "fk"
+    campaign_enrollment_event }o--|| campaign : "fk"
+    campaign_enrollment_event }o--|| campaign : "fk"
+    campaign_enrollment_event }o--|| user : "fk"
+    campaign_tag }o--|| campaign : "fk"
+    campaign_tag }o--|| campaign : "fk"
+    canvas_experiment_step_conversion_event }o--|| canvas : "fk"
+    canvas_experiment_step_conversion_event }o--|| canvas : "fk"
+    canvas_experiment_step_conversion_event }o--|| canvas_variation : "fk"
+    canvas_experiment_step_conversion_event }o--|| user : "fk"
+    canvas_experiment_step_conversion_event }o--|| canvas_conversion_behavior : "fk"
+    canvas_experiment_step_conversion_event }o--|| canvas_step : "fk"
+    canvas_experiment_step_conversion_event }o--|| canvas_step : "fk"
+    canvas_variation }o--|| canvas : "fk"
+    random_bucket_number_event }o--|| user : "fk"
+    newsfeed_impression_event }o--|| device : "fk"
+    newsfeed_impression_event }o--|| user : "fk"
+    attribution_event }o--|| user : "fk"
+    canvas_step_seq }o--|| canvas : "fk"
+    canvas_step_seq }o--|| canvas : "fk"
+    banner_event }o--|| campaign : "fk"
+    banner_event }o--|| campaign : "fk"
+    banner_event }o--|| canvas : "fk"
+    banner_event }o--|| canvas : "fk"
+    banner_event }o--|| canvas_step : "fk"
+    banner_event }o--|| canvas_step : "fk"
+    banner_event }o--|| canvas_variation : "fk"
+    banner_event }o--|| message_variation : "fk"
+    banner_event }o--|| message_variation : "fk"
+    banner_event }o--|| user : "fk"
+    banner_event }o--|| device : "fk"
+    content_card_event }o--|| campaign : "fk"
+    content_card_event }o--|| campaign : "fk"
+    content_card_event }o--|| canvas : "fk"
+    content_card_event }o--|| canvas : "fk"
+    content_card_event }o--|| canvas_step : "fk"
+    content_card_event }o--|| canvas_step : "fk"
+    content_card_event }o--|| canvas_variation : "fk"
+    content_card_event }o--|| message_variation : "fk"
+    content_card_event }o--|| message_variation : "fk"
+    content_card_event }o--|| user : "fk"
+    content_card_event }o--|| device : "fk"
+    content_card_event }o--|| message_variation : "fk"
+    content_card_event }o--|| message_variation : "fk"
+    purchase_event }o--|| device : "fk"
+    purchase_event }o--|| user : "fk"
+    webhook_event }o--|| campaign : "fk"
+    webhook_event }o--|| campaign : "fk"
+    webhook_event }o--|| canvas : "fk"
+    webhook_event }o--|| canvas : "fk"
+    webhook_event }o--|| canvas_step : "fk"
+    webhook_event }o--|| canvas_step : "fk"
+    webhook_event }o--|| canvas_variation : "fk"
+    webhook_event }o--|| message_variation : "fk"
+    webhook_event }o--|| message_variation : "fk"
+    webhook_event }o--|| user : "fk"
+    webhook_event }o--|| device : "fk"
+    webhook_event }o--|| message_variation : "fk"
+    webhook_event }o--|| message_variation : "fk"
+    canvas_conversion_behavior }o--|| canvas : "fk"
+    canvas_conversion_behavior }o--|| canvas : "fk"
+    card_tag }o--|| card : "fk"
+    canvas_conversion_event }o--|| canvas : "fk"
+    canvas_conversion_event }o--|| canvas : "fk"
+    canvas_conversion_event }o--|| canvas_variation : "fk"
+    canvas_conversion_event }o--|| user : "fk"
+    canvas_conversion_event }o--|| canvas_conversion_behavior : "fk"
+    canvas_entry_event }o--|| canvas : "fk"
+    canvas_entry_event }o--|| canvas : "fk"
+    canvas_entry_event }o--|| canvas_variation : "fk"
+    canvas_entry_event }o--|| user : "fk"
+    canvas_entry_event }o--|| canvas_step : "fk"
+    canvas_entry_event }o--|| canvas_step : "fk"
+    whatsapp_event }o--|| campaign : "fk"
+    whatsapp_event }o--|| campaign : "fk"
+    whatsapp_event }o--|| canvas : "fk"
+    whatsapp_event }o--|| canvas : "fk"
+    whatsapp_event }o--|| canvas_step : "fk"
+    whatsapp_event }o--|| canvas_step : "fk"
+    whatsapp_event }o--|| canvas_variation : "fk"
+    whatsapp_event }o--|| message_variation : "fk"
+    whatsapp_event }o--|| message_variation : "fk"
+    whatsapp_event }o--|| user : "fk"
+    whatsapp_event }o--|| message_variation : "fk"
+    whatsapp_event }o--|| message_variation : "fk"
+    whatsapp_event }o--|| device : "fk"
+    message_variation }o--|| campaign : "fk"
+    message_variation }o--|| campaign : "fk"
+    message_variation }o--|| canvas_step : "fk"
+    message_variation }o--|| canvas_step : "fk"
+    canvas_tag }o--|| canvas : "fk"
+    campaign_conversion_behavior }o--|| campaign : "fk"
+    campaign_conversion_behavior }o--|| campaign : "fk"
+    canvas_step }o--|| canvas : "fk"
+    canvas_step }o--|| canvas : "fk"
+    canvas_experiment_step_entry_event }o--|| canvas : "fk"
+    canvas_experiment_step_entry_event }o--|| canvas : "fk"
+    canvas_experiment_step_entry_event }o--|| canvas_variation : "fk"
+    canvas_experiment_step_entry_event }o--|| user : "fk"
+    canvas_experiment_step_entry_event }o--|| canvas_step : "fk"
+    canvas_experiment_step_entry_event }o--|| canvas_step : "fk"
+    newsfeed_card_event }o--|| device : "fk"
+    newsfeed_card_event }o--|| user : "fk"
+    newsfeed_card_event }o--|| card : "fk"
+    newsfeed_card_event }o--|| card : "fk"
+    custom_event }o--|| device : "fk"
+    custom_event }o--|| user : "fk"
+    segment_member }o--|| user : "fk"
+    segment_member }o--|| segment : "fk"
+    sms_event }o--|| campaign : "fk"
+    sms_event }o--|| campaign : "fk"
+    sms_event }o--|| canvas : "fk"
+    sms_event }o--|| canvas : "fk"
+    sms_event }o--|| canvas_step : "fk"
+    sms_event }o--|| canvas_step : "fk"
+    sms_event }o--|| canvas_variation : "fk"
+    sms_event }o--|| message_variation : "fk"
+    sms_event }o--|| message_variation : "fk"
+    sms_event }o--|| user : "fk"
+    sms_event }o--|| message_variation : "fk"
+    sms_event }o--|| message_variation : "fk"
+    in_app_message_event }o--|| campaign : "fk"
+    in_app_message_event }o--|| campaign : "fk"
+    in_app_message_event }o--|| canvas : "fk"
+    in_app_message_event }o--|| canvas : "fk"
+    in_app_message_event }o--|| canvas_step : "fk"
+    in_app_message_event }o--|| canvas_step : "fk"
+    in_app_message_event }o--|| canvas_variation : "fk"
+    in_app_message_event }o--|| message_variation : "fk"
+    in_app_message_event }o--|| message_variation : "fk"
+    in_app_message_event }o--|| user : "fk"
+    in_app_message_event }o--|| device : "fk"
+    in_app_message_event }o--|| message_variation : "fk"
+    in_app_message_event }o--|| message_variation : "fk"
+    user_push_token }o--|| user : "fk"
+    card_extra }o--|| card : "fk"
+    user_alias }o--|| user : "fk"
+    email_event }o--|| campaign : "fk"
+    email_event }o--|| campaign : "fk"
+    email_event }o--|| canvas : "fk"
+    email_event }o--|| canvas : "fk"
+    email_event }o--|| canvas_step : "fk"
+    email_event }o--|| canvas_step : "fk"
+    email_event }o--|| canvas_variation : "fk"
+    email_event }o--|| message_variation : "fk"
+    email_event }o--|| message_variation : "fk"
+    email_event }o--|| user : "fk"
+    email_event }o--|| device : "fk"
+    email_event }o--|| message_variation : "fk"
+    email_event }o--|| message_variation : "fk"

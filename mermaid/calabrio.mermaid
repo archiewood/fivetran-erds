@@ -1,0 +1,320 @@
+erDiagram
+    rotation_day {
+        text day PK
+        text rotation_id PK
+        text day_off_template FK
+        text end_time_maximum
+        text end_time_minimum
+        text rotation_name
+        text shift_category
+        text start_time_maximum
+        text start_time_minimum
+        text work_time_maximum
+        text work_time_minimum
+    }
+    budget_group {
+        text id PK
+        text business_unit_id PK
+        text name
+    }
+    skill {
+        text id PK
+        text business_unit_id PK
+        text activity_id FK
+        text activity_id
+        text description
+        text name
+        text resolution_minute
+        text skill_type_id
+        text skill_type_name
+        text skill_type_short_name
+        text staffing_threshold_critical_understaffing
+        text staffing_threshold_overstaffing
+        text staffing_threshold_understaffing
+        text staffing_threshold_understaffing_formax
+        text time_zone_id
+    }
+    contract {
+        text id PK
+        text business_unit_id PK
+        text name
+    }
+    optional_column {
+        text id PK
+        text business_unit_id FK
+        text name
+    }
+    role_application_function_collection {
+        text id PK
+        text role_id FK
+        text description
+        text function_code
+        text function_path
+    }
+    role_available_site {
+        text id PK
+        text role_id FK
+    }
+    role_available_team {
+        text id PK
+        text role_id FK
+    }
+    role {
+        text id PK
+        text business_unit_id PK
+        text global_level_authorization
+        text name
+    }
+    workflow_control {
+        text id PK
+        text business_unit_id PK
+        text absence_request_expired_threshold
+        text name
+        text overtime_request_staffing_check_method_is_no
+    }
+    parttime_percentage {
+        text id PK
+        text business_unit_id PK
+        text name
+    }
+    employee_default {
+        text _fivetran_id PK
+        text business_unit_id FK
+        text contract_id FK
+        text part_time_percentage_id FK
+        text site_id FK
+        text team_id FK
+        text first_day_of_week
+    }
+    absence {
+        text id PK
+        text business_unit_id PK
+        text confidential
+        text in_contract_time
+        text in_paid_time
+        text in_work_time
+        text is_deleted
+        text name
+        text payroll_code
+        text priority
+        text requestable
+        text tracker_type
+    }
+    skill_of_skill_group {
+        text id PK
+        text skill_group_id PK
+        text name
+    }
+    skill_group {
+        text id PK
+        text business_unit_id PK
+        text name
+    }
+    multiplicator_definition_set {
+        text id PK
+        text business_unit_id PK
+        text multiplicator_type
+        text name
+    }
+    site {
+        text id PK
+        text business_unit_id PK
+        text name
+        text short_name
+    }
+    shift_category {
+        text id PK
+        text business_unit_id PK
+        text name
+        text short_name
+    }
+    shift_bag {
+        text id PK
+        text business_unit_id PK
+        text name
+    }
+    day_off_template {
+        text id PK
+        text business_unit_id PK
+        text name
+    }
+    business_unit {
+        text id PK
+        text name
+    }
+    schedule_change_shift {
+        text _fivetran_id PK
+        text absence_id FK
+        text activity_id FK
+        text schedule_change_date FK
+        text schedule_change_person_id FK
+        text confidential
+        text display_color_hex
+        text external_meeting_id
+        text name
+        text overtime
+        text period_endtime
+        text period_starttime
+    }
+    schedule_change {
+        text date PK
+        text person_id PK
+        text business_unit_id PK
+        text shift_category_id FK
+        text team_id FK
+        text day_off_name
+        text day_off_template_id
+        text shift_category_name
+        text shift_category_short_name
+    }
+    availability_day {
+        text availability_id PK
+        text day PK
+        text business_unit_id PK
+        text availability_name
+        text end_time_maximum
+        text is_available
+        text start_time_minimum
+        text work_time_maximum
+        text work_time_minimum
+    }
+    contract_schedule {
+        text id PK
+        text business_unit_id PK
+        text name
+    }
+    people_skill {
+        text people_id PK
+        text skill_id PK
+        text active
+        text proficiency
+    }
+    people_role {
+        text people_id PK
+        text role_id PK
+        text business_unit_id FK
+    }
+    people {
+        text id PK
+        text budget_group_id FK
+        text business_unit_id FK
+        text contract_id FK
+        text contract_schedule_id FK
+        text part_time_percentage_id FK
+        text shift_bag_id FK
+        text site_id FK
+        text team_id FK
+        text workflow_control_set_id FK
+        text display_name
+        text email
+        text employment_number
+        text employment_start_date
+        text first_day_of_week
+        text first_name
+        text identities
+        text last_name
+        text note
+        text optional_columns
+        text part_time_percentage_id
+        text termination_date
+        text time_zone_id
+    }
+    team {
+        text id PK
+        text business_unit_id PK
+        text site_id FK
+        text name
+    }
+    forecast_skill_detail {
+        text _fivetran_id PK
+        text business_unit_id FK
+        text agent
+        text average_after_task_time_second
+        text average_task_time_second
+        text campaign_after_task_time_percent
+        text campaign_task_time_percent
+        text campaign_tasks_percent
+        text forecast_id
+        text period_end_time
+        text period_start_time
+        text task
+    }
+    scenario {
+        text id PK
+        text business_unit_id PK
+        text default_scenario
+        text description
+        text enable_reporting
+        text restricted
+    }
+    activity {
+        text id PK
+        text business_unit_id PK
+        text allow_overwrite
+        text in_contract_time
+        text in_paid_time
+        text in_ready_time
+        text in_work_time
+        text is_deleted
+        text name
+        text payroll_code
+        text report_level_detail
+        text requires_seat
+        text requires_skill
+    }
+    rotation_day }o--|| day_off_template : "fk"
+    budget_group }o--|| business_unit : "fk"
+    skill }o--|| activity : "fk"
+    skill }o--|| business_unit : "fk"
+    contract }o--|| business_unit : "fk"
+    optional_column }o--|| business_unit : "fk"
+    role_application_function_collection }o--|| role : "fk"
+    role_available_site }o--|| site : "fk"
+    role_available_site }o--|| role : "fk"
+    role_available_team }o--|| team : "fk"
+    role_available_team }o--|| role : "fk"
+    role }o--|| business_unit : "fk"
+    workflow_control }o--|| business_unit : "fk"
+    parttime_percentage }o--|| business_unit : "fk"
+    employee_default }o--|| site : "fk"
+    employee_default }o--|| team : "fk"
+    employee_default }o--|| contract : "fk"
+    employee_default }o--|| parttime_percentage : "fk"
+    employee_default }o--|| business_unit : "fk"
+    absence }o--|| business_unit : "fk"
+    skill_of_skill_group }o--|| skill : "fk"
+    skill_of_skill_group }o--|| skill_group : "fk"
+    skill_group }o--|| business_unit : "fk"
+    multiplicator_definition_set }o--|| business_unit : "fk"
+    site }o--|| business_unit : "fk"
+    shift_category }o--|| business_unit : "fk"
+    shift_bag }o--|| business_unit : "fk"
+    day_off_template }o--|| business_unit : "fk"
+    schedule_change_shift }o--|| activity : "fk"
+    schedule_change_shift }o--|| absence : "fk"
+    schedule_change_shift }o--|| schedule_change : "fk"
+    schedule_change_shift }o--|| schedule_change : "fk"
+    schedule_change }o--|| shift_category : "fk"
+    schedule_change }o--|| team : "fk"
+    schedule_change }o--|| business_unit : "fk"
+    availability_day }o--|| business_unit : "fk"
+    contract_schedule }o--|| business_unit : "fk"
+    people_skill }o--|| skill : "fk"
+    people_skill }o--|| people : "fk"
+    people_role }o--|| role : "fk"
+    people_role }o--|| business_unit : "fk"
+    people_role }o--|| people : "fk"
+    people }o--|| contract_schedule : "fk"
+    people }o--|| budget_group : "fk"
+    people }o--|| shift_bag : "fk"
+    people }o--|| team : "fk"
+    people }o--|| business_unit : "fk"
+    people }o--|| contract : "fk"
+    people }o--|| workflow_control : "fk"
+    people }o--|| site : "fk"
+    people }o--|| parttime_percentage : "fk"
+    team }o--|| site : "fk"
+    team }o--|| business_unit : "fk"
+    forecast_skill_detail }o--|| business_unit : "fk"
+    scenario }o--|| business_unit : "fk"
+    activity }o--|| business_unit : "fk"

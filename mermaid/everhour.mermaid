@@ -1,0 +1,333 @@
+erDiagram
+    project_user {
+        text project_id PK
+        text user_id PK
+    }
+    project {
+        text id PK
+        text client_id FK
+        jsonb attributes
+        text billing_fee
+        text billing_type
+        text can_sync_tasks
+        text change_protected
+        text connection_status
+        text created_at
+        text editable
+        text estimate_type
+        text favorite
+        text foreigns
+        text has_webhook
+        text is_template
+        text name
+        text platform
+        text privacy
+        text project_budget
+        text project_budget_applied_from
+        text project_budget_disallow_over_budget
+        text project_budget_exclude_expenses
+        text project_budget_exclude_unbillable_time
+        text project_budget_expense_progress
+        text project_budget_period
+        text project_budget_progress
+        text project_budget_show_to_users
+        text project_budget_threshold
+        text project_budget_time_progress
+        text project_budget_type
+        text rate
+        text rate_type
+        text status
+        text type
+        jsonb user_cost_overrides
+        jsonb user_rate_overrides
+        text workspace_id
+        text workspace_name
+    }
+    client_project {
+        text client_id PK
+        text project_id PK
+    }
+    client_email {
+        text email_id PK
+        text client_id PK
+    }
+    client {
+        text id PK
+        text budget
+        text budget_applied_from
+        text budget_disallow_over_budget
+        text budget_exclude_expenses
+        text budget_exclude_unbillable_time
+        text budget_expense_progress
+        text budget_month_start_date
+        text budget_period
+        text budget_progress
+        text budget_show_to_users
+        text budget_threshold
+        text budget_time_progress
+        text budget_type
+        text business_details
+        text created_at
+        text default_discount
+        text default_tax_rate
+        text enable_resource_planner
+        jsonb excluded_labels
+        text favorite
+        text invoice_public_notes
+        text line_item_mask
+        text name
+        text payment_due_days
+        text reference
+        text status
+    }
+    allocation {
+        text id PK
+        text time_off_type_id FK
+        text user_id FK
+        text accrual_frequency
+        text completed
+        text contract_start_date
+        text created_at
+        text created_by
+        text day
+        text day_allocated
+        text day_carried
+        text day_used
+        text end_date
+        text note
+        text restrict_over_allocation
+        text start_date
+    }
+    time_off_type {
+        text id PK
+        text color
+        text description
+        text name
+        text paid
+    }
+    assignment {
+        text id PK
+        text project_id FK
+        text user_id FK
+        text days
+        text end_date
+        text start_date
+        text time
+        text type
+    }
+    timecard_history {
+        text index PK
+        text user_id PK
+        text action
+        text previous_time
+        text time
+        text trigger
+    }
+    timecard {
+        text user_id PK
+        text break_time
+        text clock_in
+        text clock_out
+        text work_time
+    }
+    expense_attachment {
+        text id PK
+        text expense_id FK
+        text name
+        text token
+    }
+    expense {
+        text id PK
+        text category_id FK
+        text project_id FK
+        text amount
+        text billable
+        text date
+        text details
+        text quantity
+        text users
+    }
+    user_cost_history {
+        text id PK
+        text user_id PK
+        text cost
+        text created_at
+    }
+    users {
+        text id PK
+        text access_edit_all
+        text access_edit_mine
+        text access_view_all
+        text access_view_mine
+        text allow_exceed_estimate
+        text allow_future_time
+        text allow_manage_estimates
+        text allow_manual_time_input
+        text allow_time_without_estimate
+        text allow_time_without_task
+        text avatar_url
+        text capacity
+        text created_at
+        text email
+        text enable_resource_planner
+        jsonb groups
+        text headline
+        text is_email_verified
+        text name
+        text rate
+        text role
+        text status
+        text type
+    }
+    team_timer {
+        text started_at PK
+        text user_id PK
+        text task_id FK
+        text duration
+        text status
+        text today
+        text user_date
+    }
+    time_record_history {
+        text id PK
+        text time_record_id FK
+        text action
+        text created_at
+        text created_by
+        text previous_time
+        text time
+    }
+    time_record {
+        text id PK
+        text task_id FK
+        text user_id FK
+        text comment
+        text date
+        text is_invoiced
+        text is_locked
+        text time
+    }
+    task_label {
+        text label PK
+        text task_id PK
+    }
+    task_project {
+        text project_id PK
+        text task_id PK
+    }
+    task {
+        text id PK
+        text created_by_user_id FK
+        text project_section_id FK
+        text attributes_client
+        text attributes_priority
+        text completed
+        text created_at
+        text due_at
+        text estimate_type
+        jsonb estimate_users
+        text metrics_efforts
+        text metrics_expenses
+        text name
+        text position
+        text status
+        text type
+    }
+    invoice_project {
+        text invoice_id PK
+        text project_id PK
+    }
+    invoice_item {
+        text id PK
+        text invoice_id FK
+        text billed_time
+        text created_at
+        text custom
+        text list_amount
+        text name
+        text net_amount
+        text position
+        text taxable
+        text total_amount
+    }
+    invoice {
+        text id PK
+        text client_id FK
+        text user_id FK
+        text created_at
+        text date_from
+        text date_till
+        text discount_amount
+        text discount_rate
+        text due_date
+        text expense_mask
+        text include_expenses
+        text include_time
+        text is_sent
+        text issue_date
+        text limit_date_from
+        text limit_date_till
+        text list_amount
+        text net_amount
+        text payment_amount
+        text public_id
+        text public_notes
+        text show_row_numbers
+        text status
+        text tax_amount
+        text tax_rate
+        text template
+        text time_mask
+        text total_amount
+        text total_hours
+        text total_time
+        text valid
+        text version
+    }
+    project_section {
+        text id PK
+        text project_id FK
+        text name
+        text position
+        text status
+    }
+    category {
+        text id PK
+        text color
+        text name
+        text unit_based
+        text unit_name
+        text unit_price
+    }
+    project_user }o--|| users : "fk"
+    project_user }o--|| project : "fk"
+    project }o--|| client : "fk"
+    client_project }o--|| project : "fk"
+    client_project }o--|| client : "fk"
+    client_email }o--|| client : "fk"
+    allocation }o--|| users : "fk"
+    allocation }o--|| time_off_type : "fk"
+    assignment }o--|| project : "fk"
+    assignment }o--|| users : "fk"
+    timecard_history }o--|| timecard : "fk"
+    timecard }o--|| users : "fk"
+    expense_attachment }o--|| expense : "fk"
+    expense }o--|| category : "fk"
+    expense }o--|| project : "fk"
+    user_cost_history }o--|| users : "fk"
+    team_timer }o--|| task : "fk"
+    team_timer }o--|| users : "fk"
+    time_record_history }o--|| time_record : "fk"
+    time_record }o--|| users : "fk"
+    time_record }o--|| task : "fk"
+    task_label }o--|| task : "fk"
+    task_project }o--|| project : "fk"
+    task_project }o--|| task : "fk"
+    task }o--|| users : "fk"
+    task }o--|| project_section : "fk"
+    invoice_project }o--|| project : "fk"
+    invoice_project }o--|| invoice : "fk"
+    invoice_item }o--|| invoice : "fk"
+    invoice }o--|| users : "fk"
+    invoice }o--|| client : "fk"
+    project_section }o--|| project : "fk"

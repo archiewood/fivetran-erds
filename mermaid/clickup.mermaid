@@ -1,0 +1,632 @@
+erDiagram
+    list {
+        text id PK
+        text assignee FK
+        text folder_id FK
+        text space_id FK
+        text archived
+        text content
+        text due_date
+        text folder_access
+        text folder_hidden
+        text name
+        text order_index
+        text override_statuses
+        text permission_level
+        text priority
+        text priority_color
+        text space_access
+        text start_date
+        text status
+        text status_color
+        text status_hide_label
+        text task_count
+    }
+    accessible_custom_field {
+        text id PK
+        text list_id PK
+        text date_created
+        text hide_from_guests
+        text name
+        text type
+        jsonb type_config
+    }
+    space_priority {
+        text id PK
+        text space_id FK
+        text color
+        text order_index
+        text priority
+    }
+    space_status {
+        text id PK
+        text space_id FK
+        text color
+        text order_index
+        text status
+        text type
+    }
+    space {
+        text id PK
+        text team_id FK
+        text admin_can_manage
+        text archived
+        text avatar
+        text check_unresolved_checklists
+        text check_unresolved_comments
+        text check_unresolved_enabled
+        text check_unresolved_subtasks
+        text checklists_enabled
+        text color
+        text custom_fields_enabled
+        text custom_items_enabled
+        text dependency_warning_enabled
+        text due_date_enabled
+        text due_date_start_date
+        text milestones_enabled
+        text multiple_assignees
+        text multiple_assignees_enabled
+        text name
+        text points_enabled
+        text portfolios_enabled
+        text priorities_enabled
+        text private
+        text ramp_dependencies_enabled
+        text remap_closed_due_date
+        text remap_due_date
+        text sprints_enabled
+        text tags_enabled
+        text time_estimates_enabled
+        text time_tracking_enabled
+        text time_tracking_harvest
+        text time_tracking_rollup
+        text zoom_enabled
+    }
+    view_column_field {
+        text id PK
+        text view_id PK
+        text display
+        text field
+        text hidden
+        text name
+        text width
+    }
+    view {
+        text id PK
+        text creator_id FK
+        text team_id FK
+        text date_created
+        text date_protected
+        text divide_by_subcategory
+        jsonb divide_collapsed
+        text divide_dir
+        text divide_field
+        jsonb filters_fields
+        text filters_op
+        text filters_search
+        text filters_search_custom_fields
+        text filters_search_description
+        text filters_search_name
+        text filters_show_closed
+        text grouping_collapsed
+        text grouping_dir
+        text grouping_field
+        text grouping_ignores
+        text name
+        text order_index
+        text parent_id
+        text parent_type
+        text protected
+        text protected_by
+        text protected_note
+        text settings_auto_wrap
+        text settings_collapse_empty_columns
+        text settings_me_checklists
+        text settings_me_comments
+        text settings_me_subtasks
+        text settings_show_assignees
+        text settings_show_closed_subtasks
+        text settings_show_empty_statuses
+        text settings_show_images
+        text settings_show_subtask_parent_names
+        text settings_show_subtasks
+        text settings_show_task_locations
+        text settings_show_timer
+        text settings_time_in_status_view
+        jsonb sorting_fields
+        text team_sidebar_assigned_comments
+        jsonb team_sidebar_assignees
+        jsonb team_sidebar_group_assignees
+        text team_sidebar_unassigned_tasks
+        text type
+        text visibility
+    }
+    member {
+        text id PK
+        text display_profile
+        text top_tier_user
+        text type
+        text verified_ambassador
+        text verified_consultant
+        text viewed_top_tier_user
+        text viewed_verified_ambassador
+        text viewed_verified_consultant
+    }
+    goal_group_member {
+        text goal_id PK
+        text id PK
+    }
+    goal_member {
+        text goal_id PK
+        text id PK
+        text is_creator
+    }
+    goal_owner {
+        text goal_id PK
+        text id PK
+    }
+    goal {
+        text id PK
+        text creator_id FK
+        text folder_id FK
+        text owner_id FK
+        text team_id FK
+        text archived
+        text color
+        text date_created
+        text date_updated
+        text description
+        text due_date
+        text editor_token
+        text key_result_count
+        text last_update
+        text multiple_owners
+        text name
+        text percent_completed
+        text pinned
+        text pretty_id
+        text private
+        text start_date
+        text ydoc
+    }
+    goal_folder_member {
+        text goal_folder_id PK
+        text id PK
+        text added_by FK
+        text date_added
+        text permission_level
+    }
+    goal_group_member_in_goal_folder {
+        text index PK
+        text goal_id PK
+        text id FK
+    }
+    goal_members_in_goal_folder {
+        text goal_id PK
+        text id PK
+        text is_creator
+        text permission_level
+    }
+    goal_owners_in_goal_folder {
+        text goal_id PK
+        text id PK
+    }
+    goals_in_goal_folder {
+        text id PK
+        text creator_id FK
+        text folder_id FK
+        text owner_id FK
+        text team_id FK
+        text archived
+        text color
+        text date_created
+        text date_updated
+        text description
+        text due_date
+        text editor_token
+        text key_result_count
+        text last_update
+        text multiple_owners
+        text name
+        text percent_completed
+        text pinned
+        text pretty_id
+        text private
+        text start_date
+        text ydoc
+    }
+    goal_folder {
+        text id PK
+        text creator_id FK
+        text team_id FK
+        text date_created
+        text goal_count
+        text name
+        text private
+    }
+    custom_item {
+        text id PK
+        text team_id PK
+        text description
+        text name
+        text name_plural
+    }
+    sub_task_assignee {
+        text sub_task_id PK
+        text id PK
+    }
+    sub_task {
+        text id PK
+        text creator_id FK
+        text custom_item_id FK
+        text folder_id FK
+        text list_id FK
+        text parent FK
+        text space_id FK
+        text team_id FK
+        text archived
+        jsonb custom_fields
+        text custom_id
+        text date_closed
+        text date_created
+        text date_done
+        text date_updated
+        jsonb dependency
+        text description
+        text due_date
+        jsonb linked_task
+        text name
+        text order_index
+        text point
+        text priority
+        text priority_color
+        text priority_id
+        text priority_order_index
+        text project_id
+        text start_date
+        text status_color
+        text status_order_index
+        text status_status
+        text status_type
+        jsonb tags
+        text text_content
+        text time_estimate
+        text time_spent
+        text url
+        jsonb watcher
+    }
+    users {
+        text id PK
+        text color
+        text email
+        text global_font_support
+        text initials
+        text profile_picture
+        text timezone
+        text username
+        text week_start_day
+    }
+    folder_list_status {
+        text id PK
+        text folder_list_id PK
+        text color
+        text order_index
+        text status
+        text type
+    }
+    folder_list {
+        text id PK
+        text folder_id FK
+    }
+    folder {
+        text id PK
+        text space_id FK
+        text archived
+        text hidden
+        text name
+        text order_index
+        text override_statuses
+        text permission_level
+        text space_access
+        jsonb statuses
+        text task_count
+    }
+    task_assignee {
+        text id PK
+        text task_id PK
+    }
+    task_dependency {
+        text depends_on PK
+        text task_id PK
+        text user_id FK
+        text date_created
+        text type
+        text workspace_id
+    }
+    task_watcher {
+        text id PK
+        text task_id PK
+    }
+    linked_task {
+        text id PK
+        text task_id PK
+        text user_id FK
+        text date_created
+        text workspace_id
+    }
+    task_checklist_item {
+        text id PK
+        text task_checklist_id PK
+        text task_id PK
+        text assignee_id FK
+        jsonb children
+        text date_created
+        text group_assignee
+        text name
+        text order_index
+        text parent
+        text resolved
+    }
+    task_checklist {
+        text id PK
+        text task_id PK
+        text creator
+        text date_created
+        text name
+        text order_index
+        text resolved
+        text unresolved
+    }
+    task_tag {
+        text _fivetran_id PK
+        text task_id FK
+        text creator
+        text name
+        text tag_bg
+        text tag_fg
+    }
+    task {
+        text id PK
+        text creator_id FK
+        text custom_item_id FK
+        text folder_id FK
+        text list_id FK
+        text space_id FK
+        text team_id FK
+        text archived
+        jsonb custom_fields
+        text custom_id
+        text date_closed
+        text date_created
+        text date_done
+        text date_updated
+        text description
+        text due_date
+        text name
+        text order_index
+        text point
+        text priority
+        text priority_color
+        text priority_id
+        text priority_order_index
+        text project_id
+        text start_date
+        text status_color
+        text status_order_index
+        text status_status
+        text status_type
+        text text_content
+        text time_estimate
+        text time_spent
+        text url
+    }
+    role_member {
+        text member_id PK
+        text role_id PK
+    }
+    role {
+        text id PK
+        text team_id FK
+        text date_created
+        text inherited_role
+        text name
+    }
+    space_tag {
+        text _fivetran_id PK
+        text creator FK
+        text space_id FK
+        text name
+        text tag_bg
+        text tag_fg
+    }
+    task_template {
+        text id PK
+        text team_id FK
+        text name
+    }
+    comment {
+        text id PK
+        text assigned_by_id FK
+        text assignee_id FK
+        text list_id FK
+        text task_id FK
+        text user_id FK
+        text view_id FK
+        text comment_text
+        text date
+        text reactions
+        text resolved
+        text type
+    }
+    view_task {
+        text task_id PK
+        text view_id PK
+    }
+    group_member {
+        text group_id PK
+        text user_id PK
+    }
+    groups {
+        text id PK
+        text team_id FK
+        text user_id FK
+        text avatar_attachment_id
+        text avatar_color
+        text avatar_icon
+        text avatar_source
+        text date_created
+        text handle
+        text initials
+        text name
+    }
+    team_member {
+        text user_id PK
+        text team_id PK
+        text invited_by_id FK
+        text color
+        text custom_role
+        text date_invited
+        text date_joined
+        text email
+        text initials
+        text last_active
+        text profile_picture
+        text role
+        text username
+    }
+    team {
+        text id PK
+        text avatar
+        text color
+        text name
+    }
+    time_entry_task_tag {
+        text _fivetran_id PK
+        text creator FK
+        text task_id FK
+        text name
+        text tag_bg
+        text tag_fg
+    }
+    time_entry {
+        text id PK
+        text folder_id FK
+        text list_id FK
+        text space_id FK
+        text task_id FK
+        text team_id FK
+        text user_id FK
+        text at_time
+        text billable
+        text description
+        text duration
+        text end_time
+        text source
+        text start_time
+        jsonb tags
+        text task_custom_id
+        text task_custom_type
+        text task_name
+        text task_status
+        text task_status_color
+        text task_status_order_index
+        text task_status_type
+        text task_url
+        text w_id
+    }
+    list }o--|| folder : "fk"
+    list }o--|| space : "fk"
+    list }o--|| team_member : "fk"
+    accessible_custom_field }o--|| list : "fk"
+    space_priority }o--|| space : "fk"
+    space_status }o--|| space : "fk"
+    space }o--|| team : "fk"
+    view_column_field }o--|| view : "fk"
+    view }o--|| team_member : "fk"
+    view }o--|| team : "fk"
+    member }o--|| team_member : "fk"
+    goal_group_member }o--|| group_member : "fk"
+    goal_group_member }o--|| goal : "fk"
+    goal_member }o--|| team_member : "fk"
+    goal_member }o--|| goal : "fk"
+    goal_owner }o--|| team_member : "fk"
+    goal_owner }o--|| goal : "fk"
+    goal }o--|| folder : "fk"
+    goal }o--|| team : "fk"
+    goal }o--|| team_member : "fk"
+    goal }o--|| team_member : "fk"
+    goal_folder_member }o--|| team_member : "fk"
+    goal_folder_member }o--|| team_member : "fk"
+    goal_folder_member }o--|| goal_folder : "fk"
+    goal_group_member_in_goal_folder }o--|| group_member : "fk"
+    goal_group_member_in_goal_folder }o--|| goals_in_goal_folder : "fk"
+    goal_members_in_goal_folder }o--|| team_member : "fk"
+    goal_members_in_goal_folder }o--|| goals_in_goal_folder : "fk"
+    goal_owners_in_goal_folder }o--|| team_member : "fk"
+    goal_owners_in_goal_folder }o--|| goals_in_goal_folder : "fk"
+    goals_in_goal_folder }o--|| folder : "fk"
+    goals_in_goal_folder }o--|| team : "fk"
+    goals_in_goal_folder }o--|| team_member : "fk"
+    goals_in_goal_folder }o--|| team_member : "fk"
+    goal_folder }o--|| team : "fk"
+    goal_folder }o--|| team_member : "fk"
+    custom_item }o--|| team : "fk"
+    sub_task_assignee }o--|| team_member : "fk"
+    sub_task }o--|| custom_item : "fk"
+    sub_task }o--|| folder : "fk"
+    sub_task }o--|| list : "fk"
+    sub_task }o--|| team : "fk"
+    sub_task }o--|| sub_task : "fk"
+    sub_task }o--|| space : "fk"
+    sub_task }o--|| team_member : "fk"
+    folder_list_status }o--|| folder_list : "fk"
+    folder_list }o--|| list : "fk"
+    folder_list }o--|| folder : "fk"
+    folder }o--|| space : "fk"
+    task_assignee }o--|| team_member : "fk"
+    task_assignee }o--|| task : "fk"
+    task_dependency }o--|| task : "fk"
+    task_dependency }o--|| task : "fk"
+    task_dependency }o--|| team_member : "fk"
+    task_watcher }o--|| team_member : "fk"
+    task_watcher }o--|| task : "fk"
+    linked_task }o--|| team_member : "fk"
+    task_checklist_item }o--|| team_member : "fk"
+    task_checklist_item }o--|| task_checklist : "fk"
+    task_checklist_item }o--|| task_checklist : "fk"
+    task_checklist }o--|| task : "fk"
+    task_tag }o--|| task : "fk"
+    task }o--|| custom_item : "fk"
+    task }o--|| folder : "fk"
+    task }o--|| list : "fk"
+    task }o--|| team : "fk"
+    task }o--|| space : "fk"
+    task }o--|| team_member : "fk"
+    role_member }o--|| team_member : "fk"
+    role_member }o--|| role : "fk"
+    role }o--|| team : "fk"
+    space_tag }o--|| team_member : "fk"
+    space_tag }o--|| space : "fk"
+    task_template }o--|| team : "fk"
+    comment }o--|| team_member : "fk"
+    comment }o--|| list : "fk"
+    comment }o--|| task : "fk"
+    comment }o--|| view : "fk"
+    comment }o--|| team_member : "fk"
+    comment }o--|| team_member : "fk"
+    view_task }o--|| sub_task : "fk"
+    view_task }o--|| view : "fk"
+    group_member }o--|| team_member : "fk"
+    group_member }o--|| groups : "fk"
+    groups }o--|| team : "fk"
+    groups }o--|| team_member : "fk"
+    team_member }o--|| team_member : "fk"
+    team_member }o--|| team : "fk"
+    time_entry_task_tag }o--|| team_member : "fk"
+    time_entry_task_tag }o--|| task : "fk"
+    time_entry }o--|| team_member : "fk"
+    time_entry }o--|| list : "fk"
+    time_entry }o--|| folder : "fk"
+    time_entry }o--|| space : "fk"
+    time_entry }o--|| task : "fk"
+    time_entry }o--|| team : "fk"

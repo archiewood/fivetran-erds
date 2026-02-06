@@ -1,0 +1,134 @@
+erDiagram
+    knowledge_base_product {
+        text knowledge_base_id PK
+        text product_id PK
+    }
+    knowledge_base {
+        text id PK
+        text access_level
+        text answer
+        text comment
+        text content
+        text created_at
+        text is_favorite
+        text modified_at
+        text page_number
+        text question_number
+        text source
+        jsonb subtype
+    }
+    topic_update {
+        text id PK
+        text topic_id PK
+        text created_at
+        text message
+        text sp_audience
+        text updated_at
+    }
+    topic {
+        text id PK
+        text category
+        text created_at
+        text hidden
+        text is_pinned
+        text subject
+        text updated_at
+    }
+    organization {
+        text id PK
+        text name
+        text plan
+        text primary_domain
+        text sp_custom_domain
+    }
+    account_domain {
+        text index PK
+        text account_id PK
+        text domain
+    }
+    account {
+        text id PK
+        text nda_provider FK
+        text access_expires_at
+        text created_at
+        text description
+        text is_nda_done
+        text name
+        text nda_recipient_email
+        text nda_recipient_first_name
+        text nda_recipient_last_name
+        text num_member
+        text permission_profile_id
+        text review_status
+        text sfdc_account_id
+        text source
+    }
+    access_request {
+        text id PK
+        text product_id FK
+        text auto_approve_decline_reason
+        text company_name
+        text country
+        text created_at
+        text custom_checkbox_checked
+        text email
+        text first_name
+        text item_kind
+        text item_uid
+        text last_name
+        text relationship
+        text status
+    }
+    portal_product_card {
+        text index PK
+        text portal_product_id PK
+        text card_type
+        text title
+    }
+    portal_product_data {
+        text id PK
+        text portal_product_id PK
+        text card_type
+        text choice
+        text explanation
+        text has_file
+        text href
+        jsonb list_entry
+        text maturity
+        text recurrence
+        text title
+    }
+    product {
+        text id PK
+        text name
+        text show
+    }
+    organization_permission_profile {
+        text id PK
+        text _fivetran_id PK
+        text description
+        text name
+    }
+    organization_nda_provider {
+        text provider PK
+        text _fivetran_id PK
+        text label
+        text member_required_for_nda
+    }
+    organization_setting {
+        text _fivetran_id PK
+        text default_expiration
+        text default_nda_provider
+        text member_required_for_default_nda
+        text permission_default_profile_id
+    }
+    knowledge_base_product }o--|| product : "fk"
+    knowledge_base_product }o--|| knowledge_base : "fk"
+    topic_update }o--|| topic : "fk"
+    account_domain }o--|| account : "fk"
+    account }o--|| organization_nda_provider : "fk"
+    access_request }o--|| product : "fk"
+    portal_product_card }o--|| product : "fk"
+    portal_product_data }o--|| product : "fk"
+    organization_permission_profile }o--|| organization_setting : "fk"
+    organization_nda_provider }o--|| organization_setting : "fk"

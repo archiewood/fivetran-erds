@@ -1,0 +1,898 @@
+erDiagram
+    media_library_folder {
+        text id PK
+        text parent_id FK
+        text created_at
+        text name
+        timestamp updated_at
+    }
+    product_selection {
+        text id PK
+        text brand_id FK
+        text contact_address_id FK
+        text contact_id FK
+        text created_at
+        text fulfilled_at
+        text is_fulfilled
+        jsonb order_errors
+        text order_status
+        text order_status_updated_at
+        text proposal_id
+        timestamp updated_at
+    }
+    payable {
+        text id PK
+        text contact_id FK
+        text payment_id FK
+        text amount
+        jsonb conversion
+        text conversion_rate
+        text created_at
+        text currency
+        text due_at
+        text is_verified
+        text is_voided
+        text payment_status
+        text status
+        text updated_at
+        text usd_amount
+    }
+    activation_brief {
+        text id PK
+        text activation_id FK
+        text brand_id FK
+        text contact_id FK
+        text member_id FK
+        text accepted_at
+        text accepted_by
+        text account_id
+        text created_at
+        text declined_at
+        text declined_by
+        text previous_status
+        text reviewed_at
+        text status
+        text type
+        text updated_at
+    }
+    contact_custom_property {
+        text contact_id PK
+        text id PK
+        text property_id FK
+        text created_at
+        text date_value
+        jsonb json_value
+        text name
+        text number_value
+        text string_value
+        text text_value
+        text updated_at
+    }
+    contact_tag {
+        text id PK
+        text contact_id PK
+        text name
+    }
+    contact {
+        text id PK
+        text owner_id FK
+        text payment_account_id FK
+        text primary_address_id FK
+        text primary_contact_id FK
+        text added_manually
+        text application_completed_at
+        text application_page_id
+        text birthday
+        text company
+        text created_at
+        text email
+        text first_name
+        text gender
+        text is_archived
+        text is_declined
+        text joined_at
+        text languages
+        text last_name
+        text live_url_id
+        text notification_channel
+        text phone_country_code
+        text phone_number
+        text phone_number_display
+        text profile_picture
+        text promoted_to_influencer_at
+        text record_type
+        text source
+        text stage_id
+        text stage_name
+        text stage_position
+        text stage_type
+        text total_reach
+        timestamp updated_at
+        text website
+    }
+    payment_item {
+        text id PK
+        text payment_id PK
+        text contact_id FK
+        text amount
+        jsonb conversion
+        text conversion_rate
+        text created_at
+        text currency
+        text due_at
+        text is_verified
+        text is_voided
+        text payment_status
+        text status
+        text updated_at
+        text usd_amount
+    }
+    payment {
+        text id PK
+        text campaign_id FK
+        text contact_id FK
+        text payment_account_id FK
+        text user_id FK
+        text amount
+        text batch_id
+        text conversion_rate
+        text created_at
+        text currency
+        text deleted_at
+        text sent_at
+        text status
+        text type
+        timestamp updated_at
+    }
+    brand {
+        text id PK
+        text created_at
+        text currency
+        text description
+        text logo
+        text name
+        text support_email
+        timestamp updated_at
+        text url
+    }
+    partnership_proposal {
+        text id PK
+        text partnership_id PK
+        text brand_id FK
+        text campaign_id FK
+        text contact_address_id FK
+        text contact_id FK
+        text content_rights_id FK
+        text accepted_at
+        text agreed
+        text agreed_at
+        text completed_at
+        text created_at
+        text declined_at
+        text end_date
+        text has_payment
+        text has_product
+        text is_complete
+        text notes
+        text partnership_position
+        text price
+        text start_date
+        text updated_at
+    }
+    partnership_task {
+        text id PK
+        text partnership_id PK
+        text campaign_id FK
+        text network_id FK
+        text bio_text
+        text created_at
+        text deliverable_price
+        text description
+        jsonb interval_index
+        text is_required
+        text media_type
+        text name
+        text partnership_interval_type
+        text position
+        text quantity
+        text requires_creator_oauth
+        text starting_interval_index
+        text updated_at
+    }
+    partnership {
+        text id PK
+        text affiliate_link_id FK
+        text brand_id FK
+        text contact_id FK
+        text content_rights_id FK
+        text discount_code_group_id FK
+        text allow_influencer_upload
+        text budget
+        jsonb compensation
+        text created_at
+        jsonb deal_content
+        text deal_total_cost
+        text deliverable_interval
+        text description
+        text duration_interval
+        text duration_length
+        text end_date
+        text has_strict_deliverable_date
+        text ignore_end_date_for_content
+        text image
+        text influencer_title
+        text internal_title
+        text is_published
+        jsonb payable
+        text payment_method
+        jsonb property
+        text requires_signature
+        text set_end_date
+        text short_description
+        text show_revenue_tracking_information
+        text signed_at
+        text stage_id
+        text stage_name
+        text stage_position
+        text stage_type
+        text start_date
+        text tracking_tags
+        timestamp updated_at
+    }
+    partnership_job {
+        text id PK
+        text partnership_id PK
+        text campaign_id FK
+        text contact_id FK
+        text proposal_id FK
+        text task_id FK
+        text content_posted_at
+        text created_at
+        text delivered_at
+        text due_at
+        text is_extra
+        text is_global
+        text media_library_content_id
+        text note
+        text status
+        text status_info
+        text type
+        text updated_at
+    }
+    discount_code {
+        text id PK
+        text contact_id FK
+        text ecommerce_account_id FK
+        text group_id FK
+        text code
+        text created_at
+        text deleted_at
+        text disabled_at
+        text disabled_reason
+        text end_date
+        text external_id
+        text start_date
+        timestamp updated_at
+    }
+    product_variant {
+        text id PK
+        text product_id FK
+        text cost
+        text external_id
+        text price
+        text qty
+        text shipping_cost
+        text sku
+    }
+    ecommerce_account {
+        text id PK
+        text brand_id FK
+        text created_at
+        text provider
+        text updated_at
+    }
+    user_role {
+        text role_name PK
+        text users_id PK
+    }
+    users {
+        text id PK
+        text created_at
+        text email
+        text email_verified_at
+        text first_name
+        text last_name
+        text phone
+        text phone_country_code
+        text profile_picture
+        text timezone
+        timestamp updated_at
+    }
+    task {
+        text id PK
+        text assignee_id FK
+        text contact_id FK
+        text creator_id FK
+        text completed_at
+        text created_at
+        text due_at
+        text name
+        text note
+        text type
+        timestamp updated_at
+    }
+    payment_account {
+        text id PK
+        text created_at
+        text reference_id
+        timestamp updated_at
+    }
+    domain {
+        text id PK
+        text created_at
+        text is_white_labeled
+        text subdomain
+        text type
+        timestamp updated_at
+    }
+    content_rights_selected {
+        text id PK
+        text content_rights_id PK
+        text text
+    }
+    content_rights {
+        text id PK
+        text content_rights_header
+        text created_at
+        timestamp updated_at
+    }
+    deposit {
+        text id PK
+        text amount
+        text created_at
+        text failure_reason
+        text provider
+        text state
+        text total
+        timestamp updated_at
+    }
+    campaign_compensation {
+        text index PK
+        text campaign_id PK
+        text compensation
+    }
+    campaign {
+        text id PK
+        text affiliate_link_id FK
+        text brand_id FK
+        text discount_code_group_id FK
+        text team_id FK
+        text allow_influencer_uploads
+        text budget
+        text created_at
+        text date_content_end
+        text date_content_start
+        text date_proposals_end
+        text date_proposals_start
+        text description
+        text image
+        text influencer_inputs_price
+        text influencer_title
+        text internal_title
+        text payment_method
+        text public_tags
+        text recurring_proposals
+        text short_description
+        text show_revenue_tracking_information
+        text tracking_tags
+        text updated_at
+        text version
+    }
+    orders {
+        text id PK
+        text campaign_id FK
+        text contact_id FK
+        text ecommerce_account_id FK
+        text product_selection_id FK
+        text user_id FK
+        text campaign_proposal_id
+        text created_at
+        text external_order_id
+        jsonb fulfillment
+        text shipment_status
+        text shipment_status_date
+        timestamp updated_at
+    }
+    activation {
+        text id PK
+        text brand_id FK
+        text team_id FK
+        text account_id
+        text budget
+        text created_at
+        text currency
+        text currency_rate
+        text description
+        text dollar_budget
+        text image
+        text name
+        text previous_status
+        text public_name
+        text status
+        text type
+        text updated_at
+    }
+    media_library_content_hashtag {
+        text hashtag_name PK
+        text media_library_content_id PK
+    }
+    media_library_content_tag {
+        text id PK
+        text media_library_content_id PK
+        text name
+    }
+    media_library_content {
+        text id PK
+        text campaign_id FK
+        text contact_id FK
+        text content_id FK
+        text content_rights_id FK
+        text folder_id FK
+        text network_id FK
+        text owner_id FK
+        text album_id
+        jsonb annotations_colors
+        jsonb annotations_labels
+        text away_swipe
+        text campaign_job_id
+        text caption
+        text comment
+        text content_rights_accepted_at
+        text content_url
+        text created_at
+        text deleted_at
+        text engagement
+        text engagement_rate
+        text estimated_impression
+        text exit
+        text impression
+        text impressions_real
+        text imv
+        text interaction
+        text is_reel
+        text is_story
+        text label
+        text likes
+        text media_type
+        jsonb mentions
+        text name
+        text owner_name
+        text owner_picture
+        text owner_reach
+        text owner_reached
+        text owner_username
+        text posted_at
+        text reach
+        text reply
+        text reply_rate
+        text share
+        text source
+        text source_url
+        text taps_back
+        text taps_forward
+        text thumbnail
+        timestamp updated_at
+        text view
+    }
+    link {
+        text group_id PK
+        text id PK
+    }
+    affiliate_link_group {
+        text id PK
+        text account_domain_id FK
+        text brand_id FK
+        text attribution_window
+        text cascade_update
+        text created_at
+        text destination_url
+        text end_date
+        text name
+        jsonb query_parameter
+        text settings_creator_attribution
+        text settings_link_pattern
+        text settings_payout_amount
+        jsonb settings_payout_tiers
+        text settings_payout_type
+        text start_date
+        timestamp updated_at
+    }
+    product_selection_item {
+        text id PK
+        text contact_id FK
+        text product_id FK
+        text product_selection_id FK
+        text variant_id FK
+    }
+    product_option_value {
+        text id PK
+        text option_id FK
+        text name
+        text position
+    }
+    discount_code_group {
+        text id PK
+        text ecommerce_account_id FK
+        text affiliatepayout_amount
+        text affiliatepayout_type
+        text code_pattern
+        text created_at
+        text deleted_at
+        text external_id
+        text name
+        text rules_applies_to
+        text rules_cascade_update_amount
+        jsonb rules_customer_group_ids
+        text rules_customer_selection
+        text rules_discount_amount
+        text rules_discount_type
+        text rules_enable_shipping_price_limit
+        text rules_end_date
+        text rules_end_tz
+        text rules_has_end_date
+        text rules_limit_one_per_customer
+        text rules_limit_total
+        text rules_limit_total_amount
+        text rules_requirement
+        text rules_requirement_value
+        text rules_shipping_price_limit
+        jsonb rules_specific_ids
+        text rules_start_date
+        text rules_start_tz
+        timestamp updated_at
+    }
+    product_option {
+        text id PK
+        text product_id FK
+        text name
+        text position
+    }
+    content {
+        text id PK
+        text campaign_id FK
+        text contact_id FK
+        text content_id FK
+        text content_rights_id FK
+        text media_library_content_id FK
+        text network_id FK
+        text created_at
+        text deleted_at
+        text is_story
+        text job_id
+        text posted_at
+        timestamp updated_at
+    }
+    content_stat {
+        text id PK
+        text content_id FK
+        text away_swipe
+        text comment
+        text created_at
+        text engagement
+        text engagement_rate
+        text exit
+        text impression
+        text imv
+        text interaction
+        text likes
+        text owner_reach
+        text reach
+        text reply
+        text reply_rate
+        text share
+        text taps_back
+        text taps_forward
+        timestamp updated_at
+        text view
+    }
+    custom_property_option {
+        text id PK
+        text custom_property_id PK
+        text label
+        text position
+        text slug
+        text value
+    }
+    custom_property {
+        text id PK
+        text description
+        text external_label
+        text name
+        text slug
+        text type
+    }
+    contact_address {
+        text id PK
+        text contact_id FK
+        text city
+        text country
+        text country_code
+        text created_at
+        text email
+        text first_name
+        text label
+        text last_name
+        text phone_country_code
+        text phone_number
+        text phone_number_display
+        text postal_code
+        text state
+        text state_code
+        text street
+        text street_2
+        timestamp updated_at
+    }
+    contact_network {
+        text id PK
+        text contact_id FK
+        text avg_comments
+        text avg_engagement
+        text avg_likes
+        text avg_likes_to_comment
+        text avg_posts_per_day
+        text avg_shares
+        text avg_views
+        text connection_last_checked_at
+        text created_at
+        text graph_id
+        text network
+        text network_account_type
+        text network_connection_permissions
+        text network_connection_type
+        text network_id
+        text network_name
+        text network_slug
+        text network_url
+        text network_user_id
+        text network_username
+        text profile
+        text reach
+        text reach_updated_at
+        text stats_updated_at
+        timestamp updated_at
+    }
+    conversion {
+        text id PK
+        text affiliate_link_id FK
+        text brand_id FK
+        text contact_id FK
+        text discount_code_id FK
+        text amount
+        text commission_amount
+        text created_at
+        text currency
+        text is_verified
+        text is_voided
+        jsonb meta_data
+        text order_id
+        text order_number
+        text rate
+        text type
+        timestamp updated_at
+        text void_reason
+        text voided_at
+    }
+    affiliate_link {
+        text id PK
+        text contact_id FK
+        text group_id FK
+        text created_at
+        text destination_url
+        text end_date
+        text fraud_detected_at
+        text fraud_reason
+        text full_url
+        jsonb query_parameter
+        text settings_creator_attribution
+        text settings_link_pattern
+        text settings_payout_amount
+        jsonb settings_payout_tiers
+        text settings_payout_type
+        text start_date
+        timestamp updated_at
+        text url_path
+    }
+    product_image {
+        text id PK
+        text product_id PK
+        text admin_graphql_api_id
+        text alt
+        text created_at
+        text height
+        text position
+        text src
+        text updated_at
+        jsonb variant_id
+        text width
+    }
+    collection {
+        text collection_id PK
+        text product_id PK
+    }
+    product {
+        text id PK
+        text brand_id FK
+        text cost
+        text created_at
+        text description
+        text external_id
+        text has_option
+        text image
+        text is_shipped
+        text name
+        text price
+        text qty
+        text shipping_cost
+        text sku
+        text track_inventory
+        text track_variant_inventory
+        timestamp updated_at
+    }
+    product_collection {
+        text id PK
+        text brand_id FK
+        text parent_id FK
+        jsonb children
+        text created_at
+        text description
+        text external_id
+        text image
+        text is_nav
+        text name
+        text position
+        timestamp updated_at
+    }
+    custom_property_value {
+        text id PK
+        text contact_id FK
+        text partnership_id FK
+        text property_id FK
+        text created_at
+        text updated_at
+        jsonb value
+    }
+    affiliate_page_view {
+        text id PK
+        text link_id FK
+        text ip_address
+        text url
+    }
+    team_user {
+        text team_id PK
+        text user_id PK
+    }
+    team {
+        text id PK
+        text created_at
+        text defaults
+        text name
+        text updated_at
+    }
+    media_library_tag {
+        text id PK
+        text created_at
+        text name
+        timestamp updated_at
+    }
+    media_library_folder }o--|| media_library_folder : "fk"
+    product_selection }o--|| brand : "fk"
+    product_selection }o--|| contact_address : "fk"
+    product_selection }o--|| contact : "fk"
+    payable }o--|| payment : "fk"
+    payable }o--|| contact : "fk"
+    activation_brief }o--|| users : "fk"
+    activation_brief }o--|| activation : "fk"
+    activation_brief }o--|| brand : "fk"
+    activation_brief }o--|| contact : "fk"
+    contact_custom_property }o--|| custom_property_value : "fk"
+    contact_custom_property }o--|| custom_property : "fk"
+    contact_custom_property }o--|| contact : "fk"
+    contact_tag }o--|| contact : "fk"
+    contact }o--|| payment_account : "fk"
+    contact }o--|| users : "fk"
+    contact }o--|| contact : "fk"
+    contact }o--|| contact_address : "fk"
+    payment_item }o--|| payment : "fk"
+    payment_item }o--|| contact : "fk"
+    payment }o--|| users : "fk"
+    payment }o--|| campaign : "fk"
+    payment }o--|| payment_account : "fk"
+    payment }o--|| contact : "fk"
+    partnership_proposal }o--|| campaign : "fk"
+    partnership_proposal }o--|| content_rights : "fk"
+    partnership_proposal }o--|| brand : "fk"
+    partnership_proposal }o--|| contact_address : "fk"
+    partnership_proposal }o--|| contact : "fk"
+    partnership_proposal }o--|| partnership : "fk"
+    partnership_task }o--|| campaign : "fk"
+    partnership_task }o--|| contact_network : "fk"
+    partnership_task }o--|| partnership : "fk"
+    partnership }o--|| discount_code_group : "fk"
+    partnership }o--|| affiliate_link : "fk"
+    partnership }o--|| content_rights : "fk"
+    partnership }o--|| brand : "fk"
+    partnership }o--|| contact : "fk"
+    partnership_job }o--|| partnership_task : "fk"
+    partnership_job }o--|| campaign : "fk"
+    partnership_job }o--|| partnership_proposal : "fk"
+    partnership_job }o--|| contact : "fk"
+    discount_code }o--|| discount_code_group : "fk"
+    discount_code }o--|| ecommerce_account : "fk"
+    discount_code }o--|| contact : "fk"
+    product_variant }o--|| product : "fk"
+    ecommerce_account }o--|| brand : "fk"
+    user_role }o--|| users : "fk"
+    task }o--|| users : "fk"
+    task }o--|| users : "fk"
+    task }o--|| contact : "fk"
+    content_rights_selected }o--|| content_rights : "fk"
+    campaign_compensation }o--|| campaign : "fk"
+    campaign }o--|| discount_code_group : "fk"
+    campaign }o--|| team : "fk"
+    campaign }o--|| affiliate_link : "fk"
+    campaign }o--|| brand : "fk"
+    orders }o--|| users : "fk"
+    orders }o--|| campaign : "fk"
+    orders }o--|| product_selection : "fk"
+    orders }o--|| ecommerce_account : "fk"
+    orders }o--|| contact : "fk"
+    activation }o--|| team : "fk"
+    activation }o--|| brand : "fk"
+    media_library_content_hashtag }o--|| media_library_content : "fk"
+    media_library_content_tag }o--|| media_library_content : "fk"
+    media_library_content }o--|| media_library_folder : "fk"
+    media_library_content }o--|| campaign : "fk"
+    media_library_content }o--|| content_rights : "fk"
+    media_library_content }o--|| contact_network : "fk"
+    media_library_content }o--|| content : "fk"
+    media_library_content }o--|| contact : "fk"
+    media_library_content }o--|| users : "fk"
+    link }o--|| affiliate_link : "fk"
+    link }o--|| affiliate_link_group : "fk"
+    affiliate_link_group }o--|| domain : "fk"
+    affiliate_link_group }o--|| brand : "fk"
+    product_selection_item }o--|| product_selection : "fk"
+    product_selection_item }o--|| contact : "fk"
+    product_selection_item }o--|| product : "fk"
+    product_selection_item }o--|| product_variant : "fk"
+    product_option_value }o--|| product_option : "fk"
+    discount_code_group }o--|| ecommerce_account : "fk"
+    product_option }o--|| product : "fk"
+    content }o--|| campaign : "fk"
+    content }o--|| content_rights : "fk"
+    content }o--|| contact_network : "fk"
+    content }o--|| media_library_content : "fk"
+    content }o--|| content : "fk"
+    content }o--|| contact : "fk"
+    content_stat }o--|| content : "fk"
+    custom_property_option }o--|| custom_property : "fk"
+    contact_address }o--|| contact : "fk"
+    contact_network }o--|| contact : "fk"
+    conversion }o--|| affiliate_link : "fk"
+    conversion }o--|| brand : "fk"
+    conversion }o--|| discount_code : "fk"
+    conversion }o--|| contact : "fk"
+    affiliate_link }o--|| affiliate_link_group : "fk"
+    affiliate_link }o--|| contact : "fk"
+    product_image }o--|| product : "fk"
+    collection }o--|| product_collection : "fk"
+    collection }o--|| product : "fk"
+    product }o--|| brand : "fk"
+    product_collection }o--|| brand : "fk"
+    product_collection }o--|| product_collection : "fk"
+    custom_property_value }o--|| contact : "fk"
+    custom_property_value }o--|| partnership : "fk"
+    custom_property_value }o--|| custom_property : "fk"
+    affiliate_page_view }o--|| affiliate_link : "fk"
+    team_user }o--|| users : "fk"
+    team_user }o--|| team : "fk"

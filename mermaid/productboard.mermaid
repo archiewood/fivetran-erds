@@ -1,0 +1,215 @@
+erDiagram
+    release_group {
+        text id PK
+        boolean archived
+        text description
+        text name
+    }
+    jira_integration_connection {
+        text feature_id PK
+        text jira_integration_id PK
+        bigint connection_issue_id
+        text connection_issue_key
+    }
+    release {
+        text id PK
+        text release_group_id FK
+        boolean archived
+        text description
+        text end_date
+        text granularity
+        text name
+        text start_date
+        text state
+    }
+    option {
+        text id PK
+        text custom_field_id FK
+        text label
+    }
+    custom_field {
+        text id PK
+        text description
+        text name
+        text type
+    }
+    plugin_integration {
+        text id PK
+        timestamp created_at
+        text initial_state_label
+        text integration_status
+        text name
+        text type
+    }
+    company {
+        text id PK
+        text description
+        text domain
+        text name
+        text source_origin
+        text source_record_id
+    }
+    feature_status {
+        text id PK
+        boolean completed
+        text name
+    }
+    jira_integration {
+        text id PK
+        timestamp created_at
+        text integration_status
+        text name
+    }
+    note_follower {
+        text index PK
+        text note_id PK
+        text member_email
+        text member_id
+        text member_name
+        text team_id
+        text team_name
+    }
+    note_comment {
+        text index PK
+        text note_id PK
+        text content
+        text email
+        text id
+        text timestamps
+        text user_id
+    }
+    note_feature {
+        text index PK
+        text note_id PK
+        text id FK
+        text importance
+        text type
+    }
+    note_tag {
+        text index PK
+        text note_id PK
+        text tags
+    }
+    note {
+        text id PK
+        text company_id FK
+        text user_id FK
+        text content
+        text created_at
+        text created_by_email
+        text created_by_id
+        text created_by_name
+        text display_url
+        text external_display_url
+        text owner_email
+        text owner_name
+        text source_origin
+        text source_record_id
+        text state
+        text title
+        text updated_at
+    }
+    product {
+        text id PK
+        timestamp created_at
+        text description
+        text html
+        text name
+        text owner_email
+        text owner_name
+        timestamp updated_at
+    }
+    objective {
+        text id PK
+        text parent_id FK
+        boolean archived
+        text created_at
+        text description
+        text end_date
+        text granularity
+        text html
+        text level
+        text name
+        text owner_email
+        text owner_name
+        text start_date
+        text state
+        text updated_at
+    }
+    custom_field_value {
+        text hierarchy_entity_id PK
+        text custom_field_id PK
+        text hierarchy_entity_type
+        text type
+        text value
+    }
+    plugin_integration_connection {
+        text feature_id PK
+        text plugin_integration_id PK
+        text connection_color
+        text connection_hover_label
+        text connection_label
+        text connection_state
+        text connection_target_url
+        text connection_tooltip
+    }
+    feature {
+        text id PK
+        text component_id FK
+        text status_id FK
+        boolean archived
+        timestamp created_at
+        text description
+        text end_date
+        text granularity
+        text html
+        text name
+        text owner_email
+        text owner_name
+        text start_date
+        text status
+        text type
+        timestamp updated_at
+    }
+    component {
+        text id PK
+        text product_id FK
+        timestamp created_at
+        text description
+        text html
+        text name
+        text owner_email
+        text owner_name
+        timestamp updated_at
+    }
+    users {
+        text id PK
+        text email
+        text external_id
+        text name
+    }
+    feature_release_assignment {
+        text feature_id PK
+        text release_id PK
+        boolean assigned
+    }
+    jira_integration_connection }o--|| feature : "fk"
+    jira_integration_connection }o--|| jira_integration : "fk"
+    release }o--|| release_group : "fk"
+    option }o--|| custom_field : "fk"
+    note_follower }o--|| note : "fk"
+    note_comment }o--|| note : "fk"
+    note_feature }o--|| product : "fk"
+    note_feature }o--|| note : "fk"
+    note_tag }o--|| note : "fk"
+    note }o--|| users : "fk"
+    note }o--|| company : "fk"
+    objective }o--|| objective : "fk"
+    custom_field_value }o--|| custom_field : "fk"
+    plugin_integration_connection }o--|| feature : "fk"
+    plugin_integration_connection }o--|| plugin_integration : "fk"
+    feature }o--|| component : "fk"
+    feature }o--|| feature_status : "fk"
+    component }o--|| product : "fk"
+    feature_release_assignment }o--|| release : "fk"
+    feature_release_assignment }o--|| feature : "fk"

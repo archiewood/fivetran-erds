@@ -1,0 +1,483 @@
+erDiagram
+    session_field_choice {
+        text id PK
+        text session_field_id PK
+        text name
+        text sort
+    }
+    session_field {
+        text id PK
+        text allow_html
+        text attribute
+        text name
+        text required
+        text setting
+        text sort
+        text type
+        text visible
+    }
+    contact_registrant {
+        text id PK
+        text contact_id PK
+        text event_id FK
+    }
+    contact {
+        text id PK
+        text account_id
+        jsonb billing_address
+        text bio
+        text birth_date
+        text cc_email
+        text company
+        text created_at
+        text email
+        text first_name
+        text gender_id
+        text gender_value
+        jsonb home_address
+        text job_title
+        text last_name
+        text middle_name
+        text mobile_phone
+        text note
+        text prefix
+        text profile_picture
+        text subscribe_status
+        text suffix
+        text twitter_handle
+        jsonb unsubscribed_events
+        text updated_at
+        text vat_number
+        jsonb work_address
+        text work_phone
+    }
+    call_for_speaker_review {
+        text id PK
+        text event_id FK
+        text created_at
+        text notes
+        text rating
+        text reviewer_id
+        text submission_date
+        text submission_description
+        text submission_end_time
+        text submission_id
+        text submission_name
+        text submission_reviews
+        text submission_session_status
+        text submission_start_time
+        text updated_at
+    }
+    event_question_choice {
+        text id PK
+        text event_question_id PK
+        text event_id FK
+        text admin_short_name
+        text badge_name
+        text capacity
+        text name
+        text public_short_name
+        text question_id
+        text sold_out_message
+        text sort
+        text visible
+    }
+    event_question {
+        text id PK
+        text event_id PK
+        text page_id FK
+        text admin_short_name
+        text attribute
+        text created_at
+        text hint
+        text name
+        text public_short_name
+        text sort
+        text type
+        text updated_at
+    }
+    registrant_type {
+        text id PK
+        text event_id PK
+        text admin_short_name
+        text capacity
+        text created_at
+        text description
+        text max_group_size
+        text min_group_size
+        text name
+        text public_short_name
+        text sold_out_message
+        text updated_at
+    }
+    transaction {
+        text id PK
+        text event_id PK
+        text registrant_id FK
+        text amount
+        text card_number_last_4
+        text card_type
+        text created_at
+        text created_by
+        text datetime
+        text gateway_id
+        text name_on_card
+        text note
+        text payment_gateway_name
+        text status
+        text type
+        text updated_at
+        text updated_by
+    }
+    call_for_speaker_submission {
+        text id PK
+        text event_id FK
+        text created_at
+        text date
+        text description
+        text direct_link
+        text end_time
+        text location
+        text name
+        text note
+        text reviews
+        text session_included
+        text session_status
+        text start_time
+        text timezone
+        text track
+        text updated_at
+        text virtual_link
+    }
+    speaker {
+        text id PK
+        text event_id FK
+        text bio
+        text company
+        text created_at
+        text email
+        text first_name
+        text job_title
+        text last_name
+        text profile_picture
+        text updated_at
+    }
+    contact_field {
+        text id PK
+        text admin_short_name
+        text attribute
+        text default_response
+        text hint
+        text icon
+        text icon_alignment
+        text max_length
+        text min_length
+        text name
+        text note
+        text public_short_name
+        text type
+    }
+    event_language {
+        text index PK
+        text event_id PK
+        text languages
+    }
+    event {
+        text id PK
+        text folder_id FK
+        text capacity
+        text close_date
+        text close_time
+        text created_at
+        text created_by
+        text currency
+        text description
+        text domain
+        text end_date
+        text end_time
+        text event_venue_type
+        text free_event
+        text hashtag
+        text location_city
+        text location_company
+        text location_country_code
+        text location_country_continent
+        text location_country_currency_code
+        text location_country_name
+        text location_country_tax_name
+        text location_country_zipcode_required
+        text location_latitude
+        text location_line_1
+        text location_line_2
+        text location_line_3
+        text location_longitude
+        text location_name
+        text location_phone
+        text location_state
+        text location_website
+        text location_zip
+        text name
+        text organizer_id
+        text reg_count
+        text start_date
+        text start_time
+        text status
+        text swoogo_virtual_location
+        text target_attendance
+        text timezone
+        jsonb translation
+        text type_id
+        text type_value
+        text updated_at
+        text updated_by
+        text url
+        text virtual_host
+        text webinar_url
+    }
+    event_folder {
+        text id PK
+        text parent_id FK
+        text name
+    }
+    call_for_speaker_contact {
+        text id PK
+        text contact_id FK
+        text event_id FK
+        text created_at
+        text reviewer
+        text reviewer_role
+        text submitter
+        text updated_at
+    }
+    registrant {
+        text id PK
+        text contact_id FK
+        text event_id FK
+        text group_id FK
+        text package_id FK
+        text reg_type_id FK
+        text cancelled_at
+        text checked_in_at
+        text created_at
+        text group_balance_due
+        text group_gross
+        text group_net
+        text group_paid
+        text group_tax
+        text group_tax_2
+        text individual_gross
+        text individual_net
+        text individual_tax
+        text individual_tax_2
+        text ip_address
+        text languages
+        text payment_method
+        jsonb payment_plan
+        text po_number
+        text reference
+        text reg_type_value
+        text registered_at
+        text registration_status
+        jsonb session
+        jsonb session_attendance
+        jsonb sponsor_attendance
+        text timezone
+        text updated_at
+    }
+    package {
+        text id PK
+        text event_id PK
+        text admin_short_name
+        text capacity
+        text created_at
+        text description
+        text max_group_size
+        text min_group_size
+        text name
+        text public_short_name
+        text sold_out_message
+        text updated_at
+    }
+    event_field_choice {
+        text id PK
+        text event_field_id PK
+        text name
+        text sort
+    }
+    event_field {
+        text id PK
+        text allow_html
+        text attribute
+        text name
+        text required
+        text s_button_text
+        text s_hint
+        text s_link_collection_field
+        text s_max_link
+        text s_url_display_format
+        text s_url_image_id
+        text sort
+        text type
+        text visible
+    }
+    scan {
+        text _fivetran_id PK
+        text event_id FK
+        text registrant_id FK
+        text created_by
+        text scan_id
+        text type
+    }
+    registrant_line_item {
+        text _fivetran_id PK
+        text event_id FK
+        text group_id FK
+        text question_id FK
+        text registrant_id FK
+        text datetime
+        text full_price_gross
+        text full_price_net
+        text gross
+        text net
+        text object
+        text object_id
+        text quantity
+        text status
+        text tax
+        text tax_rate
+    }
+    sponsor {
+        text id PK
+        text event_id FK
+        text created_at
+        text description
+        text level_id
+        text level_value
+        text logo_id
+        text name
+        text notes
+        text updated_at
+        text website
+    }
+    sponsor_field_choice {
+        text id PK
+        text sponsor_field_id PK
+        text name
+        text sort
+    }
+    sponsor_field {
+        text id PK
+        text allow_html
+        text attribute
+        text name
+        text required
+        text s_button_text
+        text s_hint
+        text s_link_collection_field
+        text s_max_link
+        text s_url_display_format
+        text s_url_image_id
+        text settings
+        text sort
+        text type
+        text visible
+    }
+    session {
+        text id PK
+        text event_id PK
+        text capacity
+        text created_at
+        text date
+        text description
+        text end_time
+        text location
+        text location_id
+        text name
+        text notes
+        text start_time
+        text track
+        text track_id
+        text type_id
+        text updated_at
+    }
+    page {
+        text id PK
+        text event_id FK
+        text event_website_id FK
+        text parent_id FK
+        text created_at
+        text event_question
+        text full_url
+        text icon
+        text name
+        text slug
+        text sort
+        text type
+        text updated_at
+    }
+    event_badge {
+        text id PK
+        text event_id PK
+        text active
+        text created_at
+        text created_by
+        text name
+        text note
+        text updated_at
+        text updated_by
+    }
+    event_website {
+        text id PK
+        text account_id FK
+        text event_id FK
+        text module
+        text theme_id
+        text url
+    }
+    data_list {
+        text id PK
+        text account_id FK
+        text name
+        text note
+    }
+    session_field_choice }o--|| session_field : "fk"
+    contact_registrant }o--|| event : "fk"
+    contact_registrant }o--|| contact : "fk"
+    call_for_speaker_review }o--|| event : "fk"
+    event_question_choice }o--|| event : "fk"
+    event_question_choice }o--|| event_question : "fk"
+    event_question }o--|| event : "fk"
+    event_question }o--|| page : "fk"
+    registrant_type }o--|| event : "fk"
+    transaction }o--|| registrant : "fk"
+    transaction }o--|| event : "fk"
+    call_for_speaker_submission }o--|| event : "fk"
+    speaker }o--|| event : "fk"
+    event_language }o--|| event : "fk"
+    event }o--|| event_folder : "fk"
+    event_folder }o--|| event_folder : "fk"
+    call_for_speaker_contact }o--|| event : "fk"
+    call_for_speaker_contact }o--|| contact : "fk"
+    registrant }o--|| event : "fk"
+    registrant }o--|| event : "fk"
+    registrant }o--|| package : "fk"
+    registrant }o--|| contact : "fk"
+    registrant }o--|| registrant_type : "fk"
+    package }o--|| event : "fk"
+    event_field_choice }o--|| event_field : "fk"
+    scan }o--|| event : "fk"
+    scan }o--|| registrant : "fk"
+    registrant_line_item }o--|| event_question_choice : "fk"
+    registrant_line_item }o--|| registrant : "fk"
+    registrant_line_item }o--|| registrant : "fk"
+    registrant_line_item }o--|| event : "fk"
+    sponsor }o--|| event : "fk"
+    sponsor_field_choice }o--|| sponsor_field : "fk"
+    session }o--|| event : "fk"
+    page }o--|| event : "fk"
+    page }o--|| event_website : "fk"
+    page }o--|| page : "fk"
+    event_badge }o--|| event : "fk"
+    event_website }o--|| contact : "fk"
+    event_website }o--|| event : "fk"
+    data_list }o--|| contact : "fk"

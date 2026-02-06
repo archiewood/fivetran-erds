@@ -1,0 +1,793 @@
+erDiagram
+    inventory_snapshot {
+        text _fivetran_id PK
+        text inventory_id FK
+        text product_id FK
+        text room_id FK
+        text batch_id
+        text batch_name
+        text package_id
+        text quantity
+        text sku
+        text snapshot_date
+        text status
+        text total_cost
+        text unit
+        text unit_id
+        text vendor
+    }
+    discount_location_restriction {
+        text index PK
+        text discount_id PK
+        text location
+    }
+    discount_constraint {
+        text id PK
+        text discount_id PK
+        text discount_item_group_type_id
+        text has_threshold
+        text include_non_cannabis
+        text threshold_type
+    }
+    discount {
+        text id PK
+        text discount_id FK
+        text application_method_id
+        text can_stack_automatically
+        text discount_description
+        text is_bundled_discount
+        text max_redemption
+        text menu_display_description
+        text menu_display_image_url
+        text menu_display_name
+        text menu_display_rank
+        text online_name
+        jsonb payment_restrictions
+        text redemption_limit
+        jsonb restrict_to_group_ids
+        text reward_apply_to_only_one_item
+        text reward_calculation_method
+        text reward_calculation_method_id
+        text reward_discount_reward_id
+        text reward_discount_value
+        text reward_has_threshold
+        text reward_highest_or_lowest
+        text reward_item_group_type
+        text reward_item_group_type_id
+        jsonb reward_restrictions
+        text reward_threshold_max
+        text reward_threshold_min
+        text reward_threshold_type_id
+    }
+    employee {
+        text _fivetran_id PK
+        text default_location
+        text full_name
+        text groups
+        text login_id
+        text mmj_expiration
+        text permissions_location
+        text state_id
+        text status
+        text user_id
+    }
+    strain {
+        text id PK
+        text abbreviation
+        text description
+        text external_id
+        text name
+        text type
+    }
+    room_waste {
+        text id PK
+        text amount
+        text comment
+        text date
+        text reference_number
+        text room_id
+        text type
+        text unit_id
+    }
+    harvest_waste {
+        text id PK
+        text comment
+        text date
+        jsonb detail
+        text is_bio_track
+        text loc_id
+        text lsp_id
+        text reference_number
+        text room_required
+    }
+    plant_waste {
+        text id PK
+        text comment
+        text date
+        jsonb detail
+        text is_bio_track
+        text loc_id
+        text lsp_id
+        text reference_number
+        text room_required
+    }
+    register_adjustment {
+        text id PK
+        text terminal_id FK
+        text adjusted_by
+        text adjusted_by_employee_id
+        text adjusted_on
+        text amount
+        text comment
+        text reason
+        text type
+    }
+    tags {
+        text id PK
+        text name
+    }
+    size {
+        text id PK
+        text description
+        text name
+    }
+    customer_type {
+        text id PK
+        text is_medical
+        text is_retail
+        text name
+    }
+    register_transaction {
+        text id PK
+        text terminal_id FK
+        text transaction_id FK
+        text adjustment_reason
+        text comment
+        text transaction_amount
+        text transaction_by
+    }
+    inventory_tag {
+        text inventory_id PK
+        text tag_id PK
+    }
+    inventory_lab_result {
+        text index PK
+        text inventory_id PK
+        text lab_result_unit
+        text lab_result_unit_id
+        text lab_test
+        text value
+    }
+    inventory_room_quantity {
+        text inventory_id PK
+        text room_id PK
+        text quantity_available
+    }
+    inventory_lineage {
+        text index PK
+        text inventory_id PK
+        text antecedent_batch_name
+        text antecedent_is_harvest
+        text antecedent_package_distance
+        text batch_name
+        text package_id
+    }
+    inventory {
+        text id PK
+        text category_id FK
+        text product_id FK
+        text strain_id FK
+        text vendor_id FK
+        text allocated_quantity
+        text alternate_name
+        text batch_id
+        text batch_name
+        text brand_id
+        text description
+        text effective_potency_mg
+        text expiration_date
+        text external_package_id
+        text flower_equivalent
+        text flower_equivalent_unit
+        text image_url
+        text lab_result_url
+        text lab_test_status
+        text last_modified_date_utc
+        text manufacturing_date
+        text med_unit_price
+        text medical_only
+        text package_id
+        text package_ndc
+        text package_status
+        text packaged_date
+        text potency_indicator
+        text pricing_tier_name
+        text producer
+        text producer_id
+        text quantity_available
+        text quantity_unit
+        text rec_flower_equivalent
+        text rec_unit_price
+        text sample_date
+        text size
+        text sku
+        text tested_date
+        text unit_cost
+        text unit_price
+        text unit_weight
+        text unit_weight_unit
+    }
+    vehicle {
+        text id PK
+        text color
+        text license_plate
+        text make
+        text model
+        text model_year
+        text vin
+    }
+    loyalty_snapshot {
+        text customer_id PK
+        text loyalty_balance
+        text loyalty_earned
+        text loyalty_spent
+    }
+    closing_report_pay_by_bank_batch_file {
+        text index PK
+        text closing_report_fivetran_id PK
+        text adjustment_amount
+        text batch_file_name
+    }
+    closing_report_fees_donation {
+        text index PK
+        text closing_report_fivetran_id PK
+        text cash_value
+        text is_revenue
+        text name
+    }
+    closing_report_pay_batch_file_sum {
+        text index PK
+        text closing_report_fivetran_id PK
+        text adjustment_amount
+        text batch_file_name
+    }
+    closing_report_category_summary {
+        text index PK
+        text closing_report_fivetran_id PK
+        text category
+        text category_cost
+        text category_discount_total
+        text category_gross_total
+        text category_net_total
+        text category_total
+    }
+    closing_report_customer_type_summary {
+        text index PK
+        text closing_report_fivetran_id PK
+        text cannabis_sale
+        text customer_type
+        text customer_type_cost
+        text discount_total
+        text gross_total
+        text net_total
+        text non_cannabis_sale
+        text total
+    }
+    closing_report_payment_summary {
+        text index PK
+        text closing_report_fivetran_id PK
+        text payment_type
+        text total_paid
+    }
+    closing_report_tax_summary {
+        text index PK
+        text closing_report_fivetran_id PK
+        text tax_rate
+        text total_tax
+    }
+    closing_report_order_type_summary {
+        text index PK
+        text closing_report_fivetran_id PK
+        text discount_total
+        text gross_total
+        text net_total
+        text order_type
+        text order_type_cost
+        text total
+    }
+    closing_report_order_source_summary {
+        text index PK
+        text closing_report_fivetran_id PK
+        text discount_total
+        text gross_total
+        text net_total
+        text order_source
+        text order_source_cost
+        text total
+    }
+    closing_report {
+        text _fivetran_id PK
+        text adjustment
+        text average_cart_net_sale
+        text cannabis_sale
+        text cost
+        text coupon
+        text customer_count
+        text deposit
+        text discount
+        text dutchie_pay_tip
+        text dutchie_pay_total_adjustment_amount
+        text ending_balance
+        text gross_sale
+        text invoice_total
+        text item_count
+        text item_total
+        text loyalty
+        text net_sale
+        text new_customer_count
+        text non_cannabis_sale
+        text non_revenue_fees_donation
+        text over_short
+        text pay_by_bank_tip
+        text pay_by_bank_transaction_fee
+        text return_total
+        text revenue_fees_donation
+        text rounding
+        text starting_balance
+        text total_income
+        text total_payment
+        text total_tax
+        text total_tips
+        text transaction_count
+        text void_count
+        text void_total
+    }
+    vendor {
+        text id PK
+        text address
+        text city
+        text contact_email
+        text contact_name
+        text contact_phone
+        text license_number
+        text name
+        text postal_code
+        text state
+    }
+    reporting_discount_location {
+        text index PK
+        text reporting_discount_id PK
+        text location_name
+    }
+    reporting_discount_product {
+        text product_id PK
+        text reporting_discount_id PK
+    }
+    reporting_discount_product_category {
+        text product_category_id PK
+        text reporting_discount_id PK
+    }
+    reporting_discount_vendor {
+        text reporting_discount_id PK
+        text vendor_id PK
+    }
+    reporting_discount_strain {
+        text reporting_discount_id PK
+        text strain_id PK
+    }
+    reporting_discount_tag {
+        text reporting_discount_id PK
+        text tag_id PK
+    }
+    reporting_discount_customer_type {
+        text customer_type_id PK
+        text reporting_discount_id PK
+    }
+    reporting_discount_group {
+        text index PK
+        text reporting_discount_id PK
+        text discount_group_id
+        text discount_group_name
+    }
+    reporting_discount {
+        text id PK
+        text application_method
+        text applies_to_location
+        text brand_is_exclusion
+        jsonb brands
+        text customer_type_is_exclusion
+        text discount_amount
+        text discount_code
+        text discount_method
+        text discount_name
+        text discount_type
+        text external_id
+        text first_time_customer_only
+        text include_non_cannabis
+        text inventory_tag_is_exclusion
+        jsonb inventory_tags
+        text is_active
+        text is_available_online
+        text is_deleted
+        text maximum_items_allowed
+        text maximum_usage_count
+        text minimum_items_required
+        text product_category_is_exclusion
+        text product_is_exclusion
+        text require_manager_approval
+        text stack_on_other_discount
+        text strain_is_exclusion
+        text tag_is_exclusion
+        text threshold_type
+        text tier_is_exclusion
+        jsonb tiers
+        text valid_from
+        text valid_until
+        text vendor_is_exclusion
+        text weekly_recurrence_applies_on_friday
+        text weekly_recurrence_applies_on_monday
+        text weekly_recurrence_applies_on_saturday
+        text weekly_recurrence_applies_on_sunday
+        text weekly_recurrence_applies_on_thursday
+        text weekly_recurrence_applies_on_tuesday
+        text weekly_recurrence_applies_on_wednesday
+        text weekly_recurrence_end_time
+        text weekly_recurrence_start_time
+    }
+    cash_summary {
+        text _fivetran_id PK
+        text adjustment
+        text deposit
+        text ending_balance
+        text overshort
+        text return
+        text sale
+        text starting_balance
+        text terminal_name
+    }
+    product_pricing_tier {
+        text index PK
+        text product_id PK
+        text end_weight
+        text medical_price
+        text price
+        text start_weight
+    }
+    product_tag {
+        text index PK
+        text product_id FK
+        text tag_id FK
+    }
+    product_tax_category {
+        text index PK
+        text product_id PK
+        text category_name
+    }
+    product {
+        text id PK
+        text category_id FK
+        text strain_id FK
+        text vendor_id FK
+        text abbreviation
+        text administration_method
+        text allergen
+        text allow_automatic_discount
+        text alternate_name
+        text approval_date_utc
+        text brand_id
+        text brand_name
+        jsonb broadcasted_responses
+        text category
+        text cbd_content
+        text cbd_content_unit
+        text created_date
+        text days_supply
+        text default_unit
+        text description
+        text distillation_name
+        text dosage
+        text ecom_category
+        text ecom_subcategory
+        text expiration_day
+        text external_category
+        text flavor
+        text flower_equivalent
+        text gross_weight
+        text illinois_tax_category
+        jsonb image_urls
+        text ingredient_list
+        text instruction
+        text internal_name
+        text is_active
+        text is_cannabis
+        text is_coupon
+        text is_finished
+        text is_medical_only
+        text is_nutrient
+        text is_taxable
+        text is_test_product
+        text last_modified_date_utc
+        text lineage_name
+        text low_inventory_threshold
+        text master_category
+        text max_purchaseable_per_transaction
+        text med_price
+        text ndc
+        text net_weight
+        text net_weight_unit
+        text net_weight_unit_id
+        text oil_volume
+        text online_available
+        text online_description
+        text online_product
+        text online_title
+        text pos_product
+        text price
+        text pricing_tier
+        text pricing_tier_description
+        text pricing_tier_name
+        text producer_id
+        text producer_name
+        text product_gram
+        text product_name
+        text rec_flower_equivalent
+        text rec_price
+        text regulatory_category
+        text regulatory_name
+        text serving_size
+        text serving_size_per_unit
+        text size
+        text sku
+        text standard_allergens_egg
+        text standard_allergens_fish
+        text standard_allergens_milk
+        text standard_allergens_peanut
+        text standard_allergens_sesame
+        text standard_allergens_shellfish
+        text standard_allergens_soybean
+        text standard_allergens_tree_nut
+        text standard_allergens_wheat
+        text sync_externally
+        text thc_content
+        text thc_content_unit
+        text unit_cbd_content_dose
+        text unit_cost
+        text unit_thc_content_dose
+        text unit_type
+        text upc
+    }
+    terminal {
+        text id PK
+        text name
+    }
+    room {
+        text id PK
+        text is_ecommere_room
+        text is_inventory_room
+        text is_pos_room
+        text is_pre_order_room
+        text is_quarantine_room
+        text is_sales_floor
+        text is_vault_room
+        text is_waiting_room
+        text name
+    }
+    transaction_item_discount {
+        text transaction_id PK
+        text id PK
+        text transaction_item_id PK
+        text reason
+    }
+    transaction_item_tax {
+        text index PK
+        text transaction_id PK
+        text transaction_item_id PK
+        text amount
+        text rate
+        text rate_name
+    }
+    transaction_item {
+        text id PK
+        text inventory_id FK
+        text product_id FK
+        text transaction_id FK
+        text batch_name
+        text flower_equivalent
+        text flower_equivalent_unit
+        text is_coupon
+        text is_returned
+        text package_id
+        text quantity
+        text return_date
+        text return_reason
+        text returned_by_transaction_id
+        text source_package_id
+        text total_discount
+        text total_price
+        text unit_cost
+        text unit_id
+        text unit_price
+        text unit_weight
+        text unit_weight_unit
+        text vendor
+    }
+    transaction_tax_summary {
+        text index PK
+        text transaction_id PK
+        text amount
+        text rate_name
+    }
+    transaction_fees_and_donation {
+        text id PK
+        text transaction_id PK
+        text amount
+        text description
+        text is_revenue
+    }
+    transaction {
+        text id PK
+        text customer_id FK
+        text adjustment_for_transaction_id
+        text auth_code
+        text cash_paid
+        text change_due
+        text check_in_date
+        text check_paid
+        text completed_by_user
+        text credit_paid
+        text customer_type_id
+        text debit_paid
+        jsonb discounts
+        text electronic_paid
+        text electronic_payment_method
+        text employee_id
+        text est_delivery_date_local
+        text est_time_arrival_local
+        text gift_paid
+        text integrated_paid
+        jsonb integrated_payments
+        text invoice_name
+        text invoice_number
+        text is_medical
+        text is_return
+        text is_tax_inclusive
+        text is_void
+        text last_modified_date_utc
+        text loyalty_earned
+        text loyalty_spent
+        text manual_paid
+        jsonb manual_payments
+        text mmap_paid
+        text non_revenue_fees_and_donation
+        jsonb order_ids
+        text order_method
+        text order_source
+        text order_type
+        text paid
+        text pre_payment_amount
+        text reference_id
+        text responsible_for_sale_user_id
+        text return_on_transaction_id
+        text revenue_fees_and_donation
+        text subtotal
+        text tax
+        text terminal_name
+        text tip_amount
+        text total
+        text total_before_tax
+        text total_credit
+        text total_discount
+        text total_item
+        text transaction_date
+        text transaction_date_local_time
+        text transaction_type
+        text void_date
+        text was_pre_ordered
+    }
+    product_category {
+        text id PK
+        text master_category
+        text name
+    }
+    customer {
+        text id PK
+        text address_1
+        text address_2
+        text cell_phone
+        text city
+        text created_at_location
+        text created_by_integrator
+        text creation_date
+        text custom_identifier
+        text customer_type
+        text date_of_birth
+        jsonb discount_group
+        text drivers_license_hash
+        text email_address
+        text external_customer_id
+        text first_name
+        text gender
+        text is_anonymous
+        text is_loyalty_member
+        text last_modified_date_utc
+        text last_name
+        text loyalty_tier
+        text merged_into_customer_id
+        text middle_name
+        text mmjid_expiration_date
+        text mmjid_number
+        text name
+        text name_prefix
+        text name_suffix
+        text note
+        text opted_into_marketing
+        text other_referral_source
+        text phone
+        text postal_code
+        text primary_qualifying_condition
+        text referral_source
+        jsonb secondary_qualifying_condition
+        text spring_big_member_id
+        text state
+        text status
+        text unique_id
+    }
+    inventory_snapshot }o--|| product : "fk"
+    inventory_snapshot }o--|| room : "fk"
+    inventory_snapshot }o--|| inventory : "fk"
+    discount_location_restriction }o--|| discount : "fk"
+    discount_constraint }o--|| discount : "fk"
+    discount }o--|| reporting_discount : "fk"
+    register_adjustment }o--|| terminal : "fk"
+    register_transaction }o--|| transaction : "fk"
+    register_transaction }o--|| terminal : "fk"
+    inventory_tag }o--|| tags : "fk"
+    inventory_tag }o--|| inventory : "fk"
+    inventory_lab_result }o--|| inventory : "fk"
+    inventory_room_quantity }o--|| room : "fk"
+    inventory_room_quantity }o--|| inventory : "fk"
+    inventory_lineage }o--|| inventory : "fk"
+    inventory }o--|| product : "fk"
+    inventory }o--|| product_category : "fk"
+    inventory }o--|| vendor : "fk"
+    inventory }o--|| strain : "fk"
+    loyalty_snapshot }o--|| customer : "fk"
+    closing_report_pay_by_bank_batch_file }o--|| closing_report : "fk"
+    closing_report_fees_donation }o--|| closing_report : "fk"
+    closing_report_pay_batch_file_sum }o--|| closing_report : "fk"
+    closing_report_category_summary }o--|| closing_report : "fk"
+    closing_report_customer_type_summary }o--|| closing_report : "fk"
+    closing_report_payment_summary }o--|| closing_report : "fk"
+    closing_report_tax_summary }o--|| closing_report : "fk"
+    closing_report_order_type_summary }o--|| closing_report : "fk"
+    closing_report_order_source_summary }o--|| closing_report : "fk"
+    reporting_discount_location }o--|| reporting_discount : "fk"
+    reporting_discount_product }o--|| product : "fk"
+    reporting_discount_product }o--|| reporting_discount : "fk"
+    reporting_discount_product_category }o--|| product_category : "fk"
+    reporting_discount_product_category }o--|| reporting_discount : "fk"
+    reporting_discount_vendor }o--|| vendor : "fk"
+    reporting_discount_vendor }o--|| reporting_discount : "fk"
+    reporting_discount_strain }o--|| strain : "fk"
+    reporting_discount_strain }o--|| reporting_discount : "fk"
+    reporting_discount_tag }o--|| tags : "fk"
+    reporting_discount_tag }o--|| reporting_discount : "fk"
+    reporting_discount_customer_type }o--|| customer_type : "fk"
+    reporting_discount_customer_type }o--|| reporting_discount : "fk"
+    reporting_discount_group }o--|| reporting_discount : "fk"
+    product_pricing_tier }o--|| product : "fk"
+    product_tag }o--|| tags : "fk"
+    product_tag }o--|| product : "fk"
+    product_tax_category }o--|| product : "fk"
+    product }o--|| product_category : "fk"
+    product }o--|| vendor : "fk"
+    product }o--|| strain : "fk"
+    transaction_item_discount }o--|| reporting_discount : "fk"
+    transaction_item_discount }o--|| transaction_item : "fk"
+    transaction_item_tax }o--|| transaction_item : "fk"
+    transaction_item }o--|| product : "fk"
+    transaction_item }o--|| transaction : "fk"
+    transaction_item }o--|| inventory : "fk"
+    transaction_tax_summary }o--|| transaction : "fk"
+    transaction_fees_and_donation }o--|| transaction : "fk"
+    transaction }o--|| customer : "fk"

@@ -1,0 +1,387 @@
+erDiagram
+    match {
+        text tenant_id PK
+        text entity_id PK
+        text match_group_id PK
+        text matched_entity_id PK
+        text type
+    }
+    relation_attribute_type {
+        text tenant_id PK
+        text uri PK
+        text relation_type PK
+        text parent_attribute FK
+        boolean attribute_system
+        text description
+        boolean hidden
+        boolean important
+        text label
+        text name
+        boolean searchable
+        boolean skip_in_data_access
+        text type
+        jsonb values
+    }
+    entity_attribute_type {
+        text tenant_id PK
+        text uri PK
+        text entity_type PK
+        text parent_attribute FK
+        boolean attribute_system
+        text description
+        boolean hidden
+        boolean important
+        text label
+        text name
+        boolean searchable
+        boolean skip_in_data_access
+        text type
+        jsonb values
+    }
+    entity_analytics_attribute_type {
+        text tenant_id PK
+        text uri PK
+        text entity_type PK
+        text parent_attribute FK
+        text description
+        text label
+        bigint max_occurs
+        text name
+        text type
+        jsonb values
+    }
+    relation_crosswalk {
+        text id PK
+        text tenant_id PK
+        text relation_id PK
+        text type FK
+        timestamp create_date
+        timestamp delete_date
+        timestamp reltio_load_date
+        text source_table
+        timestamp update_date
+        text uri
+        text value
+    }
+    relation_type {
+        text id PK
+        text tenant_id PK
+        text description
+        text direction
+        jsonb end_object_directional_context
+        text end_object_object_type_uri
+        text end_object_uri
+        boolean implicit
+        text label
+        jsonb start_object_directional_context
+        text start_object_object_type_uri
+        text start_object_uri
+        text type_color
+        text uri
+    }
+    interaction_attribute {
+        text _fivetran_id PK
+        text tenant_id PK
+        text interaction_id PK
+        text parent_attribute FK
+        text type FK
+        text ignored
+        text label
+        text lookup_code
+        text lookup_value
+        text name
+        boolean ov
+        text uri
+        text value
+    }
+    entity_analytics_attribute {
+        text _fivetran_id PK
+        text tenant_id PK
+        text entity_id PK
+        text parent_attribute FK
+        text name
+        text type
+        text uri
+        text value
+    }
+    interaction_member {
+        text tenant_id PK
+        text interaction_id PK
+        text member_id PK
+        text type PK
+    }
+    interaction {
+        text id PK
+        text tenant_id PK
+        text type FK
+        text created_by
+        timestamp created_time
+        timestamp interaction_timestamp
+        boolean is_favorite
+        text updated_by
+        timestamp updated_time
+        text uri
+    }
+    interaction_attribute_type {
+        text tenant_id PK
+        text uri PK
+        text interaction_type PK
+        text parent_attribute FK
+        boolean attribute_system
+        text description
+        boolean hidden
+        boolean important
+        text label
+        text name
+        boolean searchable
+        boolean skip_in_data_access
+        text type
+        jsonb values
+    }
+    entity_tag {
+        text entity_id PK
+        text name PK
+        text tenant_id PK
+    }
+    interaction_member_type {
+        text tenant_id PK
+        text uri PK
+        text interaction_type PK
+        text object_type_uri FK
+        text label
+        text name
+    }
+    relation_analytics_attribute {
+        text _fivetran_id PK
+        text tenant_id PK
+        text relation_id PK
+        text parent_attribute FK
+        text name
+        text type
+        text uri
+        text value
+    }
+    entity_crosswalk_attribute {
+        text tenant_id PK
+        text attribute PK
+        text crosswalk_id PK
+        text entity_id PK
+        timestamp update_date
+    }
+    relation_attribute {
+        text _fivetran_id PK
+        text tenant_id PK
+        text relation_id PK
+        text parent_attribute FK
+        text type FK
+        text ignored
+        text label
+        text lookup_code
+        text lookup_value
+        text name
+        boolean ov
+        text uri
+        text value
+    }
+    entity {
+        text id PK
+        text tenant_id PK
+        text type FK
+        text winner_id FK
+        text created_by
+        timestamp created_time
+        timestamp end_date
+        text label
+        text secondary_label
+        text updated_by
+        timestamp updated_time
+        text uri
+    }
+    interaction_type {
+        text id PK
+        text tenant_id PK
+        boolean has_members
+        text label
+        text uri
+    }
+    interaction_crosswalk {
+        text id PK
+        text tenant_id PK
+        text interaction_id PK
+        text type FK
+        timestamp create_date
+        timestamp delete_date
+        timestamp reltio_load_date
+        text source_table
+        timestamp update_date
+        text uri
+        text value
+    }
+    relation_crosswalk_attribute {
+        text tenant_id PK
+        text attribute PK
+        text crosswalk_id PK
+        text relation_id PK
+        timestamp update_date
+    }
+    source {
+        text id PK
+        text tenant_id PK
+        text abbreviation
+        text description
+        text icon
+        text label
+        text uri
+    }
+    entity_merge {
+        text tenant_id PK
+        text loser_id PK
+        text winner_id PK
+        text merge_reason
+        text merge_rules
+        text merged_by
+        timestamp time
+    }
+    entity_type {
+        text id PK
+        text tenant_id PK
+        boolean abstract
+        text data_label_pattern
+        text description
+        text extends_type
+        text label
+        text secondary_label_pattern
+        text type_color
+        text uri
+    }
+    relation {
+        text id PK
+        text tenant_id PK
+        text end_object_entity_id FK
+        text start_object_entity_id FK
+        text type FK
+        text created_by
+        timestamp created_time
+        timestamp end_date
+        text end_object_directional_label
+        boolean end_ref_ignored
+        boolean end_ref_pinned
+        text start_object_directional_label
+        boolean start_ref_ignored
+        boolean start_ref_pinned
+        text updated_by
+        timestamp updated_time
+        text uri
+    }
+    not_match {
+        text tenant_id PK
+        text entity_id PK
+        text not_match_entity_id PK
+    }
+    match_group {
+        text id PK
+        text tenant_id PK
+        text entity_type PK
+        text label
+        jsonb rule
+        double_precision score_incremental
+        double_precision score_standalone
+        text type
+        text uri
+        boolean use_ov_only
+    }
+    entity_attribute {
+        text _fivetran_id PK
+        text tenant_id PK
+        text entity_id PK
+        text parent_attribute FK
+        text ref_entity FK
+        text ref_relation FK
+        text type FK
+        text ignored
+        text label
+        text lookup_code
+        text lookup_value
+        text name
+        boolean ov
+        text relationship_label
+        text uri
+        text value
+    }
+    interaction_crosswalk_attribute {
+        text tenant_id PK
+        text attribute PK
+        text crosswalk_id PK
+        text interaction_id PK
+        timestamp update_date
+    }
+    entity_crosswalk {
+        text id PK
+        text tenant_id PK
+        text entity_id PK
+        text type FK
+        timestamp create_date
+        timestamp delete_date
+        timestamp reltio_load_date
+        text source_table
+        timestamp update_date
+        text uri
+        text value
+    }
+    match }o--|| entity : "fk"
+    match }o--|| entity : "fk"
+    match }o--|| match_group : "fk"
+    relation_attribute_type }o--|| relation_attribute_type : "fk"
+    relation_attribute_type }o--|| relation_type : "fk"
+    entity_attribute_type }o--|| entity_attribute_type : "fk"
+    entity_attribute_type }o--|| entity_type : "fk"
+    entity_analytics_attribute_type }o--|| entity_analytics_attribute_type : "fk"
+    entity_analytics_attribute_type }o--|| entity_type : "fk"
+    relation_crosswalk }o--|| source : "fk"
+    relation_crosswalk }o--|| relation : "fk"
+    interaction_attribute }o--|| interaction_attribute : "fk"
+    interaction_attribute }o--|| interaction_attribute_type : "fk"
+    interaction_attribute }o--|| interaction : "fk"
+    entity_analytics_attribute }o--|| entity_analytics_attribute : "fk"
+    entity_analytics_attribute }o--|| entity : "fk"
+    interaction_member }o--|| interaction : "fk"
+    interaction_member }o--|| entity : "fk"
+    interaction_member }o--|| interaction_member_type : "fk"
+    interaction }o--|| interaction_type : "fk"
+    interaction_attribute_type }o--|| interaction_attribute_type : "fk"
+    interaction_attribute_type }o--|| interaction_type : "fk"
+    interaction_member_type }o--|| interaction_type : "fk"
+    interaction_member_type }o--|| entity_type : "fk"
+    relation_analytics_attribute }o--|| relation_analytics_attribute : "fk"
+    relation_analytics_attribute }o--|| relation : "fk"
+    entity_crosswalk_attribute }o--|| entity_crosswalk : "fk"
+    entity_crosswalk_attribute }o--|| entity_crosswalk : "fk"
+    entity_crosswalk_attribute }o--|| entity_attribute : "fk"
+    relation_attribute }o--|| relation_attribute : "fk"
+    relation_attribute }o--|| relation_attribute_type : "fk"
+    relation_attribute }o--|| relation : "fk"
+    entity }o--|| entity : "fk"
+    entity }o--|| entity_type : "fk"
+    interaction_crosswalk }o--|| source : "fk"
+    interaction_crosswalk }o--|| interaction : "fk"
+    relation_crosswalk_attribute }o--|| relation_crosswalk : "fk"
+    relation_crosswalk_attribute }o--|| relation_crosswalk : "fk"
+    relation_crosswalk_attribute }o--|| relation_attribute : "fk"
+    entity_merge }o--|| entity : "fk"
+    entity_merge }o--|| entity : "fk"
+    relation }o--|| relation_type : "fk"
+    relation }o--|| entity : "fk"
+    relation }o--|| entity : "fk"
+    not_match }o--|| entity : "fk"
+    not_match }o--|| entity : "fk"
+    match_group }o--|| entity_type : "fk"
+    entity_attribute }o--|| entity_attribute : "fk"
+    entity_attribute }o--|| entity_attribute_type : "fk"
+    entity_attribute }o--|| entity : "fk"
+    entity_attribute }o--|| entity : "fk"
+    entity_attribute }o--|| relation : "fk"
+    interaction_crosswalk_attribute }o--|| interaction_crosswalk : "fk"
+    interaction_crosswalk_attribute }o--|| interaction_crosswalk : "fk"
+    interaction_crosswalk_attribute }o--|| interaction_attribute : "fk"
+    entity_crosswalk }o--|| source : "fk"
+    entity_crosswalk }o--|| entity : "fk"

@@ -1,0 +1,543 @@
+erDiagram
+    sale_merchant_item_by_date {
+        text index PK
+        text product_sku PK
+        text sale_by_date_id PK
+        text part_number
+        text quantity
+        text unit_price_a
+        text unit_price_s
+    }
+    sale_merchant_kit_item_by_date {
+        text index PK
+        text sale_by_date_id PK
+        text sale_merchant_kit_by_date_index PK
+        text part_number
+        text product_sku
+        text quantity
+        text unit_price_a
+        text unit_price_s
+    }
+    sale_merchant_kit_by_date {
+        text index PK
+        text sale_by_date_id PK
+        text product_sku FK
+        text quantity
+        text unit_price_a
+        text unit_price_s
+    }
+    sale_processed_item_by_date {
+        text index PK
+        text sale_by_date_id PK
+        text product_sku FK
+        text failed_quantity
+        text passed_quantity
+        text picked_quantity
+    }
+    sale_by_date {
+        text id PK
+        text channel
+        text channel_id
+        text client
+        text contact_info_company
+        text contact_info_email
+        text contact_info_firstname
+        text contact_info_lastname
+        text contact_info_phone
+        jsonb fulfilled_items
+        text last_printed_date
+        text market_place
+        text market_place_id
+        text notes
+        text printed_status
+        text sale_date
+        text seller_sale_id
+        text shipping_carrier
+        text shipping_charge_a
+        text shipping_charge_s
+        text shipping_class
+        text shipping_cost_a
+        text shipping_cost_s
+        text shipping_info_address_1
+        text shipping_info_address_2
+        text shipping_info_city
+        text shipping_info_country
+        text shipping_info_postal_code
+        text shipping_info_region
+        text status
+    }
+    product_supplier_info {
+        text product_sku PK
+        text supplier_name PK
+        text cost
+        text is_active
+        text is_primary
+        text lead_time
+        text supplier_part_number
+    }
+    product_picture {
+        text picture PK
+        text product_sku PK
+    }
+    product_attribute {
+        text _fivetran_id PK
+        text product_sku FK
+        text name
+        text value
+    }
+    product_status {
+        text status PK
+        text product_sku PK
+    }
+    product {
+        text sku PK
+        text brand FK
+        text classification FK
+        text primary_sku FK
+        text supplier FK
+        text client
+        text code
+        text cost
+        timestamp created_date_utc
+        text description
+        text disable_quantity_sync
+        text id
+        text incremental_quantity
+        text is_alternate_code
+        text is_alternate_sku
+        text is_serialized
+        text long_description
+        text minimum_order_quantity
+        text minimum_order_quantity_information
+        timestamp modified_date_utc
+        text part_number
+        text quantity_available
+        text quantity_in_stock
+        text quantity_inbound
+        text quantity_incoming
+        text quantity_on_hand
+        text quantity_on_hold
+        text quantity_pending
+        text quantity_picked
+        text quantity_total_fba
+        text quantity_transfer
+        text reorder_point
+        text retail_price
+        text sale_price
+        text short_description
+        text variation_parent_sku
+        text weight_unit
+        text weight_value
+    }
+    token {
+        text tenant_token PK
+        text user_token PK
+    }
+    available_alternate_sku {
+        text alternate_sku PK
+        text product_sku PK
+    }
+    available_quantity {
+        text product_sku PK
+        timestamp last_modified_date_time_utc
+    }
+    warehouse {
+        text code PK
+        text id
+    }
+    classification_attribute {
+        text name PK
+        text classification_name PK
+        text is_enabled
+        text is_required
+        jsonb values
+    }
+    classification {
+        text name PK
+        text is_enabled
+    }
+    brand {
+        text name PK
+        text is_enabled
+    }
+    external_warehouse_quantitiy {
+        text product_sku PK
+        text in_stock_quantity
+        text inbound_quantity
+        text reserve_quantity
+        text total_quantity
+        text transfer_quantity
+    }
+    purchase_order_line_item {
+        text product_sku PK
+        text purchase_order_id PK
+        text cost
+        text identifier
+        text private_notes
+        text public_notes
+        text quantity
+        text quantity_to_3_pl
+        text received_quantity
+        text received_quantity_to_3_pl
+        text retail_cost
+        text variant
+    }
+    purchase_order {
+        text id PK
+        text supplier_name FK
+        timestamp actual_shipped_date
+        timestamp arrival_due_date
+        text carrier_name
+        text class_name
+        jsonb costs
+        timestamp created_date
+        timestamp order_cancel_date
+        timestamp order_date
+        text payment_status
+        text po_number
+        text private_notes
+        text public_notes
+        timestamp requested_ship_date
+        text sent_status
+        text ship_to_address
+        text ship_to_warehouse
+        text status
+        text terms_name
+        text tracking_info
+    }
+    kit_line_item {
+        text kit_line_index PK
+        text kit_sku PK
+        text product_sku PK
+        text code
+        text description
+    }
+    kit_line {
+        text index PK
+        text kit_sku PK
+        text combine
+        text line_name
+        text quantity
+    }
+    kit_status {
+        text status PK
+        text kit_sku PK
+    }
+    kit {
+        text sku PK
+        text available_quantity
+        text available_quantity_last_modified_date_time_utc
+        text code
+        text cost
+        text description
+        text last_modified_date_time_utc
+    }
+    location {
+        text location_code PK
+        text warehouse_code PK
+        text container_code
+        text parent_location
+        text total_quantity
+        text warehouse_name
+    }
+    shipment_cost {
+        text _fivetran_id PK
+        text shipment_sale_id FK
+        text shipment_tracking_number FK
+        text cost_a
+        text cost_s
+        text cost_type
+    }
+    shipment_parcel_item {
+        text id PK
+        text shipment_parcel_number PK
+        text shipment_sale_id PK
+        text shipment_tracking_number PK
+        text product_sku FK
+        text quantity
+    }
+    shipment_parcel_kit {
+        text kit_sku PK
+        text shipment_parcel_number PK
+        text shipment_sale_id PK
+        text shipment_tracking_number PK
+    }
+    shipment_parcel {
+        text number PK
+        text shipment_sale_id PK
+        text shipment_tracking_number PK
+        text dimensionsheight
+        text dimensionslength
+        text dimensionsunit
+        text dimensionswidth
+        text note
+        text weight
+        text weight_unit
+    }
+    shipment_landed_cost {
+        text product_sku PK
+        text shipment_sale_id PK
+        text shipment_tracking_number PK
+        text cost_a
+        text cost_s
+    }
+    shipment {
+        text tracking_number PK
+        text sale_id PK
+        text shipped_from_warehouse_code FK
+        text alternate_id
+        text carrier
+        text class
+        text created_date
+        text estimated_delivery_date
+        text estimated_ship_date
+        jsonb file_id
+        text manifest_id
+        text note
+        text shipped_from_address_1
+        text shipped_from_address_2
+        text shipped_from_city
+        text shipped_from_company
+        text shipped_from_country
+        text shipped_from_email
+        text shipped_from_first_name
+        text shipped_from_last_name
+        text shipped_from_middle_name
+        text shipped_from_postal_code
+        text shipped_from_region
+        text shipped_from_three_pl
+        text source
+        text status
+        text total_weight
+        text tracking_url
+        text type
+        text weight_unit
+    }
+    transaction {
+        timestamp transaction_date PK
+        text product_sku PK
+        text context_id
+        text context_type
+        text location
+        text lot_number
+        text quantity
+        text quantity_after
+        text quantity_before
+        text scanned_code
+        text title
+        text transaction_note
+        text transaction_reason
+        text transaction_type
+        text username
+    }
+    supplier {
+        text name PK
+        text is_enabled
+    }
+    serial_number {
+        text serial_number PK
+        text location_code FK
+        text warehouse_code FK
+        text container_code
+    }
+    receive_history {
+        text product_sku PK
+        text location FK
+        text warehouse FK
+        text part_number
+        text quantity
+        text quantity_3_pl
+        text quantity_to_location
+        timestamp receipt_date
+        timestamp received_date
+        text username
+    }
+    receive_correction_quantity_receipt_date {
+        text _fivetran_id PK
+        text product_sku FK
+        text new_quantity
+        text old_quantity
+        timestamp receipt_date
+    }
+    receive_correction {
+        text product_sku PK
+        text warehouse FK
+        timestamp corrected_date
+        text new_quantity
+        text new_quantity_3_pl
+        text old_quantity
+        text old_quantity_3_pl
+        text part_number
+        text ponumber
+        timestamp received_date
+        text username
+    }
+    external_warehouse {
+        text id PK
+        text code
+        text name
+    }
+    handling_time_kit {
+        text account_id PK
+        text product_sku PK
+        text quantity
+    }
+    handling_time_product {
+        text account_id PK
+        text kit_sku PK
+        text quantity
+    }
+    inventory_location {
+        text location_code PK
+        text sku PK
+        text warehouse_code PK
+        text quantity
+        text reserve
+    }
+    sale_item_promotion {
+        text code PK
+        text product_sku PK
+        text item_discount_a
+        text item_discount_s
+        text shipping_discount_a
+        text shipping_discount_s
+    }
+    sale_item {
+        text product_sku PK
+        text sale_id FK
+        text quantity
+        text taxes
+        text unit_price_a
+        text unit_price_s
+    }
+    sale_kit {
+        text kit_sku PK
+        text sale_id PK
+        jsonb kit_items
+        text quantity
+        text unit_price_a
+        text unit_price_s
+    }
+    sale_charge {
+        text _fivetran_id PK
+        text sale_id FK
+        text amount_a
+        text amount_s
+        text type
+    }
+    sale_promotion {
+        text code PK
+        text sale_id PK
+        text order_discount_a
+        text order_discount_s
+        text shipping_discount_a
+        text shipping_discount_s
+        text type
+    }
+    sale {
+        text id PK
+        text channel_id
+        text contact_infocompany
+        text contact_infoemail
+        text contact_infofirst_name
+        text contact_infolast_name
+        text contact_infophone
+        jsonb fulfilled_items
+        jsonb fulfilled_kits
+        text last_printed_date
+        text marketplace
+        text marketplace_id
+        text notes
+        text printed_status
+        text sale_date
+        text seller_sale_id
+        text shipping_carrier
+        text shipping_chargea
+        text shipping_charges
+        text shipping_class
+        text shipping_costa
+        text shipping_costs
+        text shipping_infoaddress_1
+        text shipping_infoaddress_2
+        text shipping_infocity
+        text shipping_infocountry
+        text shipping_infopostal_code
+        text shipping_inforegion
+        text status
+    }
+    item_quantity {
+        text product_sku PK
+        timestamp last_modified_date_time_utc
+    }
+    incoming_item {
+        text product_sku PK
+        text third_party_logistic_quantity
+    }
+    sale_merchant_item_by_date }o--|| product : "fk"
+    sale_merchant_item_by_date }o--|| sale_by_date : "fk"
+    sale_merchant_kit_item_by_date }o--|| sale_merchant_kit_by_date : "fk"
+    sale_merchant_kit_item_by_date }o--|| sale_merchant_kit_by_date : "fk"
+    sale_merchant_kit_by_date }o--|| product : "fk"
+    sale_merchant_kit_by_date }o--|| sale_by_date : "fk"
+    sale_processed_item_by_date }o--|| product : "fk"
+    sale_processed_item_by_date }o--|| sale_by_date : "fk"
+    product_supplier_info }o--|| supplier : "fk"
+    product_supplier_info }o--|| product : "fk"
+    product_picture }o--|| product : "fk"
+    product_attribute }o--|| product : "fk"
+    product_status }o--|| product : "fk"
+    product }o--|| brand : "fk"
+    product }o--|| product : "fk"
+    product }o--|| supplier : "fk"
+    product }o--|| classification : "fk"
+    available_alternate_sku }o--|| available_quantity : "fk"
+    available_quantity }o--|| product : "fk"
+    classification_attribute }o--|| classification : "fk"
+    external_warehouse_quantitiy }o--|| product : "fk"
+    purchase_order_line_item }o--|| product : "fk"
+    purchase_order_line_item }o--|| purchase_order : "fk"
+    purchase_order }o--|| supplier : "fk"
+    kit_line_item }o--|| product : "fk"
+    kit_line_item }o--|| kit_line : "fk"
+    kit_line_item }o--|| kit_line : "fk"
+    kit_line }o--|| kit : "fk"
+    kit_status }o--|| kit : "fk"
+    location }o--|| warehouse : "fk"
+    shipment_cost }o--|| shipment : "fk"
+    shipment_cost }o--|| shipment : "fk"
+    shipment_parcel_item }o--|| product : "fk"
+    shipment_parcel_item }o--|| shipment_parcel : "fk"
+    shipment_parcel_item }o--|| shipment_parcel : "fk"
+    shipment_parcel_item }o--|| shipment_parcel : "fk"
+    shipment_parcel_kit }o--|| kit : "fk"
+    shipment_parcel_kit }o--|| shipment_parcel : "fk"
+    shipment_parcel_kit }o--|| shipment_parcel : "fk"
+    shipment_parcel_kit }o--|| shipment_parcel : "fk"
+    shipment_parcel }o--|| shipment : "fk"
+    shipment_parcel }o--|| shipment : "fk"
+    shipment_landed_cost }o--|| product : "fk"
+    shipment_landed_cost }o--|| shipment : "fk"
+    shipment_landed_cost }o--|| shipment : "fk"
+    shipment }o--|| sale : "fk"
+    shipment }o--|| warehouse : "fk"
+    transaction }o--|| product : "fk"
+    serial_number }o--|| warehouse : "fk"
+    serial_number }o--|| location : "fk"
+    receive_history }o--|| warehouse : "fk"
+    receive_history }o--|| product : "fk"
+    receive_history }o--|| location : "fk"
+    receive_correction_quantity_receipt_date }o--|| receive_correction : "fk"
+    receive_correction }o--|| warehouse : "fk"
+    receive_correction }o--|| product : "fk"
+    handling_time_kit }o--|| product : "fk"
+    handling_time_product }o--|| kit : "fk"
+    inventory_location }o--|| warehouse : "fk"
+    sale_item_promotion }o--|| sale_item : "fk"
+    sale_item }o--|| product : "fk"
+    sale_item }o--|| sale : "fk"
+    sale_kit }o--|| kit : "fk"
+    sale_kit }o--|| sale : "fk"
+    sale_charge }o--|| sale : "fk"
+    sale_promotion }o--|| sale : "fk"
+    item_quantity }o--|| product : "fk"
+    incoming_item }o--|| product : "fk"

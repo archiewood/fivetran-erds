@@ -1,0 +1,601 @@
+erDiagram
+    sub_contractor_additional_phone {
+        text index PK
+        text sub_contractor_id PK
+        text ext
+        text label
+        text phone
+    }
+    sub_contractor_trade {
+        text id PK
+        text sub_contractor_id PK
+    }
+    sub_contractor_work_type {
+        text id PK
+        text sub_contractor_id PK
+        text trade_id FK
+        text color
+        text name
+    }
+    sub_contractor {
+        text id PK
+        text address
+        text address_line_1
+        text city
+        text color
+        text company_name
+        text country_code
+        text country_currency_name
+        text country_currency_symbol
+        text country_id
+        text country_name
+        text country_phone_code
+        text created_at
+        text email
+        text first_name
+        text group_id
+        text is_active
+        text last_name
+        text note
+        text profile_pic
+        text rating
+        text state_code
+        text state_country_id
+        text state_id
+        text state_name
+        text updated_at
+        text zip
+    }
+    referral {
+        text id PK
+        text created_at
+        text name
+        text updated_at
+    }
+    supplier {
+        text id PK
+        text created_at
+        text name
+        text updated_at
+    }
+    division {
+        text id PK
+        text address
+        text address_country_code
+        text address_country_id
+        text address_country_name
+        text address_id
+        text address_line_1
+        text address_state_code
+        text address_state_id
+        text address_state_name
+        text city
+        text color
+        text email
+        text lat
+        text long
+        text name
+        text phone
+        text phone_ext
+        text zip
+    }
+    item_category {
+        text id PK
+        text created_at
+        text is_default
+        text locked
+        text name
+        text slug
+        text updated_at
+    }
+    schedule_trade {
+        text id PK
+        text schedule_id PK
+    }
+    schedule_work_crew_note {
+        text id PK
+        text schedule_id PK
+        text job_id FK
+        text note
+    }
+    schedule_reminder {
+        text id PK
+        text schedule_id PK
+        text minutes
+        text type
+    }
+    schedule_work_type {
+        text id PK
+        text schedule_id PK
+        text trade_id FK
+        text color
+        text name
+    }
+    schedule_sub_contractor {
+        text id PK
+        text schedule_id PK
+    }
+    schedule_representative {
+        text id PK
+        text schedule_id PK
+    }
+    schedule {
+        text id PK
+        text created_by FK
+        text customer_id FK
+        text job_id FK
+        text modified_by FK
+        text created_at
+        text description
+        text end_date_time
+        text full_day
+        text is_completed
+        text is_recurring
+        text occurence
+        text repeat
+        text series_id
+        text start_date_time
+        text subject_edited
+        text title
+        text updated_at
+    }
+    company_trade_work_type {
+        text id PK
+        text company_trade_id PK
+        text color
+        text name
+    }
+    company_trade_sub_attribute {
+        text id PK
+        text company_trade_attribute_id PK
+        text company_trade_id PK
+        text locked
+        text name
+        text slug
+        text unit_display_name
+        text unit_id
+        text unit_name
+    }
+    company_trade_attribute {
+        text id PK
+        text company_trade_id PK
+        text locked
+        text name
+        text slug
+    }
+    company_trade {
+        text id PK
+        text color
+        text name
+    }
+    payment_method {
+        text id PK
+        text label
+        text method
+        text quickbook_id
+    }
+    workflow_stage {
+        text id PK
+        text code
+        text color
+        text created_at_date
+        text created_at_timezone
+        text created_at_timezone_type
+        text description
+        text jobs_count
+        text locked
+        text name
+        text position
+        text updated_at_date
+        text updated_at_timezone
+        text updated_at_timezone_type
+        text workflow_id
+    }
+    user_role {
+        text index PK
+        text user_id PK
+        text name
+    }
+    users {
+        text id PK
+        text active
+        text added_date
+        text admin_privilege
+        text color
+        text company
+        text company_id
+        text company_name
+        text email
+        text first_name
+        text group_id
+        text group_name
+        text last_name
+        text profile_pic
+    }
+    appointment_job {
+        text appointment_id PK
+        text id PK
+    }
+    appointment_reminder {
+        text id PK
+        text appointment_id PK
+        text minutes
+        text type
+    }
+    appointment_attendee {
+        text appointment_id PK
+        text id PK
+    }
+    appointment {
+        text id PK
+        text customer_id FK
+        text user_id FK
+        jsonb by_day
+        text created_at
+        text description
+        text end_date_time
+        text full_day
+        text interval
+        text is_completed
+        text is_recurring
+        text lat
+        text location
+        text location_type
+        text long
+        text occurence
+        text repeat
+        jsonb result
+        text result_option_id
+        text series_id
+        text start_date_time
+        text title
+        text until_date
+        text updated_at
+    }
+    customer_contact {
+        text id PK
+        text customer_id PK
+        text first_name
+        text last_name
+    }
+    customer_phone {
+        text index PK
+        text customer_id PK
+        text ext
+        text label
+        text number
+    }
+    customer {
+        text id PK
+        text rep_id FK
+        jsonb additional_emails
+        text address
+        text address_country_code
+        text address_country_currency_name
+        text address_country_currency_symbol
+        text address_country_id
+        text address_country_name
+        text address_country_phone_code
+        text address_id
+        text address_line_1
+        text address_state_code
+        text address_state_id
+        text address_state_name
+        text appointment_required
+        text billing_address
+        text billing_address_line_1
+        text billing_city
+        text billing_country_code
+        text billing_country_currency_name
+        text billing_country_currency_symbol
+        text billing_country_id
+        text billing_country_name
+        text billing_country_phone_code
+        text billing_id
+        text billing_lat
+        text billing_long
+        text billing_state_code
+        text billing_state_id
+        text billing_state_name
+        text billing_zip
+        text call_center_rep
+        text call_center_rep_type
+        text call_required
+        text canvasser
+        text canvasser_type
+        text city
+        text company_name
+        text created_at
+        text deleted_at
+        text email
+        text first_name
+        text is_commercial
+        text last_name
+        text lat
+        text long
+        text management_company
+        text note
+        text property_name
+        text referred_by_note
+        text referred_by_type
+        text updated_at
+        text zip
+    }
+    job_representative {
+        text id PK
+        text job_id PK
+    }
+    job_sub_contractor {
+        text id PK
+        text job_id PK
+    }
+    job_trade {
+        text id PK
+        text job_id PK
+    }
+    job_work_type {
+        text id PK
+        text job_id PK
+        text trade_id FK
+        text color
+        text name
+    }
+    job {
+        text id PK
+        text created_by FK
+        text customer_id FK
+        text division_id FK
+        text address
+        text address_country_code
+        text address_country_currency_name
+        text address_country_currency_symbol
+        text address_country_id
+        text address_country_name
+        text address_country_phone_code
+        text address_id
+        text address_line_1
+        text address_state_code
+        text address_state_id
+        text address_state_name
+        text alt_id
+        text appointment_required
+        text archived
+        text awarded_date
+        text call_required
+        text city
+        text completion_date
+        text contact_same_as_customer
+        text contract_signed_date
+        text created_at
+        text created_date
+        text current_stage_code
+        text current_stage_color
+        text current_stage_name
+        text deleted_at
+        text description
+        text duration
+        text hover_job_id
+        text insurance
+        text lat
+        text lead_number
+        text long
+        text multi_job
+        text name
+        text number
+        text other_trade_type_description
+        text same_as_customer_address
+        text stage_last_modified
+        text tax_rate
+        text updated_at
+        text zip
+    }
+    vendor_bill_attactment {
+        text id PK
+        text job_id PK
+        text vendor_bill_id PK
+        text meta
+        text mime_type
+        text name
+        text parent_id
+        text size
+        text url
+    }
+    vendor_bill_vendor {
+        text id PK
+        text job_id PK
+        text vendor_bill_id PK
+        text display_name
+        text first_name
+        text last_name
+        text origin
+    }
+    vendor_bill_line {
+        text id PK
+        text job_id PK
+        text vendor_bill_id PK
+        text account_id
+        text description
+        text quantity
+        text rate
+    }
+    vendor_bill {
+        text id PK
+        text job_id PK
+        text address
+        text bill_date
+        text bill_number
+        text created_at
+        text due_date
+        text file_paths
+        text note
+        text origin
+        text tax_amount
+        text total_amount
+        text updated_at
+    }
+    job_note {
+        text id PK
+        text job_id PK
+        text created_by FK
+        text modified_by FK
+        text created_at
+        text note
+        text stage_code
+        text updated_at
+    }
+    financial_summary {
+        text _fivetran_id PK
+        text job_id FK
+        text total_amount_owed
+        text total_change_order_amount
+        text total_credit_amount
+        text total_job_price
+        text total_job_revenue
+        text total_payment_received
+        text total_refund_amount
+    }
+    payment_history {
+        text id PK
+        text job_id PK
+        text customer_id FK
+        text cancel_note
+        text canceled
+        text date
+        text echeque_number
+        text method
+        text payment
+        text ref_id
+        text ref_to
+        text reference_number
+        text serial_number
+        text status
+        text unapplied_amount
+    }
+    invoice_line {
+        text index PK
+        text invoice_id PK
+        text job_id PK
+        text trade_id FK
+        text amount
+        text description
+        text is_chargeable
+        text product_id
+        text quantity
+        text trade_name
+        text work_type_color
+        text work_type_id
+        text work_type_name
+    }
+    invoice_custom_tax {
+        text id PK
+        text invoice_id PK
+        text job_id PK
+        text created_at
+        text tax_rate
+        text title
+        text updated_at
+    }
+    invoice {
+        text id PK
+        text job_id PK
+        text customer_id FK
+        text amount
+        text created_at
+        text date
+        text description
+        text due_date
+        text file_paths
+        text file_size
+        text invoice_number
+        text last_updated_origin
+        text name
+        text note
+        text open_balance
+        text origin
+        text status
+        text tax_rate
+        text taxable_amount
+        text title
+        text total_amount
+        text type
+        text unit_number
+        text updated_at
+    }
+    workflow_history {
+        text id PK
+        text job_id PK
+        text modified_by FK
+        text completed_date
+        text created_at
+        text stage
+        text start_date
+        text updated_at
+    }
+    sub_contractor_additional_phone }o--|| sub_contractor : "fk"
+    sub_contractor_trade }o--|| company_trade : "fk"
+    sub_contractor_trade }o--|| sub_contractor : "fk"
+    sub_contractor_work_type }o--|| company_trade : "fk"
+    sub_contractor_work_type }o--|| sub_contractor : "fk"
+    schedule_trade }o--|| company_trade : "fk"
+    schedule_trade }o--|| schedule : "fk"
+    schedule_work_crew_note }o--|| job : "fk"
+    schedule_work_crew_note }o--|| schedule : "fk"
+    schedule_reminder }o--|| schedule : "fk"
+    schedule_work_type }o--|| company_trade : "fk"
+    schedule_work_type }o--|| schedule : "fk"
+    schedule_sub_contractor }o--|| sub_contractor : "fk"
+    schedule_sub_contractor }o--|| schedule : "fk"
+    schedule_representative }o--|| users : "fk"
+    schedule_representative }o--|| schedule : "fk"
+    schedule }o--|| users : "fk"
+    schedule }o--|| job : "fk"
+    schedule }o--|| customer : "fk"
+    schedule }o--|| users : "fk"
+    company_trade_work_type }o--|| company_trade : "fk"
+    company_trade_sub_attribute }o--|| company_trade : "fk"
+    company_trade_sub_attribute }o--|| company_trade_attribute : "fk"
+    company_trade_attribute }o--|| company_trade : "fk"
+    user_role }o--|| users : "fk"
+    appointment_job }o--|| job : "fk"
+    appointment_job }o--|| appointment : "fk"
+    appointment_reminder }o--|| appointment : "fk"
+    appointment_attendee }o--|| users : "fk"
+    appointment_attendee }o--|| appointment : "fk"
+    appointment }o--|| users : "fk"
+    appointment }o--|| customer : "fk"
+    customer_contact }o--|| customer : "fk"
+    customer_phone }o--|| customer : "fk"
+    customer }o--|| users : "fk"
+    job_representative }o--|| users : "fk"
+    job_representative }o--|| job : "fk"
+    job_sub_contractor }o--|| sub_contractor : "fk"
+    job_sub_contractor }o--|| job : "fk"
+    job_trade }o--|| company_trade : "fk"
+    job_trade }o--|| job : "fk"
+    job_work_type }o--|| company_trade : "fk"
+    job_work_type }o--|| job : "fk"
+    job }o--|| users : "fk"
+    job }o--|| division : "fk"
+    job }o--|| customer : "fk"
+    vendor_bill_attactment }o--|| vendor_bill : "fk"
+    vendor_bill_attactment }o--|| vendor_bill : "fk"
+    vendor_bill_vendor }o--|| vendor_bill : "fk"
+    vendor_bill_vendor }o--|| vendor_bill : "fk"
+    vendor_bill_line }o--|| vendor_bill : "fk"
+    vendor_bill_line }o--|| vendor_bill : "fk"
+    vendor_bill }o--|| job : "fk"
+    job_note }o--|| users : "fk"
+    job_note }o--|| users : "fk"
+    job_note }o--|| job : "fk"
+    financial_summary }o--|| job : "fk"
+    payment_history }o--|| customer : "fk"
+    payment_history }o--|| job : "fk"
+    invoice_line }o--|| company_trade : "fk"
+    invoice_line }o--|| invoice : "fk"
+    invoice_line }o--|| invoice : "fk"
+    invoice_custom_tax }o--|| invoice : "fk"
+    invoice_custom_tax }o--|| invoice : "fk"
+    invoice }o--|| customer : "fk"
+    invoice }o--|| job : "fk"
+    workflow_history }o--|| users : "fk"
+    workflow_history }o--|| job : "fk"

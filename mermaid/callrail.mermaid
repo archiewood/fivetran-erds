@@ -1,0 +1,268 @@
+erDiagram
+    call {
+        text id PK
+        text account_id FK
+        text agent_email
+        text answered
+        text business_phone_number
+        text customer_city
+        text customer_country
+        text customer_name
+        text customer_phone_number
+        text customer_state
+        text direction
+        text duration
+        text gclid
+        text recording
+        text recording_duration
+        text recording_player
+        text start_time
+        text tracking_phone_number
+        text voicemail
+    }
+    outer_bound {
+        text id PK
+        text account_id FK
+        text company_id FK
+        text created_at
+        text name
+        text validation_code
+        text verified
+    }
+    summary_email {
+        text id PK
+        text account_id FK
+        text user_id FK
+        text config_call_log
+        text config_summary_statistic
+        text config_top_keyword
+        text config_top_source
+        jsonb frequency
+        text scope_id
+        text scope_name
+        text scope_type
+    }
+    summarized_call {
+        text _fivetran_id PK
+        text account_id FK
+        text end_date
+        text start_date
+        text time_zone
+        text total_results_average_duration
+        text total_results_first_time_caller
+        text total_results_formatted_average_duration
+        text total_results_lead
+        text total_results_missed_call
+        text total_results_total_call
+    }
+    company {
+        text id PK
+        text account_id FK
+        text call_score_enabled
+        text call_scribe_enabled
+        text created_at
+        text disabled_at
+        text dni_active
+        text form_capture
+        text keyword_spotting_enabled
+        text lead_scoring_enabled
+        text name
+        text script_url
+        text status
+        text swap_cookie_duration
+        text swap_exclude_jquery
+        text swap_landing_override
+        text swap_ppc_override
+        text time_zone
+    }
+    notification {
+        text id PK
+        text account_id FK
+        text company_id FK
+        text tracker_id FK
+        text user_id FK
+        text agent_id
+        text alert_type
+        text call_enabled
+        text email
+        text name
+        text send_desktop
+        text send_email
+        text send_push
+        text sms_enabled
+    }
+    form_submission {
+        text id PK
+        text account_id FK
+        text company_id FK
+        text campaign
+        text customer_email
+        text customer_name
+        text customer_phone_number
+        text first_form
+        text form_url
+        text formatted_customer_name
+        text formatted_customer_phone_number
+        text keywords
+        text landing_page_url
+        text medium
+        text person_id
+        text referrer
+        text referring_url
+        text source
+        text submitted_at
+    }
+    milestone {
+        text _fivetran_id PK
+        text form_submission_id PK
+        text ad_position
+        text device
+        text event_date
+        text keywords
+        text landing
+        text landing_page_adgroup_id
+        text landing_page_campaign_id
+        text landing_page_creative
+        text landing_page_fbclid
+        text landing_page_gad_source
+        text landing_page_gbraid
+        text landing_page_gclid
+        text landing_page_network
+        text landing_page_placement
+        text match_type
+        text referrer
+        jsonb referrer_url_param
+        text session_browser
+        text type
+        text utm_campaign
+        text utm_content
+        text utm_medium
+        text utm_source
+    }
+    account {
+        text id PK
+        text agency_in_trial
+        text brand_status
+        text created_at
+        text has_zuora_account
+        text hipaa_account
+        text name
+        text numeric_id
+        text outbound_recording_enabled
+    }
+    text_message_recent_message {
+        text index PK
+        text text_message_id PK
+        text content
+        text created_at
+        text direction
+    }
+    text_message {
+        text id PK
+        text account_id FK
+        text company_id FK
+        text initial_tracker_id FK
+        text company_time_zone
+        text current_tracker_id
+        text customer_name
+        text customer_phone_number
+        text formatted_current_tracking_number
+        text formatted_customer_name
+        text formatted_customer_phone_number
+        text formatted_initial_tracking_number
+        text last_message_at
+        text state
+    }
+    integration {
+        text id PK
+        text account_id FK
+        text company_id FK
+        text api_key
+        text state
+        text type
+    }
+    tracker_tracking_number {
+        text index PK
+        text tracker_id PK
+        text tracking_number FK
+    }
+    tracker {
+        text id PK
+        text account_id FK
+        text company_id FK
+        text created_at
+        text disabled_at
+        text name
+        text sms_enabled
+        text sms_supported
+        text source_search_engine
+        text source_search_type
+        text source_type
+        text status
+        jsonb tracking_number
+        text type
+        text whisper_message
+    }
+    users {
+        text id PK
+        text account_id FK
+        text accepted
+        text created_at
+        text email
+        text first_name
+        text last_name
+        text name
+        text role
+    }
+    integration_trigger {
+        text id PK
+        text account_id FK
+        text company_id FK
+        text integration_id FK
+        text call_type
+        text lead_status
+        text max_duration
+        text min_duration
+        jsonb tracker_id
+    }
+    tags {
+        text id PK
+        text account_id FK
+        text company_id FK
+        text background_color
+        text color
+        text created_at
+        text name
+        text status
+        text tag_level
+    }
+    call }o--|| account : "fk"
+    outer_bound }o--|| account : "fk"
+    outer_bound }o--|| company : "fk"
+    summary_email }o--|| users : "fk"
+    summary_email }o--|| account : "fk"
+    summarized_call }o--|| account : "fk"
+    company }o--|| account : "fk"
+    notification }o--|| users : "fk"
+    notification }o--|| company : "fk"
+    notification }o--|| tracker : "fk"
+    notification }o--|| account : "fk"
+    form_submission }o--|| company : "fk"
+    form_submission }o--|| account : "fk"
+    milestone }o--|| form_submission : "fk"
+    text_message_recent_message }o--|| text_message : "fk"
+    text_message }o--|| tracker : "fk"
+    text_message }o--|| company : "fk"
+    text_message }o--|| account : "fk"
+    integration }o--|| account : "fk"
+    integration }o--|| company : "fk"
+    tracker_tracking_number }o--|| call : "fk"
+    tracker_tracking_number }o--|| tracker : "fk"
+    tracker }o--|| company : "fk"
+    tracker }o--|| account : "fk"
+    users }o--|| account : "fk"
+    integration_trigger }o--|| company : "fk"
+    integration_trigger }o--|| integration : "fk"
+    integration_trigger }o--|| account : "fk"
+    tags }o--|| company : "fk"
+    tags }o--|| account : "fk"

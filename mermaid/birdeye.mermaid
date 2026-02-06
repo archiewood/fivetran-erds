@@ -1,0 +1,488 @@
+erDiagram
+    contact_location {
+        text location PK
+        text contact_id PK
+    }
+    contact_mapping {
+        text mapping_business_id PK
+        text mapping_customer_id PK
+        text contact_id PK
+    }
+    contact {
+        text id PK
+        text contact_type
+        text created
+        text email
+        text first_name
+        text last_activity_on
+        text last_name
+        text native_email_unsub_type
+        text native_sms_unsub_type
+        text phone
+        text source
+        jsonb tags
+    }
+    business_competitor {
+        text id PK
+        text enterprise_id FK
+        text location_address_1
+        text location_address_2
+        text location_city
+        text location_country_code
+        text location_country_name
+        double_precision location_latitude
+        double_precision location_longitude
+        text location_state
+        text location_zip
+        text name
+    }
+    competitor {
+        text enterprise_id PK
+        text enterprise_name
+    }
+    keyword_stat {
+        text _fivetran_id PK
+        text keyword_id FK
+        text keyword
+        text occurrence
+        text score
+        text scr
+    }
+    keyword_adjective {
+        text _fivetran_id PK
+        text keyword_id FK
+        text adjective
+        double_precision average_score
+        text occurrence
+        text percentage
+    }
+    keyword_competitor {
+        text competitor_id PK
+        text keyword_id PK
+    }
+    keyword {
+        text id PK
+        double_precision average_score
+        text count
+        jsonb keywords
+        text name
+    }
+    working_hour {
+        text _fivetran_id PK
+        text business_name FK
+        text hours_of_operation_index FK
+        text end_hour
+        text start_hour
+    }
+    hours_of_operation {
+        text index PK
+        text business_name PK
+        text comment
+        text day
+        text is_open
+    }
+    business {
+        text name PK
+        text alias
+        double_precision avg_rating
+        text base_url
+        text business_status
+        text category
+        text cover_business_info_layout
+        text cover_image_url
+        jsonb covid_info
+        text created_date
+        text description
+        text email_id
+        text fax
+        text image_1_url
+        text image_2_url
+        text image_3_url
+        text internal_listing_category
+        text internal_listing_display_category
+        text internal_listing_subcategory_1
+        text is_address_hidden
+        boolean is_seoenabled
+        text is_service_area_provider
+        text keywords
+        jsonb languages
+        text location_address_1
+        text location_address_2
+        text location_city
+        text location_country_code
+        text location_country_name
+        double_precision location_latitude
+        double_precision location_longitude
+        text location_state
+        text location_zip
+        text logo_url
+        text payment
+        text phone
+        text review_count
+        text services
+        text social_profile_urls_facebook_url
+        text social_profile_urls_google_url
+        text social_profile_urls_linkedin_url
+        text social_profile_urls_twitter_url
+        text social_profile_urls_youtube_url
+        text status
+        text timezone
+        text type
+        text website_url
+        text working_24_x_7
+    }
+    category_stat {
+        text id PK
+        text insight_id PK
+        double_precision average_score
+        text color_code
+        boolean competitor
+        text count
+        text enterprise_name
+        text grade
+    }
+    insight_category {
+        text id PK
+        text category_name
+    }
+    source_list {
+        text alias PK
+    }
+    conversation_report {
+        text id PK
+        text agg_review_count
+        text alias_1
+        text business_number
+        text email_click_info_mobile_birdeye
+        text email_click_info_mobile_google
+        text email_click_info_mobile_other_sites
+        text email_click_info_mobile_yelp
+        text email_click_info_pc_birdeye
+        text email_click_info_pc_google
+        text email_click_info_pc_other_sites
+        text email_click_info_pc_yelp
+        double_precision email_click_info_percent
+        text email_click_info_total
+        text email_open_info_mobile_android
+        text email_open_info_mobile_ios
+        text email_open_info_mobile_other
+        text email_open_info_pc
+        double_precision email_open_info_percent
+        text email_open_info_tablet_android
+        text email_open_info_tablet_ios
+        text email_open_info_tablet_other
+        text email_open_info_total
+        jsonb email_sent_info_email_details
+        text email_sent_info_req_count
+        text email_sent_info_req_reminder_count
+        text email_sent_info_share_req_count
+        text email_sent_info_share_req_reminder_count
+        text email_sent_info_total
+        text heirarchy_groups
+        text is_modifiable
+        text name
+        text organic_review_count
+        jsonb reviews
+        text sms_detail_birdeye
+        text sms_detail_google
+        text sms_detail_message_click
+        text sms_detail_message_sent
+        text sms_detail_other_sites
+        double_precision sms_detail_percent
+        text sms_detail_yelp
+    }
+    answer_child {
+        text _fivetran_id PK
+        text answer_index FK
+        text response_id FK
+        text answer
+        boolean conditional
+        boolean hidden
+        text max_value
+        text min_value
+        text question_title
+        text question_type
+        boolean show_date
+        boolean show_time
+        boolean shown_to_customer
+        boolean visible
+    }
+    answer {
+        text index PK
+        text response_id PK
+        text answer
+        boolean conditional
+        boolean hidde
+        text max_value
+        text min_value
+        text question_title
+        text question_type
+        boolean show_date
+        boolean show_time
+        boolean shown_to_customer
+        boolean visible
+    }
+    response_custom_param {
+        text name PK
+        text response_id PK
+        text value
+    }
+    response {
+        text id PK
+        text survey_id FK
+        text business_id
+        text business_location_name
+        text business_number
+        boolean completed
+        text customer_id
+        text customer_name
+        text locale
+        text location_name
+        text question_count
+        text request_date
+        text response_date
+        boolean ticketed
+    }
+    employee_business {
+        text business_id PK
+        text employee_id FK
+    }
+    employee {
+        text id PK
+        text email_id
+        text first_name
+        text image_url
+        text last_name
+        text name
+        text phone
+    }
+    theme_stat {
+        text _fivetran_id PK
+        text theme_id FK
+        text adjective
+        text count
+        text keyword
+        text negative_count
+        text positive_count
+        text score
+        text scr
+        text theme
+    }
+    theme_competitor {
+        text competitor_id PK
+        text theme_id PK
+    }
+    theme {
+        text id PK
+        double_precision average_score
+        text count
+        text name
+        text negative_count
+        double_precision negative_percentage
+        text occurrence
+        double_precision percentage
+        text positive_count
+        double_precision positive_percentage
+        jsonb themes
+    }
+    button_text {
+        text id PK
+        text survey_id FK
+        text locale
+        text locale_text
+        text text_key
+    }
+    question_choice {
+        text id PK
+        text question_id FK
+        boolean hidden
+        text orders
+        text title
+    }
+    page_question {
+        text id PK
+        text page_id FK
+        boolean add_page_break
+        jsonb display_logic
+        boolean display_question
+        jsonb dynamic_choices
+        boolean edit_answer
+        boolean embed_in_email
+        boolean hidden
+        boolean interval
+        boolean is_required
+        text maximum_value
+        text minimum_value
+        text name
+        text orders
+        text react_element_id
+        jsonb rows
+        boolean show_date
+        text show_question_numbers
+        boolean show_time
+        boolean shown_to_customer
+        jsonb skip_logic
+        boolean skip_question
+        boolean standard_field
+        text title
+        text type
+        jsonb value
+        boolean visible
+    }
+    page {
+        text id PK
+        text survey_id FK
+        boolean hidden
+        text name
+        text orders
+        text page_title
+        text show_question_numbers
+        text thankyou_msg
+        boolean visible
+    }
+    survey_custom_param {
+        text id PK
+        text survey_id FK
+        text key
+        text label
+    }
+    survey {
+        text id PK
+        text business_name FK
+        text brand_name
+        text business_id
+        boolean cloneable
+        timestamp created
+        text default_locale
+        boolean hide_birdeye_logo
+        boolean hide_locale_menu
+        boolean insights_enabled
+        timestamp last_modified
+        text name
+        text owner_email
+        text owner_name
+        text progressbar_position
+        text question_count
+        text responses
+        boolean show_business_name
+        text show_location_ques
+        text show_logo
+        boolean show_progress_bar
+        boolean show_question_number
+        boolean show_survey_title
+        text show_title
+        text status
+        text str_created_date
+        text str_last_modified_date
+        jsonb supported_locales
+        text survey_type
+        text thankyou_msg
+        text theme_color
+        text theme_text_color
+        text type
+    }
+    business_enterprise {
+        text competitor_id PK
+        text enterprise_id FK
+        text alias
+        text child_count
+        text name
+    }
+    review_extra_param {
+        text name PK
+        text review_id PK
+        text value
+    }
+    review {
+        text id PK
+        text business_name FK
+        text business_id
+        text business_type
+        text comments
+        text customer_id
+        boolean enable_reply
+        text featured
+        double_precision rating
+        text response
+        text response_date
+        text review_date
+        text review_url
+        text reviewer_city
+        text reviewer_email_id
+        text reviewer_facebook_id
+        text reviewer_first_name
+        text reviewer_last_name
+        text reviewer_nickname
+        text reviewer_phone
+        text reviewer_state
+        text reviewer_thumbnail_url
+        text source_type
+        text status
+        text title
+        text unique_review_url
+    }
+    aggregation {
+        text id PK
+        text aggregation_status
+        text source_alias
+        text source_name
+        text source_url
+    }
+    conversation_message {
+        text id PK
+        text conversation_id PK
+        jsonb attachments
+        text channel
+        text direction
+        text message_date
+        text message_status
+        text sent_at
+        text text
+        text user_id
+    }
+    conversation {
+        text id PK
+        text contact_id FK
+        text assigned_to_email_id
+        text assigned_to_id
+        text assigned_to_name
+        text assigned_to_type
+        text contact_created_date
+        text contact_team
+        text contact_updated_date
+        text conversation_start_date
+        text last_message_received_on
+        text last_used_channel
+        text status
+    }
+    contact_location }o--|| contact : "fk"
+    contact_mapping }o--|| contact : "fk"
+    business_competitor }o--|| competitor : "fk"
+    keyword_stat }o--|| keyword : "fk"
+    keyword_adjective }o--|| keyword : "fk"
+    keyword_competitor }o--|| business_enterprise : "fk"
+    keyword_competitor }o--|| keyword : "fk"
+    working_hour }o--|| hours_of_operation : "fk"
+    working_hour }o--|| hours_of_operation : "fk"
+    hours_of_operation }o--|| business : "fk"
+    category_stat }o--|| insight_category : "fk"
+    answer_child }o--|| answer : "fk"
+    answer_child }o--|| answer : "fk"
+    answer }o--|| response : "fk"
+    response_custom_param }o--|| response : "fk"
+    response }o--|| survey : "fk"
+    employee_business }o--|| employee : "fk"
+    theme_stat }o--|| theme : "fk"
+    theme_competitor }o--|| business_enterprise : "fk"
+    theme_competitor }o--|| theme : "fk"
+    button_text }o--|| survey : "fk"
+    question_choice }o--|| page_question : "fk"
+    page_question }o--|| page : "fk"
+    page }o--|| survey : "fk"
+    survey_custom_param }o--|| survey : "fk"
+    survey }o--|| business : "fk"
+    business_enterprise }o--|| competitor : "fk"
+    review_extra_param }o--|| review : "fk"
+    review }o--|| business : "fk"
+    conversation_message }o--|| conversation : "fk"
+    conversation }o--|| contact : "fk"

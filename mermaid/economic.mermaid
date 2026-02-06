@@ -1,0 +1,625 @@
+erDiagram
+    app_setting_user {
+        text setting_key PK
+        text content
+        text self
+    }
+    customer_location {
+        text customer_number PK
+        integer delivery_location_number PK
+        text address
+        boolean barred
+        text city
+        text country
+        text postal_code
+        text self
+        integer sort_key
+        text terms_of_delivery
+    }
+    order_draft {
+        integer order_number PK
+        integer customer_number FK
+        integer delivery_location_number FK
+        integer payment_terms_number FK
+        integer attentioncustomer_contact_number
+        text attentionself
+        text cost_price_in_base_currency
+        text currency
+        text date
+        text due_date
+        text exchange_rate
+        text gross_amount
+        text gross_amount_in_base_currency
+        text heading
+        text margin_in_base_currency
+        text margin_percentage
+        text net_amount
+        text net_amount_in_base_currency
+        text project_number
+        text recipient_address
+        text recipient_city
+        text recipient_country
+        text recipient_cvr
+        text recipient_ean
+        text recipient_name
+        text recipient_nem_handel_type
+        text recipient_public_entry_number
+        text recipient_zip
+        integer referencescustomer_contact_number
+        text referencesself
+        text remainder
+        text remainder_in_base_currency
+        text rounding_amount
+        integer sales_personemployee_number
+        text sales_personself
+        text self
+        text sent
+        text soapid
+        text text_line_1
+        text text_line_2
+        text vat_amount
+        integer vendoremployee_number
+        text vendorself
+    }
+    layout {
+        integer layout_number PK
+        text deleted
+        text name
+        text self
+    }
+    vat_account {
+        text vat_code PK
+        integer vat_type_number FK
+        integer account_number
+        text barred
+        text name
+        text rate_percentage
+        text self
+    }
+    order_sent {
+        integer order_number PK
+        integer customer_number FK
+        integer delivery_location_number FK
+        integer payment_terms_number FK
+        integer attentioncustomer_contact_number
+        text attentionself
+        text cost_price_in_base_currency
+        text currency
+        text date
+        text due_date
+        text exchange_rate
+        text gross_amount
+        text gross_amount_in_base_currency
+        text heading
+        text margin_in_base_currency
+        text margin_percentage
+        text net_amount
+        text net_amount_in_base_currency
+        text project_number
+        text recipient_address
+        text recipient_city
+        text recipient_country
+        text recipient_cvr
+        text recipient_ean
+        text recipient_name
+        text recipient_nem_handel_type
+        text recipient_public_entry_number
+        text recipient_zip
+        integer referencescustomer_contact_number
+        text referencesself
+        text remainder
+        text remainder_in_base_currency
+        text rounding_amount
+        integer sales_personemployee_number
+        text sales_personself
+        text self
+        text sent
+        text soapid
+        text text_line_1
+        text text_line_2
+        text vat_amount
+        integer vendoremployee_number
+        text vendorself
+    }
+    customer_contact {
+        integer contact_number PK
+        text customer_number
+        boolean deleted
+        text e_invoice_id
+        text email
+        jsonb email_notifications
+        text name
+        text notes
+        text phone
+        text self
+        text sort_key
+    }
+    department {
+        text department_number PK
+        text percentage
+        text self
+    }
+    department_distribution {
+        integer departmental_distribution_number PK
+        boolean barred
+        text distribution_type
+        text name
+        text self
+    }
+    supplier {
+        integer supplier_number PK
+        integer layout_number FK
+        integer payment_terms_number FK
+        integer supplier_group_number FK
+        integer vat_zone_number FK
+        integer account_number
+        text address
+        text bank_account
+        text city
+        text contacts
+        text corporate_identification_number
+        text creditor_id
+        text currency
+        text default_invoice_text
+        integer employee_number
+        text name
+        text phone
+        text self
+        integer supplier_contact_number
+        text zip
+    }
+    accounting_year_period {
+        text period_number PK
+        boolean closed
+        text entries
+        text from_date
+        text self
+        text to_date
+        text totals
+        text year
+    }
+    order_archived {
+        integer order_number PK
+        integer customer_number FK
+        integer delivery_location_number FK
+        integer payment_terms_number FK
+        integer attentioncustomer_contact_number
+        text attentionself
+        text cost_price_in_base_currency
+        text currency
+        text date
+        text due_date
+        text exchange_rate
+        text gross_amount
+        text gross_amount_in_base_currency
+        text heading
+        text margin_in_base_currency
+        text margin_percentage
+        text net_amount
+        text net_amount_in_base_currency
+        text project_number
+        text recipient_address
+        text recipient_city
+        text recipient_country
+        text recipient_cvr
+        text recipient_ean
+        text recipient_name
+        text recipient_nem_handel_type
+        text recipient_public_entry_number
+        text recipient_zip
+        integer referencescustomer_contact_number
+        text referencesself
+        text remainder
+        text remainder_in_base_currency
+        text rounding_amount
+        integer sales_personemployee_number
+        text sales_personself
+        text self
+        text sent
+        text soapid
+        text text_line_1
+        text text_line_2
+        text vat_amount
+        integer vendoremployee_number
+        text vendorself
+    }
+    account {
+        integer account_number PK
+        text account_type
+        text accounting_years
+        text balance
+        boolean barred
+        boolean block_direct_entries
+        integer contra_account_account_number
+        text contra_account_self
+        text debit_credit
+        integer draft_balance
+        integer from_account_number
+        text name
+        text self
+        integer to_account_number
+        integer total_from_account_account_number
+        text total_from_account_self
+        text vat_code
+    }
+    product {
+        integer product_number PK
+        integer departmental_distribution_number FK
+        text product_group_number FK
+        text unit_number FK
+        integer available
+        text bar_code
+        boolean barred
+        text cost_price
+        text distribution_type
+        integer gross_weight
+        integer in_stock
+        text invoices_booked
+        text invoices_drafts
+        text invoices_self
+        timestamp last_updated
+        text name
+        integer net_weight
+        integer ordered_by_customers
+        integer ordered_from_suppliers
+        integer package_volume
+        integer recommended_cost_price
+        text recommended_price
+        text sales_price
+        text self
+    }
+    journal_customer_invoice {
+        text customer_number PK
+        integer journal_journal_number PK
+        text self
+    }
+    customer {
+        integer number PK
+        integer customer_contact_number FK
+        integer delivery_location_number FK
+        integer employee_number FK
+        integer group_number FK
+        integer layout_number FK
+        integer payment_terms_number FK
+        integer vat_zone_number FK
+        integer attention_contact_number
+        text balance
+        text barred
+        text contacts
+        text corporate_identification_number
+        text credit_limit
+        text currency
+        text due_amount
+        boolean e_invoicing_disabled_by_default
+        text ean
+        text last_updated
+        text p_number
+        text public_entry_number
+        text self
+        text telephone_and_fax_number
+        text templates_invoice
+        text templates_invoice_line
+        text totals_booked
+        text totals_drafts
+        text totals_self
+        text vat_number
+        text website
+    }
+    currency {
+        text code PK
+        text iso_number
+        text name
+        text self
+    }
+    unit {
+        integer unit_number PK
+        text name
+        text products
+        text self
+    }
+    vat_type {
+        integer vat_type_number PK
+        text name
+        text self
+    }
+    product_group {
+        integer product_group_number PK
+        integer account_number FK
+        text name
+        text products
+        text sales_accounts
+        text self
+    }
+    accounting_year_period_entry {
+        integer entry_number PK
+        text accounting_year_period_period_number PK
+        text accounting_year_year PK
+        integer account_number FK
+        integer booked_invoice_number FK
+        integer departmental_distribution_number FK
+        integer payment_type_number FK
+        integer supplier_number FK
+        integer unit_1_number FK
+        integer unit_2_number FK
+        text vat_code FK
+        text amount
+        text amount_in_base_currency
+        integer cost_type_number
+        text currency
+        integer customer
+        text date
+        text due_date
+        text entry_type
+        text invoice_number
+        integer project_number
+        text quantity_1
+        text quantity_2
+        double_precision remainder
+        double_precision remainder_in_base_currency
+        text self
+        text supplier_invoice_number
+        text text
+        text voucher_number
+    }
+    employee {
+        integer employee_number PK
+        boolean barred
+        text booked_invoices
+        text customers
+        text draft_invoices
+        text email
+        integer group_number
+        text name
+        text phone
+        text self
+    }
+    journal {
+        integer journal_number PK
+        text entries
+        integer maximum_voucher_number
+        integer minimum_voucher_number
+        text name
+        text self
+        text vouchers
+    }
+    payment_term {
+        integer payment_terms_number PK
+        text cardcustomer_number
+        text cardself
+        text days_of_credit
+        text name
+        text payment_terms_type
+        text percentage_for_prepaid_amount
+        text percentage_for_remainder_amount
+        text prepaidaccount_number
+        text prepaidself
+        text remainderaccount_number
+        text remainderself
+        text self
+    }
+    customer_template_invoice {
+        integer customer_number PK
+        integer delivery_location_number FK
+        text currency
+        text date
+        text due_date
+        text exchange_rate
+        text recipientcustomer_contact_number
+        text recipientself
+        integer referencescustomer_contact_number
+        text referencesself
+    }
+    accounting_year {
+        text year PK
+        boolean closed
+        text entries
+        text from_date
+        text periods
+        text self
+        text to_date
+        text totals
+        text vouchers
+    }
+    payment_type {
+        integer payment_type_number PK
+        text name
+        text self
+    }
+    invoice_sent {
+        integer id PK
+        integer booked_invoice_number FK
+        text created_by
+        text creation_date
+        text recipient_ean
+        text recipient_mobile_phone
+        text recipient_name
+        text self
+        text send_by
+        text status
+    }
+    invoice_draft {
+        integer draft_invoice_number PK
+        text customer_number FK
+        text delivery_location_number FK
+        text payment_terms_number FK
+        integer attentioncustomer_contact_number
+        text attentionself
+        text cost_price_in_base_currency
+        text currency
+        text date
+        text due_date
+        text exchange_rate
+        text gross_amount
+        text gross_amount_in_base_currency
+        text heading
+        text margin_in_base_currency
+        text margin_percentage
+        text net_amount
+        text net_amount_in_base_currency
+        text project_number
+        text recipient_address
+        text recipient_city
+        text recipient_country
+        text recipient_cvr
+        text recipient_ean
+        text recipient_name
+        text recipient_nem_handel_type
+        text recipient_public_entry_number
+        text recipient_zip
+        integer referencescustomer_contact_number
+        text referencesself
+        text remainder
+        text remainder_in_base_currency
+        text rounding_amount
+        integer sales_personemployee_number
+        text sales_personself
+        text self
+        text sent
+        text soapid
+        text text_line_1
+        text text_line_2
+        text vat_amount
+        integer vendoremployee_number
+        text vendorself
+    }
+    vat_zone {
+        integer vat_zone_number PK
+        boolean enabled_for_customer
+        boolean enabled_for_supplier
+        text name
+        text self
+    }
+    customer_group {
+        integer customer_group_number PK
+        integer account_number FK
+        text customers
+        text layout_number
+        text name
+        text self
+    }
+    required_module {
+        integer module_number PK
+        integer app_role_role_number PK
+        text self
+    }
+    app_role {
+        integer role_number PK
+        text name
+    }
+    product_sales_price {
+        text price PK
+        text currency_code FK
+        integer product_number FK
+        text self
+    }
+    supplier_group {
+        integer supplier_group_number PK
+        text account_number FK
+        text name
+        text self
+    }
+    app_setting_agreement {
+        text setting_key PK
+        text content
+        text self
+    }
+    invoice_booked {
+        integer booked_invoice_number PK
+        integer customer_number FK
+        integer delivery_location_number FK
+        integer payment_terms_number FK
+        integer attentioncustomer_contact_number
+        text attentionself
+        text currency
+        text date
+        text due_date
+        text exchange_rate
+        text gross_amount
+        text gross_amount_in_base_currency
+        text heading
+        text net_amount
+        text net_amount_in_base_currency
+        text project_number
+        text recipient_address
+        text recipient_city
+        text recipient_country
+        text recipient_cvr
+        text recipient_ean
+        text recipient_name
+        text recipient_nem_handel_type
+        text recipient_public_entry_number
+        text recipient_zip
+        integer referencescustomer_contact_number
+        text referencesself
+        text remainder
+        text remainder_in_base_currency
+        text rounding_amount
+        integer sales_personemployee_number
+        text sales_personself
+        text self
+        text sent
+        text text_line_1
+        text text_line_2
+        text vat_amount
+        integer vendoremployee_number
+        text vendorself
+    }
+    customer_template_invoice_line {
+        text product_number PK
+        integer customer_number PK
+        text description
+        text self
+    }
+    order_draft }o--|| payment_term : "fk"
+    order_draft }o--|| customer_location : "fk"
+    order_draft }o--|| customer : "fk"
+    vat_account }o--|| vat_type : "fk"
+    order_sent }o--|| payment_term : "fk"
+    order_sent }o--|| customer_location : "fk"
+    order_sent }o--|| customer : "fk"
+    supplier }o--|| layout : "fk"
+    supplier }o--|| supplier_group : "fk"
+    supplier }o--|| payment_term : "fk"
+    supplier }o--|| vat_zone : "fk"
+    order_archived }o--|| payment_term : "fk"
+    order_archived }o--|| customer_location : "fk"
+    order_archived }o--|| customer : "fk"
+    product }o--|| product_group : "fk"
+    product }o--|| unit : "fk"
+    product }o--|| department_distribution : "fk"
+    journal_customer_invoice }o--|| customer : "fk"
+    journal_customer_invoice }o--|| journal : "fk"
+    customer }o--|| layout : "fk"
+    customer }o--|| payment_term : "fk"
+    customer }o--|| customer_location : "fk"
+    customer }o--|| vat_zone : "fk"
+    customer }o--|| employee : "fk"
+    customer }o--|| customer_group : "fk"
+    customer }o--|| customer_contact : "fk"
+    product_group }o--|| account : "fk"
+    accounting_year_period_entry }o--|| vat_account : "fk"
+    accounting_year_period_entry }o--|| invoice_booked : "fk"
+    accounting_year_period_entry }o--|| unit : "fk"
+    accounting_year_period_entry }o--|| unit : "fk"
+    accounting_year_period_entry }o--|| account : "fk"
+    accounting_year_period_entry }o--|| payment_term : "fk"
+    accounting_year_period_entry }o--|| department_distribution : "fk"
+    accounting_year_period_entry }o--|| supplier : "fk"
+    accounting_year_period_entry }o--|| accounting_year_period : "fk"
+    accounting_year_period_entry }o--|| accounting_year : "fk"
+    customer_template_invoice }o--|| invoice_booked : "fk"
+    customer_template_invoice }o--|| customer_location : "fk"
+    invoice_sent }o--|| invoice_booked : "fk"
+    invoice_draft }o--|| payment_term : "fk"
+    invoice_draft }o--|| customer_location : "fk"
+    invoice_draft }o--|| customer : "fk"
+    customer_group }o--|| account : "fk"
+    required_module }o--|| app_role : "fk"
+    product_sales_price }o--|| product : "fk"
+    product_sales_price }o--|| currency : "fk"
+    supplier_group }o--|| account : "fk"
+    app_setting_agreement }o--|| app_setting_user : "fk"
+    invoice_booked }o--|| payment_term : "fk"
+    invoice_booked }o--|| customer_location : "fk"
+    invoice_booked }o--|| customer : "fk"
+    customer_template_invoice_line }o--|| customer : "fk"

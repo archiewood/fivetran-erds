@@ -1,0 +1,240 @@
+erDiagram
+    agent_activity_log {
+        text id PK
+        text action_params
+        text action_reason
+        text action_type
+        text company
+        text context
+        text description
+        text event
+        text ip
+        text object_type
+        timestamp occurred
+        text params
+        text source
+        text sub_description
+    }
+    product {
+        text id PK
+        text amount
+        text amount_formatted
+        text amount_symbol
+        text billing_cycles_total
+        text chargeable
+        text charges
+        text company
+        text currency
+        text description
+        timestamp first_seen
+        text gateway_id
+        text has_agent_log
+        text interval
+        text interval_count
+        jsonb logs
+        text name
+        text quantity
+        text readable_interval
+        text setup_amount
+        text status
+        text support_url
+        text taxable
+        text trial_period_days
+        text url
+    }
+    subscrption_cancellation_log {
+        text customer_id PK
+        text subscription_id PK
+        text action
+        text email
+        text ip
+        text method
+        timestamp occurred
+        text reason
+    }
+    item {
+        text id PK
+        text subscription_id FK
+        text amount
+        text amount_formatted
+        text currency
+        text description
+        text percents
+        text quantity
+    }
+    subscription {
+        text id PK
+        text customer_id FK
+        text product_id FK
+        timestamp accurate_at
+        text amount
+        text amount_formatted
+        text amount_symbol
+        text billing_cycles_current
+        text billing_cycles_total
+        timestamp canceled_at
+        text charges
+        text company
+        text currency
+        timestamp current_period_end
+        timestamp current_period_start
+        timestamp ended_at
+        timestamp first_seen
+        text gateway_id
+        text gateway_url
+        text has_items
+        text has_meta
+        text interval
+        text interval_count
+        timestamp last_email
+        jsonb logs
+        text manage_url
+        jsonb metadata
+        jsonb methods_active
+        jsonb methods_supported
+        text object
+        text product_desc
+        text quantity
+        text readable_interval
+        text setup_amount
+        text status
+        text status_text
+        timestamp trial_end
+        text trial_period_days
+        timestamp trial_start
+    }
+    customer {
+        text id PK
+        timestamp accurate_at
+        text billing_address
+        text card_on_file
+        text charges
+        text company
+        text country
+        text customer_company
+        text delinquent
+        text description
+        text edited
+        text email
+        text email_domain
+        text fax
+        text first_name
+        timestamp first_seen
+        text gateway_id
+        text gateway_url
+        text has_items
+        text invoice_details
+        jsonb items
+        text last_charge_id
+        text last_paid_charge
+        jsonb logs
+        text manage_url
+        jsonb metadata
+        jsonb methods_active
+        jsonb methods_supported
+        text name
+        text object
+        text phone
+        text readable_country
+        text send_email_to
+        text shipping_address
+        text tax_number
+        text tax_number_abr
+        text tickets
+        text unsubscribe_authorize
+        text unsubscribe_receipts
+        text unsubscribe_refunds
+        text unsubscribe_void
+        text username
+        text website
+    }
+    charge_preview_tax_rate {
+        text name PK
+        text product_id PK
+        text amount
+        text amount_formatted
+        text rate
+        text type
+    }
+    charge_preview {
+        text _fivetran_id PK
+        text product_id PK
+        text subtotal_amount
+        text subtotal_amount_formatted
+        text total_amount
+        text total_amount_formatted
+    }
+    charge {
+        text id PK
+        text customer_id FK
+        text product_id FK
+        text subscription_id FK
+        timestamp accurate_at
+        text added_tax
+        text amount
+        text amount_formatted
+        text amount_refunded
+        text amount_refunded_formatted
+        text amount_symbol
+        text amount_with_commas
+        text audited_job
+        text company
+        text currency
+        text customer_country
+        text customer_email
+        text customer_email_domain
+        text customer_name
+        text customer_phone
+        text customer_username
+        text description
+        timestamp email_last_sent
+        text failure_reason
+        text gateway_id
+        text gateway_url
+        text invoice_company
+        text invoice_download_url
+        text invoice_url
+        text is_paid
+        text last_4_digits
+        jsonb logs
+        text manage_url
+        jsonb metadata
+        jsonb methods_active
+        jsonb methods_supported
+        text name_email
+        text name_send_email
+        text object
+        timestamp occurred
+        text occurred_formatted
+        text occurred_relative
+        text payment_method
+        text payment_method_bank
+        text payment_method_brand
+        text payment_method_describe
+        text product_desc
+        timestamp refunded_at
+        text refunded_at_formatted
+        text sent_authorize
+        text sent_dunning
+        text sent_invoice
+        text sent_invoice_reminder
+        text sent_receipt
+        text sent_refund_receipt
+        text sent_void
+        text statement_description
+        text status
+        text status_text
+        text support_email
+        text support_url
+        text transaction_id
+    }
+    subscrption_cancellation_log }o--|| customer : "fk"
+    subscrption_cancellation_log }o--|| subscription : "fk"
+    item }o--|| subscription : "fk"
+    subscription }o--|| product : "fk"
+    subscription }o--|| customer : "fk"
+    charge_preview_tax_rate }o--|| charge_preview : "fk"
+    charge_preview }o--|| product : "fk"
+    charge }o--|| product : "fk"
+    charge }o--|| subscription : "fk"
+    charge }o--|| customer : "fk"

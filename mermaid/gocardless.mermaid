@@ -1,0 +1,407 @@
+erDiagram
+    payment {
+        text id PK
+        text links_creditor FK
+        text links_installment_schedule FK
+        text links_mandate FK
+        text links_payout FK
+        text links_subscription FK
+        double_precision amount
+        double_precision amount_refunded
+        text charge_date
+        timestamp created_at
+        text currency
+        text description
+        text fx_estimated_exchange_rate
+        double_precision fx_exchange_rate
+        double_precision fx_fx_amount
+        text fx_fx_currency
+        text metadata
+        text reference
+        boolean retry_if_possible
+        text status
+    }
+    billing_request_template {
+        text id PK
+        text authorisation_url
+        timestamp created_at
+        text mandate_request_currency
+        text mandate_request_metadata
+        text mandate_request_scheme
+        text mandate_request_verify
+        text metadata
+        text name
+        text payment_request_amount
+        text payment_request_currency
+        text payment_request_description
+        text payment_request_metadata
+        text payment_request_scheme
+        text redirect_uri
+        timestamp updated_at
+    }
+    event_customer_notification {
+        text id PK
+        text event_id PK
+        timestamp deadline
+        boolean mandatory
+        text type
+    }
+    event {
+        text id PK
+        text links_billing_request FK
+        text links_creditor FK
+        text links_customer FK
+        text links_customer_bank_account FK
+        text links_installment_schedule FK
+        text links_mandate FK
+        text links_mandate_request_mandate FK
+        text links_new_customer_bank_account FK
+        text links_new_mandate FK
+        text links_payment FK
+        text links_payment_request_payment FK
+        text links_payout FK
+        text links_previous_customer_bank_account FK
+        text links_subscription FK
+        text action
+        timestamp created_at
+        text details_bank_account_id
+        text details_cause
+        text details_currency
+        text details_description
+        text details_not_retrieved_reason
+        text details_origin
+        text details_property
+        text details_reason_code
+        text details_scheme
+        text details_will_attempt_retry
+        text links_bank_authorisation
+        text links_billing_request_flow
+        text links_organisation
+        text links_parent_event
+        text links_payer_authorisation
+        text links_refund
+        text resource_type
+    }
+    creditor_scheme_identifier {
+        text _fivetran_id PK
+        text creditor_id FK
+        text address_line_1
+        text address_line_2
+        text address_line_3
+        boolean can_specify_mandate_reference
+        text city
+        text country_code
+        text currency
+        text email
+        text minimum_advance_notice
+        text name
+        text phone_number
+        text postal_code
+        text reference
+        text region
+        text scheme
+    }
+    creditor {
+        text id PK
+        text links_default_aud_payout_account FK
+        text links_default_dkk_payout_account FK
+        text links_default_eur_payout_account FK
+        text links_default_gbp_payout_account FK
+        text links_default_nzd_payout_account FK
+        text links_default_sek_payout_account FK
+        text links_default_usd_payout_account FK
+        boolean activated
+        text address_line_1
+        text address_line_2
+        text address_line_3
+        boolean can_create_refunds
+        text city
+        text country_code
+        timestamp created_at
+        boolean custom_payment_pages_enabled
+        text fx_payout_currency
+        text logo_url
+        boolean mandate_imports_enabled
+        boolean merchant_responsible_for_notifications
+        text name
+        text postal_code
+        text region
+        text verification_status
+    }
+    customer {
+        text id PK
+        text address_line_1
+        text address_line_2
+        text address_line_3
+        text city
+        text company_name
+        text country_code
+        text created_at
+        text danish_identity_number
+        text email
+        text family_name
+        text given_name
+        text language
+        text metadata
+        text phone_number
+        text postal_code
+        text region
+        text swedish_identity_number
+    }
+    installment_schedule {
+        text id PK
+        text links_customer FK
+        text links_mandate FK
+        timestamp created_at
+        text currency
+        text metadata
+        text name
+        text payment_errors
+        text status
+        text total_amount
+    }
+    refund {
+        text id PK
+        text links_mandate FK
+        text links_payment FK
+        double_precision amount
+        timestamp created_at
+        text currency
+        text fx_estimated_exchange_rate
+        double_precision fx_exchange_rate
+        double_precision fx_fx_amount
+        text fx_fx_currency
+        text metadata
+        text reference
+        text status
+    }
+    billing_request_complete_action {
+        text complete_action PK
+        text billing_request_action_index PK
+        text billing_request_id PK
+    }
+    billing_request_require_action {
+        text require_action PK
+        text billing_request_action_index PK
+        text billing_request_id PK
+    }
+    billing_request_action {
+        text index PK
+        text billing_request_id PK
+        text available_currencies
+        text bank_authorisation
+        boolean required
+        text status
+        text type
+    }
+    billing_request {
+        text id PK
+        text links_creditor FK
+        text links_customer FK
+        text links_customer_bank_account FK
+        text links_mandate_request_mandate FK
+        text links_payment_request_payment FK
+        timestamp created_at
+        text creditor_name
+        boolean fallback_enabled
+        text links_bank_authorisation
+        text links_customer_billing_detail
+        text links_mandate_request
+        text links_organisation
+        text mandate_request_currency
+        text mandate_request_metadata
+        text mandate_request_scheme
+        text mandate_request_verify
+        text metadata
+        double_precision payment_request_amount
+        bigint payment_request_app_fee
+        text payment_request_currency
+        text payment_request_description
+        text payment_request_metadata
+        text payment_request_scheme
+        text status
+    }
+    institution {
+        text id PK
+        text country_code
+        text icon_url
+        text logo_url
+        text name
+    }
+    payout {
+        text id PK
+        text links_creditor FK
+        text links_creditor_bank_account FK
+        double_precision amount
+        text arrival_date
+        timestamp created_at
+        text currency
+        double_precision deducted_fees
+        text fx_estimated_exchange_rate
+        double_precision fx_exchange_rate
+        double_precision fx_fx_amount
+        text fx_fx_currency
+        text metadata
+        text payout_type
+        text reference
+        text status
+        text tax_currency
+    }
+    block {
+        text id PK
+        boolean active
+        text block_type
+        timestamp created_at
+        text reason_description
+        text reason_type
+        text resource_reference
+        timestamp updated_at
+    }
+    subscription_upcoming_payment {
+        text _fivetran_id PK
+        text subscription_id FK
+        double_precision amount
+        text charge_date
+    }
+    subscription {
+        text id PK
+        text links_mandate FK
+        double_precision amount
+        text app_fee
+        integer count
+        timestamp created_at
+        text currency
+        integer day_of_month
+        text earliest_charge_date_after_resume
+        text end_date
+        integer interval
+        text interval_unit
+        text metadata
+        text month
+        text name
+        text payment_reference
+        boolean retry_if_possible
+        text start_date
+        text status
+    }
+    currency_exchange_rate {
+        text _fivetran_id PK
+        text rate
+        text source
+        text target
+        timestamp time
+    }
+    tax_rate {
+        text id PK
+        text end_date
+        text jurisdiction
+        text start_date
+        text type
+    }
+    customer_bank_account {
+        text id PK
+        text links_customer FK
+        text account_holder_name
+        text account_number_ending
+        text account_type
+        text bank_name
+        text country_code
+        timestamp created_at
+        text currency
+        text email
+        boolean enabled
+        text metadata
+    }
+    creditor_bank_account {
+        text id PK
+        text links_creditor FK
+        text account_holder_name
+        text account_number_ending
+        text account_type
+        text bank_name
+        text country_code
+        timestamp created_at
+        text currency
+        boolean enabled
+        text metadata
+    }
+    mandate {
+        text id PK
+        text links_creditor FK
+        text links_customer FK
+        text links_customer_bank_account FK
+        text links_mandate FK
+        text created_at
+        text metadata
+        text next_possible_charge_date
+        boolean payments_require_approval
+        text reference
+        text scheme
+        text status
+    }
+    payout_item {
+        text _fivetran_id PK
+        text payment_id FK
+        text payout_id FK
+        text tax_rate_id FK
+        double_precision amount
+        text currency
+        double_precision destination_amount
+        text destination_currency
+        double_precision exchange_rate
+    }
+    payment }o--|| creditor : "fk"
+    payment }o--|| installment_schedule : "fk"
+    payment }o--|| mandate : "fk"
+    payment }o--|| payout : "fk"
+    payment }o--|| subscription : "fk"
+    event_customer_notification }o--|| event : "fk"
+    event }o--|| installment_schedule : "fk"
+    event }o--|| mandate : "fk"
+    event }o--|| customer_bank_account : "fk"
+    event }o--|| billing_request : "fk"
+    event }o--|| payout : "fk"
+    event }o--|| creditor : "fk"
+    event }o--|| mandate : "fk"
+    event }o--|| payment : "fk"
+    event }o--|| subscription : "fk"
+    event }o--|| customer_bank_account : "fk"
+    event }o--|| customer_bank_account : "fk"
+    event }o--|| mandate : "fk"
+    event }o--|| customer : "fk"
+    event }o--|| payment : "fk"
+    creditor_scheme_identifier }o--|| creditor : "fk"
+    creditor }o--|| creditor_bank_account : "fk"
+    creditor }o--|| creditor_bank_account : "fk"
+    creditor }o--|| creditor_bank_account : "fk"
+    creditor }o--|| creditor_bank_account : "fk"
+    creditor }o--|| creditor_bank_account : "fk"
+    creditor }o--|| creditor_bank_account : "fk"
+    creditor }o--|| creditor_bank_account : "fk"
+    installment_schedule }o--|| customer : "fk"
+    installment_schedule }o--|| mandate : "fk"
+    refund }o--|| payment : "fk"
+    refund }o--|| mandate : "fk"
+    billing_request_complete_action }o--|| billing_request_action : "fk"
+    billing_request_complete_action }o--|| billing_request : "fk"
+    billing_request_require_action }o--|| billing_request_action : "fk"
+    billing_request_require_action }o--|| billing_request : "fk"
+    billing_request_action }o--|| billing_request : "fk"
+    billing_request }o--|| creditor : "fk"
+    billing_request }o--|| payment : "fk"
+    billing_request }o--|| customer_bank_account : "fk"
+    billing_request }o--|| mandate : "fk"
+    billing_request }o--|| customer : "fk"
+    payout }o--|| creditor : "fk"
+    payout }o--|| creditor_bank_account : "fk"
+    subscription_upcoming_payment }o--|| subscription : "fk"
+    subscription }o--|| mandate : "fk"
+    customer_bank_account }o--|| customer : "fk"
+    creditor_bank_account }o--|| creditor : "fk"
+    mandate }o--|| creditor : "fk"
+    mandate }o--|| customer : "fk"
+    mandate }o--|| customer_bank_account : "fk"
+    mandate }o--|| mandate : "fk"
+    payout_item }o--|| payment : "fk"
+    payout_item }o--|| tax_rate : "fk"
+    payout_item }o--|| payout : "fk"

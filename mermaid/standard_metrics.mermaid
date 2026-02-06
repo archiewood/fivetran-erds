@@ -1,0 +1,110 @@
+erDiagram
+    metrics {
+        text _fivetran_id PK
+        text category_id FK
+        text company_id FK
+        text budget_id
+        text cadence
+        text converted_value
+        text currency
+        text date
+        text detailed_source
+        text fx_rate
+        text is_budget_metric
+        text preferred_currency
+        text updated_at
+        text value
+    }
+    budget {
+        text id PK
+        text company_id FK
+        text company_slug FK
+        text company
+        text date
+        text name
+    }
+    metrics_option {
+        text category_id PK
+        text category_name
+        text description
+        text is_archived
+        text is_point_in_time
+        text is_standard
+        text type
+    }
+    company {
+        text id PK
+        text city
+        text description
+        text firm_sector
+        text fiscal_year_end
+        text logo_url
+        text name
+        text sector
+        text slug
+        text status
+        text website
+    }
+    custom_column_select {
+        text company_id PK
+        text id PK
+        text name
+        text type
+        text value
+        text value_color
+        text value_id
+    }
+    custom_column_text {
+        text company_id PK
+        text id PK
+        text name
+        text type
+        text value
+    }
+    custom_column_multi_select {
+        text value_id PK
+        text company_id PK
+        text id PK
+        text name
+        text type
+        text value
+        text value_color
+    }
+    note {
+        text id PK
+        text author_id FK
+        text company_id FK
+        text author
+        text created_at
+        jsonb note
+    }
+    custom_column_option_option {
+        text id PK
+        text custom_column_option_id PK
+        text color
+        text value
+    }
+    custom_column_option {
+        text id PK
+        text name
+        text type
+    }
+    users {
+        text id PK
+        text email
+        text first_name
+        text last_name
+    }
+    metrics }o--|| metrics_option : "fk"
+    metrics }o--|| company : "fk"
+    budget }o--|| company : "fk"
+    budget }o--|| company : "fk"
+    custom_column_select }o--|| custom_column_option : "fk"
+    custom_column_select }o--|| company : "fk"
+    custom_column_text }o--|| custom_column_option : "fk"
+    custom_column_text }o--|| company : "fk"
+    custom_column_multi_select }o--|| custom_column_option : "fk"
+    custom_column_multi_select }o--|| company : "fk"
+    note }o--|| users : "fk"
+    note }o--|| company : "fk"
+    custom_column_option_option }o--|| custom_column_option : "fk"

@@ -1,0 +1,351 @@
+erDiagram
+    leave_type {
+        text id PK
+        text created_at
+        text description
+        text is_managed_by_external_system
+        text is_paid
+        text name
+        text type
+        timestamp updated_at
+    }
+    timecard {
+        text id PK
+        text worker_id FK
+        text created_at
+        text pay_period_end_date
+        text pay_period_schedule_id
+        text pay_period_start_date
+        text summary_approved_hours
+        text summary_double_overtime_hours
+        jsonb summary_earnings
+        jsonb summary_hours_worked_by_job_code
+        text summary_overtime_hours
+        text summary_paid_hours
+        jsonb summary_premiums
+        text summary_regular_hours
+        text summary_total_holiday_hours
+        text summary_total_hours
+        text summary_total_paid_time_off_hours
+        text summary_total_unpaid_time_off_hours
+        jsonb summary_unpaid_break_hours_by_entry
+        timestamp updated_at
+    }
+    worker_team {
+        text team_id PK
+        text worker_id PK
+    }
+    worker_custom_field {
+        text index PK
+        text worker_id PK
+        text name
+        text type
+        jsonb value
+    }
+    worker {
+        text id PK
+        text department_id FK
+        text level_id FK
+        text manager_id FK
+        text user_id FK
+        text work_location_id FK
+        text citizenship
+        text country
+        text created_at
+        text date_of_birth
+        text end_date
+        text ethnicity
+        text gender
+        text legal_entity_id
+        text location_type
+        text number
+        text overtime_exemption
+        text personal_email
+        text race
+        text start_date
+        text status
+        text termination_reason
+        text termination_type
+        text title
+        timestamp updated_at
+        text work_email
+    }
+    custom_field {
+        text id PK
+        text created_at
+        text description
+        text name
+        text required
+        text type
+        timestamp updated_at
+    }
+    time_entry_comment {
+        text author_id PK
+        text time_entry_id PK
+        text created_at
+        text text
+    }
+    time_entry_job_shift {
+        text index PK
+        text time_entry_id PK
+        text end_time
+        text is_hours_only_input
+        jsonb job_codes_id
+        text original_end_time
+        text original_start_time
+        text start_time
+    }
+    time_entry_break {
+        text break_type_id PK
+        text time_entry_id PK
+        text end_time
+        text original_end_time
+        text original_start_time
+        text start_time
+    }
+    time_entry_segment {
+        text index PK
+        text time_entry_id PK
+        text break_type_id
+        text display_name
+        text end_time
+        jsonb job_codes_id
+        text ot_multiplier
+        text pay_rate
+        text start_time
+    }
+    time_entry {
+        text id PK
+        text time_card_id FK
+        text worker_id FK
+        text create_extra_hours_run
+        text created_at
+        text end_time
+        text idempotency_key
+        text pay_period_end_date
+        text pay_period_schedule_id
+        text pay_period_start_date
+        jsonb piece_rate_premiums
+        jsonb premiums
+        jsonb shift_input_values
+        text start_time
+        text status
+        jsonb tags
+        text time_entry_summary_double_over_time_hours
+        text time_entry_summary_duration
+        text time_entry_summary_over_time_hours
+        text time_entry_summary_regular_hours
+        timestamp updated_at
+    }
+    work_location {
+        text id PK
+        text address_country
+        text address_formatted
+        text address_locality
+        text address_postal_code
+        text address_region
+        text address_street_address
+        text address_type
+        text created_at
+        text name
+        timestamp updated_at
+    }
+    leave_request_day_take_off {
+        text date PK
+        text leave_request_id PK
+        text number_of_minutes_taken_off
+    }
+    leave_request {
+        text id PK
+        text leave_type_id FK
+        text requester_id FK
+        text reviewer_id FK
+        text worker_id FK
+        text comments
+        text created_at
+        text end_date
+        text end_time
+        text is_managed_by_external_system
+        text leave_event_id
+        text leave_policy_id
+        text number_of_minutes_requested
+        text reason_for_leave
+        text requester
+        text reviewed_at
+        text reviewer
+        text start_date
+        text start_time
+        text status
+        timestamp updated_at
+        text worker
+    }
+    department {
+        text id PK
+        text parent_id FK
+        text created_at
+        text name
+        text reference_code
+        timestamp updated_at
+    }
+    level {
+        text id PK
+        text parent_id FK
+        text created_at
+        text description
+        text global_level
+        text name
+        text rank
+        text track_created_at
+        text track_id
+        text track_name
+        text track_updated_at
+        timestamp updated_at
+    }
+    company_legal_entity_id {
+        text index PK
+        text company_id PK
+        text legal_entities_id
+    }
+    company {
+        text id PK
+        text created_at
+        text doing_business_as_name
+        text legal_entities
+        text legal_name
+        text name
+        text parent_legal_entity_id
+        text phone
+        text physical_address_country
+        text physical_address_formatted
+        text physical_address_locality
+        text physical_address_postal_code
+        text physical_address_region
+        text physical_address_street_address
+        text physical_address_type
+        text primary_email
+        timestamp updated_at
+    }
+    worker_detail {
+        text id PK
+        text compensation_worker_id FK
+        text annual_compensation_currency_type
+        text annual_compensation_value
+        text compensation_annual_salary_equivalent
+        text compensation_bonus_schedule
+        text compensation_created_at
+        text compensation_id
+        text compensation_payment_term
+        text compensation_payment_type
+        text compensation_target_annual_bonus_percent
+        text compensation_updated_at
+        text employment_type_amount_worked
+        text employment_type_compensation_time_period
+        text employment_type_created_at
+        text employment_type_id
+        text employment_type_label
+        text employment_type_name
+        text employment_type_type
+        text employment_type_updated_at
+        text hourly_wage_currency_type
+        text hourly_wage_value
+        text monthly_compensation_currency_type
+        text monthly_compensation_value
+        text on_target_commission_currency_type
+        text on_target_commission_value
+        text relocation_reimbursement_currency_type
+        text relocation_reimbursement_value
+        text signing_bonus_currency_type
+        text signing_bonus_value
+        text target_annual_bonus_currency_type
+        text target_annual_bonus_value
+        timestamp updated_at
+        text weekly_compensation_currency_type
+        text weekly_compensation_value
+    }
+    team {
+        text id PK
+        text parent_id FK
+        text created_at
+        text name
+        timestamp updated_at
+    }
+    user_email {
+        text index PK
+        text user_id PK
+        text display
+        text type
+        text value
+    }
+    user_phone_number {
+        text index PK
+        text user_id PK
+        text display
+        text type
+        text value
+    }
+    user_address {
+        text index PK
+        text user_id PK
+        text country
+        text formatted
+        text locality
+        text postal_code
+        text region
+        text street_address
+        text type
+    }
+    user_photo {
+        text index PK
+        text user_id PK
+        text type
+        text value
+    }
+    users {
+        text id PK
+        text active
+        text created_at
+        text display_name
+        text locale
+        text name_family_name
+        text name_formatted
+        text name_given_name
+        text name_middle_name
+        text name_preferred_family_name
+        text name_preferred_given_name
+        text number
+        text preferred_language
+        text timezone
+        timestamp updated_at
+        text username
+    }
+    timecard }o--|| worker : "fk"
+    worker_team }o--|| team : "fk"
+    worker_team }o--|| worker : "fk"
+    worker_custom_field }o--|| worker : "fk"
+    worker }o--|| users : "fk"
+    worker }o--|| department : "fk"
+    worker }o--|| worker : "fk"
+    worker }o--|| level : "fk"
+    worker }o--|| work_location : "fk"
+    time_entry_comment }o--|| worker : "fk"
+    time_entry_comment }o--|| time_entry : "fk"
+    time_entry_job_shift }o--|| time_entry : "fk"
+    time_entry_break }o--|| time_entry : "fk"
+    time_entry_segment }o--|| time_entry : "fk"
+    time_entry }o--|| timecard : "fk"
+    time_entry }o--|| worker : "fk"
+    leave_request_day_take_off }o--|| leave_request : "fk"
+    leave_request }o--|| leave_type : "fk"
+    leave_request }o--|| worker : "fk"
+    leave_request }o--|| worker : "fk"
+    leave_request }o--|| worker : "fk"
+    department }o--|| department : "fk"
+    level }o--|| level : "fk"
+    company_legal_entity_id }o--|| company : "fk"
+    worker_detail }o--|| worker : "fk"
+    worker_detail }o--|| worker : "fk"
+    team }o--|| team : "fk"
+    user_email }o--|| users : "fk"
+    user_phone_number }o--|| users : "fk"
+    user_address }o--|| users : "fk"
+    user_photo }o--|| users : "fk"

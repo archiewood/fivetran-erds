@@ -1,0 +1,66 @@
+erDiagram
+    creative {
+        text id PK
+        text created_at
+        text creative_type
+        text full_html_preview_url
+        text height
+        text name
+        text preview_url
+        text width
+    }
+    app {
+        text id PK
+        text app_store_id
+        text bundle_id
+        text name
+        text optimization_event_id
+        text optimization_event_name
+        text platform
+        text state
+        text title
+    }
+    event {
+        text id PK
+        text app_id FK
+        text name
+    }
+    campaign {
+        text id PK
+        text app_id FK
+        text campaign_type
+        text max_os_version
+        text min_os_version
+        text name
+        text state
+        text state_last_changed_at
+        text tracker_type
+    }
+    report {
+        text _fivetran_id PK
+        text app_id FK
+        text campaign_id FK
+        text creative_id FK
+        text ad_format
+        text clicks
+        text country_code
+        text cpa
+        text cpc
+        text cpi
+        text cpm
+        text ctr
+        text date
+        text event_number
+        text impressions
+        text installs
+        text publisher_app_store_id
+        text publisher_name
+        text skan_installs_with_conversion_value
+        text skan_installs_with_no_conversion_value
+        text spend
+    }
+    event }o--|| app : "fk"
+    campaign }o--|| app : "fk"
+    report }o--|| campaign : "fk"
+    report }o--|| creative : "fk"
+    report }o--|| app : "fk"

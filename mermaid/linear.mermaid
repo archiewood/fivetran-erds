@@ -1,0 +1,674 @@
+erDiagram
+    project_milestone {
+        text id PK
+        text project_id FK
+        text archived_at
+        text created_at
+        text description
+        text name
+        text sort_order
+        text target_date
+        timestamp updated_at
+    }
+    customer_request {
+        text id PK
+        text attachment_id FK
+        text comment_id FK
+        text creator_id FK
+        text customer_id FK
+        text issue_id FK
+        text original_issue_id FK
+        text project_attachment_id FK
+        text project_id FK
+        text archived_at
+        text body
+        text body_data
+        text color
+        text created_at
+        text priority
+        timestamp updated_at
+        text url
+    }
+    document {
+        text id PK
+        text creator_id FK
+        text project_id FK
+        text updated_by FK
+        text archived_at
+        text color
+        text content
+        text created_at
+        text icon
+        text slug_id
+        text title
+        timestamp updated_at
+    }
+    initiative_history {
+        text id PK
+        text initiative_id PK
+        text archived_at
+        text created_at
+        jsonb entries
+        text updated_at
+    }
+    project_status {
+        text id PK
+        text archived_at
+        text color
+        text created_at
+        text description
+        text indefinite
+        text name
+        text position
+        text type
+        timestamp updated_at
+    }
+    project_member {
+        text member_id PK
+        text project_id PK
+    }
+    project_team {
+        text project_id PK
+        text team_id PK
+    }
+    project {
+        text id PK
+        text converted_from_issue_id FK
+        text creator_id FK
+        text lead_id FK
+        text status_id FK
+        text archived_at
+        text auto_archived_at
+        text canceled_at
+        text color
+        text completed_at
+        jsonb completed_scope_history
+        text content
+        text created_at
+        text description
+        text icon
+        jsonb in_progress_scope_history
+        text name
+        text progress
+        text project_update_reminders_paused_until_at
+        text scope
+        jsonb scope_history
+        text slack_issue_comment
+        text slack_issue_status
+        text slack_new_issue
+        text slug_id
+        text sort_order
+        text start_date
+        text started_at
+        text target_date
+        text trashed
+        timestamp updated_at
+        text url
+    }
+    team_membership {
+        text id PK
+        text team_id FK
+        text user_id FK
+        text archived_at
+        text created_at
+        text owner
+        text sort_order
+        timestamp updated_at
+    }
+    roadmap {
+        text id PK
+        text creator_id FK
+        text organization_id FK
+        text owner_id FK
+        text archived_at
+        text color
+        text created_at
+        text description
+        text name
+        text slug_id
+        text sort_order
+        timestamp updated_at
+    }
+    cycle_uncompleted_issue {
+        text cycle_id PK
+        text issue_id PK
+    }
+    cycle {
+        text id PK
+        text team_id FK
+        text archived_at
+        text auto_archived_at
+        text completed_at
+        jsonb completed_issue_count_history
+        jsonb completed_scope_history
+        text created_at
+        text description
+        text ends_at
+        jsonb in_progress_scope_history
+        jsonb issue_count_history
+        text name
+        text number
+        text progress
+        jsonb scope_history
+        text starts_at
+        timestamp updated_at
+    }
+    attachment_metadata {
+        text name PK
+        text attachment_id PK
+        text value
+    }
+    attachment {
+        text id PK
+        text creator_id FK
+        text external_user_creator_id FK
+        text issue_id FK
+        text archived_at
+        text created_at
+        text group_by_source
+        text source
+        text source_type
+        text subtitle
+        text title
+        timestamp updated_at
+        text url
+    }
+    issue_history {
+        text id PK
+        text issue_id PK
+        text actor_id FK
+        text attachment_id FK
+        text from_assignee_id FK
+        text from_cycle_id FK
+        text from_parent_id FK
+        text from_project_id FK
+        text from_state_id FK
+        text from_team_id FK
+        text to_assignee_id FK
+        text to_converted_project_id FK
+        text to_cycle_id FK
+        text to_parent_id FK
+        text to_project_id FK
+        text to_state_id FK
+        text to_team_id FK
+        jsonb added_label_ids
+        text archived
+        text archived_at
+        text auto_archived
+        text auto_closed
+        jsonb changes
+        text created_at
+        text from_due_date
+        text from_estimate
+        text from_priority
+        text from_title
+        jsonb removed_label_ids
+        text to_due_date
+        text to_estimate
+        text to_priority
+        text to_title
+        text trashed
+        text updated_at
+        text updated_description
+    }
+    workflow_state {
+        text id PK
+        text team_id FK
+        text archived_at
+        text color
+        text created_at
+        text description
+        text name
+        text position
+        text type
+        timestamp updated_at
+    }
+    initiative {
+        text id PK
+        text creator_id FK
+        text organization_id FK
+        text owner_id FK
+        text project_id FK
+        text team_id FK
+        text archived_at
+        text color
+        text completed_at
+        text content
+        text created_at
+        text description
+        text frequency_resolution
+        text health
+        text health_updated_at
+        text icon
+        text integration_setting_archived_at
+        text integration_setting_context_view_type
+        text integration_setting_created_at
+        text integration_setting_id
+        text integration_setting_project_id
+        text integration_setting_slack_initiative_update_created
+        text integration_setting_slack_issue_added_to_triage
+        text integration_setting_slack_issue_added_to_view
+        text integration_setting_slack_issue_created
+        text integration_setting_slack_issue_new_comment
+        text integration_setting_slack_issue_sla_breached
+        text integration_setting_slack_issue_sla_high_risk
+        text integration_setting_slack_issue_status_changed_all
+        text integration_setting_slack_issue_status_changed_done
+        text integration_setting_slack_project_update_created
+        text integration_setting_slack_project_update_created_to_team
+        text integration_setting_slack_project_update_created_to_workspace
+        text integration_setting_team_id
+        text integration_setting_updated_at
+        text last_update_id
+        text name
+        text slug_id
+        text sort_order
+        text started_at
+        text status
+        text target_date
+        text target_date_resolution
+        text trashed
+        text update_reminder_frequency
+        text update_reminder_frequency_in_weeks
+        text update_reminders_day
+        text update_reminders_hour
+        timestamp updated_at
+        text url
+    }
+    issue_subscriber {
+        text issue_id PK
+        text subscriber_id PK
+    }
+    issue_label {
+        text index PK
+        text issue_id PK
+        text label_id FK
+    }
+    issue {
+        text id PK
+        text assignee_id FK
+        text creator_id FK
+        text cycle_id FK
+        text external_user_creator_id FK
+        text parent_id FK
+        text project_id FK
+        text project_milestone_id FK
+        text state_id FK
+        text team_id FK
+        text archived_at
+        text auto_archived_at
+        text auto_closed_at
+        text branch_name
+        text canceled_at
+        text completed_at
+        text created_at
+        text customer_ticket_count
+        text description
+        text due_date
+        text estimate
+        text identifier
+        text number
+        text priority
+        text priority_label
+        text sla_breaches_at
+        text sla_started_at
+        text snoozed_until_at
+        text sort_order
+        text started_at
+        text started_triage_at
+        text title
+        text trashed
+        text triaged_at
+        timestamp updated_at
+        text url
+    }
+    label_children {
+        text label_children_id PK
+        text label_id PK
+    }
+    label {
+        text id PK
+        text creator_id FK
+        text parent_id FK
+        text team_id FK
+        text archived_at
+        text color
+        text created_at
+        text description
+        text is_group
+        text name
+        timestamp updated_at
+    }
+    team_member {
+        text member_id PK
+        text team_id PK
+    }
+    team {
+        text id PK
+        text active_cycle_id FK
+        text auto_close_state_id FK
+        text organization_id FK
+        text start_workflow_state_id FK
+        text archived_at
+        text auto_archive_period
+        text auto_close_period
+        text color
+        text created_at
+        text cycle_calendar_url
+        text cycle_cooldown_time
+        text cycle_duration
+        text cycle_enabled
+        text cycle_issue_auto_assign_completed
+        text cycle_issue_auto_assign_started
+        text cycle_lock_to_active
+        text cycle_start_day
+        text default_issue_estimate
+        text description
+        text group_issue_history
+        text icon
+        text invite_hash
+        text issue_count
+        text issue_estimation_allow_zero
+        text issue_estimation_extended
+        text issue_estimation_type
+        text issue_ordering_no_priority_first
+        text issue_sort_order_default_to_bottom
+        text key
+        text name
+        text private
+        text require_priority_to_leave_triage
+        text slack_issue_comment
+        text slack_issue_status
+        text slack_new_issue
+        text timezone
+        text triage_enabled
+        text upcoming_cycle_count
+        timestamp updated_at
+    }
+    project_update_comment {
+        text comment_id PK
+        text project_update_id PK
+    }
+    project_update_reaction {
+        text id PK
+        text project_update_id PK
+        text comment_id FK
+        text external_user_id FK
+        text issue_id FK
+        text archived_at
+        text created_at
+        text emoji
+        text initiative_update_id
+        text post_id
+        text updated_at
+        text user_id
+    }
+    project_update {
+        text id PK
+        text project_id FK
+        text user_id FK
+        text archived_at
+        text body
+        text body_data
+        text created_at
+        jsonb diff
+        text diff_markdown
+        text edited_at
+        text health
+        jsonb info_snapshot
+        text is_diff_hidden
+        text is_stale
+        jsonb reaction_data
+        text slug_id
+        timestamp updated_at
+        text url
+    }
+    initiative_to_project {
+        text id PK
+        text initiative_id FK
+        text project_id FK
+        text archived_at
+        text created_at
+        text sort_order
+        timestamp updated_at
+    }
+    users {
+        text id PK
+        text organization_id FK
+        text active
+        text admin
+        text archived_at
+        text avatar_url
+        text calendar_hash
+        text created_at
+        text created_issue_count
+        text description
+        text disable_reason
+        text display_name
+        text email
+        text guest
+        text invite_hash
+        text last_seen
+        text name
+        text status_emoji
+        text status_label
+        text status_until_at
+        text timezone
+        timestamp updated_at
+        text url
+    }
+    roadmap_to_project {
+        text id PK
+        text project_id FK
+        text roadmap_id FK
+        text archived_at
+        text created_at
+        text sort_order
+        text updated_at
+    }
+    organization {
+        text id PK
+        text subscription_creator_id FK
+        text allow_members_to_invite
+        text archived_at
+        text created_at
+        text deletion_requested_at
+        text git_branch_format
+        text git_linkback_messages_enabled
+        text git_public_linkback_messages_enabled
+        text logo_url
+        text name
+        text period_upload_volume
+        jsonb previous_url_key
+        text project_update_reminders_day
+        text project_update_reminders_hour
+        text project_updates_reminder_frequency
+        text release_channel
+        text roadmap_enabled
+        text saml_enabled
+        text scim_enabled
+        text subscription_archived_at
+        text subscription_canceled_at
+        text subscription_created_at
+        text subscription_id
+        text subscription_next_billing_at
+        text subscription_pending_change_type
+        text subscription_seats
+        text subscription_seats_maximum
+        text subscription_seats_minimum
+        text subscription_type
+        text subscription_updated_at
+        text trial_ends_at
+        text updated_at
+        text url_key
+    }
+    integration {
+        text id PK
+        text creator_id FK
+        text organization_id FK
+        text team_id FK
+        text archived_at
+        text created_at
+        text service
+        timestamp updated_at
+    }
+    external_user {
+        text id PK
+        text organization_id FK
+        text archived_at
+        text avatar_url
+        text created_at
+        text display_name
+        text email
+        text last_seen
+        text name
+        timestamp updated_at
+    }
+    comment {
+        text id PK
+        text external_user_id FK
+        text issue_id FK
+        text parent_id FK
+        text user_id FK
+        text archived_at
+        text body
+        text body_data
+        text created_at
+        text edited_at
+        jsonb reaction_data
+        timestamp updated_at
+        text url
+    }
+    customer {
+        text id PK
+        text integration_id FK
+        text owner_id FK
+        text status_id FK
+        text approximate_need_count
+        text archived_at
+        text created_at
+        jsonb domains
+        jsonb external_ids
+        text logo_url
+        text main_source_id
+        text name
+        text revenue
+        text size
+        text slack_channel_id
+        text slug_id
+        text tier_archived_at
+        text tier_color
+        text tier_created_at
+        text tier_description
+        text tier_display_name
+        text tier_id
+        text tier_name
+        text tier_position
+        text tier_updated_at
+        timestamp updated_at
+        text url
+    }
+    project_milestone }o--|| project : "fk"
+    customer_request }o--|| comment : "fk"
+    customer_request }o--|| issue : "fk"
+    customer_request }o--|| issue : "fk"
+    customer_request }o--|| customer : "fk"
+    customer_request }o--|| project : "fk"
+    customer_request }o--|| attachment : "fk"
+    customer_request }o--|| attachment : "fk"
+    customer_request }o--|| users : "fk"
+    document }o--|| project : "fk"
+    document }o--|| users : "fk"
+    document }o--|| users : "fk"
+    initiative_history }o--|| initiative : "fk"
+    project_member }o--|| users : "fk"
+    project_member }o--|| project : "fk"
+    project_team }o--|| team : "fk"
+    project_team }o--|| project : "fk"
+    project }o--|| users : "fk"
+    project }o--|| issue : "fk"
+    project }o--|| project_status : "fk"
+    project }o--|| users : "fk"
+    team_membership }o--|| team : "fk"
+    team_membership }o--|| users : "fk"
+    roadmap }o--|| users : "fk"
+    roadmap }o--|| organization : "fk"
+    roadmap }o--|| users : "fk"
+    cycle_uncompleted_issue }o--|| issue : "fk"
+    cycle_uncompleted_issue }o--|| cycle : "fk"
+    cycle }o--|| team : "fk"
+    attachment_metadata }o--|| attachment : "fk"
+    attachment }o--|| external_user : "fk"
+    attachment }o--|| issue : "fk"
+    attachment }o--|| users : "fk"
+    issue_history }o--|| issue : "fk"
+    issue_history }o--|| project : "fk"
+    issue_history }o--|| cycle : "fk"
+    issue_history }o--|| issue : "fk"
+    issue_history }o--|| project : "fk"
+    issue_history }o--|| workflow_state : "fk"
+    issue_history }o--|| users : "fk"
+    issue_history }o--|| users : "fk"
+    issue_history }o--|| team : "fk"
+    issue_history }o--|| workflow_state : "fk"
+    issue_history }o--|| project : "fk"
+    issue_history }o--|| users : "fk"
+    issue_history }o--|| attachment : "fk"
+    issue_history }o--|| cycle : "fk"
+    issue_history }o--|| team : "fk"
+    issue_history }o--|| issue : "fk"
+    workflow_state }o--|| team : "fk"
+    initiative }o--|| users : "fk"
+    initiative }o--|| organization : "fk"
+    initiative }o--|| users : "fk"
+    initiative }o--|| project : "fk"
+    initiative }o--|| team : "fk"
+    issue_subscriber }o--|| users : "fk"
+    issue_subscriber }o--|| issue : "fk"
+    issue_label }o--|| label : "fk"
+    issue_label }o--|| issue : "fk"
+    issue }o--|| external_user : "fk"
+    issue }o--|| cycle : "fk"
+    issue }o--|| team : "fk"
+    issue }o--|| users : "fk"
+    issue }o--|| project : "fk"
+    issue }o--|| issue : "fk"
+    issue }o--|| project_milestone : "fk"
+    issue }o--|| users : "fk"
+    issue }o--|| workflow_state : "fk"
+    label_children }o--|| label : "fk"
+    label_children }o--|| label : "fk"
+    label }o--|| team : "fk"
+    label }o--|| label : "fk"
+    label }o--|| users : "fk"
+    team_member }o--|| users : "fk"
+    team_member }o--|| team : "fk"
+    team }o--|| workflow_state : "fk"
+    team }o--|| organization : "fk"
+    team }o--|| workflow_state : "fk"
+    team }o--|| cycle : "fk"
+    project_update_comment }o--|| comment : "fk"
+    project_update_comment }o--|| project_update : "fk"
+    project_update_reaction }o--|| comment : "fk"
+    project_update_reaction }o--|| issue : "fk"
+    project_update_reaction }o--|| external_user : "fk"
+    project_update_reaction }o--|| project_update : "fk"
+    project_update }o--|| users : "fk"
+    project_update }o--|| project : "fk"
+    initiative_to_project }o--|| project : "fk"
+    initiative_to_project }o--|| initiative : "fk"
+    users }o--|| organization : "fk"
+    roadmap_to_project }o--|| roadmap : "fk"
+    roadmap_to_project }o--|| project : "fk"
+    organization }o--|| users : "fk"
+    integration }o--|| users : "fk"
+    integration }o--|| team : "fk"
+    integration }o--|| organization : "fk"
+    external_user }o--|| organization : "fk"
+    comment }o--|| users : "fk"
+    comment }o--|| issue : "fk"
+    comment }o--|| external_user : "fk"
+    comment }o--|| comment : "fk"
+    customer }o--|| users : "fk"
+    customer }o--|| project_status : "fk"
+    customer }o--|| integration : "fk"

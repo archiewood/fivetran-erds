@@ -1,0 +1,504 @@
+erDiagram
+    reply_address {
+        text id PK
+        text created_by FK
+        text email_domain_id FK
+        text license_id FK
+        text updated_by FK
+        text created_at
+        text created_by_type
+        text email
+        text prefix
+        text updated_at
+        text verified
+    }
+    blocked_email {
+        text id PK
+        text created_by FK
+        text license_id FK
+        text updated_by FK
+        text created_at
+        text created_by_type
+        text email
+        text updated_at
+    }
+    view {
+        text id PK
+        text agent_id FK
+        text created_by FK
+        text license_id FK
+        text updated_by FK
+        text created_at
+        text created_by_type
+        jsonb filter
+        text name
+        text ordering
+        text updated_at
+    }
+    template_attachment {
+        text index PK
+        text template_id PK
+        text cid
+        text name
+        text size
+        text type
+    }
+    template {
+        text id PK
+        text created_by FK
+        text license_id FK
+        text updated_by FK
+        jsonb content_appearance
+        text content_text
+        text content_type
+        text created_at
+        text created_by_type
+        text name
+        text type
+        text updated_at
+    }
+    ticket_custom_field_team {
+        text team_id PK
+        text ticket_custom_field_id PK
+    }
+    ticket_custom_field {
+        text id PK
+        text created_by FK
+        text license_id FK
+        text updated_by FK
+        text api_key
+        text created_at
+        text created_by_type
+        text display_name
+        text role_level
+        text status
+        text type
+        text updated_at
+    }
+    license {
+        text id PK
+        text created_by FK
+        text default_team_id FK
+        text default_template_id FK
+        text updated_by FK
+        text created_at
+        text created_by_type
+        jsonb detected_languages
+        text landing_page
+        text past_due
+        text referrer
+        text source_id
+        text state
+        text type
+        text updated_at
+        text url
+        text utm_campaign
+        text utm_content
+        text utm_medium
+        text utm_source
+        text utm_term
+        text verified_at
+        text verified_by
+    }
+    canned_response_attachment {
+        text index PK
+        text canned_response_id PK
+        text cid
+        text name
+        text size
+        text type
+    }
+    canned_response {
+        text id PK
+        text created_by FK
+        text license_id FK
+        text team_id FK
+        text updated_by FK
+        text created_at
+        text created_by_type
+        jsonb rich_text_obj
+        jsonb shortcut
+        text text
+        text updated_at
+    }
+    tags {
+        text id PK
+        text created_by FK
+        text license_id FK
+        text team_id FK
+        text updated_by FK
+        text created_at
+        text created_by_type
+        text name
+        text updated_at
+    }
+    macros_team {
+        text macros_id PK
+        text team_id PK
+    }
+    macros_action {
+        text index PK
+        text macros_id PK
+        text agent_id FK
+        text canned_response_id FK
+        text tag_id FK
+        text team_id FK
+        text follower
+        text is_private
+        text priority
+        text random_agent
+        text round_robin
+        text spam
+        text status
+        jsonb template
+        text type
+    }
+    macros {
+        text id PK
+        text agent_id FK
+        text created_by FK
+        text license_id FK
+        text updated_by FK
+        text created_at
+        text created_by_type
+        text description
+        text name
+        text updated_at
+    }
+    email_domain_dns_cname {
+        text index PK
+        text email_domain_id PK
+        text host
+        text value
+    }
+    email_domain_dns_txt {
+        text index PK
+        text email_domain_id PK
+        text host
+        text value
+    }
+    email_domain {
+        text id PK
+        text created_by FK
+        text license_id FK
+        text updated_by FK
+        text created_at
+        text created_by_type
+        text inbox_used
+        text name
+        text status
+        text updated_at
+    }
+    mailbox {
+        text id PK
+        text agent_id FK
+        text created_by FK
+        text license_id FK
+        text team_id FK
+        text updated_by FK
+        text created_at
+        text created_by_type
+        text description
+        text inbox_used
+        text name
+        text updated_at
+    }
+    agent_role {
+        text index PK
+        text agent_id PK
+        text role
+    }
+    agent_team {
+        text agent_id PK
+        text team_id PK
+    }
+    agent_attachment {
+        text index PK
+        text agent_id PK
+        text cid
+        text name
+        text size
+        text type
+    }
+    agent {
+        text id PK
+        text created_by FK
+        text license_id FK
+        text updated_by FK
+        text auto_assignment
+        text created_at
+        text created_by_type
+        text email
+        text email_notifications_active
+        text email_verified
+        text google_analytics_client_id
+        text google_analytics_session_id
+        text invert_colors_in_dark_mode
+        text job_title
+        text name
+        jsonb signature_rich_text_obj
+        text signature_text
+        text status
+        text theme
+        text time_zone
+        text updated_at
+        text web_push_notifications_active
+        text weekly_reports
+    }
+    rule_action {
+        text index PK
+        text rule_id PK
+        text agent_id FK
+        text tag_id FK
+        text team_id FK
+        text canned_response_id
+        text followers
+        text is_private
+        text priority
+        text random_agent
+        text round_robin
+        text spam
+        text status
+        jsonb template
+        text type
+    }
+    rule {
+        text id PK
+        text created_by FK
+        text license_id FK
+        text updated_by FK
+        text active
+        text created_at
+        text created_by_type
+        text description
+        text limit_per_ticket
+        text name
+        text ordering
+        text quantifiers
+        jsonb trigger
+        text type
+        text updated_at
+        text use_counter
+    }
+    subscription {
+        text id PK
+        text license_id FK
+        text activated_at
+        text cancelled_at
+        text created_at
+        text current_period_ends_at
+        text current_period_started_at
+        text expires_at
+        text plan_code
+        text quantity
+        text state
+        text trial_ends_at
+        text trial_started_at
+        text unit_amount_in_cents
+        text updated_at
+    }
+    trusted_email {
+        text id PK
+        text created_by FK
+        text license_id FK
+        text updated_by FK
+        text created_at
+        text created_by_type
+        text email
+        text updated_at
+    }
+    team {
+        text id PK
+        text created_by FK
+        text license_id FK
+        text reply_address_id FK
+        text template_id FK
+        text updated_by FK
+        text created_at
+        text created_by_type
+        text integration_external_id
+        text name
+        text notify_team_about_assigned_ticket
+        text notify_team_about_requesters_activity
+        text reply_name
+        text tag_reminder
+        text unauth_reply_creates_new_ticket
+        text updated_at
+    }
+    ticket_team {
+        text team_id PK
+        text ticket_id PK
+    }
+    ticket_event {
+        text id PK
+        text ticket_id PK
+        text author_id FK
+        text author_type
+        text date
+        text detailed_source
+        text message_is_private
+        text message_text
+        text rich_text_obj
+        text source_from
+        text source_type
+        text status_new
+        text status_old
+        text type
+    }
+    ticket_follower {
+        text follower_id PK
+        text ticket_id PK
+    }
+    ticket_cc {
+        text email PK
+        text ticket_id PK
+        text name
+    }
+    ticket_event_delivery_status {
+        text entity_id PK
+        text ticket_event_id PK
+        text ticket_id PK
+        text date
+        text status
+    }
+    ticket_tag {
+        text tag_id PK
+        text ticket_id PK
+    }
+    child_ticket {
+        text id PK
+        text ticket_id PK
+    }
+    ticket {
+        text id PK
+        text assignment_agent_id FK
+        text created_by FK
+        text license_id FK
+        text parent_ticket_id FK
+        text source_mailbox_id FK
+        text updated_by FK
+        text created_at
+        text created_by_type
+        text detected_language
+        text integration_reference_id
+        text integration_reference_type
+        text integration_reference_url
+        text integration_type
+        text integrations
+        text last_message_at
+        text priority
+        text rating_comment
+        text rating_rate
+        text rating_request_sent
+        text rating_requested_at
+        text requester_email
+        text requester_name
+        text silo
+        text source_detailed_source
+        text source_external
+        text source_from
+        text source_integration_type
+        text source_reference_id
+        text source_reference_type
+        text source_type
+        text spam_reason
+        text spam_status
+        text status
+        text subject
+        text updated_at
+    }
+    reply_address }o--|| license : "fk"
+    reply_address }o--|| agent : "fk"
+    reply_address }o--|| email_domain : "fk"
+    reply_address }o--|| agent : "fk"
+    blocked_email }o--|| license : "fk"
+    blocked_email }o--|| agent : "fk"
+    blocked_email }o--|| agent : "fk"
+    view }o--|| license : "fk"
+    view }o--|| agent : "fk"
+    view }o--|| agent : "fk"
+    view }o--|| agent : "fk"
+    template_attachment }o--|| template : "fk"
+    template }o--|| license : "fk"
+    template }o--|| agent : "fk"
+    template }o--|| agent : "fk"
+    ticket_custom_field_team }o--|| team : "fk"
+    ticket_custom_field_team }o--|| ticket_custom_field : "fk"
+    ticket_custom_field }o--|| license : "fk"
+    ticket_custom_field }o--|| agent : "fk"
+    ticket_custom_field }o--|| agent : "fk"
+    license }o--|| template : "fk"
+    license }o--|| agent : "fk"
+    license }o--|| team : "fk"
+    license }o--|| agent : "fk"
+    canned_response_attachment }o--|| canned_response : "fk"
+    canned_response }o--|| team : "fk"
+    canned_response }o--|| license : "fk"
+    canned_response }o--|| agent : "fk"
+    canned_response }o--|| agent : "fk"
+    tags }o--|| team : "fk"
+    tags }o--|| license : "fk"
+    tags }o--|| agent : "fk"
+    tags }o--|| agent : "fk"
+    macros_team }o--|| team : "fk"
+    macros_team }o--|| macros : "fk"
+    macros_action }o--|| team : "fk"
+    macros_action }o--|| tags : "fk"
+    macros_action }o--|| agent : "fk"
+    macros_action }o--|| canned_response : "fk"
+    macros_action }o--|| macros : "fk"
+    macros }o--|| license : "fk"
+    macros }o--|| agent : "fk"
+    macros }o--|| agent : "fk"
+    macros }o--|| agent : "fk"
+    email_domain_dns_cname }o--|| email_domain : "fk"
+    email_domain_dns_txt }o--|| email_domain : "fk"
+    email_domain }o--|| license : "fk"
+    email_domain }o--|| agent : "fk"
+    email_domain }o--|| agent : "fk"
+    mailbox }o--|| team : "fk"
+    mailbox }o--|| license : "fk"
+    mailbox }o--|| agent : "fk"
+    mailbox }o--|| agent : "fk"
+    mailbox }o--|| agent : "fk"
+    agent_role }o--|| agent : "fk"
+    agent_team }o--|| team : "fk"
+    agent_team }o--|| agent : "fk"
+    agent_attachment }o--|| agent : "fk"
+    agent }o--|| license : "fk"
+    agent }o--|| agent : "fk"
+    agent }o--|| agent : "fk"
+    rule_action }o--|| team : "fk"
+    rule_action }o--|| tags : "fk"
+    rule_action }o--|| agent : "fk"
+    rule_action }o--|| rule : "fk"
+    rule }o--|| license : "fk"
+    rule }o--|| agent : "fk"
+    rule }o--|| agent : "fk"
+    subscription }o--|| license : "fk"
+    trusted_email }o--|| license : "fk"
+    trusted_email }o--|| agent : "fk"
+    trusted_email }o--|| agent : "fk"
+    team }o--|| template : "fk"
+    team }o--|| reply_address : "fk"
+    team }o--|| license : "fk"
+    team }o--|| agent : "fk"
+    team }o--|| agent : "fk"
+    ticket_team }o--|| team : "fk"
+    ticket_team }o--|| ticket : "fk"
+    ticket_event }o--|| agent : "fk"
+    ticket_event }o--|| ticket : "fk"
+    ticket_follower }o--|| agent : "fk"
+    ticket_follower }o--|| ticket : "fk"
+    ticket_cc }o--|| ticket : "fk"
+    ticket_event_delivery_status }o--|| ticket_event : "fk"
+    ticket_event_delivery_status }o--|| ticket_event : "fk"
+    ticket_tag }o--|| tags : "fk"
+    ticket_tag }o--|| ticket : "fk"
+    child_ticket }o--|| ticket : "fk"
+    ticket }o--|| ticket : "fk"
+    ticket }o--|| license : "fk"
+    ticket }o--|| agent : "fk"
+    ticket }o--|| agent : "fk"
+    ticket }o--|| mailbox : "fk"
+    ticket }o--|| agent : "fk"

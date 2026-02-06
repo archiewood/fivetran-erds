@@ -1,0 +1,317 @@
+erDiagram
+    document_custom_field {
+        text index PK
+        text document_id PK
+        text field_id FK
+        jsonb value
+    }
+    document {
+        text id PK
+        text parent_document_id FK
+        text parent_folder_id FK
+        boolean deleted
+        text description
+        text document_hub_id
+        jsonb folder_ids
+        jsonb nav_link_folder_ids
+        text nav_links_count
+        text template_id
+        text title
+        timestamp ts_created
+        timestamp ts_deleted
+        timestamp ts_updated
+    }
+    term_custom_field {
+        text field_id PK
+        text term_id PK
+        text field_name
+        jsonb value
+    }
+    term {
+        text id PK
+        boolean deleted
+        text description
+        jsonb glossary_ids
+        text template_id
+        text title
+        timestamp ts_created
+        timestamp ts_deleted
+        timestamp ts_updated
+    }
+    policy_steward {
+        text id PK
+        text policy_id PK
+        boolean deleted
+        text email
+        text name
+        text otype
+        text otype_display_name
+        text photo_url
+        text snippet
+        text title
+        text url
+    }
+    policy {
+        text id PK
+        text description
+        text otype
+        text title
+        timestamp ts_created
+        text url
+    }
+    policy_group_steward {
+        text id PK
+        text policy_group_id PK
+        boolean deleted
+        text email
+        text name
+        text otype
+        text otype_display_name
+        text photo_url
+        text snippet
+        text title
+        text url
+    }
+    policy_group {
+        text id PK
+        text description
+        text otype
+        text policies_count
+        text title
+        timestamp ts_created
+        text url
+    }
+    custom_field_allowed_otype {
+        text otype PK
+        text custom_field_id PK
+    }
+    custom_field_option {
+        text option PK
+        text custom_field_id PK
+    }
+    custom_field {
+        text id PK
+        boolean allow_multiple
+        text backref_name
+        text backref_tooltip_text
+        text builtin_name
+        text field_type
+        text name_plural
+        text name_singular
+        text tooltip_text
+    }
+    column_custom_field {
+        text index PK
+        text column_detail_id PK
+        text field_id FK
+        text field_name
+        text source_tag_applied_state
+        jsonb value
+    }
+    column_detail {
+        text id PK
+        text datasource_id FK
+        text schema_id FK
+        text table_id FK
+        text column_comment
+        text column_type
+        text description
+        text index_is_foreign_key
+        text index_is_other_index
+        text index_is_primary_key
+        text index_referenced_column_id
+        text key
+        text name
+        boolean nullable
+        text position
+        text title
+        text url
+    }
+    child_column_detail {
+        text id PK
+        text column_id PK
+        jsonb children
+        text description
+        text key
+        jsonb other_metadata
+        text path
+        text title
+        text type
+    }
+    datasource_ocf {
+        text id PK
+        text all_schemas
+        text auth_tip
+        text aws_access_key_id
+        text aws_region
+        text builtin_datasource
+        boolean can_data_upload
+        boolean can_toggle_ds_privacy
+        boolean compose_oauth_enabled
+        text connector_id
+        text cron_extraction
+        text data_upload_disabled_message
+        text db_username
+        text dbname
+        text dbtype
+        text delete_status
+        boolean deleted
+        boolean deployment_setup_complete
+        text description
+        boolean disable_auto_extraction
+        boolean enable_complex_type
+        boolean enable_default_schema_extraction
+        boolean enable_designated_credential
+        boolean enable_preserve_query_result
+        boolean enable_query_result_export
+        boolean exclude_additional_columns_in_qli
+        text exclude_schemas
+        jsonb favorited_by_list
+        boolean has_aws_glue_metastore
+        boolean has_aws_s_3_based_qli
+        boolean has_hdfs_based_qli
+        boolean has_metastore_uri
+        boolean has_previewable_qli
+        text hive_logs_source
+        text hive_logs_source_type
+        text hive_tez_logs_source
+        text host
+        text icon
+        boolean is_gone
+        boolean is_hidden
+        boolean is_hive
+        boolean is_presto_hive
+        boolean is_virtual
+        text jdbc_driver
+        boolean latest_extraction_successful
+        timestamp latest_extraction_time
+        text limit_schemas
+        text metastore_type
+        text metastore_uri
+        jsonb negative_filter_words
+        text nosql_mde_sample_size
+        jsonb obfuscate_literals
+        text otype
+        jsonb owner_ids
+        text port
+        boolean private
+        text profiling_tip
+        text qli_aws_access_key_id
+        text qli_aws_region
+        text qli_hive_connection_source
+        text qualified_name
+        boolean remove_filtered_schemas
+        text result_sharing_permission
+        boolean supports_compose
+        boolean supports_default_schema_extraction
+        boolean supports_explain
+        boolean supports_md_diagnostics
+        boolean supports_ocf_query_service_api
+        boolean supports_profiling
+        boolean supports_profiling_v_2
+        boolean supports_qli_daterange
+        boolean supports_qli_diagnostics
+        boolean supports_query_cancellation
+        text title
+        text unresolved_mention_fingerprint_method
+        text uri
+        text url
+        text use_query_service
+        boolean uses_ocf_agent
+        text webhdfs_port
+        text webhdfs_server
+        text webhdfs_username
+    }
+    schema_custom_field {
+        text index PK
+        text schema_detail_id PK
+        text field_id FK
+        text field_name
+        text source_tag_applied_state
+        text value
+    }
+    schema_detail {
+        text id PK
+        text datasource_id FK
+        text db_comment
+        text description
+        text key
+        text name
+        text title
+        text url
+    }
+    custom_field_value_detail {
+        timestamp ts_updated PK
+        text field_id PK
+        text object_id
+        text otype
+        text source_tag_applied_state
+        jsonb value
+    }
+    table_custom_field {
+        text index PK
+        text table_detail_id PK
+        text field_id FK
+        text source_tag_applied_state
+        jsonb value
+    }
+    table_detail {
+        text id PK
+        text datasource_id FK
+        text schema_id FK
+        text base_table_key
+        text description
+        text key
+        text name
+        jsonb partition_columns
+        text partition_definition
+        text sql
+        text table_comment
+        text table_type
+        text title
+        text url
+    }
+    folder_custom_field {
+        text custom_field_id PK
+        text folder_id PK
+    }
+    folder {
+        text id PK
+        text parent_folder_id FK
+        boolean deleted
+        text description
+        text document_hub_id
+        text nav_links_count
+        text template_id
+        text title
+        timestamp ts_created
+        timestamp ts_deleted
+        timestamp ts_updated
+    }
+    document_custom_field }o--|| custom_field : "fk"
+    document_custom_field }o--|| document : "fk"
+    document }o--|| folder : "fk"
+    document }o--|| document : "fk"
+    term_custom_field }o--|| custom_field : "fk"
+    term_custom_field }o--|| term : "fk"
+    policy_steward }o--|| policy : "fk"
+    policy_group_steward }o--|| policy_group : "fk"
+    custom_field_allowed_otype }o--|| custom_field : "fk"
+    custom_field_option }o--|| custom_field : "fk"
+    column_custom_field }o--|| custom_field : "fk"
+    column_custom_field }o--|| column_detail : "fk"
+    column_detail }o--|| datasource_ocf : "fk"
+    column_detail }o--|| schema_detail : "fk"
+    column_detail }o--|| table_detail : "fk"
+    child_column_detail }o--|| column_detail : "fk"
+    schema_custom_field }o--|| custom_field : "fk"
+    schema_custom_field }o--|| schema_detail : "fk"
+    schema_detail }o--|| datasource_ocf : "fk"
+    custom_field_value_detail }o--|| custom_field : "fk"
+    table_custom_field }o--|| custom_field : "fk"
+    table_custom_field }o--|| table_detail : "fk"
+    table_detail }o--|| datasource_ocf : "fk"
+    table_detail }o--|| schema_detail : "fk"
+    folder_custom_field }o--|| custom_field : "fk"
+    folder_custom_field }o--|| folder : "fk"
+    folder }o--|| folder : "fk"

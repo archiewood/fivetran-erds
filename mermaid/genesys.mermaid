@@ -1,0 +1,4125 @@
+erDiagram
+    group_image {
+        text index PK
+        text group_id PK
+        text image_uri
+        text resolution
+    }
+    group_address {
+        text index PK
+        text group_id PK
+        text address
+        text display
+        text extension
+        text media_type
+        text type
+    }
+    group_owner {
+        text group_id PK
+        text user_id PK
+    }
+    groups {
+        text id PK
+        text chat_jabber_id
+        text date_modified
+        text description
+        text member_count
+        text name
+        text rules_visible
+        text self_uri
+        text state
+        text type
+        text version
+        text visibility
+    }
+    campaign_diagnostic_dnc {
+        text _fivetran_id PK
+        text campaign_id FK
+        text dnc_id FK
+    }
+    campaign_diagnostic_rule_set {
+        text _fivetran_id PK
+        text campaign_id FK
+        text rule_set_id FK
+    }
+    campaign_rule_set_diagnostic {
+        text _fivetran_id PK
+        text campaign_id FK
+        text rule_set_id FK
+        jsonb warnings
+    }
+    campaign_diagnostic {
+        text _fivetran_id PK
+        text attempt_limit_id FK
+        text callable_time_set_id FK
+        text campaign_id FK
+        text queue_utilization_diagnostic_queue_id FK
+        text campaign_skill_statistics_eligible_skilled_agent
+        text campaign_skill_statistics_skill_combination
+        text outstanding_interactions_count
+        text queue_utilization_diagnostic_active_users_in_queue
+        text queue_utilization_diagnostic_users_in_queue
+        text queue_utilization_diagnostic_users_not_utilized
+        text queue_utilization_diagnostic_users_on_a_campaign_call
+        text queue_utilization_diagnostic_users_on_a_non_campaign_call
+        text queue_utilization_diagnostic_users_on_different_edge_group
+        text queue_utilization_diagnostic_users_on_queue
+        text queue_utilization_diagnostic_users_on_queue_with_station
+        text scheduled_interactions_count
+        text timezone_rescheduled_calls_count
+    }
+    flow_data_table {
+        text id PK
+        text division_id FK
+        text description
+        text name
+        jsonb schema_additional_properties
+        text schema_description
+        text schema_id
+        jsonb schema_properties
+        jsonb schema_required
+        text schema_schema
+        text schema_title
+        text schema_type
+        text self_uri
+    }
+    conversation_survey_answer_question_group_question_score {
+        text index PK
+        text conversation_id PK
+        text conversation_survey_answer_question_group_score_index PK
+        text conversation_survey_id PK
+        text answer_id
+        text assisted_answer_id
+        text free_text_answer
+        text marked_na
+        text nps_score
+        text nps_text_answer
+        text question_id
+        text score
+        text system_marked_na
+    }
+    conversation_survey_answer_question_group_score {
+        text index PK
+        text conversation_id PK
+        text conversation_survey_id PK
+        text marked_na
+        text max_total_score
+        text question_group_id
+        text system_marked_na
+        text total_score
+    }
+    conversation_survey {
+        text conversation_id PK
+        text id PK
+        text agent_id FK
+        text queue_id FK
+        text survey_form_id FK
+        text agent_team_date_created
+        text agent_team_date_modified
+        text agent_team_description
+        text agent_team_division_id
+        text agent_team_division_name
+        text agent_team_id
+        text agent_team_member_count
+        text agent_team_name
+        text agent_team_self_uri
+        text answer_nps_score
+        text answer_total_score
+        text completed_date
+        text flow_id
+        text missing_required_answer
+        text name
+        text self_uri
+        text status
+        text survey_error_flow_diagnostic_last_action_id
+        text survey_error_survey_error_reason
+        text survey_type
+    }
+    wrapup_code_map {
+        text _fivetran_id PK
+        text date_created
+        text date_modified
+        jsonb default_set
+        text id
+        jsonb mapping
+        text name
+        text self_uri
+        text version
+    }
+    user_call_forwarding_target {
+        text _fivetran_id PK
+        text user_call_forwarding_id FK
+        text user_id FK
+        text type
+        text value
+    }
+    user_call_forwarding {
+        text id PK
+        text user_id PK
+        text enabled
+        text modified_date
+        text name
+        text phone_number
+        text self_uri
+        text voicemail
+    }
+    location_path {
+        text index PK
+        text location_id PK
+        text path
+    }
+    location_profile_image {
+        text _fivetran_id PK
+        text location_id FK
+        text image_uri
+        text resolution
+    }
+    location_floor_plan_image {
+        text index PK
+        text location_id PK
+        text floor_plan_image
+    }
+    location {
+        text id PK
+        text contact_user_id FK
+        text address_city
+        text address_country
+        text address_country_name
+        text address_state
+        text address_stored
+        text address_street_1
+        text address_street_2
+        text address_verified
+        text address_verify_date_finished
+        text address_verify_date_started
+        text address_verify_service
+        text address_verify_status
+        text address_zipcode
+        text emergency_e_164
+        text emergency_number
+        text emergency_type
+        text images
+        text name
+        text notes
+        text self_uri
+        text state
+        text version
+    }
+    campaign_stats {
+        text _fivetran_id PK
+        text campaign_id FK
+        text adjusted_calls_per_agent
+        text contact_rate_attempts
+        text contact_rate_connect_ratio
+        text contact_rate_connects
+        text effective_idle_agents
+        text idle_agents
+        text outstanding_calls
+        text scheduled_calls
+        text time_zone_rescheduled_calls
+    }
+    agent_activity_evaluator_list_contact_info {
+        text index PK
+        text agent_activity_evaluator_list_index PK
+        text agent_activity_fivetran_id PK
+        text address
+        text media_type
+        text type
+    }
+    agent_activity_evaluator_list {
+        text index PK
+        text agent_activity_fivetran_id PK
+        text agent_id FK
+        text evaluator_id FK
+        text average_evaluation_score
+        text id
+        text name
+        text num_evaluation
+        text num_evaluations_without_view_permission
+    }
+    agent_activity {
+        text _fivetran_id PK
+        text agent_id FK
+        text integration_presence_definition_id FK
+        text presence_definition_id FK
+        text average_critical_score
+        text average_evaluation_score
+        text highest_critical_score
+        text highest_evaluation_score
+        text id
+        text lowest_critical_score
+        text lowest_evaluation_score
+        text name
+        text num_critical_evaluations
+        text num_evaluations
+        text num_evaluations_without_view_permission
+    }
+    routing_queue_routing_rule {
+        text _fivetran_id PK
+        text routing_queue_id FK
+        text operator
+        text threshold
+        text wait_seconds
+    }
+    routing_queue_conditional_group_routing_rule_group {
+        text group_id PK
+        text index PK
+        text routing_queue_id PK
+    }
+    routing_queue_conditional_group_routing_rule {
+        text index PK
+        text routing_queue_id PK
+        text condition_value
+        text metric
+        text operator
+        text wait_seconds
+    }
+    routing_queue_bulls_eye_ring_expansion_criteria {
+        text _fivetran_id PK
+        text routing_queue_id FK
+        text threshold
+        text type
+    }
+    routing_queue_bulls_eye_ring_skill_to_remove {
+        text id PK
+        text routing_queue_id PK
+        text name
+        text self_uri
+    }
+    routing_queue_bulls_eye_ring_member_group {
+        text id PK
+        text routing_queue_id PK
+        text member_count
+        text name
+        text self_uri
+        text type
+    }
+    routing_queue_member_group {
+        text id PK
+        text routing_queue_id PK
+        text member_count
+        text name
+        text self_uri
+        text type
+    }
+    routing_queue_email_address_route_skill {
+        text id PK
+        text routing_queue_id PK
+        text name
+        text self_uri
+    }
+    routing_queue_email_address_auto_bcc {
+        text _fivetran_id PK
+        text routing_queue_id FK
+        text email
+        text name
+    }
+    routing_queue {
+        text id PK
+        text division_id FK
+        text acw_settings_timeout_ms
+        text acw_settings_wrapup_prompt
+        text agent_owned_routing_enable_agent_owned_call_back
+        text agent_owned_routing_max_owned_call_back_delay_hours
+        text agent_owned_routing_max_owned_call_back_hours
+        text auto_answer_only
+        text calling_party_name
+        text calling_party_number
+        text created_by
+        text date_created
+        text date_modified
+        jsonb default_script
+        text description
+        text direct_routing_agent_wait_second
+        text direct_routing_backup_queue_id
+        text direct_routing_call_media_settingenabled
+        text direct_routing_call_media_settinginbound_flow_id
+        text direct_routing_call_media_settinginbound_self_uri
+        text direct_routing_call_media_settingvoice_mail_flow
+        text direct_routing_email_media_settingenabled
+        text direct_routing_email_media_settinginbound_flow_id
+        text direct_routing_email_media_settinginbound_self_uri
+        text direct_routing_enabled
+        text direct_routing_message_media_setting
+        text direct_routing_wait_for_agent
+        text email_in_queue_flow_id
+        text email_in_queue_flow_name
+        text email_in_queue_flow_self_uri
+        text enable_manual_assignment
+        text enable_transcription
+        text joined_member_count
+        text media_settings_call_alerting_timeout_seconds
+        text media_settings_call_auto_answer_alert_tone_seconds
+        text media_settings_call_enable_auto_answer
+        text media_settings_call_manual_answer_alert_tone_seconds
+        text media_settings_call_service_level
+        jsonb media_settings_call_sub_type_setting
+        text media_settings_callback_alerting_timeout_seconds
+        text media_settings_callback_auto_answer_alert_tone_seconds
+        text media_settings_callback_enable_auto_answer
+        text media_settings_callback_manual_answer_alert_tone_seconds
+        text media_settings_callback_service_level
+        jsonb media_settings_callback_sub_type_setting
+        text media_settings_chat_alerting_timeout_seconds
+        text media_settings_chat_auto_answer_alert_tone_seconds
+        text media_settings_chat_enable_auto_answer
+        text media_settings_chat_manual_answer_alert_tone_seconds
+        text media_settings_chat_service_level
+        jsonb media_settings_chat_sub_type_setting
+        text media_settings_email_alerting_timeout_seconds
+        text media_settings_email_auto_answer_alert_tone_seconds
+        text media_settings_email_enable_auto_answer
+        text media_settings_email_manual_answer_alert_tone_seconds
+        text media_settings_email_service_level
+        jsonb media_settings_email_sub_type_setting
+        text media_settings_message_alerting_timeout_seconds
+        text media_settings_message_auto_answer_alert_tone_seconds
+        text media_settings_message_enable_auto_answer
+        text media_settings_message_manual_answer_alert_tone_seconds
+        text media_settings_message_service_level
+        jsonb media_settings_message_sub_type_setting
+        text member_count
+        text message_in_queue_flow_id
+        text message_in_queue_flow_name
+        text message_in_queue_flow_self_uri
+        text modified_by
+        text name
+        text on_hold_prompt_id
+        text on_hold_prompt_name
+        text on_hold_prompt_self_uri
+        text outbound_messaging_addresses_open_messaging_recipient_id
+        text outbound_messaging_addresses_open_messaging_recipient_name
+        text outbound_messaging_addresses_open_messaging_recipient_self_uri
+        text outbound_messaging_addresses_sms_address_name
+        text outbound_messaging_addresses_sms_address_self_uri
+        text outbound_messaging_addresses_sms_adress_id
+        text outbound_messaging_addresses_whats_app_recipient_id
+        text outbound_messaging_addresses_whats_app_recipient_name
+        text outbound_messaging_addresses_whats_app_recipient_self_uri
+        text peer_id
+        text queue_flow_id
+        text queue_flow_name
+        text queue_flow_self_uri
+        text reply_email_address_domain_id
+        text reply_email_address_domain_name
+        text reply_email_address_domain_self_uri
+        text reply_email_address_route_allow_multiple_actions
+        text reply_email_address_route_always_included
+        text reply_email_address_route_flow_id
+        text reply_email_address_route_flow_name
+        text reply_email_address_route_flow_self_uri
+        text reply_email_address_route_from_email
+        text reply_email_address_route_from_name
+        text reply_email_address_route_history_inclusion
+        text reply_email_address_route_id
+        text reply_email_address_route_inclusion_type
+        text reply_email_address_route_language_id
+        text reply_email_address_route_language_name
+        text reply_email_address_route_language_self_url
+        text reply_email_address_route_name
+        text reply_email_address_route_pattern
+        text reply_email_address_route_priority
+        text reply_email_address_route_queue_id
+        jsonb reply_email_address_route_reply_email_address
+        text reply_email_address_route_self_uri
+        text reply_email_address_route_signature_canned_response_id
+        text reply_email_address_route_signature_enabled
+        text reply_email_address_route_spam_flow_id
+        text reply_email_address_route_spam_flow_name
+        text reply_email_address_route_spam_flow_self_uri
+        text scoring_method
+        text self_uri
+        text skill_evaluation_method
+        text suppress_in_queue_call_recording
+        text user_member_count
+        text whisper_prompt_id
+        text whisper_prompt_name
+        text whisper_prompt_self_uri
+    }
+    station {
+        text id PK
+        text user_id FK
+        text web_rtc_user_id FK
+        text description
+        text line_appearance_id
+        text name
+        text primary_edge_id
+        text primary_edge_name
+        text primary_edge_self_uri
+        text secondary_edge
+        text secondary_edge_id
+        text secondary_edge_name
+        text secondary_edge_self_uri
+        text self_uri
+        text status
+        text type
+        text web_rtc_call_appearances
+        text web_rtc_force_turn
+        text web_rtc_media_dscp
+        text web_rtc_persistent_enabled
+        text web_rtc_require_media_helper
+    }
+    conversation_id {
+        text index PK
+        text conversation_id PK
+    }
+    conversation_division_entity {
+        text id PK
+        text conversation_id PK
+        text division_id PK
+        text name
+        text self_uri
+    }
+    conversation_recent_transfer {
+        text id PK
+        text conversation_id PK
+        text destination_user_id FK
+        text initiator_user_id FK
+        text modified_by_id FK
+        text date_issued
+        text destination_address
+        text state
+        text transfer_type
+    }
+    conversation_participant_media_role {
+        text index PK
+        text conversation_id PK
+        text conversation_participant_id PK
+        text media_roles
+    }
+    conversation_participant_conversation_routing_data_skills {
+        text conversation_id PK
+        text conversation_participant_id PK
+        text id PK
+    }
+    conversation_participant_conversation_routing_data_scored_agent {
+        text agent_id PK
+        text conversation_id PK
+        text conversation_participant_id PK
+        text agent_name
+        text agent_self_uri
+        text score
+    }
+    conversation_participant_wrapup_tag {
+        text index PK
+        text conversation_id PK
+        text conversation_participant_id PK
+        text tag_name
+    }
+    conversation_participant_call_wrapup_tag {
+        text index PK
+        text conversation_id PK
+        text conversation_participant_call_id PK
+        text conversation_participant_id PK
+        text tag_name
+    }
+    conversation_participant_call_segment {
+        text index PK
+        text conversation_id PK
+        text conversation_participant_call_id PK
+        text conversation_participant_id PK
+        text disconnect_type
+        text end_time
+        text how_ended
+        text start_time
+        text type
+    }
+    conversation_participant_call_disconnect_reason {
+        text index PK
+        text conversation_id PK
+        text conversation_participant_call_id PK
+        text conversation_participant_id PK
+        text code
+        text phrase
+        text type
+    }
+    conversation_participant_call {
+        text id PK
+        text conversation_id PK
+        text conversation_participant_id PK
+        text script_id FK
+        text after_call_work_end_time
+        text after_call_work_required
+        text after_call_work_start_time
+        text after_call_work_state
+        text agent_assistant_id
+        text confined
+        text connected_time
+        text detection_event_name
+        text detection_is_person_likely
+        text detection_line_connected
+        text detection_mode
+        text detection_preconnect_duration
+        text detection_total_ringbacks
+        text direction
+        text disconnect_type
+        text disconnected_time
+        text disposition_analyzer
+        text disposition_name
+        text document_id
+        text error_info_code
+        text error_info_message
+        text fax_status_active_page
+        text fax_status_baud_rate
+        text fax_status_bytes_transmitted
+        text fax_status_direction
+        text fax_status_expected_pages
+        text fax_status_line_errors
+        text fax_status_lines_transmitted
+        text fax_status_page_errors
+        text held
+        text initial_state
+        text muted
+        text other_address_displayable
+        text other_address_name
+        text other_address_name_raw
+        text other_address_normalized
+        text other_address_raw
+        text peer_id
+        text provider
+        text recording
+        text recording_id
+        text recording_state
+        text secure_pause
+        text self_address_displayable
+        text self_address_name
+        text self_address_name_raw
+        text self_address_normalized
+        text self_address_raw
+        text start_alerting_time
+        text start_hold_time
+        text state
+        text uui_data
+        text wrapup_code
+        text wrapup_duration_seconds
+        text wrapup_end_time
+        text wrapup_name
+        text wrapup_notes
+        text wrapup_provisional
+    }
+    conversation_participant_callback_wrapup_tag {
+        text index PK
+        text conversation_id PK
+        text conversation_participant_callback_id PK
+        text conversation_participant_id PK
+        text tag_name
+    }
+    conversation_participant_callback_segment {
+        text _fivetran_id PK
+        text conversation_id FK
+        text conversation_participant_callback_id FK
+        text conversation_participant_id FK
+        text disconnect_type
+        text end_time
+        text how_ended
+        text start_time
+        text type
+    }
+    conversation_participant_callback_number {
+        text index PK
+        text conversation_id PK
+        text conversation_participant_callback_id PK
+        text conversation_participant_id PK
+        text callback_number
+    }
+    conversation_participant_callback {
+        text id PK
+        text conversation_id PK
+        text conversation_participant_id PK
+        text dialer_preview_campaign_id FK
+        text dialer_preview_contact_list_id FK
+        text script_id FK
+        text after_call_work_end_time
+        text after_call_work_required
+        text after_call_work_start_time
+        text after_call_work_state
+        text automated_callback_config_id
+        text call_back_scheduled_time
+        text call_back_user_name
+        text caller_id
+        text caller_id_name
+        text connected_time
+        text dialer_preview_contact_id
+        text dialer_preview_id
+        jsonb dialer_preview_phone_number_columns
+        text direction
+        text disconnect_type
+        text disconnected_time
+        text external_campaign
+        text held
+        text initial_state
+        text peer_id
+        text provider
+        text skip_enabled
+        text start_alerting_time
+        text start_hold_time
+        text state
+        text timeout_seconds
+        text voicemail_id
+        text voicemail_upload_status
+        text wrapup_code
+        text wrapup_duration_seconds
+        text wrapup_end_time
+        text wrapup_name
+        text wrapup_notes
+        text wrapup_provisional
+    }
+    conversation_participant_chat_wrapup_tag {
+        text index PK
+        text conversation_id PK
+        text conversation_participant_chat_id PK
+        text conversation_participant_id PK
+        text tag_name
+    }
+    conversation_participant_chat_segment {
+        text _fivetran_id PK
+        text conversation_id FK
+        text conversation_participant_chat_id FK
+        text conversation_participant_id FK
+        text disconnect_type
+        text end_time
+        text how_ended
+        text start_time
+        text type
+    }
+    conversation_participant_chat {
+        text id PK
+        text conversation_id PK
+        text conversation_participant_id PK
+        text script_id FK
+        text after_call_work_end_time
+        text after_call_work_required
+        text after_call_work_start_time
+        text after_call_work_state
+        text avatar_image_url
+        text connected_time
+        text direction
+        text disconnect_type
+        text disconnected_time
+        text held
+        text initial_state
+        text journey_context_customer_id
+        text journey_context_customer_id_type
+        text journey_context_customer_session_id
+        text journey_context_customer_session_id_type
+        text journey_context_triggering_action_action_map_id
+        text journey_context_triggering_action_action_map_version
+        text journey_context_triggering_action_id
+        text peer_id
+        text provider
+        text recording_id
+        text room_id
+        text start_alerting_time
+        text start_hold_time
+        text state
+        text wrapup_code
+        text wrapup_duration_seconds
+        text wrapup_end_time
+        text wrapup_name
+        text wrapup_notes
+        text wrapup_provisional
+    }
+    conversation_participant_conversation_cobrowse_session_wrapup_tag {
+        text index PK
+        text conversation_id PK
+        text conversation_participant_conversation_cobrowse_session_id PK
+        text conversation_participant_id PK
+        text tag_name
+    }
+    conversation_participan_conversation_cobrowse_session_controlling {
+        text index PK
+        text conversation_id PK
+        text conversation_participant_conversation_cobrowse_session_id PK
+        text conversation_participant_id PK
+        text controlling
+    }
+    conversation_participan_conversation_cobrowse_session_segment {
+        text _fivetran_id PK
+        text conversation_id FK
+        text conversation_participant_conversation_cobrowse_session_id FK
+        text conversation_participant_id FK
+        text disconnect_type
+        text end_time
+        text how_ended
+        text start_time
+        text type
+    }
+    conversation_participant_conversation_cobrowse_session {
+        text id PK
+        text conversation_id PK
+        text conversation_participant_id PK
+        text after_call_work_end_time
+        text after_call_work_required
+        text after_call_work_start_time
+        text after_call_work_state
+        text cobrowse_role
+        text cobrowse_session_id
+        text connected_time
+        text disconnect_type
+        text disconnected_time
+        text initial_state
+        text peer_id
+        text provider
+        text provider_event_time
+        text self_address_displayable
+        text self_address_name
+        text self_address_name_raw
+        text self_address_normalized
+        text self_address_raw
+        text start_alerting_time
+        text state
+        text viewer_url
+        text wrapup_code
+        text wrapup_duration_seconds
+        text wrapup_end_time
+        text wrapup_name
+        text wrapup_notes
+        text wrapup_provisional
+    }
+    conversation_participant_email_wrapup_tag {
+        text index PK
+        text conversation_id PK
+        text conversation_participant_email_id PK
+        text conversation_participant_id PK
+        text tag_name
+    }
+    conversation_participant_email_segment {
+        text _fivetran_id PK
+        text conversation_id FK
+        text conversation_participant_email_id FK
+        text conversation_participant_id FK
+        text disconnect_type
+        text end_time
+        text how_ended
+        text start_time
+        text type
+    }
+    conversation_participant_email_draft_attachment {
+        text attachment_id PK
+        text conversation_id PK
+        text conversation_participant_email_id PK
+        text conversation_participant_id PK
+        text content_length
+        text content_type
+        text content_uri
+        text inline_image
+        text name
+    }
+    conversation_participant_email {
+        text id PK
+        text conversation_id PK
+        text conversation_participant_id PK
+        text script_id FK
+        text after_call_work_end_time
+        text after_call_work_required
+        text after_call_work_start_time
+        text after_call_work_state
+        text auto_generated
+        text connected_time
+        text direction
+        text dis_connected_time
+        text disconnect_type
+        text error_info_code
+        text error_info_context_id
+        jsonb error_info_details
+        text error_info_entity_id
+        text error_info_entity_name
+        jsonb error_info_error
+        text error_info_limit_key
+        text error_info_limit_namespace
+        text error_info_limit_value
+        text error_info_message
+        jsonb error_info_message_params
+        text error_info_message_with_params
+        text error_info_status
+        text held
+        text initial_state
+        text message_id
+        text messages_sent
+        text peer_id
+        text provider
+        text recording_id
+        text spam
+        text start_alerting_time
+        text start_hold_time
+        text state
+        text subject
+        text wrapup_code
+        text wrapup_duration_seconds
+        text wrapup_end_time
+        text wrapup_name
+        text wrapup_notes
+        text wrapup_provisional
+    }
+    conversation_participant_message_wrapup_tag {
+        text index PK
+        text conversation_id PK
+        text conversation_participant_id PK
+        text conversation_participant_message_id PK
+        text tag_name
+    }
+    conversation_participant_message_segment {
+        text _fivetran_id PK
+        text conversation_id FK
+        text conversation_participant_id FK
+        text conversation_participant_message_id FK
+        text disconnect_type
+        text end_time
+        text how_ended
+        text start_time
+        text type
+    }
+    conversation_participant_sent_message_media {
+        text id PK
+        text conversation_id PK
+        text conversation_participant_id PK
+        text conversation_participant_message_id PK
+        text message_id PK
+        text content_length_bytes
+        text media_type
+        text name
+        text url
+    }
+    conversation_participant_sent_message_sticker {
+        text id PK
+        text conversation_id PK
+        text conversation_participant_id PK
+        text conversation_participant_message_id PK
+        text message_id PK
+        text url
+    }
+    conversation_participant_sent_message {
+        text message_id PK
+        text conversation_id PK
+        text conversation_participant_id PK
+        text conversation_participant_message_id PK
+        text error_info_code
+        text error_info_message
+        text message_segment_count
+        text message_status
+        text message_time
+    }
+    conversation_participant_message {
+        text id PK
+        text conversation_id PK
+        text conversation_participant_id PK
+        text script_id FK
+        text after_call_work_end_time
+        text after_call_work_required
+        text after_call_work_start_time
+        text after_call_work_state
+        text agent_assistant_id
+        text authenticated
+        text byo_sms_integration_id
+        text connected_time
+        text direction
+        text dis_connected_time
+        text disconnect_type
+        text error_info_code
+        text error_info_context_id
+        jsonb error_info_details
+        text error_info_entity_id
+        text error_info_entity_name
+        jsonb error_info_error
+        text error_info_limit_key
+        text error_info_limit_namespace
+        text error_info_limit_value
+        text error_info_message
+        jsonb error_info_message_params
+        text error_info_message_with_params
+        text error_info_status
+        text from_address_address_displayable
+        text from_address_address_name
+        text from_address_address_name_raw
+        text from_address_address_normalized
+        text from_address_address_raw
+        text held
+        text initial_state
+        text journey_context_customer_id
+        text journey_context_customer_id_type
+        text journey_context_customer_session_id
+        text journey_context_customer_session_id_type
+        text journey_context_triggering_action_action_map_id
+        text journey_context_triggering_action_action_map_version
+        text journey_context_triggering_action_id
+        text peer_id
+        text recipient_country
+        text recipient_type
+        text start_alerting_time
+        text start_hold_time
+        text state
+        text to_address_address_displayable
+        text to_address_address_name
+        text to_address_address_name_raw
+        text to_address_address_normalized
+        text to_address_address_raw
+        text type
+        text wrapup_code
+        text wrapup_duration_seconds
+        text wrapup_end_time
+        text wrapup_name
+        text wrapup_notes
+        text wrapup_provisional
+    }
+    conversation_participant_screenshare_wrapup_tag {
+        text index PK
+        text conversation_id PK
+        text conversation_participant_id PK
+        text conversation_participant_screenshare_id PK
+        text tag_name
+    }
+    conversation_participant_screenshare_segment {
+        text _fivetran_id PK
+        text conversation_id FK
+        text conversation_participant_id FK
+        text conversation_participant_screenshare_id FK
+        text disconnect_type
+        text end_time
+        text how_ended
+        text start_time
+        text type
+    }
+    conversation_participant_screenshare {
+        text id PK
+        text conversation_id PK
+        text conversation_participant_id PK
+        text after_call_work_end_time
+        text after_call_work_required
+        text after_call_work_start_time
+        text after_call_work_state
+        text connected_time
+        text context
+        text disconnect_type
+        text disconnected_time
+        text initial_state
+        text peer_count
+        text peer_id
+        text provider
+        text sharing
+        text start_alerting_time
+        text state
+        text wrapup_code
+        text wrapup_duration_seconds
+        text wrapup_end_time
+        text wrapup_name
+        text wrapup_notes
+        text wrapup_provisional
+    }
+    conversation_participant_social_expression_wrapup_tag {
+        text index PK
+        text conversation_id PK
+        text conversation_participant_id PK
+        text conversation_participant_social_expression_id PK
+        text tag_name
+    }
+    conversation_participant_social_expression_segment {
+        text _fivetran_id PK
+        text conversation_id FK
+        text conversation_participant_id FK
+        text conversation_participant_social_expression_id FK
+        text disconnect_type
+        text end_time
+        text how_ended
+        text start_time
+        text type
+    }
+    conversation_participant_social_expression {
+        text id PK
+        text conversation_id PK
+        text conversation_participant_id PK
+        text script_id FK
+        text after_call_work_end_time
+        text after_call_work_required
+        text after_call_work_start_time
+        text after_call_work_state
+        text connected_time
+        text disconnect_type
+        text disconnected_time
+        text held
+        text peer_id
+        text preview_text
+        text provider
+        text recording_id
+        text social_media_hub
+        text social_media_id
+        text social_user_name
+        text start_alerting_time
+        text start_hold_time
+        text state
+        text wrapup_code
+        text wrapup_duration_seconds
+        text wrapup_end_time
+        text wrapup_name
+        text wrapup_notes
+        text wrapup_provisional
+    }
+    conversation_participant_video_wrapup_tag {
+        text index PK
+        text conversation_id PK
+        text conversation_participant_id PK
+        text conversation_participant_video_id PK
+        text tag_name
+    }
+    conversation_participant_video_ms_id {
+        text index PK
+        text conversation_id PK
+        text conversation_participant_id PK
+        text conversation_participant_video_id PK
+        text ms_id
+    }
+    conversation_participant_video {
+        text id PK
+        text conversation_id PK
+        text conversation_participant_id PK
+        text after_call_work_end_time
+        text after_call_work_required
+        text after_call_work_start_time
+        text after_call_work_state
+        text audio_muted
+        text context
+        text disconnect_type
+        text disconnected_time
+        text initial_state
+        text peer_count
+        text peer_id
+        text provider
+        text self_address_displayable
+        text self_address_normalized
+        text self_address_raw
+        text self_name
+        text self_name_raw
+        text sharing_screen
+        text state
+        text video_muted
+        text wrapup_code
+        text wrapup_duration_seconds
+        text wrapup_end_time
+        text wrapup_name
+        text wrapup_notes
+        text wrapup_provisional
+    }
+    conversation_participant_evaluation_form_question_group_question {
+        text id PK
+        text conversation_id PK
+        text conversation_participant_evaluation_form_question_group_id PK
+        text conversation_participant_evaluation_id PK
+        text conversation_participant_id PK
+        jsonb answer_options
+        text comments_required
+        text help_text
+        text is_critical
+        text is_kill
+        text na_enabled
+        text text
+        text type
+        jsonb visibility_condition
+    }
+    conversation_participant_evaluation_form_question_group {
+        text id PK
+        text conversation_id PK
+        text conversation_participant_evaluation_id PK
+        text conversation_participant_id PK
+        text default_answers_to_highest
+        text default_answers_to_na
+        text manual_weight
+        text na_enabled
+        text name
+        text type
+        text visibility_condition
+        text weight
+    }
+    conversation_participant_evaluation_answers_question_group_score {
+        text _fivetran_id PK
+        text conversation_id FK
+        text conversation_participant_evaluation_id FK
+        text conversation_participant_id FK
+        text marked_na
+        text max_total_critical_score
+        text max_total_critical_score_unweighted
+        text max_total_non_critical_score
+        text max_total_non_critical_score_unweighted
+        text max_total_score
+        text max_total_score_unweighted
+        text question_group_id
+        jsonb question_scores
+        text total_critical_score
+        text total_critical_score_unweighted
+        text total_non_critical_score
+        text total_non_critical_score_unweighted
+        text total_score
+        text total_score_unweighted
+    }
+    conversation_participant_evaluation_answers_transcript_topic {
+        text id PK
+        text conversation_id PK
+        text conversation_participant_evaluation_id PK
+        text conversation_participant_id PK
+        text confidence
+        text duration_total_milliseconds
+        text name
+        text offset_character_count
+        text offset_word_count
+        text recording_location
+        text start_time_milliseconds
+        text topic_phrase
+        text transcript_phrase
+    }
+    conversation_participant_evaluation_media_type {
+        text _fivetran_id PK
+        text conversation_id FK
+        text conversation_participant_evaluation_id FK
+        text conversation_participant_id FK
+        text media_type
+    }
+    conversation_participant_evaluation_authorized_action {
+        text _fivetran_id PK
+        text conversation_id FK
+        text conversation_participant_evaluation_id FK
+        text conversation_participant_id FK
+        text authorized_actions
+    }
+    conversation_participant_evaluation {
+        text id PK
+        text conversation_id PK
+        text conversation_participant_id PK
+        text agent_id FK
+        text assignee_id FK
+        text evaluator_id FK
+        text queue_id FK
+        text reference_conversationid FK
+        text agent_has_read
+        text answers_agent_comments
+        text answers_any_failed_kill_questions
+        text answers_comments
+        text answers_private_comments
+        text answers_self_uri
+        text answers_total_critical_score
+        text answers_total_non_critical_score
+        text answers_total_score
+        text assigned
+        text assigned_date
+        text assignee_applicable
+        text calibration_agent
+        text calibration_average_score
+        text calibration_calibrator
+        text calibration_context_id
+        text calibration_conversation
+        text calibration_created_date
+        text calibration_evaluation_form
+        jsonb calibration_evaluations
+        jsonb calibration_evaluators
+        text calibration_expert_evaluator
+        text calibration_high_score
+        text calibration_id
+        text calibration_low_score
+        text calibration_name
+        text calibration_scoring_index
+        text calibration_self_uri
+        text changed_date
+        text conversation_date
+        text conversation_end_date
+        text date_assignee_changed
+        text evaluation_form_context_id
+        text evaluation_form_id
+        text evaluation_form_modified_date
+        text evaluation_form_name
+        text evaluation_form_published
+        text evaluation_form_self_uri
+        text evaluation_source_id
+        text evaluation_source_name
+        text evaluation_source_self_uri
+        text evaluation_source_type
+        text has_assistance_failed
+        text is_scoring_index
+        text name
+        text never_release
+        text redacted
+        text reference_conversation_id
+        text release_date
+        text rescore
+        text resource_id
+        text resource_type
+        text revision_created_date
+        text self_uri
+        text status
+    }
+    conversation_participant {
+        text id PK
+        text conversation_id PK
+        text barged_participant_id FK
+        text coached_participant_id FK
+        text consult_participant_id FK
+        text conversation_routing_data_queue_id FK
+        text group_id FK
+        text monitored_participant_id FK
+        text queue_id FK
+        text user_id FK
+        text address
+        text alerting_timeout_ms
+        text ani
+        text ani_name
+        text connected_time
+        text conversation_routing_data_language
+        text conversation_routing_data_language_self_uri
+        text conversation_routing_data_priority
+        text dnis
+        text end_acw_time
+        text end_time
+        text external_contact_id
+        text external_organization_id
+        text flagged_reason
+        text locale
+        text name
+        text participant_type
+        text purpose
+        text queue_name
+        text screen_recording_state
+        text start_acw_time
+        text start_time
+        text team_id
+        text wrapup_code
+        text wrapup_duration_seconds
+        text wrapup_end_time
+        text wrapup_name
+        text wrapup_notes
+        text wrapup_prompt
+        text wrapup_provisional
+        text wrapup_required
+        text wrapup_skipped
+        text wrapup_timeout_ms
+    }
+    conversation {
+        text id PK
+        text address
+        text end_time
+        text external_tag
+        text max_participants
+        text name
+        text recording_state
+        text secure_pause
+        text self_uri
+        text start_time
+        text state
+    }
+    calibration {
+        text id PK
+        text agent_id FK
+        text calibrator_id FK
+        text conversation_id FK
+        text evaluation_form_id FK
+        text evaluation_id FK
+        text evaluator_id FK
+        text expert_evaluator_id FK
+        text manager_id FK
+        text scoring_index_id FK
+        text agent
+        text average_score
+        text context_id
+        text created_date
+        text high_score
+        text low_score
+        text name
+        text self_uri
+    }
+    conversation_call_history_participants {
+        text id PK
+        text conversation_call_history_id PK
+        text campaign_id FK
+        text group_id FK
+        text queue_id FK
+        text user_id FK
+        text address
+        text ani
+        text did_interact
+        text direction
+        text disconnect_type
+        text dnis
+        text end_time
+        text external_canonical_contact_id
+        text external_canonical_contact_self_uri
+        text external_contact_address_address_1
+        text external_contact_address_address_2
+        text external_contact_address_city
+        text external_contact_address_country_code
+        text external_contact_address_postal_code
+        text external_contact_address_state
+        text external_contact_cellphone_accepts_sms
+        text external_contact_cellphone_country_code
+        text external_contact_cellphone_display
+        text external_contact_cellphone_e_164
+        text external_contact_cellphone_extension
+        text external_contact_cellphone_user_input
+        text external_contact_create_date
+        jsonb external_contact_custom_fields
+        jsonb external_contact_external_data_source
+        text external_contact_external_organization_id
+        text external_contact_external_system_url
+        jsonb external_contact_facebook_id
+        text external_contact_facebook_id_displayname
+        text external_contact_first_name
+        text external_contact_homephone_accepts_sms
+        text external_contact_homephone_country_code
+        text external_contact_homephone_display
+        text external_contact_homephone_e_164
+        text external_contact_homephone_extension
+        text external_contact_homephone_user_input
+        text external_contact_id
+        text external_contact_json_schema
+        jsonb external_contact_json_schema_additional_properties
+        text external_contact_json_schema_description
+        text external_contact_json_schema_id
+        jsonb external_contact_json_schema_properties
+        jsonb external_contact_json_schema_required
+        text external_contact_json_schema_title
+        text external_contact_json_schema_type
+        text external_contact_last_name
+        jsonb external_contact_line_id
+        text external_contact_line_id_display_name
+        text external_contact_merge_operation_resulting_contact_id
+        text external_contact_merge_operation_resulting_contact_self_uri
+        text external_contact_merge_operation_source_contact_id
+        text external_contact_merge_operation_source_contact_self_uri
+        text external_contact_merge_operation_target_contact_id
+        text external_contact_merge_operation_target_contact_self_uri
+        jsonb external_contact_merge_set
+        text external_contact_middle_name
+        text external_contact_modify_date
+        text external_contact_other_email
+        text external_contact_other_phone_accepts_sms
+        text external_contact_other_phone_country_code
+        text external_contact_other_phone_display
+        text external_contact_other_phone_e_164
+        text external_contact_other_phone_extension
+        text external_contact_other_phone_user_input
+        text external_contact_personal_email
+        text external_contact_salutation
+        text external_contact_schema_applies_to
+        text external_contact_schema_created_by_id
+        text external_contact_schema_date_created
+        text external_contact_schema_enabled
+        text external_contact_schema_id
+        text external_contact_schema_name
+        text external_contact_schema_self_uri
+        text external_contact_schema_version
+        text external_contact_self_uri
+        text external_contact_survey_opt_out
+        text external_contact_title
+        text external_contact_twitter_id
+        text external_contact_twitter_id_id
+        text external_contact_twitter_id_name
+        text external_contact_twitter_id_profile_url
+        text external_contact_twitter_id_screen_name
+        text external_contact_twitter_id_verified
+        text external_contact_type
+        text external_contact_whatsapp_id_phone_number_accepts_sms
+        text external_contact_whatsapp_id_phone_number_country_code
+        text external_contact_whatsapp_id_phone_number_display
+        text external_contact_whatsapp_id_phone_number_e_164
+        text external_contact_whatsapp_id_phone_number_extension
+        text external_contact_whatsapp_id_phone_number_user_input
+        text external_contact_whatsappid_displayname
+        text external_contact_work_email
+        text external_contact_workphone_accepts_sms
+        text external_contact_workphone_country_code
+        text external_contact_workphone_display
+        text external_contact_workphone_e_164
+        text external_contact_workphone_extension
+        text external_contact_workphone_user_input
+        text external_organization_address_address_1
+        text external_organization_address_address_2
+        text external_organization_address_city
+        text external_organization_address_country_code
+        text external_organization_address_postal_code
+        text external_organization_address_state
+        text external_organization_company_type
+        text external_organization_create_date
+        text external_organization_custom_fields
+        text external_organization_did_interact
+        text external_organization_employee_count
+        text external_organization_external_data_source
+        text external_organization_external_system_url
+        text external_organization_fax_number_accepts_sms
+        text external_organization_fax_number_country_code
+        text external_organization_fax_number_display
+        text external_organization_fax_number_e_164
+        text external_organization_fax_number_extension
+        text external_organization_fax_number_user_input
+        text external_organization_flagged_reason
+        text external_organization_id
+        text external_organization_industry
+        text external_organization_modify_date
+        text external_organization_name
+        text external_organization_outbound_campaign_id
+        text external_organization_phone_number_accepts_sms
+        text external_organization_phone_number_country_code
+        text external_organization_phone_number_display
+        text external_organization_phone_number_e_164
+        text external_organization_phone_number_extension
+        text external_organization_phone_number_user_input
+        text external_organization_primary_contact_id
+        text external_organization_revenue
+        text external_organization_schema_additional_properties
+        text external_organization_schema_applies_to
+        text external_organization_schema_created_by_id
+        text external_organization_schema_date_created
+        text external_organization_schema_enabled
+        text external_organization_schema_id
+        text external_organization_schema_jsonschema_description
+        text external_organization_schema_jsonschema_id
+        text external_organization_schema_jsonschema_schema
+        text external_organization_schema_jsonschema_title
+        text external_organization_schema_jsonschema_type
+        text external_organization_schema_name
+        text external_organization_schema_properties
+        text external_organization_schema_required
+        text external_organization_schema_version
+        text external_organization_selfuri
+        text external_organization_sip_response_code
+        jsonb external_organization_tag
+        jsonb external_organization_tickers
+        text external_organization_trustor_authorization_permission
+        text external_organization_trustor_created_by_id
+        text external_organization_trustor_date_created
+        text external_organization_trustor_enabled
+        text external_organization_trustor_id
+        jsonb external_organization_trustor_organization
+        text external_organization_trustor_selfuri
+        jsonb external_organization_websites
+        text flagged_reason
+        text had_cobrowse
+        text had_screen_share
+        text missed_call
+        text name
+        text purpose
+        text self_uri
+        text start_time
+        text was_callback
+        text was_conference
+        text was_outbound_campaign
+        text went_to_voicemail
+    }
+    conversation_call_history {
+        text id PK
+        text direction
+        text had_cobrowse
+        text had_screen_share
+        text missed_call
+        text name
+        text self_uri
+        text start_time
+        text was_callback
+        text was_conference
+        text was_outbound_campaign
+        text went_to_voice_mail
+    }
+    division {
+        text id PK
+        text description
+        text home_division
+        text name
+        text self_uri
+    }
+    sequence_campaign {
+        text campaign_id PK
+        text sequence_id PK
+    }
+    sequence {
+        text id PK
+        text current_campaign
+        text date_created
+        timestamp date_modified
+        text name
+        text repeat
+        text self_uri
+        text status
+        text stop_message
+        text version
+    }
+    attempt_limit {
+        text id PK
+        text date_created
+        timestamp date_modified
+        text max_attempts_per_contact
+        text max_attempts_per_number
+        text name
+        jsonb recall_entries
+        text reset_period
+        text self_uri
+        text time_zone_id
+        text version
+    }
+    rule_condition_field_mapping {
+        text _fivetran_id PK
+        text index FK
+        text rule_id FK
+        text ruleset_id FK
+        text contact_column_name
+        text data_action_field
+    }
+    rule_condition_predicate {
+        text _fivetran_id PK
+        text index FK
+        text rule_id FK
+        text ruleset_id FK
+        text comparison_value
+        text inverted
+        text output_field
+        text output_field_missing_resolution
+        text output_operator
+    }
+    rule_condition {
+        text index PK
+        text rule_id PK
+        text ruleset_id PK
+        text agent_wrapup_field
+        text attribute_name
+        text call_analysis_result_field
+        jsonb codes
+        text contact_id_field
+        text data_action_id
+        text data_action_name
+        text data_action_self_uri
+        text data_not_found_resolution
+        text inverted
+        text operator
+        text property
+        text property_type
+        text type
+        text value
+        text value_type
+    }
+    rule_action_field_mapping {
+        text _fivetran_id PK
+        text index FK
+        text rule_id FK
+        text ruleset_id FK
+        text contact_column_name
+        text data_action_field
+    }
+    rule_action {
+        text index PK
+        text rule_id PK
+        text ruleset_id PK
+        text action_type_name
+        text agent_wrapup_field
+        text call_analysis_result_field
+        text contact_id_field
+        text data_action_id
+        text data_action_name
+        text data_action_self_uri
+        jsonb properties
+        text type
+        text update_option
+    }
+    rule {
+        text id PK
+        text ruleset_id PK
+        text category
+        text name
+        text orders
+    }
+    ruleset {
+        text id PK
+        text contact_list_id FK
+        text queue_id FK
+        text date_created
+        timestamp date_modified
+        text name
+        text self_uri
+        text version
+    }
+    analytics_conversation_aggregate_query_data_metric {
+        text analytics_conversation_aggregate_query_data_index PK
+        text conversation_id PK
+        text index PK
+        text interval
+        text media_type
+        text metric
+        text qualifier
+        text stats_count
+        text stats_count_negative
+        text stats_count_positive
+        text stats_current
+        text stats_denominator
+        text stats_max
+        text stats_min
+        text stats_numerator
+        text stats_p_95
+        text stats_p_99
+        text stats_ratio
+        text stats_sum
+        text stats_target
+    }
+    flow_outcome_error_detail {
+        text _fivetran_id PK
+        text flow_outcome_id FK
+        text entity_id
+        text entity_name
+        text error_code
+        text field_name
+    }
+    flow_outcome {
+        text id PK
+        text current_operation_user_id FK
+        text division_id FK
+        text current_operation_action_name
+        text current_operation_action_status
+        text current_operation_client_id
+        text current_operation_client_name
+        text current_operation_client_self_uri
+        text current_operation_complete
+        text current_operation_error_code
+        text current_operation_error_message
+        jsonb current_operation_error_message_params
+        text current_operation_id
+        text description
+        text name
+        text self_uri
+    }
+    dnc_code {
+        text index PK
+        text dnc_id PK
+        text dnc_code
+    }
+    dnc {
+        text id PK
+        text campaign_id FK
+        text division_id FK
+        text contact_method
+        text custom_exclusion_column
+        text date_created
+        timestamp date_modified
+        text dnc_source_type
+        text import_status_completed_records
+        text import_status_failure_reason
+        text import_status_percent_complete
+        text import_status_state
+        text import_status_total_record
+        text license_id
+        text login_id
+        text name
+        text self_uri
+        text size
+        text version
+    }
+    external_contact_identifier {
+        text index PK
+        text external_contact_id PK
+        text date_created
+        text type
+        text value
+    }
+    external_contact_line_id {
+        text index PK
+        text external_contact_id PK
+        text user_id FK
+    }
+    external_contact_facebook_id {
+        text index PK
+        text external_contact_id PK
+        text scoped_id
+    }
+    external_contact_external_data_source {
+        text index PK
+        text external_contact_id PK
+        text platform
+        text url
+    }
+    external_contact_external_id {
+        text index PK
+        text external_contact_id PK
+        text external_source_active
+        text external_source_id
+        text external_source_link_configuration_uri_template
+        text external_source_name
+        text value
+    }
+    external_contact {
+        text id PK
+        text canonical_contact_id FK
+        text organization_id FK
+        text address_1
+        text address_2
+        text address_city
+        text address_country_code
+        text address_postal_code
+        text address_state
+        text create_date
+        text external_system_url
+        text facebook_display_name
+        text first_name
+        text last_name
+        text line_display_name
+        text merge_operation_resulting_contact
+        text merge_operation_source_contact
+        text merge_operation_target_contact
+        jsonb merge_set
+        text middle_name
+        text modify_date
+        text other_email
+        text personal_email
+        text salutation
+        text schema
+        text self_uri
+        text survey_opt_out
+        text title
+        text twitter_id
+        text twitter_name
+        text twitter_profile_url
+        text twitter_screen_name
+        text twitter_verified
+        text type
+        text whats_app_display_name
+        text whats_app_phone_number
+        text work_email
+        text work_phone_accepts_sms
+        text work_phone_country_code
+        text work_phone_display
+        text work_phone_e_164
+        text work_phone_extension
+        text work_phone_normalization_country_code
+        text work_phone_user_input
+    }
+    routing_wrapup_code {
+        text id PK
+        text division_id FK
+        text created_by
+        text date_created
+        text date_modified
+        text modified_by
+        text name
+        text self_uri
+    }
+    messaging_campaign_dnc {
+        text dnc_id PK
+        text messaging_campaign_id PK
+    }
+    messaging_campaign_contact_sort {
+        text _fivetran_id PK
+        text messaging_campaign_id PK
+        text direction
+        text field_name
+        text numeric
+    }
+    messaging_campaign_contact_list_filter {
+        text contact_list_filter_id PK
+        text messaging_campaign_id PK
+    }
+    messaging_campaign_rule_set {
+        text messaging_campaign_id PK
+        text rule_set_id PK
+    }
+    messaging_campaign_error {
+        text _fivetran_id PK
+        text messaging_campaign_id FK
+        text details
+        text error
+    }
+    messaging_campaign {
+        text id PK
+        text callable_time_set_id FK
+        text contact_list_id FK
+        text division_id FK
+        text always_running
+        text campaign_status
+        text date_created
+        text date_modified
+        text dynamic_contact_queueing_settings_sort
+        text email_config_content_template_id
+        text email_config_content_template_name
+        text email_config_content_template_self_uri
+        jsonb email_config_email_column
+        text email_config_from_address_domain_id
+        text email_config_from_address_domain_name
+        text email_config_from_address_domain_self_uri
+        text email_config_from_address_friendly_name
+        text email_config_from_address_local_part
+        text email_config_reply_address_domain_id
+        text email_config_reply_address_domain_name
+        text email_config_reply_address_domain_self_uri
+        text email_config_reply_address_route_id
+        text email_config_reply_address_route_name
+        text email_config_reply_address_route_self_uri
+        text messages_per_minute
+        text name
+        text self_uri
+        text sms_config_content_template_id
+        text sms_config_content_template_name
+        text sms_config_content_template_self_uri
+        text sms_config_message_column
+        text sms_config_phone_column
+        text sms_config_sender_sms_phone_number
+        text sms_config_sender_sms_phone_number_self_uri
+        text version
+    }
+    evaluation_answer_question_group_question_score {
+        text question_id PK
+        text evaluation_answer_question_group_score_question_group_id PK
+        text evaluation_id PK
+        text answer_id
+        text assisted_answer_id
+        text comments
+        text failed_kill_question
+        text marked_na
+        text score
+        text system_marked_na
+    }
+    evaluation_answer_question_group_score {
+        text question_group_id PK
+        text evaluation_id PK
+        text marked_na
+        text max_total_critical_score
+        text max_total_critical_score_unweighted
+        text max_total_non_critical_score
+        text max_total_non_critical_score_unweighted
+        text max_total_score
+        text max_total_score_unweighted
+        text system_marked_na
+        text total_critical_score
+        text total_critical_score_unweighted
+        text total_non_critical_score
+        text total_non_critical_score_unweighted
+        text total_score
+        text total_score_unweighted
+    }
+    evaluation_answer_transcript_topic {
+        text index PK
+        text evaluation_id PK
+        text confidence
+        text duration_total_milliseconds
+        text id
+        text name
+        text offset_charactercount
+        text offset_wordcount
+        text recording_location
+        text start_time_milliseconds
+        text topic_phrase
+        text transcript_phrase
+    }
+    evaluation {
+        text id PK
+        text agent_team_division_id FK
+        text assignee_id FK
+        text calibration_id FK
+        text conversation_id FK
+        text evaluation_form_id FK
+        text evaluator_id FK
+        text queue_id FK
+        text agent_has_read
+        text agent_id
+        text agent_team_date_created
+        text agent_team_date_modified
+        text agent_team_description
+        text agent_team_id
+        text agent_team_member_count
+        text agent_team_name
+        text agent_team_self_uri
+        text answer_agent_comments
+        text answer_any_failed_kill_questions
+        text answer_comments
+        text answer_private_comments
+        text answer_question_group_scores
+        text answer_total_critical_score
+        text answer_total_non_critical_score
+        text answer_total_score
+        text assigned
+        text assigned_date
+        text assignee_applicable
+        text changed_date
+        text conversation_date
+        text conversation_end_date
+        text date_assignee_changed
+        text evaluation_source_id
+        text evaluation_source_name
+        text evaluation_source_self_uri
+        text evaluation_source_type
+        text has_assistance_failed
+        text is_scoring_index
+        text name
+        text never_release
+        text redacted
+        text release_date
+        text rescore
+        text resource_id
+        text resource_type
+        text revision_created_date
+        text self_uri
+        text status
+    }
+    callable_timeset_callable_time_slot {
+        text _fivetran_id PK
+        text callable_timeset_id
+        text day
+        text start_time
+        text stop_time
+        text time_zone_id
+    }
+    callable_timeset {
+        text id PK
+        text date_created
+        timestamp date_modified
+        text name
+        text self_uri
+        text version
+    }
+    users_primary_contact_info {
+        text index PK
+        text user_id PK
+        text address
+        text country_code
+        text display
+        text extension
+        text integration
+        text media_type
+        text type
+    }
+    users_address {
+        text index PK
+        text user_id PK
+        text address
+        text country_code
+        text display
+        text extension
+        text integration
+        text media_type
+        text type
+    }
+    users_image {
+        text index PK
+        text user_id PK
+        text image_uri
+        text resolution
+    }
+    users_certification {
+        text index PK
+        text user_id PK
+        text certifications
+    }
+    users_biography_interest {
+        text index PK
+        text user_id PK
+        text interests
+    }
+    users_biography_hobby {
+        text index PK
+        text user_id PK
+        text hobbies
+    }
+    users_biography_education {
+        text index PK
+        text user_id PK
+        text date_end
+        text date_start
+        text field_of_study
+        text notes
+        text school
+    }
+    users_geo_location_location {
+        text id PK
+        text user_id PK
+        text users_geo_location_id PK
+    }
+    users_geo_location {
+        text id PK
+        text user_id PK
+    }
+    users_profile_skill {
+        text index PK
+        text user_id PK
+        text profile_skill
+    }
+    users_location {
+        text location_definition_id PK
+        text user_id PK
+        jsonb coordinates
+        text floorplan_id
+        text id
+        text notes
+    }
+    users_skill {
+        text id PK
+        text user_id PK
+        text name
+        text proficiency
+        text self_uri
+        text skill_uri
+        text state
+    }
+    users_language {
+        text id PK
+        text user_id PK
+        text language_uri
+        text name
+        text proficiency
+        text self_uri
+        text state
+    }
+    users_authorization_role {
+        text id PK
+        text user_id PK
+        text name
+    }
+    users_authorization_unused_role {
+        text id PK
+        text user_id PK
+        text name
+    }
+    users_authorization_permission {
+        text index PK
+        text user_id PK
+        text permission
+    }
+    users_authorization_permission_policy {
+        text _fivetran_id PK
+        text user_id PK
+        jsonb action_set
+        text action_set_key
+        text allow_conditions
+        text domain
+        text entity_name
+        text id
+        jsonb named_resources
+        text policy_description
+        text policy_name
+        text resource_condition
+        text resource_condition_node_conjunction
+        text resource_condition_node_variable_name
+        text resourceconditionnode_operator
+        jsonb terms
+    }
+    users {
+        text id PK
+        text associated_station_default_user FK
+        text associated_station_location_id FK
+        text associated_station_user_id FK
+        text conversation_summary_user_id FK
+        text default_station_default_user FK
+        text default_station_location_id FK
+        text default_station_user_id FK
+        text division_id FK
+        text effective_station_default_user FK
+        text effective_station_location_id FK
+        text effective_station_user_id FK
+        text last_associated_station_default_user FK
+        text last_associated_station_location_id FK
+        text last_associated_station_user_id FK
+        text manager_id FK
+        text out_of_office_user_id FK
+        text routing_status_user_id FK
+        text team_division_id FK
+        text acd_auto_answer
+        text associated_station_date
+        text associated_station_default_user_id
+        text associated_station_edge_group_id
+        text associated_station_id
+        text associated_station_name
+        text associated_station_web_rtc_call_appearances
+        text biography
+        text biography_spouse
+        text chat_jabber_id
+        text conversation_call_contact_center_active
+        text conversation_call_contact_center_acw
+        text conversation_call_enterprise_active
+        text conversation_call_enterprise_acw
+        text conversation_callback_contact_center_active
+        text conversation_callback_contact_center_acw
+        text conversation_callback_enterprise_active
+        text conversation_callback_enterprise_acw
+        text conversation_chat_contact_center_active
+        text conversation_chat_contact_center_acw
+        text conversation_chat_enterprise_active
+        text conversation_chat_enterprise_acw
+        text conversation_email_contact_center_active
+        text conversation_email_contact_center_acw
+        text conversation_email_enterprise_active
+        text conversation_email_enterprise_acw
+        text conversation_message_contact_center_active
+        text conversation_message_contact_center_acw
+        text conversation_message_enterprise_active
+        text conversation_message_enterprise_acw
+        text conversation_social_expression_contact_center_active
+        text conversation_social_expression_contact_center_acw
+        text conversation_social_expression_enterprise_active
+        text conversation_social_expression_enterprise_acw
+        text conversation_video_contact_center_active
+        text conversation_video_contact_center_acw
+        text conversation_video_enterprise_active
+        text conversation_video_enterprise_acw
+        text date_last_login
+        text default_station_date
+        text default_station_default_user_id
+        text default_station_edge_group_id
+        text default_station_id
+        text default_station_name
+        text default_station_web_rtc_call_appearances
+        text department
+        text effective_station_date
+        text effective_station_default_user_id
+        text effective_station_edge_group_id
+        text effective_station_id
+        text effective_station_name
+        text effective_station_web_rtc_call_appearances
+        text email
+        text employee_date_hire
+        text employee_id
+        text employee_official_name
+        text employee_type
+        text geolocation_city
+        text geolocation_country
+        text geolocation_id
+        text geolocation_latitude
+        text geolocation_longitude
+        text geolocation_name
+        text geolocation_primary
+        text geolocation_region
+        text geolocation_self_uri
+        text geolocation_type
+        text integration_presence_definition_id
+        text integration_presence_definition_self_uri
+        text integration_presence_definition_system_presence
+        text integration_presence_id
+        text integration_presence_message
+        text integration_presence_modified_date
+        text integration_presence_name
+        text integration_presence_primary
+        text integration_presence_self_uri
+        text integration_presence_source
+        text language_preference
+        text last_associated_station_associated_date
+        text last_associated_station_default_user_id
+        text last_associated_station_edge_group_id
+        text last_associated_station_id
+        text last_associated_station_name
+        text last_associated_station_web_rtc_call_appearances
+        text last_token_issueddate
+        text name
+        text out_of_office_active
+        text out_of_office_end_date
+        text out_of_office_id
+        text out_of_office_indefinite
+        text out_of_office_name
+        text out_of_office_self_uri
+        text out_of_office_start_date
+        text presence_definition_id
+        text presence_definition_self_uri
+        text presence_definition_system_presence
+        text presence_id
+        text presence_message
+        text presence_modified_date
+        text presence_name
+        text presence_primary
+        text presence_self_uri
+        text presence_source
+        text routing_status
+        text routing_status_start_time
+        text self_uri
+        text state
+        text team_date_created
+        text team_date_modified
+        text team_description
+        text team_id
+        text team_member_count
+        text team_name
+        text team_self_uri
+        text title
+        text username
+        text version
+    }
+    campaign_interaction_pending {
+        text id PK
+        text campaign_id FK
+        text conversation_id FK
+        text queue_id FK
+        text script_id FK
+        text skill_id FK
+        text active_preview_call
+        text agent_id
+        text agent_name
+        text agent_self_uri
+        text call_placed_time
+        text call_routed_time
+        text caller_address
+        text caller_name
+        text contact_id
+        text contact_name
+        text contact_self_uri
+        text creation_time
+        text destination_address
+        text dialer_system_participant_id
+        text dialing_mode
+        text disposition
+        text last_active_preview_wrapup_time
+        text object_type
+        text parent_campaign_id
+        text preview_connected_time
+        text preview_pop_delivered_time
+        text self_uri
+    }
+    campaign_interaction_proceed {
+        text id PK
+        text campaign_id FK
+        text conversation_id FK
+        text queue_id FK
+        text script_id FK
+        text skill_id FK
+        text active_preview_call
+        text agent_id
+        text agent_name
+        text agent_self_uri
+        text call_placed_time
+        text call_routed_time
+        text caller_address
+        text caller_name
+        text contact_id
+        text contact_name
+        text contact_self_uri
+        text creation_time
+        text destination_address
+        text dialer_system_participant_id
+        text dialing_mode
+        text disposition
+        text last_active_preview_wrapup_time
+        text object_type
+        text parent_campaign_id
+        text preview_connected_time
+        text preview_pop_delivered_time
+        text self_uri
+    }
+    campaign_interaction_previewing {
+        text id PK
+        text campaign_id FK
+        text conversation_id FK
+        text queue_id FK
+        text script_id FK
+        text skill_id FK
+        text active_preview_call
+        text agent_id
+        text agent_name
+        text agent_self_uri
+        text call_placed_time
+        text call_routed_time
+        text caller_address
+        text caller_name
+        text contact_id
+        text contact_name
+        text contact_self_uri
+        text creation_time
+        text destination_address
+        text dialer_system_participant_id
+        text dialing_mode
+        text disposition
+        text last_active_preview_wrapup_time
+        text object_type
+        text parent_campaign_id
+        text preview_connected_time
+        text preview_pop_delivered_time
+        text self_uri
+    }
+    campaign_interaction_interacting {
+        text id PK
+        text campaign_id FK
+        text conversation_id FK
+        text queue_id FK
+        text script_id FK
+        text skill_id FK
+        text active_preview_call
+        text agent_id
+        text agent_name
+        text agent_self_uri
+        text call_placed_time
+        text call_routed_time
+        text caller_address
+        text caller_name
+        text contact_id
+        text contact_name
+        text contact_self_uri
+        text creation_time
+        text destination_address
+        text dialer_system_participant_id
+        text dialing_mode
+        text disposition
+        text last_active_preview_wrapup_time
+        text object_type
+        text parent_campaign_id
+        text preview_connected_time
+        text preview_pop_delivered_time
+        text self_uri
+    }
+    campaign_interaction_scheduled {
+        text id PK
+        text campaign_id FK
+        text conversation_id FK
+        text queue_id FK
+        text script_id FK
+        text skill_id FK
+        text active_preview_call
+        text agent_id
+        text agent_name
+        text agent_self_uri
+        text call_placed_time
+        text call_routed_time
+        text caller_address
+        text caller_name
+        text contact_id
+        text contact_name
+        text contact_self_uri
+        text creation_time
+        text destination_address
+        text dialer_system_participant_id
+        text dialing_mode
+        text disposition
+        text last_active_preview_wrapup_time
+        text object_type
+        text parent_campaign_id
+        text preview_connected_time
+        text preview_pop_delivered_time
+        text self_uri
+    }
+    organization_ticker {
+        text index PK
+        text organization_id PK
+        text exchange
+        text symbol
+    }
+    organization_external_data_source {
+        text index PK
+        text organization_id PK
+        text platform
+        text url
+    }
+    organization {
+        text id PK
+        text created_by_id FK
+        text trustor_id FK
+        text address_1
+        text address_2
+        text address_city
+        text address_country_code
+        text address_postal_code
+        text address_state
+        text company_type
+        text create_date
+        text employee_count
+        text external_system_url
+        text fax_number
+        text industry
+        text modify_date
+        text name
+        text phone_number_accepts_sms
+        text phone_number_country_code
+        text phone_number_display
+        text phone_number_e_164
+        text phone_number_extension
+        text phone_number_normalization_country_code
+        text phone_number_user_input
+        text primary_contact_id
+        text revenue
+        jsonb schema_applies_to
+        text schema_created_by_id
+        text schema_created_by_name
+        text schema_date_created
+        text schema_enabled
+        text schema_id
+        text schema_json_schema
+        jsonb schema_json_schema_additional_properties
+        text schema_json_schema_description
+        text schema_json_schema_id
+        jsonb schema_json_schema_properties
+        jsonb schema_json_schema_required
+        text schema_json_schema_title
+        text schema_json_schema_type
+        text schema_name
+        text schema_version
+        text self_uri
+        jsonb tags
+        jsonb trustor_authorization_permissions
+        text trustor_created_by_organization_default_country_code
+        text trustor_created_by_organization_default_language
+        text trustor_created_by_organization_default_site_id
+        text trustor_created_by_organization_domain
+        jsonb trustor_created_by_organization_features
+        text trustor_created_by_organization_id
+        text trustor_created_by_organization_name
+        text trustor_created_by_organization_product_platform
+        text trustor_created_by_organization_self_uri
+        text trustor_created_by_organization_state
+        text trustor_created_by_organization_support_uri
+        text trustor_created_by_organization_third_party_org_name
+        text trustor_created_by_organization_third_party_uri
+        text trustor_created_by_organization_version
+        text trustor_created_by_organization_voicemail_enabled
+        text trustor_date_created
+        text trustor_enabled
+        text trustor_organization
+        text twitter_id
+        text twitter_name
+        text twitter_profile_url
+        text twitter_screen_name
+        text twitter_verified
+        jsonb websites
+    }
+    user_routing_language {
+        text id PK
+        text user_id PK
+        text language_uri
+        text name
+        text proficiency
+        text self_uri
+        text state
+    }
+    schedule_campaign_interval {
+        text _fivetran_id PK
+        text schedule_campaign_id FK
+        text ends
+        text start
+    }
+    schedule_campaign {
+        text id PK
+        text campaign_id FK
+        text date_created
+        text date_modified
+        text name
+        text self_uri
+        text timezone
+        text version
+    }
+    presence_definition {
+        text id PK
+        text deactivated
+        text division_id
+        text name
+        text self_uri
+        text system_presence
+        text type
+    }
+    survey_form_published_version {
+        text index PK
+        text survey_form_id PK
+        text context_id
+        text disabled
+        text id
+        text lang
+        text modified_date
+        text name
+        text published
+        jsonb question_groups
+        text self_uri
+        text weight_mode
+    }
+    campaign_phone_column {
+        text _fivetran_id PK
+        text campaign_id FK
+        text column_name
+        text type
+    }
+    campaign_dnc {
+        text campaign_id PK
+        text dnc_id PK
+    }
+    campaign_errors {
+        text _fivetran_id PK
+        text campaign_id FK
+        text details
+        text error
+    }
+    campaign_rule_set {
+        text campaign_id PK
+        text rule_set_id PK
+    }
+    campaign_contact_sort {
+        text _fivetran_id PK
+        text campaign_id FK
+        text direction
+        text field_name
+        text numeric
+    }
+    campaign_contact_list_filter {
+        text campaign_id PK
+        text contact_list_filter_id PK
+    }
+    campaign {
+        text id PK
+        text callable_time_set_id FK
+        text contact_list_id FK
+        text division_id FK
+        text queue_id FK
+        text script_id FK
+        text abandon_rate
+        text always_running
+        text call_analysis_language
+        text call_analysis_response_set_id
+        text call_analysis_response_set_name
+        text call_analysis_response_set_self_uri
+        text caller_address
+        text caller_name
+        text campaign_status
+        text contact_sort_direction
+        text contact_sort_field_name
+        text contact_sort_numeric
+        text date_created
+        timestamp date_modified
+        text dialing_mode
+        text dynamic_contact_queueing_settings_sort
+        text edge_group_id
+        text edge_group_name
+        text edge_group_self_uri
+        text name
+        text no_answer_timeout
+        text outbound_line_count
+        text preview_time_out_second
+        text priority
+        text self_uri
+        text single_number_preview
+        text site_id
+        text site_name
+        text site_self_uri
+        text skip_preview_disabled
+        text version
+    }
+    contact_list_column_name {
+        text index PK
+        text contact_list_id PK
+        text column_name
+    }
+    contact_list_phone_column {
+        text _fivetran_id PK
+        text contact_list_id FK
+        text callable_time_column
+        text column_name
+        text type
+    }
+    contact_list_email_column {
+        text _fivetran_id PK
+        text contact_list_id FK
+        text callable_time_column
+        text column_name
+        text type
+    }
+    contact_list_preview_mode_accepted_value {
+        text index PK
+        text contact_list_id PK
+        text preview_mode_accepted_value
+    }
+    column_data_type_specification {
+        text _fivetran_id PK
+        text contact_list_id FK
+        text column_data_type
+        text column_name
+        text max
+        text max_length
+        text min
+    }
+    contact_list {
+        text id PK
+        text attempt_limit_id FK
+        text division_id FK
+        text automatic_time_zone_mapping
+        text date_created
+        timestamp date_modified
+        text import_status_completed_record
+        text import_status_failure_reason
+        text import_status_percent_complete
+        text import_status_state
+        text import_status_total_record
+        text name
+        text preview_mode_column_name
+        text self_uri
+        text size
+        text trim_white_space
+        text version
+        text zip_code_column_name
+    }
+    flow_milestone {
+        text id PK
+        text division_id FK
+        text description
+        text name
+        text self_uri
+    }
+    event {
+        text id PK
+        text category
+        text correlation_id
+        text error_entity_id
+        text error_entity_name
+        text error_entity_self_uri
+        text level
+        text name
+        text related_entity_id
+        text related_entity_name
+        text related_entity_self_uri
+        text resource_uris_code
+        text resource_uris_documentation_uri
+        text resource_uris_message
+        jsonb resource_uris_message_params
+        text resource_uris_message_with_params
+        jsonb resource_uris_resource_uris
+        text self_uri
+        text time_stamp
+    }
+    evaluation_form_published_version {
+        text context_id PK
+        text id PK
+        text evaluation_form_id PK
+        text modified_date
+        text name
+        text published
+        jsonb question_groups
+        text self_uri
+        text weight_mode
+    }
+    evaluation_form_dispute_assignee {
+        text index PK
+        text evaluation_form_id PK
+        text user_id FK
+        text type
+    }
+    evaluation_form_question_group_question_answer_option_assistance_condition {
+        text index PK
+        text evaluation_form_id PK
+        text evaluation_form_question_group_index PK
+        text evaluation_form_question_group_question_answer_option_index PK
+        text evaluation_form_question_group_question_index PK
+        text operator
+        jsonb topic_ids
+    }
+    evaluation_form_question_group_question_answer_option {
+        text index PK
+        text evaluation_form_id PK
+        text evaluation_form_question_group_index PK
+        text evaluation_form_question_group_question_index PK
+        text id
+        text text
+        text value
+    }
+    evaluation_form_question_group_question {
+        text index PK
+        text evaluation_form_id PK
+        text evaluation_form_question_group_index PK
+        text comments_required
+        text help_text
+        text id
+        text is_critical
+        text is_kill
+        text na_enabled
+        text text
+        text type
+        text visibility_condition_combining_operation
+        jsonb visibility_condition_predicates
+    }
+    evaluation_form_question_group {
+        text index PK
+        text evaluation_form_id PK
+        text default_answers_to_highest
+        text default_answers_to_na
+        text id
+        text manual_weight
+        text na_enabled
+        text name
+        text type
+        text visibility_condition
+        text weight
+    }
+    evaluation_form {
+        text id PK
+        text context_id
+        text evaluation_setting_disputes_allowed_per_evaluation
+        text evaluation_setting_disputes_enabled
+        text evaluation_setting_revisions_enabled
+        text modified_date
+        text name
+        text published
+        text self_uri
+        text weight_mode
+    }
+    user_skill_group_skill_condition_routing_skill_condition {
+        text _fivetran_id PK
+        text user_id FK
+        text user_skill_group_id FK
+        jsonb child_condition
+        text comparator
+        text proficiency
+        text routing_skill
+    }
+    user_skill_group_skill_condition_language_skill_condition {
+        text _fivetran_id PK
+        text user_id FK
+        text user_skill_group_id FK
+        jsonb child_condition
+        text comparator
+        text language_skill
+        text proficiency
+    }
+    user_skill_group {
+        text id PK
+        text user_id PK
+        text division_id FK
+        text date_created
+        text date_modified
+        text description
+        text member_count
+        text name
+        text self_uri
+    }
+    campaign_agent_mapping_review_result {
+        text _fivetran_id PK
+        text user_id FK
+        text agent_owned_column
+        text campaign_id
+        text email
+        text exists
+        text is_queue_member
+        text record_count
+    }
+    campaign_progress {
+        text _fivetran_id PK
+        text campaign_id FK
+        text contact_list_id FK
+        text number_of_contact_call
+        text number_of_contact_message
+        jsonb number_of_contact_skipped
+        text percentage
+        text total_number_of_contact
+    }
+    contact_list_filter_clause_predicate {
+        text _fivetran_id PK
+        text contact_list_filter_id FK
+        text column_name
+        text column_type
+        text index
+        text inverted
+        text operator
+        jsonb range_in_set
+        text range_max
+        text range_max_inclusive
+        text range_min
+        text range_min_inclusive
+        text value
+    }
+    contact_list_filter {
+        text id PK
+        text contact_list_id FK
+        text date_created
+        timestamp date_modified
+        text filter_type
+        text name
+        text self_uri
+        text version
+    }
+    script_page {
+        text id PK
+        text script_id PK
+        text created_date
+        text modified_date
+        text name
+        jsonb properties
+        jsonb root_container
+        text self_uri
+        text version_id
+    }
+    script {
+        text id PK
+        text division_id FK
+        text created_date
+        jsonb custom_actions
+        jsonb features
+        timestamp modified_date
+        text name
+        text published_date
+        text self_uri
+        text start_page_id
+        text start_page_name
+        jsonb variables
+        text version_date
+        text version_id
+    }
+    conversation_callback_participants_wrapup_tag {
+        text index PK
+        text conversation_callback_id PK
+        text conversation_callback_participants_id PK
+        text tag_name
+    }
+    conversation_callback_participants_callback_number {
+        text index PK
+        text conversation_callback_id PK
+        text conversation_callback_participants_id PK
+        text callback_number
+    }
+    conversation_callback_participants_media_role {
+        text index PK
+        text conversation_callback_id PK
+        text conversation_callback_participants_id PK
+        text media_role
+    }
+    conversation_callback_participants {
+        text id PK
+        text conversation_callback_id PK
+        text queue_id FK
+        text user_id FK
+        text alerting_timeout_ms
+        jsonb attributes
+        text connected_time
+        text direction
+        text disconnect_type
+        text end_time
+        text error_info_code
+        text error_info_message
+        text external_contact_id
+        text external_contact_name
+        text external_contact_self_url
+        text external_organization_id
+        text external_organization_name
+        text external_organization_self_url
+        text flagged_reason
+        text held
+        jsonb media_roles
+        text name
+        text peer
+        text provider
+        text purpose
+        text script_id
+        text start_hold_time
+        text start_time
+        text state
+        text team_id
+        text team_name
+        text team_self_url
+        text wrapup_code
+        text wrapup_duration_seconds
+        text wrapup_end_time
+        text wrapup_name
+        text wrapup_notes
+        text wrapup_prompt
+        text wrapup_provisional
+        text wrapup_required
+        text wrapup_skipped
+        jsonb wrapup_tag
+        text wrapup_timeout_ms
+    }
+    conversation_callback_other_media_uris {
+        text _fivetran_id PK
+        text conversation_callback_id FK
+        text other_media_uri
+    }
+    conversation_callback_participants_recent_transfer {
+        text id PK
+        text conversation_callback_id PK
+        text destination_user_id FK
+        text initiator_id FK
+        text modified_by_id FK
+        text date_issued
+        text destination_address
+        text state
+    }
+    conversation_callback {
+        text id PK
+        text name
+    }
+    user_queue_routing_rule {
+        text _fivetran_id PK
+        text user_id FK
+        text user_queue_id FK
+        text operator
+        text threshold
+        text wait_seconds
+    }
+    user_queue_conditional_group_routing_rule_group {
+        text group_id PK
+        text index PK
+        text user_id PK
+        text user_queue_id PK
+    }
+    user_queue_conditional_group_routing_rule {
+        text index PK
+        text user_id PK
+        text user_queue_id PK
+        text condition_value
+        text metric
+        text operator
+        text wait_seconds
+    }
+    user_queue_bulls_eye_ring_expansion_criteria {
+        text _fivetran_id PK
+        text user_id FK
+        text user_queue_id FK
+        text threshold
+        text type
+    }
+    user_queue_bulls_eye_ring_skill_to_remove {
+        text id PK
+        text user_id PK
+        text user_queue_id PK
+        text name
+        text self_uri
+    }
+    user_queue_bulls_eye_ring_member_group {
+        text id PK
+        text user_id PK
+        text user_queue_id PK
+        text member_count
+        text name
+        text self_uri
+        text type
+    }
+    user_queue_member_group {
+        text id PK
+        text user_id PK
+        text user_queue_id PK
+        text member_count
+        text name
+        text self_uri
+        text type
+    }
+    user_queue_email_address_route_skill {
+        text id PK
+        text user_id PK
+        text user_queue_id PK
+        text name
+        text self_uri
+    }
+    user_queue_email_address_auto_bcc {
+        text _fivetran_id PK
+        text user_id FK
+        text user_queue_id FK
+        text email
+        text name
+    }
+    user_queue {
+        text id PK
+        text user_id PK
+        text division_id FK
+        text acw_settings_timeout_ms
+        text acw_settings_wrapup_prompt
+        text agent_owned_routing_enable_agent_owned_call_back
+        text agent_owned_routing_max_owned_call_back_delay_hours
+        text agent_owned_routing_max_owned_call_back_hours
+        text auto_answer_only
+        text calling_party_name
+        text calling_party_number
+        text created_by
+        text date_created
+        text date_modified
+        jsonb default_script
+        text description
+        text direct_routing_agent_wait_second
+        text direct_routing_backup_queue_id
+        text direct_routing_call_media_setting_enabled
+        text direct_routing_call_media_setting_inbound_flow_id
+        text direct_routing_call_media_setting_inbound_self_uri
+        text direct_routing_call_media_setting_voice_mail_flow
+        text direct_routing_email_media_setting_enabled
+        text direct_routing_email_media_setting_inbound_flow_id
+        text direct_routing_email_media_setting_inbound_self_uri
+        text direct_routing_enabled
+        text direct_routing_message_media_setting
+        text direct_routing_wait_for_agent
+        text email_in_queue_flow_id
+        text email_in_queue_flow_name
+        text email_in_queue_flow_self_uri
+        text enable_manual_assignment
+        text enable_transcription
+        text joined_member_count
+        text media_settings_call_alerting_timeout_seconds
+        text media_settings_call_auto_answer_alert_tone_seconds
+        text media_settings_call_enable_auto_answer
+        text media_settings_call_manual_answer_alert_tone_seconds
+        text media_settings_call_service_level
+        jsonb media_settings_call_sub_type_setting
+        text media_settings_callback_alerting_timeout_seconds
+        text media_settings_callback_auto_answer_alert_tone_seconds
+        text media_settings_callback_enable_auto_answer
+        text media_settings_callback_manual_answer_alert_tone_seconds
+        text media_settings_callback_service_level
+        jsonb media_settings_callback_sub_type_setting
+        text media_settings_chat_alerting_timeout_seconds
+        text media_settings_chat_auto_answer_alert_tone_seconds
+        text media_settings_chat_enable_auto_answer
+        text media_settings_chat_manual_answer_alert_tone_seconds
+        text media_settings_chat_service_level
+        jsonb media_settings_chat_sub_type_setting
+        text media_settings_email_alerting_timeout_seconds
+        text media_settings_email_auto_answer_alert_tone_seconds
+        text media_settings_email_enable_auto_answer
+        text media_settings_email_manual_answer_alert_tone_seconds
+        text media_settings_email_service_level
+        jsonb media_settings_email_sub_type_setting
+        text media_settings_message_alerting_timeout_seconds
+        text media_settings_message_auto_answer_alert_tone_seconds
+        text media_settings_message_enable_auto_answer
+        text media_settings_message_manual_answer_alert_tone_seconds
+        text media_settings_message_service_level
+        jsonb media_settings_message_sub_type_setting
+        text member_count
+        text message_in_queue_flow_id
+        text message_in_queue_flow_name
+        text message_in_queue_flow_self_uri
+        text modified_by
+        text name
+        text on_hold_prompt_id
+        text on_hold_prompt_name
+        text on_hold_prompt_self_uri
+        text outbound_messaging_addresses_open_messaging_recipient_id
+        text outbound_messaging_addresses_open_messaging_recipient_name
+        text outbound_messaging_addresses_open_messaging_recipient_self_uri
+        text outbound_messaging_addresses_sms_address_name
+        text outbound_messaging_addresses_sms_address_self_uri
+        text outbound_messaging_addresses_sms_adress_id
+        text outbound_messaging_addresses_whats_app_recipient_id
+        text outbound_messaging_addresses_whats_app_recipient_name
+        text outbound_messaging_addresses_whats_app_recipient_self_uri
+        text peer_id
+        text queue_flow_id
+        text queue_flow_name
+        text queue_flow_self_uri
+        text reply_email_address_domain_id
+        text reply_email_address_domain_name
+        text reply_email_address_domain_self_uri
+        text reply_email_address_route_allow_multiple_actions
+        text reply_email_address_route_always_included
+        text reply_email_address_route_flow_id
+        text reply_email_address_route_flow_name
+        text reply_email_address_route_flow_self_uri
+        text reply_email_address_route_from_email
+        text reply_email_address_route_from_name
+        text reply_email_address_route_history_inclusion
+        text reply_email_address_route_id
+        text reply_email_address_route_inclusion_type
+        text reply_email_address_route_language_id
+        text reply_email_address_route_language_name
+        text reply_email_address_route_language_self_url
+        text reply_email_address_route_name
+        text reply_email_address_route_pattern
+        text reply_email_address_route_priority
+        text reply_email_address_route_queue_id
+        jsonb reply_email_address_route_reply_email_address
+        text reply_email_address_route_self_uri
+        text reply_email_address_route_signature_canned_response_id
+        text reply_email_address_route_signature_enabled
+        text reply_email_address_route_spam_flow_id
+        text reply_email_address_route_spam_flow_name
+        text reply_email_address_route_spam_flow_self_uri
+        text scoring_method
+        text self_uri
+        text skill_evaluation_method
+        text suppress_in_queue_call_recording
+        text user_member_count
+        text whisper_prompt_id
+        text whisper_prompt_name
+        text whisper_prompt_self_uri
+    }
+    campaign_rule_campaign {
+        text campaign_id PK
+        text campaign_rule_id PK
+    }
+    campaign_rule_entity_sequence {
+        text campaign_rule_id PK
+        text id PK
+    }
+    campaign_rule_condition {
+        text id PK
+        text campaign_rule_id PK
+        text condition_type
+        text parameters_dialing_mode
+        text parameters_operator
+        text parameters_priority
+        text parameters_value
+    }
+    campaign_rule_action_campaign {
+        text campaign_id PK
+        text campaign_rule_action_id PK
+        text campaign_rule_id PK
+    }
+    campaign_rule_action_sequence {
+        text campaign_rule_action_id PK
+        text campaign_rule_id PK
+        text id PK
+    }
+    campaign_rule_action {
+        text id PK
+        text campaign_rule_id PK
+        text action_type
+        text parameters_dialing_mode
+        text parameters_operator
+        text parameters_priority
+        text parameters_value
+        text use_triggering_entity
+    }
+    campaign_rule {
+        text id PK
+        text date_created
+        timestamp date_modified
+        text enabled
+        text match_any_conditions
+        text name
+        text self_uri
+        text version
+    }
+    routing_skill {
+        text id PK
+        text date_modified
+        text name
+        text self_uri
+        text state
+        text version
+    }
+    user_routing_skill {
+        text id PK
+        text user_id PK
+        text name
+        text proficiency
+        text self_uri
+        text skill_uri
+        text state
+    }
+    messaging_campaign_progress {
+        text _fivetran_id PK
+        text messaging_campaign_id PK
+        text campaign_id FK
+        text contact_list_id FK
+        text number_of_contacts_called
+        text number_of_contacts_messaged
+        jsonb number_of_contacts_skipped
+        text percentage
+        text total_number_of_contact
+    }
+    survey_form_question_group_question {
+        text id PK
+        text survey_form_id PK
+        text survey_form_question_group_id PK
+        jsonb answer_options
+        text explanation_prompt
+        text help_text
+        text max_response_characters
+        text na_enabled
+        text text
+        text type
+        text visibility_condition_combining_operation
+        jsonb visibility_condition_predicates
+    }
+    survey_form_question_group {
+        text id PK
+        text survey_form_id PK
+        text na_enabled
+        text name
+        text type
+        text visibility_condition
+    }
+    survey_form {
+        text id PK
+        text context_id
+        text disabled
+        text footer
+        text header
+        text lang
+        text modified_date
+        text name
+        text published
+        text self_uri
+    }
+    users_group {
+        text user_id PK
+        text id PK
+    }
+    task_management_workitem_skill {
+        text index PK
+        text task_management_workitem_id PK
+        text task_management_workitem_workbin_id PK
+        text id
+    }
+    task_management_workitem_score_agent {
+        text index PK
+        text task_management_workitem_id PK
+        text task_management_workitem_workbin_id PK
+        text agent
+        text score
+    }
+    task_management_workitem {
+        text id PK
+        text workbin_id PK
+        text assignee_id FK
+        text division_id FK
+        text external_contact_id FK
+        text queue_id FK
+        text alert_timeout_seconds
+        text assignment_state
+        text auto_status_transition
+        text auto_status_transition_date_of_transition
+        text auto_status_transition_error_code
+        text auto_status_transition_error_message
+        text auto_status_transition_next_status
+        text date_assignment_state_changed
+        text date_closed
+        text date_created
+        text date_due
+        text date_expires
+        text date_modified
+        text date_status_changed
+        text description
+        text duration_seconds
+        text external_tag
+        text language_id
+        text modified_by_id
+        text name
+        jsonb preferred_agents
+        text priority
+        text queue_name
+        text reporter_id
+        text reporter_name
+        text schema_id
+        text schema_name
+        text schema_version
+        text scored_agents
+        text self_uri
+        text status_category
+        text status_id
+        text status_name
+        text ttl
+        text type_id
+        text type_name
+        text utilization_label_id
+    }
+    analytics_conversation_details_division {
+        text conversation_id PK
+        text division_id PK
+    }
+    analytics_conversation_details_knowledge_base_id {
+        text index PK
+        text conversation_id PK
+        text knowledge_base_id
+    }
+    analytics_conversation_details_evaluation {
+        text _fivetran_id PK
+        text assignee_id FK
+        text conversation_id FK
+        text division_id FK
+        text evaluator_id FK
+        text user_id FK
+        text assignee_applicable
+        text calibration_id
+        text context_id
+        text deleted
+        text evaluation_id
+        text evaluation_status
+        text event_time
+        text form_id
+        text form_name
+        text queue_id
+        text released
+        text rescored
+        text total_critical_score
+        text total_score
+    }
+    analytics_conversation_details_survey {
+        text _fivetran_id PK
+        text conversation_id FK
+        text queue_id FK
+        text user_id FK
+        text event_time
+        text o_survey_total_score
+        text survey_completed_date
+        text survey_form_context_id
+        text survey_form_id
+        text survey_form_name
+        text survey_id
+        text survey_promoter_score
+        text survey_status
+    }
+    analytics_conversation_details_resolution {
+        text _fivetran_id PK
+        text conversation_id FK
+        text queue_id FK
+        text user_id FK
+        text event_time
+        text n_next_contact_avoided
+    }
+    analytics_conversation_details_participant_session_callback_number {
+        text callback_number PK
+        text conversation_id PK
+        text participant_id PK
+        text session_id PK
+    }
+    analytics_conversation_details_participant_session_bcc {
+        text _fivetran_id PK
+        text conversation_id FK
+        text participant_id FK
+        text session_id FK
+        text bcc
+    }
+    analytics_conversation_details_participant_session_cc {
+        text _fivetran_id PK
+        text conversation_id FK
+        text participant_id FK
+        text session_id FK
+        text cc
+    }
+    analytics_conversation_details_participant_session_destination_address {
+        text _fivetran_id PK
+        text conversation_id FK
+        text participant_id FK
+        text session_id FK
+        text destination_addresses
+    }
+    analytics_conversation_details_participant_session_eligible_agent_count {
+        text _fivetran_id PK
+        text conversation_id FK
+        text participant_id FK
+        text session_id FK
+        text eligible_agent_count
+    }
+    analytics_conversation_details_participant_session_requested_routing {
+        text _fivetran_id PK
+        text conversation_id FK
+        text participant_id FK
+        text session_id FK
+        text requested_routing
+    }
+    analytics_conversation_details_participant_session_waiting_interaction_counts {
+        text _fivetran_id PK
+        text conversation_id FK
+        text participant_id FK
+        text session_id FK
+        text waiting_interaction_count
+    }
+    analytics_conversation_details_participant_session_proposed_agent {
+        text _fivetran_id PK
+        text conversation_id FK
+        text participant_id FK
+        text session_id FK
+        text agent_rank
+        text proposed_agent_id
+    }
+    analytics_conversation_details_participant_session_agent_group {
+        text _fivetran_id PK
+        text conversation_id FK
+        text participant_id FK
+        text session_id FK
+        text agent_group_id
+        text agent_group_type
+    }
+    analytics_conversation_details_participant_session_media_endpoint_stats {
+        text _fivetran_id PK
+        text conversation_id FK
+        text participant_id FK
+        text session_id FK
+        jsonb codecs
+        text discarded_packets
+        text duplicate_packets
+        text event_time
+        text invalid_packets
+        text max_latency_ms
+        text min_mos
+        text min_r_factor
+        text overrun_packets
+        text received_packets
+        text underrun_packets
+    }
+    analytics_conversation_details_participant_session_flow_outcome {
+        text _fivetran_id PK
+        text conversation_id FK
+        text participant_id FK
+        text session_id FK
+        text flow_outcome
+        text flow_outcome_end_timestamp
+        text flow_outcome_id
+        text flow_outcome_start_timestamp
+        text flow_outcome_value
+    }
+    analytics_conversation_details_participant_session_metric {
+        text _fivetran_id PK
+        text conversation_id FK
+        text participant_id FK
+        text session_id FK
+        text emit_date
+        text name
+        text value
+    }
+    analytics_conversation_details_participant_session_segment {
+        text _fivetran_id PK
+        text conversation_id FK
+        text participant_id FK
+        text session_id FK
+        text audio_muted
+        text conference
+        text destination_conversation_id
+        text destination_session_id
+        text disconnect_type
+        text error_code
+        text group_id
+        jsonb properties
+        jsonb q_850_response_code
+        text queue_id
+        text requested_language_id
+        jsonb requested_routing_skill_ids
+        jsonb requested_routing_user_ids
+        jsonb scored_agents
+        text segment_end
+        text segment_start
+        text segment_type
+        jsonb sip_response_codes
+        text source_conversation_id
+        text source_session_id
+        text subject
+        text video_muted
+        text wrap_up_code
+        text wrap_up_note
+        jsonb wrap_up_tags
+    }
+    analytics_conversation_details_participant_session {
+        text session_id PK
+        text conversation_id PK
+        text participant_id PK
+        text assigner_id FK
+        text campaign_id FK
+        text contact_list_id FK
+        text script_id FK
+        text acw_skipped
+        text address_from
+        text address_other
+        text address_self
+        text address_to
+        text agent_assistant_id
+        text agent_bullseye_ring
+        text agent_owned
+        text ani
+        text authenticated
+        text barged_participant_id
+        text callback_scheduled_time
+        text callback_user_name
+        text cleared
+        text coached_participant_id
+        text cobrowse_role
+        text cobrowse_room_id
+        text contact_id
+        text delivery_status
+        text delivery_status_change_date
+        text direction
+        text disposition_analyzer
+        text disposition_name
+        text dnis
+        text edge_id
+        text extended_delivery_status
+        text flow_in_type
+        text flow_out_type
+        text journey_action_id
+        text journey_action_map_id
+        text journey_action_map_version
+        text journey_customer_id
+        text journey_customer_id_type
+        text journey_customer_session_id
+        text journey_customer_session_id_type
+        text media_bridge_id
+        text media_count
+        text media_type
+        text message_type
+        text monitored_participant_id
+        text peer_id
+        text protocol_call_id
+        text provider
+        text recording
+        text remote
+        text remote_name_displayable
+        text room_id
+        text routing_ring
+        text routing_rule
+        text routing_rule_type
+        text screen_share_address_self
+        text screen_share_room_id
+        text selected_agent_id
+        text selected_agent_rank
+        text session_dnis
+        text sharing_screen
+        text skip_enabled
+        text timeout_seconds
+        text used_routing
+        text video_address_self
+        text video_room_id
+    }
+    analytics_conversation_details_participant {
+        text conversation_id PK
+        text participant_id PK
+        text user_id FK
+        text external_contact_id
+        text external_organization_id
+        text flagged_reason
+        text participant_name
+        text purpose
+        text team_id
+    }
+    analytics_conversation_details {
+        text conversation_id PK
+        text conference_start
+        text conversation_end
+        text conversation_initiator
+        text conversation_start
+        text customer_participation
+        text evaluation_form_context_id
+        text evaluation_form_id
+        text evaluation_form_modified_date
+        text evaluation_form_name
+        text evaluation_form_published
+        text evaluation_form_self_uri
+        text external_tag
+        text media_stats_min_conversation_mos
+        text media_stats_min_conversation_r_factor
+        text originating_direction
+        text self_served
+        text wrapup_code
+        text wrapup_duration_seconds
+        text wrapup_end_time
+        text wrapup_name
+        text wrapup_notes
+        text wrapup_provisional
+    }
+    analytics_conversation_details_participant_session_skill_id {
+        text skill_id PK
+        text conversation_id PK
+        text participant_id PK
+        text session_id PK
+        text object_type
+    }
+    analytic_user_detail_primary_presence {
+        text index PK
+        text user_id PK
+        text end_time
+        text organization_presence_id
+        text start_time
+        text system_presence
+    }
+    analytic_user_detail_routing_status {
+        text index PK
+        text user_id PK
+        text end_time
+        text routing_status
+        text start_time
+    }
+    analytic_user_detail {
+        text user_id PK
+    }
+    group_image }o--|| groups : "fk"
+    group_address }o--|| groups : "fk"
+    group_owner }o--|| users : "fk"
+    group_owner }o--|| groups : "fk"
+    campaign_diagnostic_dnc }o--|| dnc : "fk"
+    campaign_diagnostic_dnc }o--|| campaign_diagnostic : "fk"
+    campaign_diagnostic_rule_set }o--|| ruleset : "fk"
+    campaign_diagnostic_rule_set }o--|| campaign_diagnostic : "fk"
+    campaign_rule_set_diagnostic }o--|| ruleset : "fk"
+    campaign_rule_set_diagnostic }o--|| campaign_diagnostic : "fk"
+    campaign_diagnostic }o--|| attempt_limit : "fk"
+    campaign_diagnostic }o--|| callable_timeset : "fk"
+    campaign_diagnostic }o--|| routing_queue : "fk"
+    campaign_diagnostic }o--|| campaign : "fk"
+    flow_data_table }o--|| division : "fk"
+    conversation_survey_answer_question_group_question_score }o--|| conversation_survey_answer_question_group_score : "fk"
+    conversation_survey_answer_question_group_question_score }o--|| conversation_survey_answer_question_group_score : "fk"
+    conversation_survey_answer_question_group_question_score }o--|| conversation_survey_answer_question_group_score : "fk"
+    conversation_survey_answer_question_group_score }o--|| conversation_survey : "fk"
+    conversation_survey_answer_question_group_score }o--|| conversation_survey : "fk"
+    conversation_survey }o--|| user_queue : "fk"
+    conversation_survey }o--|| users : "fk"
+    conversation_survey }o--|| survey_form : "fk"
+    user_call_forwarding_target }o--|| user_call_forwarding : "fk"
+    user_call_forwarding_target }o--|| user_call_forwarding : "fk"
+    user_call_forwarding }o--|| users : "fk"
+    location_path }o--|| location : "fk"
+    location_profile_image }o--|| location : "fk"
+    location_floor_plan_image }o--|| location : "fk"
+    location }o--|| users : "fk"
+    campaign_stats }o--|| campaign : "fk"
+    agent_activity_evaluator_list_contact_info }o--|| agent_activity_evaluator_list : "fk"
+    agent_activity_evaluator_list_contact_info }o--|| agent_activity_evaluator_list : "fk"
+    agent_activity_evaluator_list }o--|| users : "fk"
+    agent_activity_evaluator_list }o--|| users : "fk"
+    agent_activity_evaluator_list }o--|| agent_activity : "fk"
+    agent_activity }o--|| presence_definition : "fk"
+    agent_activity }o--|| presence_definition : "fk"
+    agent_activity }o--|| users : "fk"
+    routing_queue_routing_rule }o--|| routing_queue : "fk"
+    routing_queue_conditional_group_routing_rule_group }o--|| groups : "fk"
+    routing_queue_conditional_group_routing_rule_group }o--|| routing_queue_conditional_group_routing_rule : "fk"
+    routing_queue_conditional_group_routing_rule_group }o--|| routing_queue_conditional_group_routing_rule : "fk"
+    routing_queue_conditional_group_routing_rule }o--|| routing_queue : "fk"
+    routing_queue_bulls_eye_ring_expansion_criteria }o--|| routing_queue : "fk"
+    routing_queue_bulls_eye_ring_skill_to_remove }o--|| routing_queue : "fk"
+    routing_queue_bulls_eye_ring_member_group }o--|| routing_queue : "fk"
+    routing_queue_member_group }o--|| routing_queue : "fk"
+    routing_queue_email_address_route_skill }o--|| routing_queue : "fk"
+    routing_queue_email_address_auto_bcc }o--|| routing_queue : "fk"
+    routing_queue }o--|| division : "fk"
+    station }o--|| users : "fk"
+    station }o--|| users : "fk"
+    conversation_id }o--|| conversation : "fk"
+    conversation_division_entity }o--|| division : "fk"
+    conversation_division_entity }o--|| conversation : "fk"
+    conversation_recent_transfer }o--|| users : "fk"
+    conversation_recent_transfer }o--|| users : "fk"
+    conversation_recent_transfer }o--|| users : "fk"
+    conversation_recent_transfer }o--|| conversation : "fk"
+    conversation_participant_media_role }o--|| conversation_participant : "fk"
+    conversation_participant_media_role }o--|| conversation_participant : "fk"
+    conversation_participant_conversation_routing_data_skills }o--|| user_routing_skill : "fk"
+    conversation_participant_conversation_routing_data_skills }o--|| conversation_participant : "fk"
+    conversation_participant_conversation_routing_data_skills }o--|| conversation_participant : "fk"
+    conversation_participant_conversation_routing_data_scored_agent }o--|| conversation_participant : "fk"
+    conversation_participant_conversation_routing_data_scored_agent }o--|| conversation_participant : "fk"
+    conversation_participant_wrapup_tag }o--|| conversation_participant : "fk"
+    conversation_participant_wrapup_tag }o--|| conversation_participant : "fk"
+    conversation_participant_call_wrapup_tag }o--|| conversation_participant_call : "fk"
+    conversation_participant_call_wrapup_tag }o--|| conversation_participant_call : "fk"
+    conversation_participant_call_wrapup_tag }o--|| conversation_participant_call : "fk"
+    conversation_participant_call_segment }o--|| conversation_participant_call : "fk"
+    conversation_participant_call_segment }o--|| conversation_participant_call : "fk"
+    conversation_participant_call_segment }o--|| conversation_participant_call : "fk"
+    conversation_participant_call_disconnect_reason }o--|| conversation_participant_call : "fk"
+    conversation_participant_call_disconnect_reason }o--|| conversation_participant_call : "fk"
+    conversation_participant_call_disconnect_reason }o--|| conversation_participant_call : "fk"
+    conversation_participant_call }o--|| script : "fk"
+    conversation_participant_call }o--|| conversation_participant : "fk"
+    conversation_participant_call }o--|| conversation_participant : "fk"
+    conversation_participant_callback_wrapup_tag }o--|| conversation_participant_callback : "fk"
+    conversation_participant_callback_wrapup_tag }o--|| conversation_participant_callback : "fk"
+    conversation_participant_callback_wrapup_tag }o--|| conversation_participant_callback : "fk"
+    conversation_participant_callback_segment }o--|| conversation_participant_callback : "fk"
+    conversation_participant_callback_segment }o--|| conversation_participant_callback : "fk"
+    conversation_participant_callback_segment }o--|| conversation_participant_callback : "fk"
+    conversation_participant_callback_number }o--|| conversation_participant_callback : "fk"
+    conversation_participant_callback_number }o--|| conversation_participant_callback : "fk"
+    conversation_participant_callback_number }o--|| conversation_participant_callback : "fk"
+    conversation_participant_callback }o--|| script : "fk"
+    conversation_participant_callback }o--|| contact_list : "fk"
+    conversation_participant_callback }o--|| campaign : "fk"
+    conversation_participant_callback }o--|| conversation_participant : "fk"
+    conversation_participant_callback }o--|| conversation_participant : "fk"
+    conversation_participant_chat_wrapup_tag }o--|| conversation_participant_chat : "fk"
+    conversation_participant_chat_wrapup_tag }o--|| conversation_participant_chat : "fk"
+    conversation_participant_chat_wrapup_tag }o--|| conversation_participant_chat : "fk"
+    conversation_participant_chat_segment }o--|| conversation_participant_chat : "fk"
+    conversation_participant_chat_segment }o--|| conversation_participant_chat : "fk"
+    conversation_participant_chat_segment }o--|| conversation_participant_chat : "fk"
+    conversation_participant_chat }o--|| script : "fk"
+    conversation_participant_chat }o--|| conversation_participant : "fk"
+    conversation_participant_chat }o--|| conversation_participant : "fk"
+    conversation_participant_conversation_cobrowse_session_wrapup_tag }o--|| conversation_participant_conversation_cobrowse_session : "fk"
+    conversation_participant_conversation_cobrowse_session_wrapup_tag }o--|| conversation_participant_conversation_cobrowse_session : "fk"
+    conversation_participant_conversation_cobrowse_session_wrapup_tag }o--|| conversation_participant_conversation_cobrowse_session : "fk"
+    conversation_participan_conversation_cobrowse_session_controlling }o--|| conversation_participant_conversation_cobrowse_session : "fk"
+    conversation_participan_conversation_cobrowse_session_controlling }o--|| conversation_participant_conversation_cobrowse_session : "fk"
+    conversation_participan_conversation_cobrowse_session_controlling }o--|| conversation_participant_conversation_cobrowse_session : "fk"
+    conversation_participan_conversation_cobrowse_session_segment }o--|| conversation_participant_conversation_cobrowse_session : "fk"
+    conversation_participan_conversation_cobrowse_session_segment }o--|| conversation_participant_conversation_cobrowse_session : "fk"
+    conversation_participan_conversation_cobrowse_session_segment }o--|| conversation_participant_conversation_cobrowse_session : "fk"
+    conversation_participant_conversation_cobrowse_session }o--|| conversation_participant : "fk"
+    conversation_participant_conversation_cobrowse_session }o--|| conversation_participant : "fk"
+    conversation_participant_email_wrapup_tag }o--|| conversation_participant_email : "fk"
+    conversation_participant_email_wrapup_tag }o--|| conversation_participant_email : "fk"
+    conversation_participant_email_wrapup_tag }o--|| conversation_participant_email : "fk"
+    conversation_participant_email_segment }o--|| conversation_participant_email : "fk"
+    conversation_participant_email_segment }o--|| conversation_participant_email : "fk"
+    conversation_participant_email_segment }o--|| conversation_participant_email : "fk"
+    conversation_participant_email_draft_attachment }o--|| conversation_participant_email : "fk"
+    conversation_participant_email_draft_attachment }o--|| conversation_participant_email : "fk"
+    conversation_participant_email_draft_attachment }o--|| conversation_participant_email : "fk"
+    conversation_participant_email }o--|| script : "fk"
+    conversation_participant_email }o--|| conversation_participant : "fk"
+    conversation_participant_email }o--|| conversation_participant : "fk"
+    conversation_participant_message_wrapup_tag }o--|| conversation_participant_message : "fk"
+    conversation_participant_message_wrapup_tag }o--|| conversation_participant_message : "fk"
+    conversation_participant_message_wrapup_tag }o--|| conversation_participant_message : "fk"
+    conversation_participant_message_segment }o--|| conversation_participant_message : "fk"
+    conversation_participant_message_segment }o--|| conversation_participant_message : "fk"
+    conversation_participant_message_segment }o--|| conversation_participant_message : "fk"
+    conversation_participant_sent_message_media }o--|| conversation_participant_sent_message : "fk"
+    conversation_participant_sent_message_media }o--|| conversation_participant_sent_message : "fk"
+    conversation_participant_sent_message_media }o--|| conversation_participant_sent_message : "fk"
+    conversation_participant_sent_message_media }o--|| conversation_participant_sent_message : "fk"
+    conversation_participant_sent_message_sticker }o--|| conversation_participant_sent_message : "fk"
+    conversation_participant_sent_message_sticker }o--|| conversation_participant_sent_message : "fk"
+    conversation_participant_sent_message_sticker }o--|| conversation_participant_sent_message : "fk"
+    conversation_participant_sent_message_sticker }o--|| conversation_participant_sent_message : "fk"
+    conversation_participant_sent_message }o--|| conversation_participant_message : "fk"
+    conversation_participant_sent_message }o--|| conversation_participant_message : "fk"
+    conversation_participant_sent_message }o--|| conversation_participant_message : "fk"
+    conversation_participant_message }o--|| script : "fk"
+    conversation_participant_message }o--|| conversation_participant : "fk"
+    conversation_participant_message }o--|| conversation_participant : "fk"
+    conversation_participant_screenshare_wrapup_tag }o--|| conversation_participant_screenshare : "fk"
+    conversation_participant_screenshare_wrapup_tag }o--|| conversation_participant_screenshare : "fk"
+    conversation_participant_screenshare_wrapup_tag }o--|| conversation_participant_screenshare : "fk"
+    conversation_participant_screenshare_segment }o--|| conversation_participant_screenshare : "fk"
+    conversation_participant_screenshare_segment }o--|| conversation_participant_screenshare : "fk"
+    conversation_participant_screenshare_segment }o--|| conversation_participant_screenshare : "fk"
+    conversation_participant_screenshare }o--|| conversation_participant : "fk"
+    conversation_participant_screenshare }o--|| conversation_participant : "fk"
+    conversation_participant_social_expression_wrapup_tag }o--|| conversation_participant_social_expression : "fk"
+    conversation_participant_social_expression_wrapup_tag }o--|| conversation_participant_social_expression : "fk"
+    conversation_participant_social_expression_wrapup_tag }o--|| conversation_participant_social_expression : "fk"
+    conversation_participant_social_expression_segment }o--|| conversation_participant_social_expression : "fk"
+    conversation_participant_social_expression_segment }o--|| conversation_participant_social_expression : "fk"
+    conversation_participant_social_expression_segment }o--|| conversation_participant_social_expression : "fk"
+    conversation_participant_social_expression }o--|| script : "fk"
+    conversation_participant_social_expression }o--|| conversation_participant : "fk"
+    conversation_participant_social_expression }o--|| conversation_participant : "fk"
+    conversation_participant_video_wrapup_tag }o--|| conversation_participant_video : "fk"
+    conversation_participant_video_wrapup_tag }o--|| conversation_participant_video : "fk"
+    conversation_participant_video_wrapup_tag }o--|| conversation_participant_video : "fk"
+    conversation_participant_video_ms_id }o--|| conversation_participant_video : "fk"
+    conversation_participant_video_ms_id }o--|| conversation_participant_video : "fk"
+    conversation_participant_video_ms_id }o--|| conversation_participant_video : "fk"
+    conversation_participant_video }o--|| conversation_participant : "fk"
+    conversation_participant_video }o--|| conversation_participant : "fk"
+    conversation_participant_evaluation_form_question_group_question }o--|| conversation_participant_evaluation_form_question_group : "fk"
+    conversation_participant_evaluation_form_question_group_question }o--|| conversation_participant_evaluation_form_question_group : "fk"
+    conversation_participant_evaluation_form_question_group_question }o--|| conversation_participant_evaluation_form_question_group : "fk"
+    conversation_participant_evaluation_form_question_group_question }o--|| conversation_participant_evaluation_form_question_group : "fk"
+    conversation_participant_evaluation_form_question_group }o--|| conversation_participant_evaluation : "fk"
+    conversation_participant_evaluation_form_question_group }o--|| conversation_participant_evaluation : "fk"
+    conversation_participant_evaluation_form_question_group }o--|| conversation_participant_evaluation : "fk"
+    conversation_participant_evaluation_answers_question_group_score }o--|| conversation_participant_evaluation : "fk"
+    conversation_participant_evaluation_answers_question_group_score }o--|| conversation_participant_evaluation : "fk"
+    conversation_participant_evaluation_answers_question_group_score }o--|| conversation_participant_evaluation : "fk"
+    conversation_participant_evaluation_answers_transcript_topic }o--|| conversation_participant_evaluation : "fk"
+    conversation_participant_evaluation_answers_transcript_topic }o--|| conversation_participant_evaluation : "fk"
+    conversation_participant_evaluation_answers_transcript_topic }o--|| conversation_participant_evaluation : "fk"
+    conversation_participant_evaluation_media_type }o--|| conversation_participant_evaluation : "fk"
+    conversation_participant_evaluation_media_type }o--|| conversation_participant_evaluation : "fk"
+    conversation_participant_evaluation_media_type }o--|| conversation_participant_evaluation : "fk"
+    conversation_participant_evaluation_authorized_action }o--|| conversation_participant_evaluation : "fk"
+    conversation_participant_evaluation_authorized_action }o--|| conversation_participant_evaluation : "fk"
+    conversation_participant_evaluation_authorized_action }o--|| conversation_participant_evaluation : "fk"
+    conversation_participant_evaluation }o--|| users : "fk"
+    conversation_participant_evaluation }o--|| routing_queue : "fk"
+    conversation_participant_evaluation }o--|| users : "fk"
+    conversation_participant_evaluation }o--|| users : "fk"
+    conversation_participant_evaluation }o--|| conversation : "fk"
+    conversation_participant_evaluation }o--|| conversation_participant : "fk"
+    conversation_participant_evaluation }o--|| conversation_participant : "fk"
+    conversation_participant }o--|| conversation_participant : "fk"
+    conversation_participant }o--|| users : "fk"
+    conversation_participant }o--|| groups : "fk"
+    conversation_participant }o--|| routing_queue : "fk"
+    conversation_participant }o--|| conversation_participant : "fk"
+    conversation_participant }o--|| conversation_participant : "fk"
+    conversation_participant }o--|| conversation_participant : "fk"
+    conversation_participant }o--|| routing_queue : "fk"
+    conversation_participant }o--|| conversation : "fk"
+    calibration }o--|| evaluation : "fk"
+    calibration }o--|| users : "fk"
+    calibration }o--|| users : "fk"
+    calibration }o--|| users : "fk"
+    calibration }o--|| conversation : "fk"
+    calibration }o--|| evaluation_form : "fk"
+    calibration }o--|| evaluation : "fk"
+    calibration }o--|| users : "fk"
+    calibration }o--|| users : "fk"
+    conversation_call_history_participants }o--|| users : "fk"
+    conversation_call_history_participants }o--|| campaign : "fk"
+    conversation_call_history_participants }o--|| groups : "fk"
+    conversation_call_history_participants }o--|| routing_queue : "fk"
+    conversation_call_history_participants }o--|| conversation_call_history : "fk"
+    sequence_campaign }o--|| campaign : "fk"
+    sequence_campaign }o--|| sequence : "fk"
+    rule_condition_field_mapping }o--|| rule_condition : "fk"
+    rule_condition_field_mapping }o--|| rule_condition : "fk"
+    rule_condition_field_mapping }o--|| rule_condition : "fk"
+    rule_condition_predicate }o--|| rule_condition : "fk"
+    rule_condition_predicate }o--|| rule_condition : "fk"
+    rule_condition_predicate }o--|| rule_condition : "fk"
+    rule_condition }o--|| rule : "fk"
+    rule_condition }o--|| rule : "fk"
+    rule_action_field_mapping }o--|| rule_action : "fk"
+    rule_action_field_mapping }o--|| rule_action : "fk"
+    rule_action_field_mapping }o--|| rule_action : "fk"
+    rule_action }o--|| rule : "fk"
+    rule_action }o--|| rule : "fk"
+    rule }o--|| ruleset : "fk"
+    ruleset }o--|| contact_list : "fk"
+    ruleset }o--|| routing_queue : "fk"
+    flow_outcome_error_detail }o--|| flow_outcome : "fk"
+    flow_outcome }o--|| division : "fk"
+    flow_outcome }o--|| users : "fk"
+    dnc_code }o--|| dnc : "fk"
+    dnc }o--|| campaign : "fk"
+    dnc }o--|| division : "fk"
+    external_contact_identifier }o--|| external_contact : "fk"
+    external_contact_line_id }o--|| users : "fk"
+    external_contact_line_id }o--|| external_contact : "fk"
+    external_contact_facebook_id }o--|| external_contact : "fk"
+    external_contact_external_data_source }o--|| external_contact : "fk"
+    external_contact_external_id }o--|| external_contact : "fk"
+    external_contact }o--|| organization : "fk"
+    external_contact }o--|| contact_list : "fk"
+    routing_wrapup_code }o--|| division : "fk"
+    messaging_campaign_dnc }o--|| dnc : "fk"
+    messaging_campaign_dnc }o--|| messaging_campaign : "fk"
+    messaging_campaign_contact_sort }o--|| messaging_campaign : "fk"
+    messaging_campaign_contact_list_filter }o--|| contact_list_filter : "fk"
+    messaging_campaign_contact_list_filter }o--|| messaging_campaign : "fk"
+    messaging_campaign_rule_set }o--|| ruleset : "fk"
+    messaging_campaign_rule_set }o--|| messaging_campaign : "fk"
+    messaging_campaign_error }o--|| messaging_campaign : "fk"
+    messaging_campaign }o--|| contact_list : "fk"
+    messaging_campaign }o--|| division : "fk"
+    messaging_campaign }o--|| callable_timeset : "fk"
+    evaluation_answer_question_group_question_score }o--|| evaluation_answer_question_group_score : "fk"
+    evaluation_answer_question_group_question_score }o--|| evaluation_answer_question_group_score : "fk"
+    evaluation_answer_question_group_score }o--|| evaluation : "fk"
+    evaluation_answer_transcript_topic }o--|| evaluation : "fk"
+    evaluation }o--|| calibration : "fk"
+    evaluation }o--|| routing_queue : "fk"
+    evaluation }o--|| users : "fk"
+    evaluation }o--|| conversation : "fk"
+    evaluation }o--|| evaluation_form : "fk"
+    evaluation }o--|| users : "fk"
+    evaluation }o--|| division : "fk"
+    users_primary_contact_info }o--|| users : "fk"
+    users_address }o--|| users : "fk"
+    users_image }o--|| users : "fk"
+    users_certification }o--|| users : "fk"
+    users_biography_interest }o--|| users : "fk"
+    users_biography_hobby }o--|| users : "fk"
+    users_biography_education }o--|| users : "fk"
+    users_geo_location_location }o--|| location : "fk"
+    users_geo_location_location }o--|| users_geo_location : "fk"
+    users_geo_location_location }o--|| users_geo_location : "fk"
+    users_geo_location }o--|| location : "fk"
+    users_geo_location }o--|| users : "fk"
+    users_profile_skill }o--|| users : "fk"
+    users_location }o--|| location : "fk"
+    users_location }o--|| users : "fk"
+    users_skill }o--|| users : "fk"
+    users_language }o--|| users : "fk"
+    users_authorization_role }o--|| users : "fk"
+    users_authorization_unused_role }o--|| users : "fk"
+    users_authorization_permission }o--|| users : "fk"
+    users_authorization_permission_policy }o--|| users : "fk"
+    users }o--|| users : "fk"
+    users }o--|| users : "fk"
+    users }o--|| users : "fk"
+    users }o--|| division : "fk"
+    users }o--|| users : "fk"
+    users }o--|| users : "fk"
+    users }o--|| location : "fk"
+    users }o--|| users : "fk"
+    users }o--|| location : "fk"
+    users }o--|| users : "fk"
+    users }o--|| location : "fk"
+    users }o--|| users : "fk"
+    users }o--|| location : "fk"
+    users }o--|| division : "fk"
+    users }o--|| users : "fk"
+    users }o--|| users : "fk"
+    users }o--|| users : "fk"
+    users }o--|| users : "fk"
+    campaign_interaction_pending }o--|| campaign : "fk"
+    campaign_interaction_pending }o--|| script : "fk"
+    campaign_interaction_pending }o--|| routing_queue : "fk"
+    campaign_interaction_pending }o--|| users_skill : "fk"
+    campaign_interaction_pending }o--|| conversation : "fk"
+    campaign_interaction_proceed }o--|| campaign : "fk"
+    campaign_interaction_proceed }o--|| script : "fk"
+    campaign_interaction_proceed }o--|| routing_queue : "fk"
+    campaign_interaction_proceed }o--|| users_skill : "fk"
+    campaign_interaction_proceed }o--|| conversation : "fk"
+    campaign_interaction_previewing }o--|| campaign : "fk"
+    campaign_interaction_previewing }o--|| script : "fk"
+    campaign_interaction_previewing }o--|| routing_queue : "fk"
+    campaign_interaction_previewing }o--|| users_skill : "fk"
+    campaign_interaction_previewing }o--|| conversation : "fk"
+    campaign_interaction_interacting }o--|| campaign : "fk"
+    campaign_interaction_interacting }o--|| script : "fk"
+    campaign_interaction_interacting }o--|| routing_queue : "fk"
+    campaign_interaction_interacting }o--|| users_skill : "fk"
+    campaign_interaction_interacting }o--|| conversation : "fk"
+    campaign_interaction_scheduled }o--|| campaign : "fk"
+    campaign_interaction_scheduled }o--|| script : "fk"
+    campaign_interaction_scheduled }o--|| routing_queue : "fk"
+    campaign_interaction_scheduled }o--|| users_skill : "fk"
+    campaign_interaction_scheduled }o--|| conversation : "fk"
+    organization_ticker }o--|| organization : "fk"
+    organization_external_data_source }o--|| organization : "fk"
+    organization }o--|| organization : "fk"
+    organization }o--|| users : "fk"
+    user_routing_language }o--|| users : "fk"
+    schedule_campaign_interval }o--|| schedule_campaign : "fk"
+    schedule_campaign }o--|| campaign : "fk"
+    survey_form_published_version }o--|| survey_form : "fk"
+    campaign_phone_column }o--|| campaign : "fk"
+    campaign_dnc }o--|| dnc : "fk"
+    campaign_dnc }o--|| campaign : "fk"
+    campaign_errors }o--|| campaign : "fk"
+    campaign_rule_set }o--|| ruleset : "fk"
+    campaign_rule_set }o--|| campaign : "fk"
+    campaign_contact_sort }o--|| campaign : "fk"
+    campaign_contact_list_filter }o--|| contact_list_filter : "fk"
+    campaign_contact_list_filter }o--|| campaign : "fk"
+    campaign }o--|| script : "fk"
+    campaign }o--|| contact_list : "fk"
+    campaign }o--|| division : "fk"
+    campaign }o--|| routing_queue : "fk"
+    campaign }o--|| callable_timeset : "fk"
+    contact_list_column_name }o--|| contact_list : "fk"
+    contact_list_phone_column }o--|| contact_list : "fk"
+    contact_list_email_column }o--|| contact_list : "fk"
+    contact_list_preview_mode_accepted_value }o--|| contact_list : "fk"
+    column_data_type_specification }o--|| contact_list : "fk"
+    contact_list }o--|| attempt_limit : "fk"
+    contact_list }o--|| division : "fk"
+    flow_milestone }o--|| division : "fk"
+    evaluation_form_published_version }o--|| evaluation_form : "fk"
+    evaluation_form_dispute_assignee }o--|| users : "fk"
+    evaluation_form_dispute_assignee }o--|| evaluation_form : "fk"
+    evaluation_form_question_group_question_answer_option_assistance_condition }o--|| evaluation_form_question_group_question_answer_option : "fk"
+    evaluation_form_question_group_question_answer_option_assistance_condition }o--|| evaluation_form_question_group_question_answer_option : "fk"
+    evaluation_form_question_group_question_answer_option_assistance_condition }o--|| evaluation_form_question_group_question_answer_option : "fk"
+    evaluation_form_question_group_question_answer_option_assistance_condition }o--|| evaluation_form_question_group_question_answer_option : "fk"
+    evaluation_form_question_group_question_answer_option }o--|| evaluation_form_question_group_question : "fk"
+    evaluation_form_question_group_question_answer_option }o--|| evaluation_form_question_group_question : "fk"
+    evaluation_form_question_group_question_answer_option }o--|| evaluation_form_question_group_question : "fk"
+    evaluation_form_question_group_question }o--|| evaluation_form_question_group : "fk"
+    evaluation_form_question_group_question }o--|| evaluation_form_question_group : "fk"
+    evaluation_form_question_group }o--|| evaluation_form : "fk"
+    user_skill_group_skill_condition_routing_skill_condition }o--|| user_skill_group : "fk"
+    user_skill_group_skill_condition_routing_skill_condition }o--|| user_skill_group : "fk"
+    user_skill_group_skill_condition_language_skill_condition }o--|| user_skill_group : "fk"
+    user_skill_group_skill_condition_language_skill_condition }o--|| user_skill_group : "fk"
+    user_skill_group }o--|| division : "fk"
+    user_skill_group }o--|| users : "fk"
+    campaign_agent_mapping_review_result }o--|| users : "fk"
+    campaign_progress }o--|| contact_list : "fk"
+    campaign_progress }o--|| campaign : "fk"
+    contact_list_filter_clause_predicate }o--|| contact_list_filter : "fk"
+    contact_list_filter }o--|| contact_list : "fk"
+    script_page }o--|| script : "fk"
+    script }o--|| division : "fk"
+    conversation_callback_participants_wrapup_tag }o--|| conversation_callback_participants : "fk"
+    conversation_callback_participants_wrapup_tag }o--|| conversation_callback_participants : "fk"
+    conversation_callback_participants_callback_number }o--|| conversation_callback_participants : "fk"
+    conversation_callback_participants_callback_number }o--|| conversation_callback_participants : "fk"
+    conversation_callback_participants_media_role }o--|| conversation_callback_participants : "fk"
+    conversation_callback_participants_media_role }o--|| conversation_callback_participants : "fk"
+    conversation_callback_participants }o--|| users : "fk"
+    conversation_callback_participants }o--|| routing_queue : "fk"
+    conversation_callback_participants }o--|| conversation_callback : "fk"
+    conversation_callback_other_media_uris }o--|| conversation_callback : "fk"
+    conversation_callback_participants_recent_transfer }o--|| users : "fk"
+    conversation_callback_participants_recent_transfer }o--|| users : "fk"
+    conversation_callback_participants_recent_transfer }o--|| users : "fk"
+    conversation_callback_participants_recent_transfer }o--|| conversation_callback : "fk"
+    user_queue_routing_rule }o--|| user_queue : "fk"
+    user_queue_routing_rule }o--|| user_queue : "fk"
+    user_queue_conditional_group_routing_rule_group }o--|| user_queue_conditional_group_routing_rule : "fk"
+    user_queue_conditional_group_routing_rule_group }o--|| user_queue_conditional_group_routing_rule : "fk"
+    user_queue_conditional_group_routing_rule_group }o--|| user_queue_conditional_group_routing_rule : "fk"
+    user_queue_conditional_group_routing_rule }o--|| user_queue : "fk"
+    user_queue_conditional_group_routing_rule }o--|| user_queue : "fk"
+    user_queue_bulls_eye_ring_expansion_criteria }o--|| user_queue : "fk"
+    user_queue_bulls_eye_ring_expansion_criteria }o--|| user_queue : "fk"
+    user_queue_bulls_eye_ring_skill_to_remove }o--|| user_queue : "fk"
+    user_queue_bulls_eye_ring_skill_to_remove }o--|| user_queue : "fk"
+    user_queue_bulls_eye_ring_member_group }o--|| user_queue : "fk"
+    user_queue_bulls_eye_ring_member_group }o--|| user_queue : "fk"
+    user_queue_member_group }o--|| user_queue : "fk"
+    user_queue_member_group }o--|| user_queue : "fk"
+    user_queue_email_address_route_skill }o--|| user_queue : "fk"
+    user_queue_email_address_route_skill }o--|| user_queue : "fk"
+    user_queue_email_address_auto_bcc }o--|| user_queue : "fk"
+    user_queue_email_address_auto_bcc }o--|| user_queue : "fk"
+    user_queue }o--|| division : "fk"
+    user_queue }o--|| users : "fk"
+    campaign_rule_campaign }o--|| campaign : "fk"
+    campaign_rule_campaign }o--|| campaign_rule : "fk"
+    campaign_rule_entity_sequence }o--|| sequence : "fk"
+    campaign_rule_entity_sequence }o--|| campaign_rule : "fk"
+    campaign_rule_condition }o--|| campaign_rule : "fk"
+    campaign_rule_action_campaign }o--|| campaign : "fk"
+    campaign_rule_action_campaign }o--|| campaign_rule_action : "fk"
+    campaign_rule_action_campaign }o--|| campaign_rule_action : "fk"
+    campaign_rule_action_sequence }o--|| sequence : "fk"
+    campaign_rule_action_sequence }o--|| campaign_rule_action : "fk"
+    campaign_rule_action_sequence }o--|| campaign_rule_action : "fk"
+    campaign_rule_action }o--|| campaign_rule : "fk"
+    user_routing_skill }o--|| users : "fk"
+    messaging_campaign_progress }o--|| campaign : "fk"
+    messaging_campaign_progress }o--|| contact_list : "fk"
+    messaging_campaign_progress }o--|| messaging_campaign : "fk"
+    survey_form_question_group_question }o--|| survey_form_question_group : "fk"
+    survey_form_question_group_question }o--|| survey_form_question_group : "fk"
+    survey_form_question_group }o--|| survey_form : "fk"
+    users_group }o--|| groups : "fk"
+    task_management_workitem_skill }o--|| task_management_workitem : "fk"
+    task_management_workitem_skill }o--|| task_management_workitem : "fk"
+    task_management_workitem_score_agent }o--|| task_management_workitem : "fk"
+    task_management_workitem_score_agent }o--|| task_management_workitem : "fk"
+    task_management_workitem }o--|| external_contact : "fk"
+    task_management_workitem }o--|| division : "fk"
+    task_management_workitem }o--|| users : "fk"
+    task_management_workitem }o--|| user_queue : "fk"
+    analytics_conversation_details_division }o--|| division : "fk"
+    analytics_conversation_details_division }o--|| analytics_conversation_details : "fk"
+    analytics_conversation_details_knowledge_base_id }o--|| analytics_conversation_details : "fk"
+    analytics_conversation_details_evaluation }o--|| users : "fk"
+    analytics_conversation_details_evaluation }o--|| users : "fk"
+    analytics_conversation_details_evaluation }o--|| users : "fk"
+    analytics_conversation_details_evaluation }o--|| division : "fk"
+    analytics_conversation_details_evaluation }o--|| analytics_conversation_details : "fk"
+    analytics_conversation_details_survey }o--|| users : "fk"
+    analytics_conversation_details_survey }o--|| routing_queue : "fk"
+    analytics_conversation_details_survey }o--|| analytics_conversation_details : "fk"
+    analytics_conversation_details_resolution }o--|| users : "fk"
+    analytics_conversation_details_resolution }o--|| routing_queue : "fk"
+    analytics_conversation_details_resolution }o--|| analytics_conversation_details : "fk"
+    analytics_conversation_details_participant_session_callback_number }o--|| analytics_conversation_details_participant_session : "fk"
+    analytics_conversation_details_participant_session_callback_number }o--|| analytics_conversation_details_participant_session : "fk"
+    analytics_conversation_details_participant_session_callback_number }o--|| analytics_conversation_details_participant_session : "fk"
+    analytics_conversation_details_participant_session_bcc }o--|| analytics_conversation_details_participant_session : "fk"
+    analytics_conversation_details_participant_session_bcc }o--|| analytics_conversation_details_participant_session : "fk"
+    analytics_conversation_details_participant_session_bcc }o--|| analytics_conversation_details_participant_session : "fk"
+    analytics_conversation_details_participant_session_cc }o--|| analytics_conversation_details_participant_session : "fk"
+    analytics_conversation_details_participant_session_cc }o--|| analytics_conversation_details_participant_session : "fk"
+    analytics_conversation_details_participant_session_cc }o--|| analytics_conversation_details_participant_session : "fk"
+    analytics_conversation_details_participant_session_destination_address }o--|| analytics_conversation_details_participant_session : "fk"
+    analytics_conversation_details_participant_session_destination_address }o--|| analytics_conversation_details_participant_session : "fk"
+    analytics_conversation_details_participant_session_destination_address }o--|| analytics_conversation_details_participant_session : "fk"
+    analytics_conversation_details_participant_session_eligible_agent_count }o--|| analytics_conversation_details_participant_session : "fk"
+    analytics_conversation_details_participant_session_eligible_agent_count }o--|| analytics_conversation_details_participant_session : "fk"
+    analytics_conversation_details_participant_session_eligible_agent_count }o--|| analytics_conversation_details_participant_session : "fk"
+    analytics_conversation_details_participant_session_requested_routing }o--|| analytics_conversation_details_participant_session : "fk"
+    analytics_conversation_details_participant_session_requested_routing }o--|| analytics_conversation_details_participant_session : "fk"
+    analytics_conversation_details_participant_session_requested_routing }o--|| analytics_conversation_details_participant_session : "fk"
+    analytics_conversation_details_participant_session_waiting_interaction_counts }o--|| analytics_conversation_details_participant_session : "fk"
+    analytics_conversation_details_participant_session_waiting_interaction_counts }o--|| analytics_conversation_details_participant_session : "fk"
+    analytics_conversation_details_participant_session_waiting_interaction_counts }o--|| analytics_conversation_details_participant_session : "fk"
+    analytics_conversation_details_participant_session_proposed_agent }o--|| analytics_conversation_details_participant_session : "fk"
+    analytics_conversation_details_participant_session_proposed_agent }o--|| analytics_conversation_details_participant_session : "fk"
+    analytics_conversation_details_participant_session_proposed_agent }o--|| analytics_conversation_details_participant_session : "fk"
+    analytics_conversation_details_participant_session_agent_group }o--|| analytics_conversation_details_participant_session : "fk"
+    analytics_conversation_details_participant_session_agent_group }o--|| analytics_conversation_details_participant_session : "fk"
+    analytics_conversation_details_participant_session_agent_group }o--|| analytics_conversation_details_participant_session : "fk"
+    analytics_conversation_details_participant_session_media_endpoint_stats }o--|| analytics_conversation_details_participant_session : "fk"
+    analytics_conversation_details_participant_session_media_endpoint_stats }o--|| analytics_conversation_details_participant_session : "fk"
+    analytics_conversation_details_participant_session_media_endpoint_stats }o--|| analytics_conversation_details_participant_session : "fk"
+    analytics_conversation_details_participant_session_flow_outcome }o--|| analytics_conversation_details_participant_session : "fk"
+    analytics_conversation_details_participant_session_flow_outcome }o--|| analytics_conversation_details_participant_session : "fk"
+    analytics_conversation_details_participant_session_flow_outcome }o--|| analytics_conversation_details_participant_session : "fk"
+    analytics_conversation_details_participant_session_metric }o--|| analytics_conversation_details_participant_session : "fk"
+    analytics_conversation_details_participant_session_metric }o--|| analytics_conversation_details_participant_session : "fk"
+    analytics_conversation_details_participant_session_metric }o--|| analytics_conversation_details_participant_session : "fk"
+    analytics_conversation_details_participant_session_segment }o--|| analytics_conversation_details_participant_session : "fk"
+    analytics_conversation_details_participant_session_segment }o--|| analytics_conversation_details_participant_session : "fk"
+    analytics_conversation_details_participant_session_segment }o--|| analytics_conversation_details_participant_session : "fk"
+    analytics_conversation_details_participant_session }o--|| users : "fk"
+    analytics_conversation_details_participant_session }o--|| campaign : "fk"
+    analytics_conversation_details_participant_session }o--|| script : "fk"
+    analytics_conversation_details_participant_session }o--|| contact_list : "fk"
+    analytics_conversation_details_participant_session }o--|| analytics_conversation_details_participant : "fk"
+    analytics_conversation_details_participant_session }o--|| analytics_conversation_details_participant : "fk"
+    analytics_conversation_details_participant }o--|| users : "fk"
+    analytics_conversation_details_participant }o--|| users : "fk"
+    analytics_conversation_details_participant }o--|| analytics_conversation_details : "fk"
+    analytics_conversation_details }o--|| conversation : "fk"
+    analytics_conversation_details_participant_session_skill_id }o--|| analytics_conversation_details_participant_session : "fk"
+    analytics_conversation_details_participant_session_skill_id }o--|| analytics_conversation_details_participant_session : "fk"
+    analytics_conversation_details_participant_session_skill_id }o--|| analytics_conversation_details_participant_session : "fk"
+    analytic_user_detail_primary_presence }o--|| analytic_user_detail : "fk"
+    analytic_user_detail_routing_status }o--|| analytic_user_detail : "fk"
+    analytic_user_detail }o--|| users : "fk"

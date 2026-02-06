@@ -1,0 +1,655 @@
+erDiagram
+    custom_role {
+        text id PK
+        timestamp created
+        text description
+        text label
+        text last_updated
+    }
+    policy {
+        text id PK
+        jsonb _links_self_hints_allow
+        text _links_self_href
+        jsonb conditions
+        timestamp created
+        text description
+        boolean is_system
+        timestamp last_updated
+        text name
+        integer priority
+        jsonb settings
+        text status
+        text type
+    }
+    user_type {
+        text id PK
+        text _links_schema_href
+        text _links_schema_method
+        text _links_schema_rel
+        text _links_self_href
+        text _links_self_method
+        text _links_self_rel
+        timestamp created
+        text created_by
+        boolean default
+        text description
+        text display_name
+        timestamp last_updated
+        text last_updated_by
+        text name
+    }
+    user_enrolled_factor {
+        text id PK
+        text user_id PK
+        timestamp created
+        jsonb embedded
+        text factor_type
+        timestamp last_updated
+        jsonb profile
+        text provider
+        text status
+        text vendor_name
+    }
+    custom_role_permission {
+        text label PK
+        text custom_role_id PK
+        text _links_role_href
+        text _links_self_href
+        timestamp created
+        timestamp last_updated
+    }
+    device_user {
+        text device_id PK
+        text users_id PK
+        timestamp created
+        text management_status
+    }
+    resource {
+        text _fivetran_id PK
+        text resource_set_id FK
+        text _links_groups_href
+        text _links_self_href
+        text _links_users_href
+        timestamp created
+        text id
+        timestamp last_updated
+    }
+    profile_mapping_property {
+        text index PK
+        text profile_mapping_id PK
+        text expression
+        text push_status
+    }
+    profile_mapping {
+        text id PK
+        jsonb _links_self_hints_allow
+        text _links_self_href
+        text source_id
+        text source_name
+        text source_type
+        text target_id
+        text target_name
+        text target_type
+    }
+    resource_set {
+        text id PK
+        text _links_bindings_href
+        text _links_resources_href
+        text _links_self_href
+        timestamp created
+        text description
+        text label
+        timestamp last_updated
+    }
+    user_credentials_email {
+        text value PK
+        text users_id PK
+        text status
+        text type
+    }
+    user_custom_profile {
+        text name PK
+        text users_id PK
+        text value
+    }
+    users {
+        text id PK
+        text type_id FK
+        text _links_self_href
+        timestamp activated
+        timestamp created
+        text credentials_password_hash_value
+        text credentials_provider_name
+        text credentials_provider_type
+        text credentials_recovery_question
+        timestamp last_login
+        timestamp last_updated
+        timestamp password_changed
+        text profile_city
+        text profile_cost_center
+        text profile_country_code
+        text profile_department
+        text profile_display_name
+        text profile_division
+        text profile_email
+        text profile_employee_number
+        text profile_first_name
+        text profile_honorific_prefix
+        text profile_honorific_suffix
+        text profile_key_gr_person
+        text profile_key_guid
+        text profile_last_name
+        text profile_local
+        text profile_login
+        text profile_manager
+        text profile_manager_id
+        text profile_middle_name
+        text profile_mobile_phone
+        text profile_nick_name
+        text profile_organization
+        text profile_postal_address
+        text profile_preferred_language
+        text profile_primary_phone
+        text profile_second_email
+        text profile_state
+        text profile_street_address
+        text profile_timezone
+        text profile_title
+        text profile_url
+        text profile_user_type
+        text profile_zip_code
+        text status
+        timestamp status_changed
+        text transitioning_to_status
+    }
+    api_token_metadata {
+        text id PK
+        text user_id FK
+        text client_name
+        text created
+        text expires_at
+        text last_updated
+        text name
+        text network_connection
+        text token_window
+    }
+    device {
+        text id PK
+        jsonb _links_activate_hints_allow
+        text _links_activate_href
+        jsonb _links_deactivate_hints_allow
+        text _links_deactivate_href
+        jsonb _links_self_hints_allow
+        text _links_self_href
+        jsonb _links_suspend_hints_allow
+        text _links_suspend_href
+        jsonb _links_unsuspend_hints_allow
+        text _links_unsuspend_href
+        jsonb _links_users_hints_allow
+        text _links_users_href
+        timestamp created
+        timestamp last_updated
+        text profile_display_name
+        text profile_imei
+        text profile_manufacturer
+        text profile_meid
+        text profile_model
+        text profile_os_version
+        text profile_platform
+        boolean profile_registered
+        boolean profile_secure_hardware_present
+        text profile_serial_number
+        text profile_sid
+        text profile_tpm_public_key_hash
+        text profile_udid
+        text resource_alternate_id
+        boolean resource_display_name_sensitive
+        text resource_display_name_value
+        text resource_id
+        text resource_type
+        text status
+    }
+    network_zone_gateway {
+        text value PK
+        text network_zone_id PK
+        text type
+    }
+    network_zone_proxy {
+        text value PK
+        text network_zone_id PK
+        text type
+    }
+    network_zone {
+        text id PK
+        text created
+        text last_updated
+        text name
+        text status
+        text systems
+        text type
+        text usage
+    }
+    group_role {
+        text id PK
+        text groups_id PK
+        text custom_role_id FK
+        text resource_set_id FK
+        text _links_assignee_href
+        text _links_member_href
+        text _links_permissions_href
+        text _links_resource_set_href
+        text _links_role_href
+        text assignment_type
+        timestamp created
+        text label
+        timestamp last_updated
+        text status
+        text type
+    }
+    assign_user_to_group_id {
+        text groups_id PK
+        text rule_id PK
+    }
+    user_excluded_from_rule {
+        text rule_id PK
+        text users_id PK
+    }
+    group_excluded_from_rule {
+        text groups_id PK
+        text rule_id PK
+    }
+    rule {
+        text id PK
+        boolean all_groups_valid
+        text conditions_expression_type
+        text conditions_expression_value
+        timestamp created
+        timestamp last_updated
+        text name
+        text status
+        text type
+    }
+    user_role {
+        text id PK
+        text users_id PK
+        text custom_role_id FK
+        text resource_set_id FK
+        text _links_assignee_href
+        text _links_member_href
+        text _links_permissions_href
+        text _links_resource_set_href
+        text _links_role_href
+        text assignment_type
+        timestamp created
+        text label
+        timestamp last_updated
+        text status
+        text type
+    }
+    application_user {
+        text application_id PK
+        text user_id PK
+        text _links_app_href
+        text _links_self_href
+        text _links_user_href
+        timestamp created
+        text credentials_user_name
+        text external_id
+        timestamp last_sync
+        timestamp last_updated
+        timestamp password_changed
+        text scope
+        text status
+        timestamp status_changed
+        text sync_state
+    }
+    system_log_target {
+        text id PK
+        text system_log_id PK
+        text alternate_id
+        jsonb detail_entry
+        text display_name
+        text type
+    }
+    system_log_request {
+        text _fivetran_id PK
+        text system_log_id FK
+        text geographical_context
+        text ip
+        text source
+        text version
+    }
+    system_log {
+        text id PK
+        text actor_alternate_id
+        text actor_detail_entry
+        text actor_display_name
+        text actor_id
+        text actor_type
+        text authentication_context_authentication_provider
+        text authentication_context_authentication_step
+        text authentication_context_credential_provider
+        text authentication_context_credential_type
+        text authentication_context_external_session_id
+        text authentication_context_interface
+        text authentication_context_issuer
+        text client_device
+        text client_geographical_context
+        text client_id
+        text client_ip_address
+        text client_user_agent_browser
+        text client_user_agent_os
+        text client_user_agent_raw_user_agent
+        text client_zone
+        text device
+        text display_message
+        text event_type
+        text legacy_event_type
+        text outcome_reason
+        text outcome_result
+        timestamp published
+        bigint security_context_as_number
+        text security_context_as_org
+        text security_context_domain
+        boolean security_context_is_proxy
+        text security_context_isp
+        text severity
+        text transaction_id
+        text transaction_type
+        text version
+    }
+    group_logo_link {
+        text href PK
+        text groups_id PK
+        text name
+        text type
+    }
+    groups {
+        text id PK
+        text _links_apps_href
+        text _links_self_href
+        text _links_source_href
+        text _links_users_href
+        timestamp created
+        timestamp last_membership_updated
+        timestamp last_updated
+        jsonb object_class
+        text profile_description
+        text profile_dn
+        text profile_external_id
+        text profile_name
+        text profile_sam_account_name
+        text profile_windows_domain_qualified_name
+        text type
+    }
+    user_authenticator_enrollment {
+        text id PK
+        text user_id PK
+        timestamp created
+        text key
+        timestamp last_updated
+        text name
+        text nickname
+        jsonb profile
+        text status
+        text type
+    }
+    application_group {
+        text application_id PK
+        text groups_id PK
+        text _links_app_href
+        text _links_group_href
+        text _links_self_href
+        integer priority
+    }
+    identify_provider_protocol_scope {
+        text scope PK
+        text identity_provider_id PK
+    }
+    identity_provider {
+        text id PK
+        text created
+        text issuer_mode
+        text last_updated
+        text name
+        text policy_account_link_action
+        text policy_account_link_filter
+        text policy_max_clock_skew
+        text policy_provisioning_action
+        text policy_provisioning_condition_deprovisioned_action
+        text policy_provisioning_condition_suspended_action
+        text policy_provisioning_group_action
+        text policy_provisioning_profile_master
+        text policy_subject_filter
+        text policy_subject_match_attribute
+        text policy_subject_match_type
+        text policy_subject_username_template
+        text protocol_endpoint_authorization_binding
+        text protocol_endpoint_authorization_url
+        text protocol_endpoint_jwks_url
+        text protocol_endpoint_token_url
+        text protocol_issuer_url
+        text protocol_token_endpoint_binding
+        text protocol_type
+        text status
+        text type
+    }
+    application_link {
+        text href PK
+        text application_id PK
+        text name
+        text type
+    }
+    application_logo_link {
+        text href PK
+        text application_id PK
+        text name
+        text type
+    }
+    application_client_credentials_link {
+        text href PK
+        text application_id PK
+        text name
+    }
+    application_sign_on_attribute_statement {
+        text name PK
+        text application_id PK
+        text filter_type
+        text filter_value
+        text namespace
+        text type
+        jsonb values
+    }
+    application_sign_on_acs_endpoint {
+        integer index PK
+        text application_id PK
+        text url
+    }
+    application_sign_on_inline_hook {
+        text id PK
+        text application_id PK
+        jsonb _links_self_hints_allow
+        text _links_self_href
+    }
+    application_feature {
+        text feature PK
+        text application_id PK
+    }
+    oauth_client_grant_type {
+        text grant_type PK
+        text application_id PK
+    }
+    oauth_client_response_type {
+        text response_type PK
+        text application_id PK
+    }
+    oauth_client_redirect_uri {
+        text redirect_uri PK
+        text application_id PK
+    }
+    oauth_client_post_logout_redirect_uri {
+        text post_logout_redirect_uri PK
+        text application_id PK
+    }
+    application {
+        text id PK
+        text _links_access_policy_href
+        text _links_activate_href
+        text _links_deactivate_href
+        text _links_groups_href
+        text _links_help_href
+        text _links_help_type
+        text _links_metadata_href
+        text _links_metadata_type
+        jsonb _links_policies_hints_allow
+        text _links_policies_href
+        text _links_profile_enrollment
+        jsonb _links_upload_logo_hints_allow
+        text _links_upload_logo_href
+        text _links_users_href
+        text accessibility_error_redirect_url
+        text accessibility_login_redirect_url
+        boolean accessibility_self_service
+        timestamp created
+        boolean credentials_oauth_client_auto_key_rotation
+        text credentials_oauth_client_token_endpoint_auth_method
+        boolean credentials_reveal_password
+        text credentials_scheme
+        text credentials_signing_kid
+        text credentials_user_name
+        text credentials_user_name_template
+        text credentials_user_name_template_push_status
+        text credentials_user_name_template_type
+        text credentials_user_name_template_user_suffix
+        text label
+        timestamp last_updated
+        text name
+        text request_object_signing_alg
+        jsonb settings_app
+        text settings_notes_admin
+        text settings_notes_end_user
+        text settings_notifications_help_url
+        text settings_notifications_message
+        text settings_notifications_vpn_network_connection
+        jsonb settings_notifications_vpn_network_include
+        text settings_oauth_client_application_type
+        text settings_oauth_client_consent_method
+        jsonb settings_oauth_client_idp_initiated_login_default_scope
+        text settings_oauth_client_idp_initiated_login_mode
+        text settings_oauth_client_initiate_login_uri
+        text settings_oauth_client_issuer_mode
+        text settings_oauth_client_logo_uri
+        text settings_oauth_client_policy_uri
+        integer settings_oauth_client_refresh_token_leeway
+        text settings_oauth_client_refresh_token_rotation_type
+        text settings_oauth_client_tos_uri
+        text settings_oauth_client_uri
+        text settings_oauth_client_wildcard_redirect
+        boolean settings_sign_on_allow_multiple_acs_endpoints
+        boolean settings_sign_on_assertion_signed
+        text settings_sign_on_audience
+        text settings_sign_on_authn_context_class_ref
+        text settings_sign_on_default_relay_state
+        text settings_sign_on_destination
+        text settings_sign_on_digest_algorithm
+        boolean settings_sign_on_honor_force_authn
+        text settings_sign_on_idp_issuer
+        text settings_sign_on_login_url
+        text settings_sign_on_recipient
+        text settings_sign_on_redirect_url
+        boolean settings_sign_on_request_compressed
+        boolean settings_sign_on_response_signed
+        text settings_sign_on_signature_algorithm
+        boolean settings_sign_on_slo_enabled
+        text settings_sign_on_slo_logout_url
+        text settings_sign_on_slo_sp_issuer
+        jsonb settings_sign_on_sp_certificate_x_5_c
+        text settings_sign_on_sp_issuer
+        text settings_sign_on_sso_acs_url
+        text settings_sign_on_subject_name_id_format
+        text settings_sign_on_subject_name_id_template
+        text sign_on_mode
+        text status
+        jsonb visibility_app_links
+        boolean visibility_auto_launch
+        boolean visibility_auto_submit_toolbar
+        boolean visibility_hide_ios
+        boolean visibility_hide_web
+    }
+    group_member {
+        text groups_id PK
+        text users_id PK
+    }
+    policy_rule_condition_excluded_user {
+        text policy_rule_id PK
+        text user_id PK
+    }
+    policy_rule {
+        text id PK
+        text policy_id FK
+        text authtype_condition
+        text created
+        text last_updated
+        text name
+        text network_connection_condition
+        text priority
+        text signon_access
+        text signon_primary_factor
+        text signon_remember_device_by_default
+        text signon_require_factor
+        text signon_session_max_session_idle_minute
+        text signon_session_max_session_lifetime_minute
+        text signon_session_use_persistent_cookie
+        text status
+        text systems
+        text type
+    }
+    user_enrolled_factor }o--|| users : "fk"
+    custom_role_permission }o--|| custom_role : "fk"
+    device_user }o--|| users : "fk"
+    device_user }o--|| device : "fk"
+    resource }o--|| resource_set : "fk"
+    profile_mapping_property }o--|| profile_mapping : "fk"
+    user_credentials_email }o--|| users : "fk"
+    user_custom_profile }o--|| users : "fk"
+    users }o--|| user_type : "fk"
+    api_token_metadata }o--|| users : "fk"
+    network_zone_gateway }o--|| network_zone : "fk"
+    network_zone_proxy }o--|| network_zone : "fk"
+    group_role }o--|| custom_role : "fk"
+    group_role }o--|| resource_set : "fk"
+    group_role }o--|| groups : "fk"
+    assign_user_to_group_id }o--|| groups : "fk"
+    assign_user_to_group_id }o--|| rule : "fk"
+    user_excluded_from_rule }o--|| users : "fk"
+    user_excluded_from_rule }o--|| rule : "fk"
+    group_excluded_from_rule }o--|| groups : "fk"
+    group_excluded_from_rule }o--|| rule : "fk"
+    user_role }o--|| custom_role : "fk"
+    user_role }o--|| resource_set : "fk"
+    user_role }o--|| users : "fk"
+    application_user }o--|| users : "fk"
+    application_user }o--|| application : "fk"
+    system_log_target }o--|| system_log : "fk"
+    system_log_request }o--|| system_log : "fk"
+    group_logo_link }o--|| groups : "fk"
+    user_authenticator_enrollment }o--|| users : "fk"
+    application_group }o--|| groups : "fk"
+    application_group }o--|| application : "fk"
+    identify_provider_protocol_scope }o--|| identity_provider : "fk"
+    application_link }o--|| application : "fk"
+    application_logo_link }o--|| application : "fk"
+    application_client_credentials_link }o--|| application : "fk"
+    application_sign_on_attribute_statement }o--|| application : "fk"
+    application_sign_on_acs_endpoint }o--|| application : "fk"
+    application_sign_on_inline_hook }o--|| application : "fk"
+    application_feature }o--|| application : "fk"
+    oauth_client_grant_type }o--|| application : "fk"
+    oauth_client_response_type }o--|| application : "fk"
+    oauth_client_redirect_uri }o--|| application : "fk"
+    oauth_client_post_logout_redirect_uri }o--|| application : "fk"
+    group_member }o--|| users : "fk"
+    group_member }o--|| groups : "fk"
+    policy_rule_condition_excluded_user }o--|| users : "fk"
+    policy_rule_condition_excluded_user }o--|| policy_rule : "fk"
+    policy_rule }o--|| policy : "fk"

@@ -1,0 +1,386 @@
+erDiagram
+    account {
+        text id PK
+        text name
+        text primary_timezone
+        text setting_enable_lead
+        text setting_team_permissions_enabled
+    }
+    custom_field_definition_available_on {
+        text index PK
+        text custom_field_definition_id PK
+        text available_on
+    }
+    custom_field_definition_option {
+        text id PK
+        text custom_field_definition_id FK
+        text name
+        text rank
+    }
+    custom_field_definition {
+        text id PK
+        text currency
+        text data_type
+        text is_filterable
+        text name
+    }
+    contact_type {
+        text id PK
+        text name
+    }
+    custom_activity_type {
+        text id PK
+        text company_id FK
+        text icon_type
+        text is_default_task_type
+        text is_disabled
+        text is_interaction
+        text name
+    }
+    pipeline {
+        text id PK
+        text name
+    }
+    task_tag {
+        text index PK
+        text task_id PK
+        text tags
+    }
+    task {
+        text id PK
+        text assignee_id FK
+        text custom_activity_type_id FK
+        jsonb opportunity_id FK
+        jsonb project_id FK
+        text completed_date
+        jsonb custom_field
+        text date_created
+        text date_modified
+        text detail
+        text due_date
+        text name
+        text priority
+        text related_resource_id
+        text related_resource_type
+        text reminder_date
+        text status
+    }
+    pipeline_stage {
+        text id PK
+        text pipeline_id PK
+        text name
+        text win_probability
+    }
+    project_tag {
+        text index PK
+        text project_id PK
+        text tags
+    }
+    project_custom_field {
+        text custom_field_definition_id PK
+        text project_id PK
+        jsonb value
+    }
+    project {
+        text id PK
+        text assignee_id FK
+        text date_created
+        text date_modified
+        text detail
+        text name
+        text related_resource_id
+        text related_resource_type
+        text status
+    }
+    opportunity_loss_reason {
+        text id PK
+        text name
+    }
+    company_phone_number {
+        text index PK
+        text company_id PK
+        text category
+        text number
+    }
+    company_social {
+        text index PK
+        text company_id PK
+        text category
+        text url
+    }
+    company_website {
+        text index PK
+        text company_id PK
+        text category
+        text url
+    }
+    company_tag {
+        text index PK
+        text company_id PK
+        text tags
+    }
+    company_custom_field {
+        text company_id PK
+        text custom_field_definition_id PK
+        text value
+    }
+    company {
+        text id PK
+        text assignee_id FK
+        text contact_type_id FK
+        text age
+        text city
+        text country
+        text date_created
+        timestamp date_modified
+        text detail
+        text email_domain
+        text followed
+        text interaction_count
+        text name
+        text postal_code
+        text state
+        text street
+    }
+    customer_source {
+        text id PK
+        text name
+    }
+    people_phone_number {
+        text index PK
+        text people_id PK
+        text category
+        text number
+    }
+    people_social {
+        text index PK
+        text people_id PK
+        text category
+        text url
+    }
+    people_email {
+        text index PK
+        text people_id PK
+        text category
+        text email
+    }
+    people_tag {
+        text index PK
+        text people_id PK
+        text tags
+    }
+    people_website {
+        text index PK
+        text people_id PK
+        text category
+        text url
+    }
+    people_custom_field {
+        text custom_field_definition_id PK
+        text people_id PK
+        jsonb value
+    }
+    people {
+        text id PK
+        text assignee_id FK
+        text company_id FK
+        text contact_type_id FK
+        jsonb opportunity_id FK
+        text city
+        text company_name
+        text country
+        text date_created
+        text date_last_contacted
+        text date_lead_created
+        timestamp date_modified
+        text detail
+        text first_name
+        text interaction_count
+        text last_name
+        jsonb leads_converted_from
+        text middle_name
+        text name
+        text postal_code
+        text prefix
+        text state
+        text street
+        text suffix
+        text title
+    }
+    users_group {
+        text id PK
+        text users_id PK
+        text name
+    }
+    users {
+        text id PK
+        text email
+        text name
+    }
+    opportunity_tag {
+        text index PK
+        text opportunity_id PK
+        text tags
+    }
+    opportunity_custom_field {
+        text custom_field_definition_id PK
+        text opportunity_id PK
+        jsonb value
+    }
+    opportunity {
+        text id PK
+        text assignee_id FK
+        text company_id FK
+        text customer_source_id FK
+        text loss_reason_id FK
+        text pipeline_id FK
+        text pipeline_stage_id FK
+        text primary_contact_id FK
+        text close_date
+        text company_name
+        text converted_unit
+        text converted_value
+        text date_created
+        text date_last_contacted
+        text date_lead_created
+        text date_modified
+        text date_stage_changed
+        text detail
+        text interaction_count
+        jsonb leads_converted_from
+        text monetary_unit
+        text monetary_value
+        text name
+        text priority
+        text status
+        text win_probability
+    }
+    activity {
+        text id PK
+        text parent_id FK
+        text user_id FK
+        text activity_date
+        text date_created
+        text date_modified
+        text detail
+        text new_value
+        text old_value
+        text parent_type
+        text type_category
+        text type_id
+    }
+    lead_phone_number {
+        text index PK
+        text lead_id PK
+        text category
+        text number
+    }
+    lead_social {
+        text index PK
+        text lead_id PK
+        text category
+        text url
+    }
+    lead_tag {
+        text index PK
+        text lead_id PK
+        text tags
+    }
+    lead_website {
+        text index PK
+        text lead_id PK
+        text category
+        text url
+    }
+    lead_custom_field {
+        text custom_field_definition_id PK
+        text lead_id PK
+        jsonb value
+    }
+    lead {
+        text id PK
+        text assignee_id FK
+        text company_id FK
+        text contact_type_id FK
+        jsonb customer_source_id FK
+        text city
+        text converted_at
+        text converted_contact_id
+        text converted_opportunity_id
+        text country
+        text date_created
+        text date_last_contacted
+        text date_modified
+        jsonb detail
+        text email
+        text email_category
+        text first_name
+        text interaction_count
+        text last_name
+        text middle_name
+        text monetary_value
+        text name
+        text postal_code
+        text prefix
+        text state
+        text status
+        text status_id
+        text street
+        text suffix
+        text title
+    }
+    custom_field_definition_available_on }o--|| custom_field_definition : "fk"
+    custom_field_definition_option }o--|| custom_field_definition : "fk"
+    custom_activity_type }o--|| company : "fk"
+    task_tag }o--|| task : "fk"
+    task }o--|| opportunity : "fk"
+    task }o--|| custom_activity_type : "fk"
+    task }o--|| users : "fk"
+    task }o--|| project : "fk"
+    pipeline_stage }o--|| pipeline : "fk"
+    project_tag }o--|| project : "fk"
+    project_custom_field }o--|| custom_field_definition : "fk"
+    project_custom_field }o--|| project : "fk"
+    project }o--|| users : "fk"
+    company_phone_number }o--|| company : "fk"
+    company_social }o--|| company : "fk"
+    company_website }o--|| company : "fk"
+    company_tag }o--|| company : "fk"
+    company_custom_field }o--|| custom_field_definition : "fk"
+    company_custom_field }o--|| company : "fk"
+    company }o--|| contact_type : "fk"
+    company }o--|| users : "fk"
+    people_phone_number }o--|| people : "fk"
+    people_social }o--|| people : "fk"
+    people_email }o--|| people : "fk"
+    people_tag }o--|| people : "fk"
+    people_website }o--|| people : "fk"
+    people_custom_field }o--|| custom_field_definition : "fk"
+    people_custom_field }o--|| people : "fk"
+    people }o--|| opportunity : "fk"
+    people }o--|| contact_type : "fk"
+    people }o--|| users : "fk"
+    people }o--|| company : "fk"
+    users_group }o--|| users : "fk"
+    opportunity_tag }o--|| opportunity : "fk"
+    opportunity_custom_field }o--|| custom_field_definition : "fk"
+    opportunity_custom_field }o--|| opportunity : "fk"
+    opportunity }o--|| pipeline : "fk"
+    opportunity }o--|| customer_source : "fk"
+    opportunity }o--|| pipeline_stage : "fk"
+    opportunity }o--|| users : "fk"
+    opportunity }o--|| opportunity_loss_reason : "fk"
+    opportunity }o--|| people : "fk"
+    opportunity }o--|| company : "fk"
+    activity }o--|| users : "fk"
+    activity }o--|| activity : "fk"
+    lead_phone_number }o--|| lead : "fk"
+    lead_social }o--|| lead : "fk"
+    lead_tag }o--|| lead : "fk"
+    lead_website }o--|| lead : "fk"
+    lead_custom_field }o--|| custom_field_definition : "fk"
+    lead_custom_field }o--|| lead : "fk"
+    lead }o--|| customer_source : "fk"
+    lead }o--|| users : "fk"
+    lead }o--|| company : "fk"
+    lead }o--|| contact_type : "fk"

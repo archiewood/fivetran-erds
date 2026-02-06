@@ -1,0 +1,176 @@
+erDiagram
+    security_audit {
+        text create_ts PK
+        text actor FK
+        text type
+    }
+    group_type {
+        text id PK
+        jsonb company_group_set FK
+        text create_ts
+        text name_plural
+        text name_singular
+    }
+    feature {
+        text _fivetran_id PK
+        text demographic_attribute
+        text pulse
+    }
+    one_on_one {
+        text id PK
+        text user_1_details_id FK
+        text user_2_details_id FK
+        text create_ts
+        text end_ts
+        text for_date
+        text is_draft
+        text user_1
+        text user_1_role
+        text user_2
+        text user_2_role
+    }
+    user_vacation {
+        text id PK
+        text user_id FK
+        text creation_date
+        text end_dt
+        text note
+        text start_dt
+    }
+    question {
+        text id PK
+        text groups
+        text is_active
+        text is_optional
+        jsonb metrics_params
+        text question_frequency
+        text question_text
+        text question_type
+        text users
+    }
+    check_in_comment {
+        text _fivetran_id PK
+        text check_in_id FK
+        text comment_text
+        text users
+    }
+    check_in_goal {
+        text _fivetran_id PK
+        text check_in_id FK
+        jsonb goals
+    }
+    check_in_accomplishment {
+        text _fivetran_id PK
+        text check_in_id FK
+        jsonb goals
+    }
+    check_in {
+        text id PK
+        text due_date
+        jsonb high_five
+        jsonb objective
+        text reporting_period
+        text reporting_period_end
+        text reporting_period_start
+        text reviewed_by
+        text reviewed_ts
+        text submit_ts
+        text users
+        text was_submitted_late
+    }
+    check_in_answer {
+        text _fivetran_id PK
+        text answer_text
+        text check_in_id
+        text create_ts
+        text goal_completed_ts
+        text goal_status
+        jsonb goal_status_comment
+        text metrics_value
+        text object_type
+        text question_text
+    }
+    groups {
+        text id PK
+        text create_ts
+        jsonb group_admin
+        text group_type
+        text group_type_name
+        text is_peer_drilldown
+        text is_peer_view
+        jsonb member
+        text members_count
+        text mention_name
+        text name
+        text skip_company_wide_question
+    }
+    company_group_id {
+        text index PK
+        text users_id PK
+        text company_group_id FK
+    }
+    users {
+        text id PK
+        text bi_weekly_due_day
+        text bi_weekly_due_day_which_week
+        text current_checkin_streak
+        text due_day
+        text email
+        text employee_id
+        text first_login_ts
+        text first_name
+        text hire_date_ts
+        text is_active
+        text is_company_admin
+        text is_reporter
+        text is_reviewer
+        text last_login_ts
+        text last_name
+        text location
+        text mention_name
+        text monthly_due_day
+        text monthly_due_day_which_in_month
+        text phone
+        text reporting_period
+        text reviewer_id
+        text skip_company_wide_question
+        text start_date_ts
+        text title
+    }
+    answer {
+        text id PK
+        text answer_text
+        jsonb comment
+        text create_ts
+        text goal_completed_ts
+        text goal_status
+        jsonb goal_status_comment
+        text metrics_value
+        text question
+        text users
+    }
+    pulse {
+        text id PK
+        text create_ts
+        text report
+        text users
+        text value
+    }
+    people_attribute {
+        text id PK
+        text datatype
+        text is_default
+        text is_only_admin_editable
+        text name
+        text slug
+    }
+    security_audit }o--|| users : "fk"
+    group_type }o--|| groups : "fk"
+    one_on_one }o--|| users : "fk"
+    one_on_one }o--|| users : "fk"
+    user_vacation }o--|| users : "fk"
+    check_in_comment }o--|| check_in : "fk"
+    check_in_goal }o--|| check_in : "fk"
+    check_in_accomplishment }o--|| check_in : "fk"
+    company_group_id }o--|| groups : "fk"
+    company_group_id }o--|| users : "fk"

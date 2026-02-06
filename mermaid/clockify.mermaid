@@ -1,0 +1,430 @@
+erDiagram
+    group_user {
+        text group_id PK
+        text user_id PK
+    }
+    groups {
+        text id PK
+        text workspace_id FK
+        text name
+    }
+    time_entry_tag {
+        text tag_id PK
+        text time_entry_id PK
+    }
+    time_entry_custom_field {
+        text id PK
+        text time_entry_id PK
+        text name
+        text type
+        text value
+    }
+    time_entry {
+        text id PK
+        text project_id FK
+        text task_id FK
+        text user_id FK
+        text workspace_id FK
+        text billable
+        text cost_rate_amount
+        text cost_rate_currency
+        text description
+        text hourly_rate_amount
+        text hourly_rate_currency
+        text is_locked
+        text kiosk_id
+        text time_interval_duration
+        text time_interval_end
+        text time_interval_start
+        text type
+    }
+    time_entry_report_tag {
+        text id PK
+        text time_entry_report_id PK
+    }
+    time_entry_report {
+        text id PK
+        text client_id FK
+        text project_id FK
+        text task_id FK
+        text user_id FK
+        text amount
+        text approval_date
+        text approval_request_id
+        text approved_by
+        text billable
+        text cost_amount
+        text cost_rate
+        text currency
+        text description
+        text earned_amount
+        text earned_rate
+        text is_locked
+        text rate
+        text time_interval_duration
+        text time_interval_end
+        text time_interval_start
+        text type
+    }
+    team_report {
+        text date PK
+        text user_id PK
+        text break
+        text capacity
+        text end_time
+        text has_running_entry
+        text image_url
+        text overtime
+        text remaining_capacity
+        text start_time
+        text time_off
+        text total_duration
+    }
+    holiday_user {
+        text holiday_id PK
+        text user_id PK
+    }
+    holiday {
+        text id PK
+        text project_id FK
+        text task_id FK
+        text workspace_id FK
+        text automatic_time_entry_creation
+        text end_date
+        text everyone_including_new
+        text name
+        text occurs_annually
+        text start_date
+    }
+    assignment {
+        text id PK
+        text client_id FK
+        text project_id FK
+        text user_id FK
+        text workspace_id FK
+        text billable
+        text hours_per_day
+        text note
+        text period_end
+        text period_start
+        text start_time
+    }
+    workspace_feature {
+        text index PK
+        text workspace_id PK
+        text feature
+    }
+    workspace_currency {
+        text id PK
+        text workspace_id PK
+        text code
+        text is_default
+    }
+    workspace {
+        text id PK
+        jsonb admin_only_pages
+        text automatic_lock
+        text can_see_time_sheet
+        text can_see_tracker
+        text cost_rate_amount
+        text cost_rate_currency
+        text currency_format
+        text default_billable_projects
+        text duration_format
+        text feature_subscription_type
+        text force_description
+        text force_projects
+        text force_tags
+        text force_tasks
+        text hourly_rate_amount
+        text hourly_rate_currency
+        text image_url
+        text is_project_public_by_default
+        text lock_time_entries
+        text lock_time_zone
+        text multi_factor_enabled
+        text name
+        text number_format
+        text only_admins_create_project
+        text only_admins_create_tag
+        text only_admins_create_task
+        text only_admins_see_all_time_entries
+        text only_admins_see_billable_rates
+        text only_admins_see_dashboard
+        text only_admins_see_public_projects_entries
+        text project_favorites
+        text project_grouping_label
+        text project_picker_special_filter
+        text round
+        text round_minutes
+        text subdomain_enabled
+        text subdomain_name
+        text time_rounding_in_reports
+        text time_tracking_mode
+        text track_time_down_to_second
+    }
+    approval_request_entry {
+        text _fivetran_id PK
+        text id PK
+    }
+    approval_request_expense {
+        text id PK
+        text _fivetran_id PK
+        text project_id FK
+        text task_id FK
+        text user_id FK
+        text approval_request_id
+        text approval_status
+        text billable
+        text category_archived
+        text category_has_unit_price
+        text category_id
+        text category_name
+        text category_price_in_cents
+        text category_unit
+        text category_workspace_id
+        text currency
+        text date
+        text file_id
+        text file_name
+        text locked
+        text notes
+        text quantity
+        text total
+    }
+    approval_request {
+        text _fivetran_id PK
+        text creator_id FK
+        text owner_id FK
+        text status_updated_by FK
+        text workspace_id FK
+        text approved_time
+        text billable_amount
+        text billable_time
+        text break_time
+        text cost_amount
+        text date_range_end
+        text date_range_start
+        text expense_total
+        text id
+        text owner_start_of_week
+        text pending_time
+        text status_note
+        timestamp status_updated_at
+        text tracked_time
+    }
+    task_assignee {
+        text assignee_id PK
+        text task_id PK
+    }
+    task {
+        text id PK
+        text project_id FK
+        text workspace_id FK
+        text billable
+        text budget_estimate
+        text cost_rate_amount
+        text cost_rate_currency
+        text duration
+        text estimate
+        text hourly_rate_amount
+        text hourly_rate_currency
+        text name
+        text status
+    }
+    project {
+        text id PK
+        text client_id FK
+        text workspace_id FK
+        text archived
+        text billable
+        text budget_estimate
+        text color
+        text cost_rate_amount
+        text cost_rate_currency
+        text duration
+        text estimate
+        text estimate_reset
+        text estimate_type
+        text hourly_rate_amount
+        text hourly_rate_currency
+        text name
+        text note
+        text public
+        text template
+        text time_estimate
+        text time_estimate_active
+        text time_estimate_include_non_billable
+        text time_estimate_reset_option
+        text time_estimate_type
+    }
+    invoice_item_time_entry {
+        text id PK
+        text invoice_item_index PK
+        text invoice_item_invoice_id PK
+    }
+    invoice_item {
+        text index PK
+        text invoice_id PK
+        text amount
+        text description
+        text item_type
+        text orders
+        text quantity
+        text unit_price
+    }
+    invoice {
+        text id PK
+        text client_id FK
+        text user_id FK
+        text amount
+        text balance
+        text bill_from
+        text company_id
+        text contains_imported_expenses
+        text contains_imported_times
+        text currency
+        text discount
+        text discount_amount
+        text due_date
+        text issued_date
+        text note
+        text paid
+        text status
+        text subject
+        text subtotal
+        text tax
+        text tax_2
+        text tax_2_amount
+        text tax_amount
+        jsonb visible_zero_fields
+    }
+    client {
+        text id PK
+        text currency_id FK
+        text workspace_id FK
+        text address
+        text archived
+        text email
+        text name
+        text note
+    }
+    user_membership {
+        text target_id PK
+        text user_id PK
+        text cost_rate_amount
+        text cost_rate_currency
+        text hourly_rate_amount
+        text hourly_rate_currency
+        text status
+        text type
+    }
+    user_custom_field {
+        text id PK
+        text user_id PK
+        text name
+        text type
+        text value
+    }
+    users {
+        text id PK
+        text workspace_id FK
+        text active_workspace
+        text alerts
+        text approval
+        text collapse_all_project_lists
+        text dashboard_pin_to_top
+        text dashboard_selection
+        text dashboard_view_type
+        text date_format
+        text default_workspace
+        text email
+        text group_similar_entries_disabled
+        text is_compact_view_on
+        text lang
+        text long_running
+        text multi_factor_enabled
+        text my_start_of_day
+        text name
+        text onboarding
+        text profile_picture
+        text project_list_collapse
+        text project_picker_task_filter
+        text pto
+        text reminders
+        text scheduled_reports
+        text scheduling
+        text send_newsletter
+        text show_only_working_days
+        text status
+        text summary_report_setting_groups
+        text summary_report_setting_subgroup
+        text theme
+        text time_format
+        text time_tracking_manual
+        text time_zone
+        text week_start
+        text weekly_updates
+    }
+    tags {
+        text id PK
+        text workspace_id FK
+        text archived
+        text name
+    }
+    group_user }o--|| users : "fk"
+    group_user }o--|| groups : "fk"
+    groups }o--|| workspace : "fk"
+    time_entry_tag }o--|| tags : "fk"
+    time_entry_tag }o--|| time_entry : "fk"
+    time_entry_custom_field }o--|| time_entry : "fk"
+    time_entry }o--|| users : "fk"
+    time_entry }o--|| task : "fk"
+    time_entry }o--|| workspace : "fk"
+    time_entry }o--|| project : "fk"
+    time_entry_report_tag }o--|| tags : "fk"
+    time_entry_report_tag }o--|| time_entry_report : "fk"
+    time_entry_report }o--|| users : "fk"
+    time_entry_report }o--|| task : "fk"
+    time_entry_report }o--|| project : "fk"
+    time_entry_report }o--|| client : "fk"
+    team_report }o--|| users : "fk"
+    holiday_user }o--|| users : "fk"
+    holiday_user }o--|| holiday : "fk"
+    holiday }o--|| task : "fk"
+    holiday }o--|| workspace : "fk"
+    holiday }o--|| project : "fk"
+    assignment }o--|| users : "fk"
+    assignment }o--|| workspace : "fk"
+    assignment }o--|| project : "fk"
+    assignment }o--|| client : "fk"
+    workspace_feature }o--|| workspace : "fk"
+    workspace_currency }o--|| workspace : "fk"
+    approval_request_entry }o--|| time_entry : "fk"
+    approval_request_entry }o--|| approval_request : "fk"
+    approval_request_expense }o--|| users : "fk"
+    approval_request_expense }o--|| task : "fk"
+    approval_request_expense }o--|| project : "fk"
+    approval_request_expense }o--|| approval_request : "fk"
+    approval_request }o--|| workspace : "fk"
+    approval_request }o--|| users : "fk"
+    approval_request }o--|| users : "fk"
+    approval_request }o--|| users : "fk"
+    task_assignee }o--|| users : "fk"
+    task_assignee }o--|| task : "fk"
+    task }o--|| project : "fk"
+    task }o--|| workspace : "fk"
+    project }o--|| workspace : "fk"
+    project }o--|| client : "fk"
+    invoice_item_time_entry }o--|| time_entry : "fk"
+    invoice_item_time_entry }o--|| invoice_item : "fk"
+    invoice_item_time_entry }o--|| invoice_item : "fk"
+    invoice_item }o--|| invoice : "fk"
+    invoice }o--|| users : "fk"
+    invoice }o--|| client : "fk"
+    client }o--|| workspace : "fk"
+    client }o--|| workspace_currency : "fk"
+    user_membership }o--|| users : "fk"
+    user_custom_field }o--|| users : "fk"
+    users }o--|| workspace : "fk"
+    tags }o--|| workspace : "fk"

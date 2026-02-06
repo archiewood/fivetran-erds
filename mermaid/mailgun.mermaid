@@ -1,0 +1,568 @@
+erDiagram
+    route_action {
+        text action PK
+        text route_id PK
+    }
+    route {
+        text id PK
+        text created_at
+        text description
+        text expression
+        text priority
+    }
+    receiving_dns_record {
+        text _fivetran_id PK
+        text domain_id FK
+        text cached
+        text priority
+        text record_type
+        text valid
+        text value
+    }
+    sending_dns_record {
+        text _fivetran_id PK
+        text domain_id FK
+        text cached
+        text name
+        text record_type
+        text valid
+        text value
+    }
+    domain {
+        text id PK
+        text created_at
+        text is_disabled
+        text name
+        text require_tls
+        text skip_verification
+        text smtp_login
+        text spam_action
+        text state
+        text type
+        text web_prefix
+        text web_scheme
+        text wildcard
+    }
+    blocklist_event {
+        text _fivetran_id PK
+        text blocklist
+        text event
+        text ip
+        text ip_pool
+        text timestamps
+    }
+    rejected_event_tag {
+        text index PK
+        text event_id PK
+        text tags
+    }
+    rejected_event_message_attachment {
+        text index PK
+        text event_id PK
+        text content_type
+        text filename
+        text size
+    }
+    rejected_event {
+        text id PK
+        text domain_id FK
+        jsonb campaigns
+        text event_type
+        text flags_is_test_mode
+        text log_level
+        text message_from
+        text message_message_id
+        text message_size
+        text message_subject
+        text message_to
+        text method
+        text originating_ip
+        text recipient
+        text recipient_domain
+        text reject_description
+        text reject_reason
+        text timestamps
+        text user_variables_org_id
+        text user_variables_silo_id
+    }
+    spam_trap_count {
+        text ends PK
+        text start PK
+        text date
+        text pristine
+        text recycled
+        text total
+        text typo
+    }
+    delivered_event_tag {
+        text index PK
+        text event_id PK
+        text tags
+    }
+    delivered_event_message_attachment {
+        text index PK
+        text event_id PK
+        text content_type
+        text filename
+        text size
+    }
+    delivered_event {
+        text id PK
+        text domain_id FK
+        jsonb campaigns
+        text delivery_status_attempt_no
+        text delivery_status_certificate_verified
+        text delivery_status_code
+        text delivery_status_description
+        text delivery_status_enhanced_code
+        text delivery_status_message
+        text delivery_status_mx_host
+        text delivery_status_session_seconds
+        text delivery_status_tls
+        text delivery_status_utf_8
+        text envelope_sender
+        text envelope_sending_ip
+        text envelope_targets
+        text envelope_transport
+        text event_type
+        text flags_is_authenticated
+        text flags_is_routed
+        text flags_is_system_test
+        text flags_is_test_mode
+        text log_level
+        text message_from
+        text message_message_id
+        text message_size
+        text message_subject
+        text message_to
+        text method
+        text originating_ip
+        text recipient
+        text recipient_domain
+        text storage_env
+        text storage_key
+        text storage_region
+        text storage_url
+        text timestamps
+        text user_variables_org_id
+        text user_variables_silo_id
+    }
+    complained_event_tag {
+        text index PK
+        text event_id PK
+        text tags
+    }
+    complained_event_message_attachment {
+        text index PK
+        text event_id PK
+        text content_type
+        text filename
+        text size
+    }
+    complained_event {
+        text id PK
+        text domain_id FK
+        jsonb campaigns
+        text event_type
+        text flags_is_authenticated
+        text flags_is_routed
+        text flags_is_system_test
+        text flags_is_test_mode
+        text log_level
+        text message_from
+        text message_message_id
+        text message_size
+        text message_subject
+        text message_to
+        text recipient
+        text recipient_domain
+        text timestamps
+        text user_variables_org_id
+        text user_variables_silo_id
+    }
+    mailing_list {
+        text email PK
+        text access_level
+        text created_at
+        text description
+        text members_count
+        text name
+        text reply_preference
+    }
+    template {
+        text id PK
+        text domain_id FK
+        text created_at
+        text created_by
+        text description
+        text name
+    }
+    inbox_ready_domain {
+        text _fivetran_id PK
+        text created_at
+        text id
+        text name
+        text spam_trap_monitoring
+        text status
+        text txt_record
+        text verified_at
+    }
+    whitelist {
+        text _fivetran_id PK
+        text domain_id FK
+        text created_at
+        text reason
+        text type
+        text value
+    }
+    failed_event_tag {
+        text index PK
+        text event_id PK
+        text tags
+    }
+    failed_event_message_attachment {
+        text index PK
+        text event_id PK
+        text content_type
+        text filename
+        text size
+    }
+    failed_event {
+        text id PK
+        text domain_id FK
+        jsonb campaigns
+        text delivery_status_attempt_no
+        text delivery_status_certificate_verified
+        text delivery_status_code
+        text delivery_status_description
+        text delivery_status_enhanced_code
+        text delivery_status_message
+        text delivery_status_mx_host
+        text delivery_status_session_seconds
+        text delivery_status_tls
+        text delivery_status_utf_8
+        text envelope_sender
+        text envelope_sending_ip
+        text envelope_targets
+        text envelope_transport
+        text event_type
+        text flags_is_authenticated
+        text flags_is_routed
+        text flags_is_system_test
+        text flags_is_test_mode
+        text log_level
+        text message_from
+        text message_message_id
+        text message_size
+        text message_subject
+        text message_to
+        text method
+        text originating_ip
+        text reason
+        text recipient
+        text recipient_domain
+        text severity
+        text storage_env
+        text storage_key
+        text storage_region
+        text storage_url
+        text template_name
+        text timestamps
+        text user_variables_org_id
+        text user_variables_silo_id
+    }
+    bounce {
+        text email PK
+        text domain_id PK
+        text code
+        text created_at
+        text error
+    }
+    accepted_event_tag {
+        text index PK
+        text event_id PK
+        text tags
+    }
+    accepted_event_message_attachment {
+        text index PK
+        text event_id PK
+        text content_type
+        text filename
+        text size
+    }
+    accepted_event_message_recipient {
+        text index PK
+        text event_id PK
+        text recipient
+    }
+    accepted_event_route {
+        text id PK
+        text event_id PK
+        text expression
+        text match_recipient
+    }
+    accepted_event {
+        text id PK
+        text domain_id FK
+        jsonb campaigns
+        text envelope_sender
+        text envelope_targets
+        text envelope_transport
+        text event_type
+        text flags_is_authenticated
+        text flags_is_test_mode
+        text log_level
+        text message_from
+        text message_message_id
+        text message_size
+        text message_subject
+        text message_to
+        text method
+        text originating_ip
+        text recipient
+        text recipient_domain
+        text storage_env
+        text storage_key
+        text storage_region
+        text storage_url
+        text timestamps
+        text user_variables_org_id
+        text user_variables_silo_id
+    }
+    clicked_event_tag {
+        text index PK
+        text event_id PK
+        text tags
+    }
+    clicked_event {
+        text id PK
+        text domain_id FK
+        jsonb campaigns
+        text client_info_client_name
+        text client_info_client_os
+        text client_info_client_type
+        text client_info_device_type
+        text client_info_user_agent
+        text event_type
+        text geolocation_city
+        text geolocation_country
+        text geolocation_region
+        text geolocation_sending_ip
+        text log_level
+        text message_from
+        text message_message_id
+        text message_size
+        text message_subject
+        text message_to
+        text recipient
+        text recipient_domain
+        text timestamps
+        text url
+        text user_variables_org_id
+        text user_variables_silo_id
+    }
+    unsubsrcibed_event_tag {
+        text index PK
+        text event_id PK
+        text tags
+    }
+    unsubsrcibed_event {
+        text id PK
+        text domain_id FK
+        jsonb campaigns
+        text client_info_client_name
+        text client_info_client_os
+        text client_info_client_type
+        text client_info_device_type
+        text client_info_user_agent
+        text event_type
+        text geolocation_city
+        text geolocation_country
+        text geolocation_region
+        text geolocation_sending_ip
+        text ip
+        text log_level
+        text message_from
+        text message_message_id
+        text message_size
+        text message_subject
+        text message_to
+        text recipient
+        text recipient_domain
+        text timestamps
+        text user_variables_org_id
+        text user_variables_silo_id
+    }
+    seed_list_result {
+        text result_id PK
+        text seed_list_id PK
+        text sender
+        text subject
+    }
+    seed_list_sending_domain {
+        text domain_id PK
+        text seed_list_id PK
+    }
+    seed_list {
+        text id PK
+        text created_at
+        text delivery_stats_all_delivered
+        text delivery_stats_all_inbox
+        text delivery_stats_all_missing
+        text delivery_stats_all_pending
+        text delivery_stats_all_provider
+        text delivery_stats_all_spam
+        text delivery_stats_all_total
+        text delivery_stats_gmail_com_delivered
+        text delivery_stats_gmail_com_inbox
+        text delivery_stats_gmail_com_missing
+        text delivery_stats_gmail_com_pending
+        text delivery_stats_gmail_com_provider
+        text delivery_stats_gmail_com_spam
+        text delivery_stats_gmail_com_total
+        text delivery_stats_yahoo_com_delivered
+        text delivery_stats_yahoo_com_inbox
+        text delivery_stats_yahoo_com_missing
+        text delivery_stats_yahoo_com_pending
+        text delivery_stats_yahoo_com_provider
+        text delivery_stats_yahoo_com_spam
+        text delivery_stats_yahoo_com_total
+        text has_result
+        text is_auto_generated
+        text last_result_at
+        text mailing_list
+        text name
+        text seed_filter
+        jsonb tags
+        text target_email
+        text updated_at
+    }
+    complaint {
+        text _fivetran_id PK
+        text domain_id FK
+        text created_at
+        text email
+    }
+    opened_event_tag {
+        text index PK
+        text event_id PK
+        text tags
+    }
+    opened_event {
+        text id PK
+        text domain_id FK
+        jsonb campaigns
+        text client_info_bot
+        text client_info_client_name
+        text client_info_client_os
+        text client_info_client_type
+        text client_info_device_type
+        text client_info_user_agent
+        text event_type
+        text geolocation_city
+        text geolocation_country
+        text geolocation_region
+        text geolocation_sending_ip
+        text ip
+        text log_level
+        text message_from
+        text message_message_id
+        text message_size
+        text message_subject
+        text message_to
+        text recipient
+        text recipient_domain
+        text timestamps
+        text user_variables_org_id
+        text user_variables_silo_id
+    }
+    stored_event_tag {
+        text index PK
+        text event_id PK
+        text tags
+    }
+    stored_event_message_attachment {
+        text index PK
+        text event_id PK
+        text content_type
+        text filename
+        text size
+    }
+    stored_event_message_recipient {
+        text index PK
+        text event_id PK
+        text recipient
+    }
+    stored_event {
+        text id PK
+        text domain_id FK
+        jsonb campaigns
+        text delivery_status_attempt_no
+        text delivery_status_certificate_verified
+        text delivery_status_code
+        text delivery_status_description
+        text delivery_status_enhanced_code
+        text delivery_status_message
+        text delivery_status_mx_host
+        text delivery_status_session_seconds
+        text delivery_status_tls
+        text delivery_status_utf_8
+        text event_type
+        text flags_is_authenticated
+        text flags_is_routed
+        text flags_is_system_test
+        text flags_is_test_mode
+        text log_level
+        text message_from
+        text message_message_id
+        text message_size
+        text message_subject
+        text message_to
+        text recipient
+        text recipient_domain
+        text storage_env
+        text storage_key
+        text storage_region
+        text storage_url
+        text template_name
+        text timestamps
+        text user_variables_org_id
+        text user_variables_silo_id
+    }
+    route_action }o--|| route : "fk"
+    receiving_dns_record }o--|| domain : "fk"
+    sending_dns_record }o--|| domain : "fk"
+    rejected_event_tag }o--|| rejected_event : "fk"
+    rejected_event_message_attachment }o--|| rejected_event : "fk"
+    rejected_event }o--|| domain : "fk"
+    delivered_event_tag }o--|| delivered_event : "fk"
+    delivered_event_message_attachment }o--|| delivered_event : "fk"
+    delivered_event }o--|| domain : "fk"
+    complained_event_tag }o--|| complained_event : "fk"
+    complained_event_message_attachment }o--|| complained_event : "fk"
+    complained_event }o--|| domain : "fk"
+    template }o--|| domain : "fk"
+    whitelist }o--|| domain : "fk"
+    failed_event_tag }o--|| failed_event : "fk"
+    failed_event_message_attachment }o--|| failed_event : "fk"
+    failed_event }o--|| domain : "fk"
+    bounce }o--|| domain : "fk"
+    accepted_event_tag }o--|| accepted_event : "fk"
+    accepted_event_message_attachment }o--|| accepted_event : "fk"
+    accepted_event_message_recipient }o--|| accepted_event : "fk"
+    accepted_event_route }o--|| accepted_event : "fk"
+    accepted_event }o--|| domain : "fk"
+    clicked_event_tag }o--|| clicked_event : "fk"
+    clicked_event }o--|| domain : "fk"
+    unsubsrcibed_event_tag }o--|| unsubsrcibed_event : "fk"
+    unsubsrcibed_event }o--|| domain : "fk"
+    seed_list_result }o--|| seed_list : "fk"
+    seed_list_sending_domain }o--|| domain : "fk"
+    seed_list_sending_domain }o--|| seed_list : "fk"
+    complaint }o--|| domain : "fk"
+    opened_event_tag }o--|| opened_event : "fk"
+    opened_event }o--|| domain : "fk"
+    stored_event_tag }o--|| stored_event : "fk"
+    stored_event_message_attachment }o--|| stored_event : "fk"
+    stored_event_message_recipient }o--|| stored_event : "fk"
+    stored_event }o--|| domain : "fk"

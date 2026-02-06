@@ -1,0 +1,240 @@
+erDiagram
+    site_allowed_file_type {
+        text allowed_file_type PK
+        text site_id PK
+    }
+    site_plan_feature_active {
+        text feature_active PK
+        text site_id PK
+    }
+    site_jetpack_module {
+        text jetpack_module PK
+        text site_id PK
+    }
+    site_user_interaction {
+        text user_interaction PK
+        text site_id PK
+    }
+    site {
+        text id PK
+        text description
+        text is_coming_soon
+        text is_core_site_editor_enabled
+        text is_following
+        text is_fse_active
+        text is_fse_eligible
+        text is_multisite
+        text is_private
+        text is_vip
+        text is_wpcom_atomic
+        text jetpack
+        text jetpack_connection
+        text lang
+        text launch_status
+        text logo_id
+        jsonb logo_size
+        text logo_url
+        text meta_links_comments
+        text meta_links_help
+        text meta_links_posts
+        text meta_links_self
+        text meta_links_xmlrpc
+        text name
+        text organization_id
+        text p_2_thumbnail_elements
+        text plan_billing_period
+        text plan_expired
+        text plan_is_free
+        text plan_license_key
+        text plan_product_id
+        text plan_product_name
+        text plan_product_name_short
+        text plan_product_slug
+        text plan_user_is_owner
+        jsonb products
+        text quota_percent_used
+        text quota_space_allowed
+        text quota_space_available
+        text quota_space_used
+        text single_user_site
+        jsonb site_migration
+        text site_owner
+        text subscribers_count
+        text update_plugins
+        text update_themes
+        text update_total
+        text update_translations
+        text update_wordpress
+        text url
+        text user_can_manage
+        text visible
+        text was_ecommerce_trial
+        text zendesk_site_meta_addon
+        text zendesk_site_meta_plan
+    }
+    post_metadata {
+        text id PK
+        text post_id PK
+        text key
+        text value
+    }
+    post {
+        text id PK
+        text author_id FK
+        text category_id FK
+        text site_id FK
+        text attachment_count
+        jsonb attachments
+        text capabilities_delete_post
+        text capabilities_edit_post
+        text capabilities_publish_post
+        text content
+        text date
+        text discussion_comment_count
+        text discussion_comment_status
+        text discussion_comments_open
+        text discussion_ping_status
+        text discussion_pings_open
+        text excerpt
+        text featured_image
+        text format
+        text geo
+        text global_id
+        text guid
+        text i_like
+        text is_following
+        text is_reblogged
+        text like_count
+        text likes_enabled
+        text menu_order
+        text meta_links_help
+        text meta_links_likes
+        text meta_links_replies
+        text meta_links_self
+        text meta_links_site
+        timestamp modified
+        jsonb other_urls
+        text page_template
+        text parent
+        text password
+        text post_thumbnail_guid
+        text post_thumbnail_height
+        text post_thumbnail_id
+        text post_thumbnail_mime_type
+        text post_thumbnail_url
+        text post_thumbnail_width
+        jsonb publicize_urls
+        text sharing_enabled
+        text short_url
+        text slug
+        text status
+        text sticky
+        jsonb tags
+        text title
+        text type
+        text url
+    }
+    comment {
+        text id PK
+        text author_id FK
+        text post_id FK
+        text site_id FK
+        text can_moderate
+        text content
+        text date
+        text i_like
+        text i_replied
+        text like_count
+        text meta_links_help
+        text meta_links_likes
+        text meta_links_post
+        text meta_links_replies
+        text meta_links_self
+        text meta_links_site
+        jsonb parent
+        text post_link
+        text post_title
+        text post_type
+        text raw_content
+        text short_url
+        text status
+        text type
+        text url
+    }
+    category {
+        text id PK
+        text site_id FK
+        text description
+        text feed_url
+        text meta_links_help
+        text meta_links_self
+        text meta_links_site
+        text name
+        text parent
+        text post_count
+        text slug
+    }
+    connected_applications_permission {
+        text name PK
+        text connected_application_id PK
+        text description
+    }
+    connected_application {
+        text id PK
+        text site_id FK
+        text authorized
+        text description
+        text icon
+        text scope
+        text title
+        text url
+    }
+    user_role {
+        text role PK
+        text user_id PK
+    }
+    users {
+        text id PK
+        text site_id FK
+        text avatar_url
+        text email
+        text first_name
+        text ip_address
+        text is_super_admin
+        text last_name
+        text login
+        text name
+        text nice_name
+        text profile_url
+        text site_visible
+        text url
+    }
+    tags {
+        text id PK
+        text site_id FK
+        text description
+        text feed_url
+        text meta_links_help
+        text meta_links_self
+        text meta_links_site
+        text name
+        text post_count
+        text slug
+    }
+    site_allowed_file_type }o--|| site : "fk"
+    site_plan_feature_active }o--|| site : "fk"
+    site_jetpack_module }o--|| site : "fk"
+    site_user_interaction }o--|| site : "fk"
+    post_metadata }o--|| post : "fk"
+    post }o--|| category : "fk"
+    post }o--|| users : "fk"
+    post }o--|| site : "fk"
+    comment }o--|| post : "fk"
+    comment }o--|| users : "fk"
+    comment }o--|| site : "fk"
+    category }o--|| site : "fk"
+    connected_applications_permission }o--|| connected_application : "fk"
+    connected_application }o--|| site : "fk"
+    user_role }o--|| users : "fk"
+    users }o--|| site : "fk"
+    tags }o--|| site : "fk"

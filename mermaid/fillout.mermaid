@@ -1,0 +1,122 @@
+erDiagram
+    form_metadata_question_option {
+        text id PK
+        text form_metadata_id PK
+        text form_metadata_question_id PK
+        text label
+        text value
+    }
+    form_metadata_question {
+        text id PK
+        text form_metadata_id PK
+        text name
+        text type
+    }
+    form_metadata_calculation {
+        text id PK
+        text form_metadata_id PK
+        text name
+        text type
+    }
+    form_metadata_url_parameter {
+        text id PK
+        text form_metadata_id PK
+        text name
+    }
+    form_metadata_document {
+        text id PK
+        text form_metadata_id PK
+        text name
+    }
+    form_metadata_scheduling {
+        text id PK
+        text form_metadata_id PK
+        text name
+    }
+    form_metadata_payment {
+        text id PK
+        text form_metadata_id PK
+        text name
+    }
+    form_metadata {
+        text id PK
+        text name
+    }
+    form {
+        text id PK
+        text name
+        text uuid
+    }
+    submission_question {
+        text id PK
+        text submission_id PK
+        text name
+        text type
+        jsonb value
+    }
+    submission_calculation {
+        text id PK
+        text submission_id PK
+        text name
+        text type
+        text value
+    }
+    submission_url_parameter {
+        text id PK
+        text submission_id PK
+        text name
+        text value
+    }
+    submission_schedule {
+        text id PK
+        text submission_id PK
+        text email
+        text event_end_time
+        text event_id
+        text event_start_time
+        text event_url
+        text full_name
+        text name
+        text reschedule_or_cancel_url
+        text timezone
+    }
+    submission_payment {
+        text id PK
+        text submission_id PK
+        text currency
+        text discount_code
+        text email
+        text name
+        text payment_id
+        text status
+        text stripe_customer_id
+        text stripe_customer_url
+        text stripe_payment_url
+        text stripe_subscription_id
+        text total_amount
+    }
+    submission {
+        text id PK
+        text form_id PK
+        jsonb documents
+        text last_updated_at
+        text login_email
+        text quiz_max_score
+        text quiz_score
+        text submission_time
+    }
+    form_metadata_question_option }o--|| form_metadata : "fk"
+    form_metadata_question_option }o--|| form_metadata_question : "fk"
+    form_metadata_question }o--|| form_metadata : "fk"
+    form_metadata_calculation }o--|| form_metadata : "fk"
+    form_metadata_url_parameter }o--|| form_metadata : "fk"
+    form_metadata_document }o--|| form_metadata : "fk"
+    form_metadata_scheduling }o--|| form_metadata : "fk"
+    form_metadata_payment }o--|| form_metadata : "fk"
+    form_metadata }o--|| form : "fk"
+    submission_question }o--|| submission : "fk"
+    submission_calculation }o--|| submission : "fk"
+    submission_url_parameter }o--|| submission : "fk"
+    submission_schedule }o--|| submission : "fk"
+    submission_payment }o--|| submission : "fk"
+    submission }o--|| form : "fk"

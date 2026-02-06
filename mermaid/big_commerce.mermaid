@@ -1,0 +1,1828 @@
+erDiagram
+    consignment_line_item {
+        text id PK
+        text consignment_id PK
+    }
+    consignment_discount {
+        text id PK
+        text consignment_id PK
+    }
+    consignment_coupon_discount {
+        text code PK
+        text consignment_id PK
+        double_precision amount
+    }
+    consignment_shipping_option {
+        text id PK
+        text consignment_id PK
+        double_precision cost
+        text description
+        text image_url
+        boolean is_recommended
+        text transit_time
+        text type
+    }
+    consignment_billing_address_custom_field {
+        text field_id PK
+        text consignment_id PK
+        text field_value
+    }
+    consignment {
+        text id PK
+        text checkout_id PK
+        text address_1
+        text address_2
+        text city
+        text company
+        text country
+        text country_code
+        text email
+        text first_name
+        double_precision handling_cost
+        text last_name
+        text phone
+        text postal_code
+        double_precision selected_shipping_option_cost
+        text selected_shipping_option_description
+        text selected_shipping_option_id
+        text selected_shipping_option_image_url
+        text selected_shipping_option_transit_time
+        text selected_shipping_option_type
+        double_precision shipping_cost
+        text state_or_province
+        text state_or_province_code
+    }
+    checkout_billing_address_custom_field {
+        text field_id PK
+        text checkout_id PK
+        text field_value
+    }
+    tax {
+        text name PK
+        text checkout_id PK
+        double_precision amount
+    }
+    applied_coupon {
+        text id PK
+        text checkout_id PK
+        text code
+        integer coupon_type
+        double_precision discounted_amount
+        text display_name
+    }
+    applied_gift_certificate {
+        text code PK
+        text checkout_id PK
+        double_precision balance
+        timestamp purchase_date
+        double_precision remaining
+        double_precision used
+    }
+    checkout {
+        text id PK
+        text cart_id FK
+        text order_id FK
+        text billing_address_address_1
+        text billing_address_address_2
+        text billing_address_city
+        text billing_address_company
+        text billing_address_country
+        text billing_address_country_code
+        text billing_address_email
+        text billing_address_first_name
+        text billing_address_id
+        text billing_address_last_name
+        text billing_address_phone
+        text billing_address_postal_code
+        text billing_address_state_or_province
+        text billing_address_state_or_province_code
+        text billing_addressaddress_1
+        text billing_addressaddress_2
+        text billing_addresscity
+        text billing_addresscompany
+        text billing_addresscountry
+        text billing_addresscountry_code
+        text billing_addressemail
+        text billing_addressfirst_name
+        text billing_addressid
+        text billing_addresslast_name
+        text billing_addressphone
+        text billing_addresspostal_code
+        text billing_addressstate_or_province
+        text billing_addressstate_or_province_code
+        text created_time
+        text customer_message
+        double_precision gift_wrapping_cost_total
+        double_precision grand_total
+        double_precision handling_cost_total
+        boolean is_store_credit_applied
+        integer outstanding_balance
+        double_precision shipping_cost_total
+        double_precision sub_total
+        double_precision tax_total
+        text updated_time
+    }
+    tax_class {
+        text id PK
+        timestamp date_created
+        timestamp date_modified
+        text name
+    }
+    product_channel_assignment {
+        bigint channel_id PK
+        bigint product_id PK
+    }
+    price_list_bulk_pricing {
+        bigint index PK
+        text price_list_record_fivetran_id PK
+        bigint amount
+        bigint quantity_max
+        bigint quantity_min
+        text type
+    }
+    price_list_record {
+        text _fivetran_id PK
+        text id FK
+        bigint product_id FK
+        bigint variant_id FK
+        double_precision calculated_price
+        text currency
+        timestamp date_created
+        timestamp date_modified
+        double_precision map_price
+        double_precision price
+        bigint price_list_id
+        double_precision retail_price
+        double_precision sale_price
+        text sku
+    }
+    store_blog_tag {
+        text tags PK
+        bigint post_id PK
+    }
+    store_blog_post {
+        bigint id PK
+        text author
+        text body
+        text date
+        boolean is_published
+        text meta_description
+        text meta_keywords
+        text preview_url
+        timestamp published_date_iso_8601
+        text summary
+        text thumbnail_path
+        text timezone
+        text timezone_type
+        text title
+    }
+    wishlist_item {
+        bigint id PK
+        bigint wishlist_id PK
+        bigint product_id FK
+        bigint variant_id FK
+    }
+    wishlist {
+        bigint id PK
+        bigint customer_id FK
+        boolean is_public
+        text name
+        text token
+    }
+    contextual_filter {
+        bigint category_id PK
+        bigint channel_id PK
+        text enabled_filter_id PK
+    }
+    category_setting {
+        text _fivetran_id PK
+        integer category_tree_depth
+        text default_product_sort
+        text listing_mode
+    }
+    placement {
+        text uuid PK
+        bigint channel_id FK
+        text widget_id FK
+        timestamp date_created
+        timestamp date_modified
+        text entity_id
+        text region
+        bigint sort_order
+        text status
+        text template_file
+    }
+    customer_setting {
+        text _fivetran_id PK
+        boolean ask_shopper_for_tracking_consent
+        bigint default_customer_group_id
+        bigint guest_customer_group_id
+        text policy_url
+    }
+    site_route {
+        bigint id PK
+        bigint site_id PK
+        text matching
+        text route
+        text type
+    }
+    cart_coupon {
+        text id PK
+        text cart_id PK
+        text code
+        bigint coupon_type
+        double_precision discounted_amount
+    }
+    cart_discount {
+        text id PK
+        text cart_id PK
+        double_precision discounted_amount
+    }
+    cart_custom_item {
+        text id PK
+        text cart_id PK
+        bigint extended_list_price
+        bigint list_price
+        text name
+        bigint quantity
+        text sku
+    }
+    digital_line_item_option {
+        bigint name_id PK
+        text digital_item_id PK
+        text name
+        text value
+        bigint value_id
+    }
+    digital_line_item_discount {
+        bigint id PK
+        text digital_item_id PK
+        double_precision discounted_amount
+    }
+    cart_digital_item {
+        text id PK
+        text cart_id PK
+        bigint product_id FK
+        bigint variant_id FK
+        text brand
+        bigint coupon_amount
+        double_precision discount_amount
+        bigint extended_list_price
+        bigint extended_sale_price
+        text image_url
+        boolean is_taxable
+        bigint list_price
+        text name
+        text parent_id
+        bigint quantity
+        bigint sale_price
+        text sku
+        text url
+    }
+    physical_line_item_option {
+        bigint name_id PK
+        text physical_item_id PK
+        text name
+        text value
+        bigint value_id
+    }
+    physical_line_item_discount {
+        text id PK
+        text physical_item_id PK
+        double_precision discounted_amount
+    }
+    cart_physical_item {
+        text id PK
+        text cart_id PK
+        bigint product_id FK
+        bigint variant_id FK
+        text brand
+        bigint coupon_amount
+        double_precision discount_amount
+        bigint extended_list_price
+        bigint extended_sale_price
+        double_precision gift_wrapping_amount
+        text gift_wrapping_message
+        text gift_wrapping_name
+        text image_url
+        boolean is_shipping_required
+        boolean is_taxable
+        bigint list_price
+        text name
+        bigint parent_id
+        bigint quantity
+        bigint sale_price
+        text sku
+        text url
+    }
+    cart_gift_certificate_item {
+        text id PK
+        text cart_id PK
+        bigint amount
+        boolean is_taxable
+        text message
+        text name
+        text recipient_email
+        text recipient_name
+        text sender_email
+        text sender_name
+    }
+    cart {
+        text id PK
+        bigint channel_id FK
+        text currency_code FK
+        bigint customer_id FK
+        double_precision base_amount
+        double_precision cart_amount
+        timestamp created_time
+        double_precision discount_amount
+        text email
+        text locale
+        text parent_id
+        boolean tax_included
+        timestamp updated_time
+    }
+    store_profile_setting {
+        text _fivetran_id PK
+        text store_address
+        text store_address_type
+        text store_email
+        text store_name
+        text store_phone
+    }
+    email_template_translation {
+        bigint index PK
+        text email_template_type_id PK
+        jsonb keys
+        text locale
+    }
+    email_template {
+        text type_id PK
+        text body
+        text subject
+    }
+    category_metafield {
+        bigint id PK
+        bigint category_id PK
+        timestamp date_created
+        timestamp date_modified
+        text description
+        text key
+        text namespace
+        text permission_set
+        bigint resource_id
+        text resource_type
+        text value
+    }
+    search_setting {
+        text _fivetran_id PK
+        text content_product_sort
+        text default_product_sort
+        boolean product_filtering_enabled
+        boolean search_suggest
+    }
+    site_url {
+        text url PK
+        bigint site_id PK
+        timestamp created_at
+        text type
+        timestamp updated_at
+    }
+    site {
+        bigint id PK
+        bigint channel_id FK
+        timestamp created_at
+        boolean is_checkout_url_customized
+        text ssl_status
+        timestamp updated_at
+        text url
+    }
+    theme_variation {
+        text uuid PK
+        text theme_id PK
+        text description
+        text external_id
+        text name
+    }
+    theme {
+        text uuid PK
+        boolean is_private
+        text name
+    }
+    banner {
+        bigint id PK
+        text content
+        timestamp date_created
+        text date_from
+        text date_to
+        text date_type
+        text item_id
+        text location
+        text name
+        text page
+        text visible
+    }
+    store {
+        text id PK
+        text account_uuid
+        text address
+        text admin_email
+        text checkout_type
+        text control_panel_base_url
+        text country
+        text currency
+        text currency_symbol
+        text currency_symbol_location
+        integer decimal_places
+        text decimal_separator
+        bigint default_channel_id
+        bigint default_site_id
+        integer dimension_decimal_places
+        text dimension_decimal_token
+        text dimension_thousands_token
+        text dimension_units
+        text domain
+        text facebook_catalog_id
+        text first_name
+        boolean graphql_storefront_api_enabled
+        text industry
+        boolean is_price_entered_with_tax
+        text languages
+        text last_name
+        text logo_url
+        boolean multi_storefront_enabled
+        text name
+        text order_email
+        text phone
+        boolean plan_is_trial
+        text plan_level
+        text plan_name
+        text secure_url
+        boolean shopper_consent_tracking_enabled
+        boolean sitewidehttps_enabled
+        text status
+        boolean stencil_enabled
+        bigint store_id
+        text thousands_separator
+        text timezone_display
+        boolean timezone_dst_correction
+        integer timezone_dst_offset
+        text timezone_export
+        text timezone_extended_display
+        text timezone_name
+        integer timezone_raw_offset
+        text weight_units
+        boolean wishlists_enabled
+    }
+    shipping_zone_location {
+        bigint id PK
+        bigint shipping_zone_id PK
+        text country_iso_2
+        text state_iso_2
+        text zip
+    }
+    shipping_zone {
+        bigint id PK
+        boolean enabled
+        boolean free_shipping_enabled
+        boolean free_shipping_exclude_fixed_shipping_products
+        double_precision free_shipping_minimum_sub_total
+        boolean handling_fees_display_separately
+        double_precision handling_fees_fixed_surcharge
+        double_precision handling_fees_percentage_surcharge
+        text name
+        text type
+    }
+    price_list {
+        bigint id PK
+        boolean active
+        timestamp date_created
+        timestamp date_modified
+        text name
+    }
+    security_setting {
+        text _fivetran_id PK
+        text csp_header_enabled
+        boolean csp_header_value
+        boolean hsts_enabled
+        boolean hsts_include_preload
+        boolean hsts_include_subdomains
+        text hsts_max_age
+        text x_frame_options_header_allowed_url
+        boolean x_frame_options_header_enabled
+        text x_frame_options_header_setting
+    }
+    enabled_filter {
+        text id PK
+        boolean collapsed_by_default
+        text display_name
+        boolean display_product_count
+        boolean is_enabled
+        integer items_to_show
+        text sort_by
+        text type
+    }
+    country_state {
+        bigint id PK
+        bigint country_id PK
+        text state
+        text state_abbreviation
+    }
+    category_tree_meta_keyword {
+        text meta_keyword_id PK
+        bigint category_id PK
+    }
+    category_tree {
+        bigint category_id PK
+        text category_uuid
+        text default_product_sort
+        text description
+        text image_url
+        boolean is_customized
+        boolean is_visible
+        text layout_file
+        text meta_description
+        text name
+        text page_title
+        bigint parent_id
+        text path
+        text search_keywords
+        bigint sort_order
+        bigint tree_id
+        bigint views
+    }
+    price_list_assignment {
+        bigint id PK
+        bigint price_list_id PK
+        bigint channel_id FK
+        bigint customer_group_id FK
+    }
+    country {
+        bigint id PK
+        text country
+        text country_iso_2
+        text country_iso_3
+        text state_resource
+        text state_url
+    }
+    locale_setting {
+        text _fivetran_id PK
+        text default_shopper_language
+        text shopper_language_selection_method
+        text store_country
+    }
+    email_setting {
+        text _fivetran_id PK
+        boolean abandoned_cart_email
+        boolean account_details_changed_email
+        boolean combined_order_status_email
+        boolean create_account_email
+        boolean create_guest_account_email
+        boolean gift_certificate_email
+        boolean invoice_email
+        boolean order_message_notification_email
+        boolean product_review_email
+        boolean return_confirmation_email
+        boolean return_statuschange_email
+    }
+    gift_certificate {
+        bigint id PK
+        bigint customer_id FK
+        bigint order_id FK
+        double_precision amount
+        double_precision balance
+        text code
+        timestamp expiry_date
+        text from_email
+        text from_name
+        text message
+        timestamp purchase_date
+        text status
+        text template
+        text to_email
+        text to_name
+    }
+    robot_setting {
+        text _fivetran_id PK
+        text robots_txt_ssl
+    }
+    brand_metafield {
+        bigint id PK
+        bigint brand_id PK
+        timestamp date_created
+        timestamp date_modified
+        text description
+        text key
+        text namespace
+        text permission_set
+        bigint resource_id
+        text resource_type
+        text value
+    }
+    brand_meta_keyword {
+        text meta_keyword_id PK
+        bigint brand_id PK
+    }
+    brand {
+        bigint id PK
+        text custom_url
+        boolean custom_url_is_customized
+        text image_url
+        text meta_description
+        text name
+        text page_title
+        text search_keywords
+    }
+    storefront_product_setting {
+        text _fivetran_id PK
+        text default_preorder_message
+        boolean show_add_to_cart_link
+        boolean show_add_to_cart_qty_box
+        boolean show_add_to_wishlist
+        text show_breadcrumbs_product_pages
+        boolean show_product_brand
+        boolean show_product_price
+        boolean show_product_rating
+        boolean show_product_shipping
+        boolean show_product_sku
+        boolean show_product_weight
+    }
+    product_custom_information {
+        bigint product_id PK
+        text commodity_description
+        text country_of_origin
+        jsonb hs_codes
+        boolean international_shipping
+    }
+    customer_group_category_access {
+        bigint customer_group_id PK
+        text type PK
+        bigint category_id PK
+    }
+    customer_group_discount_rule {
+        text type PK
+        bigint customer_group_id PK
+        bigint price_list_id FK
+        text amount
+        text method
+    }
+    customer_group {
+        bigint id PK
+        boolean is_default
+        boolean is_group_for_guests
+        text name
+    }
+    shipping_zone_method {
+        bigint id PK
+        bigint shipping_zone_id PK
+        boolean enabled
+        bigint fixed_surcharge
+        boolean is_fallback
+        text name
+        jsonb settings
+        text type
+    }
+    status_setting {
+        text _fivetran_id PK
+        text down_for_maintenance_message
+        text prelaunch_message
+        text prelaunch_password
+    }
+    redirect {
+        bigint id PK
+        bigint site_id FK
+        text from_path
+        bigint to_entity_id
+        text to_type
+        text to_url
+    }
+    catalog_variant_option_value {
+        bigint id PK
+        bigint variant_id PK
+        text label
+        text option_display_name
+        bigint option_id
+    }
+    catalog_variant {
+        bigint id PK
+        bigint product_id FK
+        text bin_picking_number
+        double_precision calculated_price
+        double_precision cost_price
+        double_precision depth
+        double_precision fixed_cost_shipping_price
+        double_precision height
+        bigint inventory_level
+        bigint inventory_warning_level
+        boolean is_free_shipping
+        double_precision price
+        boolean purchasing_disabled
+        text purchasing_disabled_message
+        double_precision retail_price
+        double_precision sale_price
+        text sku
+        bigint sku_id
+        text upc
+        double_precision weight
+        double_precision width
+    }
+    channel_enabled_currency {
+        text enabled_currency PK
+        bigint channel_id PK
+    }
+    channel_currency_assignment {
+        bigint channel_id PK
+        text default_currency
+    }
+    catalog_variant_metafield {
+        bigint id PK
+        bigint catalog_variant_id PK
+        timestamp date_created
+        timestamp date_modified
+        text description
+        text key
+        text namespace
+        text owner_client_id
+        text permission_set
+        bigint product_id
+        bigint resource_id
+        text resource_type
+        text value
+    }
+    order_status {
+        bigint id PK
+        text custom_label
+        text name
+        bigint order_id
+        text system_description
+        text system_label
+    }
+    order_refund_item {
+        bigint item_id PK
+        text item_type PK
+        bigint order_refund_id PK
+        bigint quantity
+        text reason
+        double_precision requested_amount
+    }
+    order_refund_payment {
+        bigint id PK
+        bigint order_refund_id PK
+        double_precision amount
+        text declined_message
+        boolean is_declined
+        boolean offlines
+        text provider_id
+    }
+    order_refund {
+        bigint id PK
+        bigint order_id PK
+        timestamp created
+        text reason
+        double_precision total_amount
+        bigint total_tax
+        bigint user_id
+        boolean uses_merchant_override_values
+    }
+    custom_template_association {
+        bigint id PK
+        bigint channel_id FK
+        timestamp date_created
+        timestamp date_modified
+        bigint entity_id
+        text entity_type
+        text file_name
+        boolean is_valid
+    }
+    widget {
+        text uuid PK
+        text channel_id FK
+        timestamp date_created
+        timestamp date_modified
+        text description
+        text icon_name
+        text name
+        text version_uuid
+        jsonb widget_configuration
+        text widget_template_id
+    }
+    currency {
+        integer id PK
+        boolean auto_update
+        text country_iso_2
+        text currency_code
+        double_precision currency_exchange_rate
+        integer decimal_places
+        text decimal_token
+        boolean enabled
+        boolean is_default
+        boolean is_transactional
+        timestamp last_updated
+        text name
+        text thousands_token
+        text token
+        text token_location
+    }
+    seo_setting {
+        text _fivetran_id PK
+        text meta_description
+        text meta_keywords
+        text page_title
+        text www_redirect
+    }
+    widget_template {
+        text uuid PK
+        text current_version_uuid
+        timestamp date_created
+        timestamp date_modified
+        text icon_name
+        text kind
+        text name
+        text storefront_api_query
+        text template
+    }
+    coupon_entity {
+        bigint coupon_id PK
+        bigint entity_id PK
+        text entity_type
+    }
+    coupon_country_restriction {
+        text country_id PK
+        bigint coupon_id PK
+    }
+    coupon_state_restriction {
+        bigint index PK
+        bigint coupon_id PK
+        text country
+        text state
+    }
+    coupon_zip_restriction {
+        bigint index PK
+        bigint coupon_id PK
+        text country
+        text zip
+    }
+    coupon {
+        bigint id PK
+        text amount
+        text code
+        timestamp date_created
+        boolean enabled
+        text expires
+        bigint max_uses
+        bigint max_uses_per_customer
+        text min_purchase
+        text name
+        bigint num_uses
+        text type
+    }
+    available_filter {
+        text id PK
+        text name
+        bigint product_count
+        text type
+    }
+    customer_address_form_field {
+        text name PK
+        text customer_address_id PK
+        jsonb value
+    }
+    customer_address {
+        text id PK
+        bigint customer_id PK
+        text address_1
+        text address_2
+        text address_type
+        text city
+        text company
+        text country
+        text country_code
+        text first_name
+        text last_name
+        text phone
+        text postal_code
+        text state_or_province
+    }
+    customer_form_field {
+        text name PK
+        bigint customer_id PK
+        jsonb value
+    }
+    customer_store_credit {
+        bigint index PK
+        bigint customer_id PK
+        double_precision amount
+    }
+    customer_channel {
+        bigint channel_id PK
+        bigint customer_id PK
+    }
+    customer_attribute_value {
+        bigint id PK
+        bigint customer_id PK
+        bigint attribute_id
+        text attribute_value
+        timestamp date_created
+        timestamp date_modified
+    }
+    customer {
+        bigint id PK
+        bigint customer_group_id FK
+        bigint origin_channel_id FK
+        boolean accepts_product_review_abandoned_cart_emails
+        bigint address_count
+        bigint attribute_count
+        text company
+        timestamp date_created
+        timestamp date_modified
+        text email
+        text first_name
+        boolean force_password_reset
+        text last_name
+        text notes
+        text phone
+        text registration_ip_address
+        text tax_exempt_category
+    }
+    channel_app {
+        bigint id PK
+        bigint channel_id PK
+    }
+    channel {
+        bigint id PK
+        timestamp date_created
+        timestamp date_modified
+        text external_id
+        text icon_url
+        boolean is_enabled
+        boolean is_listable_from_ui
+        boolean is_visible
+        text name
+        text platform
+        text status
+        text type
+    }
+    subscriber {
+        bigint id PK
+        bigint channel_id FK
+        bigint order_id FK
+        timestamp date_created
+        timestamp date_modified
+        text email
+        text first_name
+        text last_name
+        text source
+    }
+    product_image {
+        bigint id PK
+        bigint product_id PK
+        timestamp date_created
+        text description
+        text image_file
+        boolean is_thumbnail
+        bigint sort_order
+        text standard_url
+        text thumbnail_url
+        text tiny_url
+    }
+    product_bulk_pricing_rule {
+        bigint id PK
+        bigint product_id PK
+        bigint amount
+        bigint quantity_max
+        bigint quantity_min
+        text type
+    }
+    product_custom_field {
+        bigint id PK
+        bigint product_id PK
+        text name
+        text value
+    }
+    product_modifier_value {
+        bigint id PK
+        bigint product_modifier_id PK
+        bigint product_id FK
+        text image_url
+        boolean is_default
+        text label
+        bigint option_id
+        text price_adjuster
+        bigint price_adjuster_value
+        text purchasing_disabled_message
+        boolean purchasing_disabled_status
+        bigint sort_order
+        text weight_adjuster
+        bigint weight_adjuster_value
+    }
+    product_modifier {
+        bigint id PK
+        bigint product_id PK
+        jsonb config
+        text display_name
+        text name
+        boolean required
+        bigint sort_order
+        text type
+    }
+    product_variant {
+        bigint id PK
+        bigint product_id PK
+        text bin_picking_number
+        double_precision calculated_price
+        bigint calculated_weight
+        double_precision cost_price
+        double_precision depth
+        double_precision fixed_cost_shipping_price
+        double_precision height
+        bigint inventory_level
+        bigint inventory_warning_level
+        boolean is_free_shipping
+        text mpn
+        double_precision price
+        boolean purchasing_disabled
+        text purchasing_disabled_message
+        double_precision retail_price
+        bigint sale_price
+        text sku
+        bigint sku_id
+        text upc
+        double_precision weight
+        double_precision width
+    }
+    product_video {
+        text id PK
+        bigint product_id PK
+        text description
+        text length
+        bigint sort_order
+        text title
+        text type
+    }
+    product_meta_keyword {
+        text meta_keyword_id PK
+        bigint product_id PK
+    }
+    related_product {
+        bigint related_product_id PK
+        bigint product_id PK
+    }
+    product_option {
+        bigint id PK
+        bigint product_id PK
+        text display_name
+        bigint option_value_id
+        boolean option_value_is_default
+        text option_value_label
+        bigint option_value_sort_order
+        bigint sort_order
+        text type
+    }
+    product_gift_wrapping_option {
+        bigint gift_wrapping_option_id PK
+        bigint product_id PK
+    }
+    product_category {
+        bigint category_id PK
+        bigint product_id PK
+    }
+    product {
+        bigint id PK
+        bigint base_variant_id FK
+        bigint brand_id FK
+        bigint tax_class_id FK
+        text availability
+        text availability_description
+        text bin_picking_number
+        text brand_name
+        double_precision calculated_price
+        text condition
+        double_precision cost_price
+        text custom_url
+        boolean custom_url_is_customized
+        timestamp date_created
+        timestamp date_modified
+        double_precision depth
+        text description
+        double_precision fixed_cost_shipping_price
+        text gift_wrapping_options_type
+        text gtin
+        double_precision height
+        bigint inventory_level
+        text inventory_tracking
+        bigint inventory_warning_level
+        boolean is_condition_shown
+        boolean is_featured
+        boolean is_free_shipping
+        boolean is_preorder_hidden
+        boolean is_preorder_only
+        boolean is_price_hidden
+        boolean is_visible
+        text layout_file
+        double_precision map_price
+        text meta_description
+        text mpn
+        text name
+        text open_graph_description
+        text open_graph_title
+        text open_graph_type
+        boolean open_graph_use_image
+        boolean open_graph_use_meta_description
+        boolean open_graph_use_product_name
+        text option_set_display
+        bigint option_set_id
+        bigint order_quantity_maximum
+        bigint order_quantity_minimum
+        text page_title
+        text preorder_message
+        text preorder_release_date
+        double_precision price
+        text price_hidden_label
+        text product_tax_code
+        double_precision retail_price
+        bigint reviews_count
+        double_precision reviews_rating_sum
+        double_precision sale_price
+        text search_keywords
+        text sku
+        bigint sort_order
+        bigint total_sold
+        text type
+        text upc
+        bigint view_count
+        text warranty
+        double_precision weight
+        double_precision width
+    }
+    order_billing_address_form_field {
+        text name PK
+        bigint order_id PK
+        jsonb value
+    }
+    orders {
+        bigint id PK
+        text cart_id FK
+        bigint channel_id FK
+        bigint currency_id FK
+        bigint customer_id FK
+        text payment_provider_id FK
+        bigint status_id FK
+        double_precision base_handling_cost
+        double_precision base_shipping_cost
+        double_precision base_wrapping_cost
+        text city
+        text company
+        text country
+        text country_iso_2
+        double_precision coupon_discount
+        text coupon_resource
+        text coupon_url
+        text currency_code
+        double_precision currency_exchange_rate
+        text customer_locale
+        text customer_message
+        timestamp date_created
+        timestamp date_modified
+        timestamp date_shipped
+        text default_currency_code
+        bigint default_currency_id
+        double_precision discount_amount
+        text ebay_order_id
+        text email
+        text external_id
+        text external_merchant_id
+        text external_source
+        text first_name
+        text geoip_country
+        text geoip_country_iso_2
+        double_precision gift_certificate_amount
+        double_precision handling_cost_ex_tax
+        double_precision handling_cost_inc_tax
+        double_precision handling_cost_tax
+        bigint handling_cost_tax_class_id
+        text ip_address
+        text ip_address_v_6
+        boolean is_deleted
+        boolean is_email_opt_in
+        bigint items_shipped
+        bigint items_total
+        text last_name
+        boolean order_is_digital
+        text order_source
+        text payment_method
+        text payment_status
+        text phone
+        text product_resource
+        text product_url
+        double_precision refunded_amount
+        bigint shipping_address_count
+        text shipping_addressresource
+        text shipping_addressurl
+        double_precision shipping_cost_ex_tax
+        double_precision shipping_cost_inc_tax
+        double_precision shipping_cost_tax
+        bigint shipping_cost_tax_class_id
+        text staff_notes
+        text state
+        text status
+        double_precision store_credit_amount
+        text store_default_currency_code
+        text store_default_to_transactional_exchange_rate
+        text street_1
+        text street_2
+        double_precision subtotal_ex_tax
+        double_precision subtotal_inc_tax
+        double_precision subtotal_tax
+        text tax_provider_id
+        double_precision total_ex_tax
+        double_precision total_inc_tax
+        double_precision wrapping_cost_ex_tax
+        double_precision wrapping_cost_inc_tax
+        double_precision wrapping_cost_tax
+        bigint wrapping_cost_tax_class_id
+        text zip
+    }
+    order_product_discount {
+        text id PK
+        bigint order_product_id PK
+        text amount
+        text code
+        text name
+        text target
+    }
+    order_product_option {
+        bigint id PK
+        bigint order_product_id PK
+        text display_name
+        text display_name_customer
+        text display_name_merchant
+        text display_style
+        text display_value
+        text display_value_customer
+        text display_value_merchant
+        text name
+        bigint option_id
+        bigint product_option_id
+        text type
+        text value
+    }
+    order_product {
+        bigint id PK
+        bigint order_id PK
+        bigint product_id PK
+        bigint order_address_id FK
+        bigint variant_id FK
+        text base_cost_price
+        text base_price
+        text base_total
+        text base_wrapping_cost
+        text bin_picking_number
+        double_precision cost_price_ex_tax
+        double_precision cost_price_inc_tax
+        double_precision cost_price_tax
+        text ebay_item_id
+        text ebay_transaction_id
+        timestamp event_date
+        text event_name
+        text external_id
+        text fixed_shipping_cost
+        boolean is_bundled_product
+        boolean is_refunded
+        text name
+        text name_customer
+        text name_merchant
+        bigint option_set_id
+        bigint parent_order_product_id
+        double_precision price_ex_tax
+        double_precision price_inc_tax
+        double_precision price_tax
+        bigint quantity
+        bigint quantity_shipped
+        text refunded_amount
+        bigint return_id
+        text sku
+        double_precision total_ex_tax
+        double_precision total_inc_tax
+        double_precision total_tax
+        text type
+        text upc
+        text weight
+        double_precision wrapping_cost_ex_tax
+        double_precision wrapping_cost_inc_tax
+        double_precision wrapping_cost_tax
+        text wrapping_message
+        text wrapping_name
+    }
+    order_shipment_item {
+        bigint index PK
+        bigint shipment_id PK
+        bigint order_product_id FK
+        bigint product_id FK
+        bigint quantity
+    }
+    order_shipment {
+        bigint id PK
+        bigint order_id PK
+        bigint customer_id FK
+        bigint order_address_id FK
+        text city
+        text comments
+        text company
+        text country
+        text country_iso_2
+        timestamp date_created
+        text email
+        text first_name
+        text last_name
+        text phone
+        text shipping_method
+        text shipping_provider
+        text state
+        text street_1
+        text street_2
+        text tracking_carrier
+        text tracking_link
+        text tracking_number
+        text zip
+    }
+    order_shipping_address_quote {
+        bigint id PK
+        bigint shipping_address_id PK
+        text carrier_code
+        bigint method_id
+        text provider_code
+        text rate_code
+        text rate_id
+        text shipping_provider_id
+        text timestamps
+        text uuid
+    }
+    order_shipping_address_form_field {
+        text name PK
+        bigint shipping_address_id PK
+        jsonb value
+    }
+    order_shipping_address {
+        bigint id PK
+        bigint order_id PK
+        bigint shipping_zone_id FK
+        double_precision base_cost
+        double_precision base_handling_cost
+        text city
+        text company
+        double_precision cost_ex_tax
+        double_precision cost_inc_tax
+        double_precision cost_tax
+        bigint cost_tax_class_id
+        text country
+        text country_iso_2
+        text email
+        text first_name
+        double_precision handling_cost_ex_tax
+        double_precision handling_cost_inc_tax
+        double_precision handling_cost_tax
+        bigint handling_cost_tax_class_id
+        bigint items_shipped
+        bigint items_total
+        text last_name
+        text phone
+        text shipping_method
+        text shipping_quotes_resource
+        text shipping_quotes_url
+        text shipping_zone_name
+        text state
+        text street_1
+        text street_2
+        text zip
+    }
+    order_coupon {
+        bigint id PK
+        bigint order_id PK
+        bigint coupon_id FK
+        double_precision amount
+        text code
+        double_precision discount
+        bigint type
+    }
+    order_transaction {
+        bigint id PK
+        bigint order_id PK
+        double_precision amount
+        text avs_result_code
+        text avs_result_message
+        text avs_result_postal_match
+        text avs_result_street_match
+        integer card_expiry_month
+        integer card_expiry_year
+        text card_iin
+        text card_last_4
+        text card_type
+        text currency
+        text custom_payment_method
+        text cvv_result_code
+        text cvv_result_message
+        timestamp date_created
+        text display_name
+        text event
+        boolean fraud_review
+        text gateway
+        text gateway_transaction_id
+        text gift_certificate_code
+        double_precision gift_certificate_original_balance
+        double_precision gift_certificate_remaining_balance
+        double_precision gift_certificate_starting_balance
+        text gift_certificate_status
+        text method
+        text payment_instrument_token
+        text payment_method_id
+        bigint reference_transaction_id
+        text status
+        double_precision store_credit_remaining_balance
+        boolean test
+    }
+    payment_method_stored_instrument {
+        bigint index PK
+        text payment_method_id PK
+        text brand
+        integer expiry_month
+        integer expiry_year
+        boolean is_default
+        integer issuer_identification_number
+        text last_4
+        text type
+    }
+    payment_method_supported_instrument {
+        text index PK
+        text payment_method_id PK
+        text instrument_type
+        text verification_value_required
+    }
+    payment_method {
+        text id PK
+        text name
+        boolean test_mode
+        text type
+    }
+    order_metafield {
+        bigint id PK
+        bigint order_id PK
+        timestamp created_at
+        text description
+        text key
+        text namespace
+        text permission_set
+        text resource_id
+        text resource_type
+        timestamp updated_at
+        text value
+    }
+    order_tax {
+        bigint id PK
+        bigint order_id PK
+        bigint order_address_id FK
+        bigint order_product_id FK
+        bigint tax_class_id FK
+        text class
+        double_precision line_amount
+        text line_item_type
+        text name
+        bigint priority
+        double_precision priority_amount
+        double_precision rate
+        bigint tax_rate_id
+    }
+    order_message {
+        bigint id PK
+        bigint order_id PK
+        bigint customer_id FK
+        timestamp date_created
+        boolean is_flagged
+        text message
+        bigint staff_id
+        text status
+        text subject
+        text type
+    }
+    customer_allow_consent {
+        bigint customer_id PK
+        bigint index PK
+        text allow
+        timestamp updated_at
+    }
+    customer_deny_consent {
+        bigint customer_id PK
+        bigint index PK
+        text deny
+        timestamp updated_at
+    }
+    product_review {
+        bigint id PK
+        bigint product_id PK
+        timestamp date_created
+        timestamp date_modified
+        timestamp date_reviewed
+        text email
+        text name
+        integer rating
+        text status
+        text text
+        text title
+    }
+    product_metafield {
+        bigint id PK
+        bigint product_id PK
+        timestamp date_created
+        timestamp date_modified
+        text description
+        text key
+        text namespace
+        text permission_set
+        bigint resource_id
+        text resource_type
+        text value
+    }
+    product_variant_options_value {
+        bigint id PK
+        bigint product_variant_option_id PK
+        bigint product_id FK
+        boolean is_default
+        text label
+        bigint sort_order
+    }
+    product_variant_option {
+        bigint id PK
+        bigint product_id PK
+        text config_checkbox_label
+        boolean config_checked_by_default
+        text config_date_earliest_value
+        text config_date_latest_value
+        text config_date_limit_mode
+        boolean config_date_limited
+        text config_default_value
+        integer config_file_max_size
+        text config_file_types_mode
+        integer config_number_highest_value
+        boolean config_number_integers_only
+        text config_number_limit_mode
+        boolean config_number_limited
+        integer config_number_lowest_value
+        boolean config_product_list_adjusts_inventory
+        boolean config_product_list_adjusts_pricing
+        text config_product_list_shipping_calc
+        boolean config_text_characters_limited
+        boolean config_text_lines_limited
+        integer config_text_max_length
+        integer config_text_max_lines
+        integer config_text_min_length
+        text display_name
+        text name
+        bigint option_id
+        boolean option_is_default
+        text option_label
+        bigint option_sort_order
+        bigint sort_order
+        text type
+    }
+    product_complex_rule_condition {
+        bigint index PK
+        bigint product_complex_rule_id PK
+        bigint modifier_id FK
+        bigint modifier_value_id FK
+        bigint variant_id FK
+        bigint combination_id
+        bigint id
+    }
+    product_complex_rule {
+        bigint id PK
+        bigint product_id PK
+        boolean enabled
+        text image_url
+        text price_adjuster
+        bigint price_adjuster_value
+        boolean purchasing_disabled
+        text purchasing_disabled_message
+        boolean purchasing_hidden
+        bigint sort_order
+        boolean stop
+        text weight_adjuster
+        bigint weight_adjuster_value
+    }
+    product_variant_metafield {
+        bigint id PK
+        bigint product_variant_id PK
+        bigint product_id FK
+        timestamp date_created
+        timestamp date_modified
+        text description
+        text key
+        text namespace
+        text permission_set
+        bigint resource_id
+        text resource_type
+        text value
+    }
+    channel_variant {
+        bigint channel_id PK
+        bigint channel_listing_id PK
+        bigint product_id FK
+        bigint variant_id FK
+        timestamp date_created
+        timestamp date_modified
+        text description
+        text external_id
+        text name
+        text state
+    }
+    channel_listing {
+        bigint listing_id PK
+        bigint channel_id PK
+        bigint product_id FK
+        timestamp date_created
+        timestamp date_modified
+        text description
+        text external_id
+        text name
+        text state
+    }
+    customer_setting_per_channel {
+        text _fivetran_id PK
+        bigint channel_id FK
+        text allow_global_logins
+        boolean ask_shopper_for_tracking_consent
+        bigint default_customer_group_id
+        bigint guest_customer_group_id
+        text policy_url
+    }
+    channel_active_theme {
+        text active_theme_uuid PK
+        bigint channel_id PK
+        text active_theme_version_uuid FK
+        text active_theme_configuration_uuid
+        text saved_theme_configuration_uuid
+    }
+    consignment_line_item }o--|| consignment : "fk"
+    consignment_discount }o--|| consignment : "fk"
+    consignment_coupon_discount }o--|| consignment : "fk"
+    consignment_shipping_option }o--|| consignment : "fk"
+    consignment_billing_address_custom_field }o--|| consignment : "fk"
+    consignment }o--|| checkout : "fk"
+    checkout_billing_address_custom_field }o--|| checkout : "fk"
+    tax }o--|| checkout : "fk"
+    applied_coupon }o--|| checkout : "fk"
+    applied_gift_certificate }o--|| checkout : "fk"
+    checkout }o--|| orders : "fk"
+    checkout }o--|| cart : "fk"
+    product_channel_assignment }o--|| channel : "fk"
+    product_channel_assignment }o--|| product : "fk"
+    price_list_bulk_pricing }o--|| price_list_record : "fk"
+    price_list_record }o--|| product : "fk"
+    price_list_record }o--|| product_variant : "fk"
+    price_list_record }o--|| price_list : "fk"
+    store_blog_tag }o--|| store_blog_post : "fk"
+    wishlist_item }o--|| product : "fk"
+    wishlist_item }o--|| product_variant : "fk"
+    wishlist_item }o--|| wishlist : "fk"
+    wishlist }o--|| customer : "fk"
+    contextual_filter }o--|| enabled_filter : "fk"
+    contextual_filter }o--|| category_tree : "fk"
+    contextual_filter }o--|| channel : "fk"
+    placement }o--|| channel : "fk"
+    placement }o--|| widget : "fk"
+    site_route }o--|| site : "fk"
+    cart_coupon }o--|| cart : "fk"
+    cart_discount }o--|| cart : "fk"
+    cart_custom_item }o--|| cart : "fk"
+    digital_line_item_option }o--|| cart_digital_item : "fk"
+    digital_line_item_discount }o--|| cart_digital_item : "fk"
+    cart_digital_item }o--|| product : "fk"
+    cart_digital_item }o--|| product_variant : "fk"
+    cart_digital_item }o--|| cart : "fk"
+    physical_line_item_option }o--|| cart_physical_item : "fk"
+    physical_line_item_discount }o--|| cart_physical_item : "fk"
+    cart_physical_item }o--|| product : "fk"
+    cart_physical_item }o--|| product_variant : "fk"
+    cart_physical_item }o--|| cart : "fk"
+    cart_gift_certificate_item }o--|| cart : "fk"
+    cart }o--|| channel : "fk"
+    cart }o--|| currency : "fk"
+    cart }o--|| customer : "fk"
+    email_template_translation }o--|| email_template : "fk"
+    category_metafield }o--|| category_tree : "fk"
+    site_url }o--|| site : "fk"
+    site }o--|| channel : "fk"
+    theme_variation }o--|| theme : "fk"
+    shipping_zone_location }o--|| shipping_zone : "fk"
+    country_state }o--|| country : "fk"
+    category_tree_meta_keyword }o--|| category_tree : "fk"
+    price_list_assignment }o--|| price_list : "fk"
+    price_list_assignment }o--|| channel : "fk"
+    price_list_assignment }o--|| customer_group : "fk"
+    gift_certificate }o--|| orders : "fk"
+    gift_certificate }o--|| customer : "fk"
+    brand_metafield }o--|| brand : "fk"
+    brand_meta_keyword }o--|| brand : "fk"
+    product_custom_information }o--|| product : "fk"
+    customer_group_category_access }o--|| category_tree : "fk"
+    customer_group_discount_rule }o--|| price_list : "fk"
+    customer_group_discount_rule }o--|| customer_group : "fk"
+    shipping_zone_method }o--|| shipping_zone : "fk"
+    redirect }o--|| site : "fk"
+    catalog_variant_option_value }o--|| catalog_variant : "fk"
+    catalog_variant }o--|| product : "fk"
+    channel_enabled_currency }o--|| channel_currency_assignment : "fk"
+    channel_currency_assignment }o--|| channel : "fk"
+    catalog_variant_metafield }o--|| catalog_variant : "fk"
+    order_refund_item }o--|| order_refund : "fk"
+    order_refund_payment }o--|| order_refund : "fk"
+    order_refund }o--|| orders : "fk"
+    custom_template_association }o--|| channel : "fk"
+    widget }o--|| channel : "fk"
+    coupon_country_restriction }o--|| country : "fk"
+    coupon_country_restriction }o--|| coupon : "fk"
+    coupon_state_restriction }o--|| coupon : "fk"
+    coupon_zip_restriction }o--|| coupon : "fk"
+    customer_address_form_field }o--|| customer_address : "fk"
+    customer_address }o--|| customer : "fk"
+    customer_form_field }o--|| customer : "fk"
+    customer_store_credit }o--|| customer : "fk"
+    customer_channel }o--|| channel : "fk"
+    customer_channel }o--|| customer : "fk"
+    customer_attribute_value }o--|| customer : "fk"
+    customer }o--|| customer_group : "fk"
+    customer }o--|| channel : "fk"
+    channel_app }o--|| channel : "fk"
+    subscriber }o--|| channel : "fk"
+    subscriber }o--|| orders : "fk"
+    product_image }o--|| product : "fk"
+    product_bulk_pricing_rule }o--|| product : "fk"
+    product_custom_field }o--|| product : "fk"
+    product_modifier_value }o--|| product : "fk"
+    product_modifier_value }o--|| product_modifier : "fk"
+    product_modifier }o--|| product : "fk"
+    product_variant }o--|| product : "fk"
+    product_video }o--|| product : "fk"
+    product_meta_keyword }o--|| product : "fk"
+    related_product }o--|| product : "fk"
+    product_option }o--|| product : "fk"
+    product_gift_wrapping_option }o--|| product : "fk"
+    product_category }o--|| category_tree : "fk"
+    product_category }o--|| product : "fk"
+    product }o--|| tax_class : "fk"
+    product }o--|| product_variant : "fk"
+    product }o--|| brand : "fk"
+    order_billing_address_form_field }o--|| orders : "fk"
+    orders }o--|| currency : "fk"
+    orders }o--|| channel : "fk"
+    orders }o--|| order_transaction : "fk"
+    orders }o--|| cart : "fk"
+    orders }o--|| order_status : "fk"
+    orders }o--|| customer : "fk"
+    order_product_discount }o--|| order_product : "fk"
+    order_product_option }o--|| order_product : "fk"
+    order_product }o--|| product : "fk"
+    order_product }o--|| product_variant : "fk"
+    order_product }o--|| order_shipping_address : "fk"
+    order_product }o--|| orders : "fk"
+    order_shipment_item }o--|| order_product : "fk"
+    order_shipment_item }o--|| product : "fk"
+    order_shipment_item }o--|| order_shipment : "fk"
+    order_shipment }o--|| customer : "fk"
+    order_shipment }o--|| order_shipping_address : "fk"
+    order_shipment }o--|| orders : "fk"
+    order_shipping_address_quote }o--|| order_shipping_address : "fk"
+    order_shipping_address_form_field }o--|| order_shipping_address : "fk"
+    order_shipping_address }o--|| shipping_zone : "fk"
+    order_shipping_address }o--|| orders : "fk"
+    order_coupon }o--|| coupon : "fk"
+    order_coupon }o--|| orders : "fk"
+    order_transaction }o--|| orders : "fk"
+    payment_method_stored_instrument }o--|| payment_method : "fk"
+    payment_method_supported_instrument }o--|| payment_method : "fk"
+    order_metafield }o--|| orders : "fk"
+    order_tax }o--|| tax_class : "fk"
+    order_tax }o--|| order_product : "fk"
+    order_tax }o--|| order_shipping_address : "fk"
+    order_tax }o--|| orders : "fk"
+    order_message }o--|| customer : "fk"
+    order_message }o--|| orders : "fk"
+    product_review }o--|| product : "fk"
+    product_metafield }o--|| product : "fk"
+    product_variant_options_value }o--|| product_variant_option : "fk"
+    product_variant_options_value }o--|| product_variant_option : "fk"
+    product_variant_option }o--|| product : "fk"
+    product_complex_rule_condition }o--|| product_modifier : "fk"
+    product_complex_rule_condition }o--|| product_modifier_value : "fk"
+    product_complex_rule_condition }o--|| product_variant : "fk"
+    product_complex_rule_condition }o--|| product_complex_rule : "fk"
+    product_complex_rule }o--|| product : "fk"
+    product_variant_metafield }o--|| product_variant : "fk"
+    product_variant_metafield }o--|| product : "fk"
+    channel_variant }o--|| product : "fk"
+    channel_variant }o--|| channel : "fk"
+    channel_variant }o--|| product_variant : "fk"
+    channel_variant }o--|| channel_listing : "fk"
+    channel_listing }o--|| product : "fk"
+    channel_listing }o--|| channel : "fk"
+    customer_setting_per_channel }o--|| channel : "fk"
+    channel_active_theme }o--|| theme_variation : "fk"
+    channel_active_theme }o--|| channel : "fk"

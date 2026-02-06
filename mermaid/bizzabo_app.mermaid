@@ -1,0 +1,506 @@
+erDiagram
+    attendee_analytics {
+        text account_id PK
+        text event_id PK
+        text session_id PK
+        text ticket_id PK
+        text attended_type
+        text attendee_email
+        text attendee_first_name
+        text attendee_last_name
+        timestamp checkin_time
+        timestamp checkout_time
+        timestamp created
+        timestamp modified
+        text session_name
+    }
+    contact {
+        text id PK
+        text event_id PK
+        timestamp created
+        timestamp modified
+    }
+    event_template {
+        text id PK
+        timestamp created
+        text description
+        text event_type
+        text icon
+        timestamp modified
+        text name
+        text status
+    }
+    event_type {
+        text index PK
+        text event_id PK
+        text type
+    }
+    event_category {
+        text index PK
+        text event_id PK
+        text category
+    }
+    event {
+        text id PK
+        text archived
+        text attendance_type
+        text cover_photo_url
+        timestamp created
+        text description
+        timestamp end_date
+        text header_logo_url
+        text languages
+        timestamp modified
+        text name
+        text short_code
+        timestamp start_date
+        text status
+        text support_email
+        text timezone
+        text twitter_hashtag
+        text venue_address_1
+        text venue_city
+        text venue_country
+        text venue_display_address
+        text venue_id
+        text venue_name
+        text venue_state
+        text website_url
+    }
+    registration {
+        text id PK
+        text contact_id FK
+        text event_id FK
+        text flow_id FK
+        text ticket_id FK
+        text charge
+        text checked_in
+        timestamp checked_in_date
+        timestamp checkedout_date
+        timestamp created
+        text currency
+        text fees
+        text form_submission_status
+        text invoice
+        text magic_link
+        text manage_registration_link
+        timestamp modified
+        text order_id
+        text order_type
+        timestamp payment_date
+        text payment_method
+        text payment_status
+        text price
+        text promo_code
+        timestamp registration_date
+        text social_promo
+        text swapped
+        text tax
+        text ticket_name
+        text validity
+        text virtual_checkin
+    }
+    event_goal {
+        text id PK
+        text event_id FK
+        timestamp created
+        text date_period
+        timestamp end_timestamp
+        text goal_value
+        text interval
+        timestamp modified
+        timestamp start_timestamp
+    }
+    session_registration_setting {
+        text event_id PK
+        text allow_overlapping_registration
+        text capacity_limit
+        text capacity_limit_enabled
+        text capacity_limit_reached
+        text capacity_limit_reached_enabled
+        text capacity_unlimit
+        text capacity_unlimit_enabled
+    }
+    session_recording_view {
+        text id PK
+        text event_id PK
+        text session_id PK
+        text ticket_id FK
+        text email
+        text viewed_at
+    }
+    session_rate {
+        text contact_id PK
+        text event_id PK
+        text session_id PK
+        text feedback
+        text rated
+        text score
+    }
+    session_speaker {
+        text id PK
+        text event_id PK
+        text session_id PK
+        text speaker_id FK
+        text role
+    }
+    session_filter {
+        text id PK
+        text event_id PK
+        text session_id PK
+        jsonb tags
+    }
+    session_attachment {
+        text id PK
+        text event_id PK
+        text session_id PK
+        text display_name
+        text file_name
+        text icon
+        text position
+        text type
+    }
+    session_sponsor {
+        text index PK
+        text event_id PK
+        text session_id PK
+        text sponsor_id
+    }
+    recording_authorization {
+        text index PK
+        text event_id PK
+        text recording_session_id PK
+        text session_id PK
+        text recording_authorization
+    }
+    recording_session {
+        text id PK
+        text event_id PK
+        text session_id PK
+        text broadcast_recording
+        text custom_asset_id
+        text external_asset_id
+        text original_asset_id
+        text recording_is_ready
+        text recording_primary_asset_type
+    }
+    preroll_session {
+        text id PK
+        text event_id PK
+        text session_id PK
+        text account_id
+        text asset_id
+        text future_asset_id
+    }
+    video_producer_session {
+        text index PK
+        text event_id PK
+        text session_id PK
+        text associated_provider_livestream_id
+        text guest_url
+        text host_url
+        text restream_video_producer_id
+        text video_producer_id
+        text video_producer_title
+    }
+    session_asset {
+        text id PK
+        text event_id PK
+        text session_id PK
+        text account_id
+        text asset_association_id
+        text asset_id
+        text asset_is_primary
+        text asset_is_ready
+        text asset_media
+        jsonb asset_metadata
+        text asset_type
+        timestamp creation_date_time
+    }
+    session {
+        text id PK
+        text event_id PK
+        text location_id FK
+        text sublocation_id FK
+        text allow_rating
+        jsonb associated_contact
+        text background_color
+        text description
+        text description_html
+        text enable_recording_session
+        text enable_virtual_session
+        timestamp end_date
+        text end_minute
+        text external_id
+        text hidden
+        text image_type
+        text image_url
+        jsonb moderator
+        text private
+        text registration
+        text registration_capacity
+        text registration_capacity_enable
+        text registration_count
+        text registration_full
+        text registration_visibility
+        text session_card_size
+        text session_type
+        timestamp start_date
+        text start_minute
+        text text_color
+        text title
+        jsonb virtual_session_details
+    }
+    registration_type {
+        text ticket_id PK
+        text event_id PK
+        text currency_code
+        text name
+        text per_order_max
+        text per_order_min
+        text price
+        text quantity
+        text sale_method
+        text tax_rate
+    }
+    session_checkin {
+        text event_id PK
+        text session_id PK
+        text ticket_id PK
+        timestamp created
+        text done_by_organizer
+        text overrule
+        text status
+    }
+    agenda_setting_filter_url_filter_tag {
+        text id PK
+        text event_id PK
+        text filter_id PK
+        text name
+    }
+    agenda_setting_filter_url_filter {
+        text id PK
+        text event_id PK
+        text filter_url_id PK
+        text name
+        text type
+        text visible
+    }
+    agenda_setting_filter_url_location_sublocation {
+        text id PK
+        text event_id PK
+        text filter_url_id PK
+        text filter_url_location_id PK
+        text name
+    }
+    agenda_setting_filter_url_location {
+        text id PK
+        text event_id PK
+        text filter_url_id PK
+        text name
+    }
+    agenda_setting_filter_url {
+        text id PK
+        text event_id PK
+        text end_date
+        text end_time
+        text name
+        text start_date
+        text start_time
+    }
+    agenda_setting_filter_tag {
+        text id PK
+        text event_id PK
+        text filter_id PK
+        text name
+    }
+    agenda_setting_filter {
+        text id PK
+        text event_id PK
+        text name
+        text type
+        text visible
+    }
+    agenda_setting_sublocation {
+        text id PK
+        text event_id PK
+        text location_id PK
+        text name
+    }
+    agenda_setting_location {
+        text id PK
+        text event_id PK
+        text name
+    }
+    partner_custom_button {
+        text index PK
+        text event_id PK
+        text partner_id PK
+        text name
+        text url
+    }
+    partner_mobile_custom_button {
+        text index PK
+        text event_id PK
+        text partner_id PK
+        text name
+        text url
+    }
+    partner {
+        text id PK
+        text event_id PK
+        text booth
+        text contact_email
+        text contact_phone
+        timestamp created
+        text description
+        text email
+        text external_id
+        text facebook
+        text level
+        text linkedin
+        text logo
+        timestamp modified
+        text name
+        text position_in_list
+        text promoted_offer
+        text twitter
+        text type
+        text visible
+        text website
+    }
+    speaker {
+        text id PK
+        text event_id PK
+        text bio
+        text blog
+        text company
+        text country
+        timestamp created
+        text email
+        text first_name
+        text hidden
+        text last_name
+        text linked_in
+        timestamp modified
+        text photo_set_blur
+        text photo_set_large
+        text photo_set_medium
+        text photo_set_small
+        text prefix
+        text title
+        text twitter_handle
+        text web
+    }
+    contact_list {
+        text id PK
+        text event_id PK
+        timestamp created
+        text name
+        text size
+        text type
+    }
+    session_starring {
+        text event_id PK
+        text session_id PK
+        text contact_id FK
+        text starred
+    }
+    registration_property_value {
+        text index PK
+        text flow_id PK
+        text value
+    }
+    registration_type_property {
+        text index PK
+        text flow_id PK
+        text label
+        text name
+        text type
+    }
+    registration_form {
+        text flow_id PK
+        text event_id FK
+    }
+    registration_flow {
+        text id PK
+        text event_id PK
+        text active
+        text flow_name
+    }
+    attendee_analytics }o--|| event : "fk"
+    attendee_analytics }o--|| registration_type : "fk"
+    attendee_analytics }o--|| session : "fk"
+    contact }o--|| event : "fk"
+    event_type }o--|| event : "fk"
+    event_category }o--|| event : "fk"
+    registration }o--|| event : "fk"
+    registration }o--|| registration_type : "fk"
+    registration }o--|| registration_flow : "fk"
+    registration }o--|| contact : "fk"
+    event_goal }o--|| event : "fk"
+    session_registration_setting }o--|| event : "fk"
+    session_recording_view }o--|| session : "fk"
+    session_recording_view }o--|| registration_type : "fk"
+    session_recording_view }o--|| event : "fk"
+    session_rate }o--|| contact : "fk"
+    session_rate }o--|| session : "fk"
+    session_rate }o--|| event : "fk"
+    session_speaker }o--|| session : "fk"
+    session_speaker }o--|| session : "fk"
+    session_speaker }o--|| speaker : "fk"
+    session_filter }o--|| session : "fk"
+    session_filter }o--|| session : "fk"
+    session_attachment }o--|| session : "fk"
+    session_attachment }o--|| session : "fk"
+    session_sponsor }o--|| session : "fk"
+    session_sponsor }o--|| session : "fk"
+    recording_authorization }o--|| recording_session : "fk"
+    recording_authorization }o--|| recording_session : "fk"
+    recording_authorization }o--|| recording_session : "fk"
+    recording_session }o--|| session : "fk"
+    recording_session }o--|| session : "fk"
+    preroll_session }o--|| session : "fk"
+    preroll_session }o--|| session : "fk"
+    video_producer_session }o--|| session : "fk"
+    video_producer_session }o--|| session : "fk"
+    session_asset }o--|| session : "fk"
+    session_asset }o--|| session : "fk"
+    session }o--|| agenda_setting_sublocation : "fk"
+    session }o--|| agenda_setting_location : "fk"
+    session }o--|| event : "fk"
+    registration_type }o--|| event : "fk"
+    session_checkin }o--|| session : "fk"
+    session_checkin }o--|| registration_type : "fk"
+    session_checkin }o--|| event : "fk"
+    agenda_setting_filter_url_filter_tag }o--|| agenda_setting_filter_url_filter : "fk"
+    agenda_setting_filter_url_filter_tag }o--|| agenda_setting_filter_url_filter : "fk"
+    agenda_setting_filter_url_filter }o--|| agenda_setting_filter_url : "fk"
+    agenda_setting_filter_url_filter }o--|| agenda_setting_filter_url : "fk"
+    agenda_setting_filter_url_location_sublocation }o--|| agenda_setting_filter_url_location : "fk"
+    agenda_setting_filter_url_location_sublocation }o--|| agenda_setting_filter_url_location : "fk"
+    agenda_setting_filter_url_location_sublocation }o--|| agenda_setting_filter_url_location : "fk"
+    agenda_setting_filter_url_location }o--|| agenda_setting_filter_url : "fk"
+    agenda_setting_filter_url_location }o--|| agenda_setting_filter_url : "fk"
+    agenda_setting_filter_url }o--|| event : "fk"
+    agenda_setting_filter_tag }o--|| agenda_setting_filter : "fk"
+    agenda_setting_filter_tag }o--|| agenda_setting_filter : "fk"
+    agenda_setting_filter }o--|| event : "fk"
+    agenda_setting_sublocation }o--|| agenda_setting_location : "fk"
+    agenda_setting_sublocation }o--|| agenda_setting_location : "fk"
+    agenda_setting_location }o--|| event : "fk"
+    partner_custom_button }o--|| partner : "fk"
+    partner_custom_button }o--|| partner : "fk"
+    partner_mobile_custom_button }o--|| partner : "fk"
+    partner_mobile_custom_button }o--|| partner : "fk"
+    partner }o--|| event : "fk"
+    speaker }o--|| event : "fk"
+    contact_list }o--|| event : "fk"
+    session_starring }o--|| session : "fk"
+    session_starring }o--|| contact : "fk"
+    session_starring }o--|| event : "fk"
+    registration_property_value }o--|| registration_type_property : "fk"
+    registration_type_property }o--|| registration_form : "fk"
+    registration_form }o--|| registration_flow : "fk"
+    registration_form }o--|| event : "fk"
+    registration_flow }o--|| event : "fk"

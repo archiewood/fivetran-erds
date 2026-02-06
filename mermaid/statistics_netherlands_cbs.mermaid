@@ -1,0 +1,138 @@
+erDiagram
+    measure_group {
+        text catalog_identifier PK
+        text id PK
+        text index PK
+        text parent_id FK
+        text description
+        text title
+    }
+    provenance {
+        text index PK
+        text catalog_identifier PK
+        text property_identifier PK
+        text title
+        text url
+    }
+    related_source {
+        text index PK
+        text catalog_identifier PK
+        text property_identifier PK
+        text title
+        text url
+    }
+    distribution {
+        text index PK
+        text catalog_identifier PK
+        text property_identifier PK
+        text access_url
+        text download_url
+        text format
+        text languages
+        text media_type
+    }
+    property {
+        text catalog_identifier PK
+        text identifier PK
+        text authority
+        text catalog
+        text contact_point
+        text dataset_type
+        text description
+        text frequency
+        text graph_types
+        text languages
+        text license
+        text long_descrition
+        text modification_date
+        text modified
+        text observation_count
+        text observations_modified
+        text publisher
+        text release_date
+        text source
+        text status
+        text summary
+        text temporal_coverage
+        text title
+        text version
+        text version_notes
+        text version_reason
+    }
+    measure_code {
+        text catalog_identifier PK
+        text identifier PK
+        text index PK
+        text measure_group_id FK
+        text data_type
+        text decimal
+        text description
+        text presentation_type
+        text title
+        text unit
+    }
+    industries_branches_sbi_2008_code {
+        text catalog_identifier PK
+        text identifier PK
+        text index PK
+        text description
+        text dimention_group_id
+        text title
+    }
+    perioden_codes {
+        text catalog_identifier PK
+        text identifier PK
+        text index PK
+        text description
+        text dimensions_group_id
+        text status
+        text title
+    }
+    dimensions {
+        text catalog_identifier PK
+        text identifier PK
+        text contains_codes
+        text contains_groups
+        text description
+        text kind
+        text map_year
+        text release_policy
+        text title
+    }
+    observation {
+        text catalog_identifier PK
+        text id PK
+        text measure FK
+        text perioden FK
+        text industries_branches_sbi_2008
+        text string_value
+        text value
+        text value_attribute
+    }
+    industries_branches_sbi_2008_group {
+        text catalog_identifier PK
+        text id PK
+        text index PK
+        text parent_id FK
+        text description
+        text title
+    }
+    perioden_groups {
+        text catalog_identifier PK
+        text id PK
+        text index PK
+        text description
+        text parent_id
+        text title
+    }
+    measure_group }o--|| measure_group : "fk"
+    provenance }o--|| property : "fk"
+    provenance }o--|| property : "fk"
+    related_source }o--|| property : "fk"
+    related_source }o--|| property : "fk"
+    distribution }o--|| property : "fk"
+    distribution }o--|| property : "fk"
+    measure_code }o--|| measure_group : "fk"
+    observation }o--|| measure_code : "fk"
+    observation }o--|| perioden_codes : "fk"
+    industries_branches_sbi_2008_group }o--|| industries_branches_sbi_2008_group : "fk"

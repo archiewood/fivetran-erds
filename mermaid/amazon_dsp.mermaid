@@ -1,0 +1,2037 @@
+erDiagram
+    app {
+        text advertiser_id PK
+        text id PK
+        text profile_id PK
+        text legacy_id
+        text name
+    }
+    domain_list {
+        text id PK
+        text profile_id PK
+        integer count
+        timestamp last_updated_date_time
+        text name
+    }
+    profile {
+        text id PK
+        text account_id
+        text account_marketplace_string_id
+        text account_name
+        text account_sub_type
+        text account_type
+        text account_valid_payment_method
+        text country_code
+        text currency_code
+        text timezone
+    }
+    third_party_target_segment {
+        text id PK
+        text advertiser_id PK
+        text profile_id PK
+        text description
+        text name
+        text target_type
+    }
+    ad_creative_moderation_ad_experience {
+        text ad_creative_id PK
+        text advertiser_id PK
+        text index PK
+        text profile_id PK
+        text ad_experience
+        text moderation_status
+        jsonb reason
+    }
+    advertised_product_category {
+        text id PK
+        text profile_id PK
+        text parent_id FK
+        text name
+    }
+    brand_lift_study_status_reason {
+        text index PK
+        text brand_lift_study_id PK
+        text status_reason
+    }
+    brand_lift_study_rejection_reason {
+        text index PK
+        text brand_lift_study_id PK
+        text rejection_reason
+    }
+    brand_lift_study_link {
+        text index PK
+        text brand_lift_study_id PK
+        text name
+        text url
+    }
+    brand_lift_study_excluded_line_item {
+        text index PK
+        text brand_lift_study_id PK
+        text excluded_line_item_id FK
+    }
+    brand_lift_study_order {
+        text index PK
+        text brand_lift_study_id PK
+        text order_id FK
+    }
+    brand_lift_study_peer_name {
+        text index PK
+        text brand_lift_study_id PK
+        text peer_name
+    }
+    measurement_brand_lift_study {
+        text id PK
+        text advertiser_id FK
+        text profile_id FK
+        text benchmark_category
+        text brand_name
+        text comment
+        text create_date
+        text end_date
+        text external_reference_id
+        text last_updated_date
+        text name
+        text product_category
+        text review_date
+        text start_date
+        text status
+        text study_result_status
+        text survey_id
+        text vendor_product_id
+        text verb
+    }
+    ad_creative_ad_group_association {
+        text ad_creative_id PK
+        text ad_group_id PK
+        text advertiser_id PK
+        text profile_id PK
+        text creative_association_status
+        text state
+    }
+    iab_content_category {
+        text id PK
+        text profile_id PK
+        text parent_id FK
+        text name
+    }
+    measurement_study_status_reason {
+        text index PK
+        text measurement_study_id PK
+        text status_reason
+    }
+    measurement_study_rejection_reason {
+        text index PK
+        text measurement_study_id PK
+        text rejection_reason
+    }
+    measurement_study_link {
+        text index PK
+        text measurement_study_id PK
+        text name
+        text url
+    }
+    measurement_study {
+        text id PK
+        text advertiser_id FK
+        text profile_id FK
+        text comment
+        text create_date
+        text end_date
+        text external_reference_id
+        text last_updated_date
+        text name
+        text review_date
+        text start_date
+        text status
+        text study_result_status
+        text survey_id
+        text vendor_product_id
+    }
+    ad_group_advertised_product_category {
+        text ad_group_id PK
+        text advertiser_id PK
+        text campaign_id PK
+        text id PK
+        text profile_id PK
+    }
+    ad_group_budget_cap {
+        integer index PK
+        text ad_group_id PK
+        text advertiser_id PK
+        text campaign_id PK
+        text profile_id PK
+        double_precision amount
+        text currency_code
+        text recurrence_time_period
+    }
+    ad_group_frequency {
+        integer index PK
+        text ad_group_id PK
+        text advertiser_id PK
+        text campaign_id PK
+        text profile_id PK
+        text frequency_type
+        text level_type
+        integer max_impressions
+        text time_unit
+        integer time_unit_count
+    }
+    ad_group_fee {
+        integer index PK
+        text ad_group_id PK
+        text advertiser_id PK
+        text campaign_id PK
+        text profile_id PK
+        boolean add_to_budget_spent_amount
+        text currency_code
+        text fee_type
+        text fee_value
+        text fee_value_type
+        text third_party_provider
+    }
+    ad_group {
+        text id PK
+        text advertiser_id PK
+        text campaign_id PK
+        text profile_id PK
+        double_precision bid_base_bid
+        text bid_currency_code
+        double_precision bid_max_average_cpm
+        double_precision budget_amount
+        text comment
+        timestamp creation_date_time
+        text creative_rotation_type
+        text delivery_status
+        jsonb digital_out_of_home_product_locations
+        timestamp end_date_time
+        text inventory_type
+        timestamp last_updated_date_time
+        text name
+        boolean optimization_automate_budget_allocation
+        text optimization_bid_strategy
+        double_precision optimization_daily_min_spend_amount
+        integer pacing_catch_up_boost_percentage
+        text pacing_delivery_profile
+        text purchase_order_number
+        timestamp start_date_time
+        text state
+        boolean targeting_settings_amazon_viewability_include_unmeasurable_impressions
+        text targeting_settings_amazon_viewability_viewability_tier
+        text targeting_settings_automated_targeting_tactic
+        text targeting_settings_default_audience_targeting_match_type
+        boolean targeting_settings_enable_language_targeting
+        text targeting_settings_site_language
+        text targeting_settings_tactics_converters_exclusion_type
+        text targeting_settings_targeted_pg_deal_id
+        text targeting_settings_time_zone_type
+        text targeting_settings_user_location
+        text targeting_settings_user_location_signal
+        text targeting_settings_video_completion_tier
+    }
+    advertiser {
+        text id PK
+        text profile_id FK
+        text country
+        text currency
+        text name
+        text timezone
+        text url
+    }
+    campaign_list_budget_cap {
+        integer index PK
+        text advertiser_id PK
+        text campaign_list_id PK
+        text profile_id PK
+        double_precision amount
+        text currency_code
+        text recurrence_time_period
+    }
+    campaign_list_flight {
+        integer index PK
+        text advertiser_id PK
+        text campaign_list_id PK
+        text profile_id PK
+        double_precision budget_amount
+        text currency_code
+        timestamp end_date_time
+        text flight_id
+        timestamp start_date_time
+    }
+    campaign_list_frequency {
+        integer index PK
+        text advertiser_id PK
+        text campaign_list_id PK
+        text profile_id PK
+        text frequency_type
+        text level_type
+        integer max_impressions
+        text time_unit
+        integer time_unit_count
+    }
+    campaign_list {
+        text id PK
+        text advertiser_id PK
+        text profile_id PK
+        text skan_app_id FK
+        double_precision agency_fee_percentage
+        text comment
+        timestamp creation_date_time
+        text delivery_status
+        timestamp end_date_time
+        timestamp last_updated_date_time
+        text name
+        boolean optimization_automate_bid_allocation
+        boolean optimization_automate_budget_allocation
+        jsonb optimization_automated_adgroup_creation_setting_performance_plus_inventory_type
+        text optimization_bid_strategy
+        text optimization_flight_budget_rollover_setting_rollover_strategy
+        text optimization_goal_setting_currency_code
+        text optimization_goal_setting_goal
+        text optimization_goal_setting_kpi
+        double_precision optimization_goal_setting_target_kpi
+        jsonb optimization_primary_inventory_type
+        text purchase_order_number
+        timestamp start_date_time
+        text state
+        boolean target_amazon_deal
+    }
+    inventory_source_exchange {
+        text id PK
+        text advertiser_id PK
+        text profile_id PK
+        jsonb country
+        text device_type
+        text inventory_source_type
+        text inventory_type
+        jsonb mobile_environment
+        text name
+    }
+    measurement_creative_testing_study_status_reason {
+        text index PK
+        text measurement_creative_testing_study_id PK
+        text status_reason
+    }
+    measurement_creative_testing_study_asset {
+        text asset_id PK
+        text measurement_creative_testing_study_id PK
+        text asset_type
+        text version
+    }
+    measurement_creative_testing_study {
+        text id PK
+        text advertiser_id PK
+        text profile_id FK
+        text brand_name
+        text comment
+        text create_date
+        text end_date
+        text external_reference_id
+        text last_updated_date
+        text name
+        text product_category
+        text review_date
+        text start_date
+        text status
+        text study_result_status
+        text survey_id
+        text vendor_product_id
+    }
+    ad_creative_format_property_ad_copy {
+        text index PK
+        text ad_creative_id PK
+        text advertiser_id PK
+        text profile_id PK
+        text type
+        text value
+    }
+    ad_creative_format_property_asset {
+        text index PK
+        text ad_creative_id PK
+        text advertiser_id PK
+        text profile_id PK
+        boolean apply_border
+        text associated_ad_experience
+        text id
+        text url
+        text version
+    }
+    ad_creative_format_property_click_action {
+        text index PK
+        text ad_creative_id PK
+        text advertiser_id PK
+        text profile_id PK
+        text associated_ad_experience
+        boolean enable_deep_linking
+        text type
+        text url_destination
+    }
+    ad_creative_format_property_creative_size {
+        text index PK
+        text ad_creative_id PK
+        text advertiser_id PK
+        text profile_id PK
+        integer height
+        boolean responsive
+        integer width
+    }
+    ad_creative_format_property_product {
+        text index PK
+        text ad_creative_id PK
+        text advertiser_id PK
+        text profile_id PK
+        text id
+        text review_text
+        text review_url
+        text title
+        text type
+    }
+    ad_creative_format_property_tracking_url {
+        text index PK
+        text ad_creative_id PK
+        text advertiser_id PK
+        text profile_id PK
+        text associated_ad_experience
+        text type
+        text url
+    }
+    ad_creative {
+        text id PK
+        text advertiser_id PK
+        text profile_id PK
+        text accessibility_text
+        text ad_choice_position
+        text additional_html
+        jsonb attribute
+        text auto_localization_state
+        jsonb category
+        text country
+        timestamp created_date_time
+        text external_id
+        text format_properties_ad_creative_format_type
+        boolean format_properties_additional_attribute_allow_third_party_seller
+        jsonb format_properties_additional_attribute_allowed_retail_format
+        text format_properties_additional_attribute_creative_content_type
+        text format_properties_additional_attribute_optimization_goal
+        jsonb format_properties_additional_attribute_render_optimization
+        jsonb format_properties_additional_attribute_target_placement
+        text format_properties_skippability_setting_skippable_type
+        text format_properties_third_party_tag_destination_on_amazon
+        text format_properties_third_party_tag_source
+        text format_properties_third_party_tag_type
+        text hosted_type
+        text languages
+        timestamp last_updated_date_time
+        text name
+    }
+    survey_question_qualifying_response {
+        text index PK
+        text measurement_survey_question_template_id PK
+        text qualifying_response
+    }
+    survey_question_response {
+        text index PK
+        text measurement_survey_question_template_id PK
+        text question_response
+    }
+    placeholder_candidate_allowed_value {
+        text index PK
+        text measurement_survey_question_template_id
+        text parent_field
+        text parent_value
+        text survey_question_placeholder_candidate_index
+        text value
+    }
+    placeholder_candidate_allowed_value_range {
+        text index PK
+        text measurement_survey_question_template_id PK
+        text survey_question_placeholder_candidate_index PK
+        text maximum_value
+        text minimum_value
+        text parent_field
+        text parent_value
+    }
+    placeholder_candidate_inferred_field {
+        text index PK
+        text measurement_survey_question_template_id PK
+        text survey_question_placeholder_candidate_index PK
+        text inferred_field
+    }
+    placeholder_candidate_default_value {
+        text index PK
+        text measurement_survey_question_template_id PK
+        text survey_question_placeholder_candidate_index PK
+        text default_value
+    }
+    survey_question_placeholder_candidate {
+        text index PK
+        text measurement_survey_question_template_id PK
+        text allow_custom_value
+        text field_name
+        text maximum_value_length
+        text minimum_value_length
+        text value_type
+    }
+    measurement_survey_question_template {
+        text id PK
+        text profile_id FK
+        text category
+        text locale
+        text maximum_qualifying_responses
+        text maximum_question_responses
+        text minimum_qualifying_responses
+        text minimum_question_responses
+        text objective_type
+        text priority
+        text question_text
+        text sub_category
+        text type
+        text vendor_product_id
+    }
+    campaign_conversion_tracking_product {
+        text product_id PK
+        text advertiser_id PK
+        text campaign_list_id PK
+        text profile_id PK
+        text domain
+        text product_association
+    }
+    audio_and_video {
+        text _fivetran_id PK
+        text creative_id FK
+        text line_item_id FK
+        text order_id FK
+        text profile_id FK
+        text advertiser_id
+        text advertiser_name
+        text content_genre
+        text content_rating
+        text cost_per_thousand_impressions
+        text creative_name
+        text gross_impressions
+        text impressions
+        text interval_end
+        text interval_start
+        text invalid_impressions
+        text line_item_name
+        text order_name
+        text supply_source
+        text supply_source_id
+    }
+    tech {
+        text _fivetran_id PK
+        text line_item_id FK
+        text order_id FK
+        text profile_id FK
+        text add_to_cart
+        text add_to_cart_clicks
+        text add_to_cart_views
+        text add_to_list
+        text add_to_list_clicks
+        text add_to_list_views
+        text add_to_shopping_cart
+        text add_to_shopping_cart_clicks
+        text add_to_shopping_cart_value_average
+        text add_to_shopping_cart_value_sum
+        text add_to_shopping_cart_views
+        text add_to_watchlist
+        text add_to_watchlist_clicks
+        text add_to_watchlist_views
+        text advertiser_id
+        text application
+        text application_clicks
+        text application_value_average
+        text application_value_sum
+        text application_views
+        text audio_ad_companion_banner_clicks
+        text audio_ad_companion_banner_views
+        text audio_ad_completion_rate
+        text audio_ad_completions
+        text audio_ad_first_quartile
+        text audio_ad_midpoint
+        text audio_ad_mute
+        text audio_ad_pause
+        text audio_ad_progression
+        text audio_ad_resume
+        text audio_ad_rewind
+        text audio_ad_skip
+        text audio_ad_start
+        text audio_ad_third_quartile
+        text audio_ad_unmute
+        text audio_ad_views
+        text brand_search_rate
+        text brand_searches
+        text brand_searches_clicks
+        text brand_searches_views
+        text browser_name
+        text browser_version
+        text checkout
+        text checkout_clicks
+        text checkout_value_average
+        text checkout_value_sum
+        text checkout_views
+        text click_through_rate
+        text click_to_apply
+        text click_to_apply_clicks
+        text click_to_apply_views
+        text clicks
+        text contact
+        text contact_clicks
+        text contact_value_average
+        text contact_value_sum
+        text contact_views
+        text detail_page_view_clicks
+        text detail_page_view_views
+        text detail_page_views
+        text device_name
+        text downloaded_video_plays
+        text downloaded_video_plays_clicks
+        text downloaded_video_plays_views
+        text e_cpc
+        text e_cpm
+        text ecp_audio_ad_completion
+        text ecp_brand_search
+        text ecp_skill_invocation
+        text environment_name
+        text free_trial_subscription_signup_clicks
+        text free_trial_subscription_signup_views
+        text free_trial_subscription_signups
+        text impressions
+        text interactive_impressions
+        text interval_end
+        text interval_start
+        text kindle_detail_page_view
+        text kindle_detail_page_view_clicks
+        text kindle_detail_page_view_views
+        text lead
+        text lead_clicks
+        text lead_value_average
+        text lead_value_sum
+        text lead_views
+        text line_item_comments
+        text line_item_name
+        text mobile_app_first_start_average
+        text mobile_app_first_start_clicks
+        text mobile_app_first_start_sum
+        text mobile_app_first_start_views
+        text mobile_app_first_starts
+        text new_subscribe_and_save
+        text new_subscribe_and_save_clicks
+        text new_subscribe_and_save_views
+        text new_to_brand_detail_page_view_clicks
+        text new_to_brand_detail_page_view_rate
+        text new_to_brand_detail_page_view_views
+        text new_to_brand_detail_page_views
+        text new_to_brand_ecp_detail_page_view
+        text new_to_brand_purchases
+        text new_to_brand_purchases_clicks
+        text new_to_brand_purchases_views
+        text notification_clicks
+        text notification_opens
+        text off_amazon_clicks
+        text off_amazon_purchases_clicks
+        text off_amazon_purchases_views
+        text off_amazon_views
+        text oms_line_item_id
+        text operating_system_name
+        text order_currency
+        text order_name
+        text other
+        text other_clicks
+        text other_value_average
+        text other_value_sum
+        text other_views
+        text page_view_clicks
+        text page_view_value_average
+        text page_view_value_sum
+        text page_view_views
+        text page_views
+        text paid_subscription_signup_clicks
+        text paid_subscription_signup_views
+        text paid_subscription_signups
+        text play_trailers
+        text play_trailers_clicks
+        text play_trailers_views
+        text product_review_page_visits
+        text product_review_page_visits_clicks
+        text product_review_page_visits_views
+        text purchases
+        text purchases_clicks
+        text purchases_views
+        text rentals
+        text rentals_clicks
+        text rentals_views
+        text search
+        text search_clicks
+        text search_value_average
+        text search_value_sum
+        text search_views
+        text sign_up_value_average
+        text sign_up_value_sum
+        text sign_up_views
+        text skill_invocation
+        text skill_invocation_clicks
+        text skill_invocation_rate
+        text skill_invocation_views
+        text subscribe
+        text subscribe_clicks
+        text subscribe_value_average
+        text subscribe_value_sum
+        text subscribe_views
+        text subscription_signup_clicks
+        text subscription_signup_views
+        text subscription_signups
+        text total_cost
+        text total_new_to_brand_dpv_clicks
+        text total_new_to_brand_dpv_rate
+        text total_new_to_brand_dpv_views
+        text total_new_to_brand_dpvs
+        text total_new_to_brand_ecp_detail_page_view
+        text video_ad_clicks
+        text video_ad_complete
+        text video_ad_completion_rate
+        text video_ad_creative_views
+        text video_ad_end_state_clicks
+        text video_ad_first_quartile
+        text video_ad_impressions
+        text video_ad_midpoint
+        text video_ad_mute
+        text video_ad_pause
+        text video_ad_replays
+        text video_ad_resume
+        text video_ad_skip_backs
+        text video_ad_skip_forwards
+        text video_ad_start
+        text video_ad_third_quartile
+        text video_ad_unmute
+        text video_downloads
+        text video_downloads_clicks
+        text video_downloads_views
+        text video_streams
+        text video_streams_clicks
+        text video_streams_views
+    }
+    reach_and_frequency {
+        text _fivetran_id PK
+        text profile_id FK
+        text advertiser_id
+        text date
+        text frequency_average
+        text frequency_group_id
+        text frequency_group_name
+        text interval_end
+        text interval_start
+        text reach
+    }
+    audience {
+        text _fivetran_id PK
+        text line_item_id FK
+        text order_id FK
+        text profile_id FK
+        text add_to_cart
+        text add_to_cart_clicks
+        text add_to_cart_rate
+        text add_to_cart_views
+        text add_to_list
+        text add_to_list_clicks
+        text add_to_list_rate
+        text add_to_list_views
+        text add_to_shopping_cart
+        text add_to_shopping_cart_clicks
+        text add_to_shopping_cart_cpa
+        text add_to_shopping_cart_cvr
+        text add_to_shopping_cart_value_average
+        text add_to_shopping_cart_value_sum
+        text add_to_shopping_cart_views
+        text add_to_watchlist
+        text add_to_watchlist_clicks
+        text add_to_watchlist_rate
+        text add_to_watchlist_views
+        text advertiser_id
+        text amazon_dsp_audience_fee
+        text amazon_dsp_console_fee
+        text application
+        text application_clicks
+        text application_cpa
+        text application_cvr
+        text application_value_average
+        text application_value_sum
+        text application_views
+        text audio_ad_companion_banner_clicks
+        text audio_ad_companion_banner_views
+        text audio_ad_completion_rate
+        text audio_ad_completions
+        text audio_ad_first_quartile
+        text audio_ad_midpoint
+        text audio_ad_mute
+        text audio_ad_pause
+        text audio_ad_progression
+        text audio_ad_resume
+        text audio_ad_rewind
+        text audio_ad_skip
+        text audio_ad_start
+        text audio_ad_third_quartile
+        text audio_ad_unmute
+        text audio_ad_views
+        text average_cost_per_click_to_apply
+        text average_cost_per_kindle_detail_page_view
+        text brand_search_rate
+        text brand_searches
+        text brand_searches_clicks
+        text brand_searches_views
+        text checkout
+        text checkout_clicks
+        text checkout_cpa
+        text checkout_cvr
+        text checkout_value_average
+        text checkout_value_sum
+        text checkout_views
+        text click_through_rate
+        text click_to_apply
+        text click_to_apply_clicks
+        text click_to_apply_conversion_rate
+        text click_to_apply_views
+        text clicks
+        text contact
+        text contact_clicks
+        text contact_cpa
+        text contact_cvr
+        text contact_value_average
+        text contact_value_sum
+        text contact_views
+        text detail_page_view_clicks
+        text detail_page_view_rate
+        text detail_page_view_rate_promoted_clicks
+        text detail_page_view_views
+        text detail_page_views
+        text downloaded_video_play_rate
+        text downloaded_video_plays
+        text downloaded_video_plays_clicks
+        text downloaded_video_plays_views
+        text ecp_add_to_cart
+        text ecp_add_to_list
+        text ecp_add_to_watchlist
+        text ecp_audio_ad_completion
+        text ecp_brand_search
+        text ecp_detail_page_view
+        text ecp_downloaded_video_plays
+        text ecp_free_trial_subscription_signup
+        text ecp_new_subscribe_and_save
+        text ecp_paid_subscription_signup
+        text ecp_play_trailer
+        text ecp_product_review_page_visit
+        text ecp_rental
+        text ecp_subscription_signup
+        text ecp_video_ad_completion
+        text ecp_video_download
+        text ecp_video_stream
+        text ecpc
+        text ecpm
+        text ecpp
+        text effective_cost_per_detail_page_view_promoted_clicks
+        text effective_cost_per_purchase_promoted_clicks
+        text effective_cost_per_skill_invocation
+        text free_trial_subscription_signup_clicks
+        text free_trial_subscription_signup_rate
+        text free_trial_subscription_signup_views
+        text free_trial_subscription_signups
+        text impressions
+        text interactive_impressions
+        text interval_end
+        text interval_start
+        text kindle_detail_page_view
+        text kindle_detail_page_view_clicks
+        text kindle_detail_page_view_rate
+        text kindle_detail_page_view_views
+        text lead
+        text lead_clicks
+        text lead_cpa
+        text lead_cvr
+        text lead_value_average
+        text lead_value_sum
+        text lead_views
+        text line_item_comments
+        text line_item_name
+        text line_item_type
+        text master_clicks
+        text master_impressions
+        text mobile_app_first_start_clicks
+        text mobile_app_first_start_cpa
+        text mobile_app_first_start_cvr
+        text mobile_app_first_start_views
+        text mobile_app_first_starts
+        text new_subscribe_and_save
+        text new_subscribe_and_save_clicks
+        text new_subscribe_and_save_rate
+        text new_subscribe_and_save_views
+        text new_to_brand_detail_page_view_clicks
+        text new_to_brand_detail_page_view_rate
+        text new_to_brand_detail_page_view_views
+        text new_to_brand_detail_page_views
+        text new_to_brand_ecp_detail_page_view
+        text new_to_brand_ecpp
+        text new_to_brand_purchase_rate
+        text new_to_brand_purchases
+        text new_to_brand_purchases_clicks
+        text new_to_brand_purchases_percentage
+        text new_to_brand_purchases_views
+        text notification_clicks
+        text notification_opens
+        text off_amazon_clicks
+        text off_amazon_ecpp
+        text off_amazon_purchases_clicks
+        text off_amazon_purchases_views
+        text off_amazon_views
+        text oms_line_item_id
+        text oms_proposal_id
+        text order_currency
+        text order_name
+        text other
+        text other_clicks
+        text other_cpa
+        text other_cvr
+        text other_value_average
+        text other_value_sum
+        text other_views
+        text page_view_clicks
+        text page_view_cpa
+        text page_view_cvr
+        text page_view_value_average
+        text page_view_value_sum
+        text page_view_views
+        text page_views
+        text paid_subscription_signup_clicks
+        text paid_subscription_signup_rate
+        text paid_subscription_signup_views
+        text paid_subscription_signups
+        text play_trailer_rate
+        text play_trailers
+        text play_trailers_clicks
+        text play_trailers_views
+        text product_review_page_visit_rate
+        text product_review_page_visits
+        text product_review_page_visits_clicks
+        text product_review_page_visits_views
+        text purchase_rate
+        text purchases
+        text purchases_clicks
+        text purchases_clicks_rate
+        text purchases_views
+        text rental_rate
+        text rentals
+        text rentals_clicks
+        text rentals_views
+        text search
+        text search_clicks
+        text search_cpa
+        text search_cvr
+        text search_value_average
+        text search_value_sum
+        text search_views
+        text segment_class_code
+        text segment_id
+        text segment_marketplace_id
+        text segment_name
+        text segment_source
+        text segment_type
+        text sign_up_cpa
+        text sign_up_cvr
+        text sign_up_value_average
+        text sign_up_value_sum
+        text sign_up_views
+        text skill_invocation
+        text skill_invocation_clicks
+        text skill_invocation_rate
+        text skill_invocation_views
+        text subscribe
+        text subscribe_clicks
+        text subscribe_cpa
+        text subscribe_cvr
+        text subscribe_value_average
+        text subscribe_value_sum
+        text subscribe_views
+        text subscription_signup_clicks
+        text subscription_signup_rate
+        text subscription_signup_views
+        text subscription_signups
+        text supply_cost
+        text targeting_method
+        text total_cost
+        text total_new_to_brand_dpv_clicks
+        text total_new_to_brand_dpv_rate
+        text total_new_to_brand_dpv_views
+        text total_new_to_brand_dpvs
+        text total_new_to_brand_ecp_detail_page_view
+        text video_ad_clicks
+        text video_ad_complete
+        text video_ad_completion_rate
+        text video_ad_creative_views
+        text video_ad_end_state_clicks
+        text video_ad_first_quartile
+        text video_ad_impressions
+        text video_ad_midpoint
+        text video_ad_mute
+        text video_ad_pause
+        text video_ad_replays
+        text video_ad_resume
+        text video_ad_skip_backs
+        text video_ad_skip_forwards
+        text video_ad_start
+        text video_ad_third_quartile
+        text video_ad_unmute
+        text video_download_rate
+        text video_downloads
+        text video_downloads_clicks
+        text video_downloads_views
+        text video_streams
+        text video_streams_clicks
+        text video_streams_rate
+        text video_streams_views
+    }
+    campaign {
+        text _fivetran_id PK
+        text advertiser_id FK
+        text creative_id FK
+        text order_id FK
+        text profile_id FK
+        text add_to_list_clicks
+        text add_to_shopping_cart_clicks
+        text add_to_watchlist_rate
+        text app_store_first_opens_views
+        text app_store_opens
+        text application_clicks
+        text application_value_average
+        text audio_ad_companion_banner_views
+        text audio_ad_completion_rate
+        text audio_ad_first_quartile
+        text audio_ad_midpoint
+        text audio_ad_rewind
+        text audio_ad_unmute
+        text checkout_clicks
+        text checkout_value_average
+        text checkout_value_sum
+        text checkout_views
+        text click_through_rate
+        text combined_purchases_views
+        text contact_cvr
+        text contact_value_average
+        text creative_ad_id
+        text date
+        text detail_page_view_clicks
+        text downloaded_video_plays
+        text ecp_add_to_cart
+        text ecp_add_to_list
+        text ecp_app_store_first_opens
+        text ecp_paid_subscription_signup
+        text free_trial_subscription_signup_rate
+        text gross_click_throughs
+        text gross_impressions
+        text household_frequency_average
+        text impression_frequency_average
+        text interval_end
+        text interval_start
+        text invalid_click_throughs
+        text invalid_impressions
+        text lead_cpa
+        text line_item_external_id
+        text line_item_id
+        text measurable_impressions
+        text mobile_app_first_start_clicks
+        text mobile_app_first_start_cvr
+        text mobile_app_first_starts
+        text new_to_brand_detail_page_view_clicks
+        text new_to_brand_detail_page_view_rate
+        text new_to_brand_detail_page_views
+        text new_to_brand_ecp_detail_page_view
+        text new_to_brand_erpm
+        text notification_opens
+        text off_amazon_cpa
+        text off_amazon_erpm
+        text off_amazon_roas
+        text omnichannel_metrics_fee
+        text order_budget
+        text order_name
+        text other_clicks
+        text other_cpa
+        text page_view_cvr
+        text page_view_value_average
+        text paid_subscription_signup_clicks
+        text paid_subscription_signup_views
+        text play_trailers_clicks
+        text product_review_page_visits_views
+        text proposal_id
+        text rental_rate
+        text search
+        text search_cvr
+        text sign_up_cpa
+        text skill_invocation_clicks
+        text skill_invocation_rate
+        text skill_invocation_views
+        text subscribe_clicks
+        text subscribe_cpa
+        text subscription_signup_rate
+        text third_party_fee_automotive_absorbed
+        text third_party_fee_com_score
+        text third_party_fee_com_score_absorbed
+        text third_party_fee_cpm_1_absorbed
+        text third_party_fees
+        text third_party_pre_bid_fee
+        text total_add_to_list_views
+        text total_cost
+        text total_ecp_add_to_list
+        text total_ecp_detail_page_view
+        text total_new_to_brand_ecp_detail_page_view
+        text total_new_to_brand_purchases_clicks
+        text total_new_to_brand_purchases_percentage
+        text total_product_review_page_visits
+        text total_product_review_page_visits_clicks
+        text total_purchase_rate
+        text total_purchases
+        text total_purchases_clicks
+        text total_purchases_views
+        text total_sales
+        text total_units_sold
+        text units_sold
+        text video_ad_completion_rate
+        text video_ad_midpoint
+        text video_ad_third_quartile
+        text video_ad_unmute
+        text video_downloads_clicks
+        text video_downloads_views
+        text viewability_rate
+    }
+    inventory {
+        text _fivetran_id PK
+        text line_item_id FK
+        text order_id FK
+        text profile_id FK
+        text add_to_cart
+        text add_to_cart_clicks
+        text add_to_cart_rate
+        text add_to_cart_views
+        text add_to_list
+        text add_to_list_clicks
+        text add_to_list_rate
+        text add_to_list_views
+        text add_to_shopping_cart
+        text add_to_shopping_cart_clicks
+        text add_to_shopping_cart_cpa
+        text add_to_shopping_cart_cvr
+        text add_to_shopping_cart_value_average
+        text add_to_shopping_cart_value_sum
+        text add_to_shopping_cart_views
+        text add_to_watchlist
+        text add_to_watchlist_clicks
+        text add_to_watchlist_rate
+        text add_to_watchlist_views
+        text advertiser_country
+        text advertiser_id
+        text advertiser_timezone
+        text agency_fee
+        text amazon_dsp_audience_fee
+        text amazon_dsp_console_fee
+        text application
+        text application_clicks
+        text application_cpa
+        text application_cvr
+        text application_value_average
+        text application_value_sum
+        text application_views
+        text audio_ad_companion_banner_clicks
+        text audio_ad_companion_banner_views
+        text audio_ad_completion_rate
+        text audio_ad_completions
+        text audio_ad_first_quartile
+        text audio_ad_midpoint
+        text audio_ad_mute
+        text audio_ad_pause
+        text audio_ad_progression
+        text audio_ad_resume
+        text audio_ad_rewind
+        text audio_ad_skip
+        text audio_ad_start
+        text audio_ad_third_quartile
+        text audio_ad_unmute
+        text audio_ad_views
+        text brand_search_rate
+        text brand_searches
+        text brand_searches_clicks
+        text brand_searches_views
+        text checkout
+        text checkout_clicks
+        text checkout_cpa
+        text checkout_cvr
+        text checkout_value_average
+        text checkout_value_sum
+        text checkout_views
+        text click_through_rate
+        text clicks
+        text combined_ecpp
+        text combined_erp_m
+        text combined_product_sales
+        text combined_purchase_rate
+        text combined_purchases
+        text combined_purchases_clicks
+        text combined_purchases_views
+        text combined_roas
+        text combined_units_sold
+        text contact
+        text contact_clicks
+        text contact_cpa
+        text contact_cvr
+        text contact_value_average
+        text contact_value_sum
+        text contact_views
+        text creative_id
+        text creative_type
+        text deal_id
+        text detail_page_view_clicks
+        text detail_page_view_rate
+        text detail_page_view_views
+        text detail_page_views
+        text downloaded_video_play_rate
+        text downloaded_video_plays
+        text downloaded_video_plays_clicks
+        text downloaded_video_plays_views
+        text ecp_add_to_cart
+        text ecp_add_to_list
+        text ecp_add_to_watchlist
+        text ecp_audio_ad_completion
+        text ecp_brand_search
+        text ecp_detail_page_view
+        text ecp_downloaded_video_plays
+        text ecp_free_trial_subscription_signup
+        text ecp_new_subscribe_and_save
+        text ecp_paid_subscription_signup
+        text ecp_play_trailer
+        text ecp_product_review_page_visit
+        text ecp_rental
+        text ecp_skill_invocation
+        text ecp_subscription_signup
+        text ecp_video_ad_completion
+        text ecp_video_download
+        text ecp_video_stream
+        text ecpc
+        text ecpm
+        text ecpp
+        text entity_id
+        text erp_m
+        text free_trial_subscription_signup_clicks
+        text free_trial_subscription_signup_rate
+        text free_trial_subscription_signup_views
+        text free_trial_subscription_signups
+        text gross_click_throughs
+        text gross_impressions
+        text impressions
+        text interactive_impressions
+        text interval_end
+        text interval_start
+        text invalid_click_through_rate
+        text invalid_click_throughs
+        text invalid_impression_rate
+        text invalid_impressions
+        text lead
+        text lead_clicks
+        text lead_cpa
+        text lead_cvr
+        text lead_value_average
+        text lead_value_sum
+        text lead_views
+        text line_item_external_id
+        text marketplace
+        text measurable_impressions
+        text measurable_rate
+        text mobile_app_first_start_clicks
+        text mobile_app_first_start_cpa
+        text mobile_app_first_start_cvr
+        text mobile_app_first_start_views
+        text mobile_app_first_starts
+        text new_subscribe_and_save
+        text new_subscribe_and_save_clicks
+        text new_subscribe_and_save_rate
+        text new_subscribe_and_save_views
+        text new_to_brand_detail_page_view_clicks
+        text new_to_brand_detail_page_view_rate
+        text new_to_brand_detail_page_view_views
+        text new_to_brand_detail_page_views
+        text new_to_brand_ecp_detail_page_view
+        text new_to_brand_ecpp
+        text new_to_brand_erp_m
+        text new_to_brand_product_sales
+        text new_to_brand_purchase_rate
+        text new_to_brand_purchases
+        text new_to_brand_purchases_clicks
+        text new_to_brand_purchases_views
+        text new_to_brand_roas
+        text new_to_brand_units_sold
+        text notification_clicks
+        text notification_opens
+        text off_amazon_clicks
+        text off_amazon_conversions
+        text off_amazon_cpa
+        text off_amazon_cvr
+        text off_amazon_ecpp
+        text off_amazon_erp_m
+        text off_amazon_product_sales
+        text off_amazon_purchase_rate
+        text off_amazon_purchases
+        text off_amazon_purchases_clicks
+        text off_amazon_purchases_views
+        text off_amazon_roas
+        text off_amazon_units_sold
+        text off_amazon_views
+        text order_external_id
+        text other
+        text other_clicks
+        text other_cpa
+        text other_cvr
+        text other_value_average
+        text other_value_sum
+        text other_views
+        text page_view_clicks
+        text page_view_cpa
+        text page_view_cvr
+        text page_view_value_average
+        text page_view_value_sum
+        text page_view_views
+        text page_views
+        text paid_subscription_signup_clicks
+        text paid_subscription_signup_rate
+        text paid_subscription_signup_views
+        text paid_subscription_signups
+        text placement
+        text play_trailer_rate
+        text play_trailers
+        text play_trailers_clicks
+        text play_trailers_views
+        text product_review_page_visit_rate
+        text product_review_page_visits
+        text product_review_page_visits_clicks
+        text product_review_page_visits_views
+        text purchase_rate
+        text purchases
+        text purchases_clicks
+        text purchases_views
+        text rental_rate
+        text rentals
+        text rentals_clicks
+        text rentals_views
+        text roas
+        text sales
+        text search
+        text search_clicks
+        text search_cpa
+        text search_cvr
+        text search_value_average
+        text search_value_sum
+        text search_views
+        text sign_up_cpa
+        text sign_up_cvr
+        text sign_up_value_average
+        text sign_up_value_sum
+        text sign_up_views
+        text site
+        text skill_invocation
+        text skill_invocation_clicks
+        text skill_invocation_rate
+        text skill_invocation_views
+        text subscribe
+        text subscribe_clicks
+        text subscribe_cpa
+        text subscribe_cvr
+        text subscribe_value_average
+        text subscribe_value_sum
+        text subscribe_views
+        text subscription_signup_clicks
+        text subscription_signup_rate
+        text subscription_signup_views
+        text subscription_signups
+        text supply_cost
+        text supply_source
+        text three_p_fee_automotive
+        text three_p_fee_automotive_absorbed
+        text three_p_fee_com_score
+        text three_p_fee_com_score_absorbed
+        text three_p_fee_cpm_1
+        text three_p_fee_cpm_1_absorbed
+        text three_p_fee_cpm_2
+        text three_p_fee_cpm_2_absorbed
+        text three_p_fee_cpm_3
+        text three_p_fee_cpm_3_absorbed
+        text three_p_fee_double_verify
+        text three_p_fee_double_verify_absorbed
+        text three_p_fee_doubleclick_campaign_manager
+        text three_p_fee_doubleclick_campaign_manager_absorbed
+        text three_p_fee_integral_ad_science
+        text three_p_fee_integral_ad_science_absorbed
+        text three_p_fees
+        text total_add_to_cart
+        text total_add_to_cart_clicks
+        text total_add_to_cart_rate
+        text total_add_to_cart_views
+        text total_add_to_list
+        text total_add_to_list_clicks
+        text total_add_to_list_rate
+        text total_add_to_list_views
+        text total_cost
+        text total_detail_page_view
+        text total_detail_page_view_clicks
+        text total_detail_page_view_rate
+        text total_detail_page_view_views
+        text total_ecp_add_to_cart
+        text total_ecp_add_to_list
+        text total_ecp_detail_page_view
+        text total_ecp_product_review_page_visit
+        text total_ecp_subscribe_and_save
+        text total_ecpp
+        text total_erp_m
+        text total_fee
+        text total_new_to_brand_dp_vs
+        text total_new_to_brand_dpv_clicks
+        text total_new_to_brand_dpv_rate
+        text total_new_to_brand_dpv_views
+        text total_new_to_brand_ecp_detail_page_view
+        text total_new_to_brand_ecpp
+        text total_new_to_brand_erp_m
+        text total_new_to_brand_purchase_rate
+        text total_new_to_brand_purchases
+        text total_new_to_brand_purchases_clicks
+        text total_new_to_brand_purchases_views
+        text total_new_to_brand_roas
+        text total_new_to_brand_sales
+        text total_new_to_brand_units_sold
+        text total_product_review_page_visit_rate
+        text total_product_review_page_visits
+        text total_product_review_page_visits_clicks
+        text total_product_review_page_visits_views
+        text total_purchase_rate
+        text total_purchases
+        text total_purchases_clicks
+        text total_purchases_views
+        text total_roas
+        text total_sales
+        text total_subscribe_and_save
+        text total_subscribe_and_save_clicks
+        text total_subscribe_and_save_rate
+        text total_subscribe_and_save_views
+        text total_units_sold
+        text units_sold
+        text video_ad_clicks
+        text video_ad_complete
+        text video_ad_completion_rate
+        text video_ad_creative_views
+        text video_ad_end_state_clicks
+        text video_ad_first_quartile
+        text video_ad_impressions
+        text video_ad_midpoint
+        text video_ad_mute
+        text video_ad_pause
+        text video_ad_replays
+        text video_ad_resume
+        text video_ad_skip_backs
+        text video_ad_skip_forwards
+        text video_ad_start
+        text video_ad_third_quartile
+        text video_ad_unmute
+        text video_download_rate
+        text video_downloads
+        text video_downloads_clicks
+        text video_downloads_views
+        text video_streams
+        text video_streams_clicks
+        text video_streams_rate
+        text video_streams_views
+        text viewability_rate
+        text viewable_impressions
+    }
+    bid_adjustment {
+        text _fivetran_id PK
+        text profile_id FK
+        text advertiser_id
+        text bid_adjustment
+        text bid_adjustment_matched_term
+        text bid_adjustment_matched_term_id
+        text bid_adjustment_rule
+        text bid_adjustment_rule_id
+        text bid_adjustment_rule_version_id
+        text bids
+        text date
+        text line_item_id
+        text line_item_name
+        text match_rate
+        text order_id
+        text win_rate
+    }
+    geo {
+        text _fivetran_id PK
+        text line_item_id FK
+        text order_id FK
+        text profile_id FK
+        text add_to_cart
+        text add_to_cart_clicks
+        text add_to_cart_views
+        text add_to_list
+        text add_to_list_clicks
+        text add_to_list_views
+        text add_to_shopping_cart
+        text add_to_shopping_cart_clicks
+        text add_to_shopping_cart_value_average
+        text add_to_shopping_cart_value_sum
+        text add_to_shopping_cart_views
+        text add_to_watchlist
+        text add_to_watchlist_clicks
+        text add_to_watchlist_views
+        text advertiser_id
+        text agency_fee
+        text app_subscription_cost
+        text app_subscription_free_trial_cost
+        text app_subscription_sign_up
+        text app_subscription_sign_up_clicks
+        text app_subscription_sign_up_free_trial
+        text app_subscription_sign_up_free_trial_clicks
+        text app_subscription_sign_up_free_trial_rate
+        text app_subscription_sign_up_free_trial_views
+        text app_subscription_sign_up_paid
+        text app_subscription_sign_up_paid_clicks
+        text app_subscription_sign_up_paid_cost
+        text app_subscription_sign_up_paid_rate
+        text app_subscription_sign_up_paid_views
+        text app_subscription_sign_up_rate
+        text app_subscription_sign_up_views
+        text application
+        text application_clicks
+        text application_value_average
+        text application_value_sum
+        text application_views
+        text audio_ad_companion_banner_clicks
+        text audio_ad_companion_banner_views
+        text audio_ad_completion_rate
+        text audio_ad_completions
+        text audio_ad_first_quartile
+        text audio_ad_midpoint
+        text audio_ad_mute
+        text audio_ad_pause
+        text audio_ad_progression
+        text audio_ad_resume
+        text audio_ad_rewind
+        text audio_ad_skip
+        text audio_ad_start
+        text audio_ad_third_quartile
+        text audio_ad_unmute
+        text audio_ad_views
+        text brand_search_rate
+        text brand_searches
+        text brand_searches_clicks
+        text brand_searches_views
+        text checkout
+        text checkout_clicks
+        text checkout_value_average
+        text checkout_value_sum
+        text checkout_views
+        text city
+        text click_through_rate
+        text click_to_apply
+        text click_to_apply_clicks
+        text click_to_apply_views
+        text clicks
+        text combined_product_sales
+        text combined_purchases
+        text combined_purchases_clicks
+        text combined_purchases_views
+        text combined_units_sold
+        text contact
+        text contact_clicks
+        text contact_value_average
+        text contact_value_sum
+        text contact_views
+        text country
+        text detail_page_view_clicks
+        text detail_page_view_views
+        text detail_page_views
+        text dma_code
+        text dma_name
+        text downloaded_video_plays
+        text downloaded_video_plays_clicks
+        text downloaded_video_plays_views
+        text ecp_audio_ad_completion
+        text ecp_brand_search
+        text ecp_skill_invocation
+        text ecpc
+        text ecpm
+        text free_trial_subscription_signup_clicks
+        text free_trial_subscription_signup_views
+        text free_trial_subscription_signups
+        text gross_click_throughs
+        text gross_impressions
+        text impressions
+        text interactive_impressions
+        text interval_end
+        text interval_start
+        text invalid_click_through_rate
+        text invalid_click_throughs
+        text invalid_impression_rate
+        text invalid_impressions
+        text kindle_detail_page_view
+        text kindle_detail_page_view_clicks
+        text kindle_detail_page_view_views
+        text lead
+        text lead_clicks
+        text lead_value_average
+        text lead_value_sum
+        text lead_views
+        text line_item_budget
+        text line_item_comments
+        text line_item_end_date
+        text line_item_name
+        text line_item_start_date
+        text mobile_app_first_start_average
+        text mobile_app_first_start_clicks
+        text mobile_app_first_start_sum
+        text mobile_app_first_start_views
+        text mobile_app_first_starts
+        text new_subscribe_and_save
+        text new_subscribe_and_save_clicks
+        text new_subscribe_and_save_views
+        text new_to_brand_detail_page_view_clicks
+        text new_to_brand_detail_page_view_rate
+        text new_to_brand_detail_page_view_views
+        text new_to_brand_detail_page_views
+        text new_to_brand_ecp_detail_page_view
+        text new_to_brand_purchases
+        text new_to_brand_purchases_clicks
+        text new_to_brand_purchases_views
+        text new_to_brand_units_sold
+        text notification_clicks
+        text notification_opens
+        text off_amazon_clicks
+        text off_amazon_purchases_clicks
+        text off_amazon_purchases_views
+        text off_amazon_units_sold
+        text off_amazon_views
+        text oms_line_item_id
+        text order_budget
+        text order_currency
+        text order_end_date
+        text order_name
+        text order_start_date
+        text other
+        text other_clicks
+        text other_value_average
+        text other_value_sum
+        text other_views
+        text page_view_clicks
+        text page_view_value_average
+        text page_view_value_sum
+        text page_view_views
+        text page_views
+        text paid_subscription_signup_clicks
+        text paid_subscription_signup_views
+        text paid_subscription_signups
+        text play_trailers
+        text play_trailers_clicks
+        text play_trailers_views
+        text postal_code
+        text product_review_page_visits
+        text product_review_page_visits_clicks
+        text product_review_page_visits_views
+        text purchases
+        text purchases_clicks
+        text purchases_views
+        text region
+        text rentals
+        text rentals_clicks
+        text rentals_views
+        text sales_clicks
+        text sales_promoted_clicks
+        text search
+        text search_clicks
+        text search_value_average
+        text search_value_sum
+        text search_views
+        text sign_up_value_average
+        text sign_up_value_sum
+        text sign_up_views
+        text skill_invocation
+        text skill_invocation_clicks
+        text skill_invocation_rate
+        text skill_invocation_views
+        text subscribe
+        text subscribe_clicks
+        text subscribe_value_average
+        text subscribe_value_sum
+        text subscribe_views
+        text subscription_signup_clicks
+        text subscription_signup_views
+        text subscription_signups
+        text total_add_to_cart
+        text total_add_to_cart_clicks
+        text total_add_to_cart_views
+        text total_add_to_list
+        text total_add_to_list_clicks
+        text total_add_to_list_views
+        text total_cost
+        text total_detail_page_view
+        text total_detail_page_view_clicks
+        text total_detail_page_view_views
+        text total_new_to_brand_dpv_clicks
+        text total_new_to_brand_dpv_rate
+        text total_new_to_brand_dpv_views
+        text total_new_to_brand_dpvs
+        text total_new_to_brand_ecp_detail_page_view
+        text total_new_to_brand_purchases
+        text total_new_to_brand_purchases_clicks
+        text total_new_to_brand_purchases_views
+        text total_new_to_brand_units_sold
+        text total_product_review_page_visits
+        text total_product_review_page_visits_clicks
+        text total_product_review_page_visits_views
+        text total_purchases
+        text total_purchases_clicks
+        text total_purchases_views
+        text total_subscribe_and_save
+        text total_subscribe_and_save_clicks
+        text total_subscribe_and_save_views
+        text total_units_sold
+        text units_sold
+        text units_sold_clicks
+        text units_sold_promoted_clicks
+        text video_ad_clicks
+        text video_ad_complete
+        text video_ad_completion_rate
+        text video_ad_creative_views
+        text video_ad_end_state_clicks
+        text video_ad_first_quartile
+        text video_ad_impressions
+        text video_ad_midpoint
+        text video_ad_mute
+        text video_ad_pause
+        text video_ad_replays
+        text video_ad_resume
+        text video_ad_skip_backs
+        text video_ad_skip_forwards
+        text video_ad_start
+        text video_ad_third_quartile
+        text video_ad_unmute
+        text video_downloads
+        text video_downloads_clicks
+        text video_downloads_views
+        text video_streams
+        text video_streams_clicks
+        text video_streams_views
+        text viewable_impressions
+    }
+    product {
+        text _fivetran_id PK
+        text line_item_id FK
+        text order_id FK
+        text profile_id FK
+        text add_to_cart
+        text add_to_cart_brand_halo
+        text add_to_cart_brand_halo_clicks
+        text add_to_cart_brand_halo_views
+        text add_to_cart_clicks
+        text add_to_cart_views
+        text add_to_list
+        text add_to_list_brand_halo
+        text add_to_list_brand_halo_clicks
+        text add_to_list_brand_halo_views
+        text add_to_list_clicks
+        text add_to_list_views
+        text advertiser_id
+        text app_store_first_opens
+        text app_store_first_opens_clicks
+        text app_store_first_opens_views
+        text app_store_first_session_hours
+        text app_store_first_session_hours_clicks
+        text app_store_first_session_hours_views
+        text app_store_opens
+        text app_store_opens_clicks
+        text app_store_opens_views
+        text app_store_usage_hours
+        text app_store_usage_hours_clicks
+        text app_store_usage_hours_views
+        text app_subscription_sign_up
+        text app_subscription_sign_up_clicks
+        text app_subscription_sign_up_free_trial
+        text app_subscription_sign_up_free_trial_clicks
+        text app_subscription_sign_up_free_trial_views
+        text app_subscription_sign_up_paid
+        text app_subscription_sign_up_paid_clicks
+        text app_subscription_sign_up_paid_views
+        text app_subscription_sign_up_views
+        text asin
+        text audio_ad_companion_banner_clicks
+        text audio_ad_companion_banner_views
+        text audio_ad_completion_rate
+        text audio_ad_completions
+        text audio_ad_first_quartile
+        text audio_ad_midpoint
+        text audio_ad_mute
+        text audio_ad_pause
+        text audio_ad_progression
+        text audio_ad_resume
+        text audio_ad_rewind
+        text audio_ad_skip
+        text audio_ad_start
+        text audio_ad_third_quartile
+        text audio_ad_unmute
+        text audio_ad_views
+        text brand_name
+        text click_to_apply
+        text click_to_apply_brand_halo
+        text click_to_apply_brand_halo_clicks
+        text click_to_apply_brand_halo_views
+        text click_to_apply_clicks
+        text click_to_apply_views
+        text conversion_type
+        text detail_page_view_brand_halo
+        text detail_page_view_brand_halo_clicks
+        text detail_page_view_brand_halo_views
+        text detail_page_view_clicks
+        text detail_page_view_views
+        text detail_page_views
+        text e_c_p_audio_ad_completion
+        text e_c_p_skill_invocation
+        text effective_cost_per_skill_invocation
+        text eink_detail_page_view
+        text eink_detail_page_view_brand_halo
+        text eink_detail_page_view_brand_halo_clicks
+        text eink_detail_page_view_brand_halo_views
+        text eink_detail_page_view_clicks
+        text eink_detail_page_view_views
+        text featured_asin
+        text free_trial_subscription_signup_clicks
+        text free_trial_subscription_signup_views
+        text free_trial_subscription_signups
+        text interactive_impressions
+        text interval_end
+        text interval_start
+        text line_item_budget
+        text line_item_comments
+        text line_item_end_date
+        text line_item_name
+        text line_item_start_date
+        text marketplace
+        text new_subscribe_and_save
+        text new_subscribe_and_save_brand_halo
+        text new_subscribe_and_save_brand_halo_clicks
+        text new_subscribe_and_save_brand_halo_views
+        text new_subscribe_and_save_clicks
+        text new_subscribe_and_save_views
+        text new_to_brand_detail_page_view_clicks
+        text new_to_brand_detail_page_view_rate
+        text new_to_brand_detail_page_view_views
+        text new_to_brand_detail_page_views
+        text new_to_brand_ecp_detail_page_view
+        text new_to_brand_purchase_percentage_brand_halo
+        text new_to_brand_purchases
+        text new_to_brand_purchases_brand_halo
+        text new_to_brand_purchases_brand_halo_clicks
+        text new_to_brand_purchases_brand_halo_views
+        text new_to_brand_purchases_clicks
+        text new_to_brand_purchases_percentage
+        text new_to_brand_purchases_views
+        text new_to_brand_units_sold
+        text new_to_brand_units_sold_brand_halo
+        text notification_clicks
+        text notification_opens
+        text oms_line_item_id
+        text oms_proposal_id
+        text order_budget
+        text order_currency
+        text order_end_date
+        text order_name
+        text order_start_date
+        text paid_subscription_signup_clicks
+        text paid_subscription_signup_views
+        text paid_subscription_signups
+        text parent_asin
+        text product_category
+        text product_group
+        text product_name
+        text product_review_page_view_brand_halo
+        text product_review_page_view_brand_halo_clicks
+        text product_review_page_view_brand_halo_views
+        text product_review_page_visits
+        text product_review_page_visits_clicks
+        text product_review_page_visits_views
+        text product_sub_category
+        text purchases
+        text purchases_brand_halo
+        text purchases_brand_halo_clicks
+        text purchases_brand_halo_views
+        text purchases_clicks
+        text purchases_views
+        text report_granularity
+        text sales_clicks
+        text sales_promoted_clicks
+        text skill_invocation
+        text skill_invocation_clicks
+        text skill_invocation_rate
+        text skill_invocation_views
+        text subscription_signup_clicks
+        text subscription_signup_views
+        text subscription_signups
+        text total_add_to_cart
+        text total_add_to_cart_clicks
+        text total_add_to_cart_views
+        text total_add_to_list
+        text total_add_to_list_clicks
+        text total_add_to_list_views
+        text total_detail_page_view
+        text total_detail_page_view_clicks
+        text total_detail_page_view_views
+        text total_new_to_brand_d_p_v_clicks
+        text total_new_to_brand_d_p_v_rate
+        text total_new_to_brand_d_p_v_views
+        text total_new_to_brand_d_p_vs
+        text total_new_to_brand_ecp_detail_page_view
+        text total_new_to_brand_purchases
+        text total_new_to_brand_purchases_clicks
+        text total_new_to_brand_purchases_percentage
+        text total_new_to_brand_purchases_views
+        text total_new_to_brand_units_sold
+        text total_product_review_page_visits
+        text total_product_review_page_visits_clicks
+        text total_product_review_page_visits_views
+        text total_purchases
+        text total_purchases_clicks
+        text total_purchases_views
+        text total_subscribe_and_save
+        text total_subscribe_and_save_clicks
+        text total_subscribe_and_save_views
+        text total_units_sold
+        text units_sold
+        text units_sold_brand_halo
+        text units_sold_clicks
+        text units_sold_promoted_clicks
+        text video_ad_clicks
+        text video_ad_creative_views
+        text video_ad_end_state_clicks
+        text video_ad_impressions
+        text video_ad_replays
+        text video_ad_skip_backs
+        text video_ad_skip_forwards
+    }
+    domain_list }o--|| profile : "fk"
+    third_party_target_segment }o--|| advertiser : "fk"
+    third_party_target_segment }o--|| advertiser : "fk"
+    advertised_product_category }o--|| advertised_product_category : "fk"
+    advertised_product_category }o--|| profile : "fk"
+    brand_lift_study_status_reason }o--|| measurement_brand_lift_study : "fk"
+    brand_lift_study_rejection_reason }o--|| measurement_brand_lift_study : "fk"
+    brand_lift_study_link }o--|| measurement_brand_lift_study : "fk"
+    brand_lift_study_excluded_line_item }o--|| ad_group : "fk"
+    brand_lift_study_excluded_line_item }o--|| measurement_brand_lift_study : "fk"
+    brand_lift_study_order }o--|| campaign_list : "fk"
+    brand_lift_study_order }o--|| measurement_brand_lift_study : "fk"
+    brand_lift_study_peer_name }o--|| measurement_brand_lift_study : "fk"
+    measurement_brand_lift_study }o--|| advertiser : "fk"
+    measurement_brand_lift_study }o--|| advertiser : "fk"
+    ad_creative_ad_group_association }o--|| ad_creative_moderation_ad_experience : "fk"
+    ad_creative_ad_group_association }o--|| ad_group : "fk"
+    ad_creative_ad_group_association }o--|| advertiser : "fk"
+    ad_creative_ad_group_association }o--|| advertiser : "fk"
+    iab_content_category }o--|| iab_content_category : "fk"
+    iab_content_category }o--|| profile : "fk"
+    measurement_study_status_reason }o--|| measurement_study : "fk"
+    measurement_study_rejection_reason }o--|| measurement_study : "fk"
+    measurement_study_link }o--|| measurement_study : "fk"
+    measurement_study }o--|| advertiser : "fk"
+    measurement_study }o--|| advertiser : "fk"
+    ad_group_advertised_product_category }o--|| advertised_product_category : "fk"
+    ad_group_advertised_product_category }o--|| ad_group : "fk"
+    ad_group_advertised_product_category }o--|| ad_group : "fk"
+    ad_group_advertised_product_category }o--|| ad_group : "fk"
+    ad_group_advertised_product_category }o--|| ad_group : "fk"
+    ad_group_budget_cap }o--|| ad_group : "fk"
+    ad_group_budget_cap }o--|| ad_group : "fk"
+    ad_group_budget_cap }o--|| ad_group : "fk"
+    ad_group_budget_cap }o--|| ad_group : "fk"
+    ad_group_frequency }o--|| ad_group : "fk"
+    ad_group_frequency }o--|| ad_group : "fk"
+    ad_group_frequency }o--|| ad_group : "fk"
+    ad_group_frequency }o--|| ad_group : "fk"
+    ad_group_fee }o--|| ad_group : "fk"
+    ad_group_fee }o--|| ad_group : "fk"
+    ad_group_fee }o--|| ad_group : "fk"
+    ad_group_fee }o--|| ad_group : "fk"
+    ad_group }o--|| campaign_list : "fk"
+    ad_group }o--|| campaign_list : "fk"
+    ad_group }o--|| campaign_list : "fk"
+    advertiser }o--|| profile : "fk"
+    campaign_list_budget_cap }o--|| campaign_list : "fk"
+    campaign_list_budget_cap }o--|| campaign_list : "fk"
+    campaign_list_budget_cap }o--|| campaign_list : "fk"
+    campaign_list_flight }o--|| campaign_list : "fk"
+    campaign_list_flight }o--|| campaign_list : "fk"
+    campaign_list_flight }o--|| campaign_list : "fk"
+    campaign_list_frequency }o--|| campaign_list : "fk"
+    campaign_list_frequency }o--|| campaign_list : "fk"
+    campaign_list_frequency }o--|| campaign_list : "fk"
+    campaign_list }o--|| advertiser : "fk"
+    campaign_list }o--|| app : "fk"
+    campaign_list }o--|| advertiser : "fk"
+    inventory_source_exchange }o--|| advertiser : "fk"
+    inventory_source_exchange }o--|| advertiser : "fk"
+    measurement_creative_testing_study_status_reason }o--|| measurement_creative_testing_study : "fk"
+    measurement_creative_testing_study_asset }o--|| measurement_creative_testing_study : "fk"
+    measurement_creative_testing_study }o--|| advertiser : "fk"
+    measurement_creative_testing_study }o--|| advertiser : "fk"
+    ad_creative_format_property_ad_copy }o--|| ad_creative : "fk"
+    ad_creative_format_property_ad_copy }o--|| ad_creative : "fk"
+    ad_creative_format_property_ad_copy }o--|| ad_creative : "fk"
+    ad_creative_format_property_asset }o--|| ad_creative : "fk"
+    ad_creative_format_property_asset }o--|| ad_creative : "fk"
+    ad_creative_format_property_asset }o--|| ad_creative : "fk"
+    ad_creative_format_property_click_action }o--|| ad_creative : "fk"
+    ad_creative_format_property_click_action }o--|| ad_creative : "fk"
+    ad_creative_format_property_click_action }o--|| ad_creative : "fk"
+    ad_creative_format_property_creative_size }o--|| ad_creative : "fk"
+    ad_creative_format_property_creative_size }o--|| ad_creative : "fk"
+    ad_creative_format_property_creative_size }o--|| ad_creative : "fk"
+    ad_creative_format_property_product }o--|| ad_creative : "fk"
+    ad_creative_format_property_product }o--|| ad_creative : "fk"
+    ad_creative_format_property_product }o--|| ad_creative : "fk"
+    ad_creative_format_property_tracking_url }o--|| ad_creative : "fk"
+    ad_creative_format_property_tracking_url }o--|| ad_creative : "fk"
+    ad_creative_format_property_tracking_url }o--|| ad_creative : "fk"
+    ad_creative }o--|| advertiser : "fk"
+    ad_creative }o--|| advertiser : "fk"
+    survey_question_qualifying_response }o--|| measurement_survey_question_template : "fk"
+    survey_question_response }o--|| measurement_survey_question_template : "fk"
+    placeholder_candidate_allowed_value_range }o--|| survey_question_placeholder_candidate : "fk"
+    placeholder_candidate_allowed_value_range }o--|| survey_question_placeholder_candidate : "fk"
+    placeholder_candidate_inferred_field }o--|| survey_question_placeholder_candidate : "fk"
+    placeholder_candidate_inferred_field }o--|| survey_question_placeholder_candidate : "fk"
+    placeholder_candidate_default_value }o--|| survey_question_placeholder_candidate : "fk"
+    placeholder_candidate_default_value }o--|| survey_question_placeholder_candidate : "fk"
+    survey_question_placeholder_candidate }o--|| measurement_survey_question_template : "fk"
+    measurement_survey_question_template }o--|| advertiser : "fk"
+    campaign_conversion_tracking_product }o--|| campaign_list : "fk"
+    campaign_conversion_tracking_product }o--|| campaign_list : "fk"
+    campaign_conversion_tracking_product }o--|| campaign_list : "fk"
+    audio_and_video }o--|| campaign_list : "fk"
+    audio_and_video }o--|| ad_creative : "fk"
+    audio_and_video }o--|| ad_group : "fk"
+    audio_and_video }o--|| advertiser : "fk"
+    tech }o--|| campaign_list : "fk"
+    tech }o--|| ad_group : "fk"
+    tech }o--|| advertiser : "fk"
+    reach_and_frequency }o--|| advertiser : "fk"
+    audience }o--|| campaign_list : "fk"
+    audience }o--|| ad_group : "fk"
+    audience }o--|| advertiser : "fk"
+    campaign }o--|| advertiser : "fk"
+    campaign }o--|| campaign_list : "fk"
+    campaign }o--|| ad_creative : "fk"
+    campaign }o--|| advertiser : "fk"
+    inventory }o--|| campaign_list : "fk"
+    inventory }o--|| ad_group : "fk"
+    inventory }o--|| advertiser : "fk"
+    bid_adjustment }o--|| advertiser : "fk"
+    geo }o--|| campaign_list : "fk"
+    geo }o--|| ad_group : "fk"
+    geo }o--|| advertiser : "fk"
+    product }o--|| campaign_list : "fk"
+    product }o--|| ad_group : "fk"
+    product }o--|| advertiser : "fk"

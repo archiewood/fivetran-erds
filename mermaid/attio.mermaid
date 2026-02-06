@@ -1,0 +1,183 @@
+erDiagram
+    list_attribute {
+        text id PK
+        text workspace_id PK
+        text target_id PK
+        text api_slug
+        text config_currency_default_currency_code
+        text config_currency_display_type
+        jsonb config_record_reference_allowed_object_ids
+        text created_at
+        text default_value
+        text description
+        text is_archived
+        text is_default_value_enabled
+        text is_multiselect
+        text is_required
+        text is_system_attribute
+        text is_unique
+        text title
+        text type
+    }
+    list_attribute_status {
+        text id PK
+        text attribute_id PK
+        text target_id PK
+        text workspace_id PK
+        text celebration_enabled
+        text is_archived
+        text target_time_in_status
+        text title
+    }
+    record_value {
+        text name PK
+        text record_id PK
+        text record_object_id PK
+        text record_workspace_id PK
+        text value
+    }
+    record {
+        text id PK
+        text object_id PK
+        text workspace_id PK
+        text created_at
+    }
+    object {
+        text id PK
+        text workspace_id PK
+        text api_slug
+        text created_at
+        text plural_noun
+        text singular_noun
+    }
+    object_attribute_option {
+        text id PK
+        text attribute_id PK
+        text target_id PK
+        text workspace_id PK
+        text is_archived
+        text title
+    }
+    object_attribute_status {
+        text id PK
+        text attribute_id PK
+        text target_id PK
+        text workspace_id PK
+        text celebration_enabled
+        text is_archived
+        text target_time_in_status
+        text title
+    }
+    workspace_member {
+        text id PK
+        text workspace_id PK
+        text access_level
+        text avatar_url
+        text created_at
+        text email_address
+        text first_name
+        text last_name
+    }
+    note {
+        text id PK
+        text workspace_id PK
+        text created_by_actor_id FK
+        text content_plaintext
+        text created_at
+        text created_by_actor_type
+        text object
+        text record_id
+        text title
+    }
+    object_attribute {
+        text id PK
+        text workspace_id PK
+        text target_id PK
+        text api_slug
+        text config_currency_default_currency_code
+        text config_currency_display_type
+        jsonb config_record_reference_allowed_object_ids
+        text created_at
+        text default_value
+        text description
+        text is_archived
+        text is_default_value_enabled
+        text is_multiselect
+        text is_required
+        text is_system_attribute
+        text is_unique
+        text title
+        text type
+    }
+    list_attribute_option {
+        text id PK
+        text attribute_id PK
+        text target_id PK
+        text workspace_id PK
+        text is_archived
+        text title
+    }
+    list_workspace_member_access {
+        text list_id PK
+        text workspace_id PK
+        text workspace_member_id PK
+        text level
+    }
+    list {
+        text id PK
+        text workspace_id PK
+        text created_by_actor_id FK
+        text api_slug
+        text created_at
+        text created_by_actor_type
+        text name
+        jsonb parent_object
+        text workspace_access
+    }
+    entries_value {
+        text name PK
+        text id PK
+        text list_id PK
+        text workspace_id PK
+        text value
+    }
+    entries {
+        text id PK
+        text list_id PK
+        text workspace_id PK
+        text created_at
+        text parent_object
+        text parent_record_id
+    }
+    list_attribute }o--|| list : "fk"
+    list_attribute_status }o--|| workspace_member : "fk"
+    list_attribute_status }o--|| list_attribute : "fk"
+    list_attribute_status }o--|| list : "fk"
+    record_value }o--|| record : "fk"
+    record_value }o--|| record : "fk"
+    record_value }o--|| record : "fk"
+    record }o--|| workspace_member : "fk"
+    record }o--|| object : "fk"
+    object }o--|| workspace_member : "fk"
+    object_attribute_option }o--|| workspace_member : "fk"
+    object_attribute_option }o--|| list_attribute : "fk"
+    object_attribute_option }o--|| list : "fk"
+    object_attribute_status }o--|| workspace_member : "fk"
+    object_attribute_status }o--|| object_attribute : "fk"
+    object_attribute_status }o--|| object : "fk"
+    note }o--|| workspace_member : "fk"
+    note }o--|| workspace_member : "fk"
+    object_attribute }o--|| object : "fk"
+    list_attribute_option }o--|| workspace_member : "fk"
+    list_attribute_option }o--|| object_attribute : "fk"
+    list_attribute_option }o--|| object : "fk"
+    list_workspace_member_access }o--|| workspace_member : "fk"
+    list_workspace_member_access }o--|| list : "fk"
+    list_workspace_member_access }o--|| list : "fk"
+    list }o--|| workspace_member : "fk"
+    list }o--|| workspace_member : "fk"
+    entries_value }o--|| entries : "fk"
+    entries_value }o--|| entries : "fk"
+    entries_value }o--|| entries : "fk"
+    entries }o--|| workspace_member : "fk"
+    entries }o--|| list : "fk"

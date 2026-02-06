@@ -1,0 +1,302 @@
+erDiagram
+    customer_social_profile_history {
+        bigint id PK
+        bigint customer_id PK
+        timestamp customer_updated_at PK
+        text type
+        text value
+    }
+    customer_email_history {
+        bigint id PK
+        bigint customer_id PK
+        timestamp customer_updated_at PK
+        text type
+        text value
+    }
+    customer_phone_history {
+        bigint id PK
+        bigint customer_id PK
+        timestamp customer_updated_at PK
+        text type
+        text value
+    }
+    customer_chat_history {
+        bigint id PK
+        bigint customer_id PK
+        timestamp customer_updated_at PK
+        text type
+        text value
+    }
+    customer_website_history {
+        bigint id PK
+        bigint customer_id PK
+        timestamp customer_updated_at PK
+        text value
+    }
+    customer_history {
+        bigint id PK
+        timestamp updated_at PK
+        text address_city
+        text address_country
+        text address_postal_code
+        text address_state
+        text age
+        text background
+        timestamp created_at
+        text first_name
+        text gender
+        text job_title
+        text last_name
+        text location
+        text organization
+        text photo_type
+        text photo_url
+    }
+    team_history {
+        bigint id PK
+        timestamp updated_at PK
+        timestamp created_at
+        text email
+        text first_name
+        text last_name
+        text photo_url
+        text role
+        text timezone
+    }
+    conversation_tag_history {
+        bigint conversation_id PK
+        timestamp conversation_updated_at PK
+        bigint tag_id PK
+    }
+    conversation_history {
+        bigint id PK
+        timestamp updated_at PK
+        bigint folder_id FK
+        bigint mailbox_id FK
+        timestamp closed_at
+        bigint closed_by
+        timestamp created_at
+        text customer_waiting_since_friendly
+        text customer_waiting_since_latest_reply_from
+        timestamp customer_waiting_since_time
+        bigint number
+        text preview
+        bigint primary_customer_id
+        text source_type
+        text source_via
+        text state
+        text status
+        text subject
+        bigint threads
+        text type
+    }
+    mailbox_history {
+        bigint id PK
+        timestamp updated_at PK
+        timestamp created_at
+        text email
+        text name
+        text slug
+    }
+    doc_report_popular_search {
+        text index PK
+        text doc_report_fivetran_id PK
+        text count
+        text doc_report_end_date
+        text doc_report_start_date
+        text id
+        text result
+    }
+    doc_report_failed_search {
+        text index PK
+        text doc_report_fivetran_id PK
+        text count
+        text doc_report_end_date
+        text doc_report_start_date
+        text id
+    }
+    doc_report_top_article {
+        text index PK
+        text doc_report_fivetran_id PK
+        text collection_id
+        text count
+        text doc_report_end_date
+        text doc_report_start_date
+        text id
+        text name
+        text site_id
+    }
+    doc_report_top_category {
+        text index PK
+        text doc_report_fivetran_id PK
+        text article
+        text count
+        text doc_report_end_date
+        text doc_report_start_date
+        text id
+        text name
+        text site_id
+    }
+    doc_report {
+        text _fivetran_id PK
+        text browse_action
+        text doc_viewed_per_visit
+        text end_date
+        text failed_result
+        text found_an_answer_result
+        text search_action
+        text sent_an_email_result
+        text start_date
+        text visitor
+    }
+    tag_history {
+        bigint id PK
+        timestamp updated_at PK
+        text color
+        timestamp created_at
+        text name
+        text slug
+        integer ticket_count
+    }
+    mailbox_folder_history {
+        bigint id PK
+        timestamp updated_at PK
+        bigint mailbox_id PK
+        bigint active_count
+        text name
+        bigint total_count
+        text type
+        bigint user_id
+    }
+    team_user_history {
+        bigint team_id PK
+        timestamp team_updated_at PK
+        bigint user_id PK
+    }
+    mailbox_workflow_history {
+        bigint id PK
+        timestamp updated_at PK
+        bigint mailbox_id PK
+        timestamp created_at
+        text name
+        bigint orders
+        text status
+        text type
+    }
+    user_history {
+        bigint id PK
+        timestamp updated_at PK
+        timestamp created_at
+        text email
+        text first_name
+        text last_name
+        text photo_url
+        text role
+        text timezone
+    }
+    conversation_thread_attachment_history {
+        bigint id PK
+        bigint conversation_id PK
+        bigint conversation_thread_id PK
+        timestamp conversation_updated_at PK
+        text filename
+        text hash
+        bigint height
+        text mime_type
+        bigint size
+        text url
+        bigint width
+    }
+    conversation_thread_bcc_history {
+        text email PK
+        bigint conversation_id PK
+        bigint conversation_thread_id PK
+        timestamp conversation_updated_at PK
+    }
+    conversation_thread_to_history {
+        text email PK
+        bigint conversation_id PK
+        bigint conversation_thread_id PK
+        timestamp conversation_updated_at PK
+    }
+    conversation_thread_cc_history {
+        text email PK
+        bigint conversation_id PK
+        bigint conversation_thread_id PK
+        timestamp conversation_updated_at PK
+    }
+    conversation_thread_history {
+        bigint id PK
+        bigint conversation_id PK
+        timestamp conversation_updated_at PK
+        bigint created_by_customer_id FK
+        bigint created_by_user_id FK
+        text action_text
+        text action_type
+        bigint assigned_to_id
+        text body
+        timestamp created_at
+        text created_by_type
+        bigint customer_id
+        timestamp opened_at
+        bigint saved_reply_id
+        text source_type
+        text source_via
+        text state
+        text status
+        text type
+    }
+    happiness_rating {
+        bigint conversation_id PK
+        timestamp rating_created_at PK
+        bigint rating_customer_id PK
+        bigint number
+        text rating_comment
+        text rating_customer_name
+        bigint rating_id
+        bigint rating_user_id
+        text rating_user_name
+        timestamp thread_created_at
+        bigint thread_id
+        text type
+    }
+    customer_social_profile_history }o--|| customer_history : "fk"
+    customer_social_profile_history }o--|| customer_history : "fk"
+    customer_email_history }o--|| customer_history : "fk"
+    customer_email_history }o--|| customer_history : "fk"
+    customer_phone_history }o--|| customer_history : "fk"
+    customer_phone_history }o--|| customer_history : "fk"
+    customer_chat_history }o--|| customer_history : "fk"
+    customer_chat_history }o--|| customer_history : "fk"
+    customer_website_history }o--|| customer_history : "fk"
+    customer_website_history }o--|| customer_history : "fk"
+    conversation_tag_history }o--|| tag_history : "fk"
+    conversation_tag_history }o--|| conversation_history : "fk"
+    conversation_tag_history }o--|| conversation_history : "fk"
+    conversation_history }o--|| mailbox_folder_history : "fk"
+    conversation_history }o--|| mailbox_history : "fk"
+    doc_report_popular_search }o--|| doc_report : "fk"
+    doc_report_failed_search }o--|| doc_report : "fk"
+    doc_report_top_article }o--|| doc_report : "fk"
+    doc_report_top_category }o--|| doc_report : "fk"
+    mailbox_folder_history }o--|| mailbox_history : "fk"
+    team_user_history }o--|| user_history : "fk"
+    team_user_history }o--|| team_history : "fk"
+    team_user_history }o--|| team_history : "fk"
+    mailbox_workflow_history }o--|| mailbox_history : "fk"
+    conversation_thread_attachment_history }o--|| conversation_thread_history : "fk"
+    conversation_thread_attachment_history }o--|| conversation_thread_history : "fk"
+    conversation_thread_attachment_history }o--|| conversation_thread_history : "fk"
+    conversation_thread_bcc_history }o--|| conversation_thread_history : "fk"
+    conversation_thread_bcc_history }o--|| conversation_thread_history : "fk"
+    conversation_thread_bcc_history }o--|| conversation_thread_history : "fk"
+    conversation_thread_to_history }o--|| conversation_thread_history : "fk"
+    conversation_thread_to_history }o--|| conversation_thread_history : "fk"
+    conversation_thread_to_history }o--|| conversation_thread_history : "fk"
+    conversation_thread_cc_history }o--|| conversation_thread_history : "fk"
+    conversation_thread_cc_history }o--|| conversation_thread_history : "fk"
+    conversation_thread_cc_history }o--|| conversation_thread_history : "fk"
+    conversation_thread_history }o--|| user_history : "fk"
+    conversation_thread_history }o--|| customer_history : "fk"
+    conversation_thread_history }o--|| conversation_history : "fk"
+    conversation_thread_history }o--|| conversation_history : "fk"

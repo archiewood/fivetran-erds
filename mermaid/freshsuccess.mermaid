@@ -1,0 +1,258 @@
+erDiagram
+    product_user {
+        text user_id PK
+        text account_id FK
+        text contact_user_id
+        text email
+        text first_name
+        boolean is_active
+        text last_name
+        text lead_source
+        text mailing_city
+        text mailing_country
+        text mailing_postal_code
+        text mailing_state
+        text mailing_street
+        text phone
+        timestamp product_join_date
+        text role
+        text salutation
+        text title
+    }
+    invoice_statement_line_item {
+        text _fivetran_id PK
+        text invoice_statement_invoice_id FK
+        integer amount
+        text description
+        boolean is_recurring
+    }
+    invoice_statement {
+        text invoice_id PK
+        text account_id FK
+        boolean is_failed
+        integer non_recurring
+        timestamp paid_date
+        timestamp start_date
+    }
+    subscription_record {
+        text _fivetran_id PK
+        text subscription_id FK
+        integer cycle_length
+        text cycle_unit
+        timestamp end_date
+        timestamp expiration_date
+        boolean is_end
+        boolean is_renewal
+        text plan_code
+        timestamp start_date
+        integer total_revenue
+    }
+    subscription {
+        text subscription_id PK
+        text account_id FK
+    }
+    interaction {
+        integer id PK
+        text account_id FK
+        text user_id FK
+        timestamp create_time
+        text crm_account_id
+        text details
+        text external_id
+        boolean is_html
+        timestamp modify_time
+        text rep_email
+        text rep_first_name
+        text rep_last_name
+        text source
+        text subject
+        text type
+    }
+    subscription_history {
+        text subscription_id PK
+        text account_id PK
+        text subscription_subscription_id FK
+        integer cycle_length
+        text cycle_unit
+        timestamp end_date
+        timestamp expiration_date
+        text plan_code
+        integer revenue
+        timestamp start_date
+        integer units
+    }
+    account {
+        text account_id PK
+        text billing_account_id
+        text billing_city
+        text billing_country
+        text billing_postal_code
+        text billing_state
+        text billing_street
+        text churn_likelihood
+        text churn_reason_category
+        text churn_reason_item
+        text churn_reason_subcategory
+        text crm_account_id
+        integer csm_score
+        integer current_health_score
+        integer current_mrr
+        text current_nps_score
+        text current_stage
+        text description
+        integer employees
+        text hierarchy_label
+        integer hierarchy_level
+        integer id
+        text inactive_reason
+        text inactive_time
+        text industry
+        boolean is_active
+        boolean is_churned
+        timestamp join_date
+        text latest_status_date
+        text latest_status_details
+        text latest_status_title
+        timestamp modify_time
+        text name
+        text natero_url
+        text parent_account_id
+        text phone
+        text product
+        text projected_churn_date
+        text projected_churn_mrr
+        text region
+        text renewal_date
+        text sales_rep_email
+        text sales_rep_name
+        text source
+        text support_account_id
+        text tier
+        text type
+        text website
+    }
+    goal_task {
+        integer task_id PK
+        integer goal_goal_id FK
+        timestamp completion_date
+        timestamp create_date
+        timestamp due_date
+        timestamp modify_time
+        text owner_email
+        timestamp start_date
+        text status
+        integer target_days_due
+        text task_name
+    }
+    goal {
+        integer goal_id PK
+        text account_id FK
+        text category
+        timestamp completion_date
+        timestamp create_date
+        timestamp due_date
+        text goal_name
+        text goal_template_id
+        boolean is_measured
+        timestamp modify_time
+        text owner_email
+        text priority
+        timestamp start_date
+        text status
+        timestamp target_date
+        integer target_days_due
+        integer tasks_completed
+        integer tasks_total
+        text was_auto_deployed
+    }
+    deal {
+        integer id PK
+        text account_id PK
+        integer amount
+        timestamp close_time
+        timestamp create_time
+        text creator_email
+        text creator_name
+        text description
+        timestamp expected_close_time
+        text external_id
+        timestamp external_sync_time
+        text name
+        text owner_email
+        text owner_name
+        text pipeline
+        text product
+        text source
+        text source_created
+        text stage
+        text url
+    }
+    support_ticket {
+        text ticket_id PK
+        text account_id FK
+        text assignee_email
+        text assignee_id
+        timestamp close_time
+        timestamp create_time
+        text csat_label
+        text csat_value
+        text description
+        text due_by_time
+        text fr_due_by_time
+        boolean is_spam
+        timestamp last_update_time
+        timestamp modify_time
+        text priority
+        text source
+        text state
+        text subject
+        text tags
+        text type
+        text url
+    }
+    document {
+        text account_id PK
+        text description
+        text name
+        text url
+    }
+    account_contact {
+        integer id PK
+        text account_id FK
+        text user_id FK
+        text email
+        boolean email_opt_out
+        text first_name
+        boolean is_active
+        boolean is_primary
+        text last_name
+        text lead_source
+        text mailing_city
+        text mailing_country
+        text mailing_postal_code
+        text mailing_state
+        text mailing_street
+        text mobile_phone
+        timestamp modify_time
+        text phone
+        text role
+        text salutation
+        text source
+        text title
+    }
+    product_user }o--|| account : "fk"
+    invoice_statement_line_item }o--|| invoice_statement : "fk"
+    invoice_statement }o--|| account : "fk"
+    subscription_record }o--|| subscription : "fk"
+    subscription }o--|| account : "fk"
+    interaction }o--|| product_user : "fk"
+    interaction }o--|| account : "fk"
+    subscription_history }o--|| account : "fk"
+    subscription_history }o--|| subscription : "fk"
+    goal_task }o--|| goal : "fk"
+    goal }o--|| account : "fk"
+    deal }o--|| account : "fk"
+    support_ticket }o--|| account : "fk"
+    document }o--|| account : "fk"
+    account_contact }o--|| product_user : "fk"
+    account_contact }o--|| account : "fk"

@@ -1,0 +1,809 @@
+erDiagram
+    supplier {
+        text id PK
+        text created_by_id FK
+        text deleted_by_id FK
+        text updated_by_id FK
+        text accounting_contact_email
+        text accounting_contact_name
+        text accounting_phone_number
+        text active_purchase_order_count
+        text address_line_1
+        text address_line_2
+        text bank_account_number
+        text bank_name
+        text bank_sort_code
+        text city
+        text completed_purchase_order_count
+        text country
+        text created_at
+        text credit_limit
+        text currency_code
+        text deleted_at
+        text name
+        text post_code
+        text purchase_order_template
+        text region
+        text reminder_email_template
+        text sales_contact_email
+        text sales_contact_name
+        text sales_phone_number
+        text updated_at
+    }
+    sellable_stock_entry {
+        text updated_at PK
+        text product_id PK
+        text sellable_id PK
+        text warehouse_id PK
+        text allocated_stock_level
+        text available_stock_level
+        text incoming_stock_level
+        text infinite
+        text location
+        text physical_stock_level
+        text sellable_on_hand_value
+        text stock_running_low
+        text transit_incoming_stock_level
+        text transit_outgoing_stock_level
+    }
+    sellable_active_channel {
+        text id PK
+        text product_id PK
+        text sellable_id PK
+        text name
+        text short_name
+        text type_code
+    }
+    channel_sellable {
+        text id PK
+        text sellable_id PK
+        text product_id PK
+        text channel_id FK
+        text channel_product_id FK
+        text channel_product_remote_title
+        text channel_product_status
+        text currency_code
+        text image_url
+        text remote_gram
+        text remote_margin
+        text remote_price
+        text remote_profit
+        text remote_sku
+        text remote_title
+        text url
+    }
+    sellable {
+        text id PK
+        text product_id PK
+        text created_by_id FK
+        text allocated_stock_level_at_all_warehouse
+        text cost_price
+        text created_at
+        text customs_description
+        text deleted_at
+        text estimated_delivery
+        text full_title
+        text image_url
+        text inventory_allocated_stock_level_at_all_warehouses
+        text inventory_available_stock_level_at_all_warehouses
+        text inventory_incoming_stock_level_at_all_warehouses
+        text inventory_infinite
+        text inventory_physical_stock_level_at_all_warehouses
+        text inventory_transit_incoming_stock_level_at_all_warehouses
+        text inventory_transit_outgoing_stock_level_at_all_warehouses
+        text main_thumbnail_url
+        text margin
+        text measurement_depth
+        text measurement_dimensions_unit
+        text measurement_height
+        text measurement_id
+        text measurement_width
+        text min_reorder_level
+        text on_hand_value
+        text origin_country
+        text price
+        text product_title
+        text profit
+        text quantity_to_reorder
+        text requires_review
+        text sellable_title
+        text sku_code
+        text stock_level_at_all_warehouses
+        text tax_rate
+        text title
+        text total_quantity_sold
+        text type
+        text upc_code
+        text updated_at
+        jsonb variant_property_specific
+        text weight
+        text weight_gram
+        text weight_unit
+    }
+    channel_product {
+        text id PK
+        text product_id PK
+        text channel_id FK
+        text channel_short_name
+        text channel_type_code
+        text inactive_after
+        text remote_description
+        text remote_id
+        text remote_title
+        text status
+    }
+    products_active_channel {
+        text id PK
+        text product_id PK
+        text name
+        text short_name
+        text type_code
+    }
+    product {
+        text id PK
+        text created_by_id FK
+        text deleted_by_id FK
+        text updated_by_id FK
+        text brand_display_position
+        text brand_id
+        text brand_name
+        text brand_products_count
+        text created_at
+        text deleted_at
+        text description
+        text estimated_delivery
+        text hs_tariff_number
+        text image
+        text inventory_infinite
+        text main_image_binary_data
+        text main_image_content_type
+        text main_image_created_at
+        text main_image_created_by_id
+        text main_image_deleted_at
+        text main_image_deleted_by_id
+        text main_image_display_position
+        text main_image_id
+        text main_image_picture_content_type
+        text main_image_picture_file_name
+        text main_image_picture_file_size
+        text main_image_picture_order
+        text main_image_picture_updated_at
+        text main_image_src
+        text main_image_updated_at
+        text main_image_updated_by_id
+        text notes
+        text on_hand_value
+        text origin_country
+        text product_tax_rate_id
+        text requires_review
+        jsonb tags
+        text tax_rate
+        text thumbnail_url
+        text title
+        text total_allocated_stock_level
+        text total_available_stock_level
+        text total_quantity_sold
+        text total_stock_level
+        text updated_at
+        text web_meta_description
+        text web_meta_keywords
+        text web_meta_title
+        text web_page_title
+        text web_page_url
+        text weight
+    }
+    orders_tag {
+        text id PK
+        text orders_id PK
+        text colour
+        text name
+    }
+    orders_employee_note {
+        text order_id PK
+        text id PK
+        text created_by_id FK
+        text created_at
+        text text
+    }
+    orders_line_item {
+        text id PK
+        text orders_id PK
+        text sellable_id FK
+        text additional_option
+        text created_at
+        text picked_quantity
+        text price_per_unit
+        text quantity
+        text remote_id
+        text tax_rate
+        text taxless_discount_per_unit
+        text updated_at
+    }
+    sellable_variant_option_specific {
+        text id PK
+        text allocation_id PK
+        text allocation_line_item_id PK
+        text orders_id PK
+        text product_property_id
+        text product_property_name
+        text product_specific_id
+        text value
+    }
+    sellable_variant_property_specific {
+        text id PK
+        text allocation_id PK
+        text allocation_line_item_id PK
+        text orders_id PK
+        text product_property_id
+        text product_property_name
+        text product_specific_id
+        text value
+    }
+    allocation_line_item {
+        text id PK
+        text allocation_id PK
+        text orders_id PK
+        text sellable_id FK
+        text created_at
+        text picked_quantity
+        text quantity
+        text updated_at
+    }
+    allocation_carrier_service_enhancement_code {
+        text index PK
+        text allocation_id PK
+        text orders_id PK
+        text carrier_service_enhancement_code
+    }
+    allocation {
+        text id PK
+        text order_id FK
+        text warehouse_id FK
+        text allocated_by_id
+        text created_at
+        text dispatch_date
+        text due_date
+        text matched_parcel_properties_criteria
+        text packed_completely
+        text preferred_shipment_option
+        text recommended_shipping_options_applied_service_rule_id
+        text recommended_shipping_options_applied_service_rule_name
+        text recommended_shipping_options_carrier_id
+        text recommended_shipping_options_created_at
+        text recommended_shipping_options_id
+        text recommended_shipping_options_params_additional_option
+        text recommended_shipping_options_params_service_id
+        text recommended_shipping_options_params_service_options_signature_required
+        text recommended_shipping_options_updated_at
+        text shipment
+        text total_weight
+        text updated_at
+        text weight_unit
+    }
+    orders {
+        text id PK
+        text channel_id FK
+        text created_by_id FK
+        text delivery_method_id FK
+        text payment_created_by_id FK
+        text additional_order_level_taxless_discount
+        text additional_order_level_taxless_discount_percentage
+        text adjustment_amount
+        text allocated_completely
+        text billing_address_id
+        text business_customer_billing_address_id
+        text business_customer_shipping_address_id
+        text buyer_user_id
+        text can_be_shipped
+        text can_pay_by_card
+        text cancel_reason
+        text cancelled_at
+        text cancelled_by
+        text contact_id
+        text created_at
+        text currency_code
+        text customer_id
+        text customer_note_id
+        text customer_note_text
+        text customer_viewable_note
+        text deliver_to_id
+        text delivery_cost
+        text delivery_method_cost
+        text delivery_method_name
+        text dispatch_date
+        text due_date
+        text fulfilled_by_amazon
+        text fulfillment_channel_order
+        text international
+        text invoice_date
+        text invoice_file_url
+        text invoice_sent_ago
+        text invoice_viewed_at
+        text is_amazon_premium_order
+        text is_amazon_prime
+        text mergable_checksum
+        text mergeable_id
+        text merged_order
+        text merged_to_id
+        text note
+        text number
+        text payment_card_number
+        text payment_created_at
+        text payment_due_date
+        text payment_id
+        text payment_reference_number
+        text payment_term
+        text payment_type
+        text payment_updated_at
+        text picked_completely
+        text picked_status
+        text price_list_id
+        text receipt_printed
+        text refund_amount
+        text restock_shipped_item
+        jsonb return
+        text send_notification_email
+        text send_refund_email
+        text shipped_at
+        text shipping_discount
+        text status
+        text subtotal_price
+        text till_id
+        text total_discount
+        text total_fee
+        text total_price
+        text total_tax
+        text updated_at
+        text updated_by
+        text with_duty
+    }
+    warehouse {
+        text id PK
+        text created_by_id FK
+        text deleted_by_id FK
+        text updated_by_id FK
+        text address_line_1
+        text address_line_2
+        text city
+        text click_and_collect_day
+        text click_and_collect_enabled
+        text country
+        text created_at
+        text default_min_reorder
+        text deleted_at
+        text display_position
+        text eori_id
+        text inventory_type_code
+        text ioss_id
+        text letterbox_address_status
+        text name
+        text phone
+        text post_code
+        text region
+        text requested_carrier_account
+        text tax_id
+        text trading_name
+        text updated_at
+    }
+    company_active_feature {
+        text index PK
+        text company_id PK
+        text active_feature
+    }
+    employee {
+        text id PK
+        text company_id FK
+        text default_channel_id FK
+        text deleted_by_id FK
+        text updated_by_id FK
+        text account_owner_user_id
+        text activated_at
+        text activation_code
+        text created_at
+        text created_by_id
+        text default_order_view_id
+        text default_till_id
+        text default_warehouse_id
+        text deleted_at
+        text email
+        text failed_login_attempt
+        text guide_completed_message_viewed
+        text guide_progress
+        text location
+        text login
+        text new_orders_opted_in
+        text new_products_opted_in
+        text orders_walkthrough_viewed
+        text role_id
+        text timezone
+        text two_factor_authentication_enabled
+        text updated_at
+    }
+    company {
+        text id PK
+        text owner_id FK
+        text billing_period_started
+        text chargify_current_plan
+        text chargify_product_handle
+        text company_address_address_line_1
+        text company_address_address_line_2
+        text company_address_address_line_3
+        text company_address_city
+        text company_address_country
+        text company_address_phone
+        text company_address_post_code
+        text company_address_region
+        text created_at
+        text has_ever_created_remote_channel
+        text has_right_to_use_veeqo
+        text name
+        text paying
+        text plan_features_accounting_quickbook
+        text plan_features_accounting_setting
+        text plan_features_accounting_xero
+        text plan_features_api_any_action
+        text plan_features_billing_legacy_billing
+        text plan_features_channels_amazon_fba
+        text plan_features_channels_change_routing_order_type
+        text plan_features_channels_legacy_channels_connection
+        text plan_features_channels_magento
+        text plan_features_channels_manage_stock_level
+        text plan_features_channels_noth
+        text plan_features_channels_opencart
+        text plan_features_channels_prestashop
+        text plan_features_channels_price_minister
+        text plan_features_channels_shopify_multi_location
+        text plan_features_channels_vend
+        text plan_features_dashboard_any_action
+        text plan_features_fulfilment_allocate_action
+        text plan_features_fulfilment_digital_picking_in_onboarding
+        text plan_features_inventory_change_stock_reason
+        text plan_features_inventory_merge_review
+        text plan_features_inventory_show_stock_level
+        text plan_features_inventory_use_custom_view
+        text plan_features_inventory_use_kit
+        text plan_features_listings_any_action
+        text plan_features_onboarding_coaching
+        text plan_features_onboarding_inventory_feature
+        text plan_features_onboarding_setup_step
+        text plan_features_onboarding_signup_redirects_to_channels_wizard
+        text plan_features_onboarding_switch_legacy_to_power_plan_modal
+        text plan_features_orders_auto_allocation
+        text plan_features_orders_nav_sub_item
+        text plan_features_orders_packing
+        text plan_features_orders_wfs_default_view
+        text plan_features_picking_any_action
+        text plan_features_price_lists_any_action
+        text plan_features_printing_customizable_template
+        text plan_features_printing_direct_print
+        text plan_features_purchase_orders_any_action
+        text plan_features_reorders_any_action
+        text plan_features_reports_daily_digest_email
+        text plan_features_reports_forecast
+        text plan_features_reports_inventory_history
+        text plan_features_reports_return
+        text plan_features_reports_shipping_metric
+        text plan_features_reports_stock
+        text plan_features_reports_team_metric
+        text plan_features_returns_any_action
+        text plan_features_roles_any_action
+        text plan_features_settings_page_appstore
+        text plan_features_settings_page_customer
+        text plan_features_settings_page_customer_orders_action
+        text plan_features_settings_page_listings_linking
+        text plan_features_settings_page_payment_gateway
+        text plan_features_settings_page_sps_scan_form
+        text plan_features_shipping_all_carrier
+        text plan_features_shipping_carriers_amazon_logistic
+        text plan_features_shipping_carriers_apc
+        text plan_features_shipping_carriers_asendia
+        text plan_features_shipping_carriers_australia_post
+        text plan_features_shipping_carriers_canada_post
+        text plan_features_shipping_carriers_dhl_de
+        text plan_features_shipping_carriers_dx
+        text plan_features_shipping_carriers_endicia
+        text plan_features_shipping_carriers_hermes_world
+        text plan_features_shipping_carriers_israel_post
+        text plan_features_shipping_carriers_parcelforce
+        text plan_features_shipping_carriers_tnt
+        text plan_features_shipping_carriers_ups_reseller
+        text plan_features_shipping_carriers_usps
+        text plan_features_shipping_carriers_yodel
+        text plan_features_shipping_incoterm
+        text plan_features_shipping_pack_and_ship
+        text plan_features_stock_take_any_action
+        text plan_features_stock_transfers_any_action
+        text plan_features_suppliers_any_action
+        text plan_features_user_roles_accountant
+        text plan_features_user_roles_admin
+        text plan_features_user_roles_customer_service_agent
+        text plan_features_user_roles_customer_service_manager
+        text plan_features_user_roles_picker_packer
+        text plan_features_user_roles_purchaser
+        text plan_features_user_roles_warehouse_manager
+        text plan_features_warehouses_multi_bin
+        text plan_features_wholesale_any_action
+        text printnode_api_key
+        text referring_website
+        text settings_charge_taxes_on_shipping_rate
+        text settings_currency_code
+        text settings_date_format
+        text settings_dimensions_unit
+        text settings_id
+        text settings_phone_number
+        text settings_phone_payment
+        text settings_point_of_sale_enabled
+        text settings_pull_fba_inbound_stock
+        text settings_require_complete_packing
+        text settings_stock_change_reason_required
+        text settings_timezone
+        text settings_weight_unit
+        text shopify_app_store_referral
+        text trial_end_date
+        text trialing
+        text updated_at
+        text veeqo_product_name
+    }
+    purchase_order_line_item_stock_entry {
+        text sellable_id PK
+        text purchase_order_id PK
+        text purchase_order_line_item_id PK
+        text warehouse_id PK
+        text allocated_stock_level
+        text available_stock_level
+        text incoming_stock_level
+        text infinite
+        text location
+        text physical_stock_level
+        text sellable_on_hand_value
+        text stock_running_low
+        text updated_at
+    }
+    purchase_order_line_item {
+        text id PK
+        text purchase_order_id PK
+        text created_by_id FK
+        text allocated_stock_level_at_all_warehouse
+        text available_stock_level_at_all_warehouse
+        text cost
+        text cost_price
+        text created_at
+        text full_title
+        text inventory_allocated_stock_level_at_all_warehouse
+        text inventory_available_stock_level_at_all_warehouse
+        text inventory_incoming_stock_level_at_all_warehouse
+        text inventory_infinite
+        text inventory_physical_stock_level_at_all_warehouse
+        text margin
+        text measurement_depth
+        text measurement_dimensions_unit
+        text measurement_height
+        text measurement_id
+        text measurement_width
+        text min_reorder_level
+        text model_number
+        text on_hand_value
+        text price
+        text product_description
+        text product_estimated_delivery
+        text product_hs_tariff_number
+        text product_id
+        text product_title
+        text product_variant_id
+        text profit
+        text quantity
+        text quantity_to_reorder
+        text received
+        text received_at
+        text sellable_title
+        text sku_code
+        text stock_level_at_all_warehouse
+        text tax_rate
+        text title
+        text total_quantity_sold
+        text type
+        text upc_code
+        text updated_at
+        text weight
+    }
+    purchase_order {
+        text id PK
+        text created_by_id FK
+        text supplier_id FK
+        text updated_by_id FK
+        text actual_delivery_day
+        text actual_return_day
+        text arrival_at_calc
+        text completed_at
+        text created_at
+        text destination_warehouse_id
+        text estimated_delivery_day
+        text estimated_return_day
+        text number
+        text received_at
+        text returned_at
+        text send_to_supplier
+        text started_at
+        text started_or_returned_at_calc
+        text state
+        text total_calc
+        text updated_at
+        text user_id
+    }
+    delivery_method {
+        text id PK
+        text deleted_by_id FK
+        text cost
+        text created_at
+        text deleted_at
+        text name
+        text updated_at
+        text user_id
+    }
+    store {
+        text id PK
+        text created_by_id FK
+        text default_warehouse_id FK
+        text deleted_by_id FK
+        text warehouse_id FK
+        text additional_api_2_cart_site
+        text address_line_1
+        text address_line_2
+        text adjust_orders_tax_rate
+        text always_set_qty
+        text amazon_channel_specific
+        text amazon_fulfillment_enabled
+        text amazon_fulfillment_setting
+        text api_2_cart_channel_specific
+        text api_2_cart_store_key
+        text authorized_at_remote_store
+        text automatic_product_linking_disabled
+        text bridge_url
+        text bridge_verified
+        text channel_oauth_refresh_token_expires_at
+        text channel_setup_id
+        jsonb channel_warehouse
+        text city
+        text country
+        text create_product_if_unmatched
+        text create_product_on_ended_listing
+        text currency_code
+        text default_send_shipment_email
+        text default_warehouse
+        text default_warehouse_company_id
+        text default_warehouse_lat
+        text default_warehouse_letterbox_address_id
+        text default_warehouse_lng
+        text default_warehouse_user_id
+        text deleted_at
+        text disabled_push_of_stock_level
+        text ebay_site_code_id
+        text ebay_url
+        text email
+        text end_ebay_listing_on_out_of_stock
+        text first_sync_finish_notice_marked_as_read
+        text import_additional_payment_detail
+        text import_cost_price
+        text import_order_tag
+        text import_product_brand
+        text import_product_tag
+        text is_master
+        text keep_inventory_tracking_value
+        text link_to_products_linked_to_current_channel
+        text link_with_similar_listings_by_sku
+        text marketplace_country
+        text marketplace_id
+        text max_qty_to_advert
+        text min_threshold_qty
+        text mws_auth_token
+        text name
+        text pending_setup
+        text percent_of_qty
+        text post_code
+        text pull_historical_order
+        text pull_pending_order
+        text pull_product_image
+        text pull_product_property
+        text pull_stock_level_required
+        text pull_unpaid_shopify_order
+        text pulled_orders_at
+        text pulled_products_at
+        text pulled_stock_level_at
+        text region
+        text remote
+        text remote_warehouses_exist
+        text routing_order_type
+        text seller_id
+        text send_notification_emails_to_customer
+        text shopify_import_hs_code_and_country_of_origin
+        text shopify_multi_location
+        text shopify_pull_order_edit
+        text shopify_pull_orders_fraud_info
+        text shopify_url
+        text short_name
+        text skip_fba_orders_and_product
+        text skip_title_matching
+        text state
+        jsonb stock_level_update_request
+        text successfully_fetched_stock_levels_at
+        text time_since_order_sync
+        text time_since_product_sync
+        text time_since_successfully_fetch_stock_level
+        text time_since_tried_fetch_stock_level
+        text time_zone
+        text time_zone_offset
+        text token
+        text type_code
+        text update_product_attribute
+        text update_remote_order
+        text url
+        text veeqo_dictates_price
+        text veeqo_dictates_stock_level
+        jsonb warehouse
+        text weight_unit
+        text with_fba
+    }
+    supplier }o--|| employee : "fk"
+    supplier }o--|| employee : "fk"
+    supplier }o--|| employee : "fk"
+    sellable_stock_entry }o--|| warehouse : "fk"
+    sellable_stock_entry }o--|| sellable : "fk"
+    sellable_stock_entry }o--|| product : "fk"
+    sellable_active_channel }o--|| product : "fk"
+    sellable_active_channel }o--|| sellable : "fk"
+    channel_sellable }o--|| channel_product : "fk"
+    channel_sellable }o--|| store : "fk"
+    channel_sellable }o--|| product : "fk"
+    sellable }o--|| product : "fk"
+    sellable }o--|| employee : "fk"
+    channel_product }o--|| store : "fk"
+    channel_product }o--|| product : "fk"
+    products_active_channel }o--|| store : "fk"
+    products_active_channel }o--|| product : "fk"
+    product }o--|| employee : "fk"
+    product }o--|| employee : "fk"
+    product }o--|| employee : "fk"
+    orders_tag }o--|| orders : "fk"
+    orders_employee_note }o--|| orders : "fk"
+    orders_employee_note }o--|| employee : "fk"
+    orders_line_item }o--|| sellable : "fk"
+    orders_line_item }o--|| orders : "fk"
+    sellable_variant_option_specific }o--|| allocation_line_item : "fk"
+    sellable_variant_option_specific }o--|| orders : "fk"
+    sellable_variant_option_specific }o--|| allocation : "fk"
+    sellable_variant_property_specific }o--|| allocation_line_item : "fk"
+    sellable_variant_property_specific }o--|| orders : "fk"
+    sellable_variant_property_specific }o--|| allocation : "fk"
+    allocation_line_item }o--|| sellable : "fk"
+    allocation_line_item }o--|| orders : "fk"
+    allocation_line_item }o--|| allocation : "fk"
+    allocation_carrier_service_enhancement_code }o--|| allocation : "fk"
+    allocation_carrier_service_enhancement_code }o--|| orders : "fk"
+    allocation }o--|| warehouse : "fk"
+    allocation }o--|| orders : "fk"
+    orders }o--|| company : "fk"
+    orders }o--|| employee : "fk"
+    orders }o--|| delivery_method : "fk"
+    orders }o--|| store : "fk"
+    warehouse }o--|| employee : "fk"
+    warehouse }o--|| employee : "fk"
+    warehouse }o--|| employee : "fk"
+    company_active_feature }o--|| company : "fk"
+    employee }o--|| employee : "fk"
+    employee }o--|| company : "fk"
+    employee }o--|| store : "fk"
+    employee }o--|| employee : "fk"
+    company }o--|| employee : "fk"
+    purchase_order_line_item_stock_entry }o--|| warehouse : "fk"
+    purchase_order_line_item_stock_entry }o--|| purchase_order_line_item : "fk"
+    purchase_order_line_item_stock_entry }o--|| purchase_order : "fk"
+    purchase_order_line_item }o--|| employee : "fk"
+    purchase_order_line_item }o--|| purchase_order : "fk"
+    purchase_order }o--|| employee : "fk"
+    purchase_order }o--|| employee : "fk"
+    purchase_order }o--|| supplier : "fk"
+    delivery_method }o--|| employee : "fk"
+    store }o--|| warehouse : "fk"
+    store }o--|| employee : "fk"
+    store }o--|| employee : "fk"
+    store }o--|| warehouse : "fk"

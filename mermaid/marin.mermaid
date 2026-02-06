@@ -1,0 +1,227 @@
+erDiagram
+%% Tracking tables
+%% They have common schema. Naming pattern is <entity>_tracking_history they just refer to a different entity that is tracked:
+%% |List of Entities|
+%% |-|
+%% |creative|
+%% |keyword|
+%% |placement|
+%% |product_target|
+%% |Common Schema|
+%% |-|
+%% id 🔑
+%% last_modified  🔑
+%% <entity>_id ➤ <entity>_history
+%% value
+%% Dimension Tables
+%% Dimension tables have common schema. They have a naming pattern <entity>_dimension_history.
+%% |List of Entities|
+%% |-|
+%% campaign_dimension_history
+%% creative_dimension_history
+%% group_dimension_history
+%% keyword_dimension_history
+%% placement_dimension_history
+%% product_target_dimension_history
+%% publisher_dimension_history
+%% |Common Schema|
+%% |-|
+%% id  🔑
+%% last_modified  🔑
+%% <entity>_id  ➤ <entity>_history
+%% name
+%% value
+%% Legend
+%% 🔑    =   primary key  
+%% ➤     =   foreign key relation
+    group_history {
+        bigint id PK
+        timestamp last_modified PK
+        bigint campaign_id FK
+        text content_bid
+        text name
+        bigint pub_id
+        text search_bid
+        text status
+    }
+    creative_history {
+        bigint id PK
+        timestamp last_modified PK
+        bigint group_id FK
+        text description_1
+        text description_2
+        text display_url
+        text display_url_nav_1
+        text display_url_nav_2
+        text headline
+        text headline_2
+        bigint pub_id
+        text status
+        text url
+    }
+    publisher_history {
+        bigint id PK
+        timestamp last_modified PK
+        bigint account_id FK
+        text name
+        text original_currency
+        integer type
+    }
+    product_target_fact {
+        text date PK
+        bigint conversion_event_id PK
+        bigint group_id PK
+        bigint product_target_id PK
+        text avg_cpc
+        text avg_pos
+        integer clicks
+        integer conversions
+        integer impressions
+        timestamp last_modified
+        text publisher_cost
+        text revenue
+    }
+    campaign_history {
+        bigint id PK
+        timestamp last_modified PK
+        bigint publisher_id FK
+        text budget
+        text end_date
+        text name
+        bigint pub_id
+        text start_date
+        text status
+    }
+    creative_fact {
+        text date PK
+        bigint conversion_event_id PK
+        bigint creative_id PK
+        bigint group_id PK
+        text avg_cpc
+        text avg_pos
+        integer clicks
+        integer conversions
+        integer impressions
+        timestamp last_modified
+        text publisher_cost
+        text revenue
+    }
+    group_device_fact {
+        text date PK
+        bigint id PK
+        bigint conversion_event_id PK
+        bigint group_id PK
+        text avg_cpc
+        text avg_pos
+        integer clicks
+        integer conversions
+        integer impressions
+        timestamp last_modified
+        text potential_impressions
+        text publisher_cost
+        text revenue
+    }
+    product_target_history {
+        bigint id PK
+        timestamp last_modified PK
+        bigint group_id FK
+        text name
+        bigint pub_id
+        text status
+        text url
+    }
+    keyword_fact {
+        text date PK
+        bigint conversion_event_id PK
+        bigint group_id PK
+        bigint keyword_id PK
+        text avg_cpc
+        text avg_pos
+        integer clicks
+        integer conversions
+        integer impressions
+        integer impressions_on_absolute_top
+        integer impressions_on_top
+        timestamp last_modified
+        text potential_impressions
+        integer potential_impressions_on_absolute_top
+        integer potential_impressions_on_top
+        text publisher_cost
+        text revenue
+        text search_bid
+    }
+    keyword_history {
+        bigint id PK
+        timestamp last_modified PK
+        bigint group_id FK
+        text keyword
+        text match_type
+        text min_bid
+        bigint pub_id
+        bigint quality_score
+        text status
+        text url
+    }
+    conversion_event {
+        bigint id PK
+        text abbreviation
+        bigint aggregate_to_conversions
+        bigint aggregate_to_revenue
+        text alias_id
+        text attribution_date
+        timestamp last_modified
+        text name
+    }
+    account_history {
+        bigint id PK
+        timestamp last_modified PK
+        text creation_date
+        text currency
+        text name
+        text timezone
+        text tracking_id
+    }
+    placement_history {
+        bigint id PK
+        timestamp last_modified PK
+        bigint group_id FK
+        text keyword_url
+        text placement
+        bigint pub_id
+        text status
+    }
+    placement_fact {
+        text date PK
+        bigint conversion_event_id PK
+        bigint group_id PK
+        bigint placement_id PK
+        text avg_cpc
+        text avg_pos
+        integer clicks
+        integer conversions
+        integer impressions
+        timestamp last_modified
+        text publisher_cost
+        text revenue
+    }
+    group_history }o--|| campaign_history : "fk"
+    creative_history }o--|| group_history : "fk"
+    publisher_history }o--|| account_history : "fk"
+    product_target_fact }o--|| product_target_history : "fk"
+    product_target_fact }o--|| group_history : "fk"
+    product_target_fact }o--|| conversion_event : "fk"
+    campaign_history }o--|| publisher_history : "fk"
+    creative_fact }o--|| creative_history : "fk"
+    creative_fact }o--|| group_history : "fk"
+    creative_fact }o--|| conversion_event : "fk"
+    group_device_fact }o--|| group_history : "fk"
+    group_device_fact }o--|| conversion_event : "fk"
+    product_target_history }o--|| group_history : "fk"
+    keyword_fact }o--|| keyword_history : "fk"
+    keyword_fact }o--|| group_history : "fk"
+    keyword_fact }o--|| conversion_event : "fk"
+    keyword_history }o--|| group_history : "fk"
+    placement_history }o--|| group_history : "fk"
+    placement_fact }o--|| placement_history : "fk"
+    placement_fact }o--|| group_history : "fk"
+    placement_fact }o--|| conversion_event : "fk"

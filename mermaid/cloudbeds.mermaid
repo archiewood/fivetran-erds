@@ -1,0 +1,453 @@
+erDiagram
+    house_account {
+        text id PK
+        text property_id FK
+        text account_name
+        text account_status
+        text date_created
+        text is_private
+    }
+    source_tax {
+        text id PK
+        text source_id PK
+        text amount
+        text amount_type
+        text name
+        text type
+    }
+    source_fee {
+        text id PK
+        text source_id PK
+        text amount
+        text amount_type
+        text name
+        text type
+    }
+    source_property {
+        text id PK
+        text property_id FK
+        text commission
+        text is_third_party
+        text name
+        text payment_collect
+        text status
+    }
+    hotel_detail {
+        text id PK
+        jsonb additional_photos
+        text address_1
+        text address_2
+        jsonb amenities
+        text check_in_time
+        text check_out_time
+        text city
+        text company_legal_name
+        text country
+        text email
+        text late_check_out_allowed
+        text late_check_out_type
+        text late_check_out_value
+        text latitude
+        text longitude
+        text phone
+        text primary_language
+        text state
+        text tax_id
+        text tax_id_2
+        text terms_and_conditions
+        text zip
+    }
+    custom_field {
+        text id PK
+        text property_id FK
+        text apply_to
+        jsonb displayed
+        text is_personal
+        text max_characters
+        text name
+        text required
+        text short_code
+        text type
+    }
+    hotel {
+        text id PK
+        text currency_code
+        text currency_position
+        text currency_symbol
+        text description
+        text image
+        text name
+        text timezone
+    }
+    payment_allocation_house {
+        text index PK
+        text payment_id PK
+        text amount
+        text name
+        text reference
+        text type
+    }
+    payment_house {
+        text id PK
+        text guest_id FK
+        text house_account_id FK
+        text property_id FK
+        text reservation_id FK
+        text room_id FK
+        text transaction_id FK
+        text amount
+        text currency
+        text description
+        text is_allocated
+        text is_deleted
+        text is_posted
+        text is_voided
+        text payment_method
+        text quantity
+        text state
+        text total_allocated
+        text total_unallocated
+        text user_id
+        text user_name
+    }
+    allotment_interval {
+        text index PK
+        text allotment_block_id PK
+        text room_type_id FK
+        jsonb availability
+        text end_date
+        text rate_id
+        jsonb restrictions
+        text start_date
+    }
+    allotment_block {
+        text id PK
+        text property_id FK
+        text allotment_block_name
+        text allotment_type
+        text auto_release_release_days
+        text auto_release_release_schedule
+        text auto_release_release_time
+        text auto_release_release_type
+        text group_code
+        text is_auto_release
+        text rate_id
+        text rate_type
+        text status
+    }
+    room {
+        text id PK
+        text room_type_id FK
+        text blocked
+        text description
+        text name
+        text property_id
+    }
+    reservation {
+        text reservation_id PK
+        text property_id FK
+        text date_created
+        text date_modified
+    }
+    transaction {
+        text transaction_id PK
+        text guest_id FK
+        text house_account_id FK
+        text property_id FK
+        text reservation_id FK
+        text room_type_id FK
+        text amount
+        text card_type
+        text category
+        text category_name
+        text check_in
+        text check_out
+        text currency
+        text date_time
+        text date_time_utc
+        text description
+        text is_deleted
+        text modified_date_time
+        text modified_date_time_utc
+        text notes
+        text parent_transaction_id
+        text quantity
+        text room_name
+        text transaction_category
+        text transaction_code
+        text type
+        text user_name
+    }
+    reservation_detail_rate_by_room {
+        text room_type_id PK
+        text reservation_id PK
+        text guest_id FK
+        text room_id FK
+        jsonb detailed_room_rate_names
+        text rate_id
+        text rate_name
+        text room_status
+    }
+    reservation_detail_rate_by_day {
+        text rate_date PK
+        text reservation_id PK
+        text name
+    }
+    reservation_detail_rate {
+        text reservation_id PK
+        text guest_id FK
+        text balance_detailed_additional_items
+        text balance_detailed_grand_total
+        text balance_detailed_paid
+        text balance_detailed_sub_total
+        text balance_detailed_suggested_deposit
+        text balance_detailed_taxes_fees
+        text check_in
+        text check_out
+        text currency
+        text date_created
+        text date_created_utc
+        text date_modified
+        text date_modified_utc
+        text is_deleted
+        text source_category
+        text source_name
+        text source_payment_collect
+    }
+    blocked_room {
+        text id PK
+        text room_block_id PK
+        text room_type_id
+    }
+    blocked {
+        text id PK
+        text property_id PK
+        text end_date
+        text reason
+        text start_date
+        text type
+    }
+    room_type {
+        text id PK
+        text property_id FK
+        text adults_included
+        text children_included
+        text description
+        jsonb features
+        text is_private
+        text max_guests
+        text name_short
+        jsonb photos
+        text room_rate
+        text room_type_name
+        text rooms_available
+        text type_units
+    }
+    guest_note {
+        text id PK
+        text guest_id PK
+        text note
+    }
+    guest {
+        text id PK
+        text property_id FK
+        text reservation_id FK
+        text address
+        text address_2
+        text assigned_room
+        text birthdate
+        text cell_phone
+        text city
+        text company_name
+        text company_tax_id
+        text country
+        text document_expiration_date
+        text document_issue_date
+        text document_issuing_country
+        text document_number
+        text document_type
+        text email
+        text end_date
+        text first_name
+        text gender
+        text guest_opt_in
+        text is_anonymized
+        text is_main_guest
+        text is_merged
+        text last_name
+        text new_guest_id
+        text phone
+        text start_date
+        text state
+        text status
+        text tax_id
+        text zip
+    }
+    reservation_detail_guest {
+        text guest_id PK
+        text reservation_id PK
+        text room_id FK
+    }
+    reservation_detail_of_room_assigned {
+        text reservation_id PK
+        text room_id PK
+        text adults
+        text children
+        jsonb daily_rates
+        text end_date
+        text room_total
+        text start_date
+    }
+    reservation_detail_of_room_unassigned {
+        text room_type_id PK
+        text reservation_id PK
+        text room_id FK
+        text sub_reservation_id
+    }
+    reservation_detail_cards_on_file {
+        text id PK
+        text reservation_id PK
+    }
+    reservation_detail_custom_field {
+        text index PK
+        text reservation_id PK
+        text name
+        text value
+    }
+    reservation_detail {
+        text reservation_id PK
+        text allotment_block_code FK
+        text source_id FK
+        text additional_items
+        text balance
+        text checkin_date
+        text checkout_date
+        text date_created
+        text date_modified
+        text grand_total
+        text order_id
+        text paid
+        text status
+        text sub_total
+        text suggested_deposit
+        text taxes_fees
+        text third_party_identifier
+        text total_booking_price
+    }
+    payment_allocation_reservation {
+        text index PK
+        text payment_id PK
+        text amount
+        text name
+        text reference
+        text type
+    }
+    payment_reservation {
+        text id PK
+        text guest_id FK
+        text property_id FK
+        text reservation_id FK
+        text room_id FK
+        text transaction_id FK
+        text amount
+        text currency
+        text description
+        text guest_checkin
+        text guest_checkout
+        text is_allocated
+        text is_deleted
+        text is_posted
+        text is_voided
+        text method
+        text quantity
+        text state
+        text total_allocated
+        text total_unallocated
+        text user_id
+        text username
+    }
+    payment_allocation_guest {
+        text index PK
+        text payment_id PK
+        text amount
+        text name
+        text reference
+        text type
+    }
+    payment_guest {
+        text id PK
+        text guest_id FK
+        text property_id FK
+        text transaction_id FK
+        text amount
+        text currency
+        text description
+        text is_allocated
+        text is_deleted
+        text is_posted
+        text is_voided
+        text method
+        text quantity
+        text state
+        text total_allocated
+        text total_unallocated
+        text user_id
+        text user_name
+    }
+    house_account }o--|| hotel : "fk"
+    source_tax }o--|| source_property : "fk"
+    source_fee }o--|| source_property : "fk"
+    source_property }o--|| hotel : "fk"
+    hotel_detail }o--|| hotel : "fk"
+    custom_field }o--|| hotel : "fk"
+    payment_allocation_house }o--|| payment_house : "fk"
+    payment_house }o--|| room : "fk"
+    payment_house }o--|| hotel : "fk"
+    payment_house }o--|| house_account : "fk"
+    payment_house }o--|| reservation : "fk"
+    payment_house }o--|| guest : "fk"
+    payment_house }o--|| transaction : "fk"
+    allotment_interval }o--|| room_type : "fk"
+    allotment_interval }o--|| allotment_block : "fk"
+    allotment_block }o--|| hotel : "fk"
+    room }o--|| room_type : "fk"
+    reservation }o--|| hotel : "fk"
+    transaction }o--|| room_type : "fk"
+    transaction }o--|| hotel : "fk"
+    transaction }o--|| house_account : "fk"
+    transaction }o--|| reservation : "fk"
+    transaction }o--|| guest : "fk"
+    reservation_detail_rate_by_room }o--|| room : "fk"
+    reservation_detail_rate_by_room }o--|| guest : "fk"
+    reservation_detail_rate_by_room }o--|| reservation_detail_rate : "fk"
+    reservation_detail_rate_by_day }o--|| reservation_detail_rate : "fk"
+    reservation_detail_rate }o--|| reservation : "fk"
+    reservation_detail_rate }o--|| guest : "fk"
+    blocked_room }o--|| room : "fk"
+    blocked_room }o--|| blocked : "fk"
+    room_type }o--|| hotel : "fk"
+    guest_note }o--|| guest : "fk"
+    guest }o--|| hotel : "fk"
+    guest }o--|| reservation : "fk"
+    reservation_detail_guest }o--|| guest : "fk"
+    reservation_detail_guest }o--|| reservation : "fk"
+    reservation_detail_guest }o--|| room : "fk"
+    reservation_detail_of_room_assigned }o--|| room : "fk"
+    reservation_detail_of_room_assigned }o--|| reservation_detail : "fk"
+    reservation_detail_of_room_unassigned }o--|| room_type : "fk"
+    reservation_detail_of_room_unassigned }o--|| reservation_detail : "fk"
+    reservation_detail_cards_on_file }o--|| reservation_detail : "fk"
+    reservation_detail_custom_field }o--|| reservation_detail : "fk"
+    reservation_detail }o--|| allotment_block : "fk"
+    reservation_detail }o--|| reservation : "fk"
+    reservation_detail }o--|| source_property : "fk"
+    payment_allocation_reservation }o--|| payment_reservation : "fk"
+    payment_reservation }o--|| room : "fk"
+    payment_reservation }o--|| hotel : "fk"
+    payment_reservation }o--|| reservation : "fk"
+    payment_reservation }o--|| guest : "fk"
+    payment_reservation }o--|| transaction : "fk"
+    payment_allocation_guest }o--|| payment_guest : "fk"
+    payment_guest }o--|| hotel : "fk"
+    payment_guest }o--|| guest : "fk"
+    payment_guest }o--|| transaction : "fk"

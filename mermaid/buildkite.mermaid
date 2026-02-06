@@ -1,0 +1,192 @@
+erDiagram
+    pipeline_tag {
+        text name PK
+        text pipeline_id PK
+    }
+    pipeline_step_agent_query_rule {
+        bigint pipeline_step_index PK
+        text rule PK
+        text pipeline_id PK
+    }
+    pipeline_step {
+        text pipeline_id PK
+        text artifact_paths
+        text branch_configuration
+        text command
+        text concurrency
+        jsonb env
+        bigint index
+        text name
+        text parallelism
+        text timeout_in_minutes
+        text type
+    }
+    pipeline {
+        text id PK
+        text created_by_id FK
+        text organization_id FK
+        boolean allow_rebuilds
+        text archived_at
+        text branch_configuration
+        text builds_url
+        boolean cancel_running_branch_builds
+        text cancel_running_branch_builds_filter
+        timestamp created_at
+        text default_branch
+        jsonb env
+        text name
+        jsonb provider
+        text qraphql_id
+        text repository
+        integer running_builds_count
+        integer running_jobs_count
+        integer scheduled_builds_count
+        integer scheduled_jobs_count
+        boolean skip_queued_branch_builds
+        text skip_queued_branch_builds_filter
+        text slug
+        text url
+        text visibility
+        integer waiting_jobs_count
+        text web_url
+    }
+    agent_metadata {
+        text name PK
+        text agent_id PK
+    }
+    agent {
+        text id PK
+        text creator_id FK
+        text organization_id FK
+        text connection_state
+        timestamp created_at
+        text hostname
+        text ip_address
+        timestamp last_job_finished_at
+        text name
+        text priority
+        text url
+        text user_agent
+        text version
+        text web_url
+    }
+    build_job_agent_query_rule {
+        text rule PK
+        text build_job_id PK
+    }
+    build_job {
+        text id PK
+        text build_id PK
+        text agent_id FK
+        text organization_id FK
+        text retried_in_job_id FK
+        text unblocked_by_id FK
+        text artifact_paths
+        text artifacts_url
+        text build_url
+        text command
+        timestamp created_at
+        bigint exit_status
+        timestamp expired_at
+        timestamp finished_at
+        text graphql_id
+        text log_url
+        text matrix
+        text name
+        integer parallel_group_index
+        integer parallel_group_total
+        integer priority
+        text raw_log_url
+        boolean retried
+        integer retries_count
+        text retry_type
+        timestamp runnable_at
+        timestamp scheduled_at
+        boolean soft_failed
+        timestamp started_at
+        text state
+        text step_id
+        text step_key
+        text step_signature_algorithm
+        jsonb step_signature_signed_fields
+        text step_signature_value
+        text type
+        text unblock_url
+        boolean unblockable
+        timestamp unblocked_at
+        text web_url
+    }
+    build {
+        text id PK
+        text creator_id FK
+        text organization_id FK
+        text pipeline_id FK
+        text rebuilt_from_id FK
+        boolean blocked
+        text blocked_state
+        text branch
+        text commit
+        timestamp created_at
+        jsonb env
+        timestamp finished_at
+        text github_author_email
+        text github_author_name
+        text github_author_username
+        text graphql_id
+        text message
+        jsonb meta_data
+        bigint number
+        text pipeline_slug
+        text pr_number
+        text pr_repo
+        timestamp scheduled_at
+        text source
+        timestamp started_at
+        text state
+        text tag
+        text url
+        text web_url
+    }
+    organization {
+        text id PK
+        text agents_url
+        timestamp created_at
+        text emojis_url
+        text graph_id
+        text name
+        text pipelines_url
+        text slug
+        text url
+        text web_url
+    }
+    users {
+        text id PK
+        text organization_id FK
+        text avatar_url
+        timestamp created_at
+        text email
+        text graph_id
+        boolean is_bot
+        text name
+        text role
+        text sso_mode
+    }
+    pipeline_tag }o--|| pipeline : "fk"
+    pipeline_step_agent_query_rule }o--|| pipeline : "fk"
+    pipeline_step }o--|| pipeline : "fk"
+    pipeline }o--|| users : "fk"
+    pipeline }o--|| organization : "fk"
+    agent_metadata }o--|| agent : "fk"
+    agent }o--|| users : "fk"
+    agent }o--|| organization : "fk"
+    build_job_agent_query_rule }o--|| build_job : "fk"
+    build_job }o--|| users : "fk"
+    build_job }o--|| build : "fk"
+    build_job }o--|| agent : "fk"
+    build_job }o--|| build : "fk"
+    build_job }o--|| organization : "fk"
+    build }o--|| pipeline : "fk"
+    build }o--|| build : "fk"
+    build }o--|| users : "fk"
+    build }o--|| organization : "fk"
+    users }o--|| organization : "fk"

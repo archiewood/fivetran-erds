@@ -1,0 +1,144 @@
+erDiagram
+    keyword_category {
+        text category PK
+        text index PK
+        text keyword_added PK
+        text keyword_keyword PK
+    }
+    keyword {
+        text added PK
+        text keyword PK
+        text crawl_interval
+        text ignored
+        text priority
+        text relevance
+        text source
+        text updated
+    }
+    serp_drilldown_keyword {
+        text keyword PK
+        text object_type PK
+        text total_ranking_count
+    }
+    serp_publisher {
+        text publisher PK
+        text keyword PK
+        text object_type PK
+        text ranking_count
+    }
+    ranking_detail {
+        text _fivetran_id PK
+        text ranking_identifier FK
+        text ranking_keyword FK
+        text amp
+        text crawl_date
+        text device
+        text object_type
+        text position
+        text position_in_ranking_type
+        text ranking_lost
+        text ranking_type
+        text title
+        text url
+        text video
+    }
+    ranking {
+        text identifier PK
+        text keyword PK
+        text news_tab_crawl_date
+        text news_tab_title
+        text news_tab_url
+        text object_type
+    }
+    keyword_without_article_ranking {
+        text _fivetran_id PK
+        text amp
+        text crawl_date
+        text device
+        text keyword_with_article_identifier
+        text keyword_with_article_keyword
+        text position
+        text position_in_ranking_type
+        text ranking_lost
+        text ranking_type
+        text title
+        text url
+        text video
+    }
+    keyword_with_article {
+        text _fivetran_id PK
+        text keyword FK
+        text identifier
+        text news_tab_crawl_date
+        text news_tab_title
+        text news_tab_url
+    }
+    serp_drilldown_article {
+        text type PK
+        text url PK
+        text score_percentage_within_top_hit
+        text title
+    }
+    missing_topic {
+        text date_filter PK
+        text key PK
+    }
+    serp_visibility_value {
+        text date PK
+        text publisher PK
+        text object_type
+        text value
+    }
+    articles_without_ranking_keyword {
+        text index PK
+        text title PK
+        text url PK
+        text keyword
+    }
+    category_distribution_chart {
+        text category PK
+        text date PK
+        text publisher PK
+        text value
+    }
+    google_news_visibility_chart {
+        text date PK
+        text google_chart_publisher PK
+        text value
+    }
+    general_keyword_category {
+        text index PK
+        text general_keyword_keyword PK
+        text general_object PK
+        text category
+    }
+    general_keyword {
+        text keyword PK
+        text type PK
+        text relevance
+    }
+    topic_coverage_chart {
+        text date PK
+        text publisher PK
+        text value
+    }
+    indexed_article {
+        text indexed PK
+        text url PK
+        text title
+    }
+    index_rate_chart {
+        text date PK
+        text index_chart_publisher PK
+        text value
+    }
+    keyword_category }o--|| keyword : "fk"
+    keyword_category }o--|| keyword : "fk"
+    serp_publisher }o--|| serp_drilldown_keyword : "fk"
+    serp_publisher }o--|| serp_drilldown_keyword : "fk"
+    ranking_detail }o--|| ranking : "fk"
+    ranking_detail }o--|| ranking : "fk"
+    keyword_with_article }o--|| keyword : "fk"
+    missing_topic }o--|| keyword : "fk"
+    general_keyword_category }o--|| general_keyword : "fk"
+    general_keyword_category }o--|| general_keyword : "fk"

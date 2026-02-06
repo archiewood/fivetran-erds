@@ -1,0 +1,703 @@
+erDiagram
+    languages {
+        text id PK
+        text kind
+        text language_code
+        text name
+    }
+    audience_segment {
+        text id PK
+        text audience_segment_group_id FK
+        integer allocation
+        text name
+    }
+    placement_assignment {
+        text ad_id PK
+        text placement_id PK
+        boolean active
+        boolean ssl_required
+    }
+    ad_region {
+        text ad_id PK
+        text region_id PK
+    }
+    browser {
+        text browser_version_id PK
+        text dart_id
+        text kind
+        text major_version
+        text minor_version
+        text name
+    }
+    ad_metro {
+        text ad_id PK
+        text metro_id PK
+    }
+    creative_field {
+        text id PK
+        text profile_id PK
+        text account_id FK
+        text advertiser_id FK
+        text kind
+        text name
+        text subaccount_id
+    }
+    ad_city {
+        text ad_id PK
+        text city_id PK
+    }
+    creative_field_assignment {
+        text creative_field_id PK
+        text creative_field_value_id PK
+        text creative_id PK
+    }
+    creative_field_value {
+        text id PK
+        text profile_id PK
+        text kind
+        text value
+    }
+    placement {
+        text id PK
+        text profile_id PK
+        text account_id FK
+        text advertiser_id FK
+        text campaign_id FK
+        text site_id FK
+        text active_status
+        boolean ad_blocking_opt_out
+        text ad_serving_platform_id
+        text comment
+        text compatibility
+        text content_category_id
+        text create_info_time
+        text directory_site_id
+        text external_id
+        text id_dimension_value_dimension_name
+        text id_dimension_value_etag
+        text id_dimension_value_id
+        text id_dimension_value_kind
+        text id_dimension_value_match_type
+        text id_dimension_value_value
+        boolean is_primary
+        text key_name
+        text kind
+        text last_modified_info_time
+        integer lookback_configuration_click_duration
+        integer lookback_configuration_post_impression_activities_duration
+        text name
+        text partner_wrapping_data_link_status
+        text partner_wrapping_data_measurement_partner
+        text partner_wrapping_data_tag_wrapping_mode
+        text partner_wrapping_data_wrapped_tag
+        boolean payment_approved
+        text payment_source
+        text placement_group_id
+        text placement_strategy_id
+        text pricing_schedule_cap_cost_option
+        text pricing_schedule_end_date
+        boolean pricing_schedule_flighted
+        text pricing_schedule_floodlight_activity_id
+        text pricing_schedule_pricing_type
+        text pricing_schedule_start_date
+        text pricing_schedule_testing_start_date
+        text publisher_update_info_time
+        boolean site_served
+        integer size_height
+        boolean size_iab
+        text size_id
+        text size_kind
+        integer size_width
+        boolean ssl_required
+        text status
+        text subaccount_id
+        text tag_setting_additional_key_values
+        boolean tag_setting_include_click_through_urls
+        boolean tag_setting_include_click_tracking
+        text tag_setting_keyword_option
+        boolean video_active_view_opt_out
+        boolean video_settings_companion_settings_companions_disabled
+        boolean video_settings_companion_settings_image_only
+        text video_settings_companion_settings_kind
+        integer video_settings_duration_seconds
+        text video_settings_kind
+        boolean video_settings_oba_enabled
+        text video_settings_oba_settings_icon_click_through_url
+        text video_settings_oba_settings_icon_click_tracking_url
+        text video_settings_oba_settings_icon_view_tracking_url
+        text video_settings_oba_settings_program
+        text video_settings_oba_settings_resource_url
+        integer video_settings_oba_settings_size_height
+        boolean video_settings_oba_settings_size_iab
+        text video_settings_oba_settings_size_id
+        text video_settings_oba_settings_size_kind
+        integer video_settings_oba_settings_size_width
+        text video_settings_oba_settings_x_position
+        text video_settings_oba_settings_y_position
+        text video_settings_orientation
+        text video_settings_publisher_specification_id
+        text video_settings_skippable_settings_kind
+        integer video_settings_skippable_settings_progress_offset_offset_percentage
+        integer video_settings_skippable_settings_progress_offset_offset_seconds
+        integer video_settings_skippable_settings_skip_offset_offset_percentage
+        integer video_settings_skippable_settings_skip_offset_offset_seconds
+        boolean video_settings_skippable_settings_skippable
+        text video_settings_transcode_settings_enabled_video_formats
+        text video_settings_transcode_settings_kind
+        text vpaid_adapter_choice
+        boolean wrapping_opt_out
+    }
+    site {
+        text id PK
+        text profile_id PK
+        text account_id FK
+        text ad_serving_platform_id
+        boolean approved
+        text directory_site_id
+        text id_dimension_value_dimension_name
+        text id_dimension_value_etag
+        text id_dimension_value_id
+        text id_dimension_value_kind
+        text id_dimension_value_match_type
+        text id_dimension_value_value
+        text key_name
+        text kind
+        text name
+        boolean site_settings_active_view_opt_out
+        boolean site_settings_ad_blocking_opt_out
+        boolean site_settings_disable_new_cookie
+        text site_settings_tag_setting_additional_key_values
+        boolean site_settings_tag_setting_include_click_through_urls
+        boolean site_settings_tag_setting_include_click_tracking
+        text site_settings_tag_setting_keyword_option
+        boolean site_settings_video_active_view_opt_out_template
+        text site_settings_vpaid_adapter_choice_template
+        text subaccount_id
+    }
+    audience_segment_group {
+        text id PK
+        text campaign_id FK
+        text name
+    }
+    third_party_tracking_url {
+        text _fivetran_id PK
+        text creative_id FK
+        text third_party_url_type
+        text url
+    }
+    pricing_period {
+        text _fivetran_id PK
+        text placement_id FK
+        text end_date
+        text pricing_comment
+        text rate_or_cost_nanos
+        text start_date
+        text units
+    }
+    country {
+        text dart_id PK
+        text country_code
+        text kind
+        text name
+        boolean ssl_enabled
+    }
+    companion_creative {
+        text companion_creative_id PK
+        text creative_id PK
+    }
+    ad_connection_type {
+        text ad_id PK
+        text connection_type_id PK
+    }
+    operating_system_version {
+        text id PK
+        text operating_system_dart_id FK
+        text kind
+        text major_version
+        text minor_version
+        text name
+        boolean operating_system_desktop
+        text operating_system_kind
+        boolean operating_system_mobile
+        text operating_system_name
+    }
+    ad_language {
+        text ad_id PK
+        text language_id PK
+    }
+    operating_system {
+        text dart_id PK
+        boolean desktop
+        text kind
+        boolean mobile
+        text name
+    }
+    ad_postal_code {
+        text ad_id PK
+        text postal_code_id PK
+    }
+    creative {
+        text id PK
+        text profile_id PK
+        text account_id FK
+        text advertiser_id FK
+        boolean active
+        text ad_parameters
+        boolean allow_script_access
+        boolean archived
+        text artwork_type
+        text authoring_source
+        text authoring_tool
+        boolean auto_advance_images
+        text background_color
+        text backup_image_click_through_url_computed_click_through_url
+        text backup_image_click_through_url_custom_click_through_url
+        text backup_image_click_through_url_landing_page_id
+        text backup_image_reporting_label
+        text backup_image_target_window_custom_html
+        text backup_image_target_window_target_window_option
+        text commercial_id
+        boolean convert_flash_to_html_5
+        text creative_asset_selection_default_asset_id
+        boolean dynamic_asset_selection
+        integer fs_command_left
+        text fs_command_position_option
+        integer fs_command_top
+        integer fs_command_window_height
+        integer fs_command_window_width
+        text html_code
+        boolean html_code_locked
+        text id_dimension_value_dimension_name
+        text id_dimension_value_etag
+        text id_dimension_value_id
+        text id_dimension_value_kind
+        text id_dimension_value_match_type
+        text id_dimension_value_value
+        text kind
+        text last_modified_info_time
+        text latest_trafficked_creative_id
+        text media_description
+        double_precision media_duration
+        text name
+        text oba_icon_icon_click_through_url
+        text oba_icon_icon_click_tracking_url
+        text oba_icon_icon_view_tracking_url
+        text oba_icon_program
+        text oba_icon_resource_url
+        integer oba_icon_size_height
+        boolean oba_icon_size_iab
+        text oba_icon_size_id
+        text oba_icon_size_kind
+        integer oba_icon_size_width
+        text oba_icon_x_position
+        text oba_icon_y_position
+        text override_css
+        integer progress_offset_offset_percentage
+        integer progress_offset_offset_seconds
+        text redirect_url
+        text rendering_id
+        text required_flash_plugin_version
+        integer required_flash_version
+        integer size_height
+        boolean size_iab
+        text size_id
+        text size_kind
+        integer size_width
+        integer skip_offset_offset_percentage
+        integer skip_offset_offset_seconds
+        boolean skippable
+        boolean ssl_compliant
+        boolean ssl_override
+        text studio_advertiser_id
+        text studio_creative_id
+        text studio_trafficked_creative_id
+        text subaccount_id
+        text third_party_backup_image_impressions_url
+        text third_party_rich_media_impressions_url
+        text total_file_size
+        text type
+        text universal_ad_id_registry
+        text universal_ad_id_value
+        integer version
+    }
+    ad_operating_system {
+        text ad_id PK
+        text operating_system_id PK
+    }
+    connection_type {
+        text id PK
+        text kind
+        text name
+    }
+    ad_mobile_carrier {
+        text ad_id PK
+        text mobile_carrier_id PK
+    }
+    ad_operating_system_version {
+        text ad_id PK
+        text operating_system_version_id PK
+    }
+    region {
+        text dart_id PK
+        text country_dart_id FK
+        text country_code
+        text kind
+        text name
+        text region_code
+    }
+    ad_country {
+        text ad_id PK
+        text country_id PK
+    }
+    metro {
+        text dma_id PK
+        text country_dart_id FK
+        text country_code
+        text dart_id
+        text kind
+        text metro_code
+        text name
+    }
+    account {
+        text id PK
+        text profile_id PK
+        text country_id FK
+        text account_profile
+        boolean active
+        text active_ads_limit_tier
+        boolean active_view_opt_out
+        text currency_id
+        text default_creative_size_id
+        text description
+        text kind
+        text locale
+        text maximum_image_size
+        text name
+        boolean nielsen_ocr_enabled
+        boolean reports_configuration_exposure_to_conversion_enabled
+        integer reports_configuration_lookback_configuration_click_duration
+        integer reports_configuration_lookback_configuration_post_impression_activities_duration
+        text reports_configuration_report_generation_time_zone_id
+        boolean share_reports_with_twitter
+        text teaser_size_limit
+    }
+    creative_assignment {
+        text ad_id PK
+        text creative_id PK
+        boolean active
+        boolean apply_event_tags
+        text click_through_url_computed_click_through_url
+        text click_through_url_custom_click_through_url
+        boolean click_through_url_default_landing_page
+        text click_through_url_landing_page_id
+        text end_time
+        integer sequence
+        boolean ssl_compliant
+        text start_time
+        integer weight
+    }
+    campaign {
+        text id PK
+        text profile_id PK
+        text account_id FK
+        text advertiser_id FK
+        boolean ad_blocking_configuration_enabled
+        text advertiser_group_id
+        boolean archived
+        text billing_invoice_code
+        text click_through_url_suffix_properties_click_through_url_suffix
+        boolean click_through_url_suffix_properties_override_inherited_suffix
+        text comment
+        text create_info_time
+        text default_click_through_event_tag_properties_default_click_through_event_tag_id
+        boolean default_click_through_event_tag_properties_override_inherited_event_tag
+        text default_landing_page_id
+        text end_date
+        text external_id
+        text id_dimension_value_dimension_name
+        text id_dimension_value_etag
+        text id_dimension_value_id
+        text id_dimension_value_kind
+        text id_dimension_value_match_type
+        text id_dimension_value_value
+        text kind
+        text last_modified_info_time
+        text measurement_partner_link_link_status
+        text measurement_partner_link_measurement_partner
+        text measurement_partner_link_partner_campaign_id
+        text name
+        text start_date
+        text subaccount_id
+    }
+    ad_browser {
+        text ad_id PK
+        text browser_id PK
+    }
+    creative_asset {
+        text id PK
+        text creative_id FK
+        boolean action_script_3
+        boolean active
+        text alignment
+        text artwork_type
+        text asset_identifier_name
+        text asset_identifier_type
+        integer audio_bit_rate
+        integer audio_sample_rate
+        text backup_image_exit_advertiser_custom_event_id
+        text backup_image_exit_advertiser_custom_event_name
+        text backup_image_exit_advertiser_custom_event_type
+        text backup_image_exit_artwork_label
+        text backup_image_exit_artwork_type
+        text backup_image_exit_exit_click_through_url_computed_click_through_url
+        text backup_image_exit_exit_click_through_url_custom_click_through_url
+        text backup_image_exit_exit_click_through_url_landing_page_id
+        text backup_image_exit_id
+        integer backup_image_exit_popup_window_properties_dimension_height
+        boolean backup_image_exit_popup_window_properties_dimension_iab
+        text backup_image_exit_popup_window_properties_dimension_id
+        text backup_image_exit_popup_window_properties_dimension_kind
+        integer backup_image_exit_popup_window_properties_dimension_width
+        integer backup_image_exit_popup_window_properties_offset_left
+        integer backup_image_exit_popup_window_properties_offset_top
+        text backup_image_exit_popup_window_properties_position_type
+        boolean backup_image_exit_popup_window_properties_show_address_bar
+        boolean backup_image_exit_popup_window_properties_show_menu_bar
+        boolean backup_image_exit_popup_window_properties_show_scroll_bar
+        boolean backup_image_exit_popup_window_properties_show_status_bar
+        boolean backup_image_exit_popup_window_properties_show_tool_bar
+        text backup_image_exit_popup_window_properties_title
+        text backup_image_exit_target_type
+        text backup_image_exit_video_reporting_id
+        integer bit_rate
+        text child_asset_type
+        integer collapsed_size_height
+        boolean collapsed_size_iab
+        text collapsed_size_id
+        text collapsed_size_kind
+        integer collapsed_size_width
+        integer custom_start_time_value
+        text display_type
+        integer duration
+        text duration_type
+        integer expanded_dimension_height
+        boolean expanded_dimension_iab
+        text expanded_dimension_id
+        text expanded_dimension_kind
+        integer expanded_dimension_width
+        text file_size
+        integer flash_version
+        double_precision frame_rate
+        boolean hide_flash_objects
+        boolean hide_selection_boxes
+        boolean horizontally_locked
+        text id_dimension_value_dimension_name
+        text id_dimension_value_etag
+        text id_dimension_value_id
+        text id_dimension_value_kind
+        text id_dimension_value_match_type
+        text id_dimension_value_value
+        double_precision media_duration
+        text mime_type
+        integer offset_left
+        integer offset_top
+        text orientation
+        boolean original_backup
+        boolean polite_load
+        integer position_left
+        text position_left_unit
+        integer position_top
+        text position_top_unit
+        text progressive_serving_url
+        boolean pushdown
+        double_precision pushdown_duration
+        text role
+        integer size_height
+        boolean size_iab
+        text size_id
+        text size_kind
+        integer size_width
+        boolean ssl_compliant
+        text start_time_type
+        text streaming_serving_url
+        boolean transparency
+        boolean vertically_locked
+        text window_mode
+        integer z_index
+        text zip_filename
+        text zip_filesize
+    }
+    city {
+        text dart_id PK
+        text country_dart_id FK
+        text metro_dma_id FK
+        text region_dart_id FK
+        text country_code
+        text kind
+        text metro_code
+        text name
+        text region_code
+    }
+    ad_platform_type {
+        text ad_id PK
+        text platform_type_id PK
+    }
+    postal_code {
+        text id PK
+        text country_dart_id FK
+        text code
+        text country_code
+        text kind
+    }
+    mobile_carrier {
+        text id PK
+        text country_dart_id FK
+        text country_code
+        text kind
+        text name
+    }
+    platform_type {
+        text id PK
+        text kind
+        text name
+    }
+    ad {
+        text id PK
+        text profile_id PK
+        text account_id FK
+        text advertiser_id FK
+        text audience_segment_id FK
+        text campaign_id FK
+        boolean active
+        boolean archived
+        text click_through_url_computed_click_through_url
+        text click_through_url_custom_click_through_url
+        boolean click_through_url_default_landing_page
+        text click_through_url_landing_page_id
+        text click_through_url_suffix_properties_click_through_url_suffix
+        boolean click_through_url_suffix_properties_override_inherited_suffix
+        text comments
+        text compatibility
+        text create_info_time
+        text creative_rotation_creative_optimization_configuration_id
+        text creative_rotation_type
+        text creative_rotation_weight_calculation_strategy
+        text delivery_schedule_frequency_cap_duration
+        text delivery_schedule_frequency_cap_impressions
+        boolean delivery_schedule_hard_cutoff
+        text delivery_schedule_impression_ratio
+        text delivery_schedule_priority
+        boolean dynamic_click_tracker
+        text end_time
+        boolean geo_targeting_exclude_countries
+        text id_dimension_value_dimension_name
+        text id_dimension_value_etag
+        text id_dimension_value_id
+        text id_dimension_value_kind
+        text id_dimension_value_match_type
+        text id_dimension_value_value
+        text key_value_targeting_expression_expression
+        text kind
+        text last_modified_info_time
+        text name
+        text remarketing_list_expression_expression
+        integer size_height
+        boolean size_iab
+        text size_id
+        text size_kind
+        integer size_width
+        boolean ssl_compliant
+        boolean ssl_required
+        text start_time
+        text subaccount_id
+        text targeting_template_id
+        text type
+    }
+    advertiser {
+        text id PK
+        text profile_id PK
+        text account_id FK
+        text advertiser_group_id
+        text click_through_url_suffix
+        text default_click_through_event_tag_id
+        text default_email
+        text floodlight_configuration_id
+        text id_dimension_value_dimension_name
+        text id_dimension_value_etag
+        text id_dimension_value_id
+        text id_dimension_value_kind
+        text id_dimension_value_match_type
+        text id_dimension_value_value
+        text kind
+        text measurement_partner_link_link_status
+        text measurement_partner_link_measurement_partner
+        text measurement_partner_link_partner_advertiser_id
+        text name
+        text original_floodlight_configuration_id
+        text status
+        text subaccount_id
+        boolean suspended
+    }
+    audience_segment }o--|| audience_segment_group : "fk"
+    placement_assignment }o--|| ad : "fk"
+    placement_assignment }o--|| placement : "fk"
+    ad_region }o--|| ad : "fk"
+    ad_region }o--|| region : "fk"
+    ad_metro }o--|| ad : "fk"
+    ad_metro }o--|| metro : "fk"
+    creative_field }o--|| account : "fk"
+    creative_field }o--|| advertiser : "fk"
+    ad_city }o--|| ad : "fk"
+    ad_city }o--|| city : "fk"
+    creative_field_assignment }o--|| creative : "fk"
+    creative_field_assignment }o--|| creative_field : "fk"
+    creative_field_assignment }o--|| creative_field_value : "fk"
+    placement }o--|| account : "fk"
+    placement }o--|| advertiser : "fk"
+    placement }o--|| campaign : "fk"
+    placement }o--|| site : "fk"
+    site }o--|| account : "fk"
+    audience_segment_group }o--|| campaign : "fk"
+    third_party_tracking_url }o--|| creative : "fk"
+    pricing_period }o--|| placement : "fk"
+    companion_creative }o--|| creative : "fk"
+    companion_creative }o--|| creative_asset : "fk"
+    ad_connection_type }o--|| ad : "fk"
+    ad_connection_type }o--|| connection_type : "fk"
+    operating_system_version }o--|| operating_system : "fk"
+    ad_language }o--|| ad : "fk"
+    ad_language }o--|| languages : "fk"
+    ad_postal_code }o--|| ad : "fk"
+    ad_postal_code }o--|| postal_code : "fk"
+    creative }o--|| advertiser : "fk"
+    creative }o--|| account : "fk"
+    ad_operating_system }o--|| ad : "fk"
+    ad_operating_system }o--|| operating_system : "fk"
+    ad_mobile_carrier }o--|| ad : "fk"
+    ad_mobile_carrier }o--|| mobile_carrier : "fk"
+    ad_operating_system_version }o--|| ad : "fk"
+    ad_operating_system_version }o--|| operating_system_version : "fk"
+    region }o--|| country : "fk"
+    ad_country }o--|| ad : "fk"
+    ad_country }o--|| country : "fk"
+    metro }o--|| country : "fk"
+    account }o--|| country : "fk"
+    creative_assignment }o--|| creative : "fk"
+    creative_assignment }o--|| ad : "fk"
+    campaign }o--|| account : "fk"
+    campaign }o--|| advertiser : "fk"
+    ad_browser }o--|| ad : "fk"
+    ad_browser }o--|| browser : "fk"
+    creative_asset }o--|| creative : "fk"
+    city }o--|| country : "fk"
+    city }o--|| region : "fk"
+    city }o--|| metro : "fk"
+    ad_platform_type }o--|| ad : "fk"
+    ad_platform_type }o--|| platform_type : "fk"
+    postal_code }o--|| country : "fk"
+    mobile_carrier }o--|| country : "fk"
+    ad }o--|| campaign : "fk"
+    ad }o--|| advertiser : "fk"
+    ad }o--|| account : "fk"
+    ad }o--|| audience_segment : "fk"
+    advertiser }o--|| account : "fk"

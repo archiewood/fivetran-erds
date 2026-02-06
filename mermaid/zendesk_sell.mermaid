@@ -1,0 +1,370 @@
+erDiagram
+    lead_history {
+        bigint id PK
+        bigint creator_id FK
+        bigint owner_id FK
+        bigint source_id FK
+        bigint unqualified_reason_id FK
+        timestamp created_at
+        text description
+        text email
+        text facebook
+        text fax
+        text first_name
+        text industry
+        text last_name
+        text linkedin
+        text mobile
+        text organization_name
+        text phone
+        text skype
+        text status
+        text title
+        text twitter
+        timestamp updated_at
+        text website
+    }
+    text_message_associated_deal {
+        integer index PK
+        bigint text_message_id PK
+        bigint deal_id FK
+    }
+    note_tag {
+        integer index PK
+        bigint note_id PK
+        text name
+    }
+    product {
+        bigint id PK
+        boolean active
+        double_precision cost
+        text cost_currency
+        timestamp created_at
+        text description
+        bigint max_discount
+        bigint max_markup
+        text name
+        text sku
+        timestamp updated_at
+    }
+    product_price {
+        integer index PK
+        bigint product_id PK
+        double_precision amount
+        text currency
+    }
+    tag {
+        text name PK
+        bigint resource_id PK
+        text resource_type PK
+    }
+    collaboration {
+        bigint id PK
+        bigint creator_id FK
+        bigint collaborator_id
+        timestamp created_at
+        bigint resource_id
+        text resource_type
+        timestamp updated_at
+    }
+    deal_history {
+        bigint id PK
+        bigint contact_id FK
+        bigint creator_id FK
+        bigint last_stage_change_by_id FK
+        bigint loss_reason_id FK
+        bigint organization_id FK
+        bigint owner_id FK
+        bigint source_id FK
+        bigint stage_id FK
+        bigint unqualified_reason_id FK
+        timestamp added_at
+        timestamp created_at
+        text currency
+        integer customized_win_likelihood
+        text dropbox_email
+        text estimated_close_date
+        boolean hot
+        timestamp last_activity_at
+        text last_stage_change_at
+        text name
+        timestamp updated_at
+        text value
+    }
+    visit_outcome {
+        bigint id PK
+        timestamp created_at
+        text name
+        timestamp updated_at
+    }
+    call {
+        bigint id PK
+        bigint outcome_id FK
+        bigint user_id FK
+        timestamp created_at
+        bigint duration
+        text external_id
+        boolean incoming
+        timestamp made_at
+        boolean missed
+        text phone_number
+        text recording_url
+        bigint resource_id
+        text resource_type
+        text summary
+        timestamp updated_at
+    }
+    lead_conversion {
+        bigint id PK
+        bigint creator_id FK
+        bigint deal_id FK
+        bigint individual_id FK
+        bigint lead_id FK
+        bigint organization_id FK
+        timestamp created_at
+    }
+    unqualified_reason {
+        bigint id PK
+        bigint creator_id FK
+        timestamp created_at
+        text name
+        timestamp updated_at
+    }
+    associated_contact {
+        bigint contact_id PK
+        bigint deal_id PK
+        timestamp created_at
+        text role
+        timestamp updated_at
+    }
+    visit {
+        bigint id PK
+        bigint creator_id FK
+        bigint outcome_id FK
+        timestamp created_at
+        text rep_location_verification_status
+        text resource_address
+        bigint resource_id
+        text resource_type
+        text summary
+        timestamp updated_at
+        timestamp visited_at
+    }
+    call_associated_deal {
+        integer index PK
+        bigint call_id PK
+        bigint deal_id FK
+    }
+    task {
+        bigint id PK
+        bigint creator_id FK
+        bigint owner_id FK
+        boolean completed
+        timestamp completed_at
+        text content
+        timestamp created_at
+        timestamp due_date
+        boolean overdue
+        timestamp remind_at
+        bigint resource_id
+        text resource_type
+        timestamp updated_at
+    }
+    stage {
+        bigint id PK
+        bigint pipeline_id PK
+        boolean active
+        text category
+        timestamp created_at
+        bigint likelihood
+        text name
+        bigint position
+        timestamp updated_at
+    }
+    note {
+        bigint id PK
+        bigint creator_id FK
+        text content
+        timestamp created_at
+        boolean is_important
+        bigint resource_id
+        text resource_type
+        text type
+        timestamp updated_at
+    }
+    loss_reason {
+        bigint id PK
+        bigint creator_id FK
+        timestamp created_at
+        text name
+        timestamp updated_at
+    }
+    user {
+        bigint id PK
+        bigint reports_to FK
+        boolean confirmed
+        timestamp created_at
+        timestamp deleted_at
+        text email
+        bigint group_id
+        text group_name
+        text identity_type
+        boolean invited
+        text name
+        text phone_number
+        text role
+        text status
+        text team_name
+        text timezone
+        timestamp updated_at
+        text zendesk_user_id
+    }
+    line_item {
+        bigint id PK
+        bigint order_id FK
+        bigint product_id FK
+        timestamp created_at
+        text currency
+        text description
+        text name
+        double_precision price
+        bigint quantity
+        text sku
+        timestamp updated_at
+        double_precision value
+        double_precision variation
+    }
+    contact_history {
+        bigint id PK
+        bigint contact_id FK
+        bigint creator_id FK
+        bigint owner_id FK
+        bigint parent_organization_id FK
+        timestamp created_at
+        text customer_status
+        text description
+        text email
+        text facebook
+        text fax
+        text first_name
+        text industry
+        boolean is_organization
+        text last_name
+        text linkedin
+        text mobile
+        text name
+        text phone
+        text prospect_status
+        text skype
+        text title
+        text twitter
+        timestamp updated_at
+        text website
+    }
+    order {
+        bigint id PK
+        bigint deal_id FK
+        timestamp created_at
+        bigint discount
+        timestamp updated_at
+    }
+    text_message {
+        bigint id PK
+        text content
+        timestamp created_at
+        boolean incoming
+        bigint resource_id
+        text resource_phone_number
+        text resource_type
+        timestamp sent_at
+        timestamp updated_at
+        bigint user_id
+        text user_phone_number
+    }
+    user_role {
+        integer index PK
+        bigint user_id PK
+        text role
+    }
+    pipeline {
+        bigint id PK
+        timestamp created_at
+        boolean disabled
+        text name
+        timestamp updated_at
+    }
+    document {
+        bigint id PK
+        bigint resource_id PK
+        text resource_type PK
+        bigint creator_id FK
+        text content_type
+        timestamp created_at
+        text download_url
+        text name
+        bigint size
+        timestamp updated_at
+    }
+    call_outcome {
+        bigint id PK
+        bigint creator_id FK
+        timestamp created_at
+        text name
+        timestamp updated_at
+    }
+    source {
+        bigint id PK
+        bigint creator_id FK
+        timestamp created_at
+        text name
+        timestamp updated_at
+    }
+    lead_history }o--|| user : "fk"
+    lead_history }o--|| user : "fk"
+    lead_history }o--|| source : "fk"
+    lead_history }o--|| unqualified_reason : "fk"
+    text_message_associated_deal }o--|| text_message : "fk"
+    text_message_associated_deal }o--|| deal_history : "fk"
+    note_tag }o--|| note : "fk"
+    product_price }o--|| product : "fk"
+    collaboration }o--|| user : "fk"
+    deal_history }o--|| user : "fk"
+    deal_history }o--|| user : "fk"
+    deal_history }o--|| stage : "fk"
+    deal_history }o--|| source : "fk"
+    deal_history }o--|| loss_reason : "fk"
+    deal_history }o--|| unqualified_reason : "fk"
+    deal_history }o--|| user : "fk"
+    deal_history }o--|| contact_history : "fk"
+    deal_history }o--|| contact_history : "fk"
+    call }o--|| call_outcome : "fk"
+    call }o--|| user : "fk"
+    lead_conversion }o--|| lead_history : "fk"
+    lead_conversion }o--|| contact_history : "fk"
+    lead_conversion }o--|| contact_history : "fk"
+    lead_conversion }o--|| deal_history : "fk"
+    lead_conversion }o--|| user : "fk"
+    unqualified_reason }o--|| user : "fk"
+    associated_contact }o--|| deal_history : "fk"
+    associated_contact }o--|| contact_history : "fk"
+    visit }o--|| visit_outcome : "fk"
+    visit }o--|| user : "fk"
+    call_associated_deal }o--|| call : "fk"
+    call_associated_deal }o--|| deal_history : "fk"
+    task }o--|| user : "fk"
+    task }o--|| user : "fk"
+    stage }o--|| pipeline : "fk"
+    note }o--|| user : "fk"
+    loss_reason }o--|| user : "fk"
+    user }o--|| user : "fk"
+    line_item }o--|| product : "fk"
+    line_item }o--|| order : "fk"
+    contact_history }o--|| user : "fk"
+    contact_history }o--|| user : "fk"
+    contact_history }o--|| contact_history : "fk"
+    contact_history }o--|| contact_history : "fk"
+    order }o--|| deal_history : "fk"
+    user_role }o--|| user : "fk"
+    document }o--|| user : "fk"
+    call_outcome }o--|| user : "fk"
+    source }o--|| user : "fk"

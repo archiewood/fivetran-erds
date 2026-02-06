@@ -1,0 +1,327 @@
+erDiagram
+    survey_merge_key {
+        text index PK
+        text survey_id PK
+        text merge_key
+    }
+    survey_enabled_language {
+        text index PK
+        text survey_id PK
+        text languages
+    }
+    users {
+        text id PK
+        text card_expiration_date
+        text default_tab
+        text email
+        text has_invalid_card
+        text is_team_owner
+        text name
+        text permission
+        text source
+        text status
+        text team_id
+        text time_zone
+        text uuid
+    }
+    theme {
+        text id PK
+        text survey_id PK
+        text answer_color
+        text background_color
+        text background_display
+        text background_image_brightness
+        text background_image_bucket_type
+        text background_image_id
+        text background_image_uploaded
+        text background_image_url
+        text background_image_url_256
+        text background_image_url_512
+        text background_image_url_768
+        text background_type
+        text button_color
+        text category
+        text font
+        text name
+        text question_color
+    }
+    component_choice_stats {
+        text choice_id PK
+        text component_id PK
+        text survey_id PK
+        text answer_count
+    }
+    component_map_field {
+        text index PK
+        text component_id PK
+        text survey_id PK
+        text type
+    }
+    translation {
+        text id PK
+        text index PK
+        text choice_id FK
+        text component_id FK
+        text grid_item_id
+        text label_path
+        text languages
+        text text
+    }
+    choice {
+        text id PK
+        text component_id PK
+        text survey_id PK
+        text cm_list_key
+        text comment_enabled
+        text custom_dropdown_list
+        text form_field_type
+        text has_matching_rule_criteria
+        text is_other
+        text list_type
+        jsonb mappable_field_type
+        text media_object
+        text pardot_value
+        text position
+        text required
+        text should_hide_merge_field
+        text text
+        text value
+    }
+    component {
+        text id PK
+        text survey_id PK
+        text alignment
+        text answers_count
+        text button_text
+        text button_url
+        text can_hide_merge_field
+        text comment_enabled
+        text comment_header
+        text commentable
+        text description
+        text embedded_answer_key
+        jsonb grid_item
+        text has_grid_item
+        text include_not_applicable
+        text is_email_embeddable
+        text is_embedded_answerable
+        text is_embedded_auto
+        text is_question
+        jsonb lhs_condition_id
+        text markup
+        text max_answer
+        text maximum_label
+        text media_object
+        text min_answer
+        text minimum_label
+        text multiline
+        text multiple_answer
+        text number
+        jsonb ordered_rule
+        text randomize
+        text randomize_grid_item
+        text required
+        text shape
+        text should_hide_merge_field
+        text show_description
+        text show_media
+        text show_top_media
+        text start_at
+        text stats_average
+        jsonb target_action_id
+        text title
+        text top_media_object
+        text type
+    }
+    campaign {
+        text id PK
+        text survey_id PK
+        text autoclose_timing_second
+        jsonb custom_url
+        text ended_at
+        text expiry_period
+        text icon
+        text icon_color
+        text label
+        text logo_media_object
+        text percent_visitor
+        text placement
+        text scroll_position
+        text show_mobile
+        text show_tab
+        text style
+        text tab_color
+        text timing_second
+        text token
+        text trigger_once
+        text type
+        jsonb url
+    }
+    rule_action {
+        text id PK
+        text rule_id PK
+        text survey_id PK
+        text component_id FK
+        jsonb email
+        text email_subject
+        text field_mapping_token
+        text grid_item_id
+        text include_response
+        text parameter
+        text pardot_field_mapping_id
+        text pardot_object_mapping_id
+        text salesforce_field_mapping_id
+        text salesforce_object_mapping_id
+        text slack_conversation_id
+        text slack_message
+        text slack_team_id
+        text type
+        text value
+    }
+    rule {
+        text id PK
+        text survey_id PK
+        text component_id FK
+        text active
+        jsonb condition
+        text condition_operator
+        text created_at
+        text label
+        text purpose
+        text type
+        text updated_at
+    }
+    survey {
+        text id PK
+        text user_id FK
+        text answer_color_override
+        text automagic_salesforce_sync
+        text background_color_override
+        text background_display_override
+        text background_image_brightness
+        text background_image_override_bucket_type
+        text background_image_override_id
+        text background_image_override_uploaded
+        text background_image_override_url
+        text background_image_override_url_256
+        text background_image_override_url_512
+        text background_image_override_url_768
+        text background_type_override
+        text button_color_override
+        text completed_response_count
+        text created_at
+        text custom_domain
+        jsonb defined_merge_key
+        text discard_invalid_value
+        text draft_differ
+        text draft_id
+        text draft_pardot_credential_id
+        text draft_salesforce_credential_id
+        jsonb embedded_answer_key_error
+        text financial_data_field
+        jsonb financial_data_path
+        text folder_id
+        text font_override
+        text languages
+        text last_published
+        text limited_response_count
+        text locale
+        text logo_media_object
+        text merge_field_encryption
+        text multi_language
+        text name
+        text notification_level
+        text only_defined_merge_key
+        text pardot_credential
+        jsonb pardot_object_mapping
+        text public_setting_host
+        text public_setting_protocol
+        text publish_to_id
+        text publishing
+        text push_incomplete_response_status
+        text question_color_override
+        text question_count
+        text response_graph_token
+        jsonb salesforce_activity_mapping
+        text salesforce_credential
+        text salesforce_mapping_failure_strategy_email_notifications_enabled
+        text salesforce_mapping_failure_strategy_email_summaries_enabled
+        text salesforce_mapping_failure_strategy_email_summaries_sent_count
+        text salesforce_mapping_failure_strategy_email_summary_scheduled_for
+        text salesforce_mapping_failure_strategy_id
+        jsonb salesforce_object_mapping
+        text send_incomplete_response
+        text server_held_change_count
+        jsonb share
+        text share_token
+        text show_incomplete_response
+        text started_response_count
+        text store_ipdata
+        jsonb survey_share
+        text survey_url
+        text updated_at
+        text use_rich_text
+        text walkthrough
+        text white_labeled
+        text zendesk_connection_vox_id
+    }
+    answer_choice {
+        text answer_id PK
+        text choice_id PK
+        text response_id PK
+    }
+    answer {
+        text id PK
+        text response_id PK
+        text component_id FK
+        text comment
+        text created_at
+        text embedded
+        text grid_item
+        text not_applicable
+        text number
+        text scale
+        text text
+        text type
+        text updated_at
+    }
+    response {
+        text id PK
+        text survey_id PK
+        text browser
+        text completed_at
+        text country_code_with_emoji
+        text created_at
+        text languages
+        text limited
+        text platform
+        text status
+        text token
+        text updated_at
+    }
+    survey_merge_key }o--|| survey : "fk"
+    survey_enabled_language }o--|| survey : "fk"
+    theme }o--|| survey : "fk"
+    component_choice_stats }o--|| choice : "fk"
+    component_choice_stats }o--|| component : "fk"
+    component_choice_stats }o--|| component : "fk"
+    component_map_field }o--|| component : "fk"
+    component_map_field }o--|| component : "fk"
+    translation }o--|| component : "fk"
+    translation }o--|| choice : "fk"
+    choice }o--|| component : "fk"
+    choice }o--|| component : "fk"
+    component }o--|| survey : "fk"
+    campaign }o--|| survey : "fk"
+    rule_action }o--|| component : "fk"
+    rule_action }o--|| rule : "fk"
+    rule_action }o--|| rule : "fk"
+    rule }o--|| component : "fk"
+    rule }o--|| survey : "fk"
+    survey }o--|| users : "fk"
+    answer_choice }o--|| choice : "fk"
+    answer_choice }o--|| answer : "fk"
+    answer_choice }o--|| answer : "fk"
+    answer }o--|| component : "fk"
+    answer }o--|| response : "fk"
+    response }o--|| survey : "fk"

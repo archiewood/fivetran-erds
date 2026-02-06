@@ -1,0 +1,1205 @@
+erDiagram
+%% NOTE:
+%% This schema shows the standard fields across all tables. However, your destination might have custom fields that vary from account to account.
+    title_category {
+        text category_name PK
+        text ui_category_name
+    }
+    commission_summary {
+        text _fivetran_id PK
+        text amount_unit_type_id FK
+        text as_of_period_id FK
+        text business_group_id FK
+        text participant_id FK
+        text period_id FK
+        text earning_group_name
+        text ever_on_hold
+        text held_amount
+        text is_held
+        text name
+        text released_amount
+        text total_amount
+    }
+    credit_summary {
+        text _fivetran_id PK
+        text amount_unit_type_id FK
+        text as_of_period_id FK
+        text business_group_id FK
+        text eff_position_id FK
+        text participant_id FK
+        text period_id FK
+        text position_id FK
+        text credit_type_name
+        text ever_on_hold
+        text is_held
+        text name
+        text total_amount
+    }
+    quota_summary {
+        text _fivetran_id PK
+        text amount_unit_type_id FK
+        text as_of_period_id FK
+        text business_group_id FK
+        text eff_position_id FK
+        text participant_id FK
+        text period_id FK
+        text position_id FK
+        text quota_id FK
+        text name
+        text total_amount
+    }
+    rate_tier_value {
+        text rate_tier_values_id PK
+        text effective_end_period_id FK
+        text effective_start_period_id FK
+        text rate_table_tier_id FK
+        text created_by_id
+        text created_date
+        text description
+        text element_id
+        text element_name
+        text element_type
+        text formula_expression
+        text formula_id
+        text formula_name
+        text is_active
+        text modified_by_id
+        text modified_date
+        text rate_type
+        text tier_rate
+        text version
+    }
+    plan_rule {
+        text planrules_id PK
+        text plan_id FK
+        text rule_id FK
+        text created_by_id
+        text created_date
+        text is_active
+        text modified_by_id
+        text modified_date
+        text version
+    }
+    rate_table {
+        text rate_table_id PK
+        text attainment_ut_disp_sym
+        text attainment_ut_id
+        text created_by_id
+        text created_date
+        text description
+        text is_active
+        text modified_by_id
+        text modified_date
+        text name
+        text source_id
+        text version
+    }
+    pos_part_assignment {
+        text pos_part_assignment_id PK
+        text participant_id FK
+        text position_id FK
+        text created_by_id
+        text created_date
+        text is_active
+        text modified_by_id
+        text modified_date
+        text version
+    }
+    pos_relation_history {
+        text id PK
+        text from_pos_id FK
+        text pos_rel_type_id FK
+        text to_pos_id FK
+        text created_by_id
+        text created_date
+        text modified_by_id
+        text modified_date
+        text object_id
+        text version
+    }
+    participant {
+        text participant_id PK
+        text business_group_id FK
+        text native_cur_unit_type_id FK
+        text obj_bonus_target_unittype_id FK
+        text payment_cur_unit_type_id FK
+        text pr_target_unit_type_id FK
+        text salary_unit_type_id FK
+        text user_id FK
+        text created_by_id
+        text created_date
+        text department
+        text effective_end_date
+        text effective_start_date
+        text emp_status_id
+        text employee_id
+        text is_active
+        text manager_emp_id
+        text modified_by_id
+        text modified_date
+        text name
+        text participant_type
+        text payroll_id
+        text source_id
+        text version_reason_id
+        text version_sub_reason_id
+    }
+    draw_assignment {
+        text draw_assignment_id PK
+        text business_group_id FK
+        text draw_id FK
+        text eff_participant_id FK
+        text eff_position_id FK
+        text participant_id FK
+        text period_id FK
+        text assignment_id
+        text assignment_name
+        text assignment_type
+        text balance
+        text created_by_id
+        text created_date
+        text finalized_by
+        text finalized_date
+        text is_active
+        text modified_by_id
+        text modified_date
+        text pay_amount
+        text person_name
+        text position_name
+        text preview_balance
+        text projected_amount
+        text recovery_percent
+        text version
+    }
+    rate_table_tier {
+        text rate_table_tier_id PK
+        text rate_table_id FK
+        text created_by_id
+        text created_date
+        text default_rate
+        text formula_expression
+        text formula_name
+        text high_value
+        text is_active
+        text low_value
+        text modified_by_id
+        text modified_date
+        text rate_type
+        text tier_name
+        text tier_number
+        text version
+    }
+    quota {
+        text quota_id PK
+        text quota_period_id FK
+        text quota_value_unit_type_id FK
+        text classification_name
+        text classification_type
+        text created_by_id
+        text created_date
+        text description
+        text is_active
+        text modified_by_id
+        text modified_date
+        text name
+        text quota_interval_id
+        text quota_value
+        text source_id
+        text version
+    }
+    quota_total {
+        text quota_totals_id PK
+        text participant_id FK
+        text period_id FK
+        text position_id FK
+        text unittype_id FK
+        text amount
+        text created_by_id
+        text created_date
+        text is_active
+        text modified_by_id
+        text modified_date
+        text name
+        text version
+    }
+    payment {
+        text payment_id PK
+        text amount_unit_type_id FK
+        text bus_amount_unit_type_id FK
+        text bus_group_amount_unit_type_id FK
+        text credit_id FK
+        text eff_participant_id FK
+        text eff_position_id FK
+        text item_pay_curr_unit_type_id FK
+        text local_currency_unit_type_id FK
+        text order_item_id FK
+        text participant_id FK
+        text payment_curr_unit_type_id FK
+        text period_id FK
+        text position_id FK
+        text amount_display_symbol
+        text conversion_rate
+        text created_by_id
+        text created_date
+        text customer_id
+        text earning_group_id
+        text geography_id
+        text is_active
+        text mgr_eff_part_id
+        text mgr_eff_pos_id
+        text modified_by_id
+        text modified_date
+        text name
+        text payment_flag
+        text product_id
+        text run_id
+        text trans_id
+    }
+    credit {
+        text credit_id PK
+        text amount_unit_type_id FK
+        text business_group_id FK
+        text credit_type_id FK
+        text eff_participant_id FK
+        text eff_position_id FK
+        text order_item_id FK
+        text participant_id FK
+        text period_id FK
+        text plan_id FK
+        text position_id FK
+        text rule_id FK
+        text source_credit_id FK
+        text source_position_id FK
+        text src_pos_relation_type_id FK
+        text created_by_id
+        text created_date
+        text customer_id
+        text geography_id
+        text is_active
+        text modified_by_id
+        text modified_date
+        text name
+        text product_id
+        text reason_code_id
+        text release_group_id
+        text run_id
+        text trans_id
+    }
+    plan_approval {
+        text plan_approval_id PK
+        text business_group_id FK
+        text plan_id FK
+        text created_by_id
+        text created_date
+        text doc_template_id
+        text document
+        text is_active
+        text manager_id
+        text mgr_acpt_date
+        text modified_by_id
+        text modified_date
+        text per_acpt_date
+        text person_id
+        text route_date
+        text route_id
+        text status
+        text version
+    }
+    order_type {
+        text order_type_id PK
+        text created_by_id
+        text created_date
+        text descr
+        text is_active
+        text is_ordertype_shown
+        text modified_by_id
+        text modified_date
+        text name
+        text version
+    }
+    plan {
+        text plan_id PK
+        text period_id FK
+        text created_by_id
+        text created_date
+        text description
+        text is_active
+        text modified_by_id
+        text modified_date
+        text name
+        text version
+    }
+    quota_relationship {
+        text quota_relationship_id PK
+        text created_by_id
+        text created_date
+        text description
+        text is_active
+        text label
+        text modified_by_id
+        text modified_date
+        text name
+        text version
+    }
+    pos_title_assignment {
+        text pos_title_assignment_id PK
+        text position_id FK
+        text title_id FK
+        text created_by_id
+        text created_date
+        text is_active
+        text modified_by_id
+        text modified_date
+        text version
+    }
+    period {
+        text period_id PK
+        text parent_period_id FK
+        text period_type_id_fk FK
+        text calendar_id
+        text created_by_id
+        text created_date
+        text end_date
+        text is_active
+        text is_calc_period
+        text is_etl_excluded
+        text is_hidden
+        text is_open
+        text is_published
+        text is_visible
+        text modified_by_id
+        text modified_date
+        text name
+        text order_number
+        text start_date
+        text version
+    }
+    attainment_measure {
+        text attainment_measure_id PK
+        text effective_end_period_id FK
+        text effective_start_period_id FK
+        text master_attainment_measure_id FK
+        text created_by_id
+        text created_date
+        text description
+        text history_uuid
+        text is_active
+        text modified_by_id
+        text modified_date
+        text name
+        text period_type
+        text version
+    }
+    co_item_assignment {
+        text comp_order_assignment_id PK
+        text comp_order_item_id FK
+        text order_type_id FK
+        text participant_id FK
+        text period_id FK
+        text split_amount_unit_type_id FK
+        text created_by_id
+        text created_date
+        text is_active
+        text modified_by_id
+        text modified_date
+        text split_amount
+        text split_amount_pct
+        text upload_id
+        text version
+    }
+    credit_type {
+        text credit_type_id PK
+        text created_by_id
+        text created_date
+        text descr
+        text is_active
+        text modified_by_id
+        text modified_date
+        text name
+        text version
+    }
+    users {
+        text user_id PK
+        text business_group_id FK
+        text accepted_contract
+        text activated_date
+        text created_by_id
+        text created_by_name
+        text created_date
+        text email
+        text enabled
+        text eu_migration_status
+        text ip_addresses
+        text is_active
+        text is_internal_user
+        text is_passwd_reset
+        text locale
+        text modified_by_id
+        text modified_by_name
+        text modified_date
+        text name
+        text passwd_chg_dt
+        text passwd_exp_dt
+        text primary_role_type
+        text source_id
+        text user_uuid
+        text version
+    }
+    plan_assignment {
+        text plan_assignment_id PK
+        text plan_id FK
+        text active_end_date
+        text active_start_date
+        text assignment_id
+        text created_by_id
+        text created_date
+        text is_active
+        text modified_by_id
+        text modified_date
+        text version
+    }
+    pos_rel_type {
+        text pos_rel_type_id PK
+        text created_by_id
+        text created_date
+        text descr
+        text effective_end_date
+        text effective_start_date
+        text is_active
+        text is_master
+        text modified_by_id
+        text modified_date
+        text name
+        text version
+    }
+    emp_status_code {
+        text emp_status_code_id PK
+        text created_by_id
+        text created_date
+        text description
+        text emp_status_code
+        text emp_status_color
+        text is_active
+        text is_included_in_ranking
+        text is_sort_by
+        text modified_by_id
+        text modified_date
+        text version
+    }
+    position {
+        text position_id PK
+        text business_group_id FK
+        text master_position_id FK
+        text parent_position_id FK
+        text participant_id FK
+        text title_id FK
+        text created_by_id
+        text created_date
+        text incent_end_date
+        text incent_st_date
+        text is_active
+        text is_master
+        text modified_by_id
+        text modified_date
+        text name
+        text parent_record_id
+        text pos_group_id
+        text version
+    }
+    pos_title_assignment_history {
+        text pos_title_assignment_id PK
+        text id FK
+        text position_id FK
+        text title_id FK
+        text created_by_id
+        text created_date
+        text is_active
+        text modified_by_id
+        text modified_date
+        text object_id
+        text version
+    }
+    period_type {
+        text period_type_id PK
+        text created_by_id
+        text created_date
+        text is_active
+        text modified_by_id
+        text modified_date
+        text name
+        text version
+    }
+    pos_relation {
+        text id PK
+        text from_pos_id FK
+        text pos_rel_type_id FK
+        text to_pos_id FK
+        text created_by_id
+        text created_date
+        text modified_by_id
+        text modified_date
+        text version
+    }
+    credit_adjustment {
+        text credit_adjustment_id PK
+        text amount_unit_type_id FK
+        text credit_id FK
+        text period_id FK
+        text amount
+        text created_by_id
+        text created_date
+        text is_active
+        text modified_by_id
+        text modified_date
+        text reason_id
+    }
+    pos_hierarchy_history {
+        text pos_hierarchy_id PK
+        text from_pos_id FK
+        text id FK
+        text pos_hierarchy_type_id FK
+        text to_pos_id FK
+        text created_by_id
+        text created_date
+        text is_active
+        text modified_by_id
+        text modified_date
+        text object_id
+        text version
+    }
+    role {
+        text role_id PK
+        text created_by_id
+        text created_date
+        text descr
+        text is_active
+        text modified_by_id
+        text modified_date
+        text name
+        text role_type
+        text version
+    }
+    business_group {
+        text business_group_id PK
+        text finalize_start_period_id FK
+        text group_unit_type_id FK
+        text created_by_id
+        text created_by_name
+        text created_date
+        text descr
+        text is_active
+        text locale
+        text modified_by_id
+        text modified_by_name
+        text modified_date
+        text name
+        text version
+    }
+    pos_hierarchy_type {
+        text pos_hierarchy_type_id PK
+        text created_by_id
+        text created_date
+        text descr
+        text effective_end_date
+        text effective_start_date
+        text is_active
+        text is_master
+        text modified_by_id
+        text modified_date
+        text pos_hierarchy_type_disp_name
+        text pos_hierarchy_type_name
+        text version
+    }
+    rule {
+        text rule_id PK
+        text attainment_measure_id FK
+        text pos_relation_id FK
+        text primary_rule_id FK
+        text active_end_date
+        text active_start_date
+        text bonus_type
+        text created_by_id
+        text created_date
+        text description
+        text effective_end_date
+        text effective_start_date
+        text is_active
+        text modified_by_id
+        text modified_date
+        text multiplier
+        text name
+        text parse_tree
+        text rule_content
+        text rule_type
+        text version
+    }
+    unit_type {
+        text unit_type_id PK
+        text created_by_id
+        text created_date
+        text descr
+        text display_symbol
+        text group_name
+        text group_type
+        text is_active
+        text modified_by_id
+        text modified_date
+        text name
+        text version
+    }
+    title {
+        text title_id PK
+        text category_name FK
+        text category_type
+        text created_by_id
+        text created_date
+        text descr
+        text function_name
+        text function_type
+        text is_active
+        text market
+        text modified_by_id
+        text modified_date
+        text name
+        text pay_period_type
+        text title_level
+        text version
+    }
+    order_stage {
+        text order_stage_id PK
+        text amount_unit_type_id FK
+        text order_type_id FK
+        text period_id FK
+        text related_item_id FK
+        text amount
+        text batch_id
+        text created_by_id
+        text created_date
+        text customer_id
+        text discount
+        text geography_id
+        text incentive_date
+        text is_active
+        text is_promoted
+        text is_validated
+        text item_code
+        text item_status
+        text modified_by_id
+        text modified_date
+        text order_code
+        text order_date
+        text product_id
+        text quantity
+        text source_id
+        text upload_id
+        text version
+    }
+    position_history {
+        text position_id PK
+        text business_group_id FK
+        text master_position_id FK
+        text parent_position_id FK
+        text participant_id FK
+        text title_id FK
+        text created_by_id
+        text created_date
+        text descr
+        text incent_end_date
+        text incent_st_date
+        text is_active
+        text is_master
+        text modified_by_id
+        text modified_date
+        text name
+        text object_id
+        text parent_record_id
+        text pos_group_id
+        text version
+    }
+    user_role {
+        text id PK
+        text role_id FK
+        text user_id FK
+        text created_by_id
+        text created_date
+        text modified_by_id
+        text modified_date
+        text version
+    }
+    currency_rate {
+        text currency_rate_id PK
+        text base_currency_unit_type_id FK
+        text target_currency_unit_type_id FK
+        text active_end_date
+        text active_start_date
+        text created_by_id
+        text created_date
+        text exchange_rate
+        text is_active
+        text modified_by_id
+        text modified_date
+        text source_id
+        text version
+    }
+    part_user_assignment {
+        text part_user_assignment_id PK
+        text participant_id FK
+        text user_id FK
+        text created_by_id
+        text created_date
+        text effective_end_date
+        text effective_start_date
+        text employee_id
+        text is_active
+        text modified_by_id
+        text modified_date
+        text version
+    }
+    comp_order_item_detail {
+        text comp_order_item_detail_id PK
+        text amount_unit_type_id FK
+        text comp_order_item_id FK
+        text order_type_id FK
+        text period_id FK
+        text related_item_id FK
+        text batch_id
+        text created_by_id
+        text created_date
+        text customer_id
+        text discount
+        text geography_id
+        text incentive_date
+        text is_active
+        text item_code
+        text modified_by_id
+        text modified_date
+        text order_code
+        text order_date
+        text product_id
+        text quantity
+        text source_id
+        text upload_id
+    }
+    commission {
+        text commission_id PK
+        text amount_unit_type_id FK
+        text attainment_value_unit_type_id FK
+        text business_group_id FK
+        text credit_id FK
+        text credit_type_id FK
+        text credit_unit_type_id FK
+        text eff_participant_id FK
+        text eff_position_id FK
+        text measure_value_unit_type_id FK
+        text order_item_id FK
+        text participant_id FK
+        text period_id FK
+        text plan_id FK
+        text position_id FK
+        text quota_id FK
+        text quota_period_type_id FK
+        text rate_amount_unit_type_id FK
+        text rule_id FK
+        text created_by_id
+        text created_date
+        text customer_id
+        text earning_group_id
+        text geography_id
+        text is_active
+        text modified_by_id
+        text modified_date
+        text name
+        text product_id
+        text rate_table_id
+        text reason_code_id
+        text run_id
+        text source
+        text trans_id
+    }
+    credit_held {
+        text credit_held_id PK
+        text credit_id FK
+        text created_by_id
+        text created_date
+        text held_date
+        text is_active
+        text is_held
+        text modified_by_id
+        text modified_date
+        text release_group_id
+        text run_id
+        text trans_id
+        text version
+    }
+    quota_assignment_history {
+        text quota_assignment_id PK
+        text amount_unit_type_id FK
+        text effective_end_period_id FK
+        text effective_start_period_id FK
+        text id FK
+        text period_id FK
+        text quota_id FK
+        text amount
+        text assignment_id
+        text assignment_name
+        text assignment_type
+        text created_by_id
+        text created_date
+        text description
+        text is_active
+        text modified_by_id
+        text modified_date
+        text object_id
+        text version
+    }
+    credit_total {
+        text credit_totals_id PK
+        text participant_id FK
+        text period_id FK
+        text position_id FK
+        text unittype_id FK
+        text amount
+        text created_by_id
+        text created_date
+        text is_active
+        text modified_by_id
+        text modified_date
+        text version
+    }
+    comp_order_item {
+        text comp_order_item_id PK
+        text amount_unit_type_id FK
+        text order_type_id FK
+        text period_id FK
+        text related_item_id FK
+        text batch_id
+        text customer_id
+        text geography_id
+        text is_active
+        text item_code
+        text line_number
+        text modified_date
+        text order_code
+        text order_date
+        text product_id
+        text source_id
+        text upload_id
+    }
+    pos_hierarchy {
+        text pos_hierarchy_id PK
+        text from_pos_id FK
+        text pos_hierarchy_type_id FK
+        text to_pos_id FK
+        text created_by_id
+        text created_date
+        text is_active
+        text modified_by_id
+        text modified_date
+        text version
+    }
+    attainment_measure_criteria {
+        text attainment_measure_criteria_id PK
+        text attainment_measure_id FK
+        text created_by_id
+        text created_date
+        text criteria_id
+        text history_uuid
+        text is_active
+        text modified_by_id
+        text modified_date
+        text name
+        text type
+    }
+    pos_part_assignment_history {
+        text pos_part_assignment_id PK
+        text id FK
+        text participant_id FK
+        text position_id FK
+        text created_by_id
+        text created_date
+        text is_active
+        text modified_by_id
+        text modified_date
+        text object_id
+        text version
+    }
+    draw {
+        text draw_id PK
+        text period_id FK
+        text unit_type_id FK
+        text created_by_id
+        text created_date
+        text description
+        text draw_type
+        text earning_group_id
+        text earning_group_name
+        text is_active
+        text modified_by_id
+        text modified_date
+        text name
+        text recovery_percent
+        text version
+    }
+    pos_hierarchy_type_history {
+        text pos_hierarchy_type_id PK
+        text id FK
+        text created_by_id
+        text created_date
+        text descr
+        text effective_end_date
+        text effective_start_date
+        text is_active
+        text is_master
+        text modified_by_id
+        text modified_date
+        text object_id
+        text pos_hierarchy_type_disp_name
+        text pos_hierarchy_type_name
+        text version
+    }
+    quota_assignment {
+        text quota_assignment_id PK
+        text amount_unit_type_id FK
+        text effective_end_period_id FK
+        text effective_start_period_id FK
+        text period_id FK
+        text quota_id FK
+        text amount
+        text assignment_id
+        text assignment_name
+        text assignment_type
+        text created_by_id
+        text created_date
+        text description
+        text is_active
+        text modified_by_id
+        text modified_date
+        text version
+    }
+    quota_history {
+        text quota_id PK
+        text id FK
+        text quota_period_id FK
+        text quota_value_unit_type_id FK
+        text classification_name
+        text classification_type
+        text created_by_id
+        text created_date
+        text description
+        text is_active
+        text modified_by_id
+        text modified_date
+        text name
+        text object_id
+        text quota_interval_id
+        text quota_value
+        text source_id
+        text version
+    }
+    pos_rel_type_history {
+        text pos_rel_type_id PK
+        text id FK
+        text created_by_id
+        text created_date
+        text descr
+        text effective_end_date
+        text effective_start_date
+        text is_active
+        text is_master
+        text modified_by_id
+        text modified_date
+        text name
+        text object_id
+        text version
+    }
+    commission_summary }o--|| period : "fk"
+    commission_summary }o--|| participant : "fk"
+    commission_summary }o--|| unit_type : "fk"
+    commission_summary }o--|| business_group : "fk"
+    commission_summary }o--|| period : "fk"
+    credit_summary }o--|| position : "fk"
+    credit_summary }o--|| period : "fk"
+    credit_summary }o--|| participant : "fk"
+    credit_summary }o--|| unit_type : "fk"
+    credit_summary }o--|| position : "fk"
+    credit_summary }o--|| business_group : "fk"
+    credit_summary }o--|| period : "fk"
+    quota_summary }o--|| position : "fk"
+    quota_summary }o--|| quota : "fk"
+    quota_summary }o--|| period : "fk"
+    quota_summary }o--|| participant : "fk"
+    quota_summary }o--|| unit_type : "fk"
+    quota_summary }o--|| position : "fk"
+    quota_summary }o--|| business_group : "fk"
+    quota_summary }o--|| period : "fk"
+    rate_tier_value }o--|| period : "fk"
+    rate_tier_value }o--|| rate_table_tier : "fk"
+    rate_tier_value }o--|| period : "fk"
+    plan_rule }o--|| plan : "fk"
+    plan_rule }o--|| rule : "fk"
+    pos_part_assignment }o--|| position : "fk"
+    pos_part_assignment }o--|| participant : "fk"
+    pos_relation_history }o--|| position : "fk"
+    pos_relation_history }o--|| pos_relation : "fk"
+    pos_relation_history }o--|| pos_rel_type : "fk"
+    pos_relation_history }o--|| position : "fk"
+    participant }o--|| users : "fk"
+    participant }o--|| unit_type : "fk"
+    participant }o--|| unit_type : "fk"
+    participant }o--|| unit_type : "fk"
+    participant }o--|| business_group : "fk"
+    participant }o--|| unit_type : "fk"
+    participant }o--|| unit_type : "fk"
+    draw_assignment }o--|| draw : "fk"
+    draw_assignment }o--|| participant : "fk"
+    draw_assignment }o--|| participant : "fk"
+    draw_assignment }o--|| position : "fk"
+    draw_assignment }o--|| business_group : "fk"
+    draw_assignment }o--|| period : "fk"
+    rate_table_tier }o--|| rate_table : "fk"
+    quota }o--|| period : "fk"
+    quota }o--|| unit_type : "fk"
+    quota_total }o--|| position : "fk"
+    quota_total }o--|| unit_type : "fk"
+    quota_total }o--|| participant : "fk"
+    quota_total }o--|| period : "fk"
+    payment }o--|| position : "fk"
+    payment }o--|| credit : "fk"
+    payment }o--|| participant : "fk"
+    payment }o--|| participant : "fk"
+    payment }o--|| unit_type : "fk"
+    payment }o--|| unit_type : "fk"
+    payment }o--|| unit_type : "fk"
+    payment }o--|| position : "fk"
+    payment }o--|| unit_type : "fk"
+    payment }o--|| unit_type : "fk"
+    payment }o--|| comp_order_item : "fk"
+    payment }o--|| period : "fk"
+    payment }o--|| unit_type : "fk"
+    credit }o--|| position : "fk"
+    credit }o--|| credit_type : "fk"
+    credit }o--|| pos_relation : "fk"
+    credit }o--|| plan : "fk"
+    credit }o--|| position : "fk"
+    credit }o--|| participant : "fk"
+    credit }o--|| participant : "fk"
+    credit }o--|| unit_type : "fk"
+    credit }o--|| position : "fk"
+    credit }o--|| business_group : "fk"
+    credit }o--|| credit : "fk"
+    credit }o--|| comp_order_item : "fk"
+    credit }o--|| period : "fk"
+    credit }o--|| rule : "fk"
+    plan_approval }o--|| plan : "fk"
+    plan_approval }o--|| business_group : "fk"
+    plan }o--|| period : "fk"
+    pos_title_assignment }o--|| position : "fk"
+    pos_title_assignment }o--|| title : "fk"
+    period }o--|| period : "fk"
+    period }o--|| period_type : "fk"
+    attainment_measure }o--|| attainment_measure : "fk"
+    attainment_measure }o--|| period : "fk"
+    attainment_measure }o--|| period : "fk"
+    co_item_assignment }o--|| order_type : "fk"
+    co_item_assignment }o--|| participant : "fk"
+    co_item_assignment }o--|| unit_type : "fk"
+    co_item_assignment }o--|| comp_order_item : "fk"
+    co_item_assignment }o--|| period : "fk"
+    users }o--|| business_group : "fk"
+    plan_assignment }o--|| plan : "fk"
+    position }o--|| position : "fk"
+    position }o--|| position : "fk"
+    position }o--|| participant : "fk"
+    position }o--|| business_group : "fk"
+    position }o--|| title : "fk"
+    pos_title_assignment_history }o--|| position : "fk"
+    pos_title_assignment_history }o--|| title : "fk"
+    pos_title_assignment_history }o--|| pos_title_assignment : "fk"
+    pos_relation }o--|| position : "fk"
+    pos_relation }o--|| pos_rel_type : "fk"
+    pos_relation }o--|| position : "fk"
+    credit_adjustment }o--|| credit : "fk"
+    credit_adjustment }o--|| unit_type : "fk"
+    credit_adjustment }o--|| period : "fk"
+    pos_hierarchy_history }o--|| position : "fk"
+    pos_hierarchy_history }o--|| pos_hierarchy_type : "fk"
+    pos_hierarchy_history }o--|| position : "fk"
+    pos_hierarchy_history }o--|| pos_hierarchy : "fk"
+    business_group }o--|| period : "fk"
+    business_group }o--|| unit_type : "fk"
+    rule }o--|| rule : "fk"
+    rule }o--|| attainment_measure : "fk"
+    rule }o--|| pos_relation : "fk"
+    title }o--|| title_category : "fk"
+    order_stage }o--|| comp_order_item : "fk"
+    order_stage }o--|| order_type : "fk"
+    order_stage }o--|| unit_type : "fk"
+    order_stage }o--|| period : "fk"
+    position_history }o--|| position : "fk"
+    position_history }o--|| position : "fk"
+    position_history }o--|| participant : "fk"
+    position_history }o--|| business_group : "fk"
+    position_history }o--|| title : "fk"
+    user_role }o--|| users : "fk"
+    user_role }o--|| role : "fk"
+    currency_rate }o--|| unit_type : "fk"
+    currency_rate }o--|| unit_type : "fk"
+    part_user_assignment }o--|| users : "fk"
+    part_user_assignment }o--|| participant : "fk"
+    comp_order_item_detail }o--|| comp_order_item : "fk"
+    comp_order_item_detail }o--|| order_type : "fk"
+    comp_order_item_detail }o--|| unit_type : "fk"
+    comp_order_item_detail }o--|| comp_order_item : "fk"
+    comp_order_item_detail }o--|| period : "fk"
+    commission }o--|| position : "fk"
+    commission }o--|| unit_type : "fk"
+    commission }o--|| quota : "fk"
+    commission }o--|| credit_type : "fk"
+    commission }o--|| period_type : "fk"
+    commission }o--|| credit : "fk"
+    commission }o--|| unit_type : "fk"
+    commission }o--|| plan : "fk"
+    commission }o--|| unit_type : "fk"
+    commission }o--|| participant : "fk"
+    commission }o--|| participant : "fk"
+    commission }o--|| unit_type : "fk"
+    commission }o--|| position : "fk"
+    commission }o--|| unit_type : "fk"
+    commission }o--|| business_group : "fk"
+    commission }o--|| comp_order_item : "fk"
+    commission }o--|| period : "fk"
+    commission }o--|| rule : "fk"
+    credit_held }o--|| credit : "fk"
+    quota_assignment_history }o--|| quota : "fk"
+    quota_assignment_history }o--|| period : "fk"
+    quota_assignment_history }o--|| period : "fk"
+    quota_assignment_history }o--|| unit_type : "fk"
+    quota_assignment_history }o--|| period : "fk"
+    quota_assignment_history }o--|| quota_assignment : "fk"
+    credit_total }o--|| position : "fk"
+    credit_total }o--|| unit_type : "fk"
+    credit_total }o--|| participant : "fk"
+    credit_total }o--|| period : "fk"
+    comp_order_item }o--|| comp_order_item : "fk"
+    comp_order_item }o--|| order_type : "fk"
+    comp_order_item }o--|| unit_type : "fk"
+    comp_order_item }o--|| period : "fk"
+    pos_hierarchy }o--|| position : "fk"
+    pos_hierarchy }o--|| pos_hierarchy_type : "fk"
+    pos_hierarchy }o--|| position : "fk"
+    attainment_measure_criteria }o--|| attainment_measure : "fk"
+    pos_part_assignment_history }o--|| position : "fk"
+    pos_part_assignment_history }o--|| participant : "fk"
+    pos_part_assignment_history }o--|| pos_part_assignment : "fk"
+    draw }o--|| unit_type : "fk"
+    draw }o--|| period : "fk"
+    pos_hierarchy_type_history }o--|| pos_hierarchy_type : "fk"
+    quota_assignment }o--|| quota : "fk"
+    quota_assignment }o--|| period : "fk"
+    quota_assignment }o--|| period : "fk"
+    quota_assignment }o--|| unit_type : "fk"
+    quota_assignment }o--|| period : "fk"
+    quota_history }o--|| period : "fk"
+    quota_history }o--|| unit_type : "fk"
+    quota_history }o--|| quota : "fk"
+    pos_rel_type_history }o--|| pos_rel_type : "fk"

@@ -1,0 +1,220 @@
+erDiagram
+    source_node_hashed_column {
+        text environment_id PK
+        text id PK
+        text source_node_id PK
+    }
+    source_node_column {
+        text id PK
+        text environment_id PK
+        text source_node_id PK
+        jsonb applied_column_tests
+        jsonb column_references
+        jsonb config
+        text data_type
+        text default_value
+        text description
+        text hash_algorithm
+        text hash_type
+        jsonb hub_hashes
+        text is_business_key
+        text is_change_tracking
+        text is_surrogate_key
+        text key_column_type
+        text name
+        text nullable
+        text primary_key
+        jsonb sources
+        text system_column_type
+        text transform
+        text unique_key
+    }
+    source_node {
+        text id PK
+        text environment_id PK
+        text database
+        text description
+        text join_condition
+        text location_name
+        text name
+        jsonb node_type
+        text schema
+        jsonb source_mapping
+        text table_name
+    }
+    sql_node_hashed_column {
+        text environment_id PK
+        text id PK
+        text sql_node_id PK
+    }
+    sql_node_column {
+        text id PK
+        text environment_id PK
+        text sql_node_id PK
+        jsonb applied_column_tests
+        jsonb column_references
+        jsonb config
+        text data_type
+        text default_value
+        text description
+        text hash_algorithm
+        text hash_type
+        jsonb hub_hashes
+        text is_business_key
+        text is_change_tracking
+        text is_surrogate_key
+        text key_column_type
+        text name
+        text nullable
+        text primary_key
+        jsonb sources
+        text system_column_type
+        text transform
+        text unique_key
+    }
+    sql_node_applied_test {
+        text index PK
+        text environment_id PK
+        text sql_node_id PK
+        text continue_on_failure
+        text description
+        text name
+        text run_order
+        text template_string
+    }
+    sql_node {
+        text id PK
+        text environment_id PK
+        jsonb config
+        text database
+        text description
+        text is_multisource
+        text join_condition
+        text location_name
+        text materialization_type
+        text metadata_cte_string
+        text metadata_description
+        text metadata_destination_name
+        jsonb metadata_enabled_column_test_ids
+        jsonb metadata_mapping
+        text metadata_materialization_option
+        text name
+        jsonb node_type
+        text override_sql
+        text schema
+        jsonb source_mapping
+        text table_name
+    }
+    environment {
+        text id PK
+        text connection_account
+        text created_at
+        text created_by_first_name
+        text created_by_id
+        text created_by_last_name
+        text current_git_branch
+        text current_git_commit
+        jsonb current_mappings
+        jsonb currently_running_jobs
+        text default_storage_mapping
+        text deployed_commit
+        text description
+        text name
+        text oauth_enabled
+        text project_id
+        jsonb run_time_parameters
+        text status
+        text tag_background_color
+        text tag_text_color
+        text updated_at
+    }
+    run {
+        text id PK
+        text project_id FK
+        text run_environment_id FK
+        text canceled
+        text deploy_commit
+        text deploy_commit_message
+        text end_time
+        text environment_id
+        text exclude_nodes_selector
+        text executor
+        text force_ignore_environment_status
+        text history
+        text include_nodes_selector
+        text job_id
+        text nodes_for_refresh
+        text nodes_in_run
+        text parallelism
+        text re_run_id
+        text refresh_description
+        timestamp start_time
+        text status
+        jsonb time_parameters
+        text type
+        text user_credential_snowflake_account
+        text user_credential_snowflake_auth_type
+        text user_credential_snowflake_role
+        text user_credential_snowflake_username
+        text user_credential_snowflake_warehouse
+        text user_id
+        text version
+    }
+    run_query_result {
+        text index PK
+        text run_id PK
+        text run_result_node_id PK
+        text end_time
+        text error_detail
+        text error_string
+        text is_running
+        text name
+        text query_id
+        text row_deleted
+        text row_inserted
+        text row_updated
+        text sql
+        text start_time
+        text status
+        text success
+        text warehouse
+    }
+    run_result {
+        text node_id PK
+        text run_id PK
+        text end_time
+        text error_detail
+        text error_string
+        text is_running
+        text name
+        text origin
+        text query_id
+        text row_deleted
+        text row_inserted
+        text row_updated
+        text run_state
+        text sql
+        text start_time
+        text status
+        text success
+        text warehouse
+    }
+    source_node_hashed_column }o--|| source_node_column : "fk"
+    source_node_hashed_column }o--|| source_node_column : "fk"
+    source_node_hashed_column }o--|| source_node_column : "fk"
+    source_node_column }o--|| source_node : "fk"
+    source_node_column }o--|| source_node : "fk"
+    source_node }o--|| environment : "fk"
+    sql_node_hashed_column }o--|| sql_node_column : "fk"
+    sql_node_hashed_column }o--|| sql_node_column : "fk"
+    sql_node_hashed_column }o--|| sql_node_column : "fk"
+    sql_node_column }o--|| sql_node : "fk"
+    sql_node_column }o--|| sql_node : "fk"
+    sql_node_applied_test }o--|| sql_node : "fk"
+    sql_node_applied_test }o--|| sql_node : "fk"
+    sql_node }o--|| environment : "fk"
+    run }o--|| environment : "fk"
+    run }o--|| environment : "fk"
+    run_query_result }o--|| run_result : "fk"
+    run_query_result }o--|| run_result : "fk"
+    run_result }o--|| run : "fk"

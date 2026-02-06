@@ -1,0 +1,365 @@
+erDiagram
+%% Data Extensions
+%% Data Extensions
+%% You can find tables in your destination with the following prefixes based on the type of table that is being synced:
+%%   - Standard DE: ext_
+%%   - Shared DE: shared_ext_
+%%   - Salesforce DE: sf_ext_
+%%   - Shared Salesforce DE: shared_sf_ext_
+%%   - Synchronised DE: sync_ext_*
+    list_subscriber {
+        integer id PK
+        integer list_id PK
+        text subscriber_key FK
+        text created_date
+        text modified_date
+        text status
+    }
+    ott_registration {
+        text id PK
+        text application_id
+        text channel_name
+        text created_date
+        text default_response
+        text default_response_last_updated
+        boolean is_active
+        boolean is_customer_secret_set
+        boolean is_test_channel
+        boolean is_transactional
+        text modified_date
+        text ott_platform_name
+        text phone_number_id
+        text provider_name
+        text waba_id
+    }
+    campaign {
+        text id PK
+        text campaign_code
+        text color
+        text created_date
+        text description
+        boolean favorite
+        text modified_date
+        text name
+    }
+    push_message {
+        integer id PK
+        text app_name FK
+        text campaign FK
+        text android_media_url
+        integer format
+        text geofence_name
+        text ios_media_url
+        text media_alt
+        text message_content
+        text message_name
+        text page_name
+        text template
+    }
+    subscriber {
+        integer id PK
+        text created_date
+        text email_address
+        text email_type_preference
+        text status
+        text subscriber_key
+        text unsubscribed_date
+    }
+    push_application {
+        text id PK
+        boolean apns_enabled
+        timestamp created_date
+        text description
+        text device_endpoint
+        boolean gcm_enabled
+        text key
+        timestamp modified_date
+        text name
+    }
+    campaign_asset {
+        text id PK
+        text campaign_id FK
+        integer email_asset_id FK
+        integer email_id FK
+        integer list_id FK
+        text triggered_send_id FK
+        text created_date
+        integer item_id
+        text object_id
+        text type
+    }
+    sms_message_tracking {
+        bigint id PK
+        text action_date_time
+        text activity_id
+        bigint campaign_id
+        text code_id
+        text conversation_id
+        text conversation_state_id
+        text create_date_time
+        boolean delivered
+        text description
+        bigint enterprise_id
+        text from_name
+        boolean inbound
+        bigint invalidation_code
+        boolean is_test
+        boolean is_valid
+        text journey_definition_id
+        text keyword_id
+        bigint member_id
+        bigint message_id
+        text message_text
+        text mobile
+        bigint mobile_message_recurrence_id
+        text modified_date_time
+        text name
+        bigint ordinal
+        boolean outbound
+        bigint response_to_mobile_message_tracking_id
+        bigint send_group_id
+        bigint send_id
+        bigint send_job_id
+        bigint send_person_id
+        bigint send_segment_id
+        bigint send_split_id
+        boolean sent
+        text shared_keyword
+        text short_code
+        bigint sms_batch_id
+        text sms_job_id
+        bigint sms_standard_status_code_id
+        bigint subscriber_id
+        text subscriber_key
+        boolean undelivered
+    }
+    link {
+        integer id PK
+        text url
+    }
+    chat_potential_unsubs {
+        text contact_key PK
+        bigint eid PK
+        bigint mid PK
+        text channel_id PK
+        text first_date
+        text last_date
+        text mobile_number
+        bigint potential_bounce_count
+    }
+    activity {
+        text key PK
+        text journey_id PK
+        integer journey_version PK
+        text triggered_send_id FK
+        jsonb arguments
+        jsonb configuration_arguments
+        text description
+        text id
+        jsonb meta_data
+        text name
+        jsonb outcomes
+        jsonb schema
+        text triggered_send_key
+        text type
+    }
+    chat_inbound_message_log {
+        bigint id PK
+        text channel_id FK
+        text date_created
+        text message_data
+        text mobile_number
+    }
+    journey {
+        text id PK
+        integer version PK
+        integer category_id
+        text channel
+        text created_date
+        jsonb defaults
+        text definition_id
+        text definition_type
+        text description
+        text entry_mode
+        text execution_mode
+        jsonb exits
+        jsonb goals
+        text key
+        text last_published_date
+        jsonb meta_data
+        text modified_date
+        text name
+        jsonb notifiers
+        text scheduled_status
+        jsonb stats
+        text status
+        jsonb tags
+        jsonb triggers
+        text workflow_api_version
+    }
+    %% Note
+%% Events of multiple types (bounce_event, click_event etc.)  are put in this table, so some fields like question, url etc. may be null.
+    event {
+        text event_type PK
+        text id PK
+        text opt_in_subscriber_key FK
+        integer send_id FK
+        text subscriber_key FK
+        text triggered_send_id FK
+        integer unsubscribed_list_id FK
+        integer batch_id
+        text bounce_category
+        text bounce_type
+        text created_date
+        text event_date
+        text modified_date
+        text question
+        integer smtp_code
+        text smtp_reason
+        text url
+    }
+    chat_tracking {
+        text send_identifier PK
+        text status PK
+        text activity_id FK
+        text channel_id FK
+        text journey_definition_id FK
+        text activity_name
+        bigint asset_id
+        text contact_key
+        bigint eid
+        text event_date
+        bigint message_type_id
+        bigint mid
+        text mobile_number
+        text reason
+        text tracking_type
+    }
+    email {
+        integer id PK
+        text character_set
+        text created_date
+        text modified_date
+        text name
+        text pre_header
+        text subject
+        text text_body
+    }
+    triggered_send {
+        text id PK
+        integer email_id FK
+        integer list_id FK
+        boolean auto_add_subscribers
+        boolean auto_update_subscribers
+        text bcc_email
+        text created_date
+        text description
+        text dynamic_email_subject
+        text email_subject
+        text from_address
+        text from_name
+        boolean is_multipart
+        boolean is_wrapped
+        text modified_date
+        text name
+        text priority
+        text send_limit
+        text send_window_close
+        text send_window_open
+        text triggered_send_status
+    }
+    mobile_push_detail_report {
+        text contact_key PK
+        text device_id PK
+        text request_id PK
+        integer message_id FK
+        text date_time_send
+        text inbox_message_downloaded
+        text inbox_message_opened
+        text message_opened
+        text open_date
+        text platform
+        text platform_version
+        text push_job_id
+        text service_response
+        text status
+        text system_token
+        integer time_in_app
+    }
+    link_send {
+        integer id PK
+        integer link_id FK
+        integer send_id FK
+        text alias
+        integer total_clicks
+        integer unique_clicks
+    }
+    list {
+        integer id PK
+        text created_date
+        text description
+        text modified_date
+        text name
+        text type
+    }
+    send {
+        integer id PK
+        integer email_id FK
+        text bcc_email
+        text created_date
+        integer duplicates
+        text email_name
+        integer existing_undeliverables
+        integer existing_unsubscribes
+        integer forwarded_emails
+        text from_address
+        text from_name
+        integer hard_bounces
+        integer invalid_addresses
+        boolean is_always_on
+        boolean is_multipart
+        integer missing_addresses
+        text modified_date
+        integer number_delivered
+        integer number_errored
+        integer number_excluded
+        integer number_sent
+        integer number_targeted
+        integer other_bounces
+        text preview_url
+        text send_date
+        integer soft_bounces
+        text status
+        text subject
+        integer unique_clicks
+        integer unique_opens
+        integer unsubscribes
+    }
+    list_subscriber }o--|| subscriber : "fk"
+    list_subscriber }o--|| list : "fk"
+    push_message }o--|| push_application : "fk"
+    push_message }o--|| campaign : "fk"
+    campaign_asset }o--|| email : "fk"
+    campaign_asset }o--|| email : "fk"
+    campaign_asset }o--|| list : "fk"
+    campaign_asset }o--|| triggered_send : "fk"
+    campaign_asset }o--|| campaign : "fk"
+    chat_potential_unsubs }o--|| ott_registration : "fk"
+    activity }o--|| journey : "fk"
+    activity }o--|| triggered_send : "fk"
+    activity }o--|| journey : "fk"
+    chat_inbound_message_log }o--|| ott_registration : "fk"
+    event }o--|| send : "fk"
+    event }o--|| subscriber : "fk"
+    event }o--|| triggered_send : "fk"
+    event }o--|| subscriber : "fk"
+    event }o--|| list : "fk"
+    chat_tracking }o--|| ott_registration : "fk"
+    chat_tracking }o--|| journey : "fk"
+    chat_tracking }o--|| activity : "fk"
+    triggered_send }o--|| list : "fk"
+    triggered_send }o--|| email : "fk"
+    mobile_push_detail_report }o--|| push_message : "fk"
+    link_send }o--|| send : "fk"
+    link_send }o--|| link : "fk"
+    send }o--|| email : "fk"

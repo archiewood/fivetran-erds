@@ -1,0 +1,263 @@
+erDiagram
+    webhook {
+        text id PK
+        text active
+        text created_at
+        jsonb events
+        text url
+    }
+    user_number {
+        text number_id PK
+        text user_id PK
+    }
+    numbers {
+        text id PK
+        text availability_status
+        text country
+        text created_at
+        text digits
+        text is_ivr
+        text is_open
+        text live_recording_activated
+        text messages_after_hours
+        text messages_callback_later
+        text messages_closed
+        text messages_ivr
+        text messages_ringing_tone
+        text messages_unanswered_call
+        text messages_voicemail
+        text messages_waiting
+        text messages_welcome
+        text name
+        text priority
+        text time_zone
+    }
+    call_sentiment_participant {
+        text call_sentiment_id PK
+        text index PK
+        text call_id PK
+        text phone_number
+        text type
+        text value
+    }
+    call_playbook_result_topic {
+        text index PK
+        text call_id PK
+        text call_playbook_result_id PK
+        text name
+        text result
+    }
+    call_playbook_result {
+        text id PK
+        text call_id PK
+        text user_id FK
+        text adherence_score
+        text created_at
+        text number_id
+        text playbook_id
+        text playbook_name
+    }
+    call_summary {
+        text id PK
+        text call_id PK
+        text content
+        text created_at
+    }
+    contact_email {
+        text id PK
+        text contact_id PK
+        text label
+        text value
+    }
+    contact_number {
+        text id PK
+        text contact_id PK
+        text label
+        text value
+    }
+    contact {
+        text id PK
+        text company_name
+        text created_at
+        text first_name
+        text information
+        text is_shared
+        text last_name
+        text updated_at
+    }
+    user_availability {
+        text user_id PK
+        text availability
+    }
+    call_topic_content {
+        text call_topic_id PK
+        text index PK
+        text call_id PK
+        text call_topic_created_at
+        text content_id
+    }
+    call_action_item {
+        text id PK
+        text call_id PK
+        text created_by FK
+        text updated_by FK
+        text ai_generated
+        text content
+        text created_at
+        text updated_at
+    }
+    team_user {
+        text team_id PK
+        text user_id PK
+    }
+    team {
+        text id PK
+        text created_at
+        text name
+    }
+    users {
+        text id PK
+        text availability_status
+        text available
+        text created_at
+        text email
+        text languages
+        text name
+        text time_zone
+        text wrap_up_time
+    }
+    tags {
+        text id PK
+        text color
+        text description
+        text name
+    }
+    call_comment {
+        text comment_id PK
+        text call_id PK
+        text posted_by FK
+        text content
+        text posted_at
+    }
+    call_tag {
+        text call_id PK
+        text tag_id PK
+        text tagged_by FK
+        text created_at
+    }
+    call_participant {
+        text index PK
+        text call_id PK
+        text id
+        text phone_number
+        text type
+    }
+    call_team {
+        text call_id PK
+        text team_id PK
+        text created_at
+    }
+    call_ivr_options_selected {
+        text id PK
+        text call_id PK
+        text branch
+        text created_at
+        text key
+        text title
+        text transition_ended_at
+        text transition_started_at
+    }
+    call {
+        text id PK
+        text number_id FK
+        text user_id FK
+        text answered_at
+        text archived
+        text asset
+        text assigned_to
+        text contact
+        text cost
+        text direction
+        text duration
+        text ended_at
+        text missed_call_reason
+        text raw_digits
+        text recording
+        text sid
+        text started_at
+        text status
+        text transferred_by
+        text transferred_to
+        text voicemail
+    }
+    dialer_campaign {
+        text id PK
+        text user_id FK
+        text created_at
+    }
+    dialer_campaign_number {
+        text _fivetran_id PK
+        text user_id FK
+        text called
+        text created_at
+        text number_id
+    }
+    call_transcription_content_utterance {
+        text index PK
+        text call_id PK
+        text call_transcription_id PK
+        text end_time
+        text participant_type
+        text phone_number
+        text start_time
+        text text
+    }
+    call_transcription {
+        text id PK
+        text call_id PK
+        text call_created_at
+        text type
+    }
+    aircall_to_partner_campaign {
+        text id PK
+        text company_id
+        text created_at
+        text external_id
+        jsonb numbers
+        text update_message
+        text update_status
+        text updated_at
+    }
+    user_number }o--|| users : "fk"
+    user_number }o--|| numbers : "fk"
+    call_sentiment_participant }o--|| call : "fk"
+    call_playbook_result_topic }o--|| call_playbook_result : "fk"
+    call_playbook_result_topic }o--|| call_playbook_result : "fk"
+    call_playbook_result }o--|| call : "fk"
+    call_playbook_result }o--|| users : "fk"
+    call_summary }o--|| call : "fk"
+    contact_email }o--|| contact : "fk"
+    contact_number }o--|| contact : "fk"
+    user_availability }o--|| users : "fk"
+    call_topic_content }o--|| call : "fk"
+    call_action_item }o--|| users : "fk"
+    call_action_item }o--|| users : "fk"
+    call_action_item }o--|| call : "fk"
+    team_user }o--|| users : "fk"
+    team_user }o--|| team : "fk"
+    call_comment }o--|| users : "fk"
+    call_comment }o--|| call : "fk"
+    call_tag }o--|| tags : "fk"
+    call_tag }o--|| users : "fk"
+    call_tag }o--|| call : "fk"
+    call_participant }o--|| call : "fk"
+    call_team }o--|| team : "fk"
+    call_team }o--|| call : "fk"
+    call_ivr_options_selected }o--|| call : "fk"
+    call }o--|| numbers : "fk"
+    call }o--|| users : "fk"
+    dialer_campaign }o--|| users : "fk"
+    dialer_campaign_number }o--|| users : "fk"
+    call_transcription_content_utterance }o--|| call_transcription : "fk"
+    call_transcription_content_utterance }o--|| call_transcription : "fk"
+    call_transcription }o--|| call : "fk"

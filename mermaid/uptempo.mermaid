@@ -1,0 +1,59 @@
+erDiagram
+    finance_cell {
+        text index PK
+        text finance_fivetran_id PK
+        text column_name
+        text value
+    }
+    finance_allocation {
+        text index PK
+        text finance_fivetran_id PK
+        jsonb amortization
+        text budget_id
+        text budget_item_id
+        text percentage
+        text roll_over
+        text roll_under
+        text split_id
+    }
+    finance {
+        text _fivetran_id PK
+        text amount
+        text conflicted
+        text end_date
+        text id
+        text imported
+        text po_number
+        text start_date
+        text status
+        text type
+    }
+    line_item_cell {
+        text index PK
+        text line_item_id PK
+        text approval_status
+        text column_name
+        text comment
+        text lock_enabled
+        text locked
+        text tag_id
+        text value
+    }
+    line_item {
+        text id PK
+        text activity_id
+        text budget_id
+        text carryover
+        text created_date
+        text has_manually_allocated_investment
+        text locked
+        text name
+        text parent_id
+        text persistent_id
+        text scenario_id
+        text type
+        text updated_date
+    }
+    finance_cell }o--|| finance : "fk"
+    finance_allocation }o--|| finance : "fk"
+    line_item_cell }o--|| line_item : "fk"

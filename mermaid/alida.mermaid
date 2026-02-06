@@ -1,0 +1,177 @@
+erDiagram
+    member_event {
+        text id PK
+        text activity_id FK
+        text batch_id
+        text communication_id
+        text community_id
+        timestamp create_date
+        text created_by
+        text event_date
+        text event_type
+        text member_data_set_type
+        text member_id
+        text participant_type
+        text redirect_url
+    }
+    member_activity {
+        text id PK
+        text closed_on
+        text communication_id
+        text communication_status
+        text communicationtn_type
+        text create_date
+        text created_by
+        text description
+        text event_date
+        text event_type
+        text is_hidden
+        timestamp last_update_date
+        text last_updated_by
+        text link
+        text member_id
+        text name
+        text opened_on
+        text status
+        text title
+        text type
+    }
+    activity {
+        text id PK
+        text allow_multiple_response
+        text closed_date
+        text created_by_id
+        text created_date
+        text dataset_type
+        text name
+        text status
+    }
+    dataset {
+        text id PK
+        text name
+    }
+    profile_record_field {
+        text id PK
+        text dataset_id PK
+        text profile_record_id PK
+        text profile_id FK
+        jsonb value
+    }
+    profile_record {
+        text id PK
+        text dataset_id PK
+        text profile_id FK
+        text last_update_date
+    }
+    profile_field_type_value {
+        text id PK
+        text dataset_id PK
+        text profile_field_id PK
+        text profile_id FK
+        text meta_visibility
+        text name
+    }
+    profile_field {
+        text id PK
+        text dataset_id PK
+        text profile_id FK
+        text data_type
+        text is_sensitive
+        text meta_visibility
+        text name
+    }
+    profile {
+        text id PK
+        text dataset_id PK
+        text export_date
+        text last_sync_date
+    }
+    activity_response_field_value {
+        text index PK
+        text activity_id PK
+        text activity_response_field_id PK
+        text activity_response_id PK
+        text id
+        text meta_order
+        text name
+    }
+    activity_response_field {
+        text id PK
+        text activity_id PK
+        text activity_response_id PK
+        text data_type
+        text is_sensitive
+        text meta_description
+        text meta_is_required
+        text meta_is_system
+        text meta_order
+        text meta_source_field_type
+        text meta_visibility
+        text name
+    }
+    activity_response_field_group_id {
+        text activity_id PK
+        text activity_response_field_group_id PK
+        text activity_response_id PK
+        text field_id PK
+    }
+    activity_response_field_group {
+        text id PK
+        text activity_id PK
+        text activity_response_id PK
+        text meta_description
+        text meta_is_required
+        text meta_source_field_group_type
+        text name
+    }
+    activity_response_record_field {
+        text id PK
+        text activity_id PK
+        text activity_response_id PK
+        text activity_response_record_id PK
+        jsonb value
+    }
+    activity_response_record {
+        text id PK
+        text activity_id PK
+        text activity_response_id PK
+        text last_update_date
+    }
+    activity_response {
+        text id PK
+        text activity_id PK
+        text export_date
+        text last_sync_date
+        text since_date_time
+        text until_date_time
+    }
+    member_event }o--|| activity : "fk"
+    member_activity }o--|| activity : "fk"
+    profile_record_field }o--|| profile_record : "fk"
+    profile_record_field }o--|| profile_record : "fk"
+    profile_record_field }o--|| profile_record : "fk"
+    profile_record }o--|| profile : "fk"
+    profile_record }o--|| profile : "fk"
+    profile_field_type_value }o--|| profile_field : "fk"
+    profile_field_type_value }o--|| profile_field : "fk"
+    profile_field_type_value }o--|| profile_field : "fk"
+    profile_field }o--|| profile : "fk"
+    profile_field }o--|| profile : "fk"
+    profile }o--|| dataset : "fk"
+    activity_response_field_value }o--|| activity_response_field : "fk"
+    activity_response_field_value }o--|| activity_response_field : "fk"
+    activity_response_field_value }o--|| activity_response_field : "fk"
+    activity_response_field }o--|| activity_response : "fk"
+    activity_response_field }o--|| activity_response : "fk"
+    activity_response_field_group_id }o--|| activity_response_field : "fk"
+    activity_response_field_group_id }o--|| activity_response_field_group : "fk"
+    activity_response_field_group_id }o--|| activity_response_field_group : "fk"
+    activity_response_field_group_id }o--|| activity_response_field_group : "fk"
+    activity_response_field_group }o--|| activity_response : "fk"
+    activity_response_field_group }o--|| activity_response : "fk"
+    activity_response_record_field }o--|| activity_response_record : "fk"
+    activity_response_record_field }o--|| activity_response_record : "fk"
+    activity_response_record_field }o--|| activity_response_record : "fk"
+    activity_response_record }o--|| activity_response : "fk"
+    activity_response_record }o--|| activity_response : "fk"
+    activity_response }o--|| activity : "fk"

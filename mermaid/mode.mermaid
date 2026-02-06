@@ -1,0 +1,471 @@
+erDiagram
+    report_collection_run {
+        text id PK
+        text report_collection_id FK
+        text completed_at
+        text created_at
+        jsonb form_fields
+        text is_latest_report_run
+        text is_latest_successful_report_run
+        jsonb parameters
+        text purge_completed_at
+        text purge_started_at
+        text python_state
+        text report_has_failures_since_last_success
+        text state
+        text updated_at
+    }
+    collection {
+        text id PK
+        text default_access_level
+        text description
+        text free_default
+        text name
+        text restricted
+        text space_type
+        text state
+        text token
+        text viewable
+        text viewed
+    }
+    groups {
+        text id PK
+        text description
+        text managed
+        text name
+        text state
+        text type
+    }
+    data_source_custom_attribute {
+        text name PK
+        text data_source_id PK
+        text value
+    }
+    data_source {
+        text id PK
+        text account_id FK
+        text adapter
+        text adapter_version
+        text asleep
+        text bridged
+        text created_at
+        text database
+        text default_access_level
+        text description
+        text display_name
+        text has_expensive_schema_updates
+        text host
+        text ldap
+        text name
+        text organization_plan_code
+        text organization_token
+        text port
+        text provider
+        text public
+        text queryable
+        text soft_deleted
+        text ssl
+        text ssl_trusted_cert
+        text token
+        text updated_at
+        text username
+        text vendor
+        text warehouse
+    }
+    dataset {
+        text id PK
+        text account_id FK
+        text data_source_id FK
+        text archived
+        text color_mapping
+        text created_at
+        text description
+        text drill_anywhere_enabled
+        text drilldowns_enabled
+        text edited_at
+        text expected_runtime
+        text flamingo_signature
+        text full_width
+        text github_link
+        text imported_datasets
+        text is_embedded
+        text is_signed
+        text last_run_at
+        text last_saved_at
+        text last_successful_run_token
+        text last_successful_sync_at
+        text last_successfully_run_at
+        text layout
+        text manual_run_disabled
+        text name
+        text public
+        text published_at
+        text query_preview
+        text run_privately
+        text shared
+        text space_token
+        text theme_id
+        text token
+        text type
+        text updated_at
+        text view_count
+        text web_preview_image
+    }
+    report_data_source_schedule {
+        text id PK
+        text report_using_data_source_id FK
+        text created_at
+        text hour
+        text last_run_at
+        text last_scheduled_run
+        text last_succeeded_at
+        text minute
+        text name
+        text next_scheduled_run
+        jsonb parameters
+        text retry_state
+        text subscribed
+        text time_zone
+        text timeout
+        text type
+        text updated_at
+    }
+    report_collection_query {
+        text id PK
+        text data_source_id FK
+        text report_collection_id FK
+        text created_at
+        text dbt_metric_id
+        text dbt_metric_token
+        text explorations_count
+        text last_run_id
+        text mapping_id
+        text name
+        text raw_query
+        text token
+        text updated_at
+    }
+    collection_membership {
+        text id PK
+        text collection_id PK
+        text email
+        text member_token
+        text token
+        text type
+    }
+    account_avatar {
+        text name PK
+        text account_id PK
+        text value
+    }
+    account {
+        text id PK
+        text admin_data_source_connections_only
+        jsonb authorized_domains
+        text created_at
+        text dataset_size_limit_mb
+        text is_user
+        text membership_type
+        text name
+        text payment_method_confirmed
+        text plan_code
+        text private_definition_limit
+        text query_run_size_limit_mb
+        text token
+        text trial_state
+        text username
+    }
+    report_collection_schedule {
+        text id PK
+        text report_collection_id FK
+        text created_at
+        text hour
+        text last_run_at
+        text last_scheduled_run
+        text last_succeeded_at
+        text minute
+        text name
+        text next_scheduled_run
+        jsonb parameters
+        text retry_state
+        text subscribed
+        text time_zone
+        text timeout
+        text type
+        text updated_at
+    }
+    dataset_schedule {
+        text id PK
+        text dataset_id FK
+        text created_at
+        text hour
+        text last_run_at
+        text last_scheduled_run
+        text last_succeeded_at
+        text minute
+        text name
+        text next_scheduled_run
+        jsonb parameters
+        text retry_state
+        text subscribed
+        text time_zone
+        text timeout
+        text type
+        text updated_at
+    }
+    report_using_data_source {
+        text id PK
+        text account_id FK
+        text data_source_id FK
+        text account_username
+        text archived
+        text color_mapping
+        text created_at
+        text description
+        text drill_anywhere_enabled
+        text drilldowns_enabled
+        text edited_at
+        text expected_runtime
+        text full_width
+        text github_link
+        text imported_dataset
+        text is_embedded
+        text is_signed
+        text last_run_at
+        text last_saved_at
+        text last_successful_run_token
+        text last_successful_sync_at
+        text last_successfully_run_at
+        text layout
+        text manual_run_disabled
+        text name
+        text public
+        text published_at
+        text query_preview
+        text run_privately
+        text shared
+        text space_token
+        text theme_id
+        text token
+        text type
+        text updated_at
+        text view_count
+        text web_preview_image
+    }
+    definition {
+        text id PK
+        text data_source_id FK
+        text created_at
+        text description
+        text github_link
+        text last_saved_at
+        text last_successful_sync_at
+        text name
+        text source
+        text token
+        text updated_at
+    }
+    report_collection_query_chart {
+        text id PK
+        text report_collection_id FK
+        text report_collection_query_id FK
+        text color_palette_token
+        text created_at
+        text switch_view_token
+        text updated_at
+        jsonb view
+        jsonb view_vegas
+        text view_version
+    }
+    report_data_source_query_run {
+        text id PK
+        text data_source_id FK
+        text query_token FK
+        text report_data_source_run_id FK
+        text report_using_data_source_id FK
+        text completed_at
+        text created_at
+        text dbt_metric_id
+        text dbt_metric_token
+        text error_code
+        text error_message
+        text error_type
+        text help_url
+        text limits
+        text max_result_bytes
+        jsonb parameters
+        text raw_source
+        text rendered_source
+        text state
+        text statement_annotation
+        text token
+    }
+    report_data_source_query {
+        text id PK
+        text data_source_id FK
+        text report_using_data_source_id FK
+        text created_at
+        text dbt_metric_id
+        text dbt_metric_token
+        text explorations_count
+        text last_run_id
+        text mapping_id
+        text name
+        text raw_query
+        text token
+        text updated_at
+    }
+    report_data_source_run {
+        text id PK
+        text report_using_data_source_id FK
+        text completed_at
+        text created_at
+        jsonb form_fields
+        text is_latest_report_run
+        text is_latest_successful_report_run
+        jsonb parameters
+        text purge_completed_at
+        text purge_started_at
+        text python_state
+        text report_has_failures_since_last_success
+        text state
+        text updated_at
+    }
+    group_membership {
+        text id PK
+        text group_id FK
+        text member_id FK
+    }
+    workspace_membership {
+        text id PK
+        text activated_at
+        text admin
+        text invited
+        text managed_by_scim
+        text state
+        text username
+    }
+    dataset_run {
+        text id PK
+        text dataset_id FK
+        text created_at
+        jsonb form_fields
+        text is_latest_report_run
+        text is_latest_successful_report_run
+        jsonb parameters
+        text purge_completed_at
+        text purge_started_at
+        text python_state
+        text report_has_failures_since_last_success
+        text state
+        text updated_at
+    }
+    report_data_source_query_chart {
+        text id PK
+        text report_data_source_query_id FK
+        text report_using_data_source_id FK
+        text color_palette_token
+        text created_at
+        text switch_view_token
+        text updated_at
+        jsonb view
+        jsonb view_vegas
+        text view_version
+    }
+    report_collection_query_run {
+        text id PK
+        text data_source_id FK
+        text query_token FK
+        text report_collection_id FK
+        text report_collection_run_id FK
+        text completed_at
+        text created_at
+        text dbt_metric_id
+        text dbt_metric_token
+        text error_code
+        text error_message
+        text error_type
+        text help_url
+        text limits
+        text max_result_bytes
+        jsonb parameters
+        text raw_source
+        text rendered_source
+        text state
+        text statement_annotation
+        text token
+    }
+    report_collection {
+        text id PK
+        text account_id FK
+        text collection_id FK
+        text account_username
+        text archived
+        text color_mapping
+        text created_at
+        text description
+        text drill_anywhere_enabled
+        text drilldowns_enabled
+        text edited_at
+        text expected_runtime
+        text full_width
+        text github_link
+        text imported_dataset
+        text is_embedded
+        text is_signed
+        text last_run_at
+        text last_saved_at
+        text last_successful_run_token
+        text last_successful_sync_at
+        text last_successfully_run_at
+        text layout
+        text manual_run_disabled
+        text name
+        text public
+        text published_at
+        text query_preview
+        text run_privately
+        text shared
+        text space_token
+        text theme_id
+        text token
+        text type
+        text updated_at
+        text view_count
+        text web_preview_image
+    }
+    report_collection_run }o--|| report_collection : "fk"
+    data_source_custom_attribute }o--|| data_source : "fk"
+    data_source }o--|| account : "fk"
+    dataset }o--|| account : "fk"
+    dataset }o--|| data_source : "fk"
+    report_data_source_schedule }o--|| report_using_data_source : "fk"
+    report_collection_query }o--|| data_source : "fk"
+    report_collection_query }o--|| report_collection : "fk"
+    collection_membership }o--|| collection : "fk"
+    account_avatar }o--|| account : "fk"
+    report_collection_schedule }o--|| report_collection : "fk"
+    dataset_schedule }o--|| dataset : "fk"
+    report_using_data_source }o--|| account : "fk"
+    report_using_data_source }o--|| data_source : "fk"
+    definition }o--|| data_source : "fk"
+    report_collection_query_chart }o--|| report_collection : "fk"
+    report_collection_query_chart }o--|| report_collection_query : "fk"
+    report_data_source_query_run }o--|| report_data_source_query : "fk"
+    report_data_source_query_run }o--|| data_source : "fk"
+    report_data_source_query_run }o--|| report_using_data_source : "fk"
+    report_data_source_query_run }o--|| report_data_source_run : "fk"
+    report_data_source_query }o--|| data_source : "fk"
+    report_data_source_query }o--|| report_using_data_source : "fk"
+    report_data_source_run }o--|| report_using_data_source : "fk"
+    group_membership }o--|| workspace_membership : "fk"
+    group_membership }o--|| groups : "fk"
+    dataset_run }o--|| dataset : "fk"
+    report_data_source_query_chart }o--|| report_using_data_source : "fk"
+    report_data_source_query_chart }o--|| report_data_source_query : "fk"
+    report_collection_query_run }o--|| report_collection_query : "fk"
+    report_collection_query_run }o--|| data_source : "fk"
+    report_collection_query_run }o--|| report_collection : "fk"
+    report_collection_query_run }o--|| report_collection_run : "fk"
+    report_collection }o--|| account : "fk"
+    report_collection }o--|| collection : "fk"

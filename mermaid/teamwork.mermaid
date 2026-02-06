@@ -1,0 +1,765 @@
+erDiagram
+    project_portfolio_card {
+        text portfolio_card_id PK
+        text project_id PK
+    }
+    project_tag {
+        text tag_id PK
+        text project_id PK
+    }
+    project_workflow {
+        text project_id PK
+        text workflow_id PK
+    }
+    project_user {
+        text project_id PK
+        text user_id PK
+    }
+    project_custom_field_value {
+        text custom_field_value_id PK
+        text project_id PK
+    }
+    project {
+        text id PK
+        text company_id FK
+        text created_by FK
+        text financial_budget_id FK
+        text time_budget_id FK
+        text updated_by FK
+        text active_page_billing
+        text active_page_board
+        text active_page_comments
+        text active_page_files
+        text active_page_finance
+        text active_page_forms
+        text active_page_gantt
+        text active_page_links
+        text active_page_list
+        text active_page_messages
+        text active_page_milestones
+        text active_page_notebooks
+        text active_page_proofs
+        text active_page_risk_register
+        text active_page_table
+        text active_page_tasks
+        text active_page_tickets
+        text active_page_time
+        text allow_notify_anyone
+        text announcement
+        text available_deadlines_found
+        text available_max_end_date
+        text available_min_start_date
+        text available_suggested_end_date
+        text available_suggested_start_date
+        text category_id
+        text completed_at
+        text completed_by
+        text created_at
+        jsonb custom_field_value
+        text default_privacy
+        text description
+        text direct_file_uploads_enabled
+        text end_date
+        text harvest_timers_enabled
+        text is_billable
+        text is_on_boarding_project
+        text is_sample_project
+        jsonb latest_activity
+        text logo
+        text logo_color
+        text logo_icon
+        text name
+        text notify_comment_include_creator
+        text notify_everyone
+        text notify_task_assignee
+        text overview_start_page
+        text owner_id
+        text privacy_enabled
+        text reply_by_email_enabled
+        text show_announcement
+        text skip_weekends
+        text start_date
+        text start_page
+        text status
+        text sub_status
+        text tag_id
+        text tasks_start_page
+        text type
+        text update_id
+        text updated_at
+    }
+    time_tracking_assigned_team {
+        text assigned_team_id PK
+        text time_tracking_id PK
+    }
+    time_tracking {
+        text id PK
+        text deleted_by_user_id FK
+        text edited_by_user_id FK
+        text logged_by_user_id FK
+        text project_billing_invoice_id FK
+        text project_id FK
+        text task_id FK
+        text user_id FK
+        text billable
+        text created_at
+        text date_created
+        text date_deleted
+        text date_edited
+        text deleted
+        text deleted_at
+        text description
+        text desk_ticket_id
+        jsonb exchange_rate
+        text has_start_time
+        text is_billable
+        text minutes
+        text rate
+        text task_id_pre_move
+        text time_logged
+        text total
+        text updated_at
+    }
+    utilization {
+        text _fivetran_id PK
+        text user_id FK
+        text allocated_minute
+        text available_minute
+        text billable_minutes
+        text end_date
+        text estimated_minute
+        text logged_minute
+        text start_date
+        text unavailable_minute
+        text unbillable_minute
+    }
+    notebook {
+        text id PK
+        text created_by FK
+        text project_id FK
+        text updated_by FK
+        text category_name
+        text created_date
+        text description
+        text locked
+        text name
+        text private
+        text updated_date
+        text user_display_updated_date
+        text user_display_updated_time
+        text version
+    }
+    workflow_project {
+        text project_id PK
+        text workflow_id PK
+    }
+    workflow_stage {
+        text stage_id PK
+        text workflow_id PK
+    }
+    workflow_company {
+        text company_id PK
+        text workflow_id PK
+    }
+    workflow {
+        text id PK
+        text created_by FK
+        text updated_by FK
+        text created_at
+        text default_workflow
+        jsonb lockdown
+        text name
+        text project_specific
+        text status
+        text updated_at
+    }
+    expense {
+        text id PK
+        text company_id FK
+        text created_by FK
+        text invoice_id FK
+        text project_id FK
+        text cost
+        text date
+        text description
+        text name
+    }
+    users_team {
+        text team_id PK
+        text users_id PK
+    }
+    users {
+        text id PK
+        text company_id FK
+        text amount
+        text avatar_url
+        text can_access_portfolio
+        text can_add_projects
+        text can_manage_portfolio
+        text company_role_id
+        text company_type
+        text created_at
+        text created_by_user_id
+        text currency_id
+        text deleted
+        text email
+        text first_name
+        text is_admin
+        text is_client_user
+        text is_placeholder_resource
+        text is_service_account
+        jsonb job_role
+        text last_login
+        text last_name
+        text length_of_day
+        jsonb skill
+        text timezone
+        text title
+        text type
+        text updated_at
+        text updated_by_user_id
+        text user_cost
+        text user_rate
+        text working_hours_id
+    }
+    clock_in {
+        text id PK
+        text user_id FK
+        text clock_in_datetime
+        text clock_in_info
+        text clock_in_source
+        text clock_out_datetime
+        text clock_out_info
+        text clock_out_source
+        text status
+        text updated_date_time
+    }
+    task_change_follower {
+        text change_follower PK
+        text task_id PK
+    }
+    task_comment_follower {
+        text comment_follower PK
+        text task_id PK
+    }
+    task_complete_follower {
+        text complete_follower PK
+        text task_id PK
+    }
+    assignee_user_task {
+        text assignee_user_id PK
+        text task_id PK
+    }
+    assignee_team_task {
+        text assignee_team_id PK
+        text task_id PK
+    }
+    task_crm_deal {
+        text crm_deal PK
+        text task_id PK
+    }
+    task_sub_task {
+        text sub_task_id PK
+        text task_id PK
+    }
+    task_tag {
+        text tag_id PK
+        text task_id PK
+    }
+    task_dependency {
+        text dependency_id PK
+        text task_id PK
+    }
+    assignee_company_task {
+        text assignee_company_id PK
+        text task_id PK
+    }
+    task_predecessor {
+        text predecessor_id PK
+        text task_id PK
+    }
+    task_workflow_stage {
+        text index PK
+        text task_id PK
+        text stage_id FK
+        text workflow_id FK
+        text stage_task_display_order
+    }
+    task {
+        text id PK
+        text parent_task_id FK
+        text tasklist_id FK
+        text updated_by FK
+        text accumulated_estimated_minute
+        text assignee_ids
+        jsonb attachments
+        text capacity
+        text card
+        jsonb columns
+        text completed_at
+        text completed_by
+        text completed_on
+        text created_at
+        text created_by
+        text date_updated
+        text decimal_display_order
+        text deleted_at
+        text deleted_by
+        text description
+        text description_content_type
+        text display_order
+        text due_date
+        text due_date_offset
+        text estimate_minutes
+        text has_desk_tickets
+        text has_reminder
+        text is_archived
+        text is_blocked
+        text is_private
+        jsonb latest_update
+        text lockdown
+        text name
+        text notify
+        text original_due_date
+        text out_of_sequence
+        text priority
+        text progress
+        jsonb proof
+        text sequence_due_date
+        text sequence_id
+        text sequence_root_task
+        text sequence_start_date
+        text start_date
+        text start_date_offset
+        text status
+        text template_role_name
+        text timer
+        text updated_at
+        text user_permission_can_add_subtasks
+        text user_permission_can_complete
+        text user_permission_can_edit
+        text user_permission_can_log_time
+        text user_permission_can_view_est_time
+        text workflow_stages
+    }
+    activity {
+        text id PK
+        text company_id FK
+        text for_user_id FK
+        text item_id FK
+        text project_id FK
+        text user_id FK
+        text activity_type
+        timestamp datetime
+        text description
+        text due_date
+        text extra_description
+        text from_username
+        text is_private
+        text latest_activity_type
+        text link
+        text type
+    }
+    calendar_event {
+        text _fivetran_id PK
+        text added_by
+        text all_day
+        text assigned_to
+        text description
+        text end_date
+        text project
+        text start_date
+        text tags
+        text title
+        text type
+    }
+    link {
+        text id PK
+        text created_by FK
+        text project_id FK
+        text category_name
+        text code
+        text created_date
+        text description
+        text name
+        text open_in_new_window
+        text provider
+    }
+    company_tag {
+        text id PK
+        text company_id PK
+        text project_id FK
+        text name
+    }
+    company {
+        text id PK
+        text accounts
+        text address_one
+        text address_two
+        text can_see_private
+        text cid
+        text city
+        text clients
+        text collaborator
+        text contacts
+        text country
+        text country_code
+        text created_on
+        text email_one
+        text email_three
+        text email_two
+        text fax
+        text industry
+        text industry_id
+        text is_owner
+        text last_changed_on
+        text name
+        text phone
+        text state
+        text website
+        text zip
+    }
+    tasklist_tag {
+        text id PK
+        text task_list_id PK
+        text project_id FK
+        text name
+    }
+    task_list {
+        text id PK
+        text milestone_id FK
+        text project_id FK
+        text complete
+        text created_at
+        text description
+        text is_billable
+        text is_template
+        text last_updated
+        text name
+        text notify_task_assignee
+        text pinned
+        text position
+        text private
+        text status
+        text tasks
+    }
+    user_status {
+        text id PK
+        text user_id FK
+        text geo_ip_location
+        text is_clocked_in
+        text last_changed_on
+        text posted_on
+        text status
+    }
+    team_member {
+        text id PK
+        text team_id PK
+        text name
+    }
+    team {
+        text id PK
+        text company_id FK
+        text created_by_user_id FK
+        text project_id FK
+        text updated_by_user_id FK
+        text can_edit
+        text date_created
+        text date_updated
+        text deleted
+        text deleted_date
+        text description
+        text handle
+        text is_private
+        text name
+        text num_direct_children
+        text num_subteams
+        text parent_team_handle
+        text parent_team_id
+        text parent_team_name
+        text root_team_handle
+        text root_team_id
+        text root_team_name
+    }
+    message {
+        text id PK
+        text author_id FK
+        text milestone_id FK
+        text project_id FK
+        text body
+        text category_name
+        text content_type
+        text is_read
+        text last_changed_on
+        text last_comment_date
+        text posted_on
+        text private
+        text title
+        text user_display_posted_date
+        text user_display_posted_time
+    }
+    milestone_tasklist {
+        text id PK
+        text milestone_id PK
+    }
+    milestone_change_follower {
+        text change_follower PK
+        text milestone_id PK
+    }
+    milestone_comment_follower {
+        text comment_follower PK
+        text milestone_id PK
+    }
+    milestone_responsible_party {
+        text milestone_id PK
+        text responsible_people PK
+    }
+    milestone_tag {
+        text id PK
+        text milestone_id PK
+        text project_id FK
+        text name
+    }
+    milestone {
+        text id PK
+        text company_id FK
+        text completer_id FK
+        text creator_id FK
+        text project_id FK
+        text can_complete
+        text can_edit
+        text completed
+        text completed_on
+        text created_on
+        text deadline
+        text description
+        text due_date_offset
+        text is_private
+        text last_changed_on
+        text percentage_complete
+        text private
+        text reminder
+        text responsible_party_type
+        text status
+        text title
+        text user_following_changes
+        text user_following_comments
+    }
+    project_budget_notification {
+        text id PK
+        text project_budget_id PK
+        text type
+    }
+    project_budget {
+        text id PK
+        text created_by_user_id FK
+        text project_id FK
+        text updated_by_user_id FK
+        text announcement
+        text base_line_capacity
+        text capacity
+        text capacity_used
+        text carry_capacity
+        text carry_overspend
+        text carry_underspend
+        text completed_at
+        text created_at
+        text currency_code
+        text date_created
+        text date_updated
+        text default_rate
+        text end_date_time
+        text expense_type
+        text is_repeating
+        text is_retainer
+        text notification
+        text notification_type
+        text originator_budget_id
+        text originator_budget_type
+        text originator_start_date_time
+        text repeat_period
+        text repeat_unit
+        text sequence_number
+        text start_date_time
+        text status
+        text timelog_type
+        text type
+        timestamp updated_at
+    }
+    comment {
+        text id PK
+        text author_id FK
+        text company_id FK
+        text project_id FK
+        text author_id_deprecated
+        text body
+        text commentable_id
+        text commentable_type
+        text content_type
+        text datetime
+        text emailed_from
+        text is_read
+        text item_name
+        text last_changed_on
+        text link
+        text nr_notified_people
+        text number
+        text private
+        text type
+    }
+    risk {
+        text id PK
+        text company_id FK
+        text created_by FK
+        text last_changed_by FK
+        text project_id FK
+        text created_on
+        text impact
+        text impact_cost
+        text impact_performance
+        text impact_schedule
+        text impact_value
+        text last_changed_on
+        text mitigation_plan
+        text probability
+        text probability_value
+        text project_is_active
+        text result
+        text source
+        text status
+    }
+    invoice {
+        text id PK
+        text company_id FK
+        text created_by FK
+        text exported_by FK
+        text project_id FK
+        text update_by FK
+        text currency_code
+        text date_created
+        text date_updated
+        text description
+        text display_date
+        text exported_date
+        text fixed_cost
+        text number
+        text po_number
+        text status
+    }
+    project_portfolio_card }o--|| project : "fk"
+    project_tag }o--|| project : "fk"
+    project_workflow }o--|| workflow : "fk"
+    project_workflow }o--|| project : "fk"
+    project_user }o--|| users : "fk"
+    project_user }o--|| project : "fk"
+    project_custom_field_value }o--|| project : "fk"
+    project }o--|| project_budget : "fk"
+    project }o--|| users : "fk"
+    project }o--|| project_budget : "fk"
+    project }o--|| company : "fk"
+    project }o--|| users : "fk"
+    time_tracking_assigned_team }o--|| team : "fk"
+    time_tracking_assigned_team }o--|| time_tracking : "fk"
+    time_tracking }o--|| users : "fk"
+    time_tracking }o--|| users : "fk"
+    time_tracking }o--|| task : "fk"
+    time_tracking }o--|| invoice : "fk"
+    time_tracking }o--|| project : "fk"
+    time_tracking }o--|| users : "fk"
+    time_tracking }o--|| users : "fk"
+    utilization }o--|| users : "fk"
+    notebook }o--|| users : "fk"
+    notebook }o--|| project : "fk"
+    notebook }o--|| users : "fk"
+    workflow_project }o--|| project : "fk"
+    workflow_project }o--|| workflow : "fk"
+    workflow_stage }o--|| workflow : "fk"
+    workflow_company }o--|| company : "fk"
+    workflow_company }o--|| workflow : "fk"
+    workflow }o--|| users : "fk"
+    workflow }o--|| users : "fk"
+    expense }o--|| users : "fk"
+    expense }o--|| invoice : "fk"
+    expense }o--|| project : "fk"
+    expense }o--|| company : "fk"
+    users_team }o--|| team : "fk"
+    users_team }o--|| users : "fk"
+    users }o--|| company : "fk"
+    clock_in }o--|| users : "fk"
+    task_change_follower }o--|| users : "fk"
+    task_change_follower }o--|| task : "fk"
+    task_comment_follower }o--|| users : "fk"
+    task_comment_follower }o--|| task : "fk"
+    task_complete_follower }o--|| users : "fk"
+    task_complete_follower }o--|| task : "fk"
+    assignee_user_task }o--|| users : "fk"
+    assignee_user_task }o--|| task : "fk"
+    assignee_team_task }o--|| team : "fk"
+    assignee_team_task }o--|| task : "fk"
+    task_crm_deal }o--|| company : "fk"
+    task_crm_deal }o--|| task : "fk"
+    task_sub_task }o--|| task : "fk"
+    task_tag }o--|| task : "fk"
+    task_dependency }o--|| task : "fk"
+    assignee_company_task }o--|| company : "fk"
+    assignee_company_task }o--|| task : "fk"
+    task_predecessor }o--|| task : "fk"
+    task_workflow_stage }o--|| workflow_stage : "fk"
+    task_workflow_stage }o--|| workflow : "fk"
+    task_workflow_stage }o--|| task : "fk"
+    task }o--|| task_list : "fk"
+    task }o--|| users : "fk"
+    task }o--|| task : "fk"
+    activity }o--|| users : "fk"
+    activity }o--|| task_list : "fk"
+    activity }o--|| project : "fk"
+    activity }o--|| company : "fk"
+    activity }o--|| users : "fk"
+    link }o--|| users : "fk"
+    link }o--|| project : "fk"
+    company_tag }o--|| project : "fk"
+    company_tag }o--|| company : "fk"
+    tasklist_tag }o--|| project : "fk"
+    tasklist_tag }o--|| task_list : "fk"
+    task_list }o--|| milestone : "fk"
+    task_list }o--|| project : "fk"
+    user_status }o--|| users : "fk"
+    team_member }o--|| users : "fk"
+    team_member }o--|| team : "fk"
+    team }o--|| users : "fk"
+    team }o--|| users : "fk"
+    team }o--|| project : "fk"
+    team }o--|| company : "fk"
+    message }o--|| users : "fk"
+    message }o--|| milestone : "fk"
+    message }o--|| project : "fk"
+    milestone_tasklist }o--|| task_list : "fk"
+    milestone_tasklist }o--|| milestone : "fk"
+    milestone_change_follower }o--|| users : "fk"
+    milestone_change_follower }o--|| milestone : "fk"
+    milestone_comment_follower }o--|| users : "fk"
+    milestone_comment_follower }o--|| milestone : "fk"
+    milestone_responsible_party }o--|| users : "fk"
+    milestone_responsible_party }o--|| milestone : "fk"
+    milestone_tag }o--|| project : "fk"
+    milestone_tag }o--|| milestone : "fk"
+    milestone }o--|| users : "fk"
+    milestone }o--|| project : "fk"
+    milestone }o--|| company : "fk"
+    milestone }o--|| users : "fk"
+    project_budget_notification }o--|| project_budget : "fk"
+    project_budget }o--|| users : "fk"
+    project_budget }o--|| users : "fk"
+    project_budget }o--|| project : "fk"
+    comment }o--|| users : "fk"
+    comment }o--|| project : "fk"
+    comment }o--|| company : "fk"
+    risk }o--|| users : "fk"
+    risk }o--|| users : "fk"
+    risk }o--|| project : "fk"
+    risk }o--|| company : "fk"
+    invoice }o--|| users : "fk"
+    invoice }o--|| users : "fk"
+    invoice }o--|| project : "fk"
+    invoice }o--|| company : "fk"
+    invoice }o--|| users : "fk"

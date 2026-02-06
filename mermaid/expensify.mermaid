@@ -1,0 +1,154 @@
+erDiagram
+    report_action_list {
+        text _fivetran_id PK
+        text report_id FK
+        text account_email
+        text action
+        text created
+        text message
+    }
+    report {
+        text id PK
+        text old_report_id FK
+        text policy_id FK
+        text account_email
+        text account_id
+        text action_list
+        text approved
+        text created
+        text currency
+        text entry_id
+        text is_ach_reimbursed
+        text manager_first_name
+        text manager_full_name
+        text manager_last_name
+        text manager_payroll_id
+        text manager_user_id
+        text reimbursed
+        text report_field_name
+        text report_name
+        text status
+        text submitted
+        text submitter_first_name
+        text submitter_full_name
+        text submitter_last_name
+        text total
+    }
+    report_approver {
+        text _fivetran_id PK
+        text employee_user_id FK
+        text report_id FK
+        text date
+        text email
+        text employee_payroll_id
+    }
+    expense_attendee {
+        text email PK
+        text transaction_id PK
+        text display_name
+        text thumbnail
+    }
+    policy_report_field {
+        text index PK
+        text _fivetran_id PK
+        text name
+        text type
+        jsonb values
+    }
+    policy_category {
+        text index PK
+        text _fivetran_id PK
+        text enabled
+        text name
+    }
+    policy_tag {
+        text index PK
+        text _fivetran_id PK
+        text enabled
+        text gl_code
+        text name
+    }
+    policy_tax_rate {
+        text index PK
+        text _fivetran_id PK
+        text name
+        text type
+        jsonb values
+    }
+    policy_employee {
+        text index PK
+        text _fivetran_id PK
+        text email
+        text employee_id
+        text role
+        text submits_to
+    }
+    policy {
+        text _fivetran_id PK
+        text id PK
+        text default_tax
+        text name
+        text output_currency
+        text owner
+        text role
+        text tax_name
+        text type
+    }
+    expense {
+        text transaction_id PK
+        text original_transaction_id FK
+        text report_id FK
+        text amount
+        text bank
+        text billable
+        text category
+        text category_gl_code
+        text category_payroll_code
+        text comment
+        text created
+        text currency
+        text currency_conversion_rate
+        text has_tax
+        text inserted
+        text mcc
+        text merchant
+        text modified_amount
+        text modified_created
+        text modified_mcc
+        text modified_merchant
+        text modified_tax_amount
+        text ntag_x
+        text ntag_xgl_code
+        text receipt_filename
+        text receipt_id
+        text receipt_small_thumbnail
+        text receipt_thumbnail
+        text receipt_transaction_id
+        text receipt_type
+        text receipt_url
+        text reimbursable
+        text tag_gl_code
+        text tags
+        text tax_amount
+        text tax_code
+        text tax_name
+        text tax_rate
+        text tax_rate_name
+        text type
+        text unit
+        text unit_count
+        text unit_rate
+    }
+    report_action_list }o--|| report : "fk"
+    report }o--|| report : "fk"
+    report }o--|| policy : "fk"
+    report_approver }o--|| report : "fk"
+    report_approver }o--|| policy_employee : "fk"
+    expense_attendee }o--|| expense : "fk"
+    policy_report_field }o--|| policy : "fk"
+    policy_category }o--|| policy : "fk"
+    policy_tag }o--|| policy : "fk"
+    policy_tax_rate }o--|| policy : "fk"
+    policy_employee }o--|| policy : "fk"
+    expense }o--|| report : "fk"
+    expense }o--|| expense : "fk"

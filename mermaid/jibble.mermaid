@@ -1,0 +1,331 @@
+erDiagram
+    location {
+        text id PK
+        text address
+        text code
+        text coordinates_latitude
+        text coordinates_longitude
+        text geo_fence_radius
+        text geo_fence_units
+        text name
+        text odata_etag
+    }
+    member_overridden_property {
+        text overridden_property PK
+        text member_id PK
+    }
+    member {
+        text id PK
+        text group_id FK
+        text organization_id FK
+        text schedule_id FK
+        text calendar_id
+        text code
+        text country_code
+        text created_at
+        text email
+        text full_name
+        text has_embedding
+        text invited_at
+        text join_date
+        jsonb kiosk
+        text latest_time_entry_time
+        jsonb managed_unit
+        jsonb manager
+        text nfc_token
+        text odata_etag
+        text phone_number
+        text picture
+        text pin_code
+        text position_id
+        text preferred_name
+        jsonb project
+        text removed_at
+        text role
+        text status
+        jsonb unit_time_off_policies
+        timestamp updated_at
+        text user_id
+        text work_start_date
+        jsonb work_types
+    }
+    organization {
+        text id PK
+        text created_at
+        text face_recognition_model_id
+        text name
+        text odata_etag
+        text status
+        text updated_at
+    }
+    role {
+        text id PK
+        text organization_id FK
+        text description
+        text do_propagate_name
+        text name
+        text orders
+        jsonb organization_role_policy
+        jsonb role_policies
+        jsonb user_roles
+    }
+    time_off_holiday {
+        text date PK
+        text time_off_overview_id PK
+        text is_short_day
+        text name
+        jsonb rule
+    }
+    time_off_overview {
+        text id PK
+        text person_id FK
+        text duration
+        text end_date
+        text end_time
+        text kind
+        text note
+        text part_day_leave_duration
+        text part_of_day
+        text policy_id
+        timestamp start_date
+        text start_time
+        text status
+    }
+    groups {
+        text id PK
+        text organization_id FK
+        text schedule_id FK
+        jsonb activity
+        text calendar_id
+        text created_at
+        jsonb first_approver
+        jsonb kiosk
+        jsonb manager
+        text name
+        text odata_etag
+        jsonb overridden_property
+        jsonb project
+        jsonb second_approvers
+        text status
+        jsonb unit_time_off_policy
+        timestamp updated_at
+        jsonb work_type
+    }
+    timesheet_auto_deduction {
+        text index PK
+        text date PK
+        text timesheet_id PK
+        text duration
+        text name
+        text threshold
+    }
+    timesheet_daily {
+        text date PK
+        text timesheet_id PK
+        text daily_double_overtime_is_edited
+        text daily_double_overtime_payroll_hour_id
+        text daily_double_overtime_time
+        text daily_overtime_is_edited
+        text daily_overtime_payroll_hour_id
+        text daily_overtime_time
+        text end_offset
+        text end_time
+        text first_in
+        text first_in_location_id
+        text first_in_offset
+        text first_in_timestamp
+        text has_archived_screenshots
+        text last_out
+        text last_out_location_id
+        text last_out_offset
+        text last_out_timestamp
+        text payroll_hours_billing
+        text payroll_hours_total
+        text public_holiday_overtime_is_edited
+        text public_holiday_overtime_payroll_hour_id
+        text public_holiday_overtime_time
+        text regular_is_edited
+        text regular_payroll_hour_id
+        text regular_time
+        text rest_day_overtime_is_edited
+        text rest_day_overtime_payroll_hour_id
+        text rest_day_overtime_time
+        text start_offset
+        text start_time
+        jsonb time_off_holiday
+        text time_off_is_rest_day
+        text time_off_paid_time_off
+        jsonb time_off_short_day
+        jsonb time_off_type
+        text time_off_unpaid_time_off
+        text tracked_hours_added
+        jsonb tracked_hours_breaks
+        text tracked_hours_paid_break_time
+        text tracked_hours_total
+        text tracked_hours_total_auto_deduction_time
+        text tracked_hours_total_break_time
+        text tracked_hours_unpaid_break_time
+        text tracked_hours_worked
+        text weekly_overtime_is_edited
+        text weekly_overtime_payroll_hour_id
+        text weekly_overtime_time
+    }
+    timesheet {
+        text id PK
+        text person_id FK
+        text summary_added
+        text summary_auto_deduction_time
+        text summary_break_time
+        text summary_daily_double_overtime
+        text summary_daily_overtime
+        text summary_paid_break_time
+        text summary_paid_time_off
+        text summary_payroll
+        text summary_public_holiday_overtime
+        text summary_regular
+        text summary_rest_day_overtime
+        text summary_tracked
+        text summary_unpaid_break_time
+        text summary_unpaid_time_off
+        text summary_weekly_overtime
+        text summary_worked
+        text total
+        text total_payroll
+        text total_tracked
+    }
+    time_entry {
+        text id PK
+        text activity_id FK
+        text location_id FK
+        text next_time_entry_id FK
+        text organization_id FK
+        text person_id FK
+        text previous_time_entry_id FK
+        text address
+        text auto_clock_out_time
+        text belongs_to_date
+        text break_id
+        text client_type
+        text clock_in_out_reminder_time
+        text coordinate
+        text created_at
+        text event_id
+        text face_similarity
+        text is_automatic
+        text is_end_of_day
+        text is_face_recognized
+        text is_from_speed_kiosk
+        text is_locked
+        text is_manual
+        text is_manual_location
+        text is_offline
+        text is_outside_geofence
+        text is_unusual
+        text kiosk_id
+        text local_time
+        text note
+        text offsets
+        text picture
+        text platform_client_version
+        text platform_device_id
+        text platform_device_model
+        text platform_device_name
+        text platform_os
+        text project_id
+        text status
+        text time
+        text type
+        timestamp updated_at
+    }
+    schedule_auto_deduction {
+        text index PK
+        text schedule_id PK
+        text duration
+        text name
+        text threshold
+    }
+    schedule_break {
+        text id PK
+        text schedule_id PK
+        text allow_to_be_taken_from_to
+        text duration
+        text from_time
+        text name
+        text to_time
+    }
+    schedule_day {
+        text index PK
+        text schedule_id PK
+        text day
+        text duration
+        text from_time
+        text to_time
+    }
+    schedule {
+        text id PK
+        text organization_id FK
+        text breaks_type
+        text created_at
+        text daily_double_overtime_multiplier
+        text daily_overtime_multiplier
+        text defaults
+        text exclude_early_clock_in
+        jsonb location
+        text name
+        text odata_etag
+        text overtime_daily
+        text overtime_daily_double
+        text overtime_daily_double_duration
+        text overtime_daily_double_from
+        text overtime_daily_duration
+        text overtime_daily_from
+        text overtime_end_work_day_at
+        text overtime_public_holiday
+        text overtime_rest_day
+        text overtime_time_range_style
+        text overtime_weekly
+        text overtime_weekly_duration
+        text public_holiday_overtime_multiplier
+        text rest_day_overtime_multiplier
+        timestamp updated_at
+        text weekly_hours
+        text weekly_overtime_multiplier
+        text work_arrangement
+    }
+    activity {
+        text id PK
+        text organization_id FK
+        jsonb assigned_group
+        text code
+        text color
+        text created_at
+        text description
+        text name
+        text odata_etag
+        text status
+        timestamp updated_at
+    }
+    member_overridden_property }o--|| member : "fk"
+    member }o--|| groups : "fk"
+    member }o--|| organization : "fk"
+    member }o--|| schedule : "fk"
+    role }o--|| organization : "fk"
+    time_off_holiday }o--|| time_off_overview : "fk"
+    time_off_overview }o--|| member : "fk"
+    groups }o--|| organization : "fk"
+    groups }o--|| schedule : "fk"
+    timesheet_auto_deduction }o--|| timesheet_daily : "fk"
+    timesheet_auto_deduction }o--|| timesheet_daily : "fk"
+    timesheet_daily }o--|| timesheet : "fk"
+    timesheet }o--|| member : "fk"
+    time_entry }o--|| activity : "fk"
+    time_entry }o--|| time_entry : "fk"
+    time_entry }o--|| time_entry : "fk"
+    time_entry }o--|| member : "fk"
+    time_entry }o--|| organization : "fk"
+    time_entry }o--|| location : "fk"
+    schedule_auto_deduction }o--|| schedule : "fk"
+    schedule_break }o--|| schedule : "fk"
+    schedule_day }o--|| schedule : "fk"
+    schedule }o--|| organization : "fk"
+    activity }o--|| organization : "fk"

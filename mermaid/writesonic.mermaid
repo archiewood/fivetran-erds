@@ -1,0 +1,159 @@
+erDiagram
+    content_keyword_response {
+        text index PK
+        text content_keyword_id PK
+        text created_at
+        text paragraph
+        text platform_name
+        text query
+        text sentence
+        text sentiment
+    }
+    content_keyword_response_compare {
+        text index PK
+        text content_keyword_id PK
+        text created_at
+        text paragraph
+        text platform_name
+        text query
+        text sentence
+        text sentiment
+    }
+    content_keyword {
+        text id PK
+        text created_at
+        text created_at_compare
+        text keyword
+        text subtheme
+        text theme
+    }
+    performance_summary {
+        text date PK
+        text website_id PK
+        text rank
+        text rank_compare
+        text rank_diff
+        text total_mentions
+        text total_mentions_compare
+        text total_mentions_diff
+        text total_prompts
+        text total_prompts_compare
+        text total_prompts_diff
+        text total_results
+        text total_results_compare
+        text total_results_diff
+        text visibility_score
+        text visibility_score_compare
+        text visibility_score_diff
+        text website_name
+        text website_url
+    }
+    content_citation_mentioned_website {
+        text index PK
+        text content_citation_id PK
+        text id
+        text is_competitor
+        text is_self_website
+        text name
+    }
+    content_citation_response {
+        text index PK
+        text content_citation_id PK
+        text prompt_id FK
+        text created_at
+        text model_id
+        text model_name
+        text prompt_text
+        text result_id
+        text topic_id
+        text topic_name
+    }
+    content_citation_mentioned_website_compare {
+        text index PK
+        text content_citation_id PK
+        text id
+        text is_competitor
+        text is_self_website
+        text name
+    }
+    content_citation_response_compare {
+        text index PK
+        text content_citation_id PK
+        text created_at
+        text model_id
+        text model_name
+        text prompt_id
+        text prompt_text
+        text result_id
+        text topic_id
+        text topic_name
+    }
+    content_citation {
+        text id PK
+        text citation_domain
+        text citation_title
+        text citation_uri
+        text created_at
+    }
+    performance_answer_brand_mention {
+        text index PK
+        text platform_id PK
+        text prompt_id PK
+        text website_id FK
+        text brand_name
+        text rank
+        jsonb sentences
+        text visibility_score
+        text website_url
+    }
+    performance_answer {
+        text date PK
+        text platform_id PK
+        text prompt_id PK
+        text answer_text
+        text avg_rank
+        text avg_rank_compare
+        text avg_rank_diff
+        text avg_visibility_score
+        text avg_visibility_score_compare
+        text avg_visibility_score_diff
+        text platform
+        text platform_name
+        text prompt
+        text rank
+        text response
+        text response_id
+        text topic
+        text topic_id
+        text visibility_score
+    }
+    performance_prompt {
+        text date PK
+        text id PK
+        text avg_rank
+        text avg_rank_compare
+        text avg_rank_diff
+        text avg_visibility_score
+        text avg_visibility_score_compare
+        text avg_visibility_score_diff
+        text prompt_text
+        text topic_id
+        text topic_name
+        text total_mentions
+        text total_mentions_compare
+        text total_mentions_diff
+        text total_models
+        text total_models_compare
+        text total_models_diff
+    }
+    content_keyword_response }o--|| content_keyword : "fk"
+    content_keyword_response_compare }o--|| content_keyword : "fk"
+    content_citation_mentioned_website }o--|| content_citation : "fk"
+    content_citation_response }o--|| performance_prompt : "fk"
+    content_citation_response }o--|| content_citation : "fk"
+    content_citation_mentioned_website_compare }o--|| content_citation : "fk"
+    content_citation_response_compare }o--|| content_citation : "fk"
+    performance_answer_brand_mention }o--|| performance_summary : "fk"
+    performance_answer_brand_mention }o--|| performance_answer : "fk"
+    performance_answer_brand_mention }o--|| performance_answer : "fk"
+    performance_answer }o--|| performance_prompt : "fk"

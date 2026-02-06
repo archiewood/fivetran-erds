@@ -1,0 +1,208 @@
+erDiagram
+    contact {
+        bigint id PK
+        text email PK
+        text adding_date
+        text city
+        text company
+        text company_size
+        text country
+        jsonb custom_field
+        text first_name
+        text industry
+        text last_name
+        text linked_in_profile
+        text linked_in_recruiter_url
+        text notes
+        text phone
+        text phone_status
+        text sales_navigation_url
+        text state
+        text time_zone_id
+        text title
+    }
+    contact_statistic_campaign_email {
+        bigint campaign_id PK
+        bigint step_num PK
+        bigint contact_statistic_id FK
+        boolean bounced
+        timestamp date
+        boolean opened
+        boolean replied
+    }
+    contact_statistic_campaign {
+        bigint contact_statistic_id PK
+        bigint id PK
+        text inbox_state
+        text person_status
+        timestamp reply_date
+        text reply_text
+        text status
+    }
+    contact_statistic {
+        bigint id PK
+        text email FK
+        boolean is_blocked
+        boolean is_opted_out
+    }
+    email_account {
+        text email PK
+        bigint id PK
+        text sender_name
+        text signature
+    }
+    contact_per_campaign {
+        bigint campaign_id PK
+        bigint id PK
+    }
+    email_template_attachment {
+        text attachment_id PK
+        bigint campaign_step_template_id PK
+        bigint campaign_id FK
+    }
+    campaign_step_template {
+        bigint id PK
+        bigint campaign_id FK
+        bigint campaign_step_id FK
+        text body
+        text cc_list
+        text email_template_id
+        text email_template_name
+        text subject
+    }
+    campaign_step {
+        bigint id PK
+        bigint campaign_id FK
+        bigint in_minutes_count
+        bigint number
+    }
+    template {
+        bigint id PK
+        text body
+        bigint category_id
+        text name
+        text subject
+        text type
+    }
+    campaign_schedule {
+        bigint id PK
+        boolean is_default
+        text name
+        text timezone_id
+    }
+    campaign_time_range {
+        text campaign_schedule_id PK
+        text type PK
+        text week_day PK
+        bigint from_time_hour
+        bigint from_time_minute
+        bigint to_time_hour
+        bigint to_time_minute
+    }
+    campaign_timing {
+        text campaign_schedule_id PK
+        text type PK
+        text week_day PK
+        boolean is_active
+    }
+    campaign {
+        bigint id PK
+        text email FK
+        bigint bounces_count
+        text created
+        bigint deliveries_count
+        text name
+        bigint opens_count
+        bigint opt_outs_count
+        bigint out_of_office_count
+        text owner_email
+        bigint people_active
+        bigint people_count
+        bigint people_finished
+        bigint people_paused
+        bigint replies_count
+    }
+    email_sent {
+        text email PK
+        bigint id PK
+        text email_account_id FK
+        text sent_email_id FK
+        text email_from
+        text sent_email_date
+        text sent_email_message_id
+        text sent_email_variant
+        text sent_message_url
+    }
+    email_replied {
+        text email PK
+        bigint id PK
+        text email_account_id FK
+        text sent_email_id FK
+        text reason
+        text reply_date
+        text reply_message_id
+        text reply_message_url
+    }
+    contact_called {
+        text email PK
+        bigint id PK
+        text disposition
+        text duration
+        text from_number
+        text notes
+        text recording_url
+        text resolution
+    }
+    email_opened {
+        text email PK
+        bigint id PK
+        text email_account_id FK
+        text sent_email_id FK
+        text email_open_date
+        text opens_count
+        text sent_email_message_id
+    }
+    contact_opted_out {
+        text email PK
+        bigint id PK
+        text prospect_opt_out_date
+    }
+    contact_finished {
+        text email PK
+        bigint id PK
+        text finish_reason
+        text finished_date
+    }
+    contact }o--|| email_account : "fk"
+    contact_statistic_campaign_email }o--|| campaign_step : "fk"
+    contact_statistic_campaign_email }o--|| contact_statistic_campaign : "fk"
+    contact_statistic_campaign_email }o--|| contact_statistic_campaign : "fk"
+    contact_statistic_campaign }o--|| campaign : "fk"
+    contact_statistic_campaign }o--|| contact_statistic : "fk"
+    contact_statistic }o--|| contact : "fk"
+    contact_per_campaign }o--|| contact : "fk"
+    contact_per_campaign }o--|| campaign : "fk"
+    email_template_attachment }o--|| campaign_step_template : "fk"
+    email_template_attachment }o--|| campaign_step : "fk"
+    campaign_step_template }o--|| campaign_step : "fk"
+    campaign_step_template }o--|| campaign_step : "fk"
+    campaign_step }o--|| campaign : "fk"
+    campaign }o--|| email_account : "fk"
+    email_sent }o--|| email_account : "fk"
+    email_sent }o--|| contact : "fk"
+    email_sent }o--|| contact : "fk"
+    email_sent }o--|| email_account : "fk"
+    email_replied }o--|| contact : "fk"
+    email_replied }o--|| contact : "fk"
+    email_replied }o--|| email_account : "fk"
+    email_replied }o--|| email_account : "fk"
+    contact_called }o--|| contact : "fk"
+    contact_called }o--|| contact : "fk"
+    email_opened }o--|| contact : "fk"
+    email_opened }o--|| contact : "fk"
+    email_opened }o--|| email_account : "fk"
+    email_opened }o--|| email_account : "fk"
+    contact_opted_out }o--|| contact : "fk"
+    contact_opted_out }o--|| contact : "fk"
+    contact_finished }o--|| contact : "fk"
+    contact_finished }o--|| contact : "fk"

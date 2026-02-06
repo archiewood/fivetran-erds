@@ -1,0 +1,1106 @@
+erDiagram
+    form_submission_owner {
+        text id PK
+        text form_submission_id PK
+        text type
+    }
+    form_submission_unit_sub_unit {
+        text id PK
+        text form_submission_id PK
+        text form_submission_unit_section_id PK
+        jsonb attachments
+        text comment
+        text name
+        text option
+        text type
+        text value
+        jsonb values
+    }
+    form_submission_unit_section {
+        text id PK
+        text form_submission_id PK
+        jsonb attachments
+        text comment
+        text description
+        text name
+        text option
+        text type
+        text value
+        jsonb values
+    }
+    form_submission {
+        text id PK
+        text created_by_id FK
+        text form_id
+        text form_name
+        text status
+        text submitted_on
+    }
+    booking {
+        text id PK
+        text business_unit_id FK
+        text campaign_id FK
+        text job_id FK
+        text job_type_id FK
+        text active
+        text address_city
+        text address_country
+        text address_state
+        text address_street
+        text address_unit
+        text address_zip
+        text booking_provider_id
+        text created_on
+        jsonb customer_type
+        text dismissing_reason_id
+        text external_id
+        text is_first_time_client
+        text is_send_confirmation_email
+        timestamp modified_on
+        text name
+        text priority
+        text source
+        text start
+        text status
+        text summary
+        jsonb uploaded_image
+    }
+    project_status {
+        text id PK
+        timestamp modified_on
+        text name
+        text orders
+    }
+    project {
+        text id PK
+        text customer_id FK
+        text location_id FK
+        text status_id FK
+        text sub_status_id FK
+        text active
+        text actual_completion_date
+        jsonb business_unit_ids
+        text created_on
+        jsonb job_id
+        timestamp modified_on
+        text name
+        text number
+        jsonb project_manager_id
+        text project_type_id
+        text start_date
+        text status
+        text sub_status
+        text summary
+        text target_completion_date
+    }
+    appointment {
+        text id PK
+        text customer_id FK
+        text job_id FK
+        text active
+        text appointment_number
+        text arrival_window_end
+        text arrival_window_start
+        text created_by_id
+        text created_on
+        text ends
+        text is_confirmed
+        timestamp modified_on
+        text special_instruction
+        text start
+        text status
+        text unused
+    }
+    employee {
+        text id PK
+        text business_unit_id FK
+        text aad_user_id
+        text active
+        text created_on
+        jsonb custom_fields
+        text email
+        text login_name
+        timestamp modified_on
+        text name
+        text role
+        jsonb role_id
+        text user_id
+    }
+    job_canceled_log {
+        text id PK
+        text created_by_id FK
+        text job_id FK
+        text reason_id FK
+        text active
+        text created_on
+        text memo
+    }
+    zone_zip {
+        text index PK
+        text zone_id PK
+        text zip
+    }
+    zone_city {
+        text index PK
+        text zone_id PK
+        text city
+    }
+    zone_territory_number {
+        text index PK
+        text zone_id PK
+        text territory_number
+    }
+    zone_locn_number {
+        text index PK
+        text zone_id PK
+        text locn_number
+    }
+    zone_service_day {
+        text index PK
+        text zone_id PK
+        text service_day
+    }
+    zone_business_unit {
+        text index PK
+        text zone_id PK
+        text business_unit
+    }
+    zone_technician {
+        text index PK
+        text zone_id PK
+        text technician
+    }
+    zone {
+        text id PK
+        text created_by FK
+        text active
+        text created_on
+        text modified_on
+        text name
+        text service_days_enabled
+    }
+    estimate_item {
+        text id PK
+        text estimate_id PK
+        text created_on
+        text description
+        text item_group_name
+        text item_group_root_id
+        text membership_type_id
+        text modified_on
+        text qty
+        text sku_account
+        text sku_display_name
+        text sku_general_ledger_account_id
+        text sku_general_ledger_account_name
+        text sku_id
+        text sku_modified_on
+        text sku_name
+        text sku_sold_hours
+        text sku_type
+        text total
+        text total_cost
+        text unit_cost
+        text unit_rate
+    }
+    estimate_external_link {
+        text index PK
+        text estimate_id PK
+        text name
+        text url
+    }
+    estimate {
+        text id PK
+        text business_unit_id FK
+        text customer_id FK
+        text job_id FK
+        text location_id FK
+        text project_id FK
+        text active
+        text business_unit_name
+        text created_on
+        timestamp modified_on
+        text name
+        text sold_by
+        text sold_on
+        text status_name
+        text status_value
+        text subtotal
+        text summary
+    }
+    campaign_cost {
+        text id PK
+        text campaign_id FK
+        text daily_cost
+        text month
+        text year
+    }
+    payment_applied_to {
+        text applied_id PK
+        text applied_by FK
+        text payment_id FK
+        text applied_amount
+        text applied_on
+        text applied_to
+    }
+    payment {
+        text id PK
+        text created_by FK
+        text customer_id FK
+        text active
+        text auth_code
+        text batch_id
+        text batch_name
+        text batch_number
+        text check_number
+        text created_on
+        text date
+        text general_ledger_account_detail_type
+        text general_ledger_account_id
+        text general_ledger_account_name
+        text general_ledger_account_number
+        text general_ledger_account_type
+        text memo
+        timestamp modified_on
+        text reference_number
+        text sync_status
+        text total
+        text type
+        text type_id
+        text unapplied_amount
+    }
+    job_cancel_reason {
+        text id PK
+        text active
+        text created_on
+        text modified_on
+        text name
+    }
+    task_priority {
+        text name PK
+    }
+    task_resolution_type {
+        text name PK
+    }
+    task_status {
+        text name PK
+    }
+    task_type {
+        text id PK
+        text active
+        jsonb excluded_task_resolution_id
+        text name
+    }
+    task_source {
+        text id PK
+        text active
+        text name
+    }
+    task_resolution {
+        text id PK
+        text active
+        jsonb excluded_task_type_id
+        text name
+        text type
+    }
+    call_reason {
+        text id PK
+        text active
+        text created_on
+        text is_lead
+        text modified_on
+        text name
+    }
+    appointment_assignment {
+        text id PK
+        text technician_id PK
+        text appointment_id FK
+        text job_id FK
+        text active
+        text assigned_by_id
+        text assigned_on
+        text is_paused
+        text status
+        text technician_name
+    }
+    job_hold_reason {
+        text id PK
+        text active
+        text created_on
+        timestamp modified_on
+        text name
+    }
+    campaign_category {
+        text id PK
+        text active
+        text created_on
+        text name
+        text type
+    }
+    business_unit {
+        text id PK
+        text account_code
+        text acknowledgement_paragraph
+        text active
+        text address_city
+        text address_country
+        text address_state
+        text address_street
+        text address_unit
+        text address_zip
+        text authorization_paragraph
+        text concept_code
+        text corporate_contract_number
+        text created_on
+        text currency
+        text default_tax_rate
+        text email
+        text franchise_id
+        text invoice_header
+        text invoice_message
+        text material_sku
+        timestamp modified_on
+        text name
+        text official_name
+        text phone_number
+        text quickbooks_class
+        text tenant_account_code
+        text tenant_concept_code
+        text tenant_franchise_id
+        text tenant_id
+        text tenant_modified_on
+        text tenant_name
+    }
+    invoice_item {
+        text id PK
+        text business_unit_id FK
+        text invoice_id FK
+        text active
+        text asset_account_detail_type
+        text asset_account_id
+        text asset_account_name
+        text asset_account_number
+        text asset_account_type
+        text cost
+        text cost_of_sale_account_detail_type
+        text cost_of_sale_account_id
+        text cost_of_sale_account_name
+        text cost_of_sale_account_number
+        text cost_of_sale_account_type
+        text description
+        text display_name
+        text general_ledger_account_detail_type
+        text general_ledger_account_id
+        text general_ledger_account_name
+        text general_ledger_account_number
+        text general_ledger_account_type
+        text inventory
+        text inventory_location
+        text item_group_name
+        text item_group_root_id
+        text membership_type_id
+        timestamp modified_on
+        text orders
+        text price
+        text quantity
+        text service_date
+        text sku_id
+        text sku_name
+        text sold_hours
+        text taxable
+        text total
+        text total_cost
+        text type
+    }
+    purchase_order_item_serial_number {
+        text id PK
+        text purchase_order_id PK
+        text purchase_order_item_id PK
+        text number
+    }
+    purchase_order_item {
+        text id PK
+        text purchase_order_id PK
+        text budget_code_id
+        text chargeable
+        text cost
+        text created_on
+        text description
+        text modified_on
+        text quantity
+        text quantity_received
+        text sku_code
+        text sku_id
+        text sku_name
+        text sku_type
+        text status
+        text total
+        text vendor_part_number
+    }
+    purchase_order_custom_field {
+        text index PK
+        text purchase_order_id PK
+        text name
+        text type_id
+        text value
+    }
+    purchase_order {
+        text id PK
+        text business_unit_id FK
+        text invoice_id FK
+        text job_id FK
+        text project_id FK
+        text technician_id FK
+        text active
+        text batch_id
+        text budget_code_id
+        text created_on
+        text date
+        text inventory_location_id
+        text modified_on
+        text number
+        text received_on
+        text required_on
+        text sent_on
+        text ship_to_city
+        text ship_to_country
+        text ship_to_state
+        text ship_to_street
+        text ship_to_unit
+        text ship_to_zip
+        text shipping
+        text status
+        text summary
+        text tax
+        text total
+        text type_id
+        text vendor_document_number
+        text vendor_id
+    }
+    timesheet_code {
+        text id PK
+        text active
+        text applicable_employee_type
+        text code
+        text created_on
+        text custom_hourly_rate
+        text description
+        text hourly_rate
+        text modified_on
+        text rate_multiplier
+        text type
+    }
+    payroll_adjustment {
+        text id PK
+        text employee_id FK
+        text invoice_id FK
+        text active
+        text activity_code_id
+        text amount
+        text created_on
+        text employee_type
+        text hours
+        text memo
+        text modified_on
+        text posted_on
+        text rate
+    }
+    campaign_phone_number {
+        text phone_number PK
+        text campaign_id PK
+    }
+    campaign {
+        text id PK
+        text category_id FK
+        text active
+        text business_unit
+        text category_active
+        text category_name
+        text created_on
+        text medium
+        timestamp modified_on
+        text name
+        text other_medium
+        text other_source
+        text source
+    }
+    payroll {
+        text id PK
+        text employee_id FK
+        text active
+        text burden_rate
+        text created_on
+        text employee_type
+        text ended_on
+        text manager_approved_on
+        text modified_on
+        text started_on
+        text status
+    }
+    job {
+        text id PK
+        text booking_id FK
+        text business_unit_id FK
+        text campaign_id FK
+        text created_by_id FK
+        text customer_id FK
+        text first_appointment_id FK
+        text job_type_id FK
+        text last_appointment_id FK
+        text location_id FK
+        text project_id FK
+        text active
+        text appointment_count
+        text completed_on
+        text created_from_estimate_id
+        text created_on
+        text customer_po
+        jsonb estimate_id
+        text invoice_id
+        text job_generated_lead_source_employee_id
+        text job_generated_lead_source_job_id
+        text job_number
+        text job_status
+        text lead_call_id
+        text membership_id
+        timestamp modified_on
+        text no_charge
+        text notifications_enabled
+        text partner_lead_call_id
+        text priority
+        text recall_for_id
+        text sold_by_id
+        text summary
+        jsonb tag_type_id
+        text total
+        text warranty_id
+    }
+    job_type_skill {
+        text index PK
+        text job_type_id PK
+        text skill
+    }
+    job_type_business_unit_id {
+        text index PK
+        text job_type_id PK
+        text id FK
+    }
+    job_type {
+        text id PK
+        text active
+        text class
+        text duration
+        text enforce_recurring_service_event_selection
+        text invoice_signature_required
+        timestamp modified_on
+        text name
+        text no_charge
+        text priority
+        text sold_threshold
+        text summary
+        jsonb tag_type_id
+    }
+    tag_type {
+        text id PK
+        text active
+        text allow_to_use_on_timesheet_activity
+        text code
+        text color
+        text created_on
+        jsonb importance
+        text is_conversion_opportunity
+        text modified_on
+        text name
+    }
+    membership {
+        text id PK
+        text business_unit_id FK
+        text created_by_id FK
+        text customer_id FK
+        text location_id FK
+        text membership_type_id FK
+        text activated_by_id
+        text activated_from_id
+        text active
+        text billing_frequency
+        text billing_template_id
+        text cancellation_balance_invoice_id
+        text cancellation_date
+        text cancellation_invoice_id
+        text created_on
+        text customer_po
+        text duration
+        text follow_up_custom_status_id
+        text follow_up_on
+        text follow_up_status
+        text from_date
+        text import_id
+        text initial_deferred_revenue
+        text memo
+        text modified_on
+        text next_scheduled_bill_date
+        text payment_method_id
+        text payment_type_id
+        text recurring_location_id
+        text renewal_billing_frequency
+        text renewal_duration
+        text renewal_membership_task_id
+        text renewed_by_id
+        text sold_by_id
+        text status
+        text to_date
+    }
+    job_split {
+        text id PK
+        text job_id FK
+        text technician_id FK
+        text active
+        text created_on
+        timestamp modified_on
+        text split
+    }
+    membership_type_billing_duration {
+        text index PK
+        text membership_type_id PK
+        jsonb billing_frequency
+        text duration
+    }
+    membership_type {
+        text id PK
+        text created_by_id FK
+        text active
+        text auto_calculate_invoice_template
+        text billing_template_id
+        text created_on
+        jsonb discount_mode
+        text display_name
+        text import_id
+        jsonb location_target
+        text modified_on
+        text name
+        jsonb revenue_recognition_mode
+        text show_membership_saving
+        text use_membership_pricing_table
+    }
+    technician {
+        text id PK
+        text business_unit_id FK
+        text aad_user_id
+        text active
+        text burden_rate
+        text created_on
+        jsonb custom_fields
+        text daily_goal
+        text email
+        text home_city
+        text home_country
+        text home_latitude
+        text home_longitude
+        text home_state
+        text home_street
+        text home_street_address
+        text home_unit
+        text home_zip
+        text is_managed_tech
+        text login_name
+        text main_zone_id
+        timestamp modified_on
+        text name
+        text phone_number
+        jsonb role_id
+        text team
+        text user_id
+        jsonb zone_id
+    }
+    team {
+        text id PK
+        text created_by FK
+        text active
+        text created_on
+        text modified_on
+        text name
+    }
+    customer_contact {
+        text id PK
+        text customer_id FK
+        text active
+        text memo
+        timestamp modified_on
+        text phone_settings_do_not_text
+        text phone_settings_phone_number
+        text type
+        text value
+    }
+    lead {
+        text id PK
+        text booking_id FK
+        text business_unit_id FK
+        text call_id FK
+        text campaign_id FK
+        text created_by_id FK
+        text customer_id FK
+        text job_type_id FK
+        text location_id FK
+        text active
+        text call_reason_id
+        text capture_source
+        text created_on
+        text dismissing_reason_id
+        text follow_up_date
+        text lead_city
+        text lead_country
+        text lead_customer_name
+        text lead_email
+        text lead_phone
+        text lead_state
+        text lead_street
+        text lead_unit
+        text lead_url
+        text lead_zip
+        text manual_call_id
+        timestamp modified_on
+        text priority
+        text status
+        text summary
+        jsonb tag_type_id
+    }
+    non_job_appointment {
+        text id PK
+        text created_by_id FK
+        text technician_id FK
+        text active
+        text all_day
+        text clear_dispatch_board
+        text clear_technician_view
+        text created_on
+        text duration
+        text name
+        text remove_technician_from_capacity_planning
+        text start
+        text summary
+        text timesheet_code_id
+    }
+    call {
+        text id PK
+        text lead_call_id PK
+        text business_unit_id FK
+        text campaign_id FK
+        text job_number FK
+        text lead_call_customer_id FK
+        text lead_call_reason_id FK
+        text project_id FK
+        text lead_call_active
+        text lead_call_agent_external_id
+        text lead_call_agent_id
+        text lead_call_agent_name
+        text lead_call_call_type
+        text lead_call_created_by
+        text lead_call_created_on
+        text lead_call_direction
+        text lead_call_duration
+        text lead_call_from
+        text lead_call_modified_on
+        text lead_call_reason
+        text lead_call_received_on
+        text lead_call_recording_url
+        text lead_call_to
+        text lead_call_voice_mail_url
+        text type_id
+        text type_modified_on
+        text type_name
+    }
+    timesheet {
+        text id PK
+        text appointment_id FK
+        text job_id FK
+        text technician_id FK
+        text active
+        text arrived_on
+        text canceled_on
+        text created_on
+        text dispatched_on
+        text done_on
+        text modified_on
+    }
+    inventory_bill_item {
+        text orders PK
+        text sku_id PK
+        text inventory_bill_id PK
+        text asset_account_detail_type
+        text asset_account_id
+        text asset_account_name
+        text asset_account_number
+        text asset_account_type
+        text budget_code_id
+        text cost
+        text cost_of_sale_account_detail_type
+        text cost_of_sale_account_id
+        text cost_of_sale_account_name
+        text cost_of_sale_account_number
+        text cost_of_sale_account_type
+        text description
+        text general_ledger_account_detail_type
+        text general_ledger_account_id
+        text general_ledger_account_name
+        text general_ledger_account_number
+        text general_ledger_account_type
+        text id
+        text inventory_location
+        text name
+        text quantity
+        text receipt_item_id
+        text serial_number
+        text sku_code
+        text sku_type
+    }
+    inventory_bill {
+        text id PK
+        text business_unit_id FK
+        text created_by FK
+        text job_id FK
+        text active
+        text batch_id
+        text batch_name
+        text batch_number
+        text bill_amount
+        text bill_date
+        text budget_code_id
+        text created_on
+        text due_date
+        text job_number
+        text modified_on
+        text post_date
+        text purchase_order_id
+        text reference_number
+        text ship_to_city
+        text ship_to_country
+        text ship_to_description
+        text ship_to_state
+        text ship_to_street
+        text ship_to_unit
+        text ship_to_zip
+        text shipping_amount
+        text summary
+        text sync_status
+        text tax_amount
+        text tax_zone
+        text term_name
+        text vendor_id
+        text vendor_name
+        text vendor_number
+    }
+    project_sub_status {
+        text id PK
+        text status_id FK
+        timestamp modified_on
+        text name
+        text orders
+    }
+    location {
+        text id PK
+        text customer_id PK
+        text created_by_id FK
+        text zone_id FK
+        text active
+        text address_city
+        text address_country
+        text address_latitude
+        text address_longitude
+        text address_state
+        text address_street
+        text address_unit
+        text address_zip
+        text created_on
+        text merged_to_id
+        timestamp modified_on
+        text name
+        jsonb tag_type_id
+        text tax_zone_id
+    }
+    invoice {
+        text id PK
+        text business_unit_id FK
+        text customer_id FK
+        text employee_id FK
+        text job_id FK
+        text location_id FK
+        text project_id FK
+        text active
+        text adjustment_to_id
+        text balance
+        text batch_id
+        text batch_name
+        text batch_number
+        text commission_eligibility_date
+        text created_by
+        text created_on
+        jsonb custom_fields
+        text deposited_on
+        text due_date
+        text employee_modified_on
+        text invoice_date
+        text invoice_type_id
+        text invoice_type_name
+        text items
+        text job_type
+        timestamp modified_on
+        text reference_number
+        text royalty_date
+        text royalty_memo
+        text royalty_sent_on
+        text royalty_status
+        text sales_tax
+        text sales_tax_code_id
+        text sales_tax_code_name
+        text sales_tax_code_rate
+        text sub_total
+        text summary
+        text sync_status
+        text term_name
+        text total
+    }
+    location_contact {
+        text id PK
+        text location_id FK
+        text active
+        text created_on
+        text memo
+        timestamp modified_on
+        text phone_settings_do_not_text
+        text phone_settings_phone_number
+        text preference
+        text type
+        text value
+    }
+    customer {
+        text id PK
+        text created_by_id FK
+        text active
+        text balance
+        text created_on
+        text do_not_mail
+        text do_not_service
+        text merged_to_id
+        timestamp modified_on
+        text name
+        jsonb tag_type_id
+        text type
+    }
+    form_submission_owner }o--|| form_submission : "fk"
+    form_submission_unit_sub_unit }o--|| form_submission_unit_section : "fk"
+    form_submission_unit_sub_unit }o--|| form_submission_unit_section : "fk"
+    form_submission_unit_section }o--|| form_submission : "fk"
+    form_submission }o--|| employee : "fk"
+    booking }o--|| campaign : "fk"
+    booking }o--|| business_unit : "fk"
+    booking }o--|| job : "fk"
+    booking }o--|| job_type : "fk"
+    project }o--|| project_sub_status : "fk"
+    project }o--|| project_status : "fk"
+    project }o--|| customer : "fk"
+    project }o--|| location : "fk"
+    appointment }o--|| job : "fk"
+    appointment }o--|| customer : "fk"
+    employee }o--|| business_unit : "fk"
+    job_canceled_log }o--|| job : "fk"
+    job_canceled_log }o--|| job_cancel_reason : "fk"
+    job_canceled_log }o--|| employee : "fk"
+    zone_zip }o--|| zone : "fk"
+    zone_city }o--|| zone : "fk"
+    zone_territory_number }o--|| zone : "fk"
+    zone_locn_number }o--|| zone : "fk"
+    zone_service_day }o--|| zone : "fk"
+    zone_business_unit }o--|| zone : "fk"
+    zone_technician }o--|| zone : "fk"
+    zone }o--|| employee : "fk"
+    estimate_item }o--|| estimate : "fk"
+    estimate_external_link }o--|| estimate : "fk"
+    estimate }o--|| business_unit : "fk"
+    estimate }o--|| job : "fk"
+    estimate }o--|| customer : "fk"
+    estimate }o--|| project : "fk"
+    estimate }o--|| location : "fk"
+    campaign_cost }o--|| campaign : "fk"
+    payment_applied_to }o--|| employee : "fk"
+    payment_applied_to }o--|| payment : "fk"
+    payment }o--|| employee : "fk"
+    payment }o--|| customer : "fk"
+    appointment_assignment }o--|| technician : "fk"
+    appointment_assignment }o--|| appointment : "fk"
+    appointment_assignment }o--|| job : "fk"
+    invoice_item }o--|| business_unit : "fk"
+    invoice_item }o--|| invoice : "fk"
+    purchase_order_item_serial_number }o--|| purchase_order_item : "fk"
+    purchase_order_item_serial_number }o--|| purchase_order_item : "fk"
+    purchase_order_item }o--|| purchase_order : "fk"
+    purchase_order_custom_field }o--|| purchase_order : "fk"
+    purchase_order }o--|| technician : "fk"
+    purchase_order }o--|| business_unit : "fk"
+    purchase_order }o--|| job : "fk"
+    purchase_order }o--|| invoice : "fk"
+    purchase_order }o--|| project : "fk"
+    payroll_adjustment }o--|| invoice : "fk"
+    payroll_adjustment }o--|| employee : "fk"
+    campaign_phone_number }o--|| campaign : "fk"
+    campaign }o--|| campaign_category : "fk"
+    payroll }o--|| employee : "fk"
+    job }o--|| campaign : "fk"
+    job }o--|| business_unit : "fk"
+    job }o--|| appointment : "fk"
+    job }o--|| employee : "fk"
+    job }o--|| customer : "fk"
+    job }o--|| booking : "fk"
+    job }o--|| project : "fk"
+    job }o--|| location : "fk"
+    job }o--|| job_type : "fk"
+    job }o--|| appointment : "fk"
+    job_type_skill }o--|| job_type : "fk"
+    job_type_business_unit_id }o--|| business_unit : "fk"
+    job_type_business_unit_id }o--|| job_type : "fk"
+    membership }o--|| business_unit : "fk"
+    membership }o--|| employee : "fk"
+    membership }o--|| customer : "fk"
+    membership }o--|| membership_type : "fk"
+    membership }o--|| location : "fk"
+    job_split }o--|| job : "fk"
+    job_split }o--|| technician : "fk"
+    membership_type_billing_duration }o--|| membership_type : "fk"
+    membership_type }o--|| employee : "fk"
+    technician }o--|| business_unit : "fk"
+    team }o--|| employee : "fk"
+    customer_contact }o--|| customer : "fk"
+    lead }o--|| campaign : "fk"
+    lead }o--|| business_unit : "fk"
+    lead }o--|| employee : "fk"
+    lead }o--|| customer : "fk"
+    lead }o--|| booking : "fk"
+    lead }o--|| location : "fk"
+    lead }o--|| job_type : "fk"
+    lead }o--|| call : "fk"
+    non_job_appointment }o--|| technician : "fk"
+    non_job_appointment }o--|| employee : "fk"
+    call }o--|| project : "fk"
+    call }o--|| business_unit : "fk"
+    call }o--|| job : "fk"
+    call }o--|| call_reason : "fk"
+    call }o--|| customer : "fk"
+    call }o--|| campaign : "fk"
+    timesheet }o--|| technician : "fk"
+    timesheet }o--|| appointment : "fk"
+    timesheet }o--|| job : "fk"
+    inventory_bill_item }o--|| inventory_bill : "fk"
+    inventory_bill }o--|| employee : "fk"
+    inventory_bill }o--|| job : "fk"
+    inventory_bill }o--|| business_unit : "fk"
+    project_sub_status }o--|| project_status : "fk"
+    location }o--|| zone : "fk"
+    location }o--|| employee : "fk"
+    location }o--|| customer : "fk"
+    invoice }o--|| project : "fk"
+    invoice }o--|| customer : "fk"
+    invoice }o--|| location : "fk"
+    invoice }o--|| business_unit : "fk"
+    invoice }o--|| job : "fk"
+    invoice }o--|| employee : "fk"
+    location_contact }o--|| location : "fk"
+    customer }o--|| employee : "fk"

@@ -1,0 +1,310 @@
+erDiagram
+    custom_attribute_nested_option {
+        text id PK
+        text custom_attribute_id FK
+        text custom_attribute_input_option_id FK
+        text is_deactivated
+        text label
+        jsonb nested_option
+        text value
+    }
+    custom_attribute_input_option {
+        text id PK
+        text custom_attribute_id FK
+        text is_deactivated
+        text label
+        text value
+    }
+    custom_attribute {
+        text id PK
+        text created_at
+        text description
+        text entity_type
+        text identifier
+        text input_definition_text
+        text is_archived
+        text is_deactivated
+        text is_required
+        text label
+        text updated_at
+    }
+    team_member {
+        text agent_id PK
+        text team_id PK
+    }
+    end_user {
+        text id PK
+        text avatar_url
+        timestamp created_at
+        text display_name
+        text email
+        text first_name
+        text last_name
+        jsonb middle_name
+        text phone_number
+    }
+    agent {
+        text id PK
+        text avatar_url
+        timestamp created_at
+        text display_name
+        text email
+        text first_name
+        text last_name
+        jsonb middle_name
+        text phone_number
+    }
+    cc_email {
+        text email_id PK
+        text id PK
+    }
+    bcc_email {
+        text email_id PK
+        text id PK
+    }
+    email_recipient {
+        text email_id PK
+        text id PK
+    }
+    attached_file {
+        text file_name PK
+        text id PK
+    }
+    conversation_message {
+        text id PK
+        text author_email FK
+        bigint conversation_id FK
+        text author_name
+        text chat_input_answer
+        text chat_input_question
+        text chat_menu_text
+        timestamp created_at
+        text direction
+        bigint duration
+        text from_phone_number
+        text froms
+        text initial_channel
+        boolean is_automated_message
+        text recording_url
+        text text
+        text to_phone_number
+        text voicemail_url
+    }
+    email_queue {
+        text id PK
+        text queue_id PK
+    }
+    facebook_messenger_queue {
+        text id PK
+        text queue_id PK
+    }
+    widget_chat_queue {
+        text id PK
+        text queue_id PK
+    }
+    voicemail_queue {
+        text id PK
+        text queue_id PK
+    }
+    contact_form_queue {
+        text id PK
+        text queue_id PK
+    }
+    whatsapp_queue {
+        text id PK
+        text queue_id PK
+    }
+    callback_queue {
+        text id PK
+        text queue_id PK
+    }
+    pstn_phone_queue {
+        text id PK
+        text queue_id PK
+    }
+    messenger_queue {
+        text id PK
+        text queue_id PK
+    }
+    queue {
+        text id PK
+        integer do_not_offer_timeouts_callback
+        integer do_not_offer_timeouts_contact_form
+        integer do_not_offer_timeouts_email
+        integer do_not_offer_timeouts_facebook_messenger
+        integer do_not_offer_timeouts_messenger
+        integer do_not_offer_timeouts_pstn_phone
+        integer do_not_offer_timeouts_voicemail
+        integer do_not_offer_timeouts_whatsapp
+        integer do_not_offer_timeouts_widget_chat
+        boolean is_default
+        boolean is_do_not_offer_enabled
+        boolean is_preferred_agent_enabled
+        text member_list_type
+        text name
+        boolean offer_abandoned_conversations
+        integer offer_timeout
+        text offering_algorithm
+        text organization_id
+        integer personal_agent_offline_timeout
+        integer preferred_agent_offline_timeout
+        integer preferred_agent_timeouts_callback
+        integer preferred_agent_timeouts_contact_form
+        integer preferred_agent_timeouts_email
+        integer preferred_agent_timeouts_facebook_messenger
+        integer preferred_agent_timeouts_messenger
+        integer preferred_agent_timeouts_pstn_phone
+        integer preferred_agent_timeouts_voicemail
+        integer preferred_agent_timeouts_whatsapp
+        integer preferred_agent_timeouts_widget_chat
+        integer priority
+        integer queue_thresholds_available_agents
+        integer queue_thresholds_longest_wait
+        integer queue_thresholds_sla_percentage
+        integer queue_thresholds_sla_time_limit
+        integer queue_thresholds_waiting_conversations
+        text sla_calculation_method
+        text twilio_queue_sid
+        integer wrapup_timeout
+    }
+    conversation_internal_note {
+        text id PK
+        text author_id FK
+        bigint conversation_id FK
+        timestamp created_at
+        text message
+    }
+    conversation_activity_log {
+        text id PK
+        text author_id FK
+        bigint conversation_id FK
+        timestamp activity_timestamp
+        text activity_type
+        text type
+    }
+    queue_member {
+        text agent_id PK
+        text queue_id PK
+        integer priority
+    }
+    team {
+        text id PK
+        text name
+    }
+    tags {
+        text id PK
+        text color
+        text name
+        text state
+    }
+    conversation_tag {
+        bigint conversation_id PK
+        text tag_id PK
+        boolean is_deactivated
+    }
+    conversation_rating {
+        text _fivetran_id PK
+        bigint conversation_id FK
+        timestamp cancelled_timestamp
+        timestamp created_timestamp
+        text languages
+        text message
+        timestamp modified_timestamp
+        timestamp offered_timestamp
+        timestamp rated_timestamp
+        timestamp scheduled_for_timestamp
+        timestamp scheduled_timestamp
+        integer score
+        text status
+        text type
+        timestamp unscheduled_timestamp
+    }
+    conversation_custom_field_value {
+        text index PK
+        text conversation_custom_field_id PK
+        bigint conversation_id PK
+        text value
+    }
+    conversation_custom_field {
+        bigint conversation_id PK
+        text id PK
+        text data_type
+    }
+    conversation {
+        bigint id PK
+        text assignee_id FK
+        text queue_id FK
+        text requester_id FK
+        timestamp anonymized_at
+        timestamp assigned_at
+        text assignee_email
+        text assignee_name
+        text assignee_phone_number
+        timestamp closed_at
+        timestamp created_at
+        text direction
+        text dixa_email_integration_id
+        text dixa_email_integration_sender_name
+        text facebook_page_id
+        text facebook_page_name
+        text forwarding_email
+        text from_provisioned_phone_number_id
+        text from_provisioned_phone_number_name
+        bigint handling_duration
+        text initial_channel
+        timestamp last_message_created_at
+        text originating_country
+        text queue_name
+        timestamp queued_at
+        text requester_email
+        text requester_name
+        text requester_phone_number
+        text status
+        text subject
+        text to_provisioned_phone_number_id
+        text to_provisioned_phone_number_name
+        bigint total_duration
+        timestamp transfer_time
+        text transferee_name
+        text transferee_number
+        timestamp updated_at
+        text widget_id
+        text widget_name
+    }
+    custom_attribute_nested_option }o--|| custom_attribute_input_option : "fk"
+    custom_attribute_nested_option }o--|| custom_attribute_input_option : "fk"
+    custom_attribute_input_option }o--|| custom_attribute : "fk"
+    team_member }o--|| agent : "fk"
+    team_member }o--|| team : "fk"
+    cc_email }o--|| conversation_message : "fk"
+    bcc_email }o--|| conversation_message : "fk"
+    email_recipient }o--|| conversation_message : "fk"
+    attached_file }o--|| conversation_message : "fk"
+    conversation_message }o--|| conversation : "fk"
+    conversation_message }o--|| agent : "fk"
+    email_queue }o--|| queue : "fk"
+    facebook_messenger_queue }o--|| queue : "fk"
+    widget_chat_queue }o--|| queue : "fk"
+    voicemail_queue }o--|| queue : "fk"
+    contact_form_queue }o--|| queue : "fk"
+    whatsapp_queue }o--|| queue : "fk"
+    callback_queue }o--|| queue : "fk"
+    pstn_phone_queue }o--|| queue : "fk"
+    messenger_queue }o--|| queue : "fk"
+    conversation_internal_note }o--|| conversation : "fk"
+    conversation_internal_note }o--|| agent : "fk"
+    conversation_activity_log }o--|| conversation : "fk"
+    conversation_activity_log }o--|| agent : "fk"
+    queue_member }o--|| agent : "fk"
+    queue_member }o--|| queue : "fk"
+    conversation_tag }o--|| tags : "fk"
+    conversation_tag }o--|| conversation : "fk"
+    conversation_rating }o--|| conversation : "fk"
+    conversation_custom_field_value }o--|| conversation_custom_field : "fk"
+    conversation_custom_field_value }o--|| conversation_custom_field : "fk"
+    conversation_custom_field }o--|| custom_attribute : "fk"
+    conversation_custom_field }o--|| conversation : "fk"
+    conversation }o--|| widget_chat_queue : "fk"
+    conversation }o--|| queue : "fk"
+    conversation }o--|| agent : "fk"
+    conversation }o--|| end_user : "fk"

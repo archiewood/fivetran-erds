@@ -1,0 +1,299 @@
+erDiagram
+    groups {
+        text id PK
+        text address_country_id FK
+        text group_type_id FK
+        text address_address_1
+        text address_address_2
+        text address_city
+        text address_country
+        text address_phone
+        text address_state
+        text address_state_id
+        text address_zip
+        text count
+        text is_team
+        text title
+        text type
+    }
+    group_type {
+        text id PK
+        text deletable
+        text field_name
+        text title
+        text type
+        text x_groups_as_team
+    }
+    event {
+        text id PK
+        text profile FK
+        jsonb appreciations
+        text can_comment
+        text can_destroy
+        text can_edit
+        text can_like
+        text content
+        timestamp created_at
+        text file
+        text href
+        text html_content
+        text liked_by_current_profile
+        text likes_count
+        timestamp time
+        text type
+        timestamp updated_at
+        text use_comments
+        text utc_offset
+        text years_at_company
+    }
+    comment {
+        text id PK
+        text event_id PK
+        text profile FK
+        text can_destroy
+        text content
+        timestamp created_at
+        text html_content
+        text liked_by_current_profile
+        text likes_count
+        text utc_offset
+    }
+    profile_group {
+        text group_id PK
+        text profile_id PK
+    }
+    profile_image {
+        text id PK
+        text profile_id PK
+        text filename
+        text mime_type
+        text original
+        text thumb_150_x_150
+        text thumb_150_x_150_c
+        text thumb_300_x_300
+        text thumb_450_x_450
+        text thumb_75_x_75
+        text thumb_75_x_75_c
+        text thumb_800_x_800
+    }
+    reports_to {
+        text profile_id PK
+        text reports_to_profile_id PK
+    }
+    profile {
+        text id PK
+        text home_country_id FK
+        text job_id FK
+        text office_country_id FK
+        text access_role
+        text allergies
+        text anthem_member_id
+        text bio
+        text communication_style
+        text company
+        text company_uuid
+        timestamp created_at
+        text current_job_description
+        text date_format
+        text departure_date
+        jsonb diversity_stats
+        text division
+        text dob
+        text email
+        text emergency_contact
+        text emergency_contact_phone
+        text emergency_contact_relationship
+        text employee_id
+        text employee_level
+        text employee_type
+        text employee_wage_theft_prevention_act
+        text engineering_team
+        text ethnicity
+        text first_name
+        text full_name
+        text gender
+        jsonb gender_identity
+        text home_address_1
+        text home_address_2
+        text home_city
+        text home_phone
+        text home_state_id
+        text home_zip
+        text hrbp
+        text is_namely_admin
+        text job_description
+        text last_name
+        text linkedin_url
+        text marital_status
+        text middle_name
+        text mobile_phone
+        text namely_time_employee_url
+        text namely_time_manager_url
+        text offer_letter
+        text office_address_1
+        text office_address_2
+        text office_city
+        text office_direct_dial
+        text office_main_number
+        text office_phone
+        text office_state_id
+        text office_zip
+        text on_target_earnings
+        text people_partner
+        text personal_email
+        text preferred_name
+        text preferred_pronoun
+        text relationship_disclosure
+        text resume
+        text salary_amount_raw
+        text salary_currency_type
+        text salary_date
+        text salary_guid
+        boolean salary_is_hourly
+        text salary_payroll_company_name
+        text salary_payroll_job_id
+        text salary_rate
+        double_precision salary_yearly_amount
+        text ssn
+        text start_date
+        text t_shirt_size
+        jsonb team_positions
+        text temporary_address_covid_19
+        timestamp updated_at
+        text user_status
+    }
+    country {
+        text id PK
+        text name
+        text subdivision_type
+    }
+    resource_in_folder {
+        text id PK
+        text folder_id FK
+        text file_format
+        text file_name
+        text file_size
+        text file_url
+        text last_edited
+        text link
+        text title
+    }
+    resource_not_in_folder {
+        text id PK
+        text folder_id FK
+        text file_format
+        text file_name
+        text file_size
+        text file_url
+        text last_edited
+        text link
+        text title
+    }
+    section_block_title {
+        text block_title PK
+        text profile_field_section_id PK
+    }
+    profile_field_section {
+        text id PK
+        text title
+    }
+    comment_like {
+        text id PK
+        text comment_id PK
+        text full_name
+        text href
+        text job_title
+    }
+    folder {
+        text id PK
+        text items_count
+        text position
+        text title
+        text type
+    }
+    job_tier {
+        text id PK
+        text active
+        text defaults
+        text numerical_id
+        text title
+    }
+    profile_field {
+        text id PK
+        text section FK
+        text block_index
+        text defaults
+        text deletable
+        text label
+        text name
+        text type
+        text valid_format_info
+    }
+    team_category {
+        text category_id PK
+        text team_id PK
+    }
+    team {
+        text id PK
+        text count
+        timestamp created_at
+        text email
+        text name
+        timestamp updated_at
+    }
+    category {
+        text id PK
+        text title
+    }
+    job_title {
+        text id PK
+        text job_tier FK
+        text parent_id FK
+        text active
+        text title
+    }
+    event_like {
+        text id PK
+        text event_id PK
+        text full_name
+        text href
+        text job_title
+    }
+    notification {
+        text id PK
+        text profile_id FK
+        text requester_id FK
+        text responder_id FK
+        text action_url
+        text read
+        text seen
+        text text
+        text time_off_request_id
+        timestamp timestamps
+        text type
+    }
+    groups }o--|| group_type : "fk"
+    groups }o--|| country : "fk"
+    event }o--|| profile : "fk"
+    comment }o--|| profile : "fk"
+    comment }o--|| event : "fk"
+    profile_group }o--|| groups : "fk"
+    profile_group }o--|| profile : "fk"
+    profile_image }o--|| profile : "fk"
+    reports_to }o--|| profile : "fk"
+    reports_to }o--|| profile : "fk"
+    profile }o--|| job_title : "fk"
+    profile }o--|| country : "fk"
+    profile }o--|| country : "fk"
+    resource_in_folder }o--|| folder : "fk"
+    resource_not_in_folder }o--|| folder : "fk"
+    section_block_title }o--|| profile_field_section : "fk"
+    comment_like }o--|| comment : "fk"
+    profile_field }o--|| profile_field_section : "fk"
+    team_category }o--|| team : "fk"
+    job_title }o--|| job_tier : "fk"
+    job_title }o--|| job_title : "fk"
+    event_like }o--|| event : "fk"
+    notification }o--|| profile : "fk"
+    notification }o--|| profile : "fk"
+    notification }o--|| profile : "fk"

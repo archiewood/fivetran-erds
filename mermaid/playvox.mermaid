@@ -1,0 +1,798 @@
+erDiagram
+    evaluation_collaborator {
+        text collaborator_id PK
+        text evaluation_id PK
+    }
+    evaluation_section_answer {
+        text _fivetran_id PK
+        text evaluation_id FK
+        text evaluation_section_id FK
+        text answer_id
+        text answer_type
+        text comment
+        jsonb feedback
+        text question_id
+        text value
+    }
+    evaluation_section_custom_field {
+        text id PK
+        text evaluation_id PK
+        text evaluation_section_id PK
+        text value
+    }
+    evaluation_section {
+        text id PK
+        text evaluation_id PK
+        text comment
+        text passed
+        text score
+        text type_fail
+    }
+    evaluation_custom_field {
+        text id PK
+        text evaluation_id PK
+        text value
+    }
+    evaluation_coaching {
+        text coaching_id PK
+        text evaluation_id PK
+        text coaching_sequence
+    }
+    evaluation_subscriber {
+        text evaluation_id PK
+        text subscriber_id PK
+    }
+    evaluation {
+        text id PK
+        text agent_id FK
+        text calibration_id FK
+        text monitor_id FK
+        text scorecard_id FK
+        text team_id FK
+        text team_leader_id FK
+        text agent_agree
+        jsonb attachments
+        jsonb comments
+        text created_at
+        text date_created
+        text entity_id
+        text evaluation_time
+        text event_subtype
+        text event_type
+        text feedback
+        text interaction_id
+        text migrated
+        text passed
+        text reference
+        jsonb rules_applied
+        text schedule_date
+        text score
+        text score_avg
+        text sequence
+        text site_id
+        text status
+        text total_errors
+        text type
+        timestamp updated_at
+        text workload_history_id
+        text workload_id
+    }
+    coaching_coach_id {
+        text coach_id PK
+        text coaching_id PK
+    }
+    coaching_team {
+        text coaching_id PK
+        text team_id PK
+    }
+    coaching_collaborator {
+        text collaborator_id PK
+        text coaching_id PK
+    }
+    coaching_coach_log_interaction {
+        text _fivetran_id PK
+        text coaching_id FK
+        text date
+        text followup
+        text opens
+    }
+    coaching_trainee_log_interaction {
+        text _fivetran_id PK
+        text coaching_id FK
+        text date
+        text followup
+        text opens
+    }
+    coaching_evaluation {
+        text coaching_id PK
+        text evaluation_id PK
+    }
+    coaching_kpi {
+        text id PK
+        text coaching_id PK
+        text threshold_value
+    }
+    coaching {
+        text id PK
+        text trainee_id FK
+        text achieved
+        jsonb attachments
+        text coach_log_last_followup
+        text coach_log_total_followups
+        text coach_log_total_opens
+        text created_at
+        text custom_area_id
+        text custom_area_title
+        text data_after_end
+        text data_after_start
+        text data_before_end
+        text data_before_start
+        text ent_id
+        text entity_id
+        text entity_type
+        text feedback
+        text flag_coach
+        text follow_up
+        text form_id
+        text messages_read
+        text messages_total
+        jsonb satisfaction
+        text scorecard_id
+        text scorecard_name
+        text scorecard_status
+        text seen_coach
+        text seen_trainee
+        text sequence
+        text site_id
+        jsonb snapshots
+        text stage_id
+        text status
+        text trainee_agree_date
+        text trainee_agree_signed
+        timestamp updated_at
+    }
+    user_role {
+        text index PK
+        text user_id PK
+        text role
+    }
+    user_status_log {
+        text _fivetran_id PK
+        text user_id FK
+        text changed_by
+        text ended_to
+        text reason
+        text started_from
+        text status
+        text type
+    }
+    users {
+        text id PK
+        text created_by FK
+        text assigned_last_date_reward
+        text auth_hash
+        jsonb auth_overwrite
+        text avatar
+        text change_password
+        text created_at
+        text created_at_readable
+        text current_ui
+        text deactivated_by
+        text deactivation_reason
+        text deactivation_type
+        text email
+        text ent_id
+        jsonb external_profile
+        text first_login_date
+        text founder
+        text full_name
+        text google_id
+        jsonb ignore_notifications
+        text integration_intercom
+        text interaction_scorecard
+        text invisible
+        text lang
+        jsonb languages
+        jsonb last_feed_view
+        text last_login_date
+        text last_name
+        text last_notifications_view
+        text last_seen_at
+        text light
+        text name
+        text onboarding_completed
+        text profile_about_me
+        text profile_birthdate
+        text profile_start_date
+        jsonb provisioning
+        text saml_id
+        text site_id
+        text stats
+        text status
+        text time_zone_id
+        text times_assigned_reward
+        text total_invitations_sent
+        text type
+        text tz
+        timestamp updated_at
+        text updated_at_readable
+        text username
+    }
+    integration {
+        text id PK
+        text created_by FK
+        text created_at
+        text description
+        text ent_id
+        jsonb metadata
+        text name
+        text settings_data_storage_minutes
+        text settings_delete_only_non_audited_interactions
+        text site_id
+        text status
+        text updated_at
+    }
+    campaign_user {
+        text campaign_id PK
+        text user_id PK
+    }
+    campaign_data_source {
+        text id PK
+        text campaign_id PK
+        text connector_id
+        text type
+    }
+    campaign_kpi {
+        text id PK
+        text campaign_id PK
+        text code
+        text custom_ranges_colors
+        text custom_threshold_value
+        text name
+        text threshold_direction
+        text threshold_value
+        text type
+        text unit_id
+        text weight
+    }
+    campaign_team_leader_info {
+        text id PK
+        text campaign_id PK
+        text avatar
+        text email
+        text last_name
+        text name
+        text status
+        text username
+    }
+    campaign {
+        text id PK
+        text created_at
+        text created_at_readable
+        text created_by
+        text default_filters
+        text is_published
+        text latest_entry
+        text name
+        text site_id
+        text status
+        text team_id
+        timestamp updated_at
+        text updated_at_readable
+    }
+    job_completed {
+        text id PK
+        text job_id PK
+        text interaction_id
+    }
+    job_failed {
+        text index PK
+        text job_id PK
+        text error
+        text interaction_id
+    }
+    job {
+        text id PK
+        text created_at
+        text created_by
+        text ent_id
+        text site_id
+        text status
+        text total
+        text total_completed
+        text total_failed
+        text updated_at
+    }
+    course_record {
+        text id PK
+        text activity_id
+        text created_at
+        text extra_finished
+        text extra_finished_at
+        text learner_id
+        text progress
+        text time
+    }
+    role_read {
+        text index PK
+        text role_id PK
+        text read
+    }
+    role_write {
+        text index PK
+        text role_id PK
+        text write
+    }
+    role {
+        text id PK
+        text code
+        text created_at
+        text created_at_readable
+        text defaults
+        text description
+        text name
+        text role_inherit
+        text site_id
+        timestamp updated_at
+        text updated_at_readable
+    }
+    scorecard_team {
+        text scorecard_id PK
+        text team_id PK
+    }
+    scorecard_section_question_answer_feedback_option {
+        text id PK
+        text scorecard_answer_id PK
+        text scorecard_feedback_id PK
+        text scorecard_id PK
+        text scorecard_question_id PK
+        text scorecard_section_id PK
+        text value
+    }
+    scorecard_section_question_answer_feedback {
+        text id PK
+        text scorecard_answer_id PK
+        text scorecard_id PK
+        text scorecard_question_id PK
+        text scorecard_section_id PK
+        text label
+        text required
+        text type
+    }
+    scorecard_section_question_answer {
+        text id PK
+        text scorecard_id PK
+        text scorecard_question_id PK
+        text scorecard_section_id PK
+        text format
+        text group_fail
+        text label
+        text type
+        text value
+    }
+    scorecard_section_question {
+        text id PK
+        text scorecard_id PK
+        text scorecard_section_id PK
+        text component
+        text description
+        text group_id
+        text step
+        text tip
+        text type
+    }
+    scorecard_section {
+        text id PK
+        text scorecard_id PK
+        text max_score
+        text name
+        text type
+        text weight
+    }
+    scorecard_custom_field_option {
+        text id PK
+        text scorecard_custom_field_id PK
+        text scorecard_id PK
+        text value
+    }
+    scorecard_custom_field {
+        text id PK
+        text scorecard_id PK
+        text label
+        text operation
+        text required
+        text type
+    }
+    scorecard {
+        text id PK
+        text checkbox_threshold
+        text cloned_from
+        text created_at
+        text created_at_readable
+        text created_by
+        jsonb custom_reports
+        text description
+        text effectiveness_goal
+        text evaluations_scheduled
+        text last_evaluation
+        text last_evaluation_readable
+        text max_score
+        text name
+        text pre_check_answers
+        text reference_name
+        text reference_required
+        text site_id
+        text status
+        text target
+        text total_questions
+        text two_steps_approval
+        text type
+        timestamp updated_at
+        text updated_at_readable
+    }
+    course_skill {
+        text id PK
+        text course_id PK
+        text title
+    }
+    course {
+        text id PK
+        text created_by FK
+        text approval_percent
+        text created_at
+        text deadline_date
+        text deadline_days
+        text deadline_type
+        text enrollment_approval
+        text order_type
+        text public
+        text site_id
+        text status
+        text title
+        timestamp updated_at
+    }
+    calibration_analyst_section_question {
+        text id PK
+        text calibration_analyst_id PK
+        text calibration_analyst_section_id PK
+        text calibration_id PK
+        text is_calibrated
+    }
+    calibration_analyst_section {
+        text id PK
+        text calibration_analyst_id PK
+        text calibration_id PK
+        text percentage
+        text type_fail
+    }
+    calibration_analyst {
+        text calibration_id PK
+        text id PK
+        text qa_score
+        text results_answers_equals
+        text results_answers_score
+        text scorecard_answer_date
+        text scorecard_answer_id
+    }
+    calibration_collaborator {
+        text calibration_id PK
+        text collaborator_id PK
+    }
+    calibration_category {
+        text category_id PK
+        text calibration_id PK
+    }
+    calibration {
+        text id PK
+        text agent_id FK
+        text interaction_id FK
+        text scorecard_id FK
+        text team_id FK
+        text auto_fill_evaluation
+        text calibration_is_ready_to_update_after_completed
+        text category_ids
+        text comments
+        text completed_at
+        text created_at
+        text created_at_readable
+        text created_by
+        text due_date
+        text expert_id
+        text interaction_reference
+        text review_scorecard_id
+        text scorecard_answer_id_reference
+        text sequence
+        text site_id
+        text status
+        text summary_answers_score
+        text summary_answers_total
+        text type
+        text update_after_completed
+        timestamp updated_at
+        text updated_at_readable
+        text validate_fail_answers
+        text workload_history_id
+        text workload_id
+    }
+    dispute_reason_comment {
+        text id PK
+        text dispute_id PK
+        text dispute_reason_id PK
+        text user_id FK
+        text created_at
+        text message
+    }
+    dispute_reason {
+        text id PK
+        text dispute_id PK
+        text accepted
+        text answer_feedback
+        text answer_id
+        text answer_value
+        text parent_id
+        text parent_type
+        text previous_answer_id
+        text previous_answer_value
+        text reference_id
+        text reference_type
+    }
+    dispute_assignation_log {
+        text _fivetran_id PK
+        text dispute_id FK
+        text user_id FK
+        text assigned_at
+        text changed_by
+    }
+    dispute {
+        text id PK
+        text agent_id FK
+        text arbitrator_id FK
+        text requester_id FK
+        text responsible_id FK
+        text scorecard_id FK
+        text team_id FK
+        jsonb category_ids
+        text closed_at
+        jsonb collaborator_ids
+        text created_at
+        text ent_id
+        text entity_id
+        text entity_type
+        text evaluated_at
+        text expired_at
+        text last_opened_at
+        text previous_score
+        text resolution_for
+        text resolved_by
+        text score
+        text sequence
+        text site_id
+        timestamp started_at
+        text status
+        text total_reopens
+        text type
+        text updated_at
+    }
+    custom_field_option {
+        text id PK
+        text custom_field_id PK
+        text value
+    }
+    custom_field {
+        text id PK
+        text code
+        text created_at
+        text created_by
+        text entity_type
+        text is_valid
+        text name
+        text position
+        text required
+        text site_id
+        text type
+        timestamp updated_at
+    }
+    team_leader {
+        text team_id PK
+        text team_leader_id PK
+    }
+    team_user {
+        text team_id PK
+        text user_id PK
+    }
+    team {
+        text id PK
+        text created_at
+        text created_by
+        text defaults
+        text description
+        text name
+        text site_id
+        text status
+        text total_users
+        timestamp updated_at
+    }
+    course_stat {
+        text id PK
+        text activities
+        text learners
+        text learners_completed
+        text learners_in_progress
+        text learners_not_started
+        text learners_overdue
+        text time_spent
+    }
+    workload_assignment_stat_interaction {
+        text index PK
+        text workload_assignment_id PK
+        text workload_assignment_stat_id PK
+        text evaluation_id FK
+        text user_id FK
+        text completed
+        text id
+    }
+    workload_assignment_stat {
+        text id PK
+        text workload_assignment_id PK
+        text completed
+        text goal
+        text progress
+        text workload
+    }
+    workload_assignment_filters {
+        text _fivetran_id PK
+        text workload_assignment_id FK
+        text field
+        text filterable
+        text groups
+        text label
+        text operator
+        text type
+        text value
+    }
+    workload_assignment {
+        text id PK
+        text created_at
+        text created_at_readable
+        text custom_data_assignation_date
+        text custom_data_connector_id
+        text custom_data_date_filter_field
+        text custom_data_days
+        text custom_data_due_date
+        text custom_data_entity
+        jsonb custom_data_errors
+        text custom_data_lock_date_range
+        text custom_data_pull_data
+        text custom_data_segment_id
+        text custom_data_type
+        jsonb custom_data_users_without_interactions
+        text ent_id
+        text normalized_interactions
+        text site_id
+        text status
+        text total_assigned_interactions
+        text total_expected_interactions
+        text type
+        timestamp updated_at
+        text updated_at_readable
+        text workload_id
+    }
+    interaction {
+        text id PK
+        text interaction_id PK
+        text integration_id FK
+        text assignee_id
+        text author_id
+        jsonb collaborators
+        text created_at
+        text created_by
+        text custom_ranges_colors
+        text ent_id
+        text interaction_date
+        text is_deleted
+        text priority
+        text site_id
+        jsonb tags
+        text type
+        text updated_at
+    }
+    evaluation_collaborator }o--|| evaluation : "fk"
+    evaluation_section_answer }o--|| evaluation_section : "fk"
+    evaluation_section_answer }o--|| evaluation_section : "fk"
+    evaluation_section_custom_field }o--|| evaluation_section : "fk"
+    evaluation_section_custom_field }o--|| evaluation_section : "fk"
+    evaluation_section }o--|| evaluation : "fk"
+    evaluation_custom_field }o--|| evaluation : "fk"
+    evaluation_coaching }o--|| evaluation : "fk"
+    evaluation_subscriber }o--|| users : "fk"
+    evaluation_subscriber }o--|| evaluation : "fk"
+    evaluation }o--|| scorecard : "fk"
+    evaluation }o--|| team : "fk"
+    evaluation }o--|| calibration : "fk"
+    evaluation }o--|| users : "fk"
+    evaluation }o--|| users : "fk"
+    evaluation }o--|| users : "fk"
+    coaching_coach_id }o--|| users : "fk"
+    coaching_coach_id }o--|| coaching : "fk"
+    coaching_team }o--|| team : "fk"
+    coaching_team }o--|| coaching : "fk"
+    coaching_collaborator }o--|| coaching : "fk"
+    coaching_coach_log_interaction }o--|| coaching : "fk"
+    coaching_trainee_log_interaction }o--|| coaching : "fk"
+    coaching_evaluation }o--|| evaluation : "fk"
+    coaching_evaluation }o--|| coaching : "fk"
+    coaching_kpi }o--|| coaching : "fk"
+    coaching }o--|| users : "fk"
+    user_role }o--|| users : "fk"
+    user_status_log }o--|| users : "fk"
+    users }o--|| users : "fk"
+    integration }o--|| users : "fk"
+    campaign_user }o--|| users : "fk"
+    campaign_user }o--|| campaign : "fk"
+    campaign_data_source }o--|| campaign : "fk"
+    campaign_kpi }o--|| campaign : "fk"
+    campaign_team_leader_info }o--|| campaign : "fk"
+    job_completed }o--|| job : "fk"
+    job_failed }o--|| job : "fk"
+    role_read }o--|| role : "fk"
+    role_write }o--|| role : "fk"
+    scorecard_team }o--|| team : "fk"
+    scorecard_team }o--|| scorecard : "fk"
+    scorecard_section_question_answer_feedback_option }o--|| scorecard_section_question_answer_feedback : "fk"
+    scorecard_section_question_answer_feedback_option }o--|| scorecard_section_question_answer_feedback : "fk"
+    scorecard_section_question_answer_feedback_option }o--|| scorecard_section_question_answer_feedback : "fk"
+    scorecard_section_question_answer_feedback_option }o--|| scorecard_section_question_answer_feedback : "fk"
+    scorecard_section_question_answer_feedback_option }o--|| scorecard_section_question_answer_feedback : "fk"
+    scorecard_section_question_answer_feedback }o--|| scorecard_section_question_answer : "fk"
+    scorecard_section_question_answer_feedback }o--|| scorecard_section_question_answer : "fk"
+    scorecard_section_question_answer_feedback }o--|| scorecard_section_question_answer : "fk"
+    scorecard_section_question_answer_feedback }o--|| scorecard_section_question_answer : "fk"
+    scorecard_section_question_answer }o--|| scorecard_section_question : "fk"
+    scorecard_section_question_answer }o--|| scorecard_section_question : "fk"
+    scorecard_section_question_answer }o--|| scorecard_section_question : "fk"
+    scorecard_section_question }o--|| scorecard_section : "fk"
+    scorecard_section_question }o--|| scorecard_section : "fk"
+    scorecard_section }o--|| scorecard : "fk"
+    scorecard_custom_field_option }o--|| scorecard_custom_field : "fk"
+    scorecard_custom_field_option }o--|| scorecard_custom_field : "fk"
+    scorecard_custom_field }o--|| scorecard : "fk"
+    course_skill }o--|| course : "fk"
+    course }o--|| users : "fk"
+    calibration_analyst_section_question }o--|| calibration_analyst_section : "fk"
+    calibration_analyst_section_question }o--|| calibration_analyst_section : "fk"
+    calibration_analyst_section_question }o--|| calibration_analyst_section : "fk"
+    calibration_analyst_section }o--|| calibration_analyst : "fk"
+    calibration_analyst_section }o--|| calibration_analyst : "fk"
+    calibration_analyst }o--|| users : "fk"
+    calibration_analyst }o--|| calibration : "fk"
+    calibration_collaborator }o--|| users : "fk"
+    calibration_collaborator }o--|| calibration : "fk"
+    calibration_category }o--|| calibration : "fk"
+    calibration }o--|| scorecard : "fk"
+    calibration }o--|| team : "fk"
+    calibration }o--|| users : "fk"
+    calibration }o--|| interaction : "fk"
+    dispute_reason_comment }o--|| users : "fk"
+    dispute_reason_comment }o--|| dispute_reason : "fk"
+    dispute_reason_comment }o--|| dispute_reason : "fk"
+    dispute_reason }o--|| dispute : "fk"
+    dispute_assignation_log }o--|| users : "fk"
+    dispute_assignation_log }o--|| dispute : "fk"
+    dispute }o--|| scorecard : "fk"
+    dispute }o--|| users : "fk"
+    dispute }o--|| team : "fk"
+    dispute }o--|| users : "fk"
+    dispute }o--|| users : "fk"
+    dispute }o--|| users : "fk"
+    custom_field_option }o--|| custom_field : "fk"
+    team_leader }o--|| users : "fk"
+    team_leader }o--|| team : "fk"
+    team_user }o--|| users : "fk"
+    team_user }o--|| team : "fk"
+    workload_assignment_stat_interaction }o--|| evaluation : "fk"
+    workload_assignment_stat_interaction }o--|| users : "fk"
+    workload_assignment_stat_interaction }o--|| workload_assignment_stat : "fk"
+    workload_assignment_stat_interaction }o--|| workload_assignment_stat : "fk"
+    workload_assignment_stat }o--|| workload_assignment : "fk"
+    workload_assignment_filters }o--|| workload_assignment : "fk"
+    interaction }o--|| integration : "fk"

@@ -1,0 +1,901 @@
+erDiagram
+    ide_code_completion_editor_model {
+        text editor_name PK
+        text name PK
+        text organization PK
+        text report_date PK
+        text custom_model_training_date
+        boolean is_custom_model
+        bigint total_engaged_users
+    }
+    repository_clone {
+        timestamp timestamp_value PK
+        bigint repository_id PK
+        integer count_value
+        integer uniques
+    }
+    dotcom_pull_request_repository {
+        text name PK
+        text organization PK
+        text report_date PK
+        bigint total_engaged_users
+    }
+    workflow_run {
+        bigint id PK
+        bigint actor_id FK
+        text head_sha FK
+        bigint repository_id FK
+        bigint triggering_actor_id FK
+        bigint workflow_id FK
+        text conclusion
+        timestamp created_at
+        text event
+        text head_branch
+        text name
+        bigint run_attempt
+        bigint run_number
+        timestamp run_started_at
+        text status
+        timestamp updated_at
+    }
+    issue {
+        bigint id PK
+        bigint milestone_id FK
+        bigint repository_id FK
+        bigint user_id FK
+        text body
+        timestamp closed_at
+        timestamp created_at
+        boolean locked
+        bigint number
+        boolean pull_request
+        text state
+        text state_reason
+        text title
+        timestamp updated_at
+    }
+    user {
+        bigint id PK
+        text bio
+        text blog
+        text company
+        timestamp created_at
+        boolean hireable
+        text location
+        text login
+        text name
+        boolean site_admin
+        text type
+        timestamp updated_at
+    }
+    user_email {
+        text email PK
+        bigint user_id FK
+        text name
+    }
+    ide_code_completions_total_language {
+        text name PK
+        text organization PK
+        text report_date PK
+        bigint total_engaged_users
+    }
+    security_advisory {
+        text ghsa_id PK
+        text cve_id
+        double_precision cvss_score
+        text cvss_vector_string
+        text description
+        timestamp published_at
+        text severity
+        timestamp updated_at
+        timestamp withdrawn_at
+    }
+    workflow_run_job {
+        bigint id PK
+        bigint run_id FK
+        text check_run_url
+        text completed_at
+        text conclusion
+        text created_at
+        text head_branch
+        text head_sha
+        text html_url
+        jsonb labels
+        text name
+        text node_id
+        integer run_attempt
+        text run_url
+        integer runner_group_id
+        text runner_group_name
+        integer runner_id
+        text runner_name
+        text started_at
+        text status
+        text url
+        text workflow_name
+    }
+    commit {
+        text sha PK
+        text author_email FK
+        text committer_email FK
+        bigint repository_id FK
+        timestamp author_date
+        text author_name
+        timestamp committer_date
+        text committer_name
+        text message
+    }
+    dotcom_chat_model {
+        text name PK
+        text organization PK
+        text report_date PK
+        text custom_model_training_date
+        boolean is_custom_model
+        bigint total_chats
+        bigint total_engaged_users
+    }
+    repo_team {
+        bigint repository_id PK
+        bigint team_id PK
+        text permission
+    }
+    issue_closed_history {
+        boolean closed PK
+        timestamp updated_at PK
+        bigint issue_id PK
+        bigint actor_id FK
+        text commit_sha FK
+    }
+    requested_reviewer_history {
+        timestamp created_at PK
+        bigint requested_id PK
+        bigint pull_request_id PK
+        bigint actor_id FK
+        boolean removed
+        text requested_reviewer_type
+    }
+    ide_code_completion_editor_model_team {
+        text editor_name PK
+        text name PK
+        text organization PK
+        text report_date PK
+        bigint team_id PK
+        text custom_model_training_date
+        boolean is_custom_model
+        bigint total_engaged_users
+    }
+    issue_assignee_history {
+        timestamp updated_at PK
+        bigint issue_id PK
+        bigint user_id PK
+        bigint assigner_id FK
+        boolean assigned
+    }
+    pull_request_review {
+        bigint id PK
+        text commit_sha FK
+        bigint pull_request_id FK
+        bigint user_id FK
+        text body
+        text state
+        timestamp submitted_at
+    }
+    branch_commit_relation {
+        text branch_name PK
+        text commit_sha PK
+    }
+    dotcom_pull_request_repository_model {
+        text name PK
+        text repository_name PK
+        text organization PK
+        text report_date PK
+        text custom_model_training_date
+        boolean is_custom_model
+        bigint total_engaged_users
+        bigint total_pr_summaries_created
+    }
+    copilot_metric_team {
+        text date PK
+        text organization PK
+        bigint team_id PK
+        bigint dotcom_chat_total_engaged_users
+        bigint dotcom_pull_request_total_engaged_users
+        bigint ide_chat_total_engaged_users
+        bigint ide_code_completion_total_engaged_users
+        bigint total_active_users
+        bigint total_engaged_users
+    }
+    workflow {
+        bigint id PK
+        bigint repository_id FK
+        timestamp created_at
+        text name
+        text path
+        text state
+        timestamp updated_at
+    }
+    issue_comment {
+        bigint id PK
+        bigint issue_id FK
+        bigint user_id FK
+        text body
+        timestamp created_at
+        timestamp updated_at
+    }
+    issue_label_history {
+        timestamp updated_at PK
+        bigint issue_id PK
+        bigint label_id PK
+        bigint actor_id FK
+        boolean labeled
+    }
+    security_vulnerability {
+        text _fivetran_id PK
+        text package_ecosystem
+        text package_name
+        text patched_version_identifier
+        text severity
+        text vulnerable_version_range
+    }
+    dotcom_chat_model_team {
+        text name PK
+        text organization PK
+        text report_date PK
+        bigint team_id PK
+        text custom_model_training_date
+        boolean is_custom_model
+        bigint total_chats
+        bigint total_engaged_users
+    }
+    security_alert {
+        bigint number PK
+        bigint repository_id PK
+        bigint dismissed_by FK
+        text security_advisory_ghsa_id FK
+        text vulnerability_id FK
+        timestamp created_at
+        text dependency_manifest_path
+        text dependency_package_ecosystem
+        text dependency_package_name
+        text dependency_scope
+        timestamp dismissed_at
+        text dismissed_comment
+        text dismissed_reason
+        timestamp fixed_at
+        text state
+        timestamp updated_at
+    }
+    ide_code_completions_total_language_team {
+        text name PK
+        text organization PK
+        text report_date PK
+        bigint team_id PK
+        bigint total_engaged_users
+    }
+    workflow_run_job_step {
+        integer number PK
+        bigint workflow_run_job_id PK
+        text completed_at
+        text conclusion
+        text name
+        text started_at
+        text status
+    }
+    pull_request {
+        bigint id PK
+        bigint base_repo_id FK
+        bigint base_user_id FK
+        bigint head_repo_id FK
+        bigint head_user_id FK
+        bigint issue_id FK
+        text active_lock_reason
+        text base_label
+        text base_ref
+        text base_sha
+        timestamp closed_at
+        timestamp created_at
+        boolean draft
+        text head_label
+        text head_ref
+        text head_sha
+        text merge_commit_sha
+        timestamp updated_at
+    }
+    commit_file {
+        text commit_sha PK
+        text filename PK
+        bigint additions
+        bigint changes
+        bigint deletions
+        text status
+    }
+    security_reference {
+        text url PK
+        text security_advisory_ghsa_id PK
+    }
+    project_v_2_item {
+        bigint id PK
+        bigint creator_id FK
+        bigint milestone_id FK
+        bigint parent_issue_id FK
+        bigint project_v_2_id FK
+        bigint repository_id FK
+        timestamp archived_at
+        timestamp created_at
+        text status
+        timestamp updated_at
+    }
+    dotcom_pull_request_repository_model_team {
+        text name PK
+        text repository_name PK
+        text organization PK
+        text report_date PK
+        bigint team_id PK
+        text custom_model_training_date
+        boolean is_custom_model
+        bigint total_engaged_users
+        bigint total_pr_summaries_created
+    }
+    security_cwe {
+        text cwe_id PK
+        text name
+    }
+    page_view {
+        timestamp timestamp_value PK
+        bigint repository_id PK
+        integer count_value
+        integer uniques
+    }
+    issue_referenced {
+        timestamp referenced_at PK
+        bigint issue_id PK
+        bigint actor_id FK
+        text commit_sha FK
+    }
+    ide_chat_editor_model_team {
+        text editor_name PK
+        text name PK
+        text organization PK
+        text report_date PK
+        bigint team_id PK
+        text custom_model_training_date
+        boolean is_custom_model
+        bigint total_chat_copy_events
+        bigint total_chat_insertion_events
+        bigint total_chats
+        bigint total_engaged_users
+    }
+    security_advisory_cwe {
+        text cwe_id PK
+        text security_advisory_id PK
+    }
+    pull_request_review_comments {
+        bigint id PK
+        bigint pull_request_id PK
+        bigint parent_comment_id FK
+        bigint pull_request_review_id FK
+        bigint user_id FK
+        text body
+        timestamp created_at
+        integer reaction_minus_count
+        integer reaction_plus_count
+        timestamp updated_at
+    }
+    copilot_metric {
+        text date PK
+        text organization PK
+        bigint dotcom_chat_total_engaged_users
+        bigint dotcom_pull_request_total_engaged_users
+        bigint ide_chat_total_engaged_users
+        bigint ide_code_completion_total_engaged_users
+        bigint total_active_users
+        bigint total_engaged_users
+    }
+    deployment_status {
+        bigint id PK
+        bigint creator_id FK
+        bigint deployment_id FK
+        timestamp created_at
+        text description
+        text environment
+        text state
+        timestamp updated_at
+    }
+    project_v_2_custom_field {
+        bigint project_v_2_field_id PK
+        bigint project_v_2_item_id PK
+        text data_type
+        text name
+        text value
+    }
+    pull_request_review_dismissed {
+        bigint pull_request_review_id PK
+        bigint actor_id FK
+        text dismissal_commit_sha FK
+        timestamp created_at
+        text dismissal_message
+        text state
+    }
+    workflow_run_attempt {
+        bigint run_attempt PK
+        bigint id PK
+        bigint actor_id FK
+        text head_sha FK
+        bigint repository_id FK
+        bigint triggering_actor_id FK
+        bigint workflow_id FK
+        text conclusion
+        timestamp created_at
+        text event
+        text head_branch
+        text name
+        bigint run_number
+        timestamp run_started_at
+        text status
+        timestamp updated_at
+    }
+    issue_mention {
+        timestamp updated_at PK
+        bigint issue_id PK
+        bigint user_id PK
+    }
+    ide_code_completion_editor_team {
+        text name PK
+        text organization PK
+        text report_date PK
+        bigint team_id PK
+        bigint total_engaged_users
+    }
+    ide_code_completion_editor_model_language_team {
+        text editor_name PK
+        text model_name PK
+        text name PK
+        text organization PK
+        text report_date PK
+        bigint team_id PK
+        bigint total_code_acceptances
+        bigint total_code_lines_accepted
+        bigint total_code_lines_suggested
+        bigint total_code_suggestions
+        bigint total_engaged_users
+    }
+    repository {
+        bigint id PK
+        bigint owner_id FK
+        boolean archived
+        timestamp created_at
+        text default_branch
+        text description
+        boolean fork
+        integer forks_count
+        text full_name
+        text homepage
+        text language
+        text name
+        boolean private
+        integer watchers_count
+    }
+    ide_code_completion_editor_model_language {
+        text editor_name PK
+        text model_name PK
+        text name PK
+        text organization PK
+        text report_date PK
+        bigint total_code_acceptances
+        bigint total_code_lines_accepted
+        bigint total_code_lines_suggested
+        bigint total_code_suggestions
+        bigint total_engaged_users
+    }
+    repository_topic {
+        text name PK
+        bigint repository_id PK
+    }
+    ide_chat_editor_team {
+        text name PK
+        text organization PK
+        text report_date PK
+        bigint team_id PK
+        bigint total_engaged_users
+    }
+    issue_renamed {
+        timestamp updated_at PK
+        bigint issue_id PK
+        bigint actor_id FK
+        text from_name
+        text to_name
+    }
+    asset {
+        bigint id PK
+        bigint release_id FK
+        bigint uploader_id FK
+        text content_type
+        timestamp created_at
+        integer download_count
+        text label
+        text name
+        bigint size
+        text state
+        timestamp updated_at
+    }
+    commit_pull_request {
+        text commit_sha PK
+        bigint pull_request_id PK
+    }
+    ide_chat_editor_model {
+        text editor_name PK
+        text name PK
+        text organization PK
+        text report_date PK
+        text custom_model_training_date
+        boolean is_custom_model
+        bigint total_chat_copy_events
+        bigint total_chat_insertion_events
+        bigint total_chats
+        bigint total_engaged_users
+    }
+    ide_code_completion_editor {
+        text name PK
+        text organization PK
+        text report_date PK
+        bigint total_engaged_users
+    }
+    milestone {
+        bigint id PK
+        bigint creator_id FK
+        bigint repository_id FK
+        timestamp closed_at
+        timestamp created_at
+        text description
+        timestamp due_on
+        boolean is_deleted
+        bigint number
+        text state
+        text title
+        timestamp updated_at
+    }
+    team {
+        bigint id PK
+        bigint org_id FK
+        bigint parent_id FK
+        text description
+        text name
+        text privacy
+        text slug
+    }
+    issue_label {
+        bigint issue_id PK
+        bigint label_id PK
+    }
+    repository_property {
+        text name PK
+        bigint repository_id PK
+        text value
+    }
+    commit_parent {
+        text commit_sha PK
+        text parent_sha PK
+    }
+    deployment {
+        bigint id PK
+        text commit_sha FK
+        bigint creator_id FK
+        timestamp created_at
+        text description
+        text environment
+        text original_environment
+        jsonb payload
+        boolean production_environment
+        text ref
+        text task
+        boolean transient_environment
+        timestamp updated_at
+    }
+    dotcom_pull_request_repository_team {
+        text name PK
+        text organization PK
+        text report_date PK
+        bigint team_id PK
+        bigint total_engaged_users
+    }
+    repo_collaborator {
+        bigint repository_id PK
+        bigint user_id PK
+        boolean admin
+        boolean maintain
+        boolean pull
+        boolean push
+        text role_name
+        boolean site_admin
+        boolean triage
+    }
+    label {
+        bigint id PK
+        text color
+        text description
+        boolean is_default
+        text name
+        text url
+    }
+    security_advisory_vulnerability {
+        text security_advisory_id PK
+        text vulnerability_id PK
+    }
+    commit_check_run {
+        bigint id PK
+        text commit_sha PK
+        bigint app_id
+        text app_name
+        bigint check_suite_id
+        timestamp completed_at
+        text conclusion
+        text external_id
+        text name
+        timestamp started_at
+        text status
+    }
+    stargazer {
+        text login PK
+        bigint repository_id PK
+        timestamp starred_at
+    }
+    team_membership {
+        bigint team_id PK
+        bigint user_id PK
+    }
+    issue_milestone_history {
+        timestamp updated_at PK
+        bigint issue_id PK
+        bigint actor_id FK
+        bigint milestone_id FK
+        boolean milestoned
+    }
+    ide_chat_editor {
+        text name PK
+        text organization PK
+        text report_date PK
+        bigint total_engaged_users
+    }
+    commit_status {
+        bigint id PK
+        text commit_sha PK
+        text context
+        timestamp created_at
+        text description
+        text state
+        text target_url
+        timestamp updated_at
+    }
+    release {
+        bigint id PK
+        bigint author_id FK
+        bigint repository_id FK
+        text body
+        timestamp created_at
+        boolean draft
+        text name
+        boolean prerelease
+        timestamp published_at
+        text tag_name
+        text target_commitish
+        timestamp updated_at
+    }
+    issue_assignee {
+        bigint issue_id PK
+        bigint user_id PK
+    }
+    workflow_run_pull_request {
+        bigint pull_request_id PK
+        bigint workflow_run_id PK
+    }
+    issue_merged {
+        timestamp merged_at PK
+        text commit_sha PK
+        bigint issue_id PK
+        bigint actor_id FK
+    }
+    issue_locked_history {
+        timestamp updated_at PK
+        bigint issue_id PK
+        bigint actor_id FK
+        boolean locked
+    }
+    project_v_2 {
+        bigint id PK
+        bigint creator_id FK
+        bigint deleted_by_id FK
+        bigint latest_status_update_creator_id FK
+        bigint owner_id FK
+        timestamp closed_at
+        timestamp created_at
+        timestamp deleted_at
+        text description
+        boolean is_public
+        boolean is_template
+        text latest_status_update_body
+        timestamp latest_status_update_created_at
+        bigint latest_status_update_id
+        text latest_status_update_start_date
+        text latest_status_update_status
+        text latest_status_update_target_date
+        timestamp latest_status_update_updated_at
+        bigint number
+        text short_description
+        text state
+        text title
+        timestamp updated_at
+    }
+    pull_request_ready_for_review_history {
+        timestamp created_at PK
+        bigint pull_request_id PK
+        bigint actor_id FK
+        boolean ready_for_review
+    }
+    ide_code_completion_editor_model }o--|| copilot_metric : "fk"
+    ide_code_completion_editor_model }o--|| copilot_metric : "fk"
+    repository_clone }o--|| repository : "fk"
+    dotcom_pull_request_repository }o--|| copilot_metric : "fk"
+    dotcom_pull_request_repository }o--|| copilot_metric : "fk"
+    workflow_run }o--|| commit : "fk"
+    workflow_run }o--|| repository : "fk"
+    workflow_run }o--|| workflow : "fk"
+    workflow_run }o--|| user : "fk"
+    workflow_run }o--|| user : "fk"
+    issue }o--|| repository : "fk"
+    issue }o--|| user : "fk"
+    issue }o--|| milestone : "fk"
+    user_email }o--|| user : "fk"
+    ide_code_completions_total_language }o--|| copilot_metric : "fk"
+    ide_code_completions_total_language }o--|| copilot_metric : "fk"
+    workflow_run_job }o--|| workflow_run : "fk"
+    commit }o--|| repository : "fk"
+    commit }o--|| user_email : "fk"
+    commit }o--|| user_email : "fk"
+    dotcom_chat_model }o--|| copilot_metric : "fk"
+    dotcom_chat_model }o--|| copilot_metric : "fk"
+    repo_team }o--|| repository : "fk"
+    repo_team }o--|| team : "fk"
+    issue_closed_history }o--|| issue : "fk"
+    issue_closed_history }o--|| user : "fk"
+    issue_closed_history }o--|| commit : "fk"
+    requested_reviewer_history }o--|| pull_request : "fk"
+    requested_reviewer_history }o--|| user : "fk"
+    ide_code_completion_editor_model_team }o--|| copilot_metric_team : "fk"
+    ide_code_completion_editor_model_team }o--|| copilot_metric_team : "fk"
+    ide_code_completion_editor_model_team }o--|| copilot_metric_team : "fk"
+    issue_assignee_history }o--|| issue : "fk"
+    issue_assignee_history }o--|| user : "fk"
+    issue_assignee_history }o--|| user : "fk"
+    pull_request_review }o--|| pull_request : "fk"
+    pull_request_review }o--|| user : "fk"
+    pull_request_review }o--|| commit : "fk"
+    branch_commit_relation }o--|| commit : "fk"
+    dotcom_pull_request_repository_model }o--|| copilot_metric : "fk"
+    dotcom_pull_request_repository_model }o--|| copilot_metric : "fk"
+    copilot_metric_team }o--|| team : "fk"
+    workflow }o--|| repository : "fk"
+    issue_comment }o--|| issue : "fk"
+    issue_comment }o--|| user : "fk"
+    issue_label_history }o--|| issue : "fk"
+    issue_label_history }o--|| label : "fk"
+    issue_label_history }o--|| user : "fk"
+    dotcom_chat_model_team }o--|| copilot_metric_team : "fk"
+    dotcom_chat_model_team }o--|| copilot_metric_team : "fk"
+    dotcom_chat_model_team }o--|| copilot_metric_team : "fk"
+    security_alert }o--|| repository : "fk"
+    security_alert }o--|| security_vulnerability : "fk"
+    security_alert }o--|| security_advisory : "fk"
+    security_alert }o--|| user : "fk"
+    ide_code_completions_total_language_team }o--|| copilot_metric_team : "fk"
+    ide_code_completions_total_language_team }o--|| copilot_metric_team : "fk"
+    ide_code_completions_total_language_team }o--|| copilot_metric_team : "fk"
+    workflow_run_job_step }o--|| workflow_run_job : "fk"
+    pull_request }o--|| issue : "fk"
+    pull_request }o--|| user : "fk"
+    pull_request }o--|| repository : "fk"
+    pull_request }o--|| user : "fk"
+    pull_request }o--|| repository : "fk"
+    security_reference }o--|| security_advisory : "fk"
+    project_v_2_item }o--|| project_v_2 : "fk"
+    project_v_2_item }o--|| milestone : "fk"
+    project_v_2_item }o--|| repository : "fk"
+    project_v_2_item }o--|| issue : "fk"
+    project_v_2_item }o--|| user : "fk"
+    dotcom_pull_request_repository_model_team }o--|| copilot_metric_team : "fk"
+    dotcom_pull_request_repository_model_team }o--|| copilot_metric_team : "fk"
+    dotcom_pull_request_repository_model_team }o--|| copilot_metric_team : "fk"
+    page_view }o--|| repository : "fk"
+    issue_referenced }o--|| issue : "fk"
+    issue_referenced }o--|| commit : "fk"
+    issue_referenced }o--|| user : "fk"
+    ide_chat_editor_model_team }o--|| copilot_metric_team : "fk"
+    ide_chat_editor_model_team }o--|| copilot_metric_team : "fk"
+    ide_chat_editor_model_team }o--|| copilot_metric_team : "fk"
+    security_advisory_cwe }o--|| security_cwe : "fk"
+    security_advisory_cwe }o--|| security_advisory : "fk"
+    pull_request_review_comments }o--|| pull_request : "fk"
+    pull_request_review_comments }o--|| pull_request_review : "fk"
+    pull_request_review_comments }o--|| pull_request_review_comments : "fk"
+    pull_request_review_comments }o--|| user : "fk"
+    deployment_status }o--|| deployment : "fk"
+    deployment_status }o--|| user : "fk"
+    project_v_2_custom_field }o--|| project_v_2 : "fk"
+    pull_request_review_dismissed }o--|| user : "fk"
+    pull_request_review_dismissed }o--|| pull_request_review : "fk"
+    pull_request_review_dismissed }o--|| commit : "fk"
+    workflow_run_attempt }o--|| workflow_run : "fk"
+    workflow_run_attempt }o--|| commit : "fk"
+    workflow_run_attempt }o--|| repository : "fk"
+    workflow_run_attempt }o--|| workflow : "fk"
+    workflow_run_attempt }o--|| user : "fk"
+    workflow_run_attempt }o--|| user : "fk"
+    issue_mention }o--|| issue : "fk"
+    issue_mention }o--|| user : "fk"
+    ide_code_completion_editor_team }o--|| copilot_metric_team : "fk"
+    ide_code_completion_editor_team }o--|| copilot_metric_team : "fk"
+    ide_code_completion_editor_team }o--|| copilot_metric_team : "fk"
+    ide_code_completion_editor_model_language_team }o--|| copilot_metric_team : "fk"
+    ide_code_completion_editor_model_language_team }o--|| copilot_metric_team : "fk"
+    ide_code_completion_editor_model_language_team }o--|| copilot_metric_team : "fk"
+    repository }o--|| user : "fk"
+    ide_code_completion_editor_model_language }o--|| copilot_metric : "fk"
+    ide_code_completion_editor_model_language }o--|| copilot_metric : "fk"
+    repository_topic }o--|| repository : "fk"
+    ide_chat_editor_team }o--|| copilot_metric_team : "fk"
+    ide_chat_editor_team }o--|| copilot_metric_team : "fk"
+    ide_chat_editor_team }o--|| copilot_metric_team : "fk"
+    issue_renamed }o--|| issue : "fk"
+    issue_renamed }o--|| user : "fk"
+    asset }o--|| release : "fk"
+    asset }o--|| user : "fk"
+    commit_pull_request }o--|| commit : "fk"
+    commit_pull_request }o--|| pull_request : "fk"
+    ide_chat_editor_model }o--|| copilot_metric : "fk"
+    ide_chat_editor_model }o--|| copilot_metric : "fk"
+    ide_code_completion_editor }o--|| copilot_metric : "fk"
+    ide_code_completion_editor }o--|| copilot_metric : "fk"
+    milestone }o--|| repository : "fk"
+    milestone }o--|| user : "fk"
+    team }o--|| user : "fk"
+    team }o--|| team : "fk"
+    issue_label }o--|| issue : "fk"
+    issue_label }o--|| label : "fk"
+    repository_property }o--|| repository : "fk"
+    commit_parent }o--|| commit : "fk"
+    commit_parent }o--|| commit : "fk"
+    deployment }o--|| commit : "fk"
+    deployment }o--|| user : "fk"
+    dotcom_pull_request_repository_team }o--|| copilot_metric_team : "fk"
+    dotcom_pull_request_repository_team }o--|| copilot_metric_team : "fk"
+    dotcom_pull_request_repository_team }o--|| copilot_metric_team : "fk"
+    repo_collaborator }o--|| repository : "fk"
+    repo_collaborator }o--|| user : "fk"
+    security_advisory_vulnerability }o--|| security_vulnerability : "fk"
+    security_advisory_vulnerability }o--|| security_advisory : "fk"
+    commit_check_run }o--|| commit : "fk"
+    stargazer }o--|| repository : "fk"
+    team_membership }o--|| team : "fk"
+    team_membership }o--|| user : "fk"
+    issue_milestone_history }o--|| issue : "fk"
+    issue_milestone_history }o--|| milestone : "fk"
+    issue_milestone_history }o--|| user : "fk"
+    ide_chat_editor }o--|| copilot_metric : "fk"
+    ide_chat_editor }o--|| copilot_metric : "fk"
+    commit_status }o--|| commit : "fk"
+    release }o--|| repository : "fk"
+    release }o--|| user : "fk"
+    issue_assignee }o--|| issue : "fk"
+    issue_assignee }o--|| user : "fk"
+    workflow_run_pull_request }o--|| workflow_run : "fk"
+    workflow_run_pull_request }o--|| pull_request : "fk"
+    issue_merged }o--|| issue : "fk"
+    issue_merged }o--|| commit : "fk"
+    issue_merged }o--|| user : "fk"
+    issue_locked_history }o--|| issue : "fk"
+    issue_locked_history }o--|| user : "fk"
+    project_v_2 }o--|| user : "fk"
+    project_v_2 }o--|| user : "fk"
+    project_v_2 }o--|| user : "fk"
+    project_v_2 }o--|| user : "fk"
+    pull_request_ready_for_review_history }o--|| pull_request : "fk"
+    pull_request_ready_for_review_history }o--|| user : "fk"

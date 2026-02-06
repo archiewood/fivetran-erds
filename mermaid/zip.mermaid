@@ -1,0 +1,880 @@
+erDiagram
+    gl_account_subsidiary {
+        text gl_account_id PK
+        text subsidiary_id PK
+    }
+    gl_account {
+        text id PK
+        text active
+        text currency
+        text external_id
+        text name
+        text number
+        text source
+        text sub_type
+        text type
+    }
+    user_group {
+        text id PK
+        text name
+    }
+    agreement_attachment {
+        text id PK
+        text agreement_id PK
+        text name
+        text type
+        text url
+    }
+    agreement_request {
+        text agreement_id PK
+        text request_id PK
+    }
+    agreement_purchase_order {
+        text agreement_id PK
+        text purchase_order_id PK
+    }
+    agreement_subsidiary {
+        text agreement_id PK
+        text subsidiary_id PK
+    }
+    agreement_category {
+        text id PK
+        text agreement_id PK
+        text name
+        text status
+        text type
+    }
+    agreement_subcategory {
+        text id PK
+        text agreement_id PK
+        text name
+        text status
+        text type
+    }
+    agreement_renewal_stakeholder {
+        text agreement_id PK
+        text id PK
+    }
+    agreement {
+        text id PK
+        text department_id FK
+        text original_request_id FK
+        text renewal_workflow_id FK
+        text vendor_id FK
+        text amount
+        jsonb attributes
+        text auto_renews
+        jsonb child_requests
+        text currency
+        text display_renewal_status
+        text end_date
+        text execution_date
+        text name
+        text number
+        text opt_out_date
+        text renewal_alert_date
+        text renewal_date
+        jsonb renewal_stakeholder_queues
+        text renewal_status
+        text start_date
+        text status
+    }
+    subsidiary {
+        text id PK
+        text address_country
+        text address_locality
+        text address_postcode
+        text address_region
+        text display_name
+        jsonb external_ids
+        text is_active
+        text name
+    }
+    subsidiary_line {
+        text index PK
+        text subsidiary_id PK
+        text line
+    }
+    workflow {
+        text id PK
+        text name
+        text status
+    }
+    user_attribute {
+        text id PK
+        text user_id PK
+        text config_id
+        text data
+        jsonb integration_data
+        text name
+    }
+    user_user_group {
+        text user_group_id PK
+        text user_id PK
+    }
+    user_manager {
+        text manager_id PK
+        text user_id PK
+    }
+    user_role {
+        text role_id PK
+        text user_id PK
+    }
+    user_external_data {
+        text id PK
+        text user_id PK
+        text source
+    }
+    users {
+        text id PK
+        text department_id FK
+        text subsidiary_id FK
+        text email
+        text first_name
+        text is_active
+        text last_name
+        text sso_enforced
+    }
+    role {
+        text id PK
+        text name
+    }
+    vendor_external_data {
+        text index PK
+        text vendor_id PK
+        text id
+        text source
+    }
+    vendor_contact {
+        text id PK
+        text vendor_id PK
+        text email
+        text name
+        text phone
+        text title
+    }
+    vendor_subsidiary {
+        text subsidiary_id PK
+        text vendor_id PK
+    }
+    vendor_currency {
+        text currency_id PK
+        text vendor_id PK
+    }
+    vendor_category {
+        text id PK
+        text vendor_id PK
+        text name
+    }
+    vendor_attribute {
+        text id PK
+        text vendor_id PK
+        text config_id
+        text data
+        text name
+    }
+    vendor_address_line {
+        text index PK
+        text vendor_id PK
+        text lines
+    }
+    vendor {
+        text id PK
+        text department_id FK
+        text address_country
+        text address_locality
+        text address_postcode
+        text address_region
+        text alternate_name
+        text alternate_name_usage
+        text created_at
+        text currency
+        text description
+        text duns_number
+        text external_id
+        text last_reviewed_at
+        text legal_name
+        text name
+        text po_email
+        text primary_phone
+        text primary_phone_country
+        text remittance_email
+        text risk
+        text status
+        text tax_id_number
+        text tax_id_type
+        text tier
+        timestamp updated_at
+        text vat_number
+        text website_link
+    }
+    currency_external_data {
+        text id PK
+        text currency_id PK
+        text source
+    }
+    currency {
+        text id PK
+        text name
+    }
+    department {
+        text id PK
+        text display_name
+        jsonb external_ids
+        text hide_in_zip
+        text is_active
+        text name
+    }
+    lookup {
+        text id PK
+        jsonb display_name_fields
+        jsonb filters
+        text integration_key
+        text integration_name
+        text name
+        text settings_fields
+        text show_in_zip
+    }
+    approval_task {
+        text id PK
+        text approval_id PK
+        text complete_time
+        text description
+        text name
+        text status
+    }
+    approval {
+        text id PK
+        text assignee_id FK
+        text request_id FK
+        text requester_id FK
+        text complete_time
+        text config_type
+        text display_status
+        text due_date
+        text name
+        text node_type
+        text parent_queue_id
+        text parent_queue_level
+        text parent_queue_name
+        text queue_id
+        text queue_level
+        text queue_name
+        text sla_hours
+        timestamp start_time
+        text status
+        text total_pause_time_seconds
+        text type
+        timestamp updated_at
+    }
+    vendor_credit_line_item {
+        text id PK
+        text vendor_credit_id PK
+        text department_id FK
+        text expense_category_id FK
+        text gl_code_id FK
+        text item_account_id FK
+        text location_id FK
+        text currency
+        text description
+        text end_date
+        text name
+        text quantity
+        text rate
+        text secondary_line_type
+        text start_date
+        text total
+        text type
+    }
+    vendor_credit {
+        text id PK
+        text department_id FK
+        text location_id FK
+        text subsidiary_id FK
+        text vendor_id FK
+        text amount
+        jsonb applied_invoices
+        text credit_id
+        text currency
+        text date
+        text description
+        text number
+    }
+    lookup_option {
+        text id PK
+        text lookup_id FK
+        text key
+        text name
+        text show_in_zip
+    }
+    location_external_data {
+        text id PK
+        text location_id PK
+        text source
+    }
+    location {
+        text id PK
+        text name
+        text status
+    }
+    item_account_subsidiary {
+        text id PK
+        text item_account_id PK
+    }
+    item_account {
+        text id PK
+        text active
+        text external_id
+        text name
+        text type
+    }
+    queue_owner {
+        text queue_owner_id PK
+        text _fivetran_id PK
+    }
+    queue_member {
+        text queue_member_id PK
+        text _fivetran_id PK
+    }
+    queue_purchase_request_workflows_condition {
+        text index PK
+        text _fivetran_id PK
+        text attribute
+        text clause_operation
+        text condition_clause_value
+        text condition_group
+        text condition_number
+        text condition_operation
+        text currency
+    }
+    queue_po_change_order_workflows_condition {
+        text index PK
+        text _fivetran_id PK
+        text attribute
+        text clause_operation
+        text condition_clause_value
+        text condition_group
+        text condition_number
+        text condition_operation
+        text currency
+    }
+    queue_bill_approvals_and_invoice_assignment_condition {
+        text index PK
+        text _fivetran_id PK
+        text attribute
+        text clause_operation
+        text condition_clause_value
+        text condition_group
+        text condition_number
+        text condition_operation
+        text currency
+    }
+    queue_payout_approvals_condition {
+        text index PK
+        text _fivetran_id PK
+        text attribute
+        text clause_operation
+        text condition_clause_value
+        text condition_group
+        text condition_number
+        text condition_operation
+        text currency
+    }
+    queue {
+        text _fivetran_id PK
+        text default_assignee FK
+        text queue_id FK
+        text all_members_can_view_approval
+        text all_members_will_receive_approval_notification
+        text assignment_logic
+        text description
+        text group_email
+        text name
+    }
+    purchase_order_attribute {
+        text id PK
+        text purchase_order_id PK
+        text config_id
+        text data
+        jsonb integration_data
+        text name
+    }
+    purchase_order_change {
+        text id PK
+        text purchase_order_id PK
+    }
+    purchase_order_line_item_attribute {
+        text id PK
+        text purchase_order_id PK
+        text config_id
+        text data
+        text integration_data_id
+        text integration_data_key
+        text integration_data_name
+        text integration_data_type
+        text name
+    }
+    purchase_order_line_item {
+        text id PK
+        text purchase_order_id PK
+        text department_id FK
+        text expense_category_id FK
+        text gl_code_id FK
+        text item_account_id FK
+        text location_id FK
+        text currency
+        text description
+        text end_date
+        text name
+        text quantity
+        text rate
+        text secondary_line_type
+        text start_date
+        text total
+        text type
+    }
+    purchase_order_invoice {
+        text invoice_id PK
+        text purchase_order_id PK
+    }
+    purchase_order {
+        text id PK
+        text created_by_id FK
+        text department_id FK
+        text location_id FK
+        text original_request_id FK
+        text requester_id FK
+        text subsidiary_id FK
+        text vendor_id FK
+        text agreement_number
+        text amount_billed
+        text category_category_type
+        text category_id
+        text category_name
+        text category_status
+        text created_at
+        text currency
+        text description
+        text end_date
+        text external_id
+        text number
+        text payment_frequency
+        text payment_method
+        text payment_terms
+        text source
+        text start_date
+        text status
+        text subcategory_category_type
+        text subcategory_id
+        text subcategory_name
+        text subcategory_status
+        text subcategory_type
+        text total_amount
+        text version_number
+    }
+    request_attribute {
+        text id PK
+        text request_id PK
+        text config_id
+        jsonb data
+        text integration_data_id
+        text integration_data_key
+        text integration_data_name
+        text integration_data_type
+        text name
+    }
+    request_attachment {
+        text id PK
+        text request_id PK
+        jsonb attributes
+        text comment
+        text execution_date
+        text expire_date
+        text name
+        text renewal_date
+        text status
+        text type
+        text updated_at
+        text url
+    }
+    request_external_data {
+        text id PK
+        text request_id PK
+        text external_link
+        text external_object_type
+        text source
+    }
+    request_price_line_item_attribute {
+        text id PK
+        text request_id PK
+        text request_price_detail_line_item_id PK
+        text config_id
+        text data
+        text integration_data_id
+        text integration_data_key
+        text integration_data_name
+        text integration_data_type
+        text name
+    }
+    request_price_detail_line_item {
+        text id PK
+        text request_id PK
+        text department_id FK
+        text expense_category_id FK
+        text gl_code_id FK
+        text item_account_id FK
+        text location_id FK
+        text currency
+        text description
+        text end_date
+        text name
+        text quantity
+        text rate
+        text secondary_line_type
+        text start_date
+        text total
+        text type
+    }
+    request_price_detail_saving_line_item {
+        text id PK
+        text request_id PK
+        text amount
+        text currency
+        text description
+        text recognition_end_date
+        text recognition_frequency
+        text recognition_start_date
+        text saving_line_item_type
+    }
+    request {
+        text id PK
+        text department_id FK
+        text owner_id FK
+        text purchase_order_id FK
+        text requester_id FK
+        text subsidiary_id FK
+        text vendor_id FK
+        text workflow_id FK
+        text amount_usd
+        text canceled_at
+        text category_id
+        text category_name
+        text completed_at
+        text created_at
+        text description
+        text external_id
+        text initiated_at
+        text link
+        text name
+        text number
+        text price_detail_currency
+        text price_detail_end_date
+        text price_detail_execution_date
+        text price_detail_id
+        text price_detail_renewal_date
+        text price_detail_saving_line_items
+        text price_detail_start_date
+        text price_detail_total
+        text price_detail_total_usd
+        text status
+        text subcategory_id
+        text subcategory_name
+    }
+    audit_log {
+        text id PK
+        text user_id FK
+        text accessed_from
+        jsonb data
+        text description
+        text event_type
+        text timestamps
+        text user_ip_address
+    }
+    invoice_applied_vendor_credit {
+        text id PK
+        text invoice_id PK
+        text currency_id FK
+        text amount
+        text credit_id
+        text date
+        text external_id
+        text number
+    }
+    invoice_purchase_order {
+        text invoice_id PK
+        text purchase_order_id PK
+    }
+    invoice_payout {
+        text invoice_id PK
+        text payout_id PK
+    }
+    invoice_line_item_attribute {
+        text id PK
+        text invoice_id PK
+        text invoice_line_item_id PK
+        text config_id
+        text data
+        text integration_data
+        text name
+    }
+    invoice_line_item_tax_code {
+        text id PK
+        text invoice_id PK
+        text invoice_line_item_id PK
+    }
+    invoice_line_item {
+        text id PK
+        text invoice_id PK
+        text department_id FK
+        text expense_category_id FK
+        text gl_code_id FK
+        text item_account_id FK
+        text location_id FK
+        text amortization_schedule_end_date
+        text amortization_schedule_name
+        text amortization_schedule_start_date
+        text currency
+        text description
+        text end_date
+        text matched_purchase_order_line_item_id
+        text name
+        text quantity
+        text rate
+        text secondary_line_type
+        text start_date
+        text total
+        text type
+    }
+    invoice_payment_method_external_data {
+        text id PK
+        text invoice_id PK
+        text source
+    }
+    invoice_approval {
+        text index PK
+        text invoice_id PK
+        text id FK
+    }
+    invoice {
+        text id PK
+        text department_id FK
+        text location_id FK
+        text payment_method_id FK
+        text subsidiary_id FK
+        text vendor_id FK
+        text amount
+        jsonb attributes
+        text created_at
+        text currency
+        text description
+        text due_date
+        text external_id
+        text invoice_date
+        text misc_amount
+        text number
+        jsonb payment_terms
+        text posting_period_id
+        text posting_period_name
+        text shipping_amount
+        text source
+        text status
+        text tax_amount
+        timestamp updated_at
+    }
+    payment_method_external_data {
+        text id PK
+        text payment_method_id PK
+        text payment_method_invoice_id PK
+        text source
+    }
+    payment_method {
+        text id PK
+        text invoice_id PK
+        text vendor_id FK
+        text country
+        text is_approved
+        text is_deleted
+        text is_deleted_by_vendor
+        text payment_file_format_id
+        text payment_file_format_name
+        text payment_method
+        text updated_at
+    }
+    tax_code {
+        text id PK
+        text active
+        text city
+        text country
+        text county
+        text description
+        text display_name
+        jsonb external_data
+        text external_id
+        text name
+        text rate
+        text state
+        text tax_code_type
+        text type
+    }
+    payout {
+        text id PK
+        text invoice_id PK
+        text subsidiary_id FK
+        text vendor_id FK
+        text account_id
+        text account_name
+        text currency
+        text fx_rate
+        text paid_on_date
+        text payment_provider_creation_time
+        text reference_id
+    }
+    expense_category_subsidiary {
+        text _fivetran_id PK
+        text subsidiary_id PK
+    }
+    expense_category {
+        text _fivetran_id PK
+        text gl_code_id FK
+        text active
+        text description
+        text name
+        text source
+    }
+    gl_account_subsidiary }o--|| subsidiary : "fk"
+    gl_account_subsidiary }o--|| gl_account : "fk"
+    agreement_attachment }o--|| agreement : "fk"
+    agreement_request }o--|| request : "fk"
+    agreement_request }o--|| agreement : "fk"
+    agreement_purchase_order }o--|| purchase_order : "fk"
+    agreement_purchase_order }o--|| agreement : "fk"
+    agreement_subsidiary }o--|| subsidiary : "fk"
+    agreement_subsidiary }o--|| agreement : "fk"
+    agreement_category }o--|| agreement : "fk"
+    agreement_subcategory }o--|| agreement : "fk"
+    agreement_renewal_stakeholder }o--|| users : "fk"
+    agreement_renewal_stakeholder }o--|| agreement : "fk"
+    agreement }o--|| department : "fk"
+    agreement }o--|| vendor : "fk"
+    agreement }o--|| request : "fk"
+    agreement }o--|| workflow : "fk"
+    user_attribute }o--|| users : "fk"
+    user_user_group }o--|| user_group : "fk"
+    user_user_group }o--|| users : "fk"
+    user_manager }o--|| users : "fk"
+    user_manager }o--|| users : "fk"
+    user_role }o--|| role : "fk"
+    user_role }o--|| users : "fk"
+    user_external_data }o--|| users : "fk"
+    users }o--|| subsidiary : "fk"
+    users }o--|| department : "fk"
+    vendor_external_data }o--|| vendor : "fk"
+    vendor_contact }o--|| vendor : "fk"
+    vendor_subsidiary }o--|| subsidiary : "fk"
+    vendor_subsidiary }o--|| vendor : "fk"
+    vendor_currency }o--|| currency : "fk"
+    vendor_currency }o--|| vendor : "fk"
+    vendor_category }o--|| vendor : "fk"
+    vendor_attribute }o--|| vendor : "fk"
+    vendor_address_line }o--|| vendor : "fk"
+    vendor }o--|| department : "fk"
+    currency_external_data }o--|| currency : "fk"
+    approval_task }o--|| approval : "fk"
+    approval }o--|| users : "fk"
+    approval }o--|| request : "fk"
+    approval }o--|| users : "fk"
+    vendor_credit_line_item }o--|| department : "fk"
+    vendor_credit_line_item }o--|| item_account : "fk"
+    vendor_credit_line_item }o--|| gl_account : "fk"
+    vendor_credit_line_item }o--|| expense_category : "fk"
+    vendor_credit_line_item }o--|| location : "fk"
+    vendor_credit_line_item }o--|| vendor_credit : "fk"
+    vendor_credit }o--|| vendor : "fk"
+    vendor_credit }o--|| subsidiary : "fk"
+    vendor_credit }o--|| location : "fk"
+    vendor_credit }o--|| department : "fk"
+    lookup_option }o--|| lookup : "fk"
+    location_external_data }o--|| location : "fk"
+    item_account_subsidiary }o--|| subsidiary : "fk"
+    item_account_subsidiary }o--|| item_account : "fk"
+    queue_owner }o--|| queue : "fk"
+    queue_member }o--|| queue : "fk"
+    queue_purchase_request_workflows_condition }o--|| queue : "fk"
+    queue_po_change_order_workflows_condition }o--|| queue : "fk"
+    queue_bill_approvals_and_invoice_assignment_condition }o--|| queue : "fk"
+    queue_payout_approvals_condition }o--|| queue : "fk"
+    queue }o--|| users : "fk"
+    queue }o--|| approval : "fk"
+    purchase_order_attribute }o--|| purchase_order : "fk"
+    purchase_order_change }o--|| purchase_order : "fk"
+    purchase_order_line_item_attribute }o--|| purchase_order : "fk"
+    purchase_order_line_item }o--|| department : "fk"
+    purchase_order_line_item }o--|| item_account : "fk"
+    purchase_order_line_item }o--|| gl_account : "fk"
+    purchase_order_line_item }o--|| expense_category : "fk"
+    purchase_order_line_item }o--|| location : "fk"
+    purchase_order_line_item }o--|| purchase_order : "fk"
+    purchase_order_invoice }o--|| invoice : "fk"
+    purchase_order_invoice }o--|| purchase_order : "fk"
+    purchase_order }o--|| users : "fk"
+    purchase_order }o--|| users : "fk"
+    purchase_order }o--|| location : "fk"
+    purchase_order }o--|| request : "fk"
+    purchase_order }o--|| subsidiary : "fk"
+    purchase_order }o--|| department : "fk"
+    purchase_order }o--|| vendor : "fk"
+    request_attribute }o--|| request : "fk"
+    request_attachment }o--|| request : "fk"
+    request_external_data }o--|| request : "fk"
+    request_price_line_item_attribute }o--|| request_price_detail_line_item : "fk"
+    request_price_line_item_attribute }o--|| request_price_detail_line_item : "fk"
+    request_price_detail_line_item }o--|| department : "fk"
+    request_price_detail_line_item }o--|| item_account : "fk"
+    request_price_detail_line_item }o--|| gl_account : "fk"
+    request_price_detail_line_item }o--|| expense_category : "fk"
+    request_price_detail_line_item }o--|| location : "fk"
+    request_price_detail_line_item }o--|| request : "fk"
+    request_price_detail_saving_line_item }o--|| request : "fk"
+    request }o--|| subsidiary : "fk"
+    request }o--|| department : "fk"
+    request }o--|| vendor : "fk"
+    request }o--|| workflow : "fk"
+    request }o--|| users : "fk"
+    request }o--|| users : "fk"
+    request }o--|| purchase_order : "fk"
+    audit_log }o--|| users : "fk"
+    invoice_applied_vendor_credit }o--|| currency : "fk"
+    invoice_applied_vendor_credit }o--|| invoice : "fk"
+    invoice_purchase_order }o--|| purchase_order : "fk"
+    invoice_purchase_order }o--|| invoice : "fk"
+    invoice_payout }o--|| payout : "fk"
+    invoice_payout }o--|| invoice : "fk"
+    invoice_line_item_attribute }o--|| invoice_line_item : "fk"
+    invoice_line_item_attribute }o--|| invoice_line_item : "fk"
+    invoice_line_item_tax_code }o--|| tax_code : "fk"
+    invoice_line_item_tax_code }o--|| invoice_line_item : "fk"
+    invoice_line_item_tax_code }o--|| invoice_line_item : "fk"
+    invoice_line_item }o--|| department : "fk"
+    invoice_line_item }o--|| item_account : "fk"
+    invoice_line_item }o--|| gl_account : "fk"
+    invoice_line_item }o--|| expense_category : "fk"
+    invoice_line_item }o--|| location : "fk"
+    invoice_line_item }o--|| invoice : "fk"
+    invoice_payment_method_external_data }o--|| invoice : "fk"
+    invoice_approval }o--|| approval : "fk"
+    invoice_approval }o--|| invoice : "fk"
+    invoice }o--|| department : "fk"
+    invoice }o--|| location : "fk"
+    invoice }o--|| subsidiary : "fk"
+    invoice }o--|| vendor : "fk"
+    invoice }o--|| payment_method : "fk"
+    payment_method_external_data }o--|| payment_method : "fk"
+    payment_method_external_data }o--|| payment_method : "fk"
+    payment_method }o--|| vendor : "fk"
+    payment_method }o--|| invoice : "fk"
+    payout }o--|| subsidiary : "fk"
+    payout }o--|| vendor : "fk"
+    payout }o--|| invoice_payout : "fk"
+    expense_category_subsidiary }o--|| subsidiary : "fk"
+    expense_category_subsidiary }o--|| expense_category : "fk"
+    expense_category }o--|| gl_account : "fk"

@@ -1,0 +1,186 @@
+erDiagram
+    listing_availability_plan {
+        text _fivetran_id PK
+        text listing_id PK
+        text day_of_week
+        text end_time
+        text seat
+        text start_time
+    }
+    listing {
+        text id PK
+        text marketplace_id FK
+        text availability_plan_type
+        text created_at
+        text deleted
+        text description
+        text geolocation_lat
+        text geolocation_lng
+        jsonb meta_data
+        jsonb pivate_data
+        text price_amount
+        text price_currency
+        jsonb public_data
+        text relationships_author_id
+        text relationships_marketplace_id
+        text relationships_stock_id
+        text relationships_stock_quantity
+        text state
+        text title
+    }
+    availability_exception {
+        text id PK
+        text listing_id FK
+        text ends
+        text seat
+        text start
+    }
+    transaction_line_item_include {
+        text index PK
+        text transaction_id PK
+        text transaction_line_item_index PK
+        text value
+    }
+    transaction_line_item {
+        text index PK
+        text transaction_id PK
+        text code
+        text line_total_amount
+        text line_total_currency
+        text quantity
+        text reversal
+        text seat
+        text unit
+        text unit_price_amount
+        text unit_price_currency
+    }
+    transaction_transition {
+        text index PK
+        text transaction_id PK
+        text by
+        text created_at
+        text transition
+    }
+    transaction {
+        text id PK
+        text customer_id FK
+        text listing_id FK
+        text marketplace_id FK
+        text provider_id FK
+        text attributes_created_at
+        text attributes_last_transition
+        text attributes_last_transitioned_at
+        jsonb attributes_meta_data
+        text attributes_payin_total_amount
+        text attributes_payin_total_currency
+        text attributes_payout_total_amount
+        text attributes_payout_total_currency
+        text attributes_process_name
+        text attributes_process_version
+        jsonb attributes_protected_data
+        text relationships_customer_id
+        text relationships_listing_id
+        text relationships_marketplace_id
+        text relationships_provider_id
+        jsonb relationships_stock_reservation
+    }
+    stock_reservation {
+        text id PK
+        text transaction_id PK
+        text quantity
+        text state
+    }
+    message {
+        text id PK
+        text transaction_id PK
+        text attributes_content
+        text attributes_created_at
+    }
+    review {
+        text id PK
+        text transaction_id PK
+        text attributes_content
+        text attributes_created_at
+        text attributes_deleted
+        text attributes_rating
+        text attributes_state
+        text attributes_type
+    }
+    booking {
+        text id PK
+        text transaction_id PK
+        text attributes_display_end
+        text attributes_display_start
+        text attributes_end
+        text attributes_seat
+        text attributes_start
+        text attributes_state
+    }
+    marketplace {
+        text id PK
+        text description
+        text name
+    }
+    event {
+        text id PK
+        text marketplace_id FK
+        text attributes_created_at
+        text attributes_event_type
+        text attributes_marketplace_id
+        jsonb attributes_previous_value
+        jsonb attributes_resource
+        text attributes_resource_id
+        text attributes_resource_type
+        text attributes_sequence_id
+        text attributes_source
+        text audit_data_admin_id
+        text audit_data_client_id
+        text audit_data_request_id
+        text audit_data_user_id
+    }
+    user_identity_provider {
+        text idp_id PK
+        text users_id PK
+        text user_identity
+    }
+    users {
+        text id PK
+        text marketplace_id FK
+        text attributes_banned
+        text attributes_created_at
+        text attributes_deleted
+        text attributes_email
+        text attributes_email_verified
+        text attributes_pending_email
+        text attributes_stripe_connected
+        text profile_abbreviated_name
+        text profile_bio
+        text profile_display_name
+        text profile_first_name
+        text profile_last_name
+        jsonb profile_private_data
+        text profile_profile_commission_rate
+        jsonb profile_protected_data
+        jsonb profile_public_data
+        text relationships_marketplace_id
+        text relationships_stripe_account_id
+        text relationships_stripe_id
+    }
+    listing_availability_plan }o--|| listing : "fk"
+    listing }o--|| marketplace : "fk"
+    availability_exception }o--|| listing : "fk"
+    transaction_line_item_include }o--|| transaction_line_item : "fk"
+    transaction_line_item_include }o--|| transaction_line_item : "fk"
+    transaction_line_item }o--|| transaction : "fk"
+    transaction_transition }o--|| transaction : "fk"
+    transaction }o--|| marketplace : "fk"
+    transaction }o--|| users : "fk"
+    transaction }o--|| users : "fk"
+    transaction }o--|| listing : "fk"
+    stock_reservation }o--|| transaction : "fk"
+    message }o--|| transaction : "fk"
+    review }o--|| transaction : "fk"
+    booking }o--|| transaction : "fk"
+    event }o--|| marketplace : "fk"
+    user_identity_provider }o--|| users : "fk"
+    users }o--|| marketplace : "fk"

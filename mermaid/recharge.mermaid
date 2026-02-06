@@ -1,0 +1,517 @@
+erDiagram
+    one_time_product {
+        bigint id PK
+        bigint address_id FK
+        bigint customer_id FK
+        timestamp created_at
+        text external_product_id_ecommerce
+        text external_variant_id_ecommerce
+        text next_charge_scheduled_at
+        text price
+        text product_title
+        bigint quantity
+        text sku
+        timestamp updated_at
+        text variant_title
+    }
+    metafield {
+        bigint id PK
+        timestamp created_at
+        text description
+        text key
+        text namespace
+        text owner_id
+        text owner_resource
+        timestamp updated_at
+        jsonb value
+        text value_type
+    }
+    plan {
+        bigint id PK
+        boolean channel_settings_api_display
+        boolean channel_settings_checkout_page_display
+        boolean channel_settings_customer_portal_display
+        boolean channel_settings_merchant_portal_display
+        timestamp created_at
+        timestamp deleted_at
+        text discount_amount
+        text discount_type
+        text product_id_ecommerce
+        bigint sort_order
+        bigint subscription_preference_charge_interval_frequency
+        bigint subscription_preference_cutoff_day_of_month
+        bigint subscription_preference_cutoff_day_of_week
+        bigint subscription_preference_expire_after_specific_number_of_charges
+        text subscription_preference_interval_unit
+        bigint subscription_preference_order_day_of_month
+        bigint subscription_preference_order_day_of_week
+        bigint subscription_preference_order_interval_frequency
+        text title
+        text type
+        timestamp updated_at
+    }
+    order_line_item {
+        integer index PK
+        bigint orders_id PK
+        text external_product_id_ecommerce
+        text external_variant_id_ecommerce
+        double_precision grams
+        text product_title
+        bigint purchase_item_id
+        text purchase_item_type
+        bigint quantity
+        text sku
+        text tax_due
+        boolean taxable
+        text taxable_amount
+        text title
+        text total_price
+        text unit_price
+        boolean unit_price_includes_tax
+        text variant_title
+    }
+    orders {
+        bigint id PK
+        bigint address_id FK
+        bigint charge_id FK
+        bigint customer_id FK
+        text billing_address_address_1
+        text billing_address_address_2
+        text billing_address_city
+        text billing_address_company
+        text billing_address_country_code
+        text billing_address_first_name
+        text billing_address_last_name
+        text billing_address_phone
+        text billing_address_province
+        text billing_address_zip
+        text charge_status
+        timestamp created_at
+        text email
+        text external_cart_token
+        text external_order_id_ecommerce
+        text external_order_number_ecommerce
+        boolean is_prepaid
+        timestamp processed_at
+        timestamp scheduled_at
+        timestamp shipped_date
+        text shipping_address_address_1
+        text shipping_address_address_2
+        text shipping_address_city
+        text shipping_address_company
+        text shipping_address_country_code
+        text shipping_address_first_name
+        text shipping_address_last_name
+        text shipping_address_phone
+        text shipping_address_province
+        text shipping_address_zip
+        text status
+        text total_price
+        text transaction_id
+        text type
+        timestamp updated_at
+    }
+    customer_utm_tag {
+        text _fivetran_id PK
+        bigint customer_id PK
+        text campaign
+        text content
+        text data_source
+        text medium
+        text source
+        text term
+        timestamp time_stamp
+    }
+    payment_method {
+        bigint id PK
+        bigint customer_id PK
+        text billing_address_address_1
+        text billing_address_address_2
+        text billing_address_city
+        text billing_address_company
+        text billing_address_country_code
+        text billing_address_first_name
+        text billing_address_last_name
+        text billing_address_phone
+        text billing_address_province
+        text billing_address_zip
+        timestamp created_at
+        boolean default_payment_method
+        text payment_details_brand
+        text payment_details_exp_month
+        text payment_details_exp_year
+        text payment_details_last_4
+        text payment_type
+        text processor_customer_token
+        text processor_name
+        text processor_payment_method_token
+        text status
+        text status_reason
+        timestamp updated_at
+    }
+    customer {
+        bigint id PK
+        timestamp created_at
+        text email
+        text external_customer_id_ecommerce
+        timestamp first_charge_processed_at
+        text first_name
+        boolean has_payment_method_in_dunning
+        boolean has_valid_payment_method
+        text hash
+        text last_name
+        integer subscriptions_active_count
+        integer subscriptions_total_count
+        boolean tax_exempt
+        timestamp updated_at
+    }
+    charge_tax_line {
+        integer index PK
+        bigint charge_id PK
+        text price
+        text rate
+        text title
+    }
+    charge_shipping_line {
+        integer index PK
+        bigint charge_id PK
+        text code
+        double_precision price
+        text title
+    }
+    charge_order_attribute {
+        integer index PK
+        bigint charge_id PK
+        jsonb order_attribute
+    }
+    charge_line_item {
+        integer index PK
+        bigint charge_id PK
+        text external_product_id_ecommerce
+        text external_variant_id_ecommerce
+        double_precision grams
+        bigint purchase_item_id
+        text purchase_item_type
+        bigint quantity
+        text sku
+        text tax_due
+        boolean taxable
+        text taxable_amount
+        text title
+        text total_price
+        text unit_price
+        boolean unit_price_includes_tax
+        text variant_title
+        text vendor
+    }
+    charge_discount {
+        integer index PK
+        bigint charge_id PK
+        text id FK
+        text code
+        double_precision value
+        text value_type
+    }
+    charge_utm_tag {
+        text _fivetran_id PK
+        bigint charge_id FK
+        text campaign
+        text content
+        text data_source
+        text medium
+        text source
+        text term
+        timestamp time_stamp
+    }
+    charge {
+        bigint id PK
+        bigint address_id FK
+        bigint customer_id FK
+        text billing_address_address_1
+        text billing_address_address_2
+        text billing_address_city
+        text billing_address_company
+        text billing_address_country_code
+        text billing_address_first_name
+        text billing_address_last_name
+        text billing_address_phone
+        text billing_address_province
+        text billing_address_zip
+        double_precision charge_attempts
+        text client_details_browser_ip
+        text client_details_user_agent
+        timestamp created_at
+        text customer_hash
+        text email
+        text error
+        text error_type
+        text external_order_id_ecommerce
+        text external_transaction_id_payment_processor
+        boolean external_variant_id_not_found
+        boolean has_uncommited_changes
+        text note
+        bigint orders_count
+        text payment_processor
+        timestamp processed_at
+        timestamp retry_date
+        text scheduled_at
+        text shipping_address_address_1
+        text shipping_address_address_2
+        text shipping_address_city
+        text shipping_address_company
+        text shipping_address_country_code
+        text shipping_address_first_name
+        text shipping_address_last_name
+        text shipping_address_phone
+        text shipping_address_province
+        text shipping_address_zip
+        text status
+        double_precision subtotal_price
+        text tags
+        double_precision tax_lines
+        double_precision total_discounts
+        double_precision total_line_items_price
+        double_precision total_price
+        double_precision total_refunds
+        double_precision total_tax
+        double_precision total_weight_grams
+        text type
+        timestamp updated_at
+    }
+    subscription_utm_tag {
+        text _fivetran_id PK
+        bigint subscription_id FK
+        text campaign
+        text content
+        text data_source
+        text medium
+        text source
+        text term
+        timestamp time_stamp
+    }
+    subscription {
+        bigint id PK
+        bigint address_id FK
+        bigint customer_id FK
+        text cancellation_reason
+        text cancellation_reason_comments
+        timestamp cancelled_at
+        bigint charge_interval_frequency
+        timestamp created_at
+        integer expire_after_specific_number_of_charges
+        text external_product_id_ecommerce
+        text external_variant_id_ecommerce
+        text next_charge_scheduled_at
+        integer number_charges_until_expiration
+        integer order_day_of_month
+        integer order_day_of_week
+        bigint order_interval_frequency
+        text order_interval_unit
+        text price
+        text product_title
+        integer quantity
+        bigint shopify_product_id
+        bigint shopify_variant_id
+        text sku
+        text status
+        timestamp updated_at
+        text variant_title
+    }
+    subscription_history {
+        bigint id PK
+        timestamp updated_at PK
+        text address_id FK
+        text customer_id FK
+        text cancellation_reason
+        text cancellation_reason_comments
+        timestamp cancelled_at
+        bigint charge_interval_frequency
+        timestamp created_at
+        integer expire_after_specific_number_of_charges
+        text external_product_id_ecommerce
+        text external_variant_id_ecommerce
+        text next_charge_scheduled_at
+        integer number_charges_until_expiration
+        integer order_day_of_month
+        integer order_day_of_week
+        bigint order_interval_frequency
+        text order_interval_unit
+        text price
+        text product_title
+        integer quantity
+        bigint shopify_product_id
+        bigint shopify_variant_id
+        text sku
+        text status
+        text variant_title
+    }
+    discount {
+        bigint id PK
+        boolean applies_once
+        jsonb applies_to_id
+        text applies_to_product_type
+        text applies_to_resource
+        bigint automatic_redemptions_per_customer
+        text code
+        timestamp created_at
+        timestamp ends_at
+        bigint minimum_order_amount
+        timestamp starts_at
+        text status
+        timestamp updated_at
+        bigint usage_limit
+        boolean usage_limits_first_time_customer_restriction
+        bigint usage_limits_max_subsequent_redemptions
+        boolean usage_limits_one_application_per_customer
+        bigint usage_limits_redemptions
+        double_precision value
+        text value_type
+    }
+    address_discounts {
+        integer index PK
+        bigint address_id PK
+        bigint id
+    }
+    address {
+        bigint id PK
+        bigint customer_id FK
+        bigint payment_method_id FK
+        text address_1
+        text address_2
+        text city
+        text company
+        text country_code
+        timestamp created_at
+        text first_name
+        text last_name
+        text order_note
+        text phone
+        text province
+        timestamp updated_at
+        text zip
+    }
+    address_shipping_line {
+        integer index PK
+        bigint address_id PK
+        text code
+        text price
+        text title
+    }
+    checkout_line_item {
+        integer index PK
+        text checkout_token PK
+        bigint charge_interval_frequency
+        text cutoff_day_of_month
+        text cutoff_day_of_week
+        text expire_after_specific_number_of_charges
+        text first_recurring_charge_delay
+        text fulfillment_service
+        integer grams
+        text image
+        text line_price
+        text order_day_of_month
+        text order_day_of_week
+        bigint order_interval_frequency
+        text order_interval_unit
+        text order_interval_unit_type
+        text original_price
+        text price
+        bigint product_id
+        text product_type
+        jsonb properties
+        integer quantity
+        text recurring_price
+        boolean requires_shipping
+        text sku
+        text tax_code
+        boolean taxable
+        text title
+        text type
+        bigint variant_id
+        text variant_title
+        text vendor
+    }
+    checkout_utm_tag {
+        text _fivetran_id PK
+        text checkout_token FK
+        text campaign
+        text content
+        text data_source
+        text medium
+        text source
+        text term
+        timestamp time_stamp
+    }
+    checkout {
+        text token PK
+        bigint charge_id FK
+        jsonb applied_discounts
+        text billing_address_address_1
+        text billing_address_address_2
+        text billing_address_city
+        text billing_address_company
+        text billing_address_country_code
+        text billing_address_first_name
+        text billing_address_last_name
+        text billing_address_phone
+        text billing_address_province
+        text billing_address_zip
+        boolean buyer_accepts_marketing
+        timestamp completed_at
+        timestamp created_at
+        text currency
+        text discount_code
+        text email
+        text external_checkout_id
+        text external_checkout_source
+        text external_transaction_id_payment_processor
+        jsonb order_attributes
+        text phone
+        boolean requires_shipping
+        text shipping_address_address_1
+        text shipping_address_address_2
+        text shipping_address_city
+        text shipping_address_company
+        text shipping_address_country_code
+        text shipping_address_first_name
+        text shipping_address_last_name
+        text shipping_address_phone
+        text shipping_address_province
+        boolean shipping_address_validations_country_is_supported
+        boolean shipping_address_validations_ups
+        text shipping_address_zip
+        text subtotal_price
+        boolean taxes_included
+        text total_price
+        text total_tax
+        timestamp updated_at
+    }
+    one_time_product }o--|| address : "fk"
+    one_time_product }o--|| customer : "fk"
+    order_line_item }o--|| orders : "fk"
+    orders }o--|| address : "fk"
+    orders }o--|| customer : "fk"
+    orders }o--|| charge : "fk"
+    customer_utm_tag }o--|| customer : "fk"
+    payment_method }o--|| customer : "fk"
+    charge_tax_line }o--|| charge : "fk"
+    charge_shipping_line }o--|| charge : "fk"
+    charge_order_attribute }o--|| charge : "fk"
+    charge_line_item }o--|| charge : "fk"
+    charge_discount }o--|| charge : "fk"
+    charge_discount }o--|| discount : "fk"
+    charge_utm_tag }o--|| charge : "fk"
+    charge }o--|| address : "fk"
+    charge }o--|| customer : "fk"
+    subscription_utm_tag }o--|| subscription : "fk"
+    subscription }o--|| address : "fk"
+    subscription }o--|| customer : "fk"
+    subscription_history }o--|| address : "fk"
+    subscription_history }o--|| customer : "fk"
+    address_discounts }o--|| address : "fk"
+    address }o--|| payment_method : "fk"
+    address }o--|| customer : "fk"
+    address_shipping_line }o--|| address : "fk"
+    checkout_line_item }o--|| checkout : "fk"
+    checkout_utm_tag }o--|| checkout : "fk"
+    checkout }o--|| charge : "fk"

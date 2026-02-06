@@ -1,0 +1,343 @@
+erDiagram
+    contact_attribute {
+        text id PK
+        text contact_id PK
+        text title
+        text value
+    }
+    contact {
+        text id PK
+        text company
+        text contact_number_country_code_id
+        text contact_number_id
+        text contact_number_public_number
+        text email
+        text name
+    }
+    agent_associated_number {
+        text index PK
+        text agent_id PK
+        text associated_number
+    }
+    agent {
+        text id PK
+        text call_number_id FK
+        text availability_status
+        text daily_price_limit
+        text default_number
+        text email
+        text extension
+        text firstname
+        text is_daily_limit_ok
+        text lastname
+        text name
+        text status_outbound
+    }
+    group_statistics {
+        text id PK
+        text abandon_rate
+        text answered
+        text avg_call_duration
+        text avg_waiting_time
+        text max_waiting_time
+        text name
+        text operator
+        text real_time_avg_abandonment_time
+        text real_time_avg_waiting_time
+        text real_time_max_waiting_time
+        text real_time_waiting_queue
+        text unanswered
+    }
+    campaign_button {
+        text id PK
+        text campaign_id PK
+        text color
+        text description
+        text title
+        text type
+    }
+    campaign_contact_tag {
+        text id PK
+        text campaign_id PK
+        text name
+    }
+    campaign_agent {
+        text campaign_id PK
+        text id PK
+        text fullname
+    }
+    campaign_group {
+        text campaign_id PK
+        text id PK
+        text internal_name
+    }
+    campaign {
+        text id PK
+        text after_call_dialing_auto
+        text after_call_time
+        text answer_wait_time
+        text attempt
+        text attempt_interval
+        text has_schedule_date
+        text is_predictive
+        text is_recording
+        text name
+        text status
+    }
+    number {
+        text id PK
+        text area_code
+        text caller_id_e_164
+        text connected_to
+        text country_code
+        text internal_name
+        text is_redirected
+    }
+    call_history_agent_group {
+        text index PK
+        text call_history_id PK
+        text group_id
+    }
+    call_history_contact_tag {
+        text id PK
+        text call_history_id PK
+        text name
+    }
+    call_history_contact_external_url {
+        text index PK
+        text call_history_id PK
+        text external_system
+        text external_url
+    }
+    call_history_contact_number {
+        text index PK
+        text call_history_id PK
+        text contact_number
+    }
+    call_history_rating {
+        text id PK
+        text call_history_id PK
+        text rating
+        text type
+    }
+    call_history_note {
+        text id PK
+        text call_history_id PK
+        text name
+    }
+    call_history_tag {
+        text id PK
+        text call_history_id PK
+        text name
+    }
+    call_history {
+        text id PK
+        text agent_id FK
+        text call_number_id FK
+        text contact_id FK
+        text favorite_agent_id FK
+        text answered_at
+        text billsec
+        text contact_address
+        text contact_city
+        text contact_industry
+        text contact_state
+        text contact_title
+        text contact_type
+        text contact_zip
+        text country_code
+        text ended_at
+        text favorite_agent_default_outbound_number
+        text favorite_agent_fullname
+        text favorite_agent_language
+        text favorite_agent_role
+        text favorite_agent_status
+        text fax_email
+        text is_local
+        text is_redirected
+        text is_voicemail
+        text price
+        text public_external
+        text public_internal
+        text recorded
+        text recording_link
+        text redirected_from
+        text started_at
+        text talking_time
+        text transferred_from
+        text type
+        text user_id
+        text waiting_time
+        text wrapup_time
+    }
+    comprehensive_call_tag {
+        text id PK
+        text comprehensive_call_uuid PK
+        text label
+    }
+    comprehensive_call_step_type {
+        text type PK
+        text comprehensive_call_uuid PK
+    }
+    comprehensive_call {
+        text uuid PK
+        text cdr_id FK
+        text contact_id FK
+        text internal_id FK
+        text call_rating
+        text call_time_ringing_time
+        text call_time_talking_time
+        text call_time_total_time
+        text call_time_waiting_time
+        text call_time_wrap_up_time
+        text company_id
+        text contact_country
+        text contact_name
+        text contact_number
+        text contact_redirected_from
+        text contact_redirected_to
+        text date
+        text direction
+        text internal_name
+        text internal_number
+        text is_anonymous
+        jsonb note
+        text out_of_office
+        text recorded
+        text status
+        text type
+    }
+    comprehensive_call_step_transfer {
+        text _fivetran_id PK
+        text comprehensive_call_uuid FK
+        text date
+        text endpoint
+        text id
+        text status
+        text type
+    }
+    comprehensive_call_step_playback {
+        text _fivetran_id PK
+        text comprehensive_call_uuid FK
+        text date
+        text file
+        text id
+        text total_time
+        text type
+    }
+    comprehensive_call_step_agent_group_id {
+        text index PK
+        text _fivetran_id PK
+        text comprehensive_call_step_agent_comprehensive_call_uuid PK
+        text group_id FK
+    }
+    comprehensive_call_step_agent {
+        text _fivetran_id PK
+        text call_id FK
+        text comprehensive_call_uuid FK
+        text resolved_by_call_agent_id FK
+        text call_time_ringing_time
+        text call_time_talking_time
+        text call_time_total_time
+        text call_time_waiting_time
+        text call_time_wrap_up_time
+        text date
+        text id
+        text name
+        text reason
+        text resolved_by
+        text resolved_by_call_date
+        text resolved_by_call_id
+        text status
+        text type
+    }
+    comprehensive_call_step_ivr {
+        text _fivetran_id PK
+        text comprehensive_call_uuid FK
+        text date
+        text id
+        text option
+        text total_time
+        text type
+    }
+    comprehensive_call_step_queue_agent_call_group_id {
+        text index PK
+        text _fivetran_id PK
+        text comprehensive_call_step_queue_agent_call_id PK
+        text comprehensive_step_queue_uuid PK
+        text group_id FK
+    }
+    comprehensive_call_step_queue_agent_call {
+        text id PK
+        text _fivetran_id PK
+        text comprehensive_call_step_queue_comprehensive_call_uuid PK
+        text call_id
+        text date
+        text name
+        text reason
+        text resolved_by
+        text status
+        text type
+    }
+    comprehensive_call_step_queue {
+        text _fivetran_id PK
+        text comprehensive_call_uuid FK
+        text resolved_by_call_agent_id FK
+        text call_time_ringing_time
+        text call_time_talking_time
+        text call_time_total_time
+        text call_time_waiting_time
+        text call_time_wrap_up_time
+        text date
+        text id
+        text name
+        text reason
+        text resolved_by
+        text resolved_by_call_date
+        text resolved_by_call_id
+        text status
+        text strategy
+        text type
+    }
+    contact_attribute }o--|| contact : "fk"
+    agent_associated_number }o--|| agent : "fk"
+    agent }o--|| number : "fk"
+    campaign_button }o--|| campaign : "fk"
+    campaign_contact_tag }o--|| campaign : "fk"
+    campaign_agent }o--|| agent : "fk"
+    campaign_agent }o--|| campaign : "fk"
+    campaign_group }o--|| group_statistics : "fk"
+    campaign_group }o--|| campaign : "fk"
+    call_history_agent_group }o--|| call_history : "fk"
+    call_history_contact_tag }o--|| call_history : "fk"
+    call_history_contact_external_url }o--|| call_history : "fk"
+    call_history_contact_number }o--|| call_history : "fk"
+    call_history_rating }o--|| call_history : "fk"
+    call_history_note }o--|| call_history : "fk"
+    call_history_tag }o--|| call_history : "fk"
+    call_history }o--|| number : "fk"
+    call_history }o--|| agent : "fk"
+    call_history }o--|| contact : "fk"
+    call_history }o--|| agent : "fk"
+    comprehensive_call_tag }o--|| comprehensive_call : "fk"
+    comprehensive_call_step_type }o--|| comprehensive_call : "fk"
+    comprehensive_call }o--|| call_history : "fk"
+    comprehensive_call }o--|| contact : "fk"
+    comprehensive_call }o--|| number : "fk"
+    comprehensive_call_step_transfer }o--|| comprehensive_call : "fk"
+    comprehensive_call_step_playback }o--|| comprehensive_call : "fk"
+    comprehensive_call_step_agent_group_id }o--|| group_statistics : "fk"
+    comprehensive_call_step_agent_group_id }o--|| comprehensive_call_step_agent : "fk"
+    comprehensive_call_step_agent_group_id }o--|| comprehensive_call_step_agent : "fk"
+    comprehensive_call_step_agent }o--|| comprehensive_call : "fk"
+    comprehensive_call_step_agent }o--|| agent : "fk"
+    comprehensive_call_step_agent }o--|| comprehensive_call : "fk"
+    comprehensive_call_step_ivr }o--|| comprehensive_call : "fk"
+    comprehensive_call_step_queue_agent_call_group_id }o--|| group_statistics : "fk"
+    comprehensive_call_step_queue_agent_call_group_id }o--|| comprehensive_call_step_queue_agent_call : "fk"
+    comprehensive_call_step_queue_agent_call_group_id }o--|| comprehensive_call_step_queue_agent_call : "fk"
+    comprehensive_call_step_queue_agent_call_group_id }o--|| comprehensive_call_step_queue_agent_call : "fk"
+    comprehensive_call_step_queue_agent_call }o--|| comprehensive_call_step_queue : "fk"
+    comprehensive_call_step_queue_agent_call }o--|| comprehensive_call_step_queue : "fk"
+    comprehensive_call_step_queue }o--|| agent : "fk"
+    comprehensive_call_step_queue }o--|| comprehensive_call : "fk"

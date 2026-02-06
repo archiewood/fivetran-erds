@@ -1,0 +1,449 @@
+erDiagram
+    segment {
+        text id PK
+        text list_id FK
+        timestamp created_at
+        integer member_count
+        text name
+        text type
+        timestamp updated_at
+    }
+    product_variant {
+        text id PK
+        text product_id PK
+        text store_id PK
+        text backorders
+        timestamp created_at
+        text image_url
+        integer inventory_quantity
+        double_precision price
+        text sku
+        text title
+        timestamp updated_at
+        text url
+        text visibility
+    }
+    list {
+        text id PK
+        text beamer_address
+        timestamp date_created
+        boolean email_type_option
+        double_precision list_rating
+        text name
+        text notify_on_subscribe
+        text notify_on_unsubscribe
+        text permission_reminder
+        text subscribe_url_long
+        text subscribe_url_short
+        boolean use_archive_bar
+        text visibility
+    }
+    segment_member {
+        text member_id PK
+        text segment_id PK
+        text list_id FK
+    }
+    automation_email {
+        text id PK
+        text automation_id FK
+        text archive_url
+        boolean authenticate
+        boolean auto_footer
+        boolean auto_tweet
+        text clicktale
+        text content_type
+        timestamp create_time
+        boolean drag_and_drop
+        boolean fb_comments
+        text folder_id
+        text from_name
+        text google_analytics
+        boolean inline_css
+        integer position
+        text reply_to
+        timestamp send_time
+        timestamp start_time
+        text status
+        text subject_line
+        integer template_id
+        boolean timewarp
+        text title
+        text to_name
+        boolean track_ecomm_360
+        boolean track_goals
+        boolean track_html_clicks
+        boolean track_opens
+        boolean track_text_clicks
+        boolean use_conversation
+    }
+    orders {
+        text id PK
+        text store_id PK
+        text campaign_id FK
+        text customer_id FK
+        timestamp cancelled_at
+        text currency_code
+        double_precision discount_total
+        text financial_status
+        text fulfillment_status
+        text landing_site
+        double_precision order_total
+        text order_url
+        timestamp processed_at
+        double_precision shipping_total
+        double_precision tax_total
+        text tracking_carrier
+        text tracking_code
+        text tracking_number
+        text tracking_url
+        timestamp updated_at
+    }
+    automation_recipient_activity {
+        text action PK
+        timestamp timestamp PK
+        text automation_email_id PK
+        text member_id PK
+        text list_id FK
+        text bounce_type
+        text ip
+        text url
+    }
+    promo_code {
+        text id PK
+        text promo_rule PK
+        text store_id PK
+        text code
+        timestamp created_at
+        boolean enabled
+        text redemption_url
+        timestamp updated_at
+        integer usage_count
+    }
+    tags {
+        text id PK
+        text list_id FK
+        text name
+    }
+    customer {
+        text id PK
+        text store_id PK
+        text address_1
+        text address_2
+        text city
+        text company
+        text country
+        text country_code
+        timestamp created_at
+        text email_address
+        text first_name
+        text last_name
+        boolean opt_in_status
+        integer orders_count
+        text postal_code
+        text province
+        text province_code
+        double_precision total_spent
+        timestamp updated_at
+    }
+    campaign_recipient {
+        text campaign_id PK
+        text member_id PK
+        text list_id FK
+        text combination_id
+        text status
+    }
+    store {
+        text id PK
+        text abandoned_browse_automation_id FK
+        text abandoned_cart_automation_id FK
+        text list_id FK
+        boolean abandoned_browse_automation_is_supported
+        boolean abandoned_cart_automation_is_supported
+        text address_1
+        text address_2
+        text city
+        text connected_site_foreign_id
+        text country
+        text country_code
+        timestamp created_at
+        text currency_code
+        text domain
+        text email_address
+        boolean is_syncing
+        double_precision latitude
+        boolean list_is_active
+        double_precision longitude
+        text money_format
+        text name
+        text phone
+        text platform
+        text postal_code
+        text primary_locale
+        text province
+        text province_code
+        text timezone
+        timestamp updated_at
+    }
+    campaign {
+        text id PK
+        text list_id FK
+        text segment_id FK
+        text winning_campaign_id FK
+        text winning_combination_id FK
+        text archive_url
+        boolean authenticate
+        boolean auto_footer
+        boolean auto_tweet
+        text clicktale
+        text content_type
+        timestamp create_time
+        boolean drag_and_drop
+        boolean fb_comments
+        text folder_id
+        text from_name
+        text google_analytics
+        boolean inline_css
+        text long_archive_url
+        text reply_to
+        text segment_text
+        timestamp send_time
+        text status
+        text subject_line
+        integer template_id
+        integer test_size
+        boolean timewarp
+        text title
+        text to_name
+        boolean track_ecomm_360
+        boolean track_goals
+        boolean track_html_clicks
+        boolean track_opens
+        boolean track_text_clicks
+        text type
+        boolean use_conversation
+        integer wait_time
+        text winner_criteria
+    }
+    %% Note
+%% campaign_id contains foreign key references to the id field of both the Campaign and Automation Email  tables.  MailChimp’s API treats them as equivalent.
+    unsubscribe {
+        text list_id PK
+        text member_id PK
+        text campaign_id FK
+        text reason
+        timestamp timestamp
+    }
+    order_promo_code {
+        text promo_code PK
+        text order_id PK
+        text store_id PK
+        text promo_code_amount_discounted
+        text promo_code_type
+    }
+    campaign_recipient_activity {
+        text action PK
+        timestamp timestamp PK
+        text campaign_id PK
+        text member_id PK
+        text list_id FK
+        text bounce_type
+        text combination_id
+        text ip
+        text url
+    }
+    order_line {
+        text id PK
+        text order_id PK
+        text store_id PK
+        text product_id FK
+        text product_variant_id FK
+        double_precision discount
+        double_precision price
+        integer quantity
+    }
+    automation {
+        text id PK
+        text list_id FK
+        text segment_id FK
+        timestamp create_time
+        text segment_text
+        timestamp start_time
+        text status
+        text title
+        jsonb trigger_settings
+    }
+    interest {
+        text id PK
+        text category_id FK
+        text list_id FK
+        integer display_order
+        text name
+        text subscriber_count
+    }
+    cart {
+        text id PK
+        text store_id PK
+        text campaign_id FK
+        text customer_id FK
+        text checkout_url
+        timestamp created_at
+        text currency_code
+        double_precision order_total
+        double_precision tax_total
+        timestamp updated_at
+    }
+    member {
+        text id PK
+        text list_id PK
+        text country_code
+        double_precision dstoff
+        text email_address
+        text email_client
+        text email_type
+        double_precision gmtoff
+        text ip_opt
+        text ip_signup
+        text language
+        timestamp last_changed
+        double_precision latitude
+        double_precision longitude
+        integer member_rating
+        text source
+        text status
+        timestamp timestamp_opt
+        timestamp timestamp_signup
+        text timezone
+        text unique_email_id
+        text unsubscribe_reason
+        boolean vip
+        integer web_id
+    }
+    interest_member {
+        text interest_id PK
+        text member_id PK
+    }
+    product {
+        text id PK
+        text store_id PK
+        text currency_code
+        text description
+        text handle
+        text image_url
+        timestamp published_at
+        text title
+        text type
+        text url
+        text vendor
+    }
+    automation_recipient {
+        text automation_email_id PK
+        text member_id PK
+        text list_id FK
+        text status
+    }
+    cart_line {
+        text id PK
+        text cart_id PK
+        text store_id PK
+        text product_id FK
+        text product_variant_id FK
+        double_precision price
+        integer quantity
+    }
+    interest_category {
+        text id PK
+        text list_id FK
+        integer display_order
+        text title
+        text type
+    }
+    tag_member {
+        text member_id PK
+        text tag_id PK
+    }
+    campaign_variate_combination {
+        text id PK
+        text campaign_id FK
+        text content_description
+        text from_name
+        integer recipients
+        text reply_to
+        timestamp send_time
+        text subject_line
+    }
+    promo_rule {
+        text id PK
+        text store_id PK
+        double_precision amount
+        timestamp created_at
+        text description
+        boolean enabled
+        timestamp ends_at
+        timestamp starts_at
+        text target
+        text title
+        text type
+        timestamp updated_at
+    }
+    segment }o--|| list : "fk"
+    product_variant }o--|| product : "fk"
+    product_variant }o--|| store : "fk"
+    segment_member }o--|| segment : "fk"
+    segment_member }o--|| list : "fk"
+    segment_member }o--|| member : "fk"
+    automation_email }o--|| automation : "fk"
+    orders }o--|| store : "fk"
+    orders }o--|| customer : "fk"
+    orders }o--|| campaign : "fk"
+    automation_recipient_activity }o--|| member : "fk"
+    automation_recipient_activity }o--|| list : "fk"
+    automation_recipient_activity }o--|| automation_email : "fk"
+    promo_code }o--|| promo_rule : "fk"
+    promo_code }o--|| store : "fk"
+    tags }o--|| list : "fk"
+    customer }o--|| store : "fk"
+    campaign_recipient }o--|| member : "fk"
+    campaign_recipient }o--|| list : "fk"
+    campaign_recipient }o--|| campaign : "fk"
+    store }o--|| list : "fk"
+    store }o--|| automation : "fk"
+    store }o--|| automation : "fk"
+    campaign }o--|| list : "fk"
+    campaign }o--|| segment : "fk"
+    campaign }o--|| campaign_variate_combination : "fk"
+    campaign }o--|| campaign : "fk"
+    unsubscribe }o--|| list : "fk"
+    unsubscribe }o--|| campaign : "fk"
+    unsubscribe }o--|| member : "fk"
+    order_promo_code }o--|| orders : "fk"
+    order_promo_code }o--|| store : "fk"
+    campaign_recipient_activity }o--|| member : "fk"
+    campaign_recipient_activity }o--|| list : "fk"
+    campaign_recipient_activity }o--|| campaign : "fk"
+    order_line }o--|| orders : "fk"
+    order_line }o--|| store : "fk"
+    order_line }o--|| product : "fk"
+    order_line }o--|| product_variant : "fk"
+    automation }o--|| list : "fk"
+    automation }o--|| segment : "fk"
+    interest }o--|| interest_category : "fk"
+    interest }o--|| list : "fk"
+    cart }o--|| store : "fk"
+    cart }o--|| customer : "fk"
+    cart }o--|| campaign : "fk"
+    member }o--|| list : "fk"
+    interest_member }o--|| interest : "fk"
+    interest_member }o--|| member : "fk"
+    product }o--|| store : "fk"
+    automation_recipient }o--|| member : "fk"
+    automation_recipient }o--|| list : "fk"
+    automation_recipient }o--|| automation_email : "fk"
+    cart_line }o--|| cart : "fk"
+    cart_line }o--|| store : "fk"
+    cart_line }o--|| product : "fk"
+    cart_line }o--|| product_variant : "fk"
+    interest_category }o--|| list : "fk"
+    tag_member }o--|| tags : "fk"
+    tag_member }o--|| member : "fk"
+    campaign_variate_combination }o--|| campaign : "fk"
+    promo_rule }o--|| store : "fk"

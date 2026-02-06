@@ -1,0 +1,376 @@
+erDiagram
+    location_type {
+        text type PK
+        text location_id PK
+    }
+    location_relationship {
+        text location_id PK
+        text related_location_id PK
+        text reason
+        text related_location_name
+        text type
+    }
+    location_regulated_activity_contact {
+        text index PK
+        text location_id PK
+        text location_regulated_activity_code PK
+        text person_family_name
+        text person_given_name
+        jsonb person_roles
+        text person_title
+    }
+    location_regulated_activity {
+        text code PK
+        text location_id PK
+        text name
+    }
+    location_gac_service_type {
+        text index PK
+        text location_id PK
+        text description
+        text name
+    }
+    location_inspection_category {
+        text code PK
+        text location_id PK
+        text is_primary
+        text name
+    }
+    location_specialism {
+        text name PK
+        text location_id PK
+    }
+    location_inspection_area {
+        text id PK
+        text location_id PK
+    }
+    location_current_overall_key_question_rating {
+        text name PK
+        text location_id PK
+        text report_link_id FK
+        text organisation_id
+        text rating
+        text report_date
+    }
+    location_current_service_key_question_rating {
+        text name PK
+        text location_current_service_rating_name PK
+        text location_id PK
+        text rating
+    }
+    location_current_service_rating {
+        text location_id PK
+        text name PK
+        text report_link_id FK
+        text organisation_id
+        text rating
+        text report_date
+    }
+    location_historic_overall_key_question_rating {
+        text name PK
+        text location_historic_rating_index PK
+        text location_id PK
+        text rating
+    }
+    location_historic_service_key_question_rating {
+        text name PK
+        text location_historic_service_rating_index PK
+        text location_historic_service_rating_name PK
+        text location_id PK
+        text rating
+    }
+    location_historic_service_rating {
+        text name PK
+        text location_historic_rating_index PK
+        text location_id PK
+        text rating
+    }
+    location_historic_rating {
+        text index PK
+        text location_id PK
+        text report_link_id FK
+        text organisation_id
+        text overall_combined_quality_rating
+        text overall_combined_quality_summary
+        text overall_rating
+        text overall_use_of_resources_rating
+        text overall_use_of_resources_summary
+        text report_date
+    }
+    location_report_related_document {
+        text index PK
+        text location_id PK
+        text location_report_link_id PK
+        text document_type
+        text document_uri
+    }
+    location_report {
+        text link_id PK
+        text location_id PK
+        text first_visit_date
+        text report_date
+        text report_type
+        text report_uri
+    }
+    location {
+        text id PK
+        text brand_id
+        text brand_name
+        text care_home
+        text constituency
+        text current_overall_combined_quality_rating
+        text current_overall_combined_quality_summary
+        text current_overall_rating
+        text current_overall_report_date
+        text current_overall_report_link_id
+        text current_overall_use_of_resources_rating
+        text current_overall_use_of_resources_summary
+        text dormancy
+        text inspection_directorate
+        text last_inspection_date
+        text last_report_publication_date
+        text local_authority
+        text main_phone_number
+        text name
+        text number_of_beds
+        text ods_ccg_code
+        text ods_ccg_name
+        text ods_code
+        text onspd_ccg_code
+        text onspd_ccg_name
+        text onspd_icb_code
+        text onspd_icb_name
+        text onspd_latitude
+        text onspd_longitude
+        text organisation_type
+        text postal_address_line_1
+        text postal_address_town_city
+        text postal_code
+        text provider_id
+        text region
+        text registered_manager_absent_date
+        text registration_date
+        text registration_status
+        text type
+        text uprn
+    }
+    inspection_category {
+        text code PK
+        text inspection_area_id PK
+        text core_flag
+        text end_date
+        text name
+        text org_inspection_area_retirement_date
+        text status
+    }
+    inspection_area {
+        text id PK
+        text end_date
+        text name
+        text status
+        jsonb superseded_by
+        text type
+    }
+    provider_contact {
+        text index PK
+        text provider_id PK
+        text person_family_name
+        text person_given_name
+        jsonb person_roles
+        text person_title
+    }
+    provider_location {
+        text location_id PK
+        text provider_id PK
+    }
+    provider_relationship {
+        text provider_id PK
+        text related_provider_id PK
+        text reason
+        text related_provider_name
+        text type
+    }
+    provider_regulated_activity {
+        text code PK
+        text provider_id PK
+        text name
+        text nominated_individual_person_family_name
+        text nominated_individual_person_given_name
+        text nominated_individual_person_title
+    }
+    provider_inspection_area {
+        text id PK
+        text provider_id PK
+    }
+    provider_inspection_category {
+        text code PK
+        text provider_id PK
+        text is_primary
+        text name
+    }
+    provider_historic_service_key_question_rating {
+        text name PK
+        text provider_historic_service_rating_index PK
+        text provider_historic_service_rating_name PK
+        text provider_id PK
+        text rating
+    }
+    provider_historic_service_rating {
+        text name PK
+        text provider_historic_rating_index PK
+        text provider_id PK
+        text rating
+    }
+    provider_historic_overall_key_question_rating {
+        text name PK
+        text provider_historic_rating_index PK
+        text provider_id PK
+        text rating
+    }
+    provider_historic_rating {
+        text index PK
+        text provider_id PK
+        text report_link_id FK
+        text organisation_id
+        text overall_combined_quality_rating
+        text overall_combined_quality_summary
+        text overall_rating
+        text overall_use_of_resources_rating
+        text overall_use_of_resources_summary
+        text report_date
+    }
+    provider_report_related_document {
+        text index PK
+        text provider_id PK
+        text provider_report_link_id PK
+        text document_type
+        text document_uri
+    }
+    provider_report {
+        text link_id PK
+        text provider_id PK
+        text report_date
+        text report_type
+        text report_uri
+    }
+    provider_current_overall_key_question_rating {
+        text name PK
+        text provider_id PK
+        text report_link_id FK
+        text rating
+        text report_date
+    }
+    provider_current_service_key_question_rating {
+        text name PK
+        text provider_current_service_rating_name PK
+        text provider_id PK
+        text rating
+    }
+    provider_current_service_rating {
+        text name PK
+        text provider_id PK
+        text report_link_id FK
+        text organisation_id
+        text rating
+        text report_date
+    }
+    provider {
+        text id PK
+        text brand_id
+        text brand_name
+        text charity_number
+        text companies_house_number
+        text constituency
+        text current_overall_combined_quality_rating
+        text current_overall_combined_quality_summary
+        text current_overall_rating
+        text current_overall_report_date
+        text current_overall_report_link_id
+        text current_overall_use_of_resources_rating
+        text current_overall_use_of_resources_summary
+        text inspection_directorate
+        text last_inspection_date
+        text last_report_publication_date
+        text local_authority
+        text main_phone_number
+        text name
+        text ods_code
+        text onspd_icb_code
+        text onspd_icb_name
+        text onspd_latitude
+        text onspd_longitude
+        text organisation_type
+        text ownership_type
+        text postal_address_county
+        text postal_address_line_1
+        text postal_address_line_2
+        text postal_address_town_city
+        text postal_code
+        text region
+        text registration_date
+        text registration_status
+        text type
+        text uprn
+        text website
+    }
+    location_type }o--|| location : "fk"
+    location_relationship }o--|| location : "fk"
+    location_relationship }o--|| location : "fk"
+    location_regulated_activity_contact }o--|| location_regulated_activity : "fk"
+    location_regulated_activity_contact }o--|| location_regulated_activity : "fk"
+    location_regulated_activity }o--|| location : "fk"
+    location_gac_service_type }o--|| location : "fk"
+    location_inspection_category }o--|| inspection_category : "fk"
+    location_inspection_category }o--|| location : "fk"
+    location_specialism }o--|| location : "fk"
+    location_inspection_area }o--|| inspection_area : "fk"
+    location_inspection_area }o--|| location : "fk"
+    location_current_overall_key_question_rating }o--|| location_report : "fk"
+    location_current_overall_key_question_rating }o--|| location : "fk"
+    location_current_service_key_question_rating }o--|| location_current_service_rating : "fk"
+    location_current_service_key_question_rating }o--|| location_current_service_rating : "fk"
+    location_current_service_rating }o--|| location_inspection_area : "fk"
+    location_current_service_rating }o--|| location_report : "fk"
+    location_current_service_rating }o--|| location : "fk"
+    location_historic_overall_key_question_rating }o--|| location_historic_rating : "fk"
+    location_historic_overall_key_question_rating }o--|| location_historic_rating : "fk"
+    location_historic_service_key_question_rating }o--|| location_historic_service_rating : "fk"
+    location_historic_service_key_question_rating }o--|| location_historic_service_rating : "fk"
+    location_historic_service_key_question_rating }o--|| location_historic_service_rating : "fk"
+    location_historic_service_rating }o--|| location_historic_rating : "fk"
+    location_historic_service_rating }o--|| location_historic_rating : "fk"
+    location_historic_rating }o--|| location_report : "fk"
+    location_historic_rating }o--|| location : "fk"
+    location_report_related_document }o--|| location_report : "fk"
+    location_report_related_document }o--|| location_report : "fk"
+    location_report }o--|| location : "fk"
+    inspection_category }o--|| inspection_area : "fk"
+    provider_contact }o--|| provider : "fk"
+    provider_location }o--|| location : "fk"
+    provider_location }o--|| provider : "fk"
+    provider_relationship }o--|| provider : "fk"
+    provider_relationship }o--|| provider : "fk"
+    provider_regulated_activity }o--|| provider : "fk"
+    provider_inspection_area }o--|| inspection_area : "fk"
+    provider_inspection_area }o--|| provider : "fk"
+    provider_inspection_category }o--|| inspection_category : "fk"
+    provider_inspection_category }o--|| provider : "fk"
+    provider_historic_service_key_question_rating }o--|| provider_historic_service_rating : "fk"
+    provider_historic_service_key_question_rating }o--|| provider_historic_service_rating : "fk"
+    provider_historic_service_key_question_rating }o--|| provider_historic_service_rating : "fk"
+    provider_historic_service_rating }o--|| provider_historic_rating : "fk"
+    provider_historic_service_rating }o--|| provider_historic_rating : "fk"
+    provider_historic_overall_key_question_rating }o--|| provider_historic_rating : "fk"
+    provider_historic_overall_key_question_rating }o--|| provider_historic_rating : "fk"
+    provider_historic_rating }o--|| provider_report : "fk"
+    provider_historic_rating }o--|| provider : "fk"
+    provider_report_related_document }o--|| provider_report : "fk"
+    provider_report_related_document }o--|| provider_report : "fk"
+    provider_report }o--|| provider : "fk"
+    provider_current_overall_key_question_rating }o--|| provider_report : "fk"
+    provider_current_overall_key_question_rating }o--|| provider : "fk"
+    provider_current_service_key_question_rating }o--|| provider_current_service_rating : "fk"
+    provider_current_service_key_question_rating }o--|| provider_current_service_rating : "fk"
+    provider_current_service_rating }o--|| provider_inspection_area : "fk"
+    provider_current_service_rating }o--|| provider_report : "fk"
+    provider_current_service_rating }o--|| provider : "fk"

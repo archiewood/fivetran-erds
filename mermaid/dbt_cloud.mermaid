@@ -1,0 +1,436 @@
+erDiagram
+    audit_log_event {
+        text id PK
+        text account_id FK
+        text actor
+        text created_at
+        text event_context
+        text event_label
+        text event_type
+        text service
+        text source
+    }
+    project {
+        text id PK
+        text account_id FK
+        text connection_id FK
+        text docs_job_id FK
+        text freshness_job_id FK
+        text repository_id FK
+        text created_at
+        text dbt_project_subdirectory
+        jsonb group_permissions
+        text name
+        text semantic_layer_config_id
+        text skipped_setup
+        text state
+        text updated_at
+    }
+    run_step {
+        text id PK
+        text account_id FK
+        text run_id FK
+        text created_at
+        text debug_log
+        text debug_log_path
+        text duration
+        text duration_humanized
+        text finished_at
+        text index
+        text log_archive_type
+        text log_location
+        text log_path
+        text name
+        text run_step_command
+        text started_at
+        text status
+        text status_color
+        text status_humanized
+        text updated_at
+    }
+    run_trigger {
+        text id PK
+        text run_id FK
+        text azure_pull_request_id
+        text cause_category
+        text cause_humanized
+        text created_at
+        text dbt_version_override
+        text generate_docs_override
+        text git_branch
+        text git_sha
+        text github_pull_request_id
+        text gitlab_merge_request_id
+        text job
+        text job_definition_id
+        text non_native_pull_request_id
+        text schema_override
+        text steps_override
+        text target_name_override
+        text threads_override
+        text timeout_seconds_override
+    }
+    run {
+        text id PK
+        text account_id FK
+        text environment_id FK
+        text job_id FK
+        text project_id FK
+        text artifact_s_3_path
+        text artifacts_saved
+        jsonb blocked_by
+        text created_at
+        text created_at_humanized
+        text dbt_version
+        text deferring_run_id
+        text dequeued_at
+        text duration
+        text duration_humanized
+        text executed_by_thread_id
+        text finished_at
+        text finished_at_humanized
+        text git_branch
+        text git_sha
+        text has_docs_generated
+        text has_sources_generated
+        text href
+        text in_progress
+        text is_cancelled
+        text is_complete
+        text is_error
+        text is_running
+        text is_success
+        text last_checked_at
+        text last_heartbeat_at
+        text notifications_sent
+        text owner_thread_id
+        text queued_duration
+        text queued_duration_humanized
+        text run_duration
+        text run_duration_humanized
+        text scribe_enabled
+        text should_start_at
+        text started_at
+        text status
+        text status_humanized
+        text status_message
+        text trigger_id
+        text updated_at
+    }
+    repository {
+        text id PK
+        text account_id FK
+        text project_id FK
+        text created_at
+        text deploy_key_id
+        text deploy_key_state
+        text full_name
+        text git_clone_strategy
+        text git_provider_id
+        text git_provider_state
+        text github_installation_id
+        text github_repo
+        text github_webhook_id
+        text gitlab_id
+        text gitlab_project_access_token_id
+        text gitlab_state
+        text name
+        text private_link_endpoint_id
+        text pull_request_url_template
+        text remote_backend
+        text remote_url
+        text repository_credentials_id
+        text state
+        text updated_at
+    }
+    notification_on_failure {
+        text index PK
+        text notification_id PK
+        text on_failure
+    }
+    notification_on_cancel {
+        text index PK
+        text notification_id PK
+        text on_cancel
+    }
+    notification_on_success {
+        text index PK
+        text notification_id PK
+        text on_success
+    }
+    notification {
+        text id PK
+        text account_id FK
+        text user_id FK
+        text created_at
+        text external_email
+        text slack_channel_id
+        text slack_channel_name
+        text state
+        text type
+        text updated_at
+    }
+    connection {
+        text id PK
+        text account_id FK
+        text adapter_version
+        text created_at
+        text is_ssh_tunnel_enabled
+        text name
+        text oauth_configuration_id
+        text platform_metadata_credentials_id
+        text private_link_endpoint_id
+        text updated_at
+    }
+    run_artifact {
+        text run_artifact_id PK
+        text account_id PK
+        text run_id PK
+    }
+    auth_provider_user_groups {
+        text _fivetran_id PK
+        text users_id PK
+        text group_name
+    }
+    group_permission {
+        text id PK
+        text account_id FK
+        text group_id FK
+        text project_id FK
+        text all_projects
+        text created_at
+        text permission_level
+        text permission_set
+        text state
+        text updated_at
+    }
+    groups {
+        text id PK
+        text permission_id PK
+        text account_id FK
+        text assign_by_default
+        text created_at
+        text name
+        jsonb sso_mapping_group
+        text state
+        text updated_at
+    }
+    permission_statement {
+        text _fivetran_id PK
+        text permission_id PK
+        text all_resources
+        text permission
+        text target_resource
+    }
+    permission {
+        text id PK
+        text account_id FK
+        text user_id FK
+        text created_at
+        text license_type
+        text state
+        text updated_at
+    }
+    users {
+        text id PK
+        text auth_provider_infos_qw_corp_auth_provider_type
+        text auth_provider_infos_qw_corp_domain
+        text avatar_url
+        text azure_active_directory_connected
+        text azure_active_directory_username
+        text created_at
+        text email
+        text email_connected
+        text email_verified
+        text enterprise_authentication_method
+        text enterprise_connected
+        text first_name
+        text fullname
+        text github_connected
+        text github_username
+        text gitlab_connected
+        text gitlab_username
+        text is_active
+        text is_staff
+        text last_login
+        text last_name
+        text show_existing_user_email_verification
+        text slack_connected
+    }
+    environment {
+        text id PK
+        text account_id FK
+        text connection_id FK
+        text created_by_id FK
+        text project_id FK
+        text repository_id FK
+        text credentials_id
+        text custom_branch
+        text dbt_project_subdirectory
+        text dbt_version
+        text name
+        text raw_dbt_version
+        text state
+        text supports_docs
+        text updated_at
+        text use_custom_branch
+    }
+    job_execute_step {
+        text index PK
+        text job_id PK
+        text execute_step
+    }
+    job_schedule_date_day {
+        text index PK
+        text job_id PK
+        text schedule_date_day
+    }
+    job {
+        text id PK
+        text account_id FK
+        text environment_id FK
+        text project_id FK
+        text created_at
+        text cron_humanized
+        text dbt_version
+        text deactivated
+        text deferring_environment_id
+        text deferring_job_definition_id
+        text execution_timeout_seconds
+        text generate_docs
+        text generate_sources
+        text is_deferrable
+        text job_type
+        text lifecycle_webhooks
+        text lifecycle_webhooks_url
+        jsonb most_recent_completed_run
+        jsonb most_recent_run
+        text name
+        text next_run
+        text next_run_humanized
+        text raw_dbt_version
+        text run_failure_count
+        text run_generate_sources
+        text schedule_cron
+        text schedule_date_type
+        text schedule_time_interval
+        text schedule_time_type
+        text settings_target_name
+        text settings_threads
+        text state
+        text triggers_custom_branch_only
+        text triggers_git_provider_webhook
+        text triggers_github_webhook
+        text triggers_schedule
+        text updated_at
+    }
+    account_migration_event {
+        text index PK
+        text account_id PK
+        text account_has_static_subdomain
+        text account_identifier
+        text background_job_id
+        text completed_at
+        text failed_at
+        text is_minidump
+        text key
+        text started_at
+        text type
+    }
+    account_group {
+        text index PK
+        text account_id PK
+        text assign_by_default
+        text name
+        text sso_mapping_group
+        text state
+    }
+    account {
+        text id PK
+        text billing_email_address
+        text business_critical
+        text created_at
+        text develop_file_system
+        text develop_pod_memory_request_mebibyte
+        text developer_seat
+        text discovery_api_url
+        text enterprise_authentication_method
+        text enterprise_login_slug
+        text enterprise_unique_identifier
+        text explorer_seat
+        text git_auth_level
+        text identifier
+        text ip_restricted
+        text it_seat
+        text lock_cause
+        text lock_reason
+        text locked
+        text metronome_customer_id
+        text migration_scheduled_at
+        text name
+        text pending_cancel
+        text plan
+        text pod_memory_request_mebibyte
+        text queue_limit
+        text read_only_seat
+        text run_duration_limit_second
+        text run_locked_until
+        text run_slot
+        text salesforce_customer_id
+        text semantic_layer_graphql_api_url
+        text semantic_layer_jdbc_url
+        text semantic_layer_url
+        text starter_repo_url
+        text state
+        text static_subdomain
+        text static_url
+        text third_party_billing
+        text trial_end_date
+        text unlock_if_subscription_renewed
+        text unlocked_at
+        text updated_at
+    }
+    audit_log_event }o--|| account : "fk"
+    project }o--|| job : "fk"
+    project }o--|| connection : "fk"
+    project }o--|| job : "fk"
+    project }o--|| repository : "fk"
+    project }o--|| account : "fk"
+    run_step }o--|| run : "fk"
+    run_step }o--|| account : "fk"
+    run_trigger }o--|| run : "fk"
+    run }o--|| environment : "fk"
+    run }o--|| job : "fk"
+    run }o--|| project : "fk"
+    run }o--|| account : "fk"
+    repository }o--|| project : "fk"
+    repository }o--|| account : "fk"
+    notification_on_failure }o--|| notification : "fk"
+    notification_on_cancel }o--|| notification : "fk"
+    notification_on_success }o--|| notification : "fk"
+    notification }o--|| users : "fk"
+    notification }o--|| account : "fk"
+    connection }o--|| account : "fk"
+    run_artifact }o--|| account : "fk"
+    run_artifact }o--|| run : "fk"
+    auth_provider_user_groups }o--|| users : "fk"
+    group_permission }o--|| groups : "fk"
+    group_permission }o--|| project : "fk"
+    group_permission }o--|| account : "fk"
+    groups }o--|| account : "fk"
+    groups }o--|| permission : "fk"
+    permission_statement }o--|| permission : "fk"
+    permission }o--|| users : "fk"
+    permission }o--|| account : "fk"
+    environment }o--|| users : "fk"
+    environment }o--|| connection : "fk"
+    environment }o--|| repository : "fk"
+    environment }o--|| project : "fk"
+    environment }o--|| account : "fk"
+    job_execute_step }o--|| job : "fk"
+    job_schedule_date_day }o--|| job : "fk"
+    job }o--|| environment : "fk"
+    job }o--|| project : "fk"
+    job }o--|| account : "fk"
+    account_migration_event }o--|| account : "fk"
+    account_group }o--|| account : "fk"

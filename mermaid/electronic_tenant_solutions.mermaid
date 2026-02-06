@@ -1,0 +1,760 @@
+erDiagram
+    groups {
+        text id PK
+        text building_id FK
+        text description
+        text name
+        text subscription_notification
+    }
+    reservation_communication_log {
+        text _fivetran_id PK
+        text reservation_id PK
+        text date
+        text message
+        text shared_with_user
+        text updated_by
+    }
+    reservation {
+        text id PK
+        text amenity_id FK
+        text amenity_name FK
+        text building_name FK
+        text company_name FK
+        text archived
+        text billable_status
+        text flagged
+        text name
+        text number_of_days
+        text shared
+        text start_date
+        text submitted_by
+        text updated
+    }
+    amenity_attachment {
+        text _fivetran_id PK
+        text amenity_id PK
+        text added_by
+        text date_added
+        text link
+        text name
+    }
+    equipment_comment {
+        text equipment_id PK
+        text task_id PK
+        text job_id FK
+        text comment
+        text date
+        text email
+        text job_status
+        text task_status
+    }
+    certificate_attachment {
+        text _fivetran_id PK
+        text certificate_id FK
+        text link
+        text name
+    }
+    task_designee {
+        text id PK
+        text task_id PK
+        text job_id FK
+        text assigned_date
+        text first_name
+        text last_name
+        text notes
+        text status
+        text task_time
+        text updated_date
+        text user_type
+    }
+    request_designee {
+        text request_id PK
+        text user_id PK
+        text date_assigned
+        text priority
+    }
+    job {
+        text id PK
+        text building_name FK
+        text equipment_name FK
+        text after_hours
+        text archived
+        text auto_renewal
+        text ends
+        text frequency
+        text job_type
+        text starts
+        text template
+    }
+    task {
+        text id PK
+        text building_name FK
+        text job_id FK
+        text job_name FK
+        text user_id FK
+        text completed_date
+        text due_date
+        text equipment_name
+        text estimated_time
+        text systems
+        text task_priority
+        text task_status
+        text total_task_time
+    }
+    equipment_update {
+        text equipment_id PK
+        text job_id PK
+        text task_id FK
+        text date
+        text email
+        text status
+        text update
+    }
+    company {
+        text id PK
+        text building_id FK
+        text identifier
+        text name
+    }
+    equipment_job {
+        text equipment_id PK
+        text job_id PK
+        text frequency
+        text name
+    }
+    user_building {
+        text index PK
+        text user_id PK
+        text bid FK
+        text is_primary
+        text name
+    }
+    user_mc_permission {
+        text index PK
+        text user_id PK
+        text code
+        text name
+        text permission
+        text value
+    }
+    user_mtm_permission {
+        text index PK
+        text user_id PK
+        text code
+        text html_name
+        text name
+        text permission
+        text value
+    }
+    user_tc_permission {
+        text index PK
+        text user_id PK
+        text code
+        text name
+        text permission
+        text value
+    }
+    user_sms_message {
+        text id PK
+        text user_id FK
+        text date_added
+        text message
+        text sms_number
+        text type
+        text viewed
+    }
+    users {
+        text id PK
+        text building_id FK
+        text company_id FK
+        text emergency_phone
+        text fax
+        text first_name
+        text floor
+        text job_title
+        text last_name
+        text lease_id
+        jsonb messages
+        text mobile_phone
+        text phone
+        text primary_email
+        text secondary_email
+        text suite
+        text tertiary_email
+        text timezone
+        text user_name
+        text user_photo
+        text user_type
+    }
+    job_update {
+        text job_id PK
+        text task_id FK
+        text date
+        text email
+        text status
+        text update
+    }
+    job_task {
+        text job_id PK
+        text task_id PK
+        text date
+        text designees
+        text frequency
+    }
+    reservation_attachment {
+        text name PK
+        text reservation_id PK
+        text added_by
+        text date_added
+        text link
+        text shared_with_user
+    }
+    certificate {
+        text id PK
+        text building_name FK
+        text company_name FK
+        text associated
+        text compliant
+        text contact
+        text general_liability_expiration
+        text nearest_expiration
+        text needs_approval
+        text status
+        text type
+        text updated
+    }
+    equipment {
+        text id PK
+        text age
+        text anticipated_lifespan
+        text building
+        text cost
+        text description
+        text installation_cost
+        text installed_date
+        text location
+        text make
+        text name
+        text notes
+        text number
+        text purchase_date
+        text replacement_cost
+        text serial_number
+        text sub_location
+        text systems
+        text type
+        text updated
+        jsonb updates
+        text warranty_expiration
+    }
+    amenity {
+        text id PK
+        text building_name FK
+        text available
+        text name
+        text orders
+        text reservations
+        text shared
+    }
+    amenity_detail_scheduled_closing {
+        text _fivetran_id PK
+        text amenity_detail_id FK
+        text amenity_detail_name FK
+        text closing
+    }
+    amenity_detail {
+        text name PK
+        text amenity_id PK
+        text allow_for_vendor_details
+        text available_days
+        text description
+        text future_reservation_limitations
+        text location
+        text max_capacity
+        text max_requestable_days
+        text minimum_edit_cancel_time
+        text minimum_notice
+        text reservation_admin_contact
+        text reservation_alerts
+        text reservation_options
+        text reservation_times
+        text setup_options
+        text time_between_reservations
+    }
+    building {
+        text id PK
+        text city
+        text client_building_id
+        text country
+        text name
+        text state
+        text street_1
+        text street_2
+        text timezone
+        text url
+        text zipcode
+    }
+    job_detail_additional_information {
+        text index PK
+        text job_id PK
+        text accounting_info
+        text additional_comments
+        text estimated_down_time
+        text instructions
+        text safety_notes
+        text tenant_related
+        text tools_required
+    }
+    job_custom {
+        text name PK
+        text job_id PK
+        text selected
+        text type
+    }
+    job_detail {
+        text job_id PK
+        text client_bid FK
+        text equipment_id FK
+        text id FK
+        text building
+        text created
+        text date_range
+        text estimated_time
+        text location
+        text name
+        text priority
+        text sub_location
+        text systems
+        text updated
+    }
+    certificate_detail {
+        text certificate_id PK
+        text additional_insured_company_1
+        text additional_insured_company_2
+        text additional_insured_company_3
+        text additional_insured_company_4
+        text additional_insured_endorsement
+        text archived
+        text authorized_representative
+        text automobile_liability_any_auto
+        text automobile_liability_bodily_injury_limit
+        text automobile_liability_bodily_injury_limit_met
+        text automobile_liability_bodily_injury_limit_minimum
+        text automobile_liability_combined_single_limit
+        text automobile_liability_combined_single_limit_met
+        text automobile_liability_combined_single_limit_minimum
+        text automobile_liability_expired
+        text automobile_liability_hired_autos
+        text automobile_liability_non_owned_autos
+        text automobile_liability_occur
+        text automobile_liability_policy_effective_date
+        text automobile_liability_policy_expiration_date
+        text automobile_liability_policy_number
+        text automobile_liability_property_damage_limit
+        text automobile_liability_property_damage_limit_met
+        text automobile_liability_property_damage_limit_minimum
+        text automobile_liability_scheduled_autos
+        text automobile_liability_waiver_of_subrogation
+        text companies_affording_coverage_am_best_rating_company_a
+        text companies_affording_coverage_am_best_rating_company_b
+        text companies_affording_coverage_am_best_rating_company_c
+        text companies_affording_coverage_am_best_rating_company_d
+        text companies_affording_coverage_am_best_rating_company_e
+        text companies_affording_coverage_am_best_rating_company_f
+        text companies_affording_coverage_company_a
+        text companies_affording_coverage_company_b
+        text companies_affording_coverage_company_c
+        text companies_affording_coverage_company_d
+        text companies_affording_coverage_company_e
+        text companies_affording_coverage_company_f
+        text crime_employee_dishonesty_limit
+        text crime_employee_dishonesty_limit_met
+        text crime_employee_dishonesty_limit_minimum
+        text crime_expired
+        text crime_policy_effective_date
+        text crime_policy_number
+        text crime_policyexpirationdate
+        text cyber_liability_aggregate_limit
+        text cyber_liability_aggregate_limit_met
+        text cyber_liability_aggregate_limit_minimum
+        text cyber_liability_each_occurrence_limit
+        text cyber_liability_each_occurrence_limit_met
+        text cyber_liability_each_occurrence_limit_minimum
+        text cyber_liability_expired
+        text cyber_liability_policy_effective_date
+        text cyber_liability_policy_expiration_date
+        text cyber_liability_policy_number
+        text date_added
+        text employee_practices_insuranceaggregate_limit
+        text employee_practices_insuranceaggregate_limit_met
+        text employee_practices_insuranceaggregate_limit_minimum
+        text employee_practices_insuranceeach_occurrence_limit
+        text employee_practices_insuranceeach_occurrence_limit_met
+        text employee_practices_insuranceeach_occurrence_limit_minimum
+        text employee_practices_insuranceexpired
+        text employee_practices_insurancepolicy_effective_date
+        text employee_practices_insurancepolicy_expiration_date
+        text employee_practices_insurancepolicy_number
+        text excess_liability_aggregate_limit
+        text excess_liability_aggregate_limit_met
+        text excess_liability_aggregate_limit_minimum
+        text excess_liability_each_occurrence_limit
+        text excess_liability_each_occurrence_limit_met
+        text excess_liability_each_occurrence_limit_minimum
+        text excess_liability_expired
+        text excess_liability_other_than_umbrella_form
+        text excess_liability_policy_effective_date
+        text excess_liability_policy_expiration_date
+        text excess_liability_policy_number
+        text excess_liability_umbrella_form
+        text excess_liability_waiver_of_subrogation
+        text garage_liability_aggregate_limit
+        text garage_liability_aggregate_limit_met
+        text garage_liability_aggregate_limit_minimum
+        text garage_liability_any_auto
+        text garage_liability_auto_only_ea_accident_limit
+        text garage_liability_auto_only_ea_accident_limit_met
+        text garage_liability_auto_only_ea_accident_limit_minimum
+        text garage_liability_each_accident_limit
+        text garage_liability_each_accident_limit_met
+        text garage_liability_each_accident_limit_minimum
+        text garage_liability_expired
+        text garage_liability_other_than_auto_only_limit
+        text garage_liability_other_than_auto_only_limit_met
+        text garage_liability_other_than_auto_only_limit_minimum
+        text garage_liability_policy_effective_date
+        text garage_liability_policy_expiration_date
+        text garage_liability_policy_number
+        text garage_liability_waiver_of_subrogation
+        text general_liability_claims_made
+        text general_liability_each_occurrence_limit
+        text general_liability_each_occurrence_limit_met
+        text general_liability_each_occurrence_limit_minimum
+        text general_liability_expired
+        text general_liability_fire_damage_limit
+        text general_liability_fire_damage_limit_met
+        text general_liability_fire_damage_limit_minimum
+        text general_liability_general_aggregate_limit
+        text general_liability_general_aggregate_limit_met
+        text general_liability_general_aggregate_limit_minimum
+        text general_liability_independent_contracts
+        text general_liability_med_exp_limit
+        text general_liability_med_exp_limit_met
+        text general_liability_med_exp_limit_minimum
+        text general_liability_occur
+        text general_liability_other_limit
+        text general_liability_policy_effective_date
+        text general_liability_policy_expiration_date
+        text general_liability_policy_number
+        text general_liability_products_comp_op_agg_limit
+        text general_liability_products_comp_op_agg_limit_met
+        text general_liability_products_comp_op_agg_limit_minimum
+        text general_liability_waiver_of_subrogation
+        text insured_city
+        text insured_contact_person
+        text insured_email
+        text insured_fax
+        text insured_secondary_email
+        text insured_state
+        text insured_street_1
+        text insured_street_2
+        text insured_telephone
+        text insured_zip
+        text limits
+        text manual_compliance
+        text notification_comments
+        text notifications
+        text other
+        text personal_advertising_injuryaggregate_limit
+        text personal_advertising_injuryaggregate_limit_met
+        text personal_advertising_injuryaggregate_limit_minimum
+        text personal_advertising_injuryeach_occurrence_limit
+        text personal_advertising_injuryeach_occurrence_limit_met
+        text personal_advertising_injuryeach_occurrence_limit_minimum
+        text personal_advertising_injuryexpired
+        text personal_advertising_injurypolicy_effective_date
+        text personal_advertising_injurypolicy_expiration_date
+        text personal_advertising_injurypolicy_number
+        text producer_am_best_rating
+        text producer_city
+        text producer_company
+        text producer_contact_person
+        text producer_email
+        text producer_fax
+        text producer_state
+        text producer_street_1
+        text producer_street_2
+        text producer_telephone
+        text producer_zip
+        text professional_liability_aggregate_limit
+        text professional_liability_aggregate_limit_met
+        text professional_liability_aggregate_limit_minimum
+        text professional_liability_each_occurrence_limit
+        text professional_liability_each_occurrence_limit_met
+        text professional_liability_each_occurrence_limit_minimum
+        text professional_liability_expired
+        text professional_liability_policy_effective_date
+        text professional_liability_policy_expiration_date
+        text professional_liability_policy_number
+        text property_insurance_business_interruption
+        text property_insurance_each_occurrence_limit
+        text property_insurance_each_occurrence_limit_met
+        text property_insurance_each_occurrence_limit_minimum
+        text property_insurance_expired
+        text property_insurance_leaseholdimprovements
+        text property_insurance_policy_effective_date
+        text property_insurance_policy_expiration_date
+        text property_insurance_policy_number
+        text property_insurance_waiver_of_subrogation
+        text workers_compensation_el_disease_ea_employee_limit
+        text workers_compensation_el_disease_ea_employee_limit_met
+        text workers_compensation_el_disease_ea_employee_limit_minimum
+        text workers_compensation_el_disease_policy_limit
+        text workers_compensation_el_disease_policy_limit_met
+        text workers_compensation_el_disease_policy_limit_minimum
+        text workers_compensation_el_ea_accident_limit
+        text workers_compensation_el_ea_accident_limit_met
+        text workers_compensation_el_ea_accident_limit_minimum
+        text workers_compensation_expired
+        text workers_compensation_policy_effective_date
+        text workers_compensation_policy_expiration_date
+        text workers_compensation_policy_number
+        text workers_compensation_statutory_limits
+    }
+    reservation_schedule {
+        text vendor_name PK
+        text reservation_id PK
+        text date
+        text end_time
+        text flagged
+        text start_time
+        text vendor
+        text vendor_email
+        text vendor_end_time
+        text vendor_notes
+        text vendor_phone
+        text vendor_start_time
+    }
+    request_log {
+        text id PK
+        text request_id PK
+        text date
+        text email
+        text message
+        text notify_tenant
+        text request_status
+        text sent_emails
+        text type
+        text update_location
+    }
+    request_billable_item {
+        text id PK
+        text accounting_id
+        text date
+        text labor_acct_code
+        text labor_ch_code
+        text labor_description
+        text labor_markup
+        text labor_markup_percent
+        text labor_rate
+        text labor_tax
+        text labor_tax_percent
+        text labor_time
+        text lease_id
+        text materials_acct_code
+        text materials_chc_code
+        text materials_cost
+        text materials_description
+        text materials_markup
+        text materials_markup_percent
+        text materials_quantity
+        text materials_tax
+        text materials_tax_percent
+        text name
+        text po_number
+        text sales_tax
+        text sales_tax_percent
+    }
+    request {
+        text id PK
+        text building_id FK
+        text company_name FK
+        text created_by_user_id FK
+        text billable_status
+        text contact
+        text description
+        text email
+        text location
+        text phone
+        text request_status
+        text requested_date
+        text satisfaction_rating
+        text service_type
+        text staff_finalized_date
+        text staff_finalized_status
+        text staff_finalized_time
+        text staff_initial_response_date
+        text staff_initial_response_time
+        text suite_floor
+        text updated
+        text worked_time
+    }
+    job_comment {
+        text job_id PK
+        text task_id FK
+        text comment
+        text date
+    }
+    reservation_detail {
+        text reservation_id PK
+        text attendee_list
+        text attendees
+        text contact_alt_phone
+        text contact_email
+        text contact_name
+        text contact_phone
+        text date_created
+        text reservation_contact_alt_phone
+        text reservation_contact_email
+        text reservation_contact_name
+        text reservation_contact_phone
+        text reservation_options
+        text setup_options
+        text special_requests
+        text status
+        text submitted_location
+    }
+    service_type {
+        text id PK
+        text accounting_id FK
+        text active
+        text building
+        text designees
+        text display_order
+        text name
+    }
+    reservation_billable_item {
+        text lease_id PK
+        text reservation_id PK
+        text billable_note
+        text date_added
+        text description
+        text hourly_rate
+        text mark_up_dollar
+        text mark_up_percent
+        text materials_cost
+        text po_number
+        text quantity
+        text status
+        text tax_dollar
+        text tax_percent
+        text time
+        text type
+        text view_markups
+    }
+    certificate_email_history {
+        text _fivetran_id PK
+        text certificate_id FK
+        text date_sent
+        text email_type
+        text message
+        text receiver
+        text sender
+        text subject
+    }
+    request_hold_time {
+        text request_id PK
+        text id FK
+        text added_by
+        text added_date
+        text end_date
+        text note
+        text reason
+        text reason_other
+        text start_date
+    }
+    history {
+        text note_id PK
+        text added_by FK
+        text company_name FK
+        text user_id FK
+        text application
+        text application_record_id
+        text building
+        text communication_sent
+        text communication_subject
+        text contact
+        text date_added
+        text message
+        text title
+        text user_live
+        text user_type
+    }
+    groups }o--|| building : "fk"
+    reservation_communication_log }o--|| reservation : "fk"
+    reservation }o--|| amenity : "fk"
+    reservation }o--|| building : "fk"
+    reservation }o--|| company : "fk"
+    reservation }o--|| amenity : "fk"
+    amenity_attachment }o--|| amenity : "fk"
+    equipment_comment }o--|| task : "fk"
+    equipment_comment }o--|| job : "fk"
+    equipment_comment }o--|| equipment : "fk"
+    certificate_attachment }o--|| certificate : "fk"
+    task_designee }o--|| job : "fk"
+    task_designee }o--|| task : "fk"
+    request_designee }o--|| users : "fk"
+    request_designee }o--|| request : "fk"
+    job }o--|| equipment : "fk"
+    job }o--|| building : "fk"
+    task }o--|| users : "fk"
+    task }o--|| job : "fk"
+    task }o--|| equipment : "fk"
+    task }o--|| job : "fk"
+    equipment_update }o--|| job : "fk"
+    equipment_update }o--|| task : "fk"
+    equipment_update }o--|| equipment : "fk"
+    company }o--|| building : "fk"
+    equipment_job }o--|| job : "fk"
+    equipment_job }o--|| equipment : "fk"
+    user_building }o--|| building : "fk"
+    user_building }o--|| users : "fk"
+    user_mc_permission }o--|| users : "fk"
+    user_mtm_permission }o--|| users : "fk"
+    user_tc_permission }o--|| users : "fk"
+    user_sms_message }o--|| users : "fk"
+    users }o--|| building : "fk"
+    users }o--|| company : "fk"
+    job_update }o--|| job : "fk"
+    job_update }o--|| task : "fk"
+    job_task }o--|| task : "fk"
+    job_task }o--|| job : "fk"
+    reservation_attachment }o--|| reservation : "fk"
+    certificate }o--|| building : "fk"
+    certificate }o--|| company : "fk"
+    amenity }o--|| building : "fk"
+    amenity_detail_scheduled_closing }o--|| amenity_detail : "fk"
+    amenity_detail_scheduled_closing }o--|| amenity_detail : "fk"
+    amenity_detail }o--|| amenity : "fk"
+    job_detail_additional_information }o--|| job_detail : "fk"
+    job_custom }o--|| job : "fk"
+    job_detail }o--|| building : "fk"
+    job_detail }o--|| equipment : "fk"
+    job_detail }o--|| job : "fk"
+    certificate_detail }o--|| certificate : "fk"
+    reservation_schedule }o--|| reservation : "fk"
+    request_log }o--|| request : "fk"
+    request_billable_item }o--|| request : "fk"
+    request }o--|| users : "fk"
+    request }o--|| building : "fk"
+    request }o--|| company : "fk"
+    job_comment }o--|| job : "fk"
+    job_comment }o--|| task : "fk"
+    reservation_detail }o--|| reservation : "fk"
+    service_type }o--|| request_billable_item : "fk"
+    reservation_billable_item }o--|| reservation : "fk"
+    certificate_email_history }o--|| certificate : "fk"
+    request_hold_time }o--|| request : "fk"
+    history }o--|| users : "fk"
+    history }o--|| users : "fk"
+    history }o--|| company : "fk"

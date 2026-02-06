@@ -1,0 +1,144 @@
+erDiagram
+    lead_gen_form {
+        text id PK
+        text account_id FK
+        text name
+    }
+    ad_set {
+        text end_date PK
+        text id PK
+        text start_date PK
+        text account_id FK
+        text campagin_id FK
+        text bid_amount
+        text campaign_id
+        text click
+        text cost_per_lead
+        text cpc
+        text ctr
+        text form_completion_rate
+        text impression
+        text leads_generated
+        text name
+        text spend
+        text status
+    }
+    ad {
+        text end_date PK
+        text id PK
+        text start_date PK
+        text account_id FK
+        text ad_set_id FK
+        text campaign_id FK
+        text bid_amount
+        text click
+        text cost_per_lead
+        text form_completion_rate
+        text impression
+        text leads_generated
+        text name
+        text spend
+        text status
+    }
+    recent_leads_collected_for_lead_gen_form {
+        text id PK
+        text account_id FK
+        text ad_id FK
+        text form_id FK
+        text creation_time
+        text field_data_business_email
+        text field_data_city
+        text field_data_company_name
+        text field_data_company_size
+        text field_data_country
+        text field_data_first_name
+        text field_data_job_title
+        text field_data_last_name
+        text field_data_phone_number
+        text field_data_state
+        text field_data_user_email
+        text field_data_zipcode
+        text form_name
+    }
+    account_detail {
+        text end_date PK
+        text id PK
+        text start_date PK
+        text account_currency
+        text account_name
+        text click
+        text conversion_add_payment_info
+        text conversion_add_to_cart
+        text conversion_add_to_wishlist
+        text conversion_app_install
+        text conversion_complete_registration
+        text conversion_generate_lead
+        text conversion_generic
+        text conversion_initiate_checkout
+        text conversion_purchase
+        text conversion_rate_add_payment_info
+        text conversion_rate_add_to_cart
+        text conversion_rate_add_to_wishlist
+        text conversion_rate_app_install
+        text conversion_rate_complete_registration
+        text conversion_rate_generate_lead
+        text conversion_rate_generic
+        text conversion_rate_initiate_checkout
+        text conversion_rate_purchase
+        text conversion_rate_search
+        text conversion_search
+        text cost_per_lead
+        text cpc
+        text ctr
+        text form_completion_rate
+        text impression
+        text leads_generated
+        text spend
+    }
+    campaign {
+        text end_date PK
+        text id PK
+        text start_date PK
+        text account_id FK
+        text campaign_name
+        text click
+        text conversion_add_payment_info
+        text conversion_add_to_cart
+        text conversion_add_to_wishlist
+        text conversion_app_install
+        text conversion_complete_registration
+        text conversion_generate_lead
+        text conversion_generic
+        text conversion_initiate_checkout
+        text conversion_purchase
+        text conversion_rate_add_payment_info
+        text conversion_rate_add_to_cart
+        text conversion_rate_add_to_wishlist
+        text conversion_rate_app_install
+        text conversion_rate_complete_registration
+        text conversion_rate_generate_lead
+        text conversion_rate_generic
+        text conversion_rate_initiate_checkout
+        text conversion_rate_purchase
+        text conversion_rate_search
+        text conversion_search
+        text cost_per_lead
+        text cpc
+        text daily_budget
+        text form_completion_rate
+        text impression
+        text leads_generated
+        text lifetime_budget
+        text spend
+        text status
+    }
+    lead_gen_form }o--|| account_detail : "fk"
+    ad_set }o--|| account_detail : "fk"
+    ad_set }o--|| campaign : "fk"
+    ad }o--|| campaign : "fk"
+    ad }o--|| ad_set : "fk"
+    ad }o--|| account_detail : "fk"
+    recent_leads_collected_for_lead_gen_form }o--|| lead_gen_form : "fk"
+    recent_leads_collected_for_lead_gen_form }o--|| ad : "fk"
+    recent_leads_collected_for_lead_gen_form }o--|| account_detail : "fk"
+    campaign }o--|| account_detail : "fk"
